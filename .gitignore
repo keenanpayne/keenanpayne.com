@@ -1,0 +1,25 @@
+# Mac files
+.DS_Store
+__MACOSX/
+
+# Dependencies
+node_modules/
+
+# IDE files
+.idea/
+
+# Config files
+*.cfg
+
+# Log files
+*.log
+
+# Cache
+.sass-cache/
+
+# Specific files
+google5a5127a427270c7e.html
+BingSiteAuth.xml
+resume.pdf
+sitemap.xml
+URgcHA3kFv_wE2Sbuj4sZYjKO_s.html
