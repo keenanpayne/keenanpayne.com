@@ -1886,6 +1886,10 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   padding: 0; }
+  @media (max-height: 486px) {
+    body {
+      background: url("../images/bg.jpg") no-repeat center center;
+      background-size: cover; } }
 
 h1, h2, h3 {
   font-weight: 600; }
@@ -1922,6 +1926,20 @@ a {
     background-color: transparent;
     color: white; }
 
+.overlay,
+.layer,
+.layers,
+.layer--bg {
+  display: none;
+  visibility: hidden; }
+  @media (min-height: 486px) {
+    .overlay,
+    .layer,
+    .layers,
+    .layer--bg {
+      display: block;
+      visibility: visible; } }
+
 .overlay {
   background-color: black;
   height: 100%;
@@ -1938,8 +1956,8 @@ a {
   margin: 0;
   overflow: hidden;
   padding: 0;
-  top: -5%;
   transform: translate(-50%, -50%);
+  top: -5%;
   width: 115%; }
 
 .layer {
@@ -1953,35 +1971,38 @@ a {
   height: 100%;
   left: -5%;
   position: absolute;
-  top: -1%;
+  top: -5%;
   width: 100%; }
-  @media (min-width: 48em) {
-    .layer--bg {
-      height: 100%;
-      top: -5%; } }
 
-.section--home {
-  height: 100vh;
-  overflow: hidden;
-  width: 100%; }
-  .section--home p {
-    line-height: 1.75; }
-    @media (min-width: 48em) {
-      .section--home p {
-        font-weight: 300;
-        line-height: 2; } }
-    @media (min-width: 60em) {
-      .section--home p {
-        margin: 0 auto;
-        width: 820px; } }
-  .section--home .content {
-    left: 50%;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    z-index: 101; }
+@media (min-height: 486px) {
+  .section--home {
+    height: 100vh;
+    overflow: hidden;
+    width: 100%; } }
+
+.section--home p {
+  line-height: 1.75; }
+  @media (min-width: 48em) {
+    .section--home p {
+      font-weight: 300;
+      line-height: 2; } }
+  @media (min-width: 60em) {
+    .section--home p {
+      margin: 0 auto;
+      width: 820px; } }
+
+.section--home .content {
+  margin: 40px auto;
+  text-align: center;
+  width: 90%;
+  z-index: 101; }
+  @media (min-height: 486px) {
+    .section--home .content {
+      left: 50%;
+      margin-top: 0;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%); } }
 
 .avatar {
   background-clip: content-box;
