@@ -1897,7 +1897,16 @@ h1, h2, h3 {
 h1 {
   font-weight: 600;
   letter-spacing: .25px;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  transition: font-size 150ms; }
+  h1.kilo {
+    font-size: 1.65em; }
+    @media (min-width: 30em) {
+      h1.kilo {
+        font-size: 1.73333em; } }
+    @media (min-width: 48em) {
+      h1.kilo {
+        font-size: 2.88889em; } }
 
 a {
   border-bottom: 1px solid white;

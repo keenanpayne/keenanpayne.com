@@ -54,6 +54,19 @@ h1 {
   font-weight: 600;
   letter-spacing: .25px;
   text-transform: uppercase;
+  transition: font-size $transition-duration;
+
+  &.kilo {
+    font-size: 1.65em;
+
+    @media (min-width: $bp-extra-small) {
+      font-size: pxToEm($kilo-size * .60);
+    }
+
+    @media (min-width: $bp-small) {
+      font-size: pxToEm($kilo-size);
+    }
+  }
 }
 
 a {
