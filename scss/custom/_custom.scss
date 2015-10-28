@@ -31,7 +31,7 @@ body {
 
 body {
   backface-visibility: hidden;
-  border: 10px solid rgba(white, .5);
+  border: 5px solid rgba(white, .5);
   margin: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -40,6 +40,10 @@ body {
   @media (max-height: $height-min) {
     background: url('../images/bg.jpg') no-repeat center center;
     background-size: cover;
+  }
+
+  @media (min-width: $bp-small) {
+    border-width: 10px;
   }
 }
 

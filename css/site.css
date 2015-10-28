@@ -1881,7 +1881,7 @@ body {
 
 body {
   backface-visibility: hidden;
-  border: 10px solid rgba(255, 255, 255, 0.5);
+  border: 5px solid rgba(255, 255, 255, 0.5);
   margin: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -1890,6 +1890,9 @@ body {
     body {
       background: url("../images/bg.jpg") no-repeat center center;
       background-size: cover; } }
+  @media (min-width: 48em) {
+    body {
+      border-width: 10px; } }
 
 h1, h2, h3 {
   font-weight: 600; }
