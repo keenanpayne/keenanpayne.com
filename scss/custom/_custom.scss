@@ -178,6 +178,7 @@ a {
 
   // Typography
   p {
+    font-weight: 100;
     line-height: 1.75;
 
     @media (min-width: $bp-small) {
@@ -186,7 +187,7 @@ a {
     }
 
     @media (min-width: $bp-medium) {
-      margin: 0 auto;
+      margin: 0 auto 20px;
       width: 820px;
     }
   }
@@ -199,11 +200,15 @@ a {
     z-index: 101;
 
     @media (min-height: $height-min) {
-      left: 50%;
-      margin-top: 0;
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      margin: auto;
+      overflow: auto;
       position: absolute;
+      right: 0;
       top: 50%;
-      transform: translate(-50%, -50%);
+      width: 100%;
     }
   }
 }
