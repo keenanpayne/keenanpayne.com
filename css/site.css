@@ -1884,8 +1884,11 @@ body {
   border: 5px solid rgba(255, 255, 255, 0.5);
   margin: 0;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   padding: 0; }
+  @media (max-height: 972px) {
+    body {
+      overflow-y: auto; } }
   @media (max-height: 486px) {
     body {
       background: url("../images/bg.jpg") no-repeat center center;
