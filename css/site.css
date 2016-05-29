@@ -1886,13 +1886,11 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   padding: 0; }
-  @media (max-height: 972px) {
-    body {
-      overflow-y: auto; } }
   @media (max-height: 486px) {
     body {
       background: url("../images/bg.jpg") no-repeat center center;
-      background-size: cover; } }
+      background-size: cover;
+      overflow-y: auto; } }
   @media (min-width: 48em) {
     body {
       border-width: 10px; } }

@@ -37,13 +37,10 @@ body {
   overflow-y: hidden;
   padding: 0;
 
-  @media (max-height: ($height-min * 2)) {
-    overflow-y: auto;
-  }
-
   @media (max-height: $height-min) {
     background: url('../images/bg.jpg') no-repeat center center;
     background-size: cover;
+    overflow-y: auto;
   }
 
   @media (min-width: $bp-small) {
