@@ -1,0 +1,16 @@
+{
+  "use": [
+    "postcss-import",
+    "postcss-advanced-variables",
+    "postcss-mixins",
+    "postcss-custom-media",
+    "postcss-nested",
+    "autoprefixer"
+  ],
+  "input": "src/css/app.css",
+  "output": "dist/css/app.css",
+  "local-plugins": true,
+  "autoprefixer": {
+    "browsers": "> 5%"
+  }
+}
