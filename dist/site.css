@@ -185,12 +185,12 @@ svg:not(:root) {
 a {
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
-  color: #C65146;
+  color: #4d4d4d;
   text-decoration: none;
   -webkit-transition-duration: 150ms;
           transition-duration: 150ms; }
   a:hover, a:focus {
-    color: #7f2f27; }
+    color: #1a1a1a; }
 
 a:hover {
   outline-width: 0; }
@@ -291,21 +291,21 @@ input[type="range"] {
   input[type="range"]::-moz-range-thumb{
   border: none;
   border-radius: 50%;
-  background-color: #C65146;
+  background-color: #4d4d4d;
   height: 0.75rem;
   margin-top: -0.225rem;
   width: 0.75rem; }
   input[type="range"]::-ms-thumb{
   border: none;
   border-radius: 50%;
-  background-color: #C65146;
+  background-color: #4d4d4d;
   height: 0.75rem;
   margin-top: -0.225rem;
   width: 0.75rem; }
   input[type="range"]::-webkit-slider-thumb{
   border: none;
   border-radius: 50%;
-  background-color: #C65146;
+  background-color: #4d4d4d;
   height: 0.75rem;
   margin-top: -0.225rem;
   width: 0.75rem; }
@@ -313,7 +313,7 @@ input[type="range"] {
     -webkit-appearance: none; }
 
 button, input[type="submit"] {
-  background-color: #C65146;
+  background-color: #4d4d4d;
   border: none;
   color: white;
   cursor: pointer;
@@ -324,11 +324,11 @@ button, input[type="submit"] {
   transition: background-color 150ms;
   white-space: nowrap; }
   button:hover, input[type="submit"]:hover, button:focus, input[type="submit"]:focus {
-    background-color: #cc6359;
+    background-color: #5a5a5a;
     text-decoration: none;
     outline: none; }
   button:active, input[type="submit"]:active {
-    background-color: #d2766d; }
+    background-color: #676767; }
   button[disabled], input[disabled][type="submit"] {
     background-color: #eee;
     cursor: not-allowed; }
@@ -419,7 +419,7 @@ h1, h2, h3 {
   h1 a, h2 a, h3 a {
     color: inherit; }
     h1 a:hover, h1 a:focus, h2 a:hover, h2 a:focus, h3 a:hover, h3 a:focus {
-      color: #C65146;
+      color: #4d4d4d;
       text-decoration: none; }
 
 h4, h5, h6 {
@@ -850,3 +850,39 @@ table {
   ul li,
   ol li {
     content: "&raquo; "; } }
+
+:root {
+  background-color: #fafafa; }
+
+p.-holla {
+  font-size: 2.98598rem;
+  line-height: 1.3; }
+
+a:hover {
+  border-bottom: 1px solid #4d4d4d; }
+
+a.-dribbble {
+  color: #ea4c89; }
+
+a.-behance {
+  color: #1769ff; }
+
+a.-github {
+  color: #333; }
+
+header {
+  margin-top: 3rem; }
+  header nav {
+    text-align: right; }
+  header ul {
+    margin-top: 0.75rem; }
+  header li {
+    display: inline;
+    margin-right: 1.25em; }
+    header li:last-child {
+      margin-right: 0; }
+
+.welcome {
+  padding: 6rem 0.75rem; }
+  .welcome p {
+    max-width: 70%; }

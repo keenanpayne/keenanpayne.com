@@ -1,3 +1,43 @@
 //
 // Custom Styles
 // --------------------------------------------------
+
+:root { background-color: #fafafa; }
+
+p {
+  &.-holla {
+    font-size: typeScale(8);
+    line-height: 1.3;
+  }
+}
+
+a {
+  &:hover { border-bottom: 1px solid #4d4d4d; }
+
+  &.-dribbble { color: #ea4c89; }
+
+  &.-behance { color: #1769ff; }
+
+  &.-github { color: #333; }
+}
+
+header {
+  margin-top: $spacing-m;
+
+  nav { text-align: right; }
+
+  ul { margin-top: $spacing-xs; }
+
+  li {
+    display: inline;
+    margin-right: 1.25em;
+
+    &:last-child { margin-right: 0; }
+  }
+}
+
+.welcome {
+  padding: $spacing-xl $spacing-xs;
+
+  p { max-width: 70%; }
+}
