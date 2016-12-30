@@ -1,44 +1,21 @@
 {
-  "name": "postcss-npm-boilerplate",
-  "version": "1.0.0",
-  "description": "This is a simple boilerplate for using NPM and PostCSS to handle common front-end development environments.",
-  "author": "Keenan Payne <contact@keenanpayne.com>",
-  "license": "MIT",
-  "homepage": "https://github.com/keenanpayne/postcss-npm-boilerplate#readme",
-  "keywords": [
-    "css",
-    "postcss",
-    "boilerplate"
-  ],
-  "engines": {
-    "node": ">=6.2.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/keenanpayne/postcss-npm-boilerplate.git"
-  },
-  "bugs": {
-    "url": "https://github.com/keenanpayne/postcss-npm-boilerplate/issues"
+  "name": "keenanpayne",
+  "private": true,
+  "version": "2.0.0",
+  "description": "The personal website for Keenan Payne.",
+  "homepage": "http://keenanpayne.com",
+  "dependencies": {
+    "concise.css": "^4.1.2"
   },
   "devDependencies": {
-    "autoprefixer": "^6.5.3",
-    "del-cli": "^0.2.0",
-    "cssnano-cli": "^1.0.5",
-    "postcss-advanced-variables": "^1.2.2",
-    "postcss-cli": "^2.6.0",
-    "postcss-custom-media": "^5.0.1",
-    "postcss-import": "^8.2.0",
-    "postcss-mixins": "^5.4.0",
-    "postcss-nested": "^1.0.0",
-    "stylefmt": "^5.0.0",
-    "stylelint": "^7.6.0"
+    "concise-cli": "^0.4.1",
+    "cssmin": "^0.4.3",
+    "watch": "^0.16.0"
   },
   "scripts": {
-    "start": "postcss -w -c postcss.json",
-    "build": "postcss -c postcss.json && npm run minify",
-    "minify": "cssnano dist/css/app.css dist/css/app.min.css --safe",
-    "format": "stylefmt src/css/app.css",
-    "compile": "npm run clean && npm run build && npm run minify && npm run format",
-    "clean": "del dist/**/*"
+    "start": "npm run build:watch",
+    "build": "concisecss compile src/site.scss dist/site.css",
+    "build:minify": "cssmin dist/site.css > dist/site.min.css",
+    "build:watch": "watch \"npm run build\" src"
   }
 }
