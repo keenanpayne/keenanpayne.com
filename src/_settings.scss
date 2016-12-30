@@ -45,6 +45,7 @@ $spacing-s:  1lh;
 $spacing-m:  2lh;
 $spacing-l:  3lh;
 $spacing-xl: 4lh;
+$spacing-xxl: 5.5lh;
 
 //
 // Type Scale
@@ -90,7 +91,7 @@ $num-columns: 12;
 $prefix: '';
 
 // Create columns and offsets above this breakpoint
-$breakpoint: --small;
+$breakpoint: --medium;
 
 //
 // Color Palette

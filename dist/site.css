@@ -56,7 +56,7 @@ template,
   color: #444;
   font-size: 16px;
   text-rendering: optimizeLegibility; }
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     :root {
       font-size: 18px; } }
 
@@ -518,7 +518,7 @@ input[type="radio"] + label {
 
 table {
   width: 100%; }
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     table {
       width: auto; } }
   table thead,
@@ -554,7 +554,7 @@ table {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column; }
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     [grid] {
       -webkit-box-orient: horizontal;
       -webkit-box-direction: normal;
@@ -677,7 +677,7 @@ table {
   -ms-flex-item-align: end;
       align-self: flex-end; }
 
-@media (min-width: 480px) {
+@media (min-width: 768px) {
   [column~="1"] {
     -webkit-box-flex: 0;
         -ms-flex: 0 1 8.33333%;
@@ -855,8 +855,11 @@ table {
   background-color: #fafafa; }
 
 p.-holla {
-  font-size: 2.98598rem;
+  font-size: 1.728rem;
   line-height: 1.3; }
+  @media (min-width: 480px) {
+    p.-holla {
+      font-size: 2.98598rem; } }
 
 a:hover {
   border-bottom: 1px solid #4d4d4d; }
@@ -872,8 +875,9 @@ a.-github {
 
 header {
   margin-top: 3rem; }
-  header nav {
-    text-align: right; }
+  @media (min-width: 768px) {
+    header nav {
+      text-align: right; } }
   header ul {
     margin-top: 0.75rem; }
   header li {
@@ -882,7 +886,47 @@ header {
     header li:last-child {
       margin-right: 0; }
 
+footer {
+  -webkit-animation: fadeIn .7s .72s forwards, textUp .7s .72s ease-out forwards;
+          animation: fadeIn .7s .72s forwards, textUp .7s .72s ease-out forwards;
+  opacity: 0; }
+
 .welcome {
+  -webkit-animation: fadeIn .7s .5s forwards, textUp .7s .5s ease-out forwards;
+          animation: fadeIn .7s .5s forwards, textUp .7s .5s ease-out forwards;
+  opacity: 0;
   padding: 6rem 0.75rem; }
-  .welcome p {
-    max-width: 70%; }
+  @media (min-width: 960px) {
+    .welcome {
+      padding-bottom: 8.25rem;
+      padding-top: 8.25rem; }
+      .welcome p {
+        max-width: 750px; } }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
+@-webkit-keyframes textUp {
+  from {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px); }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); } }
+
+@keyframes textUp {
+  from {
+    -webkit-transform: translateY(50px);
+            transform: translateY(50px); }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0); } }
