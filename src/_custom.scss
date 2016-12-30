@@ -6,7 +6,9 @@
 
 p {
   &.-holla {
+    font-family: $font-secondary;
     font-size: typeScale(5);
+    letter-spacing: -.2px;
     line-height: 1.3;
 
     @media (--small) {
@@ -15,14 +17,32 @@ p {
   }
 }
 
+@mixin linkColor($color) {
+  color: $color;
+
+  &:hover { border-bottom: 1px solid $color; }
+}
+
 a {
   &:hover { border-bottom: 1px solid #4d4d4d; }
 
-  &.-dribbble { color: #ea4c89; }
+  &.-dribbble { @include linkColor(#ea4c89); }
 
-  &.-behance { color: #1769ff; }
+  &.-behance { @include linkColor(#1769ff); }
 
-  &.-github { color: #333; }
+  &.-github { @include linkColor(#333); }
+}
+
+h1 {
+  font-family: 'Marmelad', sans-serif;
+  word-spacing: -1px;
+
+  a {
+    &:hover {
+      border-bottom: none;
+      color: inherit;
+    }
+  }
 }
 
 
@@ -66,7 +86,7 @@ footer {
     padding-bottom: $spacing-xxl;
     padding-top: $spacing-xxl;
 
-    p { max-width: 750px; }
+    p { max-width: 800px; }
   }
 }
 
