@@ -1,8 +1,18 @@
 //
-// Base Styles
+// Base
 // --------------------------------------------------
 
-:root { background-color: #fafafa; }
+:root {
+  background-color: #fafafa;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+//
+// Typography
+// --------------------------------------------------
 
 p {
   &.-holla {
@@ -50,11 +60,11 @@ h1 {
 // Header & Footer
 // --------------------------------------------------
 
-header {
-  margin-top: $spacing-m;
+header[role="main"] { margin-top: $spacing-m; }
 
+nav[role="navigation"] {
   @media (--medium) {
-    nav { text-align: right; }
+    text-align: right;
   }
 
   ul { margin-top: $spacing-xs; }
@@ -67,7 +77,7 @@ header {
   }
 }
 
-footer {
+footer[role="main"] {
   animation: fadeIn .7s .72s forwards, textUp .7s .72s ease-out forwards;
   opacity: 0;
 }
@@ -88,6 +98,15 @@ footer {
 
     p { max-width: 800px; }
   }
+}
+
+
+//
+// Work
+// --------------------------------------------------
+
+.work-work-work-work-work {
+
 }
 
 

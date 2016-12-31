@@ -852,7 +852,10 @@ table {
     content: "&raquo; "; } }
 
 :root {
-  background-color: #fafafa; }
+  background-color: #fafafa;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
 
 p.-holla {
   font-family: "PT Serif", "Georgia", "Times New Roman", "Times", serif;
@@ -888,20 +891,23 @@ h1 {
     border-bottom: none;
     color: inherit; }
 
-header {
+header[role="main"] {
   margin-top: 3rem; }
-  @media (min-width: 768px) {
-    header nav {
-      text-align: right; } }
-  header ul {
-    margin-top: 0.75rem; }
-  header li {
-    display: inline;
-    margin-right: 1.25em; }
-    header li:last-child {
-      margin-right: 0; }
 
-footer {
+@media (min-width: 768px) {
+  nav[role="navigation"] {
+    text-align: right; } }
+
+nav[role="navigation"] ul {
+  margin-top: 0.75rem; }
+
+nav[role="navigation"] li {
+  display: inline;
+  margin-right: 1.25em; }
+  nav[role="navigation"] li:last-child {
+    margin-right: 0; }
+
+footer[role="main"] {
   -webkit-animation: fadeIn .7s .72s forwards, textUp .7s .72s ease-out forwards;
           animation: fadeIn .7s .72s forwards, textUp .7s .72s ease-out forwards;
   opacity: 0; }
