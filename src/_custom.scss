@@ -84,8 +84,32 @@ footer[role="main"] {
 
 
 //
-// Homepage
+// Pages
 // --------------------------------------------------
+
+//
+// Page Description
+// ----------------
+
+.description {
+  animation: fadeIn .55s .5s forwards, textUpSmall .55s .5s ease-out forwards;
+  opacity: 0;
+  padding-bottom: $spacing-s;
+
+  h2 {
+    font-size: typeScale(6);
+    margin-bottom: $spacing-xs;
+  }
+
+  p {
+    font-size: typeScale(3);
+  }
+}
+
+
+//
+// Homepage
+// --------
 
 .welcome {
   animation: fadeIn .7s .5s forwards, textUp .7s .5s ease-out forwards;
@@ -103,7 +127,7 @@ footer[role="main"] {
 
 //
 // Work
-// --------------------------------------------------
+// ----
 
 .work-work-work-work-work {
 
@@ -118,6 +142,12 @@ footer[role="main"] {
   from { opacity: 0; }
 
   to { opacity: 1; }
+}
+
+@keyframes textUpSmall {
+  from { transform: translateY(25px); }
+
+  to { transform: translateY(0); }
 }
 
 @keyframes textUp {
