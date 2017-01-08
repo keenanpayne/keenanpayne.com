@@ -1023,6 +1023,9 @@ footer {
     .tile {
       opacity: 0;
       width: 20%; } }
+  .tile:hover {
+    border-bottom: none;
+    text-decoration: none; }
   .tile img {
     height: auto;
     max-width: 100%;

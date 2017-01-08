@@ -220,6 +220,11 @@ footer {
     width: 20%;
   }
 
+  &:hover {
+    border-bottom: none;
+    text-decoration: none;
+  }
+
   img {
     height: auto;
     max-width: 100%;
