@@ -1,6 +1,6 @@
 //
 // Base
-// --------------------------------------------------
+// ==================================================
 
 :root {
   background-color: #fafafa;
@@ -12,23 +12,9 @@
 
 //
 // Typography
-// --------------------------------------------------
+// ==================================================
 
-p {
-  word-spacing: .5px;
-
-  &.-holla {
-    font-family: $font-secondary;
-    font-size: typeScale(5);
-    letter-spacing: -.75px;
-    line-height: 1.3;
-    word-spacing: 0;
-
-    @media (--small) {
-      font-size: typeScale(8);
-    }
-  }
-}
+p { word-spacing: .5px; }
 
 @mixin linkColor($color) {
   color: $color;
@@ -37,7 +23,7 @@ p {
 }
 
 a {
-  &:hover { border-bottom: 1px solid #4d4d4d; }
+  &:hover { border-bottom: 1px solid getColor(text, primary); }
 
   &.-dribbble { @include linkColor(#ea4c89); }
 
@@ -48,8 +34,25 @@ a {
   &.-linkedin { @include linkColor(#0077b5); }
 }
 
+.-holla {
+  font-family: $font-secondary;
+  font-size: typeScale(5);
+  letter-spacing: -.75px;
+  line-height: 1.4;
+  word-spacing: 0;
+
+  @media (--small) {
+    font-size: typeScale(8);
+  }
+}
+
+
+//
+// Header & Footer
+// ==================================================
+
 h1 {
-  font-family: "sutturah",sans-serif;
+  font-family: "sutturah", sans-serif;
   font-style: normal;
   font-weight: 400;
   word-spacing: -1px;
@@ -61,11 +64,6 @@ h1 {
     }
   }
 }
-
-
-//
-// Header & Footer
-// --------------------------------------------------
 
 header[role="main"] { margin-top: $spacing-m; }
 
@@ -79,7 +77,7 @@ nav[role="navigation"] {
   li {
     cursor: pointer;
     display: inline;
-    font-size: 16px;
+    font-size: $font-size + px;
     font-weight: 600;
     letter-spacing: .15px;
     margin-right: 1.5em;
@@ -87,7 +85,7 @@ nav[role="navigation"] {
     position: relative;
     text-transform: uppercase;
     transform: scaleX(0);
-    transition: transform 250ms ease-in-out;
+    transition: transform ($transition-duration * 1.5) ease-in-out;
 
     &:after {
       background: getColor(text, primary);
@@ -97,7 +95,8 @@ nav[role="navigation"] {
       opacity: 0;
       position: absolute;
       top: 100%;
-      transition: opacity 0.3s, transform 0.3s;
+      transition: opacity ($transition-duration * 2),
+                  transform ($transition-duration * 2);
       transform: translateY(10px);
       width: 100%;
     }
@@ -113,6 +112,8 @@ nav[role="navigation"] {
       border-bottom: 3px solid getColor(text, primary);
       opacity: .85;
       padding-bottom: 5px;
+
+      &:after { display: none; }
     }
   }
 
@@ -126,9 +127,8 @@ footer {
 
 
 //
-// Pages
-// --------------------------------------------------
-
+// Page-Specific
+// ==================================================
 
 //
 // Homepage
@@ -140,38 +140,32 @@ footer {
   padding: $spacing-xl $spacing-xs;
 
   @media (--large) {
-    padding-bottom: ($spacing-xxl * 1.2);
-    padding-top: ($spacing-xxl * 1.2);
+    padding-bottom: ($spacing-xxl * 1.1);
+    padding-top: ($spacing-xxl * 1.1);
 
-    p { max-width: 800px; }
+    h2 { max-width: 800px; }
   }
 }
 
-.chat {
-  border-bottom: 1px solid #32373d;
-  border-top: 1px solid #32373d;
-  color: #32373d;
-  display: block;
-  margin-top: $spacing-s;
-  max-width: 800px;
-  padding: 10px;
-  text-align: center;
+//
+// Work
+// ----
 
-  &:hover {
-    background-color: #32373d;
-    color: white;
-    text-decoration: none;
-    transition: all $transition-duration;
-  }
+.work-work-work-work-work {
+  [grid] { margin: 0; }
 }
 
 
 //
-// Page Description
-// ----------------
+// Components
+// ==================================================
+
+//
+// Page Descriptions
+//  ----------------
 
 .description {
-  animation: fadeIn .55s .5s forwards, textUpSmall .55s .5s ease-out forwards;
+  animation: fadeIn .55s .25s forwards, moveUp .55s .25s ease-out forwards;
   opacity: 0;
   padding: $spacing-s 0;
 
@@ -183,37 +177,46 @@ footer {
   p { font-size: typeScale(3); }
 }
 
-
 //
-// Work
-// ----
+// Tiles
+// -----
 
-.work-work-work-work-work {
-  [grid] { margin: 0; }
+%tile-animation {
+  animation-name: fadeIn, moveUp;
+  animation-duration: .7s, .85s;
+  animation-fill-mode: forwards, forwards;
 }
 
-%project-animation {
-  @media (--large) {
-    animation-name: fadeIn, textUpSmall;
-    animation-duration: .72s, 1s;
-    animation-fill-mode: forwards, forwards;
-  }
-}
-
-.project {
+.tile {
   opacity: 0;
   padding: 0;
+  transition: width $transition-duration;
+  width: 100%;
+
+  @media (--small) {
+    float: left;
+    width: 50%;
+  }
+
+  @media (--large) {
+    opacity: 0;
+    width: 20%;
+  }
 
   img {
     height: auto;
     max-width: 100%;
+    transition: opacity ($transition-duration * 1.5);
+    -webkit-backface-visibility: hidden;
+
+    &:hover { opacity: .75; }
   }
 
   @for $i from 1 through 18 {
     &:nth-of-type(#{$i}) {
-      @extend %project-animation;
+      @extend %tile-animation;
 
-      animation-delay: $i * 0.3s;
+      animation-delay: $i * 0.22s;
     }
   }
 }
@@ -221,7 +224,9 @@ footer {
 
 //
 // Animations
-// --------------------------------------------------
+// ==================================================
+
+$move-distance: 25px;
 
 @keyframes fadeIn {
   from { opacity: 0; }
@@ -229,26 +234,20 @@ footer {
   to { opacity: 1; }
 }
 
-@keyframes textUpSmall {
-  from { transform: translateY(25px); }
-
-  to { transform: translateY(0); }
-}
-
-@keyframes textUp {
-  from { transform: translateY(50px); }
+@keyframes moveUp {
+  from { transform: translateY($move-distance); }
 
   to { transform: translateY(0); }
 }
 
 @keyframes moveLeft {
-  from { transform: translateX(25px); }
+  from { transform: translateX($move-distance); }
 
   to { transform: translateY(0); }
 }
 
 @keyframes moveRight {
-  from { transform: translateX(-25px); }
+  from { transform: translateX(-$move-distance); }
 
   to { transform: translateY(0); }
 }
