@@ -855,7 +855,8 @@ table {
   background-color: #fafafa;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale; }
+  -moz-osx-font-smoothing: grayscale;
+  margin-bottom: 3rem; }
 
 p {
   word-spacing: .5px; }
@@ -1091,6 +1092,31 @@ footer {
   .tile:nth-of-type(18) {
     -webkit-animation-delay: 3.96s;
             animation-delay: 3.96s; }
+  @media (min-width: 768px) {
+    .tile.-book {
+      float: left;
+      width: 33.33%; } }
+  @media (min-width: 960px) {
+    .tile.-book {
+      opacity: 0;
+      width: 20%; } }
+  .tile.-book img {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    width: 100%; }
+    @media (max-width: 768px) {
+      .tile.-book img {
+        margin-bottom: 0.75rem; } }
+    @media (min-width: 480px) {
+      .tile.-book img {
+        height: 400px; } }
+    @media (min-width: 960px) {
+      .tile.-book img {
+        height: 250px; } }
+    @media (min-width: 1100px) {
+      .tile.-book img {
+        height: 300px; } }
 
 @-webkit-keyframes fadeIn {
   from {

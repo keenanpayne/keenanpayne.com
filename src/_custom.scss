@@ -7,6 +7,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin-bottom: $spacing-m;
 }
 
 
@@ -258,6 +259,40 @@ footer {
       @extend %tile-animation;
 
       animation-delay: $i * 0.22s;
+    }
+  }
+
+  // Book Modifier
+  &.-book {
+    @media (--medium) {
+      float: left;
+      width: 33.33%;
+    }
+
+    @media (--large) {
+      opacity: 0;
+      width: 20%;
+    }
+
+    img {
+      display: block;
+      height: auto;
+      margin: 0 auto;
+      width: 100%;
+
+      @media (--medium-max) { margin-bottom: $spacing-xs; }
+
+      @media (--small) {
+        height: 400px;
+      }
+
+      @media (--large) {
+        height: 250px;
+      }
+
+      @media (--extra-large) {
+        height: 300px;
+      }
     }
   }
 }
