@@ -191,6 +191,15 @@ footer {
   }
 }
 
+//
+// Contact
+// -------
+
+.wufoo {
+  animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards;
+  opacity: 0;
+}
+
 
 //
 // Components

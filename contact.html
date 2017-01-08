@@ -33,33 +33,37 @@
     </div>
   </header>
 
-  <main class="work-work-work-work-work" container>
+  <main container>
 		<header class="description">
 			<h2>Get in Touch</h2>
 
 			<p>This is a short description of some selected work that I've chosen to show on my website.</p>
 		</header>
 
-		<div id="wufoo-r1x2nqll1ee9loz">
+		<div class="wufoo" id="wufoo-r1x2nqll1ee9loz">
 			Fill out my <a href="https://keenanpayne.wufoo.com/forms/r1x2nqll1ee9loz">online form</a>.
 		</div>
 
-		<script type="text/javascript">var r1x2nqll1ee9loz;(function(d, t) {
-		var s = d.createElement(t), options = {
-		'userName':'keenanpayne',
-		'formHash':'r1x2nqll1ee9loz',
-		'autoResize':true,
-		'height':'647',
-		'async':true,
-		'host':'wufoo.com',
-		'header':'hide',
-		'ssl':true};
-		s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
-		s.onload = s.onreadystatechange = function() {
-		var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-		try { r1x2nqll1ee9loz = new WufooForm();r1x2nqll1ee9loz.initialize(options);r1x2nqll1ee9loz.display(); } catch (e) {}};
-		var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
-		})(document, 'script');</script>
+		<script type="text/javascript">
+			var r1x2nqll1ee9loz;(function(d, t) {
+				var s = d.createElement(t), options = {
+					'userName':'keenanpayne',
+					'formHash':'r1x2nqll1ee9loz',
+					'autoResize':true,
+					'height':'647',
+					'async':true,
+					'host':'wufoo.com',
+					'header':'hide',
+					'ssl':true
+				};
+
+				s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+				s.onload = s.onreadystatechange = function() {
+				var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+				try { r1x2nqll1ee9loz = new WufooForm();r1x2nqll1ee9loz.initialize(options);r1x2nqll1ee9loz.display(); } catch (e) {}};
+				var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+			})(document, 'script');
+		</script>
   </main>
 </body>
 </html>

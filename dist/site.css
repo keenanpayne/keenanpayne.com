@@ -994,6 +994,11 @@ footer {
   height: auto;
   max-width: 100%; }
 
+.wufoo {
+  -webkit-animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards;
+          animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards;
+  opacity: 0; }
+
 .description {
   border-bottom: 3px solid rgba(220, 220, 220, 0.75);
   margin-bottom: 2.25rem;
