@@ -33,6 +33,7 @@ $transition-duration: 150ms;
 @custom-media --extra-small (width <= 480px);
 @custom-media --small (width >= 480px);
 @custom-media --medium (width >= 768px);
+@custom-media --medium-max (width <= 768px);
 @custom-media --large (width >= 960px);
 @custom-media --extra-large (width >= 1100px);
 @custom-media --only-small (480px < width <= 768px);

@@ -898,12 +898,18 @@ h1 {
   font-style: normal;
   font-weight: 400;
   word-spacing: -1px; }
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 3rem; } }
   h1 a:hover {
     border-bottom: none;
     color: inherit; }
 
 header[role="main"] {
   margin-top: 3rem; }
+  @media (max-width: 768px) {
+    header[role="main"] {
+      text-align: center; } }
 
 @media (min-width: 768px) {
   nav[role="navigation"] {
@@ -915,7 +921,7 @@ nav[role="navigation"] ul {
 nav[role="navigation"] li {
   cursor: pointer;
   display: inline;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: .15px;
   margin-right: 1.5em;
@@ -928,6 +934,9 @@ nav[role="navigation"] li {
   transition: -webkit-transform 225ms ease-in-out;
   transition: transform 225ms ease-in-out;
   transition: transform 225ms ease-in-out, -webkit-transform 225ms ease-in-out; }
+  @media (min-width: 480px) {
+    nav[role="navigation"] li {
+      font-size: 16px; } }
   nav[role="navigation"] li:after {
     background: #444;
     content: '';
