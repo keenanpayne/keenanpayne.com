@@ -907,6 +907,8 @@ h1 {
   h1 a:hover {
     border-bottom: none;
     color: inherit; }
+  h1 a:active, h1 a:focus {
+    color: #f0f0f0; }
 
 header[role="main"] {
   margin-top: 3rem; }
@@ -979,16 +981,17 @@ footer {
   -webkit-animation: fadeIn .7s .5s forwards, moveRight .7s .5s ease-out forwards;
           animation: fadeIn .7s .5s forwards, moveRight .7s .5s ease-out forwards;
   opacity: 0;
-  padding: 6rem 0.75rem; }
+  padding: 8.25rem 0.75rem; }
   @media (min-width: 960px) {
-    .welcome {
-      padding-bottom: 9.075rem;
-      padding-top: 9.075rem; }
-      .welcome h2 {
-        max-width: 800px; } }
+    .welcome h2 {
+      max-width: 800px; } }
 
 .work-work-work-work-work [grid] {
   margin: 0; }
+
+.portfolio img {
+  height: auto;
+  max-width: 100%; }
 
 .description {
   border-bottom: 3px solid rgba(220, 220, 220, 0.75);

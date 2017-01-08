@@ -34,6 +34,10 @@ a {
   &.-linkedin { @include linkColor(#0077b5); }
 }
 
+//
+// Modifiers
+// ---------
+
 .-holla {
   font-family: $font-secondary;
   font-size: typeScale(5);
@@ -51,6 +55,7 @@ a {
 // Header & Footer
 // ==================================================
 
+// Logo
 h1 {
   color: getColor(text, inverted);
   font-family: "sutturah", sans-serif;
@@ -69,9 +74,13 @@ h1 {
       border-bottom: none;
       color: inherit;
     }
+
+    &:active,
+    &:focus { color: #f0f0f0; }
   }
 }
 
+// Main Header
 header[role="main"] {
   margin-top: $spacing-m;
 
@@ -80,6 +89,7 @@ header[role="main"] {
   }
 }
 
+// Main Nav
 nav[role="navigation"] {
   @media (--medium) {
     text-align: right;
@@ -136,6 +146,7 @@ nav[role="navigation"] {
   a:hover { border-bottom: none; }
 }
 
+// Main Footer
 footer {
   animation: fadeIn .7s .72s forwards, moveLeft .7s .72s ease-out forwards;
   opacity: 0;
@@ -153,12 +164,9 @@ footer {
 .welcome {
   animation: fadeIn .7s .5s forwards, moveRight .7s .5s ease-out forwards;
   opacity: 0;
-  padding: $spacing-xl $spacing-xs;
+  padding: $spacing-xxl $spacing-xs;
 
   @media (--large) {
-    padding-bottom: ($spacing-xxl * 1.1);
-    padding-top: ($spacing-xxl * 1.1);
-
     h2 { max-width: 800px; }
   }
 }
@@ -169,6 +177,17 @@ footer {
 
 .work-work-work-work-work {
   [grid] { margin: 0; }
+}
+
+//
+// Portfolio
+// ---------
+
+.portfolio {
+  img {
+    height: auto;
+    max-width: 100%;
+  }
 }
 
 
