@@ -52,13 +52,16 @@ a {
 // ==================================================
 
 h1 {
+  color: getColor(text, inverted);
   font-family: "sutturah", sans-serif;
+  font-size: typeScale(7);
   font-style: normal;
   font-weight: 400;
+  text-shadow: 2px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 2px 2px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
   word-spacing: -1px;
 
   @media (--medium-max) {
-    font-size: 3rem;
+    font-size: typeScale(8);
   }
 
   a {
@@ -87,7 +90,6 @@ nav[role="navigation"] {
   li {
     cursor: pointer;
     display: inline;
-    font-size: ($font-size - 2) + px;
     font-weight: 600;
     letter-spacing: .15px;
     margin-right: 1.5em;
@@ -179,12 +181,13 @@ footer {
 //  ----------------
 
 .description {
-  animation: fadeIn .55s .25s forwards, moveUp .55s .25s ease-out forwards;
-  opacity: 0;
+  border-bottom: 3px solid rgba(getColor(base, lines), .75);
+  margin-bottom: 1.5lh;
   padding: $spacing-s 0;
+  text-align: center;
 
   h2 {
-    font-size: typeScale(6);
+    font-size: typeScale(7);
     margin-bottom: $spacing-xs;
   }
 

@@ -54,7 +54,7 @@ template,
   -webkit-text-size-adjust: 100%;
   background-color: white;
   color: #444;
-  font-size: 16px;
+  font-size: 14px;
   text-rendering: optimizeLegibility; }
   @media (min-width: 768px) {
     :root {
@@ -894,13 +894,16 @@ a.-linkedin {
       font-size: 2.98598rem; } }
 
 h1 {
+  color: white;
   font-family: "sutturah", sans-serif;
+  font-size: 2.48832rem;
   font-style: normal;
   font-weight: 400;
+  text-shadow: 2px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 2px 2px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
   word-spacing: -1px; }
   @media (max-width: 768px) {
     h1 {
-      font-size: 3rem; } }
+      font-size: 2.98598rem; } }
   h1 a:hover {
     border-bottom: none;
     color: inherit; }
@@ -921,7 +924,6 @@ nav[role="navigation"] ul {
 nav[role="navigation"] li {
   cursor: pointer;
   display: inline;
-  font-size: 14px;
   font-weight: 600;
   letter-spacing: .15px;
   margin-right: 1.5em;
@@ -936,7 +938,7 @@ nav[role="navigation"] li {
   transition: transform 225ms ease-in-out, -webkit-transform 225ms ease-in-out; }
   @media (min-width: 480px) {
     nav[role="navigation"] li {
-      font-size: 16px; } }
+      font-size: 14px; } }
   nav[role="navigation"] li:after {
     background: #444;
     content: '';
@@ -989,12 +991,12 @@ footer {
   margin: 0; }
 
 .description {
-  -webkit-animation: fadeIn .55s .25s forwards, moveUp .55s .25s ease-out forwards;
-          animation: fadeIn .55s .25s forwards, moveUp .55s .25s ease-out forwards;
-  opacity: 0;
-  padding: 1.5rem 0; }
+  border-bottom: 3px solid rgba(220, 220, 220, 0.75);
+  margin-bottom: 2.25rem;
+  padding: 1.5rem 0;
+  text-align: center; }
   .description h2 {
-    font-size: 2.0736rem;
+    font-size: 2.48832rem;
     margin-bottom: 0.75rem; }
   .description p {
     font-size: 1.2rem; }
