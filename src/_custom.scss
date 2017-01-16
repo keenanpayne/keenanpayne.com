@@ -202,9 +202,7 @@ footer {
 // Work
 // ----
 
-.work-work-work-work-work {
-  [grid] { margin: 0; }
-}
+.work-work-work-work-work { overflow: hidden; }
 
 //
 // Portfolio
@@ -272,6 +270,11 @@ footer {
 
   @media (--large) {
     opacity: 0;
+    width: 33.33%;
+  }
+
+  @media (--extra-large) {
+    opacity: 0;
     width: 20%;
   }
 
@@ -299,15 +302,9 @@ footer {
 
   // Book Modifier
   &.-book {
-    @media (--medium) {
-      float: left;
-      width: 33.33%;
-    }
+    @media (--medium) { float: left; }
 
-    @media (--large) {
-      opacity: 0;
-      width: 20%;
-    }
+    @media (--large) { opacity: 0; }
 
     img {
       display: block;
@@ -318,15 +315,19 @@ footer {
       @media (--medium-max) { margin-bottom: $spacing-xs; }
 
       @media (--small) {
-        height: 400px;
+        height: 450px;
       }
 
       @media (--large) {
-        height: 250px;
+        height: 400px;
       }
 
       @media (--extra-large) {
-        height: 300px;
+        height: 325px;
+      }
+
+      @media (--hella-large) {
+        height: 475px;
       }
     }
   }
