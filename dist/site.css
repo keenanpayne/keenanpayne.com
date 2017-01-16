@@ -539,7 +539,7 @@ table {
 [container] {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
+  max-width: 1800px;
   padding-left: 1rem;
   padding-right: 1rem;
   overflow: auto; }
@@ -857,6 +857,12 @@ table {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-bottom: 3rem; }
+  @media (min-width: 1100px) {
+    :root {
+      font-size: 20px; } }
+  @media (min-width: 1460px) {
+    :root {
+      font-size: 24px; } }
 
 p {
   word-spacing: .5px; }
@@ -941,7 +947,7 @@ nav[role="navigation"] li {
   transition: transform 225ms ease-in-out, -webkit-transform 225ms ease-in-out; }
   @media (min-width: 480px) {
     nav[role="navigation"] li {
-      font-size: 14px; } }
+      font-size: 0.83333rem; } }
   nav[role="navigation"] li:after {
     background: #444;
     content: '';
@@ -982,10 +988,27 @@ footer {
   -webkit-animation: fadeIn .7s .5s forwards, moveRight .7s .5s ease-out forwards;
           animation: fadeIn .7s .5s forwards, moveRight .7s .5s ease-out forwards;
   opacity: 0;
-  padding: 8.25rem 0.75rem; }
+  padding: 6rem 1rem;
+  -webkit-transition: padding 150ms;
+  transition: padding 150ms; }
+  @media (min-width: 768px) {
+    .welcome {
+      padding-bottom: 8.25rem;
+      padding-top: 8.25rem; }
+      .welcome h2 {
+        max-width: 800px; } }
   @media (min-width: 960px) {
-    .welcome h2 {
-      max-width: 800px; } }
+    .welcome {
+      padding-bottom: 12.375rem;
+      padding-top: 12.375rem; }
+      .welcome h2 {
+        max-width: 900px; } }
+  @media (min-width: 1460px) {
+    .welcome {
+      padding-bottom: 16.5rem;
+      padding-top: 16.5rem; }
+      .welcome h2 {
+        max-width: 1100px; } }
 
 .work-work-work-work-work [grid] {
   margin: 0; }

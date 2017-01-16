@@ -8,6 +8,12 @@ $font-size: 14;
 // Font size for big devices
 $font-size-secondary: 18;
 
+// Font size for extra large devices
+$font-size-extra-large: 20;
+
+// Font size for hella large devices
+$font-size-hella-large: 24;
+
 // Tracking
 $letter-spacing: 0.05em;
 
@@ -36,6 +42,7 @@ $transition-duration: 150ms;
 @custom-media --medium-max (width <= 768px);
 @custom-media --large (width >= 960px);
 @custom-media --extra-large (width >= 1100px);
+@custom-media --hella-large (width >= 1460px);
 @custom-media --only-small (480px < width <= 768px);
 @custom-media --only-medium (768px < width <= 980px);
 @custom-media --only-large (980px < width <= 1100px);
@@ -80,7 +87,7 @@ $enable-grid: true;
 $full-grid: false;
 
 // Max width for container
-$container-width: 1200px;
+$container-width: 1800px;
 
 // Gutter size
 $gutter: 2rem;

@@ -8,6 +8,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-bottom: $spacing-m;
+
+  @media (--extra-large) {
+    font-size: $font-size-extra-large + px;
+  }
+
+  @media (--hella-large) {
+    font-size: $font-size-hella-large + px;
+  }
 }
 
 
@@ -111,7 +119,7 @@ nav[role="navigation"] {
     transition: transform ($transition-duration * 1.5) ease-in-out;
 
     @media (--small) {
-      font-size: $font-size + px;
+      font-size: typeScale(1);
     }
 
     &:after {
@@ -165,10 +173,28 @@ footer {
 .welcome {
   animation: fadeIn .7s .5s forwards, moveRight .7s .5s ease-out forwards;
   opacity: 0;
-  padding: $spacing-xxl $spacing-xs;
+  padding: $spacing-xl 1rem;
+  transition: padding $transition-duration;
+
+  @media (--medium) {
+    padding-bottom: $spacing-xxl;
+    padding-top: $spacing-xxl;
+
+    h2 { max-width: 800px; }
+  }
 
   @media (--large) {
-    h2 { max-width: 800px; }
+    padding-bottom: ($spacing-xxl * 1.5);
+    padding-top: ($spacing-xxl * 1.5);
+
+    h2 { max-width: 900px; }
+  }
+
+  @media (--hella-large) {
+    padding-bottom: ($spacing-xxl * 2);
+    padding-top: ($spacing-xxl * 2);
+
+    h2 { max-width: 1100px; }
   }
 }
 
