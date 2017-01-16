@@ -91,7 +91,9 @@ h1 {
 
 // Main Header
 header[role="main"] {
+  animation: fadeIn .7s .25s ease-out forwards;
   margin-top: $spacing-m;
+  opacity: 0;
 
   @media (--medium-max) {
     text-align: center;
@@ -157,7 +159,7 @@ nav[role="navigation"] {
 
 // Main Footer
 footer {
-  animation: fadeIn .7s .72s forwards, moveLeft .7s .72s ease-out forwards;
+  animation: fadeIn .8s 1.05s forwards, moveLeft .8s 1.05s ease-out forwards;
   opacity: 0;
 }
 
@@ -171,7 +173,7 @@ footer {
 // --------
 
 .welcome {
-  animation: fadeIn .7s .5s forwards, moveRight .7s .5s ease-out forwards;
+  animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
   opacity: 0;
   padding: $spacing-xl 1rem;
   transition: padding $transition-duration;
@@ -199,10 +201,10 @@ footer {
 }
 
 //
-// Work
-// ----
+// Inner Pages
+// -----------
 
-.work-work-work-work-work { overflow: hidden; }
+.we-up-in-this { overflow: hidden; }
 
 //
 // Portfolio
@@ -338,7 +340,7 @@ footer {
 // Animations
 // ==================================================
 
-$move-distance: 25px;
+$move-distance: 30px;
 
 @keyframes fadeIn {
   from { opacity: 0; }
