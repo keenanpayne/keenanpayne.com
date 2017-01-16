@@ -991,7 +991,7 @@ footer {
   -webkit-animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
           animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
   opacity: 0;
-  padding: 1.5rem 1rem;
+  padding: 4.5rem 1rem;
   -webkit-transition: padding 150ms;
   transition: padding 150ms; }
   @media (min-width: 768px) {
@@ -1003,10 +1003,6 @@ footer {
   @media (min-width: 1460px) {
     .welcome h2 {
       max-width: 1100px; } }
-  @media (min-height: 600px) {
-    .welcome {
-      padding-bottom: 3rem;
-      padding-top: 3rem; } }
   @media (min-height: 750px) {
     .welcome {
       padding-bottom: 6rem;

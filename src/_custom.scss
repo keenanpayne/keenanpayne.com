@@ -175,7 +175,7 @@ footer {
 .welcome {
   animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
   opacity: 0;
-  padding: $spacing-s 1rem;
+  padding: $spacing-l 1rem;
   transition: padding $transition-duration;
 
   @media (--medium) {
@@ -188,11 +188,6 @@ footer {
 
   @media (--hella-large) {
     h2 { max-width: 1100px; }
-  }
-
-  @media (--small-height) {
-    padding-bottom: $spacing-m;
-    padding-top: $spacing-m;
   }
 
   @media (--medium-height) {
