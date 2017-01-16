@@ -66,11 +66,13 @@ a {
 
 // Logo
 h1 {
+  animation: fadeIn .7s .25s ease-out forwards;
   color: getColor(text, inverted);
   font-family: "sutturah", sans-serif;
   font-size: typeScale(7);
   font-style: normal;
   font-weight: 400;
+  opacity: 0;
   text-shadow: 2px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 2px 2px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
   word-spacing: -1px;
 
@@ -91,9 +93,7 @@ h1 {
 
 // Main Header
 header[role="main"] {
-  animation: fadeIn .7s .25s ease-out forwards;
   margin-top: $spacing-m;
-  opacity: 0;
 
   @media (--medium-max) {
     text-align: center;
@@ -175,28 +175,44 @@ footer {
 .welcome {
   animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
   opacity: 0;
-  padding: $spacing-xl 1rem;
+  padding: $spacing-s 1rem;
   transition: padding $transition-duration;
 
   @media (--medium) {
-    padding-bottom: $spacing-xxl;
-    padding-top: $spacing-xxl;
-
     h2 { max-width: 800px; }
   }
 
   @media (--large) {
-    padding-bottom: ($spacing-xxl * 1.5);
-    padding-top: ($spacing-xxl * 1.5);
-
     h2 { max-width: 900px; }
   }
 
   @media (--hella-large) {
+    h2 { max-width: 1100px; }
+  }
+
+  @media (--small-height) {
+    padding-bottom: $spacing-m;
+    padding-top: $spacing-m;
+  }
+
+  @media (--medium-height) {
+    padding-bottom: $spacing-xl;
+    padding-top: $spacing-xl;
+  }
+
+  @media (--large-height) {
+    padding-bottom: ($spacing-xxl * 1);
+    padding-top: ($spacing-xxl * 1);
+  }
+
+  @media (--extra-large-height) {
+    padding-bottom: ($spacing-xxl * 1.5);
+    padding-top: ($spacing-xxl * 1.5);
+  }
+
+  @media (--hella-large-height) {
     padding-bottom: ($spacing-xxl * 2);
     padding-top: ($spacing-xxl * 2);
-
-    h2 { max-width: 1100px; }
   }
 }
 
@@ -304,9 +320,13 @@ footer {
 
   // Book Modifier
   &.-book {
-    @media (--medium) { float: left; }
+    @media (--medium) {
+      float: left;
+    }
 
-    @media (--large) { opacity: 0; }
+    @media (--large) {
+      opacity: 0;
+    }
 
     img {
       display: block;

@@ -46,6 +46,11 @@ $transition-duration: 150ms;
 @custom-media --only-small (480px < width <= 768px);
 @custom-media --only-medium (768px < width <= 980px);
 @custom-media --only-large (980px < width <= 1100px);
+@custom-media --small-height (height >= 600px);
+@custom-media --medium-height (height >= 750px);
+@custom-media --large-height (height >= 1100px);
+@custom-media --extra-large-height (height >= 1350px);
+@custom-media --hella-large-height (height >= 1450px);
 
 // Spacing variables
 $spacing-xs: 0.5lh;

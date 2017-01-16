@@ -901,11 +901,14 @@ a.-linkedin {
       font-size: 2.98598rem; } }
 
 h1 {
+  -webkit-animation: fadeIn .7s .25s ease-out forwards;
+          animation: fadeIn .7s .25s ease-out forwards;
   color: white;
   font-family: "sutturah", sans-serif;
   font-size: 2.48832rem;
   font-style: normal;
   font-weight: 400;
+  opacity: 0;
   text-shadow: 2px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 2px 2px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
   word-spacing: -1px; }
   @media (max-width: 768px) {
@@ -918,10 +921,7 @@ h1 {
     color: #f0f0f0; }
 
 header[role="main"] {
-  -webkit-animation: fadeIn .7s .25s ease-out forwards;
-          animation: fadeIn .7s .25s ease-out forwards;
-  margin-top: 3rem;
-  opacity: 0; }
+  margin-top: 3rem; }
   @media (max-width: 768px) {
     header[role="main"] {
       text-align: center; } }
@@ -991,27 +991,38 @@ footer {
   -webkit-animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
           animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
   opacity: 0;
-  padding: 6rem 1rem;
+  padding: 1.5rem 1rem;
   -webkit-transition: padding 150ms;
   transition: padding 150ms; }
   @media (min-width: 768px) {
+    .welcome h2 {
+      max-width: 800px; } }
+  @media (min-width: 960px) {
+    .welcome h2 {
+      max-width: 900px; } }
+  @media (min-width: 1460px) {
+    .welcome h2 {
+      max-width: 1100px; } }
+  @media (min-height: 600px) {
+    .welcome {
+      padding-bottom: 3rem;
+      padding-top: 3rem; } }
+  @media (min-height: 750px) {
+    .welcome {
+      padding-bottom: 6rem;
+      padding-top: 6rem; } }
+  @media (min-height: 1100px) {
     .welcome {
       padding-bottom: 8.25rem;
-      padding-top: 8.25rem; }
-      .welcome h2 {
-        max-width: 800px; } }
-  @media (min-width: 960px) {
+      padding-top: 8.25rem; } }
+  @media (min-height: 1350px) {
     .welcome {
       padding-bottom: 12.375rem;
-      padding-top: 12.375rem; }
-      .welcome h2 {
-        max-width: 900px; } }
-  @media (min-width: 1460px) {
+      padding-top: 12.375rem; } }
+  @media (min-height: 1450px) {
     .welcome {
       padding-bottom: 16.5rem;
-      padding-top: 16.5rem; }
-      .welcome h2 {
-        max-width: 1100px; } }
+      padding-top: 16.5rem; } }
 
 .we-up-in-this {
   overflow: hidden; }
