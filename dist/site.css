@@ -864,6 +864,10 @@ table {
     :root {
       font-size: 24px; } }
 
+[container] {
+  padding-left: 2rem;
+  padding-right: 2rem; }
+
 p {
   word-spacing: .5px; }
 
@@ -991,7 +995,7 @@ footer {
   -webkit-animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
           animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
   opacity: 0;
-  padding: 4.5rem 1rem;
+  padding: 4.5rem 2rem;
   -webkit-transition: padding 150ms;
   transition: padding 150ms; }
   @media (min-width: 768px) {

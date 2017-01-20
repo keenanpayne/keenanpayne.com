@@ -18,6 +18,11 @@
   }
 }
 
+[container] {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 
 //
 // Typography
@@ -175,7 +180,7 @@ footer {
 .welcome {
   animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
   opacity: 0;
-  padding: $spacing-l 1rem;
+  padding: $spacing-l 2rem;
   transition: padding $transition-duration;
 
   @media (--medium) {
