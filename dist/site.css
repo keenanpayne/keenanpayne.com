@@ -539,7 +539,7 @@ table {
 [container] {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1200px;
+  max-width: 1800px;
   padding-left: 1rem;
   padding-right: 1rem;
   overflow: auto; }
@@ -857,6 +857,12 @@ table {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin-bottom: 3rem; }
+  @media (min-width: 1100px) {
+    :root {
+      font-size: 20px; } }
+  @media (min-width: 1460px) {
+    :root {
+      font-size: 24px; } }
 
 p {
   word-spacing: .5px; }
@@ -895,11 +901,14 @@ a.-linkedin {
       font-size: 2.98598rem; } }
 
 h1 {
+  -webkit-animation: fadeIn .7s .25s ease-out forwards;
+          animation: fadeIn .7s .25s ease-out forwards;
   color: white;
   font-family: "sutturah", sans-serif;
   font-size: 2.48832rem;
   font-style: normal;
   font-weight: 400;
+  opacity: 0;
   text-shadow: 2px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 2px 2px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
   word-spacing: -1px; }
   @media (max-width: 768px) {
@@ -941,7 +950,7 @@ nav[role="navigation"] li {
   transition: transform 225ms ease-in-out, -webkit-transform 225ms ease-in-out; }
   @media (min-width: 480px) {
     nav[role="navigation"] li {
-      font-size: 14px; } }
+      font-size: 0.83333rem; } }
   nav[role="navigation"] li:after {
     background: #444;
     content: '';
@@ -974,21 +983,45 @@ nav[role="navigation"] a:hover {
   border-bottom: none; }
 
 footer {
-  -webkit-animation: fadeIn .7s .72s forwards, moveLeft .7s .72s ease-out forwards;
-          animation: fadeIn .7s .72s forwards, moveLeft .7s .72s ease-out forwards;
+  -webkit-animation: fadeIn .8s 1.05s forwards, moveLeft .8s 1.05s ease-out forwards;
+          animation: fadeIn .8s 1.05s forwards, moveLeft .8s 1.05s ease-out forwards;
   opacity: 0; }
 
 .welcome {
-  -webkit-animation: fadeIn .7s .5s forwards, moveRight .7s .5s ease-out forwards;
-          animation: fadeIn .7s .5s forwards, moveRight .7s .5s ease-out forwards;
+  -webkit-animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
+          animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
   opacity: 0;
-  padding: 8.25rem 0.75rem; }
-  @media (min-width: 960px) {
+  padding: 4.5rem 1rem;
+  -webkit-transition: padding 150ms;
+  transition: padding 150ms; }
+  @media (min-width: 768px) {
     .welcome h2 {
       max-width: 800px; } }
+  @media (min-width: 960px) {
+    .welcome h2 {
+      max-width: 900px; } }
+  @media (min-width: 1460px) {
+    .welcome h2 {
+      max-width: 1100px; } }
+  @media (min-height: 750px) {
+    .welcome {
+      padding-bottom: 6rem;
+      padding-top: 6rem; } }
+  @media (min-height: 1100px) {
+    .welcome {
+      padding-bottom: 8.25rem;
+      padding-top: 8.25rem; } }
+  @media (min-height: 1350px) {
+    .welcome {
+      padding-bottom: 12.375rem;
+      padding-top: 12.375rem; } }
+  @media (min-height: 1450px) {
+    .welcome {
+      padding-bottom: 16.5rem;
+      padding-top: 16.5rem; } }
 
-.work-work-work-work-work [grid] {
-  margin: 0; }
+.we-up-in-this {
+  overflow: hidden; }
 
 .portfolio img {
   height: auto;
@@ -1029,6 +1062,10 @@ footer {
       float: left;
       width: 50%; } }
   @media (min-width: 960px) {
+    .tile {
+      opacity: 0;
+      width: 33.33%; } }
+  @media (min-width: 1100px) {
     .tile {
       opacity: 0;
       width: 20%; } }
@@ -1099,12 +1136,10 @@ footer {
             animation-delay: 3.96s; }
   @media (min-width: 768px) {
     .tile.-book {
-      float: left;
-      width: 33.33%; } }
+      float: left; } }
   @media (min-width: 960px) {
     .tile.-book {
-      opacity: 0;
-      width: 20%; } }
+      opacity: 0; } }
   .tile.-book img {
     display: block;
     height: auto;
@@ -1115,13 +1150,16 @@ footer {
         margin-bottom: 0.75rem; } }
     @media (min-width: 480px) {
       .tile.-book img {
-        height: 400px; } }
+        height: 450px; } }
     @media (min-width: 960px) {
       .tile.-book img {
-        height: 250px; } }
+        height: 400px; } }
     @media (min-width: 1100px) {
       .tile.-book img {
-        height: 300px; } }
+        height: 325px; } }
+    @media (min-width: 1460px) {
+      .tile.-book img {
+        height: 475px; } }
 
 @-webkit-keyframes fadeIn {
   from {
@@ -1137,48 +1175,48 @@ footer {
 
 @-webkit-keyframes moveUp {
   from {
-    -webkit-transform: translateY(25px);
-            transform: translateY(25px); }
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
 @keyframes moveUp {
   from {
-    -webkit-transform: translateY(25px);
-            transform: translateY(25px); }
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
 @-webkit-keyframes moveLeft {
   from {
-    -webkit-transform: translateX(25px);
-            transform: translateX(25px); }
+    -webkit-transform: translateX(30px);
+            transform: translateX(30px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
 @keyframes moveLeft {
   from {
-    -webkit-transform: translateX(25px);
-            transform: translateX(25px); }
+    -webkit-transform: translateX(30px);
+            transform: translateX(30px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
 @-webkit-keyframes moveRight {
   from {
-    -webkit-transform: translateX(-25px);
-            transform: translateX(-25px); }
+    -webkit-transform: translateX(-30px);
+            transform: translateX(-30px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
 @keyframes moveRight {
   from {
-    -webkit-transform: translateX(-25px);
-            transform: translateX(-25px); }
+    -webkit-transform: translateX(-30px);
+            transform: translateX(-30px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
