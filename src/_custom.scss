@@ -7,7 +7,6 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-bottom: $spacing-m;
 
   @media (--extra-large) {
     font-size: $font-size-extra-large + px;
@@ -28,7 +27,15 @@
 // Typography
 // ==================================================
 
-p { word-spacing: .5px; }
+h2, h3 {
+  font-weight: 100;
+  letter-spacing: -1px;
+}
+
+p {
+  font-size: 1rem;
+  word-spacing: .5px;
+}
 
 @mixin linkColor($color) {
   color: $color;
@@ -179,6 +186,7 @@ footer {
 
 .welcome {
   animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
+  margin-top: 0;
   opacity: 0;
   padding: $spacing-l 2rem;
   transition: padding $transition-duration;
@@ -196,8 +204,8 @@ footer {
   }
 
   @media (--medium-height) {
-    padding-bottom: $spacing-xl;
-    padding-top: $spacing-xl;
+    padding-bottom: ($spacing-xl * 1.25);
+    padding-top: ($spacing-xl * 1.25);
   }
 
   @media (--large-height) {
@@ -220,7 +228,34 @@ footer {
 // Inner Pages
 // -----------
 
-.we-up-in-this { overflow: hidden; }
+.we-up-in-this {
+  overflow: hidden;
+
+  hgroup,
+  aside {
+    // animation: fadeIn .8s .25s forwards, moveRight .8s .25s ease-out forwards;
+    // opacity: 0;
+  }
+
+  hgroup {
+    border-top: 3px solid rgba(getColor(base, lines), .5);
+    padding: 3rem 0 1.5rem;
+
+    @media (--medium) {
+      padding: $spacing-xl 0;
+    }
+  }
+
+  h2 {
+    font-size: 2.75rem;
+    margin: 0;
+  }
+
+  p {
+    font-size: typeScale(2);
+    margin-bottom: 2rem;
+  }
+}
 
 //
 // Portfolio
@@ -252,15 +287,7 @@ footer {
 //  ----------------
 
 .description {
-  border-bottom: 3px solid rgba(getColor(base, lines), .75);
   margin-bottom: 1.5lh;
-  padding: $spacing-s 0;
-  text-align: center;
-
-  h2 {
-    font-size: typeScale(7);
-    margin-bottom: $spacing-xs;
-  }
 
   p { font-size: typeScale(3); }
 }
@@ -289,11 +316,6 @@ footer {
   @media (--large) {
     opacity: 0;
     width: 33.33%;
-  }
-
-  @media (--extra-large) {
-    opacity: 0;
-    width: 20%;
   }
 
   &:hover {
@@ -326,6 +348,7 @@ footer {
 
     @media (--large) {
       opacity: 0;
+      width: 50%;
     }
 
     img {
@@ -335,22 +358,6 @@ footer {
       width: 100%;
 
       @media (--medium-max) { margin-bottom: $spacing-xs; }
-
-      @media (--small) {
-        height: 450px;
-      }
-
-      @media (--large) {
-        height: 400px;
-      }
-
-      @media (--extra-large) {
-        height: 325px;
-      }
-
-      @media (--hella-large) {
-        height: 475px;
-      }
     }
   }
 }

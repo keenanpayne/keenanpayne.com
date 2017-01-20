@@ -540,16 +540,16 @@ table {
   margin-left: auto;
   margin-right: auto;
   max-width: 1800px;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
   overflow: auto; }
 
 [grid] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -565,8 +565,8 @@ table {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  padding-left: 1rem;
-  padding-right: 1rem; }
+  padding-left: 1.5rem;
+  padding-right: 1.5rem; }
 
 [grid~="no-gutters"] {
   margin-left: 0;
@@ -855,8 +855,7 @@ table {
   background-color: #fafafa;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin-bottom: 3rem; }
+  -moz-osx-font-smoothing: grayscale; }
   @media (min-width: 1100px) {
     :root {
       font-size: 20px; } }
@@ -868,7 +867,12 @@ table {
   padding-left: 2rem;
   padding-right: 2rem; }
 
+h2, h3 {
+  font-weight: 100;
+  letter-spacing: -1px; }
+
 p {
+  font-size: 1rem;
   word-spacing: .5px; }
 
 a:hover {
@@ -994,6 +998,7 @@ footer {
 .welcome {
   -webkit-animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
           animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
+  margin-top: 0;
   opacity: 0;
   padding: 4.5rem 2rem;
   -webkit-transition: padding 150ms;
@@ -1009,8 +1014,8 @@ footer {
       max-width: 1100px; } }
   @media (min-height: 750px) {
     .welcome {
-      padding-bottom: 6rem;
-      padding-top: 6rem; } }
+      padding-bottom: 7.5rem;
+      padding-top: 7.5rem; } }
   @media (min-height: 1100px) {
     .welcome {
       padding-bottom: 8.25rem;
@@ -1026,6 +1031,18 @@ footer {
 
 .we-up-in-this {
   overflow: hidden; }
+  .we-up-in-this hgroup {
+    border-top: 3px solid rgba(220, 220, 220, 0.5);
+    padding: 3rem 0 1.5rem; }
+    @media (min-width: 768px) {
+      .we-up-in-this hgroup {
+        padding: 6rem 0; } }
+  .we-up-in-this h2 {
+    font-size: 2.75rem;
+    margin: 0; }
+  .we-up-in-this p {
+    font-size: 1rem;
+    margin-bottom: 2rem; }
 
 .portfolio img {
   height: auto;
@@ -1037,13 +1054,7 @@ footer {
   opacity: 0; }
 
 .description {
-  border-bottom: 3px solid rgba(220, 220, 220, 0.75);
-  margin-bottom: 2.25rem;
-  padding: 1.5rem 0;
-  text-align: center; }
-  .description h2 {
-    font-size: 2.48832rem;
-    margin-bottom: 0.75rem; }
+  margin-bottom: 2.25rem; }
   .description p {
     font-size: 1.2rem; }
 
@@ -1069,10 +1080,6 @@ footer {
     .tile {
       opacity: 0;
       width: 33.33%; } }
-  @media (min-width: 1100px) {
-    .tile {
-      opacity: 0;
-      width: 20%; } }
   .tile:hover {
     border-bottom: none;
     text-decoration: none; }
@@ -1143,7 +1150,8 @@ footer {
       float: left; } }
   @media (min-width: 960px) {
     .tile.-book {
-      opacity: 0; } }
+      opacity: 0;
+      width: 50%; } }
   .tile.-book img {
     display: block;
     height: auto;
@@ -1152,18 +1160,6 @@ footer {
     @media (max-width: 768px) {
       .tile.-book img {
         margin-bottom: 0.75rem; } }
-    @media (min-width: 480px) {
-      .tile.-book img {
-        height: 450px; } }
-    @media (min-width: 960px) {
-      .tile.-book img {
-        height: 400px; } }
-    @media (min-width: 1100px) {
-      .tile.-book img {
-        height: 325px; } }
-    @media (min-width: 1460px) {
-      .tile.-book img {
-        height: 475px; } }
 
 @-webkit-keyframes fadeIn {
   from {
