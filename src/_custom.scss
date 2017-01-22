@@ -28,7 +28,7 @@
 // ==================================================
 
 h2, h3 {
-  font-weight: 100;
+  font-style: italic;
   letter-spacing: -1px;
 }
 
@@ -62,7 +62,8 @@ a {
 .-holla {
   font-family: $font-secondary;
   font-size: typeScale(5);
-  letter-spacing: -.75px;
+  font-style: normal;
+  letter-spacing: -1.25px;
   line-height: 1.4;
   word-spacing: 0;
 
@@ -173,6 +174,31 @@ nav[role="navigation"] {
 footer {
   animation: fadeIn .8s 1.05s forwards, moveLeft .8s 1.05s ease-out forwards;
   opacity: 0;
+}
+
+
+//
+// Definition Lists
+// ----------------
+
+dl[column] {
+  margin-bottom: $spacing-m;
+  margin-top: $spacing-m;
+}
+
+dt {
+  font-size: typeScale(3);
+  margin-top: 0;
+  padding-top: $spacing-xs;
+
+  &:first-of-type {
+    border-top: 3px solid getColor(background, dark);
+  }
+}
+
+dd {
+  border-bottom: 3px solid getColor(background, dark);
+  padding-bottom: $spacing-xs;
 }
 
 
