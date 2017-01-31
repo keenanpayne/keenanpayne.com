@@ -30,6 +30,20 @@
 h2, h3 {
   font-style: italic;
   letter-spacing: -1px;
+
+  &:hover {
+    small { transform: translateY(-10px); }
+  }
+
+  small {
+    display: inline-block;
+    font-family: $font-primary;
+    font-style: normal;
+    font-size: .75rem;
+    font-weight: 400;
+    margin-left: $spacing-xxs;
+    transition: transform ($transition-duration * 2);
+  }
 }
 
 p {

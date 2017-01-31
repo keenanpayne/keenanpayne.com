@@ -870,6 +870,20 @@ table {
 h2, h3 {
   font-style: italic;
   letter-spacing: -1px; }
+  h2:hover small, h3:hover small {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px); }
+  h2 small, h3 small {
+    display: inline-block;
+    font-family: "Source Sans Pro", "Arial", sans-serif;
+    font-style: normal;
+    font-size: .75rem;
+    font-weight: 400;
+    margin-left: 0.375rem;
+    -webkit-transition: -webkit-transform 300ms;
+    transition: -webkit-transform 300ms;
+    transition: transform 300ms;
+    transition: transform 300ms, -webkit-transform 300ms; }
 
 p {
   font-size: 1rem;

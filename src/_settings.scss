@@ -53,6 +53,7 @@ $transition-duration: 150ms;
 @custom-media --hella-large-height (height >= 1450px);
 
 // Spacing variables
+$spacing-xxs: 0.25lh;
 $spacing-xs: 0.5lh;
 $spacing-s:  1lh;
 $spacing-m:  2lh;
