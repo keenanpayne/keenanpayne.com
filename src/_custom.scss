@@ -64,7 +64,7 @@ a {
   font-style: normal;
   letter-spacing: -1.25px;
   line-height: 1.4;
-  word-spacing: 0;
+  word-spacing: 1px;
 
   @media (--small) {
     font-size: typeScale(8);
@@ -190,13 +190,11 @@ dt {
   margin-top: 0;
   padding-top: $spacing-xs;
 
-  &:first-of-type {
-    border-top: 3px solid getColor(background, dark);
-  }
+  &:first-of-type { border-top: 3px solid getColor(background, dark); }
 }
 
 dd {
-  border-bottom: 3px solid getColor(background, dark);
+  border-bottom: 3px solid rgba(getColor(background, dark), .2);
   padding-bottom: $spacing-xs;
 }
 
