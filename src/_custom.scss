@@ -92,7 +92,6 @@ a {
 
 // Logo
 h1 {
-  animation: fadeIn .7s .25s ease-out forwards;
   color: getColor(text, inverted);
   font-family: "sutturah", sans-serif;
   font-size: typeScale(7);
@@ -105,6 +104,8 @@ h1 {
   @media (--medium-max) {
     font-size: typeScale(9);
   }
+
+  &.-animated { animation: fadeIn .7s .25s ease-out forwards; }
 
   a {
     &:hover {
@@ -133,7 +134,7 @@ nav[role="navigation"] {
   }
 
   ul {
-    margin-top: $spacing-s; 
+    margin-top: $spacing-s;
 
     @media (--medium) {
       margin-top: $spacing-xs;
@@ -191,14 +192,27 @@ nav[role="navigation"] {
 
 // Main Footer
 footer {
-  animation: fadeIn .8s 1.05s forwards, moveLeft .8s 1.05s ease-out forwards;
   opacity: 0;
+
+  &.-animated { animation: fadeIn .8s 1.05s forwards, moveLeft .8s 1.05s ease-out forwards; }
 }
 
 
 //
 // Definition Lists
 // ----------------
+
+%dl-animation-right {
+  animation-name: fadeIn, moveRight;
+  animation-duration: .7s, .85s;
+  animation-fill-mode: forwards, forwards;
+}
+
+%dl-animation-left {
+  animation-name: fadeIn, moveLeft;
+  animation-duration: .7s, .85s;
+  animation-fill-mode: forwards, forwards;
+}
 
 dl {
   &[column] {
@@ -207,14 +221,40 @@ dl {
   }
 
   &.-no-bottom-margin { margin-bottom: 0; }
+
+  span {
+    display: block;
+    opacity: 0;
+
+    &:first-of-type {
+      dt { border-top: 3px solid getColor(background, dark); }
+    }
+
+    @for $i from 1 through 13 {
+      // If even
+      @if $i % 2 == 0 {
+        &.-animated:nth-of-type(#{$i}) {
+          @extend %dl-animation-left;
+
+          animation-delay: $i * .25s;
+        }
+
+      // If odd
+      } @else {
+        &.-animated:nth-of-type(#{$i}) {
+          @extend %dl-animation-right;
+
+          animation-delay: $i * .25s;
+        }
+      }
+    }
+  }
 }
 
 dt {
   font-size: typeScale(3);
   margin-top: 0;
   padding-top: $spacing-xs;
-
-  &:first-of-type { border-top: 3px solid getColor(background, dark); }
 }
 
 dd {
@@ -232,7 +272,6 @@ dd {
 // --------
 
 .welcome {
-  animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
   margin-top: 0;
   opacity: 0;
   padding: $spacing-l 2rem;
@@ -269,6 +308,8 @@ dd {
     padding-bottom: ($spacing-xxl * 2);
     padding-top: ($spacing-xxl * 2);
   }
+
+  &.-animated { animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; }
 }
 
 //
@@ -277,12 +318,6 @@ dd {
 
 .we-up-in-this {
   overflow: hidden;
-
-  hgroup,
-  aside {
-    // animation: fadeIn .8s .25s forwards, moveRight .8s .25s ease-out forwards;
-    // opacity: 0;
-  }
 
   hgroup {
     border-top: 3px solid rgba(getColor(base, lines), .5);
@@ -320,8 +355,9 @@ dd {
 // -------
 
 .wufoo {
-  animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards;
   opacity: 0;
+
+  &.-animated { animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards; }
 }
 
 
@@ -392,10 +428,10 @@ dd {
   }
 
   @for $i from 1 through 18 {
-    &:nth-of-type(#{$i}) {
+    &.-animated:nth-of-type(#{$i}) {
       @extend %tile-animation;
 
-      animation-delay: $i * 0.22s;
+      animation-delay: $i * .22s;
     }
   }
 }
