@@ -365,12 +365,16 @@ dd {
   }
 
   img {
-    height: auto;
     max-width: 100%;
     transition: opacity ($transition-duration * 1.5);
+    width: 100%;
     -webkit-backface-visibility: hidden;
 
     &:hover { opacity: .75; }
+
+    @media (--small-max) {
+      margin-bottom: $spacing-m;
+    }
   }
 
   @for $i from 1 through 18 {
@@ -378,27 +382,6 @@ dd {
       @extend %tile-animation;
 
       animation-delay: $i * 0.22s;
-    }
-  }
-
-  // Book Modifier
-  &.-book {
-    @media (--medium) {
-      float: left;
-    }
-
-    @media (--large) {
-      opacity: 0;
-      width: 50%;
-    }
-
-    img {
-      display: block;
-      height: auto;
-      margin: 0 auto;
-      width: 100%;
-
-      @media (--medium-max) { margin-bottom: $spacing-xs; }
     }
   }
 }

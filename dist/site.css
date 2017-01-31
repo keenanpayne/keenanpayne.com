@@ -1116,13 +1116,16 @@ dd {
     border-bottom: none;
     text-decoration: none; }
   .tile img {
-    height: auto;
     max-width: 100%;
     -webkit-transition: opacity 225ms;
     transition: opacity 225ms;
+    width: 100%;
     -webkit-backface-visibility: hidden; }
     .tile img:hover {
       opacity: .75; }
+    @media (max-width: 480px) {
+      .tile img {
+        margin-bottom: 3rem; } }
   .tile:nth-of-type(1) {
     -webkit-animation-delay: 0.22s;
             animation-delay: 0.22s; }
@@ -1177,21 +1180,6 @@ dd {
   .tile:nth-of-type(18) {
     -webkit-animation-delay: 3.96s;
             animation-delay: 3.96s; }
-  @media (min-width: 768px) {
-    .tile.-book {
-      float: left; } }
-  @media (min-width: 960px) {
-    .tile.-book {
-      opacity: 0;
-      width: 50%; } }
-  .tile.-book img {
-    display: block;
-    height: auto;
-    margin: 0 auto;
-    width: 100%; }
-    @media (max-width: 768px) {
-      .tile.-book img {
-        margin-bottom: 0.75rem; } }
 
 @-webkit-keyframes fadeIn {
   from {
