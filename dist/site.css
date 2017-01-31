@@ -999,6 +999,9 @@ dl[column] {
   margin-bottom: 3rem;
   margin-top: 3rem; }
 
+dl.-no-bottom-margin {
+  margin-bottom: 0; }
+
 dt {
   font-size: 1.2rem;
   margin-top: 0;

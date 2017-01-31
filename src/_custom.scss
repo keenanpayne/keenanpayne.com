@@ -180,9 +180,13 @@ footer {
 // Definition Lists
 // ----------------
 
-dl[column] {
-  margin-bottom: $spacing-m;
-  margin-top: $spacing-m;
+dl {
+  &[column] {
+    margin-bottom: $spacing-m;
+    margin-top: $spacing-m;
+  }
+
+  &.-no-bottom-margin { margin-bottom: 0; }
 }
 
 dt {
