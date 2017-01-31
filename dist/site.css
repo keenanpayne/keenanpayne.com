@@ -953,7 +953,10 @@ header[role="main"] {
     text-align: right; } }
 
 nav[role="navigation"] ul {
-  margin-top: 0.75rem; }
+  margin-top: 1.5rem; }
+  @media (min-width: 768px) {
+    nav[role="navigation"] ul {
+      margin-top: 0.75rem; } }
 
 nav[role="navigation"] li {
   cursor: pointer;
@@ -1115,6 +1118,9 @@ dd {
   .tile:hover {
     border-bottom: none;
     text-decoration: none; }
+  @media (max-width: 480px) {
+    .tile:last-of-type img {
+      margin-bottom: 0; } }
   .tile img {
     max-width: 100%;
     -webkit-transition: opacity 225ms;

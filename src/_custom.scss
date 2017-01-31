@@ -132,7 +132,13 @@ nav[role="navigation"] {
     text-align: right;
   }
 
-  ul { margin-top: $spacing-xs; }
+  ul {
+    margin-top: $spacing-s; 
+
+    @media (--medium) {
+      margin-top: $spacing-xs;
+    }
+  }
 
   li {
     cursor: pointer;
@@ -362,6 +368,14 @@ dd {
   &:hover {
     border-bottom: none;
     text-decoration: none;
+  }
+
+  &:last-of-type {
+    img {
+      @media (--small-max) {
+        margin-bottom: 0;
+      }
+    }
   }
 
   img {
