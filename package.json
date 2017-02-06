@@ -1,18 +1,21 @@
 {
   "name": "keenanpayne",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "The personal website for Keenan Payne.",
   "homepage": "http://keenanpayne.com",
+  "dependencies": {
+    "concise.css": "^4.1.2"
+  },
   "devDependencies": {
-    "autoprefixer": "^6.0.3",
+    "concise-cli": "^0.4.1",
     "cssmin": "^0.4.3",
-    "node-sass": "^3.4.0",
-    "postcss-cli": "^2.3.1",
     "watch": "^0.16.0"
   },
   "scripts": {
-    "build": "node-sass scss/concise.scss css/site.css | postcss --use autoprefixer < css/site.css -b \"last 2 versions\" | cssmin > css/site.min.css",
-    "build:watch": "watch \"npm run build\" scss"
+    "start": "npm run build:watch",
+    "build": "concisecss compile src/site.scss dist/site.css",
+    "build:minify": "cssmin dist/site.css > dist/site.min.css",
+    "build:watch": "watch \"npm run build\" src"
   }
 }

@@ -32,28 +32,56 @@
       <h1 column="6"><a href="index.html" title="Home">Keenan Payne</a></h1>
 
       <nav role="navigation" column="6">
-				<!--
-					TODO: What are the other necessary pages?
-
-					Ideas:
-						- About (about me, my skills, my experience and my interests)
-						- Open Source (open source projects that I've built and contribute to)
-				-->
         <ul>
           <li><a href="work.html" title="Work">Work</a></li>
           <li><a href="reading.html" title="Reading">Reading</a></li>
-          <li><a href="contact.html" title="Contact">Contact</a></li>
+          <li class="-active"><a href="contact.html" title="Contact">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="welcome" container>
-    <h2 class="-holla">Hello, my name is Keenan Payne. I'm a front-end developer based out of San Francisco, CA.</h2>
-  </main>
+  <main class="we-up-in-this" container>
+		<hgroup>
+			<h2>Get in Touch</h2>
+		</hgroup>
 
-  <footer role="complementary" container>
-    <p>You can find me on <a href="https://dribbble.com/keenanpayne" title="Dribbble" class="-dribbble" target="_blank">Dribbble</a>, <a href="https://www.behance.net/keenanpayne" title="Behance" class="-behance" target="_blank">Behance</a>, <a href="https://github.com/keenanpayne" title="GitHub" class="-github" target="_blank">GitHub</a>, and <a href="https://www.linkedin.com/in/keenanpayne" title="LinkedIn" class="-linkedin" target="_blank">LinkedIn</a>.</p>
-  </footer>
+		<div grid>
+			<aside column="5">
+				<p>Have a question or want to reach out about a project? Feel free to shoot me an email. I will be happy to answer any questions you may have.</p>
+
+				<p>I try to respond within 1-2 business days.</p>
+
+				<hr>
+
+				<p><strong>contact[at]keenanpayne.com</strong></p>
+			</aside>
+
+			<div column="7" class="wufoo" id="wufoo-r1x2nqll1ee9loz">
+				Fill out my <a href="https://keenanpayne.wufoo.com/forms/r1x2nqll1ee9loz">online form</a>.
+
+				<script type="text/javascript">
+					var r1x2nqll1ee9loz;(function(d, t) {
+						var s = d.createElement(t), options = {
+							'userName':'keenanpayne',
+							'formHash':'r1x2nqll1ee9loz',
+							'autoResize':true,
+							'height':'647',
+							'async':true,
+							'host':'wufoo.com',
+							'header':'hide',
+							'ssl':true
+						};
+
+						s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+						s.onload = s.onreadystatechange = function() {
+						var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+						try { r1x2nqll1ee9loz = new WufooForm();r1x2nqll1ee9loz.initialize(options);r1x2nqll1ee9loz.display(); } catch (e) {}};
+						var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+					})(document, 'script');
+				</script>
+			</div>
+		</div>
+  </main>
 </body>
 </html>
