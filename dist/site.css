@@ -939,7 +939,7 @@ h1 {
   font-style: normal;
   font-weight: 400;
   opacity: 0;
-  text-shadow: 3px 0 0 #000, -1px 0 0 #000, 0 2px 0 #000, 0 -1px 0 #000, 3px 3px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
+  text-shadow: 3px 1px 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 3px 2px black, -1px -1px 0 black, 0px -1px 0 black, -1px 1px 0 black;
   word-spacing: -1px; }
   @media (max-width: 768px) {
     h1 {
