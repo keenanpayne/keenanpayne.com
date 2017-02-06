@@ -98,7 +98,7 @@ h1 {
   font-style: normal;
   font-weight: 400;
   opacity: 0;
-  text-shadow: 2px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 2px 2px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
+  text-shadow: 3px 0 0 #000, -1px 0 0 #000, 0 2px 0 #000, 0 -1px 0 #000, 3px 3px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
   word-spacing: -1px;
 
   @media (--medium-max) {
@@ -112,9 +112,6 @@ h1 {
       border-bottom: none;
       color: inherit;
     }
-
-    &:active,
-    &:focus { color: #f0f0f0; }
   }
 }
 
