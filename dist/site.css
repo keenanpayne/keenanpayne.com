@@ -54,7 +54,7 @@ template,
   -webkit-text-size-adjust: 100%;
   background-color: white;
   color: #444;
-  font-size: 14px;
+  font-size: 16px;
   text-rendering: optimizeLegibility; }
   @media (min-width: 768px) {
     :root {
@@ -888,6 +888,16 @@ h2, h3 {
 p {
   font-size: 1rem;
   word-spacing: .5px; }
+  p.-headline {
+    font-family: "ff-tisa-sans-web-pro", "Source Sans Pro", "Arial", sans-serif;
+    font-size: 1.44rem;
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 0.375rem; }
+    p.-headline + p {
+      margin-top: 0.75rem; }
+    p + p.-headline {
+      margin-top: 3rem; }
 
 a:hover {
   border-bottom: 1px solid #444; }
@@ -933,13 +943,15 @@ h1 {
   word-spacing: -1px; }
   @media (max-width: 768px) {
     h1 {
-      font-size: 3.58318rem; } }
+      font-size: 2.98598rem; } }
   h1.-animated {
     -webkit-animation: fadeIn .7s .25s ease-out forwards;
             animation: fadeIn .7s .25s ease-out forwards; }
   h1 a:hover {
     border-bottom: none;
     color: inherit; }
+  h1 a:active, h1 a:focus {
+    color: #f9f9f9; }
 
 header[role="main"] {
   margin-top: 3rem; }
@@ -1135,9 +1147,8 @@ dd {
   .we-up-in-this h2 {
     font-size: 2.75rem;
     margin: 0; }
-  .we-up-in-this p {
-    font-size: 1rem;
-    margin-bottom: 2rem; }
+  .we-up-in-this p:last-of-type {
+    margin-bottom: 3rem; }
 
 .portfolio img {
   height: auto;

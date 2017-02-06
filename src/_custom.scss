@@ -49,6 +49,18 @@ h2, h3 {
 p {
   font-size: 1rem;
   word-spacing: .5px;
+
+  &.-headline {
+    font-family: $font-secondary;
+    font-size: typeScale(4);
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: $spacing-xxs;
+
+    & + p { margin-top: $spacing-xs; }
+
+    p + & { margin-top: $spacing-m; }
+  }
 }
 
 @mixin linkColor($color) {
@@ -98,11 +110,18 @@ h1 {
   font-style: normal;
   font-weight: 400;
   opacity: 0;
-  text-shadow: 3px 0 0 #000, -1px 0 0 #000, 0 2px 0 #000, 0 -1px 0 #000, 3px 3px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
+  text-shadow: 3px 0 0 #000,
+              -1px 0 0 #000,
+              0 2px 0 #000,
+              0 -1px 0 #000,
+              3px 3px #000,
+              -1px -1px 0 #000,
+              0px -1px 0 #000,
+              -1px 2px 0 #000;
   word-spacing: -1px;
 
   @media (--medium-max) {
-    font-size: typeScale(9);
+    font-size: typeScale(8);
   }
 
   &.-animated { animation: fadeIn .7s .25s ease-out forwards; }
@@ -112,6 +131,9 @@ h1 {
       border-bottom: none;
       color: inherit;
     }
+
+    &:active,
+    &:focus { color: #f9f9f9; }
   }
 }
 
@@ -330,10 +352,7 @@ dd {
     margin: 0;
   }
 
-  p {
-    font-size: typeScale(2);
-    margin-bottom: 2rem;
-  }
+  p:last-of-type { margin-bottom: $spacing-m; }
 }
 
 //
