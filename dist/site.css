@@ -885,6 +885,11 @@ h2, h3 {
     transition: transform 300ms;
     transition: transform 300ms, -webkit-transform 300ms; }
 
+h2 {
+  font-size: 2.98598rem;
+  margin: 0;
+  word-spacing: 3px; }
+
 p {
   font-size: 1rem;
   word-spacing: .5px; }
@@ -892,7 +897,6 @@ p {
     font-family: "ff-tisa-sans-web-pro", "Source Sans Pro", "Arial", sans-serif;
     font-size: 1.44rem;
     font-style: italic;
-    font-weight: 600;
     margin-bottom: 0.375rem; }
     p.-headline + p {
       margin-top: 0.75rem; }
@@ -925,16 +929,16 @@ a.-linkedin {
 .-holla {
   font-size: 1.728rem;
   font-style: normal;
-  letter-spacing: -1.25px;
+  letter-spacing: -1.3px;
   line-height: 1.4;
-  word-spacing: 1px; }
+  word-spacing: 3px; }
   @media (min-width: 480px) {
     .-holla {
       font-size: 2.98598rem; } }
 
 h1 {
   color: white;
-  font-family: "sutturah", sans-serif;
+  font-family: "sutturah", "ff-tisa-sans-web-pro", "Source Sans Pro", "Arial", sans-serif;
   font-size: 2.48832rem;
   font-style: normal;
   font-weight: 400;
@@ -1008,11 +1012,11 @@ nav[role="navigation"] li {
             transform: translateY(5px); }
   nav[role="navigation"] li:last-child {
     margin-right: 0; }
-  nav[role="navigation"] li.is-active {
+  nav[role="navigation"] li.-active {
     border-bottom: 3px solid #444;
     opacity: .85;
     padding-bottom: 5px; }
-    nav[role="navigation"] li.is-active:after {
+    nav[role="navigation"] li.-active:after {
       display: none; }
 
 nav[role="navigation"] a:hover {
@@ -1023,6 +1027,63 @@ footer {
   footer.-animated {
     -webkit-animation: fadeIn .8s 1.05s forwards, moveLeft .8s 1.05s ease-out forwards;
             animation: fadeIn .8s 1.05s forwards, moveLeft .8s 1.05s ease-out forwards; }
+
+.welcome {
+  margin-top: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 4.5rem 2rem;
+  -webkit-transition: padding 150ms;
+  transition: padding 150ms; }
+  @media (min-width: 768px) {
+    .welcome h2 {
+      max-width: 800px; } }
+  @media (min-width: 960px) {
+    .welcome h2 {
+      max-width: 900px; } }
+  @media (min-width: 1460px) {
+    .welcome h2 {
+      max-width: 1100px; } }
+  @media (min-height: 750px) {
+    .welcome {
+      padding-bottom: 7.5rem;
+      padding-top: 7.5rem; } }
+  @media (min-height: 1100px) {
+    .welcome {
+      padding-bottom: 8.25rem;
+      padding-top: 8.25rem; } }
+  @media (min-height: 1350px) {
+    .welcome {
+      padding-bottom: 12.375rem;
+      padding-top: 12.375rem; } }
+  @media (min-height: 1450px) {
+    .welcome {
+      padding-bottom: 16.5rem;
+      padding-top: 16.5rem; } }
+  .welcome.-animated {
+    -webkit-animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
+            animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; }
+
+.we-up-in-this {
+  overflow: hidden; }
+  .we-up-in-this hgroup {
+    border-top: 3px solid rgba(220, 220, 220, 0.5);
+    padding: 3rem 0 1.5rem; }
+    @media (min-width: 768px) {
+      .we-up-in-this hgroup {
+        padding: 6rem 0; } }
+  .we-up-in-this p:last-of-type {
+    margin-bottom: 3rem; }
+
+.portfolio img {
+  height: auto;
+  max-width: 100%; }
+
+.wufoo {
+  opacity: 0; }
+  .wufoo.-animated {
+    -webkit-animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards;
+            animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards; }
 
 dl span.-animated:nth-of-type(1), dl span.-animated:nth-of-type(3), dl span.-animated:nth-of-type(5), dl span.-animated:nth-of-type(7), dl span.-animated:nth-of-type(9), dl span.-animated:nth-of-type(11), dl span.-animated:nth-of-type(13) {
   -webkit-animation-name: fadeIn, moveRight;
@@ -1101,65 +1162,6 @@ dd {
   border-bottom: 3px solid rgba(50, 55, 61, 0.2);
   padding-bottom: 0.75rem; }
 
-.welcome {
-  margin-top: 0;
-  opacity: 0;
-  padding: 4.5rem 2rem;
-  -webkit-transition: padding 150ms;
-  transition: padding 150ms; }
-  @media (min-width: 768px) {
-    .welcome h2 {
-      max-width: 800px; } }
-  @media (min-width: 960px) {
-    .welcome h2 {
-      max-width: 900px; } }
-  @media (min-width: 1460px) {
-    .welcome h2 {
-      max-width: 1100px; } }
-  @media (min-height: 750px) {
-    .welcome {
-      padding-bottom: 7.5rem;
-      padding-top: 7.5rem; } }
-  @media (min-height: 1100px) {
-    .welcome {
-      padding-bottom: 8.25rem;
-      padding-top: 8.25rem; } }
-  @media (min-height: 1350px) {
-    .welcome {
-      padding-bottom: 12.375rem;
-      padding-top: 12.375rem; } }
-  @media (min-height: 1450px) {
-    .welcome {
-      padding-bottom: 16.5rem;
-      padding-top: 16.5rem; } }
-  .welcome.-animated {
-    -webkit-animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
-            animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; }
-
-.we-up-in-this {
-  overflow: hidden; }
-  .we-up-in-this hgroup {
-    border-top: 3px solid rgba(220, 220, 220, 0.5);
-    padding: 3rem 0 1.5rem; }
-    @media (min-width: 768px) {
-      .we-up-in-this hgroup {
-        padding: 6rem 0; } }
-  .we-up-in-this h2 {
-    font-size: 2.75rem;
-    margin: 0; }
-  .we-up-in-this p:last-of-type {
-    margin-bottom: 3rem; }
-
-.portfolio img {
-  height: auto;
-  max-width: 100%; }
-
-.wufoo {
-  opacity: 0; }
-  .wufoo.-animated {
-    -webkit-animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards;
-            animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards; }
-
 .description {
   margin-bottom: 2.25rem; }
   .description p {
@@ -1183,7 +1185,7 @@ dd {
     .tile {
       float: left;
       width: 50%; } }
-  @media (min-width: 960px) {
+  @media (min-width: 1100px) {
     .tile {
       opacity: 0;
       width: 33.33%; } }

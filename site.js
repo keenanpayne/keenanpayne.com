@@ -1,6 +1,8 @@
 (function($) {
   /**
-   * JavaScript Utilities
+   * JavaScript Helpers
+   *
+   * @author Keenan Payne
    */
   Helpers = {
     /**
