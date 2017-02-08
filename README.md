@@ -11,3 +11,11 @@ Feel free to fork this and use my code and designs for whatever you'd like. You 
 3. CD into the folder: `cd ../path/to/directory`
 4. Install NPM dependencies: `npm install`
 5. Run NPM build script: `npm run build` or `npm run build:watch`
+
+### To Do
+
+- [ ] Use a static site generator to reduce duplicate code (Harp.js, Jekyll, etc)
+- [ ] Add a "Labs" section that contains more isolated code snippets and examples
+- [ ] Add more items to my portfolio from past projects
+- [ ] Add "Case Studies" to my portfolio that delves deeper into select projects
+- [ ] Clean up responsiveness between portfolio sections on devices (sometimes portfolio images shrink and it creates a lot of space between the images and the "Open Source" section)
