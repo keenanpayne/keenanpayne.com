@@ -5,6 +5,7 @@
 :root {
   background-color: #fafafa;
   text-rendering: optimizeLegibility;
+  padding-bottom: 2rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -42,30 +43,13 @@ h2, h3 {
     font-size: .75rem;
     font-weight: 400;
     margin-left: $spacing-xxs;
-    transition: transform $transition-duration-long;
+    transition: transform ($transition-duration * 2);
   }
-}
-
-h2 {
-  font-size: typeScale(8);
-  margin: 0;
-  word-spacing: 3px;
 }
 
 p {
-  font-size: typeScale(2);
+  font-size: 1rem;
   word-spacing: .5px;
-
-  &.-headline {
-    font-family: $font-secondary;
-    font-size: typeScale(4);
-    font-style: italic;
-    margin-bottom: $spacing-xxs;
-
-    & + p { margin-top: $spacing-xs; }
-
-    p + & { margin-top: $spacing-m; }
-  }
 }
 
 @mixin linkColor($color) {
@@ -92,13 +76,23 @@ a {
 
 .-holla {
   font-size: typeScale(5);
-  font-style: normal;
-  letter-spacing: -1.3px;
-  line-height: 1.4;
-  word-spacing: 3px;
+  padding-bottom: 1rem;
+  padding-top: 2rem;
+  transition: font-size $transition-duration;
+  word-spacing: 1px;
 
   @media (--small) {
+    font-size: typeScale(7);
+  }
+
+  @media (--extra-large) {
     font-size: typeScale(8);
+    word-spacing: 2px;
+  }
+
+  @media (--hella-large) {
+    font-size: typeScale(9);
+    word-spacing: 3px;
   }
 }
 
@@ -110,23 +104,16 @@ a {
 // Logo
 h1 {
   color: getColor(text, inverted);
-  font-family: $font-logo;
+  font-family: "sutturah", sans-serif;
   font-size: typeScale(7);
   font-style: normal;
   font-weight: 400;
   opacity: 0;
-  text-shadow: 3px 1px 0 black,
-              -1px 0 0 black,
-              0 1px 0 black,
-              0 -1px 0 black,
-              3px 2px black,
-              -1px -1px 0 black,
-              0px -1px 0 black,
-              -1px 1px 0 black;
+  text-shadow: 2px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 2px 2px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
   word-spacing: -1px;
 
   @media (--medium-max) {
-    font-size: typeScale(8);
+    font-size: typeScale(9);
   }
 
   &.-animated { animation: fadeIn .7s .25s ease-out forwards; }
@@ -138,7 +125,7 @@ h1 {
     }
 
     &:active,
-    &:focus { color: #f9f9f9; }
+    &:focus { color: #f0f0f0; }
   }
 }
 
@@ -175,7 +162,7 @@ nav[role="navigation"] {
     position: relative;
     text-transform: uppercase;
     transform: scaleX(0);
-    transition: transform $transition-duration-med ease-in-out;
+    transition: transform ($transition-duration * 1.5) ease-in-out;
 
     @media (--small) {
       font-size: typeScale(1);
@@ -189,8 +176,8 @@ nav[role="navigation"] {
       opacity: 0;
       position: absolute;
       top: 100%;
-      transition: opacity $transition-duration-long,
-                  transform $transition-duration-long;
+      transition: opacity ($transition-duration * 2),
+                  transform ($transition-duration * 2);
       transform: translateY(10px);
       width: 100%;
     }
@@ -202,7 +189,7 @@ nav[role="navigation"] {
 
     &:last-child { margin-right: 0; }
 
-    &.-active {
+    &.is-active {
       border-bottom: 3px solid getColor(text, primary);
       opacity: .85;
       padding-bottom: 5px;
@@ -216,102 +203,10 @@ nav[role="navigation"] {
 
 // Main Footer
 footer {
-  opacity: 0;
+  margin-top: $spacing-m;
+  // opacity: 0;
 
-  &.-animated { animation: fadeIn .8s 1.05s forwards,
-                           moveLeft .8s 1.05s ease-out forwards;
-  }
-}
-
-
-//
-// Page-Specific
-// ==================================================
-
-//
-// Homepage
-// --------
-
-.welcome {
-  margin-top: 0;
-  opacity: 0;
-  overflow: hidden;
-  padding: $spacing-l 2rem;
-  transition: padding $transition-duration;
-
-  @media (--medium) {
-    h2 { max-width: 800px; }
-  }
-
-  @media (--large) {
-    h2 { max-width: 900px; }
-  }
-
-  @media (--hella-large) {
-    h2 { max-width: 1100px; }
-  }
-
-  @media (--medium-height) {
-    padding-bottom: ($spacing-xl * 1.25);
-    padding-top: ($spacing-xl * 1.25);
-  }
-
-  @media (--large-height) {
-    padding-bottom: ($spacing-xxl * 1);
-    padding-top: ($spacing-xxl * 1);
-  }
-
-  @media (--extra-large-height) {
-    padding-bottom: ($spacing-xxl * 1.5);
-    padding-top: ($spacing-xxl * 1.5);
-  }
-
-  @media (--hella-large-height) {
-    padding-bottom: ($spacing-xxl * 2);
-    padding-top: ($spacing-xxl * 2);
-  }
-
-  &.-animated { animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; }
-}
-
-//
-// Inner Pages
-// -----------
-
-.we-up-in-this {
-  overflow: hidden;
-
-  hgroup {
-    border-top: 3px solid rgba(getColor(base, lines), .5);
-    padding: 3rem 0 1.5rem;
-
-    @media (--medium) {
-      padding: $spacing-xl 0;
-    }
-  }
-
-  p:last-of-type { margin-bottom: $spacing-m; }
-}
-
-//
-// Portfolio
-// ---------
-
-.portfolio {
-  img {
-    height: auto;
-    max-width: 100%;
-  }
-}
-
-//
-// Contact
-// -------
-
-.wufoo {
-  opacity: 0;
-
-  &.-animated { animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards; }
+  // &.-animated { animation: fadeIn .8s 1.05s forwards, moveLeft .8s 1.05s ease-out forwards; }
 }
 
 
@@ -347,7 +242,6 @@ dl {
       dt { border-top: 3px solid getColor(background, dark); }
     }
 
-    // Animate for the number of items that are present
     @for $i from 1 through 13 {
       // If even
       @if $i % 2 == 0 {
@@ -378,6 +272,105 @@ dt {
 dd {
   border-bottom: 3px solid rgba(getColor(background, dark), .2);
   padding-bottom: $spacing-xs;
+}
+
+//
+// Promos
+// ------
+
+.promo {
+  background: white;
+  border: 1px solid #efefef;
+  box-shadow: 0 1px 4px 0 rgba(100, 100, 100, .1);
+  cursor: pointer;
+  margin-bottom: $spacing-s;
+  padding: $spacing-s;
+  transition: box-shadow $transition-duration-med;
+
+  &:hover {
+    box-shadow: 0 1px 4px 1px rgba(100, 100, 100, .15);
+  }
+
+  img { width: 100%; }
+
+  h4 { margin: $spacing-s 0 0; }
+}
+
+.promo-label {
+  font-size: .75rem;
+  letter-spacing: .5px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.promo-title {
+  font-family: $font-primary;
+  font-style: normal;
+}
+
+
+//
+// Page-Specific
+// ==================================================
+
+//
+// Homepage
+// --------
+
+.welcome {
+  margin-top: $spacing-s;
+  // opacity: 0;
+  transition: padding $transition-duration;
+
+  &.-animated { animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; }
+}
+
+//
+// Inner Pages
+// -----------
+
+.we-up-in-this {
+  overflow: hidden;
+
+  hgroup {
+    border-top: 3px solid rgba(getColor(base, lines), .5);
+    padding: 3rem 0 1.5rem;
+
+    @media (--medium) {
+      padding: $spacing-xl 0;
+    }
+  }
+
+  h2 {
+    font-size: 2.75rem;
+    margin: 0;
+  }
+
+  p {
+    font-size: typeScale(2);
+    margin-bottom: 2rem;
+  }
+}
+
+//
+// Portfolio
+// ---------
+
+.portfolio {
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+//
+// Contact
+// -------
+
+.wufoo {
+  opacity: 0;
+
+  // &.-animated { animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards; }
 }
 
 
@@ -416,7 +409,7 @@ dd {
     width: 50%;
   }
 
-  @media (--extra-large) {
+  @media (--large) {
     opacity: 0;
     width: 33.33%;
   }
@@ -436,7 +429,7 @@ dd {
 
   img {
     max-width: 100%;
-    transition: opacity $transition-duration-med;
+    transition: opacity ($transition-duration * 1.5);
     width: 100%;
     -webkit-backface-visibility: hidden;
 
@@ -447,7 +440,6 @@ dd {
     }
   }
 
-  // Animate for the number of items that are present
   @for $i from 1 through 18 {
     &.-animated:nth-of-type(#{$i}) {
       @extend %tile-animation;
