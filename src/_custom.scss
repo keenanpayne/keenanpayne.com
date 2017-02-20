@@ -5,7 +5,6 @@
 :root {
   background-color: #fafafa;
   text-rendering: optimizeLegibility;
-  padding-bottom: 2rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -25,8 +24,8 @@
 
 
 //
-// Body Background
-// ---------------
+// Header Background
+// -----------------
 
 .background {
   animation: backgroundGradient 40s ease infinite;
@@ -37,12 +36,52 @@
   margin-bottom: $spacing-m;
   padding-bottom: 3rem;
   padding-top: 3rem;
+
+  @media (--medium) {
+    animation: backgroundGradient 40s ease infinite;
+  }
 }
+
+
 
 
 //
 // Typography
 // ==================================================
+
+//
+// Icons
+// -----
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?yuxxtl');
+  src:  url('../fonts/icomoon.eot?yuxxtl#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?yuxxtl') format('truetype'),
+        url('../fonts/icomoon.woff?yuxxtl') format('woff'),
+        url('../fonts/icomoon.svg?yuxxtl#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+
+.icon-linkedin:before { content: "\e900"; }
+
+.icon-github:before { content: "\e901"; }
+
+.icon-behance:before { content: "\e902"; }
+
+.icon-dribbble:before { content: "\e903"; }
 
 h2, h3 {
   font-style: italic;
@@ -70,21 +109,26 @@ p {
 
 @mixin linkColor($color) {
   color: $color;
+  transition: color $transition-duration;
 
-  &:hover { border-bottom: 1px solid $color; }
+  &:hover {
+    color: darken($color, 10%);
+    border-bottom: none;
+  }
 }
 
 a {
   &:hover { border-bottom: 1px solid getColor(text, primary); }
 
-  &.-dribbble { @include linkColor(#ea4c89); }
+  &.icon-dribbble { @include linkColor(#ea4c89); }
 
-  &.-behance { @include linkColor(#1769ff); }
+  &.icon-behance { @include linkColor(#1769ff); }
 
-  &.-github { @include linkColor(#333); }
+  &.icon-github { @include linkColor(#333); }
 
-  &.-linkedin { @include linkColor(#0077b5); }
+  &.icon-linkedin { @include linkColor(#0077b5); }
 }
+
 
 //
 // Modifiers
@@ -92,7 +136,6 @@ a {
 
 .-holla {
   color: white;
-  font-size: typeScale(5);
   margin: 0;
   text-align: center;
   text-shadow: 1px 1px 0 #999;
@@ -111,7 +154,13 @@ a {
   @media (--hella-large) {
     font-size: typeScale(9);
   }
+
+  &.-stay-large {
+    font-size: typeScale(7);
+  }
 }
+
+
 
 
 //
@@ -125,20 +174,18 @@ h1 {
   font-size: typeScale(7);
   font-style: normal;
   font-weight: 400;
-  opacity: 0;
   text-shadow: 2px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 2px 2px black, -1px -1px 0 black, 0px -1px 0 black, -1px 2px 0 black;
-  transition: text-shadow $transition-duration;
   word-spacing: -1px;
 
   @media (--medium-max) {
     font-size: typeScale(8);
   }
 
-  &:hover {
-    text-shadow: 2px 0 0 black, -1px 0 0 black, 0 4px 0 black, 0 -1px 0 black, 4px 4px black, -1px -1px 0 black, 0px -1px 0 black, -1px 2px 0 black
-  }
+  @media (--medium) {
+    opacity: 0;
 
-  &.-animated { animation: fadeIn .7s .25s ease-out forwards; }
+    &.-animated { animation: fadeIn .7s .25s ease-out forwards; }
+  }
 
   a {
     &:hover {
@@ -208,7 +255,7 @@ nav[role="navigation"] {
 
     &:last-child { margin-right: 0; }
 
-    &.is-active {
+    &.-active {
       border-bottom: 3px solid white;
       opacity: .85;
       padding-bottom: 5px;
@@ -226,10 +273,24 @@ nav[role="navigation"] {
 
 // Main Footer
 footer {
-  margin-top: $spacing-m;
-  // opacity: 0;
+  background-color: #f7f7f7;
+  border-top: 1px solid #eee;
+  margin-top: $spacing-xs;
+  padding: 2.5rem 2rem;
+  text-align: center;
 
-  // &.-animated { animation: fadeIn .8s 1.05s forwards, moveLeft .8s 1.05s ease-out forwards; }
+  @media (--small) {
+    margin-top: $spacing-m;
+  }
+
+  [class^="icon-"] {
+    font-size: typeScale(5);
+    margin-right: $spacing-s;
+
+    &:hover { text-decoration: none; }
+
+    &:last-of-type { margin-right: 0; }
+  }
 }
 
 
@@ -238,15 +299,19 @@ footer {
 // ----------------
 
 %dl-animation-right {
-  animation-name: fadeIn, moveRight;
-  animation-duration: .7s, .85s;
-  animation-fill-mode: forwards, forwards;
+  @media (--medium) {
+    animation-name: fadeIn, moveRight;
+    animation-duration: .7s, .85s;
+    animation-fill-mode: forwards, forwards;
+  }
 }
 
 %dl-animation-left {
-  animation-name: fadeIn, moveLeft;
-  animation-duration: .7s, .85s;
-  animation-fill-mode: forwards, forwards;
+  @media (--medium) {
+    animation-name: fadeIn, moveLeft;
+    animation-duration: .7s, .85s;
+    animation-fill-mode: forwards, forwards;
+  }
 }
 
 dl {
@@ -255,7 +320,10 @@ dl {
 
   span {
     display: block;
-    opacity: 0;
+
+    @media (--medium) {
+      opacity: 0;
+    }
 
     &:first-of-type {
       dt { border-top: 3px solid getColor(background, dark); }
@@ -301,18 +369,43 @@ dd {
   background: white;
   border: 1px solid #efefef;
   box-shadow: 0 1px 4px 0 rgba(100, 100, 100, .1);
-  cursor: pointer;
   margin-bottom: $spacing-s;
   padding: $spacing-s;
   transition: box-shadow $transition-duration-med;
 
-  &:hover {
-    box-shadow: 0 1px 4px 1px rgba(100, 100, 100, .15);
+  @media (--medium) {
+    opacity: 0;
+
+    &.-animated { animation: fadeIn .8s 1.15s forwards, moveUp .8s 1.15s ease-out forwards; }
   }
 
-  img { width: 100%; }
+  @media (--large) {
+    height: 400px;
+  }
+
+  &:hover { box-shadow: 0 1px 4px 1px rgba(100, 100, 100, .15); }
+
+  img {
+    width: 100%;
+
+    @media (--small-max) {
+      margin-bottom: $spacing-xs;
+    }
+  }
 
   h4 { margin: $spacing-s 0 0; }
+
+  p {
+    @media (--small) {
+      font-size: typeScale(1);
+    }
+  }
+
+  &.-short {
+    @media (--large) {
+      height: 185px;
+    }
+  }
 }
 
 .promo-label {
@@ -337,7 +430,6 @@ dd {
 // --------
 
 .welcome {
-  // opacity: 0;
   padding-bottom: 2rem;
   padding-top: 2rem;
   transition: padding $transition-duration;
@@ -347,12 +439,29 @@ dd {
     padding-top: 3rem;
   }
 
+  @media (--medium) {
+    opacity: 0;
+
+    &.-animated { animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; }
+  }
+
   @media (--large) {
     padding-bottom: 6rem;
     padding-top: 6rem;
   }
 
-  &.-animated { animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; }
+  &.-short {
+    @media (--medium) {
+      opacity: 1;
+
+      &.-animated { animation: none; }
+    }
+
+    @media (--large) {
+      padding-bottom: 3rem;
+      padding-top: 3rem;
+    }
+  }
 }
 
 //
@@ -361,20 +470,6 @@ dd {
 
 .we-up-in-this {
   overflow: hidden;
-
-  hgroup {
-    border-top: 3px solid rgba(getColor(base, lines), .5);
-    padding: 3rem 0 1.5rem;
-
-    @media (--medium) {
-      padding: $spacing-xl 0;
-    }
-  }
-
-  h2 {
-    font-size: 2.75rem;
-    margin: 0;
-  }
 
   p {
     font-size: typeScale(2);
@@ -399,27 +494,18 @@ dd {
 // ==================================================
 
 //
-// Page Descriptions
-//  ----------------
-
-.description {
-  margin-bottom: 1.5lh;
-
-  p { font-size: typeScale(3); }
-}
-
-//
 // Tiles
 // -----
 
 %tile-animation {
-  animation-name: fadeIn, moveUp;
-  animation-duration: .7s, .85s;
-  animation-fill-mode: forwards, forwards;
+  @media (--medium) {
+    animation-name: fadeIn, moveUp;
+    animation-duration: .7s, .85s;
+    animation-fill-mode: forwards, forwards;
+  }
 }
 
 .tile {
-  opacity: 0;
   padding: 0;
   transition: width $transition-duration;
   width: 100%;
@@ -429,8 +515,11 @@ dd {
     width: 50%;
   }
 
-  @media (--large) {
+  @media (--medium) {
     opacity: 0;
+  }
+
+  @media (--large) {
     width: 33.33%;
   }
 
