@@ -25,6 +25,22 @@
 
 
 //
+// Body Background
+// ---------------
+
+.background {
+  animation: backgroundGradient 40s ease infinite;
+  background: #4ca2cd;
+  background: linear-gradient(to left, rgba(#67B26F, .6), rgba(#4ca2cd, .75));
+  background-size: 200% 200%;
+  border-bottom: 1px solid rgba(#4ca2cd, .15);
+  margin-bottom: $spacing-m;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+}
+
+
+//
 // Typography
 // ==================================================
 
@@ -75,10 +91,12 @@ a {
 // ---------
 
 .-holla {
+  color: white;
   font-size: typeScale(5);
-  padding-bottom: 1rem;
-  padding-top: 2rem;
-  transition: font-size $transition-duration;
+  margin: 0;
+  text-align: center;
+  text-shadow: 1px 1px 0 #999;
+  transition: font-size $transition-duration, padding $transition-duration;
   word-spacing: 1px;
 
   @media (--small) {
@@ -87,12 +105,11 @@ a {
 
   @media (--extra-large) {
     font-size: typeScale(8);
-    word-spacing: 2px;
+    word-spacing: 3px;
   }
 
   @media (--hella-large) {
     font-size: typeScale(9);
-    word-spacing: 3px;
   }
 }
 
@@ -109,11 +126,16 @@ h1 {
   font-style: normal;
   font-weight: 400;
   opacity: 0;
-  text-shadow: 2px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 2px 2px #000, -1px -1px 0 #000, 0px -1px 0 #000, -1px 2px 0 #000;
+  text-shadow: 2px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 2px 2px black, -1px -1px 0 black, 0px -1px 0 black, -1px 2px 0 black;
+  transition: text-shadow $transition-duration;
   word-spacing: -1px;
 
   @media (--medium-max) {
-    font-size: typeScale(9);
+    font-size: typeScale(8);
+  }
+
+  &:hover {
+    text-shadow: 2px 0 0 black, -1px 0 0 black, 0 4px 0 black, 0 -1px 0 black, 4px 4px black, -1px -1px 0 black, 0px -1px 0 black, -1px 2px 0 black
   }
 
   &.-animated { animation: fadeIn .7s .25s ease-out forwards; }
@@ -131,8 +153,6 @@ h1 {
 
 // Main Header
 header[role="main"] {
-  margin-top: $spacing-m;
-
   @media (--medium-max) {
     text-align: center;
   }
@@ -158,7 +178,6 @@ nav[role="navigation"] {
     font-weight: 600;
     letter-spacing: .15px;
     margin-right: 1.5em;
-    opacity: .65;
     position: relative;
     text-transform: uppercase;
     transform: scaleX(0);
@@ -169,7 +188,7 @@ nav[role="navigation"] {
     }
 
     &:after {
-      background: getColor(text, primary);
+      background: white;
       content: '';
       height: 3px;
       left: 0;
@@ -190,7 +209,7 @@ nav[role="navigation"] {
     &:last-child { margin-right: 0; }
 
     &.is-active {
-      border-bottom: 3px solid getColor(text, primary);
+      border-bottom: 3px solid white;
       opacity: .85;
       padding-bottom: 5px;
 
@@ -198,7 +217,11 @@ nav[role="navigation"] {
     }
   }
 
-  a:hover { border-bottom: none; }
+  a {
+    color: white;
+
+    &:hover { border-bottom: none; }
+  }
 }
 
 // Main Footer
@@ -227,12 +250,8 @@ footer {
 }
 
 dl {
-  &[column] {
-    margin-bottom: $spacing-m;
-    margin-top: $spacing-m;
-  }
-
-  &.-no-bottom-margin { margin-bottom: 0; }
+  clear: both;
+  padding-top: $spacing-m;
 
   span {
     display: block;
@@ -318,9 +337,20 @@ dd {
 // --------
 
 .welcome {
-  margin-top: $spacing-s;
   // opacity: 0;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
   transition: padding $transition-duration;
+
+  @media (--small) {
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+  }
+
+  @media (--large) {
+    padding-bottom: 6rem;
+    padding-top: 6rem;
+  }
 
   &.-animated { animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; }
 }
@@ -361,16 +391,6 @@ dd {
     height: auto;
     max-width: 100%;
   }
-}
-
-//
-// Contact
-// -------
-
-.wufoo {
-  opacity: 0;
-
-  // &.-animated { animation: fadeIn .7s .5s forwards, moveUp .7s .5s ease-out forwards; }
 }
 
 
@@ -454,7 +474,15 @@ dd {
 // Animations
 // ==================================================
 
-$move-distance: 30px;
+$move-distance: 20px;
+
+@keyframes backgroundGradient {
+    0% { background-position: 0% 50%; }
+
+    50% { background-position: 100% 50%; }
+
+    100% { background-position: 0% 50%; }
+}
 
 @keyframes fadeIn {
   from { opacity: 0; }

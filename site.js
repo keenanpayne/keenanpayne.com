@@ -79,10 +79,9 @@
           'h1',
           'footer',
           '.welcome',
-          '.wufoo',
           '.tile',
-          '[grid]:nth-of-type(2) dl span',
-          '[grid]:nth-of-type(3) dl span'
+          'main dl:nth-of-type(1) span',
+          'main dl:nth-of-type(2) span'
         ], '-animated'
       );
     }
