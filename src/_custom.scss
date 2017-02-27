@@ -156,7 +156,9 @@ a {
   }
 
   &.-stay-large {
-    font-size: typeScale(7);
+    @media (--small-max) {
+      font-size: typeScale(7);
+    }
   }
 }
 

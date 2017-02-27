@@ -987,8 +987,9 @@ a.icon-linkedin {
   @media (min-width: 1460px) {
     .-holla {
       font-size: 3.58318rem; } }
-  .-holla.-stay-large {
-    font-size: 2.48832rem; }
+  @media (max-width: 480px) {
+    .-holla.-stay-large {
+      font-size: 2.48832rem; } }
 
 h1 {
   color: white;
