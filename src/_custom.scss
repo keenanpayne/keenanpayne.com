@@ -22,6 +22,14 @@
   padding-right: 2rem;
 }
 
+[container="narrow"] {
+  max-width: 726px;
+
+  @media (--hella-large) {
+    max-width: 960px;
+  }
+}
+
 
 //
 // Header Background
@@ -551,11 +559,69 @@ dd {
     }
   }
 
-  @for $i from 1 through 18 {
+  @for $i from 1 through 15 {
     &.-animated:nth-of-type(#{$i}) {
       @extend %tile-animation;
 
       animation-delay: $i * .22s;
+    }
+  }
+}
+
+//
+// Books
+// -----
+
+.books {
+  [grid] {
+    margin-bottom: $spacing-xs;
+
+    &:last-of-type { margin-bottom: 0; }
+  }
+}
+
+.book {
+  background-color: getColor(background, light);
+  border: 1px solid getColor(base, lines);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: background-color $transition-duration-med;
+
+  &:hover {
+    background-color: darken(getColor(background, light), 1.5%);
+    border-bottom-color: getColor(base, lines);
+  }
+
+  @media (--medium) {
+    margin-bottom: 0;
+    margin-left: 1rem;
+    opacity: 0;
+  }
+
+  &:first-of-type { margin-left: 0; }
+
+  @for $i from 1 through 3 {
+    &.-animated:nth-of-type(#{$i}) {
+      @extend %tile-animation;
+
+      animation-delay: $i * .22s;
+    }
+  }
+
+  h5 {
+    margin-top: 1.25rem;
+
+    @media (--medium-max) {
+      text-align: center;
+    }
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+
+    @media (--medium) {
+      width: 100%;
     }
   }
 }

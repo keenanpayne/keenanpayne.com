@@ -79,6 +79,7 @@
           'h1',
           '.welcome',
           '.tile',
+          '.book',
           '.promo',
           'main dl:nth-of-type(1) span',
           'main dl:nth-of-type(2) span'
