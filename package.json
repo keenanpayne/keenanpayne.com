@@ -10,6 +10,8 @@
   "devDependencies": {
     "concise-cli": "^0.4.1",
     "cssmin": "^0.4.3",
+    "imagemin": "^5.2.2",
+    "imagemin-webp": "^4.0.0",
     "watch": "^0.16.0"
   },
   "scripts": {
