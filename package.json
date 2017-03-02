@@ -18,6 +18,7 @@
     "start": "npm run build:watch",
     "build": "concisecss compile src/site.scss dist/site.css",
     "build:minify": "cssmin dist/site.css > dist/site.min.css",
-    "build:watch": "watch \"npm run build\" src"
+    "build:watch": "watch \"npm run build\" src",
+    "webp": "node webp.js"
   }
 }

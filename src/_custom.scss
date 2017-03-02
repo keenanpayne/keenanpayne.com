@@ -159,10 +159,6 @@ a {
     word-spacing: 3px;
   }
 
-  @media (--hella-large) {
-    font-size: typeScale(9);
-  }
-
   &.-stay-large {
     @media (--small-max) {
       font-size: typeScale(7);

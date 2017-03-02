@@ -990,9 +990,6 @@ a.icon-linkedin {
     .-holla {
       font-size: 2.98598rem;
       word-spacing: 3px; } }
-  @media (min-width: 1460px) {
-    .-holla {
-      font-size: 3.58318rem; } }
   @media (max-width: 480px) {
     .-holla.-stay-large {
       font-size: 2.48832rem; } }
