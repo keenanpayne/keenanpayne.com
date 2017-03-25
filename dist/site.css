@@ -1061,19 +1061,19 @@ nav[role="navigation"] li {
     transition: opacity 300ms, -webkit-transform 300ms;
     transition: opacity 300ms, transform 300ms;
     transition: opacity 300ms, transform 300ms, -webkit-transform 300ms;
-    -webkit-transform: translateY(10px);
-            transform: translateY(10px);
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
     width: 100%; }
   nav[role="navigation"] li:hover:after {
     opacity: 1;
-    -webkit-transform: translateY(5px);
-            transform: translateY(5px); }
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px); }
   nav[role="navigation"] li:not(:last-child) {
     margin-right: 1.5em; }
   nav[role="navigation"] li.-active {
     border-bottom: 3px solid white;
     opacity: .85;
-    padding-bottom: 5px; }
+    padding-bottom: 10px; }
     nav[role="navigation"] li.-active:after {
       display: none; }
 
@@ -1357,7 +1357,8 @@ dd {
 .book {
   background-color: #f5f5f5;
   border: 1px solid #DCDCDC;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
+  max-width: 350px;
   padding: 1rem;
   -webkit-transition: background-color 225ms;
   transition: background-color 225ms; }

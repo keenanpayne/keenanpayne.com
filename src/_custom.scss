@@ -250,13 +250,13 @@ nav[role="navigation"] {
       top: 100%;
       transition: opacity ($transition-duration * 2),
                   transform ($transition-duration * 2);
-      transform: translateY(10px);
+      transform: translateY(5px);
       width: 100%;
     }
 
     &:hover:after {
       opacity: 1;
-      transform: translateY(5px);
+      transform: translateY(10px);
     }
 
     &:not(:last-child) { margin-right: 1.5em; }
@@ -264,7 +264,7 @@ nav[role="navigation"] {
     &.-active {
       border-bottom: 3px solid white;
       opacity: .85;
-      padding-bottom: 5px;
+      padding-bottom: 10px;
 
       &:after { display: none; }
     }
@@ -584,7 +584,8 @@ dd {
 .book {
   background-color: getColor(background, light);
   border: 1px solid getColor(base, lines);
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
+  max-width: 350px;
   padding: 1rem;
   transition: background-color $transition-duration-med;
 
