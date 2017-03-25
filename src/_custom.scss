@@ -155,7 +155,6 @@ a {
   }
 
   @media (--extra-large) {
-    font-size: typeScale(8);
     word-spacing: 3px;
   }
 
@@ -389,6 +388,10 @@ dd {
     height: 400px;
   }
 
+  @media (--extra-large) {
+    height: 500px;
+  }
+
   &:hover { box-shadow: 0 1px 4px 1px rgba(100, 100, 100, .15); }
 
   img {
@@ -410,6 +413,10 @@ dd {
   &.-short {
     @media (--large) {
       height: 185px;
+    }
+
+    @media (--extra-large) {
+      height: 230px;
     }
   }
 }
