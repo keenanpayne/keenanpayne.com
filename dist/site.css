@@ -873,6 +873,9 @@ table {
     [container="narrow"] {
       max-width: 960px; } }
 
+main[container] {
+  overflow: hidden; }
+
 .background {
   -webkit-animation: backgroundGradient 40s ease infinite;
           animation: backgroundGradient 40s ease infinite;
