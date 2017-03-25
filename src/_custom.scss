@@ -231,7 +231,6 @@ nav[role="navigation"] {
     display: inline;
     font-weight: 600;
     letter-spacing: .15px;
-    margin-right: 1.5em;
     position: relative;
     text-transform: uppercase;
     transform: scaleX(0);
@@ -260,7 +259,7 @@ nav[role="navigation"] {
       transform: translateY(5px);
     }
 
-    &:last-child { margin-right: 0; }
+    &:not(:last-child) { margin-right: 1.5em; }
 
     &.-active {
       border-bottom: 3px solid white;
@@ -292,11 +291,10 @@ footer {
 
   [class^="icon-"] {
     font-size: typeScale(5);
-    margin-right: $spacing-s;
 
     &:hover { text-decoration: none; }
 
-    &:last-of-type { margin-right: 0; }
+    &:not(:last-of-type) { margin-right: $spacing-s; }
   }
 }
 
@@ -579,9 +577,7 @@ dd {
 
 .books {
   [grid] {
-    margin-bottom: $spacing-xs;
-
-    &:last-of-type { margin-bottom: 0; }
+    &:not(:last-of-type) { margin-bottom: $spacing-xs; }
   }
 }
 
@@ -599,11 +595,10 @@ dd {
 
   @media (--medium) {
     margin-bottom: 0;
-    margin-left: 1rem;
     opacity: 0;
-  }
 
-  &:first-of-type { margin-left: 0; }
+    &:not(:first-of-type) { margin-left: 1rem; }
+  }
 
   @for $i from 1 through 3 {
     &.-animated:nth-of-type(#{$i}) {
