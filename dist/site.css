@@ -873,6 +873,10 @@ table {
     [container="narrow"] {
       max-width: 960px; } }
 
+@media (min-width: 960px) {
+  [container="medium"] {
+    max-width: 1080px; } }
+
 main[container] {
   overflow: hidden; }
 
@@ -1150,53 +1154,13 @@ dd {
   padding-bottom: 0.75rem; }
 
 .promo {
-  background: white;
-  border: 1px solid #efefef;
-  box-shadow: 0 1px 4px 0 rgba(100, 100, 100, 0.1);
-  margin-bottom: 1.5rem;
-  padding: 1.5rem;
-  -webkit-transition: box-shadow 225ms;
-  transition: box-shadow 225ms; }
-  @media (min-width: 768px) {
-    .promo {
-      opacity: 0; }
-      .promo.-animated {
-        -webkit-animation: fadeIn .8s 1.15s forwards, moveUp .8s 1.15s ease-out forwards;
-                animation: fadeIn .8s 1.15s forwards, moveUp .8s 1.15s ease-out forwards; } }
-  @media (min-width: 960px) {
-    .promo {
-      height: 400px; } }
-  @media (min-width: 1100px) {
-    .promo {
-      height: 500px; } }
+  padding: 50px;
+  -webkit-transition: background-color 150ms;
+  transition: background-color 150ms; }
   .promo:hover {
-    box-shadow: 0 1px 4px 1px rgba(100, 100, 100, 0.15); }
-  .promo img {
-    width: 100%; }
-    @media (max-width: 480px) {
-      .promo img {
-        margin-bottom: 0.75rem; } }
-  .promo h4 {
-    margin: 1.5rem 0 0; }
-  @media (min-width: 480px) {
-    .promo p {
-      font-size: 0.83333rem; } }
-  @media (min-width: 960px) {
-    .promo.-short {
-      height: 185px; } }
-  @media (min-width: 1100px) {
-    .promo.-short {
-      height: 230px; } }
-
-.promo-label {
-  font-size: .75rem;
-  letter-spacing: .5px;
-  margin-bottom: 1rem;
-  text-transform: uppercase; }
-
-.promo-title {
-  font-family: "Source Sans Pro", "Arial", sans-serif;
-  font-style: normal; }
+    background-color: rgba(235, 225, 211, 0.3); }
+  .promo h3 {
+    margin-top: 0; }
 
 .welcome {
   padding-bottom: 2rem;
@@ -1215,8 +1179,8 @@ dd {
                 animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; } }
   @media (min-width: 960px) {
     .welcome {
-      padding-bottom: 6rem;
-      padding-top: 6rem; } }
+      padding-bottom: 5rem;
+      padding-top: 5rem; } }
   @media (min-width: 768px) {
     .welcome.-short {
       opacity: 1; }
