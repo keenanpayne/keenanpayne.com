@@ -19,8 +19,8 @@ $letter-spacing: 0.05em;
 
 // Font families
 $font-primary: "Source Sans Pro", "Arial", sans-serif;
-$font-secondary: "ff-tisa-sans-web-pro", "Source Sans Pro", "Arial", sans-serif;
-$font-logo: "sutturah", "ff-tisa-sans-web-pro", "Source Sans Pro", "Arial", sans-serif;
+$font-secondary: "Helvetica", "Arial", sans-serif;
+$font-logo: "sutturah", "Source Sans Pro", "Arial", sans-serif;
 $font-mono: "Consolas", monospace;
 $font-print-primary: "Georgia", "Times New Roman", "Times", serif;
 $font-print-secondary: "Georgia", "Times New Roman", "Times", serif;
@@ -126,9 +126,9 @@ $colors: (
   ),
 
   text: (
-    "primary":   #444,
-    "secondary": #777,
-    "heading":   #222,
+    "primary":   #333,
+    "secondary": #666,
+    "heading":   #333,
     "inverted":  white
   ),
 

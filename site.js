@@ -77,8 +77,8 @@
       Helpers.animateVisibleElement(
         [
           'h1',
-          '.welcome',
           '.tile',
+          '.welcome',
           '.book',
           '.promo',
           'main dl:nth-of-type(1) span',
