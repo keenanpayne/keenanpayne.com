@@ -492,62 +492,6 @@ dd {
   }
 }
 
-//
-// Books
-// -----
-
-.books {
-  [grid] {
-    &:not(:last-of-type) { margin-bottom: $spacing-xs; }
-  }
-}
-
-.book {
-  background-color: getColor(background, light);
-  border: 1px solid getColor(base, lines);
-  margin: 0 auto 1rem;
-  max-width: 350px;
-  padding: 1rem;
-  transition: background-color $transition-duration-med;
-
-  &:hover {
-    background-color: darken(getColor(background, light), 1.5%);
-    border-bottom-color: getColor(base, lines);
-  }
-
-  @media (--medium) {
-    margin-bottom: 0;
-    opacity: 0;
-
-    &:not(:first-of-type) { margin-left: 1rem; }
-  }
-
-  @for $i from 1 through 3 {
-    &.-animated:nth-of-type(#{$i}) {
-      @extend %tile-animation;
-
-      animation-delay: $i * .22s;
-    }
-  }
-
-  h5 {
-    margin-top: 1.25rem;
-
-    @media (--medium-max) {
-      text-align: center;
-    }
-  }
-
-  img {
-    display: block;
-    margin: 0 auto;
-
-    @media (--medium) {
-      width: 100%;
-    }
-  }
-}
-
 
 //
 // Animations
