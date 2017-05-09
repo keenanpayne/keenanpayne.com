@@ -344,11 +344,15 @@ dd {
 // ------
 
 .promo {
-  padding: 50px;
+  padding: 25px;
   transition: background-color $transition-duration;
 
   &:hover {
     background-color: rgba(getColor(base, selection), .3);
+  }
+
+  @media (--small) {
+    padding: 50px;
   }
 
   h3 { margin-top: 0; }

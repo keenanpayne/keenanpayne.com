@@ -4,6 +4,9 @@
   "version": "2.0.0",
   "description": "The personal website for Keenan Payne.",
   "homepage": "http://keenanpayne.com",
+  "engines": {
+    "node": "<=6.3.0"
+  },
   "dependencies": {
     "concise.css": "^4.1.2"
   },

@@ -1154,11 +1154,14 @@ dd {
   padding-bottom: 0.75rem; }
 
 .promo {
-  padding: 50px;
+  padding: 25px;
   -webkit-transition: background-color 150ms;
   transition: background-color 150ms; }
   .promo:hover {
     background-color: rgba(235, 225, 211, 0.3); }
+  @media (min-width: 480px) {
+    .promo {
+      padding: 50px; } }
   .promo h3 {
     margin-top: 0; }
 
