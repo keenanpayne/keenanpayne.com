@@ -968,6 +968,7 @@ a.icon-linkedin {
       text-align: right; } }
 
 h1 {
+  color: #3f3f3f;
   font-size: 3.58318rem;
   font-weight: 900;
   line-height: .85;
@@ -1154,8 +1155,8 @@ dd {
     .welcome {
       opacity: 0; }
       .welcome.-animated {
-        -webkit-animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards;
-                animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; } }
+        -webkit-animation: fadeIn .8s .8s forwards, moveLeft .8s .8s ease-out forwards;
+                animation: fadeIn .8s .8s forwards, moveLeft .8s .8s ease-out forwards; } }
   @media (min-width: 960px) {
     .welcome {
       padding-bottom: 5rem;

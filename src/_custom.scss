@@ -139,6 +139,7 @@ a {
 
 // Logo
 h1 {
+  color: #3f3f3f;
   font-size: typeScale(9);
   font-weight: 900;
   line-height: .85;
@@ -345,7 +346,7 @@ dd {
   @media (--medium) {
     opacity: 0;
 
-    &.-animated { animation: fadeIn .8s .8s forwards, moveRight .8s .8s ease-out forwards; }
+    &.-animated { animation: fadeIn .8s .8s forwards, moveLeft .8s .8s ease-out forwards; }
   }
 
   @media (--large) {
