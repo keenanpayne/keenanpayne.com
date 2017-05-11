@@ -22,20 +22,6 @@
   padding-right: 2rem;
 }
 
-[container="narrow"] {
-  max-width: 726px;
-
-  @media (--hella-large) {
-    max-width: 960px;
-  }
-}
-
-[container="medium"] {
-  @media (--large) {
-    max-width: 1080px;
-  }
-}
-
 main[container] { overflow: hidden; }
 
 
@@ -80,8 +66,9 @@ main[container] { overflow: hidden; }
 .icon-dribbble:before { content: "\e903"; }
 
 h2, h3 {
-  letter-spacing: -1px;
+  letter-spacing: -.35px;
 
+  // TODO: Abstract this to it's own component/class
   &:hover {
     small { transform: translateY(-10px); }
   }
@@ -131,8 +118,9 @@ a {
 
 .-holla {
   font-size: 2rem;
-  margin: 0;
-  word-spacing: 1px;
+  margin: 0 auto;
+  text-align: center;
+  word-spacing: 1.5px;
 
   @media (--medium) {
     font-size: 3.5rem;
@@ -149,33 +137,12 @@ a {
 
 // Logo
 h1 {
-  color: getColor(text, inverted);
-  font-family: "sutturah", sans-serif;
-  font-size: typeScale(7);
-  font-style: normal;
-  font-weight: 400;
-  text-shadow: 2px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 2px 2px black, -1px -1px 0 black, 0px -1px 0 black, -1px 2px 0 black;
-  word-spacing: -1px;
+  font-size: typeScale(10);
+  font-weight: 900;
+  line-height: .85;
+  padding-bottom: $spacing-xs;
 
-  @media (--medium-max) {
-    font-size: typeScale(8);
-  }
-
-  @media (--medium) {
-    opacity: 0;
-
-    &.-animated { animation: fadeIn .7s .25s ease-out forwards; }
-  }
-
-  a {
-    &:hover {
-      border-bottom: none;
-      color: inherit;
-    }
-
-    &:active,
-    &:focus { color: #f0f0f0; }
-  }
+  a:hover { border-bottom: none; }
 }
 
 // Main Header
@@ -194,26 +161,18 @@ nav[role="navigation"] {
   }
 
   ul {
-    margin-top: $spacing-s;
+    margin-top: $spacing-xs;
 
-    @media (--medium) {
-      margin-top: $spacing-xs;
-    }
+    @media (--medium) { margin-top: -$spacing-xs; }
   }
 
   li {
     cursor: pointer;
     display: inline;
-    font-weight: 600;
-    letter-spacing: .15px;
     position: relative;
     text-transform: uppercase;
     transform: scaleX(0);
     transition: transform ($transition-duration * 1.5) ease-in-out;
-
-    @media (--small) {
-      font-size: typeScale(1);
-    }
 
     &:after {
       background: getColor(text, primary);
