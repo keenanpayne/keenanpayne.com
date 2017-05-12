@@ -1,92 +1,45 @@
-<!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="HandheldFriendly" content="True">
-	<meta name="MobileOptimized" content="320">
-	<meta name="description" content="Keenan Payne is a web designer and developer based out of San Francisco, CA."/>
-	<meta name="author" content="Keenan Payne" />
+---
+layout: home
+title: Contact
+welcome: Get in Touch
+navigation_weight: 3
+---
 
-	<title>Keenan Payne | Front-End Developer</title>
+<main class="we-up-in-this" container>
+	<div grid>
+		<aside column="5">
+			<p>Have a question or want to reach out about a project? Feel free to shoot me an email. I will be happy to answer any questions you may have.</p>
 
-	<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
-	<link rel="icon" type="image/png" href="/favicons/favicon-32x32.png" sizes="32x32">
-	<link rel="manifest" href="/favicons/manifest.json">
-	<link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#fafafa">
+			<p>I try to respond within 1-2 business days.</p>
 
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,900|Hind" rel="stylesheet">
-	<link rel="stylesheet" href="dist/site.css" />
+			<hr>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="site.js"></script>
-</head>
-<body>
-  <header role="main" container>
-    <div grid="center">
-      <h1 column="4"><a href="index.html" title="Home">Keenan Payne</a></h1>
+			<p><strong>contact[at]keenanpayne.com</strong></p>
+		</aside>
 
-      <nav role="navigation" column="8">
-        <ul>
-          <li><a href="work.html" title="Work">Work</a></li>
-          <li class="-active"><a href="contact.html" title="Contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+		<div column="7" class="wufoo" id="wufoo-r1x2nqll1ee9loz">
+			Fill out my <a href="https://keenanpayne.wufoo.com/forms/r1x2nqll1ee9loz">online form</a>.
 
-  <section class="welcome -short" container>
-    <h2 class="-holla">Get in Touch</h2>
-  </section>
+			<script type="text/javascript">
+				var r1x2nqll1ee9loz;(function(d, t) {
+					var s = d.createElement(t), options = {
+						'userName':'keenanpayne',
+						'formHash':'r1x2nqll1ee9loz',
+						'autoResize':true,
+						'height':'647',
+						'async':true,
+						'host':'wufoo.com',
+						'header':'hide',
+						'ssl':true
+					};
 
-  <main class="we-up-in-this" container>
-		<div grid>
-			<aside column="5">
-				<p>Have a question or want to reach out about a project? Feel free to shoot me an email. I will be happy to answer any questions you may have.</p>
-
-				<p>I try to respond within 1-2 business days.</p>
-
-				<hr>
-
-				<p><strong>contact[at]keenanpayne.com</strong></p>
-			</aside>
-
-			<div column="7" class="wufoo" id="wufoo-r1x2nqll1ee9loz">
-				Fill out my <a href="https://keenanpayne.wufoo.com/forms/r1x2nqll1ee9loz">online form</a>.
-
-				<script type="text/javascript">
-					var r1x2nqll1ee9loz;(function(d, t) {
-						var s = d.createElement(t), options = {
-							'userName':'keenanpayne',
-							'formHash':'r1x2nqll1ee9loz',
-							'autoResize':true,
-							'height':'647',
-							'async':true,
-							'host':'wufoo.com',
-							'header':'hide',
-							'ssl':true
-						};
-
-						s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
-						s.onload = s.onreadystatechange = function() {
-						var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-						try { r1x2nqll1ee9loz = new WufooForm();r1x2nqll1ee9loz.initialize(options);r1x2nqll1ee9loz.display(); } catch (e) {}};
-						var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
-					})(document, 'script');
-				</script>
-			</div>
+					s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+					s.onload = s.onreadystatechange = function() {
+					var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+					try { r1x2nqll1ee9loz = new WufooForm();r1x2nqll1ee9loz.initialize(options);r1x2nqll1ee9loz.display(); } catch (e) {}};
+					var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+				})(document, 'script');
+			</script>
 		</div>
-  </main>
-
-	<footer role="complementary">
-		<div container>
-	    <a href="https://dribbble.com/keenanpayne" title="Dribbble profile" class="icon-dribbble" target="_blank"></a>
-			<a href="https://www.behance.net/keenanpayne" title="Behance profile" class="icon-behance" target="_blank"></a>
-			<a href="https://github.com/keenanpayne" title="GitHub profile" class="icon-github" target="_blank"></a>
-			<a href="https://www.linkedin.com/in/keenanpayne" title="LinkedIn profile" class="icon-linkedin" target="_blank"></a>
-		</div>
-  </footer>
-</body>
-</html>
+	</div>
+</main>

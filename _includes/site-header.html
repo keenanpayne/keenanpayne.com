@@ -1,0 +1,25 @@
+<header role="main" container>
+  <div grid="center">
+    <h1 column="4">
+      <a href="/index" title="Home">{{ site.name }}</a>
+    </h1>
+
+    <nav role="navigation" column="8">
+      <ul>
+        {% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
+
+        {% for p in navigation_pages %}
+          {% if p.navigation_weight %}
+            {% if p.navigation_weight != 1 %} <!-- Ignore homepage link -->
+              <li {% if p.url == page.url %}class="-active"{% endif %}>
+                <a href="{{ p.url }}">
+                  {{ p.title }}
+                </a>
+              </li>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

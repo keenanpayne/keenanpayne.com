@@ -17,6 +17,8 @@
   }
 }
 
+html { border-top: 3px solid getColor(background, dark); }
+
 [container] {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -95,7 +97,7 @@ p {
 
   &:hover {
     color: darken($color, 10%);
-    border-bottom: none;
+    ttom: none;
   }
 }
 
@@ -139,7 +141,6 @@ a {
 
 // Logo
 h1 {
-  color: #3f3f3f;
   font-size: typeScale(9);
   font-weight: 900;
   line-height: .85;
@@ -203,7 +204,7 @@ nav[role="navigation"] {
     &:not(:last-child) { margin-right: 1.5em; }
 
     &.-active {
-      border-bottom: 3px solid getColor(text, primary);
+      border-bottom: 2px solid getColor(text, primary);
       opacity: .85;
       padding-bottom: 10px;
 
