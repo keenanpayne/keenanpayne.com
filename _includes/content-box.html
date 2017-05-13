@@ -1,11 +1,19 @@
 <div grid="wrap">
   {% for box in page.content_box %}
     <aside column="6">
+      {% if box.url %}
+        <a href="{{ box.url }}" title="{{ box.title }}">
+      {% endif %}
+
       <div class="contentBox">
         <h3>{{ box.title }}</h3>
 
         <p>{{ box.description }}</p>
       </div>
+
+      {% if box.url %}
+        </a>
+      {% endif %}
     </aside>
   {% endfor %}
 </div>

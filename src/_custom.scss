@@ -209,8 +209,8 @@ a {
 
     &:not(:last-child) { margin-right: 1.5em; }
 
-    &.-active {
-      border-bottom: 2px solid getColor(text, primary);
+    &.-is-active {
+      border-bottom: 2px solid rgba(getColor(text, primary), .85);
       opacity: .85;
       padding-bottom: 10px;
 
