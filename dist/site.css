@@ -976,7 +976,6 @@ a.icon-linkedin {
   font-size: 3.58318rem;
   font-weight: 900;
   line-height: .85;
-  max-width: 350px;
   padding-bottom: 0.75rem; }
   @media (min-width: 480px) {
     .logo {
@@ -993,7 +992,6 @@ a.icon-linkedin {
 
 @media (min-width: 768px) {
   .siteNavigation {
-    padding-right: 0;
     text-align: right; } }
 
 .siteNavigation ul {
@@ -1058,15 +1056,20 @@ a.icon-linkedin {
       margin-right: 1.5rem; }
 
 .contentBox {
+  opacity: 0;
   padding: 2rem;
   -webkit-transition: background-color 150ms;
   transition: background-color 150ms; }
   .contentBox:hover {
     background-color: rgba(235, 225, 211, 0.3); }
+  .contentBox.-animated {
+    -webkit-animation: fadeIn .5s .75s forwards, moveUp .75s .75s ease-out forwards;
+            animation: fadeIn .5s .75s forwards, moveUp .75s .75s ease-out forwards; }
   .contentBox h3 {
     margin-top: 0; }
 
 .masthead {
+  opacity: 0;
   padding-bottom: 2rem;
   padding-top: 2rem;
   -webkit-transition: padding 150ms;
@@ -1075,47 +1078,40 @@ a.icon-linkedin {
     .masthead {
       padding-bottom: 3rem;
       padding-top: 3rem; } }
-  @media (min-width: 768px) {
-    .masthead {
-      opacity: 0; }
-      .masthead.-animated {
-        -webkit-animation: fadeIn .8s .8s forwards, moveLeft .8s .8s ease-out forwards;
-                animation: fadeIn .8s .8s forwards, moveLeft .8s .8s ease-out forwards; } }
   @media (min-width: 960px) {
     .masthead {
       padding-bottom: 5rem;
       padding-top: 5rem; } }
+  .masthead.-animated {
+    -webkit-animation: fadeIn .5s .5s forwards, moveLeft .75s .5s ease-out forwards;
+            animation: fadeIn .5s .5s forwards, moveLeft .75s .5s ease-out forwards; }
   @media (min-width: 960px) {
     .masthead.-short {
       padding-bottom: 3rem;
       padding-top: 3rem; } }
 
-@media (min-width: 768px) {
-  .portfolioList span.-animated:nth-of-type(1), .portfolioList span.-animated:nth-of-type(3), .portfolioList span.-animated:nth-of-type(5) {
-    -webkit-animation-name: fadeIn, moveRight;
-            animation-name: fadeIn, moveRight;
-    -webkit-animation-duration: .7s, .85s;
-            animation-duration: .7s, .85s;
-    -webkit-animation-fill-mode: forwards, forwards;
-            animation-fill-mode: forwards, forwards; } }
+.portfolioList span.-animated:nth-of-type(1), .portfolioList span.-animated:nth-of-type(3), .portfolioList span.-animated:nth-of-type(5) {
+  -webkit-animation-name: fadeIn, moveRight;
+          animation-name: fadeIn, moveRight;
+  -webkit-animation-duration: .7s, .85s;
+          animation-duration: .7s, .85s;
+  -webkit-animation-fill-mode: forwards, forwards;
+          animation-fill-mode: forwards, forwards; }
 
-@media (min-width: 768px) {
-  .portfolioList span.-animated:nth-of-type(2), .portfolioList span.-animated:nth-of-type(4) {
-    -webkit-animation-name: fadeIn, moveLeft;
-            animation-name: fadeIn, moveLeft;
-    -webkit-animation-duration: .7s, .85s;
-            animation-duration: .7s, .85s;
-    -webkit-animation-fill-mode: forwards, forwards;
-            animation-fill-mode: forwards, forwards; } }
+.portfolioList span.-animated:nth-of-type(2), .portfolioList span.-animated:nth-of-type(4) {
+  -webkit-animation-name: fadeIn, moveLeft;
+          animation-name: fadeIn, moveLeft;
+  -webkit-animation-duration: .7s, .85s;
+          animation-duration: .7s, .85s;
+  -webkit-animation-fill-mode: forwards, forwards;
+          animation-fill-mode: forwards, forwards; }
 
 .portfolioList {
   clear: both;
   padding-top: 3rem; }
   .portfolioList span {
-    display: block; }
-    @media (min-width: 768px) {
-      .portfolioList span {
-        opacity: 0; } }
+    display: block;
+    opacity: 0; }
     .portfolioList span:first-of-type dt {
       border-top: 3px solid #32373d; }
     .portfolioList span.-animated:nth-of-type(1) {

@@ -148,7 +148,6 @@ a {
   font-size: typeScale(9);
   font-weight: 900;
   line-height: .85;
-  max-width: 350px;
   padding-bottom: $spacing-xs;
 
   @media (--small) {
@@ -173,7 +172,6 @@ a {
 // Main Nav
 .siteNavigation {
   @media (--medium) {
-    padding-right: 0;
     text-align: right;
   }
 
@@ -256,12 +254,13 @@ a {
 // -----------
 
 .contentBox {
+  opacity: 0;
   padding: 2rem;
   transition: background-color $transition-duration;
 
-  &:hover {
-    background-color: rgba(getColor(base, selection), .3);
-  }
+  &:hover { background-color: rgba(getColor(base, selection), .3); }
+
+  &.-animated { animation: fadeIn .5s .75s forwards, moveUp .75s .75s ease-out forwards; }
 
   h3 { margin-top: 0; }
 }
@@ -272,6 +271,7 @@ a {
 // --------
 
 .masthead {
+  opacity: 0;
   padding-bottom: 2rem;
   padding-top: 2rem;
   transition: padding $transition-duration;
@@ -281,16 +281,12 @@ a {
     padding-top: 3rem;
   }
 
-  @media (--medium) {
-    opacity: 0;
-
-    &.-animated { animation: fadeIn .8s .8s forwards, moveLeft .8s .8s ease-out forwards; }
-  }
-
   @media (--large) {
     padding-bottom: 5rem;
     padding-top: 5rem;
   }
+
+  &.-animated { animation: fadeIn .5s .5s forwards, moveLeft .75s .5s ease-out forwards; }
 
   &.-short {
     @media (--large) {
@@ -306,19 +302,15 @@ a {
 // ----------------
 
 %dl-animation-right {
-  @media (--medium) {
-    animation-name: fadeIn, moveRight;
-    animation-duration: .7s, .85s;
-    animation-fill-mode: forwards, forwards;
-  }
+  animation-name: fadeIn, moveRight;
+  animation-duration: .7s, .85s;
+  animation-fill-mode: forwards, forwards;
 }
 
 %dl-animation-left {
-  @media (--medium) {
-    animation-name: fadeIn, moveLeft;
-    animation-duration: .7s, .85s;
-    animation-fill-mode: forwards, forwards;
-  }
+  animation-name: fadeIn, moveLeft;
+  animation-duration: .7s, .85s;
+  animation-fill-mode: forwards, forwards;
 }
 
 .portfolioList {
@@ -327,10 +319,7 @@ a {
 
   span {
     display: block;
-
-    @media (--medium) {
-      opacity: 0;
-    }
+    opacity: 0;
 
     &:first-of-type {
       dt { border-top: 3px solid getColor(background, dark); }
