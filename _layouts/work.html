@@ -1,0 +1,23 @@
+---
+layout: work
+---
+
+{% include header.html %}
+
+  {% include site-header.html %}
+
+  {% include welcome.html %}
+
+  <main container>
+    <div grid>
+      <aside column="5">
+        {{ content }}
+      </aside>
+
+      <aside column="7">
+        {% include portfolio.html %}
+      </aside>
+    </div>
+  </main>
+
+{% include footer.html %}
