@@ -128,13 +128,21 @@ $colors: (
     "primary":   #333,
     "secondary": #666,
     "heading":   #333,
-    "inverted":  white
+    "inverted":  white,
+    "sf": #ff8080
   ),
 
   background: (
     "dark":  #32373d,
-    "light": #f5f5f5,
-    "body":  white
+    "light": #f7f7f7,
+    "body":  #fafafa
+  ),
+
+  social: (
+    "dribbble": #ea4c89,
+    "behance": #1769ff,
+    "github": #333333,
+    "linkedin": #0077b5
   ),
 
   state: (

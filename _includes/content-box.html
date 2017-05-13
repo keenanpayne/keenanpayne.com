@@ -1,0 +1,11 @@
+<div grid="wrap">
+  {% for box in page.content_box %}
+    <aside column="6">
+      <div class="contentBox">
+        <h3>{{ box.title }}</h3>
+
+        <p>{{ box.description }}</p>
+      </div>
+    </aside>
+  {% endfor %}
+</div>

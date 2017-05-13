@@ -3,7 +3,7 @@
 // ==================================================
 
 :root {
-  background-color: #fafafa;
+  background-color: getColor(background, body);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -25,6 +25,11 @@ html { border-top: 3px solid getColor(background, dark); }
 }
 
 main[container] { overflow: hidden; }
+
+img {
+  height: auto;
+  max-width: 100%;
+}
 
 
 
@@ -57,6 +62,8 @@ main[container] { overflow: hidden; }
   font-variant: normal;
   text-transform: none;
   line-height: 1;
+
+  &:hover { border-bottom: none; }
 }
 
 .icon-linkedin:before { content: "\e900"; }
@@ -67,50 +74,45 @@ main[container] { overflow: hidden; }
 
 .icon-dribbble:before { content: "\e903"; }
 
+
+//
+// Body Copy
+// ---------
+
+p,
+h2, h3 { letter-spacing: -.35px; }
+
 h2, h3 {
-  letter-spacing: -.35px;
-
-  // TODO: Abstract this to it's own component/class
   &:hover {
-    small { transform: translateY(-10px); }
-  }
-
-  small {
-    display: inline-block;
-    font-family: $font-primary;
-    font-style: normal;
-    font-size: .75rem;
-    font-weight: 400;
-    margin-left: $spacing-xxs;
-    transition: transform ($transition-duration * 2);
+    .heading-subtext { transform: translateY(-10px); }
   }
 }
 
-p {
-  font-size: 1rem;
-  letter-spacing: -.35px;
+.heading-subtext {
+  display: inline-block;
+  font-family: $font-primary;
+  font-style: normal;
+  font-size: .75rem;
+  font-weight: 400;
+  margin-left: $spacing-xxs;
+  transition: transform $transition-duration-long;
 }
 
 @mixin linkColor($color) {
   color: $color;
   transition: color $transition-duration;
 
-  &:hover {
-    color: darken($color, 10%);
-    ttom: none;
-  }
+  &:hover { color: darken($color, 10%); }
 }
 
 a {
-  &:hover { border-bottom: 1px solid getColor(text, primary); }
+  &.icon-dribbble { @include linkColor(getColor(social, dribbble)); }
 
-  &.icon-dribbble { @include linkColor(#ea4c89); }
+  &.icon-behance { @include linkColor(getColor(social, behance)); }
 
-  &.icon-behance { @include linkColor(#1769ff); }
+  &.icon-github { @include linkColor(getColor(social, github)); }
 
-  &.icon-github { @include linkColor(#333); }
-
-  &.icon-linkedin { @include linkColor(#0077b5); }
+  &.icon-linkedin { @include linkColor(getColor(social, linkedin)); }
 }
 
 
@@ -132,6 +134,8 @@ a {
   }
 }
 
+&.-sf { color: getColor(text, sf); }
+
 
 
 
@@ -140,7 +144,7 @@ a {
 // ==================================================
 
 // Logo
-h1 {
+.logo {
   font-size: typeScale(9);
   font-weight: 900;
   line-height: .85;
@@ -151,11 +155,14 @@ h1 {
     font-size: typeScale(10);
   }
 
-  a:hover { border-bottom: none; }
+  a:hover {
+    border-bottom: none;
+    color: inherit;
+  }
 }
 
 // Main Header
-header[role="main"] {
+.siteHeader {
   margin-top: 2rem;
 
   @media (--medium-max) {
@@ -164,13 +171,14 @@ header[role="main"] {
 }
 
 // Main Nav
-nav[role="navigation"] {
+.siteNavigation {
   @media (--medium) {
+    padding-right: 0;
     text-align: right;
   }
 
   ul {
-    margin-top: $spacing-xs;
+    margin-top: $spacing-s;
 
     @media (--medium) { margin-top: -$spacing-xs; }
   }
@@ -180,7 +188,7 @@ nav[role="navigation"] {
     display: inline;
     position: relative;
     transform: scaleX(0);
-    transition: transform ($transition-duration * 1.5) ease-in-out;
+    transition: transform $transition-duration ease-in-out;
 
     &:after {
       background: getColor(text, primary);
@@ -190,8 +198,8 @@ nav[role="navigation"] {
       opacity: 0;
       position: absolute;
       top: 100%;
-      transition: opacity ($transition-duration * 2),
-                  transform ($transition-duration * 2);
+      transition: opacity $transition-duration-long,
+                  transform $transition-duration-long;
       transform: translateY(5px);
       width: 100%;
     }
@@ -218,9 +226,9 @@ nav[role="navigation"] {
 }
 
 // Main Footer
-footer {
-  background-color: #f7f7f7;
-  border-top: 1px solid #eee;
+.siteFooter {
+  background-color: getColor(background, light);
+  border-top: 1px solid darken(getColor(background, light), 5%);
   margin-top: $spacing-xs;
   padding: 2.5rem 2rem;
   text-align: center;
@@ -232,9 +240,63 @@ footer {
   [class^="icon-"] {
     font-size: typeScale(5);
 
-    &:hover { text-decoration: none; }
-
     &:not(:last-of-type) { margin-right: $spacing-s; }
+  }
+}
+
+
+
+
+//
+// Components
+// ==================================================
+
+//
+// Content Box
+// -----------
+
+.contentBox {
+  padding: 2rem;
+  transition: background-color $transition-duration;
+
+  &:hover {
+    background-color: rgba(getColor(base, selection), .3);
+  }
+
+  h3 { margin-top: 0; }
+}
+
+
+//
+// Masthead
+// --------
+
+.masthead {
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  transition: padding $transition-duration;
+
+  @media (--small) {
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+  }
+
+  @media (--medium) {
+    opacity: 0;
+
+    &.-animated { animation: fadeIn .8s .8s forwards, moveLeft .8s .8s ease-out forwards; }
+  }
+
+  @media (--large) {
+    padding-bottom: 5rem;
+    padding-top: 5rem;
+  }
+
+  &.-short {
+    @media (--large) {
+      padding-bottom: 3rem;
+      padding-top: 3rem;
+    }
   }
 }
 
@@ -259,7 +321,7 @@ footer {
   }
 }
 
-dl {
+.portfolioList {
   clear: both;
   padding-top: $spacing-m;
 
@@ -274,13 +336,13 @@ dl {
       dt { border-top: 3px solid getColor(background, dark); }
     }
 
-    @for $i from 1 through 13 {
+    @for $i from 1 through 5 {
       // If even
       @if $i % 2 == 0 {
         &.-animated:nth-of-type(#{$i}) {
           @extend %dl-animation-left;
 
-          animation-delay: $i * .25s;
+          animation-delay: $i * .2s;
         }
 
       // If odd
@@ -288,103 +350,24 @@ dl {
         &.-animated:nth-of-type(#{$i}) {
           @extend %dl-animation-right;
 
-          animation-delay: $i * .25s;
+          animation-delay: $i * .2s;
         }
       }
     }
   }
-}
 
-dt {
-  font-size: typeScale(3);
-  margin-top: 0;
-  padding-top: $spacing-xs;
-}
-
-dd {
-  border-bottom: 3px solid rgba(getColor(background, dark), .2);
-  padding-bottom: $spacing-xs;
-}
-
-//
-// Promos
-// ------
-
-.promo {
-  padding: 25px;
-  transition: background-color $transition-duration;
-
-  &:hover {
-    background-color: rgba(getColor(base, selection), .3);
+  dt {
+    font-size: typeScale(3);
+    margin-top: 0;
+    padding-top: $spacing-xs;
   }
 
-  @media (--small) {
-    padding: 50px;
-  }
-
-  h3 { margin-top: 0; }
-}
-
-
-//
-// Page-Specific
-// ==================================================
-
-//
-// Homepage
-// --------
-
-.welcome {
-  padding-bottom: 2rem;
-  padding-top: 2rem;
-  transition: padding $transition-duration;
-
-  @media (--small) {
-    padding-bottom: 3rem;
-    padding-top: 3rem;
-  }
-
-  @media (--medium) {
-    opacity: 0;
-
-    &.-animated { animation: fadeIn .8s .8s forwards, moveLeft .8s .8s ease-out forwards; }
-  }
-
-  @media (--large) {
-    padding-bottom: 5rem;
-    padding-top: 5rem;
-  }
-
-  &.-short {
-    @media (--medium) {
-      opacity: 1;
-
-      &.-animated { animation: none; }
-    }
-
-    @media (--large) {
-      padding-bottom: 3rem;
-      padding-top: 3rem;
-    }
+  dd {
+    border-bottom: 3px solid rgba(getColor(background, dark), .2);
+    padding-bottom: $spacing-xs;
   }
 }
 
-
-//
-// Portfolio
-// ---------
-
-.portfolio {
-  img {
-    height: auto;
-    max-width: 100%;
-  }
-}
-
-
-//
-// Components
-// ==================================================
 
 //
 // Tiles
@@ -431,7 +414,7 @@ dd {
 
   img {
     max-width: 100%;
-    transition: opacity ($transition-duration * 1.5);
+    transition: opacity $transition-duration-med;
     width: 100%;
     -webkit-backface-visibility: hidden;
 
@@ -450,6 +433,8 @@ dd {
     }
   }
 }
+
+
 
 
 //

@@ -6,22 +6,12 @@ layout: home
 
   {% include site-header.html %}
 
-  {% include welcome.html %}
+  {% include masthead.html %}
 
   <main container>
     {{ content }}
 
-    <div grid="wrap">
-      {% for block in page.blocks %}
-    		<aside column="6">
-    			<div class="promo">
-    				<h3>{{ block.title }}</h3>
-
-    				<p>{{ block.description }}</p>
-    			</div>
-    		</aside>
-      {% endfor %}
-    </div>
+    {% include content-box.html %}
   </main>
 
 {% include footer.html %}
