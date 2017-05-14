@@ -362,46 +362,41 @@ a {
 // Tiles
 // -----
 
+$tile-spacing: 10px;
+
 %tile-animation {
-  @media (--medium) {
-    animation-name: fadeIn, moveUp;
-    animation-duration: .7s, .85s;
-    animation-fill-mode: forwards, forwards;
-  }
+  animation-name: fadeIn, moveUp;
+  animation-duration: .7s, .85s;
+  animation-fill-mode: forwards, forwards;
 }
 
 .tile {
-  padding: 0;
-  transition: width $transition-duration;
+  background: getColor(background, light);
+  border: 1px solid lighten(getColor(base, lines), 7.5%);
+  display: block;
+  margin-bottom: $spacing-xs;
+  opacity: 0;
+  padding-bottom: $spacing-xs;
+  transition: width $transition-duration-long;
   width: 100%;
 
   @media (--small) {
     float: left;
-    width: 50%;
-  }
-
-  @media (--medium) {
-    opacity: 0;
+    width: calc(50% - #{$tile-spacing});
   }
 
   @media (--large) {
-    width: 33.33%;
+    width: calc(20% - #{$tile-spacing});
   }
 
-  &:hover {
-    border-bottom: none;
-    text-decoration: none;
-  }
+  &:hover { text-decoration: none; }
 
-  &:last-of-type {
-    img {
-      @media (--small-max) {
-        margin-bottom: 0;
-      }
-    }
-  }
+  &:nth-of-type(5n) { margin-bottom: $spacing-m; }
+
+  &:not(:nth-of-type(5n)) { margin-right: #{$tile-spacing}; }
 
   img {
+    margin-top: 0;
     max-width: 100%;
     transition: opacity $transition-duration-med;
     width: 100%;
@@ -410,17 +405,36 @@ a {
     &:hover { opacity: .75; }
 
     @media (--small-max) {
-      margin-bottom: $spacing-m;
+      margin-top: 0;
     }
   }
 
-  @for $i from 1 through 15 {
+  @for $i from 1 through 10 {
     &.-animated:nth-of-type(#{$i}) {
       @extend %tile-animation;
 
       animation-delay: $i * .22s;
     }
   }
+}
+
+.tile-header {
+  margin-bottom: $spacing-s;
+
+  &:before,
+  &:after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+.tile-title {
+  color: getColor(text, secondary);
+  display: block;
+  font-size: 12px;
+  margin-top: $spacing-xs;
+  text-align: center;
 }
 
 

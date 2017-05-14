@@ -1,13 +1,15 @@
 {% for section in page.portfolio %}
-  <strong>{{ section.title }}</strong>
+  <h4 class="tile-header"><strong>{{ section.title }}</strong></h4>
 
   {% for item in section.items %}
-    <a class="tile" href="{{ item.url }}" title="{{ item.title }}" target="_blank">
+    <a class="tile" href="{{ item.url }}" title="View more info about {{ item.title }}" target="_blank">
       <picture>
         <source srcset="images/{{ item.image }}.webp" type="image/webp">
         <source srcset="images/{{ item.image }}.png" type="image/jpeg">
         <img src="images/{{ item.image }}.png" alt="{{ item.title }}">
       </picture>
+
+      <span class="tile-title">{{ item.title }}</span>
     </a>
   {% endfor %}
 {% endfor %}
