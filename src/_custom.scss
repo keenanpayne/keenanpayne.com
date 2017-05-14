@@ -116,27 +116,6 @@ a {
 }
 
 
-//
-// Modifiers
-// ---------
-
-.-holla {
-  font-size: typeScale(5);
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-
-  @media (--medium) {
-    float: right;
-    font-size: typeScale(8);
-    max-width: 900px;
-    text-align: right;
-  }
-}
-
-&.-sf { color: getColor(text, sf); }
-
-
 
 
 //
@@ -147,6 +126,7 @@ a {
 .logo {
   font-size: typeScale(9);
   font-weight: 900;
+  letter-spacing: -1.75px;
   line-height: .85;
   padding-bottom: $spacing-xs;
 
@@ -296,6 +276,22 @@ a {
   }
 }
 
+.masthead-heading {
+  font-size: typeScale(5);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  @media (--medium) {
+    float: right;
+    font-size: typeScale(8);
+    max-width: 900px;
+    text-align: right;
+  }
+
+  &.-sf { font-style: italic; }
+}
+
 
 //
 // Definition Lists
@@ -314,8 +310,7 @@ a {
 }
 
 .portfolioList {
-  clear: both;
-  padding-top: $spacing-m;
+  // clear: both;
 
   span {
     display: block;
@@ -391,7 +386,7 @@ $tile-spacing: 10px;
 
   &:hover { text-decoration: none; }
 
-  &:nth-of-type(5n) { margin-bottom: $spacing-m; }
+  &:nth-of-type(5n) { margin-bottom: $spacing-l; }
 
   &:not(:nth-of-type(5n)) { margin-right: #{$tile-spacing}; }
 
@@ -419,7 +414,7 @@ $tile-spacing: 10px;
 }
 
 .tile-header {
-  margin-bottom: $spacing-s;
+  margin-bottom: $spacing-xs;
 
   &:before,
   &:after {
@@ -428,6 +423,8 @@ $tile-spacing: 10px;
     display: table;
   }
 }
+
+.tile-description { margin-bottom: $spacing-s; }
 
 .tile-title {
   color: getColor(text, secondary);

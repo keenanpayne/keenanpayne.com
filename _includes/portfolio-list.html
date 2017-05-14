@@ -1,0 +1,21 @@
+{% for section in page.portfolioList %}
+  <dl class="portfolioList">
+  	<h3>
+      {{ section.title }}
+
+      {% if section.subtext %}
+        <small class="heading-subtext">{{ section.subtext }}</small>
+      {% endif %}
+    </h3>
+
+    {% for item in section.items %}
+    	<span>
+    		<dt>
+          <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">{{ item.title }}</a>
+        </dt>
+
+    		<dd>{{ item.description }}</dd>
+    	</span>
+    </dl>
+  {% endfor %}
+{% endfor %}

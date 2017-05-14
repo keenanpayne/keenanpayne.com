@@ -1,5 +1,9 @@
 {% for section in page.portfolio %}
-  <h4 class="tile-header"><strong>{{ section.title }}</strong></h4>
+  <h3 class="tile-header"><strong>{{ section.title }}</strong></h3>
+
+  {% if section.description %}
+    <p class="tile-description">{{ section.description }}</p>
+  {% endif %}
 
   {% for item in section.items %}
     <a class="tile" href="{{ item.url }}" title="View more info about {{ item.title }}" target="_blank">

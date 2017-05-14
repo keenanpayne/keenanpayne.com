@@ -957,24 +957,10 @@ a.icon-linkedin {
   a.icon-linkedin:hover {
     color: #005582; }
 
-.-holla {
-  font-size: 1.728rem;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center; }
-  @media (min-width: 768px) {
-    .-holla {
-      float: right;
-      font-size: 2.98598rem;
-      max-width: 900px;
-      text-align: right; } }
-
-.-sf {
-  color: #ff8080; }
-
 .logo {
   font-size: 3.58318rem;
   font-weight: 900;
+  letter-spacing: -1.75px;
   line-height: .85;
   padding-bottom: 0.75rem; }
   @media (min-width: 480px) {
@@ -1090,6 +1076,20 @@ a.icon-linkedin {
       padding-bottom: 3rem;
       padding-top: 3rem; } }
 
+.masthead-heading {
+  font-size: 1.728rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center; }
+  @media (min-width: 768px) {
+    .masthead-heading {
+      float: right;
+      font-size: 2.98598rem;
+      max-width: 900px;
+      text-align: right; } }
+  .masthead-heading.-sf {
+    font-style: italic; }
+
 .portfolioList span.-animated:nth-of-type(1), .portfolioList span.-animated:nth-of-type(3), .portfolioList span.-animated:nth-of-type(5) {
   -webkit-animation-name: fadeIn, moveRight;
           animation-name: fadeIn, moveRight;
@@ -1106,36 +1106,35 @@ a.icon-linkedin {
   -webkit-animation-fill-mode: forwards, forwards;
           animation-fill-mode: forwards, forwards; }
 
-.portfolioList {
-  clear: both;
-  padding-top: 3rem; }
-  .portfolioList span {
-    display: block;
-    opacity: 0; }
-    .portfolioList span:first-of-type dt {
-      border-top: 3px solid #32373d; }
-    .portfolioList span.-animated:nth-of-type(1) {
-      -webkit-animation-delay: 0.2s;
-              animation-delay: 0.2s; }
-    .portfolioList span.-animated:nth-of-type(2) {
-      -webkit-animation-delay: 0.4s;
-              animation-delay: 0.4s; }
-    .portfolioList span.-animated:nth-of-type(3) {
-      -webkit-animation-delay: 0.6s;
-              animation-delay: 0.6s; }
-    .portfolioList span.-animated:nth-of-type(4) {
-      -webkit-animation-delay: 0.8s;
-              animation-delay: 0.8s; }
-    .portfolioList span.-animated:nth-of-type(5) {
-      -webkit-animation-delay: 1s;
-              animation-delay: 1s; }
-  .portfolioList dt {
-    font-size: 1.2rem;
-    margin-top: 0;
-    padding-top: 0.75rem; }
-  .portfolioList dd {
-    border-bottom: 3px solid rgba(50, 55, 61, 0.2);
-    padding-bottom: 0.75rem; }
+.portfolioList span {
+  display: block;
+  opacity: 0; }
+  .portfolioList span:first-of-type dt {
+    border-top: 3px solid #32373d; }
+  .portfolioList span.-animated:nth-of-type(1) {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .portfolioList span.-animated:nth-of-type(2) {
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s; }
+  .portfolioList span.-animated:nth-of-type(3) {
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s; }
+  .portfolioList span.-animated:nth-of-type(4) {
+    -webkit-animation-delay: 0.8s;
+            animation-delay: 0.8s; }
+  .portfolioList span.-animated:nth-of-type(5) {
+    -webkit-animation-delay: 1s;
+            animation-delay: 1s; }
+
+.portfolioList dt {
+  font-size: 1.2rem;
+  margin-top: 0;
+  padding-top: 0.75rem; }
+
+.portfolioList dd {
+  border-bottom: 3px solid rgba(50, 55, 61, 0.2);
+  padding-bottom: 0.75rem; }
 
 .tile.-animated:nth-of-type(1), .tile.-animated:nth-of-type(2), .tile.-animated:nth-of-type(3), .tile.-animated:nth-of-type(4), .tile.-animated:nth-of-type(5), .tile.-animated:nth-of-type(6), .tile.-animated:nth-of-type(7), .tile.-animated:nth-of-type(8), .tile.-animated:nth-of-type(9), .tile.-animated:nth-of-type(10) {
   -webkit-animation-name: fadeIn, moveUp;
@@ -1165,7 +1164,7 @@ a.icon-linkedin {
   .tile:hover {
     text-decoration: none; }
   .tile:nth-of-type(5n) {
-    margin-bottom: 3rem; }
+    margin-bottom: 4.5rem; }
   .tile:not(:nth-of-type(5n)) {
     margin-right: 10px; }
   .tile img {
@@ -1212,11 +1211,14 @@ a.icon-linkedin {
             animation-delay: 2.2s; }
 
 .tile-header {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 0.75rem; }
   .tile-header:before, .tile-header:after {
     clear: both;
     content: "";
     display: table; }
+
+.tile-description {
+  margin-bottom: 1.5rem; }
 
 .tile-title {
   color: #666;
