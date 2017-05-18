@@ -866,10 +866,6 @@ table {
 html {
   border-top: 3px solid #32373d; }
 
-[container] {
-  padding-left: 2rem;
-  padding-right: 2rem; }
-
 main[container] {
   overflow: hidden; }
 
@@ -1051,6 +1047,18 @@ a.icon-linkedin {
   .contentBox.-animated {
     -webkit-animation: fadeIn .5s .75s forwards, moveUp .75s .75s ease-out forwards;
             animation: fadeIn .5s .75s forwards, moveUp .75s .75s ease-out forwards; }
+  .contentBox.-animate-stagger-1 {
+    -webkit-animation-delay: .75s;
+            animation-delay: .75s; }
+  .contentBox.-animate-stagger-2 {
+    -webkit-animation-delay: .9s;
+            animation-delay: .9s; }
+  .contentBox.-animate-stagger-3 {
+    -webkit-animation-delay: 1.05s;
+            animation-delay: 1.05s; }
+  .contentBox.-animate-stagger-4 {
+    -webkit-animation-delay: 1.2s;
+            animation-delay: 1.2s; }
   .contentBox h3 {
     margin-top: 0; }
 
@@ -1087,7 +1095,7 @@ a.icon-linkedin {
       font-size: 2.98598rem;
       max-width: 900px;
       text-align: right; } }
-  .masthead-heading.-sf {
+  .masthead-heading .-sf {
     font-style: italic; }
 
 .portfolioList span.-animated:nth-of-type(1), .portfolioList span.-animated:nth-of-type(3), .portfolioList span.-animated:nth-of-type(5) {
@@ -1148,19 +1156,13 @@ a.icon-linkedin {
   background: #f7f7f7;
   border: 1px solid #efefef;
   display: block;
+  height: 100%;
   margin-bottom: 0.75rem;
   opacity: 0;
   padding-bottom: 0.75rem;
   -webkit-transition: width 300ms;
   transition: width 300ms;
   width: 100%; }
-  @media (min-width: 480px) {
-    .tile {
-      float: left;
-      width: calc(50% - 10px); } }
-  @media (min-width: 960px) {
-    .tile {
-      width: calc(20% - 10px); } }
   .tile:hover {
     text-decoration: none; }
   .tile:nth-of-type(5n) {
@@ -1212,10 +1214,6 @@ a.icon-linkedin {
 
 .tile-header {
   margin-bottom: 0.75rem; }
-  .tile-header:before, .tile-header:after {
-    clear: both;
-    content: "";
-    display: table; }
 
 .tile-description {
   margin-bottom: 1.5rem; }

@@ -19,11 +19,6 @@
 
 html { border-top: 3px solid getColor(background, dark); }
 
-[container] {
-  padding-left: 2rem;
-  padding-right: 2rem;
-}
-
 main[container] { overflow: hidden; }
 
 img {
@@ -242,6 +237,14 @@ a {
 
   &.-animated { animation: fadeIn .5s .75s forwards, moveUp .75s .75s ease-out forwards; }
 
+  &.-animate-stagger-1 { animation-delay: .75s; }
+
+  &.-animate-stagger-2 { animation-delay: .9s; }
+
+  &.-animate-stagger-3 { animation-delay: 1.05s; }
+
+  &.-animate-stagger-4 { animation-delay: 1.2s; }
+
   h3 { margin-top: 0; }
 }
 
@@ -289,7 +292,7 @@ a {
     text-align: right;
   }
 
-  &.-sf { font-style: italic; }
+  .-sf { font-style: italic; }
 }
 
 
@@ -310,8 +313,6 @@ a {
 }
 
 .portfolioList {
-  // clear: both;
-
   span {
     display: block;
     opacity: 0;
@@ -369,20 +370,12 @@ $tile-spacing: 10px;
   background: getColor(background, light);
   border: 1px solid lighten(getColor(base, lines), 7.5%);
   display: block;
+  height: 100%;
   margin-bottom: $spacing-xs;
   opacity: 0;
   padding-bottom: $spacing-xs;
   transition: width $transition-duration-long;
   width: 100%;
-
-  @media (--small) {
-    float: left;
-    width: calc(50% - #{$tile-spacing});
-  }
-
-  @media (--large) {
-    width: calc(20% - #{$tile-spacing});
-  }
 
   &:hover { text-decoration: none; }
 
@@ -415,13 +408,6 @@ $tile-spacing: 10px;
 
 .tile-header {
   margin-bottom: $spacing-xs;
-
-  &:before,
-  &:after {
-    clear: both;
-    content: "";
-    display: table;
-  }
 }
 
 .tile-description { margin-bottom: $spacing-s; }

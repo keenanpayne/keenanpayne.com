@@ -5,7 +5,7 @@
         <a href="{{ box.url }}" title="Visit {{ box.title }}">
       {% endif %}
 
-      <div class="contentBox">
+      <div class="contentBox -animate-stagger-{{ forloop.index }}">
         <h3>{{ box.title }}</h3>
 
         <p>{{ box.description }}</p>
