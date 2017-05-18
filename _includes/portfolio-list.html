@@ -10,6 +10,12 @@
       </h3>
 
       {% for item in section.items %}
+        {% if forloop.index == 6 %}
+          <span>
+            <p class="portfolioList-viewmore">View more articles</p>
+          </span>
+        {% endif %}
+
       	<span>
       		<dt>
             <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">{{ item.title }}</a>

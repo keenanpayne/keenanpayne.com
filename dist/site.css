@@ -1098,7 +1098,7 @@ a.icon-linkedin {
   .masthead-heading .-sf {
     font-style: italic; }
 
-.portfolioList span.-animated:nth-of-type(1), .portfolioList span.-animated:nth-of-type(3), .portfolioList span.-animated:nth-of-type(5) {
+.portfolioList span.-animated:nth-of-type(1), .portfolioList span.-animated:nth-of-type(3), .portfolioList span.-animated:nth-of-type(5), .portfolioList span.-animated:nth-of-type(7), .portfolioList span.-animated:nth-of-type(9), .portfolioList span.-animated:nth-of-type(11), .portfolioList span.-animated:nth-of-type(13), .portfolioList span.-animated:nth-of-type(15) {
   -webkit-animation-name: fadeIn, moveRight;
           animation-name: fadeIn, moveRight;
   -webkit-animation-duration: .7s, .85s;
@@ -1106,7 +1106,7 @@ a.icon-linkedin {
   -webkit-animation-fill-mode: forwards, forwards;
           animation-fill-mode: forwards, forwards; }
 
-.portfolioList span.-animated:nth-of-type(2), .portfolioList span.-animated:nth-of-type(4) {
+.portfolioList span.-animated:nth-of-type(2), .portfolioList span.-animated:nth-of-type(4), .portfolioList span.-animated:nth-of-type(6), .portfolioList span.-animated:nth-of-type(8), .portfolioList span.-animated:nth-of-type(10), .portfolioList span.-animated:nth-of-type(12), .portfolioList span.-animated:nth-of-type(14) {
   -webkit-animation-name: fadeIn, moveLeft;
           animation-name: fadeIn, moveLeft;
   -webkit-animation-duration: .7s, .85s;
@@ -1119,6 +1119,8 @@ a.icon-linkedin {
   opacity: 0; }
   .portfolioList span:first-of-type dt {
     border-top: 3px solid #32373d; }
+  .portfolioList span:nth-child(n+8) {
+    display: none; }
   .portfolioList span.-animated:nth-of-type(1) {
     -webkit-animation-delay: 0.2s;
             animation-delay: 0.2s; }
@@ -1134,6 +1136,36 @@ a.icon-linkedin {
   .portfolioList span.-animated:nth-of-type(5) {
     -webkit-animation-delay: 1s;
             animation-delay: 1s; }
+  .portfolioList span.-animated:nth-of-type(6) {
+    -webkit-animation-delay: 1.2s;
+            animation-delay: 1.2s; }
+  .portfolioList span.-animated:nth-of-type(7) {
+    -webkit-animation-delay: 1.4s;
+            animation-delay: 1.4s; }
+  .portfolioList span.-animated:nth-of-type(8) {
+    -webkit-animation-delay: 1.6s;
+            animation-delay: 1.6s; }
+  .portfolioList span.-animated:nth-of-type(9) {
+    -webkit-animation-delay: 1.8s;
+            animation-delay: 1.8s; }
+  .portfolioList span.-animated:nth-of-type(10) {
+    -webkit-animation-delay: 2s;
+            animation-delay: 2s; }
+  .portfolioList span.-animated:nth-of-type(11) {
+    -webkit-animation-delay: 2.2s;
+            animation-delay: 2.2s; }
+  .portfolioList span.-animated:nth-of-type(12) {
+    -webkit-animation-delay: 2.4s;
+            animation-delay: 2.4s; }
+  .portfolioList span.-animated:nth-of-type(13) {
+    -webkit-animation-delay: 2.6s;
+            animation-delay: 2.6s; }
+  .portfolioList span.-animated:nth-of-type(14) {
+    -webkit-animation-delay: 2.8s;
+            animation-delay: 2.8s; }
+  .portfolioList span.-animated:nth-of-type(15) {
+    -webkit-animation-delay: 3s;
+            animation-delay: 3s; }
 
 .portfolioList dt {
   font-size: 1.2rem;
@@ -1143,6 +1175,11 @@ a.icon-linkedin {
 .portfolioList dd {
   border-bottom: 3px solid rgba(50, 55, 61, 0.2);
   padding-bottom: 0.75rem; }
+
+.portfolioList-viewmore {
+  cursor: pointer;
+  margin-top: 1.5rem;
+  text-align: center; }
 
 .tile.-animated:nth-of-type(1), .tile.-animated:nth-of-type(2), .tile.-animated:nth-of-type(3), .tile.-animated:nth-of-type(4), .tile.-animated:nth-of-type(5), .tile.-animated:nth-of-type(6), .tile.-animated:nth-of-type(7), .tile.-animated:nth-of-type(8), .tile.-animated:nth-of-type(9), .tile.-animated:nth-of-type(10) {
   -webkit-animation-name: fadeIn, moveUp;
@@ -1239,48 +1276,48 @@ a.icon-linkedin {
 
 @-webkit-keyframes moveUp {
   from {
-    -webkit-transform: translateY(20px);
-            transform: translateY(20px); }
+    -webkit-transform: translateY(15px);
+            transform: translateY(15px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
 @keyframes moveUp {
   from {
-    -webkit-transform: translateY(20px);
-            transform: translateY(20px); }
+    -webkit-transform: translateY(15px);
+            transform: translateY(15px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
 @-webkit-keyframes moveLeft {
   from {
-    -webkit-transform: translateX(20px);
-            transform: translateX(20px); }
+    -webkit-transform: translateX(15px);
+            transform: translateX(15px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
 @keyframes moveLeft {
   from {
-    -webkit-transform: translateX(20px);
-            transform: translateX(20px); }
+    -webkit-transform: translateX(15px);
+            transform: translateX(15px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
 @-webkit-keyframes moveRight {
   from {
-    -webkit-transform: translateX(-20px);
-            transform: translateX(-20px); }
+    -webkit-transform: translateX(-15px);
+            transform: translateX(-15px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
 @keyframes moveRight {
   from {
-    -webkit-transform: translateX(-20px);
-            transform: translateX(-20px); }
+    -webkit-transform: translateX(-15px);
+            transform: translateX(-15px); }
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }

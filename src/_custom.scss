@@ -321,7 +321,9 @@ a {
       dt { border-top: 3px solid getColor(background, dark); }
     }
 
-    @for $i from 1 through 5 {
+    &:nth-child(n+8) { display: none; }
+
+    @for $i from 1 through 15 {
       // If even
       @if $i % 2 == 0 {
         &.-animated:nth-of-type(#{$i}) {
@@ -351,6 +353,12 @@ a {
     border-bottom: 3px solid rgba(getColor(background, dark), .2);
     padding-bottom: $spacing-xs;
   }
+}
+
+.portfolioList-viewmore {
+  cursor: pointer;
+  margin-top: $spacing-s;
+  text-align: center;
 }
 
 
@@ -427,7 +435,7 @@ $tile-spacing: 10px;
 // Animations
 // ==================================================
 
-$move-distance: 20px;
+$move-distance: 15px;
 
 @keyframes fadeIn {
   from { opacity: 0; }
