@@ -78,6 +78,7 @@
         [
           'h1',
           '.tile',
+          '.tile-header',
           '.masthead',
           '.contentBox',
           'main dl:nth-of-type(1) span',

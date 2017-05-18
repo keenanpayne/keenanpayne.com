@@ -235,15 +235,15 @@ a {
 
   &:hover { background-color: rgba(getColor(base, selection), .3); }
 
-  &.-animated { animation: fadeIn .5s .75s forwards, moveUp .75s .75s ease-out forwards; }
+  &.-animated { animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
 
-  &.-animate-stagger-1 { animation-delay: .75s; }
+  &.-animate-stagger-1 { animation-delay: .5s; }
 
-  &.-animate-stagger-2 { animation-delay: .9s; }
+  &.-animate-stagger-2 { animation-delay: .7s; }
 
-  &.-animate-stagger-3 { animation-delay: 1.05s; }
+  &.-animate-stagger-3 { animation-delay: .9s; }
 
-  &.-animate-stagger-4 { animation-delay: 1.2s; }
+  &.-animate-stagger-4 { animation-delay: 1.1s; }
 
   h3 { margin-top: 0; }
 }
@@ -269,7 +269,7 @@ a {
     padding-top: 5rem;
   }
 
-  &.-animated { animation: fadeIn .5s .5s forwards, moveLeft .75s .5s ease-out forwards; }
+  &.-animated { animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
 
   &.-short {
     @media (--large) {
@@ -405,17 +405,42 @@ $tile-spacing: 10px;
     }
   }
 
-  @for $i from 1 through 10 {
-    &.-animated:nth-of-type(#{$i}) {
-      @extend %tile-animation;
-
-      animation-delay: $i * .22s;
-    }
+  &.-animated {
+    @extend %tile-animation;
   }
+
+  &.-animated:nth-of-type(1) { animation-delay: .7s; }
+
+  &.-animated:nth-of-type(2) { animation-delay: .65s; }
+
+  &.-animated:nth-of-type(3) { animation-delay: .8s; }
+
+  &.-animated:nth-of-type(4) { animation-delay: .95s; }
+
+  &.-animated:nth-of-type(5) { animation-delay: 1.1s; }
+
+  &.-animated:nth-of-type(6) { animation-delay: 1.25s; }
+
+  &.-animated:nth-of-type(7) { animation-delay: 1.4s; }
+
+  &.-animated:nth-of-type(8) { animation-delay: 1.55s; }
+
+  &.-animated:nth-of-type(9) { animation-delay: 1.7s; }
+
+  &.-animated:nth-of-type(10) { animation-delay: 1.95s; }
 }
 
 .tile-header {
   margin-bottom: $spacing-xs;
+  opacity: 0;
+
+  &.-animated {
+    @extend %tile-animation;
+  }
+
+  &.-animated:nth-of-type(1) { animation-delay: .5s; }
+
+  &.-animated:nth-of-type(2) { animation-delay: 2.1; }
 }
 
 .tile-description { margin-bottom: $spacing-s; }
