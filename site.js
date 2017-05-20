@@ -79,6 +79,7 @@
           'h1',
           '.tile',
           '.tile-header',
+          '.tile-description',
           '.masthead',
           '.contentBox',
           'main dl:nth-of-type(1) span',
