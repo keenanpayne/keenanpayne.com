@@ -10,7 +10,7 @@
 
         {% for p in navigation_pages %}
           {% if p.navigation_weight %}
-            {% if p.navigation_weight != 1 %} <!-- Ignore homepage link -->
+            {% if p.navigation_weight != 0 %} <!-- Ignore homepage link -->
               <li {% if p.url == page.url %}class="-is-active"{% endif %}>
                 <a href="{{ p.url }}">
                   {{ p.title }}

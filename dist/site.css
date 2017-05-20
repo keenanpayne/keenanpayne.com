@@ -1085,7 +1085,7 @@ a.icon-linkedin {
       padding-top: 3rem; } }
 
 .masthead-heading {
-  font-size: 1.728rem;
+  font-size: 2.48832rem;
   margin-left: auto;
   margin-right: auto;
   text-align: center; }
@@ -1269,6 +1269,21 @@ a.icon-linkedin {
   font-size: 12px;
   margin-top: 0.75rem;
   text-align: center; }
+
+.lab {
+  opacity: 0; }
+  @media (max-width: 768px) {
+    .lab {
+      margin-bottom: 1.5rem; } }
+  .lab.-animated {
+    -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
+            animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
+  .lab.-animate-stagger-1 {
+    -webkit-animation-delay: .5s;
+            animation-delay: .5s; }
+  .lab.-animate-stagger-2 {
+    -webkit-animation-delay: .7s;
+            animation-delay: .7s; }
 
 @-webkit-keyframes fadeIn {
   from {

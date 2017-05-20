@@ -82,6 +82,7 @@
           '.tile-description',
           '.masthead',
           '.contentBox',
+          '.lab',
           'main dl:nth-of-type(1) span',
           'main dl:nth-of-type(2) span'
         ], '-animated'
