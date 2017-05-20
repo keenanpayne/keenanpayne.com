@@ -436,11 +436,9 @@ $tile-spacing: 10px;
 
   &.-animated {
     @extend %tile-animation;
+
+    animation-delay: .5s;
   }
-
-  &.-animated:nth-of-type(1) { animation-delay: .5s; }
-
-  &.-animated:nth-of-type(2) { animation-delay: 2.1; }
 }
 
 .tile-description {
@@ -449,11 +447,9 @@ $tile-spacing: 10px;
 
   &.-animated {
     @extend %tile-animation;
+
+    animation-delay: .7s;
   }
-
-  &.-animated:nth-of-type(1) { animation-delay: .7s; }
-
-  &.-animated:nth-of-type(2) { animation-delay: 2.3; }
 }
 
 .tile-title {

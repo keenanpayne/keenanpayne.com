@@ -1252,22 +1252,16 @@ a.icon-linkedin {
 .tile-header {
   margin-bottom: 0.75rem;
   opacity: 0; }
-  .tile-header.-animated:nth-of-type(1) {
+  .tile-header.-animated {
     -webkit-animation-delay: .5s;
             animation-delay: .5s; }
-  .tile-header.-animated:nth-of-type(2) {
-    -webkit-animation-delay: 2.1;
-            animation-delay: 2.1; }
 
 .tile-description {
   margin-bottom: 1.5rem;
   opacity: 0; }
-  .tile-description.-animated:nth-of-type(1) {
+  .tile-description.-animated {
     -webkit-animation-delay: .7s;
             animation-delay: .7s; }
-  .tile-description.-animated:nth-of-type(2) {
-    -webkit-animation-delay: 2.3;
-            animation-delay: 2.3; }
 
 .tile-title {
   color: #666;
