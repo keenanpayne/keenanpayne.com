@@ -539,7 +539,7 @@ table {
 [container] {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1400px;
+  max-width: 1960px;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   overflow: auto; }
@@ -862,6 +862,9 @@ table {
   @media (min-width: 1460px) {
     :root {
       font-size: 24px; } }
+  @media (min-width: 1800px) {
+    :root {
+      font-size: 28px; } }
 
 html {
   border-top: 3px solid #32373d; }
@@ -1076,6 +1079,10 @@ a.icon-linkedin {
     .masthead {
       padding-bottom: 5rem;
       padding-top: 5rem; } }
+  @media (min-width: 1100px) {
+    .masthead {
+      padding-bottom: 7rem;
+      padding-top: 7rem; } }
   .masthead.-animated {
     -webkit-animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards;
             animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
@@ -1095,6 +1102,9 @@ a.icon-linkedin {
       font-size: 2.98598rem;
       max-width: 900px;
       text-align: right; } }
+  @media (min-width: 1460px) {
+    .masthead-heading {
+      max-width: 1160px; } }
   .masthead-heading .-sf {
     font-style: italic; }
 

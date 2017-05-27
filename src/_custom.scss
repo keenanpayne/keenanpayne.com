@@ -12,6 +12,10 @@
     font-size: $font-size-extra-large + px;
   }
 
+  @media (--very-large) {
+    font-size: $font-size-very-large + px;
+  }
+
   @media (--hella-large) {
     font-size: $font-size-hella-large + px;
   }
@@ -269,6 +273,11 @@ a {
     padding-top: 5rem;
   }
 
+  @media (--extra-large) {
+    padding-bottom: 7rem;
+    padding-top: 7rem;
+  }
+
   &.-animated { animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
 
   &.-short {
@@ -290,6 +299,10 @@ a {
     font-size: typeScale(8);
     max-width: 900px;
     text-align: right;
+  }
+
+  @media (--very-large) {
+    max-width: 1160px;
   }
 
   .-sf { font-style: italic; }
