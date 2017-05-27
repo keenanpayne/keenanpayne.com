@@ -289,7 +289,7 @@ a {
 }
 
 .masthead-heading {
-  font-size: typeScale(7);
+  font-size: typeScale(6);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -302,10 +302,16 @@ a {
   }
 
   @media (--very-large) {
-    max-width: 1160px;
+    max-width: 1080px;
+  }
+
+  @media (--hella-large) {
+    max-width: 1200px;
   }
 
   .-sf { font-style: italic; }
+
+  &.-small { font-size: typeScale(5); }
 }
 
 
