@@ -23,7 +23,17 @@
 
 html { border-top: 3px solid getColor(background, dark); }
 
-main[container] { overflow: hidden; }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main[container] {
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+}
 
 img {
   height: auto;
@@ -142,6 +152,7 @@ a {
 // Main Header
 .siteHeader {
   margin-top: 2rem;
+  width: 100%;
 
   @media (--medium-max) {
     text-align: center;
@@ -311,7 +322,13 @@ a {
 
   .-sf { font-style: italic; }
 
-  &.-small { font-size: typeScale(5); }
+  &.-small {
+    font-size: typeScale(5);
+
+    @media (--medium) {
+      font-size: typeScale(8);
+    }
+  }
 }
 
 
