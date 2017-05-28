@@ -995,7 +995,10 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
     .siteFooter {
       margin-top: 3rem; } }
   .siteFooter a:not(:last-of-type) .icon {
-    margin-right: 1.5rem; }
+    margin-right: 0.75rem; }
+    @media (min-width: 480px) {
+      .siteFooter a:not(:last-of-type) .icon {
+        margin-right: 1.5rem; } }
 
 .contentBox {
   opacity: 0;

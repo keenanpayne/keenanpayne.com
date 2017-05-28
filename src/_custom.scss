@@ -175,7 +175,13 @@ h2, h3 {
     margin-top: $spacing-m;
   }
 
-  a:not(:last-of-type) .icon { margin-right: $spacing-s; }
+  a:not(:last-of-type) .icon {
+    margin-right: $spacing-xs; 
+
+    @media (--small) {
+      margin-right: $spacing-s;
+    }
+  }
 }
 
 
