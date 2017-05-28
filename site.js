@@ -77,12 +77,9 @@
       Helpers.animateVisibleElement(
         [
           'h1',
-          '.tile-container .tiles:nth-of-type(1) .tile',
-          '.tile-container .tiles:nth-of-type(1) .tile-header',
-          '.tile-container .tiles:nth-of-type(1) .tile-description',
-          '.tile-container .tiles:nth-of-type(2) .tile',
-          '.tile-container .tiles:nth-of-type(2) .tile-header',
-          '.tile-container .tiles:nth-of-type(2) .tile-description',
+          '.tile',
+          '.tile-header',
+          '.tile-description',
           '.masthead',
           '.contentBox',
           '.lab',

@@ -1089,67 +1089,71 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   -webkit-animation-fill-mode: forwards, forwards;
           animation-fill-mode: forwards, forwards; }
 
-.portfolioList {
-  margin-top: 3rem; }
-  .portfolioList span {
-    display: block;
-    opacity: 0; }
-    .portfolioList span:first-of-type dt {
-      border-top: 3px solid #32373d; }
-    .portfolioList span:nth-child(n+8) {
-      display: none; }
-    .portfolioList span.-animated:nth-of-type(1) {
-      -webkit-animation-delay: 0.2s;
-              animation-delay: 0.2s; }
-    .portfolioList span.-animated:nth-of-type(2) {
-      -webkit-animation-delay: 0.4s;
-              animation-delay: 0.4s; }
-    .portfolioList span.-animated:nth-of-type(3) {
-      -webkit-animation-delay: 0.6s;
-              animation-delay: 0.6s; }
-    .portfolioList span.-animated:nth-of-type(4) {
-      -webkit-animation-delay: 0.8s;
-              animation-delay: 0.8s; }
-    .portfolioList span.-animated:nth-of-type(5) {
-      -webkit-animation-delay: 1s;
-              animation-delay: 1s; }
-    .portfolioList span.-animated:nth-of-type(6) {
-      -webkit-animation-delay: 1.2s;
-              animation-delay: 1.2s; }
-    .portfolioList span.-animated:nth-of-type(7) {
-      -webkit-animation-delay: 1.4s;
-              animation-delay: 1.4s; }
-    .portfolioList span.-animated:nth-of-type(8) {
-      -webkit-animation-delay: 1.6s;
-              animation-delay: 1.6s; }
-    .portfolioList span.-animated:nth-of-type(9) {
-      -webkit-animation-delay: 1.8s;
-              animation-delay: 1.8s; }
-    .portfolioList span.-animated:nth-of-type(10) {
-      -webkit-animation-delay: 2s;
-              animation-delay: 2s; }
-    .portfolioList span.-animated:nth-of-type(11) {
-      -webkit-animation-delay: 2.2s;
-              animation-delay: 2.2s; }
-    .portfolioList span.-animated:nth-of-type(12) {
-      -webkit-animation-delay: 2.4s;
-              animation-delay: 2.4s; }
-    .portfolioList span.-animated:nth-of-type(13) {
-      -webkit-animation-delay: 2.6s;
-              animation-delay: 2.6s; }
-    .portfolioList span.-animated:nth-of-type(14) {
-      -webkit-animation-delay: 2.8s;
-              animation-delay: 2.8s; }
-    .portfolioList span.-animated:nth-of-type(15) {
-      -webkit-animation-delay: 3s;
-              animation-delay: 3s; }
-  .portfolioList dt {
-    font-size: 1.2rem;
-    margin-top: 0;
-    padding-top: 0.75rem; }
-  .portfolioList dd {
-    border-bottom: 3px solid rgba(50, 55, 61, 0.2);
-    padding-bottom: 0.75rem; }
+@media (max-width: 480px) {
+  .portfolioList {
+    margin-bottom: 3rem; } }
+
+.portfolioList span {
+  border-bottom: 3px solid rgba(50, 55, 61, 0.2);
+  display: block;
+  opacity: 0; }
+  .portfolioList span:first-of-type {
+    border-bottom: 3px solid #32373d; }
+  .portfolioList span:nth-child(n+8) {
+    display: none; }
+  .portfolioList span.-animated:nth-of-type(1) {
+    -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s; }
+  .portfolioList span.-animated:nth-of-type(2) {
+    -webkit-animation-delay: 0.4s;
+            animation-delay: 0.4s; }
+  .portfolioList span.-animated:nth-of-type(3) {
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s; }
+  .portfolioList span.-animated:nth-of-type(4) {
+    -webkit-animation-delay: 0.8s;
+            animation-delay: 0.8s; }
+  .portfolioList span.-animated:nth-of-type(5) {
+    -webkit-animation-delay: 1s;
+            animation-delay: 1s; }
+  .portfolioList span.-animated:nth-of-type(6) {
+    -webkit-animation-delay: 1.2s;
+            animation-delay: 1.2s; }
+  .portfolioList span.-animated:nth-of-type(7) {
+    -webkit-animation-delay: 1.4s;
+            animation-delay: 1.4s; }
+  .portfolioList span.-animated:nth-of-type(8) {
+    -webkit-animation-delay: 1.6s;
+            animation-delay: 1.6s; }
+  .portfolioList span.-animated:nth-of-type(9) {
+    -webkit-animation-delay: 1.8s;
+            animation-delay: 1.8s; }
+  .portfolioList span.-animated:nth-of-type(10) {
+    -webkit-animation-delay: 2s;
+            animation-delay: 2s; }
+  .portfolioList span.-animated:nth-of-type(11) {
+    -webkit-animation-delay: 2.2s;
+            animation-delay: 2.2s; }
+  .portfolioList span.-animated:nth-of-type(12) {
+    -webkit-animation-delay: 2.4s;
+            animation-delay: 2.4s; }
+  .portfolioList span.-animated:nth-of-type(13) {
+    -webkit-animation-delay: 2.6s;
+            animation-delay: 2.6s; }
+  .portfolioList span.-animated:nth-of-type(14) {
+    -webkit-animation-delay: 2.8s;
+            animation-delay: 2.8s; }
+  .portfolioList span.-animated:nth-of-type(15) {
+    -webkit-animation-delay: 3s;
+            animation-delay: 3s; }
+
+.portfolioList dt {
+  font-size: 1.2rem;
+  margin-top: 0;
+  padding-top: 0.75rem; }
+
+.portfolioList dd {
+  padding-bottom: 0.75rem; }
 
 .portfolioList-viewmore {
   cursor: pointer;
@@ -1163,6 +1167,9 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
           animation-duration: .7s, .85s;
   -webkit-animation-fill-mode: forwards, forwards;
           animation-fill-mode: forwards, forwards; }
+
+.tiles {
+  margin-bottom: 3rem; }
 
 .tile {
   background: #f7f7f7;
