@@ -349,6 +349,8 @@ a {
 }
 
 .portfolioList {
+  margin-top: $spacing-m;
+
   span {
     display: block;
     opacity: 0;
@@ -422,8 +424,6 @@ $tile-spacing: 10px;
   width: 100%;
 
   &:hover { text-decoration: none; }
-
-  &:nth-of-type(5n) { margin-bottom: $spacing-l; }
 
   &:not(:nth-of-type(5n)) { margin-right: #{$tile-spacing}; }
 
