@@ -1316,6 +1316,21 @@ a.icon-linkedin {
     -webkit-animation-delay: .7s;
             animation-delay: .7s; }
 
+.contact {
+  opacity: 0; }
+  .contact.-animated {
+    -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
+            animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
+
+.wufoo {
+  opacity: 0; }
+  @media (max-width: 768px) {
+    .wufoo {
+      margin-top: 3rem; } }
+  .wufoo.-animated {
+    -webkit-animation: fadeIn .5s .7s forwards, moveUp .75s .7s ease-out forwards;
+            animation: fadeIn .5s .7s forwards, moveUp .75s .7s ease-out forwards; }
+
 @-webkit-keyframes fadeIn {
   from {
     opacity: 0; }

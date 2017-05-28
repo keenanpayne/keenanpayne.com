@@ -1,5 +1,7 @@
 {% for section in page.portfolio %}
-  <h3 class="tile-header"><strong>{{ section.title }}</strong></h3>
+  <h3 class="tile-header">
+    <strong>{{ section.title }}</strong>
+  </h3>
 
   {% if section.description %}
     <p class="tile-description">{{ section.description }}</p>
