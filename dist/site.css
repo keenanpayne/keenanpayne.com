@@ -890,37 +890,9 @@ img {
   height: auto;
   max-width: 100%; }
 
-@font-face {
-  font-family: 'icomoon';
-  src: url("../fonts/icomoon.eot?yuxxtl");
-  src: url("../fonts/icomoon.eot?yuxxtl#iefix") format("embedded-opentype"), url("../fonts/icomoon.ttf?yuxxtl") format("truetype"), url("../fonts/icomoon.woff?yuxxtl") format("woff"), url("../fonts/icomoon.svg?yuxxtl#icomoon") format("svg");
-  font-weight: normal;
-  font-style: normal; }
-
-[class^="icon-"],
-[class*=" icon-"] {
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1; }
-  [class^="icon-"]:hover,
-  [class*=" icon-"]:hover {
-    border-bottom: none; }
-
-.icon-linkedin:before {
-  content: "\e900"; }
-
-.icon-github:before {
-  content: "\e901"; }
-
-.icon-behance:before {
-  content: "\e902"; }
-
-.icon-dribbble:before {
-  content: "\e903"; }
+.icon {
+  width: 32px;
+  vertical-align: top; }
 
 p,
 h2, h3 {
@@ -941,34 +913,6 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   transition: -webkit-transform 300ms;
   transition: transform 300ms;
   transition: transform 300ms, -webkit-transform 300ms; }
-
-a.icon-dribbble {
-  color: #ea4c89;
-  -webkit-transition: color 150ms;
-  transition: color 150ms; }
-  a.icon-dribbble:hover {
-    color: #e51e6b; }
-
-a.icon-behance {
-  color: #1769ff;
-  -webkit-transition: color 150ms;
-  transition: color 150ms; }
-  a.icon-behance:hover {
-    color: #0050e3; }
-
-a.icon-github {
-  color: #333333;
-  -webkit-transition: color 150ms;
-  transition: color 150ms; }
-  a.icon-github:hover {
-    color: #1a1a1a; }
-
-a.icon-linkedin {
-  color: #0077b5;
-  -webkit-transition: color 150ms;
-  transition: color 150ms; }
-  a.icon-linkedin:hover {
-    color: #005582; }
 
 .logo {
   font-size: 3.58318rem;
@@ -1050,10 +994,8 @@ a.icon-linkedin {
   @media (min-width: 480px) {
     .siteFooter {
       margin-top: 3rem; } }
-  .siteFooter [class^="icon-"] {
-    font-size: 1.728rem; }
-    .siteFooter [class^="icon-"]:not(:last-of-type) {
-      margin-right: 1.5rem; }
+  .siteFooter a:not(:last-of-type) .icon {
+    margin-right: 1.5rem; }
 
 .contentBox {
   opacity: 0;
