@@ -87,6 +87,7 @@ h1, h2 { font-family: 'Permanent Marker', cursive; }
   background-color: getColor(background, light);
   border-top: 1px solid darken(getColor(background, light), 5%);
   font-size: .75rem;
+  margin-top: $spacing-m;
   padding-bottom: $spacing-s;
   padding-top: $spacing-s;
   text-align: center;
@@ -326,8 +327,8 @@ h2 {
 }
 
 .box {
-  background-color: #EDF1F2;
-  border: 1px solid #9CA6AF;
+  background-color: darken(getColor(background, light), 5%);
+  border: 1px solid darken(getColor(background, light), 17.5%);
   margin-bottom: $spacing;
   padding-bottom: $spacing;
   padding-top: $spacing;

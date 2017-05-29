@@ -913,6 +913,7 @@ h1, h2 {
   background-color: #f7f7f7;
   border-top: 1px solid #eaeaea;
   font-size: .75rem;
+  margin-top: 3rem;
   padding-bottom: 1.5rem;
   padding-top: 1.5rem;
   text-align: center; }
@@ -1544,8 +1545,8 @@ h2 {
   margin-top: 3rem; }
 
 .box {
-  background-color: #EDF1F2;
-  border: 1px solid #9CA6AF;
+  background-color: #eaeaea;
+  border: 1px solid #cacaca;
   margin-bottom: 15px;
   padding-bottom: 15px;
   padding-top: 15px;
