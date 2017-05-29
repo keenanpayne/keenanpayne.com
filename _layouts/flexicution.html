@@ -4,21 +4,339 @@ layout: flexicution
 
 {% include header.html %}
 
-<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-
   <!-- <main container>
     {{ content }}
   </main> -->
 
-<section class="projectHead">
-  <h1 class="projectHead-title">Flexicution</h1>
+<section class="flexHead">
+  <h1 class="flexHead-title">Flexicution</h1>
 
-  <p class="projectHead-subtitle">
-    <a href="https://www.youtube.com/watch?v=M2NIMHVmGwk" target="_blank">This the type of grid they said they really wanted. So I gave them this right here, now go build something.</a>
+  <p class="flexHead-subtitle">
+    <a href="https://www.youtube.com/watch?v=M2NIMHVmGwk" target="_blank" title="Everything I do you know I do it for the squad">This the type of grid they said they really wanted. So I gave them this right here, now go build something.</a>
   </p>
 
-  <nav class="projectHead-nav">
-    <a class="projectHead-nav-item" href="">Download</a>
-    <a class="projectHead-nav-item" href="">GitHub</a>
+  <nav class="flexHead-nav">
+    <a class="flexHead-nav-item" href="">Download</a>
+    <a class="flexHead-nav-item" href="">GitHub</a>
   </nav>
+</section>
+
+<section class="container">
+  <h2>Fluid Layout</h2>
+
+  <div class="row">
+    <div class="col-xsmall-12">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xsmall-1">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-11">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xsmall-2">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-10">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xsmall-3">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-9">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xsmall-4">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-8">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xsmall-5">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-7">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xsmall-6">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-6">
+      <div class="box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Responsive Layout</h2>
+
+  <div class="row">
+    <div class="col-xsmall-12 col-small-6 col-medium-3">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-12 col-small-6 col-medium-3">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-12 col-small-6 col-medium-3">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-12 col-small-6 col-medium-3">
+      <div class="box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Offsets</h2>
+
+  <div class="row">
+    <div class="col-xsmall-1 col-small-offset-11">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-2 col-small-offset-10">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-3 col-small-offset-9">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-4 col-small-offset-8">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-5 col-small-offset-7">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-6 col-small-offset-6">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-7 col-small-offset-5">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-8 col-small-offset-4">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-9 col-small-offset-3">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-10 col-small-offset-2">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-11 col-small-offset-1">
+      <div class="box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Nested Grids</h2>
+
+  <div class="row">
+    <div class="col-xsmall-6">
+      <div class="box">
+        <div class="row">
+          <div class="col-xsmall-6">
+            <div class="box"></div>
+          </div>
+
+          <div class="col-xsmall-6">
+            <div class="box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xsmall-6">
+      <div class="box">
+        <div class="row">
+          <div class="col-xsmall-4">
+            <div class="box"></div>
+          </div>
+
+          <div class="col-xsmall-4">
+            <div class="box"></div>
+          </div>
+
+          <div class="col-xsmall-4">
+            <div class="box"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Alignment</h2>
+
+  <p><code>-[size]-start</code></p>
+
+  <div class="row -xsmall-start">
+    <div class="col-xsmall-6">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <p><code>-[size]-center</code></p>
+
+  <div class="row -xsmall-center">
+    <div class="col-xsmall-6">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <p><code>-[size]-end</code></p>
+
+  <div class="row -xsmall-end">
+    <div class="col-xsmall-6">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <p>Here's an example of adjusting horizontal alignment based on viewport size.</p>
+
+  <div class="row -xsmall-center -medium-end -xlarge-start">
+    <div class="col-xsmall-6">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <p><code>-[size]-top</code></p>
+
+  <div class="row -xsmall-top">
+    <div class="col-xsmall-6">
+      <div class="box" style="min-height: 100px;"></div>
+    </div>
+
+    <div class="col-xsmall-6">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <p><code>-[size]-middle</code></p>
+
+  <div class="row -xsmall-middle">
+    <div class="col-xsmall-6">
+      <div class="box" style="min-height: 100px;"></div>
+    </div>
+
+    <div class="col-xsmall-6">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <p><code>-[size]-bottom</code></p>
+
+  <div class="row -xsmall-bottom">
+    <div class="col-xsmall-6">
+      <div class="box" style="min-height: 100px;"></div>
+    </div>
+
+    <div class="col-xsmall-6">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <p>Here's an example of adjusting vertical alignment based on viewport size.</p>
+
+  <div class="row -xsmall-bottom -medium-middle -xlarge-top">
+    <div class="col-xsmall-6">
+      <div class="box" style="min-height: 100px;"></div>
+    </div>
+
+    <div class="col-xsmall-6">
+      <div class="box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Distribution</h2>
+
+  <p><code>-[size]-space-around</code></p>
+
+  <div class="row -xsmall-space-around">
+    <div class="col-xsmall-2">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-2">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-2">
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <p><code>-[size]-space-between</code></p>
+
+  <div class="row -xsmall-space-between">
+    <div class="col-xsmall-2">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-2">
+      <div class="box"></div>
+    </div>
+
+    <div class="col-xsmall-2">
+      <div class="box"></div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Ordering</h2>
+
+  <p><code>-row-reverse</code></p>
+
+  <div class="row -row-reverse">
+    <div class="col-xsmall-4">
+      <div class="box">Column 1</div>
+    </div>
+
+    <div class="col-xsmall-4">
+      <div class="box">Column 2</div>
+    </div>
+
+    <div class="col-xsmall-4">
+      <div class="box">Column 3</div>
+    </div>
+  </div>
 </section>

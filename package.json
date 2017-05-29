@@ -22,6 +22,9 @@
     "build": "watch \"npm run build:sass && npm run build:minify\" src",
     "build:minify": "cssmin dist/site.css > dist/site.min.css",
     "build:sass": "concisecss compile src/site.scss dist/site.css",
+    "flex": "watch \"npm run flex:sass && npm run flex:minify\" src",
+    "flex:minify": "cssmin dist/flex.css > dist/flex.min.css",
+    "flex:sass": "concisecss compile src/flex.scss dist/flex.css",
     "webp": "node webp.js"
   }
 }

@@ -6,7 +6,7 @@
 // Project Header
 // --------------
 
-.projectHead {
+.flexHead {
   background-color: darken(getColor(background, dark), 5%);
   margin-top: 0;
   padding-bottom: $spacing-l;
@@ -19,12 +19,11 @@
   }
 }
 
-.projectHead-title {
+.flexHead-title {
   color: white;
   font-family: 'Permanent Marker', cursive;
   font-size: typeScale(9);
   margin-top: 0;
-  text-shadow: 2px 2px 0 black;
 
   @media (--small) {
     font-size: typeScale(10);
@@ -35,7 +34,7 @@
   }
 }
 
-.projectHead-subtitle {
+.flexHead-subtitle {
   color: white;
   font-size: typeScale(2);
   font-weight: 300;
@@ -55,9 +54,9 @@
   }
 }
 
-.projectHead-nav { margin-top: $spacing-m; }
+.flexHead-nav { margin-top: $spacing-m; }
 
-.projectHead-nav-item {
+.flexHead-nav-item {
   border: 2px solid white;
   color: white;
   font-size: typeScale(2);
