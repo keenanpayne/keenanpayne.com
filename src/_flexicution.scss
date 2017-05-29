@@ -24,6 +24,7 @@
   font-family: 'Permanent Marker', cursive;
   font-size: typeScale(9);
   margin-top: 0;
+  text-shadow: 2px 2px 0 black;
 
   @media (--small) {
     font-size: typeScale(10);
@@ -46,6 +47,11 @@
   @media (--small) {
     font-size: typeScale(3);
     max-width: 550px;
+  }
+
+  a {
+    &,
+    &:hover { color: white; }
   }
 }
 

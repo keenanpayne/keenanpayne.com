@@ -1378,7 +1378,8 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   color: white;
   font-family: 'Permanent Marker', cursive;
   font-size: 3.58318rem;
-  margin-top: 0; }
+  margin-top: 0;
+  text-shadow: 2px 2px 0 black; }
   @media (min-width: 480px) {
     .projectHead-title {
       font-size: 4.29982rem; } }
@@ -1398,6 +1399,8 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
     .projectHead-subtitle {
       font-size: 1.2rem;
       max-width: 550px; } }
+  .projectHead-subtitle a, .projectHead-subtitle a:hover {
+    color: white; }
 
 .projectHead-nav {
   margin-top: 3rem; }
