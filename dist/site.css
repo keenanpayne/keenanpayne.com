@@ -1362,3 +1362,33 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   to {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
+
+.projectHead {
+  background-color: #32373d;
+  margin-top: 0;
+  padding-bottom: 4.5rem;
+  padding-top: 4.5rem;
+  text-align: center; }
+  @media (min-width: 480px) {
+    .projectHead {
+      padding-bottom: 6rem;
+      padding-top: 6rem; } }
+
+.projectHead-title {
+  color: white;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 3.58318rem; }
+  @media (min-width: 768px) {
+    .projectHead-title {
+      font-size: 6.19174rem; } }
+
+.projectHead-subtitle {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-top: 0.75rem; }
+  @media (min-width: 480px) {
+    .projectHead-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 550px; } }
