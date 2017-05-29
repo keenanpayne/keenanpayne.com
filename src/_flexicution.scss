@@ -3,6 +3,13 @@
 // ==================================================
 
 //
+// Typography
+// ----------
+
+h1, h2 { font-family: 'Permanent Marker', cursive; }
+
+
+//
 // Project Header
 // --------------
 
@@ -21,7 +28,6 @@
 
 .flexHead-title {
   color: white;
-  font-family: 'Permanent Marker', cursive;
   font-size: typeScale(9);
   margin-top: 0;
 
@@ -70,4 +76,262 @@
   @media (--small) {
     font-size: typeScale(3);
   }
+}
+
+
+//
+// Footer
+// ------
+
+.flexFooter {
+  background-color: getColor(background, light);
+  border-top: 1px solid darken(getColor(background, light), 5%);
+  font-size: .75rem;
+  padding-bottom: $spacing-s;
+  padding-top: $spacing-s;
+  text-align: center;
+}
+
+
+
+
+//
+// Flexicution Library
+// -------------------
+
+//
+// Variables
+// =============================================================================
+
+// Breakpoints
+$media-xsmall-min:   480px;
+$media-small-min:    768px;
+$media-medium-min:   960px;
+$media-large-min:   1120px;
+$media-xlarge-min:  1280px;
+
+// Grid settings
+$grid-columns: 12;
+$grid-gutter-width: 32px;
+
+
+
+
+//
+// Mixins
+// =============================================================================
+// Generate semantic grid columns with these mixins.
+
+//
+// make-row()
+// ----------
+// Creates a wrapper for a series of columns
+
+@mixin make-row($gutter: $grid-gutter-width) {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left:  ceil($gutter / -2);
+  margin-right: floor($gutter / -2);
+
+  &.-row-reverse { flex-direction: row-reverse; }
+}
+
+
+//
+// make-column()
+// -------------
+// Generates semantic columns for a given width and viewport size
+
+@mixin make-column($columns, $media-query: null, $gutter: $grid-gutter-width) {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding-left:  ($gutter / 2);
+  padding-right: ($gutter / 2);
+  position: relative;
+
+  @if ($media-query != null) {
+    @media (min-width: $media-query) {
+      flex-basis: percentage($columns / $grid-columns);
+      max-width: percentage($columns / $grid-columns);
+    }
+  } @else {
+    flex-basis: percentage($columns / $grid-columns);
+    max-width: percentage($columns / $grid-columns);
+  }
+}
+
+
+//
+// make-column-offset()
+// --------------------
+
+@mixin make-column-offset($columns, $media-query: null) {
+  @if ($media-query != null) {
+    @media (min-width: $media-query) {
+      margin-left: percentage($columns / $grid-columns);
+    }
+  } @else {
+    margin-left: percentage($columns / $grid-columns);
+  }
+}
+
+
+
+
+//
+// Grid Generation Mixins
+// =============================================================================
+
+//
+// calc-grid-column()
+// ------------------
+// Helper mixin used by `loop-grid-columns()` to generate semantic column classes
+
+@mixin calc-grid-column($index, $class, $type) {
+  @if ($type == width) and ($index > 0) {
+    .col-#{$class}-#{$index} {
+      flex-basis: percentage($index / $grid-columns);
+      max-width: percentage($index / $grid-columns);
+    }
+  }
+
+  @if ($type == offset) {
+    .col-#{$class}-offset-#{$index} {
+      margin-left: percentage($index / $grid-columns);
+    }
+  }
+}
+
+
+//
+// loop-grid-columns()
+// -------------------
+// Helper mixin used by `make-grid()` to loop over the `calc-grid-column()` mixin
+
+@mixin loop-grid-columns($columns, $class, $type) {
+  @for $i from 0 through $columns {
+    @include calc-grid-column($i, $class, $type);
+  }
+}
+
+
+//
+// make-grid()
+// -----------
+// Generate grid classes and modifiers
+
+@mixin make-grid($class) {
+  @include loop-grid-columns($grid-columns, $class, width);
+  @include loop-grid-columns($grid-columns, $class, offset);
+
+  // Breakpoint-specific column modifiers
+  .-#{$class}-start {
+    justify-content: flex-start;
+    text-align: start;
+  }
+
+  .-#{$class}-center {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .-#{$class}-end {
+    justify-content: flex-end;
+    text-align: end;
+  }
+
+  .-#{$class}-top { align-items: flex-start; }
+
+  .-#{$class}-middle { align-items: center; }
+
+  .-#{$class}-bottom { align-items: flex-end; }
+
+  .-#{$class}-space-around { justify-content: space-around; }
+
+  .-#{$class}-space-between { justify-content: space-between; }
+}
+
+
+
+
+//
+// Styles
+// =============================================================================
+
+.container {
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+
+  @media (min-width: $media-xlarge-min) {
+    width: 1220px;
+  }
+}
+
+.row { @include make-row; }
+
+[class*="col-"] {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding-left:  ($grid-gutter-width / 2);
+  padding-right: ($grid-gutter-width / 2);
+  position: relative;
+}
+
+
+//
+// Generate Classes
+// ----------------
+
+// Extra-small
+@include make-grid(xsmall);
+
+// Small
+@media (min-width: $media-small-min) {
+  @include make-grid(small);
+}
+
+// Medium
+@media (min-width: $media-medium-min) {
+  @include make-grid(medium);
+}
+
+// Large
+@media (min-width: $media-large-min) {
+  @include make-grid(large);
+}
+
+// Extra-large
+@media (min-width: $media-xlarge-min) {
+  @include make-grid(xlarge);
+}
+
+
+
+
+//
+// Demo-Specific Styles
+// =============================================================================
+
+$spacing: 15px;
+
+h2 {
+  font-size: typeScale(6);
+  margin-bottom: $spacing-s;
+  margin-top: $spacing-m;
+}
+
+.box {
+  background-color: #EDF1F2;
+  border: 1px solid #9CA6AF;
+  margin-bottom: $spacing;
+  padding-bottom: $spacing;
+  padding-top: $spacing;
+  text-align: center;
+
+  .box { margin-bottom: 0; }
 }
