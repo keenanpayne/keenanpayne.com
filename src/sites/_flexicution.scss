@@ -6,7 +6,7 @@
 // Typography
 // ----------
 
-h1, h2 { font-family: 'Permanent Marker', cursive; }
+h1 { font-family: 'Permanent Marker', cursive; }
 
 
 //
@@ -76,6 +76,35 @@ h1, h2 { font-family: 'Permanent Marker', cursive; }
   @media (--small) {
     font-size: typeScale(3);
   }
+}
+
+
+//
+// Instructions
+// ------------
+
+.instructions {
+  background-color: getColor(background, light);
+  border-bottom: 1px solid darken(getColor(background, light), 5%);
+  margin-top: 0;
+}
+
+.instructions-header:first-of-type {
+  margin-top: 0;
+  padding-top: $spacing-m;
+}
+
+
+//
+// Code Snippets
+// -------------
+
+.highlight {
+  border-bottom: 1px solid darken(getColor(background, light), 7.5%);
+  border-top: 1px solid darken(getColor(background, light), 7.5%);
+  line-height: 1.65;
+  padding-bottom: $spacing-xs;
+  padding-top: $spacing-xs;
 }
 
 

@@ -8,5 +8,9 @@
 // Concise Core
 @import "node_modules/concise.css/concise";
 
-// Base Website
-@import "base";
+// Site-Specific
+@import "sites/base";
+
+// Common Styles
+@import "base/base";
+@import "base/type";

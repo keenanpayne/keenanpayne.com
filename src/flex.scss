@@ -8,5 +8,9 @@
 // Concise Core
 @import "node_modules/concise.css/concise";
 
-// Flexicution Project
-@import "flexicution";
+// Site-Specific
+@import "sites/flexicution";
+
+// Common Styles
+@import "base/base";
+@import "base/type";

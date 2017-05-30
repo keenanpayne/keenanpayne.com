@@ -2,25 +2,6 @@
 // Base
 // ==================================================
 
-:root {
-  background-color: getColor(background, body);
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (--extra-large) {
-    font-size: $font-size-extra-large + px;
-  }
-
-  @media (--very-large) {
-    font-size: $font-size-very-large + px;
-  }
-
-  @media (--hella-large) {
-    font-size: $font-size-hella-large + px;
-  }
-}
-
 html { border-top: 3px solid getColor(background, dark); }
 
 body {
@@ -44,9 +25,6 @@ img {
 //
 // Body Copy
 // ---------
-
-p,
-h2, h3 { letter-spacing: -.35px; }
 
 h2, h3 {
   &:hover {
@@ -176,7 +154,7 @@ h2, h3 {
   }
 
   a:not(:last-of-type) .icon {
-    margin-right: $spacing-xs; 
+    margin-right: $spacing-xs;
 
     @media (--small) {
       margin-right: $spacing-s;

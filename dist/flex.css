@@ -851,7 +851,7 @@ table {
   ol li {
     content: "&raquo; "; } }
 
-h1, h2 {
+h1 {
   font-family: 'Permanent Marker', cursive; }
 
 .flexHead {
@@ -908,6 +908,22 @@ h1, h2 {
   @media (min-width: 480px) {
     .flexHead-nav-item {
       font-size: 1.2rem; } }
+
+.instructions {
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #eaeaea;
+  margin-top: 0; }
+
+.instructions-header:first-of-type {
+  margin-top: 0;
+  padding-top: 3rem; }
+
+.highlight {
+  border-bottom: 1px solid #e4e4e4;
+  border-top: 1px solid #e4e4e4;
+  line-height: 1.65;
+  padding-bottom: 0.75rem;
+  padding-top: 0.75rem; }
 
 .flexFooter {
   background-color: #f7f7f7;
@@ -1553,3 +1569,22 @@ h2 {
   text-align: center; }
   .box .box {
     margin-bottom: 0; }
+
+:root {
+  background-color: #fafafa;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+  @media (min-width: 1100px) {
+    :root {
+      font-size: 20px; } }
+  @media (min-width: 1460px) {
+    :root {
+      font-size: 24px; } }
+  @media (min-width: 1800px) {
+    :root {
+      font-size: 28px; } }
+
+p,
+h2, h3 {
+  letter-spacing: -.35px; }
