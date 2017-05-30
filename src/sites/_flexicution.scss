@@ -14,7 +14,7 @@ h1 { font-family: 'Permanent Marker', cursive; }
 // --------------
 
 .flexHead {
-  background-color: darken(getColor(background, dark), 5%);
+  background-color: darken(getColor(background, dark), 7.5%);
   margin-top: 0;
   padding-bottom: $spacing-l;
   padding-top: $spacing-l;
@@ -92,19 +92,6 @@ h1 { font-family: 'Permanent Marker', cursive; }
 .instructions-header:first-of-type {
   margin-top: 0;
   padding-top: $spacing-m;
-}
-
-
-//
-// Code Snippets
-// -------------
-
-.highlight {
-  border-bottom: 1px solid darken(getColor(background, light), 7.5%);
-  border-top: 1px solid darken(getColor(background, light), 7.5%);
-  line-height: 1.65;
-  padding-bottom: $spacing-xs;
-  padding-top: $spacing-xs;
 }
 
 
