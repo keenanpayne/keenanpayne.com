@@ -16,7 +16,7 @@ h2, h3, h4, h5 { font-family: 'Varela Round', sans-serif; }
 // --------------
 
 .flexHead {
-  background-color: darken(getColor(background, dark), 7.5%);
+  background-color: getColor(flexicution, header);
   margin-top: 0;
   padding-bottom: $spacing-l;
   padding-top: $spacing-l;
@@ -87,7 +87,7 @@ h2, h3, h4, h5 { font-family: 'Varela Round', sans-serif; }
 
 .instructions {
   background-color: getColor(background, light);
-  border-bottom: 1px solid darken(getColor(background, light), 5%);
+  border-bottom: 1px solid getColor(flexicution, border);
   margin-top: 0;
 }
 
@@ -103,7 +103,7 @@ h2, h3, h4, h5 { font-family: 'Varela Round', sans-serif; }
 
 .flexFooter {
   background-color: getColor(background, light);
-  border-top: 1px solid darken(getColor(background, light), 5%);
+  border-top: 1px solid getColor(flexicution, border);
   font-size: .75rem;
   margin-top: $spacing-m;
   padding-bottom: $spacing-s;
