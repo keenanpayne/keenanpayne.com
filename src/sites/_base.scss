@@ -146,7 +146,7 @@ h2, h3 {
   background-color: getColor(background, light);
   border-top: 1px solid darken(getColor(background, light), 5%);
   margin-top: $spacing-xs;
-  padding: 2.5rem 2rem;
+  padding: 2.5rem .5rem;
 
   @media (--small) {
     margin-top: $spacing-m;
@@ -165,9 +165,14 @@ h2, h3 {
 .siteFooter-me {
   border-radius: 50%;
   display: block;
-  height: 70px;
+  height: 100px;
   margin: 0 auto $spacing-s;
-  width: 70px;
+  width: 100px;
+
+  @media (--small) {
+    height: 70px;
+    width: 70px;
+  }
 
   @media (--large) {
     height: 100px;

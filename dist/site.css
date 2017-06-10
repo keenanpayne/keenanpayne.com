@@ -969,7 +969,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   background-color: #f7f7f7;
   border-top: 1px solid #eaeaea;
   margin-top: 0.75rem;
-  padding: 2.5rem 2rem; }
+  padding: 2.5rem .5rem; }
   @media (min-width: 480px) {
     .siteFooter {
       margin-top: 3rem; } }
@@ -982,9 +982,13 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
 .siteFooter-me {
   border-radius: 50%;
   display: block;
-  height: 70px;
+  height: 100px;
   margin: 0 auto 1.5rem;
-  width: 70px; }
+  width: 100px; }
+  @media (min-width: 480px) {
+    .siteFooter-me {
+      height: 70px;
+      width: 70px; } }
   @media (min-width: 960px) {
     .siteFooter-me {
       height: 100px;
