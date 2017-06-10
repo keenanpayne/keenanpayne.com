@@ -147,7 +147,6 @@ h2, h3 {
   border-top: 1px solid darken(getColor(background, light), 5%);
   margin-top: $spacing-xs;
   padding: 2.5rem 2rem;
-  text-align: center;
 
   @media (--small) {
     margin-top: $spacing-m;
@@ -160,6 +159,36 @@ h2, h3 {
       margin-right: $spacing-s;
     }
   }
+}
+
+// My image
+.siteFooter-me {
+  border-radius: 50%;
+  display: block;
+  height: 70px;
+  margin: 0 auto $spacing-s;
+  width: 70px;
+
+  @media (--large) {
+    height: 100px;
+    width: 100px;
+  }
+
+  @media (--hella-large) {
+    height: 115px;
+    width: 115px;
+  }
+
+  @media (--very-large) {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+// Description text
+.siteFooter-text-description {
+  margin-bottom: $spacing-m;
+  margin-top: $spacing-xxs;
 }
 
 
