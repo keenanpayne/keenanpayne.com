@@ -317,6 +317,10 @@ h2, h3 {
     margin-bottom: $spacing-m;
   }
 
+  &.-center {
+    margin: 0 auto;
+  }
+
   span {
     border-bottom: 3px solid rgba(getColor(background, dark), .2);
     display: block;
@@ -325,8 +329,6 @@ h2, h3 {
     &:first-of-type {
       border-bottom: 3px solid getColor(background, dark);
     }
-
-    &:nth-child(n+8) { display: none; }
 
     @for $i from 1 through 15 {
       // If even

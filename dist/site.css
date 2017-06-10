@@ -1100,13 +1100,14 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   .portfolioList {
     margin-bottom: 3rem; } }
 
+.portfolioList.-center {
+  margin: 0 auto; }
+
 .portfolioList span {
   border-bottom: 3px solid rgba(50, 55, 61, 0.2);
   display: block; }
   .portfolioList span:first-of-type {
     border-bottom: 3px solid #32373d; }
-  .portfolioList span:nth-child(n+8) {
-    display: none; }
   .portfolioList span.-animated:nth-of-type(1) {
     -webkit-animation-delay: 0.2s;
             animation-delay: 0.2s; }
