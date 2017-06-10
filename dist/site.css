@@ -48,7 +48,7 @@ template,
 
 :root {
   box-sizing: border-box;
-  font-family: "Hind", "Arial", sans-serif;
+  font-family: "Hind", "Cambria", "Arial", sans-serif;
   line-height: 1.5;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -407,7 +407,7 @@ h6 {
 
 h1, h2, h3, h4, h5, h6 {
   color: #333;
-  font-family: "Playfair Display", "Times New Roman", Times, serif;
+  font-family: "Playfair Display", "Times New Roman", "Times", serif;
   line-height: 1.3; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     color: inherit;
@@ -881,7 +881,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
 
 .heading-subtext {
   display: inline-block;
-  font-family: "Hind", "Arial", sans-serif;
+  font-family: "Hind", "Cambria", "Arial", sans-serif;
   font-style: normal;
   font-size: .75rem;
   font-weight: 400;
