@@ -1027,8 +1027,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
     margin-top: 0; }
 
 .masthead {
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding: 2rem 0;
   -webkit-transition: padding 150ms;
   transition: padding 150ms; }
   @media (min-width: 480px) {

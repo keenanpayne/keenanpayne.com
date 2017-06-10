@@ -229,8 +229,7 @@ h2, h3 {
 
 .masthead {
   // opacity: 0;
-  padding-bottom: 2rem;
-  padding-top: 2rem;
+  padding: 2rem 0;
   transition: padding $transition-duration;
 
   @media (--small) {
