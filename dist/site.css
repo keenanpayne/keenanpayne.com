@@ -985,7 +985,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   height: 100px;
   margin: 0 auto 1.5rem;
   width: 100px; }
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     .siteFooter-me {
       height: 70px;
       width: 70px; } }
@@ -1004,7 +1004,8 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
 
 .siteFooter-text-description {
   margin-bottom: 3rem;
-  margin-top: 0.375rem; }
+  margin-top: 0.375rem;
+  max-width: 600px; }
 
 .contentBox {
   padding: 2rem;

@@ -169,7 +169,7 @@ h2, h3 {
   margin: 0 auto $spacing-s;
   width: 100px;
 
-  @media (--small) {
+  @media (--medium) {
     height: 70px;
     width: 70px;
   }
@@ -194,6 +194,7 @@ h2, h3 {
 .siteFooter-text-description {
   margin-bottom: $spacing-m;
   margin-top: $spacing-xxs;
+  max-width: 600px;
 }
 
 
