@@ -1096,7 +1096,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   -webkit-animation-fill-mode: forwards, forwards;
           animation-fill-mode: forwards, forwards; }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .portfolioList {
     margin-bottom: 3rem; } }
 
