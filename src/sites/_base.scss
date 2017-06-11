@@ -196,7 +196,7 @@ h2, h3 {
 .siteFooter-description {
   margin-bottom: $spacing-s;
   margin-top: $spacing-xxs;
-  max-width: 650px;
+  max-width: $content-limit;
 }
 
 
@@ -429,6 +429,7 @@ $tile-spacing: 10px;
 
 .tile-description {
   margin-bottom: $spacing-s;
+  max-width: $content-limit;
   opacity: 0;
 
   &.-animated {

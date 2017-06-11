@@ -1219,6 +1219,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
 
 .tile-description {
   margin-bottom: 1.5rem;
+  max-width: 650px;
   opacity: 0; }
 
 .tile-title {
