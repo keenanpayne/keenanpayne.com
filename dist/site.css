@@ -1016,7 +1016,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   padding: 2rem;
   -webkit-transition: background-color 150ms;
   transition: background-color 150ms; }
-  .contentBox:hover {
+  .contentBox.-is-link:hover {
     background-color: rgba(235, 225, 211, 0.3); }
   .contentBox.-animated {
     -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
