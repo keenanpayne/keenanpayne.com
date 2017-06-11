@@ -1009,6 +1009,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   max-width: 600px; }
 
 .contentBox {
+  opacity: 0;
   padding: 2rem;
   -webkit-transition: background-color 150ms;
   transition: background-color 150ms; }
@@ -1033,6 +1034,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
     margin-top: 0; }
 
 .masthead {
+  opacity: 0;
   padding: 2rem 0;
   -webkit-transition: padding 150ms;
   transition: padding 150ms; }
@@ -1106,7 +1108,8 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
 
 .portfolioList span {
   border-bottom: 3px solid rgba(50, 55, 61, 0.2);
-  display: block; }
+  display: block;
+  opacity: 0; }
   .portfolioList span:first-of-type {
     border-bottom: 3px solid #32373d; }
   .portfolioList span.-animated:nth-of-type(1) {
@@ -1185,6 +1188,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   display: block;
   height: 100%;
   margin-bottom: 0.75rem;
+  opacity: 0;
   padding-bottom: 0.75rem;
   -webkit-transition: width 300ms;
   transition: width 300ms;
@@ -1207,10 +1211,12 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
         margin-top: 0; } }
 
 .tile-header {
-  margin-bottom: 0.75rem; }
+  margin-bottom: 0.75rem;
+  opacity: 0; }
 
 .tile-description {
-  margin-bottom: 1.5rem; }
+  margin-bottom: 1.5rem;
+  opacity: 0; }
 
 .tile-title {
   color: #666;
@@ -1275,33 +1281,35 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   -webkit-animation-delay: 2.55s;
           animation-delay: 2.55s; }
 
-@media (max-width: 768px) {
-  .lab {
-    margin-bottom: 1.5rem; } }
+.lab {
+  opacity: 0; }
+  @media (max-width: 768px) {
+    .lab {
+      margin-bottom: 1.5rem; } }
+  .lab.-animated {
+    -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
+            animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
+  .lab.-animate-stagger-1 {
+    -webkit-animation-delay: .5s;
+            animation-delay: .5s; }
+  .lab.-animate-stagger-2 {
+    -webkit-animation-delay: .7s;
+            animation-delay: .7s; }
 
-.lab.-animated {
-  -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
-          animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
+.contact {
+  opacity: 0; }
+  .contact.-animated {
+    -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
+            animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
 
-.lab.-animate-stagger-1 {
-  -webkit-animation-delay: .5s;
-          animation-delay: .5s; }
-
-.lab.-animate-stagger-2 {
-  -webkit-animation-delay: .7s;
-          animation-delay: .7s; }
-
-.contact.-animated {
-  -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
-          animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
-
-@media (max-width: 768px) {
-  .wufoo {
-    margin-top: 3rem; } }
-
-.wufoo.-animated {
-  -webkit-animation: fadeIn .5s .7s forwards, moveUp .75s .7s ease-out forwards;
-          animation: fadeIn .5s .7s forwards, moveUp .75s .7s ease-out forwards; }
+.wufoo {
+  opacity: 0; }
+  @media (max-width: 768px) {
+    .wufoo {
+      margin-top: 3rem; } }
+  .wufoo.-animated {
+    -webkit-animation: fadeIn .5s .7s forwards, moveUp .75s .7s ease-out forwards;
+            animation: fadeIn .5s .7s forwards, moveUp .75s .7s ease-out forwards; }
 
 @-webkit-keyframes fadeIn {
   from {

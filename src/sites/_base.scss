@@ -209,7 +209,7 @@ h2, h3 {
 // -----------
 
 .contentBox {
-  // opacity: 0;
+  opacity: 0;
   padding: 2rem;
   transition: background-color $transition-duration;
 
@@ -234,7 +234,7 @@ h2, h3 {
 // --------
 
 .masthead {
-  // opacity: 0;
+  opacity: 0;
   padding: 2rem 0;
   transition: padding $transition-duration;
 
@@ -324,7 +324,7 @@ h2, h3 {
   span {
     border-bottom: 3px solid rgba(getColor(background, dark), .2);
     display: block;
-    // opacity: 0;
+    opacity: 0;
 
     &:first-of-type {
       border-bottom: 3px solid getColor(background, dark);
@@ -386,7 +386,7 @@ $tile-spacing: 10px;
   display: block;
   height: 100%;
   margin-bottom: $spacing-xs;
-  // opacity: 0;
+  opacity: 0;
   padding-bottom: $spacing-xs;
   transition: width $transition-duration-long;
   width: 100%;
@@ -416,7 +416,7 @@ $tile-spacing: 10px;
 
 .tile-header {
   margin-bottom: $spacing-xs;
-  // opacity: 0;
+  opacity: 0;
 
   &.-animated {
     @extend %tile-animation;
@@ -425,7 +425,7 @@ $tile-spacing: 10px;
 
 .tile-description {
   margin-bottom: $spacing-s;
-  // opacity: 0;
+  opacity: 0;
 
   &.-animated {
     @extend %tile-animation;
@@ -485,7 +485,7 @@ $tile-spacing: 10px;
 // ------------
 
 .lab {
-  // opacity: 0;
+  opacity: 0;
 
   @media (--medium-max) {
     margin-bottom: $spacing-s;
@@ -504,13 +504,13 @@ $tile-spacing: 10px;
 // -------
 
 .contact {
-  // opacity: 0;
+  opacity: 0;
 
   &.-animated { animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
 }
 
 .wufoo {
-  // opacity: 0;
+  opacity: 0;
 
   @media (--medium-max) {
     margin-top: $spacing-m;
