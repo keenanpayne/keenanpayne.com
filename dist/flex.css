@@ -48,7 +48,7 @@ template,
 
 :root {
   box-sizing: border-box;
-  font-family: "Hind", "Arial", sans-serif;
+  font-family: "Hind", "Cambria", "Arial", sans-serif;
   line-height: 1.5;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -407,7 +407,7 @@ h6 {
 
 h1, h2, h3, h4, h5, h6 {
   color: #333;
-  font-family: "Playfair Display", Helvetica, Arial, serif;
+  font-family: "Playfair Display", "Times New Roman", "Times", serif;
   line-height: 1.3; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     color: inherit;
@@ -851,11 +851,8 @@ table {
   ol li {
     content: "&raquo; "; } }
 
-h1 {
+h1, h2, h3, h4 {
   font-family: 'Permanent Marker', cursive; }
-
-h2, h3, h4, h5 {
-  font-family: 'Varela Round', sans-serif; }
 
 .flexHead {
   background-color: #212428;
