@@ -159,12 +159,12 @@ h2, h3 {
 .siteFooter-me {
   border-radius: 50%;
   display: block;
-  height: 100px;
+  height: 125px;
   margin-left: auto;
-  width: 100px;
+  width: 125px;
 
-  @media (--small-max) {
-    margin-bottom: $spacing-m;
+  @media (--medium-max) {
+    margin-bottom: $spacing-s;
   }
 
   @media (--medium) {
@@ -190,7 +190,7 @@ h2, h3 {
 
 // Description text
 .siteFooter-description {
-  margin-bottom: $spacing-m;
+  margin-bottom: $spacing-s;
   margin-top: $spacing-xxs;
   max-width: 600px;
 }
@@ -494,6 +494,19 @@ $tile-spacing: 10px;
   &.-animate-stagger-1 { animation-delay: .5s; }
 
   &.-animate-stagger-2 { animation-delay: .7s; }
+
+  // Codepen Embed
+  iframe {
+    height: 300px;
+
+    @media (--medium) {
+      height: 400px;
+    }
+
+    @media (--very-large) {
+      height: 500px;
+    }
+  }
 }
 
 

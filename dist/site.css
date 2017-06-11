@@ -980,12 +980,12 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
 .siteFooter-me {
   border-radius: 50%;
   display: block;
-  height: 100px;
+  height: 125px;
   margin-left: auto;
-  width: 100px; }
-  @media (max-width: 480px) {
+  width: 125px; }
+  @media (max-width: 768px) {
     .siteFooter-me {
-      margin-bottom: 3rem; } }
+      margin-bottom: 1.5rem; } }
   @media (min-width: 768px) {
     .siteFooter-me {
       height: 70px;
@@ -1004,7 +1004,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
       width: 150px; } }
 
 .siteFooter-description {
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   margin-top: 0.375rem;
   max-width: 600px; }
 
@@ -1295,6 +1295,14 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   .lab.-animate-stagger-2 {
     -webkit-animation-delay: .7s;
             animation-delay: .7s; }
+  .lab iframe {
+    height: 300px; }
+    @media (min-width: 768px) {
+      .lab iframe {
+        height: 400px; } }
+    @media (min-width: 1460px) {
+      .lab iframe {
+        height: 500px; } }
 
 .contact {
   opacity: 0; }
