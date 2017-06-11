@@ -975,17 +975,17 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
     .siteFooter {
       margin-top: 3rem; } }
   .siteFooter a:not(:last-of-type) .icon {
-    margin-right: 0.75rem; }
-    @media (min-width: 480px) {
-      .siteFooter a:not(:last-of-type) .icon {
-        margin-right: 1.5rem; } }
+    margin-right: 1.5rem; }
 
 .siteFooter-me {
   border-radius: 50%;
   display: block;
   height: 100px;
-  margin: 0 auto 1.5rem;
+  margin-left: auto;
   width: 100px; }
+  @media (max-width: 480px) {
+    .siteFooter-me {
+      margin-bottom: 3rem; } }
   @media (min-width: 768px) {
     .siteFooter-me {
       height: 70px;
@@ -994,10 +994,10 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
     .siteFooter-me {
       height: 100px;
       width: 100px; } }
-  @media (min-width: 1800px) {
+  @media (min-width: 1100px) {
     .siteFooter-me {
-      height: 115px;
-      width: 115px; } }
+      height: 125px;
+      width: 125px; } }
   @media (min-width: 1460px) {
     .siteFooter-me {
       height: 150px;

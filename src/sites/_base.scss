@@ -152,13 +152,7 @@ h2, h3 {
     margin-top: $spacing-m;
   }
 
-  a:not(:last-of-type) .icon {
-    margin-right: $spacing-xs;
-
-    @media (--small) {
-      margin-right: $spacing-s;
-    }
-  }
+  a:not(:last-of-type) .icon { margin-right: $spacing-s; }
 }
 
 // My image
@@ -166,8 +160,12 @@ h2, h3 {
   border-radius: 50%;
   display: block;
   height: 100px;
-  margin: 0 auto $spacing-s;
+  margin-left: auto;
   width: 100px;
+
+  @media (--small-max) {
+    margin-bottom: $spacing-m;
+  }
 
   @media (--medium) {
     height: 70px;
@@ -179,9 +177,9 @@ h2, h3 {
     width: 100px;
   }
 
-  @media (--hella-large) {
-    height: 115px;
-    width: 115px;
+  @media (--extra-large) {
+    height: 125px;
+    width: 125px;
   }
 
   @media (--very-large) {
