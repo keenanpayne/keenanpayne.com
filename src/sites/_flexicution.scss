@@ -118,6 +118,8 @@ h1, h2, h3, h4 {
   padding-bottom: $spacing-s;
   padding-top: $spacing-s;
   text-align: center;
+
+  p { margin-bottom: 0; }
 }
 
 
@@ -164,7 +166,7 @@ $grid-gutter-width: 32px;
   margin-left:  ceil($gutter / -2);
   margin-right: floor($gutter / -2);
 
-  &.-row-reverse { flex-direction: row-reverse; }
+  &.-reverse { flex-direction: row-reverse; }
 }
 
 
@@ -173,7 +175,18 @@ $grid-gutter-width: 32px;
 // -------------
 // Generates semantic columns for a given width and viewport size
 
-@mixin make-column($columns, $media-query: null, $gutter: $grid-gutter-width) {
+@mixin make-column($columns, $gutter: $grid-gutter-width, $media-query: null, $min-max: null) {
+  $column-width: percentage($columns / $grid-columns);
+  $media-min-max: 'min';
+
+  @if ($gutter == null) {
+    $gutter: $grid-gutter-width;
+  }
+
+  @if ($min-max != null) {
+    $media-min-max: $min-max;
+  }
+
   box-sizing: border-box;
   flex: 0 0 auto;
   padding-left:  ($gutter / 2);
@@ -181,13 +194,13 @@ $grid-gutter-width: 32px;
   position: relative;
 
   @if ($media-query != null) {
-    @media (min-width: $media-query) {
-      flex-basis: percentage($columns / $grid-columns);
-      max-width: percentage($columns / $grid-columns);
+    @media (#{$media-min-max}-width: $media-query) {
+      flex-basis: $column-width;
+      max-width: $column-width;
     }
   } @else {
-    flex-basis: percentage($columns / $grid-columns);
-    max-width: percentage($columns / $grid-columns);
+    flex-basis: $column-width;
+    max-width: $column-width;
   }
 }
 
@@ -196,13 +209,20 @@ $grid-gutter-width: 32px;
 // make-column-offset()
 // --------------------
 
-@mixin make-column-offset($columns, $media-query: null) {
+@mixin make-column-offset($columns, $media-query: null, $min-max: null) {
+  $column-offset: percentage($columns / $grid-columns);
+  $media-min-max: 'min';
+
+  @if ($min-max != null) {
+    $media-min-max: $min-max;
+  }
+
   @if ($media-query != null) {
-    @media (min-width: $media-query) {
-      margin-left: percentage($columns / $grid-columns);
+    @media (#{$media-min-max}-width: $media-query) {
+      margin-left: $column-offset;
     }
   } @else {
-    margin-left: percentage($columns / $grid-columns);
+    margin-left: $column-offset;
   }
 }
 
@@ -255,7 +275,18 @@ $grid-gutter-width: 32px;
   @include loop-grid-columns($grid-columns, $class, width);
   @include loop-grid-columns($grid-columns, $class, offset);
 
+  // Adaptive column sizing
+  .col-#{$class} {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
   // Breakpoint-specific column modifiers
+  .-#{$class}-first { order: -1; }
+
+  .-#{$class}-last { order: 1; }
+
   .-#{$class}-start {
     justify-content: flex-start;
     text-align: start;
@@ -348,18 +379,39 @@ $grid-gutter-width: 32px;
 $spacing: 15px;
 
 h2 {
-  font-size: typeScale(6);
-  margin-bottom: $spacing-s;
-  margin-top: $spacing-m;
+  font-size: 2rem;
+  margin-bottom: $spacing;
+  margin-top: ($spacing * 4);
+
+  small {
+    font-size: 60%;
+    font-weight: normal;
+  }
 }
 
+p { margin-bottom: ($spacing * 2); }
+
 .box {
-  background-color: darken(getColor(background, light), 5%);
-  border: 1px solid darken(getColor(background, light), 17.5%);
+  background-color: #EDF1F2;
+  border: 1px solid #9CA6AF;
+  font-size: .875rem;
   margin-bottom: $spacing;
-  padding-bottom: $spacing;
-  padding-top: $spacing;
+  overflow: hidden;
+  padding: $spacing;
   text-align: center;
 
   .box { margin-bottom: 0; }
 }
+
+pre {
+  background-color: #fcfcfc;
+  border: 1px solid #e6e6e6;
+  border-left-width: 5px;
+  font-size: .875em;
+  overflow-x: auto;
+  padding: ($spacing / 2) ($spacing * 1.5);
+  white-space: pre;
+  word-wrap: normal;
+}
+
+code { color: #7D2727; }
