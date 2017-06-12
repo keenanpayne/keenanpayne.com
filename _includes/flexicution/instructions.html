@@ -1,0 +1,72 @@
+<section class="instructions">
+  <div class="container">
+    <h2 class="instructions-header">Instructions</h2>
+
+    <p>This is the prefered method to install Flexicution. Simply install using NPM and include in your Sass file.</p>
+
+{% highlight scss %}
+// Get Flexicution library
+npm install flexicution
+
+// Import library
+@import "node_modules/flexicution/flexicution";
+{% endhighlight %}
+
+    <h2 class="instructions-header">Setup</h2>
+
+    <p>Flexicution is as agnostic as possible in regards to your layout and pre-defined breakpoints. You can either use the semantic grid mixin to generate rows and columns for your layout and components, or you can generate responsive class names based on the breakpoints used in your project.</p>
+
+    <div class="demo">
+      <div class="row">
+        <div class="col-small-6">
+          <h4>Semantic Grid Mixin</h4>
+
+  {% highlight scss %}
+  //
+  // Generate Semantic Rows
+  // ----------------------
+  // @param $gutter - Gutter between columns. Default is `$flex-gutter-width` (30px)
+
+  @include make-row();
+
+
+  //
+  // Generate Semantic Columns
+  // -------------------------
+  // @param $columns - Number of columns to take up
+  // @param $gutter - Gutter between columns. Default is `$gutter-width` (30px)
+  // @param $media-query - Breakpoint for the column to collapse. Default is null
+  // @param $min-max - Explicitly sets the media query to be `min-width` or `max-width`. Default is `min`
+
+  @include make-column();
+  {% endhighlight %}
+        </div>
+
+        <div class="col-small-6">
+          <h4>Generating Class Names</h4>
+
+  {% highlight scss %}
+  //
+  // Generate Grid Classes
+  // ---------------------
+  // @param $class - Class name you want postfixed after `.col-`
+
+  // Extra-small
+  @include make-grid(xsmall);
+
+  // Small
+  @media (min-width: 480px) {
+    @include make-grid(small);
+  }
+  {% endhighlight %}
+        </div>
+      </div>
+    </div>
+
+    <h2 class="instructions-header">Flexbox Support</h2>
+
+    <aside class="ciu_embed" data-feature="flexbox" data-periods="future_1,current,past_1,past_2">
+      <iframe src="//caniuse.bitsofco.de/embed/index.html?feat=flexbox&amp;periods=future_1,current,past_1,past_2" frameborder="0" width="100%" height="468px"></iframe>
+    </aside>
+  </div>
+</section>
