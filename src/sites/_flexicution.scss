@@ -13,12 +13,14 @@
   word-spacing: .25px;
 }
 
-h1, h2, h3, h4 {
+h1, h2 {
   font-family: 'Permanent Marker', cursive;
   letter-spacing: 0;
 
   + p { margin-top: $spacing-xs; }
 }
+
+h3, h4, h5 { font-family: 'Overpass', sans-serif; }
 
 pre, code { background-color: transparent; }
 
