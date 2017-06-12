@@ -16,7 +16,11 @@
 h1, h2, h3, h4 {
   font-family: 'Permanent Marker', cursive;
   letter-spacing: 0;
+
+  + p { margin-top: $spacing-xs; }
 }
+
+pre, code { background-color: transparent; }
 
 
 //
@@ -97,6 +101,7 @@ h1, h2, h3, h4 {
 .instructions {
   background-color: getColor(background, light);
   border-bottom: 1px solid getColor(flexicution, border);
+  margin-bottom: $spacing-m;
   margin-top: 0;
 }
 
@@ -104,6 +109,16 @@ h1, h2, h3, h4 {
   margin-bottom: $spacing-xs;
   margin-top: 0;
   padding-top: $spacing-m;
+}
+
+
+//
+// Demos
+// -----
+
+.demo-format {
+  font-weight: 600;
+  margin-bottom: 1rem;
 }
 
 

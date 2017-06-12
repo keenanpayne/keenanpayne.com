@@ -8,14 +8,11 @@
   padding: 1rem;
 
   pre {
-    background-color: transparent;
     overflow-x: auto;
     padding: 0;
     white-space: pre;
     word-wrap: normal;
   }
-
-  code { background-color: transparent; }
 
   .c { color: #999988; font-style: italic } /* Comment */
   .err { color: #a61717; background-color: #e3d2d2 } /* Error */

@@ -48,7 +48,7 @@ npm install flexicution
 
   <p>Class names can be used to build layouts based on viewport width.</p>
 
-  <p><code>.col-[viewport size]-[column size]</code></p>
+  <p class="demo-format"><code>.col-[viewport size]-[column size]</code></p>
 
   <div class="row">
     <div class="col-xsmall-12">
@@ -174,7 +174,7 @@ npm install flexicution
     </div>
   </div>
 
-  {% highlight css %}
+  {% highlight html %}
 <div class="row">
   <div class="col-small-6"></div>
   <div class="col-small-6"></div>
@@ -186,7 +186,7 @@ npm install flexicution
 
   <p>Automatically size columns inside of a grid.</p>
 
-  <p><code>.col-[viewport size]</code></p>
+  <p class="demo-format"><code>.col-[viewport size]</code></p>
 
   <div class="row">
     <div class="col-xsmall">
@@ -210,15 +210,14 @@ npm install flexicution
     </div>
   </div>
 
-  <pre><code>
+  {% highlight html %}
 <div class="row">
     <div class="col-xsmall"></div>
     <div class="col-xsmall"></div>
     <div class="col-xsmall"></div>
     <div class="col-small"></div>
     <div class="col-medium"></div>
-</div>
-  </code></pre>
+</div>{% endhighlight %}
 </section>
 
 <section class="container">
@@ -244,7 +243,7 @@ npm install flexicution
     </div>
   </div>
 
-  <pre><code>
+  {% highlight html %}
 <div class="row">
     <div class="col-xsmall-12
                 col-small-8
@@ -252,8 +251,7 @@ npm install flexicution
                 col-large-4
                 col-xlarge-3">
     </div>
-</div>
-  </code></pre>
+</div>{% endhighlight %}
 </section>
 
 <section class="container">
@@ -261,7 +259,7 @@ npm install flexicution
 
   <p>Columns can be easily offset using class names according to viewport width.</p>
 
-  <p><code>.col-[viewport size]-offset-[offset]</code></p>
+  <p class="demo-format"><code>.col-[viewport size]-offset-[offset]</code></p>
 
   <div class="row">
     <div class="col-xsmall-1 col-small-offset-11">
@@ -309,11 +307,10 @@ npm install flexicution
     </div>
   </div>
 
-  <pre><code>
+  {% highlight html %}
 <div class="row">
     <div class="col-small-6 col-small-offset-2"></div>
-</div>
-  </code></pre>
+</div>{% endhighlight %}
 </section>
 
 <section class="container">
@@ -355,7 +352,7 @@ npm install flexicution
     </div>
   </div>
 
-  <pre><code>
+  {% highlight html %}
 <div class="row">
     <div class="col-small-6">
         <div class="row">
@@ -363,8 +360,7 @@ npm install flexicution
           <div class="col-small-6"></div>
         </div>
     </div>
-</div>
-  </code></pre>
+</div>{% endhighlight %}
 </section>
 
 <section class="container">
@@ -372,7 +368,7 @@ npm install flexicution
 
   <p>Apply modifier classes to adjust the horizontal and vertical alignment of columns inside of a grid.</p>
 
-  <p><code>-[size]-start</code></p>
+  <p class="demo-format"><code>-[size]-start</code></p>
 
   <div class="row -xsmall-start">
     <div class="col-xsmall-6">
@@ -380,7 +376,7 @@ npm install flexicution
     </div>
   </div>
 
-  <p><code>-[size]-center</code></p>
+  <p class="demo-format"><code>-[size]-center</code></p>
 
   <div class="row -xsmall-center">
     <div class="col-xsmall-6">
@@ -388,7 +384,7 @@ npm install flexicution
     </div>
   </div>
 
-  <p><code>-[size]-end</code></p>
+  <p class="demo-format"><code>-[size]-end</code></p>
 
   <div class="row -xsmall-end">
     <div class="col-xsmall-6">
@@ -404,17 +400,16 @@ npm install flexicution
     </div>
   </div>
 
-  <pre><code>
+  {% highlight html %}
 <div class="row -xsmall-start"></div>
 
 <div class="row -xsmall-center"></div>
 
 <div class="row -xsmall-end"></div>
 
-<div class="row -xsmall-center -medium-end -xlarge-start"></div>
-  </code></pre>
+<div class="row -xsmall-center -medium-end -xlarge-start"></div>{% endhighlight %}
 
-  <p><code>-[size]-top</code></p>
+  <p class="demo-format"><code>-[size]-top</code></p>
 
   <div class="row -xsmall-top">
     <div class="col-xsmall-6">
@@ -426,7 +421,7 @@ npm install flexicution
     </div>
   </div>
 
-  <p><code>-[size]-middle</code></p>
+  <p class="demo-format"><code>-[size]-middle</code></p>
 
   <div class="row -xsmall-middle">
     <div class="col-xsmall-6">
@@ -438,7 +433,7 @@ npm install flexicution
     </div>
   </div>
 
-  <p><code>-[size]-bottom</code></p>
+  <p class="demo-format"><code>-[size]-bottom</code></p>
 
   <div class="row -xsmall-bottom">
     <div class="col-xsmall-6">
@@ -462,15 +457,14 @@ npm install flexicution
     </div>
   </div>
 
-  <pre><code>
+  {% highlight html %}
 <div class="row -xsmall-top"></div>
 
 <div class="row -xsmall-middle"></div>
 
 <div class="row -xsmall-bottom"></div>
 
-<div class="row -xsmall-bottom -medium-middle -xlarge-top"></div>
-  </code></pre>
+<div class="row -xsmall-bottom -medium-middle -xlarge-top"></div>{% endhighlight %}
 </section>
 
 <section class="container">
@@ -478,7 +472,7 @@ npm install flexicution
 
   <p>Apply modifier classes to adjust the space distribution between columns inside of a grid.</p>
 
-  <p><code>-[size]-space-around</code></p>
+  <p class="demo-format"><code>-[size]-space-around</code></p>
 
   <div class="row -xsmall-space-around">
     <div class="col-xsmall-2">
@@ -494,7 +488,7 @@ npm install flexicution
     </div>
   </div>
 
-  <p><code>-[size]-space-between</code></p>
+  <p class="demo-format"><code>-[size]-space-between</code></p>
 
   <div class="row -xsmall-space-between">
     <div class="col-xsmall-2">
@@ -526,13 +520,12 @@ npm install flexicution
     </div>
   </div>
 
-  <pre><code>
+  {% highlight html %}
 <div class="row -xsmall-space-around"></div>
 
 <div class="row -xsmall-space-between"></div>
 
-<div class="row -xsmall-space-between -medium-space-around"></div>
-  </code></pre>
+<div class="row -xsmall-space-between -medium-space-around"></div>{% endhighlight %}
 </section>
 
 <section class="container">
@@ -540,7 +533,7 @@ npm install flexicution
 
   <p>Apply modifier classes to columns to adjust their position within the grid.</p>
 
-  <p><code>-[size]-first</code></p>
+  <p class="demo-format"><code>-[size]-first</code></p>
 
   <div class="row">
     <div class="col-xsmall-2">
@@ -568,7 +561,7 @@ npm install flexicution
     </div>
   </div>
 
-  <p><code>-[size]-last</code></p>
+  <p class="demo-format"><code>-[size]-last</code></p>
 
   <div class="row">
     <div class="col-xsmall-2 -small-last">
@@ -596,7 +589,7 @@ npm install flexicution
     </div>
   </div>
 
-  <p><code>-reverse</code></p>
+  <p class="demo-format"><code>-reverse</code></p>
 
   <div class="row -reverse">
     <div class="col-xsmall-4">
@@ -612,7 +605,7 @@ npm install flexicution
     </div>
   </div>
 
-  <pre><code>
+  {% highlight html %}
 <div class="row">
   <div class="col-small-4"></div>
   <div class="col-small-4"></div>
@@ -625,8 +618,7 @@ npm install flexicution
   <div class="col-small-4"></div>
 </div>
 
-<div class="row -row-reverse"></div>
-  </code></pre>
+<div class="row -row-reverse"></div>{% endhighlight %}
 </section>
 
 <footer class="flexFooter">

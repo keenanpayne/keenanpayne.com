@@ -860,6 +860,11 @@ table {
 h1, h2, h3, h4 {
   font-family: 'Permanent Marker', cursive;
   letter-spacing: 0; }
+  h1 + p, h2 + p, h3 + p, h4 + p {
+    margin-top: 0.75rem; }
+
+pre, code {
+  background-color: transparent; }
 
 .flexHead {
   background-color: #212428;
@@ -920,12 +925,17 @@ h1, h2, h3, h4 {
 .instructions {
   background-color: #f7f7f7;
   border-bottom: 1px solid #eaeaea;
+  margin-bottom: 3rem;
   margin-top: 0; }
 
 .instructions-header:first-of-type {
   margin-bottom: 0.75rem;
   margin-top: 0;
   padding-top: 3rem; }
+
+.demo-format {
+  font-weight: 600;
+  margin-bottom: 1rem; }
 
 .flexFooter {
   background-color: #f7f7f7;
@@ -1731,13 +1741,10 @@ h1, h2, h3, h4 {
   /* Name.Variable.Instance */
   /* Literal.Number.Integer.Long */ }
   .highlight pre {
-    background-color: transparent;
     overflow-x: auto;
     padding: 0;
     white-space: pre;
     word-wrap: normal; }
-  .highlight code {
-    background-color: transparent; }
   .highlight .c {
     color: #999988;
     font-style: italic; }
