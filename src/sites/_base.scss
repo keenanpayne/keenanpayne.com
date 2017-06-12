@@ -26,6 +26,9 @@ img {
 // Body Copy
 // ---------
 
+p,
+h2, h3 { letter-spacing: -.35px; }
+
 h2, h3 {
   &:hover {
     .heading-subtext { transform: translateY(-10px); }

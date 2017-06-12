@@ -875,6 +875,10 @@ img {
   height: auto;
   max-width: 100%; }
 
+p,
+h2, h3 {
+  letter-spacing: -.35px; }
+
 h2:hover .heading-subtext, h3:hover .heading-subtext {
   -webkit-transform: translateY(-10px);
           transform: translateY(-10px); }
@@ -1407,7 +1411,3 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   @media (min-width: 1800px) {
     :root {
       font-size: 28px; } }
-
-p,
-h2, h3 {
-  letter-spacing: -.35px; }

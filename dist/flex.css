@@ -854,6 +854,11 @@ table {
 h1, h2, h3, h4 {
   font-family: 'Permanent Marker', cursive; }
 
+p {
+  font-family: 'Overpass', sans-serif;
+  letter-spacing: -.65px;
+  word-spacing: .25px; }
+
 .flexHead {
   background-color: #212428;
   margin-top: 0;
@@ -1577,10 +1582,6 @@ h2 {
   @media (min-width: 1800px) {
     :root {
       font-size: 28px; } }
-
-p,
-h2, h3 {
-  letter-spacing: -.35px; }
 
 .highlight {
   border-bottom: 1px solid #e4e4e4;
