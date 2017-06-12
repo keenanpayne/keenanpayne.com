@@ -933,6 +933,12 @@ pre, code {
   margin-top: 0;
   padding-top: 3rem; }
 
+.demo {
+  margin-top: 1.5rem; }
+
+.demo-format + .demo {
+  margin-top: 0.75rem; }
+
 .demo-format {
   font-weight: 600;
   margin-bottom: 1rem; }

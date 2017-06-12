@@ -116,6 +116,10 @@ pre, code { background-color: transparent; }
 // Demos
 // -----
 
+.demo { margin-top: $spacing-s; }
+
+.demo-format + .demo { margin-top: $spacing-xs; }
+
 .demo-format {
   font-weight: 600;
   margin-bottom: 1rem;
