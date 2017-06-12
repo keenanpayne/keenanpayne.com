@@ -105,6 +105,12 @@ pre, code { background-color: transparent; }
   border-bottom: 1px solid getColor(flexicution, border);
   margin-bottom: $spacing-m;
   margin-top: 0;
+
+  p {
+    @media (--large) {
+      max-width: 75%;
+    }
+  }
 }
 
 .instructions-header:first-of-type {

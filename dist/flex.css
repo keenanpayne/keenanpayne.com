@@ -930,6 +930,9 @@ pre, code {
   border-bottom: 1px solid #eaeaea;
   margin-bottom: 3rem;
   margin-top: 0; }
+  @media (min-width: 960px) {
+    .instructions p {
+      max-width: 75%; } }
 
 .instructions-header:first-of-type {
   margin-bottom: 0.75rem;
