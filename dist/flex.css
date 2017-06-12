@@ -923,6 +923,7 @@ h1, h2, h3, h4 {
   margin-top: 0; }
 
 .instructions-header:first-of-type {
+  margin-bottom: 0.75rem;
   margin-top: 0;
   padding-top: 3rem; }
 
@@ -1636,40 +1637,16 @@ h1, h2, h3, h4 {
         -ms-flex-pack: justify;
             justify-content: space-between; } }
 
-h2 {
-  font-size: 2rem;
-  margin-bottom: 15px;
-  margin-top: 60px; }
-  h2 small {
-    font-size: 60%;
-    font-weight: normal; }
-
-p {
-  margin-bottom: 30px; }
-
 .box {
   background-color: #EDF1F2;
   border: 1px solid #9CA6AF;
   font-size: .875rem;
-  margin-bottom: 15px;
+  margin-bottom: 0.75rem;
   overflow: hidden;
-  padding: 15px;
+  padding: 0.75rem;
   text-align: center; }
   .box .box {
     margin-bottom: 0; }
-
-pre {
-  background-color: #fcfcfc;
-  border: 1px solid #e6e6e6;
-  border-left-width: 5px;
-  font-size: .875em;
-  overflow-x: auto;
-  padding: 7.5px 22.5px;
-  white-space: pre;
-  word-wrap: normal; }
-
-code {
-  color: #7D2727; }
 
 :root {
   background-color: #fafafa;
@@ -1687,11 +1664,13 @@ code {
       font-size: 28px; } }
 
 .highlight {
-  border-bottom: 1px solid #e4e4e4;
-  border-top: 1px solid #e4e4e4;
+  background-color: #fcfcfc;
+  border: 1px solid #e6e6e6;
+  border-left-width: 5px;
+  font-size: .875rem;
   line-height: 1.65;
-  padding-bottom: 0.75rem;
-  padding-top: 0.75rem;
+  margin-bottom: 3rem;
+  padding: 1rem;
   /* Comment */
   /* Error */
   /* Keyword */
@@ -1751,6 +1730,14 @@ code {
   /* Name.Variable.Global */
   /* Name.Variable.Instance */
   /* Literal.Number.Integer.Long */ }
+  .highlight pre {
+    background-color: transparent;
+    overflow-x: auto;
+    padding: 0;
+    white-space: pre;
+    word-wrap: normal; }
+  .highlight code {
+    background-color: transparent; }
   .highlight .c {
     color: #999988;
     font-style: italic; }
