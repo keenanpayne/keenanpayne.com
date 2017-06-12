@@ -852,19 +852,25 @@ table {
     content: "&raquo; "; } }
 
 :root {
-  font-family: 'Overpass', sans-serif;
+  font-family: "Overpass", sans-serif;
   font-weight: 300;
   letter-spacing: -.65px;
   word-spacing: .25px; }
 
 h1, h2 {
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   letter-spacing: 0; }
   h1 + p, h2 + p {
     margin-top: 0.75rem; }
+  h1 small, h2 small {
+    display: inline-block;
+    font-family: "Overpass", sans-serif;
+    font-size: 65%;
+    letter-spacing: -1.15px;
+    text-indent: 5px; }
 
 h3, h4, h5 {
-  font-family: 'Overpass', sans-serif; }
+  font-family: "Overpass", sans-serif; }
 
 pre, code {
   background-color: transparent; }

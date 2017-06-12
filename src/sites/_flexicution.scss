@@ -3,24 +3,40 @@
 // ==================================================
 
 //
+// Variables
+// ---------
+
+$font-primary: 'Overpass', sans-serif;
+$font-secondary: 'Permanent Marker', cursive;
+
+
+//
 // Typography
 // ----------
 
 :root {
-  font-family: 'Overpass', sans-serif;
+  font-family: $font-primary;
   font-weight: 300;
   letter-spacing: -.65px;
   word-spacing: .25px;
 }
 
 h1, h2 {
-  font-family: 'Permanent Marker', cursive;
+  font-family: $font-secondary;
   letter-spacing: 0;
 
   + p { margin-top: $spacing-xs; }
+
+  small {
+    display: inline-block;
+    font-family: $font-primary;
+    font-size: 65%;
+    letter-spacing: -1.15px;
+    text-indent: 5px;
+  }
 }
 
-h3, h4, h5 { font-family: 'Overpass', sans-serif; }
+h3, h4, h5 { font-family: $font-primary; }
 
 pre, code { background-color: transparent; }
 
