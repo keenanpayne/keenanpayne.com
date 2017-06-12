@@ -6,12 +6,16 @@
 // Typography
 // ----------
 
-h1, h2, h3, h4 { font-family: 'Permanent Marker', cursive; }
-
-p {
+:root {
   font-family: 'Overpass', sans-serif;
+  font-weight: 300;
   letter-spacing: -.65px;
   word-spacing: .25px;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Permanent Marker', cursive;
+  letter-spacing: 0;
 }
 
 
@@ -72,6 +76,7 @@ p {
   border: 2px solid white;
   color: white;
   font-size: typeScale(2);
+  font-weight: 600;
   padding: $spacing-xxs $spacing-s;
   transition: background-color $transition-duration;
 

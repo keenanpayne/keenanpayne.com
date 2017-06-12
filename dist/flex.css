@@ -851,13 +851,15 @@ table {
   ol li {
     content: "&raquo; "; } }
 
-h1, h2, h3, h4 {
-  font-family: 'Permanent Marker', cursive; }
-
-p {
+:root {
   font-family: 'Overpass', sans-serif;
+  font-weight: 300;
   letter-spacing: -.65px;
   word-spacing: .25px; }
+
+h1, h2, h3, h4 {
+  font-family: 'Permanent Marker', cursive;
+  letter-spacing: 0; }
 
 .flexHead {
   background-color: #212428;
@@ -903,6 +905,7 @@ p {
   border: 2px solid white;
   color: white;
   font-size: 1rem;
+  font-weight: 600;
   padding: 0.375rem 1.5rem;
   -webkit-transition: background-color 150ms;
   transition: background-color 150ms; }
