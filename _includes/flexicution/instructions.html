@@ -1,16 +1,46 @@
 <section class="instructions">
   <div class="container">
-    <h2 class="instructions-header">Instructions</h2>
+    <h2 class="instructions-header">Installation</h2>
 
-    <p>This is the prefered method to install Flexicution. Simply install using NPM and include in your Sass file.</p>
+    <p>This is the prefered method to install Flexicution. Simply install using NPM or Bower.</p>
 
-{% highlight scss %}
-// Get Flexicution library
+{% highlight bash %}
+# NPM
 npm install flexicution
 
-// Import library
+# Bower
+bower install flexicution
+{% endhighlight %}
+
+    <h2>Usage</h2>
+
+    <p>You have two different options for using Flexicution. You may either include the framework and build your column classes yourself, or you can use our pre-defined breakpoints and generated class names.</p>
+
+    <div class="demo">
+      <div class="row">
+        <div class="col-small-6">
+          <h4>Base</h4>
+
+          <p>This includes only the Sass mixins that power Flexicution, with no specific class names.</p>
+
+{% highlight scss %}
+// Import Flexicution library
 @import "node_modules/flexicution/flexicution";
 {% endhighlight %}
+        </div>
+
+        <div class="col-small-6">
+          <h4>With Classes</h4>
+
+          <p>This includes the Sass mixins that power Flexicution, as well as responsive column classes.</p>
+
+{% highlight scss %}
+// Import Flexicution library
+@import "node_modules/flexicution/flexicution-classes";
+{% endhighlight %}
+        </div>
+      </div>
+    </div>
 
     <h2 class="instructions-header">Setup</h2>
 
@@ -21,51 +51,56 @@ npm install flexicution
         <div class="col-small-6">
           <h4>Semantic Grid Mixin</h4>
 
-  {% highlight scss %}
-  //
-  // Generate Semantic Rows
-  // ----------------------
-  // @param $gutter - Gutter between columns. Default is `$flex-gutter-width` (30px)
+{% highlight scss %}
+//
+// Generate Semantic Rows
+// ----------------------
+// @param $gutter - Gutter between columns. Default is `$flex-gutter-width` (30px)
 
-  @include make-row();
+@include make-row();
 
 
-  //
-  // Generate Semantic Columns
-  // -------------------------
-  // @param $columns - Number of columns to take up
-  // @param $gutter - Gutter between columns. Default is `$gutter-width` (30px)
-  // @param $media-query - Breakpoint for the column to collapse. Default is null
-  // @param $min-max - Explicitly sets the media query to be `min-width` or `max-width`. Default is `min`
+//
+// Generate Semantic Columns
+// -------------------------
+// @param $columns - Number of columns to take up
+// @param $gutter - Gutter between columns. Default is `$gutter-width` (30px)
+// @param $media-query - Breakpoint for the column to collapse. Default is null
+// @param $min-max - Explicitly sets the media query to be `min-width` or `max-width`. Default is `min`
 
-  @include make-column();
-  {% endhighlight %}
+@include make-column();
+{% endhighlight %}
         </div>
 
         <div class="col-small-6">
           <h4>Generating Class Names</h4>
 
-  {% highlight scss %}
-  //
-  // Generate Grid Classes
-  // ---------------------
-  // @param $class - Class name you want postfixed after `.col-`
+{% highlight scss %}
+//
+// Generate Grid Classes
+// ---------------------
+// @param $class - Class name you want postfixed after `.col-`
 
-  // Extra-small
-  @include make-grid(xsmall);
+// Extra-small
+@include make-grid(xsmall);
 
-  // Small
-  @media (min-width: 480px) {
-    @include make-grid(small);
-  }
-  {% endhighlight %}
+// Small
+@media (min-width: 480px) {
+  @include make-grid(small);
+}
+{% endhighlight %}
         </div>
       </div>
     </div>
 
     <h2 class="instructions-header">Settings</h2>
 
-    <p>The Flexicution library has two variables that help configure the library. You may override these in your own project if you wish to customize your grid layout.</p>
+    <p>The Flexicution library has variables that help configure the base library and library with classes. You may override these in your own project if you wish to customize your grid layout.</p>
+
+    <div class="demo">
+      <div class="row">
+        <div class="col-small-6">
+          <h4>Base</h4>
 
 {% highlight scss %}
 // Number of grid columns
@@ -74,6 +109,22 @@ $flex-grid-columns: 12;
 // Amount of gutter width
 $flex-grid-gutter-width: 30px;
 {% endhighlight %}
+        </div>
+
+        <div class="col-small-6">
+          <h4>Classes</h4>
+
+{% highlight scss %}
+// Breakpoints
+$media-xsmall-min:   480px;
+$media-small-min:    768px;
+$media-medium-min:   960px;
+$media-large-min:   1120px;
+$media-xlarge-min:  1280px;
+{% endhighlight %}
+        </div>
+      </div>
+    </div>
 
     <h2 class="instructions-header">Flexbox Support</h2>
 

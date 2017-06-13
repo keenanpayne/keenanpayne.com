@@ -851,6 +851,15 @@ table {
   ol li {
     content: "&raquo; "; } }
 
+[class*="col-"] {
+  box-sizing: border-box;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  position: relative; }
+
 .row {
   box-sizing: border-box;
   display: -webkit-box;
@@ -971,15 +980,6 @@ table {
 
 .col-xsmall-offset-12 {
   margin-left: 100%; }
-
-[class*="col-xsmall"] {
-  box-sizing: border-box;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  position: relative; }
 
 .col-xsmall {
   -ms-flex-preferred-size: 0;
@@ -1116,14 +1116,6 @@ table {
     margin-left: 91.66667%; }
   .col-small-offset-12 {
     margin-left: 100%; }
-  [class*="col-small"] {
-    box-sizing: border-box;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative; }
   .col-small {
     -ms-flex-preferred-size: 0;
         flex-basis: 0;
@@ -1249,14 +1241,6 @@ table {
     margin-left: 91.66667%; }
   .col-medium-offset-12 {
     margin-left: 100%; }
-  [class*="col-medium"] {
-    box-sizing: border-box;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative; }
   .col-medium {
     -ms-flex-preferred-size: 0;
         flex-basis: 0;
@@ -1382,14 +1366,6 @@ table {
     margin-left: 91.66667%; }
   .col-large-offset-12 {
     margin-left: 100%; }
-  [class*="col-large"] {
-    box-sizing: border-box;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative; }
   .col-large {
     -ms-flex-preferred-size: 0;
         flex-basis: 0;
@@ -1515,14 +1491,6 @@ table {
     margin-left: 91.66667%; }
   .col-xlarge-offset-12 {
     margin-left: 100%; }
-  [class*="col-xlarge"] {
-    box-sizing: border-box;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 0 auto;
-            flex: 1 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
-    position: relative; }
   .col-xlarge {
     -ms-flex-preferred-size: 0;
         flex-basis: 0;
@@ -1677,7 +1645,7 @@ pre, code {
   margin-bottom: 3rem;
   margin-top: 0; }
   @media (min-width: 960px) {
-    .instructions p {
+    .instructions h2 + p {
       max-width: 75%; } }
 
 .instructions-header:first-of-type {

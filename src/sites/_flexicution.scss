@@ -147,7 +147,7 @@ pre, code { background-color: transparent; }
   margin-bottom: $spacing-m;
   margin-top: 0;
 
-  p {
+  h2 + p {
     @media (--large) {
       max-width: 75%;
     }
