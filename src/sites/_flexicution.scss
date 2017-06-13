@@ -164,6 +164,12 @@ pre, code { background-color: transparent; }
   text-align: center;
 
   p { margin-bottom: 0; }
+
+  iframe {
+    margin-top: 0;
+
+    &:not(:last-of-type) { margin-right: 5px; }
+  }
 }
 
 

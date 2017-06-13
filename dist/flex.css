@@ -965,6 +965,10 @@ pre, code {
   text-align: center; }
   .flexFooter p {
     margin-bottom: 0; }
+  .flexFooter iframe {
+    margin-top: 0; }
+    .flexFooter iframe:not(:last-of-type) {
+      margin-right: 5px; }
 
 .container {
   box-sizing: border-box;
