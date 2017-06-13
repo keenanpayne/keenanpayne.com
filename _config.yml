@@ -27,3 +27,11 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+
+
+##
+## Flexicution Site Settings
+## -------------------------
+
+flex_meta_title: Flexicution | A Great Flexbox Grid System
+flex_meta_description: Yet another grid system based on Flexbox. Agnostic, easy-to-use, customizable.

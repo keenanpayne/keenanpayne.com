@@ -6,10 +6,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
-	<meta name="description" content="{{ site.meta_description }}"/>
 	<meta name="author" content="{{ site.name }}" />
 
-	<title>{{ site.meta_title }}</title>
+	{% if page.layout == 'flexicution' %}
+		<meta name="description" content="{{ site.flex_meta_description }}"/>
+		<title>{{ site.flex_meta_title }}</title>
+	{% else %}
+		<meta name="description" content="{{ site.meta_description }}"/>
+		<title>{{ site.meta_title }}</title>
+	{% endif %}
 
 	<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
 	<link rel="icon" type="image/png" href="/favicons/favicon-16x16.png" sizes="16x16">
