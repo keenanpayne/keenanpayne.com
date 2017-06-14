@@ -52,7 +52,7 @@ template,
   line-height: 1.5;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  background-color: #fafafa;
+  background-color: #fcfcfc;
   color: #333;
   font-size: 16px;
   text-rendering: optimizeLegibility; }
@@ -1017,7 +1017,6 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
 
 .contentBox {
   opacity: 0;
-  padding: 2rem;
   -webkit-transition: background-color 150ms;
   transition: background-color 150ms; }
   .contentBox.-is-link:hover {
@@ -1089,6 +1088,20 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
     @media (min-width: 768px) {
       .masthead-heading.-small {
         font-size: 2.98598rem; } }
+
+.testimonials {
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #eaeaea;
+  border-top: 1px solid #eaeaea;
+  margin-top: 6rem;
+  padding-bottom: 4.5rem;
+  padding-top: 4.5rem; }
+  .testimonials cite {
+    display: block;
+    font-family: "Playfair Display", "Times New Roman", "Times", serif;
+    font-size: 1rem;
+    margin-top: 1.5rem;
+    text-align: center; }
 
 .portfolioList span.-animated:nth-of-type(1), .portfolioList span.-animated:nth-of-type(3), .portfolioList span.-animated:nth-of-type(5), .portfolioList span.-animated:nth-of-type(7), .portfolioList span.-animated:nth-of-type(9), .portfolioList span.-animated:nth-of-type(11), .portfolioList span.-animated:nth-of-type(13), .portfolioList span.-animated:nth-of-type(15) {
   -webkit-animation-name: fadeIn, moveRight;
@@ -1398,7 +1411,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
             transform: translateY(0); } }
 
 :root {
-  background-color: #fafafa;
+  background-color: #fcfcfc;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }

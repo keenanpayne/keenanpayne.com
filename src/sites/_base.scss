@@ -215,7 +215,6 @@ h2, h3 {
 
 .contentBox {
   opacity: 0;
-  padding: 2rem;
   transition: background-color $transition-duration;
 
   &.-is-link {
@@ -299,6 +298,28 @@ h2, h3 {
     @media (--medium) {
       font-size: typeScale(8);
     }
+  }
+}
+
+
+//
+// Testimonials
+// ------------
+
+.testimonials {
+  background-color: getColor(background, light);
+  border-bottom: 1px solid darken(getColor(background, light), 5%);
+  border-top: 1px solid darken(getColor(background, light), 5%);
+  margin-top: $spacing-xl;
+  padding-bottom: $spacing-l;
+  padding-top: $spacing-l;
+
+  cite {
+    display: block;
+    font-family: $font-secondary;
+    font-size: typeScale(2);
+    margin-top: $spacing-s;
+    text-align: center;
   }
 }
 

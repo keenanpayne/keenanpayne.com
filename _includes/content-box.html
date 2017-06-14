@@ -1,19 +1,21 @@
-<div grid="wrap">
-  {% for box in page.content_box %}
-    <aside column="6">
-      {% if box.url %}
-        <a href="{{ box.url }}" title="Visit {{ box.title }}">
-      {% endif %}
+<section container>
+  <div grid="wrap">
+    {% for box in page.content_box %}
+      <aside column>
+        {% if box.url %}
+          <a href="{{ box.url }}" title="Visit {{ box.title }}">
+        {% endif %}
 
-      <div class="contentBox {% if box.url %} -is-link {% endif %} -animate-stagger-{{ forloop.index }}">
-        <h3>{{ box.title }}</h3>
+        <div class="contentBox {% if box.url %} -is-link {% endif %} -animate-stagger-{{ forloop.index }}">
+          <h3>{{ box.title }}</h3>
 
-        <p>{{ box.description }}</p>
-      </div>
+          <p>{{ box.description }}</p>
+        </div>
 
-      {% if box.url %}
-        </a>
-      {% endif %}
-    </aside>
-  {% endfor %}
-</div>
+        {% if box.url %}
+          </a>
+        {% endif %}
+      </aside>
+    {% endfor %}
+  </div>
+</section>
