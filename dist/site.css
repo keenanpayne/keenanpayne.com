@@ -1095,13 +1095,13 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   border-top: 1px solid #eaeaea;
   margin-top: 6rem;
   padding-bottom: 4.5rem;
-  padding-top: 4.5rem; }
+  padding-top: 4.5rem;
+  text-align: center; }
   .testimonials cite {
     display: block;
     font-family: "Playfair Display", "Times New Roman", "Times", serif;
     font-size: 1rem;
-    margin-top: 1.5rem;
-    text-align: center; }
+    margin-top: 1.5rem; }
 
 .portfolioList span.-animated:nth-of-type(1), .portfolioList span.-animated:nth-of-type(3), .portfolioList span.-animated:nth-of-type(5), .portfolioList span.-animated:nth-of-type(7), .portfolioList span.-animated:nth-of-type(9), .portfolioList span.-animated:nth-of-type(11), .portfolioList span.-animated:nth-of-type(13), .portfolioList span.-animated:nth-of-type(15) {
   -webkit-animation-name: fadeIn, moveRight;

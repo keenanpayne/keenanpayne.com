@@ -313,13 +313,13 @@ h2, h3 {
   margin-top: $spacing-xl;
   padding-bottom: $spacing-l;
   padding-top: $spacing-l;
+  text-align: center;
 
   cite {
     display: block;
     font-family: $font-secondary;
     font-size: typeScale(2);
     margin-top: $spacing-s;
-    text-align: center;
   }
 }
 
