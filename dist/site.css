@@ -919,15 +919,31 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
     .siteHeader {
       text-align: center; } }
 
+@media (max-width: 768px) {
+  .siteNavigation {
+    margin-top: 1.5rem;
+    width: 100%; } }
+
 @media (min-width: 768px) {
   .siteNavigation {
     text-align: right; } }
 
-.siteNavigation ul {
-  margin-top: 1.5rem; }
-  @media (min-width: 768px) {
-    .siteNavigation ul {
-      margin-top: -0.75rem; } }
+@media (max-width: 768px) {
+  .siteNavigation:before, .siteNavigation:after {
+    background: -webkit-linear-gradient(left, transparent, #DCDCDC, #DCDCDC, transparent);
+    background: linear-gradient(to right, transparent, #DCDCDC, #DCDCDC, transparent);
+    content: "";
+    display: block;
+    height: 1px; } }
+
+@media (max-width: 768px) {
+  .siteNavigation ul {
+    padding-bottom: 0.75rem;
+    padding-top: 0.75rem; } }
+
+@media (min-width: 768px) {
+  .siteNavigation ul {
+    margin-top: -0.75rem; } }
 
 .siteNavigation li {
   cursor: pointer;
@@ -963,12 +979,16 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
                 transform: translateY(10px); } }
   .siteNavigation li:not(:last-child) {
     margin-right: 1.5em; }
-  .siteNavigation li.-is-active {
-    border-bottom: 2px solid rgba(51, 51, 51, 0.85);
-    opacity: .85;
-    padding-bottom: 10px; }
-    .siteNavigation li.-is-active:after {
-      display: none; }
+  @media (max-width: 768px) {
+    .siteNavigation li.-is-active {
+      font-weight: bold; } }
+  @media (min-width: 768px) {
+    .siteNavigation li.-is-active {
+      border-bottom: 2px solid rgba(51, 51, 51, 0.85);
+      opacity: .85;
+      padding-bottom: 10px; }
+      .siteNavigation li.-is-active:after {
+        display: none; } }
 
 .siteNavigation a:hover {
   border-bottom: none; }
