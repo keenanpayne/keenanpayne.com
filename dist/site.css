@@ -883,6 +883,21 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   -webkit-transform: translateY(-10px);
           transform: translateY(-10px); }
 
+a.-dribbble {
+  color: #ea4c89; }
+
+a.-github {
+  color: #24292e; }
+
+a.-behance {
+  color: #0057ff; }
+
+a.-linkedin {
+  color: #0077b5; }
+
+a.-codepen {
+  color: #959595; }
+
 .heading-subtext {
   display: inline-block;
   font-family: "Hind", "Cambria", "Arial", sans-serif;
@@ -894,10 +909,6 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   transition: -webkit-transform 300ms;
   transition: transform 300ms;
   transition: transform 300ms, -webkit-transform 300ms; }
-
-.icon {
-  width: 32px;
-  vertical-align: top; }
 
 .logo {
   font-size: 3.58318rem;
@@ -1001,8 +1012,6 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
   @media (min-width: 480px) {
     .siteFooter {
       margin-top: 3rem; } }
-  .siteFooter a:not(:last-of-type) .icon {
-    margin-right: 1.5rem; }
 
 .siteFooter-me {
   border-radius: 50%;
@@ -1031,8 +1040,7 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
       width: 150px; } }
 
 .siteFooter-description {
-  margin-bottom: 1.5rem;
-  margin-top: 0.375rem;
+  margin-top: 0.75rem;
   max-width: 650px; }
 
 .contentBox {

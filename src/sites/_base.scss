@@ -35,6 +35,15 @@ h2, h3 {
   }
 }
 
+a {
+  // Social modifiers
+  &.-dribbble { color: #ea4c89; }
+  &.-github { color: #24292e; }
+  &.-behance { color: #0057ff; }
+  &.-linkedin { color: #0077b5; }
+  &.-codepen { color: #959595; }
+}
+
 .heading-subtext {
   display: inline-block;
   font-family: $font-primary;
@@ -43,16 +52,6 @@ h2, h3 {
   font-weight: 400;
   margin-left: $spacing-xxs;
   transition: transform $transition-duration-long;
-}
-
-
-//
-// Icons
-// -----
-
-.icon {
-  width: 32px;
-  vertical-align: top;
 }
 
 
@@ -182,8 +181,6 @@ h2, h3 {
   @media (--small) {
     margin-top: $spacing-m;
   }
-
-  a:not(:last-of-type) .icon { margin-right: $spacing-s; }
 }
 
 // My image
@@ -221,8 +218,7 @@ h2, h3 {
 
 // Description text
 .siteFooter-description {
-  margin-bottom: $spacing-s;
-  margin-top: $spacing-xxs;
+  margin-top: $spacing-xs;
   max-width: $content-limit;
 }
 
