@@ -1,9 +1,11 @@
 <section class="tile-container">
   {% for section in page.portfolio %}
     <div class="tiles">
-      <h3 class="tile-header">
-        <strong>{{ section.title }}</strong>
-      </h3>
+      {% if section.title %}
+        <h3 class="tile-header">
+          <strong>{{ section.title }}</strong>
+        </h3>
+      {% endif %}
 
       {% if section.description %}
         <p class="tile-description">{{ section.description }}</p>
@@ -12,13 +14,17 @@
       <div grid container>
         {% for item in section.items %}
           <a class="tile -animated-{{ forloop.index }}" href="{{ item.url }}" title="View more info about {{ item.title }}" target="_blank">
-            <picture>
-              <source srcset="images/{{ item.image }}.webp" type="image/webp">
-              <source srcset="images/{{ item.image }}.png" type="image/jpeg">
-              <img src="images/{{ item.image }}.png" alt="{{ item.title }}">
-            </picture>
+            {% if item.image %}
+              <picture>
+                <source srcset="images/{{ item.image }}.webp" type="image/webp">
+                <source srcset="images/{{ item.image }}.png" type="image/jpeg">
+                <img src="images/{{ item.image }}.png" alt="{{ item.title }}">
+              </picture>
+            {% endif %}
 
-            <span class="tile-title">{{ item.title }}</span>
+            {% if item.title %}
+              <span class="tile-title">{{ item.title }}</span>
+            {% endif %}
           </a>
         {% endfor %}
       </div>
