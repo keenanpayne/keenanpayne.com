@@ -885,18 +885,28 @@ h2:hover .heading-subtext, h3:hover .heading-subtext {
 
 a.-dribbble {
   color: #ea4c89; }
+  a.-dribbble:hover {
+    border-bottom: 1px solid #ea4c89; }
 
 a.-github {
   color: #24292e; }
+  a.-github:hover {
+    border-bottom: 1px solid #24292e; }
 
 a.-behance {
   color: #0057ff; }
+  a.-behance:hover {
+    border-bottom: 1px solid #0057ff; }
 
 a.-linkedin {
   color: #0077b5; }
+  a.-linkedin:hover {
+    border-bottom: 1px solid #0077b5; }
 
 a.-codepen {
   color: #959595; }
+  a.-codepen:hover {
+    border-bottom: 1px solid #959595; }
 
 .heading-subtext {
   display: inline-block;

@@ -35,13 +35,19 @@ h2, h3 {
   }
 }
 
+@mixin social-link($color) {
+  color: $color;
+
+  &:hover { border-bottom: 1px solid $color; }
+}
+
 a {
   // Social modifiers
-  &.-dribbble { color: #ea4c89; }
-  &.-github { color: #24292e; }
-  &.-behance { color: #0057ff; }
-  &.-linkedin { color: #0077b5; }
-  &.-codepen { color: #959595; }
+  &.-dribbble { @include social-link(#ea4c89); }
+  &.-github { @include social-link(#24292e); }
+  &.-behance { @include social-link(#0057ff); }
+  &.-linkedin { @include social-link(#0077b5); }
+  &.-codepen { @include social-link(#959595); }
 }
 
 .heading-subtext {
