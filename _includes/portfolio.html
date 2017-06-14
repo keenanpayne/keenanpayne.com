@@ -11,7 +11,7 @@
         <p class="tile-description">{{ section.description }}</p>
       {% endif %}
 
-      <div grid container>
+      <div class="tile-container" grid="no-gutters" container>
         {% for item in section.items %}
           <a class="tile -animated-{{ forloop.index }}" href="{{ item.url }}" title="View more info about {{ item.title }}" target="_blank">
             {% if item.image %}

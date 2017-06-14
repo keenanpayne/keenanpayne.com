@@ -476,6 +476,11 @@ $tile-spacing: 10px;
 
 .tiles { margin-bottom: $spacing-m; }
 
+.tile-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .tile {
   background: getColor(background, light);
   border: 1px solid lighten(getColor(base, lines), 7.5%);
