@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
 }
 
-main[container] {
+[container] {
   flex: 1;
   overflow: hidden;
   width: 100%;
@@ -243,10 +243,6 @@ a {
   opacity: 0;
   transition: background-color $transition-duration;
 
-  &.-is-link {
-    &:hover { background-color: rgba(getColor(base, selection), .3); }
-  }
-
   &.-animated { animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
 
   &.-animate-stagger-1 { animation-delay: .5s; }
@@ -256,8 +252,12 @@ a {
   &.-animate-stagger-3 { animation-delay: .9s; }
 
   &.-animate-stagger-4 { animation-delay: 1.1s; }
+}
 
-  h3 { margin-top: 0; }
+.contentBox-title {
+  @media (--medium-max) {
+    margin-top: $spacing-m;
+  }
 }
 
 
@@ -357,12 +357,30 @@ a {
 .projects {
   margin-bottom: $spacing-m;
   margin-top: $spacing-xl;
+
+  @media (--medium) {
+    padding-left: $spacing-l;
+    padding-right: $spacing-l;
+  }
 }
 
-.projects-image {
+.project {
+  @media (--medium) {
+    padding-left: $spacing-m;
+    padding-right: $spacing-m;
+  }
+
+  &:not(:first-of-type) {
+    @media (--medium-max) {
+      margin-top: $spacing-l;
+    }
+  }
+}
+
+.project-image {
   display: block;
   margin: 0 auto $spacing-s;
-  max-width: 200px;
+  max-width: 175px;
 }
 
 

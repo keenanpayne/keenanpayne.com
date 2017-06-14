@@ -2,23 +2,15 @@
   <div grid="wrap">
     {% for box in page.content_box %}
       <aside column>
-        {% if box.url %}
-          <a href="{{ box.url }}" title="Visit {{ box.title }}">
-        {% endif %}
-
         <div class="contentBox {% if box.url %} -is-link {% endif %} -animate-stagger-{{ forloop.index }}">
           {% if box.title %}
-            <h3>{{ box.title }}</h3>
+            <h3 class="contentBox-title">{{ box.title }}</h3>
           {% endif %}
 
           {% if box.description %}
             <p>{{ box.description }}</p>
           {% endif %}
         </div>
-
-        {% if box.url %}
-          </a>
-        {% endif %}
       </aside>
     {% endfor %}
   </div>
