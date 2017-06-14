@@ -1,9 +1,11 @@
 <div grid>
   {% for section in page.portfolioList %}
-    <dl column="6" class="portfolioList {{ section.modifiers }}">
+    <dl column class="portfolioList {{ section.modifiers }}">
       <span>
       	<h3>
-          {{ section.title }}
+          {% if section.title %}
+            {{ section.title }}
+          {% endif %}
 
           {% if section.subtext %}
             <small class="heading-subtext">{{ section.subtext }}</small>
@@ -14,11 +16,15 @@
       {% for item in section.items %}
         {% if forloop.index <= section.limit %}
         	<span>
-        		<dt>
-              <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">{{ item.title }}</a>
-            </dt>
+            {% if item.title %}
+        		  <dt>
+                <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">{{ item.title }}</a>
+              </dt>
+            {% endif s%}
 
-        		<dd>{{ item.description }}</dd>
+            {% if item.description %}
+        		  <dd>{{ item.description }}</dd>
+            {% endif %}
         	</span>
         {% endif %}
       {% endfor %}
