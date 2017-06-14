@@ -1149,14 +1149,24 @@ a.-codepen {
       padding-left: 4.5rem;
       padding-right: 4.5rem; } }
 
-@media (min-width: 768px) {
-  .project {
-    padding-left: 3rem;
-    padding-right: 3rem; } }
-
-@media (max-width: 768px) {
-  .project:not(:first-of-type) {
-    margin-top: 4.5rem; } }
+.project {
+  opacity: 0; }
+  @media (min-width: 768px) {
+    .project {
+      padding-left: 3rem;
+      padding-right: 3rem; } }
+  @media (max-width: 768px) {
+    .project:not(:first-of-type) {
+      margin-top: 4.5rem; } }
+  .project.-animated {
+    -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
+            animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
+  .project.-animate-stagger-1 {
+    -webkit-animation-delay: .5s;
+            animation-delay: .5s; }
+  .project.-animate-stagger-2 {
+    -webkit-animation-delay: .7s;
+            animation-delay: .7s; }
 
 .project-image {
   display: block;

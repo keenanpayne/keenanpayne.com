@@ -1,7 +1,7 @@
 <section container class="projects">
   <div grid="wrap">
     {% for project in page.projects %}
-      <div class="project" column="6">
+      <div class="project -animate-stagger-{{ forloop.index }}" column="6">
         {% if project.image %}
           <img class="project-image" src="{{ project.image }}" alt="{{ project.title }} Logo">
         {% endif %}

@@ -85,6 +85,7 @@
           '.lab',
           '.contact',
           '.wufoo',
+          '.project',
           'main dl:nth-of-type(1) span',
           'main dl:nth-of-type(2) span'
         ], '-animated'

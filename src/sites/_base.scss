@@ -365,6 +365,8 @@ a {
 }
 
 .project {
+  opacity: 0;
+
   @media (--medium) {
     padding-left: $spacing-m;
     padding-right: $spacing-m;
@@ -375,6 +377,12 @@ a {
       margin-top: $spacing-l;
     }
   }
+
+  &.-animated { animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
+
+  &.-animate-stagger-1 { animation-delay: .5s; }
+
+  &.-animate-stagger-2 { animation-delay: .7s; }
 }
 
 .project-image {
