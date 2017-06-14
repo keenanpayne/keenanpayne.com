@@ -1,9 +1,15 @@
 <section class="testimonials">
   <div grid>
-    <blockquote column="6 +3">
-      <p>I hired Keenan to re-design and overhaul one of my websites. From our initial meeting until we launched the new site, Keenan worked closely with me to meet all of my wants and needs for the site. Simultaneously he shared his ideas and expertise throughout the entire design and development process.</p>
+    {% for testimonial in page.testimonials %}
+      <blockquote column="6 +3">
+        {% if testimonial.quote %}
+          <p>{{ testimonial.quote }}</p>
+        {% endif %}
 
-      <cite>Daniel Mahoney, Missoula on the Fly</cite>
-    </blockquote>
+        {% if testimonial.author %}
+          <cite>{{ testimonial.author }}</cite>
+        {% endif %}
+      </blockquote>
+    {% endfor %}
   </div>
 </section>
