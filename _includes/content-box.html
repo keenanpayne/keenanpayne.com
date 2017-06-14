@@ -7,9 +7,13 @@
         {% endif %}
 
         <div class="contentBox {% if box.url %} -is-link {% endif %} -animate-stagger-{{ forloop.index }}">
-          <h3>{{ box.title }}</h3>
+          {% if box.title %}
+            <h3>{{ box.title }}</h3>
+          {% endif %}
 
-          <p>{{ box.description }}</p>
+          {% if box.description %}
+            <p>{{ box.description }}</p>
+          {% endif %}
         </div>
 
         {% if box.url %}

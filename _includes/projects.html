@@ -1,0 +1,19 @@
+<section container class="projects">
+  <div grid="wrap">
+    {% for project in page.projects %}
+      <div column="6">
+        {% if project.image %}
+          <img class="projects-image" src="{{ project.image }}" alt="{{ project.title }} Logo">
+        {% endif %}
+
+        {% if project.title %}
+          <h4>{{ project.title }}</h4>
+        {% endif %}
+
+        {% if project.description %}
+          <p>{{ project.description }}</p>
+        {% endif %}
+      </div>
+    {% endof %}
+  </div>
+</section>

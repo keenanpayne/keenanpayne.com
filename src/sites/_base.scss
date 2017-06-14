@@ -325,6 +325,22 @@ h2, h3 {
 
 
 //
+// Projects
+// --------
+
+.projects {
+  margin-bottom: $spacing-m;
+  margin-top: $spacing-xl;
+}
+
+.projects-image {
+  display: block;
+  margin: 0 auto $spacing-s;
+  max-width: 200px;
+}
+
+
+//
 // Definition Lists
 // ----------------
 
