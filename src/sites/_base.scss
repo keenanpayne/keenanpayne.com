@@ -26,6 +26,8 @@ img {
 // Body Copy
 // ---------
 
+p { word-spacing: .5px; }
+
 p,
 h2, h3 { letter-spacing: -.35px; }
 
@@ -241,6 +243,7 @@ a {
 
 .contentBox {
   opacity: 0;
+  padding: $spacing-xs;
   transition: background-color $transition-duration;
 
   &.-animated { animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }

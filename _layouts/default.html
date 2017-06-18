@@ -1,5 +1,5 @@
 ---
-layout: home-v2
+layout: default
 ---
 
 {% include header.html %}
@@ -7,13 +7,11 @@ layout: home-v2
   {% include site-header.html %}
 
   <main container>
-    {% include masthead.html %}
+    {% for section in page.sections %}
+      {% include {{ section.name }}.html %}
+    {% endfor %}
 
     {{ content }}
-
-    {% include content-box.html %}
-
-    {% include portfolio-list.html %}
   </main>
 
 {% include footer.html %}

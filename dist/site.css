@@ -875,6 +875,9 @@ img {
   height: auto;
   max-width: 100%; }
 
+p {
+  word-spacing: .5px; }
+
 p,
 h2, h3 {
   letter-spacing: -.35px; }
@@ -1055,6 +1058,7 @@ a.-codepen {
 
 .contentBox {
   opacity: 0;
+  padding: 0.75rem;
   -webkit-transition: background-color 150ms;
   transition: background-color 150ms; }
   .contentBox.-animated {
