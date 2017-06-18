@@ -1155,10 +1155,10 @@ a.-codepen {
 
 .project {
   opacity: 0; }
-  @media (min-width: 768px) {
+  @media (min-width: 960px) {
     .project {
-      padding-left: 3rem;
-      padding-right: 3rem; } }
+      padding-left: 4.5rem;
+      padding-right: 4.5rem; } }
   @media (max-width: 768px) {
     .project:not(:first-of-type) {
       margin-top: 4.5rem; } }

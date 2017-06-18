@@ -2,16 +2,16 @@
 layout: default
 ---
 
-{% include header.html %}
+{% include global/header.html %}
 
-  {% include site-header.html %}
+  {% include components/site-header.html %}
 
-  <main container>
+  <main>
     {% for section in page.sections %}
-      {% include {{ section.name }}.html %}
+      {% include components/{{ section.name }}.html %}
     {% endfor %}
 
     {{ content }}
   </main>
 
-{% include footer.html %}
+{% include components/site-footer.html %}

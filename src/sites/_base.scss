@@ -370,9 +370,9 @@ a {
 .project {
   opacity: 0;
 
-  @media (--medium) {
-    padding-left: $spacing-m;
-    padding-right: $spacing-m;
+  @media (--large) {
+    padding-left: $spacing-l;
+    padding-right: $spacing-l;
   }
 
   &:not(:first-of-type) {
