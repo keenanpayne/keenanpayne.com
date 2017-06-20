@@ -1,33 +1,37 @@
-<div grid>
-  {% for section in page.portfolioList %}
-    <dl column class="portfolioList {{ section.modifiers }}">
-      <span>
-      	<h3>
-          {% if section.title %}
-            {{ section.title }}
-          {% endif %}
-
-          {% if section.subtext %}
-            <small class="heading-subtext">{{ section.subtext }}</small>
-          {% endif %}
-        </h3>
-      </span>
-
-      {% for item in section.items %}
-        {% if forloop.index <= section.limit %}
-        	<span>
-            {% if item.title %}
-        		  <dt>
-                <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">{{ item.title }}</a>
-              </dt>
-            {% endif s%}
-
-            {% if item.description %}
-        		  <dd>{{ item.description }}</dd>
+<section container>
+  <div grid>
+    {% for section in page.portfolioList %}
+      <dl column class="portfolioList {{ section.modifiers }}">
+        <span>
+        	<h3>
+            {% if section.title %}
+              {{ section.title }}
             {% endif %}
-        	</span>
-        {% endif %}
-      {% endfor %}
-    </dl>
-  {% endfor %}
-</div>
+
+            {% if section.subtext %}
+              <small class="heading-subtext">{{ section.subtext }}</small>
+            {% endif %}
+          </h3>
+        </span>
+
+        {% for item in section.items %}
+          {% if forloop.index <= section.limit %}
+          	<span>
+              {% if item.title %}
+          		  <dt>
+                  <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">
+                    {{ item.title }}
+                  </a>
+                </dt>
+              {% endif s%}
+
+              {% if item.description %}
+          		  <dd>{{ item.description }}</dd>
+              {% endif %}
+          	</span>
+          {% endif %}
+        {% endfor %}
+      </dl>
+    {% endfor %}
+  </div>
+</section>
