@@ -307,16 +307,7 @@ a {
   @media (--medium) {
     float: right;
     font-size: typeScale(8);
-    max-width: 900px;
     text-align: right;
-  }
-
-  @media (--very-large) {
-    max-width: 1080px;
-  }
-
-  @media (--hella-large) {
-    max-width: 1200px;
   }
 
   .-sf { font-style: italic; }
@@ -327,6 +318,12 @@ a {
     @media (--medium) {
       font-size: typeScale(8);
     }
+  }
+}
+
+.masthead-break {
+  @media (--small-max) {
+    display: none;
   }
 }
 
@@ -343,14 +340,24 @@ a {
   padding-bottom: $spacing-l;
   padding-top: $spacing-l;
   text-align: center;
-
-  cite {
-    display: block;
-    font-family: $font-secondary;
-    font-size: typeScale(2);
-    margin-top: $spacing-s;
-  }
 }
+
+.testimonial-text {
+  font-size: typeScale(4);
+
+  &:before,
+  &:after {
+    font-family: $font-secondary;
+    font-size: 110%;
+    line-height: 0;
+  }
+
+  &:before { content: "“ "; }
+
+  &:after { content: " ”"; }
+}
+
+.testimonial-author { font-weight: bold; }
 
 
 //

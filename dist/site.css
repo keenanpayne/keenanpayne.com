@@ -1115,14 +1115,7 @@ a.-codepen {
     .masthead-heading {
       float: right;
       font-size: 2.98598rem;
-      max-width: 900px;
       text-align: right; } }
-  @media (min-width: 1460px) {
-    .masthead-heading {
-      max-width: 1080px; } }
-  @media (min-width: 1800px) {
-    .masthead-heading {
-      max-width: 1200px; } }
   .masthead-heading .-sf {
     font-style: italic; }
   .masthead-heading.-small {
@@ -1130,6 +1123,10 @@ a.-codepen {
     @media (min-width: 768px) {
       .masthead-heading.-small {
         font-size: 2.98598rem; } }
+
+@media (max-width: 480px) {
+  .masthead-break {
+    display: none; } }
 
 .testimonials {
   background-color: #f7f7f7;
@@ -1139,11 +1136,20 @@ a.-codepen {
   padding-bottom: 4.5rem;
   padding-top: 4.5rem;
   text-align: center; }
-  .testimonials cite {
-    display: block;
+
+.testimonial-text {
+  font-size: 1.44rem; }
+  .testimonial-text:before, .testimonial-text:after {
     font-family: "Playfair Display", "Times New Roman", "Times", serif;
-    font-size: 1rem;
-    margin-top: 1.5rem; }
+    font-size: 110%;
+    line-height: 0; }
+  .testimonial-text:before {
+    content: "“ "; }
+  .testimonial-text:after {
+    content: " ”"; }
+
+.testimonial-author {
+  font-weight: bold; }
 
 .projects {
   margin-bottom: 3rem;

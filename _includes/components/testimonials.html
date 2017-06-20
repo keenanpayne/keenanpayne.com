@@ -1,15 +1,15 @@
 <section class="testimonials" container>
   <div grid>
     {% for testimonial in page.testimonials %}
-      <blockquote column="6 +3">
+      <div class="testimonial" column="10 +1">
         {% if testimonial.quote %}
-          <p>{{ testimonial.quote }}</p>
+          <p class="testimonial-text">{{ testimonial.quote }}</p>
         {% endif %}
 
         {% if testimonial.author %}
-          <cite>{{ testimonial.author }}</cite>
+          <p class="testimonial-author">{{ testimonial.author }}</p>
         {% endif %}
-      </blockquote>
+      </div>
     {% endfor %}
   </div>
 </section>
