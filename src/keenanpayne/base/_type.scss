@@ -2,16 +2,10 @@
 // Typography
 // ==================================================
 
-p { word-spacing: .5px; }
 
-p,
-h2, h3 { letter-spacing: -.35px; }
-
-h2, h3 {
-  &:hover {
-    .heading-subtext { transform: translateY(-10px); }
-  }
-}
+//
+// Mixins
+// ------
 
 @mixin social-link($color) {
   color: $color;
@@ -19,8 +13,28 @@ h2, h3 {
   &:hover { border-bottom: 1px solid $color; }
 }
 
+
+//
+// Styles
+// ------
+
+p {
+  font-variant-ligatures: normal;
+  word-spacing: .5px;
+}
+
+p,
+h2, h3 { letter-spacing: -.35px; }
+
+h2, h3 {
+  // Subtext hover effect on portfolio
+  &:hover {
+    .heading-subtext { transform: translateY(-10px); }
+  }
+}
+
 a {
-  // Social modifiers
+  // Social network modifiers
   &.-dribbble { @include social-link(#ea4c89); }
   &.-github { @include social-link(#24292e); }
   &.-behance { @include social-link(#0057ff); }

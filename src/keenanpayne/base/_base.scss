@@ -4,6 +4,7 @@
 
 :root {
   background-color: getColor(background, body);
+  border-top: 3px solid getColor(background, dark);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -21,9 +22,6 @@
   }
 }
 
-
-html { border-top: 3px solid getColor(background, dark); }
-
 body {
   display: flex;
   flex-direction: column;
@@ -35,6 +33,8 @@ body {
   overflow: hidden;
   width: 100%;
 }
+
+main { margin-top: 0; }
 
 img {
   height: auto;

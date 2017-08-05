@@ -4,36 +4,22 @@
 
 .masthead {
   opacity: 0;
-  padding: 2rem 0;
+  padding-bottom: 3.5rem;
+  padding-top: 3.5rem;
   transition: padding $transition-duration;
-
-  @media (--small) {
-    padding-bottom: 3rem;
-    padding-top: 3rem;
-  }
-
-  @media (--large) {
-    padding-bottom: 5rem;
-    padding-top: 5rem;
-  }
-
-  @media (--extra-large) {
-    padding-bottom: 7rem;
-    padding-top: 7rem;
-  }
 
   &.-animated { animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
 
-  &.-short {
-    @media (--large) {
-      padding-bottom: 3rem;
-      padding-top: 3rem;
+  &.-homepage {
+    @media (--medium) {
+      padding-bottom: 6rem;
+      padding-top: 6rem;
     }
   }
 }
 
 .masthead-heading {
-  font-size: typeScale(6);
+  font-size: typeScale(5);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -46,11 +32,9 @@
 
   .-sf { font-style: italic; }
 
-  &.-small {
-    font-size: typeScale(5);
-
-    @media (--medium) {
-      font-size: typeScale(8);
+  &.-homepage {
+    @media (--medium-max) {
+      font-size: typeScale(5);
     }
   }
 }
@@ -58,5 +42,6 @@
 .masthead-break {
   @media (--small-max) {
     display: none;
+    visibility: hidden;
   }
 }

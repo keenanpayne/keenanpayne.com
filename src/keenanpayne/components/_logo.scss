@@ -1,0 +1,20 @@
+//
+// Logo
+// ==================================================
+
+.logo {
+  font-size: typeScale(9);
+  font-weight: 900;
+  letter-spacing: -1.75px;
+  line-height: .85;
+  padding-bottom: $spacing-xs;
+
+  @media (--small) {
+    font-size: typeScale(10);
+  }
+
+  a:hover {
+    border-bottom: none;
+    color: inherit;
+  }
+}

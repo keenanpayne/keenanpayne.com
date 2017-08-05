@@ -1,7 +1,7 @@
 {% if page.masthead %}
-  <section class="masthead {% if page.navigation_weight != 0 %}-short{% endif %}">
+  <section class="masthead {% if page.navigation_weight == 0 %}-homepage{% endif %}">
     <div container>
-      <h2 class="masthead-heading {% if page.navigation_weight == 0 %}-small{% endif %}">{{ page.masthead }}</h2>
+      <h2 class="masthead-heading {% if page.navigation_weight == 0 %}-homepage{% endif %}">{{ page.masthead }}</h2>
     </div>
   </section>
 {% endif %}

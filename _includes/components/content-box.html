@@ -1,16 +1,14 @@
 <section container>
   <div grid="wrap">
     {% for box in page.content_box %}
-      <aside column>
-        <div class="contentBox -animate-stagger-{{ forloop.index }}">
-          {% if box.title %}
-            <h3 class="contentBox-title">{{ box.title }}</h3>
-          {% endif %}
+      <aside class="contentBox -animate-stagger-{{ forloop.index }}" column>
+        {% if box.title %}
+          <h3 class="contentBox-title">{{ box.title }}</h3>
+        {% endif %}
 
-          {% if box.description %}
-            <p>{{ box.description }}</p>
-          {% endif %}
-        </div>
+        {% if box.description %}
+          <p>{{ box.description }}</p>
+        {% endif %}
       </aside>
     {% endfor %}
   </div>

@@ -2,6 +2,11 @@
 // Portfolio List
 // ==================================================
 
+
+//
+// Silent Classes
+// --------------
+
 %dl-animation-right {
   animation-name: fadeIn, moveRight;
   animation-duration: .7s, .85s;
@@ -14,55 +19,48 @@
   animation-fill-mode: forwards, forwards;
 }
 
+
+//
+// Styles
+// ------
+
 .portfolioList {
   @media (--medium-max) {
     margin-bottom: $spacing-m;
   }
+}
 
-  &.-center {
-    margin: 0 auto;
-  }
+.portfolioList-item {
+  border-bottom: 3px solid rgba(getColor(background, dark), .2);
+  display: block;
+  opacity: 0;
 
-  span {
-    border-bottom: 3px solid rgba(getColor(background, dark), .2);
-    display: block;
-    opacity: 0;
+  &:first-of-type { border-bottom-color: getColor(background, dark); }
 
-    &:first-of-type {
-      border-bottom: 3px solid getColor(background, dark);
-    }
+  @for $i from 1 through 15 {
+    // If even
+    @if $i % 2 == 0 {
+      &.-animated:nth-of-type(#{$i}) {
+        @extend %dl-animation-left;
 
-    @for $i from 1 through 15 {
-      // If even
-      @if $i % 2 == 0 {
-        &.-animated:nth-of-type(#{$i}) {
-          @extend %dl-animation-left;
+        animation-delay: $i * .2s;
+      }
 
-          animation-delay: $i * .2s;
-        }
+    // If odd
+    } @else {
+      &.-animated:nth-of-type(#{$i}) {
+        @extend %dl-animation-right;
 
-      // If odd
-      } @else {
-        &.-animated:nth-of-type(#{$i}) {
-          @extend %dl-animation-right;
-
-          animation-delay: $i * .2s;
-        }
+        animation-delay: $i * .2s;
       }
     }
   }
-
-  dt {
-    font-size: typeScale(3);
-    margin-top: 0;
-    padding-top: $spacing-xs;
-  }
-
-  dd { padding-bottom: $spacing-xs; }
 }
 
-.portfolioList-viewmore {
-  cursor: pointer;
-  margin-top: $spacing-s;
-  text-align: center;
+.portfolioList-item-title {
+  font-size: typeScale(3);
+  margin-top: 0;
+  padding-top: $spacing-xs;
 }
+
+.portfolioList-item-description { padding-bottom: $spacing-xs; }

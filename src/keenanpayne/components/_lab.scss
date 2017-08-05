@@ -4,6 +4,7 @@
 
 .lab-container {
   @media (--medium) {
+    // All but first two
     &:nth-of-type(n+3) { margin-top: $spacing-m; }
   }
 }

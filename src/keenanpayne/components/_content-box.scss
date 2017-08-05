@@ -4,8 +4,14 @@
 
 .contentBox {
   opacity: 0;
-  padding: $spacing-xs;
-  transition: background-color $transition-duration;
+  padding-left: $spacing-m;
+  padding-right: $spacing-m;
+
+  @media (--medium-max) {
+    &:not(:first-child) {
+      margin-top: $spacing-m;
+    }
+  }
 
   &.-animated { animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
 
@@ -14,12 +20,6 @@
   &.-animate-stagger-2 { animation-delay: .7s; }
 
   &.-animate-stagger-3 { animation-delay: .9s; }
-
-  &.-animate-stagger-4 { animation-delay: 1.1s; }
 }
 
-.contentBox-title {
-  @media (--medium-max) {
-    margin-top: $spacing-m;
-  }
-}
+.contentBox-title { margin-top: 0; }

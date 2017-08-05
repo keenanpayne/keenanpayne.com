@@ -52,6 +52,6 @@
   max-width: $content-limit;
 
   @media (--very-large) {
-    max-width: ($content-limit * 1.25);
+    max-width: $content-limit-large;
   }
 }
