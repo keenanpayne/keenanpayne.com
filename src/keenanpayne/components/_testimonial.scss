@@ -1,0 +1,36 @@
+//
+// Testimonials
+// ==================================================
+
+.testimonials {
+  background-color: getColor(background, light);
+  border-bottom: 1px solid darken(getColor(background, light), 5%);
+  border-top: 1px solid darken(getColor(background, light), 5%);
+  margin-top: $spacing-xl;
+  padding-bottom: $spacing-l;
+  padding-top: $spacing-l;
+  text-align: center;
+}
+
+.testimonial {
+  opacity: 0;
+
+  &.-animated { animation: fadeIn .5s .5s forwards, moveLeft .75s .5s ease-out forwards; }
+}
+
+.testimonial-text {
+  font-size: typeScale(4);
+
+  &:before,
+  &:after {
+    font-family: $font-secondary;
+    font-size: 110%;
+    line-height: 0;
+  }
+
+  &:before { content: "“ "; }
+
+  &:after { content: " ”"; }
+}
+
+.testimonial-author { font-weight: bold; }

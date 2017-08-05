@@ -1,0 +1,118 @@
+//
+// Tiles
+// ==================================================
+
+$tile-spacing: 10px;
+
+%tile-animation {
+  animation-name: fadeIn, moveUp;
+  animation-duration: .7s, .85s;
+  animation-fill-mode: forwards, forwards;
+}
+
+.tiles { margin-bottom: $spacing-m; }
+
+.tile-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.tile {
+  background: getColor(background, light);
+  border: 1px solid lighten(getColor(base, lines), 7.5%);
+  display: block;
+  height: 100%;
+  margin-bottom: $spacing-xs;
+  opacity: 0;
+  padding-bottom: $spacing-xs;
+  transition: width $transition-duration-long;
+  width: 100%;
+
+  &:hover { text-decoration: none; }
+
+  &:not(:nth-of-type(5n)) { margin-right: #{$tile-spacing}; }
+
+  img {
+    margin-top: 0;
+    max-width: 100%;
+    transition: opacity $transition-duration-med;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+
+    &:hover { opacity: .75; }
+
+    @media (--small-max) {
+      margin-top: 0;
+    }
+  }
+
+  &.-animated {
+    @extend %tile-animation;
+  }
+}
+
+.tile-header {
+  margin-bottom: $spacing-xs;
+  opacity: 0;
+
+  &.-animated {
+    @extend %tile-animation;
+  }
+}
+
+.tile-description {
+  margin-bottom: $spacing-s;
+  max-width: $content-limit;
+  opacity: 0;
+
+  &.-animated {
+    @extend %tile-animation;
+  }
+}
+
+.tile-title {
+  color: getColor(text, secondary);
+  display: block;
+  font-size: 12px;
+  margin-top: $spacing-xs;
+  text-align: center;
+}
+
+// Properly cascading animations
+.tile-container .tiles {
+  &:nth-of-type(1) {
+    .tile-header { animation-delay: .5s; }
+
+    .tile-description { animation-delay: .7s; }
+
+    .tile {
+      &.-animated-1 { animation-delay: 1.05s; }
+
+      &.-animated-2 { animation-delay: 1.15s; }
+
+      &.-animated-3 { animation-delay: 1.25s; }
+
+      &.-animated-4 { animation-delay: 1.35s; }
+
+      &.-animated-5 { animation-delay: 1.45s; }
+    }
+  }
+
+  &:nth-of-type(2) {
+    .tile-header { animation-delay: 1.55s; }
+
+    .tile-description { animation-delay: 1.75s; }
+
+    .tile {
+      &.-animated-1 { animation-delay: 2.1s; }
+
+      &.-animated-2 { animation-delay: 2.25s; }
+
+      &.-animated-3 { animation-delay: 2.35s; }
+
+      &.-animated-4 { animation-delay: 2.45s; }
+
+      &.-animated-5 { animation-delay: 2.55s; }
+    }
+  }
+}

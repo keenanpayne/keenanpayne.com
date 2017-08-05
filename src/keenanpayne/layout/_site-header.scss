@@ -1,0 +1,113 @@
+//
+// Site Header
+// ==================================================
+
+// Logo
+.logo {
+  font-size: typeScale(9);
+  font-weight: 900;
+  letter-spacing: -1.75px;
+  line-height: .85;
+  padding-bottom: $spacing-xs;
+
+  @media (--small) {
+    font-size: typeScale(10);
+  }
+
+  a:hover {
+    border-bottom: none;
+    color: inherit;
+  }
+}
+
+// Main Header
+.siteHeader {
+  margin-top: 2rem;
+  width: 100%;
+
+  @media (--medium-max) {
+    text-align: center;
+  }
+}
+
+// Main Nav
+.siteNavigation {
+  @media (--medium-max) {
+    margin-top: $spacing-s;
+    width: 100%;
+  }
+
+  @media (--medium) {
+    text-align: right;
+  }
+
+  &:before,
+  &:after {
+    @media (--medium-max) {
+      background: linear-gradient(to right, transparent, getColor(base, lines), getColor(base, lines), transparent);
+      content: "";
+      display: block;
+      height: 1px;
+    }
+  }
+
+  ul {
+    @media (--medium-max) {
+      padding-bottom: $spacing-xs;
+      padding-top: $spacing-xs;
+    }
+
+    @media (--medium) { margin-top: -$spacing-xs; }
+  }
+
+  li {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+
+    @media (--medium) {
+      display: inline;
+      transform: scaleX(0);
+      transition: transform $transition-duration ease-in-out;
+
+      &:after {
+        background: getColor(text, primary);
+        content: '';
+        height: 2px;
+        left: 0;
+        opacity: 0;
+        position: absolute;
+        top: 100%;
+        transition: opacity $transition-duration-long,
+                    transform $transition-duration-long;
+        transform: translateY(5px);
+        width: 100%;
+      }
+
+      &:hover:after {
+        opacity: 1;
+        transform: translateY(10px);
+      }
+    }
+
+    &:not(:last-child) { margin-right: 1.5em; }
+
+    &.-is-active {
+      @media (--medium-max) {
+        font-weight: bold;
+      }
+
+      @media (--medium) {
+        border-bottom: 2px solid rgba(getColor(text, primary), .85);
+        opacity: .85;
+        padding-bottom: 10px;
+
+        &:after { display: none; }
+      }
+    }
+  }
+
+  a {
+    &:hover { border-bottom: none; }
+  }
+}

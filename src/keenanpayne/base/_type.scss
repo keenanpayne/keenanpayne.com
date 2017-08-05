@@ -1,0 +1,39 @@
+//
+// Typography
+// ==================================================
+
+p { word-spacing: .5px; }
+
+p,
+h2, h3 { letter-spacing: -.35px; }
+
+h2, h3 {
+  &:hover {
+    .heading-subtext { transform: translateY(-10px); }
+  }
+}
+
+@mixin social-link($color) {
+  color: $color;
+
+  &:hover { border-bottom: 1px solid $color; }
+}
+
+a {
+  // Social modifiers
+  &.-dribbble { @include social-link(#ea4c89); }
+  &.-github { @include social-link(#24292e); }
+  &.-behance { @include social-link(#0057ff); }
+  &.-linkedin { @include social-link(#0077b5); }
+  &.-codepen { @include social-link(#959595); }
+}
+
+.heading-subtext {
+  display: inline-block;
+  font-family: $font-primary;
+  font-style: normal;
+  font-size: .75rem;
+  font-weight: 400;
+  margin-left: $spacing-xxs;
+  transition: transform $transition-duration-long;
+}

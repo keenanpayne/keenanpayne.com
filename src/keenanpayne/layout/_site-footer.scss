@@ -1,0 +1,57 @@
+//
+// Site Footer
+// ==================================================
+
+.siteFooter {
+  background-color: getColor(background, light);
+  border-top: 1px solid darken(getColor(background, light), 5%);
+  margin-top: $spacing-xs;
+  padding: 2.5rem .5rem;
+
+  @media (--small) {
+    margin-top: $spacing-m;
+  }
+}
+
+// My image
+.siteFooter-me {
+  border-radius: 50%;
+  display: block;
+  height: 125px;
+  margin-left: auto;
+  width: 125px;
+
+  @media (--medium-max) {
+    margin-bottom: $spacing-s;
+  }
+
+  @media (--medium) {
+    height: 70px;
+    width: 70px;
+  }
+
+  @media (--large) {
+    height: 100px;
+    width: 100px;
+  }
+
+  @media (--extra-large) {
+    height: 125px;
+    width: 125px;
+  }
+
+  @media (--very-large) {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+// Description text
+.siteFooter-description {
+  margin-top: $spacing-xs;
+  max-width: $content-limit;
+
+  @media (--very-large) {
+    max-width: ($content-limit * 1.25);
+  }
+}

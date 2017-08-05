@@ -2,24 +2,38 @@
 // Flexicution
 // ==================================================
 
-//
-// Variables
-// ---------
 
-$font-primary: 'Overpass', sans-serif;
-$font-secondary: 'Permanent Marker', cursive;
+//
+// Base
+// ----
+
+:root {
+  background-color: getColor(background, body);
+  font-family: $font-primary;
+  font-weight: 300;
+  letter-spacing: -.65px;
+  text-rendering: optimizeLegibility;
+  word-spacing: .25px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (--extra-large) {
+    font-size: $font-size-extra-large + px;
+  }
+
+  @media (--very-large) {
+    font-size: $font-size-very-large + px;
+  }
+
+  @media (--hella-large) {
+    font-size: $font-size-hella-large + px;
+  }
+}
 
 
 //
 // Typography
 // ----------
-
-:root {
-  font-family: $font-primary;
-  font-weight: 300;
-  letter-spacing: -.65px;
-  word-spacing: .25px;
-}
 
 h1, h2 {
   font-family: $font-secondary;

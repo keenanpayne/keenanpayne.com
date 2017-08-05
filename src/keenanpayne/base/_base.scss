@@ -20,3 +20,23 @@
     font-size: $font-size-hella-large + px;
   }
 }
+
+
+html { border-top: 3px solid getColor(background, dark); }
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+[container] {
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}

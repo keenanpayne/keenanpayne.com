@@ -1,9 +1,14 @@
 //
 // Imports
+// ==================================================
+
+
+//
+// Globals
 // -------
 
 // Concise Settings
-@import "settings";
+@import "flexicution/settings";
 
 // Concise Core
 @import "node_modules/concise.css/concise";
@@ -11,11 +16,13 @@
 // Flexicution
 @import "node_modules/flexicution/flexicution-classes";
 
-// Site-Specific
-@import "sites/flexicution";
-
-// Common Styles
-@import "base/base";
-
 // Libraries
 @import "libs/syntax";
+
+
+//
+// Site-Specific
+// -------------
+
+// Styling
+@import "flexicution/styles";
