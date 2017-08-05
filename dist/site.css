@@ -1055,6 +1055,9 @@ a.-codepen {
 .siteFooter-description {
   margin-top: 0.75rem;
   max-width: 650px; }
+  @media (min-width: 1460px) {
+    .siteFooter-description {
+      max-width: 812.5px; } }
 
 .contentBox {
   opacity: 0;
@@ -1136,6 +1139,12 @@ a.-codepen {
   padding-bottom: 4.5rem;
   padding-top: 4.5rem;
   text-align: center; }
+
+.testimonial {
+  opacity: 0; }
+  .testimonial.-animated {
+    -webkit-animation: fadeIn .5s .5s forwards, moveLeft .75s .5s ease-out forwards;
+            animation: fadeIn .5s .5s forwards, moveLeft .75s .5s ease-out forwards; }
 
 .testimonial-text {
   font-size: 1.44rem; }

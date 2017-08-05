@@ -228,6 +228,10 @@ a {
 .siteFooter-description {
   margin-top: $spacing-xs;
   max-width: $content-limit;
+
+  @media (--very-large) {
+    max-width: ($content-limit * 1.25);
+  }
 }
 
 
@@ -340,6 +344,12 @@ a {
   padding-bottom: $spacing-l;
   padding-top: $spacing-l;
   text-align: center;
+}
+
+.testimonial {
+  opacity: 0;
+
+  &.-animated { animation: fadeIn .5s .5s forwards, moveLeft .75s .5s ease-out forwards; }
 }
 
 .testimonial-text {
