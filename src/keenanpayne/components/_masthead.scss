@@ -4,22 +4,22 @@
 
 .masthead {
   opacity: 0;
-  padding-bottom: 3.5rem;
-  padding-top: 3.5rem;
+  padding-bottom: $spacing-m;
+  padding-top: $spacing-m;
   transition: padding $transition-duration;
 
   &.-animated { animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
 
   &.-homepage {
     @media (--medium) {
-      padding-bottom: 6rem;
-      padding-top: 6rem;
+      padding-bottom: $spacing-xxl;
+      padding-top: $spacing-xxl;
     }
   }
 }
 
 .masthead-heading {
-  font-size: typeScale(5);
+  font-size: typeScale(6);
   margin-left: auto;
   margin-right: auto;
   text-align: center;

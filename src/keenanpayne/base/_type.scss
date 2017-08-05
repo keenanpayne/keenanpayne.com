@@ -46,7 +46,7 @@ a {
   display: inline-block;
   font-family: $font-primary;
   font-style: normal;
-  font-size: .75rem;
+  font-size: typeScale(1);
   font-weight: 400;
   margin-left: $spacing-xxs;
   transition: transform $transition-duration-long;

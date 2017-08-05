@@ -2,11 +2,24 @@
 // Site Footer
 // ==================================================
 
+
+//
+// Variables
+// ---------
+
+$avatar-size: 125px;
+
+
+//
+// Styles
+// ------
+
 .siteFooter {
   background-color: getColor(background, light);
   border-top: 1px solid darken(getColor(background, light), 5%);
   margin-top: $spacing-xs;
-  padding: 2.5rem .5rem;
+  padding-bottom: $spacing-m;
+  padding-top: $spacing-m;
 
   @media (--small) {
     margin-top: $spacing-m;
@@ -17,32 +30,32 @@
 .siteFooter-me {
   border-radius: 50%;
   display: block;
-  height: 125px;
+  height: $avatar-size;
   margin-left: auto;
-  width: 125px;
+  width: $avatar-size;
 
   @media (--medium-max) {
     margin-bottom: $spacing-s;
   }
 
   @media (--medium) {
-    height: 70px;
-    width: 70px;
+    height: ($avatar-size * .6);
+    width: ($avatar-size * .6);
   }
 
   @media (--large) {
-    height: 100px;
-    width: 100px;
+    height: ($avatar-size * .8);
+    width: ($avatar-size * .8);
   }
 
   @media (--extra-large) {
-    height: 125px;
-    width: 125px;
+    height: $avatar-size;
+    width: $avatar-size;
   }
 
   @media (--very-large) {
-    height: 150px;
-    width: 150px;
+    height: ($avatar-size * 1.2);
+    width: ($avatar-size * 1.2);
   }
 }
 
