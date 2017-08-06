@@ -6,12 +6,6 @@ layout: default
 
   {% include components/site-header.html %}
 
-  <main>
-    {% for section in page.sections %}
-      {% include components/{{ section.name }}.html %}
-    {% endfor %}
-
-    {{ content }}
-  </main>
+  {{ content }}
 
 {% include components/site-footer.html %}
