@@ -2,6 +2,7 @@
 layout: personal
 title: Labs
 navigation_weight: 3
+permalink: labs.html
 
 ## Page Sections
 sections:

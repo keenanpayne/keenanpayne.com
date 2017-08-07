@@ -2,7 +2,8 @@
 layout: personal
 title: Work
 masthead: Selected Work
-navigation_weight: 1
+navigation_weight: 2
+permalink: work.html
 
 ## Page Sections
 sections:

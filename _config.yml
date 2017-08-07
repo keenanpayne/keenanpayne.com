@@ -1,32 +1,63 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+##
+## Welcome to Jekyll!
+## ------------------
+## This config file is meant for settings that affect your whole blog, values
+## which you are expected to set up once and rarely edit after that. If you find
+## yourself editing this file very often, consider using Jekyll's data files
+## feature for the data you need to update frequently.
+##
+## For technical reasons, this file is *NOT* reloaded automatically when you use
+## 'bundle exec jekyll serve'. If you change this file, please restart the server process.
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
+
+##
+## Site Settings
+## -------------
+## These are used to personalize your new site. If you look in the HTML files,
+## you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+## You can create any custom variable you would like, and they will be accessible
+## in the templates via {{ site.myvariable }}.
+
 meta_title: Keenan Payne | Front-End Developer
 meta_description: Keenan Payne is a web designer and developer based out of San Francisco, CA.
 name: Keenan Payne
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
-# Build settings
+
+##
+## Build Settings
+## --------------
+
 markdown: kramdown
 theme: minima
 gems:
   - jekyll-feed
 exclude:
+  - node_modules
+  - package.json
+  - README.md
+  - yarn.lock
   - Gemfile
   - Gemfile.lock
+  - LICENSE
+  - webp.js
+  - src
+
+
+##
+## Defaults
+## --------
+
+defaults:
+  -
+    # Set default layout for all posts
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: "/blog/:title.html"
 
 
 ##

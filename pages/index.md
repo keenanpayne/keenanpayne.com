@@ -2,6 +2,7 @@
 layout: personal
 title: Home
 navigation_weight: 0
+permalink: index.html
 
 ## Page Sections
 sections:
