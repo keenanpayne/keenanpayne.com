@@ -2,14 +2,14 @@
 layout: default
 ---
 
-<article class="post">
-  <h1>{{ page.title }}</h1>
+<section container>
+  <article class="post" column="6 +3">
+    <header class="post-header">
+      <h1 class="post-title">{{ page.title }}</h1>
 
-  <div class="entry">
+      <p>{{ page.date | date: "%B %e, %Y" }}</p>
+    </header>
+
     {{ content }}
-  </div>
-
-  <div class="date">
-    Written on {{ page.date | date: "%B %e, %Y" }}
-  </div>
-</article>
+  </article>
+</section>

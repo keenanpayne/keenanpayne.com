@@ -18,7 +18,8 @@
 ## You can create any custom variable you would like, and they will be accessible
 ## in the templates via {{ site.myvariable }}.
 
-meta_title: Keenan Payne | Front-End Developer
+meta_title: Keenan Payne
+meta_tagline: Front-End Developer
 meta_description: Keenan Payne is a web designer and developer based out of San Francisco, CA.
 name: Keenan Payne
 baseurl: "" # the subpath of your site, e.g. /blog

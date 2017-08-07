@@ -941,6 +941,16 @@ a.-codepen {
   transition: transform 300ms;
   transition: transform 300ms, -webkit-transform 300ms; }
 
+.post {
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem; }
+
+.post-header {
+  text-align: center; }
+
+.post-title {
+  padding-bottom: 0.75rem; }
+
 .siteFooter {
   background-color: #f7f7f7;
   border-top: 1px solid #eaeaea;
