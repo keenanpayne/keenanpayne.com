@@ -5,7 +5,7 @@
         <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
       </h2>
 
-      <p>{{ post.date | date: "%B %e, %Y" }}</p>
+      <p class="post-date">{{ post.date | date: "%B %e, %Y" }}</p>
 
       {% if forloop.index == 1 %}
         <p>{{ post.excerpt }}</p>

@@ -33,6 +33,8 @@ h2, h3 {
   }
 }
 
+ul, ol { margin-left: $spacing-xs; }
+
 a {
   // Social network modifiers
   &.-dribbble { @include social-link(#ea4c89); }
@@ -51,3 +53,42 @@ a {
   margin-left: $spacing-xxs;
   transition: transform $transition-duration-long;
 }
+
+
+//
+// Blockquotes
+// -----------
+
+blockquote {
+  background-color: lighten(getColor(base, selection), 6.5%);
+  padding: $spacing-s;
+}
+
+code {
+  background-color: lighten(getColor(base, selection), 6.5%);
+  padding: .1rem .5rem;
+  vertical-align: 5%;
+}
+
+
+//
+// Tables
+// ------
+
+table {
+  margin-bottom: $spacing-s;
+  margin-top: $spacing-s;
+  
+  thead {
+    padding-bottom: $spacing-xs;
+    padding-top: $spacing-xs;
+  }
+
+  td {
+    line-height: inherit;
+    padding-bottom: $spacing-xs;
+    padding-top: $spacing-xs;
+  }
+}
+
+tr { border-bottom: 1px solid getColor(base, lines); }

@@ -2,6 +2,8 @@
 // Base
 // ==================================================
 
+* + * { margin-top: 1rem; }
+
 :root {
   background-color: getColor(background, body);
   border-top: 3px solid getColor(background, dark);

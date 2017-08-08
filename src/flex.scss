@@ -16,9 +16,6 @@
 // Flexicution
 @import "node_modules/flexicution/flexicution-classes";
 
-// Libraries
-@import "libs/syntax";
-
 
 //
 // Site-Specific
@@ -26,3 +23,6 @@
 
 // Styling
 @import "flexicution/styles";
+
+// Libraries
+@import "flexicution/syntax";

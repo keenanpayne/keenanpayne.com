@@ -5,8 +5,18 @@
 .post {
   padding-bottom: $spacing-s;
   padding-top: $spacing-s;
+
+  h1, h2, h3 { margin: 2.5rem 0 1rem; }
 }
 
-.post-header { text-align: center; }
+.post-header {
+  padding-bottom: $spacing-xs;
+  text-align: center;
+}
 
 .post-title { padding-bottom: $spacing-xs; }
+
+.post-date {
+  color: getColor(text, secondary);
+  font-size: typeScale(.5);
+}
