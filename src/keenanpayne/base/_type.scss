@@ -9,8 +9,9 @@
 
 @mixin social-link($color) {
   color: $color;
+  text-decoration: none;
 
-  &:hover { border-bottom: 1px solid $color; }
+  &:hover { text-decoration: underline; }
 }
 
 
@@ -78,7 +79,7 @@ code {
 table {
   margin-bottom: $spacing-s;
   margin-top: $spacing-s;
-  
+
   thead {
     padding-bottom: $spacing-xs;
     padding-top: $spacing-xs;

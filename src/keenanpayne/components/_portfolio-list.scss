@@ -28,14 +28,16 @@
   @media (--medium-max) {
     margin-bottom: $spacing-m;
   }
+
+  > .portfolioList-item:first-of-type {
+    border-bottom: 3px solid getColor(background, dark);
+    margin-bottom: $spacing-xs;
+  }
 }
 
 .portfolioList-item {
-  border-bottom: 3px solid rgba(getColor(background, dark), .2);
   display: block;
   opacity: 0;
-
-  &:first-of-type { border-bottom-color: getColor(background, dark); }
 
   @for $i from 1 through 15 {
     // If even
@@ -58,9 +60,13 @@
 }
 
 .portfolioList-item-title {
-  font-size: typeScale(3);
+  font-size: 1.1rem;
   margin-top: 0;
-  padding-top: $spacing-xs;
+  // padding-bottom: $spacing-xs;
 }
 
-.portfolioList-item-description { padding-bottom: $spacing-xs; }
+.portfolioList-item-description {
+  border-bottom: 3px solid rgba(getColor(background, dark), .2);
+  margin-bottom: $spacing-xs;
+  padding-bottom: $spacing-xs;
+}

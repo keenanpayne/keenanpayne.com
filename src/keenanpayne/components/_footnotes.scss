@@ -1,0 +1,38 @@
+//
+// Footnotes
+// ==================================================
+
+.footnotes {
+  border-top: 1px solid getColor(base, lines);
+  margin-top: $spacing-s;
+  padding-top: $spacing-s;
+
+  &:before {
+    color: getColor(text, secondary);
+    content: 'Footnotes:';
+    display: block;
+    font-size: typeScale(.5);
+    font-weight: bold;
+    letter-spacing: .25px;
+    line-height: 1.5;
+    margin-bottom: $spacing-xxs;
+  }
+
+  // Note number
+  li {
+    font-size: .875rem;
+
+    &:before {
+      color: getColor(text, secondary);
+      float: left;
+      font-size: typeScale(.5);
+      margin-right: $spacing-xxs;
+    }
+  }
+}
+
+a.reversefootnote {
+  color: getColor(text, secondary);
+  font-size: typeScale(.5);
+  text-decoration: none;
+}

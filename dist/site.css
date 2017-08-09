@@ -911,29 +911,34 @@ ul, ol {
   margin-left: 0.75rem; }
 
 a.-dribbble {
-  color: #ea4c89; }
+  color: #ea4c89;
+  text-decoration: none; }
   a.-dribbble:hover {
-    border-bottom: 1px solid #ea4c89; }
+    text-decoration: underline; }
 
 a.-github {
-  color: #24292e; }
+  color: #24292e;
+  text-decoration: none; }
   a.-github:hover {
-    border-bottom: 1px solid #24292e; }
+    text-decoration: underline; }
 
 a.-behance {
-  color: #0057ff; }
+  color: #0057ff;
+  text-decoration: none; }
   a.-behance:hover {
-    border-bottom: 1px solid #0057ff; }
+    text-decoration: underline; }
 
 a.-linkedin {
-  color: #0077b5; }
+  color: #0077b5;
+  text-decoration: none; }
   a.-linkedin:hover {
-    border-bottom: 1px solid #0077b5; }
+    text-decoration: underline; }
 
 a.-codepen {
-  color: #959595; }
+  color: #959595;
+  text-decoration: none; }
   a.-codepen:hover {
-    border-bottom: 1px solid #959595; }
+    text-decoration: underline; }
 
 .heading-subtext {
   display: inline-block;
@@ -973,15 +978,14 @@ tr {
 .post {
   padding-bottom: 1.5rem;
   padding-top: 1.5rem; }
+  .post a {
+    text-decoration: underline; }
   .post h1, .post h2, .post h3 {
     margin: 2.5rem 0 1rem; }
 
 .post-header {
   padding-bottom: 0.75rem;
   text-align: center; }
-
-.post-title {
-  padding-bottom: 0.75rem; }
 
 .post-date {
   color: #666;
@@ -1209,6 +1213,32 @@ tr {
 .contentBox-title {
   margin-top: 0; }
 
+.footnotes {
+  border-top: 1px solid #DCDCDC;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem; }
+  .footnotes:before {
+    color: #666;
+    content: 'Footnotes:';
+    display: block;
+    font-size: 0.69444rem;
+    font-weight: bold;
+    letter-spacing: .25px;
+    line-height: 1.5;
+    margin-bottom: 0.375rem; }
+  .footnotes li {
+    font-size: .875rem; }
+    .footnotes li:before {
+      color: #666;
+      float: left;
+      font-size: 0.69444rem;
+      margin-right: 0.375rem; }
+
+a.reversefootnote {
+  color: #666;
+  font-size: 0.69444rem;
+  text-decoration: none; }
+
 @media (min-width: 768px) {
   .lab-container:nth-of-type(n+3) {
     margin-top: 3rem; } }
@@ -1310,12 +1340,13 @@ tr {
   .portfolioList {
     margin-bottom: 3rem; } }
 
+.portfolioList > .portfolioList-item:first-of-type {
+  border-bottom: 3px solid #32373d;
+  margin-bottom: 0.75rem; }
+
 .portfolioList-item {
-  border-bottom: 3px solid rgba(50, 55, 61, 0.2);
   display: block;
   opacity: 0; }
-  .portfolioList-item:first-of-type {
-    border-bottom-color: #32373d; }
   .portfolioList-item.-animated:nth-of-type(1) {
     -webkit-animation-delay: 0.2s;
             animation-delay: 0.2s; }
@@ -1363,11 +1394,12 @@ tr {
             animation-delay: 3s; }
 
 .portfolioList-item-title {
-  font-size: 1.2rem;
-  margin-top: 0;
-  padding-top: 0.75rem; }
+  font-size: 1.1rem;
+  margin-top: 0; }
 
 .portfolioList-item-description {
+  border-bottom: 3px solid rgba(50, 55, 61, 0.2);
+  margin-bottom: 0.75rem;
   padding-bottom: 0.75rem; }
 
 .projects {

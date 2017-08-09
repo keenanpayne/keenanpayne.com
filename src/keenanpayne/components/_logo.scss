@@ -13,8 +13,10 @@
     font-size: typeScale(10);
   }
 
-  a:hover {
-    border-bottom: none;
-    color: inherit;
+  a {
+    &:hover {
+      border-bottom: none;
+      color: inherit;
+    }
   }
 }
