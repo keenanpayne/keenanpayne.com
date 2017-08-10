@@ -953,8 +953,16 @@ a.-codepen {
   transition: transform 300ms, -webkit-transform 300ms; }
 
 blockquote {
-  background-color: #f5f1ea;
-  padding: 1.5rem; }
+  color: #666;
+  border-left: 5px solid #DCDCDC;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  padding-bottom: 0.375rem;
+  padding-top: 0.375rem; }
+  @media (min-width: 768px) {
+    blockquote {
+      padding-left: calc(3rem / 2 + 5px);
+      margin-left: calc(-3rem - 5px); } }
 
 code {
   background-color: #f5f1ea;
@@ -975,21 +983,50 @@ table {
 tr {
   border-bottom: 1px solid #DCDCDC; }
 
-.post {
+.post.-single {
   padding-bottom: 1.5rem;
   padding-top: 1.5rem; }
-  .post a {
-    text-decoration: underline; }
-  .post h1, .post h2, .post h3 {
-    margin: 2.5rem 0 1rem; }
+  @media (min-width: 768px) {
+    .post.-single {
+      padding-top: 3rem; } }
+  .post.-single .post-header {
+    padding-bottom: 1.5rem;
+    text-align: center; }
 
-.post-header {
-  padding-bottom: 0.75rem;
-  text-align: center; }
+.post.-list {
+  min-height: calc(100vh - 600px);
+  opacity: 0; }
+  .post.-list:not(:first-child) {
+    margin-bottom: 3rem; }
+  .post.-list.-animated {
+    -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
+            animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
 
 .post-date {
   color: #666;
-  font-size: 0.69444rem; }
+  font-size: .75rem; }
+
+.post-content p a {
+  text-decoration: underline; }
+
+.post-content h1, .post-content h2, .post-content h3 {
+  margin: 3rem 0 1rem; }
+
+.post-content img {
+  padding-bottom: 0.375rem;
+  padding-top: 0.375rem; }
+  @media (min-width: 768px) {
+    .post-content img {
+      max-width: none;
+      -webkit-transform: translateX(-11%);
+              transform: translateX(-11%);
+      width: 130%; } }
+  @media (min-width: 960px) {
+    .post-content img {
+      max-width: none;
+      -webkit-transform: translateX(-15%);
+              transform: translateX(-15%);
+      width: 140%; } }
 
 .siteFooter {
   background-color: #f7f7f7;
@@ -1433,6 +1470,22 @@ a.reversefootnote {
   display: block;
   margin: 0 auto 1.5rem;
   max-width: 175px; }
+
+.promo {
+  background-color: #f1f1f1;
+  cursor: pointer;
+  display: block;
+  font-size: .75rem;
+  font-weight: 600;
+  margin-top: 4.5rem;
+  opacity: .85;
+  padding: 0.75rem;
+  text-align: center;
+  -webkit-transition: opacity 150ms;
+  transition: opacity 150ms; }
+  .promo:hover {
+    color: inherit;
+    opacity: 1; }
 
 .testimonials {
   background-color: #f7f7f7;

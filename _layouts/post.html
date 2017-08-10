@@ -3,13 +3,21 @@ layout: default
 ---
 
 <section container>
-  <article class="post" column="6 +3">
+  <article class="post -single" grid="no-gutters">
+    <div column="6 +3">
     <header class="post-header">
-      <h1 class="post-title">{{ page.title }}</h1>
+      <h1>{{ page.title }}</h1>
 
       <p class="post-date">{{ page.date | date: "%B %e, %Y" }}</p>
     </header>
 
-    {{ content }}
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+    <a class="promo" href="/contact.html">
+      Did you like this post? Did you know I'm available for hire?
+    </a>
+  </div>
   </article>
 </section>

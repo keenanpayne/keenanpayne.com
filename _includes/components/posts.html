@@ -1,11 +1,13 @@
 <section container>
-  <article column="6 +3">
+  <article class="post -list" column="6 +3">
     {% for post in site.posts %}
-      <h2>
-        <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-      </h2>
+      <header class="post-header">
+        <h2>
+          <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+        </h2>
 
-      <p class="post-date">{{ post.date | date: "%B %e, %Y" }}</p>
+        <p class="post-date">{{ post.date | date: "%B %e, %Y" }}</p>
+      </header>
 
       {% if forloop.index == 1 %}
         <p>{{ post.excerpt }}</p>

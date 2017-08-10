@@ -1,10 +1,9 @@
 ---
 title:  "Welcome to Jekyll!"
 date:   2017-05-11 00:12:52 -0700
-categories: jekyll update
 ---
 
-Paragraphs are separated by a blank line.
+This is an example post for my blog. I can use this as a starting post for any articles that I write. This file should include all formatting that can be used on any post for easy reference.
 
 2nd paragraph. *Italic*, **bold**, and `monospace`. Itemized lists
 look like:
@@ -16,9 +15,7 @@ look like:
 Note that --- not considering the asterisk --- the actual text
 content starts at 4-columns in.
 
-> Block quotes are written like so.
->
-> They can span multiple paragraphs, if you like.
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
 
 Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all
 in chapters 12--14"). Three dots ... will be converted to an ellipsis.

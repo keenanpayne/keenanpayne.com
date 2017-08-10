@@ -3,20 +3,55 @@
 // ==================================================
 
 .post {
-  padding-bottom: $spacing-s;
-  padding-top: $spacing-s;
+  // Modifiers
+  &.-single {
+    padding-bottom: $spacing-s;
+    padding-top: $spacing-s;
 
-  a { text-decoration: underline; }
+    @media (--medium) {
+      padding-top: $spacing-m;
+    }
 
-  h1, h2, h3 { margin: 2.5rem 0 1rem; }
-}
+    .post-header {
+      padding-bottom: $spacing-s;
+      text-align: center;
+    }
+  }
 
-.post-header {
-  padding-bottom: $spacing-xs;
-  text-align: center;
+  &.-list {
+    min-height: calc(100vh - 600px); // NOTE: Temporary until enough posts fill the page
+    opacity: 0;
+
+    &:not(:first-child) { margin-bottom: $spacing-m; }
+
+    &.-animated { animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
+  }
 }
 
 .post-date {
   color: getColor(text, secondary);
-  font-size: typeScale(.5);
+  font-size: .75rem;
+}
+
+.post-content {
+  p a { text-decoration: underline; }
+
+  h1, h2, h3 { margin: $spacing-m 0 1rem; }
+
+  img {
+    padding-bottom: $spacing-xxs;
+    padding-top: $spacing-xxs;
+
+    @media (--medium) {
+      max-width: none;
+      transform: translateX(-11%);
+      width: 130%;
+    }
+
+    @media (--large) {
+      max-width: none;
+      transform: translateX(-15%);
+      width: 140%;
+    }
+  }
 }
