@@ -1212,6 +1212,9 @@ tr {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
+.comments {
+  margin-top: 4.5rem; }
+
 .contact {
   opacity: 0; }
   .contact.-animated {
