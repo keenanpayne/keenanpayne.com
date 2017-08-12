@@ -3,7 +3,7 @@
 // ==================================================
 
 .promo {
-  background-color: darken(getColor(background, light), 2.5%);
+  background-color: darken(getColor(background, light), 10%);
   cursor: pointer;
   display: block;
   font-size: .75rem;
@@ -12,7 +12,7 @@
   opacity: .85;
   padding: $spacing-xs;
   text-align: center;
-  transition: opacity $transition-duration;
+  transition: opacity $transition-duration-med, color $transition-duration-med;
 
   &:hover {
     color: inherit;

@@ -9,6 +9,8 @@ layout: default
       <h1>{{ page.title }}</h1>
 
       <p class="post-date">{{ page.date | date: "%B %e, %Y" }}</p>
+
+      {% include components/reading-time.html %}
     </header>
 
     <div class="post-content">
