@@ -1,5 +1,13 @@
 (function($) {
   /**
+   * Global Variables
+   */
+  var $window = $(window);
+  var $document = $(document);
+  var disqusLoaded = false;
+
+
+  /**
    * JavaScript Helpers
    *
    * @author Keenan Payne
@@ -96,22 +104,6 @@
 
 
     /**
-     * findTop()
-     */
-    findTop: function(obj) {
-      var curtop = 0;
-
-      if (obj.offsetParent) {
-        do {
-          curtop += obj.offsetTop;
-        } while (obj = obj.offsetParent);
-
-        return curtop;
-      }
-    },
-
-
-    /**
      * disqusEmbed()
      *
      * Load Disqus comments per embed code
@@ -119,13 +111,13 @@
      * @returns null
      */
     disqusEmbed: function() {
-      var disqus_shortname = 'keenan-payne';
-      var dsq = document.createElement('script');
-      dsq.type = 'text/javascript';
-      dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      var shortname = 'keenan-payne';
+      var disqus = document.createElement('script');
+      disqus.type = 'text/javascript';
+      disqus.async = true;
+      disqus.src = '//' + shortname + '.disqus.com/embed.js';
 
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(disqus);
 
       disqusLoaded = true;
     },
@@ -134,25 +126,36 @@
     /**
      * loadDisqus()
      *
+     * Conditions for when to load Disqus comments
+     *
      * @returns null
      */
-    loadDisqus() {
-      var comments = document.getElementsByClassName('comments')[0];
-      var disqusLoaded = false;
+    loadDisqus: function() {
+      // Load when comments are scrolled to
+      var $comments = $('.comments');
 
-      if(window.location.hash.indexOf('#comments') > 0) {
-        Helpers.disqusEmbed();
-      }
+      if (!disqusLoaded && $comments.length !== 0) {
+        var commentsOffset = $comments.offset().top;
+        var pageOffset = window.pageYOffset;
+        var offsetTrigger = (commentsOffset - 1000);
 
-      if(comments) {
-        var commentsOffset = Helpers.findTop(comments);
-
-        window.onscroll = function() {
-          if(!disqusLoaded && window.pageYOffset > commentsOffset - 1000) {
-            Helpers.disqusEmbed();
-          }
+        if(!disqusLoaded && pageOffset > offsetTrigger) {
+          Helpers.disqusEmbed();
         }
       }
+    },
+
+
+    /**
+     * init()
+     *
+     * Functions to run on initialization
+     *
+     * @returns null
+     */
+    init: function() {
+      Helpers.siteAnimations();
+      Helpers.loadDisqus();
     }
   };
 
@@ -160,19 +163,11 @@
   /**
    * When Document Ready
    */
-  $(document).ready(function() {
-    Helpers.siteAnimations();
-
-    var disqus_shortname = 'keenan-payne';
-    var dsq = document.createElement('script');
-    dsq.type = 'text/javascript';
-    dsq.async = true;
-    dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
-    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    disqusLoaded = true;
+  $document.ready(function() {
+    Helpers.init();
   });
 
-  $(window).on('scroll resize', function() {
-    Helpers.siteAnimations();
+  $window.on('scroll', function() {
+    Helpers.init();
   });
 })(jQuery);
