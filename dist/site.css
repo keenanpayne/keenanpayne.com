@@ -860,15 +860,9 @@ table {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
-  @media (min-width: 1100px) {
+  @media (min-width: 480px) {
     :root {
-      font-size: 20px; } }
-  @media (min-width: 1460px) {
-    :root {
-      font-size: 24px; } }
-  @media (min-width: 1800px) {
-    :root {
-      font-size: 28px; } }
+      font-size: calc(16px + .35vw); } }
 
 body {
   display: -webkit-box;
@@ -1248,8 +1242,8 @@ tr {
 
 .contentBox {
   opacity: 0;
-  padding-left: 3rem;
-  padding-right: 3rem; }
+  padding-left: calc(2rem + .2vw);
+  padding-right: calc(2rem + .2vw); }
   @media (max-width: 768px) {
     .contentBox:not(:first-child) {
       margin-top: 3rem; } }
@@ -1343,17 +1337,17 @@ a.reversefootnote {
 
 .masthead {
   opacity: 0;
-  padding-bottom: 3rem;
-  padding-top: 3rem;
+  padding-bottom: calc(4rem + .2vw);
+  padding-top: calc(4rem + .2vw);
   -webkit-transition: padding 150ms;
   transition: padding 150ms; }
+  @media (min-width: 768px) {
+    .masthead {
+      padding-bottom: calc(8rem + .2vw);
+      padding-top: calc(8rem + .2vw); } }
   .masthead.-animated {
     -webkit-animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards;
             animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
-  @media (min-width: 768px) {
-    .masthead.-homepage {
-      padding-bottom: 8.25rem;
-      padding-top: 8.25rem; } }
 
 .masthead-heading {
   font-size: 2.0736rem;
@@ -1371,7 +1365,7 @@ a.reversefootnote {
     .masthead-heading.-homepage {
       font-size: 1.728rem; } }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .masthead-break {
     display: none;
     visibility: hidden; } }

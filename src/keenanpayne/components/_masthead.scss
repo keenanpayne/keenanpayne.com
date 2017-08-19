@@ -4,18 +4,16 @@
 
 .masthead {
   opacity: 0;
-  padding-bottom: $spacing-m;
-  padding-top: $spacing-m;
+  padding-bottom: calc(4rem + .2vw);
+  padding-top: calc(4rem + .2vw);
   transition: padding $transition-duration;
 
-  &.-animated { animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
-
-  &.-homepage {
-    @media (--medium) {
-      padding-bottom: $spacing-xxl;
-      padding-top: $spacing-xxl;
-    }
+  @media (--medium) {
+    padding-bottom: calc(8rem + .2vw);
+    padding-top: calc(8rem + .2vw);
   }
+
+  &.-animated { animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
 }
 
 .masthead-heading {
@@ -40,7 +38,7 @@
 }
 
 .masthead-break {
-  @media (--small-max) {
+  @media (--medium-max) {
     display: none;
     visibility: hidden;
   }

@@ -11,16 +11,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @media (--extra-large) {
-    font-size: $font-size-extra-large + px;
-  }
-
-  @media (--very-large) {
-    font-size: $font-size-very-large + px;
-  }
-
-  @media (--hella-large) {
-    font-size: $font-size-hella-large + px;
+  @media (--small) {
+    font-size: calc(#{$font-size}px + .35vw);
   }
 }
 
