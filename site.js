@@ -147,9 +147,32 @@
 
 
     /**
+     * linkToHeader()
+     *
+     * Prepend headers with jump links for accessibility
+     *
+     * @returns null
+     */
+    linkToHeader: function() {
+      var headings = ["h1", "h2", "h3", "h4"];
+
+      jQuery.each(headings, function(i, heading) {
+        var $heading = $(heading, '.post-content');
+        var headingText = $heading.text();
+        var headingID = $heading.attr("id");
+        var headingLink = `<a class="post-content-header-link"
+                              href="#${headingID}"
+                              title="Link to ${headingText}">#</a>`;
+
+        $heading.prepend(headingLink);
+      });
+    },
+
+
+    /**
      * init()
      *
-     * Functions to run on initialization
+     * Common functions to run on initialization
      *
      * @returns null
      */
@@ -165,6 +188,7 @@
    */
   $document.ready(function() {
     Helpers.init();
+    Helpers.linkToHeader();
   });
 
   $window.on('scroll', function() {

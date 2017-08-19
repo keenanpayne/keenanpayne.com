@@ -36,7 +36,10 @@
 .post-content {
   p a { text-decoration: underline; }
 
-  h1, h2, h3 { margin: $spacing-m 0 1rem; }
+  h1, h2, h3 {
+    margin: $spacing-m 0 1rem;
+    position: relative;
+  }
 
   img {
     padding-bottom: $spacing-xxs;
@@ -54,4 +57,20 @@
       width: 140%;
     }
   }
+}
+
+.post-content-header-link {
+  color: getColor(text, secondary);
+  font-size: 1rem;
+  font-family: $font-primary;
+  font-weight: bold;
+  left: -1.15rem;
+  line-height: 1;
+  opacity: .35;
+  position: absolute;
+  top: .375rem;
+  transition: opacity $transition-duration;
+
+  &:hover,
+  &:active { opacity: .5; }
 }
