@@ -30,32 +30,17 @@ $avatar-size: 125px;
 .siteFooter-me {
   border-radius: 50%;
   display: block;
-  height: $avatar-size;
+  max-height: $avatar-size;
   margin-left: auto;
-  width: $avatar-size;
+  max-width: $avatar-size;
 
   @media (--medium-max) {
     margin-bottom: $spacing-s;
   }
 
   @media (--medium) {
-    height: ($avatar-size * .6);
-    width: ($avatar-size * .6);
-  }
-
-  @media (--large) {
-    height: ($avatar-size * .8);
-    width: ($avatar-size * .8);
-  }
-
-  @media (--extra-large) {
-    height: $avatar-size;
-    width: $avatar-size;
-  }
-
-  @media (--very-large) {
-    height: ($avatar-size * 1.2);
-    width: ($avatar-size * 1.2);
+    max-height: calc(#{$avatar-size} + 1.5vw);
+    max-width: calc(#{$avatar-size} + 1.5vw);
   }
 }
 

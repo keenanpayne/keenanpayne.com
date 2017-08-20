@@ -4,8 +4,8 @@
 
 .contentBox {
   opacity: 0;
-  padding-left: calc(2rem + .2vw);
-  padding-right: calc(2rem + .2vw);
+  padding-left: $spacing-s;
+  padding-right: $spacing-s;
 
   @media (--medium-max) {
     &:not(:first-child) {

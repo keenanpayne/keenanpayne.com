@@ -4,13 +4,13 @@
 
 .masthead {
   opacity: 0;
-  padding-bottom: calc(4rem + .2vw);
-  padding-top: calc(4rem + .2vw);
+  padding-bottom: $spacing-l;
+  padding-top: $spacing-l;
   transition: padding $transition-duration;
 
   @media (--medium) {
-    padding-bottom: calc(8rem + .2vw);
-    padding-top: calc(8rem + .2vw);
+    padding-bottom: $spacing-xxl;
+    padding-top: $spacing-xxl;
   }
 
   &.-animated { animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }

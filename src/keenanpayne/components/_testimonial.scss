@@ -24,13 +24,13 @@
   &:before,
   &:after {
     font-family: $font-secondary;
-    font-size: 110%;
+    font-size: 115%;
     line-height: 0;
   }
 
-  &:before { content: "“ "; }
+  &:before { content: "“"; }
 
-  &:after { content: " ”"; }
+  &:after { content: "”"; }
 }
 
 .testimonial-author { font-weight: bold; }

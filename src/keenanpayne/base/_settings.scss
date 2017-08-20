@@ -53,13 +53,13 @@ $transition-duration-long: 300ms;
 @custom-media --very-large (width >= 1460px);
 
 // Spacing variables
-$spacing-xxs: 0.25lh;
-$spacing-xs: 0.5lh;
-$spacing-s:  1lh;
-$spacing-m:  2lh;
-$spacing-l:  3lh;
-$spacing-xl: 4lh;
-$spacing-xxl: 5.5lh;
+$spacing-xxs: calc(0.25lh + .2vw);
+$spacing-xs: calc(0.5lh + .2vw);
+$spacing-s:  calc(1lh + .2vw);
+$spacing-m:  calc(2lh + .2vw);
+$spacing-l:  calc(3lh + .2vw);
+$spacing-xl: calc(4lh + .2vw);
+$spacing-xxl: calc(5.5lh + .2vw);
 
 //
 // Type Scale
