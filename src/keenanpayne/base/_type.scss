@@ -19,19 +19,28 @@
 // Styles
 // ------
 
-p { font-variant-ligatures: normal; }
+p {
+  font-variant-ligatures: normal;
+  letter-spacing: -.15px;
+}
 
-p,
-h2, h3 { letter-spacing: -.15px; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; }
+
+h1, h2, h3 { margin: $spacing-xs 0; }
 
 h2, h3 {
+  letter-spacing: -.15px;
+
   // Subtext hover effect on portfolio
   &:hover {
     .heading-subtext { transform: translateY(-10px); }
   }
 }
 
-ul, ol { margin-left: $spacing-xs; }
+// Hanging lists for readability
+ul, ol { padding-left: 0; }
+
+ol { margin-left: -1rem; }
 
 a {
   // Social network modifiers
@@ -40,6 +49,13 @@ a {
   &.-behance { @include social-link(#0057ff); }
   &.-linkedin { @include social-link(#0077b5); }
   &.-codepen { @include social-link(#959595); }
+
+  // Links in paragraphs
+  p & {
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-skip: ink;
+  }
 }
 
 .heading-subtext {

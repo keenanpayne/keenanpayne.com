@@ -18,6 +18,9 @@
 // Site-Specific
 // -------------
 
+// Utilities
+@import "keenanpayne/utils/animations";
+
 // Base Site
 @import "keenanpayne/base/base";
 @import "keenanpayne/base/type";
@@ -26,9 +29,6 @@
 @import "keenanpayne/layout/post";
 @import "keenanpayne/layout/site-footer";
 @import "keenanpayne/layout/site-header";
-
-// Utilities
-@import "keenanpayne/utils/animations";
 
 // Components
 @import "keenanpayne/components/comments";
