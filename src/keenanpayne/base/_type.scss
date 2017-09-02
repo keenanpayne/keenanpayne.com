@@ -42,6 +42,10 @@ ul, ol { padding-left: 0; }
 
 ol { margin-left: -1rem; }
 
+li {
+  &:not(:last-child) { margin-bottom: calc(0.15lh + .1vw); }
+}
+
 a {
   // Social network modifiers
   &.-dribbble { @include social-link(#ea4c89); }

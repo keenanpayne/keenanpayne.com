@@ -7,6 +7,7 @@
 :root {
   background-color: getColor(background, body);
   border-top: 3px solid getColor(background, dark);
+  line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
