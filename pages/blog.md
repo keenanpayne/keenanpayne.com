@@ -7,7 +7,7 @@ permalink: blog.html
 ## Page Sections
 sections:
   - name: 'masthead'
-  - name: 'posts'
+  - name: 'post-list'
 
 ## Masthead
 masthead: Blog
