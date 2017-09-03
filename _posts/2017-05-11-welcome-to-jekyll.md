@@ -1,5 +1,5 @@
 ---
-title:  "Welcome to Jekyll!"
+title:  "Writing blog posts with Jekyll"
 date:   2017-05-11 00:12:52 -0700
 ---
 

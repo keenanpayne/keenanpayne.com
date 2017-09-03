@@ -1,7 +1,7 @@
 <section container>
-  <article class="post -list">
+  <article class="post -list" grid="column">
     {% for post in site.posts %}
-      <header class="post-header">
+      <header class="post-header" column>
         <h2>
           <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
         </h2>
@@ -9,9 +9,11 @@
         <p class="post-date">{{ post.date | date: "%B %e, %Y" }}</p>
       </header>
 
-      {% if forloop.index == 1 %}
-        <p>{{ post.excerpt }}</p>
-      {% endif %}
+      <div class="post-content" column>
+        {% if forloop.index == 1 %}
+          <p>{{ post.excerpt }}</p>
+        {% endif %}
+      </div>
     {% endfor %}
   </article>
 </section>

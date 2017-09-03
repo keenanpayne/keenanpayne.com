@@ -4,21 +4,21 @@ comments: true
 ---
 
 <section container>
-  <article class="post -single">
-    <header class="post-header">
-      <h1>{{ page.title }}</h1>
+  <article class="post -single" grid="column">
+    <header class="post-header" column>
+      <h1 class="post-title">{{ page.title }}</h1>
 
       <p class="post-date">{{ page.date | date: "%B %e, %Y" }}</p>
 
       {% include components/reading-time.html %}
     </header>
 
-    <div class="post-content">
+    <div class="post-content" column>
       {{ content }}
+
+      {% include components/promo.html %}
+
+      {% include components/comments.html %}
     </div>
-
-    {% include components/promo.html %}
-
-    {% include components/comments.html %}
   </article>
 </section>

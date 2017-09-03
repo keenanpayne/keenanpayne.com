@@ -3,8 +3,6 @@
 // ==================================================
 
 .readingTime {
-  color: getColor(text, secondary);
-  font-size: .75rem;
   margin-left: $spacing-xxs;
 
   &:before {

@@ -2,10 +2,22 @@
 // Post
 // ==================================================
 
+
+//
+// Variables
+// ---------
+
+$post-left-margin: calc(600px + 2vw);
+
+
+//
+// Styles
+// ------
+
 .post {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: calc(600px + 2vw);
+  // margin-left: auto;
+  // margin-right: auto;
+  // max-width: calc(600px + 2vw);
 
   // Modifiers
   &.-single {
@@ -18,7 +30,6 @@
 
     .post-header {
       padding-bottom: $spacing-s;
-      text-align: center;
     }
   }
 
@@ -32,13 +43,73 @@
   }
 }
 
-.post-date {
-  color: getColor(text, secondary);
-  font-size: .75rem;
+.post-bump-right {
+  @media (--small) {
+    margin-right: auto;
+    width: calc(100% - #{$post-left-margin});
+  }
 }
 
+// Header
+.post-header {
+  @media (--medium) {
+    flex: 0 1 91.66667%;
+    margin-left: 8.33333%;
+    max-width: 91.66667%;
+  }
+
+  @media (--large) {
+    flex: 0 1 83.33333%;
+    margin-left: 25%;
+    max-width: 83.33333%;
+  }
+
+  @media (--very-large) {
+    flex: 0 1 66.66667%;
+    margin-left: 33.33333%;
+    max-width: 66.66667%;
+  }
+}
+
+// Title
+.post-title {
+  font-size: typeScale(9);
+  letter-spacing: -.025rem;
+  line-height: 1.1;
+  margin-bottom: $spacing-xs;
+
+  @media (--medium) {
+    font-size: typeScale(11);
+  }
+}
+
+// Date
+.post-date {
+  color: getColor(text, secondary);
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: .01rem;
+}
+
+// Content
 .post-content {
-  // p a { text-decoration: underline; }
+  @media (--medium) {
+    flex: 0 1 75%;
+    margin-left: 8.33333%;
+    max-width: 75%;
+  }
+
+  @media (--large) {
+    flex: 0 1 58.33333%;
+    margin-left: 25%;
+    max-width: 58.33333%;
+  }
+
+  @media (--very-large) {
+    flex: 0 1 41.66667%;
+    margin-left: 33.33333%;
+    max-width: 41.66667%;
+  }
 
   h1, h2, h3 {
     margin: $spacing-m 0 1rem;

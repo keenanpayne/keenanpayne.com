@@ -26,13 +26,23 @@ $avatar-size: 125px;
   }
 }
 
+.siteFooter-grid { flex-direction: row; }
+
 // My image
+.siteFooter-me-container {
+  flex: 0 1 25%;
+  max-width: 25%;
+  padding-left: $spacing-s;
+}
+
 .siteFooter-me {
   border-radius: 50%;
   display: block;
+  height: 100%;
   max-height: $avatar-size;
   margin-left: auto;
   max-width: $avatar-size;
+  width: 100%;
 
   @media (--medium-max) {
     margin-bottom: $spacing-s;
@@ -45,6 +55,13 @@ $avatar-size: 125px;
 }
 
 // Description text
+.siteFooter-bio {
+  flex: 0 1 75%;
+  max-width: 75%;
+  padding-left: $spacing-s;
+  padding-right: $spacing-s;
+}
+
 .siteFooter-description {
   margin-top: $spacing-xs;
   max-width: $content-limit;
