@@ -911,9 +911,6 @@ table {
     -webkit-transform: translateY(0);
             transform: translateY(0); } }
 
-* + * {
-  margin-top: 1rem; }
-
 :root {
   background-color: #fcfcfc;
   border-top: 3px solid #32373d;
