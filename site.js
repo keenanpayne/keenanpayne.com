@@ -171,6 +171,27 @@
 
 
     /**
+     * navHover()
+     *
+     * Creates navigation opacity hover effect
+     *
+     * @param el {element} current navigation element
+     * @returns null
+     */
+    navHover: function(el) {
+      var $link = $(el);
+      var $allLinks = $('.siteHeader-navigation a');
+
+      $link.hover(function() {
+        var $this = $(this);
+
+        $allLinks.toggleClass('-is-inactive');
+        $this.removeClass('-is-inactive');
+      });
+    },
+
+
+    /**
      * init()
      *
      * Common functions to run on initialization
@@ -180,6 +201,7 @@
     init: function() {
       Helpers.siteAnimations();
       Helpers.loadDisqus();
+      Helpers.navHover('.siteHeader-navigation a');
     }
   };
 

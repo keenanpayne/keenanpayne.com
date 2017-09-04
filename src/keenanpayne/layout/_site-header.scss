@@ -13,31 +13,8 @@ $navigation-padding: 15px;
 
 
 //
-// Mixins
+// Styles
 // ------
-
-@mixin navHover($offset, $offsetDirection, $opacity) {
-  margin-#{$offsetDirection}: $offset;
-
-  &:after {
-    background: rgba(getColor(background, dark), $opacity);
-    content: '';
-    display: block;
-    height: 100%;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    transform: skewX(-20deg);
-    transition: opacity $transition-duration-med;
-    top: 0;
-    width: 100%;
-    z-index: -1;
-  }
-
-  &:hover {
-    &:after { opacity: 1; }
-  }
-}
 
 .siteHeader {
   margin-top: $spacing-s;
@@ -78,42 +55,34 @@ $navigation-padding: 15px;
     padding-right: $navigation-padding;
     position: relative;
     width: $navigation-width;
-
-    &:hover {
-      a { color: white; }
-    }
   }
 
   a {
+    transition: opacity $transition-duration-long;
+
     &:hover { border-bottom: none; }
+
+    &.-is-inactive { opacity: .5; }
   }
 }
 
 .siteHeader-navigation-left {
   li {
-    &:nth-of-type(1) {
-      @include navHover(-20px, 'left', 1);
-    }
+    &:nth-of-type(1) { margin-left: -20px; }
 
-    &:nth-of-type(2) {
-      @include navHover(-30px, 'left', .85);
-    }
+    &:nth-of-type(2) { margin-left: -30px; }
   }
 }
 
 .siteHeader-navigation-right {
   li {
     &:nth-of-type(1) {
-      @include navHover(0, 'left', .7);
+
     }
 
-    &:nth-of-type(2) {
-      @include navHover(-10px, 'left', .55);
-    }
+    &:nth-of-type(2) { margin-left: -10px; }
 
-    &:nth-of-type(3) {
-      @include navHover(-20px, 'left', .55);
-    }
+    &:nth-of-type(3) { margin-left: -20px; }
   }
 }
 
