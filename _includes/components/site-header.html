@@ -5,33 +5,18 @@
     </h1>
 
     <nav class="siteHeader-navigation" role="navigation" column="8">
-        {% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
+      <ul class="siteHeader-navigation-left">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li>&nbsp;</li>
+      </ul>
 
-        <!-- {% for p in navigation_pages %}
-          {% if p.navigation_weight %}
-            {% if p.navigation_weight == 0  %}
-              <ul>
-            {% endif %}
+      <span class="siteHeader-navigation-seperator"></span>
 
-              <li {% if p.url == page.url %}class="-is-active"{% endif %}><a href="{{ p.url }}">{{ p.title }}</a></li>
-
-            </ul>
-          {% endif %}
-        {% endfor %} -->
-
-        <ul class="siteHeader-navigation-left">
-          <li><a href="/index.html">Home</a></li>
-          <li><a href="/blog.html">Blog</a></li>
-          <li>&nbsp;</li>
-        </ul>
-
-        <span class="siteHeader-navigation-seperator"></span>
-
-        <ul class="siteHeader-navigation-right">
-          <li><a href="/work.html">Work</a></li>
-          <li><a href="/labs.html">Labs</a></li>
-          <li><a href="/contact.html">Contact</a></li>
-        </ul>
+      <ul class="siteHeader-navigation-right">
+        <li><a href="/work.html">Work</a></li>
+        <li><a href="/labs.html">Labs</a></li>
+        <li><a href="/contact.html">Contact</a></li>
       </ul>
     </nav>
 
@@ -45,11 +30,15 @@
       <div class="mobileNav-container">
         <div class="mobileNav-content">
           <ul>
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/blog.html">Blog</a></li>
-            <li><a href="/work.html">Work</a></li>
-            <li><a href="/labs.html">Labs</a></li>
-            <li><a href="/contact.html">Contact</a></li>
+            {% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
+
+            {% for p in navigation_pages %}
+              {% if p.navigation_weight %}
+                <li {% if p.url == page.url %}class="-is-active"{% endif %}>
+                  <a href="{{ p.url }}">{{ p.title }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
           </ul>
         </div>
       </div>
@@ -60,6 +49,7 @@
 <script>
   $(document).ready(function() {
     var $mobileNavToggle = $(".mobileNav-toggle");
+
     $mobileNavToggle.click(function() {
       $mobileNavToggle.toggleClass('-is-active');
       $('.mobileNav').toggleClass('-is-active');

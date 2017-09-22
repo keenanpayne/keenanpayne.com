@@ -1182,26 +1182,26 @@ tr {
   height: auto;
   margin: 0 auto;
   min-height: 100vh;
+  padding: calc(3.2rem + .2vw) calc(1.6rem + .2vw);
   text-align: left;
   width: 100%; }
-
-.mobileNav-content {
-  overflow: scroll;
-  padding: calc(3.2rem + .2vw) calc(1.6rem + .2vw); }
-  .mobileNav-content::-webkit-scrollbar {
+  .mobileNav-container::-webkit-scrollbar {
     width: 0; }
-  .mobileNav-content a {
+  .mobileNav-container a {
     color: #333;
     text-decoration: none; }
-  .mobileNav-content ul {
+  .mobileNav-container ul {
     margin-top: 0;
     padding-left: 0; }
-  .mobileNav-content li {
+  .mobileNav-container li {
     font-family: "Playfair Display", "Times New Roman", "Times", serif;
-    font-size: 2.48832rem;
+    font-size: 1.728rem;
     font-weight: 900;
     list-style-type: none;
     margin-bottom: calc(0.8rem + .2vw); }
+    @media (min-height: 560px) {
+      .mobileNav-container li {
+        font-size: 2.48832rem; } }
 
 .mobileNav-wrapper {
   cursor: pointer;

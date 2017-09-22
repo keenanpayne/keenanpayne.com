@@ -42,13 +42,9 @@ $mobileNavTrigger-size: 26px;
   height: auto;
   margin: 0 auto;
   min-height: 100vh;
+  padding: $spacing-m $spacing-s;
   text-align: left;
   width: 100%;
-}
-
-.mobileNav-content {
-  overflow: scroll;
-  padding: $spacing-m $spacing-s;
 
   &::-webkit-scrollbar { width: 0; }
 
@@ -64,10 +60,14 @@ $mobileNavTrigger-size: 26px;
 
   li {
     font-family: $font-secondary;
-    font-size: typeScale(7);
+    font-size: typeScale(5);
     font-weight: 900;
     list-style-type: none;
     margin-bottom: $spacing-xs;
+
+    @media (min-height: 560px) {
+      font-size: typeScale(7);
+    }
   }
 }
 
