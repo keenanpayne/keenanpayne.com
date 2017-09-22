@@ -1441,6 +1441,14 @@ a.reversefootnote {
   border-bottom: 3px solid #32373d;
   margin-bottom: calc(0.8rem + .2vw); }
 
+@media (min-width: 960px) {
+  .portfolioList:first-of-type {
+    padding-left: calc(8.8rem + .2vw); } }
+
+@media (min-width: 960px) {
+  .portfolioList:last-of-type {
+    padding-right: calc(8.8rem + .2vw); } }
+
 .portfolioList-item {
   display: block;
   opacity: 0; }
@@ -1710,7 +1718,7 @@ a.reversefootnote {
   line-height: 1.65;
   margin-bottom: calc(1.6rem + .2vw);
   margin-top: calc(1.6rem + .2vw);
-  padding: 1rem;
+  padding: 0;
   /* Comment */
   /* Error */
   /* Keyword */
@@ -1776,7 +1784,8 @@ a.reversefootnote {
     white-space: pre;
     word-wrap: normal; }
   .highlight code {
-    background-color: transparent; }
+    background-color: transparent;
+    padding: calc(0.8rem + .2vw); }
   .highlight .c {
     color: #999988;
     font-style: italic; }
@@ -1910,3 +1919,23 @@ a.reversefootnote {
     color: #008080; }
   .highlight .il {
     color: #009999; }
+
+[class^="language-"] .highlight:before {
+  background: #e6e6e6;
+  content: '';
+  display: block;
+  font-size: 0.69444rem;
+  font-weight: bold;
+  padding: calc(0.4rem + .2vw); }
+
+[class^="language-python"] .highlight:before {
+  content: "python";
+  text-transform: capitalize; }
+
+[class^="language-scss"] .highlight:before {
+  content: "scss";
+  text-transform: uppercase; }
+
+[class^="language-html"] .highlight:before {
+  content: "html";
+  text-transform: uppercase; }

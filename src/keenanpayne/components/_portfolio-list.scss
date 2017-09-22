@@ -33,6 +33,18 @@
     border-bottom: 3px solid getColor(background, dark);
     margin-bottom: $spacing-xs;
   }
+
+  &:first-of-type {
+    @media (--large) {
+      padding-left: $spacing-xxl;
+    }
+  }
+
+  &:last-of-type {
+    @media (--large) {
+      padding-right: $spacing-xxl;
+    }
+  }
 }
 
 .portfolioList-item {

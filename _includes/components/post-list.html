@@ -11,7 +11,7 @@
 
       <div class="post-content" column>
         {% if forloop.index == 1 %}
-          <p>{{ post.excerpt }}</p>
+          {{ post.excerpt }}
         {% endif %}
       </div>
     {% endfor %}

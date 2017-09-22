@@ -7,7 +7,7 @@
   line-height: 1.65;
   margin-bottom: $spacing-s;
   margin-top: $spacing-s;
-  padding: 1rem;
+  padding: 0;
 
   pre {
     overflow-x: auto;
@@ -16,7 +16,10 @@
     word-wrap: normal;
   }
 
-  code { background-color: transparent; }
+  code {
+    background-color: transparent;
+    padding: $spacing-xs;
+  }
 
   .c { color: #999988; font-style: italic } /* Comment */
   .err { color: #a61717; background-color: #e3d2d2 } /* Error */
@@ -78,3 +81,36 @@
   .vi { color: #008080 } /* Name.Variable.Instance */
   .il { color: #009999 } /* Literal.Number.Integer.Long */
 }
+
+
+//
+// Language-Specific
+// -----------------
+
+@mixin highlightLanguage($language, $textStyle) {
+  [class^="language-#{$language}"] {
+    .highlight {
+      &:before {
+        content: $language;
+        text-transform: $textStyle;
+      }
+    }
+  }
+}
+
+[class^="language-"] {
+  .highlight {
+    &:before {
+      background: #e6e6e6;
+      content: '';
+      display: block;
+      font-size: typeScale(.5);
+      font-weight: bold;
+      padding: $spacing-xxs;
+    }
+  }
+}
+
+@include highlightLanguage('python', capitalize);
+@include highlightLanguage('scss', uppercase);
+@include highlightLanguage('html', uppercase);
