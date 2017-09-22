@@ -34,5 +34,36 @@
         </ul>
       </ul>
     </nav>
+
+    <div class="mobileNav-wrapper">
+      <a class="mobileNav-toggle">
+        <span></span>
+      </a>
+    </div>
+
+    <nav id="nav" class="mobileNav">
+      <div class="mobileNav-container">
+        <div class="mobileNav-content">
+          <ul>
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/work.html">Work</a></li>
+            <li><a href="/labs.html">Labs</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
 </header>
+
+<script>
+  $(document).ready(function() {
+    var $mobileNavToggle = $(".mobileNav-toggle");
+    $mobileNavToggle.click(function() {
+      $mobileNavToggle.toggleClass('-is-active');
+      $('.mobileNav').toggleClass('-is-active');
+      $('body').toggleClass('-no-scroll');
+    });
+  });
+</script>

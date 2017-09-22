@@ -8,7 +8,7 @@
 // ---------
 
 $navigation-width: 75px;
-$navigation-fontSize: 14px;
+$navigation-fontSize: 16px;
 $navigation-padding: 15px;
 
 
@@ -19,10 +19,6 @@ $navigation-padding: 15px;
 .siteHeader {
   margin-top: $spacing-s;
   width: 100%;
-
-  @media (--medium-max) {
-    text-align: center;
-  }
 }
 
 
@@ -31,13 +27,11 @@ $navigation-padding: 15px;
 // ----------
 
 .siteHeader-navigation {
-  @media (--medium-max) {
-    margin-top: $spacing-s;
-  }
+  margin-right: $spacing-xxs;
+  text-align: right;
 
-  @media (--medium) {
-    margin-right: $spacing-xxs;
-    text-align: right;
+  @media (--medium-max) {
+    display: none;
   }
 
   ul {
@@ -76,10 +70,6 @@ $navigation-padding: 15px;
 
 .siteHeader-navigation-right {
   li {
-    &:nth-of-type(1) {
-
-    }
-
     &:nth-of-type(2) { margin-left: -10px; }
 
     &:nth-of-type(3) { margin-left: -20px; }
@@ -89,14 +79,10 @@ $navigation-padding: 15px;
 .siteHeader-navigation-seperator {
   background-color: rgba(getColor(base, lines), .75);
   display: inline-block;
-  height: 100px;
+  height: 115px;
   margin-left: 5px;
   margin-right: 5px;
   transform: skew(-20deg) translateY(10px);
   vertical-align: bottom;
   width: 1px;
-
-  @media (--medium) {
-    height: 110px;
-  }
 }

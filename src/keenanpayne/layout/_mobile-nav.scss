@@ -1,0 +1,138 @@
+//
+// Mobile Nav
+// =============================================================================
+
+//
+// Variables
+// ---------
+
+$mobileNavTrigger-size: 26px;
+
+
+//
+// Styles
+// ------
+
+.mobileNav {
+  color: white;
+  height: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 3px;
+  transition: all ease-in $transition-duration;
+  width: 100%;
+  z-index: 800;
+
+  @media (--medium) {
+    opacity: 0 !important;
+  }
+
+  &.-is-active {
+    height: 100%;
+    min-height: 100%;
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.mobileNav-container {
+  background-color: getColor(background, light);
+  height: auto;
+  margin: 0 auto;
+  min-height: 100vh;
+  text-align: left;
+  width: 100%;
+}
+
+.mobileNav-content {
+  overflow: scroll;
+  padding: $spacing-m $spacing-s;
+
+  &::-webkit-scrollbar { width: 0; }
+
+  a {
+    color: getColor(text, heading);
+    text-decoration: none;
+  }
+
+  ul {
+    margin-top: 0;
+    padding-left: 0;
+  }
+
+  li {
+    font-family: $font-secondary;
+    font-size: typeScale(7);
+    font-weight: 900;
+    list-style-type: none;
+    margin-bottom: $spacing-xs;
+  }
+}
+
+
+//
+// Hamburger Button
+// ----------------
+
+.mobileNav-wrapper {
+  cursor: pointer;
+  height: $mobileNavTrigger-size;
+  position: absolute;
+  right: $mobileNavTrigger-size;
+  top: $mobileNavTrigger-size;
+  width: $mobileNavTrigger-size;
+  z-index: 1000;
+
+  @media (--medium) {
+    opacity: 0;
+  }
+}
+
+.mobileNav-toggle {
+  cursor: pointer;
+  display: block;
+  height: $mobileNavTrigger-size;
+  width: $mobileNavTrigger-size;
+
+  &:hover {
+    border-bottom: none;
+  }
+
+  span {
+    &,
+    &:before,
+    &:after {
+      background-color: getColor(text, heading);
+      border-radius: 1px;
+      content: '';
+      cursor: pointer;
+      display: block;
+      height: 2px;
+      position: absolute;
+      top: 2px;
+      transition: background-color $transition-duration-long;
+      width: $mobileNavTrigger-size;
+      will-change: transform;
+    }
+
+    &:before,
+    &:after { transition: all $transition-duration-med ease-in-out; }
+
+    &:before { top: 8px; }
+
+    &:after { top: 16px; }
+  }
+
+  &.-is-active span {
+    background-color: transparent;
+
+    &:before,
+    &:after { top: 8px; }
+
+    &:before { transform: rotate(45deg); }
+
+    &:after { transform: rotate(-45deg); }
+  }
+}
