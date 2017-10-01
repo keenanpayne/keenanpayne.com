@@ -1182,7 +1182,7 @@ tr {
   height: auto;
   margin: 0 auto;
   min-height: 100vh;
-  padding: calc(3.2rem + .2vw) calc(1.6rem + .2vw);
+  padding: calc(6.4rem + .2vw) calc(1.6rem + .2vw) 0;
   text-align: left;
   width: 100%; }
   .mobileNav-container::-webkit-scrollbar {
@@ -1190,6 +1190,8 @@ tr {
   .mobileNav-container a {
     color: #333;
     text-decoration: none; }
+    .mobileNav-container a:hover {
+      color: #666; }
   .mobileNav-container ul {
     margin-top: 0;
     padding-left: 0; }
@@ -1208,7 +1210,7 @@ tr {
   height: 26px;
   position: absolute;
   right: 26px;
-  top: 26px;
+  top: 70px;
   width: 26px;
   z-index: 1000; }
   @media (min-width: 768px) {
