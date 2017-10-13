@@ -85,7 +85,7 @@ blockquote {
   border-left: 5px solid getColor(base, lines);
   padding-bottom: $spacing-xxs;
   padding-top: $spacing-xxs;
-  transition: border-left-color $transition-duration-med;
+  transition: border-left-color $transition-duration-long;
 
   &:hover { border-left-color: getColor(text, link); }
 }

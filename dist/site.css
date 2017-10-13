@@ -1008,7 +1008,7 @@ a.-codepen {
     text-decoration: underline; }
 
 p a {
-  color: #287ebf;
+  color: #23699e;
   text-decoration: underline;
   -webkit-text-decoration-skip: ink;
           text-decoration-skip: ink; }
@@ -1030,10 +1030,10 @@ blockquote {
   border-left: 5px solid #DCDCDC;
   padding-bottom: calc(0.375rem + .2vw);
   padding-top: calc(0.375rem + .2vw);
-  -webkit-transition: border-left-color 225ms;
-  transition: border-left-color 225ms; }
+  -webkit-transition: border-left-color 300ms;
+  transition: border-left-color 300ms; }
   blockquote:hover {
-    border-left-color: #287ebf; }
+    border-left-color: #23699e; }
 
 code {
   background-color: #f5f1ea;
@@ -1095,27 +1095,15 @@ tr {
 
 @media (min-width: 768px) {
   .post-header {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 91.66667%;
-            flex: 0 1 91.66667%;
-    margin-left: 8.33333%;
-    max-width: 91.66667%; } }
+    margin-left: 8.33333%; } }
 
 @media (min-width: 960px) {
   .post-header {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 83.33333%;
-            flex: 0 1 83.33333%;
-    margin-left: 25%;
-    max-width: 83.33333%; } }
+    margin-left: 25%; } }
 
 @media (min-width: 1440px) {
   .post-header {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 66.66667%;
-            flex: 0 1 66.66667%;
-    margin-left: 33.33333%;
-    max-width: 66.66667%; } }
+    margin-left: 33.33333%; } }
 
 .post-title {
   font-size: 3.58318rem;
@@ -1133,30 +1121,19 @@ tr {
 
 @media (min-width: 768px) {
   .post-content {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 75%;
-            flex: 0 1 75%;
     margin-left: 8.33333%;
-    max-width: 75%; } }
+    max-width: 815px; } }
 
 @media (min-width: 960px) {
   .post-content {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 58.33333%;
-            flex: 0 1 58.33333%;
-    margin-left: 25%;
-    max-width: 58.33333%; } }
+    margin-left: 25%; } }
 
 @media (min-width: 1440px) {
   .post-content {
-    -webkit-box-flex: 0;
-        -ms-flex: 0 1 47.5%;
-            flex: 0 1 47.5%;
-    margin-left: 33.33333%;
-    max-width: 47.5%; } }
+    margin-left: 33.33333%; } }
 
 .post-content h1, .post-content h2, .post-content h3 {
-  margin: calc(3rem + .2vw) 0 1rem;
+  margin: calc(3rem + .2vw) 0 1.5rem;
   position: relative; }
 
 .post-content h3 {

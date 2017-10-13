@@ -16,21 +16,15 @@
 // Header
 .post-header {
   @media (--medium) {
-    flex: 0 1 91.66667%;
     margin-left: 8.33333%;
-    max-width: 91.66667%;
   }
 
   @media (--large) {
-    flex: 0 1 83.33333%;
     margin-left: 25%;
-    max-width: 83.33333%;
   }
 
   @media (--very-large) {
-    flex: 0 1 66.66667%;
     margin-left: 33.33333%;
-    max-width: 66.66667%;
   }
 }
 
@@ -56,25 +50,20 @@
 // Content
 .post-content {
   @media (--medium) {
-    flex: 0 1 75%;
     margin-left: 8.33333%;
-    max-width: 75%;
+    max-width: 815px;
   }
 
   @media (--large) {
-    flex: 0 1 58.33333%;
     margin-left: 25%;
-    max-width: 58.33333%;
   }
 
   @media (--very-large) {
-    flex: 0 1 47.5%;
     margin-left: 33.33333%;
-    max-width: 47.5%;
   }
 
   h1, h2, h3 {
-    margin: $spacing-m 0 1rem;
+    margin: $spacing-m 0 $block-margin;
     position: relative;
   }
 
