@@ -42,11 +42,11 @@ $transition-duration-long: 300ms;
 // Use as @media (--medium) { … }
 @custom-media --small (width >= 480px);
 @custom-media --small-max (width <= 480px);
-@custom-media --medium (width >= 768px);
-@custom-media --medium-max (width <= 768px);
+@custom-media --medium (width >= 720px);
+@custom-media --medium-max (width <= 720px);
 @custom-media --large (width >= 960px);
-@custom-media --extra-large (width >= 1100px);
-@custom-media --very-large (width >= 1460px);
+@custom-media --extra-large (width >= 1120px);
+@custom-media --very-large (width >= 1440px);
 
 // Spacing variables
 $spacing-xxs: calc(0.25lh + .2vw);
@@ -89,7 +89,7 @@ $enable-grid: true;
 $full-grid: false;
 
 // Max width for container
-$container-width: 1960px;
+$container-width: 1720px;
 
 // Gutter size
 $gutter: 3rem;
@@ -121,13 +121,14 @@ $colors: (
     "secondary": #666,
     "heading":   #333,
     "inverted":  white,
-    "sf": #ff8080
+    "sf": #ff8080,
+    "link": #287ebf
   ),
 
   background: (
     "dark":  #32373d,
     "light": #f7f7f7,
-    "body":  #fcfcfc
+    "body":  #fefefe
   ),
 
   social: (

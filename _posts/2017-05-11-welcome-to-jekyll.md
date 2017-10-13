@@ -21,6 +21,8 @@ Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all
 in chapters 12--14"). Three dots ... will be converted to an ellipsis.
 Unicode is supported. ☺
 
+<p class="-large">I set a goal to read <strong>24 books in 2017</strong>. I have already read 3 books in the last 3 weeks</p>
+
 
 
 ## An h2 header

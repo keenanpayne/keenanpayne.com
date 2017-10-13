@@ -19,7 +19,13 @@
 // Styles
 // ------
 
-p { font-variant-ligatures: normal; }
+p {
+  font-variant-ligatures: normal;
+
+  &.-large {
+    font-size: typeScale(3);
+  }
+}
 
 h1, h2, h3, h4, h5, h6 { line-height: 1.2; }
 
@@ -53,6 +59,7 @@ a {
 
   // Links in paragraphs
   p & {
+    color: getColor(text, link);
     text-decoration: underline;
     text-decoration-skip: ink;
   }
@@ -75,11 +82,12 @@ a {
 
 blockquote {
   color: getColor(text, secondary);
-  border-left: 5px solid getColor(text, secondary);
-  margin-bottom: $spacing-s;
-  margin-top: $spacing-s;
+  border-left: 5px solid getColor(base, lines);
   padding-bottom: $spacing-xxs;
   padding-top: $spacing-xxs;
+  transition: border-left-color $transition-duration-med;
+
+  &:hover { border-left-color: getColor(text, link); }
 }
 
 code {

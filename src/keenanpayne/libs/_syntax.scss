@@ -1,6 +1,6 @@
 .highlight {
-  background-color: #fcfcfc;
-  border: 1px solid #e6e6e6;
+  background-color: getColor(background, light);
+  border: 1px solid getColor(base, lines);
   border-left-width: 5px;
   border-radius: 3px 0 0 3px;
   font-size: .875rem;
@@ -101,7 +101,7 @@
 [class^="language-"] {
   .highlight {
     &:before {
-      background: #e6e6e6;
+      background: getColor(base, lines);
       content: '';
       display: block;
       font-size: typeScale(.5);
