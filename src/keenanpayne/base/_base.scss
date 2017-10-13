@@ -5,13 +5,16 @@
 :root {
   background-color: getColor(background, body);
   border-top: 3px solid getColor(background, dark);
-  line-height: 1.6;
+  line-height: 1.5;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 
   @media (--small) {
     font-size: calc(#{$font-size}px + .3vw);
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 

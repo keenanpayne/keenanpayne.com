@@ -4,15 +4,13 @@
 
 .post {
   padding-bottom: $spacing-s;
-  padding-top: $spacing-s;
+  padding-top: $spacing-m;
 
   @media (--medium) {
-    padding-top: $spacing-m;
+    padding-top: $spacing-l;
   }
 
-  .post-header {
-    padding-bottom: $spacing-s;
-  }
+  .post-header { padding-bottom: $spacing-m; }
 }
 
 // Header
@@ -41,7 +39,7 @@
   font-size: typeScale(9);
   letter-spacing: -.025rem;
   line-height: 1.1;
-  margin-bottom: $spacing-xs;
+  margin-bottom: $spacing-s;
 
   @media (--medium) {
     font-size: typeScale(11);
@@ -50,10 +48,9 @@
 
 // Date
 .post-date {
-  color: getColor(text, secondary);
-  font-size: .875rem;
-  font-weight: 600;
-  letter-spacing: .01rem;
+  font-variant: all-small-caps;
+  letter-spacing: 3px;
+  text-transform: lowercase;
 }
 
 // Content
@@ -71,14 +68,20 @@
   }
 
   @media (--very-large) {
-    flex: 0 1 41.66667%;
+    flex: 0 1 47.5%;
     margin-left: 33.33333%;
-    max-width: 41.66667%;
+    max-width: 47.5%;
   }
 
   h1, h2, h3 {
     margin: $spacing-m 0 1rem;
     position: relative;
+  }
+
+  h3 {
+    font-variant: all-small-caps;
+    letter-spacing: 1.5px;
+    text-transform: lowercase;
   }
 
   img {
