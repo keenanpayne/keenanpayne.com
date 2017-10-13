@@ -110,3 +110,38 @@ table {
 }
 
 tr { border-bottom: 1px solid getColor(base, lines); }
+
+
+//
+// Global OpenType Modifiers
+// -------------------------
+
+.-small-caps {
+  font-feature-settings: "smcp";
+  font-variant-caps: small-caps;
+}
+
+.-all-small-caps {
+  font-feature-settings: "c2sc", "smcp";
+  font-variant-caps: all-small-caps;
+}
+
+.-lining-numbers {
+  font-feature-settings: "lnum";
+  font-variant-numeric: lining-nums;
+}
+
+.-proportional-numbers {
+  font-feature-settings: "pnum";
+  font-variant-numeric: proportional-nums;
+}
+
+.-fraction {
+  font-feature-settings: "frac";
+  font-variant-numeric: diagonal-fractions;
+}
+
+.-ordinal {
+  font-feature-settings: "ordn";
+  font-variant-numeric: ordinal;
+}

@@ -1049,6 +1049,36 @@ table {
 tr {
   border-bottom: 1px solid #DCDCDC; }
 
+.-small-caps {
+  -webkit-font-feature-settings: "smcp";
+          font-feature-settings: "smcp";
+  font-variant-caps: small-caps; }
+
+.-all-small-caps {
+  -webkit-font-feature-settings: "c2sc", "smcp";
+          font-feature-settings: "c2sc", "smcp";
+  font-variant-caps: all-small-caps; }
+
+.-lining-numbers {
+  -webkit-font-feature-settings: "lnum";
+          font-feature-settings: "lnum";
+  font-variant-numeric: lining-nums; }
+
+.-proportional-numbers {
+  -webkit-font-feature-settings: "pnum";
+          font-feature-settings: "pnum";
+  font-variant-numeric: proportional-nums; }
+
+.-fraction {
+  -webkit-font-feature-settings: "frac";
+          font-feature-settings: "frac";
+  font-variant-numeric: diagonal-fractions; }
+
+.-ordinal {
+  -webkit-font-feature-settings: "ordn";
+          font-feature-settings: "ordn";
+  font-variant-numeric: ordinal; }
+
 .post {
   padding-bottom: calc(1.5rem + .2vw);
   padding-top: calc(3rem + .2vw); }
