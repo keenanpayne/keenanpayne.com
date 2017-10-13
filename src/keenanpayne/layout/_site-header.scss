@@ -19,6 +19,10 @@ $navigation-padding: 15px;
 .siteHeader {
   margin-top: $spacing-s;
   width: 100%;
+
+  @media (--medium) {
+    margin-top: $spacing-m;
+  }
 }
 
 

@@ -41,9 +41,17 @@ h2, h3 {
 }
 
 // Hanging lists for readability
-ul, ol { padding-left: 0; }
+ul, ol {
+  @media (--medium) {
+    padding-left: 0;
+  }
+}
 
-ol { margin-left: -1rem; }
+ol {
+  @media (--medium) {
+    margin-left: -1rem;
+  }
+}
 
 li {
   &:not(:last-child) { margin-bottom: calc(0.15lh + .1vw); }

@@ -41,9 +41,9 @@ $transition-duration-long: 300ms;
 // Custom media queries
 // Use as @media (--medium) { … }
 @custom-media --small (width >= 480px);
-@custom-media --small-max (width <= 480px);
-@custom-media --medium (width >= 720px);
-@custom-media --medium-max (width <= 720px);
+@custom-media --small-max (width <= 479px);
+@custom-media --medium (width >= 768px);
+@custom-media --medium-max (width <= 767px);
 @custom-media --large (width >= 960px);
 @custom-media --extra-large (width >= 1120px);
 @custom-media --very-large (width >= 1440px);
@@ -120,7 +120,7 @@ $colors: (
     "primary":   #333,
     "secondary": #666,
     "heading":   #333,
-    "inverted":  white,
+    "inverted":  #fff,
     "sf": #ff8080,
     "link": #23699e
   ),
@@ -128,7 +128,7 @@ $colors: (
   background: (
     "dark":  #32373d,
     "light": #f7f7f7,
-    "body":  #fefefe
+    "body":  #ffffff
   ),
 
   social: (

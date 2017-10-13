@@ -7,7 +7,7 @@
   padding-top: $spacing-m;
 
   @media (--medium) {
-    padding-top: $spacing-l;
+    padding-top: $spacing-xl;
   }
 
   .post-header { padding-bottom: $spacing-m; }
@@ -30,13 +30,13 @@
 
 // Title
 .post-title {
-  font-size: typeScale(9);
+  font-size: typeScale(8);
   letter-spacing: -.025rem;
   line-height: 1.1;
   margin-bottom: $spacing-s;
 
   @media (--medium) {
-    font-size: typeScale(11);
+    font-size: typeScale(10);
   }
 }
 
@@ -98,11 +98,11 @@
   font-weight: bold;
   left: -1.15rem;
   line-height: 1;
-  opacity: .35;
+  opacity: .5;
   position: absolute;
   top: .375rem;
   transition: opacity $transition-duration;
 
   &:hover,
-  &:active { opacity: .5; }
+  &:active { opacity: .75; }
 }
