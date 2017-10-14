@@ -3,19 +3,20 @@
 // ==================================================
 
 .promo {
-  background-color: darken(getColor(background, light), 10%);
+  background-color: getColor(base, splash);
+  color: white;
   cursor: pointer;
   display: block;
   font-size: .75rem;
   font-weight: 600;
   margin-top: $spacing-l;
-  opacity: .85;
+  opacity: .75;
   padding: $spacing-xs;
   text-align: center;
   transition: opacity $transition-duration-med, color $transition-duration-med;
 
   &:hover {
-    color: inherit;
-    opacity: 1;
+    color: white;
+    opacity: .8;
   }
 }

@@ -1108,7 +1108,7 @@ tr {
     margin-left: 33.33333%; } }
 
 .post-title {
-  font-size: 2.98598rem;
+  font-size: 2.48832rem;
   letter-spacing: -.025rem;
   line-height: 1.1;
   margin-bottom: calc(1.5rem + .2vw); }
@@ -1656,20 +1656,21 @@ a.reversefootnote {
   max-width: 175px; }
 
 .promo {
-  background-color: #dedede;
+  background-color: #23699e;
+  color: white;
   cursor: pointer;
   display: block;
   font-size: .75rem;
   font-weight: 600;
   margin-top: calc(4.5rem + .2vw);
-  opacity: .85;
+  opacity: .75;
   padding: calc(0.75rem + .2vw);
   text-align: center;
   -webkit-transition: opacity 225ms, color 225ms;
   transition: opacity 225ms, color 225ms; }
   .promo:hover {
-    color: inherit;
-    opacity: 1; }
+    color: white;
+    opacity: .8; }
 
 .readingTime {
   margin-left: calc(0.375rem + .2vw); }

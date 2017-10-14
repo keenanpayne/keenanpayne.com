@@ -67,7 +67,7 @@ a {
 
   // Links in paragraphs
   p & {
-    color: getColor(text, link);
+    color: getColor(base, splash);
     text-decoration: underline;
     text-decoration-skip: ink;
   }
@@ -95,7 +95,7 @@ blockquote {
   padding-top: $spacing-xxs;
   transition: border-left-color $transition-duration-long;
 
-  &:hover { border-left-color: getColor(text, link); }
+  &:hover { border-left-color: getColor(base, splash); }
 }
 
 code {
