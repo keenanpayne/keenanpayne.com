@@ -944,7 +944,7 @@ body {
   width: 100%; }
 
 [container="narrow"] {
-  max-width: 860px; }
+  max-width: 1020px; }
 
 main {
   margin-top: 0; }
@@ -1612,23 +1612,10 @@ a.reversefootnote {
   margin-bottom: calc(0.75rem + .2vw);
   padding-bottom: calc(0.75rem + .2vw); }
 
-.projects {
-  margin-bottom: calc(3rem + .2vw);
-  margin-top: calc(6rem + .2vw); }
-  @media (min-width: 768px) {
-    .projects {
-      padding-left: calc(4.5rem + .2vw);
-      padding-right: calc(4.5rem + .2vw); } }
-
 .project {
   opacity: 0; }
-  @media (min-width: 960px) {
-    .project {
-      padding-left: calc(4.5rem + .2vw);
-      padding-right: calc(4.5rem + .2vw); } }
-  @media (max-width: 767px) {
-    .project:not(:first-of-type) {
-      margin-top: calc(4.5rem + .2vw); } }
+  .project:not(:last-of-type) {
+    margin-bottom: calc(3rem + .2vw); }
   .project.-animated {
     -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
             animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
@@ -1641,8 +1628,11 @@ a.reversefootnote {
 
 .project-image {
   display: block;
-  margin: 0 auto calc(1.5rem + .2vw);
-  max-width: 175px; }
+  margin-left: auto;
+  margin-right: auto; }
+  @media (max-width: 767px) {
+    .project-image {
+      margin-bottom: calc(1.5rem + .2vw); } }
 
 .promo {
   background-color: #C55B60;

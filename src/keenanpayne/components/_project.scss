@@ -3,27 +3,14 @@
 // ==================================================
 
 .projects {
-  margin-bottom: $spacing-m;
-  margin-top: $spacing-xl;
 
-  @media (--medium) {
-    padding-left: $spacing-l;
-    padding-right: $spacing-l;
-  }
 }
 
 .project {
   opacity: 0;
 
-  @media (--large) {
-    padding-left: $spacing-l;
-    padding-right: $spacing-l;
-  }
-
-  &:not(:first-of-type) {
-    @media (--medium-max) {
-      margin-top: $spacing-l;
-    }
+  &:not(:last-of-type) {
+    margin-bottom: $spacing-m;
   }
 
   &.-animated { animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
@@ -35,6 +22,10 @@
 
 .project-image {
   display: block;
-  margin: 0 auto $spacing-s;
-  max-width: 175px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (--medium-max) {
+    margin-bottom: $spacing-s;
+  }
 }
