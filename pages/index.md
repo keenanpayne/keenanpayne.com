@@ -18,7 +18,7 @@ projects:
     title: "Case Studies"
     items:
       - title: "Asana.com Re-Architecture"
-        description: "With 4 months of development time, I led the re-architecture of the <a href='https://asana.com/' title='Marketers Playbook'>Asana Website</a>. As a growing company, we needed a website that would allow effortless creation of pages, as well as a codebase that could be easily modified and scaled with ease."
+        description: "With four months of development time, I led the re-architecture of the <a href='https://asana.com/' title='Marketers Playbook'>Asana Website</a>. As a growing company, we needed a website that would allow the effortless creation of pages, as well as a codebase that could be modified and scaled with ease."
         url: "https://asana.com/"
         image: "https://luna1.co/e5bb4b.png"
         tags:
