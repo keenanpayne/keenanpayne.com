@@ -3,8 +3,8 @@
 // ==================================================
 
 .introtext {
-  padding-bottom: $spacing-l;
-  padding-top: $spacing-l;
+  padding-bottom: $spacing-xl;
+  padding-top: $spacing-xl;
 
   a { color: getColor(base, splash); }
 }
@@ -13,6 +13,6 @@
   font-size: typeScale(6);
 
   @media (--medium) {
-    font-size: typeScale(7);
+    font-size: typeScale(8);
   }
 }

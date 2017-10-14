@@ -28,10 +28,6 @@ p {
     font-variant: all-small-caps;
     letter-spacing: 3px;
     text-transform: lowercase;
-
-    @media (--medium-max) {
-      font-size: typeScale(3);
-    }
   }
 }
 

@@ -66,7 +66,7 @@ pre,
 samp {
   font-family: "Consolas", monospace;
   font-size: 0.83333rem;
-  background-color: #f7f7f7; }
+  background-color: #f4f4f4; }
 
 code,
 kbd {
@@ -81,10 +81,10 @@ pre {
 
 kbd {
   background-color: transparent;
-  outline: 1px solid #DCDCDC; }
+  outline: 1px solid #DADADA; }
 
 hr {
-  background-color: #DCDCDC;
+  background-color: #DADADA;
   height: 1px;
   overflow: visible;
   border: 0; }
@@ -115,7 +115,7 @@ abbr {
           font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
   text-transform: uppercase; }
   abbr[title] {
-    border-bottom: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DADADA;
     cursor: help;
     text-decoration: none; }
 
@@ -228,7 +228,7 @@ html [type="button"],
   outline: 1px dotted ButtonText; }
 
 fieldset {
-  border: 1px solid #DCDCDC;
+  border: 1px solid #DADADA;
   padding: 1.5rem 1em; }
 
 legend {
@@ -277,15 +277,15 @@ input[type="range"] {
   input[type="range"]:focus {
     outline: none; }
   input[type="range"]::-moz-range-track{
-  background-color: #DCDCDC;
+  background-color: #DADADA;
   border: none;
   height: 0.3rem; }
   input[type="range"]::-ms-track{
-  background-color: #DCDCDC;
+  background-color: #DADADA;
   border: none;
   height: 0.3rem; }
   input[type="range"]::-webkit-slider-runnable-track{
-  background-color: #DCDCDC;
+  background-color: #DADADA;
   border: none;
   height: 0.3rem; }
   input[type="range"]::-moz-range-thumb{
@@ -466,7 +466,7 @@ textarea {
 input:not([type="submit"]):not([type="range"]),
 select,
 textarea {
-  border: 1px solid #DCDCDC;
+  border: 1px solid #DADADA;
   padding: 0 0.75em; }
 
 input[type="checkbox"],
@@ -523,7 +523,7 @@ table {
       width: auto; } }
   table thead,
   table tfoot {
-    background-color: #f7f7f7;
+    background-color: #f4f4f4;
     text-align: left; }
   table th,
   table td {
@@ -829,7 +829,7 @@ table {
   pre,
   code {
     background-color: transparent;
-    border: 1px solid #DCDCDC;
+    border: 1px solid #DADADA;
     page-break-inside: avoid; }
   blockquote {
     border: none;
@@ -913,7 +913,7 @@ table {
 
 :root {
   background-color: #ffffff;
-  border-top: 3px solid #32373d;
+  border-top: 5px solid #32373d;
   line-height: 1.5;
   text-rendering: optimizeLegibility; }
   @media (min-width: 480px) {
@@ -962,9 +962,6 @@ p {
     font-variant: all-small-caps;
     letter-spacing: 3px;
     text-transform: lowercase; }
-    @media (max-width: 767px) {
-      p.-small-heading {
-        font-size: 1.2rem; } }
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2; }
@@ -1038,7 +1035,7 @@ p a {
 
 blockquote {
   color: #666;
-  border-left: 5px solid #DCDCDC;
+  border-left: 5px solid #DADADA;
   padding-bottom: calc(0.375rem + .2vw);
   padding-top: calc(0.375rem + .2vw);
   -webkit-transition: border-left-color 300ms;
@@ -1048,7 +1045,7 @@ blockquote {
 
 code {
   background-color: background, light;
-  border: 1px solid #DCDCDC;
+  border: 1px solid #DADADA;
   padding: .1rem .5rem;
   vertical-align: 5%; }
 
@@ -1064,7 +1061,7 @@ table {
     padding-top: calc(0.75rem + .2vw); }
 
 tr {
-  border-bottom: 1px solid #DCDCDC; }
+  border-bottom: 1px solid #DADADA; }
 
 .-small-caps {
   -webkit-font-feature-settings: "smcp";
@@ -1185,7 +1182,7 @@ tr {
     pointer-events: auto; }
 
 .mobileNav-container {
-  background-color: #f7f7f7;
+  background-color: #f4f4f4;
   height: auto;
   margin: 0 auto;
   min-height: 100vh;
@@ -1263,8 +1260,8 @@ tr {
               transform: rotate(-45deg); }
 
 .siteFooter {
-  background-color: #f7f7f7;
-  border-top: 1px solid #eaeaea;
+  background-color: #f4f4f4;
+  border-top: 1px solid #e7e7e7;
   margin-top: calc(0.75rem + .2vw);
   padding-bottom: calc(3rem + .2vw);
   padding-top: calc(3rem + .2vw); }
@@ -1319,9 +1316,6 @@ tr {
 .siteHeader {
   margin-top: calc(1.5rem + .2vw);
   width: 100%; }
-  @media (min-width: 768px) {
-    .siteHeader {
-      margin-top: calc(3rem + .2vw); } }
 
 .siteHeader-navigation {
   margin-right: calc(0.375rem + .2vw);
@@ -1363,7 +1357,7 @@ tr {
   margin-left: -20px; }
 
 .siteHeader-navigation-seperator {
-  background-color: rgba(220, 220, 220, 0.75);
+  background-color: rgba(218, 218, 218, 0.75);
   display: inline-block;
   height: 115px;
   margin-left: 5px;
@@ -1415,7 +1409,7 @@ tr {
   margin-top: 0; }
 
 .footnotes {
-  border-top: 1px solid #DCDCDC;
+  border-top: 1px solid #DADADA;
   margin-top: calc(1.5rem + .2vw);
   padding-top: calc(1.5rem + .2vw); }
   .footnotes:before {
@@ -1441,8 +1435,8 @@ a.reversefootnote {
   text-decoration: none; }
 
 .introtext {
-  padding-bottom: calc(4.5rem + .2vw);
-  padding-top: calc(4.5rem + .2vw); }
+  padding-bottom: calc(6rem + .2vw);
+  padding-top: calc(6rem + .2vw); }
   .introtext a {
     color: #C55B60; }
 
@@ -1450,7 +1444,7 @@ a.reversefootnote {
   font-size: 2.0736rem; }
   @media (min-width: 768px) {
     .introtext-text {
-      font-size: 2.48832rem; } }
+      font-size: 2.98598rem; } }
 
 @media (min-width: 768px) {
   .lab-container:nth-of-type(n+3) {
@@ -1625,8 +1619,8 @@ a.reversefootnote {
     -webkit-animation-delay: .5s;
             animation-delay: .5s; }
   .project.-animate-stagger-2 {
-    -webkit-animation-delay: .7s;
-            animation-delay: .7s; }
+    -webkit-animation-delay: .65s;
+            animation-delay: .65s; }
 
 .project-image {
   display: block;
@@ -1635,6 +1629,14 @@ a.reversefootnote {
   @media (max-width: 767px) {
     .project-image {
       margin-bottom: calc(1.5rem + .2vw); } }
+
+.project-tag {
+  background: #f4f4f4;
+  border: 1px solid #DADADA;
+  border-radius: 3px;
+  display: inline-block;
+  font-size: .75rem;
+  padding: .2rem .5rem; }
 
 .promo {
   background-color: #C55B60;
@@ -1665,13 +1667,14 @@ a.reversefootnote {
     vertical-align: middle; }
 
 .sectionHeading {
+  font-weight: 600;
   margin-bottom: calc(3rem + .2vw);
   text-align: center; }
 
 .testimonials {
-  background-color: #f7f7f7;
-  border-bottom: 1px solid #eaeaea;
-  border-top: 1px solid #eaeaea;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #e7e7e7;
+  border-top: 1px solid #e7e7e7;
   margin-top: calc(6rem + .2vw);
   padding-bottom: calc(4.5rem + .2vw);
   padding-top: calc(4.5rem + .2vw);
@@ -1713,8 +1716,8 @@ a.reversefootnote {
   padding-right: 0; }
 
 .tile {
-  background: #f7f7f7;
-  border: 1px solid #efefef;
+  background: #f4f4f4;
+  border: 1px solid #ededed;
   display: block;
   height: 100%;
   margin-bottom: calc(0.75rem + .2vw);
@@ -1816,8 +1819,8 @@ a.reversefootnote {
           animation-delay: 2.55s; }
 
 .highlight {
-  background-color: #f7f7f7;
-  border: 1px solid #DCDCDC;
+  background-color: #f4f4f4;
+  border: 1px solid #DADADA;
   border-left-width: 5px;
   border-radius: 3px 0 0 3px;
   font-size: .875rem;
@@ -2028,7 +2031,7 @@ a.reversefootnote {
     color: #009999; }
 
 [class^="language-"] .highlight:before {
-  background: #DCDCDC;
+  background: #DADADA;
   content: '';
   display: block;
   font-size: 0.69444rem;

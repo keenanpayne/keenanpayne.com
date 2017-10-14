@@ -29,6 +29,10 @@
           {% if project.description %}
             <p>{{ project.description }}</p>
           {% endif %}
+
+          {% if project.tag %}
+            <p class="project-tag -small-heading">{{ project.tag }}</p>
+          {% endif %}
         </div>
       </div>
     {% endfor %}

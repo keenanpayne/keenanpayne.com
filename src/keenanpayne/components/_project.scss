@@ -2,10 +2,6 @@
 // Projects
 // ==================================================
 
-.projects {
-
-}
-
 .project {
   opacity: 0;
 
@@ -17,7 +13,7 @@
 
   &.-animate-stagger-1 { animation-delay: .5s; }
 
-  &.-animate-stagger-2 { animation-delay: .7s; }
+  &.-animate-stagger-2 { animation-delay: .65s; }
 }
 
 .project-image {
@@ -28,4 +24,13 @@
   @media (--medium-max) {
     margin-bottom: $spacing-s;
   }
+}
+
+.project-tag {
+  background: getColor(background, light);
+  border: 1px solid getColor(base, lines);
+  border-radius: 3px;
+  display: inline-block;
+  font-size: .75rem;
+  padding: .2rem .5rem;
 }
