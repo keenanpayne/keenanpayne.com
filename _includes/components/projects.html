@@ -30,8 +30,12 @@
             <p>{{ project.description }}</p>
           {% endif %}
 
-          {% if project.tag %}
-            <p class="project-tag -small-heading">{{ project.tag }}</p>
+          {% if project.tags %}
+            <aside>
+              {% for tag in project.tags %}
+                <p class="project-tag -small-heading">{{ tag.name }}</p>
+              {% endfor %}
+            </aside>
           {% endif %}
         </div>
       </div>

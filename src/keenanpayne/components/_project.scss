@@ -32,5 +32,8 @@
   border-radius: 3px;
   display: inline-block;
   font-size: .75rem;
-  padding: .2rem .5rem;
+  margin-top: 0;
+  padding: .25rem $spacing-xxs;
+
+  &:not(:first-of-type) { margin-left: $spacing-xxs; }
 }
