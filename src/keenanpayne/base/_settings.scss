@@ -76,7 +76,7 @@ $_golden-ratio:     1.618;
 $scale-ratio: $_minor-third;
 
 // Ratio for secondary scale
-$scale-ratio-secondary: $_perfect-fourth;
+$scale-ratio-secondary: $_golden-ratio;
 
 //
 // Grid
