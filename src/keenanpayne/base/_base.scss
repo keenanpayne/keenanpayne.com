@@ -33,6 +33,10 @@ body {
   width: 100%;
 }
 
+[container="narrow"] {
+  max-width: ($container-width / 2);
+}
+
 main { margin-top: 0; }
 
 img {

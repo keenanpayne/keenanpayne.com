@@ -27,19 +27,4 @@
     font-size: typeScale(8);
     text-align: right;
   }
-
-  .-sf { font-style: italic; }
-
-  &.-homepage {
-    @media (--medium-max) {
-      font-size: typeScale(5);
-    }
-  }
-}
-
-.masthead-break {
-  @media (--medium-max) {
-    display: none;
-    visibility: hidden;
-  }
 }

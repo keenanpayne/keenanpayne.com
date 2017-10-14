@@ -6,13 +6,13 @@ permalink: index.html
 
 ## Page Sections
 sections:
-  - name: 'masthead'
+  - name: 'intro-text'
   - name: 'content-box'
   - name: 'testimonials'
   - name: 'projects'
 
 ## Masthead
-masthead: Great web development from<br class="masthead-break"><span class="-sf"> San Francisco</span>
+introtext: I'm a web developer at <a href="https://asana.com" target="_blank">Asana</a>. I like to write and build things in my spare time.
 
 ## Content Boxes
 content_box:

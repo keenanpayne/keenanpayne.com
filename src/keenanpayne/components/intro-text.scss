@@ -1,0 +1,18 @@
+//
+// Intro Text
+// ==================================================
+
+.introtext {
+  padding-bottom: $spacing-l;
+  padding-top: $spacing-l;
+
+  a { color: getColor(base, splash); }
+}
+
+.introtext-text {
+  font-size: typeScale(6);
+
+  @media (--medium) {
+    font-size: typeScale(7);
+  }
+}
