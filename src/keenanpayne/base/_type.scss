@@ -23,6 +23,16 @@ p {
   font-variant-ligatures: normal;
 
   &.-large { font-size: typeScale(3); }
+
+  &.-small-heading {
+    font-variant: all-small-caps;
+    letter-spacing: 3px;
+    text-transform: lowercase;
+
+    @media (--medium-max) {
+      font-size: typeScale(3);
+    }
+  }
 }
 
 h1, h2, h3, h4, h5, h6 { line-height: 1.2; }

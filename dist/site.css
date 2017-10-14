@@ -958,6 +958,13 @@ p {
           font-variant-ligatures: normal; }
   p.-large {
     font-size: 1.2rem; }
+  p.-small-heading {
+    font-variant: all-small-caps;
+    letter-spacing: 3px;
+    text-transform: lowercase; }
+    @media (max-width: 767px) {
+      p.-small-heading {
+        font-size: 1.2rem; } }
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2; }
@@ -1113,11 +1120,6 @@ tr {
     .post-title {
       font-size: 2.98598rem;
       letter-spacing: -.015rem; } }
-
-.post-date {
-  font-variant: all-small-caps;
-  letter-spacing: 3px;
-  text-transform: lowercase; }
 
 .post-content {
   margin-left: auto;
@@ -1661,6 +1663,10 @@ a.reversefootnote {
     line-height: 1;
     padding-right: calc(0.375rem + .2vw);
     vertical-align: middle; }
+
+.sectionHeading {
+  margin-bottom: calc(3rem + .2vw);
+  text-align: center; }
 
 .testimonials {
   background-color: #f7f7f7;

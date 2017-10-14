@@ -1,26 +1,36 @@
 <section container="narrow" class="projects">
-  {% for project in page.projects %}
-    <div class="project -animate-stagger-{{ forloop.index }}" grid=
-    "center">
-      {% if project.image %}
-        <figure column="5">
-          {% if project.url %}
-            <a href="{{ project.url }}" title="{{ project.title }}">
-          {% endif %}
+  {% for section in page.projects %}
+    {% if section.title %}
+      {% capture title %}
+        {{ section.title }}
+      {% endcapture %}
 
-          <img class="project-image" src="{{ project.image }}" alt="{{ project.title }} Logo">
+      {% include components/section-heading.html content=title %}
+    {% endif %}
 
-          {% if project.url %}
-            </a>
-          {% endif %}
-        </figure>
-      {% endif %}
+    {% for project in section.items %}
+      <div class="project -animate-stagger-{{ forloop.index }}" grid=
+      "center">
+        {% if project.image %}
+          <figure column="5">
+            {% if project.url %}
+              <a href="{{ project.url }}" title="{{ project.title }}">
+            {% endif %}
 
-      <div column="7">
-        {% if project.description %}
-          <p>{{ project.description }}</p>
+            <img class="project-image" src="{{ project.image }}" alt="{{ project.title }} Logo">
+
+            {% if project.url %}
+              </a>
+            {% endif %}
+          </figure>
         {% endif %}
+
+        <div column="7">
+          {% if project.description %}
+            <p>{{ project.description }}</p>
+          {% endif %}
+        </div>
       </div>
-    </div>
+    {% endfor %}
   {% endfor %}
 </section>

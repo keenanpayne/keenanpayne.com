@@ -14,14 +14,17 @@ introtext: I'm a web developer at <a href="https://asana.com" target="_blank">As
 
 ## Projects
 projects:
-  - title: "Concise CSS"
-    description: '<a href="http://concisecss.com" title="Concise CSS">Concise CSS</a> is a a lightweight front-end framework that I built with my friend and colleague <a href="http://jameskolce.com" title="James Kolce">James Kolce</a>. Our goal is to create a lightweight but extensible framework without the bloat.'
-    url: "http://concisecss.com/"
-    image: "https://cdn.dribbble.com/users/99199/screenshots/2553398/concisecss.png"
-  - title: "Flexicution"
-    description: '<a href="http://keenanpayne.com/flexicution/" title="Flexicution">Flexicution</a> is a flexbox grid system that is agnostic in regards to layout and breakpoints. You can use mixins to generate rows and columns for your layout and components, or you can generate responsive class names based on the breakpoints used in your project.'
-    url: "http://keenanpayne.com/flexicution/"
-    image: "https://luna1.co/aed6c1.png"
+  - section:
+    title: "Case Studies"
+    items:
+      - title: "Concise CSS"
+        description: '<a href="http://concisecss.com" title="Concise CSS">Concise CSS</a> is a a lightweight front-end framework that I built with my friend and colleague <a href="http://jameskolce.com" title="James Kolce">James Kolce</a>. Our goal is to create a lightweight but extensible framework without the bloat.'
+        url: "http://concisecss.com/"
+        image: "https://cdn.dribbble.com/users/99199/screenshots/2553398/concisecss.png"
+      - title: "Flexicution"
+        description: '<a href="http://keenanpayne.com/flexicution/" title="Flexicution">Flexicution</a> is a flexbox grid system that is agnostic in regards to layout and breakpoints. You can use mixins to generate rows and columns for your layout and components, or you can generate responsive class names based on the breakpoints used in your project.'
+        url: "http://keenanpayne.com/flexicution/"
+        image: "https://luna1.co/aed6c1.png"
 
 ## Portfolio List
 portfolioList:
