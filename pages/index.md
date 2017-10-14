@@ -10,15 +10,30 @@ sections:
   - name: 'projects'
 
 ## Masthead
-introtext: I'm a web developer at <a href="https://asana.com" target="_blank">Asana</a>. I like to write and build things in my spare time.
+introtext: I'm a web developer at <a href="https://asana.com">Asana</a>. I like to write and build things in my spare time.
 
 ## Projects
 projects:
   - section:
     title: "Case Studies"
     items:
+      - title: "Asana.com Re-Architecture"
+        description: "With 4 months of development time, I led the re-architecture of the <a href='https://asana.com/' title='Marketers Playbook'>Asana Website</a>. As a growing company, we needed a website that would allow effortless creation of pages, as well as a codebase that could be easily modified and scaled with ease."
+        url: "https://asana.com/"
+        image: "https://luna1.co/e5bb4b.png"
+        tags:
+          - name: "Web Project Lead"
+          - name: "Architecture"
+          - name: "Development"
+      - title: "Asana Marketers Playbook"
+        description: "We recently launched the <a href='https://asana.com/how-to/marketing/full' title='Marketers Playbook'>Marketer's Playbook</a> at Asana which puts into words the processes our marketing team uses to achieve their goals with the goal of helping other teams do the same."
+        url: "https://asana.com/how-to/marketing/full"
+        image: "https://cdn.dribbble.com/users/12000/screenshots/3873877/asana-the-marketers-playbook.gif"
+        tags:
+          - name: "Web Project Lead"
+          - name: "Development"
       - title: "Concise CSS"
-        description: '<a href="http://concisecss.com" title="Concise CSS">Concise CSS</a> is a a lightweight front-end framework that I built with my friend and colleague <a href="http://jameskolce.com" title="James Kolce">James Kolce</a>. Our goal is to create a lightweight but extensible framework without the bloat.'
+        description: '<a href="http://concisecss.com" title="Concise CSS">Concise CSS</a> is a lightweight front-end framework that I built with my friend and colleague <a href="http://jameskolce.com" title="James Kolce">James Kolce</a>. Our goal is to create a lightweight but extensible framework without the bloat.'
         url: "http://concisecss.com/"
         image: "https://cdn.dribbble.com/users/99199/screenshots/2553398/concisecss.png"
         tags:
