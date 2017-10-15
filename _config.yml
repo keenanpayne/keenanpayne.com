@@ -27,6 +27,23 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 
 
 ##
+## Social Networks
+## ---------------
+
+social:
+  - name: Dribbble
+    url: "https://dribbble.com/keenanpayne"
+  - name: GitHub
+    url: "https://github.com/keenanpayne"
+  - name: Behance
+    url: "https://www.behance.net/keenanpayne"
+  - name: LinkedIn
+    url: "https://www.linkedin.com/in/keenanpayne"
+  - name: CodePen
+    url: "https://codepen.io/keenanpayne/"
+
+
+##
 ## Build Settings
 ## --------------
 

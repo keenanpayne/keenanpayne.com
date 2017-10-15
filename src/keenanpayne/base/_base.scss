@@ -5,6 +5,7 @@
 :root {
   background-color: getColor(background, body);
   border-top: 5px solid getColor(background, dark);
+  font-weight: 300;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
 

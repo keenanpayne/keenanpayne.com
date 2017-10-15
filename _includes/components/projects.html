@@ -1,44 +1,46 @@
-<section container="narrow" class="projects">
-  {% for section in page.projects %}
-    {% if section.title %}
-      {% capture title %}
-        {{ section.title }}
-      {% endcapture %}
+{% if page.projects %}
+  <section container="narrow" class="projects">
+    {% for section in page.projects %}
+      {% if section.title %}
+        {% capture title %}
+          {{ section.title }}
+        {% endcapture %}
 
-      {% include components/section-heading.html content=title %}
-    {% endif %}
+        {% include components/section-heading.html content=title %}
+      {% endif %}
 
-    {% for project in section.items %}
-      <div class="project -animate-stagger-{{ forloop.index }}" grid=
-      "center">
-        {% if project.image %}
-          <figure column="5">
-            {% if project.url %}
-              <a href="{{ project.url }}" title="{{ project.title }}">
-            {% endif %}
+      {% for project in section.items %}
+        <div class="project -animate-stagger-{{ forloop.index }}" grid=
+        "center">
+          {% if project.image %}
+            <figure column="5">
+              {% if project.url %}
+                <a href="{{ project.url }}" title="{{ project.title }}">
+              {% endif %}
 
-            <img class="project-image" src="{{ project.image }}" alt="{{ project.title }} Logo">
+              <img class="project-image" src="{{ project.image }}" alt="{{ project.title }} Logo">
 
-            {% if project.url %}
-              </a>
-            {% endif %}
-          </figure>
-        {% endif %}
-
-        <div column="7">
-          {% if project.description %}
-            <p>{{ project.description }}</p>
+              {% if project.url %}
+                </a>
+              {% endif %}
+            </figure>
           {% endif %}
 
-          {% if project.tags %}
-            <aside>
-              {% for tag in project.tags %}
-                <p class="project-tag -small-heading">{{ tag.name }}</p>
-              {% endfor %}
-            </aside>
-          {% endif %}
+          <div column="7">
+            {% if project.description %}
+              <p>{{ project.description }}</p>
+            {% endif %}
+
+            {% if project.tags %}
+              <aside>
+                {% for tag in project.tags %}
+                  <p class="project-tag -small-heading">{{ tag.name }}</p>
+                {% endfor %}
+              </aside>
+            {% endif %}
+          </div>
         </div>
-      </div>
+      {% endfor %}
     {% endfor %}
-  {% endfor %}
-</section>
+  </section>
+{% endif %}

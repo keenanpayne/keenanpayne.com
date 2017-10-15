@@ -2,23 +2,6 @@
 // Typography
 // ==================================================
 
-
-//
-// Mixins
-// ------
-
-@mixin social-link($color) {
-  color: $color;
-  text-decoration: none;
-
-  &:hover { text-decoration: underline; }
-}
-
-
-//
-// Styles
-// ------
-
 p {
   font-variant-ligatures: normal;
 
@@ -62,15 +45,9 @@ li {
 }
 
 a {
-  // Social network modifiers
-  &.-dribbble { @include social-link(#ea4c89); }
-  &.-github { @include social-link(#24292e); }
-  &.-behance { @include social-link(#0057ff); }
-  &.-linkedin { @include social-link(#0077b5); }
-  &.-codepen { @include social-link(#959595); }
-
   // Links in paragraphs
   p & {
+    font-weight: 400;
     text-decoration: underline;
     text-decoration-skip: ink;
   }

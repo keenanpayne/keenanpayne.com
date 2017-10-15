@@ -1,0 +1,9 @@
+{% if site.social %}
+  <aside class="social">
+	  {% for network in site.social %}
+      <a class="social-link -{{ network.name|downcase }}" href="{{ network.url }}" title="{{ network.name }}">
+        {{ network.name }}
+      </a>
+    {% endfor %}
+  </aside>
+{% endif %}

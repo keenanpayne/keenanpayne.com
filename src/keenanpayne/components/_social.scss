@@ -1,0 +1,41 @@
+//
+// Social Networks
+// ==================================================
+
+
+//
+// Mixin
+// -----
+
+@mixin social-link($color) {
+  color: $color;
+
+  &:hover { color: darken($color, 10%); }
+}
+
+
+//
+// Styles
+// ------
+
+.social-link {
+  font-size: .875rem;
+  font-weight: 400;
+
+  &:not(:first-of-type) {
+    margin-left: .25rem;
+
+    &:before {
+      color: getColor(text, primary);
+      content: "/";
+      padding-right: .25rem;
+    }
+  }
+
+  // Networks
+  &.-dribbble { @include social-link(#ea4c89); }
+  &.-github { @include social-link(#24292e); }
+  &.-behance { @include social-link(#0057ff); }
+  &.-linkedin { @include social-link(#0077b5); }
+  &.-codepen { @include social-link(#959595); }
+}

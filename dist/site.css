@@ -914,6 +914,7 @@ table {
 :root {
   background-color: #ffffff;
   border-top: 5px solid #32373d;
+  font-weight: 300;
   line-height: 1.5;
   text-rendering: optimizeLegibility; }
   @media (min-width: 480px) {
@@ -986,37 +987,8 @@ h2, h3 {
 li:not(:last-child) {
   margin-bottom: calc(0.225rem + .1vw); }
 
-a.-dribbble {
-  color: #ea4c89;
-  text-decoration: none; }
-  a.-dribbble:hover {
-    text-decoration: underline; }
-
-a.-github {
-  color: #24292e;
-  text-decoration: none; }
-  a.-github:hover {
-    text-decoration: underline; }
-
-a.-behance {
-  color: #0057ff;
-  text-decoration: none; }
-  a.-behance:hover {
-    text-decoration: underline; }
-
-a.-linkedin {
-  color: #0077b5;
-  text-decoration: none; }
-  a.-linkedin:hover {
-    text-decoration: underline; }
-
-a.-codepen {
-  color: #959595;
-  text-decoration: none; }
-  a.-codepen:hover {
-    text-decoration: underline; }
-
 p a {
+  font-weight: 400;
   text-decoration: underline;
   -webkit-text-decoration-skip: ink;
           text-decoration-skip: ink; }
@@ -1674,34 +1646,35 @@ a.reversefootnote {
   margin-bottom: calc(3rem + .2vw);
   text-align: center; }
 
-.testimonials {
-  background-color: #f4f4f4;
-  border-bottom: 1px solid #e7e7e7;
-  border-top: 1px solid #e7e7e7;
-  margin-top: calc(6rem + .2vw);
-  padding-bottom: calc(4.5rem + .2vw);
-  padding-top: calc(4.5rem + .2vw);
-  text-align: center; }
-
-.testimonial {
-  opacity: 0; }
-  .testimonial.-animated {
-    -webkit-animation: fadeIn .5s .5s forwards, moveLeft .75s .5s ease-out forwards;
-            animation: fadeIn .5s .5s forwards, moveLeft .75s .5s ease-out forwards; }
-
-.testimonial-text {
-  font-size: 1.2rem; }
-  .testimonial-text:before, .testimonial-text:after {
-    font-family: "Playfair Display", "Times New Roman", "Times", serif;
-    font-size: 115%;
-    line-height: 0; }
-  .testimonial-text:before {
-    content: "“"; }
-  .testimonial-text:after {
-    content: "”"; }
-
-.testimonial-author {
-  font-weight: bold; }
+.social-link {
+  font-size: .875rem;
+  font-weight: 400; }
+  .social-link:not(:first-of-type) {
+    margin-left: .25rem; }
+    .social-link:not(:first-of-type):before {
+      color: #333;
+      content: "/";
+      padding-right: .25rem; }
+  .social-link.-dribbble {
+    color: #ea4c89; }
+    .social-link.-dribbble:hover {
+      color: #e51e6b; }
+  .social-link.-github {
+    color: #24292e; }
+    .social-link.-github:hover {
+      color: #0e1011; }
+  .social-link.-behance {
+    color: #0057ff; }
+    .social-link.-behance:hover {
+      color: #0046cc; }
+  .social-link.-linkedin {
+    color: #0077b5; }
+    .social-link.-linkedin:hover {
+      color: #005582; }
+  .social-link.-codepen {
+    color: #959595; }
+    .social-link.-codepen:hover {
+      color: #7c7c7c; }
 
 .tile.-animated, .tile-header.-animated, .tile-description.-animated {
   -webkit-animation-name: fadeIn, moveUp;
