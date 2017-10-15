@@ -2,21 +2,9 @@
 // Site Footer
 // ==================================================
 
-
-//
-// Variables
-// ---------
-
-$avatar-size: 125px;
-
-
-//
-// Styles
-// ------
-
 .siteFooter {
   background-color: getColor(background, light);
-  border-top: 1px solid darken(getColor(background, light), 5%);
+  border-top: 3px solid getColor(base, splash);
   margin-top: $spacing-xs;
   padding-bottom: $spacing-m;
   padding-top: $spacing-m;
@@ -26,47 +14,6 @@ $avatar-size: 125px;
   }
 }
 
-.siteFooter-grid { flex-direction: row; }
-
-// My image
-.siteFooter-me-container {
-  flex: 0 1 25%;
-  max-width: 25%;
-  padding-left: $spacing-s;
-}
-
-.siteFooter-me {
-  border-radius: 50%;
-  display: block;
-  height: 100%;
-  max-height: $avatar-size;
-  margin-left: auto;
-  max-width: $avatar-size;
-  width: 100%;
-
-  @media (--medium-max) {
-    margin-bottom: $spacing-s;
-  }
-
-  @media (--medium) {
-    max-height: calc(#{$avatar-size} + 1.5vw);
-    max-width: calc(#{$avatar-size} + 1.5vw);
-  }
-}
-
-// Description text
-.siteFooter-bio {
-  flex: 0 1 75%;
-  max-width: 75%;
-  padding-left: $spacing-s;
-  padding-right: $spacing-s;
-}
-
-.siteFooter-description {
-  margin-top: $spacing-xs;
+.siteFooter-copy {
   max-width: $content-limit;
-
-  @media (--very-large) {
-    max-width: $content-limit-large;
-  }
 }

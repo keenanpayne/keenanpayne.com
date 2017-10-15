@@ -539,7 +539,7 @@ table {
 [container] {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1720px;
+  max-width: 1600px;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   overflow: auto; }
@@ -1065,6 +1065,23 @@ tr {
           font-feature-settings: "ordn";
   font-variant-numeric: ordinal; }
 
+button, input[type="submit"],
+.button {
+  background-color: #C55B60;
+  border-radius: 3px;
+  color: white;
+  display: inline-block;
+  font-size: 0.83333rem;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  -webkit-transition: background-color 150ms;
+  transition: background-color 150ms;
+  vertical-align: middle; }
+  button:hover, input[type="submit"]:hover,
+  .button:hover {
+    background-color: #b94147;
+    color: white; }
+
 .post {
   padding-bottom: calc(1.5rem + .2vw);
   padding-top: calc(3rem + .2vw); }
@@ -1233,7 +1250,7 @@ tr {
 
 .siteFooter {
   background-color: #f4f4f4;
-  border-top: 1px solid #e7e7e7;
+  border-top: 3px solid #C55B60;
   margin-top: calc(0.75rem + .2vw);
   padding-bottom: calc(3rem + .2vw);
   padding-top: calc(3rem + .2vw); }
@@ -1241,49 +1258,8 @@ tr {
     .siteFooter {
       margin-top: calc(3rem + .2vw); } }
 
-.siteFooter-grid {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row; }
-
-.siteFooter-me-container {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 25%;
-          flex: 0 1 25%;
-  max-width: 25%;
-  padding-left: calc(1.5rem + .2vw); }
-
-.siteFooter-me {
-  border-radius: 50%;
-  display: block;
-  height: 100%;
-  max-height: 125px;
-  margin-left: auto;
-  max-width: 125px;
-  width: 100%; }
-  @media (max-width: 767px) {
-    .siteFooter-me {
-      margin-bottom: calc(1.5rem + .2vw); } }
-  @media (min-width: 768px) {
-    .siteFooter-me {
-      max-height: calc(125px + 1.5vw);
-      max-width: calc(125px + 1.5vw); } }
-
-.siteFooter-bio {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 75%;
-          flex: 0 1 75%;
-  max-width: 75%;
-  padding-left: calc(1.5rem + .2vw);
-  padding-right: calc(1.5rem + .2vw); }
-
-.siteFooter-description {
-  margin-top: calc(0.75rem + .2vw);
+.siteFooter-copy {
   max-width: 650px; }
-  @media (min-width: 1440px) {
-    .siteFooter-description {
-      max-width: 815px; } }
 
 .siteHeader {
   margin-top: calc(1.5rem + .2vw);

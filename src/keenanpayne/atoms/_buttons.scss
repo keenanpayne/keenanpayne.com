@@ -1,0 +1,21 @@
+//
+// Buttons
+// ==================================================
+
+button,
+.button {
+  background-color: getColor(base, splash);
+  border-radius: 3px;
+  color: white;
+  display: inline-block;
+  font-size: typeScale(1);
+  padding: .5rem 1rem;
+  text-decoration: none;
+  transition: background-color $transition-duration;
+  vertical-align: middle;
+
+  &:hover {
+    background-color: darken(getColor(base, splash), 7.5%);
+    color: white;
+  }
+}
