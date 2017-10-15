@@ -8,6 +8,7 @@ permalink: index.html
 sections:
   - name: 'intro-text'
   - name: 'projects'
+  - name: 'post-list'
 
 ## Masthead
 introtext: I'm a web developer at <a href="https://asana.com">Asana</a>. I like to write and build things in my spare time.
@@ -15,7 +16,7 @@ introtext: I'm a web developer at <a href="https://asana.com">Asana</a>. I like 
 ## Projects
 projects:
   - section:
-    title: "Case Studies"
+    title: "Work"
     items:
       - title: "Asana.com Re-Architecture"
         description: "With four months of development time, I led the re-architecture of the <a href='https://asana.com/' title='Marketers Playbook'>Asana Website</a>. As a growing company, we needed a website that would allow the effortless creation of pages, as well as a codebase that could be modified and scaled with ease."
