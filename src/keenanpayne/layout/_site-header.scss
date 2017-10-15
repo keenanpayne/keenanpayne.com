@@ -21,6 +21,12 @@ $navigation-padding: 15px;
   width: 100%;
 }
 
+.siteHeader-grid {
+  @media (--medium) {
+    align-items: center;
+  }
+}
+
 
 //
 // Navigation
@@ -39,7 +45,7 @@ $navigation-padding: 15px;
     font-weight: 500;
 
     &:not(:last-of-type) {
-      margin-right: $spacing-xs;
+      margin-right: $spacing-s;
     }
   }
 
