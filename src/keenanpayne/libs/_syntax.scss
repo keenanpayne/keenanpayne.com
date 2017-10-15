@@ -2,7 +2,7 @@
   background-color: getColor(background, light);
   border: 1px solid getColor(base, lines);
   border-left-width: 5px;
-  border-radius: 3px 0 0 3px;
+  border-radius: $border-radius 0 0 $border-radius;
   font-size: .875rem;
   line-height: 1.65;
   margin-bottom: $spacing-s;

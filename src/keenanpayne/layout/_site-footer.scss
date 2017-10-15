@@ -14,6 +14,9 @@
   }
 }
 
-.siteFooter-copy {
-  max-width: $content-limit;
+.siteFooter-heading {
+  font-size: typeScale(3);
+  font-weight: 400;
 }
+
+.siteFooter-copy { max-width: $content-limit-large; }

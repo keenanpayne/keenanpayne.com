@@ -29,7 +29,7 @@
 .project-tag {
   background: getColor(background, light);
   border: 1px solid getColor(base, lines);
-  border-radius: 3px;
+  border-radius: $border-radius;
   display: inline-block;
   font-size: .75rem;
   margin-top: 0;
