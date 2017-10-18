@@ -23,12 +23,12 @@
   font-weight: 400;
 
   &:not(:first-of-type) {
-    margin-left: .25rem;
+    margin-left: .2rem;
 
     &:before {
       color: getColor(text, primary);
       content: "/";
-      padding-right: .25rem;
+      padding-right: .2rem;
     }
   }
 

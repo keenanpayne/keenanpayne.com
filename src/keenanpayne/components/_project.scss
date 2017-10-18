@@ -35,5 +35,9 @@
   margin-top: 0;
   padding: .25rem $spacing-xxs;
 
-  &:not(:first-of-type) { margin-left: $spacing-xxs; }
+  &:not(:last-of-type) { margin-right: $spacing-xxs; }
+
+  @media (--small-max) {
+    &:nth-of-type(n+3) { margin-top: $spacing-xxs; }
+  }
 }
