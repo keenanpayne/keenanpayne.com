@@ -1,0 +1,19 @@
+//
+// Post List
+// ==================================================
+
+.postList { margin-bottom: $spacing-l; }
+
+.postList-article {
+  padding-bottom: $spacing-s;
+
+  &:not(:last-of-type) {
+    border-bottom: 1px solid getColor(base, lines);
+  }
+}
+
+.postList-title { margin-top: 0; }
+
+.postList-date { font-size: typeScale(1); }
+
+.postList-archive { text-align: center; }

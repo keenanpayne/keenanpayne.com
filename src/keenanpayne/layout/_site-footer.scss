@@ -8,10 +8,6 @@
   margin-top: $spacing-xs;
   padding-bottom: $spacing-m;
   padding-top: $spacing-m;
-
-  @media (--small) {
-    margin-top: $spacing-m;
-  }
 }
 
 .siteFooter-heading {
