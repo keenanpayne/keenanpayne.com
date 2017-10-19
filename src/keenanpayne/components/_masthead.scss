@@ -8,23 +8,17 @@
   padding-top: $spacing-l;
   transition: padding $transition-duration;
 
-  @media (--medium) {
-    padding-bottom: $spacing-xxl;
-    padding-top: $spacing-xxl;
-  }
-
   &.-animated { animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
 }
 
 .masthead-heading {
-  font-size: typeScale(6);
+  font-size: typeScale(8);
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 
   @media (--medium) {
     float: right;
-    font-size: typeScale(8);
     text-align: right;
   }
 }

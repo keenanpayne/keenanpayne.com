@@ -1412,23 +1412,18 @@ a.reversefootnote {
   padding-bottom: calc(4.5rem + .2vw);
   padding-top: calc(4.5rem + .2vw);
   transition: padding 150ms; }
-  @media (min-width: 768px) {
-    .masthead {
-      padding-bottom: calc(8.25rem + .2vw);
-      padding-top: calc(8.25rem + .2vw); } }
   .masthead.-animated {
     -webkit-animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards;
             animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
 
 .masthead-heading {
-  font-size: 2.0736rem;
+  font-size: 2.98598rem;
   margin-left: auto;
   margin-right: auto;
   text-align: center; }
   @media (min-width: 768px) {
     .masthead-heading {
       float: right;
-      font-size: 2.98598rem;
       text-align: right; } }
 
 .postList {
