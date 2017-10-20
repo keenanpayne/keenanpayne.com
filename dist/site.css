@@ -1380,38 +1380,24 @@ a.reversefootnote {
     .introtext-text {
       font-size: 2.98598rem; } }
 
-@media (min-width: 768px) {
-  .lab-container:nth-of-type(n+3) {
-    margin-top: calc(3rem + .2vw); } }
+.labs {
+  margin-bottom: calc(8.25rem + .2vw); }
 
-.lab {
-  opacity: 0; }
-  @media (max-width: 767px) {
-    .lab {
-      margin-bottom: calc(1.5rem + .2vw); } }
-  .lab.-animated {
-    -webkit-animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards;
-            animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
-  .lab.-animate-stagger-1 {
-    -webkit-animation-delay: .5s;
-            animation-delay: .5s; }
-  .lab.-animate-stagger-2 {
-    -webkit-animation-delay: .7s;
-            animation-delay: .7s; }
-  .lab.-animate-stagger-3 {
-    -webkit-animation-delay: .9s;
-            animation-delay: .9s; }
-  .lab.-animate-stagger-4 {
-    -webkit-animation-delay: 1.1s;
-            animation-delay: 1.1s; }
-  .lab iframe {
-    height: 300px; }
-    @media (min-width: 768px) {
-      .lab iframe {
-        height: 400px; } }
-    @media (min-width: 1440px) {
-      .lab iframe {
-        height: 500px; } }
+@media (max-width: 767px) {
+  .labs-lab {
+    margin-bottom: calc(1.5rem + .2vw); } }
+
+.labs-lab iframe {
+  height: 450px; }
+  @media (min-width: 768px) {
+    .labs-lab iframe {
+      height: 550px; } }
+  @media (min-width: 1440px) {
+    .labs-lab iframe {
+      height: 650px; } }
+
+.lab-codepen {
+  text-align: center; }
 
 .logo {
   font-size: 3.58318rem;
@@ -1448,7 +1434,7 @@ a.reversefootnote {
       text-align: right; } }
 
 .postList {
-  margin-bottom: calc(4.5rem + .2vw); }
+  margin-bottom: calc(8.25rem + .2vw); }
 
 .postList-article {
   padding-bottom: calc(1.5rem + .2vw); }
@@ -1555,7 +1541,7 @@ a.reversefootnote {
   padding-bottom: calc(0.75rem + .2vw); }
 
 .projects {
-  margin-bottom: calc(4.5rem + .2vw); }
+  margin-bottom: calc(8.25rem + .2vw); }
 
 .project {
   opacity: 0; }
@@ -1584,14 +1570,18 @@ a.reversefootnote {
   border: 1px solid #DADADA;
   border-radius: 3px;
   display: inline-block;
-  font-size: .75rem;
+  font-size: .85rem;
+  font-weight: 600;
   margin-top: 0;
-  padding: 0.25rem calc(0.375rem + .2vw); }
+  padding: 0.15rem calc(0.375rem + .2vw); }
   .project-tag:not(:last-of-type) {
     margin-right: calc(0.375rem + .2vw); }
   @media (max-width: 479px) {
     .project-tag:nth-of-type(n+3) {
       margin-top: calc(0.375rem + .2vw); } }
+  @media (min-width: 768px) {
+    .project-tag {
+      font-size: .65rem; } }
 
 .promo {
   background-color: #C55B60;

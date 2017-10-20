@@ -2,7 +2,7 @@
 // Projects
 // ==================================================
 
-.projects { margin-bottom: $spacing-l; }
+.projects { margin-bottom: $spacing-xxl; }
 
 .project {
   opacity: 0;
@@ -33,13 +33,18 @@
   border: 1px solid getColor(base, lines);
   border-radius: $border-radius;
   display: inline-block;
-  font-size: .75rem;
+  font-size: .85rem;
+  font-weight: 600;
   margin-top: 0;
-  padding: .25rem $spacing-xxs;
+  padding: .15rem $spacing-xxs;
 
   &:not(:last-of-type) { margin-right: $spacing-xxs; }
 
   @media (--small-max) {
     &:nth-of-type(n+3) { margin-top: $spacing-xxs; }
+  }
+
+  @media (--medium) {
+    font-size: .65rem;
   }
 }

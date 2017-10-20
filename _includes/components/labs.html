@@ -1,13 +1,15 @@
-<section container>
-  <div grid="wrap">
-    {% for lab in page.labs %}
-      <div class="lab-container" column="6">
-        <div class="lab -animate-stagger-{{ forloop.index }}">
-          <p data-height="300" data-theme-id="dark" data-slug-hash="{{ lab.id }}" data-default-tab="{{ lab.tab }}" data-user="keenanpayne" data-embed-version="2" data-pen-title="{{ lab.title }}" class="codepen">
+<section class="labs" container>
+  {% include components/section-heading.html content="Latest Experiment" %}
 
-          <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-        </div>
-      </div>
-    {% endfor %}
-  </div>
+  {% for lab in page.labs %}
+    <div class="labs-lab">
+      <p data-height="300" data-theme-id="dark" data-slug-hash="{{ lab.id }}" data-default-tab="{{ lab.tab }}" data-user="keenanpayne" data-embed-version="2" data-pen-title="{{ lab.title }}" class="codepen">
+
+      <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+    </div>
+  {% endfor %}
+
+  <p class="lab-codepen">
+    <a href="https://codepen.io/keenanpayne/">View more on CodePen</a>
+  </p>
 </section>

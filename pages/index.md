@@ -8,6 +8,7 @@ permalink: index.html
 sections:
   - name: 'intro-text'
   - name: 'projects'
+  - name: 'labs'
   - name: 'post-list'
 
 ## Masthead
@@ -46,26 +47,10 @@ projects:
         tags:
           - name: "Open Source"
 
-## Portfolio List
-portfolioList:
-  - section:
-    title: "Writing"
-    subtext: ""
-    limit: 6
-    items:
-      - title: "Displaying Dynamic Messages Using the Web Notification API"
-        description: "Sitepoint"
-        url: "https://www.sitepoint.com/browser-notification-api/"
-      - title: "Troubleshooting Ubuntu Server"
-        description: "Packt Publishing <small>(Technical Editor)</small>"
-        url: "https://www.packtpub.com/networking-and-servers/troubleshooting-ubuntu-server"
-      - title: "3 New Programming Languages You Should Know"
-        description: "Udacity"
-        url: "http://blog.udacity.com/2015/05/3-new-programming-languages-know.html"
-      - title: "13 Useful Web Dev Tools You Can’t Live Without"
-        description: "Udacity"
-        url: "http://blog.udacity.com/2015/04/13-useful-web-dev-tools-cant-live-without.html"
-      - title: "Writing Your First Python Application"
-        description: "Udacity"
-        url: "http://blog.udacity.com/2015/03/write-your-first-python-application.html"
+
+## Labs
+labs:
+  - id: KmGXVx
+    title: Programmatically Animating Individual Letters
+    tab: result
 ---
