@@ -1,0 +1,18 @@
+//
+// Large CTA
+// ==================================================
+
+.largeCta {
+  background-color: getColor(background, light);
+  border-top: 3px solid getColor(base, splash);
+  margin-top: $spacing-xs;
+  padding-bottom: $spacing-m;
+  padding-top: $spacing-m;
+}
+
+.largeCta-heading {
+  font-size: typeScale(3);
+  font-weight: 400;
+}
+
+.largeCta-copy { max-width: $content-limit-large; }

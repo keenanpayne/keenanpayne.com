@@ -3,16 +3,11 @@
 // ==================================================
 
 .siteFooter {
-  background-color: getColor(background, light);
-  border-top: 3px solid getColor(base, splash);
-  margin-top: $spacing-xs;
-  padding-bottom: $spacing-m;
-  padding-top: $spacing-m;
+  border-top: 1px solid getColor(base, lines);
+  font-size: typeScale(1);
+  margin-top: 0;
+  padding-bottom: $spacing-xs;
+  padding-top: $spacing-xs;
 }
 
-.siteFooter-heading {
-  font-size: typeScale(3);
-  font-weight: 400;
-}
-
-.siteFooter-copy { max-width: $content-limit-large; }
+.siteFooter-copy { font-size: typeScale(1); }

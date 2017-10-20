@@ -1,0 +1,30 @@
+//
+// Horizontal Navigation
+// ==================================================
+
+.navHorizontal {
+  text-align: right;
+
+  @media (--medium-max) {
+    display: none;
+  }
+
+  li {
+    display: inline-block;
+    font-size: typeScale(1);
+    font-weight: 500;
+    margin-bottom: 0;
+
+    &:not(:last-of-type) {
+      margin-right: $spacing-s;
+    }
+  }
+
+  a {
+    transition: opacity $transition-duration-long;
+
+    &:hover { border-bottom: none; }
+
+    &.-is-inactive { opacity: .5; }
+  }
+}

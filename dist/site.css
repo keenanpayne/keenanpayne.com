@@ -187,7 +187,8 @@ a {
   -webkit-text-decoration-skip: objects;
   color: #4d4d4d;
   text-decoration: none;
-  transition-duration: 150ms; }
+  -webkit-transition-duration: 150ms;
+          transition-duration: 150ms; }
   a:hover, a:focus {
     color: #1a1a1a; }
 
@@ -319,6 +320,7 @@ button, input[type="submit"] {
   font-size: 0.83333rem;
   line-height: 2.25rem;
   padding: 0 1.5em;
+  -webkit-transition: background-color 150ms;
   transition: background-color 150ms;
   white-space: nowrap; }
   button:hover, input[type="submit"]:hover, button:focus, input[type="submit"]:focus {
@@ -445,7 +447,8 @@ ol {
 input:not([type="submit"]),
 select,
 textarea {
-  transition-duration: 150ms;
+  -webkit-transition-duration: 150ms;
+          transition-duration: 150ms;
   width: 100%;
   font-size: 0.83333rem;
   min-height: 2.25rem; }
@@ -573,10 +576,8 @@ table {
     padding-right: 0; }
 
 [grid~="no-collapse"] {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row nowrap;
-          flex-flow: row nowrap; }
+  -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap; }
 
 [grid~="wrap"] {
   -ms-flex-wrap: wrap;
@@ -999,6 +1000,7 @@ p a {
   font-size: 0.83333rem;
   font-weight: 400;
   margin-left: calc(0.375rem + .2vw);
+  -webkit-transition: -webkit-transform 300ms;
   transition: -webkit-transform 300ms;
   transition: transform 300ms;
   transition: transform 300ms, -webkit-transform 300ms; }
@@ -1008,6 +1010,7 @@ blockquote {
   border-left: 5px solid #DADADA;
   padding-bottom: calc(0.375rem + .2vw);
   padding-top: calc(0.375rem + .2vw);
+  -webkit-transition: border-left-color 300ms;
   transition: border-left-color 300ms; }
   blockquote:hover {
     border-left-color: #C55B60; }
@@ -1070,12 +1073,33 @@ button, input[type="submit"],
   display: inline-block;
   padding: .5rem 1rem;
   text-decoration: none;
+  -webkit-transition: background-color 150ms;
   transition: background-color 150ms;
   vertical-align: middle; }
   button:hover, input[type="submit"]:hover,
   .button:hover {
     background-color: #b94147;
     color: white; }
+
+.navHorizontal {
+  text-align: right; }
+  @media (max-width: 767px) {
+    .navHorizontal {
+      display: none; } }
+  .navHorizontal li {
+    display: inline-block;
+    font-size: 0.83333rem;
+    font-weight: 500;
+    margin-bottom: 0; }
+    .navHorizontal li:not(:last-of-type) {
+      margin-right: calc(1.5rem + .2vw); }
+  .navHorizontal a {
+    -webkit-transition: opacity 300ms;
+    transition: opacity 300ms; }
+    .navHorizontal a:hover {
+      border-bottom: none; }
+    .navHorizontal a.-is-inactive {
+      opacity: .5; }
 
 .post {
   padding-bottom: calc(1.5rem + .2vw);
@@ -1139,6 +1163,7 @@ button, input[type="submit"],
   opacity: .5;
   position: absolute;
   top: .375rem;
+  -webkit-transition: opacity 150ms;
   transition: opacity 150ms; }
   .post-content-header-link:hover, .post-content-header-link:active {
     opacity: .75; }
@@ -1151,6 +1176,7 @@ button, input[type="submit"],
   pointer-events: none;
   position: absolute;
   top: 5px;
+  -webkit-transition: all ease-in 150ms;
   transition: all ease-in 150ms;
   width: 100%;
   z-index: 800; }
@@ -1219,10 +1245,12 @@ button, input[type="submit"],
     height: 2px;
     position: absolute;
     top: 2px;
+    -webkit-transition: background-color 300ms;
     transition: background-color 300ms;
     width: 26px;
     will-change: transform; }
   .mobileNav-toggle span:before, .mobileNav-toggle span:after {
+    -webkit-transition: all 225ms ease-in-out;
     transition: all 225ms ease-in-out; }
   .mobileNav-toggle span:before {
     top: 8px; }
@@ -1240,18 +1268,14 @@ button, input[type="submit"],
               transform: rotate(-45deg); }
 
 .siteFooter {
-  background-color: #f4f4f4;
-  border-top: 3px solid #C55B60;
-  margin-top: calc(0.75rem + .2vw);
-  padding-bottom: calc(3rem + .2vw);
-  padding-top: calc(3rem + .2vw); }
-
-.siteFooter-heading {
-  font-size: 1.2rem;
-  font-weight: 400; }
+  border-top: 1px solid #DADADA;
+  font-size: 0.83333rem;
+  margin-top: 0;
+  padding-bottom: calc(0.75rem + .2vw);
+  padding-top: calc(0.75rem + .2vw); }
 
 .siteFooter-copy {
-  max-width: 815px; }
+  font-size: 0.83333rem; }
 
 .siteHeader {
   margin-top: calc(1.5rem + .2vw);
@@ -1262,24 +1286,6 @@ button, input[type="submit"],
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center; } }
-
-.siteHeader-navigation {
-  text-align: right; }
-  @media (max-width: 767px) {
-    .siteHeader-navigation {
-      display: none; } }
-  .siteHeader-navigation li {
-    display: inline-block;
-    font-size: 0.83333rem;
-    font-weight: 500; }
-    .siteHeader-navigation li:not(:last-of-type) {
-      margin-right: calc(1.5rem + .2vw); }
-  .siteHeader-navigation a {
-    transition: opacity 300ms; }
-    .siteHeader-navigation a:hover {
-      border-bottom: none; }
-    .siteHeader-navigation a.-is-inactive {
-      opacity: .5; }
 
 .comments {
   margin-top: calc(4.5rem + .2vw); }
@@ -1321,6 +1327,20 @@ button, input[type="submit"],
 
 .contentBox-title {
   margin-top: 0; }
+
+.largeCta {
+  background-color: #f4f4f4;
+  border-top: 3px solid #C55B60;
+  margin-top: calc(0.75rem + .2vw);
+  padding-bottom: calc(3rem + .2vw);
+  padding-top: calc(3rem + .2vw); }
+
+.largeCta-heading {
+  font-size: 1.2rem;
+  font-weight: 400; }
+
+.largeCta-copy {
+  max-width: 815px; }
 
 .footnotes {
   border-top: 1px solid #DADADA;
@@ -1411,6 +1431,7 @@ a.reversefootnote {
   opacity: 0;
   padding-bottom: calc(4.5rem + .2vw);
   padding-top: calc(4.5rem + .2vw);
+  -webkit-transition: padding 150ms;
   transition: padding 150ms; }
   .masthead.-animated {
     -webkit-animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards;
@@ -1584,6 +1605,7 @@ a.reversefootnote {
   opacity: .75;
   padding: calc(0.75rem + .2vw);
   text-align: center;
+  -webkit-transition: opacity 225ms, color 225ms;
   transition: opacity 225ms, color 225ms; }
   .promo:hover {
     color: white;
@@ -1657,6 +1679,7 @@ a.reversefootnote {
   margin-bottom: calc(0.75rem + .2vw);
   opacity: 0;
   padding-bottom: calc(0.75rem + .2vw);
+  -webkit-transition: width 300ms;
   transition: width 300ms;
   width: 100%; }
   .tile:hover {
@@ -1666,6 +1689,7 @@ a.reversefootnote {
   .tile img {
     margin-top: 0;
     max-width: 100%;
+    -webkit-transition: opacity 225ms;
     transition: opacity 225ms;
     width: 100%;
     -webkit-backface-visibility: hidden; }

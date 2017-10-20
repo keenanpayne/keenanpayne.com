@@ -1,10 +1,14 @@
+  {% include components/large-cta.html %}
+
   <footer class="siteFooter" role="complementary">
     <div container>
-      <p class="siteFooter-heading">Need an extra hand with your project?</p>
+      <div grid>
+        <p class="siteFooter-copy" column>Copyright &copy; 2008 &ndash; 2017</p>
 
-      <p class="siteFooter-copy">I'm currently available for freelance development and consulting for projects of all shapes and sizes. Get in touch and let's see if I can be of service to you.</p>
-
-      <p><a href="/contact" class="button" title="Contact me">Get in touch</a></p>
+        <nav class="navHorizontal" role="navigation" column>
+          {% include atoms/navigation.html %}
+        </nav>
+      </div>
     </div>
   </footer>
 </body>
