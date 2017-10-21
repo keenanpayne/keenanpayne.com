@@ -30,14 +30,14 @@ projects:
       - title: "Asana Marketers Playbook"
         description: "We recently launched the <a href='https://asana.com/how-to/marketing/full' title='Marketers Playbook'>Marketer's Playbook</a> at Asana which puts into words the processes our marketing team uses to achieve their goals with the goal of helping other teams do the same."
         url: "https://asana.com/how-to/marketing/full"
-        image: "https://cdn.dribbble.com/users/12000/screenshots/3873877/asana-the-marketers-playbook.gif"
+        image: "https://luna1.co/b15f02.png"
         tags:
           - name: "Web Project Lead"
           - name: "Development"
       - title: "Concise CSS"
         description: '<a href="http://concisecss.com" title="Concise CSS">Concise CSS</a> is a lightweight front-end framework that I built with my friend and colleague <a href="http://jameskolce.com" title="James Kolce">James Kolce</a>. Our goal is to create a lightweight but extensible framework without the bloat.'
         url: "http://concisecss.com/"
-        image: "https://cdn.dribbble.com/users/99199/screenshots/2553398/concisecss.png"
+        image: "https://luna1.co/8896ff.png"
         tags:
           - name: "Open Source"
       - title: "Flexicution"

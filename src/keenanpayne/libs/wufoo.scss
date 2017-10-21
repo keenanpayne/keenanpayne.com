@@ -1,7 +1,9 @@
-.wufoo { margin-bottom: 1.5rem; }
+.wufoo {
+	margin: 0 0 1.5rem !important;
+}
 
 .wufoo input.text {
-	min-width: 233px;
+	min-width: auto;
 	text-indent: 5px;
 }
 
@@ -23,7 +25,16 @@
 	border-bottom-color: rgba(220, 220, 220, .75);
 }
 
-.wufoo li { margin-bottom: 1.5rem; }
+.wufoo li {
+	margin-bottom: 1.5rem;
+}
+
+.wufoo li span {
+	margin: 0;
+	width: 48%;
+}
+
+.wufoo li span:not(:first-of-type) { margin-left: 4%; }
 
 .wufoo li.buttons { display: block; }
 
@@ -71,7 +82,7 @@
 
 .wufoo li div, .wufoo li div label, .wufoo li span label{font-family:inherit;color:#333}
 
-.wufoo input.text, .wufoo textarea.textarea, .wufoo select.select, .wufoo label.choice{font-size:100%;font-family:inherit;color:#333333}
+.wufoo input.text, .wufoo textarea.textarea, .wufoo select.select, .wufoo label.choice{font-size:100%;font-family:inherit;color:#333333;width:100%;}
 
 .wufoo label.choice{color:#333}
 
