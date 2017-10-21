@@ -11,13 +11,13 @@
   font-weight: 600;
   letter-spacing: .3px;
   margin-top: $spacing-l;
-  opacity: .75;
+  opacity: .85;
   padding: $spacing-xs;
   text-align: center;
   transition: opacity $transition-duration-med, color $transition-duration-med;
 
   &:hover {
     color: white;
-    opacity: .8;
+    opacity: 1;
   }
 }

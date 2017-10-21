@@ -3,37 +3,20 @@
 // ==================================================
 
 .portfolioList {
-  @media (--medium-max) {
-    margin-bottom: $spacing-m;
-  }
-
   > .portfolioList-item:first-of-type {
     border-bottom: 3px solid getColor(background, dark);
     margin-bottom: $spacing-xs;
-  }
-
-  &:first-of-type {
-    @media (--large) {
-      padding-left: $spacing-xxl;
-    }
-  }
-
-  &:last-of-type {
-    @media (--large) {
-      padding-right: $spacing-xxl;
-    }
   }
 }
 
 .portfolioList-item { display: block; }
 
-.portfolioList-item-title {
-  font-size: 1.1rem;
-  margin-top: 0;
-}
+.portfolioList-item-title { margin-top: 0; }
 
 .portfolioList-item-description {
-  border-bottom: 3px solid rgba(getColor(background, dark), .2);
+  font-size: typeScale(1);
   margin-bottom: $spacing-xs;
   padding-bottom: $spacing-xs;
+
+  &:not(:last-of-type) { border-bottom: 1px solid getColor(base, lines); }
 }
