@@ -21,7 +21,7 @@ masthead: Get in Touch
 
 			<hr>
 
-			<p><strong>contact[at]keenanpayne.com</strong></p>
+			<p><strong>contact@keenanpayne.com</strong></p>
 		</aside>
 
 		<div column="7" class="wufoo" id="wufoo-r1x2nqll1ee9loz">

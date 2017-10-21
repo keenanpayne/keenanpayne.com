@@ -1332,7 +1332,6 @@ a.reversefootnote {
   text-align: center; }
   @media (min-width: 768px) {
     .masthead-heading {
-      float: right;
       text-align: right; } }
 
 .postList {
