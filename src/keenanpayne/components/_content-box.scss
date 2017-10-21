@@ -3,7 +3,6 @@
 // ==================================================
 
 .contentBox {
-  opacity: 0;
   padding-left: $spacing-s;
   padding-right: $spacing-s;
 
@@ -12,14 +11,6 @@
       margin-top: $spacing-m;
     }
   }
-
-  &.-animated { animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
-
-  &.-animate-stagger-1 { animation-delay: .5s; }
-
-  &.-animate-stagger-2 { animation-delay: .7s; }
-
-  &.-animate-stagger-3 { animation-delay: .9s; }
 }
 
 .contentBox-title { margin-top: 0; }

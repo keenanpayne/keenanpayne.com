@@ -2,18 +2,11 @@
 // Tiles
 // ==================================================
 
-
 //
-// Variables and Silent Classes
-// ----------------------------
+// Variables
+// ---------
 
 $tile-spacing: 10px;
-
-%tile-animation {
-  animation-name: fadeIn, moveUp;
-  animation-duration: .7s, .85s;
-  animation-fill-mode: forwards, forwards;
-}
 
 
 //
@@ -33,7 +26,6 @@ $tile-spacing: 10px;
   display: block;
   height: 100%;
   margin-bottom: $spacing-xs;
-  opacity: 0;
   padding-bottom: $spacing-xs;
   transition: width $transition-duration-long;
   width: 100%;
@@ -55,32 +47,16 @@ $tile-spacing: 10px;
       margin-top: 0;
     }
   }
-
-  &.-animated {
-    @extend %tile-animation;
-  }
 }
 
-.tile-header {
-  margin-bottom: $spacing-xs;
-  opacity: 0;
-
-  &.-animated {
-    @extend %tile-animation;
-  }
-}
+.tile-header { margin-bottom: $spacing-xs; }
 
 .tile-description {
   margin-bottom: $spacing-s;
   max-width: $content-limit;
-  opacity: 0;
 
   @media (--very-large) {
     max-width: $content-limit-large;
-  }
-
-  &.-animated {
-    @extend %tile-animation;
   }
 }
 
@@ -90,43 +66,4 @@ $tile-spacing: 10px;
   font-size: typeScale(.5);
   margin-top: $spacing-xs;
   text-align: center;
-}
-
-// Properly cascading animations
-.tile-container .tiles {
-  &:nth-of-type(1) {
-    .tile-header { animation-delay: .5s; }
-
-    .tile-description { animation-delay: .7s; }
-
-    .tile {
-      &.-animated-1 { animation-delay: 1.05s; }
-
-      &.-animated-2 { animation-delay: 1.15s; }
-
-      &.-animated-3 { animation-delay: 1.25s; }
-
-      &.-animated-4 { animation-delay: 1.35s; }
-
-      &.-animated-5 { animation-delay: 1.45s; }
-    }
-  }
-
-  &:nth-of-type(2) {
-    .tile-header { animation-delay: 1.55s; }
-
-    .tile-description { animation-delay: 1.75s; }
-
-    .tile {
-      &.-animated-1 { animation-delay: 2.1s; }
-
-      &.-animated-2 { animation-delay: 2.25s; }
-
-      &.-animated-3 { animation-delay: 2.35s; }
-
-      &.-animated-4 { animation-delay: 2.45s; }
-
-      &.-animated-5 { animation-delay: 2.55s; }
-    }
-  }
 }

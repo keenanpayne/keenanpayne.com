@@ -2,18 +2,8 @@
 // Contact
 // ==================================================
 
-.contact {
-  opacity: 0;
-
-  &.-animated { animation: fadeIn .5s .5s forwards, moveUp .75s .5s ease-out forwards; }
-}
-
 .wufoo {
-  opacity: 0;
-
   @media (--medium-max) {
     margin-top: $spacing-m;
   }
-
-  &.-animated { animation: fadeIn .5s .7s forwards, moveUp .75s .7s ease-out forwards; }
 }

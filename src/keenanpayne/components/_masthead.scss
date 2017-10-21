@@ -3,12 +3,9 @@
 // ==================================================
 
 .masthead {
-  opacity: 0;
   padding-bottom: $spacing-l;
   padding-top: $spacing-l;
   transition: padding $transition-duration;
-
-  &.-animated { animation: fadeIn .5s .25s forwards, moveLeft .75s .25s ease-out forwards; }
 }
 
 .masthead-heading {

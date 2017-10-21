@@ -2,28 +2,6 @@
 // Portfolio List
 // ==================================================
 
-
-//
-// Silent Classes
-// --------------
-
-%dl-animation-right {
-  animation-name: fadeIn, moveRight;
-  animation-duration: .7s, .85s;
-  animation-fill-mode: forwards, forwards;
-}
-
-%dl-animation-left {
-  animation-name: fadeIn, moveLeft;
-  animation-duration: .7s, .85s;
-  animation-fill-mode: forwards, forwards;
-}
-
-
-//
-// Styles
-// ------
-
 .portfolioList {
   @media (--medium-max) {
     margin-bottom: $spacing-m;
@@ -47,34 +25,11 @@
   }
 }
 
-.portfolioList-item {
-  display: block;
-  opacity: 0;
-
-  @for $i from 1 through 15 {
-    // If even
-    @if $i % 2 == 0 {
-      &.-animated:nth-of-type(#{$i}) {
-        @extend %dl-animation-left;
-
-        animation-delay: $i * .2s;
-      }
-
-    // If odd
-    } @else {
-      &.-animated:nth-of-type(#{$i}) {
-        @extend %dl-animation-right;
-
-        animation-delay: $i * .2s;
-      }
-    }
-  }
-}
+.portfolioList-item { display: block; }
 
 .portfolioList-item-title {
   font-size: 1.1rem;
   margin-top: 0;
-  // padding-bottom: $spacing-xs;
 }
 
 .portfolioList-item-description {
