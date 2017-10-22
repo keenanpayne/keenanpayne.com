@@ -1,8 +1,5 @@
 .highlight {
-  background-color: getColor(background, light);
-  border: 1px solid getColor(base, lines);
-  border-left-width: 5px;
-  border-radius: $border-radius 0 0 $border-radius;
+  background-color: getColor(background, lines);
   font-size: .875rem;
   line-height: 1.65;
   margin-bottom: $spacing-s;
@@ -102,7 +99,6 @@
 [class^="language-"] {
   .highlight {
     &:before {
-      background: getColor(base, lines);
       content: '';
       display: block;
       font-size: typeScale(.5);

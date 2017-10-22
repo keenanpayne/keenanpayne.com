@@ -41,8 +41,21 @@
   margin-right: auto;
   max-width: 800px;
 
+  > p,
+  > ol,
+  > ul,
+  > h1,
+  > h2,
+  > h3 {
+    @media (--medium) {
+      margin-left: $spacing-m;
+      margin-right: $spacing-m;
+    }
+  }
+
   h1, h2, h3 {
-    margin: $spacing-m 0 $block-margin;
+    margin-bottom: $block-margin;
+    margin-top: $spacing-m;
     position: relative;
   }
 
@@ -67,6 +80,15 @@
       transform: translateX(-15%);
       width: 140%;
     }
+  }
+
+  table {
+    width: 100%;
+
+    thead { background-color: transparent; }
+
+    th,
+    td { border-right: 1px solid getColor(base, lines); }
   }
 }
 
