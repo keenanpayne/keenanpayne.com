@@ -12,7 +12,7 @@
     content: 'Footnotes:';
     display: block;
     font-size: typeScale(.5);
-    font-weight: bold;
+    font-weight: $fontWeight-bold;
     letter-spacing: .25px;
     line-height: 1.5;
     margin-bottom: $spacing-xxs;

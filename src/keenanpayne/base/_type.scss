@@ -47,7 +47,7 @@ li {
 a {
   // Links in paragraphs
   p & {
-    font-weight: 400;
+    font-weight: $fontWeight-normal;
     text-decoration: underline;
     text-decoration-skip: ink;
   }
@@ -58,7 +58,7 @@ a {
   font-family: $font-primary;
   font-style: normal;
   font-size: typeScale(1);
-  font-weight: 400;
+  font-weight: $fontWeight-normal;
   margin-left: $spacing-xxs;
   transition: transform $transition-duration-long;
 }

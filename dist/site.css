@@ -1041,7 +1041,7 @@ button, input[type="submit"],
   padding-top: calc(3rem + .2vw); }
   @media (min-width: 768px) {
     .post {
-      padding-top: calc(6rem + .2vw); } }
+      padding-top: calc(4.5rem + .2vw); } }
   .post .post-header {
     padding-bottom: calc(3rem + .2vw); }
 
@@ -1109,7 +1109,7 @@ button, input[type="submit"],
   color: #666;
   font-size: 1rem;
   font-family: "Hind", "Cambria", "Arial", sans-serif;
-  font-weight: bold;
+  font-weight: 600;
   left: -1.15rem;
   line-height: 1;
   opacity: .5;
@@ -1275,7 +1275,7 @@ button, input[type="submit"],
     content: 'Footnotes:';
     display: block;
     font-size: 0.69444rem;
-    font-weight: bold;
+    font-weight: 600;
     letter-spacing: .25px;
     line-height: 1.5;
     margin-bottom: calc(0.375rem + .2vw); }
@@ -1439,7 +1439,7 @@ a.reversefootnote {
   .readingTime:before {
     content: "·";
     font-size: 145%;
-    font-weight: bold;
+    font-weight: 600;
     line-height: 1;
     padding-right: calc(0.375rem + .2vw);
     vertical-align: middle; }

@@ -7,7 +7,7 @@
   padding-top: $spacing-m;
 
   @media (--medium) {
-    padding-top: $spacing-xl;
+    padding-top: $spacing-l;
   }
 
   .post-header { padding-bottom: $spacing-m; }
@@ -96,7 +96,7 @@
   color: getColor(text, secondary);
   font-size: 1rem;
   font-family: $font-primary;
-  font-weight: bold;
+  font-weight: $fontWeight-bold;
   left: -1.15rem;
   line-height: 1;
   opacity: .5;

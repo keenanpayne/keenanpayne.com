@@ -8,7 +8,7 @@
   &:before {
     content: "·";
     font-size: 145%;
-    font-weight: bold;
+    font-weight: $fontWeight-bold;
     line-height: 1;
     padding-right: $spacing-xxs;
     vertical-align: middle;

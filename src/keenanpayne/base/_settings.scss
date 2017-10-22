@@ -82,10 +82,16 @@ $scale-ratio: $_minor-third;
 // Ratio for secondary scale
 $scale-ratio-secondary: $_golden-ratio;
 
+
 //
 // Font Weights
 // --------------------------------------------------
 
+$fontWeight-light:    300;
+$fontWeight-normal:   400;
+$fontWeight-semibold: 500;
+$fontWeight-bold:     600;
+$fontWeight-heavy:    900;
 
 
 //
