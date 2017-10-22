@@ -9,7 +9,7 @@ sections:
   - name: 'intro-text'
   - name: 'projects'
   - name: 'labs'
-  - name: 'post-list'
+  #- name: 'post-list'
 
 ## Masthead
 introtext: I'm a web developer at <a href="https://asana.com">Asana</a>. I like to write and build things in my spare time.
