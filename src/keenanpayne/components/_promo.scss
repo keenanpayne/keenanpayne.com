@@ -3,8 +3,8 @@
 // ==================================================
 
 .promo {
-  background-color: getColor(base, splash);
-  color: white;
+  border: 2px solid getColor(base, splash);
+  color: getColor(base, splash);
   cursor: pointer;
   display: block;
   font-size: typeScale(.5);
@@ -13,9 +13,10 @@
   opacity: .85;
   padding: $spacing-xs;
   text-align: center;
-  transition: opacity $transition-duration-med, color $transition-duration-med;
+  transition: all $transition-duration-med;
 
   &:hover {
+    background-color: getColor(base, splash);
     color: white;
     opacity: 1;
   }
