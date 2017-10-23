@@ -7,9 +7,8 @@
   color: white;
   cursor: pointer;
   display: block;
-  font-size: .875rem;
+  font-size: typeScale(.5);
   font-weight: $fontWeight-bold;
-  letter-spacing: .3px;
   margin-top: $spacing-l;
   opacity: .85;
   padding: $spacing-xs;

@@ -14,7 +14,7 @@ button,
   vertical-align: middle;
 
   &:hover {
-    background-color: darken(getColor(base, splash), 7.5%);
+    background-color: darken(getColor(base, splash), 10%);
     color: white;
   }
 }

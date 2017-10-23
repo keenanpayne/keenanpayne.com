@@ -20,11 +20,6 @@ h1, h2, h3 { margin: $spacing-xs 0; }
 
 h2, h3 {
   letter-spacing: -.15px;
-
-  // Subtext hover effect on portfolio
-  &:hover {
-    .heading-subtext { transform: translateY(-10px); }
-  }
 }
 
 // Hanging lists for readability
@@ -53,16 +48,6 @@ a {
   }
 }
 
-.heading-subtext {
-  display: inline-block;
-  font-family: $font-primary;
-  font-style: normal;
-  font-size: typeScale(1);
-  font-weight: $fontWeight-normal;
-  margin-left: $spacing-xxs;
-  transition: transform $transition-duration-long;
-}
-
 
 //
 // Blockquotes
@@ -77,6 +62,11 @@ blockquote {
 
   &:hover { border-left-color: getColor(base, splash); }
 }
+
+
+//
+// Code
+// ----
 
 code {
   background-color: (background, light);

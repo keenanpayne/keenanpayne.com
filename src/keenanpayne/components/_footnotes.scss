@@ -20,7 +20,7 @@
 
   // Note number
   li {
-    font-size: .875rem;
+    font-size: typeScale(.5);
 
     &:before {
       color: getColor(text, secondary);
