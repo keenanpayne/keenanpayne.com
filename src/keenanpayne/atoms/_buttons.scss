@@ -6,6 +6,7 @@ button,
 .button {
   background-color: getColor(base, splash);
   color: white;
+  cursor: default;
   display: inline-block;
   padding: .5rem 1rem;
   text-decoration: none;
@@ -13,7 +14,7 @@ button,
   vertical-align: middle;
 
   &:hover {
-    background-color: darken(getColor(base, splash), 10%);
+    background-color: getColor(base, splash-hover);
     color: white;
   }
 }

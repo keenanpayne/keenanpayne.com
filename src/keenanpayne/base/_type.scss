@@ -40,11 +40,23 @@ li {
 }
 
 a {
+  &:hover {
+    text-decoration: underline;
+    text-decoration-skip: ink;
+  }
+
   // Links in paragraphs
   p & {
     font-weight: $fontWeight-normal;
     text-decoration: underline;
     text-decoration-skip: ink;
+  }
+
+  // Modifiers
+  &.-cta {
+    color: getColor(base, splash);
+
+    &:hover { color: getColor(base, splash-hover); }
   }
 }
 

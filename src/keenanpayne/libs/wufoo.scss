@@ -43,7 +43,7 @@
 	border: none;
   border-radius: 3px;
   color: white;
-	cursor: pointer;
+	cursor: default;
   display: inline-block;
   padding: 1rem;
   text-decoration: none;
@@ -53,7 +53,7 @@
 }
 
 .wufoo li.buttons input[type="submit"]:hover {
-	background-color: #fe1d46;
+	background-color: #f3012d;
 	color: white;
 }
 
