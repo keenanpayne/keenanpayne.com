@@ -16,6 +16,8 @@
     "flexicution": "0.0.1",
     "imagemin": "^5.2.2",
     "imagemin-webp": "^4.0.0",
+    "prettier": "^1.8.1",
+    "prettier-eslint": "^8.2.1",
     "watch": "^0.16.0"
   },
   "scripts": {
