@@ -1067,7 +1067,8 @@ button, input[type="submit"],
     .post-content > ul,
     .post-content > h1,
     .post-content > h2,
-    .post-content > h3 {
+    .post-content > h3,
+    .post-content > blockquote {
       margin-left: calc(3rem + .2vw);
       margin-right: calc(3rem + .2vw); } }
   .post-content h1, .post-content h2, .post-content h3 {
@@ -1364,13 +1365,11 @@ a.reversefootnote {
     border-bottom: 1px solid #DADADA; }
 
 .postList-title {
+  font-size: 2.0736rem;
   margin-top: 0; }
 
 .postList-date {
   font-size: 0.83333rem; }
-
-.postList-archive {
-  text-align: center; }
 
 .portfolioList > .portfolioList-item:first-of-type {
   border-bottom: 3px solid #32373d;

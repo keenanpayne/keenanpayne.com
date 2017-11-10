@@ -46,7 +46,8 @@
   > ul,
   > h1,
   > h2,
-  > h3 {
+  > h3,
+  > blockquote {
     @media (--medium) {
       margin-left: $spacing-m;
       margin-right: $spacing-m;

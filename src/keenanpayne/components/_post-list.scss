@@ -12,8 +12,9 @@
   }
 }
 
-.postList-title { margin-top: 0; }
+.postList-title {
+  font-size: typeScale(6);
+  margin-top: 0;
+}
 
 .postList-date { font-size: typeScale(1); }
-
-.postList-archive { text-align: center; }

@@ -1,5 +1,5 @@
 <section class="postList" container="narrower">
-  {% include components/section-heading.html content="From the Blog" %}
+  {% include components/section-heading.html content="Archives" %}
 
   <article class="postList-article">
     {% for post in site.posts %}
@@ -10,10 +10,8 @@
 
         <p class="postList-date">{{ post.date | date: "%B %e, %Y" }}</p>
       </header>
+
+      {{ post.excerpt }}
     {% endfor %}
   </article>
-
-  <p class="postList-archive">
-    <a href="/blog">See the archives</a>
-  </p>
 </section>
