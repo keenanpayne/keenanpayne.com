@@ -16,8 +16,8 @@
 
   a {
     &:hover {
-      border-bottom: none;
       color: inherit;
+      text-decoration: none; 
     }
   }
 }

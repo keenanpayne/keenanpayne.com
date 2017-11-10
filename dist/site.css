@@ -1339,8 +1339,8 @@ a.reversefootnote {
     .logo {
       max-width: 350px; } }
   .logo a:hover {
-    border-bottom: none;
-    color: inherit; }
+    color: inherit;
+    text-decoration: none; }
 
 .masthead {
   padding-bottom: calc(4.5rem + .2vw);
