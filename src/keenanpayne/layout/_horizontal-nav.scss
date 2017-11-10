@@ -23,8 +23,6 @@
   a {
     transition: opacity $transition-duration-long;
 
-    &:hover { border-bottom: none; }
-
-    &.-is-inactive { opacity: .5; }
+    &.-is-active { text-decoration: underline; }
   }
 }

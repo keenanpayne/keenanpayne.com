@@ -10,8 +10,8 @@ $mobileNavTrigger-size: 26px;
 
 
 //
-// Styles
-// ------
+// Menu
+// ----
 
 .mobileNav {
   color: white;
@@ -40,9 +40,10 @@ $mobileNavTrigger-size: 26px;
 
 .mobileNav-container {
   background-color: getColor(background, light);
-  height: auto;
+  height: 100%;
   margin: 0 auto;
   min-height: 100vh;
+  overflow: scroll;
   padding: $spacing-xl $spacing-s 0;
   text-align: left;
   width: 100%;
@@ -63,14 +64,14 @@ $mobileNavTrigger-size: 26px;
 
   li {
     font-family: $font-secondary;
-    font-size: typeScale(5);
+    font-size: typeScale(8);
     font-weight: $fontWeight-heavy;
     list-style-type: none;
     margin-bottom: $spacing-xs;
 
-    @media (min-height: 560px) {
-      font-size: typeScale(7);
-    }
+    // @media (min-height: 560px) {
+    //   font-size: typeScale(7);
+    // }
   }
 }
 
@@ -99,10 +100,6 @@ $mobileNavTrigger-size: 26px;
   height: $mobileNavTrigger-size;
   width: $mobileNavTrigger-size;
 
-  &:hover {
-    border-bottom: none;
-  }
-
   span {
     &,
     &:before,
@@ -117,7 +114,6 @@ $mobileNavTrigger-size: 26px;
       top: 2px;
       transition: background-color $transition-duration-long;
       width: $mobileNavTrigger-size;
-      will-change: transform;
     }
 
     &:before,

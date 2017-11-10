@@ -2,6 +2,10 @@
 // Post
 // ==================================================
 
+//
+// Container
+// ---------
+
 .post {
   padding-bottom: $spacing-s;
   padding-top: $spacing-m;
@@ -13,7 +17,11 @@
   .post-header { padding-bottom: $spacing-m; }
 }
 
+
+//
 // Header
+// ------
+
 .post-header {
   margin-left: auto;
   margin-right: auto;
@@ -24,7 +32,11 @@
   }
 }
 
+
+//
 // Title
+// -----
+
 .post-title {
   font-size: typeScale(6);
   margin-bottom: $spacing-s;
@@ -35,7 +47,11 @@
   }
 }
 
+
+//
 // Content
+// -------
+
 .post-content {
   margin-left: auto;
   margin-right: auto;
@@ -92,6 +108,11 @@
     td { border-right: 1px solid getColor(base, lines); }
   }
 }
+
+
+//
+// Heading Anchor
+// --------------
 
 .post-content-header-link {
   color: getColor(text, secondary);

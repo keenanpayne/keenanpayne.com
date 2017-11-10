@@ -2,9 +2,14 @@
 // Typography
 // ==================================================
 
+//
+// Paragraphs
+// ----------
+
 p {
   font-variant-ligatures: normal;
 
+  // Modifiers
   &.-large { font-size: typeScale(4); }
 
   &.-small-heading {
@@ -14,21 +19,10 @@ p {
   }
 }
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.2;
 
-  a:hover {
-    color: initial;
-    text-decoration: underline;
-    text-decoration-skip: ink;
-  }
-}
-
-h1, h2, h3 { margin: $spacing-xs 0; }
-
-h2, h3 {
-  letter-spacing: -.15px;
-}
+//
+// Lists
+// -----
 
 // Hanging lists for readability
 ul, ol {
@@ -46,6 +40,11 @@ ol {
 li {
   &:not(:last-child) { margin-bottom: calc(0.15lh + .1vw); }
 }
+
+
+//
+// Links
+// -----
 
 a {
   &:hover {
@@ -67,6 +66,24 @@ a {
     &:hover { color: getColor(base, splash-hover); }
   }
 }
+
+
+//
+// Headings
+// --------
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+
+  a:hover {
+    color: initial;
+    text-decoration: underline;
+    text-decoration-skip: ink;
+  }
+}
+
+h1, h2, h3 { margin: $spacing-xs 0; }
+
+h2, h3 { letter-spacing: -.15px; }
 
 
 //

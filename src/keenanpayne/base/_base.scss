@@ -25,6 +25,13 @@ body {
   &.-no-scroll { overflow: hidden; }
 }
 
+main { margin-top: 0; }
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
 [container] {
   overflow: hidden;
   width: 100%;
@@ -33,10 +40,3 @@ body {
 [container="narrow"] { max-width: $container-width-narrow; }
 
 [container="narrower"] { max-width: $container-width-narrower; }
-
-main { margin-top: 0; }
-
-img {
-  height: auto;
-  max-width: 100%;
-}
