@@ -6,7 +6,10 @@
   padding-bottom: $spacing-xl;
   padding-top: $spacing-xl;
 
-  a { color: getColor(base, splash); }
+  a {
+    &,
+    &:hover { color: getColor(base, splash); }
+  }
 }
 
 .introtext-text {

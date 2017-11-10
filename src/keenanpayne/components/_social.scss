@@ -17,20 +17,34 @@
 // Styles
 // ------
 
-.social-link {
+.social { padding-left: 0; }
+
+.social-link-wrapper {
+  display: inline-block;
   font-size: .875rem;
   font-weight: $fontWeight-normal;
+  list-style-type: none;
 
   &:not(:first-of-type) {
-    margin-left: .2rem;
+    margin-left: .25rem;
+
+    @media (--small) {
+      margin-left: .5rem;
+    }
 
     &:before {
       color: getColor(text, primary);
       content: "/";
-      padding-right: .2rem;
+      padding-right: .25rem;
+
+      @media (--small) {
+        padding-right: .5rem;
+      }
     }
   }
+}
 
+.social-link {
   // Networks
   &.-dribbble { @include social-link(#ea4c89); }
   &.-github { @include social-link(#24292e); }

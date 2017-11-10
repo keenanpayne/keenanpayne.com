@@ -14,7 +14,15 @@ p {
   }
 }
 
-h1, h2, h3, h4, h5, h6 { line-height: 1.2; }
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+
+  a:hover {
+    color: initial;
+    text-decoration: underline;
+    text-decoration-skip: ink;
+  }
+}
 
 h1, h2, h3 { margin: $spacing-xs 0; }
 

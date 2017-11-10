@@ -31,15 +31,15 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 ## ---------------
 
 social:
-  - name: Dribbble
+  - name: "Dribbble"
     url: "https://dribbble.com/keenanpayne"
-  - name: GitHub
+  - name: "GitHub"
     url: "https://github.com/keenanpayne"
-  - name: Behance
+  - name: "Behance"
     url: "https://www.behance.net/keenanpayne"
-  - name: LinkedIn
+  - name: "LinkedIn"
     url: "https://www.linkedin.com/in/keenanpayne"
-  - name: CodePen
+  - name: "CodePen"
     url: "https://codepen.io/keenanpayne/"
 
 
