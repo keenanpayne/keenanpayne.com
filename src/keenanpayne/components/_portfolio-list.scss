@@ -4,7 +4,7 @@
 
 .portfolioList {
   > .portfolioList-item:first-of-type {
-    border-bottom: 3px solid getColor(background, dark);
+    border-bottom: 3px solid getColor(base, linesDark);
     margin-bottom: $spacing-xs;
   }
 }
@@ -18,5 +18,5 @@
   margin-bottom: $spacing-xs;
   padding-bottom: $spacing-xs;
 
-  &:not(:last-of-type) { border-bottom: 1px solid getColor(base, lines); }
+  &:not(:last-of-type) { border-bottom: 2px solid getColor(base, lines); }
 }

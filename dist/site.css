@@ -66,7 +66,7 @@ pre,
 samp {
   font-family: "Consolas", monospace;
   font-size: 0.83333rem;
-  background-color: #f4f4f4; }
+  background-color: #fffbf1; }
 
 code,
 kbd {
@@ -81,10 +81,10 @@ pre {
 
 kbd {
   background-color: transparent;
-  outline: 1px solid #DADADA; }
+  outline: 1px solid #f3ecdb; }
 
 hr {
-  background-color: #DADADA;
+  background-color: #f3ecdb;
   height: 1px;
   overflow: visible;
   border: 0; }
@@ -115,7 +115,7 @@ abbr {
           font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
   text-transform: uppercase; }
   abbr[title] {
-    border-bottom: 1px solid #DADADA;
+    border-bottom: 1px solid #f3ecdb;
     cursor: help;
     text-decoration: none; }
 
@@ -227,7 +227,7 @@ html [type="button"],
   outline: 1px dotted ButtonText; }
 
 fieldset {
-  border: 1px solid #DADADA;
+  border: 1px solid #f3ecdb;
   padding: 1.5rem 1em; }
 
 legend {
@@ -276,15 +276,15 @@ input[type="range"] {
   input[type="range"]:focus {
     outline: none; }
   input[type="range"]::-moz-range-track{
-  background-color: #DADADA;
+  background-color: #f3ecdb;
   border: none;
   height: 0.3rem; }
   input[type="range"]::-ms-track{
-  background-color: #DADADA;
+  background-color: #f3ecdb;
   border: none;
   height: 0.3rem; }
   input[type="range"]::-webkit-slider-runnable-track{
-  background-color: #DADADA;
+  background-color: #f3ecdb;
   border: none;
   height: 0.3rem; }
   input[type="range"]::-moz-range-thumb{
@@ -463,7 +463,7 @@ textarea {
 input:not([type="submit"]):not([type="range"]),
 select,
 textarea {
-  border: 1px solid #DADADA;
+  border: 1px solid #f3ecdb;
   padding: 0 0.75em; }
 
 input[type="checkbox"],
@@ -520,7 +520,7 @@ table {
       width: auto; } }
   table thead,
   table tfoot {
-    background-color: #f4f4f4;
+    background-color: #fffbf1;
     text-align: left; }
   table th,
   table td {
@@ -828,7 +828,7 @@ table {
   pre,
   code {
     background-color: transparent;
-    border: 1px solid #DADADA;
+    border: 1px solid #f3ecdb;
     page-break-inside: avoid; }
   blockquote {
     border: none;
@@ -937,7 +937,7 @@ h2, h3 {
 
 blockquote {
   color: #666;
-  border-left: 5px solid #DADADA;
+  border-left: 5px solid #f3ecdb;
   padding-bottom: calc(0.375rem + .2vw);
   padding-top: calc(0.375rem + .2vw);
   transition: border-left-color 300ms; }
@@ -946,7 +946,7 @@ blockquote {
 
 code {
   background-color: background, light;
-  border: 1px solid #DADADA;
+  border: 1px solid #f3ecdb;
   padding: .1rem .5rem;
   vertical-align: 5%; }
 
@@ -962,7 +962,7 @@ table {
     padding-top: calc(0.75rem + .2vw); }
 
 tr {
-  border-bottom: 1px solid #DADADA; }
+  border-bottom: 1px solid #f3ecdb; }
 
 .-small-caps {
   -webkit-font-feature-settings: "smcp";
@@ -1094,7 +1094,7 @@ button, input[type="submit"],
       background-color: transparent; }
     .post-content table th,
     .post-content table td {
-      border-right: 1px solid #DADADA; }
+      border-right: 1px solid #f3ecdb; }
 
 .post-content-header-link {
   color: #666;
@@ -1132,7 +1132,7 @@ button, input[type="submit"],
     pointer-events: auto; }
 
 .mobileNav-container {
-  background-color: #f4f4f4;
+  background-color: #fffbf1;
   height: 100%;
   margin: 0 auto;
   min-height: 100vh;
@@ -1203,7 +1203,7 @@ button, input[type="submit"],
               transform: rotate(-45deg); }
 
 .siteFooter {
-  border-top: 1px solid #DADADA;
+  border-top: 2px solid #f3ecdb;
   font-size: 0.83333rem;
   margin-top: 0;
   padding-bottom: calc(0.75rem + .2vw);
@@ -1240,7 +1240,7 @@ button, input[type="submit"],
   margin-top: 0; }
 
 .footnotes {
-  border-top: 1px solid #DADADA;
+  border-top: 1px solid #f3ecdb;
   margin-top: calc(1.5rem + .2vw);
   padding-top: calc(1.5rem + .2vw); }
   .footnotes:before {
@@ -1298,7 +1298,7 @@ a.reversefootnote {
   text-align: center; }
 
 .largeCta {
-  background-color: #f4f4f4;
+  background-color: #fffbf1;
   border-top: 3px solid #FE4365;
   margin-top: calc(0.75rem + .2vw);
   padding-bottom: calc(3rem + .2vw);
@@ -1347,7 +1347,7 @@ a.reversefootnote {
 .postList-article {
   padding-bottom: calc(1.5rem + .2vw); }
   .postList-article:not(:last-of-type) {
-    border-bottom: 1px solid #DADADA; }
+    border-bottom: 1px solid #f3ecdb; }
 
 .postList-title {
   font-size: 2.0736rem;
@@ -1357,7 +1357,7 @@ a.reversefootnote {
   font-size: 0.83333rem; }
 
 .portfolioList > .portfolioList-item:first-of-type {
-  border-bottom: 3px solid #32373d;
+  border-bottom: 3px solid #c6a555;
   margin-bottom: calc(0.75rem + .2vw); }
 
 .portfolioList-item {
@@ -1371,7 +1371,7 @@ a.reversefootnote {
   margin-bottom: calc(0.75rem + .2vw);
   padding-bottom: calc(0.75rem + .2vw); }
   .portfolioList-item-description:not(:last-of-type) {
-    border-bottom: 1px solid #DADADA; }
+    border-bottom: 2px solid #f3ecdb; }
 
 .projects {
   margin-bottom: calc(8.25rem + .2vw); }
@@ -1388,8 +1388,8 @@ a.reversefootnote {
       margin-bottom: calc(1.5rem + .2vw); } }
 
 .project-tag {
-  background: #f4f4f4;
-  border: 1px solid #DADADA;
+  background: #fffbf1;
+  border: 1px solid #f3ecdb;
   border-radius: 3px;
   display: inline-block;
   font-size: 0.69444rem;
@@ -1478,8 +1478,8 @@ a.reversefootnote {
 
 .highlight {
   background-color: transparent;
-  border-bottom: 3px solid #f4f4f4;
-  border-top: 3px solid #f4f4f4;
+  border-bottom: 3px solid #f3ecdb;
+  border-top: 3px solid #f3ecdb;
   font-size: .875rem;
   line-height: 1.65;
   margin-bottom: calc(1.5rem + .2vw);
