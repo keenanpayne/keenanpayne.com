@@ -1,10 +1,11 @@
 .highlight {
-  background-color: getColor(background, lines);
+  background-color: transparent;
+  border-bottom: 3px solid getColor(background, light);
+  border-top: 3px solid getColor(background, light);
   font-size: .875rem;
   line-height: 1.65;
   margin-bottom: $spacing-s;
   margin-top: $spacing-s;
-  padding: 0;
 
   pre {
     overflow-x: auto;
@@ -79,35 +80,3 @@
   .vi { color: #008080 } /* Name.Variable.Instance */
   .il { color: #009999 } /* Literal.Number.Integer.Long */
 }
-
-
-//
-// Language-Specific
-// -----------------
-
-@mixin highlightLanguage($language, $textStyle) {
-  [class^="language-#{$language}"] {
-    .highlight {
-      &:before {
-        content: $language;
-        text-transform: $textStyle;
-      }
-    }
-  }
-}
-
-[class^="language-"] {
-  .highlight {
-    &:before {
-      content: '';
-      display: block;
-      font-size: typeScale(.5);
-      font-weight: bold;
-      padding: $spacing-xxs;
-    }
-  }
-}
-
-@include highlightLanguage('python', capitalize);
-@include highlightLanguage('scss', uppercase);
-@include highlightLanguage('html', uppercase);

@@ -187,8 +187,7 @@ a {
   -webkit-text-decoration-skip: objects;
   color: #4d4d4d;
   text-decoration: none;
-  -webkit-transition-duration: 150ms;
-          transition-duration: 150ms; }
+  transition-duration: 150ms; }
   a:hover, a:focus {
     color: #1a1a1a; }
 
@@ -320,7 +319,6 @@ button, input[type="submit"] {
   font-size: 0.83333rem;
   line-height: 2.25rem;
   padding: 0 1.5em;
-  -webkit-transition: background-color 150ms;
   transition: background-color 150ms;
   white-space: nowrap; }
   button:hover, input[type="submit"]:hover, button:focus, input[type="submit"]:focus {
@@ -447,8 +445,7 @@ ol {
 input:not([type="submit"]),
 select,
 textarea {
-  -webkit-transition-duration: 150ms;
-          transition-duration: 150ms;
+  transition-duration: 150ms;
   width: 100%;
   font-size: 0.83333rem;
   min-height: 2.25rem; }
@@ -576,8 +573,10 @@ table {
     padding-right: 0; }
 
 [grid~="no-collapse"] {
-  -ms-flex-flow: row nowrap;
-      flex-flow: row nowrap; }
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap; }
 
 [grid~="wrap"] {
   -ms-flex-wrap: wrap;
@@ -941,7 +940,6 @@ blockquote {
   border-left: 5px solid #DADADA;
   padding-bottom: calc(0.375rem + .2vw);
   padding-top: calc(0.375rem + .2vw);
-  -webkit-transition: border-left-color 300ms;
   transition: border-left-color 300ms; }
   blockquote:hover {
     border-left-color: #FE4365; }
@@ -1004,7 +1002,6 @@ button, input[type="submit"],
   display: inline-block;
   padding: .5rem 1rem;
   text-decoration: none;
-  -webkit-transition: background-color 150ms;
   transition: background-color 150ms;
   vertical-align: middle; }
   button:hover, input[type="submit"]:hover,
@@ -1025,7 +1022,6 @@ button, input[type="submit"],
     .navHorizontal li:not(:last-of-type) {
       margin-right: calc(1.5rem + .2vw); }
   .navHorizontal a {
-    -webkit-transition: opacity 300ms;
     transition: opacity 300ms; }
     .navHorizontal a.-is-active {
       text-decoration: underline; }
@@ -1110,7 +1106,6 @@ button, input[type="submit"],
   opacity: .5;
   position: absolute;
   top: .375rem;
-  -webkit-transition: opacity 150ms;
   transition: opacity 150ms; }
   .post-content-header-link:hover, .post-content-header-link:active {
     opacity: .75; }
@@ -1124,7 +1119,6 @@ button, input[type="submit"],
   pointer-events: none;
   position: absolute;
   top: 5px;
-  -webkit-transition: all ease-in 150ms;
   transition: all ease-in 150ms;
   width: 100%;
   z-index: 800; }
@@ -1189,11 +1183,9 @@ button, input[type="submit"],
     height: 2px;
     position: absolute;
     top: 2px;
-    -webkit-transition: background-color 300ms;
     transition: background-color 300ms;
     width: 26px; }
   .mobileNav-toggle span:before, .mobileNav-toggle span:after {
-    -webkit-transition: all 225ms ease-in-out;
     transition: all 225ms ease-in-out; }
   .mobileNav-toggle span:before {
     top: 8px; }
@@ -1420,7 +1412,6 @@ a.reversefootnote {
   opacity: .85;
   padding: calc(0.75rem + .2vw);
   text-align: center;
-  -webkit-transition: all 225ms;
   transition: all 225ms; }
   .promo:hover {
     background-color: #FE4365;
@@ -1486,11 +1477,13 @@ a.reversefootnote {
     color: #7c7c7c; }
 
 .highlight {
+  background-color: transparent;
+  border-bottom: 3px solid #f4f4f4;
+  border-top: 3px solid #f4f4f4;
   font-size: .875rem;
   line-height: 1.65;
   margin-bottom: calc(1.5rem + .2vw);
   margin-top: calc(1.5rem + .2vw);
-  padding: 0;
   /* Comment */
   /* Error */
   /* Keyword */
@@ -1692,22 +1685,3 @@ a.reversefootnote {
     color: #008080; }
   .highlight .il {
     color: #009999; }
-
-[class^="language-"] .highlight:before {
-  content: '';
-  display: block;
-  font-size: 0.69444rem;
-  font-weight: bold;
-  padding: calc(0.375rem + .2vw); }
-
-[class^="language-python"] .highlight:before {
-  content: "python";
-  text-transform: capitalize; }
-
-[class^="language-scss"] .highlight:before {
-  content: "scss";
-  text-transform: uppercase; }
-
-[class^="language-html"] .highlight:before {
-  content: "html";
-  text-transform: uppercase; }
