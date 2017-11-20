@@ -932,9 +932,6 @@ h1, h2, h3, h4, h5, h6 {
 h1, h2, h3 {
   margin: calc(0.775rem + .2vw) 0; }
 
-h2 {
-  letter-spacing: -.5px; }
-
 blockquote {
   color: #666;
   border-left: 5px solid #f3ecdb;
@@ -1064,7 +1061,8 @@ button, input[type="submit"],
 .post-title {
   font-size: 2.98598rem;
   letter-spacing: -.015rem;
-  margin-bottom: calc(1.55rem + .2vw); }
+  margin-bottom: calc(1.55rem + .2vw);
+  margin-top: 0; }
 
 .post-content {
   margin-left: auto;
@@ -1291,9 +1289,6 @@ a.reversefootnote {
   margin-top: 0;
   padding-bottom: calc(0.775rem + .2vw);
   text-align: center; }
-  .logo a:hover {
-    color: inherit;
-    text-decoration: none; }
 
 .masthead {
   padding-bottom: calc(4.65rem + .2vw);
@@ -1301,12 +1296,10 @@ a.reversefootnote {
 
 .masthead-heading {
   font-size: 2.98598rem;
+  letter-spacing: -.5px;
   margin-left: auto;
   margin-right: auto;
   text-align: center; }
-  @media (min-width: 768px) {
-    .masthead-heading {
-      text-align: right; } }
 
 .postList {
   margin-bottom: calc(8.525rem + .2vw); }
@@ -1324,7 +1317,7 @@ a.reversefootnote {
   font-size: 0.83333rem; }
 
 .portfolioList > .portfolioList-item:first-of-type {
-  border-bottom: 3px solid #c6a555;
+  border-bottom: 3px solid #7b6530;
   margin-bottom: calc(0.775rem + .2vw); }
 
 .portfolioList-item {
@@ -1390,7 +1383,6 @@ a.reversefootnote {
   margin-left: calc(0.388rem + .2vw); }
   .readingTime:before {
     content: "·";
-    font-size: 145%;
     padding-right: calc(0.388rem + .2vw);
     vertical-align: middle; }
 

@@ -9,11 +9,8 @@
 
 .masthead-heading {
   font-size: typeScale(8);
+  letter-spacing: -.5px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-
-  @media (--medium) {
-    text-align: right;
-  }
 }
