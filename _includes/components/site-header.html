@@ -4,19 +4,13 @@
   </h1>
 
   <nav class="navHorizontal -ornate" role="navigation">
-    {% include atoms/navigation.html class="-ornate" %}
+    {% include atoms/navigation.html name="navHorizontal" class="-ornate" mobile="true" %}
   </nav>
-
-  <div class="mobileNav-wrapper">
-    <a class="mobileNav-toggle">
-      <span></span>
-    </a>
-  </div>
 
   <nav id="nav" class="mobileNav">
     <div class="mobileNav-container">
       <div class="mobileNav-content">
-        {% include atoms/navigation.html %}
+        {% include atoms/navigation.html name="mobileNav" %}
       </div>
     </div>
   </nav>

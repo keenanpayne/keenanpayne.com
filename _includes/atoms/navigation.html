@@ -1,9 +1,15 @@
 {% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
 
 <ul>
+  {% if include.mobile == "true" %}
+    <li class="{{ include.name }}-item -mobile">
+      <a class="mobileNav-toggle">Menu</a>
+    </li>
+  {% endif %}
+
   {% for p in navigation_pages %}
     {% if p.navigation_weight %}
-      <li class="navHorizontal-item">
+      <li class="{{ include.name }}-item">
         <a href="{{ p.url }}" title="p.title" {% if p.url == page.url %}class="-is-active"{% endif %}>
           {{ p.title }}
         </a>

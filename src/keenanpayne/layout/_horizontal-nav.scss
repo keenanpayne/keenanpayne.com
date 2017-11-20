@@ -6,10 +6,6 @@
   margin-top: 0;
   text-align: right;
 
-  @media (--small-max) {
-    display: none;
-  }
-
   a {
     transition: opacity $transition-duration-long;
 
@@ -28,20 +24,16 @@
         display: inline-block;
         height: 1px;
         vertical-align: middle;
-        width: 50px;
-
-        @media (--small) {
-          width: 100px;
-        }
+        width: 100px;
 
         @media (--medium) {
           width: 150px;
         }
       }
 
-      &:before { margin-right: $spacing-xs; }
+      &:before { margin-right: $spacing-s; }
 
-      &:after { margin-left: $spacing-xs; }
+      &:after { margin-left: $spacing-s; }
     }
   }
 }
@@ -53,5 +45,20 @@
 
   &:not(:last-of-type) {
     margin-right: $spacing-s;
+  }
+
+  &:not(.-mobile) {
+    @media (--small-max) {
+      display: none;
+    }
+  }
+
+  // Modifiers
+  &.-mobile {
+    margin-right: 0;
+
+    @media (--small) {
+      display: none;
+    }
   }
 }
