@@ -3,7 +3,7 @@
 <ul>
   {% if include.mobile == "true" %}
     <li class="{{ include.name }}-item -mobile">
-      <a data-mobileNav-toggle>Menu</a>
+      {% include atoms/toggle-mobile-nav.html text="Menu" %}
     </li>
   {% endif %}
 
