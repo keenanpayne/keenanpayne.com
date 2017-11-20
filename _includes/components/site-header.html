@@ -1,27 +1,25 @@
 <header class="siteHeader" role="main" container>
-  <div class="siteHeader-grid" grid>
-    <h1 class="logo" column="3">
-      <a href="/index.html" title="Home">{{ site.name }}</a>
-    </h1>
+  <h1 class="logo">
+    <a href="/index.html" title="Home">{{ site.name }}</a>
+  </h1>
 
-    <nav class="navHorizontal" role="navigation" column="9">
-      {% include atoms/navigation.html %}
-    </nav>
+  <nav class="navHorizontal -ornate" role="navigation">
+    {% include atoms/navigation.html class="-ornate" %}
+  </nav>
 
-    <div class="mobileNav-wrapper">
-      <a class="mobileNav-toggle">
-        <span></span>
-      </a>
-    </div>
-
-    <nav id="nav" class="mobileNav">
-      <div class="mobileNav-container">
-        <div class="mobileNav-content">
-          {% include atoms/navigation.html %}
-        </div>
-      </div>
-    </nav>
+  <div class="mobileNav-wrapper">
+    <a class="mobileNav-toggle">
+      <span></span>
+    </a>
   </div>
+
+  <nav id="nav" class="mobileNav">
+    <div class="mobileNav-container">
+      <div class="mobileNav-content">
+        {% include atoms/navigation.html %}
+      </div>
+    </div>
+  </nav>
 </header>
 
 <script>
