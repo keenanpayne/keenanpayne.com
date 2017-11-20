@@ -1050,28 +1050,21 @@ button, input[type="submit"],
 
 .post {
   padding-bottom: calc(1.55rem + .2vw);
-  padding-top: calc(3.1rem + .2vw); }
-  @media (min-width: 768px) {
-    .post {
-      padding-top: calc(4.65rem + .2vw); } }
-  .post .post-header {
-    padding-bottom: calc(3.1rem + .2vw); }
+  padding-top: calc(1.55rem + .2vw); }
 
 .post-header {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1220px; }
+  max-width: 1120px;
+  padding-bottom: calc(3.1rem + .2vw); }
   @media (min-width: 768px) {
     .post-header {
       text-align: center; } }
 
 .post-title {
-  font-size: 2.0736rem;
+  font-size: 2.98598rem;
+  letter-spacing: -.015rem;
   margin-bottom: calc(1.55rem + .2vw); }
-  @media (min-width: 768px) {
-    .post-title {
-      font-size: 2.98598rem;
-      letter-spacing: -.015rem; } }
 
 .post-content {
   margin-left: auto;

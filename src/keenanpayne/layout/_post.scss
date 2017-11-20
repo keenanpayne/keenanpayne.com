@@ -8,13 +8,7 @@
 
 .post {
   padding-bottom: $spacing-s;
-  padding-top: $spacing-m;
-
-  @media (--medium) {
-    padding-top: $spacing-l;
-  }
-
-  .post-header { padding-bottom: $spacing-m; }
+  padding-top: $spacing-s;
 }
 
 
@@ -25,7 +19,8 @@
 .post-header {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1220px;
+  max-width: 1120px;
+  padding-bottom: $spacing-m;
 
   @media (--medium) {
     text-align: center;
@@ -38,13 +33,9 @@
 // -----
 
 .post-title {
-  font-size: typeScale(6);
+  font-size: typeScale(8);
+  letter-spacing: -.015rem;
   margin-bottom: $spacing-s;
-
-  @media (--medium) {
-    font-size: typeScale(8);
-    letter-spacing: -.015rem;
-  }
 }
 
 
