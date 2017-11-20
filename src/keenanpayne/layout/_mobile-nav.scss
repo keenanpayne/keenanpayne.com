@@ -65,13 +65,8 @@ $mobileNavTrigger-size: 26px;
   li {
     font-family: $font-secondary;
     font-size: typeScale(8);
-    font-weight: $fontWeight-heavy;
     list-style-type: none;
     margin-bottom: $spacing-xs;
-
-    // @media (min-height: 560px) {
-    //   font-size: typeScale(7);
-    // }
   }
 }
 

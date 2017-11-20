@@ -14,7 +14,7 @@ p {
 
   &.-small-heading {
     font-variant: all-small-caps;
-    letter-spacing: 3px;
+    letter-spacing: .1rem;
     text-transform: lowercase;
   }
 }
@@ -72,6 +72,7 @@ a {
 // Headings
 // --------
 h1, h2, h3, h4, h5, h6 {
+  font-weight: $fontWeight-normal;
   line-height: 1.2;
 
   a:hover {
@@ -83,7 +84,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1, h2, h3 { margin: $spacing-xs 0; }
 
-h2, h3 { letter-spacing: -.15px; }
+h2 { letter-spacing: -.5px; }
 
 
 //

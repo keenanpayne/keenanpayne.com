@@ -12,8 +12,8 @@ $font-size-secondary: 18;
 $letter-spacing: 0.05em;
 
 // Font families
-$font-primary: "Hind", "Cambria", "Arial", sans-serif;
-$font-secondary: "Playfair Display", "Times New Roman", "Times", serif;
+$font-primary: "source-sans-pro", "Cambria", "Arial", sans-serif;
+$font-secondary: "bagatela", "Times New Roman", "Times", serif;
 $font-mono: "Consolas", monospace;
 $font-print-primary: "Georgia", "Times New Roman", "Times", serif;
 $font-print-secondary: "Georgia", "Times New Roman", "Times", serif;
@@ -79,11 +79,8 @@ $scale-ratio-secondary: $_golden-ratio;
 // Font Weights
 // --------------------------------------------------
 
-$fontWeight-light:    300;
 $fontWeight-normal:   400;
-$fontWeight-semibold: 500;
 $fontWeight-bold:     600;
-$fontWeight-heavy:    900;
 
 
 //
