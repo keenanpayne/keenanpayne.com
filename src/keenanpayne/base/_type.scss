@@ -47,6 +47,8 @@ li {
 // -----
 
 a {
+  cursor: pointer;
+  
   &:hover {
     text-decoration: underline;
     text-decoration-skip: ink;

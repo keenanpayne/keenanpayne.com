@@ -904,21 +904,21 @@ p {
 li:not(:last-child) {
   margin-bottom: calc(0.232rem + .1vw); }
 
-a:hover {
-  text-decoration: underline;
-  -webkit-text-decoration-skip: ink;
-          text-decoration-skip: ink; }
-
-p a {
-  font-weight: 400;
-  text-decoration: underline;
-  -webkit-text-decoration-skip: ink;
-          text-decoration-skip: ink; }
-
-a.-cta {
-  color: #FE4365; }
-  a.-cta:hover {
-    color: #f3012d; }
+a {
+  cursor: pointer; }
+  a:hover {
+    text-decoration: underline;
+    -webkit-text-decoration-skip: ink;
+            text-decoration-skip: ink; }
+  p a {
+    font-weight: 400;
+    text-decoration: underline;
+    -webkit-text-decoration-skip: ink;
+            text-decoration-skip: ink; }
+  a.-cta {
+    color: #FE4365; }
+    a.-cta:hover {
+      color: #f3012d; }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
@@ -1172,49 +1172,10 @@ button, input[type="submit"],
     list-style-type: none;
     margin-bottom: calc(0.775rem + .2vw); }
 
-.mobileNav-wrapper {
-  cursor: pointer;
-  height: 26px;
+.mobileNav-close {
   position: absolute;
-  right: 26px;
-  top: 70px;
-  width: 26px;
-  z-index: 1000; }
-  @media (min-width: 480px) {
-    .mobileNav-wrapper {
-      opacity: 0; } }
-
-.mobileNav-toggle span, .mobileNav-toggle span:before, .mobileNav-toggle span:after {
-  background-color: #333;
-  border-radius: 1px;
-  content: '';
-  cursor: pointer;
-  display: block;
-  height: 2px;
-  position: absolute;
-  top: 2px;
-  transition: background-color 300ms;
-  width: 26px; }
-
-.mobileNav-toggle span:before, .mobileNav-toggle span:after {
-  transition: all 225ms ease-in-out; }
-
-.mobileNav-toggle span:before {
-  top: 8px; }
-
-.mobileNav-toggle span:after {
-  top: 16px; }
-
-.mobileNav-toggle.-is-active span {
-  background-color: transparent; }
-  .mobileNav-toggle.-is-active span:before, .mobileNav-toggle.-is-active span:after {
-    top: 8px; }
-  .mobileNav-toggle.-is-active span:before {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg); }
-  .mobileNav-toggle.-is-active span:after {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg); }
+  right: calc(1.55rem + .2vw);
+  top: calc(1.55rem + .2vw); }
 
 .siteFooter {
   border-top: 2px solid #f3ecdb;

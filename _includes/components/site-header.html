@@ -8,6 +8,8 @@
   </nav>
 
   <nav id="nav" class="mobileNav">
+    <a class="mobileNav-close" data-mobileNav-toggle>Close Menu</a>
+
     <div class="mobileNav-container">
       <div class="mobileNav-content">
         {% include atoms/navigation.html name="mobileNav" %}
@@ -18,7 +20,7 @@
 
 <script>
   $(document).ready(function() {
-    var $mobileNavToggle = $(".mobileNav-toggle");
+    var $mobileNavToggle = $("[data-mobileNav-toggle]");
 
     $mobileNavToggle.click(function() {
       $mobileNavToggle.toggleClass('-is-active');

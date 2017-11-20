@@ -73,61 +73,11 @@ $mobileNavTrigger-size: 26px;
 
 
 //
-// Hamburger Button
-// ----------------
+// Close Link
+// ----------
 
-.mobileNav-wrapper {
-  cursor: pointer;
-  height: $mobileNavTrigger-size;
+.mobileNav-close {
   position: absolute;
-  right: $mobileNavTrigger-size;
-  top: 70px;
-  width: $mobileNavTrigger-size;
-  z-index: 1000;
-
-  @media (--small) {
-    opacity: 0;
-  }
-}
-
-.mobileNav-toggle {
-  // cursor: pointer;
-  // display: block;
-  // height: $mobileNavTrigger-size;
-  // width: $mobileNavTrigger-size;
-
-  span {
-    &,
-    &:before,
-    &:after {
-      background-color: getColor(text, heading);
-      border-radius: 1px;
-      content: '';
-      cursor: pointer;
-      display: block;
-      height: 2px;
-      position: absolute;
-      top: 2px;
-      transition: background-color $transition-duration-long;
-      width: $mobileNavTrigger-size;
-    }
-
-    &:before,
-    &:after { transition: all $transition-duration-med ease-in-out; }
-
-    &:before { top: 8px; }
-
-    &:after { top: 16px; }
-  }
-
-  &.-is-active span {
-    background-color: transparent;
-
-    &:before,
-    &:after { top: 8px; }
-
-    &:before { transform: rotate(45deg); }
-
-    &:after { transform: rotate(-45deg); }
-  }
+  right: $spacing-s;
+  top: $spacing-s;
 }
