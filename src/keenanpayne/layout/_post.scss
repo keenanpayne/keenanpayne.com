@@ -66,6 +66,19 @@
     margin-bottom: $block-margin;
     margin-top: $spacing-m;
     position: relative;
+
+    // Display anchor on header hover
+    &:hover {
+      .post-content-header-link { opacity: .75; }
+    }
+  }
+
+  h2 {
+    .post-content-header-link svg { width: typeScale(3); }
+  }
+
+  h3 {
+    .post-content-header-link svg { width: typeScale(2); }
   }
 
   h3 {
@@ -107,17 +120,14 @@
 // --------------
 
 .post-content-header-link {
-  color: getColor(text, secondary);
-  font-size: 1rem;
-  font-family: $font-primary;
-  font-weight: $fontWeight-bold;
-  left: -1.15rem;
-  line-height: 1;
-  opacity: .5;
-  position: absolute;
-  top: .375rem;
+  margin-left: .1lh;
+  opacity: 0;
   transition: opacity $transition-duration;
+  vertical-align: text-top;
 
   &:hover,
-  &:active { opacity: .75; }
+  &:active {
+    opacity: 1;
+    text-decoration: none;
+  }
 }
