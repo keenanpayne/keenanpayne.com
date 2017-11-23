@@ -3,10 +3,15 @@
 // ==================================================
 
 .logo {
-  font-size: typeScale(2);
+  font-size: typeScale(3);
   font-style: italic;
   margin-bottom: 0;
   margin-top: 0;
-  padding-bottom: $spacing-xs;
+  padding-bottom: $spacing-s;
   text-align: center;
+
+  @media (--small) {
+    font-size: typeScale(2);
+    padding-bottom: $spacing-xs;
+  }
 }

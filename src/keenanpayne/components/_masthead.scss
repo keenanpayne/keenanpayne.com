@@ -14,3 +14,10 @@
   margin-right: auto;
   text-align: center;
 }
+
+.masthead-subtitle {
+  color: getColor(text, secondary);
+  font-family: $font-secondary;
+  font-style: italic;
+  text-align: center;
+}
