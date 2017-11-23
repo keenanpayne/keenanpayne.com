@@ -1327,7 +1327,7 @@ a.reversefootnote {
   font-size: 0.83333rem; }
 
 .portfolioList > .portfolioList-item:first-of-type {
-  border-bottom: 3px solid #7b6530;
+  border-bottom: 3px solid #32373d;
   margin-bottom: calc(0.775rem + .2vw); }
 
 .portfolioList-item {
