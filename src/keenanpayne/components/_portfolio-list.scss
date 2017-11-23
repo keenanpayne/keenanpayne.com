@@ -3,6 +3,8 @@
 // ==================================================
 
 .portfolioList {
+  margin-bottom: $spacing-m;
+
   @media (--small) {
     column-count: 2;
     column-gap: 2rem;
@@ -21,7 +23,7 @@
 
 .portfolioList-item {
   @media (--medium) {
-    display: table;
+    break-inside: avoid;
     page-break-inside: avoid;
   }
 }
