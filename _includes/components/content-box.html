@@ -1,7 +1,7 @@
 <section container>
   <div grid="wrap">
     {% for box in page.content_box %}
-      <aside class="contentBox -animate-stagger-{{ forloop.index }}" column>
+      <aside class="contentBox" column>
         {% if box.title %}
           <h3 class="contentBox-title">{{ box.title }}</h3>
         {% endif %}

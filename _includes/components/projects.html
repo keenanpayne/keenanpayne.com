@@ -10,15 +10,16 @@
       {% endif %}
 
       {% for project in section.items %}
-        <div class="project -animate-stagger-{{ forloop.index }}" grid=
-        "center">
+        <div class="project" grid="center">
           {% if project.image %}
             <figure column="5">
               {% if project.url %}
                 <a href="{{ project.url }}" title="{{ project.title }}">
               {% endif %}
 
-              <img class="project-image" src="{{ project.image }}" alt="{{ project.title }} Logo">
+              {% if project.image %}
+                <img class="project-image" src="{{ project.image }}" alt="{{ project.title }} Logo">
+              {% endif %}
 
               {% if project.url %}
                 </a>
@@ -28,16 +29,16 @@
 
           <div column="7">
             {% if project.description %}
-              <p>{{ project.description }}</p>
+              <p class="project-text">{{ project.description }}</p>
             {% endif %}
 
-            {% if project.tags %}
+            <!-- {% if project.tags %}
               <aside>
                 {% for tag in project.tags %}
                   <p class="project-tag -small-heading">{{ tag.name }}</p>
                 {% endfor %}
               </aside>
-            {% endif %}
+            {% endif %} -->
           </div>
         </div>
       {% endfor %}

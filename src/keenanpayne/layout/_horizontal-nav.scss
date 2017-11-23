@@ -7,9 +7,16 @@
   text-align: right;
 
   a {
-    transition: opacity $transition-duration-long;
+    opacity: .65;
+    text-decoration: none;
+    transition: opacity $transition-duration-med;
 
-    &.-is-active { text-decoration: underline; }
+    &:hover { opacity: 1; }
+
+    &.-is-active {
+      color: getColor(text, activeLink);
+      opacity: 1;
+    }
   }
 
   // Modifiers
