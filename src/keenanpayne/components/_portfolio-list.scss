@@ -3,20 +3,31 @@
 // ==================================================
 
 .portfolioList {
-  > .portfolioList-item:first-of-type {
-    border-bottom: 3px solid getColor(base, linesDark);
-    margin-bottom: $spacing-xs;
+  @media (--small) {
+    column-count: 2;
+    column-gap: 2rem;
+  }
+
+  @media (--medium) {
+    column-count: 3;
+    column-gap: 3rem;
+  }
+
+  @media (--extra-large) {
+    column-count: 4;
+    column-gap: 4rem;
   }
 }
 
-.portfolioList-item { display: block; }
-
-.portfolioList-item-title { margin-top: 0; }
+.portfolioList-item {
+  @media (--medium) {
+    display: table;
+    page-break-inside: avoid;
+  }
+}
 
 .portfolioList-item-description {
-  font-size: typeScale(1);
-  margin-bottom: $spacing-xs;
-  padding-bottom: $spacing-xs;
-
-  &:not(:last-of-type) { border-bottom: 2px solid getColor(base, lines); }
+  color: getColor(text, secondary);
+  font-size: typeScale(.5);
+  margin-bottom: $spacing-s;
 }

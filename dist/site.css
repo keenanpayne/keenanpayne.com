@@ -1326,22 +1326,42 @@ a.reversefootnote {
 .postList-date {
   font-size: 0.83333rem; }
 
-.portfolioList > .portfolioList-item:first-of-type {
-  border-bottom: 3px solid #32373d;
-  margin-bottom: calc(0.775rem + .2vw); }
+@media (min-width: 480px) {
+  .portfolioList {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+    -webkit-column-gap: 2rem;
+       -moz-column-gap: 2rem;
+            column-gap: 2rem; } }
 
-.portfolioList-item {
-  display: block; }
+@media (min-width: 768px) {
+  .portfolioList {
+    -webkit-column-count: 3;
+       -moz-column-count: 3;
+            column-count: 3;
+    -webkit-column-gap: 3rem;
+       -moz-column-gap: 3rem;
+            column-gap: 3rem; } }
 
-.portfolioList-item-title {
-  margin-top: 0; }
+@media (min-width: 1100px) {
+  .portfolioList {
+    -webkit-column-count: 4;
+       -moz-column-count: 4;
+            column-count: 4;
+    -webkit-column-gap: 4rem;
+       -moz-column-gap: 4rem;
+            column-gap: 4rem; } }
+
+@media (min-width: 768px) {
+  .portfolioList-item {
+    display: table;
+    page-break-inside: avoid; } }
 
 .portfolioList-item-description {
-  font-size: 0.83333rem;
-  margin-bottom: calc(0.775rem + .2vw);
-  padding-bottom: calc(0.775rem + .2vw); }
-  .portfolioList-item-description:not(:last-of-type) {
-    border-bottom: 2px solid #f3ecdb; }
+  color: #666;
+  font-size: 0.69444rem;
+  margin-bottom: calc(1.55rem + .2vw); }
 
 .projects {
   margin-bottom: calc(8.525rem + .2vw); }

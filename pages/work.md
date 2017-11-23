@@ -18,7 +18,7 @@ portfolioList:
       - title: "Keenan Payne"
         description: "You're on it!"
         url: "http://keenanpayne.com"
-      - title: "Asana"
+      - title: "Asana.com"
         description: "Development lead, architecture, coordinator"
         url: "https://asana.com/?noredirect"
       - title: "Asana Marketer's Playbook"

@@ -1,33 +1,27 @@
-<section container>
-  <div grid="wrap">
-    {% for section in page.portfolioList %}
-      <dl column="3" class="portfolioList {{ section.modifiers }}">
-        <span class="portfolioList-item">
-        	<h3>
-            {% if section.title %}
-              {{ section.title }}
-            {% endif %}
-          </h3>
-        </span>
+<section class="portfolioList" container>
+  {% for section in page.portfolioList %}
+    <div class="portfolioList-item">
+      {% if section.title %}
+    	 <h3>
+         {{ section.title }}
+       </h3>
+      {% endif %}
+    </div>
 
-        {% for item in section.items %}
-        	<span class="portfolioList-item">
-            {% if item.title %}
-        		  <dt class="portfolioList-item-title">
-                <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">
-                  {{ item.title }}
-                </a>
-              </dt>
-            {% endif s%}
+    {% for item in section.items %}
+    	<div class="portfolioList-item">
+        {% if item.title %}
+          <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">
+            {{ item.title }}
+          </a>
+        {% endif %}
 
-            {% if item.description %}
-        		  <dd class="portfolioList-item-description">
-                {{ item.description }}
-              </dd>
-            {% endif %}
-        	</span>
-        {% endfor %}
-      </dl>
+        {% if item.description %}
+    		  <div class="portfolioList-item-description">
+            {{ item.description }}
+          </div>
+        {% endif %}
+    	</div>
     {% endfor %}
-  </div>
+  {% endfor %}
 </section>
