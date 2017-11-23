@@ -26,6 +26,11 @@
     break-inside: avoid;
     page-break-inside: avoid;
   }
+
+  // Remove top margin from first heading so it is flush
+  &:first-of-type {
+    h3 { margin-top: 0; }
+  }
 }
 
 .portfolioList-item-description {

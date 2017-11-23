@@ -1370,6 +1370,9 @@ a.reversefootnote {
             break-inside: avoid;
     page-break-inside: avoid; } }
 
+.portfolioList-item:first-of-type h3 {
+  margin-top: 0; }
+
 .portfolioList-item-description {
   color: #666;
   font-size: 0.69444rem;
