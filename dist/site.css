@@ -1044,12 +1044,12 @@ button, input[type="submit"],
   margin-bottom: 0; }
   .navHorizontal-item:not(:last-of-type) {
     margin-right: calc(1.55rem + .2vw); }
-  @media (max-width: 479px) {
+  @media (max-width: 767px) {
     .navHorizontal-item:not(.-mobile) {
       display: none; } }
   .navHorizontal-item.-mobile {
     margin-right: 0; }
-    @media (min-width: 480px) {
+    @media (min-width: 768px) {
       .navHorizontal-item.-mobile {
         display: none; } }
 
@@ -1146,7 +1146,7 @@ button, input[type="submit"],
   transition: all ease-in 150ms;
   width: 100%;
   z-index: 800; }
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     .mobileNav {
       opacity: 0 !important; } }
   .mobileNav.-is-active {
@@ -1293,12 +1293,16 @@ a.reversefootnote {
   margin-top: 1.55rem; }
 
 .logo {
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-style: italic;
   margin-bottom: 0;
   margin-top: 0;
-  padding-bottom: calc(0.775rem + .2vw);
+  padding-bottom: calc(1.55rem + .2vw);
   text-align: center; }
+  @media (min-width: 480px) {
+    .logo {
+      font-size: 1rem;
+      padding-bottom: calc(0.775rem + .2vw); } }
 
 .masthead {
   padding-bottom: calc(4.65rem + .2vw);
@@ -1311,8 +1315,15 @@ a.reversefootnote {
   margin-right: auto;
   text-align: center; }
 
+.masthead-subtitle {
+  color: #666;
+  font-family: "bagatela", "Times New Roman", "Times", serif;
+  font-style: italic;
+  text-align: center; }
+
 .postList {
-  margin-bottom: calc(8.525rem + .2vw); }
+  margin-bottom: calc(8.525rem + .2vw);
+  margin-top: 0; }
 
 .postList-article {
   padding-bottom: calc(1.55rem + .2vw); }
@@ -1324,7 +1335,7 @@ a.reversefootnote {
   margin-top: 0; }
 
 .postList-date {
-  font-size: 0.83333rem; }
+  color: #666; }
 
 .portfolioList {
   margin-bottom: calc(3.1rem + .2vw); }

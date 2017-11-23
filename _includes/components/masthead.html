@@ -1,7 +1,13 @@
 {% if page.masthead %}
   <section class="masthead">
     <div container>
-      <h2 class="masthead-heading">{{ page.masthead }}</h2>
+      {% if page.masthead %}
+        <h2 class="masthead-heading">{{ page.masthead }}</h2>
+      {% endif %}
+
+      {% if page.masthead_subtitle %}
+        <p class="masthead-subtitle">{{ page.masthead_subtitle }}</p>
+      {% endif %}
     </div>
   </section>
 {% endif %}

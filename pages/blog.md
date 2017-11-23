@@ -1,6 +1,6 @@
 ---
 layout: personal
-title: Blog
+title: Two Cents
 navigation_weight: 1
 permalink: blog.html
 
@@ -10,5 +10,6 @@ sections:
   - name: 'post-list'
 
 ## Masthead
-masthead: Blog
+masthead: Two Cents
+masthead_subtitle: A collection of thoughts, ramblings, and musings.
 ---

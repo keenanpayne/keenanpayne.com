@@ -2,7 +2,10 @@
 // Post List
 // ==================================================
 
-.postList { margin-bottom: $spacing-xxl; }
+.postList {
+  margin-bottom: $spacing-xxl;
+  margin-top: 0; 
+}
 
 .postList-article {
   padding-bottom: $spacing-s;
@@ -17,4 +20,4 @@
   margin-top: 0;
 }
 
-.postList-date { font-size: typeScale(1); }
+.postList-date { color: getColor(text, secondary); }
