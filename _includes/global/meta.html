@@ -1,9 +1,23 @@
+<!-- Global -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23449205-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23449205-4');
+</script>
+
+
+<!-- Flexicution -->
 {% if page.layout == 'flexicution' %}
   <link rel="stylesheet" href="/dist/flex.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Overpass:300,600" rel="stylesheet">
 
   <script src="//cdn.jsdelivr.net/caniuse-embed/1.1.0/caniuse-embed.min.js"></script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- Personal Site -->
 {% else %}
   <link rel="stylesheet" href="/dist/site.min.css" />
   <link rel="stylesheet" href="//use.typekit.net/hid0bbh.css">
