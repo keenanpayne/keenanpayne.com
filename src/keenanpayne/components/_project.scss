@@ -20,23 +20,6 @@
   }
 }
 
-.project-tag {
-  background: getColor(background, light);
-  border: 1px solid getColor(base, lines);
-  border-radius: $border-radius;
-  display: inline-block;
-  font-size: typeScale(.5);
-  font-weight: $fontWeight-bold;
-  margin-top: 0;
-  padding: .15rem $spacing-xxs;
-
-  &:not(:last-of-type) { margin-right: $spacing-xxs; }
-
-  @media (--small-max) {
-    &:nth-of-type(n+3) { margin-top: $spacing-xxs; }
-  }
-}
-
 .project-text {
   @media (--medium-max) {
     margin-left: $spacing-s;

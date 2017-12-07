@@ -17,9 +17,9 @@
         {% endif %}
 
         {% if item.description %}
-    		  <div class="portfolioList-item-description">
-            {{ item.description }}
-          </div>
+    		  <p class="-no-top-margin">
+            <small>{{ item.description }}</small>
+          </p>
         {% endif %}
     	</div>
     {% endfor %}

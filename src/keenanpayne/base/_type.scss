@@ -10,6 +10,8 @@ p {
   font-variant-ligatures: normal;
 
   // Modifiers
+  &.-no-top-margin { margin-top: 0; }
+
   &.-large { font-size: typeScale(4); }
 
   &.-small-heading {
@@ -103,15 +105,9 @@ h1, h2, h3, h4, h5, h6 {
   &.-no-top-margin { margin-top: 0; }
 }
 
-h1, h2, h3 {
-  margin-bottom: $block-margin;
-  margin-top: $spacing-m;
-}
-
 h1 {
   font-size: typeScale(7);
   margin-bottom: $spacing-xs;
-  margin-top: 0;
 
   @media (--medium) {
     letter-spacing: -.025rem;
@@ -126,6 +122,8 @@ h1 {
 
 h2 {
   letter-spacing: -.01rem;
+  margin-bottom: $spacing-xs;
+  margin-top: $spacing-s;
   font-size: typeScale(6);
 
   @media (--medium) {
@@ -145,6 +143,8 @@ h2 {
 h3 {
   font-variant: all-small-caps;
   letter-spacing: .15rem;
+  margin-bottom: $block-margin;
+  margin-top: $spacing-m;
   text-transform: lowercase;
 }
 
@@ -156,6 +156,16 @@ h4,
   @media (--small) {
     font-size: typeScale(2);
   }
+}
+
+
+//
+// Small Text
+// ----------
+
+small {
+  color: getColor(text, secondary);
+  font-size: typeScale(.5);
 }
 
 
