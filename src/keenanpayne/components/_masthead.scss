@@ -3,21 +3,19 @@
 // ==================================================
 
 .masthead {
-  padding-bottom: $spacing-l;
-  padding-top: $spacing-l;
+  padding-bottom: $spacing-xl;
+  padding-top: $spacing-xl;
+  text-align: center;
 }
 
 .masthead-heading {
   font-size: typeScale(8);
   letter-spacing: -.5px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+  margin-top: 0;
 }
 
 .masthead-subtitle {
   color: getColor(text, secondary);
   font-family: $font-secondary;
   font-style: italic;
-  text-align: center;
 }

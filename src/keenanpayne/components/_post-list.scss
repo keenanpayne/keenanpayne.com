@@ -4,7 +4,7 @@
 
 .postList {
   margin-bottom: $spacing-xxl;
-  margin-top: 0; 
+  margin-top: 0;
 }
 
 .postList-article {
@@ -19,5 +19,3 @@
   font-size: typeScale(6);
   margin-top: 0;
 }
-
-.postList-date { color: getColor(text, secondary); }

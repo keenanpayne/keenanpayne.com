@@ -38,10 +38,12 @@
   margin-top: 0;
 
   @media (--medium) {
+    letter-spacing: -.025rem;
     font-size: typeScale(8.5);
   }
 
   @media (--extra-large) {
+    letter-spacing: -.05rem;
     font-size: typeScale(10);
   }
 }

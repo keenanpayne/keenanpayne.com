@@ -48,7 +48,7 @@
 .navHorizontal-item {
   display: inline-block;
   font-size: typeScale(1);
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 
   &:not(:last-of-type) {
     margin-right: $spacing-s;

@@ -3,10 +3,14 @@
     {% for post in site.posts %}
       <header>
         <h2 class="postList-title">
-          <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+          <a href="{{ post.url }}" title="{{ post.title }}" class="-small-heading">
+            {{ post.title }}
+          </a>
         </h2>
 
-        <p class="postList-date">{{ post.date | date: "%B %e, %Y" }}</p>
+        <p class="-small-heading">
+          {{ post.date | date: "%B %e, %Y" }}
+        </p>
       </header>
 
       {{ post.excerpt }}
