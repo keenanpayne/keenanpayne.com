@@ -16,6 +16,14 @@ p {
     font-variant: all-small-caps;
     letter-spacing: .1rem;
   }
+
+  &.-small-heading-border {
+    border-bottom: 1px solid getColor(base, lines);
+    color: getColor(text, secondary);
+    font-variant: all-small-caps;
+    letter-spacing: .1rem;
+    padding-bottom: $spacing-xs;
+  }
 }
 
 

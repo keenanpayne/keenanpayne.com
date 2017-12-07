@@ -891,6 +891,12 @@ p {
   p.-small-heading {
     font-variant: all-small-caps;
     letter-spacing: .1rem; }
+  p.-small-heading-border {
+    border-bottom: 1px solid #f3ecdb;
+    color: #666;
+    font-variant: all-small-caps;
+    letter-spacing: .1rem;
+    padding-bottom: calc(0.775rem + .2vw); }
 
 @media (min-width: 768px) {
   ul, ol {
