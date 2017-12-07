@@ -1,7 +1,6 @@
 ---
 layout: personal
 title: Work
-masthead: Selected Work
 navigation_weight: 2
 permalink: work.html
 
@@ -9,6 +8,10 @@ permalink: work.html
 sections:
   - name: 'masthead'
   - name: 'portfolio-list'
+
+## Masthead
+masthead: Selected Work
+masthead_center: true
 
 ## Portfolio List
 portfolioList:

@@ -1,12 +1,20 @@
 {% if page.masthead %}
-  <section class="masthead">
+  <section class="masthead {% if page.masthead_center %}-center{% endif %}" container="narrow">
     <div container>
       {% if page.masthead %}
-        <h2 class="masthead-heading">{{ page.masthead }}</h2>
+        <{% if page.url == "/index.html" %}h2{% else %}h1{% endif %} class="{% if page.masthead_subtitle %}-no-top-margin{% else %}-no-margin{% endif %} {% if page.url == "/index.html" %}-xl{% endif %}">
+          {{ page.masthead }}
+        </{% if page.url == "/index.html" %}h2{% else %}h1{% endif %}>
       {% endif %}
 
       {% if page.masthead_subtitle %}
-        <p class="masthead-subtitle">{{ page.masthead_subtitle }}</p>
+        <h4 class="-muted">
+          {{ page.masthead_subtitle }}
+        </h4>
+      {% endif %}
+
+      {% if page.url == "/index.html" %}
+        {% include components/social.html %}
       {% endif %}
     </div>
   </section>

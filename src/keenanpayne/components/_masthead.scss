@@ -5,17 +5,7 @@
 .masthead {
   padding-bottom: $spacing-xl;
   padding-top: $spacing-xl;
-  text-align: center;
-}
 
-.masthead-heading {
-  font-size: typeScale(8);
-  letter-spacing: -.5px;
-  margin-top: 0;
-}
 
-.masthead-subtitle {
-  color: getColor(text, secondary);
-  font-family: $font-secondary;
-  font-style: italic;
+  &.-center { text-align: center; }
 }

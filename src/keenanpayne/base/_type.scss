@@ -89,9 +89,74 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: underline;
     text-decoration-skip: ink;
   }
+
+  // Modifiers
+  &.-muted { color: getColor(text, secondary); }
+
+  &.-no-margin {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  &.-no-bottom-margin { margin-bottom: 0; }
+
+  &.-no-top-margin { margin-top: 0; }
 }
 
-h1, h2, h3 { margin: $spacing-xs 0; }
+h1, h2, h3 {
+  margin-bottom: $block-margin;
+  margin-top: $spacing-m;
+}
+
+h1 {
+  font-size: typeScale(7);
+  margin-bottom: $spacing-xs;
+  margin-top: 0;
+
+  @media (--medium) {
+    letter-spacing: -.025rem;
+    font-size: typeScale(8.5);
+  }
+
+  @media (--extra-large) {
+    letter-spacing: -.05rem;
+    font-size: typeScale(10);
+  }
+}
+
+h2 {
+  letter-spacing: -.01rem;
+  font-size: typeScale(6);
+
+  @media (--medium) {
+    letter-spacing: -.025rem;
+    font-size: typeScale(7);
+  }
+
+  // Modifiers
+  &.-xl {
+    @media (--extra-large) {
+      letter-spacing: -.025rem;
+      font-size: typeScale(8);
+    }
+  }
+}
+
+h3 {
+  font-variant: all-small-caps;
+  letter-spacing: .15rem;
+  text-transform: lowercase;
+}
+
+h4,
+.-h4 {
+  font-size: typeScale(3);
+  font-style: italic;
+
+  @media (--small) {
+    font-size: typeScale(2);
+  }
+}
 
 
 //

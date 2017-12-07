@@ -12,4 +12,5 @@ sections:
 ## Masthead
 masthead: Two Cents
 masthead_subtitle: A collection of thoughts, ramblings, and musings.
+masthead_center: true
 ---

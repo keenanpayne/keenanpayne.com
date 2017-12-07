@@ -1,0 +1,12 @@
+//
+// Tables
+// ==================================================
+
+table {
+  width: 100%;
+
+  thead { background-color: transparent; }
+
+  th,
+  td { border-right: 1px solid getColor(base, lines); }
+}

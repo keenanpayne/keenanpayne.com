@@ -6,13 +6,14 @@ permalink: index.html
 
 ## Page Sections
 sections:
-  - name: 'intro-text'
+  - name: 'masthead'
   - name: 'projects'
   - name: 'labs'
   #- name: 'post-list'
 
 ## Masthead
-introtext: I'm a web developer at <a href="https://asana.com">Asana</a>. I like to write and build things in my spare time.
+masthead: I'm a web developer at <a href="https://asana.com" class="-cta">Asana</a>. I like to write and build things in my spare time.
+masthead_center:
 
 ## Projects
 projects:
