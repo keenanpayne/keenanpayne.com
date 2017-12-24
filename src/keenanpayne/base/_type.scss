@@ -10,6 +10,8 @@ p {
   font-variant-ligatures: normal;
 
   // Modifiers
+  &.-secondary { color: getColor(text, secondary); }
+  
   &.-no-top-margin { margin-top: 0; }
 
   &.-large { font-size: typeScale(4); }

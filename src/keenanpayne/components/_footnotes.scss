@@ -36,3 +36,12 @@ a.reversefootnote {
   font-size: typeScale(.5);
   text-decoration: none;
 }
+
+.footnote {
+  text-decoration: none;
+
+  &:hover {
+    color: getColor(text, secondary);
+    text-decoration: none;
+  }
+}

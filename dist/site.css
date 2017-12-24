@@ -886,6 +886,8 @@ img {
 p {
   -webkit-font-variant-ligatures: normal;
           font-variant-ligatures: normal; }
+  p.-secondary {
+    color: #666; }
   p.-no-top-margin {
     margin-top: 0; }
   p.-large {
@@ -1287,6 +1289,12 @@ a.reversefootnote {
   font-size: 0.69444rem;
   text-decoration: none; }
 
+.footnote {
+  text-decoration: none; }
+  .footnote:hover {
+    color: #666;
+    text-decoration: none; }
+
 .labs {
   margin-bottom: calc(8.525rem + .2vw); }
 
@@ -1372,8 +1380,9 @@ a.reversefootnote {
       -webkit-column-break-inside: avoid;
               break-inside: avoid;
       page-break-inside: avoid; } }
-  .portfolioList-item:first-of-type .portfolioList-heading {
-    margin-top: 0; }
+
+.portfolioList-heading:first-of-type {
+  margin-top: 0; }
 
 .projects {
   margin-bottom: calc(8.525rem + .2vw); }

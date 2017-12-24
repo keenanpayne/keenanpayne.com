@@ -28,9 +28,9 @@
     break-inside: avoid;
     page-break-inside: avoid;
   }
+}
 
-  // Remove top margin from first heading so it is flush
-  &:first-of-type {
-    .portfolioList-heading { margin-top: 0; }
-  }
+// Remove top margin from first heading so it is flush
+.portfolioList-heading {
+  &:first-of-type { margin-top: 0; }
 }
