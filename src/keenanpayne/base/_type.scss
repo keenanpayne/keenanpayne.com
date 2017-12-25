@@ -11,7 +11,7 @@ p {
 
   // Modifiers
   &.-secondary { color: getColor(text, secondary); }
-  
+
   &.-no-top-margin { margin-top: 0; }
 
   &.-large { font-size: typeScale(4); }
@@ -109,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   font-size: typeScale(7);
-  margin-bottom: $spacing-xs;
+  margin-bottom: $spacing-s;
 
   @media (--medium) {
     letter-spacing: -.025rem;

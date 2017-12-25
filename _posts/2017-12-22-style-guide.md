@@ -1,19 +1,5 @@
 ---
-layout: personal
-title: Style Guide
-navigation_weight:
-narrow_container: true
-permalink: style-guide.html
-
-## Page Sections
-sections:
-  - name: 'masthead'
-  - name: 'style-guide'
-
-## Masthead
-masthead: Style Guide
-masthead_subtitle: The bits and bytes that make up this website
-masthead_center: true
+title:  "Writing blog posts with Jekyll"
 ---
 
 This is an example post for my blog. I can use this as a starting post for any articles that I write. This file should include all formatting that can be used on any post for easy reference.

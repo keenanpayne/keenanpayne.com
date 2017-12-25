@@ -7,5 +7,7 @@ layout: default
     {% include components/{{ section.name }}.html %}
   {% endfor %}
 
-  {{ content }}
+  <section container{% if page.narrow_container %}="narrow"{% endif %}>
+    {{ content }}
+  </section>
 </main>
