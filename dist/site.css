@@ -1296,7 +1296,7 @@ a.reversefootnote {
     text-decoration: none; }
 
 .labs {
-  margin-bottom: calc(8.525rem + .2vw); }
+  margin-bottom: calc(6.2rem + .2vw); }
 
 @media (max-width: 767px) {
   .labs-lab {
@@ -1318,7 +1318,6 @@ a.reversefootnote {
 .largeCta {
   background-color: #fffbf1;
   border-top: 3px solid #FE4365;
-  margin-top: calc(0.775rem + .2vw);
   padding-bottom: calc(3.1rem + .2vw);
   padding-top: calc(3.1rem + .2vw); }
 
@@ -1348,10 +1347,9 @@ a.reversefootnote {
   margin-bottom: calc(8.525rem + .2vw);
   margin-top: 0; }
 
-.postList-article {
+.postList-article:not(:last-of-type) {
+  border-bottom: 1px solid #f3ecdb;
   padding-bottom: calc(1.55rem + .2vw); }
-  .postList-article:not(:last-of-type) {
-    border-bottom: 1px solid #f3ecdb; }
 
 .portfolioList {
   margin-bottom: calc(3.1rem + .2vw); }
@@ -1386,7 +1384,7 @@ a.reversefootnote {
   margin-top: 0; }
 
 .projects {
-  margin-bottom: calc(8.525rem + .2vw); }
+  margin-bottom: calc(6.2rem + .2vw); }
 
 .project:not(:last-of-type) {
   margin-bottom: calc(3.1rem + .2vw); }
