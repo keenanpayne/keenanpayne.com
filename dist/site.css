@@ -892,6 +892,9 @@ p {
     margin-top: 0; }
   p.-large {
     font-size: 1.44rem; }
+  p.-small {
+    color: #666;
+    font-size: 0.69444rem; }
   p.-small-heading {
     font-variant: all-small-caps;
     letter-spacing: .1rem; }
@@ -988,10 +991,6 @@ h4,
     h4,
     .-h4 {
       font-size: 1rem; } }
-
-small {
-  color: #666;
-  font-size: 0.69444rem; }
 
 blockquote {
   color: #666;

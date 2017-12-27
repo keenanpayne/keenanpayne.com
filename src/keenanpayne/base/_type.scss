@@ -16,6 +16,11 @@ p {
 
   &.-large { font-size: typeScale(4); }
 
+  &.-small {
+    color: getColor(text, secondary);
+    font-size: typeScale(.5);
+  }
+
   &.-small-heading {
     font-variant: all-small-caps;
     letter-spacing: .1rem;
@@ -158,16 +163,6 @@ h4,
   @media (--small) {
     font-size: typeScale(2);
   }
-}
-
-
-//
-// Small Text
-// ----------
-
-small {
-  color: getColor(text, secondary);
-  font-size: typeScale(.5);
 }
 
 
