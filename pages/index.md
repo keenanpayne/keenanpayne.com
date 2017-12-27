@@ -8,6 +8,7 @@ permalink: index.html
 sections:
   - name: 'masthead'
   - name: 'projects'
+  - name: 'post-list'
   - name: 'labs'
   #- name: 'post-list'
 
@@ -48,6 +49,8 @@ projects:
         tags:
           - name: "Open Source"
 
+## Post List
+post_list_title: "From the Blog"
 
 ## Labs
 labs:

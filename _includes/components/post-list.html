@@ -1,4 +1,12 @@
 <section class="postList" container="narrower">
+  {% if page.post_list_title %}
+    {% capture title %}
+      {{ page.post_list_title }}
+    {% endcapture %}
+
+    {% include components/section-heading.html content=title %}
+  {% endif %}
+
   <article class="postList-article">
     {% for post in site.posts %}
       <header>
