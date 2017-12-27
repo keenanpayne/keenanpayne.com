@@ -16,6 +16,9 @@ sections:
 masthead: I'm a web developer at <a href="https://asana.com" class="-cta">Asana</a>. I like to write and build things in my spare time.
 masthead_center:
 
+## Post List
+post_list_title: "Want my Two Cents?"
+
 ## Projects
 projects:
   - section:
@@ -48,9 +51,6 @@ projects:
         image: "https://luna1.co/aed6c1.png"
         tags:
           - name: "Open Source"
-
-## Post List
-post_list_title: "From the Blog"
 
 ## Labs
 labs:
