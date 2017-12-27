@@ -5,10 +5,8 @@
 var imagemin = require("imagemin"),
     webp = require("imagemin-webp"),
     outputFolder = "images",
-    outputReading = "images/reading",
     PNGImages = "images/*.png",
     JPEGImages = "images/*.jpg",
-    ReadingImages = "images/reading/*.jpg";
 
 imagemin([PNGImages], outputFolder, {
   plugins: [webp({
@@ -17,12 +15,6 @@ imagemin([PNGImages], outputFolder, {
 });
 
 imagemin([JPEGImages], outputFolder, {
-  plugins: [webp({
-    quality: 65
-  })]
-});
-
-imagemin([ReadingImages], outputReading, {
   plugins: [webp({
     quality: 65
   })]
