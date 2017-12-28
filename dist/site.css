@@ -885,7 +885,10 @@ img {
 
 p {
   -webkit-font-variant-ligatures: normal;
-          font-variant-ligatures: normal; }
+          font-variant-ligatures: normal;
+  -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+          hyphens: auto; }
   p.-secondary, p.-content-heading {
     color: #666; }
   p.-no-top-margin {
@@ -899,7 +902,8 @@ p {
     font-variant: all-small-caps;
     letter-spacing: .1rem; }
   p.-content-heading {
-    margin-top: calc(3.1rem + .2vw); }
+    margin-top: calc(3.1rem + .2vw);
+    padding-bottom: calc(0.388rem + .2vw); }
 
 @media (min-width: 768px) {
   ul, ol {
@@ -930,25 +934,25 @@ a {
     a.-cta:after {
       content: ' →'; }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
   font-weight: 400;
   line-height: 1.2; }
-  h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover {
+  h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
     color: initial;
     text-decoration: underline;
     -webkit-text-decoration-skip: ink;
             text-decoration-skip: ink; }
-  h1.-secondary, h2.-secondary, h3.-secondary, h4.-secondary, h5.-secondary, h6.-secondary {
+  h1.-secondary, h2.-secondary, h3.-secondary, h4.-secondary {
     color: #666; }
-  h1.-bottom-border, h2.-bottom-border, h3.-bottom-border, h4.-bottom-border, h5.-bottom-border, h6.-bottom-border {
-    border-bottom: 1px solid #f3ecdb;
+  h1.-bottom-border, h2.-bottom-border, h3.-bottom-border, h4.-bottom-border {
+    border-bottom: 2px solid #f3ecdb;
     padding-bottom: calc(0.775rem + .2vw); }
-  h1.-no-margin, h2.-no-margin, h3.-no-margin, h4.-no-margin, h5.-no-margin, h6.-no-margin {
+  h1.-no-margin, h2.-no-margin, h3.-no-margin, h4.-no-margin {
     margin-bottom: 0;
     margin-top: 0; }
-  h1.-no-bottom-margin, h2.-no-bottom-margin, h3.-no-bottom-margin, h4.-no-bottom-margin, h5.-no-bottom-margin, h6.-no-bottom-margin {
+  h1.-no-bottom-margin, h2.-no-bottom-margin, h3.-no-bottom-margin, h4.-no-bottom-margin {
     margin-bottom: 0; }
-  h1.-no-top-margin, h2.-no-top-margin, h3.-no-top-margin, h4.-no-top-margin, h5.-no-top-margin, h6.-no-top-margin {
+  h1.-no-top-margin, h2.-no-top-margin, h3.-no-top-margin, h4.-no-top-margin {
     margin-top: 0; }
 
 h1 {
@@ -981,7 +985,7 @@ h3 {
   font-variant: all-small-caps;
   letter-spacing: .15rem;
   margin-bottom: 1.55rem;
-  margin-top: calc(3.1rem + .2vw);
+  margin-top: calc(4.65rem + .2vw);
   text-transform: lowercase; }
 
 h4,
@@ -1006,8 +1010,7 @@ blockquote {
 code {
   background-color: background, light;
   border: 1px solid #f3ecdb;
-  padding: .1rem .5rem;
-  vertical-align: 5%; }
+  padding: .1rem .5rem; }
 
 table {
   margin-bottom: calc(1.55rem + .2vw);
@@ -1032,11 +1035,6 @@ tr {
   -webkit-font-feature-settings: "c2sc", "smcp";
           font-feature-settings: "c2sc", "smcp";
   font-variant-caps: all-small-caps; }
-
-.-lining-numbers {
-  -webkit-font-feature-settings: "lnum";
-          font-feature-settings: "lnum";
-  font-variant-numeric: lining-nums; }
 
 .-proportional-numbers {
   -webkit-font-feature-settings: "pnum";
@@ -1067,6 +1065,10 @@ button, input[type="submit"],
   .button:hover {
     background-color: #f3012d;
     color: white; }
+  button:active, input[type="submit"]:active, button:focus, input[type="submit"]:focus,
+  .button:active,
+  .button:focus {
+    background-color: #FE4365; }
 
 .navHorizontal {
   margin-top: 0;
@@ -1487,8 +1489,8 @@ a.reversefootnote {
 
 .highlight {
   background-color: transparent;
-  border-bottom: 3px solid #f3ecdb;
-  border-top: 3px solid #f3ecdb;
+  border-bottom: 2px solid #f3ecdb;
+  border-top: 2px solid #f3ecdb;
   font-size: .875rem;
   line-height: 1.65;
   margin-bottom: calc(1.55rem + .2vw);

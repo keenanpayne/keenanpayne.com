@@ -17,4 +17,7 @@ button,
     background-color: getColor(base, splash-hover);
     color: white;
   }
+
+  &:active,
+  &:focus { background-color: getColor(base, splash); }
 }

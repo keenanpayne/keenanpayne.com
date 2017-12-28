@@ -15,70 +15,86 @@ masthead_subtitle: The bits and bytes that make up this website
 masthead_center: true
 ---
 
-<h3 class="-bottom-border">Typography</h3>
+<h3 class="-bottom-border -no-top-margin">Typography</h3>
 
-<p class="-content-heading">Headings</p>
+{% include atoms/content-heading.html text="Headings" %}
 
 # Heading 1
 ## Heading 2
 ### Heading 3
 #### Heading 4
 
-<p class="-content-heading">Paragraph</p>
+{% include atoms/content-heading.html text="Paragraph" %}
 
-This is an example post for my blog. I can use this as a starting post for any articles that I write. This file should include all formatting that can be used on any post for easy reference.
-
-Here's a link to [a website](http://foo.bar), to a [local
-doc](local-doc.html), and to a [section heading in the current
-doc](#an-h2-header). Here's a footnote [^1].
+Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), and to a [section heading in the current doc](#an-h2-header). Here's a footnote [^1]. Sometimes you just need to use a *little* bit of **emphasis** when talking about `code` --- if you want to learn more, see chapters 2--4 and maybe you'll find a surprise as well...
 
 [^1]: Footnote text goes here.
 
-2nd paragraph. *Italic*, **bold**, and `monospace`.
+{% include atoms/content-heading.html text="OpenType Modifiers" %}
 
-Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex., "it's all in chapters 12--14"). Three dots ... will be converted to an ellipsis.
+<p class="-small-caps">Small Caps</p>
 
-<p class="-content-heading">Paragraph Callout</p>
+<p class="-all-small-caps">All Small Caps</p>
+
+<p class="-proportional-numbers">12345 (proportional numbers)</p>
+
+<p class="-fraction">1/2</p>
+
+<p class="-ordinal">1st 2nd 3rd 4th 96o</p>
+
+{% include atoms/content-heading.html text="Paragraph Callout" %}
 
 {% include post/p-large.html content="I set a goal to read <strong>24 books in 2017</strong>. I have already read 3 books in the last 3 weeks" %}
 
-<p class="-content-heading">Lists</p>
+{% include atoms/content-heading.html text="Blockquotes" %}
+
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
+
+
+<h3 class="-bottom-border">Buttons</h3>
+
+<button>Only used for submissions</button>
+
+<h3 class="-bottom-border">Lists</h3>
+
+**Unordered lists**
 
   * this one
+      * another one
   * that one
   * the other one
 
-  1. first item
-  2. second item
-  3. third item
+**Ordered lists**
 
   1. First, get these ingredients:
-       - carrots
-       - celery
-       - lentils
+      1. carrots
+      2. celery
+      3. lentils
   2. Boil some water.
   3. Dump everything in the pot and follow this algorithm:
   4. Do not bump wooden spoon or it will fall.
 
-<p class="-content-heading">Blockquote</p>
 
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
+<h3 class="-bottom-border">Tables</h3>
 
-<p class="-content-heading">Tables</p>
+&nbsp; | First Header | Second Header
+--- | ------------ | -------------
+**Y Value** | Content from cell 1 | Content from cell 2
+**Y Value** | Content in the first column | Content in the second column
+
+
+<h3 class="-bottom-border">Code Snippets</h3>
+
+**Language-agnostic**
 
     # Let me re-iterate ...
     for i in 1 .. 10 { do-something(i) }
 
-<p class="-content-heading">Code Snippet</p>
-
-~~~scss
-define foobar() {
-    print "Welcome to flavor country!";
-}
-~~~
+**Language-specific**
 
 ~~~python
 import time
+
 # Quick, count to ten!
 for i in range(10):
     # (but not *too* quick)
@@ -86,25 +102,7 @@ for i in range(10):
     print i
 ~~~
 
-**Tables can look like this:**
 
-&nbsp; | First Header | Second Header
---- | ------------ | -------------
-**Y Value** | Content from cell 1 | Content from cell 2
-**Y Value** | Content in the first column | Content in the second column
-
-Table: Shoes, their sizes, and what they're made of
-
-A horizontal rule follows.
-
-***
-
-Again, text is indented 4 spaces. (Put a blank line between each
-term/definition pair to spread things out more.)
-
-and images can be specified like so:
+<h3 class="-bottom-border">Images</h3>
 
 ![example image](https://luna1.co/4c8bb1.jpg "An exemplary image")
-
-And note that you can backslash-escape any punctuation characters
-which you wish to be displayed literally, ex.: \`foo\`, \*bar\*, etc.

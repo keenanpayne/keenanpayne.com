@@ -8,6 +8,7 @@
 
 p {
   font-variant-ligatures: normal;
+  hyphens: auto;
 
   // Modifiers
   &.-secondary { color: getColor(text, secondary); }
@@ -31,6 +32,7 @@ p {
     @extend p.-small-heading;
 
     margin-top: $spacing-m;
+    padding-bottom: $spacing-xxs;
   }
 }
 
@@ -90,7 +92,7 @@ a {
 //
 // Headings
 // --------
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4 {
   font-weight: $fontWeight-normal;
   line-height: 1.2;
 
@@ -104,7 +106,7 @@ h1, h2, h3, h4, h5, h6 {
   &.-secondary { color: getColor(text, secondary); }
 
   &.-bottom-border {
-    border-bottom: 1px solid getColor(base, lines);
+    border-bottom: 2px solid getColor(base, lines);
     padding-bottom: $spacing-xs;
   }
 
@@ -157,7 +159,7 @@ h3 {
   font-variant: all-small-caps;
   letter-spacing: .15rem;
   margin-bottom: $block-margin;
-  margin-top: $spacing-m;
+  margin-top: $spacing-l;
   text-transform: lowercase;
 }
 
@@ -196,7 +198,6 @@ code {
   background-color: (background, light);
   border: 1px solid getColor(base, lines);
   padding: .1rem .5rem;
-  vertical-align: 5%;
 }
 
 
@@ -235,11 +236,6 @@ tr { border-bottom: 1px solid getColor(base, lines); }
 .-all-small-caps {
   font-feature-settings: "c2sc", "smcp";
   font-variant-caps: all-small-caps;
-}
-
-.-lining-numbers {
-  font-feature-settings: "lnum";
-  font-variant-numeric: lining-nums;
 }
 
 .-proportional-numbers {
