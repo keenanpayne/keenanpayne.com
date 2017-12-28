@@ -1345,6 +1345,12 @@ a.reversefootnote {
 .postList {
   margin-bottom: calc(8.525rem + .2vw);
   margin-top: 0; }
+  .postList.-bg-light {
+    background-color: #fffbf1;
+    border-bottom: 3px solid #FE4365;
+    border-top: 3px solid #FE4365;
+    padding-bottom: calc(8.525rem + .2vw);
+    padding-top: calc(8.525rem + .2vw); }
 
 .postList-article:not(:last-of-type) {
   border-bottom: 1px solid #f3ecdb;

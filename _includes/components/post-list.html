@@ -1,27 +1,35 @@
-<section class="postList" container="narrower">
-  {% if page.post_list_title %}
-    {% capture title %}
-      {{ page.post_list_title }}
-    {% endcapture %}
+{% if page.post_list_background %}
+  {% capture background %}
+    {{ page.post_list_background }}
+  {% endcapture %}
+{% endif %}
 
-    {% include components/section-heading.html content=title %}
-  {% endif %}
+<section class="postList {{ background }}">
+  <div container="narrower">
+    {% if page.post_list_title %}
+      {% capture title %}
+        {{ page.post_list_title }}
+      {% endcapture %}
 
-  <article class="postList-article">
-    {% for post in site.posts %}
-      <header>
-        <h2 class="-no-top-margin">
-          <a href="{{ post.url }}" title="{{ post.title }}" class="-small-heading">
-            {{ post.title }}
-          </a>
-        </h2>
+      {% include components/section-heading.html content=title %}
+    {% endif %}
 
-        <p class="-secondary -small-heading">
-          {{ post.date | date: "%B %e, %Y" }}
-        </p>
-      </header>
+    <article class="postList-article">
+      {% for post in site.posts %}
+        <header>
+          <h2 class="-no-top-margin">
+            <a href="{{ post.url }}" title="{{ post.title }}" class="-small-heading">
+              {{ post.title }}
+            </a>
+          </h2>
 
-      {{ post.excerpt }}
-    {% endfor %}
-  </article>
+          <p class="-secondary -small-heading">
+            {{ post.date | date: "%B %e, %Y" }}
+          </p>
+        </header>
+
+        {{ post.excerpt }}
+      {% endfor %}
+    </article>
+  </div>
 </section>

@@ -5,6 +5,15 @@
 .postList {
   margin-bottom: $spacing-xxl;
   margin-top: 0;
+
+  // Backgrounds
+  &.-bg-light {
+    background-color: getColor(background, light);
+    border-bottom: 3px solid getColor(base, splash);
+    border-top: 3px solid getColor(base, splash);
+    padding-bottom: $spacing-xxl;
+    padding-top: $spacing-xxl;
+  }
 }
 
 .postList-article {
