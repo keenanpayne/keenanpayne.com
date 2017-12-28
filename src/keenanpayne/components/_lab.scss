@@ -2,7 +2,10 @@
 // Lab Examples
 // ==================================================
 
-.labs { margin-bottom: $spacing-xl; }
+.labs {
+  // Modifiers
+  &.-top-margin { margin-top: $spacing-xl; }
+}
 
 .labs-lab {
   @media (--medium-max) {

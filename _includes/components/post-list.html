@@ -1,10 +1,10 @@
-{% if page.post_list_background %}
-  {% capture background %}
-    {{ page.post_list_background }}
+{% if page.post_list_modifiers %}
+  {% capture modifiers %}
+    {{ page.post_list_modifiers }}
   {% endcapture %}
 {% endif %}
 
-<section class="postList {{ background }}">
+<section class="postList {{ modifiers }}">
   <div container="narrower">
     {% if page.post_list_title %}
       {% capture title %}
@@ -31,5 +31,11 @@
         {{ post.excerpt }}
       {% endfor %}
     </article>
+
+    {% if page.post_list_more %}
+      <div class="postList-more">
+        <a href="/blog.html" class="-cta" title="View all articles">View all articles</a>
+      </div>
+    {% endif %}
   </div>
 </section>

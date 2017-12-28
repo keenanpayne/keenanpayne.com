@@ -3,16 +3,17 @@
 // ==================================================
 
 .postList {
-  margin-bottom: $spacing-xxl;
-  margin-top: 0;
+  // Modifiers
+  &.-top-margin { margin-top: $spacing-xl; }
 
-  // Backgrounds
+  &.-bottom-padding { padding-bottom: $spacing-xl; }
+
   &.-bg-light {
     background-color: getColor(background, light);
     border-bottom: 3px solid getColor(base, splash);
     border-top: 3px solid getColor(base, splash);
-    padding-bottom: $spacing-xxl;
-    padding-top: $spacing-xxl;
+    padding-bottom: $spacing-xl;
+    padding-top: $spacing-xl;
   }
 }
 
@@ -21,4 +22,9 @@
     border-bottom: 1px solid getColor(base, lines);
     padding-bottom: $spacing-s;
   }
+}
+
+.postList-more {
+  margin-top: $spacing-l;
+  text-align: center;
 }

@@ -26,12 +26,11 @@ p {
     letter-spacing: .1rem;
   }
 
-  &.-small-heading-border {
-    border-bottom: 1px solid getColor(base, lines);
-    color: getColor(text, secondary);
-    font-variant: all-small-caps;
-    letter-spacing: .1rem;
-    padding-bottom: $spacing-xs;
+  &.-content-heading {
+    @extend p.-secondary;
+    @extend p.-small-heading;
+
+    margin-top: $spacing-m;
   }
 }
 
@@ -82,6 +81,8 @@ a {
     color: getColor(base, splash);
 
     &:hover { color: getColor(base, splash-hover); }
+
+    &:after { content: ' →'; }
   }
 }
 
@@ -100,7 +101,12 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   // Modifiers
-  &.-muted { color: getColor(text, secondary); }
+  &.-secondary { color: getColor(text, secondary); }
+
+  &.-bottom-border {
+    border-bottom: 1px solid getColor(base, lines);
+    padding-bottom: $spacing-xs;
+  }
 
   &.-no-margin {
     margin-bottom: 0;

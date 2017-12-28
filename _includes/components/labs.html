@@ -1,4 +1,10 @@
-<section class="labs" container>
+{% if page.labs_modifiers %}
+  {% capture modifiers %}
+    {{ page.labs_modifiers }}
+  {% endcapture %}
+{% endif %}
+
+<section class="labs {{ modifiers }}" container>
   {% include components/section-heading.html content="Latest Experiment" %}
 
   {% for lab in page.labs %}

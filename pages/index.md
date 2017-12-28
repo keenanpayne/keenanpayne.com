@@ -17,8 +17,9 @@ masthead: I'm a web developer at <a href="https://asana.com" class="-cta">Asana<
 masthead_center:
 
 ## Post List
-post_list_background: '-bg-light'
+post_list_modifiers: '-top-margin -bg-light'
 post_list_title: "Want my Two Cents?"
+post_list_more: true
 
 ## Projects
 projects:
@@ -58,4 +59,5 @@ labs:
   - id: KmGXVx
     title: Programmatically Animating Individual Letters
     tab: result
+labs_modifiers: '-top-margin'
 ---
