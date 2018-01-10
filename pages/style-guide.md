@@ -1,7 +1,8 @@
 ---
 layout: personal
 title: Style Guide
-navigation_weight:
+navigation_weight: 3
+navigation_hide_header: true
 narrow_container: true
 permalink: style-guide.html
 
@@ -14,6 +15,11 @@ masthead: Style Guide
 masthead_subtitle: The bits and bytes that make up this website
 masthead_center: true
 ---
+
+<!--
+  Only elements that are atoms should be displayed on this page.
+  No complex components. Modifiers for atoms should be included.
+-->
 
 <h3 class="-bottom-border -no-top-margin">Typography</h3>
 
@@ -30,6 +36,34 @@ Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), 
 
 [^1]: Footnote text goes here.
 
+<p class="-secondary">This is secondary text that shouldn't stand out as much.</p>
+
+<p class="-no-top-margin">This is a paragraph with no top margin.</p>
+
+<p class="-small">This is some small text.</p>
+
+{% include atoms/content-heading.html text="Links" %}
+
+<p><a>This is a standalone link</a></p>
+
+<p><a class="-cta">This is a CTA link</a></p>
+
+<p><a class="-arrow">This is a link with an arrow</a></p>
+
+{% include atoms/content-heading.html text="Paragraph Callout" %}
+
+{% include post/p-large.html content="I set a goal to read <strong>24 books in 2017</strong>. I have already read 3 books in the last 3 weeks" %}
+
+{% include atoms/content-heading.html text="Section Headings" %}
+
+{% include components/section-heading.html content="This is a content heading" %}
+
+<p class="-small-heading">This is a small heading</p>
+
+{% include atoms/content-heading.html text="Blockquotes" %}
+
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
+
 {% include atoms/content-heading.html text="OpenType Modifiers" %}
 
 <p class="-small-caps">Small Caps</p>
@@ -42,18 +76,6 @@ Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), 
 
 <p class="-ordinal">1st 2nd 3rd 4th 96o</p>
 
-{% include atoms/content-heading.html text="Paragraph Callout" %}
-
-{% include post/p-large.html content="I set a goal to read <strong>24 books in 2017</strong>. I have already read 3 books in the last 3 weeks" %}
-
-{% include atoms/content-heading.html text="Blockquotes" %}
-
-> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
-
-
-<h3 class="-bottom-border">Buttons</h3>
-
-<button>Only used for submissions</button>
 
 <h3 class="-bottom-border">Lists</h3>
 
@@ -73,6 +95,11 @@ Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), 
   2. Boil some water.
   3. Dump everything in the pot and follow this algorithm:
   4. Do not bump wooden spoon or it will fall.
+
+
+<h3 class="-bottom-border">Buttons</h3>
+
+<button>Only used for submissions</button>
 
 
 <h3 class="-bottom-border">Tables</h3>

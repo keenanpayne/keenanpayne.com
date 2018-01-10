@@ -9,8 +9,8 @@
 
   {% for p in navigation_pages %}
     {% if p.navigation_weight %}
-      <li class="{{ include.name }}-item">
-        <a href="{{ p.url }}" title="{{ p.title }}" {% if p.url == page.url %}class="-is-active"{% endif %}>
+      <li class="{{ include.name }}-item {% if p.navigation_hide_header == true %}siteHeader-hiddenLink{% endif %}">
+        <a href="{{ p.url }}" title="{{ p.title }}" class="{% if p.url == page.url %}-is-active{% endif %}">
           {{ p.title }}
         </a>
       </li>

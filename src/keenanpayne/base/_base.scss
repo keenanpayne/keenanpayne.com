@@ -9,7 +9,7 @@
   text-rendering: optimizeLegibility;
 
   @media (--small) {
-    font-size: calc(#{$font-size}px + .3vw);
+    font-size: calc(#{$font-size}px + .4vw);
   }
 
   @media screen and (-webkit-min-device-pixel-ratio: 2),

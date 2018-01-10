@@ -31,8 +31,7 @@ p {
     @extend p.-secondary;
     @extend p.-small-heading;
 
-    margin-top: $spacing-m;
-    padding-bottom: $spacing-xxs;
+    margin-top: $spacing-l;
   }
 }
 
@@ -83,7 +82,9 @@ a {
     color: getColor(base, splash);
 
     &:hover { color: getColor(base, splash-hover); }
+  }
 
+  &.-arrow {
     &:after { content: ' →'; }
   }
 }
@@ -157,7 +158,7 @@ h2 {
 
 h3 {
   font-variant: all-small-caps;
-  letter-spacing: .15rem;
+  letter-spacing: .1rem;
   margin-bottom: $block-margin;
   margin-top: $spacing-l;
   text-transform: lowercase;

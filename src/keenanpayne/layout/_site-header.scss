@@ -5,4 +5,9 @@
 .siteHeader {
   margin-top: $spacing-s;
   width: 100%;
+
+  .siteHeader-hiddenLink {
+    display: none;
+    visibility: hidden;
+  }
 }
