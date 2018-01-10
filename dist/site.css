@@ -857,7 +857,7 @@ table {
   text-rendering: optimizeLegibility; }
   @media (min-width: 480px) {
     :root {
-      font-size: calc(16px + .4vw); } }
+      font-size: calc(16px + .35vw); } }
   @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
     :root {
       -webkit-font-smoothing: antialiased;
@@ -1100,8 +1100,10 @@ button, input[type="submit"],
 
 .navHorizontal-item {
   display: inline-block;
-  font-size: 0.83333rem;
   margin-bottom: 0 !important; }
+  @media (min-width: 768px) {
+    .navHorizontal-item {
+      font-size: 0.83333rem; } }
   .navHorizontal-item:not(:last-of-type) {
     margin-right: calc(1.55rem + .2vw); }
   @media (max-width: 767px) {
@@ -1444,6 +1446,9 @@ a.reversefootnote {
   font-weight: 600;
   margin-bottom: calc(3.1rem + .2vw);
   text-align: center; }
+  @media (max-width: 479px) {
+    .sectionHeading {
+      font-size: 1.2rem; } }
 
 .social {
   padding-left: 0; }

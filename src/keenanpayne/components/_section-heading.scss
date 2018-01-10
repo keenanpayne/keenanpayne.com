@@ -6,4 +6,8 @@
   font-weight: $fontWeight-bold;
   margin-bottom: $spacing-m;
   text-align: center;
+
+  @media (--small-max) {
+    font-size: typeScale(3);
+  }
 }
