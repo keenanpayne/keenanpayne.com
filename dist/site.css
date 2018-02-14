@@ -885,10 +885,7 @@ img {
 
 p {
   -webkit-font-variant-ligatures: normal;
-          font-variant-ligatures: normal;
-  -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-          hyphens: auto; }
+          font-variant-ligatures: normal; }
   p.-secondary, p.-content-heading {
     color: #666; }
   p.-no-top-margin {

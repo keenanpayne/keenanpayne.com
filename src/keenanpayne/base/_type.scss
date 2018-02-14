@@ -8,7 +8,6 @@
 
 p {
   font-variant-ligatures: normal;
-  hyphens: auto;
 
   // Modifiers
   &.-secondary { color: getColor(text, secondary); }
