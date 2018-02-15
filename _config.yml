@@ -59,7 +59,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - LICENSE
-  - webp.js
+  - js/webp.js
   - src
 
 
