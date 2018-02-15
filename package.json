@@ -28,6 +28,6 @@
     "flex:minify": "cssmin dist/flex.css > dist/flex.min.css",
     "flex:sass": "concisecss compile src/flex.scss dist/flex.css",
     "prettier": "prettier --write '**/**/*.scss' && prettier --write '**/**/*.js' ",
-    "webp": "node webp.js"
+    "webp": "node js/webp.js"
   }
 }

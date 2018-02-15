@@ -3,6 +3,19 @@
 // ==================================================
 
 //
+// Font Loading
+// ------------
+
+:root.fonts-loaded {
+  // Root styles
+  font-family: "source-sans-pro", sans-serif;
+
+  // Headings
+  h1, h2, h3, h4, h5, h6 { font-family: "bagatela", serif; }
+}
+
+
+//
 // Paragraphs
 // ----------
 

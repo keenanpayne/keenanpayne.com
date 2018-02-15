@@ -12,6 +12,26 @@
     </div>
   </footer>
 
+  <script>
+    (function() {
+      var script = document.createElement("script");
+      script.src = "js/fontfaceobserver.js";
+      script.async = true;
+      script.onload = function() {
+        var bagatela = new FontFaceObserver("bagatela");
+        var sourcesanspro = new FontFaceObserver("source-sans-pro");
+
+        Promise.all([
+          bagatela.load(),
+          sourcesanspro.load()
+        ]).then(function() {
+          document.documentElement.classList.add("fonts-loaded");
+        });
+      };
+
+      document.head.appendChild(script);
+    })();
+  </script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23449205-4"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
