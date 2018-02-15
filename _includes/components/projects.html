@@ -18,7 +18,7 @@
               {% endif %}
 
               {% if project.image %}
-                <img class="project-image" src="{{ project.image }}" alt="{{ project.title }} Logo">
+                {% include atoms/picture.html src=project.image alt=project.title %}
               {% endif %}
 
               {% if project.url %}

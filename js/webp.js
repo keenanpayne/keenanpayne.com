@@ -6,7 +6,7 @@ var imagemin = require("imagemin"),
     webp = require("imagemin-webp"),
     outputFolder = "images",
     PNGImages = "images/*.png",
-    JPEGImages = "images/*.jpg",
+    JPEGImages = "images/*.jpg";
 
 imagemin([PNGImages], outputFolder, {
   plugins: [webp({

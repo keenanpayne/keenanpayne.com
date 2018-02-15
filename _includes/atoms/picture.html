@@ -1,5 +1,5 @@
 <picture>
-  <source srcset="images/{{ item.image }}.webp" type="image/webp">
-  <source srcset="images/{{ item.image }}.png" type="image/jpeg">
-  <img src="images/{{ item.image }}.png" alt="{{ item.title }}">
+  <source srcset="https://d3lzmj2d3v8qdh.cloudfront.net/{{ include.src|slugify:'raw' }}.webp" type="image/webp">
+  <source srcset="https://d3lzmj2d3v8qdh.cloudfront.net/{{ include.src|slugify:'raw' }}.png" type="image/jpeg">
+  <img src="https://d3lzmj2d3v8qdh.cloudfront.net/{{ include.src|slugify:'raw' }}.png" alt="{{ include.alt }}">
 </picture>
