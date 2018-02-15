@@ -1,14 +1,3 @@
-<!-- Global -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23449205-4"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23449205-4');
-</script>
-
-
 <!-- Flexicution -->
 {% if page.layout == 'flexicution' %}
   <link rel="stylesheet" href="/dist/flex.min.css" />
@@ -19,9 +8,19 @@
 
 <!-- Personal Site -->
 {% else %}
+  <link rel="preconnect" href="//use.typekit.net">
+  <link rel="preconnect" href="//cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://codepen.io">
+
+  <link rel="dns-prefetch" href="//use.typekit.net">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+  <link rel="dns-prefetch" href="https://codepen.io">
+
   <link rel="stylesheet" href="/dist/site.min.css" />
   <link rel="stylesheet" href="//use.typekit.net/hid0bbh.css">
 
-  <script async defer src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
-  <script async defer src="/site.js"></script>
+  <script async src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+  <script async src="/site.js"></script>
 {% endif %}
