@@ -26,7 +26,7 @@ During my first pass at implementing the design, I built a layout with a fixed-w
 
 <p>
   <p data-height="500" data-theme-id="dark" data-slug-hash="a4d4d78c334a82834eec8a23d1aa94a3" data-default-tab="result" data-user="keenanpayne" data-embed-version="2" data-pen-title="Allow elements to hang outside of a fixed-width container [Attempt 1]" class="codepen">See the Pen <a href="https://codepen.io/keenanpayne/pen/a4d4d78c334a82834eec8a23d1aa94a3/">Allow elements to hang outside of a fixed-width container [Attempt 1]</a> by Keenan Payne (<a href="https://codepen.io/keenanpayne">@keenanpayne</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-  <script async src="https://codepen.io/eijs.js"></script>
+  <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 </p>
 
 This solution achieves the desired effect, with one caveat: we have horizontal scrollbars because of our off-screen content.
