@@ -1,5 +1,12 @@
 {
- "name": "App",
+ "name": "Keenan Payne",
+ "short_name": "Keenan Payne",
+ "theme": {
+    "colors": {
+      "accentcolor": "#fff",
+      "textcolor": "#333"
+    }
+  },
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
