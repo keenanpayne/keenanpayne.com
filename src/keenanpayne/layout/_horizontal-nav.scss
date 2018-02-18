@@ -71,4 +71,10 @@
       display: none;
     }
   }
+
+  &.-soundtrack {
+    fill-opacity: .5;
+
+    &:hover { fill-opacity: 1; }
+  }
 }

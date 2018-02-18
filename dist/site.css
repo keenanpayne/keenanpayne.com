@@ -1116,6 +1116,10 @@ button, input[type="submit"],
     @media (min-width: 768px) {
       .navHorizontal-item.-mobile {
         display: none; } }
+  .navHorizontal-item.-soundtrack {
+    fill-opacity: .5; }
+    .navHorizontal-item.-soundtrack:hover {
+      fill-opacity: 1; }
 
 .post {
   padding-bottom: calc(1.55rem + .2vw);
