@@ -1422,7 +1422,8 @@ a.reversefootnote {
 @media (max-width: 767px) {
   .project-text {
     margin-left: calc(1.55rem + .2vw);
-    margin-right: calc(1.55rem + .2vw); } }
+    margin-right: calc(1.55rem + .2vw);
+    margin-top: calc(1.55rem + .2vw); } }
 
 .promo {
   border: 2px solid #FE4365;

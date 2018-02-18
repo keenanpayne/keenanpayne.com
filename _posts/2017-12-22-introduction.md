@@ -1,5 +1,5 @@
 ---
-title:  'Just another &#8220;hello, world&#8221; introduction'
+title:  'Just another "hello, world" introduction'
 ---
 
 Hello, my name is Keenan Payne, which you probably already discerned if you're reading this post. If you haven't, greetings it's nice to meet you. 👋🏻

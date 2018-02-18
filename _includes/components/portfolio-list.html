@@ -2,7 +2,7 @@
   {% for section in page.portfolioList %}
     {% if section.title %}
   	 <h3 class="portfolioList-heading">
-       {{ section.title }}
+       {{ section.title|smartify }}
      </h3>
     {% endif %}
 
@@ -10,13 +10,13 @@
     	<div class="portfolioList-item">
         {% if item.title %}
           <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">
-            {{ item.title }}
+            {{ item.title|smartify }}
           </a>
         {% endif %}
 
         {% if item.description %}
     		  <p class="-no-top-margin -small">
-            {{ item.description }}
+            {{ item.description|smartify }}
           </p>
         {% endif %}
     	</div>

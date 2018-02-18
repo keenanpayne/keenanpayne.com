@@ -7,26 +7,33 @@
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
 	<meta name="author" content="{{ site.name }}" />
+  <meta name="msapplication-TileColor" content="#ffffff">
+	<meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
 
-	<!-- TODO: Need to test and update these values -->
-	<meta property="og:site_name" content="{{ site.title }}">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="keenanpayne.com">
 
-	{% if page.title %}
-	  <meta property="og:title" content="{{ page.title }}">
+  {% if page.layout == "post" %}
+    <meta name="twitter:title" content="{{ page.title|smartify }}">
+    <meta name="twitter:description" content="{{ page.excerpt|strip_html }}">
 	{% else %}
-	  <meta property="og:title" content="{{ site.title }}">
+    <meta name="twitter:description" content="{{ site.meta_description }}">
+    <meta name="twitter:title" content="{{ site.meta_title }} | {{ site.meta_tagline }}">
 	{% endif %}
 
-	{% if page.title %}
-	  <meta property="og:type" content="article">
-	{% else %}
-	  <meta property="og:type" content="website">
-	{% endif %}
+  <!-- OpenGraph -->
+	<meta property="og:site_name" content="{{ site.meta_title }}">
 
-	{% if page.description %}
-	  <meta property="og:description" content="{{ page.description }}">
+	{% if page.layout == "post" %}
+	  <meta property="og:title" content="{{ page.title|smartify }}">
+    <meta property="og:type" content="article">
+    <meta property="og:description" content="{{ page.excerpt|strip_html }}">
 	{% else %}
-	  <meta property="og:description" content="{{ site.description }}">
+	  <meta property="og:title" content="{{ site.meta_title }} | {{ site.meta_tagline }}">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="{{ site.meta_description }}">
 	{% endif %}
 
 	{% if page.url %}
@@ -35,24 +42,18 @@
 
 	{% if page.date %}
 	  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
-	  <meta property="article:author" content="{{ site.url }}/about/">
+	  <meta property="article:author" content="{{ site.url }}">
 	{% endif %}
 
-	{% if page.image %}
+	<!-- {% if page.image %}
 	  <meta property="og:image" content="/img/srcset/{{ page.image }}">
 	{% else %}
 	  <meta property="og:image" content="/img/logo-high-resolution.png">
-	{% endif %}
+	{% endif %} -->
 
 	{% if page.categories %}
 	  {% for category in page.categories limit:1 %}
 	  	<meta property="article:section" content="{{ category }}">
-	  {% endfor %}
-	{% endif %}
-
-	{% if page.tags %}
-	  {% for tag in page.tags %}
-	  	<meta property="article:tag" content="{{ tag }}">
 	  {% endfor %}
 	{% endif %}
 
@@ -65,10 +66,12 @@
 			{% if page.title == "Home" %}
 				{{ site.meta_title }} | {{ site.meta_tagline }}
 			{% else %}
-				{{ page.title }} | {{ site.meta_title }}
+				{{ page.title|smartify }} | {{ site.meta_title }}
 			{% endif %}
 		</title>
 	{% endif %}
+
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 
 	<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
@@ -84,10 +87,6 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="/favicons/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
 	<link rel="manifest" href="/favicons/manifest.json">
-
-	<meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
 
 	{% include global/meta.html %}
 </head>

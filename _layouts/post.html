@@ -7,14 +7,14 @@ comments: true
   <article class="post" grid="column">
     <header class="post-header" column>
       <h1>
-        {{ page.title }}
+        {{ page.title|smartify }}
       </h1>
 
       <p class="-secondary -small-heading">
         {{ page.date | date: "%B %e, %Y" }}
-      </p>
 
-      {% include components/reading-time.html %}
+        {% include components/reading-time.html %}
+      </p>
     </header>
 
     <div class="post-content" column>
