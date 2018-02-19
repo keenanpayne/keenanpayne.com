@@ -22,8 +22,7 @@ meta_title: Keenan Payne
 meta_tagline: Front-End Developer
 meta_description: Keenan Payne is a web designer and developer based out of San Francisco, CA.
 name: Keenan Payne
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+link: "http://keenanpayne.com"
 
 
 ##
