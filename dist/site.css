@@ -1369,8 +1369,7 @@ a.reversefootnote {
   padding-top: calc(6.2rem + .2vw); }
 
 .postList-article:not(:last-of-type) {
-  border-bottom: 1px solid #f3ecdb;
-  padding-bottom: calc(1.55rem + .2vw); }
+  padding-bottom: calc(3.1rem + .2vw); }
 
 .postList-more {
   margin-top: calc(4.65rem + .2vw);

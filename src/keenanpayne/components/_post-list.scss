@@ -18,10 +18,7 @@
 }
 
 .postList-article {
-  &:not(:last-of-type) {
-    border-bottom: 1px solid getColor(base, lines);
-    padding-bottom: $spacing-s;
-  }
+  &:not(:last-of-type) { padding-bottom: $spacing-m; }
 }
 
 .postList-more {
