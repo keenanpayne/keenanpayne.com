@@ -1426,6 +1426,7 @@ a.reversefootnote {
 
 .promo {
   border: 2px solid #FE4365;
+  box-shadow: 4px 4px 0 rgba(254, 67, 101, 0.3), 8px 8px 0 rgba(254, 67, 101, 0.4), 12px 12px 0 rgba(254, 67, 101, 0.5);
   color: #FE4365;
   display: block;
   font-size: 0.83333rem;
@@ -1434,9 +1435,10 @@ a.reversefootnote {
   opacity: .85;
   padding: calc(0.775rem + .2vw);
   text-align: center;
-  transition: all 225ms; }
+  transition: all 300ms; }
   .promo:hover {
     background-color: #FE4365;
+    box-shadow: 5px 5px 0 rgba(254, 67, 101, 0.3), 10px 10px 0 rgba(254, 67, 101, 0.4), 15px 15px 0 rgba(254, 67, 101, 0.5);
     color: white;
     opacity: 1;
     text-decoration: none; }

@@ -14,7 +14,7 @@
       {% include components/section-heading.html content=title %}
     {% endif %}
 
-    {% for post in site.posts %}
+    {% for post in site.posts limit:page.post_list_limit %}
       <article class="postList-article">
         <header>
           <h2 class="-no-top-margin">
