@@ -57,8 +57,8 @@ projects:
 
 ## Labs
 labs:
-  - id: KmGXVx
-    title: Programmatically Animating Individual Letters
+  - id: zmwPQo
+    title: Studio Ghibli scrolling film marquee
     tab: result
 labs_modifiers: '-top-margin'
 ---
