@@ -886,7 +886,9 @@ img {
 :root.fonts-loaded {
   font-family: "source-sans-pro", sans-serif; }
   :root.fonts-loaded h1, :root.fonts-loaded h2, :root.fonts-loaded h3, :root.fonts-loaded h4, :root.fonts-loaded h5, :root.fonts-loaded h6 {
-    font-family: "bagatela", serif; }
+    font-family: forma-djr-display, sans-serif;
+    font-weight: 700;
+    font-style: normal; }
 
 p {
   -webkit-font-variant-ligatures: normal;
@@ -1083,22 +1085,6 @@ button, input[type="submit"],
     .navHorizontal a.-is-active {
       color: #1a1a1a;
       opacity: 1; }
-  .navHorizontal.-ornate {
-    text-align: center; }
-    .navHorizontal.-ornate ul:before, .navHorizontal.-ornate ul:after {
-      background: #32373d;
-      content: '';
-      display: inline-block;
-      height: 1px;
-      vertical-align: middle;
-      width: 100px; }
-      @media (min-width: 768px) {
-        .navHorizontal.-ornate ul:before, .navHorizontal.-ornate ul:after {
-          width: 150px; } }
-    .navHorizontal.-ornate ul:before {
-      margin-right: calc(1.55rem + .2vw); }
-    .navHorizontal.-ornate ul:after {
-      margin-left: calc(1.55rem + .2vw); }
 
 .navHorizontal-item {
   display: inline-block;
@@ -1244,7 +1230,18 @@ button, input[type="submit"],
   font-size: 0.83333rem; }
 
 .siteHeader {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: calc(1.55rem + .2vw);
+  padding-left: calc(1.55rem + .2vw);
+  padding-right: calc(1.55rem + .2vw);
   width: 100%; }
   .siteHeader .siteHeader-hiddenLink {
     display: none;
@@ -1340,16 +1337,16 @@ a.reversefootnote {
   margin-top: 1.55rem; }
 
 .logo {
+  font-family: bagatela, serif !important;
+  font-weight: 900;
+  font-style: italic !important;
+  font-size: 1.728rem !important;
   letter-spacing: 0;
   margin-bottom: 0;
-  margin-top: 0;
-  padding-bottom: calc(1.55rem + .2vw);
-  text-align: center; }
-  @media (min-width: 480px) {
-    .logo {
-      padding-bottom: calc(0.775rem + .2vw); } }
+  margin-top: 0; }
 
 .masthead {
+  margin-left: 0;
   padding-bottom: calc(6.2rem + .2vw);
   padding-top: calc(6.2rem + .2vw); }
   .masthead.-center {

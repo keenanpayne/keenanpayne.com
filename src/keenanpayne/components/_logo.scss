@@ -3,13 +3,18 @@
 // ==================================================
 
 .logo {
-  letter-spacing: 0; 
+  font-family: bagatela, serif !important;
+  font-weight: 900;
+  font-style: italic !important;
+  font-size: typeScale(5) !important;
+
+  letter-spacing: 0;
   margin-bottom: 0;
   margin-top: 0;
-  padding-bottom: $spacing-s;
-  text-align: center;
+  // padding-bottom: $spacing-s;
+  // text-align: center;
 
   @media (--small) {
-    padding-bottom: $spacing-xs;
+    // padding-bottom: $spacing-xs;
   }
 }

@@ -21,26 +21,13 @@
 
   // Modifiers
   &.-ornate {
-    text-align: center;
+    // text-align: center;
 
     ul {
-      &:before,
-      &:after {
-        background: getColor(background, dark);
-        content: '';
-        display: inline-block;
-        height: 1px;
-        vertical-align: middle;
-        width: 100px;
-
-        @media (--medium) {
-          width: 150px;
-        }
-      }
-
-      &:before { margin-right: $spacing-s; }
-
-      &:after { margin-left: $spacing-s; }
+      // border-bottom: 1px solid getColor(base, lines);
+      // border-top: 1px solid getColor(base, lines);
+      // padding-bottom: $spacing-xxs;
+      // padding-top: $spacing-xxs;
     }
   }
 }
