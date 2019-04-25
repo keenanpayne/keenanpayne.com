@@ -1,6 +1,6 @@
 //
 // Typography
-// ==================================================
+  // ==================================================
 
 //
 // Paragraphs
@@ -23,7 +23,7 @@ p {
 
   &.-small-heading {
     font-variant: all-small-caps;
-    letter-spacing: .1rem;
+    letter-spacing: .02rem;
   }
 
   &.-content-heading {
@@ -165,10 +165,9 @@ h2 {
 
 h3 {
   font-variant: all-small-caps;
-  letter-spacing: .1rem;
+  line-height: 1.1;
   margin-bottom: $block-margin;
   margin-top: $spacing-l;
-  text-transform: lowercase;
 }
 
 h4,

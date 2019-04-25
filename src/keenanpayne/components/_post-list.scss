@@ -3,8 +3,9 @@
 // ==================================================
 
 .postList {
-  // Modifiers
-  &.-top-margin { margin-top: $spacing-xl; }
+  @media (--large) {
+    margin-top: $spacing-m;
+  }
 
   &.-bottom-padding { padding-bottom: $spacing-xl; }
 
@@ -15,13 +16,19 @@
     padding-bottom: $spacing-xl;
     padding-top: $spacing-xl;
   }
-}
 
-.postList-article {
-  &:not(:last-of-type) { padding-bottom: $spacing-m; }
+  // Descendants
+  [container] {
+    margin-right: 0;
+  }
 }
 
 .postList-more {
-  margin-top: $spacing-l;
+  margin-top: $spacing-s;
   text-align: center;
+}
+
+.postList-title {
+  margin-bottom: 0;
+  margin-top: 0;
 }

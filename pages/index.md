@@ -7,20 +7,17 @@ permalink: index.html
 ## Page Sections
 sections:
   - name: 'masthead'
-  - name: 'projects'
   - name: 'post-list'
-  - name: 'labs'
-  #- name: 'post-list'
+  - name: 'projects'
 
 ## Masthead
 masthead: I'm a web developer at <a href="https://asana.com" class="-cta">Asana</a>. I like to write and build things in my spare time.
 masthead_center:
 
 ## Post List
-post_list_modifiers: '-top-margin -bg-light'
 post_list_title: "Want my Two Cents?"
 post_list_more: true
-post_list_limit: 1
+post_list_limit: 5
 
 ## Projects
 projects:
@@ -54,11 +51,4 @@ projects:
         image: "homepage/flexicution"
         tags:
           - name: "Open Source"
-
-## Labs
-labs:
-  - id: zmwPQo
-    title: Studio Ghibli scrolling film marquee
-    tab: result
-labs_modifiers: '-top-margin'
 ---

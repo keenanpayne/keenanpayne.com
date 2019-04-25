@@ -4,7 +4,7 @@
   {% endcapture %}
 {% endif %}
 
-<section class="postList {{ modifiers }}">
+<section class="postList" container>
   <div container="narrower">
     {% if page.post_list_title %}
       {% capture title %}
@@ -17,19 +17,16 @@
     {% for post in site.posts limit:page.post_list_limit %}
       <article class="postList-article">
         <header>
-          <h2 class="-no-top-margin">
-            <a href="{{ post.url }}" title="{{ post.title }}" class="-small-heading">
+          <h3 class="postList-title">
+            <a href="{{ post.url }}" title="{{ post.title }}">
               {{ post.title|smartify }}
             </a>
-          </h2>
+          </h3>
 
           <p class="-secondary -small-heading">
             {{ post.date | date: "%B %e, %Y" }}
           </p>
         </header>
-
-
-        {{ post.excerpt }}
       </article>
     {% endfor %}
 

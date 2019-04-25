@@ -6,8 +6,8 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: $spacing-s;
-  width: 100%;
+  padding-bottom: $spacing-s;
+  padding-top: $spacing-s;
 
   .siteHeader-hiddenLink {
     display: none;
