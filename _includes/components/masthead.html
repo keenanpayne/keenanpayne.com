@@ -1,5 +1,5 @@
 {% if page.masthead %}
-  <section class="masthead {% if page.masthead_center %}-center{% endif %}" container="narrow">
+  <section class="masthead {% if page.masthead_center %}-center{% endif %}">
     <div container>
       {% if page.masthead %}
         <{% if page.url == "/index.html" %}h2{% else %}h1{% endif %} class="{% if page.masthead_subtitle %}-no-top-margin{% else %}-no-margin{% endif %} {% if page.url == "/index.html" %}-xl{% endif %}">
@@ -11,10 +11,6 @@
         <h4 class="-secondary">
           {{ page.masthead_subtitle }}
         </h4>
-      {% endif %}
-
-      {% if page.url == "/index.html" %}
-        {% include components/social.html %}
       {% endif %}
     </div>
   </section>

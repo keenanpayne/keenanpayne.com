@@ -48,7 +48,7 @@ template,
 
 :root {
   box-sizing: border-box;
-  font-family: "Helvetica", "Arial", sans-serif;
+  font-family: "source-sans-pro", sans-serif;
   line-height: 1.5;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -405,7 +405,7 @@ h6 {
 
 h1, h2, h3, h4, h5, h6 {
   color: #333;
-  font-family: "Cambria", "Times New Roman", "Times", serif;
+  font-family: "Inter var", sans-serif;
   line-height: 1.3; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     color: inherit;
@@ -536,7 +536,7 @@ table {
 [container] {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1600px;
+  max-width: 1260px;
   padding-left: 1rem;
   padding-right: 1rem;
   overflow: auto; }
@@ -883,13 +883,6 @@ img {
 [container="narrower"] {
   max-width: 768px; }
 
-:root.fonts-loaded {
-  font-family: "source-sans-pro", sans-serif; }
-  :root.fonts-loaded h1, :root.fonts-loaded h2, :root.fonts-loaded h3, :root.fonts-loaded h4, :root.fonts-loaded h5, :root.fonts-loaded h6 {
-    font-family: forma-djr-display, sans-serif;
-    font-weight: 700;
-    font-style: normal; }
-
 p {
   -webkit-font-variant-ligatures: normal;
           font-variant-ligatures: normal; }
@@ -937,8 +930,12 @@ a {
   a.-arrow:after {
     content: ' →'; }
 
+@supports (font-variation-settings: normal) {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter var', sans-serif; } }
+
 h1, h2, h3, h4 {
-  font-weight: 400;
+  font-weight: 730;
   line-height: 1.2; }
   h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {
     color: initial;
@@ -979,10 +976,12 @@ h2 {
     h2 {
       letter-spacing: -.025rem;
       font-size: 2.48832rem; } }
-  @media (min-width: 1100px) {
-    h2.-xl {
-      letter-spacing: -.025rem;
-      font-size: 2.98598rem; } }
+  h2.-xl {
+    font-weight: 730;
+    letter-spacing: -.025em; }
+    @media (min-width: 1100px) {
+      h2.-xl {
+        font-size: 3.58318rem; } }
 
 h3 {
   font-variant: all-small-caps;
@@ -1209,7 +1208,7 @@ button, input[type="submit"],
     padding-left: 0; }
   .mobileNav-container li {
     display: block;
-    font-family: "Cambria", "Times New Roman", "Times", serif;
+    font-family: "Inter var", sans-serif;
     font-size: 2.98598rem;
     list-style-type: none;
     margin-bottom: calc(0.775rem + .2vw); }
@@ -1239,9 +1238,7 @@ button, input[type="submit"],
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  margin-top: calc(1.55rem + .2vw);
-  padding-left: calc(1.55rem + .2vw);
-  padding-right: calc(1.55rem + .2vw);
+  padding: calc(1.55rem + .2vw);
   width: 100%; }
   .siteHeader .siteHeader-hiddenLink {
     display: none;
@@ -1337,20 +1334,22 @@ a.reversefootnote {
   margin-top: 1.55rem; }
 
 .logo {
-  font-family: bagatela, serif !important;
-  font-weight: 900;
-  font-style: italic !important;
-  font-size: 1.728rem !important;
+  font-family: ohno-blazeface, sans-serif;
+  font-size: 1.728rem;
+  font-weight: 500;
   letter-spacing: 0;
   margin-bottom: 0;
   margin-top: 0; }
 
 .masthead {
+  background-color: black;
   margin-left: 0;
   padding-bottom: calc(6.2rem + .2vw);
   padding-top: calc(6.2rem + .2vw); }
   .masthead.-center {
     text-align: center; }
+  .masthead h2 {
+    color: white; }
 
 .postList.-top-margin {
   margin-top: calc(6.2rem + .2vw); }

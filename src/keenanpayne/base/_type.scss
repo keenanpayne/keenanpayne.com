@@ -3,23 +3,6 @@
 // ==================================================
 
 //
-// Font Loading
-// ------------
-
-:root.fonts-loaded {
-  // Root styles
-  font-family: "source-sans-pro", sans-serif;
-
-  // Headings
-  h1, h2, h3, h4, h5, h6 {
-    font-family: forma-djr-display, sans-serif;
-    font-weight: 700;
-    font-style: normal;
-  }
-}
-
-
-//
 // Paragraphs
 // ----------
 
@@ -109,8 +92,14 @@ a {
 //
 // Headings
 // --------
+h1, h2, h3, h4, h5, h6 {
+  @supports (font-variation-settings: normal) {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
 h1, h2, h3, h4 {
-  font-weight: $fontWeight-normal;
+  font-weight: 730;
   line-height: 1.2;
 
   a:hover {
@@ -165,9 +154,11 @@ h2 {
 
   // Modifiers
   &.-xl {
+    font-weight: 730;
+    letter-spacing: -.025em;
+
     @media (--extra-large) {
-      letter-spacing: -.025rem;
-      font-size: typeScale(8);
+      font-size: typeScale(9);
     }
   }
 }

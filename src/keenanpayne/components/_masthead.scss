@@ -3,10 +3,16 @@
 // ==================================================
 
 .masthead {
+  background-color: black;
   margin-left: 0;
   padding-bottom: $spacing-xl;
   padding-top: $spacing-xl;
 
   // Modifiers
   &.-center { text-align: center; }
+
+  // Descendants
+  h2 {
+    color: white;
+  }
 }

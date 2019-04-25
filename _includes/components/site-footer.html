@@ -2,6 +2,10 @@
 
   <footer class="siteFooter" role="complementary">
     <div container>
+      {% if page.url == "/index.html" %}
+        {% include components/social.html %}
+      {% endif %}
+
       <div grid>
         <p class="siteFooter-copy" column="4">Copyright &copy; 2008 &ndash; 2017</p>
 
@@ -17,25 +21,6 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23449205-4"></script>
 
   <script>
-    (function() {
-      var script = document.createElement("script");
-      script.src = "/js/fontfaceobserver.js";
-      script.async = true;
-      script.onload = function() {
-        var bagatela = new FontFaceObserver("bagatela");
-        var sourcesanspro = new FontFaceObserver("source-sans-pro");
-
-        Promise.all([
-          bagatela.load(),
-          sourcesanspro.load()
-        ]).then(function() {
-          document.documentElement.classList.add("fonts-loaded");
-        });
-      };
-
-      document.head.appendChild(script);
-    })();
-
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());

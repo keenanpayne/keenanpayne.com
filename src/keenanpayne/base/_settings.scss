@@ -12,8 +12,8 @@ $font-size-secondary: 18;
 $letter-spacing: 0.05em;
 
 // Font families
-$font-primary: "Helvetica", "Arial", sans-serif;
-$font-secondary: "Cambria", "Times New Roman", "Times", serif;
+$font-primary: "source-sans-pro", sans-serif;
+$font-secondary: 'Inter var', sans-serif;
 $font-mono: "Consolas", monospace;
 $font-print-primary: "Georgia", "Times New Roman", "Times", serif;
 $font-print-secondary: "Georgia", "Times New Roman", "Times", serif;
@@ -94,7 +94,7 @@ $enable-grid: true;
 $full-grid: false;
 
 // Max width for container
-$container-width: 1600px;
+$container-width: 1260px;
 $container-width-narrow: 1020px;
 $container-width-narrower: 768px;
 
@@ -137,7 +137,8 @@ $colors: (
   background: (
     "dark":  #32373d,
     "light": #fffbf1,
-    "body":  #ffffff
+    "body":  #ffffff,
+    "masthead": #f3f3f3
   ),
 
   social: (
