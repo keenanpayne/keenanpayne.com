@@ -78,9 +78,13 @@ a {
 
   // Modifiers
   &.-cta {
-    color: getColor(base, splash);
+    box-shadow: inset 0 -3px 0 0 getColor(base, splash);
+    transition: box-shadow $transition-duration;
 
-    &:hover { color: getColor(base, splash-hover); }
+    &:hover {
+      box-shadow: inset 0 -0.5em 0 0 getColor(base, splash);
+      text-decoration: none;
+    }
   }
 
   &.-arrow {
@@ -109,6 +113,15 @@ h1, h2, h3, h4 {
   }
 
   // Modifiers
+  &.-xl {
+    font-weight: 730;
+
+    @media (--large) {
+      font-size: typeScale(9);
+      letter-spacing: -.035em;
+    }
+  }
+
   &.-secondary { color: getColor(text, secondary); }
 
   &.-bottom-border {
@@ -128,46 +141,26 @@ h1, h2, h3, h4 {
 
 h1 {
   font-size: typeScale(7);
+  letter-spacing: -.04em;
   margin-bottom: $spacing-s;
 
   @media (--medium) {
-    letter-spacing: -.025rem;
-    font-size: typeScale(8.5);
-  }
-
-  @media (--extra-large) {
-    letter-spacing: -.05rem;
-    font-size: typeScale(10);
+    font-size: typeScale(9);
   }
 }
 
 h2 {
-  letter-spacing: -.01rem;
+  letter-spacing: -.02em;
   margin-bottom: $spacing-xs;
   margin-top: $spacing-s;
   font-size: typeScale(6);
-
-  @media (--medium) {
-    letter-spacing: -.025rem;
-    font-size: typeScale(7);
-  }
-
-  // Modifiers
-  &.-xl {
-    font-weight: 730;
-    letter-spacing: -.025em;
-
-    @media (--extra-large) {
-      font-size: typeScale(9);
-    }
-  }
 }
 
 h3 {
   font-variant: all-small-caps;
   line-height: 1.1;
   margin-bottom: $block-margin;
-  margin-top: $spacing-l;
+  margin-top: $spacing-m;
 }
 
 h4,
@@ -204,7 +197,7 @@ blockquote {
 code {
   background-color: (background, light);
   border: 1px solid getColor(base, lines);
-  padding: .1rem .5rem;
+  padding: .1em .4em;
 }
 
 
