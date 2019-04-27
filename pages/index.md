@@ -45,10 +45,4 @@ projects:
         image: "homepage/concise"
         tags:
           - name: "Open Source"
-      - title: "Flexicution"
-        description: '<a href="http://keenanpayne.com/flexicution/" title="Flexicution">Flexicution</a> is a flexbox grid system that is agnostic in regards to layout and breakpoints. You can use mixins to generate rows and columns for your layout and components, or you can generate responsive class names based on the breakpoints used in your project.'
-        url: "http://keenanpayne.com/flexicution/"
-        image: "homepage/flexicution"
-        tags:
-          - name: "Open Source"
 ---

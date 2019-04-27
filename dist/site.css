@@ -1402,22 +1402,24 @@ a.reversefootnote {
 .portfolioList-heading:first-of-type {
   margin-top: 0; }
 
-.project:not(:last-of-type) {
-  margin-bottom: calc(3.1rem + .2vw); }
+.projects {
+  display: -ms-grid;
+  display: grid;
+  grid-column-gap: calc(3.1rem + .2vw);
+  -ms-grid-columns: (minmax(300px, 1fr))[3];
+      grid-template-columns: repeat(3, minmax(300px, 1fr));
+  overflow-x: scroll; }
 
-.project-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto; }
-  @media (max-width: 767px) {
-    .project-image {
-      margin-bottom: calc(1.55rem + .2vw); } }
+.project img {
+  margin-top: 0; }
 
-@media (max-width: 767px) {
-  .project-text {
-    margin-left: calc(1.55rem + .2vw);
-    margin-right: calc(1.55rem + .2vw);
-    margin-top: calc(1.55rem + .2vw); } }
+.project-text {
+  margin-left: calc(0.775rem + .2vw);
+  margin-right: calc(0.775rem + .2vw);
+  margin-top: calc(1.55rem + .2vw); }
+  @media (min-width: 960px) {
+    .project-text {
+      font-size: 0.83333rem; } }
 
 .promo {
   border: 2px solid #FE4365;
@@ -1446,7 +1448,7 @@ a.reversefootnote {
     vertical-align: middle; }
 
 .sectionHeading {
-  border-bottom: 1px solid #2f2f2f;
+  border-bottom: 2px solid #2f2f2f;
   font-weight: 600;
   margin-bottom: calc(1.55rem + .2vw);
   padding-bottom: .25rem;

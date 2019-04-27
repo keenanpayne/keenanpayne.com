@@ -2,26 +2,25 @@
 // Projects
 // ==================================================
 
-.project {
-  &:not(:last-of-type) {
-    margin-bottom: $spacing-m;
-  }
+.projects {
+  display: grid;
+  grid-column-gap: $spacing-m;
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+  overflow-x: scroll;
 }
 
-.project-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-  @media (--medium-max) {
-    margin-bottom: $spacing-s;
+.project { 
+  img { 
+    margin-top: 0;
   }
 }
 
 .project-text {
-  @media (--medium-max) {
-    margin-left: $spacing-s;
-    margin-right: $spacing-s;
-    margin-top: $spacing-s;
+  margin-left: $spacing-xs;
+  margin-right: $spacing-xs;
+  margin-top: $spacing-s;
+
+  @media (--large) { 
+    font-size: typeScale(1);
   }
 }
