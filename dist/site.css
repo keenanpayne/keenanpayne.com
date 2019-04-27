@@ -1237,16 +1237,6 @@ table {
   .wufoo {
     margin-top: calc(3.1rem + .2vw); } }
 
-.contentBox {
-  padding-left: calc(1.55rem + .2vw);
-  padding-right: calc(1.55rem + .2vw); }
-  @media (max-width: 767px) {
-    .contentBox:not(:first-child) {
-      margin-top: calc(3.1rem + .2vw); } }
-
-.contentBox-title {
-  margin-top: 0; }
-
 .footnotes {
   border-top: 1px solid #e0e0e0;
   margin-top: calc(1.55rem + .2vw);
@@ -1278,26 +1268,6 @@ a.reversefootnote {
   .footnote:hover {
     color: #666;
     text-decoration: none; }
-
-.labs.-top-margin {
-  margin-top: calc(6.2rem + .2vw); }
-
-@media (max-width: 767px) {
-  .labs-lab {
-    margin-bottom: calc(1.55rem + .2vw); } }
-
-.labs-lab iframe {
-  height: 450px; }
-  @media (min-width: 768px) {
-    .labs-lab iframe {
-      height: 550px; } }
-  @media (min-width: 1440px) {
-    .labs-lab iframe {
-      height: 650px; } }
-
-.lab-codepen {
-  margin-top: 1.55rem;
-  text-align: center; }
 
 .largeCta {
   background-color: #fffbf1;
