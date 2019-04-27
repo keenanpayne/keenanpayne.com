@@ -1,5 +1,5 @@
 {% if page.projects %}
-  <section container>
+  <section class="_sectionSpacing-full" container>
     {% for section in page.projects %}
       <header>
         {% if section.title %}
@@ -15,7 +15,7 @@
         {% for project in section.items %}
           <div class="project">
             {% if project.image %}
-              <figure>
+              <figure class="project-image">
                 {% if project.url %}
                   <a href="{{ project.url }}" title="{{ project.title }}">
                 {% endif %}

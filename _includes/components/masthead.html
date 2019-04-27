@@ -1,17 +1,15 @@
 {% if page.masthead %}
-  <section class="masthead {% if page.masthead_center %}-center{% endif %}">
-    <div container>
-      {% if page.masthead %}
-        <{% if page.url == "/index.html" %}h2{% else %}h1{% endif %} class="{% if page.masthead_subtitle %}-no-top-margin{% else %}-no-margin{% endif %} {% if page.url == "/index.html" %}-xl{% endif %}">
-          {{ page.masthead }}
-        </{% if page.url == "/index.html" %}h2{% else %}h1{% endif %}>
-      {% endif %}
+  <section class="masthead {% if page.masthead_center %}-center{% endif %}" container>
+    {% if page.masthead %}
+      <{% if page.url == "/index.html" %}h2{% else %}h1{% endif %} class="{% if page.masthead_subtitle %}-no-top-margin{% else %}-no-margin{% endif %} {% if page.url == "/index.html" %}-xl{% endif %}">
+        {{ page.masthead }}
+      </{% if page.url == "/index.html" %}h2{% else %}h1{% endif %}>
+    {% endif %}
 
-      {% if page.masthead_subtitle %}
-        <h4 class="-secondary">
-          {{ page.masthead_subtitle }}
-        </h4>
-      {% endif %}
-    </div>
+    {% if page.masthead_subtitle %}
+      <h4 class="-secondary">
+        {{ page.masthead_subtitle }}
+      </h4>
+    {% endif %}
   </section>
 {% endif %}

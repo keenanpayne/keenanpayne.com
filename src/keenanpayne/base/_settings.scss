@@ -20,7 +20,7 @@ $font-print-secondary: "Georgia", "Times New Roman", "Times", serif;
 
 // Enable margins to all the elements
 // except the first one in each nesting level
-$automargin: true;
+$automargin: false;
 
 // ^ How much margin for those elements
 $block-margin: 1lh;
@@ -48,6 +48,10 @@ $spacing-m:  calc(2lh + .2vw);
 $spacing-l:  calc(3lh + .2vw);
 $spacing-xl: calc(4lh + .2vw);
 $spacing-xxl: calc(5.5lh + .2vw);
+
+// Section spacing
+$spacing-section-half: 3rem;
+$spacing-section: 6rem;
 
 // Border radius
 $border-radius: 3px;

@@ -361,31 +361,6 @@ textarea,
 [hidden][aria-hidden="false"]:focus {
   clip: auto; }
 
-* {
-  margin: 0; }
-
-* + * {
-  margin-top: 1.55rem; }
-
-li,
-kbd,
-div,
-input,
-option,
-select,
-a,
-textarea,
-body,
-span,
-dd,
-code,
-label,
-[column] {
-  margin-top: 0; }
-
-h1 + p, h2 + p, h3 + p, h4 + p, h5 + p, h6 + p {
-  margin-top: 0; }
-
 h1 {
   font-size: 2.0736rem; }
 
@@ -1047,6 +1022,12 @@ tr {
           font-feature-settings: "ordn";
   font-variant-numeric: ordinal; }
 
+._sectionSpacing-full {
+  margin-top: 6rem; }
+
+._sectionSpacing-half {
+  margin-top: 3rem; }
+
 button, input[type="submit"],
 .button {
   background-color: #FE4365;
@@ -1335,29 +1316,10 @@ a.reversefootnote {
   margin-top: 0; }
 
 .masthead {
-  margin-left: 0;
-  padding-bottom: calc(4.65rem + .2vw);
-  padding-top: calc(4.65rem + .2vw); }
+  padding-bottom: 3rem;
+  padding-top: 3rem; }
   .masthead.-center {
     text-align: center; }
-  .masthead.-inverted {
-    background-color: black; }
-    .masthead.-inverted h2 {
-      color: white; }
-
-@media (min-width: 960px) {
-  .postList {
-    margin-top: calc(3.1rem + .2vw); } }
-
-.postList.-bottom-padding {
-  padding-bottom: calc(6.2rem + .2vw); }
-
-.postList.-bg-light {
-  background-color: #fffbf1;
-  border-bottom: 3px solid #FE4365;
-  border-top: 3px solid #FE4365;
-  padding-bottom: calc(6.2rem + .2vw);
-  padding-top: calc(6.2rem + .2vw); }
 
 .postList [container] {
   margin-right: 0; }
@@ -1406,12 +1368,12 @@ a.reversefootnote {
   display: -ms-grid;
   display: grid;
   grid-column-gap: calc(3.1rem + .2vw);
-  -ms-grid-columns: (minmax(300px, 1fr))[3];
-      grid-template-columns: repeat(3, minmax(300px, 1fr));
+  -ms-grid-columns: (minmax(250px, 1fr))[3];
+      grid-template-columns: repeat(3, minmax(250px, 1fr));
   overflow-x: scroll; }
 
-.project img {
-  margin-top: 0; }
+.project-image {
+  margin: 0; }
 
 .project-text {
   margin-left: calc(0.775rem + .2vw);

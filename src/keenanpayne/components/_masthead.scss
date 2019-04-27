@@ -3,16 +3,11 @@
 // ==================================================
 
 .masthead {
-  margin-left: 0;
-  padding-bottom: $spacing-l;
-  padding-top: $spacing-l;
+  padding-bottom: $spacing-section-half;
+  padding-top: $spacing-section-half;
 
   // Modifiers
-  &.-center { text-align: center; }
-
-  &.-inverted {
-    background-color: black;
-
-    h2 { color: white; }
+  &.-center { 
+    text-align: center; 
   }
 }
