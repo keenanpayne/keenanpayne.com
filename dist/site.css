@@ -82,10 +82,10 @@ pre {
 
 kbd {
   background-color: transparent;
-  outline: 1px solid #2f2f2f; }
+  outline: 1px solid #e0e0e0; }
 
 hr {
-  background-color: #2f2f2f;
+  background-color: #e0e0e0;
   height: 1px;
   overflow: visible;
   border: 0; }
@@ -116,7 +116,7 @@ abbr {
           font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "smcp" 1, "c2sc" 1;
   text-transform: uppercase; }
   abbr[title] {
-    border-bottom: 1px solid #2f2f2f;
+    border-bottom: 1px solid #e0e0e0;
     cursor: help;
     text-decoration: none; }
 
@@ -228,7 +228,7 @@ html [type="button"],
   outline: 1px dotted ButtonText; }
 
 fieldset {
-  border: 1px solid #2f2f2f;
+  border: 1px solid #e0e0e0;
   padding: 1.55rem 1em; }
 
 legend {
@@ -277,15 +277,15 @@ input[type="range"] {
   input[type="range"]:focus {
     outline: none; }
   input[type="range"]::-moz-range-track{
-  background-color: #2f2f2f;
+  background-color: #e0e0e0;
   border: none;
   height: 0.31rem; }
   input[type="range"]::-ms-track{
-  background-color: #2f2f2f;
+  background-color: #e0e0e0;
   border: none;
   height: 0.31rem; }
   input[type="range"]::-webkit-slider-runnable-track{
-  background-color: #2f2f2f;
+  background-color: #e0e0e0;
   border: none;
   height: 0.31rem; }
   input[type="range"]::-moz-range-thumb{
@@ -439,7 +439,7 @@ textarea {
 input:not([type="submit"]):not([type="range"]),
 select,
 textarea {
-  border: 1px solid #2f2f2f;
+  border: 1px solid #e0e0e0;
   padding: 0 0.75em; }
 
 input[type="checkbox"],
@@ -804,7 +804,7 @@ table {
   pre,
   code {
     background-color: transparent;
-    border: 1px solid #2f2f2f;
+    border: 1px solid #e0e0e0;
     page-break-inside: avoid; }
   blockquote {
     border: none;
@@ -839,8 +839,10 @@ table {
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale; } }
 
-body.-no-scroll {
-  overflow: hidden; }
+body {
+  margin: 0; }
+  body.-no-scroll {
+    overflow: hidden; }
 
 main {
   margin-top: 0; }
@@ -860,6 +862,7 @@ img {
   max-width: 768px; }
 
 p {
+  margin-top: 0;
   -webkit-font-variant-ligatures: normal;
           font-variant-ligatures: normal; }
   p.-secondary, p.-content-heading {
@@ -929,7 +932,7 @@ h1, h2, h3, h4 {
   h1.-secondary, h2.-secondary, h3.-secondary, h4.-secondary {
     color: #666; }
   h1.-bottom-border, h2.-bottom-border, h3.-bottom-border, h4.-bottom-border {
-    border-bottom: 2px solid #2f2f2f;
+    border-bottom: 2px solid #e0e0e0;
     padding-bottom: calc(0.775rem + .2vw); }
   h1.-no-margin, h2.-no-margin, h3.-no-margin, h4.-no-margin {
     margin-bottom: 0;
@@ -970,7 +973,7 @@ h4,
 
 blockquote {
   color: #666;
-  border-left: 5px solid #2f2f2f;
+  border-left: 5px solid #e0e0e0;
   font-style: italic;
   padding-bottom: calc(0.388rem + .2vw);
   padding-top: calc(0.388rem + .2vw);
@@ -980,7 +983,7 @@ blockquote {
 
 code {
   background-color: background, light;
-  border: 1px solid #2f2f2f;
+  border: 1px solid #e0e0e0;
   padding: .1em .4em; }
 
 table {
@@ -995,7 +998,7 @@ table {
     padding-top: calc(0.775rem + .2vw); }
 
 tr {
-  border-bottom: 1px solid #2f2f2f; }
+  border-bottom: 1px solid #e0e0e0; }
 
 .-small-caps {
   -webkit-font-feature-settings: "smcp";
@@ -1194,7 +1197,7 @@ button, input[type="submit"],
   top: calc(1.55rem + .2vw); }
 
 .siteFooter {
-  border-top: 2px solid #2f2f2f;
+  border-top: 1px solid #e0e0e0;
   font-size: 0.83333rem;
   margin-top: 0;
   padding-bottom: calc(0.775rem + .2vw);
@@ -1225,7 +1228,7 @@ table {
     background-color: transparent; }
   table th,
   table td {
-    border-right: 1px solid #2f2f2f; }
+    border-right: 1px solid #e0e0e0; }
 
 .comments {
   margin-top: calc(4.65rem + .2vw); }
@@ -1245,7 +1248,7 @@ table {
   margin-top: 0; }
 
 .footnotes {
-  border-top: 1px solid #2f2f2f;
+  border-top: 1px solid #e0e0e0;
   margin-top: calc(1.55rem + .2vw);
   padding-top: calc(1.55rem + .2vw); }
   .footnotes:before {
@@ -1410,7 +1413,7 @@ a.reversefootnote {
     vertical-align: middle; }
 
 .sectionHeading {
-  border-bottom: 2px solid #2f2f2f;
+  border-bottom: 2px solid #32373d;
   font-weight: 600;
   margin-bottom: calc(1.55rem + .2vw);
   padding-bottom: .25rem;
@@ -1465,8 +1468,8 @@ a.reversefootnote {
 
 .highlight {
   background-color: transparent;
-  border-bottom: 2px solid #2f2f2f;
-  border-top: 2px solid #2f2f2f;
+  border-bottom: 2px solid #e0e0e0;
+  border-top: 2px solid #e0e0e0;
   font-size: .875rem;
   line-height: 1.65;
   margin-bottom: calc(1.55rem + .2vw);

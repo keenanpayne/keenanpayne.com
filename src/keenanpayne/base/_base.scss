@@ -20,6 +20,8 @@
 }
 
 body {
+  margin: 0; 
+  
   // Modifiers
   &.-no-scroll { overflow: hidden; }
 }
