@@ -3,8 +3,6 @@
 // ==================================================
 
 .portfolioList {
-  margin-bottom: $spacing-m;
-
   @media (--small) {
     column-count: 2;
     column-gap: 2rem;
@@ -30,5 +28,7 @@
 
 // Remove top margin from first heading so it is flush
 .portfolioList-heading {
+  margin-top: $spacing-m;
+
   &:first-of-type { margin-top: 0; }
 }

@@ -2,15 +2,13 @@
 
   <footer class="siteFooter" role="complementary">
     <div container>
-      {% if page.url == "/index.html" %}
-        {% include components/social.html %}
-      {% endif %}
+      <div grid="center justify-between">
+        <p class="siteFooter-copy" column>
+          Copyright &copy; 2008 &ndash; {{ site.time | date: '%Y' }}
+        </p>
 
-      <div grid>
-        <p class="siteFooter-copy" column="4">Copyright &copy; 2008 &ndash; 2017</p>
-
-        <nav class="navHorizontal" role="navigation" column="8">
-          {% include atoms/navigation.html name="navHorizontal" extras="column" soundtrack="true" %}
+        <nav role="navigation" column>
+          {% include components/social.html %}
         </nav>
       </div>
     </div>
