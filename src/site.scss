@@ -26,9 +26,6 @@
 @import "keenanpayne/base/type";
 @import "keenanpayne/base/utilities";
 
-// Atoms
-@import "keenanpayne/atoms/buttons";
-
 // Globals
 @import "keenanpayne/globals/footer";
 @import "keenanpayne/globals/header";
@@ -36,22 +33,25 @@
 @import "keenanpayne/globals/navigation";
 @import "keenanpayne/globals/navigation-mobile";
 
-// Layout
-@import "keenanpayne/layouts/post";
-@import "keenanpayne/layouts/table";
-
 // Components
+@import "keenanpayne/components/buttons";
 @import "keenanpayne/components/contact";
 @import "keenanpayne/components/footnotes";
-@import "keenanpayne/components/large-cta";
-@import "keenanpayne/components/masthead";
-@import "keenanpayne/components/post-list";
-@import "keenanpayne/components/portfolio-list";
-@import "keenanpayne/components/projects";
-@import "keenanpayne/components/promo";
 @import "keenanpayne/components/reading-time";
 @import "keenanpayne/components/section-heading";
 @import "keenanpayne/components/social";
+
+// Planks
+@import "keenanpayne/planks/large-cta";
+@import "keenanpayne/planks/masthead";
+@import "keenanpayne/planks/post-list";
+@import "keenanpayne/planks/portfolio-list";
+@import "keenanpayne/planks/projects";
+@import "keenanpayne/planks/promo";
+
+// Layouts
+@import "keenanpayne/layouts/post";
+@import "keenanpayne/layouts/table";
 
 // Libraries
 @import "keenanpayne/libs/syntax";
