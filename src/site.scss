@@ -29,20 +29,21 @@
 // Atoms
 @import "keenanpayne/atoms/buttons";
 
+// Globals
+@import "keenanpayne/globals/footer";
+@import "keenanpayne/globals/header";
+@import "keenanpayne/globals/logo";
+@import "keenanpayne/globals/navigation";
+@import "keenanpayne/globals/navigation-mobile";
+
 // Layout
-@import "keenanpayne/layout/horizontal-nav";
-@import "keenanpayne/layout/post";
-@import "keenanpayne/layout/mobile-nav";
-@import "keenanpayne/layout/site-footer";
-@import "keenanpayne/layout/site-header";
-@import "keenanpayne/layout/table";
+@import "keenanpayne/layouts/post";
+@import "keenanpayne/layouts/table";
 
 // Components
-@import "keenanpayne/components/comments";
 @import "keenanpayne/components/contact";
 @import "keenanpayne/components/footnotes";
 @import "keenanpayne/components/large-cta";
-@import "keenanpayne/components/logo";
 @import "keenanpayne/components/masthead";
 @import "keenanpayne/components/post-list";
 @import "keenanpayne/components/portfolio-list";

@@ -22,8 +22,6 @@
 }
 
 .portfolioList-item {
-  margin-bottom: $spacing-s;
-
   @media (--medium) {
     break-inside: avoid;
     page-break-inside: avoid;

@@ -60,11 +60,18 @@
   }
 
   h2 {
-    .post-content-header-link svg { width: typeScale(3); }
+    margin-bottom: $spacing-xs;
+    margin-top: $spacing-s;
+    
+    .post-content-header-link svg { 
+      width: typeScale(3); 
+    }
   }
 
   h3 {
-    .post-content-header-link svg { width: typeScale(2); }
+    .post-content-header-link svg { 
+      width: typeScale(2); 
+    }
   }
 
   img {
@@ -83,6 +90,11 @@
       width: 140%;
     }
   }
+}
+
+// Comments
+.post-comments { 
+  margin-top: $spacing-l; 
 }
 
 
