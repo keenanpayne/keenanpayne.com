@@ -10,4 +10,10 @@
   &.-center { 
     text-align: center; 
   }
+
+  // Descendants
+  h1, h2 { 
+    margin-bottom: 0;
+    margin-top: 0;
+  }
 }

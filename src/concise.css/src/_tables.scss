@@ -1,0 +1,31 @@
+//
+// Tables
+// =============================================================================
+
+table {
+  width: 100%;
+
+  @media ($breakpoint) {
+    width: auto;
+  }
+
+  thead,
+  tfoot {
+    background-color: getColor(background, light);
+    text-align: left;
+  }
+
+  th,
+  td {
+    line-height: 1.5lh;
+    overflow: visible;
+    padding: 0 1em;
+  }
+
+  caption {
+    font-size: typeScale(1);
+    font-style: italic;
+    line-height: 2lh;
+    text-align: center;
+  }
+}

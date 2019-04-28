@@ -33,11 +33,6 @@ img {
   max-width: 100%;
 }
 
-[container] {
-  overflow: hidden;
-  width: 100%;
-}
-
 [container="narrow"] { max-width: $container-width-narrow; }
 
 [container="narrower"] { max-width: $container-width-narrower; }

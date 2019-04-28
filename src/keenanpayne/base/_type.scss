@@ -5,15 +5,13 @@
 //
 // Paragraphs
 // ----------
-
+//
 p {
   margin-top: 0;
   font-variant-ligatures: normal;
 
   // Modifiers
   &.-secondary { color: getColor(text, secondary); }
-
-  &.-no-top-margin { margin-top: 0; }
 
   &.-large { font-size: typeScale(4); }
 
@@ -67,14 +65,12 @@ a {
 
   &:hover {
     text-decoration: underline;
-    text-decoration-skip: ink;
   }
 
   // Links in paragraphs
   p & {
     font-weight: $fontWeight-normal;
     text-decoration: underline;
-    text-decoration-skip: ink;
   }
 
   // Modifiers
@@ -110,7 +106,6 @@ h1, h2, h3, h4 {
   a:hover {
     color: initial;
     text-decoration: underline;
-    text-decoration-skip: ink;
   }
 
   // Modifiers
@@ -129,15 +124,6 @@ h1, h2, h3, h4 {
     border-bottom: 2px solid getColor(base, lines);
     padding-bottom: $spacing-xs;
   }
-
-  &.-no-margin {
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-  &.-no-bottom-margin { margin-bottom: 0; }
-
-  &.-no-top-margin { margin-top: 0; }
 }
 
 h1 {

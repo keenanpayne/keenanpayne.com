@@ -5,7 +5,7 @@
 .projects {
   display: grid;
   grid-column-gap: $spacing-m;
-  grid-template-columns: repeat(3, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
   overflow-x: scroll;
 }
 
