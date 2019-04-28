@@ -5,7 +5,7 @@ navigation_weight: 0
 permalink: index.html
 
 ## Page Sections
-sections:
+planks:
   - name: 'masthead'
   - name: 'post-list'
   - name: 'projects'

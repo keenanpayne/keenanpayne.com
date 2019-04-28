@@ -5,7 +5,7 @@ navigation_weight: 4
 permalink: contact.html
 
 ## Page Sections
-sections:
+planks:
   - name: 'masthead'
 
 ## Masthead

@@ -7,7 +7,7 @@ narrow_container: true
 permalink: style-guide.html
 
 ## Page Sections
-sections:
+planks:
   - name: 'masthead'
 
 ## Masthead

@@ -5,7 +5,7 @@ navigation_weight: 2
 permalink: work.html
 
 ## Page Sections
-sections:
+planks:
   - name: 'masthead'
   - name: 'portfolio-list'
 

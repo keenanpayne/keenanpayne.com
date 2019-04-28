@@ -5,7 +5,7 @@ navigation_weight: 1
 permalink: blog.html
 
 ## Page Sections
-sections:
+planks:
   - name: 'masthead'
   - name: 'post-list'
 
