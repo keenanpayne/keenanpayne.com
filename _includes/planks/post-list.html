@@ -1,8 +1,4 @@
-{% if page.post_list_modifiers %}
-  {% capture modifiers %}
-    {{ page.post_list_modifiers }}
-  {% endcapture %}
-{% endif %}
+{% assign postcount = site.posts | size %}
 
 <section class="postList _sectionSpacing-half" container>
   <div container="narrower">
@@ -29,10 +25,12 @@
         </header>
       </article>
     {% endfor %}
-
-    {% if page.post_list_more %}
+    
+    {% if postcount > page.post_list_limit %}
       <div class="postList-more">
-        <a href="/blog.html" class="-cta -arrow" title="View all articles">View all articles</a>
+        <a href="/blog" class="-cta -arrow" title="View archive">
+          View archive
+        </a>
       </div>
     {% endif %}
   </div>

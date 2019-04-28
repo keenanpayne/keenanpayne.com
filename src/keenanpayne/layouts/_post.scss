@@ -18,7 +18,7 @@
 
 .post-header {
   max-width: 70rem;
-  padding-bottom: $spacing-m;
+  padding-bottom: $spacing-s;
 
   @media (--medium) {
     margin-left: auto;
@@ -69,6 +69,9 @@
   }
 
   h3 {
+    margin-bottom: $block-margin;
+    margin-top: $spacing-m;
+
     .post-content-header-link svg { 
       width: typeScale(2); 
     }

@@ -4,7 +4,7 @@ title: Home
 navigation_weight: 0
 permalink: index.html
 
-## Page Sections
+## Page Planks
 planks:
   - name: 'masthead'
   - name: 'post-list'
@@ -15,9 +15,8 @@ masthead: I'm a web developer at <a href="https://asana.com" class="-cta">Asana<
 masthead_center:
 
 ## Post List
-post_list_title: "Want my Two Cents?"
-post_list_more: true
-post_list_limit: 5
+post_list_title: "Latest ramblings"
+post_list_limit: 3
 
 ## Projects
 projects:

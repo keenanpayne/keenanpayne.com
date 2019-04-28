@@ -4,7 +4,7 @@ title: Contact
 navigation_weight: 4
 permalink: contact.html
 
-## Page Sections
+## Page Planks
 planks:
   - name: 'masthead'
 

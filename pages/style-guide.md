@@ -6,7 +6,7 @@ navigation_hide_header: true
 narrow_container: true
 permalink: style-guide.html
 
-## Page Sections
+## Page Planks
 planks:
   - name: 'masthead'
 

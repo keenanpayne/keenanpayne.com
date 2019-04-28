@@ -102,6 +102,7 @@ h1, h2, h3, h4, h5, h6 {
 h1, h2, h3, h4 {
   font-weight: 730;
   line-height: 1.2;
+  margin-top: 0;
 
   a:hover {
     color: initial;
@@ -145,18 +146,12 @@ h2 {
 h3 {
   font-variant: all-small-caps;
   line-height: 1.1;
-  margin-bottom: $block-margin;
-  margin-top: $spacing-m;
 }
 
 h4,
 .-h4 {
   font-size: typeScale(3);
-  font-style: italic;
-
-  @media (--small) {
-    font-size: typeScale(2);
-  }
+  font-weight: 350;
 }
 
 
