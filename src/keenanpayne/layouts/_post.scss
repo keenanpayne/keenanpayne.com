@@ -27,6 +27,10 @@
   }
 }
 
+.post-header-title { 
+  margin-bottom: $spacing-xs;
+}
+
 
 //
 // Content
@@ -37,6 +41,7 @@
   margin-right: auto;
   max-width: 43rem;
 
+  // Typography
   > p,
   > ol,
   > ul,
@@ -70,7 +75,7 @@
 
   h3 {
     margin-bottom: $block-margin;
-    margin-top: $spacing-m;
+    margin-top: $spacing-s;
 
     .post-content-header-link svg { 
       width: typeScale(2); 
@@ -92,6 +97,11 @@
       transform: translateX(-15%);
       width: 140%;
     }
+  }
+
+  // Descendants
+  .cp_embed_wrapper { 
+    margin-bottom: $spacing-xs;
   }
 }
 
