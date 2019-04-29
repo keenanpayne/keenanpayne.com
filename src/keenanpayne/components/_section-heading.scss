@@ -3,9 +3,11 @@
 // ==================================================
 
 .sectionHeading {
+  border-bottom: 2px solid getColor(base, linesDark);
   font-weight: $fontWeight-bold;
-  margin-bottom: $spacing-m;
-  text-align: center;
+  margin-bottom: $spacing-s;
+  padding-bottom: .25rem;
+  text-align: right;
 
   @media (--small-max) {
     font-size: typeScale(3);

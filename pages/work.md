@@ -4,8 +4,8 @@ title: Work
 navigation_weight: 2
 permalink: work.html
 
-## Page Sections
-sections:
+## Page Planks
+planks:
   - name: 'masthead'
   - name: 'portfolio-list'
 

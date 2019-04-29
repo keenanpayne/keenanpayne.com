@@ -1,19 +1,16 @@
 ---
 layout: personal
-title: Two Cents
+title: Blog
 navigation_weight: 1
 permalink: blog.html
 
-## Page Sections
-sections:
+## Page Planks
+planks:
   - name: 'masthead'
-  - name: 'post-list'
-
-## Post List
-post_list_modifiers: '-bottom-padding'
+  - name: 'post-archive'
 
 ## Masthead
-masthead: Two Cents
+masthead: Blog
 masthead_subtitle: A collection of thoughts, ramblings, and musings.
 masthead_center: true
 ---

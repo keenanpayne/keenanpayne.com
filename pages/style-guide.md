@@ -6,8 +6,8 @@ navigation_hide_header: true
 narrow_container: true
 permalink: style-guide.html
 
-## Page Sections
-sections:
+## Page Planks
+planks:
   - name: 'masthead'
 
 ## Masthead
@@ -21,7 +21,7 @@ masthead_center: true
   No complex components. Modifiers for atoms should be included.
 -->
 
-<h3 class="-bottom-border -no-top-margin">Typography</h3>
+<h3 class="-bottom-border">Typography</h3>
 
 {% include atoms/content-heading.html text="Headings" %}
 
@@ -37,8 +37,6 @@ Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), 
 [^1]: Footnote text goes here.
 
 <p class="-secondary">This is secondary text that shouldn't stand out as much.</p>
-
-<p class="-no-top-margin">This is a paragraph with no top margin.</p>
 
 <p class="-small">This is some small text.</p>
 

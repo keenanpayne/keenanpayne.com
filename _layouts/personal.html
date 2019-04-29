@@ -3,8 +3,8 @@ layout: default
 ---
 
 <main>
-  {% for section in page.sections %}
-    {% include components/{{ section.name }}.html %}
+  {% for plank in page.planks %}
+    {% include planks/{{ plank.name }}.html %}
   {% endfor %}
 
   <section container{% if page.narrow_container %}="narrow"{% endif %}>

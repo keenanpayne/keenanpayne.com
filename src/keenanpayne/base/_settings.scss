@@ -12,15 +12,15 @@ $font-size-secondary: 18;
 $letter-spacing: 0.05em;
 
 // Font families
-$font-primary: "Helvetica", "Arial", sans-serif;
-$font-secondary: "Cambria", "Times New Roman", "Times", serif;
+$font-primary: "source-sans-pro", sans-serif;
+$font-secondary: 'Inter var', sans-serif;
 $font-mono: "Consolas", monospace;
 $font-print-primary: "Georgia", "Times New Roman", "Times", serif;
 $font-print-secondary: "Georgia", "Times New Roman", "Times", serif;
 
 // Enable margins to all the elements
 // except the first one in each nesting level
-$automargin: true;
+$automargin: false;
 
 // ^ How much margin for those elements
 $block-margin: 1lh;
@@ -48,6 +48,10 @@ $spacing-m:  calc(2lh + .2vw);
 $spacing-l:  calc(3lh + .2vw);
 $spacing-xl: calc(4lh + .2vw);
 $spacing-xxl: calc(5.5lh + .2vw);
+
+// Section spacing
+$spacing-section-half: 3rem;
+$spacing-section: 6rem;
 
 // Border radius
 $border-radius: 3px;
@@ -94,7 +98,7 @@ $enable-grid: true;
 $full-grid: false;
 
 // Max width for container
-$container-width: 1600px;
+$container-width: 1260px;
 $container-width-narrow: 1020px;
 $container-width-narrower: 768px;
 
@@ -120,14 +124,14 @@ $colors: (
   base: (
     "primary":      #4d4d4d,
     "selection":    #EBE1D3,
-    "lines":        #f3ecdb,
+    "lines":        #e0e0e0,
     "linesDark":    #32373d,
     "splash":       #FE4365,
     "splash-hover": #f3012d
   ),
 
   text: (
-    "primary":   #333,
+    "primary":   #2f2f2f,
     "secondary": #666,
     "heading":   #333,
     "inverted":  #fff,
@@ -137,7 +141,8 @@ $colors: (
   background: (
     "dark":  #32373d,
     "light": #fffbf1,
-    "body":  #ffffff
+    "body":  #ffffff,
+    "masthead": #f3f3f3
   ),
 
   social: (

@@ -4,23 +4,19 @@ title: Home
 navigation_weight: 0
 permalink: index.html
 
-## Page Sections
-sections:
+## Page Planks
+planks:
   - name: 'masthead'
-  - name: 'projects'
   - name: 'post-list'
-  - name: 'labs'
-  #- name: 'post-list'
+  - name: 'projects'
 
 ## Masthead
 masthead: I'm a web developer at <a href="https://asana.com" class="-cta">Asana</a>. I like to write and build things in my spare time.
 masthead_center:
 
 ## Post List
-post_list_modifiers: '-top-margin -bg-light'
-post_list_title: "Want my Two Cents?"
-post_list_more: true
-post_list_limit: 1
+post_list_title: "Latest ramblings"
+post_list_limit: 3
 
 ## Projects
 projects:
@@ -48,17 +44,4 @@ projects:
         image: "homepage/concise"
         tags:
           - name: "Open Source"
-      - title: "Flexicution"
-        description: '<a href="http://keenanpayne.com/flexicution/" title="Flexicution">Flexicution</a> is a flexbox grid system that is agnostic in regards to layout and breakpoints. You can use mixins to generate rows and columns for your layout and components, or you can generate responsive class names based on the breakpoints used in your project.'
-        url: "http://keenanpayne.com/flexicution/"
-        image: "homepage/flexicution"
-        tags:
-          - name: "Open Source"
-
-## Labs
-labs:
-  - id: zmwPQo
-    title: Studio Ghibli scrolling film marquee
-    tab: result
-labs_modifiers: '-top-margin'
 ---

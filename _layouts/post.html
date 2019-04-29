@@ -6,7 +6,7 @@ comments: true
 <section container>
   <article class="post" grid="column">
     <header class="post-header" column>
-      <h1>
+      <h1 class="post-header-title">
         {{ page.title|smartify }}
       </h1>
 
@@ -22,7 +22,7 @@ comments: true
 
       {% include components/promo.html %}
 
-      {% include components/comments.html %}
+      <aside class="post-comments" id="disqus_thread"></aside>
     </div>
   </article>
 </section>

@@ -1,0 +1,55 @@
+//
+// Horizontal Navigation
+// ==================================================
+
+.navHorizontal {
+  margin-top: 0;
+  text-align: right;
+
+  a {
+    opacity: .65;
+    text-decoration: none;
+    transition: opacity $transition-duration-med;
+
+    &:hover { opacity: 1; }
+
+    &.-is-active {
+      color: getColor(text, activeLink);
+      opacity: 1;
+    }
+  }
+}
+
+.navHorizontal-item {
+  display: inline-block;
+  margin-bottom: 0 !important;
+
+  @media (--medium) {
+    font-size: typeScale(1);
+  }
+
+  &:not(:last-of-type) {
+    margin-right: $spacing-s;
+  }
+
+  &:not(.-mobile) {
+    @media (--medium-max) {
+      display: none;
+    }
+  }
+
+  // Modifiers
+  &.-mobile {
+    margin-right: 0;
+
+    @media (--medium) {
+      display: none;
+    }
+  }
+
+  &.-soundtrack {
+    fill-opacity: .5;
+
+    &:hover { fill-opacity: 1; }
+  }
+}

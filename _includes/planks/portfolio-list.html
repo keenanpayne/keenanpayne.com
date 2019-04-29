@@ -1,0 +1,25 @@
+<section class="portfolioList" container>
+  {% for section in page.portfolioList %}
+    {% if section.title %}
+  	 <h3 class="portfolioList-heading">
+       {{ section.title|smartify }}
+     </h3>
+    {% endif %}
+
+    {% for item in section.items %}
+    	<div class="portfolioList-item">
+        {% if item.title %}
+          <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">
+            {{ item.title|smartify }}
+          </a>
+        {% endif %}
+
+        {% if item.description %}
+    		  <p class="-small">
+            {{ item.description|smartify }}
+          </p>
+        {% endif %}
+    	</div>
+    {% endfor %}
+  {% endfor %}
+</section>

@@ -1,0 +1,41 @@
+{% if page.projects %}
+  <section class="_sectionSpacing-full" container>
+    {% for section in page.projects %}
+      <header>
+        {% if section.title %}
+          {% capture title %}
+            {{ section.title }}
+          {% endcapture %}
+
+          {% include components/section-heading.html content=title %}
+        {% endif %}
+      </header>
+
+      <div class="projects">
+        {% for project in section.items %}
+          <div class="project">
+            {% if project.image %}
+              <figure class="project-image">
+                {% if project.url %}
+                  <a href="{{ project.url }}" title="{{ project.title }}">
+                {% endif %}
+
+                {% if project.image %}
+                  {% include atoms/picture.html src=project.image alt=project.title %}
+                {% endif %}
+
+                {% if project.url %}
+                  </a>
+                {% endif %}
+              </figure>
+            {% endif %}
+
+            {% if project.description %}
+              <p class="project-text">{{ project.description }}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </section>
+{% endif %}

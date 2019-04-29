@@ -1,0 +1,29 @@
+  {% include components/large-cta.html %}
+
+  <footer class="siteFooter" role="complementary">
+    <div container>
+      <div grid="center justify-between">
+        <p class="siteFooter-copy" column>
+          Copyright &copy; 2008 &ndash; {{ site.time | date: '%Y' }}
+        </p>
+
+        <nav role="navigation" column>
+          {% include components/social.html %}
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+  <script src="/js/site.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23449205-4"></script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23449205-4');
+  </script>
+</body>
+</html>

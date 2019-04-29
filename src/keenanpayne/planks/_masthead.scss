@@ -1,0 +1,17 @@
+//
+// Masthead
+// ==================================================
+
+.masthead {
+  padding-bottom: $spacing-section-half;
+  padding-top: $spacing-section-half;
+
+  // Modifiers
+  &.-center { 
+    text-align: center; 
+  }
+}
+
+.masthead-subhead { 
+  margin-top: $spacing-xs;
+}

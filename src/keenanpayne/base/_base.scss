@@ -20,6 +20,8 @@
 }
 
 body {
+  margin: 0; 
+  
   // Modifiers
   &.-no-scroll { overflow: hidden; }
 }
@@ -29,11 +31,6 @@ main { margin-top: 0; }
 img {
   height: auto;
   max-width: 100%;
-}
-
-[container] {
-  overflow: hidden;
-  width: 100%;
 }
 
 [container="narrow"] { max-width: $container-width-narrow; }

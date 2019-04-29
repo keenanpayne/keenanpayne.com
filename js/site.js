@@ -60,7 +60,7 @@
      */
     loadDisqus: function() {
       // Load when comments are scrolled to
-      var $comments = $('.comments');
+      var $comments = $('.post-comments');
 
       if (!disqusLoaded && $comments.length !== 0) {
         var commentsOffset = $comments.offset().top;

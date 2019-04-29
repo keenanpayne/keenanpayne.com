@@ -1,0 +1,25 @@
+//
+// Promo
+// ==================================================
+
+.promo {
+  border: 2px solid getColor(base, splash);
+  box-shadow: 4px 4px 0 rgba(254,67,101,.3), 8px 8px 0 rgba(254,67,101,.4), 12px 12px 0 rgba(254,67,101,.5);
+  color: getColor(base, splash);
+  display: block;
+  font-size: typeScale(1);
+  font-weight: $fontWeight-bold;
+  margin-top: $spacing-m;
+  opacity: .85;
+  padding: $spacing-xs;
+  text-align: center;
+  transition: all $transition-duration-long;
+
+  &:hover {
+    background-color: getColor(base, splash);
+    box-shadow: 5px 5px 0 rgba(254,67,101,.3), 10px 10px 0 rgba(254,67,101,.4), 15px 15px 0 rgba(254,67,101,.5);
+    color: white;
+    opacity: 1;
+    text-decoration: none;
+  }
+}

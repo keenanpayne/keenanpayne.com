@@ -1,0 +1,16 @@
+//
+// Site Header
+// ==================================================
+
+.siteHeader {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: $spacing-s;
+  padding-top: $spacing-s;
+
+  .siteHeader-hiddenLink {
+    display: none;
+    visibility: hidden;
+  }
+}

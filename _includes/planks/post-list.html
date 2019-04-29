@@ -1,0 +1,37 @@
+{% assign postcount = site.posts | size %}
+
+<section class="postList _sectionSpacing-half" container>
+  <div container="narrower">
+    {% if page.post_list_title %}
+      {% capture title %}
+        {{ page.post_list_title }}
+      {% endcapture %}
+
+      {% include components/section-heading.html content=title %}
+    {% endif %}
+
+    {% for post in site.posts limit:page.post_list_limit %}
+      <article class="postList-article">
+        <header>
+          <h3 class="postList-title">
+            <a href="{{ post.url }}" title="{{ post.title }}">
+              {{ post.title|smartify }}
+            </a>
+          </h3>
+
+          <p class="-secondary -small-heading">
+            {{ post.date | date: "%B %e, %Y" }}
+          </p>
+        </header>
+      </article>
+    {% endfor %}
+    
+    {% if postcount > page.post_list_limit %}
+      <div class="postList-more">
+        <a href="/blog" class="-cta -arrow" title="View archive">
+          View archive
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>

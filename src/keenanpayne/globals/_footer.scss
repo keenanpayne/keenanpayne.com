@@ -1,0 +1,16 @@
+//
+// Site Footer
+// ==================================================
+
+.siteFooter {
+  border-top: 1px solid getColor(base, lines);
+  font-size: typeScale(1);
+  margin-top: 0;
+  padding-bottom: $spacing-xs;
+  padding-top: $spacing-xs;
+}
+
+.siteFooter-copy { 
+  font-size: typeScale(1); 
+  margin-bottom: 0;
+}

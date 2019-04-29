@@ -1,0 +1,129 @@
+//
+// Post
+// ==================================================
+
+//
+// Container
+// ---------
+
+.post {
+  padding-bottom: $spacing-s;
+  padding-top: $spacing-s;
+}
+
+
+//
+// Header
+// ------
+
+.post-header {
+  max-width: 70rem;
+  padding-bottom: $spacing-s;
+
+  @media (--medium) {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
+.post-header-title { 
+  margin-bottom: $spacing-xs;
+}
+
+
+//
+// Content
+// -------
+
+.post-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 43rem;
+
+  // Typography
+  > p,
+  > ol,
+  > ul,
+  > h1,
+  > h2,
+  > h3,
+  > blockquote {
+    @media (--medium) {
+      margin-left: $spacing-m;
+      margin-right: $spacing-m;
+    }
+  }
+
+  h1, h2, h3 {
+    position: relative;
+
+    // Display anchor on header hover
+    &:hover {
+      .post-content-header-link { opacity: .75; }
+    }
+  }
+
+  h2 {
+    margin-bottom: $spacing-xs;
+    margin-top: $spacing-s;
+    
+    .post-content-header-link svg { 
+      width: typeScale(3); 
+    }
+  }
+
+  h3 {
+    margin-bottom: $block-margin;
+    margin-top: $spacing-s;
+
+    .post-content-header-link svg { 
+      width: typeScale(2); 
+    }
+  }
+
+  img {
+    padding-bottom: $spacing-xxs;
+    padding-top: $spacing-xxs;
+
+    @media (--medium) {
+      max-width: none;
+      transform: translateX(-11%);
+      width: 130%;
+    }
+
+    @media (--large) {
+      max-width: none;
+      transform: translateX(-15%);
+      width: 140%;
+    }
+  }
+
+  // Descendants
+  .cp_embed_wrapper { 
+    margin-bottom: $spacing-xs;
+  }
+}
+
+// Comments
+.post-comments { 
+  margin-top: $spacing-l; 
+}
+
+
+//
+// Heading Anchor
+// --------------
+
+.post-content-header-link {
+  margin-left: .1lh;
+  opacity: 0;
+  transition: opacity $transition-duration;
+  vertical-align: text-top;
+
+  &:hover,
+  &:active {
+    opacity: 1;
+    text-decoration: none;
+  }
+}
