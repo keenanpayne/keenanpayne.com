@@ -110,7 +110,7 @@ portfolioList:
     items:
       - title: "Flexicution"
         description: "Yet another grid system based on Flexbox. Agnostic, easy-to-use, customizable."
-        url: "http://keenanpayne.com/flexicution/"
+        url: "https://keenanpayne.github.io/flexicution/"
       - title: "concise.css"
         description: "Concise is a lightweight front-end framework that I built with the help of my friend <a href='http://jameskolce.com/' title='James Kolce' target='_blank'>James Kolce</a>"
         url: "https://github.com/ConciseCSS/concise.css"

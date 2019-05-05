@@ -57,19 +57,14 @@
 	  {% endfor %}
 	{% endif %}
 
-	{% if page.layout == 'flexicution' %}
-		<meta name="description" content="{{ site.flex_meta_description }}"/>
-		<title>{{ site.flex_meta_title }}</title>
-	{% else %}
-		<meta name="description" content="{{ site.meta_description }}"/>
-		<title>
-			{% if page.title == "Home" %}
-				{{ site.meta_title }} | {{ site.meta_tagline }}
-			{% else %}
-				{{ page.title|smartify }} | {{ site.meta_title }}
-			{% endif %}
-		</title>
-	{% endif %}
+	<meta name="description" content="{{ site.meta_description }}"/>
+	<title>
+		{% if page.title == "Home" %}
+			{{ site.meta_title }} | {{ site.meta_tagline }}
+		{% else %}
+			{{ page.title|smartify }} | {{ site.meta_title }}
+		{% endif %}
+	</title>
 
   <link rel="canonical" href="{{ site.link }}{{ page.url }}">
 
