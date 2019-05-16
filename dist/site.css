@@ -842,6 +842,7 @@ li:not(:last-child) {
   margin-bottom: calc(0.232rem + .1vw); }
 
 a {
+  color: #2f2f2f;
   cursor: pointer; }
   a:hover {
     text-decoration: underline; }
@@ -987,9 +988,9 @@ tr {
     visibility: hidden; }
 
 .logo {
-  font-size: 1.44rem;
-  font-weight: 690;
-  letter-spacing: -.055em;
+  font-size: 1.2rem;
+  font-weight: 420;
+  letter-spacing: -.042em;
   margin-bottom: 0;
   margin-top: 0; }
 
