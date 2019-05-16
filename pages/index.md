@@ -12,7 +12,7 @@ planks:
 
 ## Masthead
 masthead: I'm Keenan
-masthead_subtitle: I'm currently a web developer at <a href="https://asana.com" class="-cta">Asana</a>. I have been freelancing for a decade. This is my corner of the internet where I like to write and play. 
+masthead_subtitle: By day, I'm a web developer at <a href="https://asana.com" class="-cta">Asana</a>. By night, I'm a freelancer helping businesses succeed on the web. <small>Welcome to my little corner of the internet</small>
 masthead_center:
 
 ## Post List

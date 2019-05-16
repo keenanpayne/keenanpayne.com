@@ -2,7 +2,7 @@
   <section class="masthead {% if page.masthead_center %}-center{% endif %}" container>
     {% if page.url == "/index.html" %}
       <span class="masthead-hello">
-        Hi,
+        Hey there
       </span>
     {% endif %}
 
@@ -13,7 +13,7 @@
     {% endif %}
 
     {% if page.masthead_subtitle %}
-      <h4 class="masthead-subhead -secondary {% if page.url == "/index.html" %}-narrow{% endif %}">
+      <h4 class="masthead-subhead -secondary {% if page.url == "/index.html" %}-homepage{% endif %}">
         {{ page.masthead_subtitle }}
       </h4>
     {% endif %}

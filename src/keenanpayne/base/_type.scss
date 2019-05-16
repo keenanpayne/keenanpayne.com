@@ -3,6 +3,25 @@
 // ==================================================
 
 //
+// Global
+// ------
+
+:root { 
+  line-height: 1.45;
+  text-rendering: optimizeLegibility;
+
+  @media (--small) {
+    font-size: calc(#{$font-size}px + .35vw);
+  }
+
+  @media screen and (-webkit-min-device-pixel-ratio: 2),
+         screen and (min-resolution: 2dppx) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+//
 // Paragraphs
 // ----------
 //
@@ -76,11 +95,11 @@ a {
 
   // Modifiers
   &.-cta {
-    box-shadow: inset 0 -3px 0 0 getColor(base, splash);
+    box-shadow: inset 0 -.1em 0 0 getColor(base, splash);
     transition: box-shadow $transition-duration;
 
     &:hover {
-      box-shadow: inset 0 -0.5em 0 0 getColor(base, splash);
+      box-shadow: inset 0 -0.45em 0 0 getColor(base, splash);
       text-decoration: none;
     }
   }
@@ -153,7 +172,7 @@ h4,
 .-h4 {
   font-size: typeScale(3);
   font-weight: 350;
-  line-height: 1.25;
+  line-height: 1.3;
 }
 
 

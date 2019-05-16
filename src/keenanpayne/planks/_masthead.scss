@@ -3,8 +3,10 @@
 // ==================================================
 
 .masthead {
-  padding-bottom: $spacing-section;
-  padding-top: $spacing-section;
+  overflow: visible;
+  margin-bottom: $spacing-section;
+  margin-top: $spacing-section;
+  position: relative;
 
   // Modifiers
   &.-center { 
@@ -14,7 +16,26 @@
 
 .masthead-subhead { 
   // Modifiers
-  &.-narrow { 
+  &.-homepage { 
+    margin-bottom: 0;
     max-width: 70%;
+    padding-bottom: .4rem;
+
+    small { 
+      display: block;
+      margin-top: .5rem;
+    }
   }
+}
+
+.masthead-hello { 
+  border-right: 2px solid getColor(base, linesDark);
+  height: 100%;
+  left: -2rem;
+  line-height: 1;
+  padding-right: .5rem;
+  position: absolute;
+  text-indent: 16px;
+  top: 0;
+  writing-mode: vertical-rl;
 }
