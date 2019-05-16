@@ -11,12 +11,13 @@ planks:
   - name: 'projects'
 
 ## Masthead
-masthead: I'm a web developer at <a href="https://asana.com" class="-cta">Asana</a>. I like to write and build things in my spare time.
+masthead: I'm Keenan
+masthead_subtitle: I'm currently a web developer at <a href="https://asana.com" class="-cta">Asana</a>. I have been freelancing for a decade. This is my corner of the internet where I like to write and play. 
 masthead_center:
 
 ## Post List
 post_list_title: "Latest ramblings"
-post_list_limit: 3
+post_list_limit: 3 
 
 ## Projects
 projects:

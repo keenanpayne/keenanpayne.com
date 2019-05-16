@@ -3,8 +3,8 @@
 // ==================================================
 
 .masthead {
-  padding-bottom: $spacing-section-half;
-  padding-top: $spacing-section-half;
+  padding-bottom: $spacing-section;
+  padding-top: $spacing-section;
 
   // Modifiers
   &.-center { 
@@ -13,5 +13,8 @@
 }
 
 .masthead-subhead { 
-  margin-top: $spacing-xs;
+  // Modifiers
+  &.-narrow { 
+    max-width: 70%;
+  }
 }

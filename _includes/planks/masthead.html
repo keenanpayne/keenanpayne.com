@@ -1,13 +1,19 @@
 {% if page.masthead %}
   <section class="masthead {% if page.masthead_center %}-center{% endif %}" container>
+    {% if page.url == "/index.html" %}
+      <span class="masthead-hello">
+        Hi,
+      </span>
+    {% endif %}
+
     {% if page.masthead %}
-      <{% if page.url == "/index.html" %}h2{% else %}h1{% endif %} class="{% if page.url == "/index.html" %}-xl{% endif %}">
+      <h1 class="{% if page.url == "/index.html" %}-xl{% endif %}">
         {{ page.masthead }}
-      </{% if page.url == "/index.html" %}h2{% else %}h1{% endif %}>
+      </h1>
     {% endif %}
 
     {% if page.masthead_subtitle %}
-      <h4 class="masthead-subhead -secondary">
+      <h4 class="masthead-subhead -secondary {% if page.url == "/index.html" %}-narrow{% endif %}">
         {{ page.masthead_subtitle }}
       </h4>
     {% endif %}

@@ -512,7 +512,7 @@ table {
 [container] {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1260px;
+  max-width: 1080px;
   padding-left: 1rem;
   padding-right: 1rem;
   overflow: auto; }
@@ -813,12 +813,6 @@ img {
   height: auto;
   max-width: 100%; }
 
-[container="narrow"] {
-  max-width: 1020px; }
-
-[container="narrower"] {
-  max-width: 768px; }
-
 p {
   margin-top: 0;
   -webkit-font-variant-ligatures: normal;
@@ -906,7 +900,8 @@ h3 {
 h4,
 .-h4 {
   font-size: 1.2rem;
-  font-weight: 350; }
+  font-weight: 350;
+  line-height: 1.25; }
 
 blockquote {
   color: #666;
@@ -986,14 +981,13 @@ tr {
   display: flex;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  padding-bottom: calc(1.55rem + .2vw);
-  padding-top: calc(1.55rem + .2vw); }
+  padding-top: calc(0.775rem + .2vw); }
   .siteHeader .siteHeader-hiddenLink {
     display: none;
     visibility: hidden; }
 
 .logo {
-  font-size: 1.728rem;
+  font-size: 1.44rem;
   font-weight: 690;
   letter-spacing: -.055em;
   margin-bottom: 0;
@@ -1212,13 +1206,13 @@ a.reversefootnote {
   margin-top: 1.55rem; }
 
 .masthead {
-  padding-bottom: 3rem;
-  padding-top: 3rem; }
+  padding-bottom: 6rem;
+  padding-top: 6rem; }
   .masthead.-center {
     text-align: center; }
 
-.masthead-subhead {
-  margin-top: calc(0.775rem + .2vw); }
+.masthead-subhead.-narrow {
+  max-width: 70%; }
 
 .postList [container] {
   margin-right: 0; }
@@ -1295,7 +1289,9 @@ a.reversefootnote {
 
 .post-header {
   max-width: 70rem;
-  padding-bottom: calc(1.55rem + .2vw); }
+  padding-bottom: calc(1.55rem + .2vw);
+  padding-left: 0;
+  padding-right: 0; }
   @media (min-width: 768px) {
     .post-header {
       margin-left: auto;

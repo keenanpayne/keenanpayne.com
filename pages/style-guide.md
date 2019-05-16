@@ -3,7 +3,6 @@ layout: personal
 title: Style Guide
 navigation_weight: 3
 navigation_hide_header: true
-narrow_container: true
 permalink: style-guide.html
 
 ## Page Planks
