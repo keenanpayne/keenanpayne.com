@@ -984,13 +984,13 @@ tr {
   display: flex;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  padding-top: calc(0.725rem + .2vw); }
+  padding-top: calc(1.45rem + .2vw); }
   .siteHeader .siteHeader-hiddenLink {
     display: none;
     visibility: hidden; }
 
 .logo {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 420;
   letter-spacing: -.042em;
   margin-bottom: 0;
@@ -999,6 +999,9 @@ tr {
 .navHorizontal {
   margin-top: 0;
   text-align: right; }
+  .navHorizontal ul {
+    margin-bottom: 0;
+    margin-top: 0; }
   .navHorizontal a {
     opacity: .65;
     text-decoration: none;
