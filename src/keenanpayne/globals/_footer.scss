@@ -12,5 +12,9 @@
 
 .siteFooter-copy { 
   font-size: typeScale(1); 
-  margin-bottom: 0;
+  margin-bottom: $spacing-xxs;
+
+  @media (--medium) { 
+    margin-bottom: 0;
+  }
 }

@@ -41,13 +41,13 @@ $transition-duration-long: 300ms;
 @custom-media --very-large (width >= 1440px);
 
 // Spacing variables
-$spacing-xxs: calc(0.25lh + .2vw);
-$spacing-xs: calc(0.5lh + .2vw);
-$spacing-s:  calc(1lh + .2vw);
-$spacing-m:  calc(2lh + .2vw);
-$spacing-l:  calc(3lh + .2vw);
-$spacing-xl: calc(4lh + .2vw);
-$spacing-xxl: calc(5.5lh + .2vw);
+$spacing-xxs: calc(0.25lh + .5vw);
+$spacing-xs: calc(0.5lh + .5vw);
+$spacing-s:  calc(1lh + .5vw);
+$spacing-m:  calc(2lh + .5vw);
+$spacing-l:  calc(3lh + .5vw);
+$spacing-xl: calc(4lh + .5vw);
+$spacing-xxl: calc(5.5lh + .5vw);
 
 // Section spacing
 $spacing-section-half: 3rem;
@@ -99,6 +99,7 @@ $full-grid: false;
 
 // Max width for container
 $container-width: 1080px;
+$container-width-narrow: 768px;
 
 // Gutter size
 $gutter: 2rem;

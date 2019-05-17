@@ -7,11 +7,15 @@
 // ------
 
 :root { 
-  line-height: 1.45;
+  line-height: 1.35;
   text-rendering: optimizeLegibility;
 
   @media (--small) {
-    font-size: calc(#{$font-size}px + .35vw);
+    font-size: $font-size-secondary;
+  }
+
+  @media (--large) {
+    font-size: 21px;
   }
 
   @media screen and (-webkit-min-device-pixel-ratio: 2),

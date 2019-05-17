@@ -12,11 +12,6 @@
     column-count: 3;
     column-gap: 3rem;
   }
-
-  @media (--extra-large) {
-    column-count: 4;
-    column-gap: 4rem;
-  }
 }
 
 .portfolioList-item {

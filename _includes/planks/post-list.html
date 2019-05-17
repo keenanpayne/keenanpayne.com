@@ -1,6 +1,7 @@
 {% assign postcount = site.posts | size %}
 
 <section class="postList _sectionSpacing-half" container>
+  <div container="narrow">
   {% if page.post_list_title %}
     {% capture title %}
       {{ page.post_list_title }}
@@ -32,4 +33,5 @@
       </a>
     </div>
   {% endif %}
+  </div>
 </section>

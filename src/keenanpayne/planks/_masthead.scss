@@ -6,7 +6,12 @@
   overflow: visible;
   margin-bottom: $spacing-section;
   margin-top: $spacing-section;
+  margin-left: 2rem;
   position: relative;
+
+  @media (min-width: 1160px) { 
+    margin-left: auto;
+  }
 
   // Modifiers
   &.-center { 
@@ -18,8 +23,19 @@
   // Modifiers
   &.-homepage { 
     margin-bottom: 0;
-    max-width: 70%;
     padding-bottom: .4rem;
+
+    @media (--small) { 
+      max-width: 80%;
+    }
+
+    @media (--medium) { 
+      max-width: 70%;
+    }
+
+    @media (--large) { 
+      max-width: 65%;
+    }
 
     small { 
       display: block;

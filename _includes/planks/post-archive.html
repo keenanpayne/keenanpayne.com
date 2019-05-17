@@ -1,6 +1,6 @@
 {% assign items = site.posts | sort: 'date' %}
 
-<section container>
+<section container="narrow">
   {% for post in site.posts %}
     {% assign current_year = post.date | date: '%Y' %}
 

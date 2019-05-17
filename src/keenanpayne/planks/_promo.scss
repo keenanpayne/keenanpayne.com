@@ -17,6 +17,7 @@
 
   &:hover {
     background-color: getColor(base, splash);
+    border-color: transparent;
     box-shadow: 5px 5px 0 rgba(254,67,101,.3), 10px 10px 0 rgba(254,67,101,.4), 15px 15px 0 rgba(254,67,101,.5);
     color: white;
     opacity: 1;
