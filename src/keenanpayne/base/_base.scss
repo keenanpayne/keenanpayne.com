@@ -4,17 +4,11 @@
 
 :root {
   background-color: getColor(background, body);
-  border-top: 5px solid getColor(background, dark);
 }
 
 body {
   margin: 0; 
-  
-  // Modifiers
-  &.-no-scroll { overflow: hidden; }
 }
-
-main { margin-top: 0; }
 
 img {
   height: auto;

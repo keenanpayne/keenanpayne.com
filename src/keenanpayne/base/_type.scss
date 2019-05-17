@@ -15,7 +15,7 @@
   }
 
   @media (--large) {
-    font-size: 21px;
+    font-size: 20px;
   }
 
   @media screen and (-webkit-min-device-pixel-ratio: 2),
@@ -63,6 +63,8 @@ p {
 
 // Hanging lists for readability
 ul, ol {
+  font-size: typeScale(1);
+
   @media (--medium) {
     padding-left: 0;
   }
@@ -75,7 +77,9 @@ ol {
 }
 
 li {
-  &:not(:last-child) { margin-bottom: calc(0.15lh + .1vw); }
+  &:not(:last-child) { 
+    margin-bottom: .5em; 
+  }
 }
 
 

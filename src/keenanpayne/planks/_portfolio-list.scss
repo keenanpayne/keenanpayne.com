@@ -25,5 +25,7 @@
 .portfolioList-heading {
   margin-top: $spacing-m;
 
-  &:first-of-type { margin-top: 0; }
+  &:first-of-type { 
+    margin-top: 0; 
+  }
 }
