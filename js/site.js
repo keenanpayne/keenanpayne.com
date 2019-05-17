@@ -14,24 +14,6 @@
    */
   Helpers = {
     /**
-     * mobileNav()
-     *
-     * Mobile navigation functionality
-     *
-     * @returns null
-     */
-    mobileNav: function() {
-      var $mobileNavToggle = $("[data-mobileNav-toggle]");
-
-      $mobileNavToggle.click(function() {
-        $mobileNavToggle.toggleClass('-is-active');
-        $('.mobileNav').toggleClass('-is-active');
-        $('body').toggleClass('-no-scroll');
-      });
-    },
-
-
-    /**
      * disqusEmbed()
      *
      * Load Disqus comments per embed code
@@ -131,7 +113,6 @@
      * @returns null
      */
     init: function() {
-      Helpers.mobileNav();
       Helpers.loadDisqus();
       Helpers.navHover('.siteHeader-navigation a');
     }

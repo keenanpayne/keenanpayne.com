@@ -1,17 +1,5 @@
 <header class="siteHeader" role="main" container>
   {% include atoms/logo.html %}
 
-  <nav class="navHorizontal -ornate">
-    {% include atoms/navigation.html name="navHorizontal" class="-ornate" mobile="true" %}
-  </nav>
-
-  <nav id="nav" class="mobileNav">
-    {% include atoms/toggle-mobile-nav.html text="Close Menu" class="mobileNav-close" %}
-
-    <div class="mobileNav-container">
-      <div class="mobileNav-content">
-        {% include atoms/navigation.html name="mobileNav" %}
-      </div>
-    </div>
-  </nav>
+  {% include atoms/navigation.html %}
 </header>

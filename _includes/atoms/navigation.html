@@ -1,29 +1,15 @@
 {% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
 
-<ul>
-  {% if include.mobile == "true" %}
-    <li class="{{ include.name }}-item -mobile">
-      {% include atoms/toggle-mobile-nav.html text="Menu" %}
-    </li>
-  {% endif %}
-
-  {% for p in navigation_pages %}
-    {% if p.navigation_weight %}
-      <li class="{{ include.name }}-item {% if p.navigation_hide_header == true %}siteHeader-hiddenLink{% endif %}">
-        <a href="{{ p.url }}" title="{{ p.title }}" class="{% if p.url == page.url %}-is-active{% endif %}">
-          {{ p.title }}
-        </a>
-      </li>
-    {% endif %}
-  {% endfor %}
-
-  {% if include.soundtrack == "true" %}
-    <li class="navHorizontal-item -soundtrack">
-      <a href="https://open.spotify.com/user/keenanthesavage/playlist/3VKKwo0H4zW2v5Ml0zV0xG" title="Listen to the soundtrack of my life">
-        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="16" height="16" data-icon="audio-spectrum" data-container-transform="translate(1)" viewBox="0 0 16 16">
-          <path d="M8 0v16h2v-16h-2zm-4 2v12h2v-12h-2zm8 3.031v5.968999999999999h2v-5.968999999999999h-2zm-12 .969v4h2v-4h-2z" transform="translate(1)" />
-        </svg>
-      </a>
-    </li>
-  {% endif %}
-</ul>
+<nav class="siteNavigation">
+  <ul>
+    {% for p in navigation_pages %}
+      {% if p.navigation_weight and p.navigation_hide_header != true %}
+        <li class="siteNavigation-item">
+          <a href="{{ p.url }}" title="{{ p.title }}" class="{% if p.url == page.url %}-is-active{% endif %}">
+            {{ p.title }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>

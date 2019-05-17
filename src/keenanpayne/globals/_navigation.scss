@@ -2,7 +2,7 @@
 // Horizontal Navigation
 // ==================================================
 
-.navHorizontal {
+.siteNavigation {
   margin-top: 0;
   text-align: right;
 
@@ -19,6 +19,7 @@
 
     &:hover { opacity: 1; }
 
+    // Modifiers
     &.-is-active {
       color: getColor(text, activeLink);
       opacity: 1;
@@ -26,7 +27,7 @@
   }
 }
 
-.navHorizontal-item {
+.siteNavigation-item {
   display: inline-block;
   margin-bottom: 0 !important;
 
@@ -36,26 +37,5 @@
 
   &:not(:last-of-type) {
     margin-right: $spacing-s;
-  }
-
-  &:not(.-mobile) {
-    @media (--medium-max) {
-      display: none;
-    }
-  }
-
-  // Modifiers
-  &.-mobile {
-    margin-right: 0;
-
-    @media (--medium) {
-      display: none;
-    }
-  }
-
-  &.-soundtrack {
-    fill-opacity: .5;
-
-    &:hover { fill-opacity: 1; }
   }
 }

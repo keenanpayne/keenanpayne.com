@@ -34,10 +34,10 @@
   list-style-type: none;
 
   &:not(:first-of-type) {
-    margin-left: .5rem;
+    margin-left: .5em;
 
     @media (--small) {
-      margin-left: 1rem;
+      margin-left: 1em;
     }
   }
 }
