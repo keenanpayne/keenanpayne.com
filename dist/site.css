@@ -983,13 +983,15 @@ tr {
       margin-bottom: 0; } }
 
 .siteHeader {
-  -ms-flex-align: center;
-      align-items: center;
-  display: -ms-flexbox;
-  display: flex;
   -ms-flex-pack: justify;
       justify-content: space-between;
   padding-top: calc(1.35rem + .5vw); }
+  @media (min-width: 480px) {
+    .siteHeader {
+      -ms-flex-align: center;
+          align-items: center;
+      display: -ms-flexbox;
+      display: flex; } }
 
 .logo {
   font-size: 1rem;
@@ -999,8 +1001,15 @@ tr {
   margin-top: 0; }
 
 .siteNavigation {
-  margin-top: 0;
+  border-top: 1px solid #e0e0e0;
+  margin-top: -.2em;
+  padding-top: .5em;
   text-align: right; }
+  @media (min-width: 480px) {
+    .siteNavigation {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0; } }
   .siteNavigation ul {
     margin-bottom: 0;
     margin-top: 0; }

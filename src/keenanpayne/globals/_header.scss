@@ -3,8 +3,11 @@
 // ==================================================
 
 .siteHeader {
-  align-items: center;
-  display: flex;
   justify-content: space-between;
   padding-top: $spacing-s;
+
+  @media (--small) { 
+    align-items: center;
+    display: flex;
+  }
 }
