@@ -1224,16 +1224,54 @@ a.reversefootnote {
     margin-top: .5rem; }
 
 .masthead-hello {
-  border-right: 2px solid #32373d;
   height: 100%;
   left: -2rem;
   line-height: 1;
-  padding-right: .5rem;
+  padding-right: .6rem;
   position: absolute;
-  text-indent: 16px;
+  text-indent: 8px;
   top: 0;
   -ms-writing-mode: tb-rl;
       writing-mode: vertical-rl; }
+  @media (min-width: 768px) {
+    .masthead-hello {
+      text-indent: 14px; } }
+  .masthead-hello:before, .masthead-hello:after {
+    transition: all 300ms cubic-bezier(0.885, -0.065, 0.085, 1.02); }
+  .masthead-hello:before {
+    animation: 350ms mastheadOpacity .85s forwards,  430ms mastheadTranslate .7s forwards;
+    content: "Hey there";
+    display: block;
+    opacity: 0;
+    transform: translateX(-130%); }
+  .masthead-hello:after {
+    animation: mastheadBorder 300ms 0.5s forwards;
+    background-color: #32373d;
+    content: '';
+    display: block;
+    height: 100%;
+    max-height: 0;
+    position: absolute;
+    right: 0;
+    width: 2px; }
+
+@keyframes mastheadBorder {
+  from {
+    max-height: 0; }
+  to {
+    max-height: 100%; } }
+
+@keyframes mastheadTranslate {
+  from {
+    transform: translateX(-130%); }
+  to {
+    transform: translateX(0); } }
+
+@keyframes mastheadOpacity {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
 
 .postList [container] {
   margin-right: 0;
