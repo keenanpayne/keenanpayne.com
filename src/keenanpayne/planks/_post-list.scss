@@ -8,13 +8,14 @@
 }
 
 .postList-container { 
+  grid-column-start: 7;
+  grid-column-end: 1;
+
   @media (--small) { 
-    grid-column-start: 7;
     grid-column-end: 2;
   }
 
   @media (--medium) { 
-    grid-column-start: 7;
     grid-column-end: 3;
   }
 }

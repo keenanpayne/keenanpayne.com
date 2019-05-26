@@ -1160,13 +1160,24 @@ a.reversefootnote {
   padding-bottom: calc(2.7rem + 1vw);
   padding-top: calc(2.7rem + 1vw); }
 
+.largeCta-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr); }
+
+.largeCta-content {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7; }
+  @media (min-width: 768px) {
+    .largeCta-content {
+      grid-column-end: 5; } }
+
 .largeCta-headline {
   font-size: 1.44rem;
   margin-bottom: calc(0.338rem + 1vw);
   position: relative; }
-
-.largeCta-copy {
-  max-width: 700px; }
 
 .largeCta-link {
   margin-top: 1.35rem; }
@@ -1222,17 +1233,16 @@ a.reversefootnote {
     grid-column-end: 7; }
 
 .introduction-subhead {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7;
   margin-bottom: 0;
   padding-bottom: .4em; }
   @media (min-width: 480px) {
     .introduction-subhead {
-      -ms-grid-column: 1;
-          grid-column-start: 1;
       grid-column-end: 6; } }
   @media (min-width: 768px) {
     .introduction-subhead {
-      -ms-grid-column: 1;
-          grid-column-start: 1;
       grid-column-end: 5; } }
   .introduction-subhead small {
     display: block;
@@ -1305,17 +1315,16 @@ a.reversefootnote {
   -ms-grid-columns: (1fr)[6];
       grid-template-columns: repeat(6, 1fr); }
 
-@media (min-width: 480px) {
-  .postList-container {
-    -ms-grid-column: 7;
-        grid-column-start: 7;
-    grid-column-end: 2; } }
-
-@media (min-width: 768px) {
-  .postList-container {
-    -ms-grid-column: 7;
-        grid-column-start: 7;
-    grid-column-end: 3; } }
+.postList-container {
+  -ms-grid-column: 7;
+      grid-column-start: 7;
+  grid-column-end: 1; }
+  @media (min-width: 480px) {
+    .postList-container {
+      grid-column-end: 2; } }
+  @media (min-width: 768px) {
+    .postList-container {
+      grid-column-end: 3; } }
 
 .postList-more {
   margin-top: calc(1.35rem + 1vw); }
@@ -1343,7 +1352,7 @@ a.reversefootnote {
 .projects {
   display: -ms-grid;
   display: grid;
-  grid-column-gap: calc(2.7rem + 1vw);
+  grid-column-gap: calc(1.35rem + 1vw);
   -ms-grid-columns: (minmax(300px, 1fr))[3];
       grid-template-columns: repeat(3, minmax(300px, 1fr));
   overflow-x: scroll; }

@@ -13,16 +13,27 @@
 // Descendants
 // -----------
 
+// Grid wrapper
+.largeCta-grid { 
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+// Content
+.largeCta-content {
+  grid-column-start: 1;
+  grid-column-end: 7;
+
+  @media (--medium) { 
+    grid-column-end: 5;
+  }
+}
+
 // Headline
 .largeCta-headline { 
   font-size: typeScale(4);
   margin-bottom: $spacing-xxs;
   position: relative;
-}
-
-// Subhead
-.largeCta-copy {
-  max-width: 700px; 
 }
 
 // Link

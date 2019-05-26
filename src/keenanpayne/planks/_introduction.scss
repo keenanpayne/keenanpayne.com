@@ -22,13 +22,14 @@
 }
 
 .introduction-subhead { 
+  grid-column-start: 1;
+  grid-column-end: 7;
+
   @media (--small) { 
-    grid-column-start: 1;
     grid-column-end: 6;
   }
 
   @media (--medium) { 
-    grid-column-start: 1;
     grid-column-end: 5;
   }
 
