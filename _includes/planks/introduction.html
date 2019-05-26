@@ -1,0 +1,17 @@
+{% if page.introduction %}
+  <section class="introduction" container>
+    <span class="introduction-hello"></span>
+
+    {% if page.introduction %}
+      <h1 class="-xl">
+        {{ page.introduction }}
+      </h1>
+    {% endif %}
+
+    {% if page.introduction_subtitle %}
+      <h4 class="introduction-subhead -secondary">
+        {{ page.introduction_subtitle }}
+      </h4>
+    {% endif %}
+  </section>
+{% endif %}

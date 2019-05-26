@@ -1,0 +1,117 @@
+//
+// Introduction
+// ==================================================
+
+.introduction {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  margin-bottom: $spacing-xxl;
+  margin-top: $spacing-xxl;
+  margin-left: 2rem;
+  overflow: visible;
+  position: relative;
+
+  @media (min-width: 1160px) { 
+    margin-left: auto;
+  }
+
+  h1 { 
+    grid-column-start: 1;
+    grid-column-end: 7;
+  }
+}
+
+.introduction-subhead { 
+  @media (--small) { 
+    grid-column-start: 1;
+    grid-column-end: 6;
+  }
+
+  @media (--medium) { 
+    grid-column-start: 1;
+    grid-column-end: 5;
+  }
+
+  // Modifiers
+  margin-bottom: 0;
+  padding-bottom: .4em;
+
+  small { 
+    display: block;
+    margin-top: .5rem;
+  }
+}
+
+.introduction-hello { 
+  height: 100%;
+  left: -2rem;
+  line-height: 1;
+  padding-right: .6rem;
+  position: absolute;
+  text-indent: 8px;
+  top: 0;
+  writing-mode: vertical-rl;
+
+  @media (--medium) { 
+    text-indent: 14px;
+  }
+
+  &:before,
+  &:after { 
+    transition: all $transition-duration-long cubic-bezier(.885,-.065,.085,1.02);
+  }
+
+  &:before { 
+    // TODO: Trigger this animation when page has loaded by adding a 
+    //       modifier class with JS
+    animation: 350ms introductionOpacity .85s forwards, 
+               430ms introductionTranslate .7s forwards;
+    content: "Hey there";
+    display: block;
+    opacity: 0;
+    transform: translateX(-130%);
+  }
+
+  &:after { 
+    animation: introductionBorder $transition-duration-long .5s forwards;
+    background-color: getColor(base, linesDark);
+    content: '';
+    display: block;
+    height: 100%;
+    max-height: 0;
+    position: absolute;
+    right: 0;
+    width: 2px;
+  }
+}
+
+// Animations
+@keyframes introductionBorder { 
+  from { 
+    max-height: 0;
+  }
+
+  to { 
+    max-height: 100%;
+  }
+}
+
+@keyframes introductionTranslate { 
+  from { 
+    transform: translateX(-130%);
+  }
+
+  to { 
+    transform: translateX(0);
+  }
+}
+
+@keyframes introductionOpacity { 
+  from { 
+    opacity: 0;
+  }
+
+  to { 
+    opacity: 1;
+  }
+}
