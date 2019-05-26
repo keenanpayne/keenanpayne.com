@@ -1299,9 +1299,23 @@ a.reversefootnote {
     .masthead {
       margin-left: auto; } }
 
-.postList [container] {
-  margin-right: 0;
-  padding-right: 0; }
+.postList {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr); }
+
+@media (min-width: 480px) {
+  .postList-container {
+    -ms-grid-column: 7;
+        grid-column-start: 7;
+    grid-column-end: 2; } }
+
+@media (min-width: 768px) {
+  .postList-container {
+    -ms-grid-column: 7;
+        grid-column-start: 7;
+    grid-column-end: 3; } }
 
 .postList-more {
   margin-top: calc(1.35rem + 1vw); }

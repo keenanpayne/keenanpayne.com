@@ -2,11 +2,20 @@
 // Post List
 // ==================================================
 
-.postList {
-  // Descendants
-  [container] {
-    margin-right: 0;
-    padding-right: 0;
+.postList { 
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.postList-container { 
+  @media (--small) { 
+    grid-column-start: 7;
+    grid-column-end: 2;
+  }
+
+  @media (--medium) { 
+    grid-column-start: 7;
+    grid-column-end: 3;
   }
 }
 
