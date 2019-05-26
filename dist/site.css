@@ -1059,9 +1059,32 @@ button, input[type="submit"],
   .button:focus {
     background-color: rgba(254, 67, 101, 0.75); }
 
-@media (max-width: 767px) {
-  .wufoo {
-    margin-top: calc(2.7rem + 1vw); } }
+.page-contact {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr);
+  grid-column-gap: calc(2.7rem + 1vw); }
+
+.page-contact-text {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7; }
+  @media (min-width: 768px) {
+    .page-contact-text {
+      grid-column-end: 4; } }
+
+.page-contact-form {
+  margin-top: calc(1.35rem + 1vw);
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7; }
+  @media (min-width: 768px) {
+    .page-contact-form {
+      margin-top: 0;
+      -ms-grid-column: 4;
+          grid-column-start: 4;
+      grid-column-end: 7; } }
 
 .footnotes {
   border-top: 1px solid #e0e0e0;
@@ -1344,12 +1367,12 @@ a.reversefootnote {
 @media (min-width: 480px) {
   .portfolioList {
     column-count: 2;
-    column-gap: 2rem; } }
+    column-gap: calc(1.35rem + 1vw); } }
 
 @media (min-width: 768px) {
   .portfolioList {
     column-count: 3;
-    column-gap: 3rem; } }
+    column-gap: calc(2.7rem + 1vw); } }
 
 @media (min-width: 768px) {
   .portfolioList-item {

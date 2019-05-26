@@ -26,7 +26,6 @@ $transition-duration-long: 300ms;
 @custom-media --small (width >= 480px);
 @custom-media --small-max (width <= 479px);
 @custom-media --medium (width >= 768px);
-@custom-media --medium-max (width <= 767px);
 @custom-media --large (width >= 960px);
 @custom-media --extra-large (width >= 1440px);
 @custom-media --hella-large (width >= 1920px);

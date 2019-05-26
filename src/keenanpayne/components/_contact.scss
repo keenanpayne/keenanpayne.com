@@ -2,8 +2,29 @@
 // Contact
 // ==================================================
 
-.wufoo {
-  @media (--medium-max) {
-    margin-top: $spacing-m;
+.page-contact { 
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-column-gap: $spacing-m;
+}
+
+.page-contact-text { 
+  grid-column-start: 1;
+  grid-column-end: 7;
+
+  @media (--medium) { 
+    grid-column-end: 4;
+  }
+}
+
+.page-contact-form {
+  margin-top: $spacing-s;
+  grid-column-start: 1;
+  grid-column-end: 7;
+
+  @media (--medium) { 
+    margin-top: 0;
+    grid-column-start: 4;
+    grid-column-end: 7;
   }
 }

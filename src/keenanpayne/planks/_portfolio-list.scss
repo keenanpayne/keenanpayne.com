@@ -5,12 +5,12 @@
 .portfolioList {
   @media (--small) {
     column-count: 2;
-    column-gap: 2rem;
+    column-gap: $spacing-s;
   }
 
   @media (--medium) {
     column-count: 3;
-    column-gap: 3rem;
+    column-gap: $spacing-m;
   }
 }
 
