@@ -4,13 +4,8 @@
 
 .masthead {
   overflow: visible;
-  margin-bottom: $spacing-xxl;
-  margin-top: $spacing-xxl;
-  margin-left: 2rem;
+  margin-bottom: $spacing-l;
+  margin-top: $spacing-xl;
   position: relative;
   text-align: center; 
-
-  @media (min-width: 1160px) { 
-    margin-left: auto;
-  }
 }

@@ -1300,14 +1300,26 @@ a.reversefootnote {
 
 .masthead {
   overflow: visible;
-  margin-bottom: calc(7.425rem + 1vw);
-  margin-top: calc(7.425rem + 1vw);
-  margin-left: 2rem;
+  margin-bottom: calc(4.05rem + 1vw);
+  margin-top: calc(5.4rem + 1vw);
   position: relative;
   text-align: center; }
-  @media (min-width: 1160px) {
-    .masthead {
-      margin-left: auto; } }
+
+.postArchive {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[6];
+      grid-template-columns: repeat(6, 1fr); }
+
+.postArchive-container {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 7; }
+  @media (min-width: 768px) {
+    .postArchive-container {
+      -ms-grid-column: 2;
+          grid-column-start: 2;
+      grid-column-end: 6; } }
 
 .postList {
   display: -ms-grid;
@@ -1361,8 +1373,8 @@ a.reversefootnote {
   margin: 0; }
 
 .project-text {
-  margin-left: calc(0.675rem + 1vw);
-  margin-right: calc(0.675rem + 1vw);
+  margin-left: calc(0.338rem + 1vw);
+  margin-right: calc(0.338rem + 1vw);
   margin-top: calc(1.35rem + 1vw); }
   @media (min-width: 960px) {
     .project-text {
