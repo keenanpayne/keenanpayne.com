@@ -7,15 +7,27 @@
 // ------
 
 :root { 
+  // Global variables
+  --font-size: 16px;
+
+  font-size: var(--font-size);
   line-height: 1.35;
   text-rendering: optimizeLegibility;
 
   @media (--small) {
-    font-size: $font-size-secondary;
+    --font-size: 18px;
   }
 
   @media (--large) {
-    font-size: 20px;
+    --font-size: 20px;
+  }
+
+  @media (--extra-large) {
+    --font-size: 21px;
+  }
+
+  @media (--hella-large) {
+    --font-size: 22px;
   }
 
   @media screen and (-webkit-min-device-pixel-ratio: 2),

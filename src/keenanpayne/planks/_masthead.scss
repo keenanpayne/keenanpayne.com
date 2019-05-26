@@ -4,8 +4,8 @@
 
 .masthead {
   overflow: visible;
-  margin-bottom: $spacing-section;
-  margin-top: $spacing-section;
+  margin-bottom: $spacing-xxl;
+  margin-top: $spacing-xxl;
   margin-left: 2rem;
   position: relative;
 
@@ -64,6 +64,8 @@
   }
 
   &:before { 
+    // TODO: Trigger this animation when page has loaded by adding a 
+    //       modifier class with JS
     animation: 350ms mastheadOpacity .85s forwards, 
                430ms mastheadTranslate .7s forwards;
     content: "Hey there";

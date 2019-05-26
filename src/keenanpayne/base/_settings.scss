@@ -2,15 +2,6 @@
 // Base
 // --------------------------------------------------
 
-// Font size for small devices
-$font-size: 16;
-
-// Font size for big devices
-$font-size-secondary: 18;
-
-// Tracking
-$letter-spacing: 0.05em;
-
 // Font families
 $font-primary: "source-sans-pro", sans-serif;
 $font-secondary: 'Inter var', sans-serif;
@@ -37,21 +28,17 @@ $transition-duration-long: 300ms;
 @custom-media --medium (width >= 768px);
 @custom-media --medium-max (width <= 767px);
 @custom-media --large (width >= 960px);
-@custom-media --extra-large (width >= 1120px);
-@custom-media --very-large (width >= 1440px);
+@custom-media --extra-large (width >= 1440px);
+@custom-media --hella-large (width >= 1920px);
 
 // Spacing variables
-$spacing-xxs: calc(0.25lh + .5vw);
-$spacing-xs: calc(0.5lh + .5vw);
-$spacing-s:  calc(1lh + .5vw);
-$spacing-m:  calc(2lh + .5vw);
-$spacing-l:  calc(3lh + .5vw);
-$spacing-xl: calc(4lh + .5vw);
-$spacing-xxl: calc(5.5lh + .5vw);
-
-// Section spacing
-$spacing-section-half: 3rem;
-$spacing-section: 6rem;
+$spacing-xxs: calc(0.25lh + 1vw);
+$spacing-xs: calc(0.5lh + 1vw);
+$spacing-s:  calc(1lh + 1vw);
+$spacing-m:  calc(2lh + 1vw);
+$spacing-l:  calc(3lh + 1vw);
+$spacing-xl: calc(4lh + 1vw);
+$spacing-xxl: calc(5.5lh + 1vw);
 
 // Border radius
 $border-radius: 3px;
