@@ -5,7 +5,7 @@
   "description": "The personal website for Keenan Payne.",
   "homepage": "http://keenanpayne.com",
   "engines": {
-    "node": "<=6.11.0"
+    "node": "<=10.15.1"
   },
   "dependencies": {
     "concise.css": "^4.1.2"
@@ -14,12 +14,12 @@
     "autoprefixer": "^9.5.1",
     "concise-cli": "^0.4.1",
     "cssmin": "^0.4.3",
-    "imagemin": "^5.2.2",
-    "imagemin-webp": "^4.0.0",
+    "imagemin": "^6.1.0",
+    "imagemin-webp": "^5.0.0",
     "node-sass": "^4.12.0",
     "postcss-cli": "^6.1.2",
-    "prettier": "^1.8.1",
-    "watch": "^0.16.0"
+    "prettier": "^1.17.0",
+    "watch": "^1.0.2"
   },
   "scripts": {
     "start": "bundle exec jekyll serve",
