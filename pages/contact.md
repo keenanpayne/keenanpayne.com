@@ -10,7 +10,6 @@ planks:
 
 ## Masthead
 masthead: Get in Touch
-masthead_center: true
 ---
 
 <main container>

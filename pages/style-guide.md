@@ -12,7 +12,6 @@ planks:
 ## Masthead
 masthead: Style Guide
 masthead_subtitle: The bits and bytes that make up this website
-masthead_center: true
 ---
 
 <!--

@@ -12,5 +12,4 @@ planks:
 ## Masthead
 masthead: Blog
 masthead_subtitle: A collection of thoughts, ramblings, and musings.
-masthead_center: true
 ---

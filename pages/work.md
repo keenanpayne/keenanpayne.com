@@ -11,7 +11,6 @@ planks:
 
 ## Masthead
 masthead: Selected Work
-masthead_center: true
 
 ## Portfolio List
 portfolioList:
