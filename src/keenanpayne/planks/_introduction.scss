@@ -21,6 +21,11 @@
   }
 }
 
+
+// 
+// Descendants
+// -----------
+
 .introduction-subhead { 
   grid-column-start: 1;
   grid-column-end: 7;
@@ -86,7 +91,11 @@
   }
 }
 
+
+//
 // Animations
+// ----------
+
 @keyframes introductionBorder { 
   from { 
     max-height: 0;

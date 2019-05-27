@@ -46,9 +46,13 @@ p {
   font-variant-ligatures: normal;
 
   // Modifiers
-  &.-secondary { color: getColor(text, secondary); }
+  &.-secondary { 
+    color: getColor(text, secondary); 
+  }
 
-  &.-large { font-size: typeScale(4); }
+  &.-large { 
+    font-size: typeScale(4); 
+  }
 
   &.-small {
     color: getColor(text, secondary);
@@ -159,7 +163,9 @@ h1, h2, h3, h4 {
     }
   }
 
-  &.-secondary { color: getColor(text, secondary); }
+  &.-secondary { 
+    color: getColor(text, secondary); 
+  }
 
   &.-bottom-border {
     border-bottom: 2px solid getColor(base, lines);
@@ -208,7 +214,9 @@ blockquote {
   padding-top: $spacing-xxs;
   transition: border-left-color $transition-duration-long;
 
-  &:hover { border-left-color: getColor(base, splash); }
+  &:hover { 
+    border-left-color: getColor(base, splash); 
+  }
 }
 
 
@@ -243,7 +251,9 @@ table {
   }
 }
 
-tr { border-bottom: 1px solid getColor(base, lines); }
+tr { 
+  border-bottom: 1px solid getColor(base, lines); 
+}
 
 
 //

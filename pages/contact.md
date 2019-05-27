@@ -16,7 +16,7 @@ masthead: Get in Touch
 	<aside class="page-contact-text">
 		<p>Have a question or want to reach out about a project? Feel free to shoot me an email. I will be happy to answer any questions you may have.</p>
 
-		<p>I try to respond within 1-2 business days.</p>
+		<p><small>I try to respond within 1-2 business days.</small></p>
 
 		<hr>
 

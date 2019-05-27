@@ -798,9 +798,6 @@ img {
   height: auto;
   max-width: 100%; }
 
-[container="narrow"] {
-  max-width: 768px; }
-
 :root {
   --font-size: 16px;
   font-size: var(--font-size);
@@ -1105,8 +1102,7 @@ button, input[type="submit"],
     -ms-grid-column: 1;
         grid-column-start: 1;
     grid-column-end: 9;
-    letter-spacing: .25px;
-    line-height: 1.5;
+    letter-spacing: .05em;
     margin-bottom: .5rem;
     margin-top: calc(0.338rem + 1vw);
     padding-top: calc(0.338rem + 1vw); }
@@ -1144,13 +1140,6 @@ a.reversefootnote {
   .footnote:hover {
     color: #666;
     text-decoration: none; }
-
-.readingTime {
-  margin-left: .5rem; }
-  .readingTime:before {
-    content: "·";
-    padding-right: .5rem;
-    vertical-align: middle; }
 
 .sectionHeading {
   border-bottom: 2px solid #32373d;
@@ -1230,9 +1219,6 @@ a.reversefootnote {
   font-size: 1.44rem;
   margin-bottom: calc(0.338rem + 1vw);
   position: relative; }
-
-.largeCta-link {
-  margin-top: 1.35rem; }
 
 .largeCta-headline-supplemental {
   left: auto;
@@ -1351,7 +1337,6 @@ a.reversefootnote {
     opacity: 1; } }
 
 .masthead {
-  overflow: visible;
   margin-bottom: calc(2.7rem + 1vw);
   margin-top: calc(4.05rem + 1vw);
   position: relative;
@@ -1501,25 +1486,18 @@ a.reversefootnote {
         -ms-grid-column: 2;
             grid-column-start: 2;
         grid-column-end: 6; } }
-  @media (min-width: 768px) {
-    .post-content p.-large {
-      -ms-grid-column: 3;
-          grid-column-start: 3;
-      grid-column-end: 6; } }
   .post-content h1, .post-content h2, .post-content h3 {
     position: relative; }
     .post-content h1:hover .post-content-header-link, .post-content h2:hover .post-content-header-link, .post-content h3:hover .post-content-header-link {
-      opacity: .75; }
+      opacity: .5; }
   .post-content h2 {
     margin-bottom: calc(0.675rem + 1vw);
     margin-top: calc(1.35rem + 1vw); }
     .post-content h2 .post-content-header-link svg {
-      width: 1.2rem; }
+      vertical-align: baseline; }
   .post-content h3 {
-    margin-bottom: 1.35rem;
-    margin-top: calc(1.35rem + 1vw); }
-    .post-content h3 .post-content-header-link svg {
-      width: 1rem; }
+    margin-bottom: calc(0.675rem + 1vw);
+    margin-top: calc(0.675rem + 1vw); }
   .post-content ul,
   .post-content ol {
     margin-top: 0; }
@@ -1548,13 +1526,21 @@ a.reversefootnote {
       grid-column-end: 6; } }
 
 .post-content-header-link {
-  margin-left: 0.135rem;
+  margin-left: .15em;
   opacity: 0;
-  transition: opacity 150ms;
-  vertical-align: text-top; }
+  transition: opacity 150ms; }
   .post-content-header-link:hover, .post-content-header-link:active {
     opacity: 1;
     text-decoration: none; }
+  .post-content-header-link svg {
+    width: .6em; }
+
+.post-meta {
+  margin-left: .5rem; }
+  .post-meta:before {
+    content: "·";
+    padding-right: .5rem;
+    vertical-align: middle; }
 
 table {
   width: 100%; }

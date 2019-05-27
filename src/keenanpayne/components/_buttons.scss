@@ -19,5 +19,7 @@ button,
   }
 
   &:active,
-  &:focus { background-color: getColor(base, splash); }
+  &:focus { 
+    background-color: getColor(base, splash); 
+  }
 }

@@ -25,7 +25,9 @@
     text-decoration: none;
     transition: opacity $transition-duration-med;
 
-    &:hover { opacity: 1; }
+    &:hover { 
+      opacity: 1; 
+    }
 
     // Modifiers
     &.-is-active {

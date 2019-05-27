@@ -13,7 +13,18 @@ comments: true
       <p class="-secondary -small-heading">
         {{ page.date | date: "%B %e, %Y" }}
 
-        {% include components/reading-time.html %}
+        <span class="post-meta" title="Estimated read time">
+          {% assign words = content | number_of_words %}
+        
+          {% if words < 360 %}
+            1 minute
+          {% else %}
+            {{ words | divided_by:180 }} minutes
+          {% endif %}
+          
+          to read
+        </span>
+
       </p>
     </header>
 
