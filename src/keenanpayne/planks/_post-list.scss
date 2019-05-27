@@ -7,6 +7,11 @@
   grid-template-columns: repeat(6, 1fr);
 }
 
+
+// 
+// Descendants
+// -----------
+
 .postList-container { 
   grid-column-start: 7;
   grid-column-end: 1;
@@ -17,6 +22,12 @@
 
   @media (--medium) { 
     grid-column-end: 3;
+  }
+}
+
+.postList-article { 
+  &:not(:last-of-type) { 
+    margin-bottom: $spacing-xs;
   }
 }
 

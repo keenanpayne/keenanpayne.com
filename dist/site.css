@@ -1257,7 +1257,6 @@ a.reversefootnote {
   display: grid;
   -ms-grid-columns: (1fr)[6];
       grid-template-columns: repeat(6, 1fr);
-  margin-bottom: calc(7.425rem + 1vw);
   margin-top: calc(7.425rem + 1vw);
   margin-left: 2rem;
   overflow: visible;
@@ -1380,6 +1379,9 @@ a.reversefootnote {
   @media (min-width: 768px) {
     .postList-container {
       grid-column-end: 3; } }
+
+.postList-article:not(:last-of-type) {
+  margin-bottom: calc(0.675rem + 1vw); }
 
 .postList-more {
   margin-top: calc(1.35rem + 1vw); }
