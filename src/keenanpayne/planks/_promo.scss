@@ -9,11 +9,18 @@
   display: block;
   font-size: typeScale(1);
   font-weight: $fontWeight-bold;
+  grid-column-start: 1;
+  grid-column-end: 7;
   margin-top: $spacing-m;
   opacity: .85;
   padding: $spacing-xs;
   text-align: center;
   transition: all $transition-duration-long;
+
+  @media (--medium) { 
+    grid-column-start: 2;
+    grid-column-end: 6;
+  }
 
   &:hover {
     background-color: getColor(base, splash);

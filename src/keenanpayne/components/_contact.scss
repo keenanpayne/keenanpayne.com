@@ -13,7 +13,8 @@
   grid-column-end: 7;
 
   @media (--medium) { 
-    grid-column-end: 4;
+    grid-column-end: 3;
+    margin-top: 2rem;
   }
 }
 
@@ -24,7 +25,7 @@
 
   @media (--medium) { 
     margin-top: 0;
-    grid-column-start: 4;
+    grid-column-start: 3;
     grid-column-end: 7;
   }
 }

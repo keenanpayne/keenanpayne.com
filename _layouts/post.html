@@ -4,8 +4,8 @@ comments: true
 ---
 
 <section container>
-  <article class="post" grid="column">
-    <header class="post-header" column>
+  <article class="post">
+    <header class="post-header">
       <h1 class="post-header-title">
         {{ page.title|smartify }}
       </h1>
@@ -17,7 +17,7 @@ comments: true
       </p>
     </header>
 
-    <div class="post-content" column>
+    <div class="post-content">
       {{ content }}
 
       {% include components/promo.html %}

@@ -3,19 +3,42 @@
 // ==================================================
 
 .footnotes {
-  border-top: 1px solid getColor(base, lines);
-  margin-top: $spacing-s;
-  padding-top: $spacing-s;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-column-start: 1;
+  grid-column-end: 7;
 
   &:before {
+    border-top: 1px solid getColor(base, lines);
     color: getColor(text, secondary);
     content: 'Footnotes:';
     display: block;
     font-size: typeScale(.5);
     font-weight: $fontWeight-bold;
+    grid-column-start: 1;
+    grid-column-end: 9;
     letter-spacing: .25px;
     line-height: 1.5;
-    margin-bottom: $spacing-xxs;
+    margin-bottom: .5rem;
+    margin-top: $spacing-xxs;
+    padding-top: $spacing-xxs;
+
+    @media (--medium) { 
+      grid-column-start: 3;
+      grid-column-end: 7;
+    }
+  }
+
+  ol { 
+    grid-column-start: 1;
+    grid-column-end: 9;
+    margin-bottom: 0;
+    margin-top: 0;
+
+    @media (--medium) { 
+      grid-column-start: 3;
+      grid-column-end: 7;
+    }
   }
 
   // Note number
@@ -26,7 +49,7 @@
       color: getColor(text, secondary);
       float: left;
       font-size: typeScale(.5);
-      margin-right: $spacing-xxs;
+      margin-right: .5rem;
     }
   }
 }

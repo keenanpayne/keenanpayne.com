@@ -1,0 +1,7 @@
+<figure>
+  <img src="{{ include.src|slugify:'raw' }}" alt="{{ include.alt }}">
+
+  {% if include.caption %}
+    <figcaption>{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>
