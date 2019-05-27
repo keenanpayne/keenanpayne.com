@@ -1157,7 +1157,7 @@ a.reversefootnote {
   font-variant: all-small-caps;
   font-weight: 600;
   margin-bottom: calc(1.35rem + 1vw);
-  letter-spacing: .02rem;
+  letter-spacing: .02em;
   padding-bottom: .25em;
   text-align: right; }
   @media (max-width: 479px) {
