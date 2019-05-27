@@ -57,7 +57,7 @@ p {
 
   &.-small-heading {
     font-variant: all-small-caps;
-    letter-spacing: .02rem;
+    letter-spacing: .005em;
   }
 
   &.-content-heading {
@@ -169,7 +169,7 @@ h1, h2, h3, h4 {
 
 h1 {
   font-size: typeScale(7);
-  letter-spacing: -.04em;
+  letter-spacing: -.035em;
 
   @media (--medium) {
     font-size: typeScale(9);

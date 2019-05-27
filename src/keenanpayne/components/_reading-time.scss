@@ -3,11 +3,11 @@
 // ==================================================
 
 .readingTime {
-  margin-left: $spacing-xxs;
+  margin-left: .5rem;
 
   &:before {
     content: "·";
-    padding-right: $spacing-xxs;
+    padding-right: .5rem;
     vertical-align: middle;
   }
 }

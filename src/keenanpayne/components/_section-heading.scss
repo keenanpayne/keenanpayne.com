@@ -4,8 +4,10 @@
 
 .sectionHeading {
   border-bottom: 2px solid getColor(base, linesDark);
+  font-variant: all-small-caps;
   font-weight: $fontWeight-bold;
   margin-bottom: $spacing-s;
+  letter-spacing: .02rem;
   padding-bottom: .25em;
   text-align: right;
 

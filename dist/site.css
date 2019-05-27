@@ -836,7 +836,7 @@ p {
     font-size: 0.69444rem; }
   p.-small-heading, p.-content-heading {
     font-variant: all-small-caps;
-    letter-spacing: .02rem; }
+    letter-spacing: .005em; }
   p.-content-heading {
     margin-top: calc(4.05rem + 1vw); }
 
@@ -895,7 +895,7 @@ h1, h2, h3, h4 {
 
 h1 {
   font-size: 2.48832rem;
-  letter-spacing: -.04em; }
+  letter-spacing: -.035em; }
   @media (min-width: 768px) {
     h1 {
       font-size: 3.58318rem; } }
@@ -1146,16 +1146,18 @@ a.reversefootnote {
     text-decoration: none; }
 
 .readingTime {
-  margin-left: calc(0.338rem + 1vw); }
+  margin-left: .5rem; }
   .readingTime:before {
     content: "·";
-    padding-right: calc(0.338rem + 1vw);
+    padding-right: .5rem;
     vertical-align: middle; }
 
 .sectionHeading {
   border-bottom: 2px solid #32373d;
+  font-variant: all-small-caps;
   font-weight: 600;
   margin-bottom: calc(1.35rem + 1vw);
+  letter-spacing: .02rem;
   padding-bottom: .25em;
   text-align: right; }
   @media (max-width: 479px) {
@@ -1358,6 +1360,9 @@ a.reversefootnote {
     .masthead {
       margin-bottom: calc(4.05rem + 1vw); } }
 
+.masthead-subhead {
+  margin-bottom: 0; }
+
 .postArchive {
   display: -ms-grid;
   display: grid;
@@ -1466,12 +1471,9 @@ a.reversefootnote {
   padding-top: calc(4.05rem + 1vw); }
 
 .post-header {
-  padding-bottom: calc(1.35rem + 1vw);
+  padding-bottom: calc(0.675rem + 1vw);
   padding-left: 0;
   padding-right: 0; }
-
-.post-header-title {
-  margin-bottom: calc(0.338rem + 1vw); }
 
 .post-content {
   display: -ms-grid;
