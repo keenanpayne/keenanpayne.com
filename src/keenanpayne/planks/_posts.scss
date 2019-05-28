@@ -2,7 +2,7 @@
 // Post List
 // ==================================================
 
-.postList { 
+.posts { 
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
@@ -12,7 +12,7 @@
 // Descendants
 // -----------
 
-.postList-container { 
+.posts-container { 
   grid-column-start: 7;
   grid-column-end: 1;
 
@@ -25,12 +25,12 @@
   }
 }
 
-.postList-article { 
+.posts-article { 
   &:not(:last-of-type) { 
     margin-bottom: $spacing-xs;
   }
 }
 
-.postList-more {
+.posts-more {
   margin-top: $spacing-s;
 }

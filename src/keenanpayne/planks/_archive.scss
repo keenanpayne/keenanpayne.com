@@ -2,12 +2,12 @@
 // Post Archive
 // ==================================================
 
-.postArchive {
+.archive {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
 
-.postArchive-container { 
+.archive-container { 
   grid-column-start: 1;
   grid-column-end: 7;
 

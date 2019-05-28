@@ -7,13 +7,13 @@ permalink: work.html
 ## Page Planks
 planks:
   - name: 'masthead'
-  - name: 'portfolio-list'
+  - name: 'work'
 
 ## Masthead
 masthead: Selected Work
 
-## Portfolio List
-portfolioList:
+## Work
+work:
   - section:
     title: "Development"
     items:

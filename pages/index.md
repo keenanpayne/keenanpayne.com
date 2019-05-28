@@ -7,7 +7,7 @@ permalink: index.html
 ## Page Planks
 planks:
   - name: 'introduction'
-  - name: 'post-list'
+  - name: 'posts'
   - name: 'projects'
 
 ## Introduction
@@ -15,8 +15,8 @@ introduction: I'm Keenan
 introduction_subtitle: By day, I'm a web developer at <a href="https://asana.com" class="-cta">Asana</a>. By night, I'm a freelancer helping businesses succeed on the web. <small>Welcome to my little corner of the internet</small>
 
 ## Post List
-post_list_title: "Latest ramblings"
-post_list_limit: 3 
+posts_title: "Latest ramblings"
+posts_limit: 3 
 
 ## Projects
 projects:

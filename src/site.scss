@@ -34,22 +34,19 @@
 @import "keenanpayne/components/buttons";
 @import "keenanpayne/components/contact";
 @import "keenanpayne/components/footnotes";
-@import "keenanpayne/components/section-heading";
-@import "keenanpayne/components/social";
 
 // Planks
-@import "keenanpayne/planks/large-cta";
+@import "keenanpayne/planks/archive";
+@import "keenanpayne/planks/cta";
 @import "keenanpayne/planks/introduction";
 @import "keenanpayne/planks/masthead";
-@import "keenanpayne/planks/post-archive";
-@import "keenanpayne/planks/post-list";
-@import "keenanpayne/planks/portfolio-list";
+@import "keenanpayne/planks/posts";
 @import "keenanpayne/planks/projects";
 @import "keenanpayne/planks/promo";
+@import "keenanpayne/planks/work";
 
 // Layouts
 @import "keenanpayne/layouts/post";
-@import "keenanpayne/layouts/table";
 
 // Libraries
 @import "keenanpayne/libs/syntax";

@@ -16,6 +16,6 @@ I'm lucky enough to work on different projects on a daily basis, always solving 
 
 Outside of my daily work, I'm also sporadically involved in different open source projects. These include tools for developers (i.e., [Concise](http://concisecss.com/)), or what I believe to be useful websites (coming soon - 😮). These projects grant me the opportunity to work with new technologies, and to take a stab at making the life of my fellow developers easier.
 
-{% include post/p-large.html content="As I start to work on new projects, I think that this blog would be a perfect outlet for outlining the work that I'm doing, how I'm doing it, and why." %}
+{% include type/p-large.html content="As I start to work on new projects, I think that this blog would be a perfect outlet for outlining the work that I'm doing, how I'm doing it, and why." %}
 
 I'm looking forward to getting the chance to write more and share what I can with you. I hope you follow along with this blog and share your thoughts as you find appropriate.

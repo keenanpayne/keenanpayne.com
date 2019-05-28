@@ -70,6 +70,20 @@ p {
 
     margin-top: $spacing-m;
   }
+
+  &.-section-heading { 
+    border-bottom: 2px solid getColor(base, linesDark);
+    font-variant: all-small-caps;
+    font-weight: $fontWeight-bold;
+    margin-bottom: $spacing-s;
+    letter-spacing: .02em;
+    padding-bottom: .25em;
+    text-align: right;
+
+    @media (--small-max) {
+      font-size: typeScale(3);
+    }
+  }
 }
 
 
@@ -238,10 +252,17 @@ code {
 table {
   margin-bottom: $spacing-s;
   margin-top: $spacing-s;
+  width: 100%;
 
   thead {
+    background-color: transparent; 
     padding-bottom: $spacing-xs;
     padding-top: $spacing-xs;
+  }
+
+  th,
+  td { 
+    border-right: 1px solid getColor(base, lines); 
   }
 
   td {
@@ -249,10 +270,10 @@ table {
     padding-bottom: $spacing-xs;
     padding-top: $spacing-xs;
   }
-}
 
-tr { 
-  border-bottom: 1px solid getColor(base, lines); 
+  tr { 
+    border-bottom: 1px solid getColor(base, lines); 
+  }
 }
 
 

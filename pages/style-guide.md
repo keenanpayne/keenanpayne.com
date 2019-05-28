@@ -21,14 +21,14 @@ masthead_subtitle: The bits and bytes that make up this website
 
 <h3 class="-bottom-border">Typography</h3>
 
-{% include atoms/content-heading.html text="Headings" %}
+{% include type/content-heading.html text="Headings" %}
 
 # Heading 1
 ## Heading 2
 ### Heading 3
 #### Heading 4
 
-{% include atoms/content-heading.html text="Paragraph" %}
+{% include type/content-heading.html text="Paragraph" %}
 
 Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), and to a [section heading in the current doc](#an-h2-header). Here's a footnote [^1]. Sometimes you just need to use a *little* bit of **emphasis** when talking about `code` --- if you want to learn more, see chapters 2--4 and maybe you'll find a surprise as well...
 
@@ -38,7 +38,7 @@ Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), 
 
 <p class="-small">This is some small text.</p>
 
-{% include atoms/content-heading.html text="Links" %}
+{% include type/content-heading.html text="Links" %}
 
 <p><a>This is a standalone link</a></p>
 
@@ -46,21 +46,21 @@ Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), 
 
 <p><a class="-arrow">This is a link with an arrow</a></p>
 
-{% include atoms/content-heading.html text="Paragraph Callout" %}
+{% include type/content-heading.html text="Paragraph Callout" %}
 
-{% include post/p-large.html content="I set a goal to read <strong>24 books in 2017</strong>. I have already read 3 books in the last 3 weeks" %}
+{% include type/p-large.html content="I set a goal to read <strong>24 books in 2017</strong>. I have already read 3 books in the last 3 weeks" %}
 
-{% include atoms/content-heading.html text="Section Headings" %}
+{% include type/content-heading.html text="Section Headings" %}
 
-{% include components/section-heading.html content="This is a content heading" %}
+{% include type/section-heading.html content="This is a content heading" %}
 
 <p class="-small-heading">This is a small heading</p>
 
-{% include atoms/content-heading.html text="Blockquotes" %}
+{% include type/content-heading.html text="Blockquotes" %}
 
 > This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
 
-{% include atoms/content-heading.html text="OpenType Modifiers" %}
+{% include type/content-heading.html text="OpenType Modifiers" %}
 
 <p class="-small-caps">Small Caps</p>
 

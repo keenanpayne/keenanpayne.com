@@ -1,8 +1,8 @@
 //
-// Portfolio List
+// Work
 // ==================================================
 
-.portfolioList {
+.work {
   @media (--small) {
     column-count: 2;
     column-gap: $spacing-s;
@@ -14,7 +14,7 @@
   }
 }
 
-.portfolioList-item {
+.work-item {
   @media (--medium) {
     break-inside: avoid;
     page-break-inside: avoid;
@@ -22,7 +22,7 @@
 }
 
 // Remove top margin from first heading so it is flush
-.portfolioList-heading {
+.work-heading {
   margin-top: $spacing-m;
 
   &:first-of-type { 

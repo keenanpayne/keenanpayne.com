@@ -2,7 +2,7 @@
 // Large CTA
 // ==================================================
 
-.largeCta {
+.cta {
   background-color: getColor(background, light);
   border-top: 3px solid getColor(base, splash);
   padding-bottom: $spacing-m;
@@ -14,13 +14,13 @@
 // -----------
 
 // Grid wrapper
-.largeCta-grid { 
+.cta-grid { 
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
 
 // Content
-.largeCta-content {
+.cta-content {
   grid-column-start: 1;
   grid-column-end: 7;
 
@@ -30,14 +30,14 @@
 }
 
 // Headline
-.largeCta-headline { 
+.cta-headline { 
   font-size: typeScale(4);
   margin-bottom: $spacing-xxs;
   position: relative;
 }
 
 // Rotating, supplemental information
-.largeCta-headline-supplemental { 
+.cta-headline-supplemental { 
   left: auto;
   margin-bottom: 0;
   opacity: 0;

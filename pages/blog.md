@@ -7,7 +7,7 @@ permalink: blog.html
 ## Page Planks
 planks:
   - name: 'masthead'
-  - name: 'post-archive'
+  - name: 'archive'
 
 ## Masthead
 masthead: Blog

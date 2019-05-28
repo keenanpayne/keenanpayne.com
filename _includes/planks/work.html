@@ -1,13 +1,13 @@
-<section class="portfolioList" container>
-  {% for section in page.portfolioList %}
+<section class="work" container>
+  {% for section in page.work %}
     {% if section.title %}
-  	 <h3 class="portfolioList-heading">
+  	 <h3 class="work-heading">
        {{ section.title|smartify }}
      </h3>
     {% endif %}
 
     {% for item in section.items %}
-    	<div class="portfolioList-item">
+    	<div class="work-item">
         {% if item.title %}
           <a href="{{ item.url }}" title="{{ item.title }}" target="_blank">
             {{ item.title|smartify }}

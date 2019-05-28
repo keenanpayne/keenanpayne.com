@@ -1,0 +1,29 @@
+  {% include components/cta.html %}
+
+  <footer class="siteFooter" role="complementary">
+    <div container>
+      <div grid="center justify-between">
+        <p class="siteFooter-copy" column>
+          Copyright &copy; 2008 &ndash; {{ site.time | date: '%Y' }}
+        </p>
+
+        <nav column>
+          {% if site.social %}
+            <ul class="siteFooter-social">
+              {% for network in site.social %}
+                <li class="siteFooter-social-link-wrapper">
+                  <a class="siteFooter-social-link -{{ network.name|downcase }}" href="{{ network.url }}"
+                    title="{{ network.name }}">{{ network.name }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
+  <script src="/js/site.js"></script>
+</body>
+</html>
