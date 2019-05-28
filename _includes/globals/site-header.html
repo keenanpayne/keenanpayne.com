@@ -1,5 +1,23 @@
-<header class="siteHeader" role="main" container>
-  {% include atoms/logo.html %}
+{% assign navigation_pages = site.html_pages | sort: 'navigation_weight' %}
 
-  {% include atoms/navigation.html %}
+<header class="siteHeader" role="main" container>
+  <h1 class="siteHeader-logo">
+    <a href="/index.html" title="Home">
+      {{ site.name }}
+    </a>
+  </h1>
+  
+  <nav class="siteHeader-navigation">
+    <ul>
+      {% for p in navigation_pages %}
+        {% if p.navigation_weight and p.navigation_hide_header != true %}
+          <li class="siteHeader-navigation-item">
+            <a href="{{ p.url }}" title="{{ p.title }}" class="{% if p.url == page.url %}-is-active{% endif %}">
+              {{ p.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </nav>
 </header>
