@@ -1354,7 +1354,8 @@ a.reversefootnote {
       margin-bottom: calc(4.2rem + 1vw); } }
 
 .masthead-subhead {
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  margin-top: calc(0.35rem + 1vw); }
 
 .posts {
   display: -ms-grid;

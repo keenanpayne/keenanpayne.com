@@ -1,16 +1,12 @@
-(function($) {
+(function() {
   /**
    * Global Variables
    */
-  var $window = $(window);
-  var $document = $(document);
   var disqusLoaded = false;
 
 
   /**
    * JavaScript Helpers
-   *
-   * @author Keenan Payne
    */
   Helpers = {
     /**
@@ -42,15 +38,17 @@
      */
     loadDisqus: function() {
       // Load when comments are scrolled to
-      var $comments = $('.post-comments');
+      var comments = document.querySelector('.post-comments');
+      
+      if (comments) { 
+        if (!disqusLoaded && comments.length !== 0) {
+          var commentsOffset = comments.offsetTop;
+          var pageOffset = window.pageYOffset;
+          var offsetTrigger = (commentsOffset - 1000);
 
-      if (!disqusLoaded && $comments.length !== 0) {
-        var commentsOffset = $comments.offset().top;
-        var pageOffset = window.pageYOffset;
-        var offsetTrigger = (commentsOffset - 1000);
-
-        if(!disqusLoaded && pageOffset > offsetTrigger) {
-          Helpers.disqusEmbed();
+          if(!disqusLoaded && pageOffset > offsetTrigger) {
+            Helpers.disqusEmbed();
+          }
         }
       }
     },
@@ -59,40 +57,41 @@
     /**
      * linkToHeader()
      *
-     * Prepend headers with jump links for accessibility
+     * Prepend headers with anchor links 
      *
      * @returns null
      */
     linkToHeader: function() {
-      var content = document.querySelector('.post-content');
       var headings = document.querySelectorAll('.post-content h2, .post-content h3');
 
-      for (var i = 0, len = headings.length; i < len; i++) { 
-        let heading = headings[i];
-        let id = heading.getAttribute('id');
-        let text = heading.textContent;
-        var link = document.createElement('a');
+      if (headings.length) { 
+        for (var i = 0, len = headings.length; i < len; i++) { 
+          let heading = headings[i];
+          let id = heading.getAttribute('id');
+          let text = heading.textContent;
+          var link = document.createElement('a');
 
-        link.classList.add('post-content-header-link');
-        link.href = `#${id}`;
-        link.setAttribute('title', `Link to ${text}`);
-        link.textContent = "#";
-        
-        heading.prepend(link);
+          link.classList.add('post-content-header-link');
+          link.href = `#${id}`;
+          link.setAttribute('title', text);
+          link.textContent = "#";
+          
+          heading.prepend(link);
+        }
       }
     }
   };
 
 
   /**
-   * When Document Ready
+   * Initialize
    */
-  $document.ready(function() {
+  window.onload = function() { 
     Helpers.loadDisqus();
     Helpers.linkToHeader();
-  });
+  };
 
-  $window.on('scroll', function() {
+  window.onscroll = function() { 
     Helpers.loadDisqus();
-  });
-})(jQuery);
+  };
+})();
