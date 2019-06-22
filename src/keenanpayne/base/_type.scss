@@ -11,7 +11,7 @@
   --font-size: 16px;
 
   font-size: var(--font-size);
-  line-height: 1.35;
+  line-height: 1.4;
   text-rendering: optimizeLegibility;
 
   @media (--small) {
@@ -20,10 +20,6 @@
 
   @media (--large) {
     --font-size: 20px;
-  }
-
-  @media (--extra-large) {
-    --font-size: 21px;
   }
 
   @media (--hella-large) {
@@ -93,8 +89,6 @@ p {
 
 // Hanging lists for readability
 ul, ol {
-  font-size: typeScale(1);
-
   @media (--medium) {
     padding-left: 0;
   }
@@ -108,7 +102,7 @@ ol {
 
 li {
   &:not(:last-child) { 
-    margin-bottom: .5em; 
+    margin-bottom: 1em; 
   }
 }
 
@@ -239,9 +233,11 @@ blockquote {
 // ----
 
 code {
-  background-color: (background, light);
+  background-color: getColor(background, light);
   border: 1px solid getColor(base, lines);
-  padding: .1em .4em;
+  border-radius: .15em;
+  line-height: 1;
+  padding: .3em .4em .1em;
 }
 
 

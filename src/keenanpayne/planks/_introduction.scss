@@ -4,7 +4,7 @@
 
 .introduction {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   margin-top: $spacing-xxl;
   margin-left: 2rem;
   overflow: visible;
@@ -15,8 +15,7 @@
   }
 
   h1 { 
-    grid-column-start: 1;
-    grid-column-end: 7;
+    grid-column: 1 / -1;
   }
 }
 
@@ -26,15 +25,10 @@
 // -----------
 
 .introduction-subhead { 
-  grid-column-start: 1;
-  grid-column-end: 7;
-
-  @media (--small) { 
-    grid-column-end: 6;
-  }
+  grid-column: 1 / -1;
 
   @media (--medium) { 
-    grid-column-end: 5;
+    grid-column-end: 6;
   }
 
   // Modifiers

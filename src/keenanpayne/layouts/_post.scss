@@ -30,14 +30,15 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 
-  // Typography
+  // Descendants
   > p,
   > ol,
   > ul,
   > h1,
   > h2,
   > h3,
-  > blockquote {
+  > blockquote, 
+  > .highlighter-rouge {
     grid-column-start: 1;
     grid-column-end: 7;
 
@@ -47,24 +48,13 @@
     }
   }
 
-  h1, h2, h3 {
+  h2, h3 {
     position: relative;
-
-    // Display anchor on header hover
-    &:hover {
-      .post-content-header-link { 
-        opacity: .5; 
-      }
-    }
   }
 
   h2 {
-    margin-bottom: $spacing-xs;
-    margin-top: $spacing-s;
-
-    .post-content-header-link svg { 
-      vertical-align: baseline;
-    }
+    margin-bottom: $spacing-xxs;
+    margin-top: $spacing-xs;
   }
 
   h3 {
@@ -111,19 +101,19 @@
 // --------------
 
 .post-content-header-link {
-  margin-left: .15em;
-  opacity: 0;
+  font-size: 80%;
+  font-weight: 400;
+  position: absolute;
+  left: -1em;
+  opacity: .5;
+  top: 50%;
+  transform: translateY(-50%);
   transition: opacity $transition-duration;
 
   &:hover,
   &:active {
     opacity: 1;
     text-decoration: none;
-  }
-
-  // Descendants
-  svg { 
-    width: .6em;
   }
 }
 

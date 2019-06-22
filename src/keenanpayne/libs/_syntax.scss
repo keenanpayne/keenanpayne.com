@@ -7,9 +7,8 @@
   border-bottom: 2px solid getColor(base, lines);
   border-top: 2px solid getColor(base, lines);
   font-size: .875rem;
-  line-height: 1.65;
-  margin-bottom: $spacing-s;
-  margin-top: $spacing-s;
+  line-height: 1.4;
+  margin-bottom: $spacing-xs;
 
   pre {
     overflow-x: auto;
@@ -21,7 +20,8 @@
   code {
     background-color: transparent;
     border: none;
-    padding: $spacing-xs;
+    line-height: inherit;
+    padding: $spacing-xxs;
   }
 
   .c { color: #999988; font-style: italic } /* Comment */
