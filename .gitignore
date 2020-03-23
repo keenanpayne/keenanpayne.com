@@ -4,3 +4,6 @@ _site
 node_modules
 .DS_Store
 *.log
+
+new/node_modules
+new/_site
