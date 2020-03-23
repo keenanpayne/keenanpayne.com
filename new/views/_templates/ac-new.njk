@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Animal Crossing Diary</title>
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <meta name="author" content="Keenan Payne" />
+
+  <link rel="stylesheet" href="https://use.typekit.net/ncw8xrb.css">
+  <link rel="stylesheet" type="text/css" href="/dist/css/app.min.css" />
+
+  <script>
+    document.documentElement.className = "js";
+    var supportsCssVars = function () {
+      var e,
+        t = document.createElement("style");
+      return (
+        (t.innerHTML = "root: { --tmp-var: bold; }"),
+        document.head.appendChild(t),
+        (e = !!(
+          window.CSS &&
+          window.CSS.supports &&
+          window.CSS.supports("font-weight", "var(--tmp-var)")
+        )),
+        t.parentNode.removeChild(t),
+        e
+      );
+    };
+    supportsCssVars() ||
+      alert(
+        "Please view this demo in a modern browser that supports CSS Variables."
+      );
+  </script>
+</head>
+<body>
+  <main>
+    <div class="frame">
+      <div class="frame__title-wrap">
+        <h1 class="frame__title">Animal Crossing Diary</h1>
+        <p class="frame__tagline">
+          Created by <a href="https://keenanpayne.com">Keenan Payne</a>
+        </p>
+      </div>
+
+      <div class="frame__links">
+        <a href="https://github.com/keenanpayne/keenanpayne.com">GitHub</a>
+      </div>
+
+      <p class="frame__tip">Click &amp; drag</p>
+    </div>
+
+    <div class="content" id="app">
+      <!-- the content -->
+    </div>
+  </main>
+
+  <div class="cursor">
+    <div class="cursor__inner cursor__inner--circle"></div>
+    <div class="cursor__inner cursor__inner--dot"></div>
+  </div>
+
+  <script src="/index.js"></script>
+</body>
+</html>
