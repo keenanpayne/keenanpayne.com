@@ -11,16 +11,16 @@
 
 body {
 	--color-text: #1c1b1b;
-	--color-bg: #efe6e1;
-	--color-link: #b07656;
+	--color-bg: #f5f3e5;
+	--color-link: #83e1c3;
 	--color-link-hover: #000;
   --color-deco: #e4dbd6;
+  --font-futura: futura-pt, sans-serif;
+  --font-futura-bold: futura-pt-bold, sans-serif;
   
 	background-color: var(--color-bg);
 	color: var(--color-text);
-	font-family: paralucent, sans-serif;
-	font-family: quiroh, sans-serif;
-  font-family: mr-eaves-xl-sans, sans-serif;
+	font-family: var(--font-futura);
   margin: 0;
 }
 
@@ -44,7 +44,6 @@ a:focus {
 
 .content {
 	align-items: center;
-	counter-reset: figure; 
 	display: flex;
 	flex-direction: column;
 	padding: 6rem 0;
@@ -55,17 +54,30 @@ a:focus {
 	margin: 10vh auto;
 	max-width: 100%;
 	position: relative;
-	will-change: transform;
+  will-change: transform;
+  
+
+  // Different overflow values
+  &:nth-of-type(odd) { 
+    .item__img {
+      --overflow: 40px;
+    }
+  }
+  
+  &:nth-of-type(even) { 
+    .item__img {
+      --overflow: 80px;
+    }
+  }
 }
 
-.item::before {
-	bottom: calc(100% - 3rem);
+.item__date {
+	bottom: calc(100% - 1.5rem);
 	color: var(--color-deco);
-	content: "03/19/2020";
-	counter-increment: figure;
-	font-family: paralucent, sans-serif;
-	font-size: 10rem;
-	position: absolute;
+	font-family: var(--font-futura-bold);
+	font-size: 8rem;
+  position: absolute;
+  text-indent: 1.5rem;
 }
 
 .item:nth-child(even)::before {
@@ -74,7 +86,7 @@ a:focus {
 
 .item__img-wrap {
   --aspect-ratio: 16/9;
-  --width: 1280px;
+  --width: 960px;
   
 	margin: 0 auto;
 	max-width: calc(100% - 2rem);
@@ -84,46 +96,14 @@ a:focus {
 	will-change: transform;
 }
 
-.item:nth-child(1) .item__img-wrap {
-  --image: url('/dist/images/2020/03/19/2020031922232200-02CB906EA538A35643C1E1484C4B947D.jpg');
-}
-
-.item:nth-child(2) .item__img-wrap {
-  --image: url('/dist/images/2020/03/20/2020032012004900-02CB906EA538A35643C1E1484C4B947D.jpg');
-  --width: 1000px;
-}
-
-.item:nth-child(3) .item__img-wrap {
-	--image: url('/dist/images/2020/03/21/2020032120483100-02CB906EA538A35643C1E1484C4B947D.jpg');
-}
-
-.item:nth-child(4) .item__img-wrap {
-  --image: url('/dist/images/2020/03/22/2020032211350600-02CB906EA538A35643C1E1484C4B947D.jpg');
-	--width: 800px;
-}
-
 .item__img {
-  --overflow: 40px;
-  
   background: var(--image) no-repeat 50% 0%;
 	height: calc(100% + (2 * var(--overflow)));
 	top: calc( -1 * var(--overflow));
 	width: 100%;
 	position: absolute;
 	background-size: cover;
-	will-change: transform;
-}
-
-.item__img--t1 {
-	--overflow: 40px;
-}
-
-.item__img--t2 {
-	--overflow: 80px;
-}
-
-.item__img--t3 {
-	--overflow: 120px;
+  will-change: transform;
 }
 
 .item__caption {

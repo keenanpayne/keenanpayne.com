@@ -1,8 +1,19 @@
-module.exports = {
-  dir: {
-    input: "views",
-    output: "_site",
-    includes: "_templates",
-    templateFormats: ["html", "njk"]
-  }
+const moment = require('moment');
+moment.locale('en');
+
+module.exports = function(eleventyConfig) {
+  // Date filter
+  eleventyConfig.addFilter("simple", function(date) {
+    return moment(date).format("MM/DD/YYYY");
+  });
+
+  // Base config
+  return {
+    dir: {
+      input: "views",
+      output: "_site",
+      includes: "_templates",
+      templateFormats: ["html", "njk"]
+    }
+  };
 };
