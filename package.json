@@ -11,6 +11,7 @@
     "concise.css": "^4.1.2"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^0.10.0",
     "autoprefixer": "^9.5.1",
     "concise-cli": "^0.4.1",
     "cssmin": "^0.4.3",
