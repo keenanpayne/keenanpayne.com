@@ -31,10 +31,11 @@
   },
   "scripts": {
     "assets:prebuild": "rm -rf ./_site/",
+    "assets:fonts": "cp -r assets/fonts ./_site/dist/",
     "assets:js": "parcel build assets/js/index.js -d ./_site/",
     "assets:sass": "node-sass assets/sass/app.scss _site/dist/css/app.css; postcss --use autoprefixer < _site/dist/css/app.css -b \"last 2 versions\" | cssmin > _site/dist/css/app.min.css",
-    "assets:build:dev": "watch 'npm run assets:sass & npm run assets:js' 'assets/'",
-    "assets:build:prod": "npm run assets:sass & npm run assets:js",
+    "assets:build:dev": "watch 'npm run assets:sass & npm run assets:js & npm run assets:fonts' 'assets/'",
+    "assets:build:prod": "npm run assets:sass & npm run assets:js & npm run assets:fonts",
     "app:build:dev": "npm run assets:build:dev & eleventy --watch --serve",
     "app:build:prod": "npm run assets:build:prod; eleventy",
     "start": "npm run assets:prebuild && npm run app:build:dev"

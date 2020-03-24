@@ -211,14 +211,20 @@ table {
   font-size: 15px;
 }
 
+@font-face {
+  font-family: "Moonget";
+  src: url("../moon_get-Heavy.otf") format("opentype"),
+       url("../moon_get-Heavy.ttf") format("truetype");
+}
+
 body {
-  --color-text: #949494;
-  --color-bg: #0e0e0f;
-  --color-link: #b78a84;
-  --color-link-hover: #fff;
+  --color-text: #f5f3e5;
+  --color-bg: #83e1c3;
+  --color-link: #f5f3e5;
+  --color-link-hover: #4ac34e;
   color: var(--color-text);
   background-color: var(--color-bg);
-  font-family: covik-sans, sans-serif;
+  font-family: 'covik-sans', sans-serif;
 }
 
 .cursor {
@@ -231,7 +237,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  mix-blend-mode: difference;
+  // mix-blend-mode: difference;
   border-radius: 50%;
 }
 
@@ -283,7 +289,7 @@ body {
 }
 
 a {
-  text-decoration: none;
+  // text-decoration: none;
   color: var(--color-link);
   outline: none;
 }
@@ -373,7 +379,7 @@ a:focus {
   }
 
   .frame__tagline::before {
-    content: '-------------';
+    content: '----------';
     letter-spacing: -0.15rem;
     margin: 0 1rem 0 0;
   }
@@ -416,7 +422,7 @@ a:focus {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #131319;
+  background-color: var(--color-bg);;
 }
 
 canvas {
@@ -475,11 +481,11 @@ canvas {
 }
 
 .slide-title {
-  font-size: 8vw;
+  font-size: 5vw;
   margin: 0;
   color: #fafafa;
   text-indent: -0.5vw;
-  font-family: gibbs, sans-serif;
+  font-family: 'Moonget', sans-serif;
   font-weight: 900;
   transition: color 500ms cubic-bezier(0.2, 1, 0.3, 1);
 }
