@@ -3,4 +3,3 @@ _site
 node_modules
 .DS_Store
 *.log
-.cache

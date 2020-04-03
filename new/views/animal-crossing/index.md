@@ -1,4 +1,4 @@
 ---
-layout: ac-new
+layout: ac
 title: "Home"
 ---
