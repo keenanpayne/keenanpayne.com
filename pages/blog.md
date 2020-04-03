@@ -8,6 +8,7 @@ permalink: blog.html
 planks:
   - name: 'masthead'
   - name: 'archive'
+  - name: 'newsletter'
 
 ## Masthead
 masthead: Blog

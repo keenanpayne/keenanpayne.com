@@ -1,0 +1,14 @@
+//
+// Forms
+// ==================================================
+
+input { 
+  &[type="submit"] { 
+    cursor: pointer;
+  }
+
+  // Modifiers
+  &.-bg-white { 
+    background-color: white;
+  }
+}

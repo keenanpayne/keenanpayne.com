@@ -8,6 +8,7 @@ permalink: work.html
 planks:
   - name: 'masthead'
   - name: 'work'
+  - name: 'cta'
 
 ## Masthead
 masthead: Selected Work
