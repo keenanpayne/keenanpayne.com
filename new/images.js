@@ -12,8 +12,8 @@ const imagemin = require("imagemin");
 const imageminJpegtran = require("imagemin-jpegtran");
 
 (async () => {
-  const files = await imagemin(["assets/images/**/**/**/.{jpg}"], {
-    destination: "_site/dist/images/**/**/**/",
+  const files = await imagemin(["assets/images/**/.{jpg}"], {
+    destination: "_site/dist/images/**/",
     plugins: [
       imageminJpegtran()
     ]

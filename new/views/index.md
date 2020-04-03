@@ -1,4 +1,4 @@
 ---
-layout: ac
+layout: base
 title: "Home"
 ---
