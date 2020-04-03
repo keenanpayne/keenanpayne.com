@@ -12,7 +12,7 @@ planks:
 
 ## Introduction
 introduction: I'm Keenan
-introduction_subtitle: By day, I'm a web developer at <a href="https://asana.com" class="-cta">Asana</a>. By night, I'm a freelancer helping businesses succeed on the web. <small>Welcome to my little corner of the internet</small>
+introduction_subtitle: I'm a freelance web developer with over ten years of experience. I strive to help businesses large and small succeed on the web. <small>Welcome to my little corner of the internet</small>
 
 ## Post List
 posts_title: "Latest ramblings"
