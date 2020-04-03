@@ -1,0 +1,34 @@
+//
+// Newsletter
+// ==================================================
+
+.newsletter { 
+  background-color: #fffbf1;
+  border-bottom: 1px solid rgba(254,67,101,0.75);
+  border-top: 1px solid rgba(254,67,101,0.75);
+  padding-bottom: $spacing-l;
+  padding-top: $spacing-l;
+}
+
+.newsletter-form { 
+  margin-bottom: $spacing-xs;
+}
+
+.newsletter-form-fields { 
+  display: flex;
+  flex-wrap: wrap;
+
+  // Descendants
+  > label { 
+    flex-basis: 100%;
+  }
+
+  > input[type="email"] { 
+    flex: 1;
+  }
+
+  > input[type="submit"] { 
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+}

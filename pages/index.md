@@ -8,7 +8,9 @@ permalink: index.html
 planks:
   - name: 'introduction'
   - name: 'posts'
+  - name: 'newsletter'
   - name: 'projects'
+  - name: 'cta'
 
 ## Introduction
 introduction: I'm Keenan
