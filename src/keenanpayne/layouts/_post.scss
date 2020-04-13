@@ -97,6 +97,14 @@
       margin-right: $spacing-xxs;
       margin-top: $spacing-xxs;
       text-align: right;
+
+      br {
+        display: none;
+
+        @media (--medium) {
+          display: block;
+        }
+      }
     }
   }
 
