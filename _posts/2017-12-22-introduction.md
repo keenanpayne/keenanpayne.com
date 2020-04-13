@@ -14,7 +14,7 @@ What exactly will I be talking about? Well, by profession I'm a front-end develo
 
 I'm lucky enough to work on different projects on a daily basis, always solving challenges that arise. If it takes me more than an hour to solve a single problem, then it's deserving of a blog post. Additionally, my solutions are almost guaranteed to be sub-optimal, which is why I have a comments box for each post. I would love nothing more than to engage in civil discourse with other developers in an effort to hear new opinions and learn how other developers might solve a given problem.
 
-Outside of my daily work, I'm also sporadically involved in different open source projects. These include tools for developers (i.e., [Concise](http://concisecss.com/)), or what I believe to be useful websites (coming soon - 😮). These projects grant me the opportunity to work with new technologies, and to take a stab at making the life of my fellow developers easier.
+Outside of my daily work, I'm also sporadically involved in different open source projects. These include tools for developers (i.e., [Concise](https://concisecss.com/)), or what I believe to be useful websites (coming soon - 😮). These projects grant me the opportunity to work with new technologies, and to take a stab at making the life of my fellow developers easier.
 
 {% include type/p-large.html content="As I start to work on new projects, I think that this blog would be a perfect outlet for outlining the work that I'm doing, how I'm doing it, and why." %}
 

@@ -30,7 +30,7 @@ masthead_subtitle: The bits and bytes that make up this website
 
 {% include type/content-heading.html text="Paragraph" %}
 
-Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), and to a [section heading in the current doc](#an-h2-header). Here's a footnote [^1]. Sometimes you just need to use a *little* bit of **emphasis** when talking about `code` --- if you want to learn more, see chapters 2--4 and maybe you'll find a surprise as well...
+Here's a link to [a website](https://foo.bar), to a [local doc](local-doc.html), and to a [section heading in the current doc](#an-h2-header). Here's a footnote [^1]. Sometimes you just need to use a *little* bit of **emphasis** when talking about `code` --- if you want to learn more, see chapters 2--4 and maybe you'll find a surprise as well...
 
 [^1]: Footnote text goes here.
 
