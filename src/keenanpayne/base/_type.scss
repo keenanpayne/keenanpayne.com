@@ -57,7 +57,6 @@ p {
 
   &.-small-heading {
     font-variant: all-small-caps;
-    letter-spacing: .005em;
   }
 
   &.-content-heading {
@@ -102,7 +101,7 @@ ol {
 
 li {
   &:not(:last-child) { 
-    margin-bottom: .3em; 
+    margin-bottom: .5em; 
   }
 }
 
@@ -116,12 +115,6 @@ a {
   cursor: pointer;
 
   &:hover {
-    text-decoration: underline;
-  }
-
-  // Links in paragraphs
-  p & {
-    font-weight: $fontWeight-normal;
     text-decoration: underline;
   }
 
@@ -141,6 +134,16 @@ a {
   }
 }
 
+// Links in other elements
+p,
+ul,
+ol {
+  a {
+    font-weight: $fontWeight-normal;
+    text-decoration: underline;
+  }
+}
+
 
 //
 // Headings
@@ -152,7 +155,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h2, h3, h4 {
-  font-weight: 730;
   line-height: 1.2;
   margin-top: 0;
 
@@ -276,6 +278,16 @@ table {
   tr { 
     border-bottom: 1px solid getColor(base, lines); 
   }
+}
+
+
+//
+// Superscript
+// -----------
+
+sup {
+  font-size: 1.15rem;
+  top: 0;
 }
 
 

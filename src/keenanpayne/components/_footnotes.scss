@@ -13,7 +13,7 @@
     color: getColor(text, secondary);
     content: 'Footnotes:';
     display: block;
-    font-size: typeScale(.5);
+    font-size: typeScale(1);
     font-weight: $fontWeight-bold;
     grid-column-start: 1;
     grid-column-end: 9;
@@ -42,13 +42,14 @@
 
   // Note number
   li {
-    font-size: typeScale(.5);
+    font-size: 75%;
 
     &:before {
       color: getColor(text, secondary);
       float: left;
-      font-size: typeScale(.5);
-      margin-right: .5rem;
+      font-weight: bold;
+      margin-left: .25rem;
+      margin-right: .35rem;
     }
   }
 }
@@ -60,10 +61,11 @@ a.reversefootnote {
 }
 
 .footnote {
+  margin-right: .1em;
   text-decoration: none;
 
   &:hover {
     color: getColor(text, secondary);
-    text-decoration: none;
+    text-decoration: underline;
   }
 }
