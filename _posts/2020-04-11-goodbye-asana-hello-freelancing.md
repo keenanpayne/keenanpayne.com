@@ -67,7 +67,7 @@ I could take my laptop and work in more remote areas of the office to avoid othe
 
 Since I started freelancing, I have primarily been working from home in a desk setup that I configured after leaving Asana <small>(and realizing that my Ikea desk and chair were going to be the death of my back if I didn't upgrade)</small>. Now, I have the best of both worlds: I have a desk configuration that is perfectly situated for how I enjoy working, and I have an environment that is conducive to focusing. The only thing I'm missing is face-to-face contact with the people that I enjoyed seeing every day at Asana. I've mitigated this feeling by being proactive in scheduling time to see my closest friends regularly so that I am not lacking in human contact.
 
-{% include atoms/figure.html src='/images/IMG_20200413_102511.jpg' alt='My home office setup' caption="My current home office setup. <br>I will share a post about how I decided on my equipment in the future." %}
+{% include atoms/figure.html src='/images/IMG_20200413_190640.jpg' alt='My home office setup' caption="My current home office setup. <br>I will share a post about how I decided on my equipment in the future." %}
 
 ### Professional agency
 
@@ -95,7 +95,7 @@ And of course, if you feel so inclined, leave a comment down below and tell me w
 
 [^2]: Growing up with a completely informal education as a web developer ended up creating some confusion when I tried taking the skills that I had and match them to job listings I found online. I had no idea what I was; was I a web developer, web designer, front-end developer, software engineer, blah blah blah. Anyone who has applied for a technology job before probably knows how horrible job listings are. That, combined with my lack of understanding about *what* exactly I was as a professional, led me to a bunch of awkward phone calls where both parties fully understood that I had no idea what I was talking about for a job to which I had applied. Oops.  
 
-[^3]: I may not have hard numbers to back it up, but the number of projects that I have been able to complete during my first six months freelancing dwarfs what I as doing at Asana. Sure, this is anecdotal and there are plenty of caveats I could make, but I'm listening to my gut on this one: I'm much more productive right now than I ever have been.
+[^3]: I may not have hard numbers to back it up, but the number of projects that I have been able to complete during my first six months freelancing dwarfs what I was doing at Asana. Sure, this is anecdotal and there are plenty of caveats I could make, but I'm listening to my gut on this one: I'm much more productive right now than I ever have been.
 
 [^4]: I will note that the process for organizing and executing web projects got **much** better during the last year that I worked at Asana. After years of being at the tail-end of waterfall planning, I was finally having more of a say in the planning process, which allowed for more flexible deadlines and better project planning. However, we still acted as a mostly reactive team, and rarely created time for ourselves to improve our processes and infrastructure. 
 
