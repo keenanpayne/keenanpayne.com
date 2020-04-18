@@ -8,7 +8,7 @@
 
 .siteHeader {
   justify-content: space-between;
-  padding-top: $spacing-s;
+  padding-top: $spacing-xs;
 
   @media (--small) { 
     align-items: center;
@@ -50,22 +50,6 @@
   ul {
     margin-bottom: 0;
     margin-top: 0;
-  }
-
-  a {
-    opacity: .75;
-    text-decoration: none;
-    transition: opacity $transition-duration-med;
-
-    &:hover { 
-      opacity: 1; 
-    }
-
-    // Modifiers
-    &.-is-active {
-      color: getColor(text, activeLink);
-      opacity: 1;
-    }
   }
 }
 

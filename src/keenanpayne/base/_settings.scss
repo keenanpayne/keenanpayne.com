@@ -71,6 +71,7 @@ $scale-ratio-secondary: $_golden-ratio;
 
 $fontWeight-normal:   400;
 $fontWeight-bold:     600;
+$fontWeight-heavy:    700;
 
 
 //
@@ -112,7 +113,7 @@ $colors: (
     "lines":        #e0e0e0,
     "linesDark":    #32373d,
     "splash":       hsla(349, 99%, 63%, .75),
-    "splash-hover": hsla(349, 99%, 63%, .9)
+    "splash-dark": hsla(349, 99%, 63%, .95)
   ),
 
   text: (

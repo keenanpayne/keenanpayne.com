@@ -6,7 +6,6 @@
   margin-bottom: $spacing-m;
   margin-top: $spacing-l;
   position: relative;
-  text-align: center; 
 
   @media (--medium) {
     margin-bottom: $spacing-l;
@@ -15,5 +14,4 @@
 
 .masthead-subhead { 
   margin-bottom: 0;
-  margin-top: $spacing-xxs;
 }

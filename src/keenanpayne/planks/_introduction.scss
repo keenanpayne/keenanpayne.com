@@ -5,7 +5,6 @@
 .introduction {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  margin-top: $spacing-xxl;
   margin-left: 2rem;
   overflow: visible;
   position: relative;
@@ -37,7 +36,7 @@
 
   small { 
     display: block;
-    margin-top: .5rem;
+    margin-top: .5lh;
   }
 }
 
