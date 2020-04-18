@@ -48,6 +48,7 @@ p {
 
   &.-large { 
     font-size: typeScale(4); 
+    letter-spacing: -.01em;
   }
 
   &.-small {
@@ -119,6 +120,15 @@ a {
   }
 
   // Modifiers
+  &.-tertiary { 
+    text-decoration: underline;
+    text-decoration-color: getColor(base, splash-dark);
+
+    &:hover { 
+      color: getColor(base, splash-dark);
+    }
+  }
+
   &.-cta {
     box-shadow: inset 0 -.1em 0 0 getColor(base, splash);
     transition: box-shadow $transition-duration;
@@ -154,7 +164,11 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4,
+._fontSize-h1,
+._fontSize-h2,
+._fontSize-h3,
+._fontSize-h4 {
   line-height: 1.2;
   margin-top: 0;
 
@@ -165,11 +179,12 @@ h1, h2, h3, h4 {
 
   // Modifiers
   &.-xl {
-    font-weight: 730;
+    font-weight: $fontWeight-heavy;
+    margin-bottom: .5lh;
 
     @media (--large) {
       font-size: typeScale(9);
-      letter-spacing: -.035em;
+      letter-spacing: -.0425em;
     }
   }
 
@@ -183,31 +198,31 @@ h1, h2, h3, h4 {
   }
 }
 
-h1 {
+h1,
+._fontSize-h1 {
   font-size: typeScale(7);
   letter-spacing: -.035em;
-
-  @media (--medium) {
-    font-size: typeScale(9);
-  }
 }
 
-h2 {
+h2,
+._fontSize-h2 {
   letter-spacing: -.02em;
-  margin-bottom: $spacing-xxs;
+  margin-bottom: .25em;
   margin-top: 0;
-  font-size: typeScale(6);
+  font-size: typeScale(5);
 }
 
-h3 {
+h3,
+._fontSize-h3 {
   font-variant: all-small-caps;
   line-height: 1.1;
 }
 
 h4,
-.-h4 {
+._fontSize-h4 {
   font-size: typeScale(3);
-  font-weight: 350;
+  font-weight: $fontWeight-normal;
+  letter-spacing: -.0125em;
   line-height: 1.3;
 }
 
