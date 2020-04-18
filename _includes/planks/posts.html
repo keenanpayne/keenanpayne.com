@@ -1,7 +1,6 @@
 {% assign postcount = site.posts | size %}
 
 <section class="posts _sectionSpacing-full" container>
-  <div class="posts-container">
   {% if page.posts_title %}
     {% capture title %}
       {{ page.posts_title }}
@@ -10,22 +9,24 @@
     {% include type/section-heading.html content=title %}
   {% endif %}
 
-  {% for post in site.posts limit:page.posts_limit %}
-    <article class="posts-article">
-      <header>
-        <h3 class="posts-title">
-          <a href="{{ post.url }}" title="{{ post.title }}">
-            {{ post.title|smartify }}
-          </a>
-        </h3>
+  <div class="posts-container">
+    {% for post in site.posts limit:page.posts_limit %}
+      <article class="posts-article">
+        <header>
+          <h3 class="posts-title">
+            <a href="{{ post.url }}" title="{{ post.title }}">
+              {{ post.title|smartify }}
+            </a>
+          </h3>
 
-        <p class="-secondary -small-heading">
-          {{ post.date | date: "%B %e, %Y" }}
-        </p>
-      </header>
-    </article>
-  {% endfor %}
-  
+          <p class="-secondary -small-heading">
+            {{ post.date | date: "%B %e, %Y" }}
+          </p>
+        </header>
+      </article>
+    {% endfor %}  
+  </div>
+
   {% if postcount > page.posts_limit %}
     <div class="posts-more">
       <a href="/blog" class="-cta -arrow" title="View archive">
@@ -33,5 +34,4 @@
       </a>
     </div>
   {% endif %}
-  </div>
 </section>
