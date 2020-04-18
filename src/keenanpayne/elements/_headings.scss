@@ -1,0 +1,66 @@
+//
+// Headings
+// ==================================================
+
+h1, h2, h3, h4, h5, h6 {
+  @supports (font-variation-settings: normal) {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
+h1, h2, h3, h4,
+._fontSize-h1,
+._fontSize-h2,
+._fontSize-h3,
+._fontSize-h4 {
+  line-height: 1.2;
+  margin-top: 0;
+
+  a:hover {
+    color: initial;
+    text-decoration: underline;
+  }
+
+  // Modifiers
+  &.-xl {
+    font-weight: $fontWeight-heavy;
+    margin-bottom: .5lh;
+
+    @media (--large) {
+      font-size: typeScale(9);
+      letter-spacing: -.0425em;
+    }
+  }
+
+  &.-secondary { 
+    color: var(--color-secondary); 
+  }
+}
+
+h1,
+._fontSize-h1 {
+  font-size: typeScale(7);
+  letter-spacing: -.035em;
+}
+
+h2,
+._fontSize-h2 {
+  letter-spacing: -.02em;
+  margin-bottom: .25em;
+  margin-top: 0;
+  font-size: typeScale(5);
+}
+
+h3,
+._fontSize-h3 {
+  font-variant: all-small-caps;
+  line-height: 1.1;
+}
+
+h4,
+._fontSize-h4 {
+  font-size: typeScale(3);
+  font-weight: $fontWeight-normal;
+  letter-spacing: -.0125em;
+  line-height: 1.3;
+}

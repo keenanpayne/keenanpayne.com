@@ -7,6 +7,18 @@
   grid-column-gap: $spacing-s;
   grid-template-columns: repeat(3, minmax(300px, 1fr));
   overflow-x: scroll;
+
+  @media (--large) {
+    overflow-x: hidden;
+  }
+}
+
+.project {
+  margin-bottom: $spacing-xxs;
+
+  @media (--large) {
+    margin-bottom: 0;
+  }
 }
 
 .project-image { 

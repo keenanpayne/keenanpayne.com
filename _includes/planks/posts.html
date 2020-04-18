@@ -13,15 +13,15 @@
     {% for post in site.posts limit:page.posts_limit %}
       <article class="posts-article">
         <header>
+          <p class="-secondary -small-heading">
+            {{ post.date | date: "%B %e, %Y" }}
+          </p>
+          
           <h3 class="posts-title">
             <a href="{{ post.url }}" title="{{ post.title }}">
               {{ post.title|smartify }}
             </a>
           </h3>
-
-          <p class="-secondary -small-heading">
-            {{ post.date | date: "%B %e, %Y" }}
-          </p>
         </header>
       </article>
     {% endfor %}  

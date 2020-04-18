@@ -23,6 +23,15 @@
 
 
 //
+// Container
+// ---------
+
+.post-container {
+  
+}
+
+
+//
 // Content
 // -------
 
@@ -30,7 +39,6 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 
-  // Descendants
   > p,
   > ol,
   > ul,
@@ -91,7 +99,7 @@
     width: 100%;
 
     figcaption {
-      color: getColor(text, secondary);
+      color: var(--color-secondary);
       font-size: typeScale(1);
       font-style: italic;
       margin-right: $spacing-xxs;
@@ -165,4 +173,15 @@
     padding-right: .5rem;
     vertical-align: middle;
   }
+}
+
+
+//
+// Extras
+// ------
+
+.post-extras {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
 }

@@ -4,8 +4,8 @@
 
 .highlight {
   background-color: transparent;
-  border-bottom: 2px solid getColor(base, lines);
-  border-top: 2px solid getColor(base, lines);
+  border-bottom: 2px solid var(--color-tertiary-mid);
+  border-top: 2px solid var(--color-tertiary-mid);
   font-size: .875rem;
   line-height: 1.45;
   margin-bottom: $spacing-xs;

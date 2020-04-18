@@ -3,9 +3,9 @@
 // ==================================================
 
 .cta {
-  background-color: getColor(background, light);
-  border-bottom: 1px solid getColor(base, lines);
-  border-top: 3px solid getColor(base, splash);
+  background-color: var(--color-base-light);
+  border-bottom: 1px solid var(--color-tertiary);
+  border-top: 1px solid var(--color-tertiary);
   padding-bottom: $spacing-m;
   padding-top: $spacing-m;
 }

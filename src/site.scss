@@ -9,10 +9,11 @@
 // Inter font
 @import url('https://rsms.me/inter/inter.css');
 
-// Concise Settings
-@import "keenanpayne/base/settings";
+// Settings
+@import "keenanpayne/settings/custom-properties";
+@import "keenanpayne/settings/variables";
 
-// Concise Core
+// Concise
 @import "src/concise.css/concise";
 
 
@@ -20,10 +21,21 @@
 // Site-Specific
 // -------------
 
-// Base Site
-@import "keenanpayne/base/base";
-@import "keenanpayne/base/type";
-@import "keenanpayne/base/utilities";
+// Generic
+@import "keenanpayne/generic/shared";
+@import "keenanpayne/generic/utilities";
+
+// Elements
+@import "keenanpayne/elements/blockquote";
+@import "keenanpayne/elements/body";
+@import "keenanpayne/elements/code";
+@import "keenanpayne/elements/headings";
+@import "keenanpayne/elements/image";
+@import "keenanpayne/elements/link";
+@import "keenanpayne/elements/lists";
+@import "keenanpayne/elements/paragraph";
+@import "keenanpayne/elements/sup";
+@import "keenanpayne/elements/table";
 
 // Globals
 @import "keenanpayne/globals/footer";

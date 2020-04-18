@@ -72,7 +72,7 @@
 
   &:after { 
     animation: introductionBorder $transition-duration-long .5s forwards;
-    background-color: getColor(base, linesDark);
+    background-color: currentColor;
     content: '';
     display: block;
     height: 100%;
