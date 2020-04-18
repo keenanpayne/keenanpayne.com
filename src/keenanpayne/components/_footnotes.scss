@@ -9,7 +9,7 @@
   grid-column-end: 7;
 
   &:before {
-    border-top: 1px solid getColor(base, lines);
+    border-top: 1px solid var(--color-tertiary-light);
     color: var(--color-secondary);
     content: 'Footnotes:';
     display: block;
@@ -20,7 +20,7 @@
     letter-spacing: .05em;
     margin-bottom: .5rem;
     margin-top: $spacing-xxs;
-    padding-top: $spacing-xxs;
+    padding-top: $spacing-s;
 
     @media (--medium) { 
       grid-column-start: 3;

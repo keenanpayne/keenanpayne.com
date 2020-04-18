@@ -1,0 +1,28 @@
+//
+// Shared
+// ==================================================
+
+:root {   
+  background-color: var(--color-base);
+  font-size: var(--font-size);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+
+  @media screen and (-webkit-min-device-pixel-ratio: 2),
+         screen and (min-resolution: 2dppx) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-tertiary-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-tertiary-mid);
+}

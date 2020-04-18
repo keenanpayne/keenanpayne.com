@@ -3,9 +3,7 @@
 // ==================================================
 
 .newsletter { 
-  background-color: #fffbf1;
-  border-bottom: 1px solid rgba(254,67,101,0.75);
-  border-top: 1px solid rgba(254,67,101,0.75);
+  background-color: var(--color-base-mid);
   padding-bottom: $spacing-l;
   padding-top: $spacing-l;
 }

@@ -28,16 +28,20 @@ comments: true
       </p>
     </header>
 
-    <div class="post-content">
-      {{ content }}
+    <div class="post-container">
+      <div class="post-content">
+        {{ content }}
+      </div>
 
-      {% include components/promo.html %}
+      <div class="post-extras">
+        {% include components/promo.html %}
 
-      <noscript>
-        Please enable JavaScript in your browser to participate in the discussion.
-      </noscript>
-      
-      <aside class="post-comments" id="disqus_thread"></aside>
+        <noscript>
+          Please enable JavaScript in your browser to participate in the discussion.
+        </noscript>
+        
+        <aside class="post-comments" id="disqus_thread"></aside>
+      </div>
     </div>
   </article>
 </section>

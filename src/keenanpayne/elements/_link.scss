@@ -1,0 +1,46 @@
+//
+// Links
+// ==================================================
+
+a {
+  color: currentColor;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  // Modifiers
+  &.-tertiary { 
+    text-decoration: underline;
+    text-decoration-color: var(--color-tertiary-mid);
+
+    &:hover { 
+      color: var(--color-tertiary);
+    }
+  }
+
+  &.-cta {
+    box-shadow: inset 0 -.1em 0 0 var(--color-tertiary-mid);
+    transition: box-shadow $transition-duration;
+
+    &:hover {
+      box-shadow: inset 0 -0.35em 0 0 var(--color-tertiary-mid);
+      text-decoration: none;
+    }
+  }
+
+  &.-arrow {
+    &:after { content: ' →'; }
+  }
+}
+
+// Links in other elements
+p,
+ul,
+ol {
+  a {
+    font-weight: $fontWeight-normal;
+    text-decoration: underline;
+  }
+}

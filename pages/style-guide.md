@@ -19,7 +19,7 @@ masthead_subtitle: The bits and bytes that make up this website
   No complex components. Modifiers for atoms should be included.
 -->
 
-<h3 class="-bottom-border">Typography</h3>
+{% include type/section-heading.html content="Typography" %}
 
 {% include type/content-heading.html text="Headings" %}
 
@@ -72,8 +72,7 @@ Here's a link to [a website](https://foo.bar), to a [local doc](local-doc.html),
 
 <p class="-ordinal">1st 2nd 3rd 4th 96o</p>
 
-
-<h3 class="-bottom-border">Lists</h3>
+{% include type/section-heading.html content="Lists" %}
 
 **Unordered lists**
 
@@ -93,12 +92,12 @@ Here's a link to [a website](https://foo.bar), to a [local doc](local-doc.html),
   4. Do not bump wooden spoon or it will fall.
 
 
-<h3 class="-bottom-border">Buttons</h3>
+{% include type/section-heading.html content="Buttons" %}
 
 <button>Only used for submissions</button>
 
 
-<h3 class="-bottom-border">Tables</h3>
+{% include type/section-heading.html content="Tables" %}
 
 &nbsp; | First Header | Second Header
 --- | ------------ | -------------
@@ -106,7 +105,7 @@ Here's a link to [a website](https://foo.bar), to a [local doc](local-doc.html),
 **Y Value** | Content in the first column | Content in the second column
 
 
-<h3 class="-bottom-border">Code Snippets</h3>
+{% include type/section-heading.html content="Code" %}
 
 **Language-agnostic**
 
@@ -126,6 +125,6 @@ for i in range(10):
 ~~~
 
 
-<h3 class="-bottom-border">Images</h3>
+{% include type/section-heading.html content="Images" %}
 
 ![example image](https://luna1.co/4c8bb1.jpg "An exemplary image")

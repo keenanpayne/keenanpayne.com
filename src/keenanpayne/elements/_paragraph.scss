@@ -1,0 +1,47 @@
+//
+// Paragraph
+// ==================================================
+
+p {
+  margin-top: 0;
+  font-variant-ligatures: normal;
+
+  // Modifiers
+  &.-secondary { 
+    color: var(--color-secondary); 
+  }
+
+  &.-large { 
+    font-size: typeScale(4); 
+    letter-spacing: -.01em;
+  }
+
+  &.-small {
+    font-size: typeScale(.5);
+  }
+
+  &.-small-heading {
+    font-variant: all-small-caps;
+  }
+
+  &.-content-heading {
+    @extend p.-secondary;
+    @extend p.-small-heading;
+
+    margin-top: $spacing-m;
+  }
+
+  &.-section-heading { 
+    border-bottom: 2px solid var(--color-secondary);
+    font-variant: all-small-caps;
+    font-weight: $fontWeight-bold;
+    margin-bottom: $spacing-s;
+    letter-spacing: .02em;
+    padding-bottom: .25em;
+    text-align: right;
+
+    @media (--small-max) {
+      font-size: typeScale(3);
+    }
+  }
+}
