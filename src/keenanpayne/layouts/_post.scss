@@ -91,7 +91,7 @@
     width: 100%;
 
     figcaption {
-      color: getColor(text, secondary);
+      color: var(--color-secondary);
       font-size: typeScale(1);
       font-style: italic;
       margin-right: $spacing-xxs;

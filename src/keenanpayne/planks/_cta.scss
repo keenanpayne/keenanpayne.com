@@ -5,7 +5,7 @@
 .cta {
   background-color: getColor(background, light);
   border-bottom: 1px solid getColor(base, lines);
-  border-top: 3px solid getColor(base, splash);
+  border-top: 3px solid var(--color-tertiary);
   padding-bottom: $spacing-m;
   padding-top: $spacing-m;
 }

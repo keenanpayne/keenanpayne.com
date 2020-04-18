@@ -17,8 +17,8 @@ introduction: I'm Keenan
 introduction_subtitle: I'm a freelance web developer with over ten years of experience. I strive to help businesses large and small succeed on the web. <small>Welcome to my little corner of the internet</small>
 
 ## Post List
-posts_title: "Latest ramblings"
-posts_limit: 3 
+posts_title: "Latest Articles"
+posts_limit: 5
 
 ## Projects
 projects:

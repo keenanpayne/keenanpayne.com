@@ -4,7 +4,7 @@
 
 button,
 .button {
-  background-color: getColor(base, splash);
+  background-color: var(--color-tertiary-mid);
   color: white;
   cursor: default;
   display: inline-block;
@@ -14,12 +14,12 @@ button,
   vertical-align: middle;
 
   &:hover {
-    background-color: getColor(base, splash-dark);
+    background-color: var(--color-tertiary);
     color: white;
   }
 
   &:active,
   &:focus { 
-    background-color: getColor(base, splash); 
+    background-color: var(--color-tertiary-mid); 
   }
 }

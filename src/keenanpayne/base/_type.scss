@@ -43,7 +43,7 @@ p {
 
   // Modifiers
   &.-secondary { 
-    color: getColor(text, secondary); 
+    color: var(--color-secondary); 
   }
 
   &.-large { 
@@ -52,7 +52,6 @@ p {
   }
 
   &.-small {
-    color: getColor(text, secondary);
     font-size: typeScale(.5);
   }
 
@@ -68,7 +67,7 @@ p {
   }
 
   &.-section-heading { 
-    border-bottom: 2px solid getColor(base, linesDark);
+    border-bottom: 2px solid var(--color-secondary);
     font-variant: all-small-caps;
     font-weight: $fontWeight-bold;
     margin-bottom: $spacing-s;
@@ -112,7 +111,7 @@ li {
 // -----
 
 a {
-  color: getColor(text, primary);
+  color: currentColor;
   cursor: pointer;
 
   &:hover {
@@ -122,19 +121,19 @@ a {
   // Modifiers
   &.-tertiary { 
     text-decoration: underline;
-    text-decoration-color: getColor(base, splash-dark);
+    text-decoration-color: var(--color-tertiary-mid);
 
     &:hover { 
-      color: getColor(base, splash-dark);
+      color: var(--color-tertiary);
     }
   }
 
   &.-cta {
-    box-shadow: inset 0 -.1em 0 0 getColor(base, splash);
+    box-shadow: inset 0 -.1em 0 0 var(--color-tertiary-mid);
     transition: box-shadow $transition-duration;
 
     &:hover {
-      box-shadow: inset 0 -0.45em 0 0 getColor(base, splash);
+      box-shadow: inset 0 -0.35em 0 0 var(--color-tertiary-mid);
       text-decoration: none;
     }
   }
@@ -189,7 +188,7 @@ h1, h2, h3, h4,
   }
 
   &.-secondary { 
-    color: getColor(text, secondary); 
+    color: var(--color-secondary); 
   }
 
   &.-bottom-border {
@@ -232,7 +231,7 @@ h4,
 // -----------
 
 blockquote {
-  color: getColor(text, secondary);
+  color: var(--color-secondary);
   border-left: 5px solid getColor(base, lines);
   font-style: italic;
   margin-left: 0;
@@ -241,7 +240,7 @@ blockquote {
   transition: border-left-color $transition-duration-long;
 
   &:hover { 
-    border-left-color: getColor(base, splash); 
+    border-left-color: var(--color-tertiary); 
   }
 }
 
