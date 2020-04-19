@@ -43,3 +43,22 @@
   font-feature-settings: "ordn";
   font-variant-numeric: ordinal;
 }
+
+
+//
+// Horizontal Scrollbars
+// ---------------------
+
+._scroll-horizontal {
+  &::-webkit-scrollbar {
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-tertiary-light);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-tertiary-mid);
+  }
+}

@@ -5,7 +5,7 @@
 .introduction {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  margin-left: 2rem;
+  // margin-left: 2rem;
   overflow: visible;
   position: relative;
 
@@ -41,6 +41,7 @@
 }
 
 .introduction-hello { 
+  display: none;
   height: 100%;
   left: -2rem;
   line-height: 1;
@@ -49,6 +50,10 @@
   text-indent: 8px;
   top: 0;
   writing-mode: vertical-rl;
+
+  @media (min-width: 1160px) { 
+    display: block;
+  }
 
   @media (--medium) { 
     text-indent: 14px;

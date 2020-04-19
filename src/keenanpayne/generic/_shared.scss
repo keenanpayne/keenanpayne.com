@@ -14,15 +14,3 @@
     -moz-osx-font-smoothing: grayscale;
   }
 }
-
-::-webkit-scrollbar {
-  height: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--color-tertiary-light);
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: var(--color-tertiary-mid);
-}
