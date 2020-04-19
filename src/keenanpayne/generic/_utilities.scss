@@ -30,7 +30,7 @@
 }
 
 .-proportional-numbers {
-  font-feature-settings: "pnum";
+  font-feature-settings: "pnumn";
   font-variant-numeric: proportional-nums;
 }
 
@@ -51,7 +51,7 @@
 
 ._scroll-horizontal {
   &::-webkit-scrollbar {
-    height: 10px;
+    height: .75rem;
   }
 
   &::-webkit-scrollbar-track {
