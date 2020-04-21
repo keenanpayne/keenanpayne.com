@@ -36,30 +36,29 @@
 // -------
 
 .post-content {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-
   > p,
   > ol,
   > ul,
   > h1,
   > h2,
   > h3,
-  > blockquote, 
   > .highlighter-rouge {
-    grid-column: 1 / -1;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+  }
 
+  > p.-large,
+  > blockquote {
     @media (--medium) {
-      grid-column: 2 / 6;
+      margin-bottom: $spacing-s;
+      margin-left: $spacing-m;
+      margin-top: $spacing-s;
     }
   }
 
   > blockquote { 
-    grid-column: 1 / -1;
-
-    @media (--medium) {
-      grid-column-end: 5;
-    }
+    max-width: 700px;
   }
 
   > p {
@@ -71,7 +70,7 @@
   }
 
   h2 {
-    margin-bottom: $spacing-xs;
+    margin-bottom: $spacing-xxs;
     margin-top: $spacing-s;
   }
 
@@ -93,7 +92,6 @@
   }
 
   figure { 
-    grid-column: 1 / -1;
     margin: $spacing-xxs 0 $spacing-s;
     max-width: 100%;
     width: 100%;
@@ -118,19 +116,14 @@
 
   // Descendants
   .cp_embed_wrapper { 
-    grid-column: 1 / -1;
-    margin-bottom: $spacing-xs;
+    margin-bottom: $spacing-s;
+    margin-top: $spacing-s;
   }
 }
 
 // Comments
 .post-comments { 
-  grid-column: 1 / -1;
   margin-top: $spacing-l; 
-
-  @media (--medium) { 
-    grid-column: 2 / 6;
-  }
 }
 
 
