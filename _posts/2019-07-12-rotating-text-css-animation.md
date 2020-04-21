@@ -16,7 +16,7 @@ Here's an example of what we will be building:
 
 Before writing any code, I knew that I wanted to have the following headline on my website:
 
-{% include type/p-large.html content="I'll make your website... [insert adjective here]" %}
+**I'll make your website... [insert adjective here]**
 
 For my adjectives, I made a list of what I wanted to rotate through:
 

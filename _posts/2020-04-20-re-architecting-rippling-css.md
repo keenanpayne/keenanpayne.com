@@ -4,10 +4,15 @@ title:  'Re-architecting the CSS for Rippling.com'
 
 I recently led an effort to rebuild the entire website for [Rippling](https://rippling.com), a San Francisco-based startup that builds software that helps companies manage different parts of their organization, such as HR and IT. Rippling had been using its former website since early in the company's life and wanted me to help provide a complete overhaul of their web presence. This overhaul coincided with an extensive marketing campaign by the company, which included a significant advertising push inside of San Francisco boldly targeting their direct competitors. 
 
-[//]: <> (TODO: Have these side-by-side so that they are large and clear to the reader)
+<div grid>
+  <div column="6">
+    {% include atoms/figure.html src='/images/rippling-legacy.png' alt='Preview of what the Rippling website looked like before' caption="Preview of what the Rippling website looked like before" %}
+  </div>
 
-{% include atoms/figure.html src='/images/rippling-legacy.png' alt='Preview of what the Rippling website looked like before' caption="Preview of what the Rippling website looked like before" %}
-{% include atoms/figure.html src='/images/rippling-new.png' alt='Preview of what the Rippling website looks like now' caption="Preview of what the Rippling website looks like now" %}
+  <div column="6">
+    {% include atoms/figure.html src='/images/rippling-new.png' alt='Preview of what the Rippling website looks like now' caption="Preview of what the Rippling website looks like now" %}
+  </div>
+</div>
 
 ## Move fast and build things
 

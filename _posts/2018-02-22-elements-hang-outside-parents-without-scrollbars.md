@@ -53,4 +53,4 @@ Why does this work? It's because we shift the logic to ensure that horizontal ov
 
 ## Shouts Out
 
-Quick shout out to Chris Silich that wrote a [blog post](https://chrissilich.com/blog/make-elements-hang-outside-your-main-page-container-without-triggering-scrollbars-if-the-window-is-too-narrow/) about this a few years ago. This post was one of the only resources I found documenting this solution, and I thought it would be valuable to write about it again since his original post contains broken images and no working examples.
+Quick shout out to [Chris Silich](https://chrissilich.com/) that wrote a blog post about this a few years ago, but no longer seems to be published. This post was one of the only resources I found documenting this solution, and I thought it would be valuable to write about it again since his original post contains broken images and no working examples.
