@@ -1238,7 +1238,6 @@ a.reversefootnote {
   text-decoration: none; }
 
 .footnote {
-  margin-right: .1em;
   text-decoration: none; }
   .footnote:hover {
     color: var(--color-secondary);
