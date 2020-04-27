@@ -23,7 +23,8 @@
 
 // Remove top margin from first heading so it is flush
 .work-heading {
-  margin-top: $spacing-m;
+  margin-bottom: .5em;
+  margin-top: $spacing-s;
 
   &:first-of-type { 
     margin-top: 0; 

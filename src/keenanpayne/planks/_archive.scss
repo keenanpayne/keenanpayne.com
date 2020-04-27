@@ -16,3 +16,9 @@
     grid-column-end: 6;
   }
 }
+
+.archive-article {
+  &:not(:last-of-type) {
+    margin-bottom: $spacing-xs;
+  }
+}

@@ -2,12 +2,6 @@
 // Headings
 // ==================================================
 
-h1, h2, h3, h4, h5, h6 {
-  @supports (font-variation-settings: normal) {
-    font-family: 'Inter var', sans-serif;
-  }
-}
-
 h1, h2, h3, h4,
 ._fontSize-h1,
 ._fontSize-h2,
@@ -28,7 +22,6 @@ h1, h2, h3, h4,
 
     @media (--large) {
       font-size: typeScale(9);
-      letter-spacing: -.0425em;
     }
   }
 
@@ -40,13 +33,12 @@ h1, h2, h3, h4,
 h1,
 ._fontSize-h1 {
   font-size: typeScale(7);
-  letter-spacing: -.035em;
+  margin-bottom: .25em;
 }
 
 h2,
 ._fontSize-h2 {
-  letter-spacing: -.02em;
-  margin-bottom: .25em;
+  margin-bottom: .5em;
   margin-top: 0;
   font-size: typeScale(5);
 }
@@ -54,13 +46,14 @@ h2,
 h3,
 ._fontSize-h3 {
   font-variant: all-small-caps;
-  line-height: 1.1;
+  letter-spacing: .02em;
+  line-height: 1;
 }
 
 h4,
 ._fontSize-h4 {
+  font-family: $font-primary;
   font-size: typeScale(3);
   font-weight: $fontWeight-normal;
-  letter-spacing: -.0125em;
   line-height: 1.3;
 }

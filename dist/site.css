@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url("https://rsms.me/inter/inter.css");
 :root {
   --font-size: 16px;
   --color-base: white;
@@ -399,7 +398,7 @@ h6 {
 
 h1, h2, h3, h4, h5, h6 {
   color: #222;
-  font-family: "Inter", sans-serif;
+  font-family: neue-haas-grotesk-display, sans-serif;
   line-height: 1.3; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     color: inherit;
@@ -888,10 +887,6 @@ code {
   a code {
     text-decoration: underline; }
 
-@supports (font-variation-settings: normal) {
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Inter var', sans-serif; } }
-
 h1, h2, h3, h4,
 ._fontSize-h1,
 ._fontSize-h2,
@@ -919,8 +914,7 @@ h1, h2, h3, h4,
       ._fontSize-h2.-xl,
       ._fontSize-h3.-xl,
       ._fontSize-h4.-xl {
-        font-size: 3.58318rem;
-        letter-spacing: -.0425em; } }
+        font-size: 3.58318rem; } }
   h1.-secondary, h2.-secondary, h3.-secondary, h4.-secondary,
   ._fontSize-h1.-secondary,
   ._fontSize-h2.-secondary,
@@ -931,25 +925,25 @@ h1, h2, h3, h4,
 h1,
 ._fontSize-h1 {
   font-size: 2.48832rem;
-  letter-spacing: -.035em; }
+  margin-bottom: .25em; }
 
 h2,
 ._fontSize-h2 {
-  letter-spacing: -.02em;
-  margin-bottom: .25em;
+  margin-bottom: .5em;
   margin-top: 0;
   font-size: 1.728rem; }
 
 h3,
 ._fontSize-h3 {
   font-variant: all-small-caps;
-  line-height: 1.1; }
+  letter-spacing: .02em;
+  line-height: 1; }
 
 h4,
 ._fontSize-h4 {
+  font-family: "source-sans-pro", sans-serif;
   font-size: 1.2rem;
   font-weight: 400;
-  letter-spacing: -.0125em;
   line-height: 1.3; }
 
 img {
@@ -1008,8 +1002,9 @@ p {
     font-variant: all-small-caps; }
   p.-content-heading {
     margin-top: calc(3rem + 1vw); }
-  p.-section-heading {
+  p.-section-heading, .footnotes:before {
     border-bottom: 2px solid var(--color-secondary);
+    font-family: neue-haas-grotesk-text, sans-serif;
     font-variant: all-small-caps;
     font-weight: 600;
     margin-bottom: calc(0.375rem + 1vw);
@@ -1017,7 +1012,7 @@ p {
     padding-bottom: .25em;
     text-align: right; }
     @media (max-width: 479px) {
-      p.-section-heading {
+      p.-section-heading, .footnotes:before {
         font-size: 1.2rem; } }
 
 sup {
@@ -1110,8 +1105,8 @@ table {
 
 .siteHeader-logo {
   font-size: 1rem;
-  font-weight: 420;
-  letter-spacing: -.042em;
+  font-weight: 600;
+  letter-spacing: .05em;
   margin-bottom: 0;
   margin-top: 0; }
 
@@ -1194,19 +1189,15 @@ button, input[type="submit"],
       grid-column-start: 1;
   grid-column-end: 7; }
   .footnotes:before {
-    border-top: 1px solid var(--color-tertiary-light);
-    color: var(--color-secondary);
-    content: 'Footnotes:';
+    content: 'Footnotes';
     display: block;
-    font-size: 0.83333rem;
-    font-weight: 600;
     -ms-grid-column: 1;
         grid-column-start: 1;
     grid-column-end: 9;
-    letter-spacing: .05em;
-    margin-bottom: .5rem;
+    margin-bottom: 1.5rem;
     margin-top: calc(0.375rem + 1vw);
-    padding-top: calc(1.5rem + 1vw); }
+    padding-top: calc(1.5rem + 1vw);
+    text-align: left; }
     @media (min-width: 768px) {
       .footnotes:before {
         -ms-grid-column: 3;
@@ -1264,6 +1255,9 @@ input.-bg-white {
       -ms-grid-column: 2;
           grid-column-start: 2;
       grid-column-end: 6; } }
+
+.archive-article:not(:last-of-type) {
+  margin-bottom: calc(0.75rem + 1vw); }
 
 .cta {
   background-color: var(--color-base-light);
@@ -1332,8 +1326,9 @@ input.-bg-white {
   @media (min-width: 1160px) {
     .introduction {
       margin-left: auto; } }
-  .introduction h1 {
-    grid-column: 1 / -1; }
+
+.introduction-headline {
+  grid-column: 1 / -1; }
 
 .introduction-subhead {
   grid-column: 1 / -1;
@@ -1341,6 +1336,7 @@ input.-bg-white {
   padding-bottom: .4em; }
   @media (min-width: 768px) {
     .introduction-subhead {
+      max-width: 25em;
       grid-column-end: 6; } }
   .introduction-subhead small {
     display: block;
@@ -1482,8 +1478,6 @@ input.-bg-white {
 
 .project-text {
   margin-bottom: 0;
-  margin-left: calc(0.375rem + 1vw);
-  margin-right: calc(0.375rem + 1vw);
   margin-top: calc(1.5rem + 1vw); }
   @media (min-width: 960px) {
     .project-text {
@@ -1533,7 +1527,8 @@ input.-bg-white {
     page-break-inside: avoid; } }
 
 .work-heading {
-  margin-top: calc(3rem + 1vw); }
+  margin-bottom: .5em;
+  margin-top: calc(1.5rem + 1vw); }
   .work-heading:first-of-type {
     margin-top: 0; }
 
@@ -1573,11 +1568,10 @@ input.-bg-white {
   position: relative; }
 
 .post-content h2 {
-  margin-bottom: calc(0.375rem + 1vw);
   margin-top: calc(1.5rem + 1vw); }
 
 .post-content h3 {
-  margin-bottom: calc(0.375rem + 1vw);
+  margin-bottom: .5em;
   margin-top: calc(0.75rem + 1vw); }
 
 .post-content > ul,
