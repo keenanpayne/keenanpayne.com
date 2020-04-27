@@ -14,7 +14,7 @@ planks:
 
 ## Introduction
 introduction: I'm Keenan
-introduction_subtitle: I'm a freelance web developer with over ten years of experience. I strive to help businesses large and small succeed on the web. <small>Welcome to my little corner of the internet</small>
+introduction_subtitle: I'm a freelance web developer with over ten years of experience. I strive to help businesses large and small succeed on the web. <small>Welcome to my little corner of the internet.</small>
 
 ## Post List
 posts_title: "Latest Articles"
