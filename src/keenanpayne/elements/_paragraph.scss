@@ -33,10 +33,11 @@ p {
 
   &.-section-heading { 
     border-bottom: 2px solid var(--color-secondary);
+    font-family: $font-tertiary;
     font-variant: all-small-caps;
     font-weight: $fontWeight-bold;
     margin-bottom: $spacing-xxs;
-    letter-spacing: .02em;
+    letter-spacing: .035em;
     padding-bottom: .25em;
     text-align: right;
 

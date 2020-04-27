@@ -5,16 +5,11 @@
 .introduction {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  // margin-left: 2rem;
   overflow: visible;
   position: relative;
 
   @media (min-width: 1160px) { 
     margin-left: auto;
-  }
-
-  h1 { 
-    grid-column: 1 / -1;
   }
 }
 
@@ -23,16 +18,19 @@
 // Descendants
 // -----------
 
-.introduction-subhead { 
+.introduction-headline {
   grid-column: 1 / -1;
+}
 
-  @media (--medium) { 
+.introduction-subhead {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+  padding-bottom: .4em; 
+
+  @media (--medium) {
+    max-width: 25em;
     grid-column-end: 6;
   }
-
-  // Modifiers
-  margin-bottom: 0;
-  padding-bottom: .4em;
 
   small { 
     display: block;
