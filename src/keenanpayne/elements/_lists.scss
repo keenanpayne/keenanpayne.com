@@ -5,7 +5,7 @@
 // Hanging lists for readability
 ul, ol {
   @media (--medium) {
-    padding-left: 0;
+    // padding-left: 0;
   }
 }
 
@@ -17,6 +17,6 @@ ol {
 
 li {
   &:not(:last-child) { 
-    margin-bottom: .75em; 
+    margin-bottom: .5em; 
   }
 }

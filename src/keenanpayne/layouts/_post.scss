@@ -61,8 +61,8 @@
     max-width: 700px;
   }
 
-  > p {
-    margin-bottom: $spacing-xxs;
+  > p:not([class]) {
+    line-height: 1.6;
   }
 
   h2, h3 {
@@ -70,17 +70,16 @@
   }
 
   h2 {
-    margin-top: $spacing-s;
+    margin-top: 1.25em;
   }
 
   h3 {
     margin-bottom: .5em;
-    margin-top: $spacing-xs;
+    margin-top: 1.5em;
   }
 
   > ul,
   > ol { 
-    margin-bottom: $spacing-xs;
     margin-top: 0;
 
     // Nested lists

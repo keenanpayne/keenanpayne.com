@@ -11,9 +11,14 @@ p {
     color: var(--color-secondary); 
   }
 
+  &.-secondary-mid { 
+    color: var(--color-secondary-mid);
+  }
+
   &.-large { 
     font-size: typeScale(4); 
     letter-spacing: -.01em;
+    line-height: 1.4;
   }
 
   &.-small {
@@ -22,6 +27,7 @@ p {
 
   &.-small-heading {
     font-variant: all-small-caps;
+    line-height: 1;
   }
 
   &.-content-heading {
@@ -36,9 +42,8 @@ p {
     font-family: $font-tertiary;
     font-variant: all-small-caps;
     font-weight: $fontWeight-bold;
-    margin-bottom: $spacing-xxs;
-    letter-spacing: .035em;
-    padding-bottom: .25em;
+    margin-bottom: 1.25em;
+    letter-spacing: .02em;
     text-align: right;
 
     @media (--small-max) {
