@@ -40,15 +40,25 @@ p {
   }
 
   &.-section-heading { 
-    border-bottom: 2px solid var(--color-secondary);
     font-variant: all-small-caps;
     font-weight: $fontWeight-bold;
-    margin-bottom: 1.25em;
     letter-spacing: .02em;
+    margin-bottom: 1.25em;
+    position: relative;
     text-align: right;
 
     @media (--small-max) {
       font-size: typeScale(3);
+    }
+
+    &:after {
+      background-image: linear-gradient(90deg, var(--color-secondary-light), var(--color-secondary));
+      height: 2px;
+      width: 100%;
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
     }
   }
 }

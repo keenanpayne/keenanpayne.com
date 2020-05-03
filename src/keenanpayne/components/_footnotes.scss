@@ -10,6 +10,8 @@
 
   &:before {
     @extend p.-section-heading;
+
+    border-bottom: 2px solid var(--color-secondary);
     content: 'Footnotes';
     display: block;
     grid-column-start: 1;
