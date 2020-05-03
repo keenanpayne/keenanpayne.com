@@ -70,7 +70,19 @@
   }
 
   h2 {
+    margin-bottom: .5em;
     margin-top: 1.25em;
+    padding-bottom: .15em;
+
+    &:after {
+      background-image: linear-gradient(90deg, var(--color-secondary-mid), transparent);
+      bottom: 0;
+      content: '';
+      height: 1px;
+      left: 0;
+      position: absolute;
+      right: 0;
+    }
   }
 
   h3 {

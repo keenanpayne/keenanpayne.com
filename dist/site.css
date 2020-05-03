@@ -927,9 +927,16 @@ h1, h2, h3, h4,
   ._fontSize-h2.-xl,
   ._fontSize-h3.-xl,
   ._fontSize-h4.-xl {
-    font-size: 3.8147rem;
+    font-size: 3.05176rem;
     line-height: 1;
     margin-bottom: .25em; }
+    @media (min-width: 960px) {
+      h1.-xl, h2.-xl, h3.-xl, h4.-xl,
+      ._fontSize-h1.-xl,
+      ._fontSize-h2.-xl,
+      ._fontSize-h3.-xl,
+      ._fontSize-h4.-xl {
+        font-size: 3.8147rem; } }
   h1.-secondary, h2.-secondary, h3.-secondary, h4.-secondary,
   ._fontSize-h1.-secondary,
   ._fontSize-h2.-secondary,
@@ -1126,13 +1133,13 @@ table {
 
 .siteHeader-logo {
   font-family: "neue-haas-grotesk-display", sans-serif;
-  font-size: 1rem;
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 0;
   margin-top: 0; }
 
 .siteHeader-navigation {
-  border-top: 1px solid var(--color-secondary-light);
+  border-top: 2px solid var(--color-secondary);
   margin-top: -.2em;
   padding-top: .5em;
   text-align: right; }
@@ -1586,7 +1593,17 @@ input.-bg-white {
   position: relative; }
 
 .post-content h2 {
-  margin-top: 1.25em; }
+  margin-bottom: .5em;
+  margin-top: 1.25em;
+  padding-bottom: .15em; }
+  .post-content h2:after {
+    background-image: linear-gradient(90deg, var(--color-secondary-mid), transparent);
+    bottom: 0;
+    content: '';
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0; }
 
 .post-content h3 {
   font-family: "neue-haas-grotesk-display", sans-serif;

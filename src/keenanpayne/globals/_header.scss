@@ -23,7 +23,7 @@
 
 .siteHeader-logo {
   font-family: $font-tertiary;
-  font-size: typeScale(2);
+  font-size: 18px;
   font-weight: $fontWeight-bold; 
   margin-bottom: 0;
   margin-top: 0;
@@ -35,7 +35,7 @@
 // ----------
 
 .siteHeader-navigation {
-  border-top: 1px solid var(--color-secondary-light);
+  border-top: 2px solid var(--color-secondary);
   margin-top: -.2em;
   padding-top: .5em;
   text-align: right;
