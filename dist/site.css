@@ -68,7 +68,7 @@ template,
 
 :root {
   box-sizing: border-box;
-  font-family: "source-sans-pro", sans-serif;
+  font-family: "Soehne", sans-serif;
   line-height: 1.5;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -399,7 +399,7 @@ h6 {
 
 h1, h2, h3, h4, h5, h6 {
   color: #222;
-  font-family: "Tiempos Fine", "Georgia", sans-serif;
+  font-family: "Heldane", "Georgia", sans-serif;
   line-height: 1.3; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     color: inherit;
@@ -810,73 +810,127 @@ table {
   font-family: 'Tiempos Fine';
   font-style: normal;
   font-weight: 200;
-  src: local("Tiempos Fine Regular"), url("../fonts/tiempos-fine-test-regular.woff") format("woff"); }
+  src: local("Tiempos Fine Regular"), url("../fonts/tiempos-fine/tiempos-fine-test-regular.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: italic;
   font-weight: 200;
-  src: local("Tiempos Fine Regular Italic"), url("../fonts/tiempos-fine-test-regular-italic.woff") format("woff"); }
+  src: local("Tiempos Fine Regular Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-regular-italic.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: normal;
   font-weight: 100;
-  src: local("Tiempos Fine Light"), url("../fonts/tiempos-fine-test-light.woff") format("woff"); }
+  src: local("Tiempos Fine Light"), url("../fonts/tiempos-fine/tiempos-fine-test-light.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: italic;
   font-weight: 100;
-  src: local("Tiempos Fine Light Italic"), url("../fonts/tiempos-fine-test-light-italic.woff") format("woff"); }
+  src: local("Tiempos Fine Light Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-light-italic.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: normal;
   font-weight: 300;
-  src: local("Tiempos Fine Medium"), url("../fonts/tiempos-fine-test-medium.woff") format("woff"); }
+  src: local("Tiempos Fine Medium"), url("../fonts/tiempos-fine/tiempos-fine-test-medium.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: italic;
   font-weight: 300;
-  src: local("Tiempos Fine Medium Italic"), url("../fonts/tiempos-fine-test-medium-italic.woff") format("woff"); }
+  src: local("Tiempos Fine Medium Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-medium-italic.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: normal;
   font-weight: 400;
-  src: local("Tiempos Fine Semibold"), url("../fonts/tiempos-fine-test-semibold.woff") format("woff"); }
+  src: local("Tiempos Fine Semibold"), url("../fonts/tiempos-fine/tiempos-fine-test-semibold.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: italic;
   font-weight: 400;
-  src: local("Tiempos Fine Semibold Italic"), url("../fonts/tiempos-fine-test-semibold-italic.woff") format("woff"); }
+  src: local("Tiempos Fine Semibold Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-semibold-italic.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: normal;
   font-weight: 500;
-  src: local("Tiempos Fine Bold"), url("../fonts/tiempos-fine-test-bold.woff") format("woff"); }
+  src: local("Tiempos Fine Bold"), url("../fonts/tiempos-fine/tiempos-fine-test-bold.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: italic;
   font-weight: 500;
-  src: local("Tiempos Fine Bold Italic"), url("../fonts/tiempos-fine-test-bold-italic.woff") format("woff"); }
+  src: local("Tiempos Fine Bold Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-bold-italic.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: normal;
   font-weight: 900;
-  src: local("Tiempos Fine Black"), url("../fonts/tiempos-fine-test-black.woff") format("woff"); }
+  src: local("Tiempos Fine Black"), url("../fonts/tiempos-fine/tiempos-fine-test-black.woff") format("woff"); }
 
 @font-face {
   font-family: 'Tiempos Fine';
   font-style: italic;
   font-weight: 900;
-  src: local("Tiempos Fine Black Italic"), url("../fonts/tiempos-fine-test-black-italic.woff") format("woff"); }
+  src: local("Tiempos Fine Black Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-black-italic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Heldane';
+  font-style: normal;
+  font-weight: 200;
+  src: local("Tiempos Fine Regular"), url("../fonts/heldane/heldane-display-test-regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Heldane';
+  font-style: italic;
+  font-weight: 200;
+  src: local("Tiempos Fine Regular Italic"), url("../fonts/heldane/heldane-display-test-regular-italic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Heldane';
+  font-style: normal;
+  font-weight: 300;
+  src: local("Tiempos Fine Medium"), url("../fonts/heldane/heldane-display-test-medium.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Heldane';
+  font-style: italic;
+  font-weight: 300;
+  src: local("Tiempos Fine Medium Italic"), url("../fonts/heldane/heldane-display-test-medium-italic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Heldane';
+  font-style: normal;
+  font-weight: 500;
+  src: local("Tiempos Fine Bold"), url("../fonts/heldane/heldane-display-test-bold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Heldane';
+  font-style: italic;
+  font-weight: 500;
+  src: local("Tiempos Fine Bold Italic"), url("../fonts/heldane/heldane-display-test-bold-italic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Soehne';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Soehne"), url("../fonts/soehne/soehne-test-buch.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Soehne';
+  font-style: italic;
+  font-weight: 400;
+  src: local("Soehne"), url("../fonts/soehne/soehne-test-buch-kursiv.woff") format("woff"); }
+
+@font-face {
+  font-family: 'Soehne Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local("Soehne Mono"), url("../fonts/soehne-mono/soehne-mono-test-halbfett.woff") format("woff"); }
 
 :root {
   background-color: var(--color-base);
@@ -1035,11 +1089,11 @@ h2,
 h3,
 ._fontSize-h3 {
   font-weight: 200;
-  line-height: 1.1; }
+  line-height: 1.15; }
 
 h4,
 ._fontSize-h4 {
-  font-family: "source-sans-pro", sans-serif;
+  font-family: "Soehne", sans-serif;
   font-size: 1.2rem;
   font-weight: 400;
   line-height: 1.3; }
@@ -1073,6 +1127,10 @@ ul a,
 ol a {
   font-weight: 400;
   text-decoration: underline; }
+
+@media (min-width: 768px) {
+  ul, ol {
+    padding-left: 0; } }
 
 @media (min-width: 768px) {
   ol {
@@ -1201,10 +1259,9 @@ table {
       display: flex; } }
 
 .siteHeader-logo {
-  font-family: neue-haas-grotesk-text, sans-serif;
+  font-family: 'Soehne Mono';
   font-size: 1rem;
   font-weight: 600;
-  letter-spacing: .015em;
   margin-bottom: 0;
   margin-top: 0; }
 
@@ -1353,7 +1410,7 @@ input.-bg-white {
       grid-column-end: 6; } }
 
 .archive-article:not(:last-of-type) {
-  margin-bottom: calc(1.5rem + 1vw); }
+  margin-bottom: 1.5em; }
 
 .cta {
   background-color: var(--color-base-light);
