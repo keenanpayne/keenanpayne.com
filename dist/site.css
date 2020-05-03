@@ -68,7 +68,7 @@ template,
 
 :root {
   box-sizing: border-box;
-  font-family: "Soehne", sans-serif;
+  font-family: "neue-haas-grotesk-text", sans-serif;
   line-height: 1.5;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -85,7 +85,7 @@ kbd,
 pre,
 samp {
   font-family: "Consolas", monospace;
-  font-size: 0.83333rem;
+  font-size: 0.8rem;
   background-color: #f5f5f5; }
 
 code,
@@ -124,7 +124,7 @@ blockquote {
   blockquote cite,
   blockquote footer {
     color: #777;
-    font-size: 83.33333%;
+    font-size: 80%;
     margin-top: 0.75rem; }
     blockquote cite:before,
     blockquote footer:before {
@@ -158,14 +158,14 @@ progress {
   vertical-align: baseline; }
 
 small {
-  font-size: 83.33333%; }
+  font-size: 80%; }
 
 sub,
 sup {
   line-height: 0;
   position: relative;
   vertical-align: baseline;
-  font-size: 83.33333%; }
+  font-size: 80%; }
 
 sub {
   bottom: -0.25em;
@@ -336,7 +336,7 @@ button, input[type="submit"] {
   border: none;
   color: white;
   cursor: pointer;
-  font-size: 0.83333rem;
+  font-size: 0.8rem;
   line-height: 2.25rem;
   padding: 0 1.5em;
   transition: background-color 150ms;
@@ -380,31 +380,31 @@ textarea,
   clip: auto; }
 
 h1 {
-  font-size: 2.0736rem; }
+  font-size: 2.44141rem; }
 
 h2 {
-  font-size: 1.728rem; }
+  font-size: 1.95312rem; }
 
 h3 {
-  font-size: 1.44rem; }
+  font-size: 1.5625rem; }
 
 h4 {
-  font-size: 1.2rem; }
+  font-size: 1.25rem; }
 
 h5 {
   font-size: 1rem; }
 
 h6 {
-  font-size: 0.83333rem; }
+  font-size: 0.8rem; }
 
 h1, h2, h3, h4, h5, h6 {
   color: #222;
-  font-family: "Heldane", "Georgia", sans-serif;
+  font-family: "Eksell", "Georgia", sans-serif;
   line-height: 1.3; }
   h1 small, h2 small, h3 small, h4 small, h5 small, h6 small {
     color: inherit;
     vertical-align: 0;
-    font-size: 83.33333%; }
+    font-size: 80%; }
 
 h1, h2, h3 {
   margin: 0.75rem 0 0.375rem; }
@@ -441,7 +441,7 @@ select,
 textarea {
   transition-duration: 150ms;
   width: 100%;
-  font-size: 0.83333rem;
+  font-size: 0.8rem;
   min-height: 2.25rem; }
   input:not([type="submit"]):focus,
   select:focus,
@@ -499,7 +499,7 @@ select {
 
 label {
   display: block;
-  font-size: 0.83333rem;
+  font-size: 0.8rem;
   line-height: 2.25rem; }
 
 input[type="checkbox"] + label,
@@ -522,7 +522,7 @@ table {
     overflow: visible;
     padding: 0 1em; }
   table caption {
-    font-size: 0.83333rem;
+    font-size: 0.8rem;
     font-style: italic;
     line-height: 3rem;
     text-align: center; }
@@ -807,130 +807,25 @@ table {
     content: "&raquo; "; } }
 
 @font-face {
-  font-family: 'Tiempos Fine';
-  font-style: normal;
-  font-weight: 200;
-  src: local("Tiempos Fine Regular"), url("../fonts/tiempos-fine/tiempos-fine-test-regular.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 200;
-  src: local("Tiempos Fine Regular Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-regular-italic.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: normal;
-  font-weight: 100;
-  src: local("Tiempos Fine Light"), url("../fonts/tiempos-fine/tiempos-fine-test-light.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 100;
-  src: local("Tiempos Fine Light Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-light-italic.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: normal;
-  font-weight: 300;
-  src: local("Tiempos Fine Medium"), url("../fonts/tiempos-fine/tiempos-fine-test-medium.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 300;
-  src: local("Tiempos Fine Medium Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-medium-italic.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: normal;
+  font-family: "Eksell";
   font-weight: 400;
-  src: local("Tiempos Fine Semibold"), url("../fonts/tiempos-fine/tiempos-fine-test-semibold.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 400;
-  src: local("Tiempos Fine Semibold Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-semibold-italic.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Tiempos Fine';
   font-style: normal;
+  src: url("/fonts/eksell/EksellDisplayWeb-Small.eot") format("embedded-opentype"), url("/fonts/eksell/EksellDisplayWeb-Small.woff2") format("woff2"), url("/fonts/eksell/EksellDisplayWeb-Small.woff") format("woff");
+  font-display: swap; }
+
+@font-face {
+  font-family: "Eksell";
   font-weight: 500;
-  src: local("Tiempos Fine Bold"), url("../fonts/tiempos-fine/tiempos-fine-test-bold.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 500;
-  src: local("Tiempos Fine Bold Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-bold-italic.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Tiempos Fine';
   font-style: normal;
-  font-weight: 900;
-  src: local("Tiempos Fine Black"), url("../fonts/tiempos-fine/tiempos-fine-test-black.woff") format("woff"); }
+  src: url("/fonts/eksell/EksellDisplayWeb-Medium.eot") format("embedded-opentype"), url("/fonts/eksell/EksellDisplayWeb-Medium.woff2") format("woff2"), url("/fonts/eksell/EksellDisplayWeb-Medium.woff") format("woff");
+  font-display: swap; }
 
 @font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 900;
-  src: local("Tiempos Fine Black Italic"), url("../fonts/tiempos-fine/tiempos-fine-test-black-italic.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Heldane';
+  font-family: "Eksell";
+  font-weight: 600;
   font-style: normal;
-  font-weight: 200;
-  src: local("Tiempos Fine Regular"), url("../fonts/heldane/heldane-display-test-regular.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Heldane';
-  font-style: italic;
-  font-weight: 200;
-  src: local("Tiempos Fine Regular Italic"), url("../fonts/heldane/heldane-display-test-regular-italic.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Heldane';
-  font-style: normal;
-  font-weight: 300;
-  src: local("Tiempos Fine Medium"), url("../fonts/heldane/heldane-display-test-medium.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Heldane';
-  font-style: italic;
-  font-weight: 300;
-  src: local("Tiempos Fine Medium Italic"), url("../fonts/heldane/heldane-display-test-medium-italic.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Heldane';
-  font-style: normal;
-  font-weight: 500;
-  src: local("Tiempos Fine Bold"), url("../fonts/heldane/heldane-display-test-bold.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Heldane';
-  font-style: italic;
-  font-weight: 500;
-  src: local("Tiempos Fine Bold Italic"), url("../fonts/heldane/heldane-display-test-bold-italic.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Soehne';
-  font-style: normal;
-  font-weight: 400;
-  src: local("Soehne"), url("../fonts/soehne/soehne-test-buch.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Soehne';
-  font-style: italic;
-  font-weight: 400;
-  src: local("Soehne"), url("../fonts/soehne/soehne-test-buch-kursiv.woff") format("woff"); }
-
-@font-face {
-  font-family: 'Soehne Mono';
-  font-style: normal;
-  font-weight: 400;
-  src: local("Soehne Mono"), url("../fonts/soehne-mono/soehne-mono-test-halbfett.woff") format("woff"); }
+  src: url("/fonts/eksell/EksellDisplayWeb-Large.eot") format("embedded-opentype"), url("/fonts/eksell/EksellDisplayWeb-Large.woff2") format("woff2"), url("/fonts/eksell/EksellDisplayWeb-Large.woff") format("woff");
+  font-display: swap; }
 
 :root {
   background-color: var(--color-base);
@@ -1050,16 +945,9 @@ h1, h2, h3, h4,
   ._fontSize-h2.-xl,
   ._fontSize-h3.-xl,
   ._fontSize-h4.-xl {
-    font-size: 2.48832rem;
+    font-size: 3.8147rem;
     line-height: 1;
     margin-bottom: .25em; }
-    @media (min-width: 960px) {
-      h1.-xl, h2.-xl, h3.-xl, h4.-xl,
-      ._fontSize-h1.-xl,
-      ._fontSize-h2.-xl,
-      ._fontSize-h3.-xl,
-      ._fontSize-h4.-xl {
-        font-size: 3.58318rem; } }
   h1.-secondary, h2.-secondary, h3.-secondary, h4.-secondary,
   ._fontSize-h1.-secondary,
   ._fontSize-h2.-secondary,
@@ -1069,32 +957,29 @@ h1, h2, h3, h4,
 
 h1,
 ._fontSize-h1 {
-  font-size: 2.48832rem;
-  font-weight: 400;
+  font-size: 3.05176rem;
+  font-weight: 600;
   line-height: 1.05;
   margin-bottom: .3em; }
-  @media (min-width: 960px) {
-    h1,
-    ._fontSize-h1 {
-      font-size: 2.98598rem; } }
 
 h2,
 ._fontSize-h2 {
-  font-size: 2.0736rem;
-  font-weight: 400;
+  font-size: 2.44141rem;
+  font-weight: 500;
   margin-bottom: .35em;
   margin-top: 0;
   line-height: 1.1; }
 
 h3,
 ._fontSize-h3 {
-  font-weight: 200;
+  font-size: 1.5625rem;
+  font-weight: 400;
   line-height: 1.15; }
 
 h4,
 ._fontSize-h4 {
-  font-family: "Soehne", sans-serif;
-  font-size: 1.2rem;
+  font-family: "neue-haas-grotesk-text", sans-serif;
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.3; }
 
@@ -1148,11 +1033,11 @@ p {
   p.-secondary-mid {
     color: var(--color-secondary-mid); }
   p.-large {
-    font-size: 1.44rem;
+    font-size: 1.5625rem;
     letter-spacing: -.01em;
     line-height: 1.4; }
   p.-small {
-    font-size: 0.69444rem; }
+    font-size: 0.64rem; }
   p.-small-heading, p.-content-heading {
     font-variant: all-small-caps;
     line-height: 1; }
@@ -1160,7 +1045,6 @@ p {
     margin-top: calc(3rem + 1vw); }
   p.-section-heading, .footnotes:before {
     border-bottom: 2px solid var(--color-secondary);
-    font-family: neue-haas-grotesk-text, sans-serif;
     font-variant: all-small-caps;
     font-weight: 600;
     margin-bottom: 1.25em;
@@ -1168,7 +1052,7 @@ p {
     text-align: right; }
     @media (max-width: 479px) {
       p.-section-heading, .footnotes:before {
-        font-size: 1.2rem; } }
+        font-size: 1.25rem; } }
 
 sup {
   font-size: 1.15rem;
@@ -1193,13 +1077,13 @@ table {
     border-bottom: 1px solid var(--color-base-mid); }
 
 .siteFooter {
-  font-size: 0.83333rem;
+  font-size: 0.8rem;
   margin-top: 0;
   padding-bottom: calc(0.75rem + 1vw);
   padding-top: calc(0.75rem + 1vw); }
 
 .siteFooter-copy {
-  font-size: 0.83333rem;
+  font-size: 0.8rem;
   margin-bottom: calc(0.375rem + 1vw); }
   @media (min-width: 768px) {
     .siteFooter-copy {
@@ -1259,7 +1143,7 @@ table {
       display: flex; } }
 
 .siteHeader-logo {
-  font-family: 'Soehne Mono';
+  font-family: "neue-haas-grotesk-display", sans-serif;
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0;
@@ -1284,7 +1168,7 @@ table {
   margin-bottom: 0 !important; }
   @media (min-width: 768px) {
     .siteHeader-navigation-item {
-      font-size: 0.83333rem; } }
+      font-size: 0.8rem; } }
   .siteHeader-navigation-item:not(:last-of-type) {
     margin-right: calc(1.5rem + 1vw); }
 
@@ -1378,7 +1262,7 @@ button, input[type="submit"],
 
 a.reversefootnote {
   color: var(--color-secondary);
-  font-size: 0.69444rem;
+  font-size: 0.64rem;
   text-decoration: none; }
 
 .footnote {
@@ -1480,7 +1364,6 @@ input.-bg-white {
       margin-left: auto; } }
 
 .introduction-headline {
-  font-style: italic;
   grid-column: 1 / -1; }
 
 .introduction-subhead {
@@ -1634,14 +1517,14 @@ input.-bg-white {
   margin-top: calc(1.5rem + 1vw); }
   @media (min-width: 960px) {
     .project-text {
-      font-size: 0.83333rem; } }
+      font-size: 0.8rem; } }
 
 .promo {
   border: 2px solid var(--color-tertiary);
   box-shadow: 4px 4px 0 var(--color-tertiary), 8px 8px 0 var(--color-tertiary-mid), 12px 12px 0 var(--color-tertiary-light);
   color: var(--color-tertiary);
   display: block;
-  font-size: 0.83333rem;
+  font-size: 0.8rem;
   font-weight: 600;
   -ms-grid-column: 1;
       grid-column-start: 1;
@@ -1724,6 +1607,8 @@ input.-bg-white {
   margin-top: 1.25em; }
 
 .post-content h3 {
+  font-family: "neue-haas-grotesk-display", sans-serif;
+  font-weight: 600;
   margin-bottom: .5em;
   margin-top: 1.5em; }
 
@@ -1742,7 +1627,7 @@ input.-bg-white {
   width: 100%; }
   .post-content figure figcaption {
     color: var(--color-secondary);
-    font-size: 0.83333rem;
+    font-size: 0.8rem;
     font-style: italic;
     margin-right: calc(0.375rem + 1vw);
     margin-top: calc(0.375rem + 1vw);

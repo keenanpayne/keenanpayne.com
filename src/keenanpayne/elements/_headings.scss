@@ -16,13 +16,9 @@ h1, h2, h3, h4,
 
   // Modifiers
   &.-xl {
-    font-size: typeScale(7);
+    font-size: typeScale(8);
     line-height: 1;
     margin-bottom: .25em;
-
-    @media (--large) {
-      font-size: typeScale(9);
-    }
   }
 
   &.-secondary { 
@@ -33,19 +29,15 @@ h1, h2, h3, h4,
 h1,
 ._fontSize-h1 {
   font-size: typeScale(7);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.05;
   margin-bottom: .3em;
-
-  @media (--large) {
-    font-size: typeScale(8);
-  }
 }
 
 h2,
 ._fontSize-h2 {
   font-size: typeScale(6);
-  font-weight: 400;
+  font-weight: 500;
   margin-bottom: .35em;
   margin-top: 0;
   line-height: 1.1;
@@ -53,7 +45,8 @@ h2,
 
 h3,
 ._fontSize-h3 {
-  font-weight: 200;
+  font-size: typeScale(4);
+  font-weight: 400;
   line-height: 1.15;
 }
 

@@ -2,6 +2,7 @@
 layout: personal
 title: Home
 navigation_weight: 0
+navigation_hide_header: true
 permalink: index.html
 
 ## Page Planks

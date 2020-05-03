@@ -3,9 +3,9 @@
 // --------------------------------------------------
 
 // Font families
-$font-primary: "Soehne", sans-serif;
-$font-secondary:  "Heldane", "Georgia", sans-serif;
-$font-tertiary: neue-haas-grotesk-text, sans-serif;
+$font-primary: "neue-haas-grotesk-text", sans-serif;
+$font-secondary:  "Eksell", "Georgia", sans-serif;
+$font-tertiary: "neue-haas-grotesk-display", sans-serif;
 $font-mono: "Consolas", monospace;
 $font-print-primary: "Georgia", "Times New Roman", "Times", serif;
 $font-print-secondary: "Georgia", "Times New Roman", "Times", serif;
@@ -60,7 +60,7 @@ $_perfect-fifth:    1.500;
 $_golden-ratio:     1.618;
 
 // Ratio for primary scale
-$scale-ratio: $_minor-third;
+$scale-ratio: $_major-third;
 
 // Ratio for secondary scale
 $scale-ratio-secondary: $_golden-ratio;

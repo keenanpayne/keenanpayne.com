@@ -3,170 +3,35 @@
 // ==================================================
 
 //
-// Tiempos Fine
-// ------------
-// https://klim.co.nz/retail-fonts/tiempos-fine/
+// Eksell
+// --------
 
 @font-face {
-  font-family: 'Tiempos Fine';
-  font-style: normal;
-  font-weight: 200;
-  src: local('Tiempos Fine Regular'), url('../fonts/tiempos-fine/tiempos-fine-test-regular.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 200;
-  src: local('Tiempos Fine Regular Italic'), url('../fonts/tiempos-fine/tiempos-fine-test-regular-italic.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: normal;
-  font-weight: 100;
-  src: local('Tiempos Fine Light'), url('../fonts/tiempos-fine/tiempos-fine-test-light.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 100;
-  src: local('Tiempos Fine Light Italic'), url('../fonts/tiempos-fine/tiempos-fine-test-light-italic.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Tiempos Fine Medium'), url('../fonts/tiempos-fine/tiempos-fine-test-medium.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 300;
-  src: local('Tiempos Fine Medium Italic'), url('../fonts/tiempos-fine/tiempos-fine-test-medium-italic.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: normal;
+  font-family: "Eksell";
   font-weight: 400;
-  src: local('Tiempos Fine Semibold'), url('../fonts/tiempos-fine/tiempos-fine-test-semibold.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Tiempos Fine Semibold Italic'), url('../fonts/tiempos-fine/tiempos-fine-test-semibold-italic.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
   font-style: normal;
+  src: url('/fonts/eksell/EksellDisplayWeb-Small.eot') format("embedded-opentype"),
+    url('/fonts/eksell/EksellDisplayWeb-Small.woff2') format("woff2"),
+    url('/fonts/eksell/EksellDisplayWeb-Small.woff') format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Eksell";
   font-weight: 500;
-  src: local('Tiempos Fine Bold'), url('../fonts/tiempos-fine/tiempos-fine-test-bold.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 500;
-  src: local('Tiempos Fine Bold Italic'), url('../fonts/tiempos-fine/tiempos-fine-test-bold-italic.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
   font-style: normal;
-  font-weight: 900;
-  src: local('Tiempos Fine Black'), url('../fonts/tiempos-fine/tiempos-fine-test-black.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Tiempos Fine';
-  font-style: italic;
-  font-weight: 900;
-  src: local('Tiempos Fine Black Italic'), url('../fonts/tiempos-fine/tiempos-fine-test-black-italic.woff') format('woff');
+  src: url('/fonts/eksell/EksellDisplayWeb-Medium.eot') format("embedded-opentype"),
+    url('/fonts/eksell/EksellDisplayWeb-Medium.woff2') format("woff2"),
+    url('/fonts/eksell/EksellDisplayWeb-Medium.woff') format("woff");
+  font-display: swap;
 }
 
-
-//
-// Heldane
-// -------
-
 @font-face {
-  font-family: 'Heldane';
+  font-family: "Eksell";
+  font-weight: 600;
   font-style: normal;
-  font-weight: 200;
-  src: local('Tiempos Fine Regular'), url('../fonts/heldane/heldane-display-test-regular.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Heldane';
-  font-style: italic;
-  font-weight: 200;
-  src: local('Tiempos Fine Regular Italic'), url('../fonts/heldane/heldane-display-test-regular-italic.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Heldane';
-  font-style: normal;
-  font-weight: 300;
-  src: local('Tiempos Fine Medium'), url('../fonts/heldane/heldane-display-test-medium.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Heldane';
-  font-style: italic;
-  font-weight: 300;
-  src: local('Tiempos Fine Medium Italic'), url('../fonts/heldane/heldane-display-test-medium-italic.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Heldane';
-  font-style: normal;
-  font-weight: 500;
-  src: local('Tiempos Fine Bold'), url('../fonts/heldane/heldane-display-test-bold.woff') format('woff');
-}
-  
-@font-face {
-  font-family: 'Heldane';
-  font-style: italic;
-  font-weight: 500;
-  src: local('Tiempos Fine Bold Italic'), url('../fonts/heldane/heldane-display-test-bold-italic.woff') format('woff');
-}
-
-
-//
-// Soehne
-// ------
-// https://klim.co.nz/collections/soehne
-
-@font-face {
-  font-family: 'Soehne';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Soehne'), url('../fonts/soehne/soehne-test-buch.woff') format('woff');
-}
-
-@font-face {
-  font-family: 'Soehne';
-  font-style: italic;
-  font-weight: 400;
-  src: local('Soehne'), url('../fonts/soehne/soehne-test-buch-kursiv.woff') format('woff');
-}
-
-
-//
-// Soehne Mono
-// -----------
-// https://klim.co.nz/retail-fonts/soehne-mono/
-
-@font-face {
-  font-family: 'Soehne Mono';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Soehne Mono'), url('../fonts/soehne-mono/soehne-mono-test-halbfett.woff') format('woff');
+  src: url('/fonts/eksell/EksellDisplayWeb-Large.eot') format("embedded-opentype"),
+    url('/fonts/eksell/EksellDisplayWeb-Large.woff2') format("woff2"),
+    url('/fonts/eksell/EksellDisplayWeb-Large.woff') format("woff");
+  font-display: swap;
 }
