@@ -22,9 +22,9 @@
 // ----
 
 .siteHeader-logo {
+  font-family: $font-tertiary;
   font-size: typeScale(2);
   font-weight: $fontWeight-bold; 
-  letter-spacing: .05em;
   margin-bottom: 0;
   margin-top: 0;
 }

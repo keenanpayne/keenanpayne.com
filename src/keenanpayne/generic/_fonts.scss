@@ -1,0 +1,37 @@
+//
+// Fonts
+// ==================================================
+
+//
+// Eksell
+// --------
+
+@font-face {
+  font-family: "Eksell";
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/eksell/EksellDisplayWeb-Small.eot') format("embedded-opentype"),
+    url('/fonts/eksell/EksellDisplayWeb-Small.woff2') format("woff2"),
+    url('/fonts/eksell/EksellDisplayWeb-Small.woff') format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Eksell";
+  font-weight: 500;
+  font-style: normal;
+  src: url('/fonts/eksell/EksellDisplayWeb-Medium.eot') format("embedded-opentype"),
+    url('/fonts/eksell/EksellDisplayWeb-Medium.woff2') format("woff2"),
+    url('/fonts/eksell/EksellDisplayWeb-Medium.woff') format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Eksell";
+  font-weight: 600;
+  font-style: normal;
+  src: url('/fonts/eksell/EksellDisplayWeb-Large.eot') format("embedded-opentype"),
+    url('/fonts/eksell/EksellDisplayWeb-Large.woff2') format("woff2"),
+    url('/fonts/eksell/EksellDisplayWeb-Large.woff') format("woff");
+  font-display: swap;
+}
