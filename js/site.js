@@ -74,7 +74,7 @@
           link.classList.add('post-content-header-link');
           link.href = `#${id}`;
           link.setAttribute('title', text);
-          link.textContent = "#";
+          link.textContent = "§";
           
           heading.prepend(link);
         }

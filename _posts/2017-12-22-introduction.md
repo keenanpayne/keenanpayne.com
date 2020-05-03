@@ -4,9 +4,7 @@ title:  'Just another "hello, world" introduction'
 
 Hello, my name is Keenan Payne, which you probably already discerned if you're reading this post. If you haven't, greetings it's nice to meet you. 👋🏻
 
-I'm starting this blog with the intention of sharing any helpful knowledge that I have as it pertains to coding [^1]. I've always found writing to be a helpful exercise in both teaching and learning. By spending time writing, I get to share my thoughts and ideas with you on a given subject, but I also get to spend time re-evaluating my thoughts and ideas. This cycle of re-evaluation helps me think of things that I might otherwise have missed initially. It also gives me the space to think of alternatives and ensure that I'm providing you, the reader, my best thoughts at any given time on a subject.
-
-[^1]: Maybe I'll branch out in the future
+I'm starting this blog with the intention of sharing any helpful knowledge that I have as it pertains to coding (Maybe I'll branch out in the future). I've always found writing to be a helpful exercise in both teaching and learning. By spending time writing, I get to share my thoughts and ideas with you on a given subject, but I also get to spend time re-evaluating my thoughts and ideas. This cycle of re-evaluation helps me think of things that I might otherwise have missed initially. It also gives me the space to think of alternatives and ensure that I'm providing you, the reader, my best thoughts at any given time on a subject.
 
 ### Topics of Conversation
 

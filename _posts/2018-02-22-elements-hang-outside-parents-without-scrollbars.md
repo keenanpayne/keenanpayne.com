@@ -16,7 +16,9 @@ When described to me, this seemed like a pretty straight-forward interaction. I 
 
 If that were the case, I wouldn't be writing this blog post.
 
-## Solution 1
+## Approaches
+
+### Solution 1
 
 During my first pass at implementing the design, I built a layout with a fixed-width container that contains many child elements that are absolutely positioned to achieve the desired effect.
 
@@ -25,7 +27,7 @@ During my first pass at implementing the design, I built a layout with a fixed-w
 
 This solution achieves the desired effect, with one caveat: we have horizontal overflow because of our off-screen content.
 
-## Solution 2
+### Solution 2
 
 Naturally, if we want to remove the horizontal overflow for our off-screen content, we can apply `overflow-x: hidden;` to our container and see if that solves our problem.
 
@@ -37,7 +39,7 @@ This solution works well on sub-1920 pixel viewports, but when you have a larger
 
 Because we're removing all horizontal overflow from our container, when you have a viewport larger than 1920 pixels, the remaining parts of our floating elements are cut off.
 
-## Solution 3
+### Solution 3
 
 We need a solution that allows our floating elements to be positioned off-screen on sub-1920 pixel viewports without any horizontal overflow, and on viewports larger than 1920 pixels the entire floating elements are visible.
 

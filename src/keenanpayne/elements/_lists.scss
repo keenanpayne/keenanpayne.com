@@ -2,21 +2,6 @@
 // Lists
 // ==================================================
 
-// Hanging lists for readability
 ul, ol {
-  @media (--medium) {
-    padding-left: 0;
-  }
-}
-
-ol {
-  @media (--medium) {
-    margin-left: -1rem;
-  }
-}
-
-li {
-  &:not(:last-child) { 
-    margin-bottom: .5em; 
-  }
+  margin-bottom: 0;
 }
