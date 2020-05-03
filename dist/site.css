@@ -886,24 +886,6 @@ table {
 ._scroll-horizontal::-webkit-scrollbar-thumb {
   background-color: var(--color-tertiary-mid); }
 
-._fontWeight-100 {
-  font-weight: 100; }
-
-._fontWeight-200 {
-  font-weight: 200; }
-
-._fontWeight-300 {
-  font-weight: 300; }
-
-._fontWeight-400 {
-  font-weight: 400; }
-
-._fontWeight-500 {
-  font-weight: 500; }
-
-._fontWeight-900 {
-  font-weight: 900; }
-
 blockquote {
   color: var(--color-secondary);
   border-left: 5px solid var(--color-base-mid);
@@ -1585,7 +1567,7 @@ input.-bg-white {
 .post-content > .highlighter-rouge {
   margin-left: auto;
   margin-right: auto;
-  max-width: 700px; }
+  max-width: 750px; }
 
 @media (min-width: 768px) {
   .post-content > p.-large,
@@ -1595,7 +1577,7 @@ input.-bg-white {
     margin-top: calc(1.5rem + 1vw); } }
 
 .post-content > blockquote {
-  max-width: 700px; }
+  max-width: 750px; }
 
 .post-content > p:not([class]) {
   line-height: 1.6; }
