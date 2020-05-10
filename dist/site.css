@@ -981,7 +981,10 @@ a {
   color: currentColor;
   cursor: pointer; }
   a:hover {
+    color: var(--color-tertiary);
     text-decoration: underline; }
+  a.-is-active {
+    text-decoration: none; }
   a.-tertiary {
     text-decoration: underline;
     -webkit-text-decoration-color: var(--color-tertiary-mid);
@@ -1128,7 +1131,7 @@ table {
   padding-top: 1em; }
   @media (min-width: 480px) {
     .siteHeader {
-      background-color: var(--color-base-light);
+      background-color: var(--color-base-mid);
       border-bottom: 1px solid var(--color-secondary); } }
 
 .siteHeader-container {
@@ -1144,6 +1147,9 @@ table {
 .siteHeader-logo {
   font-family: "neue-haas-grotesk-display", sans-serif;
   font-size: 18px;
+  font-variant: all-small-caps;
+  font-weight: bold;
+  line-height: 1;
   margin-bottom: 0;
   margin-top: 0; }
   .siteHeader-logo a:hover {
@@ -1160,6 +1166,7 @@ table {
       margin-top: 0;
       padding-top: 0; } }
   .siteHeader-navigation ul {
+    line-height: 1;
     margin-bottom: 0;
     margin-top: 0; }
 

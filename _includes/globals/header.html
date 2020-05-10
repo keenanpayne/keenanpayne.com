@@ -13,7 +13,7 @@
         {% for p in navigation_pages %}
           {% if p.navigation_weight and p.navigation_hide_header != true %}
             <li class="siteHeader-navigation-item">
-              <a href="{{ p.url }}" title="{{ p.title }}" class="-tertiary {% if p.url == page.url %}-is-active{% endif %}">
+              <a href="{{ p.url }}" title="{{ p.title }}" class="{% if p.url == page.url %}-is-active{% endif %}">
                 {{ p.title }}
               </a>
             </li>

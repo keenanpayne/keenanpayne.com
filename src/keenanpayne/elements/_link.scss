@@ -7,10 +7,15 @@ a {
   cursor: pointer;
 
   &:hover {
+    color: var(--color-tertiary);
     text-decoration: underline;
   }
 
   // Modifiers
+  &.-is-active { 
+    text-decoration: none;
+  }
+
   &.-tertiary { 
     text-decoration: underline;
     text-decoration-color: var(--color-tertiary-mid);
