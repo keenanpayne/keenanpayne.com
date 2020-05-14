@@ -1198,8 +1198,9 @@ h2,
 
 h3,
 ._fontSize-h3 {
+  font-family: "DegularDisplay", sans-serif;
   font-size: 1.5625rem;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.15; }
 
 h4,
@@ -1382,10 +1383,8 @@ table {
 
 .siteHeader-logo {
   color: white;
-  font-family: "neue-haas-grotesk-display", sans-serif;
   font-size: 18px;
   font-variant: all-small-caps;
-  font-weight: bold;
   line-height: 1;
   margin-bottom: 0;
   margin-top: 0; }
@@ -1859,7 +1858,6 @@ input.-bg-white {
   margin-top: 1.5em; }
 
 .post-content h3 {
-  font-family: "neue-haas-grotesk-display", sans-serif;
   font-weight: 600;
   margin-bottom: .5em;
   margin-top: 1.5em; }

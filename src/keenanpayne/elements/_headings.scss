@@ -49,8 +49,9 @@ h2,
 
 h3,
 ._fontSize-h3 {
+  font-family: $font-tertiary;
   font-size: typeScale(4);
-  font-weight: 400;
+  font-weight: 600;
   line-height: 1.15;
 }
 
