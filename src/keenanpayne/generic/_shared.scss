@@ -9,11 +9,11 @@
   line-height: 1.5;
   text-rendering: optimizeLegibility;
 
-  @media screen and (-webkit-min-device-pixel-ratio: 2),
-         screen and (min-resolution: 2dppx) {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+  // @media screen and (-webkit-min-device-pixel-ratio: 2),
+  //        screen and (min-resolution: 2dppx) {
+  //   -webkit-font-smoothing: antialiased;
+  //   -moz-osx-font-smoothing: grayscale;
+  // }
 }
 
 // Content selection background
