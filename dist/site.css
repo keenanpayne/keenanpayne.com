@@ -68,7 +68,7 @@ template,
 
 :root {
   box-sizing: border-box;
-  font-family: "neue-haas-grotesk-text", sans-serif;
+  font-family: "Degular", "neue-haas-grotesk-text", sans-serif;
   line-height: 1.5;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -827,6 +827,246 @@ table {
   src: url("/fonts/eksell/EksellDisplayWeb-Large.eot") format("embedded-opentype"), url("/fonts/eksell/EksellDisplayWeb-Large.woff2") format("woff2"), url("/fonts/eksell/EksellDisplayWeb-Large.woff") format("woff");
   font-display: swap; }
 
+@font-face {
+  font-family: "Vulf";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/vulf/VulfMonoDemo-Regular.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Vulf";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/vulf/VulfMonoDemo-Regular.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Vulf";
+  font-style: normal;
+  font-weight: 100;
+  src: url("/fonts/vulf/VulfMonoDemo-Light.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Vulf";
+  font-style: italic;
+  font-weight: 100;
+  src: url("/fonts/vulf/VulfMonoDemo-LightItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Vulf";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/vulf/VulfMonoDemo-Bold.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Vulf";
+  font-style: italic;
+  font-weight: 500;
+  src: url("/fonts/vulf/VulfMonoDemo-BoldItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Vulf";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/vulf/VulfMonoDemo-Black.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Vulf";
+  font-style: italic;
+  font-weight: 600;
+  src: url("/fonts/vulf/VulfMonoDemo-BlackItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/degular/DegularDemo-Regular.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Degular";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/degular/DegularDemo-Italic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 100;
+  src: url("/fonts/degular/DegularDemo-Light.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Degular";
+  font-style: italic;
+  font-weight: 100;
+  src: url("/fonts/degular/DegularDemo-LightItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/degular/DegularDemo-Medium.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Degular";
+  font-style: italic;
+  font-weight: 500;
+  src: url("/fonts/degular/DegularDemo-MediumItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/degular/DegularDemo-Bold.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Degular";
+  font-style: italic;
+  font-weight: 600;
+  src: url("/fonts/degular/DegularDemo-BoldItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Degular";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/degular/DegularDemo-Black.otf") format("opentype"); }
+
+@font-face {
+  font-family: "Degular";
+  font-style: italic;
+  font-weight: 700;
+  src: url("/fonts/degular/DegularDemo-BlackItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/degular-display/DegularDisplayDemo-Regular.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/degular-display/DegularDisplayDemo-Italic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: normal;
+  font-weight: 100;
+  src: url("/fonts/degular-display/DegularDisplayDemo-Light.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: italic;
+  font-weight: 100;
+  src: url("/fonts/degular-display/DegularDisplayDemo-LightItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/degular-display/DegularDisplayDemo-Medium.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: italic;
+  font-weight: 500;
+  src: url("/fonts/degular-display/DegularDisplayDemo-MediumItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/degular-display/DegularDisplayDemo-Semibold.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: italic;
+  font-weight: 600;
+  src: url("/fonts/degular-display/DegularDisplayDemo-SemiboldItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/degular-display/DegularDisplayDemo-Bold.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: italic;
+  font-weight: 700;
+  src: url("/fonts/degular-display/DegularDisplayDemo-BoldItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: normal;
+  font-weight: 800;
+  src: url("/fonts/degular-display/DegularDisplayDemo-Black.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularDisplay";
+  font-style: italic;
+  font-weight: 800;
+  src: url("/fonts/degular-display/DegularDisplayDemo-BlackItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularText";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/fonts/degular-text/DegularTextDemo-Regular.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularText";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/fonts/degular-text/DegularTextDemo-Italic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularText";
+  font-style: normal;
+  font-weight: 100;
+  src: url("/fonts/degular-text/DegularTextDemo-Light.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularText";
+  font-style: italic;
+  font-weight: 100;
+  src: url("/fonts/degular-text/DegularTextDemo-LightItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularText";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/degular-text/DegularTextDemo-Medium.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularText";
+  font-style: italic;
+  font-weight: 500;
+  src: url("/fonts/degular-text/DegularTextDemo-MediumItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularText";
+  font-style: normal;
+  font-weight: 600;
+  src: url("/fonts/degular-text/DegularTextDemo-Bold.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularText";
+  font-style: italic;
+  font-weight: 600;
+  src: url("/fonts/degular-text/DegularTextDemo-BoldItalic.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularText";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/degular-text/DegularTextDemo-Black.otf") format("opentype"); }
+
+@font-face {
+  font-family: "DegularText";
+  font-style: italic;
+  font-weight: 700;
+  src: url("/fonts/degular-text/DegularTextDemo-BlackItalic.otf") format("opentype"); }
+
 :root {
   background-color: var(--color-base);
   color: #030303;
@@ -968,7 +1208,7 @@ h3,
 
 h4,
 ._fontSize-h4 {
-  font-family: "neue-haas-grotesk-text", sans-serif;
+  font-family: "Degular", "neue-haas-grotesk-text", sans-serif;
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.3; }
@@ -1128,10 +1368,11 @@ table {
 
 .siteHeader {
   padding-bottom: 1em;
-  padding-top: 1em; }
-  @media (min-width: 480px) {
-    .siteHeader {
-      border-bottom: 1px solid var(--color-secondary); } }
+  padding-top: 1em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1; }
 
 .siteHeader-container {
   -ms-flex-pack: justify;
@@ -1144,6 +1385,7 @@ table {
       display: flex; } }
 
 .siteHeader-logo {
+  color: white;
   font-family: "neue-haas-grotesk-display", sans-serif;
   font-size: 18px;
   font-variant: all-small-caps;
@@ -1159,11 +1401,6 @@ table {
   margin-top: -.2em;
   padding-top: .5em;
   text-align: right; }
-  @media (min-width: 480px) {
-    .siteHeader-navigation {
-      border-top: none;
-      margin-top: 0;
-      padding-top: 0; } }
   .siteHeader-navigation ul {
     line-height: 1;
     margin-bottom: 0;
@@ -1177,6 +1414,8 @@ table {
       font-size: 0.8rem; } }
   .siteHeader-navigation-item:not(:last-of-type) {
     margin-right: calc(1.5rem + 1vw); }
+  .siteHeader-navigation-item > a {
+    color: white; }
 
 button, input[type="submit"],
 .button {
@@ -1364,21 +1603,26 @@ input.-bg-white {
     opacity: 1; } }
 
 .introduction {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[8];
-      grid-template-columns: repeat(8, 1fr);
   overflow: visible;
-  position: relative; }
+  position: relative;
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+  background: url(http://parabolicplayground.com/wp-content/uploads/2017/11/dark-laura3.jpg) no-repeat center center;
+  background-size: cover;
+  display: block;
+  padding-top: 10rem;
+  padding-bottom: 10rem; }
   @media (min-width: 1160px) {
     .introduction {
       margin-left: auto; } }
 
 .introduction-headline {
-  grid-column: 1 / -1; }
+  color: white; }
 
 .introduction-subhead {
-  grid-column: 1 / -1;
+  color: white !important;
   margin-bottom: 0;
   padding-bottom: .4em; }
   @media (min-width: 768px) {
@@ -1573,7 +1817,7 @@ input.-bg-white {
     page-break-inside: avoid; } }
 
 .work-heading {
-  font-family: "neue-haas-grotesk-text", sans-serif;
+  font-family: "Degular", "neue-haas-grotesk-text", sans-serif;
   font-weight: 600;
   margin-bottom: .5em;
   margin-top: calc(1.5rem + 1vw); }

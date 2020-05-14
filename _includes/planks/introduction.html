@@ -1,15 +1,17 @@
 {% if page.introduction %}
-  <section class="introduction _sectionSpacing-full" container>
-    {% if page.introduction %}
-      <h2 class="-xl introduction-headline">
-        {{ page.introduction }}
-      </h2>
-    {% endif %}
+  <section class="introduction _sectionSpacing-full">
+    <div container>
+      {% if page.introduction %}
+        <h2 class="-xl introduction-headline">
+          {{ page.introduction }}
+        </h2>
+      {% endif %}
 
-    {% if page.introduction_subtitle %}
-      <h4 class="introduction-subhead -secondary">
-        {{ page.introduction_subtitle }}
-      </h4>
-    {% endif %}
-  </section>
+      {% if page.introduction_subtitle %}
+        <h4 class="introduction-subhead -secondary">
+          {{ page.introduction_subtitle }}
+        </h4>
+      {% endif %}
+    </section>
+  </div>
 {% endif %}

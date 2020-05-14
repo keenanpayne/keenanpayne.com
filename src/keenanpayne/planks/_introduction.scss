@@ -3,10 +3,21 @@
 // ==================================================
 
 .introduction {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  // display: grid;
+  // grid-template-columns: repeat(8, 1fr);
   overflow: visible;
   position: relative;
+
+
+  max-width: none;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 0;
+  background: url(http://parabolicplayground.com/wp-content/uploads/2017/11/dark-laura3.jpg) no-repeat center center;
+  background-size: cover;
+  display: block;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
 
   @media (min-width: 1160px) { 
     margin-left: auto;
@@ -19,11 +30,13 @@
 // -----------
 
 .introduction-headline {
-  grid-column: 1 / -1;
+  color: white;
+  // grid-column: 1 / -1;
 }
 
 .introduction-subhead {
-  grid-column: 1 / -1;
+  color: white !important;
+  // grid-column: 1 / -1;
   margin-bottom: 0;
   padding-bottom: .4em; 
 

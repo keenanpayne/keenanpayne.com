@@ -14,7 +14,7 @@ planks:
   - name: 'cta'
 
 ## Introduction
-introduction: Hey, I'm Keenan
+introduction: Building for success
 introduction_subtitle: I'm a freelance web developer with over ten years of experience. I strive to help businesses large and small succeed on the web. <small>Welcome to my little corner of the internet.</small>
 
 ## Post List
