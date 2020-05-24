@@ -31,8 +31,9 @@ p {
   }
 
   &.-small-heading {
+    font-family: $font-accessory;
     font-variant: all-small-caps;
-    margin-bottom: .5em;
+    margin-bottom: .25em;
   }
 
   &.-content-heading {
@@ -43,6 +44,7 @@ p {
   }
 
   &.-section-heading { 
+    font-family: $font-accessory;
     font-variant: all-small-caps;
     font-weight: $fontWeight-heavy;
     margin-bottom: 1.25em;

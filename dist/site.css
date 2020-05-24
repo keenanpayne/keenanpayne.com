@@ -68,7 +68,7 @@ template,
 
 :root {
   box-sizing: border-box;
-  font-family: "neue-haas-grotesk-text", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
   line-height: 1.5;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -962,9 +962,10 @@ h2,
 
 h3,
 ._fontSize-h3 {
+  font-family: "neue-haas-grotesk-display", sans-serif;
   font-size: 1.5625rem;
-  font-weight: 400;
-  line-height: 1.15; }
+  line-height: 1.15;
+  margin-bottom: .5em; }
 
 h4,
 ._fontSize-h4 {
@@ -1029,11 +1030,13 @@ p {
   p.-small {
     font-size: 0.64rem; }
   p.-small-heading, p.-content-heading {
+    font-family: "neue-haas-grotesk-text", sans-serif;
     font-variant: all-small-caps;
-    margin-bottom: .5em; }
+    margin-bottom: .25em; }
   p.-content-heading {
     margin-top: calc(3rem + 1vw); }
   p.-section-heading, .footnotes:before {
+    font-family: "neue-haas-grotesk-text", sans-serif;
     font-variant: all-small-caps;
     font-weight: 700;
     margin-bottom: 1.25em;
@@ -1581,15 +1584,12 @@ input.-bg-white {
     page-break-inside: avoid; } }
 
 .work-heading {
-  font-family: "neue-haas-grotesk-text", sans-serif;
-  font-weight: 600;
-  margin-bottom: .5em;
   margin-top: calc(1.5rem + 1vw); }
   .work-heading:first-of-type {
     margin-top: 0; }
 
 .post {
-  padding-top: calc(4.5rem + 1vw); }
+  padding-top: calc(3rem + 1vw); }
 
 .post-header {
   padding-bottom: calc(1.5rem + 1vw);
@@ -1618,7 +1618,7 @@ input.-bg-white {
   max-width: 750px; }
 
 .post-content > p:not([class]) {
-  line-height: 1.65; }
+  line-height: 1.6; }
 
 .post-content h2, .post-content h3 {
   position: relative; }
@@ -1627,10 +1627,7 @@ input.-bg-white {
   margin-top: 1.5em; }
 
 .post-content h3 {
-  font-family: "neue-haas-grotesk-display", sans-serif;
-  font-weight: 600;
-  margin-bottom: .5em;
-  margin-top: 1.5em; }
+  margin-top: 1.25em; }
 
 .post-content > ul,
 .post-content > ol {

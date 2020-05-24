@@ -1,5 +1,5 @@
 ---
-title:  'What is your mindset upon completing a project?'
+title:  'What is your mindset after completing a project?'
 ---
 
 When you complete a project, and I use the term "project" to refer to anything that requires multiple steps to achieve an outcome, what do you do afterward? Do you look back at what you just accomplished and analyze what you created and the means by which you created it? Do you sit back and relax, basking in the sense of calmness achieved as a result of accomplishing something that one sets out to do? Or, do you march perilously toward your next project, forging a trail of accomplishments paved by your own ambition?

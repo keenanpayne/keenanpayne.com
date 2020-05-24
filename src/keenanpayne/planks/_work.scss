@@ -23,9 +23,6 @@
 
 // Remove top margin from first heading so it is flush
 .work-heading {
-  font-family: $font-primary;
-  font-weight: 600;
-  margin-bottom: .5em;
   margin-top: $spacing-s;
 
   &:first-of-type { 

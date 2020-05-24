@@ -7,7 +7,7 @@
 // ---------
 
 .post {
-  padding-top: $spacing-l;
+  padding-top: $spacing-m;
 }
 
 
@@ -62,7 +62,7 @@
   }
 
   > p:not([class]) {
-    line-height: 1.65;
+    line-height: 1.6;
   }
 
   h2, h3 {
@@ -74,10 +74,7 @@
   }
 
   h3 {
-    font-family: $font-tertiary;
-    font-weight: 600;
-    margin-bottom: .5em;
-    margin-top: 1.5em;
+    margin-top: 1.25em;
   }
 
   // Lists

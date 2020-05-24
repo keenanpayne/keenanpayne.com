@@ -6,10 +6,6 @@
   margin-bottom: $spacing-s;
   margin-top: $spacing-m;
   position: relative;
-
-  @media (--medium) {
-    // margin-bottom: $spacing-s;
-  }
 }
 
 .masthead-subhead { 
