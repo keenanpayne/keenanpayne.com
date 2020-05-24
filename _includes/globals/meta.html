@@ -1,3 +1,33 @@
+<!-- Globals -->
+{% if page.meta.description %}
+  {% assign description = page.meta.description %}
+{% else %}
+  {% assign description = site.meta.description %}
+{% endif %}
+
+{% if page.title == "Home" %}
+  {% assign title = site.meta.title %}
+{% elsif page.layout == "post" %}
+  {% assign title = page.title | smartify %}
+{% else %}
+  {% assign title = page.title | smartify | append: ' | ' | append: site.meta.title %}
+{% endif %}
+
+{% if page.layout == "post" %}
+  {% assign type = 'article' %}
+{% else %}
+  {% assign type = 'website' %}
+{% endif %}
+
+{% if page.meta.image %}
+  {% assign image = site.meta.link | append: page.meta.image %}
+{% else %}
+  {% assign image = 'https://d3lzmj2d3v8qdh.cloudfront.net/sharing/fb-share.png' %}
+{% endif %}
+
+{% assign link = site.meta.link | append: page.url %}
+
+<!-- Markup -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,49 +36,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="HandheldFriendly" content="True">
 	<meta name="MobileOptimized" content="320">
-	<meta name="author" content="{{ site.name }}" />
-  <meta name="msapplication-TileColor" content="#ffffff">
-	<meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
-	<meta name="theme-color" content="#ffffff">
+	<meta name="author" content="{{ site.globals.name }}" />
+  <meta name="description" content="{{ description }}"/>
+  <link rel="canonical" href="{{ link }}">
+
+  <title>
+		{% if page.title != "Home" %}
+			{{ page.title|smartify }} | 
+		{% endif %}
+    
+    {{ site.meta.title }}
+	</title>
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:domain" content="keenanpayne.com">
-
-  {% if page.layout == "post" %}
-    <meta name="twitter:title" content="{{ page.title|smartify }}">
-    <meta name="twitter:description" content="{{ page.excerpt|strip_html }}">
-	{% else %}
-    <meta name="twitter:description" content="{{ site.meta_description }}">
-    <meta name="twitter:title" content="{{ site.meta_title }} | {{ site.meta_tagline }}">
-	{% endif %}
+  <meta name="twitter:domain" content="{{ link }}">
+  <meta name="twitter:title" content="{{ title }}">
+  <meta name="twitter:description" content="{{ description }}">
 
   <!-- OpenGraph -->
-	<meta property="og:site_name" content="{{ site.meta_title }}">
-
-	{% if page.layout == "post" %}
-	  <meta property="og:title" content="{{ page.title|smartify }}">
-    <meta property="og:type" content="article">
-    <meta property="og:description" content="{{ page.excerpt|strip_html }}">
-	{% else %}
-	  <meta property="og:title" content="{{ site.meta_title }} | {{ site.meta_tagline }}">
-    <meta property="og:type" content="website">
-    <meta property="og:description" content="{{ site.meta_description }}">
-	{% endif %}
-
-	{% if page.url %}
-	  <meta property="og:url" content="{{ site.link }}{{ page.url }}">
-	{% endif %}
+	<meta property="og:site_name" content="{{ site.meta.title }}">
+  <meta property="og:title" content="{{ title }}">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:type" content="{{ type }}">
+  <meta property="og:url" content="{{ link }}">
+  <meta property="og:image" content="{{ image }}">
 
 	{% if page.date %}
 	  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
-	  <meta property="article:author" content="{{ site.link }}">
-	{% endif %}
-
-	{% if page.image %}
-	  <meta property="og:image" content="{{ page.image }}">
-	{% else %}
-	  <meta property="og:image" content="https://d3lzmj2d3v8qdh.cloudfront.net/sharing/fb-share.png">
+	  <meta property="article:author" content="{{ site.globals.name }}">
 	{% endif %}
 
 	{% if page.categories %}
@@ -57,17 +73,10 @@
 	  {% endfor %}
 	{% endif %}
 
-	<meta name="description" content="{{ site.meta_description }}"/>
-	<title>
-		{% if page.title == "Home" %}
-			{{ site.meta_title }} | {{ site.meta_tagline }}
-		{% else %}
-			{{ page.title|smartify }} | {{ site.meta_title }}
-		{% endif %}
-	</title>
-
-  <link rel="canonical" href="{{ site.link }}{{ page.url }}">
-
+  <!-- Oh my, favicons -->
+  <meta name="msapplication-TileColor" content="#fffdf7">
+	<meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png">
+	<meta name="theme-color" content="#fffdf7">
 	<link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="/favicons/apple-icon-72x72.png">
@@ -83,6 +92,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
 	<link rel="manifest" href="/favicons/manifest.json">
 
+  <!-- Preconnect and prefetch resources -->
 	<link rel="preconnect" href="//use.typekit.net">
 	<link rel="preconnect" href="//cdnjs.cloudflare.com">
 	

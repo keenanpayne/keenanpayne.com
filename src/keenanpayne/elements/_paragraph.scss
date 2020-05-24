@@ -16,10 +16,14 @@ p {
   }
 
   &.-large {
+    border-top: 2px solid var(--color-tertiary-light);
+    border-bottom: 2px solid var(--color-tertiary-light);
     font-family: $font-secondary;
     font-size: typeScale(4); 
     font-weight: 400;
     line-height: 1.4;
+    padding-bottom: 1em;
+    padding-top: 1em;
   }
 
   &.-small {
@@ -28,8 +32,7 @@ p {
 
   &.-small-heading {
     font-variant: all-small-caps;
-    letter-spacing: .015em;
-    line-height: 1;
+    margin-bottom: .5em;
   }
 
   &.-content-heading {
@@ -41,8 +44,7 @@ p {
 
   &.-section-heading { 
     font-variant: all-small-caps;
-    font-weight: $fontWeight-bold;
-    letter-spacing: .02em;
+    font-weight: $fontWeight-heavy;
     margin-bottom: 1.25em;
     position: relative;
     text-align: right;

@@ -4,6 +4,10 @@ title: Work
 navigation_weight: 2
 permalink: work.html
 
+## Meta Info
+meta: 
+  description: "Selected web development projects by Keenan Payne."
+
 ## Page Planks
 planks:
   - name: 'masthead'

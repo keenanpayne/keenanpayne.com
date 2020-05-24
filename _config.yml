@@ -18,12 +18,18 @@
 ## You can create any custom variable you would like, and they will be accessible
 ## in the templates via {{ site.myvariable }}.
 
-meta_title: Keenan Payne
-meta_tagline: Front-End Developer
-meta_description: Keenan Payne is a web designer and developer based out of San Francisco, CA.
-name: Keenan Payne
-link: "http://keenanpayne.com"
-future: true
+meta:
+  title: Keenan Payne
+  description: This is the home page of Keenan Payne, a freelance web developer. Learn how I can help you grow as a freelancer or help your business succeed on the web.
+  link: "https://keenanpayne.com"
+
+
+##
+## Globals
+## --------
+
+globals:
+  name: Keenan Payne
 
 
 ##

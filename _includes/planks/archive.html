@@ -12,15 +12,21 @@
 
       <article class="archive-article">
         <header>
+          <p class="-secondary-mid -small-heading">
+            {{ post.date | date: "%B %e" }}
+          </p>
+
           <h3>
             <a href="{{ post.url }}" title="{{ post.title }}">
               {{ post.title|smartify }}
             </a>
           </h3>
 
-          <p class="-secondary-mid -small-heading">
-            {{ post.date | date: "%B %e" }}
-          </p>
+          {% if post.meta.description %}
+            <p class="archive-description">
+              {{ post.meta.description }}
+            </p>
+          {% endif %}
         </header>
       </article>
     {% endfor %}

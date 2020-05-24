@@ -21,4 +21,13 @@
   &:not(:last-of-type) {
     margin-bottom: 1.5em;
   }
+
+  & + & {
+    // border-top: 1px solid var(--color-tertiary-light);
+    // padding-top: 1rem;
+  }
+}
+
+.archive-description { 
+  margin-top: .75rem;
 }
