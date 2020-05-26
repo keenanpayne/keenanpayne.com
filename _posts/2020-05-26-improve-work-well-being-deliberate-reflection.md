@@ -23,7 +23,7 @@ Today I'm going to talk about the framework I used to solve my problem with unre
 ## Reflecting on unrealistic deadlines
 I recently shared a [project that I completed for Rippling](/blog/re-architecting-rippling-css), where I mentioned that the project's timeline was tight, and as a result, I was rushed to get the work finished so that the website could launch on time. What was the result? Well, we launched the website, but at a significant cost to the quality of what I was able to build, as well as my well-being while building it.
 
-[//]: <> (TODO: Add an image of Rippling. See if I can use something from the Play case study https://www.play.studio/rippling/)
+{% include atoms/figure.html src="/images/posts/improve-project-execution/rippling.jpg" alt="Rippling re-branding collection" caption="Play did a wonderful job handling the re-branding for Rippling" source_title="Play case study" source_link="https://www.play.studio/rippling/" %}
 
 After launching the new Rippling website, I decided to take a one-month sabbatical to unwind and reflect on the myriad of projects that I had been working on since I started freelancing. Something I kept coming back to while reflecting was the timeline for the Rippling project. 
 - Why was the timeline so tight? 
@@ -34,7 +34,8 @@ After launching the new Rippling website, I decided to take a one-month sabbatic
 I ended up answering all of these questions and then some. However, the most valuable insight I gained by thinking about that last bullet point, and it is unrelated to the idea of project timelines. In wondering how I could prevent tight deadlines from happening in the future, I ended up reflecting on why I hadn't taken the time to think critically about this issue until recently. 
 
 [//]: <> (TODO: Bold this text once bug is fixed: https://www.coywolf.news/webmaster/chrome-81-breaks-system-fonts-bold/)
-*If project deadlines have plagued me for over a decade, why hadn't I taken the time to think about and solve this problem?
+
+*If project deadlines have plagued me for over a decade, why hadn't I taken the time to think about and solve this problem?*
 
 ## Making reflection deliberate
 In a recent post, I discussed the idea of analyzing [what mindset I have after completing a project](/blog/mindset-upon-completing-project). In it, I mentioned that I generally embody the "future mindset," where I find myself more inclined to look towards the next thing after completing a project, as opposed to looking back and reflecting over what I just completed.

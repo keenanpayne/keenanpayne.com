@@ -2,6 +2,19 @@
   <img src="{{ include.src|slugify:'raw' }}" alt="{{ include.alt }}">
 
   {% if include.caption %}
-    <figcaption>{{ include.caption }}</figcaption>
+    <figcaption>
+      {{ include.caption }}
+
+      {% if include.source_title and include.source_link %}
+        <p>
+          <small>
+            <strong>Source:</strong> 
+            <a href="{{ include.source_link }}" title="{{ include.source_title }}" target="_blank">
+              {{ include.source_title }}
+            </a>
+          </small>
+        </p>
+      {% endif %}
+    </figcaption>
   {% endif %}
 </figure>

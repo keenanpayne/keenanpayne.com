@@ -1659,6 +1659,10 @@ input.-bg-white {
       @media (min-width: 768px) {
         .post-content figure figcaption br {
           display: block; } }
+    .post-content figure figcaption p {
+      font-style: normal;
+      margin-bottom: 0;
+      margin-top: .5em; }
 
 .post-content .cp_embed_wrapper {
   margin-bottom: calc(1.5rem + 1vw);
