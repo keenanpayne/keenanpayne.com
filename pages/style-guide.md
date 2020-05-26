@@ -127,4 +127,4 @@ for i in range(10):
 
 {% include type/section-heading.html content="Images" %}
 
-![example image](https://luna1.co/4c8bb1.jpg "An exemplary image")
+![example image](/images/pages/style-guide/example-image.jpg "An exemplary image")

@@ -27,7 +27,7 @@ Overall, I had a wonderful experience working at Asana. I was fortunate to work 
 
 Looking back, I am pleased with the time that I spent at Asana. There are things that I think could have gone better, but such is the case with most areas of our lives. I met a lot of great people, built a lot of great things, and learned a lot of great skills. That's not a bad takeaway from spending five years working somewhere.
 
-{% include atoms/figure.html src='/images/IMG_20160826_103144.jpg' alt='My Asana office setup' caption="My Asana office setup. Why is there a bunch of fake grass on my desk? <br> That was a prank, and I kept it on there for almost two years." %}
+{% include atoms/figure.html src='/images/posts/goodbye-asana/asana-desk.jpg' alt='My Asana office setup' caption="My Asana office setup. Why is there a bunch of fake grass on my desk? <br> That was a prank, and I kept it on there for almost two years." %}
 
 ## Reflecting on areas of improvement
 
@@ -67,7 +67,7 @@ I could take my laptop and work in more remote areas of the office to avoid othe
 
 Since I started freelancing, I have primarily been working from home in a desk setup that I configured after leaving Asana (and realizing that my Ikea desk and chair were going to be the death of my back if I didn't upgrade). Now, I have the best of both worlds: I have a desk configuration that is perfectly situated for how I enjoy working, and I have an environment that is conducive to focusing. The only thing I'm missing is face-to-face contact with the people that I enjoyed seeing every day at Asana. I've mitigated this feeling by being proactive in scheduling time to see my closest friends regularly so that I am not lacking in human contact.
 
-{% include atoms/figure.html src='/images/IMG_20200413_190640.jpg' alt='My home office setup' caption="My current home office setup. <br>I will share a post about how I decided on my equipment in the future." %}
+{% include atoms/figure.html src='/images/posts/goodbye-asana/home-desk.jpg' alt='My home office setup' caption="My current home office setup. <br>I will share a post about how I decided on my equipment in the future." %}
 
 ### Professional agency
 

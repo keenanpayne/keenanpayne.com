@@ -8,7 +8,7 @@ The area that confused me was the component that we call the "masthead." This co
 
 Because this landing page is not live, let's say the design looks something like this:
 
-{% include atoms/figure.html src="https://luna1.co/28a6e5.png" alt="Landing page design" %}
+{% include atoms/figure.html src="/images/posts/elements-hang-outside-parents/example-design.png" alt="Landing page design" %}
 
 As Devin and I walked through the implementation details, he described the interaction for the masthead component. He explained that at sub-1920 pixel viewports the floating elements would be positioned off-screen surrounding the content. If the screen grew larger, the elements would remain at their location, but more of the element would be visible to the user.
 
@@ -35,7 +35,7 @@ Naturally, if we want to remove the horizontal overflow for our off-screen conte
 
 This solution works well on sub-1920 pixel viewports, but when you have a larger viewport, we get the following issue:
 
-{% include atoms/figure.html src="https://luna1.co/c55db2.png" alt="Landing page design" %}
+{% include atoms/figure.html src="/images/posts/elements-hang-outside-parents/example-complete.png" alt="Landing page design" %}
 
 Because we're removing all horizontal overflow from our container, when you have a viewport larger than 1920 pixels, the remaining parts of our floating elements are cut off.
 

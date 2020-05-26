@@ -6,11 +6,11 @@ I recently led an effort to rebuild the entire website for [Rippling](https://ri
 
 <div grid>
   <div column="6">
-    {% include atoms/figure.html src='/images/rippling-legacy.png' alt='Preview of what the Rippling website looked like before' caption="Preview of what the Rippling website looked like before" %}
+    {% include atoms/figure.html src='/images/posts/re-architecting-rippling-css/rippling-legacy.png' alt='Preview of what the Rippling website looked like before' caption="Preview of what the Rippling website looked like before" %}
   </div>
 
   <div column="6">
-    {% include atoms/figure.html src='/images/rippling-new.png' alt='Preview of what the Rippling website looks like now' caption="Preview of what the Rippling website looks like now" %}
+    {% include atoms/figure.html src='/images/posts/re-architecting-rippling-css/rippling-new.png' alt='Preview of what the Rippling website looks like now' caption="Preview of what the Rippling website looks like now" source_title="View the Rippling website" source_link="https://rippling.com" %}
   </div>
 </div>
 
