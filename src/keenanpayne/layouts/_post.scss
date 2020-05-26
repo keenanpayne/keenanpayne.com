@@ -66,15 +66,13 @@
   }
 
   h2, h3 {
+    margin-top: 1.5em;
     position: relative;
   }
 
-  h2 {
-    margin-top: 1.5em;
-  }
-
-  h3 {
-    margin-top: 1.25em;
+  // Adjust spacing when <h3> follows image gallery
+  .gallery + h3 {
+    margin-top: .5em;
   }
 
   // Lists
