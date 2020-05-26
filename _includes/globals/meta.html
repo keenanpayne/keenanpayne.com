@@ -22,7 +22,7 @@
 {% if page.meta.image %}
   {% assign image = site.meta.link | append: page.meta.image %}
 {% else %}
-  {% assign image = '/images/social/opengraph.png' %}
+  {% assign image = site.meta.link | append: '/images/social/opengraph.png' %}
 {% endif %}
 
 {% assign link = site.meta.link | append: page.url %}
@@ -61,6 +61,8 @@
   <meta property="og:type" content="{{ type }}">
   <meta property="og:url" content="{{ link }}">
   <meta property="og:image" content="{{ image }}">
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
 	{% if page.date %}
 	  <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
