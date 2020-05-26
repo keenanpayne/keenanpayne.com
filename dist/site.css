@@ -1545,7 +1545,7 @@ input.-bg-white {
   box-shadow: 4px 4px 0 var(--color-tertiary), 8px 8px 0 var(--color-tertiary-mid), 12px 12px 0 var(--color-tertiary-light);
   color: var(--color-tertiary);
   display: block;
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 500;
   -ms-grid-column: 1;
       grid-column-start: 1;
@@ -1621,13 +1621,11 @@ input.-bg-white {
   line-height: 1.6; }
 
 .post-content h2, .post-content h3 {
+  margin-top: 1.5em;
   position: relative; }
 
-.post-content h2 {
-  margin-top: 1.5em; }
-
-.post-content h3 {
-  margin-top: 1.25em; }
+.post-content .gallery + h3 {
+  margin-top: .5em; }
 
 .post-content > ul,
 .post-content > ol {
