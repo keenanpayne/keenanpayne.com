@@ -88,8 +88,7 @@
 
     // List items
     li {
-      margin-bottom: 1em; 
-      padding-left: .25em;  
+      margin-bottom: 1em;  
     
       // Nested list items
       li {
@@ -172,17 +171,32 @@
 // Meta
 // ----
 
-.post-date { 
+.post-meta { 
+  border-top: 1px solid var(--color-secondary-light);
   margin-bottom: 0;
-}
+  padding-left: .25rem;
+  padding-top: .5rem;
 
-.post-meta {
-  margin-left: .5rem;
+  // Descendants 
+  > span { 
+    display: block;
+    font-size: typeScale(1);
+    position: relative;
 
-  &:before {
-    content: "·";
-    font-weight: bold;
-    padding-right: .5rem;
+    @media (--small) { 
+      display: inline-block;
+    }
+
+    &:not(:first-of-type) { 
+      margin-top: .25rem;
+
+      @media (--small) { 
+        border-left: 1px solid var(--color-secondary-light);
+        margin-left: .7em;
+        margin-top: 0;
+        padding-left: .8em;
+      }
+    }
   }
 }
 
