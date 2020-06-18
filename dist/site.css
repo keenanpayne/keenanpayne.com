@@ -887,6 +887,14 @@ table {
 ._scroll-horizontal::-webkit-scrollbar-thumb {
   background-color: var(--color-tertiary-mid); }
 
+.-hidden {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px; }
+
 blockquote {
   color: var(--color-secondary);
   border-left: 5px solid var(--color-base-mid);
@@ -1295,6 +1303,47 @@ input[type="submit"] {
 
 input.-bg-white {
   background-color: white; }
+
+.newsletterSlideIn {
+  background-color: white;
+  box-shadow: 0 0 4px 0 var(--color-secondary-light);
+  bottom: 0;
+  padding: 1.5rem 1rem 0;
+  position: fixed;
+  transform: translateY(100%);
+  transition: transform 600ms ease-in;
+  right: 1rem;
+  width: 350px; }
+  .newsletterSlideIn:before {
+    background: linear-gradient(to right, var(--color-tertiary-mid) 0, var(--color-tertiary-light) 60%, var(--color-base-mid) 100%);
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 5px;
+    left: 0;
+    display: block;
+    width: 100%; }
+  @media (min-width: 768px) {
+    .newsletterSlideIn.-visible {
+      transform: translateY(0); } }
+
+.newsletterSlideIn-headline {
+  font-weight: bold; }
+
+.newsletterSlideIn-description {
+  font-size: 0.8rem;
+  margin-bottom: 1rem; }
+
+.newsletterSlideIn-close {
+  cursor: pointer;
+  font-size: 1.5625rem;
+  opacity: .3;
+  position: absolute;
+  right: .5rem;
+  top: 0;
+  transition: opacity 300ms; }
+  .newsletterSlideIn-close:hover {
+    opacity: .6; }
 
 .archive {
   display: -ms-grid;

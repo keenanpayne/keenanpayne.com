@@ -62,3 +62,17 @@
     background-color: var(--color-tertiary-mid);
   }
 }
+
+
+//
+// A11y Hidden Content
+// -------------------
+
+.-hidden { 
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px;
+}
