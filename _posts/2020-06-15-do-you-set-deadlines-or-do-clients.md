@@ -16,9 +16,9 @@ As a freelancer, effectively setting deadlines is essential to managing my stres
 
 The latter is how I prefer to work, so I strive to set deadlines that allow me that freedom. However, learning how to set and communicate deadlines is something that has taken me a long time to learn. I hope that by sharing my experience, you will be able to avoid the pitfalls that I've fallen into throughout my career, and you can begin managing the deadlines for your work in a way that manifests relaxation, happiness, and freedom.
 
-*Are you currently setting timelines like a mechanic or a firefighter?*
+**Are you currently setting timelines like a mechanic or a firefighter?**
 
-## Who determines the deadline?
+## Who sets the deadline?
 How you set a deadline for a project is going to be largely context-dependent. One client might require that you work with a deadline that they have set for a project, while another client will require you to estimate and set the deadline for a project. 
 
 Neither option is "right", and both can be appropriate depending on the circumstances. Let's discuss the differences surrounding the circumstances of the client or the contractor setting project deadlines so that we can understand when each is appropriate. 
@@ -40,9 +40,7 @@ You *might* let a client set a project deadline if they have a **soft deadline**
 
 There are times when the client needs to set a deadline, and you will need to meet that deadline if you accept the project. However, in my experience, the deadlines that a client has rarely fall under the category of "hard deadline" or "soft deadline", but instead, usually typically fall under the category of "artificial deadline".
 
-*Quick one sentence describing what an artificial deadline is*
-
-CTA: Learn more about how to spot and manage artificial deadlines from a client [here](artificial deadlines post).
+    TODO: Quick one sentence describing what an artificial deadline is
 
 I like to think of working with client deadlines as similar to the mindset of a firefighter because I am being reactive in responding to what the client needs. 
 
@@ -77,3 +75,5 @@ An example of working forwards is remodeling your home. If you are remodeling yo
 Mechanics and firefighters handle their work under different sets of circumstances, thereby requiring different responses. The mechanic proactively sets deadlines by estimating how long their work will take to complete, while the firefighter works reactively by fighting fires as they occur, and doing their job as quickly as possible. Neither mode of operation is correct, each are context-dependent. 
 
 This same principle applies to how we think about setting deadlines for a project. There will be times when the circumstances require a client to set a deadline for a project to be completed, and you must work backwards to meet this deadline. Other times the client will defer to your experience and expertise as a contractor to set a deadline, and you must estimate how long the project will take complete in order to provide a deadline. 
+
+    TODO: Continue finishing conclusion
