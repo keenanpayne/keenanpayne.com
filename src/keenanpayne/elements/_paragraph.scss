@@ -65,4 +65,20 @@ p {
       bottom: 0;
     }
   }
+
+  &.-tip { 
+    border-top: 1px solid var(--color-base-mid);
+    border-bottom: 1px solid var(--color-base-mid);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    position: relative;
+
+    &:before { 
+      @media (--medium) {
+        content: '💡';
+        left: -1.5rem;
+        position: absolute;
+      }
+    }
+  }
 }

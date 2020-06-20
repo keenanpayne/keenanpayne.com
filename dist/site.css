@@ -1061,6 +1061,17 @@ p {
       position: absolute;
       left: 0;
       bottom: 0; }
+  p.-tip {
+    border-top: 1px solid var(--color-base-mid);
+    border-bottom: 1px solid var(--color-base-mid);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    position: relative; }
+    @media (min-width: 768px) {
+      p.-tip:before {
+        content: '💡';
+        left: -1.5rem;
+        position: absolute; } }
 
 sup {
   font-size: 1.15rem;
@@ -1839,7 +1850,8 @@ input.-bg-white {
     background-color: transparent;
     border: none;
     line-height: inherit;
-    padding: calc(0.375rem + 1vw); }
+    padding: calc(0.375rem + 1vw);
+    white-space: pre-wrap; }
   .highlight .c {
     color: #999988;
     font-style: italic; }
