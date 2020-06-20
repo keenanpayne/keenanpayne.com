@@ -19,7 +19,7 @@ This is an example of what we are going to be building today. These buttons were
 
 ## Let's build buttons
 
-### Starting with markup
+### Writing button markup
 I like to write the markup for the component in an accessible fashion when building a new component. Let's start with a  `<button>` element with a class name to denote what background color we want our button to have. We also add our content wrapped in `<span>` tags so that we can style each line of text individually. 
 
 {% include type/tip.html content="If you're wondering why you would start with markup as opposed to writing stylesheets, think about the human body. Does the skeleton sit on top of the skin, or does the skin sit on top of the skeleton? Think of the markup as the skeleton for what we are building. Building the skeleton first can inform how we approach implementing the design and interactions for this component." %}
@@ -47,7 +47,7 @@ html='<button class="-bg-yellow">
 </button>'
 %}
 
-### Adding styles
+### Writing button styles
 
 Now that we have the markup for our button, let's start adding some styles. Note that I am using [Sass](https://sass-lang.com/) as the pre-processor for my CSS for convenience (e.g., [nesting](https://sass-lang.com/guide#topic-3), [comments](https://sass-lang.com/documentation/syntax/comments), and [mixins](https://sass-lang.com/documentation/at-rules/mixin)).
 
@@ -176,7 +176,7 @@ scss='button {
 
 To bring our two lines of text together I set distinct `line-height` values for the first and second `<span>` elements. This gives us the multi-line affect that we are looking for with the correct spacing between each of the lines.
 
-### Supporting multiple backgrounds
+### Supporting multiple button backgrounds
 The design for this component included two different backgrounds, so we want to write some CSS to support these different contexts.
 
 {% include components/codepen.html
@@ -259,7 +259,7 @@ I scope two modifier classes inside of our `button` component for each backgroun
 
 {% include type/note.html content="Curious about how and why I write modifier classes starting with a single dash (`-`) and scoped directly inside of a component? [Read this article]() where I go over how and why I write modifier classes in this way." %}
 
-### Adding interaction
+### Adding button interactions
 Interaction was not outlined for this component, so I decided to use the [pacman arrow]() micro-interaction that I've written a tutorial about. I simply swapped in the arrow SVG that was included in the design for this pacman arrow, and everything worked like a charm. 
 
 Let's start by adding the necessary markup required for this micro-interaction:
