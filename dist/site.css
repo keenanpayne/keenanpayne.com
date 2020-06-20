@@ -1065,17 +1065,25 @@ p {
       position: absolute;
       left: 0;
       bottom: 0; }
-  p.-tip {
-    border-top: 1px solid var(--color-base-mid);
-    border-bottom: 1px solid var(--color-base-mid);
-    padding-top: 1rem;
+  p.-context {
+    --context-border-color: transparent;
+    --context-icon: '';
+    border-bottom: 1px solid var(--context-border-color);
+    border-top: 1px solid var(--context-border-color);
     padding-bottom: 1rem;
+    padding-top: 1rem;
     position: relative; }
     @media (min-width: 768px) {
-      p.-tip:before {
-        content: '💡';
+      p.-context:before {
+        content: var(--context-icon);
         left: -1.5rem;
         position: absolute; } }
+    p.-context.-tip {
+      --context-border-color: var(--color-base-mid);
+      --context-icon: '💡'; }
+    p.-context.-note {
+      --context-border-color: var(--color-secondary-light);
+      --context-icon: '📎'; }
 
 sup {
   top: -.5em; }
@@ -1228,6 +1236,12 @@ button, input[type="submit"],
   .button:active,
   .button:focus {
     background-color: var(--color-tertiary-mid); }
+  button.-flat, input.-flat[type="submit"],
+  .button.-flat {
+    background-color: transparent;
+    color: inherit;
+    line-height: 1;
+    padding: 0; }
 
 .page-contact {
   display: -ms-grid;
@@ -1356,7 +1370,7 @@ input.-bg-white {
   opacity: .3;
   position: absolute;
   right: .5rem;
-  top: 0;
+  top: .5rem;
   transition: opacity 300ms; }
   .newsletterSlideIn-close:hover {
     opacity: .6; }
