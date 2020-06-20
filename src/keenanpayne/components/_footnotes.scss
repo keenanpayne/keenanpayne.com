@@ -47,7 +47,7 @@
     &:before {
       color: var(--color-secondary);
       float: left;
-      font-weight: bold;
+      font-weight: $fontWeight-semibold;
       margin-left: .25rem;
       margin-right: .35rem;
     }

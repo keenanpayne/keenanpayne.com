@@ -9,12 +9,11 @@
               12px 12px 0 var(--color-tertiary-light);
   color: var(--color-tertiary);
   display: block;
-  font-size: typeScale(2);
-  font-weight: $fontWeight-bold;
+  font-size: 18px;
+  font-weight: $fontWeight-regular;
   grid-column-start: 1;
   grid-column-end: 7;
   margin-top: $spacing-m;
-  opacity: .85;
   padding: 1rem;
   text-align: center;
   transition: all $transition-duration-long;
@@ -29,7 +28,6 @@
     border-color: transparent;
     box-shadow: 5px 5px 0 rgba(254,67,101,.3), 10px 10px 0 rgba(254,67,101,.4), 15px 15px 0 rgba(254,67,101,.5);
     color: white;
-    opacity: 1;
     text-decoration: none;
   }
 }

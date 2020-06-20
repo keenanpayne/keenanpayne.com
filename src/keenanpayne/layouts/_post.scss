@@ -7,7 +7,7 @@
 // ---------
 
 .post {
-  padding-top: $spacing-m;
+  padding-top: 4rem;
 }
 
 
@@ -16,7 +16,7 @@
 // ------
 
 .post-header {
-  padding-bottom: $spacing-s;
+  padding-bottom: 3rem;
   padding-left: 0;
   padding-right: 0;
 }
@@ -48,6 +48,12 @@
     max-width: 750px;
   }
 
+  > p,
+  > ul,
+  > ol {
+    margin-bottom: 1.5em;
+  }
+
   > p.-large,
   > blockquote {
     @media (--medium) {
@@ -59,10 +65,6 @@
 
   > blockquote { 
     max-width: 750px;
-  }
-
-  > p:not([class]) {
-    line-height: 1.6;
   }
 
   h2, h3 {
@@ -148,7 +150,7 @@
 .post-content-header-link {
   display: none;
   font-size: .7em;
-  font-weight: 600;
+  font-weight: $fontWeight-display-bold;
   margin-left: -2ch;
   margin-right: 1ch;
   opacity: .4;

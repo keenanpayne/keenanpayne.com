@@ -18,13 +18,17 @@
   min-width: 300px;
 
   @media (--medium) {
-    flex-basis: 350px;
-    min-width: 350px;
+    flex-basis: 375px;
+    min-width: 375px;
   }
 
   &:not(:last-of-type) { 
     margin-right: 1.5rem;
   }
+}
+
+.posts-title { 
+  margin-bottom: 0;
 }
 
 .posts-more {
