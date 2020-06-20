@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "Eksell";
-  font-weight: 400;
+  font-weight: $fontWeight-display-normal;
   font-style: normal;
   src: url('/fonts/eksell/EksellDisplayWeb-Small.eot') format("embedded-opentype"),
     url('/fonts/eksell/EksellDisplayWeb-Small.woff2') format("woff2"),
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: "Eksell";
-  font-weight: 500;
+  font-weight: $fontWeight-display-medium;
   font-style: normal;
   src: url('/fonts/eksell/EksellDisplayWeb-Medium.eot') format("embedded-opentype"),
     url('/fonts/eksell/EksellDisplayWeb-Medium.woff2') format("woff2"),
@@ -28,7 +28,7 @@
 
 @font-face {
   font-family: "Eksell";
-  font-weight: 600;
+  font-weight: $fontWeight-display-bold;
   font-style: normal;
   src: url('/fonts/eksell/EksellDisplayWeb-Large.eot') format("embedded-opentype"),
     url('/fonts/eksell/EksellDisplayWeb-Large.woff2') format("woff2"),

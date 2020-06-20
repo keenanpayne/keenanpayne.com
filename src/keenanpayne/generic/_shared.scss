@@ -6,14 +6,9 @@
   background-color: var(--color-base);
   color: #030303;
   font-size: var(--font-size);
+  font-weight: $fontWeight-light;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
-
-  @media screen and (-webkit-min-device-pixel-ratio: 2),
-         screen and (min-resolution: 2dppx) {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
 }
 
 // Content selection background

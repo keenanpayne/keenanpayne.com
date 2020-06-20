@@ -20,19 +20,21 @@ p {
     border-bottom: 2px solid var(--color-tertiary-light);
     font-family: $font-secondary;
     font-size: typeScale(4); 
-    font-weight: 400;
+    font-weight: $fontWeight-display-normal;
     line-height: 1.4;
-    padding-bottom: 1em;
-    padding-top: 1em;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
   }
 
   &.-small {
     font-size: typeScale(.5);
+    font-weight: $fontWeight-medium;
   }
 
   &.-small-heading {
-    font-family: $font-accessory;
+    font-weight: $fontWeight-medium;
     font-variant: all-small-caps;
+    letter-spacing: .025em;
     margin-bottom: .25em;
   }
 
@@ -44,10 +46,10 @@ p {
   }
 
   &.-section-heading { 
-    font-family: $font-accessory;
     font-variant: all-small-caps;
-    font-weight: $fontWeight-heavy;
+    font-weight: $fontWeight-medium;
     margin-bottom: 1.25em;
+    letter-spacing: .025em;
     position: relative;
     text-align: right;
 
