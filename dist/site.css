@@ -831,9 +831,12 @@ table {
   background-color: var(--color-base);
   color: #030303;
   font-size: var(--font-size);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.5;
   text-rendering: optimizeLegibility; }
+  @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
+    :root {
+      font-weight: 300; } }
 
 ::-moz-selection {
   background: var(--color-tertiary-light); }
@@ -1364,10 +1367,7 @@ input.-bg-white {
       grid-column-end: 6; } }
 
 .archive-article:not(:last-of-type) {
-  margin-bottom: 1.5rem; }
-  @media (min-width: 768px) {
-    .archive-article:not(:last-of-type) {
-      margin-bottom: 3rem; } }
+  margin-bottom: 3rem; }
 
 .archive-link {
   text-decoration: underline;
