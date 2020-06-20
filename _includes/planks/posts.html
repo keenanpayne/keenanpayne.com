@@ -12,11 +12,7 @@
   <div class="posts-container _scroll-horizontal">
     {% for post in site.posts limit:page.posts_limit %}
       <article class="posts-article">
-        <header>
-          <p class="-secondary -small-heading">
-            {{ post.date | date: "%B %e, %Y" }}
-          </p>
-          
+        <header>          
           <h3 class="posts-title">
             <a href="{{ post.url }}" title="{{ post.title }}">
               {{ post.title|smartify }}

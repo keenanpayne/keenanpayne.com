@@ -19,15 +19,15 @@
 
 .archive-article {
   &:not(:last-of-type) {
-    margin-bottom: 1.5em;
-  }
-
-  & + & {
-    // border-top: 1px solid var(--color-tertiary-light);
-    // padding-top: 1rem;
+    margin-bottom: 3rem;
   }
 }
 
-.archive-description { 
-  margin-top: .75rem;
+.archive-link { 
+  text-decoration: underline;
+  text-decoration-color: var(--color-base-mid);
+
+  &:hover { 
+    text-decoration-color: var(--color-secondary);
+  }
 }

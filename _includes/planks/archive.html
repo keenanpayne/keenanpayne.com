@@ -12,12 +12,8 @@
 
       <article class="archive-article">
         <header>
-          <p class="-secondary-mid -small-heading">
-            {{ post.date | date: "%B %e" }}
-          </p>
-
           <h3>
-            <a href="{{ post.url }}" title="{{ post.title }}">
+            <a class="archive-link" href="{{ post.url }}" title="{{ post.title }}">
               {{ post.title|smartify }}
             </a>
           </h3>

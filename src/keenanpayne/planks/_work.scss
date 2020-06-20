@@ -19,6 +19,16 @@
     break-inside: avoid;
     page-break-inside: avoid;
   }
+
+  // Descendants
+  a { 
+    text-decoration: underline;
+    text-decoration-color: var(--color-base-mid);
+
+    &:hover { 
+      text-decoration-color: var(--color-secondary);
+    }
+  }
 }
 
 // Remove top margin from first heading so it is flush

@@ -8,13 +8,11 @@ meta:
 
 How do you deliberately improve the conditions under which you do your work? That is if you work on a project and things go well, how do you ensure that things continue to go well during your next project? Conversely, if you work on a project and things go poorly, how do you prevent things from going poorly during your next project?
 
-[//]: <> (TODO: Bold this text once bug is fixed: https://www.coywolf.news/webmaster/chrome-81-breaks-system-fonts-bold/)
-*Is this something that you even think about?*
+**Is this something that you even think about?**
 
 Honestly, this is not something that I have put much thought into until recently. For example, I have worked as a professional web developer for 10 years, and I cannot count the number of projects with unrealistic deadlines that have required me to work late nights and weekends. Why did I accept projects with unrealistic deadlines as an unavoidable reality for so long? 
 
-[//]: <> (TODO: Bold this text once bug is fixed: https://www.coywolf.news/webmaster/chrome-81-breaks-system-fonts-bold/)
-*What has occurred repeatedly throughout your work that you want to change but have not changed yet?*
+**What has occurred repeatedly throughout your work that you want to change but have not changed yet?**
 
 I recently spent a lot of time thinking about the idea of deliberate improvement in the pursuit of avoiding unrealistic deadlines for future projects. I discovered that I lacked a framework that allowed me to think about and address the problems I encountered systematically. 
 
@@ -33,9 +31,7 @@ After launching the new Rippling website, I decided to take a one-month sabbatic
 
 I ended up answering all of these questions and then some. However, the most valuable insight I gained by thinking about that last bullet point, and it is unrelated to the idea of project timelines. In wondering how I could prevent tight deadlines from happening in the future, I ended up reflecting on why I hadn't taken the time to think critically about this issue until recently. 
 
-[//]: <> (TODO: Bold this text once bug is fixed: https://www.coywolf.news/webmaster/chrome-81-breaks-system-fonts-bold/)
-
-*If project deadlines have plagued me for over a decade, why hadn't I taken the time to think about and solve this problem?*
+**If project deadlines have plagued me for over a decade, why hadn't I taken the time to think about and solve this problem?**
 
 ## Making reflection deliberate
 In a recent post, I discussed the idea of analyzing [what mindset I have after completing a project](/blog/mindset-upon-completing-project). In it, I mentioned that I generally embody the "future mindset," where I find myself more inclined to look towards the next thing after completing a project, as opposed to looking back and reflecting over what I just completed.
@@ -54,8 +50,7 @@ What was missing from my process was taking the impromptu reflections that I had
 
 Building in time for deliberate reflection allows me to focus on *thinking about* the work, as opposed to *doing* the work. Creating this separation allows me more time to flesh out my thoughts, which provides me with greater clarity around my experiences and how these experiences have made me feel. Having this deep understanding is crucial when manifesting positive change in my life.
 
-[//]: <> (TODO: Bold this text once bug is fixed: https://www.coywolf.news/webmaster/chrome-81-breaks-system-fonts-bold/)
-*Now that I understand the value of deliberate reflection, how can I make this time productive?*
+**Now that I understand the value of deliberate reflection, how can I make this time productive?**
 
 ## My framework for deliberate reflection
 Reflection is *always* a useful way to gain clarity around your thoughts and feelings. However, I learned that adding some structure can reliably produce something actionable from my reflections, which gives me something that I can utilize moving forward.

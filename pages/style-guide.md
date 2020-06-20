@@ -50,12 +50,6 @@ Here's a link to [a website](https://foo.bar), to a [local doc](local-doc.html),
 
 {% include type/p-large.html content="I set a goal to read <strong>24 books in 2017</strong>. I have already read 3 books in the last 3 weeks" %}
 
-{% include type/content-heading.html text="Section Headings" %}
-
-{% include type/section-heading.html content="This is a content heading" %}
-
-<p class="-small-heading">This is a small heading</p>
-
 {% include type/content-heading.html text="Blockquotes" %}
 
 > This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.

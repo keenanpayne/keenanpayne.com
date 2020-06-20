@@ -7,8 +7,9 @@ a {
   cursor: pointer;
 
   &:hover {
-    color: var(--color-tertiary);
+    color: initial;
     text-decoration: underline;
+    text-decoration-color: var(--color-tertiary);
   }
 
   // Modifiers
@@ -45,7 +46,7 @@ p,
 ul,
 ol {
   a {
-    font-weight: $fontWeight-normal;
+    font-weight: $fontWeight-regular;
     text-decoration: underline;
   }
 }
