@@ -19,7 +19,11 @@
 
 .archive-article {
   &:not(:last-of-type) {
-    margin-bottom: 1.5em;
+    margin-bottom: 1.5rem;
+
+    @media (--medium) { 
+      margin-bottom: 3rem;
+    }
   }
 }
 

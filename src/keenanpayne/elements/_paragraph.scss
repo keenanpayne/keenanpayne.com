@@ -11,10 +11,6 @@ p {
     color: var(--color-secondary); 
   }
 
-  &.-secondary-mid { 
-    color: var(--color-secondary-mid);
-  }
-
   &.-large {
     border-top: 2px solid var(--color-tertiary-light);
     border-bottom: 2px solid var(--color-tertiary-light);
@@ -31,17 +27,11 @@ p {
     font-weight: $fontWeight-medium;
   }
 
-  &.-small-heading {
+  &.-content-heading {
     font-weight: $fontWeight-medium;
     font-variant: all-small-caps;
     letter-spacing: .025em;
-    margin-bottom: .25em;
-  }
-
-  &.-content-heading {
-    @extend p.-secondary;
-    @extend p.-small-heading;
-
+    margin-bottom: 1rem;
     margin-top: $spacing-m;
   }
 
