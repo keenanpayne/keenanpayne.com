@@ -9,6 +9,9 @@ module.exports = function(eleventyConfig) {
 
   // Base config
   return {
+    markdownTemplateEngine: 'njk',
+    dataTemplateEngine: 'njk',
+    htmlTemplateEngine: 'njk',
     dir: {
       input: "views",
       output: "_site",
