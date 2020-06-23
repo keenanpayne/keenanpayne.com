@@ -3,17 +3,18 @@
 // ==================================================
 
 .promo {
-  border: 2px solid getColor(base, splash);
-  box-shadow: 4px 4px 0 rgba(254,67,101,.3), 8px 8px 0 rgba(254,67,101,.4), 12px 12px 0 rgba(254,67,101,.5);
-  color: getColor(base, splash);
+  border: 2px solid var(--color-tertiary);
+  box-shadow: 4px 4px 0 var(--color-tertiary),
+              8px 8px 0 var(--color-tertiary-mid),
+              12px 12px 0 var(--color-tertiary-light);
+  color: var(--color-tertiary);
   display: block;
-  font-size: typeScale(1);
-  font-weight: $fontWeight-bold;
+  font-size: 18px;
+  font-weight: $fontWeight-regular;
   grid-column-start: 1;
   grid-column-end: 7;
   margin-top: $spacing-m;
-  opacity: .85;
-  padding: $spacing-xs;
+  padding: 1rem;
   text-align: center;
   transition: all $transition-duration-long;
 
@@ -23,11 +24,10 @@
   }
 
   &:hover {
-    background-color: getColor(base, splash);
+    background-color: var(--color-tertiary);
     border-color: transparent;
     box-shadow: 5px 5px 0 rgba(254,67,101,.3), 10px 10px 0 rgba(254,67,101,.4), 15px 15px 0 rgba(254,67,101,.5);
     color: white;
-    opacity: 1;
     text-decoration: none;
   }
 }

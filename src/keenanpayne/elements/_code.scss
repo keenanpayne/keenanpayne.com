@@ -1,0 +1,17 @@
+//
+// Code
+// ==================================================
+
+code {
+  background-color: var(--color-base-light);
+  border: 1px solid var(--color-base-mid);
+  border-radius: .15em;
+  line-height: 1;
+  padding: .25em .4em;
+  vertical-align: initial;
+
+  // Link wrapping code
+  a & { 
+    text-decoration: underline;
+  }
+}

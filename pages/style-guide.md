@@ -19,7 +19,7 @@ masthead_subtitle: The bits and bytes that make up this website
   No complex components. Modifiers for atoms should be included.
 -->
 
-<h3 class="-bottom-border">Typography</h3>
+{% include type/section-heading.html content="Typography" %}
 
 {% include type/content-heading.html text="Headings" %}
 
@@ -30,7 +30,7 @@ masthead_subtitle: The bits and bytes that make up this website
 
 {% include type/content-heading.html text="Paragraph" %}
 
-Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), and to a [section heading in the current doc](#an-h2-header). Here's a footnote [^1]. Sometimes you just need to use a *little* bit of **emphasis** when talking about `code` --- if you want to learn more, see chapters 2--4 and maybe you'll find a surprise as well...
+Here's a link to [a website](https://foo.bar), to a [local doc](local-doc.html), and to a [section heading in the current doc](#an-h2-header). Here's a footnote [^1]. Sometimes you just need to use a *little* bit of **emphasis** when talking about `code` --- if you want to learn more, see chapters 2--4 and maybe you'll find a surprise as well...
 
 [^1]: Footnote text goes here.
 
@@ -50,12 +50,6 @@ Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), 
 
 {% include type/p-large.html content="I set a goal to read <strong>24 books in 2017</strong>. I have already read 3 books in the last 3 weeks" %}
 
-{% include type/content-heading.html text="Section Headings" %}
-
-{% include type/section-heading.html content="This is a content heading" %}
-
-<p class="-small-heading">This is a small heading</p>
-
 {% include type/content-heading.html text="Blockquotes" %}
 
 > This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote.
@@ -72,8 +66,7 @@ Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), 
 
 <p class="-ordinal">1st 2nd 3rd 4th 96o</p>
 
-
-<h3 class="-bottom-border">Lists</h3>
+{% include type/section-heading.html content="Lists" %}
 
 **Unordered lists**
 
@@ -93,12 +86,12 @@ Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), 
   4. Do not bump wooden spoon or it will fall.
 
 
-<h3 class="-bottom-border">Buttons</h3>
+{% include type/section-heading.html content="Buttons" %}
 
 <button>Only used for submissions</button>
 
 
-<h3 class="-bottom-border">Tables</h3>
+{% include type/section-heading.html content="Tables" %}
 
 &nbsp; | First Header | Second Header
 --- | ------------ | -------------
@@ -106,7 +99,7 @@ Here's a link to [a website](http://foo.bar), to a [local doc](local-doc.html), 
 **Y Value** | Content in the first column | Content in the second column
 
 
-<h3 class="-bottom-border">Code Snippets</h3>
+{% include type/section-heading.html content="Code" %}
 
 **Language-agnostic**
 
@@ -126,6 +119,6 @@ for i in range(10):
 ~~~
 
 
-<h3 class="-bottom-border">Images</h3>
+{% include type/section-heading.html content="Images" %}
 
-![example image](https://luna1.co/4c8bb1.jpg "An exemplary image")
+![example image](/images/pages/style-guide/example-image.jpg "An exemplary image")

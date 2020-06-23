@@ -22,7 +22,7 @@
     "watch": "^1.0.2"
   },
   "scripts": {
-    "start": "bundle exec jekyll serve",
+    "start": "bundle exec jekyll serve --future",
     "build": "watch \"npm run build:sass && npm run build:minify\" src",
     "build:minify": "cssmin dist/site.css > dist/site.min.css",
     "build:sass": "concisecss compile src/site.scss dist/site.css",

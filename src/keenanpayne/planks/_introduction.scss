@@ -5,17 +5,11 @@
 .introduction {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  margin-top: $spacing-xxl;
-  margin-left: 2rem;
   overflow: visible;
   position: relative;
 
   @media (min-width: 1160px) { 
     margin-left: auto;
-  }
-
-  h1 { 
-    grid-column: 1 / -1;
   }
 }
 
@@ -24,24 +18,28 @@
 // Descendants
 // -----------
 
-.introduction-subhead { 
+.introduction-headline {
   grid-column: 1 / -1;
+}
 
-  @media (--medium) { 
+.introduction-subhead {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+  padding-bottom: .4em; 
+
+  @media (--medium) {
+    max-width: 25em;
     grid-column-end: 6;
   }
 
-  // Modifiers
-  margin-bottom: 0;
-  padding-bottom: .4em;
-
   small { 
     display: block;
-    margin-top: .5rem;
+    margin-top: .5lh;
   }
 }
 
 .introduction-hello { 
+  display: none;
   height: 100%;
   left: -2rem;
   line-height: 1;
@@ -50,6 +48,10 @@
   text-indent: 8px;
   top: 0;
   writing-mode: vertical-rl;
+
+  @media (min-width: 1160px) { 
+    display: block;
+  }
 
   @media (--medium) { 
     text-indent: 14px;
@@ -73,7 +75,7 @@
 
   &:after { 
     animation: introductionBorder $transition-duration-long .5s forwards;
-    background-color: getColor(base, linesDark);
+    background-color: currentColor;
     content: '';
     display: block;
     height: 100%;

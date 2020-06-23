@@ -1,0 +1,30 @@
+//
+// Table
+// ==================================================
+
+table {
+  margin-bottom: $spacing-s;
+  margin-top: $spacing-s;
+  width: 100%;
+
+  thead {
+    background-color: transparent; 
+    padding-bottom: $spacing-xs;
+    padding-top: $spacing-xs;
+  }
+
+  th,
+  td { 
+    border-right: 1px solid var(--color-base-mid); 
+  }
+
+  td {
+    line-height: inherit;
+    padding-bottom: $spacing-xs;
+    padding-top: $spacing-xs;
+  }
+
+  tr { 
+    border-bottom: 1px solid var(--color-base-mid); 
+  }
+}

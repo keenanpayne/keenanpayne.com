@@ -8,7 +8,7 @@ The area that confused me was the component that we call the "masthead." This co
 
 Because this landing page is not live, let's say the design looks something like this:
 
-{% include atoms/figure.html src="https://luna1.co/28a6e5.png" alt="Landing page design" %}
+{% include atoms/figure.html src="/images/posts/elements-hang-outside-parents/example-design.png" alt="Landing page design" %}
 
 As Devin and I walked through the implementation details, he described the interaction for the masthead component. He explained that at sub-1920 pixel viewports the floating elements would be positioned off-screen surrounding the content. If the screen grew larger, the elements would remain at their location, but more of the element would be visible to the user.
 
@@ -16,7 +16,9 @@ When described to me, this seemed like a pretty straight-forward interaction. I 
 
 If that were the case, I wouldn't be writing this blog post.
 
-## Solution 1
+## Approaches
+
+### Solution 1
 
 During my first pass at implementing the design, I built a layout with a fixed-width container that contains many child elements that are absolutely positioned to achieve the desired effect.
 
@@ -25,7 +27,7 @@ During my first pass at implementing the design, I built a layout with a fixed-w
 
 This solution achieves the desired effect, with one caveat: we have horizontal overflow because of our off-screen content.
 
-## Solution 2
+### Solution 2
 
 Naturally, if we want to remove the horizontal overflow for our off-screen content, we can apply `overflow-x: hidden;` to our container and see if that solves our problem.
 
@@ -33,11 +35,11 @@ Naturally, if we want to remove the horizontal overflow for our off-screen conte
 
 This solution works well on sub-1920 pixel viewports, but when you have a larger viewport, we get the following issue:
 
-{% include atoms/figure.html src="https://luna1.co/c55db2.png" alt="Landing page design" %}
+{% include atoms/figure.html src="/images/posts/elements-hang-outside-parents/example-complete.png" alt="Landing page design" %}
 
 Because we're removing all horizontal overflow from our container, when you have a viewport larger than 1920 pixels, the remaining parts of our floating elements are cut off.
 
-## Solution 3
+### Solution 3
 
 We need a solution that allows our floating elements to be positioned off-screen on sub-1920 pixel viewports without any horizontal overflow, and on viewports larger than 1920 pixels the entire floating elements are visible.
 
@@ -53,4 +55,4 @@ Why does this work? It's because we shift the logic to ensure that horizontal ov
 
 ## Shouts Out
 
-Quick shout out to Chris Silich that wrote a [blog post](https://chrissilich.com/blog/make-elements-hang-outside-your-main-page-container-without-triggering-scrollbars-if-the-window-is-too-narrow/) about this a few years ago. This post was one of the only resources I found documenting this solution, and I thought it would be valuable to write about it again since his original post contains broken images and no working examples.
+Quick shout out to [Chris Silich](https://chrissilich.com/) that wrote a blog post about this a few years ago, but no longer seems to be published. This post was one of the only resources I found documenting this solution, and I thought it would be valuable to write about it again since his original post contains broken images and no working examples.

@@ -9,18 +9,15 @@
   grid-column-end: 7;
 
   &:before {
-    border-top: 1px solid getColor(base, lines);
-    color: getColor(text, secondary);
-    content: 'Footnotes:';
+    @extend p.-section-heading;
+
+    border-bottom: 2px solid var(--color-secondary);
+    content: 'Footnotes';
     display: block;
-    font-size: typeScale(.5);
-    font-weight: $fontWeight-bold;
     grid-column-start: 1;
     grid-column-end: 9;
-    letter-spacing: .05em;
-    margin-bottom: .5rem;
     margin-top: $spacing-xxs;
-    padding-top: $spacing-xxs;
+    text-align: left;
 
     @media (--medium) { 
       grid-column-start: 3;
@@ -31,8 +28,7 @@
   ol { 
     grid-column-start: 1;
     grid-column-end: 9;
-    margin-bottom: 0;
-    margin-top: 0;
+    margin: 0;
 
     @media (--medium) { 
       grid-column-start: 3;
@@ -42,28 +38,39 @@
 
   // Note number
   li {
-    font-size: typeScale(.5);
+    font-size: 75%;
+
+    &:not(:last-of-type) {
+      margin-bottom: 1em;
+    }
 
     &:before {
-      color: getColor(text, secondary);
+      color: var(--color-secondary);
       float: left;
-      font-size: typeScale(.5);
-      margin-right: .5rem;
+      font-weight: $fontWeight-semibold;
+      margin-left: .25rem;
+      margin-right: .35rem;
     }
+  }
+
+  // Footnote text
+  p {
+    margin-bottom: 0;
   }
 }
 
 a.reversefootnote {
-  color: getColor(text, secondary);
+  color: var(--color-secondary);
   font-size: typeScale(.5);
   text-decoration: none;
 }
 
 .footnote {
+  padding-right: .05em;
   text-decoration: none;
 
   &:hover {
-    color: getColor(text, secondary);
-    text-decoration: none;
+    color: var(--color-secondary);
+    text-decoration: underline;
   }
 }

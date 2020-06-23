@@ -3,8 +3,9 @@
 // --------------------------------------------------
 
 // Font families
-$font-primary: "source-sans-pro", sans-serif;
-$font-secondary: 'Inter var', sans-serif;
+$font-primary: 'Fira Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+$font-secondary:  "Eksell", "Georgia", sans-serif;
+$font-tertiary: "neue-haas-grotesk-display", sans-serif;
 $font-mono: "Consolas", monospace;
 $font-print-primary: "Georgia", "Times New Roman", "Times", serif;
 $font-print-secondary: "Georgia", "Times New Roman", "Times", serif;
@@ -59,7 +60,7 @@ $_perfect-fifth:    1.500;
 $_golden-ratio:     1.618;
 
 // Ratio for primary scale
-$scale-ratio: $_minor-third;
+$scale-ratio: $_major-third;
 
 // Ratio for secondary scale
 $scale-ratio-secondary: $_golden-ratio;
@@ -69,8 +70,14 @@ $scale-ratio-secondary: $_golden-ratio;
 // Font Weights
 // --------------------------------------------------
 
-$fontWeight-normal:   400;
-$fontWeight-bold:     600;
+$fontWeight-light:    300;
+$fontWeight-regular:  400;
+$fontWeight-medium:   500;
+$fontWeight-semibold: 600;
+
+$fontWeight-display-normal: 400;
+$fontWeight-display-medium: 500;
+$fontWeight-display-bold:   600;
 
 
 //
@@ -84,7 +91,7 @@ $enable-grid: true;
 $full-grid: false;
 
 // Max width for container
-$container-width: 1080px;
+$container-width: 1140px;
 $container-width-narrow: 768px;
 
 // Gutter size
@@ -98,81 +105,3 @@ $prefix: '';
 
 // Create columns and offsets above this breakpoint
 $breakpoint: --medium;
-
-//
-// Color Palette
-// --------------------------------------------------
-// Use the getColor() function to use those values in
-// your stylesheets. Example: getColor(base, primary)
-
-$colors: (
-  base: (
-    "primary":      #4d4d4d,
-    "selection":    #EBE1D3,
-    "lines":        #e0e0e0,
-    "linesDark":    #32373d,
-    "splash":       hsla(349, 99%, 63%, .75),
-    "splash-hover": hsla(349, 99%, 63%, .9)
-  ),
-
-  text: (
-    "primary":   #2f2f2f,
-    "secondary": #666,
-    "heading":   #333,
-    "inverted":  #fff,
-    "activeLink": #1a1a1a
-  ),
-
-  background: (
-    "dark":  #32373d,
-    "light": #fffbf1,
-    "body":  #ffffff,
-    "masthead": #f3f3f3
-  ),
-
-  social: (
-    "dribbble": #ea4c89,
-    "behance": #1769ff,
-    "github": #333333,
-    "linkedin": #0077b5
-  ),
-
-  state: (
-    "muted":   #eee,
-    "success": #10a887,
-    "warning": #F17F42,
-    "error":   #da3c3c
-  ),
-
-  blue: (
-    "darker":  #1573b6,
-    "dark":    #1e80c6,
-    "base":    #2b90d9,
-    "light":   #3fa2e9,
-    "lighter": #4eb1f9
-  ),
-
-  green: (
-    "darker":  #089073,
-    "dark":    #0b9d7d,
-    "base":    #10a887,
-    "light":   #1eb896,
-    "lighter": #28ceaa
-  ),
-
-  red: (
-    "darker":  #653131,
-    "dark":    #b73333,
-    "base":    #da3c3c,
-    "light":   #f25a5a,
-    "lighter": #fa8181
-  ),
-
-  gray: (
-    "darker":  #333333,
-    "dark":    #4d4d4d,
-    "base":    #666666,
-    "light":   #808080,
-    "lighter": #999999
-  )
-);

@@ -62,7 +62,7 @@
      * @returns null
      */
     linkToHeader: function() {
-      var headings = document.querySelectorAll('.post-content h2, .post-content h3');
+      var headings = document.querySelectorAll('.post-content h2');
 
       if (headings.length) { 
         for (var i = 0, len = headings.length; i < len; i++) { 
@@ -74,10 +74,71 @@
           link.classList.add('post-content-header-link');
           link.href = `#${id}`;
           link.setAttribute('title', text);
-          link.textContent = "#";
+          link.textContent = "§";
           
           heading.prepend(link);
         }
+      }
+    }
+  };
+
+
+  /**
+   * Newsletter
+   */
+  Newsletter = {
+    /**
+     * @function show()
+     *
+     * Ref: https://stackoverflow.com/questions/2387136/cross-browser-method-to-determine-vertical-scroll-percentage-in-javascript
+     */
+    show: function() {
+      var el = document.querySelector('.newsletterSlideIn');
+      var h = document.documentElement, 
+          b = document.body,
+          st = 'scrollTop',
+          sh = 'scrollHeight';
+      var hidden = window.localStorage.getItem('newsletterSlideIn');
+      var percent = (h[st]||b[st]) / ((h[sh]||b[sh]) - h.clientHeight) * 100;
+      var visibility = '-visible';
+
+      if (percent > 30 && hidden !== 'true') { 
+        el.classList.add(visibility);
+      } else {
+        el.classList.remove(visibility);
+      }
+    },
+
+    /**
+     * @function close()
+     */
+    close: function(element) {
+      element.closest('.newsletterSlideIn').classList.remove('-visible');
+      window.localStorage.setItem('newsletterSlideIn', 'true');
+    },
+
+    /**
+     * @function bindEventListeners();
+     */
+    bindEventListeners: function() {
+      document.addEventListener('scroll', Newsletter.show);
+      document.addEventListener('click', function() {
+        var target = event.target;
+        
+        if (target.closest('.newsletterSlideIn-close') || target.closest('input[name="subscribe"]')) {
+          Newsletter.close(target);
+        }
+      });
+    },
+
+    /**
+     * @function init()
+     */
+    init: function() {
+      var element = document.querySelectorAll('.newsletterSlideIn');
+
+      if (element.length) { 
+        Newsletter.bindEventListeners();
       }
     }
   };
@@ -93,5 +154,6 @@
 
   window.onscroll = function() { 
     Helpers.loadDisqus();
+    Newsletter.init();
   };
 })();
