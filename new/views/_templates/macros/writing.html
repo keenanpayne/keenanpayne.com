@@ -1,0 +1,33 @@
+{#
+ # @macro posts
+ #
+ # Returns a list of entries from a collection
+ #
+ # @param {string} name - collection name to retrieve entries from
+ #}
+{% macro posts(name) %}
+  {% if name === 'Blog' %}
+    {% set collection = collections.blog %}
+  {% elseif name === 'Journal' %}
+    {% set collection = collections.journal %}
+  {% endif %}
+
+  <h2>
+    {{ name }}
+  </h2>
+
+  {% for item in collection %}
+    <a
+      href="{{ item.url }}"
+      aria-label="See {{ item.data.title }}"
+      class="[ frame ]"
+      data-frame="quaternary"
+    >
+      {{ item.data.title }}
+    </a>
+  {% endfor %}
+
+  <div class="[ flow-space-700 ]">
+    <a href="/{{ name | lower }}/" class="button">See more posts</a>
+  </div>
+{% endmacro %}

@@ -17,16 +17,14 @@
   </head>
   
 	<body>
-		<main>
+    {% include "partials/global-header.html" %}
+
+		<main tabindex="-1" id="main-content">
       {% block content %}
-        <article>
-          <h1>
-            {{ title }}
-          </h1>
-          
-          {{ content | safe }}
-        </article>
+        {{ content | safe }}
       {% endblock %}
-    </main>    
+    </main>
+
+    {% include "partials/global-footer.html" %}
 	</body>
 </html>

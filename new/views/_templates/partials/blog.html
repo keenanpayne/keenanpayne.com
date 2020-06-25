@@ -1,0 +1,15 @@
+<h2>Blog</h2>
+{% for item in collections.blog %}
+  <a
+    href="{{ item.url }}"
+    aria-label="See {{ item.data.title }}"
+    class="[ featured-work__item ] [ frame ]"
+    data-frame="quaternary"
+  >
+    {{ item.data.title }}
+  </a>
+{% endfor %}
+
+<div class="[ featured-work__action ] [ flow-space-700 ]">
+  <a href="/blog/" class="button">See more posts</a>
+</div>

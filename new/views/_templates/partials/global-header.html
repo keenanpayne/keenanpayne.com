@@ -1,0 +1,23 @@
+<a class="[ skip-link ] [ button ]" href="#main-content">Skip to content</a>
+
+<header role="banner" class="global-header">
+  <div class="wrapper">
+    <div class="global-header__inner">
+      <a href="/" aria-label="{{ site.name }} - home" class="global-header__brand">
+        {{ site.name }}
+      </a>
+      
+      <nav class="[ nav ] [ global-header__nav ] [ font-sans ]" aria-label="Primary">
+        <ul class="nav__list">
+          {% for item in navigation.items %}
+            <li>
+              <a href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
+                {{ item.text }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,10 @@
+{% extends "layouts/base.html" %}
+{% import "macros/writing.html" as writing %}
+
+
+{% block content %}
+  {{ writing.posts('Blog') }}
+
+  {% set ctaContent = cta %} 
+  {% include "partials/cta.html" %}
+{% endblock %}
