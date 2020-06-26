@@ -2,8 +2,6 @@
 title:  'Building a "pacman arrow" micro-interaction with CSS'
 meta: 
   description: 'Learn how to build a beautiful arrow micro-interaction with CSS.'
-  image: '/images/posts/improve-project-execution/social.jpg'
-  image_credits: 'https://unsplash.com/photos/cYUMaCqMYvI'
 ---
 
 I helped build the [Asana for Marketers](https://asana.com/teams/marketing) page with [Devin Jacoviello](http://jacoviello.com/) while I was still at Asana. Part of this work involved making a neat micro-interaction for an arrow icon that Devin wanted to use throughout the page. Today I am going to walk you through how I created this interaction and why I built it the way that I did. 
