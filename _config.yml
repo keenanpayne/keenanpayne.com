@@ -55,7 +55,7 @@ social:
 
 markdown: kramdown
 theme: minima
-gems:
+plugins:
   - jekyll-feed
 exclude:
   - node_modules
@@ -68,6 +68,7 @@ exclude:
   - LICENSE
   - js/webp.js
   - src
+  - new
 
 
 ##
