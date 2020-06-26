@@ -917,6 +917,8 @@ code {
   vertical-align: initial; }
   a code {
     text-decoration: underline; }
+  strong code {
+    font-weight: bold; }
 
 h1, h2, h3, h4,
 ._fontSize-h1,

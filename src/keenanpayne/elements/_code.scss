@@ -14,4 +14,9 @@ code {
   a & { 
     text-decoration: underline;
   }
+
+  // Allow for bold inline code
+  strong & { 
+    font-weight: bold;
+  }
 }
