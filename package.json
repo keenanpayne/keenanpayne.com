@@ -13,7 +13,6 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.5.1",
-    "clean-css": "^4.2.3",
     "concise-cli": "^0.4.1",
     "cssmin": "^0.4.3",
     "imagemin": "^6.1.0",
