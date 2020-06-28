@@ -51,6 +51,7 @@ module.exports = function(eleventyConfig) {
   });
 
   // Set up 404 handling locally 
+  // Ref: https://www.11ty.dev/docs/quicktips/not-found/
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: function(err, bs) {
