@@ -25,6 +25,18 @@
         {{ css | safe }}
       {% endif %}
     </style>
+
+    {% set js %}
+      {% include "../assets/app.js" %}
+    {% endset %}
+
+    <script>
+      {% if variables.environment == 'prod' %}
+        {{ js | jsmin | safe }}
+      {% else %}
+        {{ js | safe }}
+      {% endif %}
+    </script>
   </head>
   
 	<body>

@@ -1,1 +1,1 @@
-console.log('testing');
+const test = 'testing';

@@ -1,5 +1,6 @@
+const CleanCSS = require('clean-css');
+const terser = require('terser');
 const sortByDisplayOrder = require('./src/utils/sort-by-display-order.js');
-const CleanCSS = require ('clean-css');
 const moment = require('moment');
 moment.locale('en');
 
@@ -7,6 +8,18 @@ module.exports = function(eleventyConfig) {
   // Filter to minify CSS
   eleventyConfig.addFilter('cssmin', function(code) { 
     return new CleanCSS({}).minify(code).styles;
+  });
+
+  // Filter to minify JS
+  eleventyConfig.addFilter('jsmin', function(code) { 
+    let minified = terser.minify(code);
+    
+    if (minified.error) { 
+      console.log('Terser error: ', minified.error);
+      return code;
+    }
+
+    return minified.code;
   });
 
   // Filter to handle dates
