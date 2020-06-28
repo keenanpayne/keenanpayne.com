@@ -13,7 +13,6 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "autoprefixer": "^9.7.4",
-    "cssmin": "^0.4.3",
     "imagemin": "^7.0.1",
     "imagemin-jpegtran": "^6.0.0",
     "imagemin-webp": "^5.1.0",
@@ -23,13 +22,13 @@
     "watch": "^1.0.2"
   },
   "scripts": {
-    "assets:js": "babel src/js/ -d dist/js/",
-    "assets:sass": "node-sass src/sass/app.scss dist/css/app.css; postcss --use autoprefixer < dist/css/app.css -b \"last 2 versions\" | cssmin > dist/css/app.min.css",
-    "assets:images": "cp -r src/images/ dist/images/",
-    "assets:build:dev": "watch 'npm run assets:sass & npm run assets:js & npm run assets:images' 'src/'",
+    "assets:js": "babel src/_assets/js/ -d src/_templates/assets/",
+    "assets:sass": "node-sass src/_assets/sass/app.scss src/_templates/assets/app.css; postcss --use autoprefixer < src/_templates/assets/app.css -b \"last 2 versions\"",
+    "assets:images": "cp -r src/_assets/images/ dist/images/",
+    "assets:build:dev": "watch 'npm run assets:sass & npm run assets:js & npm run assets:images' 'src/_assets/'",
     "assets:build:prod": "npm run assets:sass & npm run assets:js",
-    "app:build:dev": "npm run assets:build:dev & eleventy --watch --serve",
-    "app:build:prod": "npm run assets:build:prod; eleventy",
+    "app:build:dev": "npm run assets:build:dev & ENV=dev eleventy --watch --serve",
+    "app:build:prod": "npm run assets:build:prod; ENV=prod eleventy",
     "start": "npm run app:build:dev"
   }
 }

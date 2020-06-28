@@ -7,7 +7,7 @@ intro:
   summary: "I'm a freelance web developer with over ten years of experience. I strive to help businesses large and small succeed on the web. <small>Welcome to my little corner of the internet.</small>"
   buttonText: 'See our work'
   buttonUrl: '/work'
-  image: '/dist/images/facebook.png'
+  image: '/images/facebook.png'
   imageAlt: 'Buttered toasted white bread'
 primaryCTA:
   title: 'This is an agency that doesn’t actually exist'
