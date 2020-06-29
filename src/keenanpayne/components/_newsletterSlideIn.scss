@@ -13,6 +13,10 @@
   right: 1rem;
   width: 350px;
   
+  @media (--extra-large) { 
+    width: 375px;
+  }
+  
   &:before { 
     background: linear-gradient(to right, var(--color-tertiary-mid) 0, var(--color-tertiary-light) 60%, var(--color-base-mid) 100%);
     content: '';

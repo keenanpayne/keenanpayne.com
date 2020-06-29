@@ -1352,6 +1352,9 @@ input.-bg-white {
   transition: transform 600ms ease-in;
   right: 1rem;
   width: 350px; }
+  @media (min-width: 1100px) {
+    .newsletterSlideIn {
+      width: 375px; } }
   .newsletterSlideIn:before {
     background: linear-gradient(to right, var(--color-tertiary-mid) 0, var(--color-tertiary-light) 60%, var(--color-base-mid) 100%);
     content: '';
