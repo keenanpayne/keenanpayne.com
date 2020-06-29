@@ -16,7 +16,7 @@
   @media (min-width: 960px) {
     :root {
       --font-size: 20px; } }
-  @media (min-width: 1920px) {
+  @media (min-width: 1100px) {
     :root {
       --font-size: 22px; } }
 /**
@@ -829,14 +829,18 @@ table {
 
 :root {
   background-color: var(--color-base);
-  color: #030303;
+  color: black;
   font-size: var(--font-size);
   font-weight: 400;
   line-height: 1.5;
-  text-rendering: optimizeLegibility; }
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
   @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
     :root {
-      font-weight: 300; } }
+      font-weight: 300;
+      -webkit-font-smoothing: auto;
+      -moz-osx-font-smoothing: initial; } }
 
 ::-moz-selection {
   background: var(--color-tertiary-light); }
@@ -910,15 +914,17 @@ body {
 
 code {
   background-color: var(--color-base-light);
-  border: 1px solid var(--color-base-mid);
-  border-radius: .15em;
+  font-family: 'Fira Code', monospace;
   line-height: 1;
-  padding: .25em .4em;
+  padding: .25em .35em .2em;
   vertical-align: initial; }
   a code {
     text-decoration: underline; }
+  a code,
   strong code {
-    font-weight: bold; }
+    background-color: transparent;
+    font-weight: bold;
+    padding: 0; }
 
 h1, h2, h3, h4,
 ._fontSize-h1,

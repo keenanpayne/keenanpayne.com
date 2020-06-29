@@ -1,5 +1,5 @@
 ---
-title:  'Building a "pacman arrow" micro-interaction with CSS'
+title:  'Building a "Pacman arrow" micro-interaction with CSS'
 meta: 
   description: 'Learn how to build a beautiful arrow micro-interaction with CSS.'
   image: '/images/posts/css-arrow-interaction/social.gif'
@@ -14,7 +14,7 @@ I helped build the [Asana for Marketers](https://asana.com/teams/marketing) page
 </p>
 <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-Our goal is to create an animation of an arrow following itself (hence the name “Pacman arrow”) when we hover over an element on the page. We also want this interaction to exist in multiple elements throughout the page, so it is essential to build this in a context-agnostic way.
+Our goal is to create an animation of an arrow following itself (hence the name "Pacman arrow") when we hover over an element on the page. We also want this interaction to exist in multiple elements throughout the page, so it is essential to build this in a context-agnostic way.
 
 ## Writing the markup
 We'll start by writing the markup for this interaction. For this tutorial, I will be putting this arrow animation inside of a `<button>` element with some accompanying text. However, once you finish this tutorial, you should be able to use this interaction inside of any element. 
@@ -262,9 +262,9 @@ button {
 }'
 %}
 
-We use [flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) to align our two arrows. Next, we set the `transform` property to **-24px** by utilizing the `--arrow-plus-spacer` custom property that we declared earlier, and multiplying it by **-1**. This moves our entire `arrowPacman-clip` to the left, which is how we will create the left-to-right animation.
+We use [flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) to align our two arrows. Next, we set the `transform` property to **`-24px`** by utilizing the `--arrow-plus-spacer` custom property that we declared earlier, and multiplying it by **`-1`**. This moves our entire `arrowPacman-clip` to the left, which is how we will create the left-to-right animation.
 
-Lastly, we set the width of this element to **44px** by once again utilizing the CSS `calc` function, adding the `--arrow-plus-spacer` and `--arrow-width` custom properties. This width value is important because it is the total width of both arrows plus the space between the arrows, which is crucial in creating a seamless left-to-right animation.
+Lastly, we set the width of this element to **`44px`** by once again utilizing the CSS `calc` function, adding the `--arrow-plus-spacer` and `--arrow-width` custom properties. This width value is important because it is the total width of both arrows plus the space between the arrows, which is crucial in creating a seamless left-to-right animation.
 
 ### Creating the arrow animation
 Now that we've set the stage let's add the styles necessary to make this animation work. 
@@ -355,7 +355,7 @@ The first thing we do is use [CSS @keyframes](https://developer.mozilla.org/en-U
 
 One of the powerful features of Sass is that you can define [mixins](https://sass-lang.com/documentation/at-rules/mixin), which allow you to define a set of styles that can be reused across multiple contexts. The styles in this mixin are what allow this interaction to work with the button that we just built. We start by creating a mixin named `arrowPacmanInteraction`, which contains all of the styles that will enable our animation to run. Then we include this mixin in the hover state for our button by using `@include arrowPacmanInteraction()`, which allows the animation to run when we hover over the button.
 
-That's it! We now have a cute little "pacman arrow" animation for our button. 
+That's it! We now have a cute little "Pacman arrow" animation for our button. 
 
 ## Conclusion
 I hope you all had as much fun building this micro-interaction as I did. While the approach I took in this article works well for animating arrows, this same approach can be applied to create all sorts of interactions in different directions. 
