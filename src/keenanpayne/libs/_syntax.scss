@@ -25,6 +25,7 @@
     border: none;
     line-height: inherit;
     padding: $spacing-xxs;
+    white-space: pre-wrap;
   }
 
   .c { color: #999988; font-style: italic } /* Comment */
