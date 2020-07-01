@@ -3,10 +3,10 @@
 // --------------------------------------------------
 
 // Font families
-$font-primary: 'Fira Sans', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+$font-primary: 'degular-text', -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
 $font-secondary:  "Eksell", "Georgia", sans-serif;
-$font-tertiary: "neue-haas-grotesk-display", sans-serif;
-$font-mono: "Consolas", monospace;
+$font-tertiary: "degular", sans-serif;
+$font-mono: "Menlo", "SF Mono", "Courier New", "Courier", "Consolas", monospace;
 $font-print-primary: "Georgia", "Times New Roman", "Times", serif;
 $font-print-secondary: "Georgia", "Times New Roman", "Times", serif;
 
@@ -70,7 +70,6 @@ $scale-ratio-secondary: $_golden-ratio;
 // Font Weights
 // --------------------------------------------------
 
-$fontWeight-light:    300;
 $fontWeight-regular:  400;
 $fontWeight-medium:   500;
 $fontWeight-semibold: 600;
