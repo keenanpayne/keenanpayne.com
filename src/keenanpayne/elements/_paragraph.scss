@@ -23,14 +23,13 @@ p {
   }
 
   &.-small {
-    font-size: typeScale(.5);
+    font-size: 75%;
     font-weight: $fontWeight-medium;
   }
 
   &.-content-heading {
     font-weight: $fontWeight-medium;
     font-variant: all-small-caps;
-    letter-spacing: .025em;
     margin-bottom: 1rem;
     margin-top: $spacing-m;
   }
@@ -39,7 +38,6 @@ p {
     font-variant: all-small-caps;
     font-weight: $fontWeight-medium;
     margin-bottom: 1.25em;
-    letter-spacing: .025em;
     position: relative;
     text-align: right;
 
