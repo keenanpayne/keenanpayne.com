@@ -7,17 +7,8 @@
   color: black;
   font-size: var(--font-size);
   font-weight: $fontWeight-regular;
-  line-height: 1.5;
+  line-height: 1.45;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media screen and (-webkit-min-device-pixel-ratio: 2), 
-         screen and (min-resolution: 2dppx) {
-    font-weight: $fontWeight-light;
-    -webkit-font-smoothing: auto;
-    -moz-osx-font-smoothing: initial;
-  }
 }
 
 // Content selection background

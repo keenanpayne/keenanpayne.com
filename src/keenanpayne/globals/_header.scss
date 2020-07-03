@@ -7,15 +7,10 @@
 // ---------
 
 .siteHeader {
-  background-color: var(--color-secondary);
-  border-bottom: 3px solid var(--color-base-mid);
-  color: white;
+  background-color: var(--color-base-light);
+  border-bottom: 1px solid var(--color-secondary-mid);
   padding-bottom: 1em;
   padding-top: 1em;
-  
-  @media (--small) {
-    border-bottom-width: 5px;
-  }
 
   // Descendants
   a { 
@@ -41,9 +36,6 @@
 
 .siteHeader-logo {
   font-family: $font-tertiary;
-  font-size: 18px;
-  font-variant: all-small-caps;
-  font-weight: $fontWeight-semibold;
   line-height: 1;
   margin-bottom: 0;
   margin-top: 0;

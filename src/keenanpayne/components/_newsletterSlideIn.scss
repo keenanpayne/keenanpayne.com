@@ -6,16 +6,12 @@
   background-color: white;
   box-shadow: 0 0 4px 0 var(--color-secondary-light);
   bottom: 0;
-  padding: 1.5rem 1rem 0;
+  padding: 1.25rem 1rem;
   position: fixed;
   transform: translateY(100%);
   transition: transform ($transition-duration-long * 2) ease-in;
   right: 1rem;
   width: 350px;
-  
-  @media (--extra-large) { 
-    width: 375px;
-  }
   
   &:before { 
     background: linear-gradient(to right, var(--color-tertiary-mid) 0, var(--color-tertiary-light) 60%, var(--color-base-mid) 100%);
