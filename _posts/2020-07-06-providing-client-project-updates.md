@@ -6,7 +6,8 @@ meta:
 
 Your client wants to be kept in the loop with what you are doing. Period. Nobody who is exchanging money for professional services feels comfortable being left in the dark by whoever is providing a service. This is true for lawyers, general contractors, and yes, web developers. As a web developer, perhaps your communication isn't as imperative as that of a lawyer, but you should treat it *like it is*.
 
-## Why do you provide an update?
+## How to provide a project update to your client
+### The goal when updating your client
 I generally have three primary goals when providing a project update to a client: 
 - Share the progress that I have made on the project since the last update
 - Share what my next priority is following this update
@@ -22,12 +23,12 @@ You might also provide context-specific updates depending on the preference of y
 
 Ultimately, you will be the best judge of what to provide in a project update to your client because you are the one who is interacting with them and working on the project. Use the ideas above as a jumping-off point when thinking about what you want to include in your project updates. 
 
-## How frequently do you provide updates?
+### The frequency for providing updates
 The title of this article includes "regular project updates," but how regular is "regular"? The answer to this will change depending on the client and the project.
 
 I default to providing project updates to my clients at least once per week at the beginning of the week. While once per week is my default, I **always** ask clients what cadence they prefer for updates. Some clients like to be updated more frequently than others, so understanding what makes a client feel comfortable allows you to tailor updates to meet their needs.
 
-## Templates for providing an update
+### Templates for providing an update
 The format I use for providing a weekly update usually looks something like this: 
 
 > Hello [stakeholder name],
@@ -60,7 +61,7 @@ Here is how I might ask a client what their preferred frequency for communicatio
 > Thanks, 
 > Keenan
 
-## How do you provide an update?
+### Where to provide a project update
 You can provide updates using whatever medium you and your client use to communicate. I usually send updates via email, but tools such as [Asana](https://asana.com/) and [Slack](https://slack.com/) (or countless others) are also suitable for providing updates to your client. 
 
 The important thing is not *what* you use to provide an update, but rather, that your client is *seeing* your update. Providing project updates to your client will do you and your client no good if left unseen. If you can't decide the best way to provide an update to your client, just ask! 
