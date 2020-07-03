@@ -35,7 +35,7 @@ h1,
   font-size: typeScale(7);
   font-weight: $fontWeight-display-bold;
   line-height: 1.05;
-  margin-bottom: .3em;
+  margin-bottom: .5em;
 }
 
 h2,
@@ -49,19 +49,17 @@ h2,
 
 h3,
 ._fontSize-h3 {
-  font-family: $font-primary;
+  font-family: $font-tertiary;
   font-size: typeScale(4);
-  font-weight: $fontWeight-medium;
-  letter-spacing: -.02em;
+  font-weight: $fontWeight-semibold;
   line-height: 1.2;
   margin-bottom: .5em;
 }
 
 h4,
 ._fontSize-h4 {
-  font-family: $font-primary;
+  font-family: $font-tertiary;
   font-size: typeScale(3);
   font-weight: $fontWeight-regular;
-  letter-spacing: -.015em;
-  line-height: 1.15;
+  line-height: 1.2;
 }

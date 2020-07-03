@@ -4,16 +4,11 @@
 
 :root {   
   background-color: var(--color-base);
-  color: #030303;
+  color: black;
   font-size: var(--font-size);
   font-weight: $fontWeight-regular;
-  line-height: 1.5;
+  line-height: 1.45;
   text-rendering: optimizeLegibility;
-
-  @media screen and (-webkit-min-device-pixel-ratio: 2), 
-         screen and (min-resolution: 2dppx) {
-    font-weight: $fontWeight-light;
-  }
 }
 
 // Content selection background
