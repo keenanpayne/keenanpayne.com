@@ -19,13 +19,17 @@
   {% assign type = 'website' %}
 {% endif %}
 
-{% if page.meta.image %}
+{% if page.meta.facebook_image %}
+  {% assign opengraph_image = site.meta.link | append: page.meta.facebook_image %}
+{% elsif page.meta.image %}
   {% assign opengraph_image = site.meta.link | append: page.meta.image %}
 {% else %}
   {% assign opengraph_image = site.meta.link | append: '/images/social/facebook.png' %}
 {% endif %}
 
-{% if page.meta.image %}
+{% if page.meta.twitter_image %}
+  {% assign twitter_image = site.meta.link | append: page.meta.twitter_image %}
+{% elsif page.meta.image %}
   {% assign twitter_image = site.meta.link | append: page.meta.image %}
 {% else %}
   {% assign twitter_image = site.meta.link | append: '/images/social/twitter.png' %}
@@ -58,7 +62,7 @@
 	</title>
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@KeenanPayne_" />
   <meta name="twitter:domain" content="{{ link }}">
   <meta name="twitter:title" content="{{ title }}">
