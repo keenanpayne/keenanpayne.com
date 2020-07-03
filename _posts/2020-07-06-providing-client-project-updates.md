@@ -1,19 +1,18 @@
 ---
 title:  'Providing your client with regular project updates'
 meta: 
-  description: 'Learn why it is important to provide regular project updates to your clients.'
+  description: 'Learn the importance of providing regular project updates to your clients and how to send a perfect update.'
 ---
 
 Your client wants to be kept in the loop with what you are doing. Period. Nobody who is exchanging money for professional services feels comfortable being left in the dark by whoever is providing a service. This is true for lawyers, general contractors, and yes, web developers. As a web developer, perhaps your communication isn't as imperative as that of a lawyer, but you should treat it *like it is*.
 
 ## How to provide a project update to your client
-### The goal when updating your client
+### What to include in an update
 I generally have three primary goals when providing a project update to a client: 
 - Share the progress that I have made on the project since the last update
 - Share what my next priority is following this update
-- Creating space for the client to reach out if they have questions or comments regarding what I have done or what I am doing
 
-Covering these three items in a project update will allow you to reflect on the progress you have made on a project and look to the future for what you plan to do next. Most clients want *at least* this amount of information communicated with them regularly.
+Covering these two items in a project update will allow you to reflect on the progress you have made on a project and look to the future for what you plan to do next. Most clients want *at least* this amount of information communicated with them regularly.
 
 You might also provide context-specific updates depending on the preference of your client, or the project you are working on:
 - How you are pacing to meet a deadline
@@ -21,7 +20,7 @@ You might also provide context-specific updates depending on the preference of y
 - Circling back on issues that might have arisen in the past related to the project (are they resolved, what do you need to resolve them, etc.)
 - Anything that is blocking you from making progress
 
-Ultimately, you will be the best judge of what to provide in a project update to your client because you are the one who is interacting with them and working on the project. Use the ideas above as a jumping-off point when thinking about what you want to include in your project updates. 
+Ultimately, you will be the best judge of what to include in a project update to your client because you are the one who is interacting with them and working on the project. Use the ideas above as a jumping-off point when thinking about what you want to include in your project updates. 
 
 ### The frequency for providing updates
 The title of this article includes "regular project updates," but how regular is "regular"? The answer to this will change depending on the client and the project.
@@ -50,6 +49,7 @@ The format I use for providing a weekly update usually looks something like this
 > Please let me know if you have any questions or comments. 
 > 
 > Best,
+>
 > Keenan 
 
 Here is how I might ask a client what their preferred frequency for communication is: 
@@ -59,6 +59,7 @@ Here is how I might ask a client what their preferred frequency for communicatio
 > I'm reaching out to see if you have a specific cadence for how frequently I provide updates for [project name]? I default to providing weekly updates, but please let me know if there is a different frequency that you prefer.
 > 
 > Thanks, 
+>
 > Keenan
 
 ### Where to provide a project update
@@ -70,7 +71,7 @@ The important thing is not *what* you use to provide an update, but rather, that
 
 
 ## Conclusion 
-Providing regular project updates to your client is something that you need to be regularly doing. Providing these updates can help build trust between you and your client, hold you accountable for what you are responsible for, and provide transparency to your client. 
+Providing regular project updates to your client is something that you need to do regularly. Providing updates can help build trust between you and your client, hold you accountable for what you are responsible for, and provide transparency to your client on how a project is progressing. 
 
 Also, remember that the frequency that you provide updates, what you include in your updates, and how you deliver an update are all context-dependent. What works for one client might not work for another client, so you must ask the client yourself to answer each of these questions.
 
