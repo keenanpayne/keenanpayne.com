@@ -28,14 +28,14 @@ module.exports = function(eleventyConfig) {
     return moment(date).format('MM/DD/YYYY');
   });
 
-  // Returns blog posts, sorted chronologically
+  // Returns blog posts, sorted reverse-chronologically
   eleventyConfig.addCollection('blog', collection => {
-    return collection.getFilteredByGlob('./src/blog/*.md');
+    return [...collection.getFilteredByGlob('./src/blog/*.md')].reverse();
   });
 
-  // Returns journal posts, sorted chronologically
+  // Returns journal posts, sorted reverse-chronologically
   eleventyConfig.addCollection('journal', collection => {
-    return collection.getFilteredByGlob('./src/journal/*.md');
+    return [...collection.getFilteredByGlob('./src/journal/*.md')].reverse();
   });
 
   // Returns work items, sorted by display order
