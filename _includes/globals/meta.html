@@ -19,13 +19,17 @@
   {% assign type = 'website' %}
 {% endif %}
 
-{% if page.meta.image %}
+{% if page.meta.facebook_image %}
+  {% assign opengraph_image = site.meta.link | append: page.meta.facebook_image %}
+{% elsif page.meta.image %}
   {% assign opengraph_image = site.meta.link | append: page.meta.image %}
 {% else %}
   {% assign opengraph_image = site.meta.link | append: '/images/social/facebook.png' %}
 {% endif %}
 
-{% if page.meta.image %}
+{% if page.meta.twitter_image %}
+  {% assign twitter_image = site.meta.link | append: page.meta.twitter_image %}
+{% elsif page.meta.image %}
   {% assign twitter_image = site.meta.link | append: page.meta.image %}
 {% else %}
   {% assign twitter_image = site.meta.link | append: '/images/social/twitter.png' %}
@@ -44,6 +48,8 @@
 	<meta name="MobileOptimized" content="320">
 	<meta name="author" content="{{ site.globals.name }}" />
   <meta name="description" content="{{ description }}"/>
+  <meta name="monetization" content="$ilp.uphold.com/9wMypREUn7GW">
+
   <link rel="canonical" href="{{ link }}">
   <link rel="alternate" type="application/rss+xml" title="Subscribe to Keenan Payne's Blog" href="{{ site.meta.link | append: 'feed.xml' }}" />
 
@@ -56,7 +62,7 @@
 	</title>
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@KeenanPayne_" />
   <meta name="twitter:domain" content="{{ link }}">
   <meta name="twitter:title" content="{{ title }}">
@@ -108,14 +114,11 @@
   <!-- Preconnect and prefetch resources -->
 	<link rel="preconnect" href="//use.typekit.net">
 	<link rel="preconnect" href="//cdnjs.cloudflare.com">
-	<link rel="preconnect" href="//fonts.googleapis.com">
 	
 	<link rel="dns-prefetch" href="//use.typekit.net">
 	<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	
 	<link rel="stylesheet" href="/dist/site.min.css" />
 	<link rel="stylesheet" href="//use.typekit.net/hid0bbh.css">
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,500,600display=swap">
 </head>
 <body>

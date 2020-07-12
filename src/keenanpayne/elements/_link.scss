@@ -14,6 +14,7 @@ a {
 
   // Modifiers
   &.-is-active { 
+    font-weight: $fontWeight-semibold;
     text-decoration: none;
   }
 
@@ -48,5 +49,11 @@ ol {
   a {
     font-weight: $fontWeight-regular;
     text-decoration: underline;
+  }
+}
+
+p {
+  a {
+    font-weight: $fontWeight-medium;
   }
 }

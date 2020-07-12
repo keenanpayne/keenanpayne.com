@@ -4,14 +4,19 @@
 
 code {
   background-color: var(--color-base-light);
-  border: 1px solid var(--color-base-mid);
-  border-radius: .15em;
   line-height: 1;
-  padding: .25em .4em;
+  padding: .25em .35em .2em;
   vertical-align: initial;
 
-  // Link wrapping code
+  // Containing elements
   a & { 
     text-decoration: underline;
+  }
+
+  a &,
+  strong & { 
+    background-color: transparent;
+    font-weight: bold;
+    padding: 0;
   }
 }
