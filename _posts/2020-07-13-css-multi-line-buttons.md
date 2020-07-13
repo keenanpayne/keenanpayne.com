@@ -2,8 +2,8 @@
 title:  'Building beautiful multi-line buttons with CSS'
 meta: 
   description: 'Learn how to build beautiful multi-line buttons with CSS and HTML.'
-  facebook_image: '/images/posts/multi-line-buttons/social_facebook.jpg'
-  twitter_image: '/images/posts/multi-line-buttons/social_twitter.jpg'
+  facebook_image: '/images/posts/multi-line-buttons/social_facebook.png'
+  twitter_image: '/images/posts/multi-line-buttons/social_twitter.png'
 ---
 
 Today I'm going to show you how to build some beautiful multi-line buttons with CSS and HTML. I initially built these buttons for a client project, but they ended up getting scrapped. So that my work was not entirely in vain, I decided to write a quick tutorial showing how I built these buttons.
