@@ -106,7 +106,7 @@ scss='button {
 
 We start by using [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) for context-specific properties that we want to alter depending on what button color we are using. We'll then remove some of the default button styles such as the border, box-shadow, and apply our own unique styles for the type, spacing, and a custom hover state. 
 
-Our button is starting to come together! However, we still have to style the text inside of our `<span>` elements. We'll nest the styles for our `span` element directly beneath all of the styles for our `button` for the purposes of this tutorial, but you could also write these styles within their own class and apply that class to the `span` element.
+Our button is starting to come together! However, we still have to style the text inside of our `<span>` elements. We'll nest the styles for our `<span>` element directly beneath all of the styles for our `<button>` for the purposes of this tutorial, but you could also write these styles within their own class and apply that class to the `<span>` element.
 
 {% include components/codepen.html
 tab='css,result'
@@ -253,7 +253,7 @@ scss='button {
 }'
 %}
 
-We will write two classes inside of our `button` component for each background color that this button supports. Inside of each of these update the custom properties that we declared earlier for the unique background and text color that each button requires. Approaching context-specific styles in this way allows us write style declarations once, but redefine their values on a case-by-case basis.
+We will write two classes inside of our `<button>` component for each background color that this button supports. Inside of each of these update the custom properties that we declared earlier for the unique background and text color that each button requires. Approaching context-specific styles in this way allows us write style declarations once, but redefine their values on a case-by-case basis.
 
 ### Adding button interactions
 Interaction was not outlined for this component, so I decided to use the [pacman arrow](/blog/css-arrow-interaction.html) micro-interaction that I've written a tutorial about. To get this interaction working, I simply copied over the markup, swapped in the arrow SVG that was included in the design for this button, and copied over the styles. It works like a charm!
