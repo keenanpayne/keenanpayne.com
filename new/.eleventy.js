@@ -5,7 +5,15 @@ const sortByDisplayOrder = require('./src/utils/sort-by-display-order.js');
 const moment = require('moment');
 moment.locale('en');
 
+// Filters
+const dateFilter = require('./src/filters/date-filter.js');
+const w3DateFilter = require('./src/filters/w3-date-filter.js');
+
 module.exports = function(eleventyConfig) {
+  // Add filters
+  eleventyConfig.addFilter('dateFilter', dateFilter);
+  eleventyConfig.addFilter('w3DateFilter', w3DateFilter);
+
   // Filter to minify CSS
   eleventyConfig.addFilter('cssmin', function(code) { 
     return new CleanCSS({}).minify(code).styles;

@@ -1,0 +1,26 @@
+{% set next = pagination.href.next %}
+{% set previous = pagination.href.previous %}
+
+{% if next or previous %}
+  <footer class="[ pagination ] [ dot-shadow panel ] [ bg-light-glare font-sans weight-bold ]">
+    <div class="wrapper">
+      <nav class="pagination__inner" aria-label="Pagination links">
+        {% if previous %}
+          <a href="{{ previous }}{{ paginationAnchor }}" data-direction="backwards">
+            <span>
+              {{ paginationPrevText if paginationPrevText else 'Previous' }}
+            </span>
+          </a>
+        {% endif %}
+
+        {% if next %}
+          <a href="{{ next }}{{ paginationAnchor }}" data-direction="forwards">
+            <span>
+              {{ paginationNextText if paginationNextText else 'Next' }}
+            </span>
+          </a>
+        {% endif %}
+      </nav>
+    </div>
+  </footer>
+{% endif %}
