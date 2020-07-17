@@ -1,5 +1,7 @@
 ---
 title:  'Naming typography patterns in CSS'
+meta: 
+  description: 'Why do we name patterns the way that we do when writing CSS? How are the patterns that we write providing clarity and utility to ourselves and others?'
 ---
 
 I read a great article the other day by Dan Mall titled [Typography in Design Systems](https://danmall.me/articles/typography-in-design-systems/). In it, Dan talks about how he approaches naming conventions for typography in design systems; specifically, some of the problems that he has encountered trying to scale common naming conventions. This is a topic that I've also been thinking about recently, having encountered similar issues as Dan in codebases that I work in. I’ve taken a different approach to address this problem, which is why I thought it would be useful to share my thoughts.

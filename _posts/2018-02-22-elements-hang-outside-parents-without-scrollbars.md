@@ -1,5 +1,7 @@
 ---
 title:  'Allow elements to hang outside of their fixed-width parents without scrollbars'
+meta: 
+  description: 'Learn about how I tackled the issue of elements existing outside of a fixed-width parent using CSS.'
 ---
 
 I was recently working on a landing page at Asana that was designed by [Devin Jacoviello](http://jacoviello.com/), one of our talented communication designers at Asana. The page was beautiful and seemed to be a relatively straight-forward project. As we discussed developing the page during our design hand-off, there was one area that did not seem straight-forward in its implementation.

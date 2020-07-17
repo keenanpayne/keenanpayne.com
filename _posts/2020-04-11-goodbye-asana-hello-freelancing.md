@@ -1,5 +1,7 @@
 ---
 title:  'Goodbye Asana, hello freelancing'
+meta: 
+  description: 'After five years I have decided to leave Asana and embark on a journey as a freelance web developer.'
 ---
 
 It's seven, almost eight months past due, but there's no better time than the present to share some exciting news about my life. I have left Asana, and I'm now working full-time as a freelance web developer! I am a gun for hire, taking my decade of web development experience and applying it to new projects and clients that need someone with my expertise. 

@@ -1,5 +1,7 @@
 ---
 title:  'Rotating text with CSS animations'
+meta: 
+  description: 'Learn how to make rotating text using only HTML and CSS in this tutorial.'
 ---
 
 I've been toying with different ideas for how I can describe the work that I do to people visiting my website. One idea that I had involved rotating a single word or phrase inside of a sentence to list the different qualities of my work. Here's a quick tutorial of the prototype that I built for how this effect might be achieved using HTML and CSS.

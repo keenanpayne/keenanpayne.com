@@ -1,5 +1,7 @@
 ---
 title:  'Just another "hello, world" introduction'
+meta: 
+  description: 'A brief introduction to me and this blog.'
 ---
 
 Hello, my name is Keenan Payne, which you probably already discerned if you're reading this post. If you haven't, greetings it's nice to meet you. 👋🏻

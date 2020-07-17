@@ -1,5 +1,7 @@
 ---
 title:  'Defining metrics that help with static site generator evaluation'
+meta: 
+  description: 'A brief reflection on what metrics one might use when evaluating different static site generators.'
 ---
 
 When choosing a static site generator (SSG) for your next project, how do you decide on which tool to use? What is important to you or your organization? Different individuals or organizations often have drastically different priorities when it comes to choosing software.
