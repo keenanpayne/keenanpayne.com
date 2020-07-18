@@ -28,12 +28,32 @@
       {{ content | safe }}
     </div>
 
+    {# Related posts #}
     {% if recommendedPosts and recommendedPosts.length %}
       <footer class="recommended-posts">
         {% set postListItems = recommendedPosts %}
         {% set postListHeadline = 'More from the blog' %}
         {% include "partials/post-list.html" %}
       </footer>
+    {% endif %}
+
+    {# 
+      This is a fun way to link entries across different collections. 
+      In this example, I list any books that I reference in a blog post at the bottom of the post
+      which will link my post about the book for further reading. 
+    #}
+    {% if books %}
+      {% set relatedBooks = helpers.filterCollectionByKeys(collections.books, books) %}
+
+      <h2>
+        Related Books
+      </h2>
+
+      {% for item in relatedBooks %}
+        <a href="{{ item.url }}">
+          {{ item.data.title }}
+        </a>
+      {% endfor %}
     {% endif %}
   </article>
 

@@ -1,0 +1,21 @@
+{#
+ # @macro figure
+ #
+ # Returns a list of entries from a collection
+ #
+ # @param {string} name - collection name to retrieve entries from
+ #}
+
+{% macro figure(image, image_alt, caption) %}
+  <figure class="{{ class }}">
+    <img
+      src="{{ iamge }}"
+      alt="{{ image_alt }}"
+      draggable="false"
+    />
+    
+    <figcaption>
+      {{ caption }}
+    </figcaption>
+  </figure>
+{% endmacro %}

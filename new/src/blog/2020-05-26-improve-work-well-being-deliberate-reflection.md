@@ -8,6 +8,7 @@ tags:
   - 'Culture'
   - 'Design Thinking'
 date: '2020-04-01'
+books: ['make-time']
 ---
 
 How do you deliberately improve the conditions under which you do your work? That is if you work on a project and things go well, how do you ensure that things continue to go well during your next project? Conversely, if you work on a project and things go poorly, how do you prevent things from going poorly during your next project?

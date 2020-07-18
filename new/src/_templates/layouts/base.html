@@ -5,15 +5,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="monetization" content="$ilp.uphold.com/9wMypREUn7GW">
     
-    <title>
-      {{ title }}
-    </title>
+    {% include "partials/meta.html" %}
     
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
     <meta name="author" content="" />
     
 		<link rel="shortcut icon" href="/favicon.ico">
+    <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml" />
 
     {% set css %}
       {% include "../assets/app.css" %}

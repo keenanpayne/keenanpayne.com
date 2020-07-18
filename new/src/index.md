@@ -1,6 +1,7 @@
 ---
 layout: "layouts/home.html"
 title: "Home"
+metaDesc: 'A made up agency site that you build if you take Learn Eleventy From Scratch, by Piccalilli'
 intro:
   eyebrow: 'Digital Marketing is our'
   main: "Hey, I'm Keenan"

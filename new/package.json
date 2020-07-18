@@ -5,11 +5,12 @@
   "description": "The personal website for Keenan Payne.",
   "homepage": "http://keenanpayne.com",
   "engines": {
-    "node": "<=13.11.1"
+    "node": "<=14.3.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.10.0",
     "@11ty/eleventy-cache-assets": "^2.0.2",
+    "@11ty/eleventy-plugin-rss": "^1.0.7",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",

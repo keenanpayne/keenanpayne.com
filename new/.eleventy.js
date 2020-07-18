@@ -1,3 +1,4 @@
+const rssPlugin = require('@11ty/eleventy-plugin-rss');
 const CleanCSS = require('clean-css');
 const terser = require('terser');
 const fs = require("fs");
@@ -9,18 +10,21 @@ moment.locale('en');
 const dateFilter = require('./src/filters/date-filter.js');
 const w3DateFilter = require('./src/filters/w3-date-filter.js');
 
-module.exports = function(eleventyConfig) {
+module.exports = function(config) {
   // Add filters
-  eleventyConfig.addFilter('dateFilter', dateFilter);
-  eleventyConfig.addFilter('w3DateFilter', w3DateFilter);
+  config.addFilter('dateFilter', dateFilter);
+  config.addFilter('w3DateFilter', w3DateFilter);
+
+  // Plugins
+  config.addPlugin(rssPlugin);
 
   // Filter to minify CSS
-  eleventyConfig.addFilter('cssmin', function(code) { 
+  config.addFilter('cssmin', function(code) { 
     return new CleanCSS({}).minify(code).styles;
   });
 
   // Filter to minify JS
-  eleventyConfig.addFilter('jsmin', function(code) { 
+  config.addFilter('jsmin', function(code) { 
     let minified = terser.minify(code);
     
     if (minified.error) { 
@@ -32,35 +36,40 @@ module.exports = function(eleventyConfig) {
   });
 
   // Filter to handle dates
-  eleventyConfig.addFilter('simple', function(date) {
+  config.addFilter('simple', function(date) {
     return moment(date).format('MM/DD/YYYY');
   });
 
   // Returns blog posts, sorted reverse-chronologically
-  eleventyConfig.addCollection('blog', collection => {
+  config.addCollection('blog', collection => {
     return [...collection.getFilteredByGlob('./src/blog/*.md')].reverse();
   });
 
   // Returns journal posts, sorted reverse-chronologically
-  eleventyConfig.addCollection('journal', collection => {
+  config.addCollection('journal', collection => {
     return [...collection.getFilteredByGlob('./src/journal/*.md')].reverse();
   });
 
   // Returns work items, sorted by display order
-  eleventyConfig.addCollection('work', collection => {
+  config.addCollection('work', collection => {
     return sortByDisplayOrder(collection.getFilteredByGlob('./src/work/*.md'));
   });
 
   // Returns work items, sorted by display order then filtered by featured
-  eleventyConfig.addCollection('featuredWork', collection => {
+  config.addCollection('featuredWork', collection => {
     return sortByDisplayOrder(collection.getFilteredByGlob('./src/work/*.md')).filter(
       x => x.data.featured
     );
   });
 
+  // Returns books, sorted reverse-chronologically
+  config.addCollection('books', collection => {
+    return [...collection.getFilteredByGlob('./src/books/*.md')].reverse();
+  });
+
   // Set up 404 handling locally 
   // Ref: https://www.11ty.dev/docs/quicktips/not-found/
-  eleventyConfig.setBrowserSyncConfig({
+  config.setBrowserSyncConfig({
     callbacks: {
       ready: function(err, bs) {
         bs.addMiddleware("*", (req, res) => {
