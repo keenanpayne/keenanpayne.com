@@ -82,6 +82,10 @@
   > ol {
     padding-left: 1.5em;
 
+    @media (--large) {
+      padding-left: 0;
+    }
+
     // Nested lists
     ul, ol {
       margin-bottom: 0;
@@ -90,7 +94,7 @@
 
     // List items
     li {
-      margin-bottom: 1em;  
+      margin-bottom: .75em;  
     
       // Nested list items
       li {

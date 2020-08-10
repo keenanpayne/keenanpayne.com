@@ -4,4 +4,14 @@
 
 ul, ol {
   margin-bottom: 0;
+
+  // Modifiers
+  &.-three-columns { 
+    column-count: 2;
+    column-gap: 1rem;
+
+    @media (--medium) {
+      column-count: 3;
+    }
+  }
 }

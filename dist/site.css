@@ -1024,6 +1024,12 @@ p a {
 
 ul, ol {
   margin-bottom: 0; }
+  ul.-three-columns, ol.-three-columns {
+    column-count: 2;
+    column-gap: 1rem; }
+    @media (min-width: 768px) {
+      ul.-three-columns, ol.-three-columns {
+        column-count: 3; } }
 
 p {
   margin-top: 0;
@@ -1720,6 +1726,10 @@ input.-bg-white {
 .post-content > ul,
 .post-content > ol {
   padding-left: 1.5em; }
+  @media (min-width: 960px) {
+    .post-content > ul,
+    .post-content > ol {
+      padding-left: 0; } }
   .post-content > ul ul, .post-content > ul ol,
   .post-content > ol ul,
   .post-content > ol ol {
@@ -1727,7 +1737,7 @@ input.-bg-white {
     margin-top: .5em; }
   .post-content > ul li,
   .post-content > ol li {
-    margin-bottom: 1em; }
+    margin-bottom: .75em; }
     .post-content > ul li li:not(:last-child),
     .post-content > ol li li:not(:last-child) {
       margin-bottom: .5em; }
