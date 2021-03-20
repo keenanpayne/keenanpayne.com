@@ -1,5 +1,5 @@
 ---
-title:  'Building a "Pacman arrow" micro-interaction with CSS'
+title:  "Building a 'Pacman arrow' micro-interaction with CSS"
 meta: 
   description: 'Learn how to build a beautiful arrow micro-interaction with CSS.'
   image: '/images/posts/css-arrow-interaction/social.gif'
