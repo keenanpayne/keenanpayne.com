@@ -1086,6 +1086,7 @@ p {
       --context-icon: '📎'; }
 
 sup {
+  font-size: 75%;
   top: -.5em; }
 
 table {
