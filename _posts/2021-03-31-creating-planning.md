@@ -12,8 +12,6 @@ The muse for a creative can serve as a wellspring from which all manner of inspi
 
 The muse can also be an albatross, adding undue weight to the creative's shoulders who fails to harness its potential for creative output. I'm familiar with carrying such weight, having most of my creative endeavors amount to little more than a collection of dust. It's a weight that, perhaps needlessly, reinforces many negative feelings in my life.
 
-
-
 ## Inspiration gone stagnant
 
 I’ve become more aware of my relationship with my muses as I attempt to engage with a muse of the past, one that caught my attention so feverishly that my imagination ran wild at the realm of endless possibilities that lie ahead once I begin pursuing it. Well, _should_ I begin pursuing it.
@@ -30,9 +28,9 @@ I reach for one of the _many_ writing prompts that I've captured, determined to 
 
 I’m intimately familiar with this experience, discovering something so inspiring that I want to drop everything to do it, only to fall into a pattern of procrastination that leads to eventual disinterest.
 
-With more muses left behind than exes [^2], I have a pattern for handling our separation gracefully. I forgo reflecting on the creative impotence that ails me, and after giving me and my muse "space" to rekindle our relationship, I decide to call it quits. Neither of us is right or wrong; we simply aren’t meant to be. Although, I must admit that many of these things happen implicitly, placing me in the position of “ghosting” my muse, who certainly deserves more than half-hearted rationalizations about why we’re breaking up.
+With more muses left behind than exes [^1], I have a pattern for handling our separation gracefully. I forgo reflecting on the creative impotence that ails me, and after giving me and my muse "space" to rekindle our relationship, I decide to call it quits. Neither of us is right or wrong; we simply aren’t meant to be. Although, I must admit that many of these things happen implicitly, placing me in the position of “ghosting” my muse, who certainly deserves more than half-hearted rationalizations about why we’re breaking up.
 
-[^2]: For the record, all of my exes *do not* [live in Texas](https://youtu.be/0KCWqnldEag?t=28) like I'm [George Strait](https://www.youtube.com/watch?v=Jk7uXaNuWNE).
+[^1]: For the record, all of my exes *do not* [live in Texas](https://youtu.be/0KCWqnldEag?t=28) like I'm [George Strait](https://www.youtube.com/watch?v=Jk7uXaNuWNE).
 
 {% include type/p-large.html content="I deserve more than half-hearted rationalizations about why I don't engage with what inspires me." %}
 
@@ -59,27 +57,11 @@ For others, planning yields little more than perpetual uncertainty and a misguid
 
 Thus, I’ve found myself standing beneath a light shining on my primary mode of procrastination, guiding my actions towards planning instead of doing. I’ve created no shortage of projects, to-do lists, systems, strategies, plans, timelines, commitments, and goals that are all designed to get me from point A to point B, from idea to creation. Where, then, are my creations?
 
-<!-- Thus, I’ve found myself standing beneath a light shining on my innermost desire for orderliness, guiding my actions towards planning instead of doing. I’ve created no shortage of projects, to-do lists, systems, strategies, plans, timelines, commitments, and goals that are all designed to get me from point A to point B, from idea to creation. Where, then, are my creations? -->
-
 {% include type/p-large.html content="Planning is a solution to a problem encountered by doing something." %}
 
 Planning as a form of procrastination inhibits my ability to engage in acts of creativity that are engaging and rewarding. Planning is no substitute for doing. To plan is to anticipate, while to do is to create. The former does not preclude the latter, but I'm no longer going to allow planning to impede my creative process.
 
 ## Moving forward
-
-<!-- TODO: I want to add a paragraph or two describing *how* I'm going to change my relationships with my muses.
-           What are my intentions moving forward? How will I manifest the future I desire? How will I hold myself accountible?
-           This will round off my article nicely and make it more powerful. -->
-
-<!-- 
-- No more "planning as procrastination" 
-- Create first, plan later
-  - Write or create in a stream-of-consciousness manner, as I'm feeling inspired
-    - This will give me a jumping-off point for the first iteration of whatever I choose to create, which is a step I frequently don't take
-      - Once I have something I'm working with, I can try to be diligent about setting aside time to continue working on it and get it to a point where I'm comfortable publishing it
-
-- I will not allow perfectionism to impede my releasing things <- This might be better-suited towards another essay that's more focused on perfectionism. It feels a bit disjointed here
-  - I often fall into the trap of things  -->
 
 Identifying my primary mode of procrastination has been revealing, but understanding _how_ I procrastinate doesn't mean I won't continue doing it. I need to turn my insight into action and chart a path towards creative liberty.
 
