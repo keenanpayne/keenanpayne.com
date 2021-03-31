@@ -1086,6 +1086,7 @@ p {
       --context-icon: '📎'; }
 
 sup {
+  font-size: 75%;
   top: -.5em; }
 
 table {
@@ -1632,6 +1633,7 @@ input.-bg-white {
   -ms-grid-column: 1;
       grid-column-start: 1;
   grid-column-end: 7;
+  margin-bottom: calc(4.35rem + 1vw);
   margin-top: calc(2.9rem + 1vw);
   padding: 1rem;
   text-align: center;
@@ -1733,9 +1735,14 @@ input.-bg-white {
       margin-bottom: .5em; }
 
 .post-content figure {
-  margin: calc(0.362rem + 1vw) 0 calc(1.45rem + 1vw);
+  display: block;
+  margin: calc(0.362rem + 1vw) auto calc(1.45rem + 1vw);
   max-width: 100%;
   width: 100%; }
+  .post-content figure img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto; }
   .post-content figure figcaption {
     color: var(--color-secondary);
     font-size: 0.8rem;

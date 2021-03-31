@@ -102,9 +102,16 @@
   }
 
   figure { 
-    margin: $spacing-xxs 0 $spacing-s;
+    display: block;
+    margin: $spacing-xxs auto $spacing-s;
     max-width: 100%;
     width: 100%;
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     figcaption {
       color: var(--color-secondary);
