@@ -1,17 +1,63 @@
-# keenanpayne.com
+# Eleventy Boilerplate
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/23342844-d353-4977-9ac2-e69e9e17fd82/deploy-status)](https://app.netlify.com/sites/keenanpayne/deploys)
+## Table of Contents
+- [Eleventy Boilerplate](#eleventy-boilerplate)
+  - [Table of Contents](#table-of-contents)
+  - [Tooling](#tooling)
+  - [Development](#development)
+    - [Build tools](#build-tools)
+    - [Folder Structure](#folder-structure)
+  - [To Do](#to-do)
 
-This is the repository for my personal website. I used my own front-end CSS framework Concise (https://github.com/ConciseCSS/concise.css) for the design as well as some custom styles, and wrote a couple of simple NPM build scripts to compile everything.
+## Tooling
 
-Feel free to fork this and use my code and designs for whatever you'd like. You can add credit to myself if you please, but it's not necessary.
+This is built using the [Eleventy static site generator](https://www.11ty.io/). Eleventy was chosen due to its agnostic tooling decisions.
 
-## Compilation
+## Development
 
-1. Fork the repo
-2. Install [NodeJS](https://nodejs.org/en/)
-3. CD into the folder: `cd ../path/to/keenanpayne.com`
-4. Install NPM dependencies: `npm install`
-5. Instal Jekyll dependencies: `bundle install`
-6. Start Jekyll server: `npm start`
-7. Run NPM build script: `npm run build` or `npm run build:watch`
+### Build tools
+
+**Install dependencies**
+
+```
+npm i
+```
+
+**Start development**
+Start Eleventy server, compile Sass, transpile JavaScript, optimize images, and watch for changes inside of `/src`.
+
+```
+npm start
+```
+
+### Folder Structure
+
+```
+/project-directory
+├── src/
+│   ├── _data/
+│   ├── _templates/
+|   ├── assets/
+│   |   ├── images/
+│   |   ├── js/
+│   └── ├── sass/
+├── dist/
+```
+
+The `/src` folder contains all of the content for our Eleventy website. Inside of `/src/_data`, and `/src/_templates` we have our [global data files](https://www.11ty.io/docs/data-global/) and [templates](https://www.11ty.io/docs/templates/), respectively. All other files and folders inside of `/src` are [markdown](https://www.markdownguide.org/) content files.
+
+**Note:** I have [configured Eleventy](https://www.11ty.io/docs/config/) to work with this set of folders so that content and templates are better organized and our root directory clean.
+
+Our entire website gets compiled into static HTML inside of `/dist`. This folder is excluded from the git repository.
+
+## To Do
+
+Now that you have new website generated using the Eleventy Boilerplate, you should go through each of these steps to update the codebase with the correct settings and information.  
+
+- [ ] Rename `<title>` in `admin/index.html` replacing "Eleventy Boilerplate" with project name
+- [ ] Update `name` key in `package.json` with project name
+- [ ] Update `description` key in `package.json` with project description
+- [ ] Replace "Eleventy Boilerplate" heading in `README.md` with project name
+- [ ] Update `name` key in `/src/_data/site.json` with project name
+- [ ] Update all keys in `/src/_data/meta.json` with project details
+- [ ] Add logo image or SVG to `logos.njk`

@@ -1,0 +1,33 @@
+{# Component Options #}
+{% from "partials/atoms/heading.njk" import output as heading with context %}
+{% from "partials/atoms/image.njk" import output as image with context %}
+{% from "partials/atoms/button.njk" import link as button with context %}
+
+{% set name = 'pageList' %}
+{% set items = section.items %}
+{% set mobile = section.mobileOnly %}
+
+{# Markup #}
+<section class="pageList {{ '_desktop-only' if section.desktopOnly }} {{ '_mobile-only -mobile' if mobile }}">
+  {% for item in items %}
+    <a
+      class="pageList-item {{ '_component-color-' ~ item.color if item.color }}"
+      href="{{ item.cta.link }}"
+      title="{{ item.cta.title }}"
+    >
+      <div class="pageList-content">
+        <header class="pageList-header">
+          {{ heading(item.headline, name) }}
+        </header>
+
+        <div class="pageList-asset">
+          {{ image(section.type, item.image) }}
+        </div>
+
+        <p class="pageList-cta">
+          {{- item.cta.text -}}
+        </p>
+      </div>
+    </a>
+  {% endfor %}
+</section>

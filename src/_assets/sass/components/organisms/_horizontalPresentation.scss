@@ -1,0 +1,23 @@
+//
+// Horizontal Presentation
+// ==================================================
+
+.horizontalPresentation-container {
+  @include grid;
+
+  // Modifiers
+  &.-image-left {
+    .horizontalPresentation-image {
+      order: -1;
+    }
+  }
+}
+
+.horizontalPresentation-text,
+.horizontalPresentation-image {
+  grid-column: 1 / -1;
+
+  @media (--min-960) {
+    grid-column: auto / span 6;
+  }
+}

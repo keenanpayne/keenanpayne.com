@@ -1,0 +1,25 @@
+{#  
+ # @macro heading.output
+ #
+ # A generic heading that can be set to any size
+ # 
+ # @param yaml - The block of YAML that will provide keys that hold our data
+ #               Options: [text, size]
+ # @param name - The name of the component where this is being used. 
+ #               When supplied, a class name of `name-headline` is applied
+ #}
+{% macro output(yaml, name) %}
+  {# Macro Options #}
+  {% set text = yaml.text %}
+  {% set size = yaml.size %}
+
+  {# Markup #}
+  {% if text %}
+    {# Default to <h2> if no size is declared #}
+    {% set element = (size if size else 'h2') %}
+
+    <{{element}} class="{{ name ~ '-headline' if name }}">
+      {{ text | safe }}
+    </{{element}}>
+  {% endif %}
+{% endmacro %}

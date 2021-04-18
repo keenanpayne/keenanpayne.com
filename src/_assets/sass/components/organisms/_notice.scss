@@ -1,0 +1,106 @@
+//
+// Notice
+// ==================================================
+
+.notices {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.notice {
+  background-color: var(--color-background-gray);
+  margin-left: 32px;
+  margin-right: 32px;
+  padding: 32px 32px 24px;
+  position: absolute;
+  text-align: center;
+  top: 120px;
+  z-index: 1;
+  transition: all 0.2s ease;
+
+  @media (--min-960) {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 16px 24px;
+    position: relative;
+    text-align: left;
+    top: 0;
+  }
+
+  // Modifiers
+  &.-important {
+    background: linear-gradient(90deg, #F5F1F5 0%, #FEEDFC 16.67%, #F4DFE2 33.33%, #BAE6F5 57.81%, #CBDBFF 80.21%, #F7F5FF 96.35%), #FFFFFF;
+    color: var(--color-type-headlines);
+  }
+
+  &.-cookies {
+    background-color: black;
+    color: var(--color-type-inverted);
+  }
+
+  &.-hidden {
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+    padding: 0;
+  }
+}
+
+.notice-content {
+  font-size: .875rem;
+  padding-right: 25px;
+
+  @media (--min-960) {
+    font-size: 1rem;
+  }
+}
+
+.notice-actions {
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  margin-top: 16px;
+
+  @media (--min-960) {
+    margin-top: 0;
+  }
+
+  // Descendants
+  a {
+    &:first-of-type {
+      @media (--min-960) {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.notice-emoji {
+  margin-right: .5em;
+}
+
+.notice-close {
+  color: black;
+  font-size: 2.25rem;
+  font-family: system-ui;
+  font-weight: 300;
+  line-height: 1;
+  position: absolute;
+  right: 8px;
+  top: 0;
+
+  @media (--min-960) {
+    height: 22px;
+    line-height: .5;
+    position: relative;
+    right: 0;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,49 @@
+//
+// Modal
+// ==================================================
+
+.modal {
+	background: white;
+	bottom: 0;
+	left: 0;
+  opacity: 0;
+  overflow-y: scroll;
+	pointer-events: none;
+	position: fixed;
+	right: 0;
+	top: 0;
+	transition: opacity var(--transition-quick) var(--ease-out-quad);
+  z-index: 300;
+
+  &:target {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.modal-content {
+  margin: 160px auto 0;
+  max-width: 960px;
+  padding: 5px 20px 13px 20px;
+  position: relative;
+}
+
+.modal-close {
+  color: black;
+  font-family: system-ui;
+  font-size: 2.5rem;
+  font-weight: 100;
+  line-height: 25px;
+  position: fixed;
+  right: 30px;
+  text-align: center;
+  top: 25px;
+  width: 24px;
+  text-decoration: none;
+  transition: color var(--transition-medium);
+
+  &:hover {
+    color: var(--color-base);
+    text-decoration: none;
+  }
+}

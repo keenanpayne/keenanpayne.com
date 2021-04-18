@@ -1,0 +1,25 @@
+{# Component Options #}
+{% from "partials/atoms/logos.njk" import output as logo %}
+{% from "partials/molecules/navigation.njk" import output as navigation with context %}
+
+{# Markup #}
+<header class="header" role="banner">
+  <div class="container header-container">
+    <a href="/">
+      <h1 class="_hidden">
+        {{ site.name }}
+      </h1>
+
+      {% if logo|length %}
+        {{ logo() }}
+      {% else %}
+        {{ site.name }}
+      {% endif %}
+    </a>
+
+    {% include "partials/atoms/hamburger.njk" %}
+
+    {# TODO: The navigation should be a top level element #}
+    {{ navigation('-header') }}
+  </div>
+</header>

@@ -1,0 +1,42 @@
+{#
+ # @macro output
+ #
+ # Builds a navigation component
+ #
+ # @param {string} modifier - unique class name to apply to the `<nav>` element
+ #}
+
+{% macro output(modifier) %}
+  {% if navigation.items %}
+    <nav class="navigation {{ modifier }}" role="navigation" aria-labelledby="mainnavheader">
+      <ul class="navigation-list" role="navigation">
+TESTING
+        {% for item in navigation.items %}
+          <li class="navigation-listItem">
+            <a class="navigation-link {{ '-icon' if item.children }}" href="{{ item.url }}" {{ helpers.getLinkActiveState(item.url, page.url) | safe }}>
+              {{ item.text }}
+
+              {% if item.children %}
+                <svg class="navigation-icon" width="15" height="9" viewBox="0 0 15 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.50002 8.99996L0 1.50002L1.5 2.415e-05L7.49999 6.00001L13.5 0L15 1.49999L7.50002 8.99996Z" />
+                </svg>
+              {% endif %}
+            </a>
+
+            {% if item.children %}
+              <ul class="navigation-childList">
+                {% for child in item.children %}
+                  <li class="navigation-listItem">
+                    <a class="navigation-link" href="{{ child.url }}" {{ helpers.getLinkActiveState(child.url, page.url) | safe }}>
+                      {{ child.text }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+{% endmacro %}

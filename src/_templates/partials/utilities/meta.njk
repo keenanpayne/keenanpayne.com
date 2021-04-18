@@ -1,0 +1,123 @@
+{#
+ # Settings
+ #}
+
+{# Default settings for meta tags #}
+{% set homepage = (true if permalink == "/" else false) %}
+{% set metaUrl = meta.url %}
+{% set metaTitle = meta.title %}
+{% set metaDescription = meta.description %}
+{% set favicon = meta.favicon %}
+
+{# Default settings for social share #}
+{% set twitter = social.twitter %}
+{% set opengraph = social.opengraph %}
+
+{# Page-specific title is highest-priority #}
+{%- if seo.title -%}
+  {% set seo_title = seo.title %}
+{%- else -%}
+  {# Default to site title if homepage #}
+  {%- if homepage -%}
+    {% set seo_title = metaTitle %}
+
+  {# Fallback to page title on others #}
+  {%- else -%}
+    {% set seo_title = title %}
+  {%- endif -%}
+{% endif %}
+
+{# A tagline follows the title in the address bar #}
+{% set tagline = (seo.tagline if seo.tagline else meta.tagline) %}
+
+{# How we separate the title and tagline #}
+{% set delimiter = (seo.delimiter if seo.delimiter else meta.delimiter) %}
+
+{# Following the title, attach a tagline for homepage, or site name for others #}
+{% set full_title = seo_title ~ delimiter ~ metaTitle %}
+
+{% set description = (seo.description if seo.description else meta.description) %}
+{% set canonical = (seo.canonical if seo.canonical else meta.url) ~ (page.url if not homepage) %}
+{% set robots = (seo.robots if seo.robots else meta.robots) %}
+{% set author = (seo.author if seo.author else meta.author) %}
+{% set color = (seo.color if seo.color else meta.color) %}
+{% set generator = ('Eleventy' if meta.generator else false) %}
+{% set copyright = ('Copyright ' ~ helpers.buildTime | date("Y") if meta.copyright else false) %}
+
+
+{#
+ # Markup
+ #}
+
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+
+{%- if author -%}
+  <meta name="author" content="{{ author }}" />
+{%- endif -%}
+
+{%- if color -%}
+  <meta name="theme-color" content="{{ color }}">
+{%- endif -%}
+
+{%- if description -%}
+  <meta name="description" content="{{ description }}" />
+{%- endif -%}
+
+{%- if robots -%}
+  <meta name="robots" content="{{ robots }}" />
+{%- endif -%}
+
+{%- if generator -%}
+  <meta name="generator" content="{{ generator }}" />
+{%- endif -%}
+
+{%- if copyright -%}
+  <meta name="copyright" content="{{ copyright }}" />
+{%- endif -%}
+
+<title>
+  {{- full_title -}}
+</title>
+
+<link rel="canonical" href="{{ canonical }}">
+
+{# Twitter Cards #}
+{% if twitter.handle %}
+  <meta name="twitter:site" content="{{ twitter.handle }}">
+  <meta name="twitter:creator" content="{{ twitter.handle }}" />
+{% endif %}
+
+{% if twitter.image %}
+  <meta name="twitter:image" content="{{ metaUrl ~ twitter.image }}">
+{% endif %}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:description" content="{{ metaDescription }}">
+<meta name="twitter:title" content="{{ metaTitle }}">
+<meta name="twitter:image:width" content="1200">
+<meta name="twitter:image:height" content="675">
+
+{# OpenGraph #}
+{% if opengraph.image %}
+  <meta property="og:image" content="{{ metaUrl ~ opengraph.image }}">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="628">
+  <meta property="og:image:alt" content="{{ site.name }} logo">
+{% endif %}
+
+<meta property="og:url" content="{{ canonical }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ seo_title }}">
+<meta property="og:site_name" content="{{ metaTitle }}">
+<meta property="og:description" content="{{ metaDescription }}">
+<meta property="og:locale" content="en_US">
+
+{# Favicons #}
+{% if favicon %}
+  <link rel="shortcut icon" href="{{ favicon }}" type="image/x-icon">
+{% endif %}

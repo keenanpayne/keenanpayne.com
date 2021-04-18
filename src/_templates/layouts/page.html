@@ -1,0 +1,7 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  {% for section in sections %}
+    {% include "partials/organisms/" + section.type + ".njk" %}
+  {% endfor %}
+{% endblock %}

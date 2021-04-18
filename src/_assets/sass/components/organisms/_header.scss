@@ -1,0 +1,17 @@
+//
+// Header
+// ==================================================
+
+.header {
+  background-color: var(--color-base-light);
+  border-bottom: 1px solid var(--color-base-mid);
+  transition: background-color 150ms;
+  width: 100%;
+  z-index: 9999;
+}
+
+.header-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}

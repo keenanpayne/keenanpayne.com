@@ -1,0 +1,19 @@
+//
+// Hero
+// ==================================================
+
+.hero {
+  border-bottom: 1px solid var(--color-base-mid);
+  padding-bottom: 10spaces;
+  padding-top: 10spaces;
+  position: relative;
+}
+
+.hero-headline {
+  margin-bottom: 5spaces;
+  margin-top: 0;
+}
+
+.hero-subheading { 
+  @include typeScale-h5();
+}

@@ -1,0 +1,47 @@
+//
+// Hamburger Icon
+// ==================================================
+
+.hamburger {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  @media (--min-768) {
+    display: none;
+  }
+}
+
+.hamburger {
+  cursor: pointer;
+  transition: transform 400ms;
+  user-select: none;
+
+  // Modifiers
+  &.-active {
+    transform: rotate(45deg);
+
+    .hamburger-top {
+      stroke-dashoffset: -98px;
+    }
+
+    .hamburger-bottom {
+      stroke-dashoffset: -138px;
+    }
+  }
+}
+
+.hamburger-line {
+  fill: none;
+  stroke: var(--color-type-base);
+  stroke-width: 3;
+  transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+}
+
+.hamburger-top {
+  stroke-dasharray: 40 139;
+}
+
+.hamburger-bottom {
+  stroke-dasharray: 40 180;
+}

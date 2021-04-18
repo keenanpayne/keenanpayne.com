@@ -1,0 +1,14 @@
+//
+// Paragraph
+// ==================================================
+
+p {
+  @include typeScale-body();
+  
+  margin: 0;
+
+  // Spacing for stacked paragraphs
+  & + & {
+    margin-top: 1rem;
+  }
+}

@@ -1,0 +1,22 @@
+{#
+ # @macro image.output
+ #
+ # Outputs an image
+ #
+ # @param yaml - The block of YAML that will provide keys that hold our data
+ #               Options: [source, alt]
+ #}
+{% macro output(name, yaml, alt = yaml.alt) %}
+  {% set source = yaml.src %}
+  {% set alt = yaml.alt %}
+  {% set mobile = yaml.mobile %}
+
+  {% if source %}
+    {% if mobile %}
+      <img class="{{ name }}-image lazy _desktop-only" data-src="{{ source }}" alt="{{ alt if alt }}" />
+      <img class="{{ name }}-image lazy _mobile-only" data-src="{{ mobile }}" alt="{{ alt if alt }}" />
+    {% else %}
+      <img class="{{ name }}-image lazy" data-src="{{ source }}" alt="{{ alt if alt }}" />
+    {% endif %}
+  {% endif %}
+{% endmacro %}

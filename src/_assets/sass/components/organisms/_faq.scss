@@ -1,0 +1,17 @@
+//
+// FAQ
+// ==================================================
+
+.faq {
+  padding-bottom: 5spaces;
+  padding-top: 5spaces;
+
+  @media (--min-960) {
+    padding-bottom: 10spaces;
+    padding-top: 10spaces;
+  }
+}
+
+.faq-accordion {
+  margin-top: 5spaces;
+}

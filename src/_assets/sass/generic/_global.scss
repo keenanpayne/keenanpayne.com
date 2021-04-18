@@ -1,0 +1,25 @@
+//
+// Global
+// ==================================================
+
+// Set box sizing
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+// Set anti-aliasing for HiDPI screens
+* {
+  @media screen and (-webkit-min-device-pixel-ratio: 2),
+         screen and (min-resolution: 2dppx) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+// Update selection colors
+::selection {
+  background-color: var(--color-primary-light);
+  color: var(--color-type-base);
+}

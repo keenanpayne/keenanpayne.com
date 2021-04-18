@@ -1,0 +1,42 @@
+{# TODO: 
+    Allow this to be a component that can be easily interoperated with other 
+    components such that the modal is just a skeleton that can surround 
+    any sort of content or component. 
+
+    Maybe this can be accomplished with Nunjucks macros. Alternatively, maybe 
+    we allow components to be injected into this template (i.e., include partial in 
+    `.modal-content`).
+ #}
+
+{# Settings #}
+{% set id = section.id %}
+
+{# Markup #}
+<a href="{{ '#' ~ id }}">
+  Test Modal
+</a>
+
+{# TODO: 
+    Ensure each modal has a unique ID in case content
+    editors name them the same thing in Contentful.
+
+    Perhaps I can add a value to the end of the ID to 
+    force them to be unique OR I could set each modal
+    up as it's own entry in Contentful so names would 
+    be like permalinks, it would be easier to not screw up
+#}
+<div id="{{ id }}" class="modal">
+  <a href="#close" title="Close" class="modal-close">
+    &times;
+  </a>
+
+  <div class="modal-content">
+      <h2 class="modal-headline">
+        Modal headline
+      </h2>
+
+      <p class="modal-subheading">
+        Modal subheading
+      </p>
+  </div>
+</div>

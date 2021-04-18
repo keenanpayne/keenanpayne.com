@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "text": "About",
+      "url": "/about",
+      "children": [
+        {
+          "text": "Contact",
+          "url": "/contact"
+        }
+      ]
+    },
+    {
+      "text": "Blog",
+      "url": ""
+    },
+    {
+      "text": "Support",
+      "url": ""
+    }
+  ]
+}

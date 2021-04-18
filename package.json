@@ -1,34 +1,48 @@
 {
-  "name": "keenanpayne",
+  "name": "eleventy-boilerplate",
   "private": true,
-  "version": "4.0.0",
-  "description": "The personal website for Keenan Payne.",
-  "homepage": "http://keenanpayne.com",
+  "version": "1.0.0",
+  "description": "Simple boilerplate for creating an Eleventy website",
+  "homepage": "",
   "engines": {
-    "node": "<=10.15.1"
+    "node": ">=14.15.1"
   },
-  "dependencies": {
-    "concise.css": "^4.1.2"
-  },
+  "browserslist": [
+    "last 2 versions"
+  ],
   "devDependencies": {
-    "autoprefixer": "^9.5.1",
-    "concise-cli": "^0.4.1",
-    "cssmin": "^0.4.3",
-    "imagemin": "^6.1.0",
-    "imagemin-webp": "^5.0.0",
-    "node-sass": "^4.12.0",
-    "postcss-cli": "^6.1.2",
-    "prettier": "^1.17.0",
-    "watch": "^1.0.2"
+    "@11ty/eleventy": "^0.11.1",
+    "@11ty/eleventy-plugin-rss": "^1.1.0",
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "@contentful/rich-text-html-renderer": "^14.1.2",
+    "autoprefixer": "^10.2.1",
+    "bent": "^7.3.12",
+    "chokidar-cli": "^2.1.0",
+    "contentful-resolve-response": "^1.3.0",
+    "dotenv": "^8.2.0",
+    "eleventy-plugin-error-overlay": "^0.1.2",
+    "html-minifier": "^4.0.0",
+    "markdown-it": "^12.0.4",
+    "marked": "^1.2.7",
+    "moment": "^2.29.1",
+    "postcss": "^8.2.4",
+    "postcss-cli": "^8.3.0",
+    "postcss-custom-media": "^8.0.0",
+    "postcss-media-minmax": "^5.0.0",
+    "sass": "^1.32.4",
+    "terser": "^5.5.1",
+    "microbundle": "^0.13.0"
   },
   "scripts": {
-    "start": "bundle exec jekyll serve --future",
-    "build": "watch \"npm run build:sass && npm run build:minify\" src",
-    "build:minify": "cssmin dist/site.css > dist/site.min.css",
-    "build:sass": "concisecss compile src/site.scss dist/site.css",
-    "build:watchnodesass": "watch \"npm run build:nodesass && npm run build:minify\" src",
-    "build:nodesass": "node-sass --output-style=expanded src/site.scss dist/site.css | postcss --use autoprefixer < dist/site.css -b \"last 2 versions\" | cssmin > dist/site.min.css",
-    "prettier": "prettier --write '**/**/*.scss' && prettier --write '**/**/*.js' ",
-    "webp": "node js/webp.js"
+    "assets:js": "microbundle -i src/_assets/js/app.js -o dist/assets/app.js",
+    "assets:sass": "sass src/_assets/sass/app.scss | postcss --output dist/assets/app.css",
+    "assets:build": "npm run assets:sass && npm run assets:js",
+    "assets:build:watch": "chokidar 'src/_assets/**/*' -c 'npm run assets:build' --initial",
+    "app:build:dev": "([ -d dist ] && rm -rf ./dist); mkdir -p dist/assets && npm run assets:build:watch & ENV=dev eleventy --watch --serve",
+    "app:build:prod": "mkdir -p dist/assets && npm run assets:build && ENV=prod eleventy",
+    "start": "npm run app:build:dev",
+    "debug:eleventy": "DEBUG=Eleventy* npx @11ty/eleventy"
   }
 }

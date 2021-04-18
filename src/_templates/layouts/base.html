@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="{{ meta.language }}" prefix="og: http://ogp.me/ns#">
+<head>
+  {% include "partials/utilities/meta.njk" %}
+  {% include "partials/utilities/assets.njk" %}
+</head>
+
+<body>
+  {% include "partials/organisms/header.njk" %}
+
+  <main tabindex="-1" role="main" id="main-content">
+    {% block content %}
+      {{ content | safe }}
+    {% endblock %}
+  </main>
+
+  {% include "partials/organisms/footer.njk" %}
+</body>
+</html>

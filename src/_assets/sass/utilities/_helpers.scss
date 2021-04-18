@@ -1,0 +1,63 @@
+//
+// Helper Classes
+// ==================================================
+
+//
+// A11y Hidden Content
+// -------------------
+
+._hidden {
+  @include hidden();
+}
+
+._visible {
+  @include visible();
+}
+
+
+//
+// Typography
+// ----------
+
+// Headings
+._type-size-h1 {
+  @include typeScale-h1();
+}
+
+._type-size-h2 {
+  @include typeScale-h2();
+}
+
+._type-size-h3 {
+  @include typeScale-h3();
+}
+
+._type-size-h4 {
+  @include typeScale-h4();
+}
+
+._type-size-h5 {
+  @include typeScale-h5();
+}
+
+._type-size-h6 {
+  @include typeScale-h6();
+}
+
+// Body
+._type-size-body {
+  @include typeScale-body();
+}
+
+// Font Weights
+._font-weight-light {
+  font-weight: var(--font-weight-light);
+}
+
+._font-weight-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+._font-weight-bold {
+  font-weight: var(--font-weight-bold);
+}

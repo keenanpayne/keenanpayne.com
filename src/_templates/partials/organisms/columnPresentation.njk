@@ -1,0 +1,24 @@
+{# Settings #}
+{% from "partials/molecules/stack.njk" import output as stack with context %}
+
+{% set name = 'columnPresentation' %}
+{% set columns = section.columns %}
+
+{# Markup #}
+{# TODO: Allow for this component to have arbitrary column counts
+         i.e., if there are three columns in markdown ensure they're styled correctly #}
+<section class="columnPresentation container">
+  <div class="columnPresentation-list">
+    {{ stack(section, name) }}
+  </div>
+
+  <div class="columnPresentation-grid">
+    {% for column in columns %}
+      <div class="columnPresentation-column">
+        <img class="columnPresentation-image" src="{{ column.image }}">
+
+        {{ stack(column) }}
+      </div>
+    {% endfor %}
+  </div>
+</section>

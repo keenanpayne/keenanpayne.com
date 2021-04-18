@@ -1,0 +1,23 @@
+//
+// Column Presentation
+// ==================================================
+
+.columnPresentation {
+
+}
+
+.columnPresentation-grid {
+  @include grid;
+}
+
+.columnPresentation-column {
+  grid-column: 1 / -1;
+
+  @media (--min-768) {
+    grid-column: auto / span 6;
+  }
+}
+
+.columnPresentation-image {
+
+}

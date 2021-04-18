@@ -1,0 +1,64 @@
+//
+// Style Guide
+// ==================================================
+
+.styleguide {
+  margin-bottom: 5spaces;
+  margin-top: 5spaces;
+
+  @media (--min-960) {
+    margin-bottom: 10spaces;
+    margin-top: 10spaces;
+  }
+}
+
+.styleguideCategory {
+  @media (--min-960) {
+    display: grid;
+    margin-top: 15spaces;
+    grid-gap: 5spaces;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+}
+
+.styleguide-headline {
+  border-bottom: 1px solid var(--color-base-mid);
+
+  @media (--min-960) {
+    border-bottom: 0;
+    border-right: 1px solid var(--color-base-mid);
+    grid-column: auto / span 4;
+  }
+}
+
+.styleguide-content {
+  @media (--min-960) {
+    grid-column: auto / span 8;
+  }
+}
+
+.styleguide-colors {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.styleguide-color {
+  margin-bottom: 5spaces;
+  vertical-align: top;
+  width: 33.33%;
+
+  // Color swatch
+  span:first-child {
+    display: inline-block;
+    width: 100%;
+    height: 15spaces;
+  }
+
+  // Color custom property
+  span:last-child {
+    display: inline-block;
+    margin-top: 1spaces;
+    text-align: center;
+    width: 100%;
+  }
+}

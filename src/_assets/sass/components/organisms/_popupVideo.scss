@@ -1,0 +1,51 @@
+//
+// Popup Video
+// ==================================================
+// TODO: Lots of duplicate styles from `modal.scss`
+
+.popupVideo {
+  @include hidden();
+
+  background-color: rgba(0, 0, 0, .9);
+  transition: opacity var(--transition-long);
+  z-index: 9999;
+
+  // Modifiers
+  &.-visible {
+    @include visible();
+
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+}
+
+.popupVideo-container {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+
+  @media (--min-768) {
+    width: 60%;
+  }
+}
+
+.popupVideo-video {
+  width: 100%;
+}
+
+.popupVideo-close {
+  cursor: pointer;
+  position: absolute;
+  right: calc(var(--grid-gutters) / 2);
+  top: calc(var(--grid-gutters) / 2);
+
+  @media (--min-768) {
+    right: var(--grid-gutters);
+    top: var(--grid-gutters);
+  }
+}

@@ -1,0 +1,33 @@
+{# Settings #}
+{% import "partials/molecules/pardot.njk" as pardot with context %}
+
+{# Markup #}
+<form id="form-get-started" class="leadGen-form" action="//www2.collectivei.com/l/883833/2021-02-02/md8b" method="post">
+  <fieldset class="leadGen-container">
+    <legend class="leadGen-legend">
+      <h2 class="leadGen-headline">
+        Get started with Collective[i]
+      </h2>
+
+      <p class="leadGen-subheading">
+        Our team is expert at evaluating progress and supporting companies’ AI-enabled digital sales transformation. We’ll be in touch soon to learn how we can help.
+      </p>
+
+      {{ pardot.error() }}
+    </legend>
+
+    {{ pardot.input('First name', 'text', 'a-z', '-half', 'required')}}
+    {{ pardot.input('Last name', 'text', 'a-z', '-half', 'required')}}
+    {{ pardot.input('Phone', 'tel', 'integer', '-half', 'required')}}
+    {{ pardot.input('Work email', 'email', null, '-half', 'required')}}
+    {{ pardot.select('Role', '-half', 'required', ['Role (required)', 'Sales', 'Revenue Operations', 'Executive', 'Marketing', 'Other'])}}
+    {{ pardot.input('Company', 'text', null, '-half', 'required')}}
+    {{ pardot.select('CRM', '-full', null, ['CRM (optional)', 'Salesforce', 'Dynamics', 'Hubspot', 'Oracle', 'SAP', 'Other'] )}}
+    {{ pardot.textarea('Buying experience', '-full', null, 'What else should we know to make your buying experience better? (optional)')}}
+    {{ pardot.checkbox('Opt in', '-full', 'required', 'Opt-in to receive invitations to exclusive briefings on AI and digital transformation topics.')}}
+    {{ pardot.honeypot() }}
+    {{ pardot.submit() }}
+  </fieldset>
+</form>
+
+{{ pardot.success() }}

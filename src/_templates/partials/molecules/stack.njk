@@ -1,0 +1,45 @@
+{#  
+ # @macro stack.output
+ #
+ # A "stack" which consists of a headline, subheading, and CTA.
+ # 
+ # @param yaml - The block of YAML that will provide keys that hold our data
+ #               Options: [headline, subheading, cta]
+ # @param name - The name of the component where this is being used. 
+ #               When supplied, class names will by dynamically added for
+ #               ease-of-use when inspecting the DOM and consistency when styling
+ #}
+
+{% macro output(yaml, name) %}
+  {# Macro Options #}
+  {% import "partials/atoms/heading.njk" as heading with context %}
+  {% import "partials/atoms/button.njk" as button with context %}
+
+  {% set eyebrow = yaml.eyebrow %}
+  {% set subheading = yaml.subheading %}
+  {% set cta = yaml.cta %}
+
+  {# Markup #}
+  {%- if eyebrow -%}
+    <p class="{{ name ~ '-eyebrow' }}">
+      {{ eyebrow }}
+    </p>
+  {%- endif -%}
+
+  {{ heading.output(yaml.headline, name) }}
+
+  {%- if subheading -%}
+    {% set text = subheading.text %}
+    {% set modifiers = subheading.modifiers %}
+
+    <p class="{{ name ~ '-subheading' if name }} {{ modifiers }}">
+      {{ text | safe }}
+    </p>
+  {%- endif -%}
+
+  {%- if cta -%}
+    <p class="{{ name ~ '-cta' if name }}">
+      {{ button.link(cta, cta.type) }}
+    </p>
+  {%- endif -%}
+{% endmacro %}

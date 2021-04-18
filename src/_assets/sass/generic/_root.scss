@@ -1,0 +1,14 @@
+//
+// Root
+// ==================================================
+
+:root {
+  color: var(--color-type-base);
+  font-family: var(--font-primary);
+  font-weight: normal;
+
+  // Modifiers
+  &.-no-scroll {
+    overflow: hidden;
+  }
+}

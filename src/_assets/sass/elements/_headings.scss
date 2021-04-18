@@ -1,0 +1,39 @@
+//
+// Headings
+// ==================================================
+
+h1 {
+  @include typeScale-h1();
+}
+
+h2 {
+  @include typeScale-h2();
+}
+
+h3 {
+  @include typeScale-h3();
+}
+
+h4 {
+  @include typeScale-h4();
+}
+
+h5 {
+  @include typeScale-h5();
+}
+
+h6 {
+  @include typeScale-h6();
+}
+
+// Descendants
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  small {
+    font-size: 70%;
+  }
+}

@@ -1,0 +1,35 @@
+//
+// Buttons
+// ==================================================
+
+button,
+.button {
+  background-color: var(--color-tertiary-mid);
+  border: 0;
+  box-shadow: none;
+  color: currentColor;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: bold;
+  line-height: 1;
+  padding: .5rem 1rem;
+  position: relative;
+  text-decoration: none;
+  transition: background-color var(--transition-quick);
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-tertiary-light);
+    color: var(--color-type-base);
+    text-decoration: none;
+  }
+
+  // Modifiers
+  &.-flat {
+    background-color: transparent;
+    padding: 0;
+  }
+}

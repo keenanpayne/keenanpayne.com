@@ -1,0 +1,195 @@
+//
+// Navigation
+// ==================================================
+
+//
+// Variables
+// ---------
+
+// Alias so we can easily understand desktop vs. mobile 
+$navigation-desktop: --min-768;
+
+
+//
+// Styles
+// ------
+
+.navigation {
+  height: 0;
+  overflow: hidden;
+  transform: translateX(-100%);
+  transition: transform 500ms;
+
+  @media (min-width: $navigation-desktop) {
+    height: 100%;
+    overflow: visible;
+    transform: none;
+    transition: none;
+  }
+
+  // Modifiers
+  &.-active {
+    background-color: var(--color-base);
+    height: calc(100vh - var(--header-height));
+    left: 0;
+    overflow-y: auto;
+    position: absolute;
+    top: var(--header-height);
+    transform: translateX(0);
+    width: 100%;
+  }
+
+
+  //
+  // List
+  // ----
+  
+  // Container
+  .navigation-list {
+    height: 100%;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0;
+    text-align: left;
+  }
+
+  // List items
+  .navigation-listItem {
+    display: block;
+    list-style: none;
+    position: relative;
+    margin-left: 0;
+    
+    @media (min-width: $navigation-desktop) {
+      display: inline-block;
+      height: 100%;
+
+      // Show dropdown on hover
+      &:hover {
+        background-color: var(--color-base);
+        color: var(--color-primary);
+
+        > .navigation-childList {
+          opacity: 1;
+          transform: translateY(0);
+          background-color: var(--color-base);
+          color: var(--color-primary);
+        }
+
+        .navigation-icon {
+          transform: rotate(180deg);
+
+          path {
+            fill: var(--color-primary);
+          }
+        }
+      }
+    }
+
+    &:not(:last-of-type) {
+      margin-bottom: 0;
+    }
+  }
+
+
+  //
+  // Links
+  // -----
+
+  .navigation-link {
+    color: var(--color-type-light);
+    display: inline-block;
+    padding: spacing(2) spacing(3);
+    white-space: nowrap;
+    position: relative;
+
+    @media (min-width: $navigation-desktop) {
+      height: 100%;
+      padding-left: spacing(3);
+      padding-right: spacing(3);
+      font-size: inherit;
+    }
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+
+    // Active state
+    &[data-state="active"] {
+      &::before {
+        @media (min-width: $navigation-desktop) {
+          background-color: black;
+          content: '';
+          height: 5px;
+          left: 0;
+          position: absolute;
+          top: 0;
+          width: 100%;
+        }
+      }
+    }
+
+    // Modifiers
+    &.-icon {
+      align-items: center;
+      display: flex;
+    }
+  }
+
+  
+  //
+  // Dropdown
+  // --------
+
+  // Arrow icon
+  .navigation-icon {
+    display: none;
+    fill: var(--color-type-light);
+    margin-left: spacing(1);
+    transition: transform 300ms;
+
+    @media (min-width: $navigation-desktop) {
+      display: block;
+    }
+  }
+
+  // List
+  .navigation-childList {
+    background-color: var(--color-primary);
+    padding-left: 0;
+
+    @media (min-width: $navigation-desktop) {
+      min-width: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      transform: translateY(-100%);
+      top: 100%;
+    }
+
+    // Context-specific overrides
+    .navigation-listItem {
+      width: 100%;
+    }
+
+    .navigation-link {
+      padding: spacing(2);
+
+      @media (min-width: $navigation-desktop) {
+        display: block;
+
+        &[data-state="active"] {
+          background-color: var(--color-primary);
+          color: var(--color-type-base);
+        }
+      }
+
+      &:hover,
+      &:focus {
+        background-color: var(--color-primary);
+        color: var(--color-type-base);
+      }
+    }
+  }
+}

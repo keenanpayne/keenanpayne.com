@@ -1,0 +1,54 @@
+
+//
+// Custom Properties
+// ==================================================
+
+:root {
+  // Layout
+  --layout-max-width: 1440px;
+
+  // Grid
+  --grid-column-count: 12;
+  --grid-gutters: 60px;
+  
+  // Spacing
+  --spacing-unit: 0.5rem;
+
+  // Section styles
+  --section-spacing: 10spaces;
+
+  // Color Palette
+  --color-base: #343a40;
+  --color-base-mid: #6c757d;
+  --color-base-light: #ced4da;
+
+  --color-primary: #555b6e;
+  --color-primary-mid: #89b0ae;
+  --color-primary-light: #bee3db;
+
+  --color-tertiary: #9d4edd;
+  --color-tertiary-mid: #c77dff;
+  --color-tertiary-light: #e0aaff;
+
+  // Type Colors
+  --color-type-base: #212529;
+  --color-type-mid: #6c757d;
+  --color-type-light: #ced4da;
+
+  // UI Colors
+  --color-border: var(--color-base-light);
+
+  // Fonts
+  --font-primary: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  --font-monospace: "SFMono-Regular", Consolas, Menlo, Courier, monospace;
+
+  // Font Weights
+  --font-weight-normal: normal;
+  --font-weight-light: 300;
+  --font-weight-medium: 400;
+  --font-weight-bold: 600;
+
+  // Transition
+  --transition-medium: .3s;
+  --transition-long: .5s;
+}

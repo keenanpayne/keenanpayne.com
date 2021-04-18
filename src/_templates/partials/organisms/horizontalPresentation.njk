@@ -1,0 +1,23 @@
+{# Component Options #}
+{% from "partials/atoms/image.njk" import output as image with context %}
+{% from "partials/molecules/stack.njk" import output as stack with context %}
+
+{% set name = 'horizontalPresentation' %}
+{% set container = section.container %}
+{% set alignment = section.alignment %}
+{% set headline = section.headline %}
+{% set subheading = section.subheading %}
+{% set cta = section.cta %}
+
+{# Markup #}
+<section class="{{ name }}">
+  <div class="{{ name ~ '-container' }} {{ '-' ~ alignment }} {{ 'container' if container }}">
+    <div class="{{ name }}-text">
+      {{ stack(section, name) }}
+    </div>
+
+    <div class="{{ name }}-image">
+      {{ image(name, section.image, headline.text) }}
+    </div>
+  </div>
+</section>

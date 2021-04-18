@@ -1,0 +1,22 @@
+{# Settings #}
+{% set id = section.id %}
+{% set message = section.message %}
+{% set link = section.link %}
+
+{# Markup #}
+<aside id="{{ id | lower | replace(' ', '-') }}" class="notice -important">
+  <p class="notice-content">
+    <span class="notice-emoji">📣</span>
+    {{ message }}
+  </p>
+
+  <span class="notice-actions">
+    <a href="{{ link.url }}" class="button -secondary -small">
+      {{ link.text }}
+    </a>
+
+    <a href="#notice-close" class="notice-close">
+      &times;
+    </a>
+  </span>
+</aside>

@@ -1,0 +1,48 @@
+{#  
+ # @macro button.element
+ #
+ # A button displayed as an element that could be used in a form
+ # 
+ # @param yaml - The block of YAML that will provide keys that hold our data
+ #               Options: [text, type]
+ # @param modifiers - Custom classs to apply to this element (default is `-primary)
+ #}
+{% macro element(yaml, modifier = '-primary') %}
+  {% set text = yaml.text %}
+
+  {# Safeguard to catch instances where a blank value is provided for `modifiers` #}
+  {% if not modifiers %}
+    {% set modifiers = '-primary' %}
+  {% endif %}
+  
+  {% if text %}
+    <button class="button {{ modifier }}" title="{{ text }}">
+      {{ text }}
+    </button>
+  {% endif %}
+{% endmacro %}
+
+{#  
+ # @macro button.link
+ #
+ # A button displayed as a link that can take users to another location
+ # 
+ # @param yaml - The block of YAML that will provide keys that hold our data
+ #               Options: [link, text, type]
+ # @param modifiers - Custom classs to apply to this element (default is `-primary)
+ #}
+{% macro link(yaml, modifiers = '-primary') %}
+  {% set text = yaml.text %}
+  {% set link = yaml.link %}
+
+  {# Safeguard to catch instances where a blank value is provided for `modifiers` #}
+  {% if not modifiers %}
+    {% set modifiers = '-primary' %}
+  {% endif %}
+
+  {% if link and text %}
+    <a class="button {{ modifiers }}" href="{{ link }}" title="{{ text }}">
+      {{ text }}
+    </a>
+  {% endif %}
+{% endmacro %}

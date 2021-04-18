@@ -1,0 +1,109 @@
+{#  
+ # @macro pardot.input
+ #}
+{% macro input(name, type, filter, size, required) %}
+  {% set nameAttr = name | lower | replace(' ', '_') %}
+
+  <div class="leadGen-field {{ size }}">
+    <label class="leadGen-label _hidden" for="{{ nameAttr }}">
+      {{ name }}
+    </label>
+
+    <input class="leadGen-input" type="{{ type }}" name="{{ nameAttr }}" id="{{ nameAttr }}" placeholder="{{ name }}" {{ required }} {{ 'data-input-filter=' ~ filter if filter }} />
+  </div>
+{% endmacro %}
+
+{#  
+ # @macro pardot.select
+ #}
+{% macro select(name, size, required, items) %}
+  {% set nameAttr = name | lower | replace(' ', '_') %}
+
+  <div class="leadGen-field {{ size }}">
+    <label class="leadGen-label _hidden" for="{{ nameAttr }}">
+      {{ name }}
+    </label>
+
+    <select class="leadGen-input" name="{{ nameAttr }}" id="{{ nameAttr }}" {{ 'required' if required }}>
+      {% for item in items %}
+        <option {% if loop.index == 1 %} value disabled selected {% else %} value="{{ item }}" {% endif %}>
+          {{ item }}
+        </option>
+      {% endfor %}
+    </select>
+  </div>
+{% endmacro %}
+
+{#  
+ # @macro pardot.textarea
+ #}
+{% macro textarea(name, size, required, placeholder=name) %}
+  {% set nameAttr = name | lower | replace(' ', '_') %}
+
+  <div class="leadGen-field {{ size }}">
+    <label class="leadGen-label _hidden" for="{{ nameAttr }}">
+      {{ placeholder }}
+    </label>
+
+    <textarea class="leadGen-input" name="{{ nameAttr }}" id="{{ nameAttr }}" placeholder="{{ placeholder }}" {{ required }}></textarea>
+  </div>
+{% endmacro %}
+
+{#  
+ # @macro pardot.checkbox
+ #}
+{% macro checkbox(name, size, required, text=name) %}
+  {% set nameAttr = name | lower | replace(' ', '_') %}
+
+  <div class="leadGen-field {{ size }} leadGen-checkbox">
+    <label class="leadGen-label">
+      <input class="leadGen-input" type="checkbox" name="{{ nameAttr }}" id="{{ nameAttr }}" value="true">
+      {{ text }}
+    </label>
+  </div>
+{% endmacro %}
+
+{#  
+ # @macro pardot.honeypot
+ #}
+{% macro honeypot() %}
+  <div class="leadGen-honeypot">
+    <label for="pardot_extra_field">Comments</label>
+    <input type="text" id="pardot_extra_field" name="pardot_extra_field">
+  </div>  
+{% endmacro %}
+
+{#  
+ # @macro pardot.submit
+ #}
+{% macro submit() %}
+  <div class="leadGen-submit">
+    <input type="submit" class="button -primary -extra-wide -full-mobile" value="Send" />
+  </div>
+{% endmacro %}
+
+{#  
+ # @macro pardot.success
+ #}
+{% macro success() %}
+  <div class="leadGen-success">
+    <h2 class="leadGen-headline">
+      We’ll be in touch soon
+    </h2>
+
+    <p class="leadGen-subheading">
+      In the meantime, <a href="/product" title="Learn about Collective Intelligence">explore Collective[i]</a> and find answers to <a href="/product#faq">frequently asked questions</a>.
+    </p>
+  </div>
+{% endmacro %}
+
+{#  
+ # @macro pardot.error
+ #}
+{% macro error() %}
+  <div class="leadGen-error _hidden">
+    <p>On no, we ran into an issue submitting this form. Please ensure each field was filled out correctly and resubmit.</p>
+    
+    <p>If this problem persists, please <a href="/contact">reach out to us</a> and we will be more than happy to follow-up from there.</p>
+  </div>
+{% endmacro %}
