@@ -60,6 +60,7 @@
   &:before {
     content: '📬';
     font-size: typeScale(6);
+    line-height: 1;
     position: absolute;
     right: -.35em;
     top: -.75em;
