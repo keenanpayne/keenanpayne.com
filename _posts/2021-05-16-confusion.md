@@ -30,7 +30,7 @@ Goals come in all shapes and sizes. I have a goal every morning to make a delici
 
 But how do I determine the actions I take? Actions are an atomic unit of being. It's through action that life is made possible; it's the reason I'm writing these very words. But how do we determine what action to take? If experience is predicated on constantly answering that question, I'd think I would be better at answering it after living twenty-seven years. I haven't, and I haven't.   
 
-# "Actions are an atomic unit of being. It's through action that life is made possible; it's the reason I'm writing these very words." can be a `p-large` callout
+[//]: # (TODO: "Actions are an atomic unit of being. It's through action that life is made possible; it's the reason I'm writing these very words." can be a `p-large` callout)
 
 I take many actions just to stay alive. Other actions allow me to stay afloat in a late-stage capitalistic country, while others allow me to engage in meaningful things.
 
