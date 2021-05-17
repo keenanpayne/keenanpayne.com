@@ -137,6 +137,13 @@
     }
   }
 
+  // Horizontal rules
+  hr {
+    + p {
+      margin-top: 2em;
+    }
+  }
+
   // Descendants
   .cp_embed_wrapper { 
     margin-bottom: $spacing-s;
