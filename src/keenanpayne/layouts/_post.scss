@@ -101,6 +101,7 @@
     }
   }
 
+  // Figures
   figure { 
     display: block;
     margin: $spacing-xxs auto $spacing-s;
@@ -135,6 +136,20 @@
         margin-top: .5em;
       }
     }
+  }
+
+  // Highlighted text
+  // Ref: https://max.hn/thoughts/how-to-create-a-highlighter-marker-effect-in-css
+  mark {
+    background: transparent;
+    background-image: linear-gradient(to right,
+      rgba(255,225,0,0.15),
+      rgba(255,225,0,0.6) 7.5%,
+      rgba(255,225,0,0.25));
+    border-radius: 0.8em 0.3em;
+    box-decoration-break: clone;
+    margin: 0 -0.4em;
+    padding: 0.1em 0.4em;
   }
 
   // Descendants
