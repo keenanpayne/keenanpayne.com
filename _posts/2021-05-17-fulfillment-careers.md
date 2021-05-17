@@ -1,7 +1,7 @@
 ---
 title:  'Searching for fulfillment by switching careers'
 meta: 
-  description: 
+  description: Have you wondered whether switching careers could make you more fulfilled? So have many others.
   facebook_image: 
   twitter_image: 
 ---
