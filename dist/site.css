@@ -1038,8 +1038,8 @@ p {
     font-size: 1.5625rem;
     font-weight: 400;
     line-height: 1.4;
-    padding-bottom: 1rem;
-    padding-top: 1rem; }
+    padding-bottom: 1.25rem;
+    padding-top: 1.25rem; }
   p.-small {
     font-size: 75%;
     font-weight: 500; }
@@ -1368,6 +1368,49 @@ input.-bg-white {
   transition: opacity 300ms; }
   .newsletterSlideIn-close:hover {
     opacity: .6; }
+
+.mailbox {
+  background-color: var(--color-base-light);
+  border-top: 3px solid var(--color-base-mid);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  filter: saturate(70%);
+  margin: calc(1.45rem + 1vw) auto calc(1.45rem + 1vw);
+  max-width: 800px;
+  padding: calc(1.45rem + 1vw) calc(2.9rem + 1vw);
+  position: relative; }
+  .mailbox:before, .mailbox:after {
+    content: '';
+    left: 0;
+    position: absolute;
+    width: 100%; }
+  .mailbox:before {
+    background-image: linear-gradient(177deg, rgba(0, 0, 0, 0.1) 10%, transparent 50%), linear-gradient(-177deg, rgba(0, 0, 0, 0.1) 10%, transparent 50%);
+    background-position: 2% 0, 98% 0;
+    background-repeat: no-repeat;
+    background-size: 49% 100%;
+    bottom: -1%;
+    height: 1%; }
+  .mailbox:after {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0.5%, rgba(0, 0, 0, 0.15) 1.2%, transparent 1.2%), linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0.5%, rgba(0, 0, 0, 0.15) 1.2%, transparent 1.2%), linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0.5%, rgba(0, 0, 0, 0.15) 1.2%, transparent 1.2%), linear-gradient(265deg, rgba(0, 0, 0, 0.2), transparent 10%), linear-gradient(5deg, rgba(0, 0, 0, 0.2), transparent 15%), linear-gradient(-5deg, rgba(0, 0, 0, 0.1), transparent 10%), linear-gradient(5deg, rgba(0, 0, 0, 0.1), transparent 10%), linear-gradient(-265deg, rgba(0, 0, 0, 0.2), transparent 10%), linear-gradient(-5deg, rgba(0, 0, 0, 0.2), transparent 15%), linear-gradient(266deg, rgba(0, 0, 0, 0.2), transparent 10%);
+    background-position: right top, left center, left bottom, left top, left top, right top, left center, right center, right center, left bottom;
+    background-repeat: no-repeat;
+    background-size: 50% 100%, 100% 33.3333%, 100% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%;
+    height: 100%;
+    opacity: .25;
+    top: 0;
+    width: 100%;
+    z-index: 2; }
+
+.mailbox-icon:before {
+  content: '📬';
+  font-size: 2.44141rem;
+  line-height: 1;
+  position: absolute;
+  right: -.35em;
+  top: -.75em; }
+  @media (min-width: 768px) {
+    .mailbox-icon:before {
+      font-size: 5.96046rem; } }
 
 .archive {
   display: -ms-grid;
@@ -1759,6 +1802,15 @@ input.-bg-white {
       font-style: normal;
       margin-bottom: 0;
       margin-top: .5em; }
+
+.post-content mark {
+  background: transparent;
+  background-image: linear-gradient(to right, rgba(255, 225, 0, 0.15), rgba(255, 225, 0, 0.6) 7.5%, rgba(255, 225, 0, 0.25));
+  border-radius: 0.8em 0.3em;
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+  margin: 0 -0.4em;
+  padding: 0.1em 0.4em; }
 
 .post-content .cp_embed_wrapper {
   margin-bottom: calc(1.45rem + 1vw);
