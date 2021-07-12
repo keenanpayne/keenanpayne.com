@@ -1803,8 +1803,30 @@ input.-bg-white {
       margin-bottom: 0;
       margin-top: .5em; }
 
-.post-content hr + p {
-  margin-top: 1.5em; }
+.post-content hr {
+  background-color: transparent;
+  border: none;
+  border-top: medium double var(--color-secondary-light);
+  color: var(--color-secondary-light);
+  margin: calc(2.9rem + 1vw) calc(1.45rem + 1vw);
+  overflow: visible;
+  padding: 0;
+  text-align: center; }
+  @media (min-width: 768px) {
+    .post-content hr {
+      margin-left: calc(2.9rem + 1vw);
+      margin-right: calc(2.9rem + 1vw); } }
+  .post-content hr:after {
+    background-color: var(--color-base);
+    content: "§";
+    display: inline-block;
+    font-family: "Eksell", "Georgia", sans-serif;
+    font-size: 1rem;
+    padding: 0 .75rem;
+    position: relative;
+    top: -0.85em; }
+  .post-content hr + p {
+    margin-top: 1.5em; }
 
 .post-content mark {
   background: transparent;

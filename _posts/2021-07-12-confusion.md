@@ -6,9 +6,13 @@ meta:
   twitter_image: 
 ---
 
-Unprompted, I receive a message from George Hoqqanen, a friend and mentor of mine, with a simple question: "what are you confused about?" Huh, that's broad. The question is so broad that I've procrastinated responding to this message for a week, and aside from some internal mental digressions, I haven't given the question much thought. Every time I ask myself this question, I find myself at the tail-end of a mental avalanche, buried beneath a pile of unknowing. And who's to blame me when confronted with a question whose answers reveal more obscurity than clarity?   
+Unprompted, I receive a message from George Hoqqanen, a friend and mentor of mine, with a simple question: "what are you confused about?" 
 
-I'm going to work my way down this mountain by asking one question at a time. What am I confused about? Many things.  
+Huh, that's broad. So broad that I've procrastinated responding to this message for a week, and aside from some internal mental digressions, I haven't given the question much thought. Every time I ask myself this question, I find myself at the tail-end of a mental avalanche, buried beneath a pile of unknowing. And who's to blame me when confronted with a question whose answers reveal more obscurity than clarity?   
+
+I'm going to work my way down this mountain by asking one question at a time. 
+
+**What am I confused about? Many things.**
 
 ---  
 
