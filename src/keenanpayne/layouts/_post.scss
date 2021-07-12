@@ -138,6 +138,41 @@
     }
   }
 
+  // Horizontal rules
+  // Ref: https://css-tricks.com/examples/hrs/
+  hr {
+    background-color: transparent;
+    border: none;
+    border-top: medium double var(--color-secondary-light);
+    color: var(--color-secondary-light);
+    margin: $spacing-m $spacing-s;
+    overflow: visible;
+    padding: 0;
+    text-align: center;
+
+    @media (--medium) { 
+      margin-left: $spacing-m;
+      margin-right: $spacing-m;
+    }
+
+    // a e s t h e t i c s
+    &:after {
+      background-color: var(--color-base);
+      content: "§";
+      display: inline-block;
+      font-family: $font-secondary;
+      font-size: typeScale(2);
+      padding: 0 .75rem;
+      position: relative;
+      top: -0.85em;
+    }
+
+    // d e s c e n d a n d t s
+    + p {
+      margin-top: 1.5em;
+    }
+  }
+  
   // Highlighted text
   // Ref: https://max.hn/thoughts/how-to-create-a-highlighter-marker-effect-in-css
   mark {
