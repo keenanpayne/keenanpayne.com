@@ -1086,7 +1086,7 @@ p {
       --context-icon: '📎'; }
     p.-context.-question {
       --context-border-color: var(--color-tertiary-mid);
-      --context-icon: '❓'; }
+      --context-icon: '🤔'; }
     p.-context.-twitter {
       --context-border-color: #1DA1F2;
       color: var(--color-secondary-mid);
