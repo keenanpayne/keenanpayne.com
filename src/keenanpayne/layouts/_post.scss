@@ -152,10 +152,15 @@
     padding: 0.1em 0.4em;
   }
 
-  // Descendants
+  // Codepen Embeds
   .cp_embed_wrapper { 
     margin-bottom: $spacing-s;
     margin-top: $spacing-s;
+  }
+
+  // Embedded Tweets
+  .twitter-tweet-rendered { 
+    margin: $spacing-xs auto $spacing-s !important;
   }
 }
 

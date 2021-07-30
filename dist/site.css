@@ -1084,6 +1084,36 @@ p {
     p.-context.-note {
       --context-border-color: var(--color-secondary-light);
       --context-icon: '📎'; }
+    p.-context.-question {
+      --context-border-color: var(--color-tertiary-mid);
+      --context-icon: '❓'; }
+    p.-context.-twitter {
+      --context-border-color: #1DA1F2;
+      color: var(--color-secondary-mid);
+      font-size: 0.8rem;
+      font-style: italic;
+      margin-bottom: calc(1.45rem + 1vw); }
+      p.-context.-twitter svg {
+        display: block;
+        margin-bottom: calc(0.362rem + 1vw);
+        margin-left: auto;
+        margin-right: auto; }
+        @media (min-width: 480px) {
+          p.-context.-twitter svg {
+            left: 0;
+            position: absolute;
+            top: 25%;
+            transform: translateY(-25%); } }
+      p.-context.-twitter a {
+        display: block;
+        font-size: 0.64rem;
+        font-style: normal;
+        margin-top: calc(0.362rem + 1vw); }
+      p.-context.-twitter span {
+        display: inline-block; }
+        @media (min-width: 480px) {
+          p.-context.-twitter span {
+            padding-left: calc(1.45rem + 1vw); } }
 
 sup {
   font-size: 75%;
@@ -1815,6 +1845,9 @@ input.-bg-white {
 .post-content .cp_embed_wrapper {
   margin-bottom: calc(1.45rem + 1vw);
   margin-top: calc(1.45rem + 1vw); }
+
+.post-content .twitter-tweet-rendered {
+  margin: calc(0.725rem + 1vw) auto calc(1.45rem + 1vw) !important; }
 
 .post-comments {
   margin-top: calc(4.35rem + 1vw); }
