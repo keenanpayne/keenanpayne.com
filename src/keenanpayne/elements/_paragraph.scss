@@ -89,6 +89,17 @@ p {
       --context-icon: '🤔';
     }
 
+    &.-notice {
+      --context-border-color: var(--color-tertiary);
+      --context-icon: '⚠️';
+
+      font-size: typeScale(1);
+      
+      &:before { 
+        color: var(--color-tertiary);
+      }
+    }
+
     &.-twitter { 
       --context-border-color: #1DA1F2;
 
@@ -112,7 +123,7 @@ p {
       }
 
       a { 
-        display: block;
+        display: inline-block;
         font-size: typeScale(.5);
         font-style: normal;
         margin-top: $spacing-xxs;

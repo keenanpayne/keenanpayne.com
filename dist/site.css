@@ -1087,6 +1087,12 @@ p {
     p.-context.-question {
       --context-border-color: var(--color-tertiary-mid);
       --context-icon: '🤔'; }
+    p.-context.-notice {
+      --context-border-color: var(--color-tertiary);
+      --context-icon: '⚠️';
+      font-size: 0.8rem; }
+      p.-context.-notice:before {
+        color: var(--color-tertiary); }
     p.-context.-twitter {
       --context-border-color: #1DA1F2;
       color: var(--color-secondary-mid);
@@ -1105,7 +1111,7 @@ p {
             top: 25%;
             transform: translateY(-25%); } }
       p.-context.-twitter a {
-        display: block;
+        display: inline-block;
         font-size: 0.64rem;
         font-style: normal;
         margin-top: calc(0.362rem + 1vw); }
@@ -1635,9 +1641,11 @@ input.-bg-white {
     -ms-flex-preferred-size: 100%;
         flex-basis: 100%; }
   .newsletter-form-fields > input[type="email"] {
+    font-size: 0.64rem;
     -ms-flex: 1;
         flex: 1; }
   .newsletter-form-fields > input[type="submit"] {
+    font-size: 0.64rem;
     padding-bottom: 0;
     padding-top: 0; }
 
@@ -1784,6 +1792,10 @@ input.-bg-white {
 
 .post-content > blockquote {
   max-width: 750px; }
+  .post-content > blockquote cite {
+    display: block;
+    margin-top: calc(0.725rem + 1vw);
+    text-align: right; }
 
 .post-content h2, .post-content h3 {
   margin-top: 1.5em;

@@ -22,10 +22,12 @@
   }
 
   > input[type="email"] { 
+    font-size: typeScale(.5);
     flex: 1;
   }
 
   > input[type="submit"] { 
+    font-size: typeScale(.5);
     padding-bottom: 0;
     padding-top: 0;
   }

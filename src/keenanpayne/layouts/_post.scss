@@ -65,6 +65,12 @@
 
   > blockquote { 
     max-width: 750px;
+
+    cite { 
+      display: block;
+      margin-top: $spacing-xs;
+      text-align: right;
+    }
   }
 
   h2, h3 {
