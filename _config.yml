@@ -79,7 +79,6 @@ exclude:
 compress_html:
   clippings: all
   comments:  all
-  endings:   all
 
 
 ##
