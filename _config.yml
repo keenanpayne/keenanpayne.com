@@ -72,16 +72,6 @@ exclude:
 
 
 ##
-## Compress Settings
-## -----------------
-## https://github.com/penibelst/jekyll-compress-html
-
-compress_html:
-  clippings: all
-  comments:  all
-
-
-##
 ## Defaults
 ## --------
 
