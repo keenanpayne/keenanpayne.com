@@ -1,0 +1,21 @@
+{
+  "title": "Keenan Payne",
+  "url": "https://keenanpayne.com/",
+  "language": "en",
+  "description": "TODO: Add description",
+  "feed": {
+    "subtitle": "TODO: Add subtitle",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://keenanpayne.com/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://keenanpayne.com/feed/feed.json"
+  },
+  "author": {
+    "name": "Keenan Payne",
+    "email": "contact@keenanpayne.com",
+    "url": "https://keenanpayne.com/about-me/"
+  }
+}
