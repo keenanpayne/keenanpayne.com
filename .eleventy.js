@@ -57,8 +57,8 @@ module.exports = function(eleventyConfig) {
     return filterTagList([...tagSet]);
   });
 
-  // Copy the `img` and `css` folders to the output
-  eleventyConfig.addPassthroughCopy("img");
+  // Copy the `images` and `css` folders to the output
+  eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("css");
 
   // Customize Markdown library and settings:
@@ -91,6 +91,10 @@ module.exports = function(eleventyConfig) {
     ghostMode: false
   });
 
+  eleventyConfig.addShortcode("p_large", function(p_large) {
+    return `<p class="-large">${p_large.content}</p>`;
+  });
+
   return {
     // Control which files Eleventy will process
     // e.g.: *.md, *.njk, *.html, *.liquid
@@ -116,10 +120,10 @@ module.exports = function(eleventyConfig) {
     // -----------------------------------------------------------------
 
     // Pre-process *.md files with: (default: `liquid`)
-    markdownTemplateEngine: "njk",
+    markdownTemplateEngine: "liquid",
 
     // Pre-process *.html files with: (default: `liquid`)
-    htmlTemplateEngine: "njk",
+    htmlTemplateEngine: "liquid",
 
     // Opt-out of pre-processing global data JSON files: (default: `liquid`)
     dataTemplateEngine: false,

@@ -46,13 +46,12 @@ main :first-child {
   margin-top: 0;
 }
 header {
+  align-items: center;
   border-bottom: 1px dashed var(--lightgray);
+  display: flex;
+  justify-content: space-between;
 }
-header:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+
 table {
   margin: 1em 0;
 }
@@ -158,22 +157,11 @@ code {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  counter-increment: start-from -1;
   line-height: 1.8;
 }
-.postlist-item:before {
-  display: inline-block;
-  pointer-events: none;
-  content: "" counter(start-from, decimal-leading-zero) ". ";
-  line-height: 100%;
-  text-align: right;
-}
-.postlist-date,
-.postlist-item:before {
-  font-size: 0.8125em; /* 13px /16 */
-  color: var(--darkgray);
-}
 .postlist-date {
+  color: var(--darkgray);
+  font-size: 0.8125em; /* 13px /16 */
   word-spacing: -0.5px;
 }
 .postlist-link {
@@ -244,4 +232,20 @@ a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
   color: #aaa;
+}
+
+/* Blog */
+.tmpl-post { 
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2rem;
+  max-width: 65ch;
+}
+
+.tmpl-post time { 
+  font-size: .875rem;
+}
+
+p.-large { 
+  font-size: 1.5rem;
 }

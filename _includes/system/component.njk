@@ -1,0 +1,4 @@
+{# Ref: https://www.trysmudford.com/blog/encapsulated-11ty-components/ #}
+{%- macro component(name, params) -%}
+  {% include "../" + name + ".njk" ignore missing %}
+{%- endmacro -%}

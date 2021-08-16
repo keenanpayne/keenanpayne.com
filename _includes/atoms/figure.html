@@ -1,0 +1,20 @@
+<figure>
+  <img src="{{ src|slugify:'raw' }}" alt="{{ alt }}" {% if width %} width="{{ width }}" {% endif %}>
+
+  {% if caption %}
+    <figcaption>
+      {{ caption }}
+
+      {% if source_title and source_link %}
+        <p>
+          <small>
+            <strong>Source:</strong>
+            <a href="{{ source_link }}" title="{{ source_title }}" target="_blank">
+              {{ source_title }}
+            </a>
+          </small>
+        </p>
+      {% endif %}
+    </figcaption>
+  {% endif %}
+</figure>
