@@ -70,7 +70,8 @@ module.exports = function(eleventyConfig) {
     permalink: true,
     permalinkClass: "direct-link",
     permalinkSymbol: "#"
-  });
+  }).disable('code').use(require('markdown-it-footnote')); // Addressing https://www.11ty.dev/docs/languages/markdown/#there-are-extra-and-in-my-output
+
   eleventyConfig.setLibrary("md", markdownLibrary);
 
   // Override Browsersync defaults (used only with --serve)
@@ -91,6 +92,8 @@ module.exports = function(eleventyConfig) {
     ghostMode: false
   });
 
+
+  // Playing with shortcodes
   eleventyConfig.addShortcode("p_large", function(p_large) {
     return `<p class="-large">${p_large.content}</p>`;
   });
