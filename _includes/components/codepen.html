@@ -1,0 +1,22 @@
+<div 
+  class="codepen" 
+  data-prefill='{
+    {% if title %}"title": "{{ title }}",{% endif %}
+    {% if description %}"description": "{{ description }}",{% endif %}
+    {% if tags %}"tags": [{{ tags }}]{% endif %}
+  }'
+  data-height="400" 
+  data-theme-id="dark"
+  data-default-tab="{% if tab %}{{ tab }}{% else %}result{% endif %}" 
+  data-editable="false"
+>
+{% if html %}
+<pre data-lang="html"><code class="language-html">{{ html | escape }}</code></pre>
+{% endif %}
+{% if scss %}
+<pre data-lang="scss"><code class="language-scss">{{ scss | escape }}</code></pre>
+{% endif %}
+{% if js %}
+<pre data-lang="js"><code class="language-js">{{ js | escape }}</code></pre>
+{% endif %}
+</div>

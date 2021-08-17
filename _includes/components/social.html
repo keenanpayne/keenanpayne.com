@@ -1,0 +1,9 @@
+{% if site.social %}
+  <ul class="social">
+	  {% for network in site.social %}
+    <li class="social-link-wrapper">
+      <a class="social-link -{{ network.name|downcase }}" href="{{ network.url }}" title="{{ network.name }}">{{ network.name }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+{% endif %}
