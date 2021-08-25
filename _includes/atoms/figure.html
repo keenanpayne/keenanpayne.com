@@ -1,11 +1,11 @@
 <figure>
   <img src="{{ src|slugify:'raw' }}" alt="{{ alt }}" {% if width %} width="{{ width }}" {% endif %}>
 
-  {% if caption %}
+  {%- if caption -%}
     <figcaption>
       {{ caption }}
 
-      {% if source_title and source_link %}
+      {%- if source_title and source_link -%}
         <p>
           <small>
             <strong>Source:</strong>
@@ -14,7 +14,7 @@
             </a>
           </small>
         </p>
-      {% endif %}
+      {%- endif -%}
     </figcaption>
-  {% endif %}
+  {%- endif -%}
 </figure>

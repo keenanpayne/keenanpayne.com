@@ -69,7 +69,7 @@ html: '<button>
       </svg>
     </div>
   </div>
-</button>'
+</button>',
 scss='button {
   background-color: white;
   border: 2px solid black;
@@ -106,7 +106,7 @@ html: '<button>
       </svg>
     </div>
   </div>
-</button>'
+</button>',
 scss='.arrowPacman {
   --arrow-width: 20px;
   --arrow-spacer: 4px;
@@ -160,7 +160,7 @@ html: '<button>
       </svg>
     </div>
   </div>
-</button>'
+</button>',
 scss='.arrowPacman {
   --arrow-width: 20px;
   --arrow-spacer: 4px;
@@ -219,7 +219,7 @@ html: '<button>
       </svg>
     </div>
   </div>
-</button>'
+</button>',
 scss='.arrowPacman {
   --arrow-width: 20px;
   --arrow-spacer: 4px;
@@ -288,7 +288,7 @@ html: '<button>
       </svg>
     </div>
   </div>
-</button>'
+</button>',
 scss='.arrowPacman {
   --arrow-width: 20px;
   --arrow-spacer: 4px;

@@ -9,14 +9,10 @@ tags:
 
 I recently led an effort to rebuild the entire website for [Rippling](https://rippling.com), a San Francisco-based startup that builds software that helps companies manage different parts of their organization, such as HR and IT. Rippling had been using its former website since early in the company's life and wanted me to help provide a complete overhaul of their web presence. This overhaul coincided with an extensive marketing campaign by the company, which included a significant advertising push inside of San Francisco boldly targeting their direct competitors. 
 
-<div grid>
-  <div column="6">
-    {% include atoms/figure.html, src: '/images/posts/re-architecting-rippling-css/rippling-legacy.png', alt: 'Preview of what the Rippling website looked like before', caption: "Preview of what the Rippling website looked like before" %}
-  </div>
+<div class="sideBySide">
+  {% include atoms/figure.html, src: '/images/posts/re-architecting-rippling-css/rippling-legacy.png', alt: 'Preview of what the Rippling website looked like before', caption: "Preview of what the Rippling website looked like before" %}
 
-  <div column="6">
-    {% include atoms/figure.html src: '/images/posts/re-architecting-rippling-css/rippling-new.png', alt: 'Preview of what the Rippling website looks like now' caption="Preview of what the Rippling website looks like now" source_title: "View the Rippling website", source_link: "https://rippling.com" %}
-  </div>
+  {% include atoms/figure.html, src: '/images/posts/re-architecting-rippling-css/rippling-new.png', alt: 'Preview of what the Rippling website looks like now', caption: "Preview of what the Rippling website looks like now", source_title: "View the Rippling website", source_link: "https://rippling.com" %}
 </div>
 
 ## Move fast and build things

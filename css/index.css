@@ -6,6 +6,7 @@
   --navy: #17050F;
   --blue: #082840;
   --white: #fff;
+  --light-yellow: #fbf4e6;
 }
 
 /* Global stylesheet */
@@ -25,11 +26,6 @@ p:last-child {
   margin-bottom: 0;
 }
 p,
-.tmpl-post li,
-img {
-  max-width: 37.5em; /* 600px /16 */
-}
-p,
 .tmpl-post li {
   line-height: 1.45;
 }
@@ -45,11 +41,10 @@ main {
 main :first-child {
   margin-top: 0;
 }
-header {
-  align-items: center;
-  border-bottom: 1px dashed var(--lightgray);
-  display: flex;
-  justify-content: space-between;
+
+img,
+video { 
+  max-width: 100%;
 }
 
 table {
@@ -119,30 +114,56 @@ code {
 }
 
 /* Header */
-.home {
-  padding: 0 1rem;
-  float: left;
-  margin: 1rem 0; /* 16px /16 */
-  font-size: 1em; /* 16px /16 */
+.header {
+  align-items: center;
+  border-bottom: 1px dashed var(--lightgray);
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
 }
-.home :link:not(:hover) {
+
+.header-left { 
+  display: flex;
+  flex-direction: column;
+}
+
+.header-right { 
+
+}
+
+.header-description { 
+  font-size: .875rem;
+  margin-top: 0;
+  max-width: 35ch;
+  text-align: right;
+}
+
+.header-logo {
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.header-logo :link:not(:hover) {
   text-decoration: none;
 }
 
 /* Nav */
 .nav {
+  font-size: .875rem;
   padding: 0;
   list-style: none;
-  float: left;
-  margin-left: 1em;
+  margin: 0;
 }
+
 .nav-item {
   display: inline-block;
   margin-right: 1em;
 }
+
 .nav-item a[href]:not(:hover) {
   text-decoration: none;
 }
+
 .nav-item-active {
   font-weight: 700;
   text-decoration: underline;
@@ -246,6 +267,76 @@ a[href].direct-link:focus:visited,
   font-size: .875rem;
 }
 
+.tmpl-post h2 { 
+  margin-top: 2.5rem;
+}
+
+.tmpl-post h3 { 
+  margin-top: 2rem;
+}
+
+.tmpl-post h2 + h3 { 
+  margin-top: 0;
+}
+
+.tmpl-post li:not(:first-of-type) { 
+  margin-top: .5rem;
+}
+
+.tmpl-post ul ul { 
+  margin-top: .5rem;
+}
+
 p.-large { 
   font-size: 1.5rem;
+}
+
+/* Code */
+p code { 
+  background-color: var(--light-yellow);
+  border-radius: 3px;
+  font-size: .75rem;
+  padding: .25rem .35rem;
+  white-space: nowrap
+}
+
+/* Figures */
+figure { 
+  margin: 0;
+}
+
+figcaption { 
+  font-size: .75rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin-top: .5rem;
+}
+
+/* Codepen */
+.codepen { 
+  border: 1px solid var(--darkgray);
+  padding: 1rem 1.5rem;
+}
+
+/* Blockquote */
+blockquote { 
+  border-left: 3px solid var(--blue);
+  margin-left: 1rem;
+  padding-bottom: .5rem;
+  padding-left: 1rem;
+  padding-top: .5rem;
+}
+
+/* Footnotes */
+.footnotes { 
+  font-size: .875rem;
+}
+
+.footnote-item:not(:first-of-type) { 
+  margin-top: 1rem;
+}
+
+/* Side-by-side */
+.sideBySide { 
+  display: flex;
 }

@@ -82,14 +82,10 @@ The first step is setting aside time for reflection after completing a project. 
 
 I would suggest doing your reflection somewhere that inspires you. I enjoy being out in nature when I'm reflecting, as that setting is where I have the greatest number of ideas. Pick a setting that puts you at ease and inspires you. 
 
-<div grid class="gallery">
-  <div column="6">
-    {% include atoms/figure.html, src: '/images/posts/improve-project-execution/hike-1.jpg', alt: 'Picture of the Presidio in San Francisco', caption: "The Presidio is one of my favorite areas to hike in San Francisco" %}
-  </div>
+<div class="sideBySide">
+  {% include atoms/figure.html, src: '/images/posts/improve-project-execution/hike-1.jpg', alt: 'Picture of the Presidio in San Francisco', caption: "The Presidio is one of my favorite areas to hike in San Francisco" %}
 
-  <div column="6">
-    {% include atoms/figure.html, src: '/images/posts/improve-project-execution/hike-2.jpg', alt: 'Picture of Baker Beach in San Francisco', caption: "I also love walking around the beach, so ,I: can frequently be found at Baker Beach" %}
-  </div>
+  {% include atoms/figure.html, src: '/images/posts/improve-project-execution/hike-2.jpg', alt: 'Picture of Baker Beach in San Francisco', caption: "I also love walking around the beach, so ,I: can frequently be found at Baker Beach" %}
 </div>
 
 ### Have a brainstorming session
@@ -140,7 +136,7 @@ For example, after reflecting on the tight deadlines that I was experiencing, I 
 - Don't accept any projects with set deadlines
 - Don't accept any projects with clients who are unwilling to negotiate deadlines
 - Always map out a project timeline using the scope of work to understand what realistic deadlines look like
-- Imagine that the work will always take 1.2--1.5x the time that I expect
+- Imagine that the work will always take 1.2–1.5x the time that I expect
 - Have ownership over creating a timeline and setting deadlines for the work that I do
 
 Now, I have turned the idea of "improve tight deadlines" into a list of actionable steps that I could utilize to improve my work.

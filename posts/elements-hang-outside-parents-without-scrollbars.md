@@ -38,7 +38,7 @@ Naturally, if we want to remove the horizontal overflow for our off-screen conte
 
 This solution works well on sub-1920 pixel viewports, but when you have a larger viewport, we get the following issue:
 
-{% include atoms/figure.html, src: "/images/posts/elements-hang-outside-parents/example-complete.png" alt: "Landing page design" %}
+{% include atoms/figure.html, src: "/images/posts/elements-hang-outside-parents/example-complete.png", alt: "Landing page design" %}
 
 Because we're removing all horizontal overflow from our container, when you have a viewport larger than 1920 pixels, the remaining parts of our floating elements are cut off.
 
