@@ -1,7 +1,35 @@
 <ul reversed class="postlist">
-  {% for post in postslist | reverse %}
+  {# TODO: Only display the intro and topics when displaying a specific journey #}
+  <li class="postlist-item -intro">
+    {# TODO: Dynamic journey name #}
+    <h2>
+      Cryptocurrency and the world of web3
+    </h2>
+
+    {# TODO: Dynamic journey description #}
+    <p>
+      The advent of ever-popular and powerful cryptocurrency technology has inspired me to learn more about what makes this world tick. 
+    </p>  
+  </li>
+
+  <li class="postlist-item -topics">
+    <h3>Topics</h3>
+
+    {# TODO: Display categories/tags applied to posts in this journey #}
+    <ul>
+      {# TODO: Display number of posts associated with a topic next to name
+                e.g., Blockchain (10) #}
+      <li>Blockchain</li>
+      <li>Coins</li>
+      <li>NFT</li>
+      <li>Community</li>
+      <li>Investing</li>
+    </ul>
+  </li>
+
+  {%- for post in postslist | reverse -%}
     <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-      <a href="{{ post.url | url }}" class="postlist-link">
+      <a href="{{ post.url | url }}" class="postlist-title">
         {% if post.data.title %}
           {{ post.data.title }}
         {% else %}
@@ -9,17 +37,23 @@
         {% endif %}
       </a>
 
-      <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
-        {{ post.date | readableDate }}
-      </time>
+      <div class="postlist-meta">
+        <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
+          {{ post.date | readableDate }}
+        </time>
 
-      {% for tag in post.data.tags | filterTagList %}
-        {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+        <ul class="postlist-tags">
+          {%- for tag in post.data.tags | filterTagList -%}
+            <li class="postlist-tag">
+              {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
 
-        <a href="{{ tagUrl | url }}" class="post-tag">
-          {{ tag }}
-        </a>
-      {% endfor %}
+              <a href="{{ tagUrl | url }}" class="post-tag">
+                {{ tag }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
     </li>
-  {% endfor %}
+  {%- endfor -%}
 </ul>
