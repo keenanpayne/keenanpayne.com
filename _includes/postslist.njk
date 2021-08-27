@@ -1,18 +1,28 @@
-<ul reversed class="postlist">
+<header class="postlist-headline">
+  <h2>
+    Essays
+  </h2>
+
+  <p>
+    <a href="{{ '/posts/' | url }}">View all posts →</a>
+  </p>
+</header>
+
+<section class="postlist">
   {# TODO: Only display the intro and topics when displaying a specific journey #}
-  <li class="postlist-item -intro">
+  <article class="postlist-item -intro">
     {# TODO: Dynamic journey name #}
-    <h2>
+    <h3>
       Cryptocurrency and the world of web3
-    </h2>
+    </h3>
 
     {# TODO: Dynamic journey description #}
-    <p>
+    <p class="postlist-item-description">
       The advent of ever-popular and powerful cryptocurrency technology has inspired me to learn more about what makes this world tick. 
     </p>  
-  </li>
+  </article>
 
-  <li class="postlist-item -topics">
+  <article class="postlist-item -topics">
     <h3>Topics</h3>
 
     {# TODO: Display categories/tags applied to posts in this journey #}
@@ -25,17 +35,25 @@
       <li>Community</li>
       <li>Investing</li>
     </ul>
-  </li>
+  </article>
 
   {%- for post in postslist | reverse -%}
-    <li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-      <a href="{{ post.url | url }}" class="postlist-title">
-        {% if post.data.title %}
-          {{ post.data.title }}
-        {% else %}
-          <code>{{ post.url }}</code>
-        {% endif %}
-      </a>
+    <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+      <header class="postlist-header">
+        <h3 class="postlist-title">
+          <a href="{{ post.url | url }}" class="postlist-link">
+            {% if post.data.title %}
+              {{ post.data.title }}
+            {% else %}
+              <code>{{ post.url }}</code>
+            {% endif %}
+          </a>
+        </h3>
+
+        <p class="postlist-lede">
+          This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
+        </p>
+      </header>
 
       <div class="postlist-meta">
         <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
@@ -54,6 +72,6 @@
           {%- endfor -%}
         </ul>
       </div>
-    </li>
+    </article>
   {%- endfor -%}
-</ul>
+</section>
