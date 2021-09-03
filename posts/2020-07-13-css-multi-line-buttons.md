@@ -5,6 +5,7 @@ meta:
   facebook_image: '/images/posts/multi-line-buttons/social_facebook.png'
   twitter_image: '/images/posts/multi-line-buttons/social_twitter.png'
 date: 2020-07-13
+type: Tutorial
 tags:
   - CSS
 ---

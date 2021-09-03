@@ -1,14 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+
 /**
  * Shared
  */
 :root {
   --lightgray: #e0e0e0;
   --gray: #C0C0C0;
+  --midgray: #909090;
   --darkgray: #333;
   --navy: #17050F;
   --blue: #082840;
   --white: #fff;
   --light-yellow: #fbf4e6;
+
+  --font-family-mono: 'Space Mono', monospace;
 }
 
 
@@ -181,17 +187,9 @@ blockquote {
  */
 .header {
   align-items: center;
-  border-bottom: 1px dashed var(--lightgray);
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1.5rem;
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: var(--white);
-  z-index: 1;
+  padding: 2rem 1.5rem;
 }
 
 .header-left { 
@@ -200,15 +198,19 @@ blockquote {
 }
 
 .header-logo {
-  font-size: 1rem;
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
   margin-top: 0;
+}
+
+.header-right { 
+  text-align: right;
 }
 
 .header-description { 
   font-size: .875rem;
   margin-top: 0;
   max-width: 35ch;
-  text-align: right;
 }
 
 .header-logo :link:not(:hover) {
@@ -228,7 +230,16 @@ blockquote {
 
 .nav-item {
   display: inline-block;
-  margin-right: 1em;
+}
+
+.nav-item:not(:first-of-type) { 
+  margin-left: 1.5rem;
+}
+
+.nav-item.-cta { 
+  border-left: 1px solid var(--midgray);
+  font-weight: bold;
+  padding-left: 1.5rem;
 }
 
 .nav-item a[href]:not(:hover) {
@@ -244,11 +255,14 @@ blockquote {
 /**
  * Posts list 
  */
-.postlist {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
-  padding: 0;
+.postlist { 
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 760px;
+}
+
+.postlist + .postlist { 
+  margin-top: 5rem;
 }
 
 .postlist-headline { 
@@ -265,16 +279,6 @@ blockquote {
   margin-top: 0;
 }
 
-.postlist-item {
-  border: 1px solid var(--navy);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  line-height: 1.65;
-  min-height: 150px;
-  padding: 1.25rem 1.5rem;
-}
-
 .postlist-item.-intro { 
   grid-area: 1 / span 2;
 }
@@ -285,7 +289,7 @@ blockquote {
 
 .postlist-date {
   color: var(--darkgray);
-  font-size: 0.8125em; /* 13px /16 */
+  font-size: 0.75rem;
   word-spacing: -0.5px;
 }
 
@@ -321,14 +325,78 @@ blockquote {
   align-items: center;
   display: flex;
   justify-content: space-between;
+  margin-bottom: .75rem;
+}
+
+.postlist-type { 
+  color: var(--darkgray);
+  font-family: var(--font-family-mono);
+  font-size: .875rem;
+  font-variant: all-small-caps;
+}
+
+.postlist-date { 
+  color: var(--midgray);
 }
 
 .postlist-tags { 
   list-style-type: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
 }
 
 .postlist-tag { 
   display: inline-block;
+}
+
+.postlist-tag:not(:first-of-type) { 
+  margin-left: 0.8em;
+}
+
+.postlist-toggle { 
+  border-bottom: 1px solid var(--navy);
+  color: var(--navy);
+  font-size: .75rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  padding-bottom: .25rem;
+}
+
+.postlist-toggle select { 
+  background: none;
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid var(--gray);
+  box-shadow: none;
+  font-size: .875rem;
+  width: 50px;
+}
+
+/* Modifiers */
+.postlist.-stack .postlist-item + .postlist-item {
+  margin-top: 3rem;
+}
+
+.postlist.-journey { 
+  max-width: 1260px;
+}
+
+.postlist.-journey .postlist-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  padding: 0;
+}
+
+.postlist.-journey .postlist-item {
+  border: 1px solid var(--navy);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  line-height: 1.65;
+  min-height: 150px;
+  padding: 1.25rem 1.5rem;
 }
 
 
@@ -344,7 +412,6 @@ blockquote {
   font-size: 0.6875em;
   justify-content: center;
   line-height: 1.8;
-  margin-left: 0.8em;
   padding: 0.09090909090909em 0.3636363636364em;
   text-decoration: none;
   text-transform: uppercase;
@@ -504,4 +571,11 @@ p.-large {
   margin-top: 2rem;
   text-align: center;
   width: calc(100% + 5vw);
+}
+
+/**
+ * Page Templates
+ */
+.page-home { 
+  margin-top: 3rem;
 }

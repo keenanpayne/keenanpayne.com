@@ -2,6 +2,9 @@
 title:  'Defining metrics that help with static site generator evaluation'
 meta: 
   description: 'A brief reflection on what metrics one might use when evaluating different static site generators.'
+type: Reflections
+tags: 
+  - Web Development
 date: 2018-07-26
 ---
 

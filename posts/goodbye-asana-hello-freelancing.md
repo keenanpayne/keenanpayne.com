@@ -3,6 +3,7 @@ title:  'Goodbye Asana, hello freelancing'
 meta: 
   description: 'After five years I have decided to leave Asana and embark on a journey as a freelance web developer.'
 date: 2020-04-11
+type: Article
 tags:
   - Personal
 ---

@@ -1,64 +1,38 @@
-<header class="postlist-headline">
-  <h2>
-    Essays
-  </h2>
+<section class="postlist -stack">
+  <nav class="postlist-toggle">
+    Recently Published
+  </nav>
 
-  <p>
-    <a href="{{ '/posts/' | url }}">View all posts →</a>
-  </p>
-</header>
+  <div class="postlist-items">
+    {%- for post in postslist | reverse -%}
+      <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+        <div class="postlist-meta">
+          {%- if post.data.type -%}
+            <span class="postlist-type">
+              {{ post.data.type }}
+            </span>
+          {%- endif -%}
 
-<section class="postlist">
-  {# TODO: Only display the intro and topics when displaying a specific journey #}
-  <article class="postlist-item -intro">
-    {# TODO: Dynamic journey name #}
-    <h3>
-      Cryptocurrency and the world of web3
-    </h3>
+          <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
+            {{ post.date | readableDate }}
+          </time>
+        </div>
 
-    {# TODO: Dynamic journey description #}
-    <p class="postlist-item-description">
-      The advent of ever-popular and powerful cryptocurrency technology has inspired me to learn more about what makes this world tick. 
-    </p>  
-  </article>
+        <header class="postlist-header">
+          <h3 class="postlist-title">
+            <a href="{{ post.url | url }}" class="postlist-link">
+              {% if post.data.title %}
+                {{ post.data.title }}
+              {% else %}
+                <code>{{ post.url }}</code>
+              {% endif %}
+            </a>
+          </h3>
 
-  <article class="postlist-item -topics">
-    <h3>Topics</h3>
-
-    {# TODO: Display categories/tags applied to posts in this journey #}
-    <ul>
-      {# TODO: Display number of posts associated with a topic next to name
-                e.g., Blockchain (10) #}
-      <li>Blockchain</li>
-      <li>Coins</li>
-      <li>NFT</li>
-      <li>Community</li>
-      <li>Investing</li>
-    </ul>
-  </article>
-
-  {%- for post in postslist | reverse -%}
-    <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-      <header class="postlist-header">
-        <h3 class="postlist-title">
-          <a href="{{ post.url | url }}" class="postlist-link">
-            {% if post.data.title %}
-              {{ post.data.title }}
-            {% else %}
-              <code>{{ post.url }}</code>
-            {% endif %}
-          </a>
-        </h3>
-
-        <p class="postlist-lede">
-          This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
-        </p>
-      </header>
-
-      <div class="postlist-meta">
-        <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
-          {{ post.date | readableDate }}
-        </time>
+          <p class="postlist-lede">
+            This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
+          </p>
+        </header>
 
         <ul class="postlist-tags">
           {%- for tag in post.data.tags | filterTagList -%}
@@ -71,7 +45,87 @@
             </li>
           {%- endfor -%}
         </ul>
-      </div>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+<section class="postlist -journey">
+  <header class="postlist-headline">
+    <h2>
+      Essays
+    </h2>
+
+    <p>
+      <a href="{{ '/posts/' | url }}">View all posts →</a>
+    </p>
+  </header>
+  
+  <div class="postlist-items">
+    {# TODO: Only display the intro and topics when displaying a specific journey #}
+    <article class="postlist-item -intro">
+      {# TODO: Dynamic journey name #}
+      <h3>
+        Cryptocurrency and the world of web3
+      </h3>
+
+      {# TODO: Dynamic journey description #}
+      <p class="postlist-item-description">
+        The advent of ever-popular and powerful cryptocurrency technology has inspired me to learn more about what makes this world tick. 
+      </p>  
     </article>
-  {%- endfor -%}
+
+    <article class="postlist-item -topics">
+      <h3>Topics</h3>
+
+      {# TODO: Display categories/tags applied to posts in this journey #}
+      <ul>
+        {# TODO: Display number of posts associated with a topic next to name
+                  e.g., Blockchain (10) #}
+        <li>Blockchain</li>
+        <li>Coins</li>
+        <li>NFT</li>
+        <li>Community</li>
+        <li>Investing</li>
+      </ul>
+    </article>
+
+    {%- for post in postslist | reverse -%}
+      <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+        {%- if post.data.type -%}
+          <span class="postlist-type">
+            {{ post.data.type }}
+          </span>
+        {%- endif -%}
+
+        <header class="postlist-header">
+          <h3 class="postlist-title">
+            <a href="{{ post.url | url }}" class="postlist-link">
+              {% if post.data.title %}
+                {{ post.data.title }}
+              {% else %}
+                <code>{{ post.url }}</code>
+              {% endif %}
+            </a>
+          </h3>
+
+          <p class="postlist-lede">
+            This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
+          </p>
+        </header>
+
+        <ul class="postlist-tags">
+          {%- for tag in post.data.tags | filterTagList -%}
+            <li class="postlist-tag">
+              {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+
+              <a href="{{ tagUrl | url }}" class="post-tag">
+                {{ tag }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </article>
+    {%- endfor -%}
+  </div>
 </section>

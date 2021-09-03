@@ -23,22 +23,27 @@
           </a>
         </h1>
 
+        <p class="header-description">
+          This is a description of who I am and what this website is about.
+        </p>
+      </div>
+
+      <div class="header-right">
         {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
         <ul class="nav">
-          {%- for entry in collections.all | eleventyNavigation %}
+          {%- for entry in collections.all | eleventyNavigation -%}
             <li class="nav-item{% if entry.url == page.url %} nav-item-active{% endif %}">
               <a href="{{ entry.url | url }}">
                 {{ entry.title }}
               </a>
             </li>
-          {%- endfor %}
-        </ul>
-      </div>
+          {%- endfor -%}
 
-      <div class="header-right">
-        <p class="header-description">
-          This is a description of who I am and what this website is about.
-        </p>
+          <li class="nav-item -cta">
+            <a href="#">
+              Subscribe
+            </a>
+        </ul>
       </div>
     </header>
 

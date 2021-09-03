@@ -1,9 +1,9 @@
 ---
 title:  "How do we address the monopolization of web browsers?"
 date: 2021-07-30
+type: Essay
 tags:
   - Web Browsers
-  - Twitter Essay
 ---
 
 {% include type/twitter-essay.html, link: "https://twitter.com/KeenanPayne_/status/1421215458766647297" %}

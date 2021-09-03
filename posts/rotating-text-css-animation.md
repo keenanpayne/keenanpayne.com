@@ -3,6 +3,7 @@ title:  'Rotating text with CSS animations'
 meta: 
   description: 'Learn how to make rotating text using only HTML and CSS in this tutorial.'
 date: 2019-07-12
+type: Tutorial
 tags:
   - CSS
 ---

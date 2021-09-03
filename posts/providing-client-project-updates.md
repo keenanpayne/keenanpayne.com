@@ -3,6 +3,7 @@ title:  'Providing your client with regular project updates'
 meta: 
   description: 'Learn the importance of providing regular project updates to your clients and how to send a perfect update.'
 date: 2020-07-06
+type: Article
 tags:
   - Freelancing
 ---

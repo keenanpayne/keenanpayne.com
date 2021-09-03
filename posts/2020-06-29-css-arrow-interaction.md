@@ -4,6 +4,7 @@ meta:
   description: 'Learn how to build a beautiful arrow micro-interaction with CSS.'
   image: '/images/posts/css-arrow-interaction/social.gif'
 date: 2020-06-29
+type: Tutorial
 tags:
   - CSS
 ---

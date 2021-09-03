@@ -4,6 +4,7 @@ meta:
   description: Have you ever wondered if switching careers would help you feel more fulfilled? So have I, and many others. 
   facebook_image: 
   twitter_image: 
+type: Mailbox
 date: 2021-05-17
 ---
 

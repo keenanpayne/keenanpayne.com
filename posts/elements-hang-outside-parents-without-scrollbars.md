@@ -2,6 +2,10 @@
 title:  'Allow elements to hang outside of their fixed-width parents without scrollbars'
 meta: 
   description: 'Learn about how I tackled the issue of elements existing outside of a fixed-width parent using CSS.'
+type: Tutorial
+Tags:
+  - CSS
+  - HTML
 date: 2018-02-22
 ---
 

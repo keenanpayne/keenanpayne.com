@@ -3,6 +3,7 @@ title:  'Naming typography patterns in CSS'
 meta: 
   description: 'Why do we name patterns the way that we do when writing CSS? How are the patterns that we write providing clarity and utility to ourselves and others?'
 date: 2019-06-26
+type: Tutorial
 tags: 
   - CSS
 ---

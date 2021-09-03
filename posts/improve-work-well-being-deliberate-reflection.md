@@ -4,6 +4,7 @@ meta:
   description: 'Learn how I use the practice of deliberate reflection to reliably improve my work and well-being.'
   image: '/images/posts/improve-project-execution/social.jpg'
   image_credits: 'https://unsplash.com/photos/cYUMaCqMYvI'
+type: Article
 date: 2020-05-26
 ---
 

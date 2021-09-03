@@ -4,6 +4,7 @@ meta:
   description: Do you procrastinate by planning instead of doing? How this occurs in my life and how I'm going to overcome it.
   facebook_image: 
   twitter_image: 
+type: Essay
 date: 2021-03-31
 tags:
   - Creativity
