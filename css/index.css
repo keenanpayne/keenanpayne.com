@@ -58,10 +58,6 @@ a[href]:visited {
 }
 
 /* Main */
-main {
-  padding: 1rem 1.5rem;
-}
-
 main :first-child {
   margin-top: 0;
 }
@@ -256,6 +252,7 @@ blockquote {
  * Posts list 
  */
 .postlist { 
+  margin-bottom: 5rem;
   margin-left: auto;
   margin-right: auto;
   max-width: 760px;
@@ -577,5 +574,55 @@ p.-large {
  * Page Templates
  */
 .page-home { 
-  margin-top: 3rem;
+  margin-top: 2.5rem;
+}
+
+/**
+ * Newsletter
+ */
+ .newsletter {
+  --color-base-mid: #ffd466;
+
+  background-color: var(--color-base-mid);
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  margin-bottom: 5rem;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+}
+
+.newsletter-description { 
+  grid-column: 2 / span 4;
+}
+
+.newsletter-cta { 
+  grid-column: 7 / span 3;
+}
+
+.newsletter-form {
+  margin-bottom: calc(0.725rem + 1vw);
+}
+
+.newsletter-form-fields {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.newsletter-form-fields > label {
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+}
+
+.newsletter-form-fields > input[type="email"] {
+  font-size: 0.64rem;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.newsletter-form-fields > input[type="submit"] {
+  font-size: 0.64rem;
+  padding-bottom: 0;
+  padding-top: 0;
 }

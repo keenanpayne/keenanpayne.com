@@ -2,7 +2,9 @@
 layout: layouts/home.njk
 ---
 
-{% set postslist = collections.posts | head(-3) %}
+{% set postslist = collections.posts | head(-5) %}
 {% set postslistCounter = collections.posts | length %}
 
 {% include "postslist.njk" %}
+{% include "newsletter.njk" %}
+{# {% include "postslist-journey.njk" %} #}
