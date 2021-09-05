@@ -8,12 +8,12 @@
       <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
         <div class="postlist-meta">
           {%- if post.data.type -%}
-            <span class="postlist-type">
+            <span class="_label">
               {{ post.data.type }}
             </span>
           {%- endif -%}
 
-          <time class="postlist-date" datetime="{{ post.date | htmlDateString }}">
+          <time class="_small-text" datetime="{{ post.date | htmlDateString }}">
             {{ post.date | readableDate }}
           </time>
         </div>
