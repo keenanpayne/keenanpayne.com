@@ -1,0 +1,2 @@
+/blog/*    /:splat.html    200!
+/blog /archive 200!
