@@ -16,6 +16,17 @@
   --black: #000;
   --light-yellow: #fbf4e6;
 
+  /* Migrate from old website */
+  --color-base: #fffdf7;
+  --color-base-mid: #ffd466;
+  --color-base-light: #fff8e6;
+  --color-secondary: #1a1a1a;
+  --color-secondary-mid: #4d4d4d;
+  --color-secondary-light: #999999;
+  --color-tertiary: #fe0130;
+  --color-tertiary-mid: #fe4d6e;
+  --color-tertiary-light: #ffccd6;
+
   /* Fonts */
   --font-family-mono: 'Space Mono', monospace;
 
@@ -292,9 +303,6 @@ blockquote {
  */
 .postlist { 
   margin-bottom: 5rem;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: var(--content-max-width);
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -483,20 +491,18 @@ a[href].direct-link:focus:visited,
  * Blog Post
  */
 .post { 
-  margin-left: auto;
-  margin-right: auto;
   padding-top: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  max-width: var(--content-max-width);
 }
 
 .post-header {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .post-title { 
   font-size: 2.5rem;
+  margin-bottom: 1.25rem;
   margin-top: 1rem;
 }
 
@@ -525,6 +531,45 @@ a[href].direct-link:focus:visited,
 
 .post-content ul ul { 
   margin-top: .5rem;
+}
+
+.post-content mark { 
+  background: transparent;
+  background-image: linear-gradient(to right, rgba(255, 225, 0, 0.15), rgba(255, 225, 0, 0.6) 7.5%, rgba(255, 225, 0, 0.25));
+  border-radius: 0.8em 0.3em;
+  -webkit-box-decoration-break: clone;
+          box-decoration-break: clone;
+  margin: 0 -0.4em;
+  padding: 0.1em 0.4em; 
+}
+
+
+/**
+ * Post Navigation
+ */
+
+.postNav { 
+  align-items: top;
+  border-top: 1px solid var(--midgray);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+  padding-bottom: 4rem;
+  padding-top: 2rem;
+}
+
+.postNav a { 
+  display: inline-block;
+  max-width: 27ch;
+}
+
+.postNav-prev,
+.postNav-next {
+  margin: 0;
+}
+
+.postNav-label { 
+  display: block;
 }
 
 
@@ -602,7 +647,7 @@ p.-context.-question {
 }
 
 p.-large { 
-  font-size: 2.15rem;
+  font-size: 2rem;
   transform: translateX(-2.5vw);
   margin-bottom: 2.5rem;
   margin-top: 2rem;
@@ -615,12 +660,6 @@ p.-large {
  */
 .page-home { 
   margin-top: 3rem;
-}
-
-.page-tags { 
-  margin-left: auto;
-  margin-right: auto;
-  max-width: var(--content-max-width);
 }
 
 /**
@@ -683,6 +722,55 @@ p.-large {
   padding-top: 0;
 }
 
+
+/**
+ * Mailbox
+ */
+
+ .mailbox {
+  background-color: var(--color-base-light);
+  border-top: 3px solid var(--color-base-mid);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  filter: saturate(70%);
+  margin: calc(1.45rem + 1vw) auto calc(1.45rem + 1vw);
+  max-width: 800px;
+  padding: calc(1.45rem + 1vw) calc(2.9rem + 1vw);
+  position: relative; }
+  .mailbox:before, .mailbox:after {
+    content: '';
+    left: 0;
+    position: absolute;
+    width: 100%; }
+  .mailbox:before {
+    background-image: linear-gradient(177deg, rgba(0, 0, 0, 0.1) 10%, transparent 50%), linear-gradient(-177deg, rgba(0, 0, 0, 0.1) 10%, transparent 50%);
+    background-position: 2% 0, 98% 0;
+    background-repeat: no-repeat;
+    background-size: 49% 100%;
+    bottom: -1%;
+    height: 1%; }
+  .mailbox:after {
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0.5%, rgba(0, 0, 0, 0.15) 1.2%, transparent 1.2%), linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0.5%, rgba(0, 0, 0, 0.15) 1.2%, transparent 1.2%), linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0.5%, rgba(0, 0, 0, 0.15) 1.2%, transparent 1.2%), linear-gradient(265deg, rgba(0, 0, 0, 0.2), transparent 10%), linear-gradient(5deg, rgba(0, 0, 0, 0.2), transparent 15%), linear-gradient(-5deg, rgba(0, 0, 0, 0.1), transparent 10%), linear-gradient(5deg, rgba(0, 0, 0, 0.1), transparent 10%), linear-gradient(-265deg, rgba(0, 0, 0, 0.2), transparent 10%), linear-gradient(-5deg, rgba(0, 0, 0, 0.2), transparent 15%), linear-gradient(266deg, rgba(0, 0, 0, 0.2), transparent 10%);
+    background-position: right top, left center, left bottom, left top, left top, right top, left center, right center, right center, left bottom;
+    background-repeat: no-repeat;
+    background-size: 50% 100%, 100% 33.3333%, 100% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%, 50% 33.3333%;
+    height: 100%;
+    opacity: .25;
+    top: 0;
+    width: 100%;
+    z-index: 2; }
+
+.mailbox-icon:before {
+  content: '📬';
+  font-size: 2.44141rem;
+  line-height: 1;
+  position: absolute;
+  right: -.35em;
+  top: -.75em; }
+  @media (min-width: 768px) {
+    .mailbox-icon:before {
+      font-size: 5.96046rem; } }
+
+
 /**
  * Utilities
  */
@@ -694,6 +782,12 @@ p.-large {
    display: block;
    margin-left: auto;
    margin-right: auto;
+ }
+
+ ._container { 
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--content-max-width);
  }
 
  ._label { 

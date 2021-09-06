@@ -15,3 +15,8 @@
   from = "/blog"
   to = "/archive"
   status = 301
+
+[[redirects]]
+  from = "/work"
+  to = "/"
+  status = 301

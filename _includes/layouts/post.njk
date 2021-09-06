@@ -3,7 +3,7 @@ layout: layouts/base.njk
 permalink: "/{{ title | slug }}/"
 ---
 
-<section class="post">
+<section class="post _container">
   <header class="post-header">
     <div class="post-meta">
       {%- if type -%}
@@ -40,19 +40,30 @@ permalink: "/{{ title | slug }}/"
   {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
 
   {%- if nextPost or previousPost -%}
-    <hr>
-    <ul>
+    <div class="postNav">
       {%- if nextPost -%}
-        <li>
-          Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a>
-        </li>
+        <p class="postNav-next">
+          <span class="postNav-label _label">
+            Next
+          </span>
+          
+          <a href="{{ nextPost.url | url }}">
+            {{ nextPost.data.title }}
+          </a>
+        </p>
       {% endif -%}
 
       {%- if previousPost -%}
-        <li>
-          Previous: <a href="{{ previousPost.url | url }}">{{ previousPost.data.title }}</a>
-        </li>
+        <p class="postNav-prev">
+          <span class="postNav-label _label">
+            Previous
+          </span>
+          
+          <a href="{{ previousPost.url | url }}">
+            {{ previousPost.data.title }}
+          </a>
+        </p>
       {%- endif -%}
-    </ul>
+    </div>
   {%- endif -%}
 </section>
