@@ -1,0 +1,8 @@
+/* Link */
+a[href] {
+  color: var(--link-color);
+}
+
+a[href]:visited {
+  color: var(--link-color-visited);
+}

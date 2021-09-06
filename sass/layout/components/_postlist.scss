@@ -1,0 +1,127 @@
+/**
+ * Posts list 
+ */
+ .postlist { 
+  margin-bottom: 5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.postlist + .postlist { 
+  margin-top: 5rem;
+}
+
+.postlist-headline { 
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.postlist-headline h1 { 
+  margin-bottom: 0;
+}
+
+.postlist-headline p { 
+  margin-top: 0;
+}
+
+.postlist-item.-intro { 
+  grid-area: 1 / span 2;
+}
+
+.postlist-item-description { 
+  margin-top: 0;
+}
+
+.postlist-title {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.postlist-link { 
+  text-decoration: none;
+}
+
+.postlist-header { 
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.postlist-lede { 
+  margin-top: .5rem;
+}
+
+.postlist-item-active .postlist-title {
+  font-weight: bold;
+}
+
+.postlist-title:hover { 
+  text-decoration: underline;
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
+}
+
+.postlist-meta { 
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .75rem;
+}
+
+.postlist-tags { 
+  list-style-type: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.postlist-tag { 
+  display: inline-block;
+}
+
+.postlist-tag:not(:first-of-type) { 
+  margin-left: 0.8em;
+}
+
+.postlist-toggle {
+  --toggle-border: var(--navy);
+
+  border-bottom: 1px solid var(--toggle-border);
+  font-size: .75rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  padding-bottom: .25rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .postlist-toggle {
+    --toggle-border: var(--white);
+  }
+}
+
+/* Modifiers */
+.postlist.-stack .postlist-item + .postlist-item {
+  margin-top: 3rem;
+}
+
+.postlist.-journey { 
+  max-width: 1260px;
+}
+
+.postlist.-journey .postlist-items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  padding: 0;
+}
+
+.postlist.-journey .postlist-item {
+  border: 1px solid var(--navy);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  line-height: 1.65;
+  min-height: 150px;
+  padding: 1.25rem 1.5rem;
+}

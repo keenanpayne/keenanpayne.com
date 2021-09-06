@@ -12,7 +12,7 @@ templateClass: _container
 {%- for tag in collections.tagList -%}
   {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
 
-  <a href="{{ tagUrl | url }}" class="post-tag -large">
+  <a href="{{ tagUrl | url }}" class="tag -large">
     {{ tag }}
   </a>
 {%- endfor -%}

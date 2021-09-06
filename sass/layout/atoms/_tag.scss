@@ -1,0 +1,35 @@
+/** 
+ * Tags 
+ */
+ .tag {
+  align-items: center;
+  border: 1px solid var(--gray);
+  border-radius: 0.25em; 
+  color: var(--darkgray);
+  display: inline-flex;
+  font-size: 0.6875em;
+  justify-content: center;
+  line-height: 1.8;
+  padding: 0.09090909090909em 0.3636363636364em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.tag.-large { 
+  font-size: 1.25rem;
+  margin: .25rem;
+}
+
+a[href].tag,
+a[href].tag:visited {
+  color: inherit;
+}
+
+a[href].tag:hover,
+a[href].tag:focus {
+  background-color: var(--lightgray);
+}
+
+.postlist-item > .tag {
+  align-self: center;
+}
