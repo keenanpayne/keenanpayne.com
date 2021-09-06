@@ -1,5 +1,7 @@
 ---
 title:  "Walking quickly, then slowly"
+meta:
+  description: 'Are you aware of how fast you typically walk?'
 ---
 
 Boy, do I walk fast. It's as if the only thing that matters is getting from point A to point B. I feel built to move quickly. My long legs give me a stride designed for efficiency. Efficiency to... *walk*.
