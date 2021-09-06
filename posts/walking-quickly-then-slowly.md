@@ -1,4 +1,5 @@
 ---
+permalink: '/walking-quickly-slowly/'
 title:  'Walking quickly, then slowly'
 meta: 
   description: 'Are you aware of how fast you typically walk?'
