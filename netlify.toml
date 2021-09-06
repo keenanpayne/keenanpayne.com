@@ -1,0 +1,17 @@
+# Settings in the [build] context are global and are applied to all contexts
+# unless otherwise overridden by more specific contexts.
+[build]
+  publish = "_site/"
+  command = "npm run build"
+  environment = { NODE_VERSION = "10.15.1" }
+
+# Redirects
+[[redirects]]
+  from = "/blog/*"
+  to = "/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/archive"
+  status = 301
