@@ -1,0 +1,43 @@
+/* Paragraph Styles */
+p.-context { 
+  --background: transparent;
+
+  background-color: var(--background);
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1.35rem 1.5rem;
+  position: relative;
+}
+
+p.-context .icon { 
+  background: white;
+  bottom: 0;
+  font-size: 1.25rem;
+  height: 35px;
+  line-height: 1;
+  padding: .5rem;
+  position: absolute;
+  right: 0;
+  width: 35px;
+}
+
+p.-context.-twitter { 
+  --background: rgb(29 161 242 / 20%);
+}
+
+p.-context.-twitter span { 
+  display: block;
+  margin-bottom: 1rem;
+}
+
+p.-context.-notice { 
+  --background: var(--light-yellow);
+
+  color: var(--darkgray);
+}
+
+p.-context.-question { 
+  --background: var(--lightgray);
+
+  color: var(--darkgray);
+}

@@ -1,0 +1,27 @@
+/**
+ * Post Navigation
+ */
+
+ .postNav { 
+  align-items: top;
+  border-top: 1px solid var(--midgray);
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4rem;
+  padding-bottom: 4rem;
+  padding-top: 2rem;
+}
+
+.postNav a { 
+  display: inline-block;
+  max-width: 27ch;
+}
+
+.postNav-prev,
+.postNav-next {
+  margin: 0;
+}
+
+.postNav-label { 
+  display: block;
+}
