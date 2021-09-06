@@ -3,7 +3,6 @@
 [build]
   publish = "_site/"
   command = "npm run build"
-  environment = { NODE_VERSION = "10.15.1" }
 
 # Redirects
 [[redirects]]
