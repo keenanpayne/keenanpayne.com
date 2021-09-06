@@ -26,7 +26,7 @@ An acute awareness of my mortality likely plays a role in my subconscious desire
 
 But I cannot dodge mortality, so when it's all said and done, there will always be the possibility of _more_. Perhaps my focus can shift from what I'm doing to how I'm doing it. I want to enjoy the journey.  
 
-**A ha!**  
+**Aha!**  
 
 If there is a figurative scoreboard for my life, I'm in charge of it. Why stress out by rushing, only to miss the joy and serenity of my journey?  
 
