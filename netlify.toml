@@ -2,7 +2,7 @@
 # unless otherwise overridden by more specific contexts.
 [build]
   publish = "_site/"
-  command = "npm run build"
+  command = "npm run app:build:prod"
 
 # Redirects
 [[redirects]]
