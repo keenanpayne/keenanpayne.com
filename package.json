@@ -18,7 +18,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": "<=10.15.1"
+    "node": "<=15.14.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
@@ -42,5 +42,8 @@
     "app:build:prod": "npm run assets:build:prod; ENV=prod eleventy",
     "start": "npm run app:build:dev",
     "debug": "DEBUG=* eleventy"
+  },
+  "dependencies": {
+    "sass": "^1.39.0"
   }
 }
