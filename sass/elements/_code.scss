@@ -9,10 +9,11 @@ code {
 }
 
 p code { 
+  @extend ._text-small;
+
   background-color: var(--light-yellow);
   border-radius: 3px;
   color: initial;
-  font-size: .75rem;
   padding: 0.15rem 0.25rem .175rem;
   white-space: nowrap
 }

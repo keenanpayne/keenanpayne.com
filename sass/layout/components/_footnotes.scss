@@ -3,7 +3,7 @@
 // ==================================================
 
 .footnotes { 
-  font-size: .875rem;
+  @extend ._text-small;
 }
 
 .footnote-item:not(:first-of-type) { 

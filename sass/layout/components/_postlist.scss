@@ -36,7 +36,6 @@
 }
 
 .postlist-title {
-  font-size: 1.5rem;
   margin-bottom: 0;
 }
 
@@ -87,12 +86,11 @@
 }
 
 
-.postlist-toggle {
+.postlist-toggle { 
   --toggle-border: var(--navy);
 
   border-bottom: 1px solid var(--toggle-border);
-  font-size: .75rem;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 1.5rem;
   padding-bottom: .25rem;
 

@@ -3,12 +3,13 @@
 // ==================================================
 
 .tags {
+  @extend ._text-smaller;
+
   align-items: center;
   border: 1px solid var(--lightgray);
   border-radius: 0.25em; 
   color: var(--darkgray);
   display: inline-flex;
-  font-size: 0.625em;
   justify-content: center;
   line-height: 2;
   padding: .05rem .5rem .1rem;
@@ -17,7 +18,8 @@
 
   // Modifiers
   &.-large { 
-    font-size: 1.25rem;
+    @extend ._text-h5;
+
     margin: .25rem;
   }
 }

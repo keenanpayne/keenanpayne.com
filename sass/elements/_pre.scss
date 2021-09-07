@@ -3,10 +3,11 @@
 // ==================================================
 
 pre {
+  @extend ._text-small;
+
   background-color: var(--lightgray);
   direction: ltr;
   font-family: var(--font-family-mono);
-  font-size: 14px;
   hyphens: none;
   line-height: 1.375;
   margin: .5em 0;

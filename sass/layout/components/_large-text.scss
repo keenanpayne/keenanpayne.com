@@ -3,7 +3,8 @@
 // ==================================================
 
 p.-large { 
-  font-size: 2rem;
+  @extend ._text-h3;
+
   transform: translateX(-2.5vw);
   margin-bottom: 2.5rem;
   margin-top: 2rem;

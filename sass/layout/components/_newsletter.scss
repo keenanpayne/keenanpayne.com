@@ -17,11 +17,6 @@
   }
 }
 
-
-.newsletter-title { 
-  font-size: 2.5rem;
-}
-
 .newsletter-description { 
   grid-column: 2 / span 4;
 }
@@ -46,14 +41,12 @@
   }
   
   > input[type="email"] {
-    font-size: 0.64rem;
     -ms-flex: 1;
     flex: 1;
   }
 }
 
 .newsletter-form-fields > input[type="submit"] {
-  font-size: 0.64rem;
   padding-bottom: 0;
   padding-top: 0;
 }

@@ -1,0 +1,44 @@
+//
+// Headings
+// ==================================================
+// Ref: https://type-scale.com/?size=16&scale=1.250&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
+
+h1, h2, h3, h4, h5 {
+  line-height: 1.3;
+}
+
+h1,
+._text-h1 {
+  margin-top: 0;
+  font-size: 3.052rem;
+}
+
+h2,
+._text-h2 {
+  font-size: 2.441rem;
+}
+
+h3,
+._text-h3 {
+  font-size: 1.953rem;
+}
+
+h4,
+._text-h4 {
+  font-size: 1.563rem;
+}
+
+h5,
+._text-h5 {
+  font-size: 1.25rem;
+}
+
+small, 
+._text-small {
+  font-size: 0.8rem;
+}
+
+._text-smaller { 
+  font-size: 0.64rem;
+  letter-spacing: .015em;
+}

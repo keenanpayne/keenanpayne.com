@@ -3,34 +3,27 @@
 // ==================================================
 
 .header {
- align-items: center;
- display: flex;
- justify-content: space-between;
- padding: 2rem 1.5rem;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
 }
 
 .header-left { 
- display: flex;
- flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .header-logo {
- font-size: 1.5rem;
- margin-bottom: .5rem;
- margin-top: 0;
+  margin-bottom: 0;
+  margin-top: 0;
 
- // Descendants
- :link:not(:hover) {
-  text-decoration: none;
- }
+  // Descendants
+  :link:not(:hover) {
+    text-decoration: none;
+  }
 }
 
 .header-right { 
- text-align: right;
-}
-
-.header-description { 
- font-size: .875rem;
- margin-top: 0;
- max-width: 35ch;
+  text-align: right;
 }

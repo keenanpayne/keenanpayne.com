@@ -13,10 +13,11 @@ p {
     position: relative;
 
     // Descendants
-    .icon { 
+    .icon {
+      @extend ._text-h5;
+
       background: white;
       bottom: 0;
-      font-size: 1.25rem;
       height: 35px;
       line-height: 1;
       padding: .5rem;

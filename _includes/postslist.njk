@@ -1,5 +1,5 @@
 <section class="postlist -stack _container">
-  <nav class="postlist-toggle">
+  <nav class="postlist-toggle _text-small">
     {{ label }}
   </nav>
 
@@ -13,13 +13,13 @@
             </span>
           {%- endif -%}
 
-          <time class="_small-text" datetime="{{ post.date | htmlDateString }}">
+          <time class="_text-smaller" datetime="{{ post.date | htmlDateString }}">
             {{ post.date | readableDate }}
           </time>
         </div>
 
         <header class="postlist-header">
-          <h3 class="postlist-title">
+          <h3 class="postlist-title _text-h3">
             <a href="{{ post.url | url }}" class="postlist-link">
               {% if post.data.title %}
                 {{ post.data.title }}
