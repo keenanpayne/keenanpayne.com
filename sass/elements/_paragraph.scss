@@ -1,8 +1,11 @@
-/* Paragraph */
-p:last-child {
-  margin-bottom: 0;
-}
+//
+// Paragraph
+// ==================================================
 
 p {
   line-height: 1.45;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }

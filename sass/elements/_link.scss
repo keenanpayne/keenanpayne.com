@@ -1,8 +1,25 @@
-/* Link */
-a[href] {
-  color: var(--link-color);
-}
+//
+// Links
+// ==================================================
 
-a[href]:visited {
-  color: var(--link-color-visited);
+a[href] {
+  --link-color: var(--blue);
+  --link-color-hover: var(--navy);
+  --link-color-visited: var(--navy);
+
+  color: var(--link-color);
+
+  &:hover { 
+    color: var(--link-color-hover);
+  }
+
+  &:visited {
+    color: var(--link-color-visited);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    --link-color: var(--light-yellow);
+    --link-color-hover: var(--lightgray);
+    --link-color-visited: var(--white);
+  }
 }

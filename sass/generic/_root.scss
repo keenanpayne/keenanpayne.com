@@ -1,7 +1,19 @@
+//
+// Root element (i.e., <html>)
+// ==================================================
+
 :root {
+  --root-background: var(--white);
+  --root-color: var(--darkgray);
+
   background-color: var(--root-background);
   color: var(--root-color);
   font-family: -apple-system, system-ui, sans-serif;
   margin: 0;
   padding: 0;
+
+  @media (prefers-color-scheme: dark) {
+    --root-background: var(--black);
+    --root-color: var(--white);
+  }
 }

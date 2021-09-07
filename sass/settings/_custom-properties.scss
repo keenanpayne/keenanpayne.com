@@ -1,6 +1,7 @@
-/**
- * Shared
- */
+//
+// Custom Properties
+// ==================================================
+
  :root {
   /* Color Scheme */
   --lightgray: #e0e0e0;
@@ -25,15 +26,9 @@
   --color-tertiary-light: #ffccd6;
 
   /* Fonts */
-  --font-family-mono: 'Space Mono', monospace;
+  --font-family-mono: 'Space Mono', Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
 
   /* Context-Specific */
-  --root-background: var(--white);
-  --root-color: var(--darkgray);
-
-  --link-color: var(--blue);
-  --link-color-visited: var(--navy);
-
   --pre-background: var(--lightgray);
 
   --small-text-color: var(--midgray);
@@ -45,12 +40,6 @@
 /* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
-    --root-background: var(--black);
-    --root-color: var(--white);
-
-    --link-color: var(--light-yellow);
-    --link-color-visited: var(--white);
-
     --small-text-color: var(--white);
     --label-color: var(--white);
   }

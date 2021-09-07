@@ -1,20 +1,21 @@
-/**
- * Post Navigation
- */
+//
+// Post Navigation
+// ==================================================
 
- .postNav { 
+.postNav { 
   align-items: top;
   border-top: 1px solid var(--midgray);
   display: flex;
   justify-content: space-between;
-  margin-top: 4rem;
+  margin-top: 5rem;
   padding-bottom: 4rem;
   padding-top: 2rem;
-}
-
-.postNav a { 
-  display: inline-block;
-  max-width: 27ch;
+  
+  // Descendants
+  a { 
+    display: inline-block;
+    max-width: 27ch;
+  }
 }
 
 .postNav-prev,
@@ -24,4 +25,5 @@
 
 .postNav-label { 
   display: block;
+  margin-bottom: .2rem;
 }

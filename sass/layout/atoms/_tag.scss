@@ -1,7 +1,8 @@
-/** 
- * Tags 
- */
- .tag {
+//
+// Tags
+// ==================================================
+
+.tags {
   align-items: center;
   border: 1px solid var(--gray);
   border-radius: 0.25em; 
@@ -13,23 +14,25 @@
   padding: 0.09090909090909em 0.3636363636364em;
   text-decoration: none;
   text-transform: uppercase;
+
+  // Modifiers
+  &.-large { 
+    font-size: 1.25rem;
+    margin: .25rem;
+  }
 }
 
-.tag.-large { 
-  font-size: 1.25rem;
-  margin: .25rem;
-}
-
-a[href].tag,
-a[href].tag:visited {
+a[href].tags,
+a[href].tags:visited {
   color: inherit;
 }
 
-a[href].tag:hover,
-a[href].tag:focus {
+a[href].tags:hover,
+a[href].tags:focus {
   background-color: var(--lightgray);
 }
 
-.postlist-item > .tag {
+// Context-specific styles
+.postlist-item > .tags {
   align-self: center;
 }

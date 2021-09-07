@@ -1,7 +1,8 @@
-/**
- * Blog Post
- */
- .post { 
+//
+// Blog Post
+// ==================================================
+
+.post { 
   padding-top: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -23,33 +24,56 @@
   justify-content: space-between;
 }
 
-/* Post content descendants */
-.post-content h2 { 
-  margin-top: 2.5rem;
-}
 
-.post-content h3 { 
-  margin-top: 2rem;
-}
+//
+// Post Content
+// ------------
 
-.post-content h2 + h3 { 
-  margin-top: 0;
-}
+.post-content { 
+  h2 { 
+    margin-top: 2.5rem;
+  }
+  
+  h3 { 
+    margin-top: 2rem;
+  }
+  
+  h2 + h3 { 
+    margin-top: 0;
+  }
 
-.post-content li:not(:first-of-type) { 
-  margin-top: .5rem;
-}
+  li { 
+    line-height: 1.4;
 
-.post-content ul ul { 
-  margin-top: .5rem;
-}
+    &:not(:first-of-type) { 
+      margin-top: .75rem;
+    }
+  }
+  
+  ul ul { 
+    margin-top: .5rem;
+  }
 
-.post-content mark { 
-  background: transparent;
-  background-image: linear-gradient(to right, rgba(255, 225, 0, 0.15), rgba(255, 225, 0, 0.6) 7.5%, rgba(255, 225, 0, 0.25));
-  border-radius: 0.8em 0.3em;
-  -webkit-box-decoration-break: clone;
-          box-decoration-break: clone;
-  margin: 0 -0.4em;
-  padding: 0.1em 0.4em; 
+  img { 
+    // NOTE: This is kind of a hack because I have some transparent PNG drawings 
+    //       (e.g., creating-planning.md) that don't look good without a white background
+    @media (prefers-color-scheme: dark) { 
+      background-color: var(--white);
+    }
+  }
+  
+  mark { 
+    background: transparent;
+    background-image: linear-gradient(to right, rgba(255, 225, 0, 0.15), rgba(255, 225, 0, 0.6) 7.5%, rgba(255, 225, 0, 0.25));
+    border-radius: 0.8em 0.3em;
+    -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+    margin: 0 -0.4em;
+    padding: 0.1em 0.4em; 
+
+    @media (prefers-color-scheme: dark) { 
+      background-color: var(--light-yellow);
+      margin: 0 -0.1em;
+    }
+  }
 }

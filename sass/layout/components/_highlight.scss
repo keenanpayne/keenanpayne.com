@@ -1,22 +1,24 @@
-/**
- * Highlighting 
- */
- .highlight-line {
+//
+// Syntax Highlighting
+// ==================================================
+
+.highlight-line {
+  color: inherit; /* override del, ins, mark defaults */
   display: block;
   padding: 0.125em 1em;
   text-decoration: none; /* override del, ins, mark defaults */
-  color: inherit; /* override del, ins, mark defaults */
+
+  // Allow highlighting empty lines
+  &:empty:before {
+    content: " ";
+  }
+  
+  // Avoid double line breaks when using display: block; 
+  & + br {
+    display: none;
+  }
 }
 
-/* Allow highlighting empty lines */
-.highlight-line:empty:before {
-  content: " ";
-}
-
-/* Avoid double line breaks when using display: block; */
-.highlight-line + br {
-  display: none;
-}
 
 .highlight-line-isdir {
   color: #b0b0b0;

@@ -1,7 +1,8 @@
-/**
- * Direct Links / Markdown Headers 
- */
- .direct-link {
+//
+// Direct Links / Markdown Headers 
+// ==================================================
+
+.direct-link {
   font-family: sans-serif;
   font-style: normal;
   margin-left: .1em;
@@ -17,5 +18,5 @@ a[href].direct-link:focus,
 a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
-  color: #aaa;
+  color: var(--lightgray);
 }

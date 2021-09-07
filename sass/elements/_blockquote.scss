@@ -1,4 +1,7 @@
-/* Blockquote */
+//
+// Blockquote
+// ==================================================
+
 blockquote { 
   --blockquote-border: var(--blue);
 
@@ -7,10 +10,8 @@ blockquote {
   padding-bottom: .75rem;
   padding-left: 1.5rem;
   padding-top: .75rem;
-}
 
-@media (prefers-color-scheme: dark) {
-  blockquote { 
+  @media (prefers-color-scheme: dark) {
     --blockquote-border: var(--light-yellow);
   }
 }

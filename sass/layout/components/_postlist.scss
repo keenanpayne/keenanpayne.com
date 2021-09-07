@@ -1,7 +1,8 @@
-/**
- * Posts list 
- */
- .postlist { 
+//
+// Post List
+// ==================================================
+
+.postlist { 
   margin-bottom: 5rem;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -15,14 +16,15 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-}
 
-.postlist-headline h1 { 
-  margin-bottom: 0;
-}
-
-.postlist-headline p { 
-  margin-top: 0;
+  // Descendants
+  h1 { 
+    margin-bottom: 0;
+  }
+  
+  p { 
+    margin-top: 0;
+  }
 }
 
 .postlist-item.-intro { 
@@ -78,11 +80,12 @@
 
 .postlist-tag { 
   display: inline-block;
+
+  &:not(:first-of-type) { 
+    margin-left: 0.8em;
+  }
 }
 
-.postlist-tag:not(:first-of-type) { 
-  margin-left: 0.8em;
-}
 
 .postlist-toggle {
   --toggle-border: var(--navy);
@@ -92,36 +95,41 @@
   font-weight: 500;
   margin-bottom: 1.5rem;
   padding-bottom: .25rem;
-}
 
-@media (prefers-color-scheme: dark) {
-  .postlist-toggle {
+  @media (prefers-color-scheme: dark) {
     --toggle-border: var(--white);
   }
 }
 
-/* Modifiers */
-.postlist.-stack .postlist-item + .postlist-item {
-  margin-top: 3rem;
+
+
+//
+// Modifiers
+// ---------
+
+.postlist.-stack {
+  .postlist-item + .postlist-item {
+    margin-top: 3rem;
+  }
 }
 
 .postlist.-journey { 
   max-width: 1260px;
-}
 
-.postlist.-journey .postlist-items {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
-  padding: 0;
-}
-
-.postlist.-journey .postlist-item {
-  border: 1px solid var(--navy);
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  line-height: 1.65;
-  min-height: 150px;
-  padding: 1.25rem 1.5rem;
+  .postlist-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    padding: 0;
+  }
+  
+  .postlist-item {
+    border: 1px solid var(--navy);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    line-height: 1.65;
+    min-height: 150px;
+    padding: 1.25rem 1.5rem;
+  }
 }

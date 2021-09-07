@@ -1,4 +1,9 @@
-/* Main */
-main :first-child {
-  margin-top: 0;
+//
+// Main
+// ==================================================
+
+main {
+  :first-child {
+    margin-top: 0;
+  }
 }

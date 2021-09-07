@@ -1,7 +1,8 @@
-/**
- * Newsletter
- */
- .newsletter {
+//
+// Newsletter
+// ==================================================
+
+.newsletter {
   --newsletter-background: #ffd466;
 
   background-color: var(--newsletter-background);
@@ -10,13 +11,12 @@
   margin-bottom: 5rem;
   padding-bottom: 5rem;
   padding-top: 5rem;
-}
 
-@media (prefers-color-scheme: dark) {
-  .newsletter {
+  @media (prefers-color-scheme: dark) {
     --newsletter-background: #fe4d6e;
   }
 }
+
 
 .newsletter-title { 
   font-size: 2.5rem;
@@ -39,17 +39,17 @@
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-}
-
-.newsletter-form-fields > label {
-  -ms-flex-preferred-size: 100%;
-  flex-basis: 100%;
-}
-
-.newsletter-form-fields > input[type="email"] {
-  font-size: 0.64rem;
-  -ms-flex: 1;
-  flex: 1;
+  
+  > label {
+    -ms-flex-preferred-size: 100%;
+    flex-basis: 100%;
+  }
+  
+  > input[type="email"] {
+    font-size: 0.64rem;
+    -ms-flex: 1;
+    flex: 1;
+  }
 }
 
 .newsletter-form-fields > input[type="submit"] {

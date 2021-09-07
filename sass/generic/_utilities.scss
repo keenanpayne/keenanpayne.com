@@ -1,7 +1,8 @@
-/**
- * Utilities
- */
- ._text-align-center { 
+//
+// Utility Classes
+// ==================================================
+
+._text-align-center { 
   text-align: center;
 }
 
@@ -28,4 +29,8 @@
    color: var(--small-text-color);
    font-size: 0.75rem;
    word-spacing: -0.5px;
+}
+
+._bg-white { 
+  background-color: var(--white);
 }
