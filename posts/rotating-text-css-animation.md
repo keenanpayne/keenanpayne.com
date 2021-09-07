@@ -88,7 +88,7 @@ Our headline is starting to come together after adding some styles. Now it's tim
 
 The first step in the animation is ensuring that all of the adjectives in our headline are hidden until the animation runs. Hiding things on the web can be done in many different ways, and it's important that our approach will not impact the accessibility of our content for visitors using screen readers or other assistive technologies. For this project, the visibility of our content will change by toggling the [`opacity`](https://developer.mozilla.org/en-US/docs/Web/CSS/opacity) property on the `.rotatingText-adjective` class.
 
-```css
+```css/8/-1
 .rotatingText-adjective { 
   font-family: 'Open Sans', sans-serif;
   font-size: 50px;
@@ -97,7 +97,7 @@ The first step in the animation is ensuring that all of the adjectives in our he
   left: 0;
   margin-bottom: 0;
   margin-top: 50px;
-* opacity: 0;
+  opacity: 0;
   position: absolute;
   right: 0;
   text-align: center;
@@ -171,12 +171,12 @@ The animation is successfully running! However, our last adjective slides away w
 
 We then apply this animation to our last adjective:
 
-```css
+```css/1,4/-1
 .rotatingText-adjective:nth-of-type(3) {
-* animation-name: rotate-last;
+  animation-name: rotate-last;
   animation-duration: 1.5s;
   animation-delay: 3s;
-* animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 }
 ```
 
