@@ -25,7 +25,7 @@ permalink: "/{{ title | slug }}/"
       {%- for tag in tags | filterTagList -%}
         {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
 
-        <a href="{{ tagUrl | url }}" class="tags">
+        <a href="{{ tagUrl | url }}" class="tag">
           {{ tag }}
         </a>
       {%- endfor %}

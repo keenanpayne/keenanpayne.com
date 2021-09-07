@@ -4,14 +4,14 @@
 
 .tags {
   align-items: center;
-  border: 1px solid var(--gray);
+  border: 1px solid var(--lightgray);
   border-radius: 0.25em; 
   color: var(--darkgray);
   display: inline-flex;
-  font-size: 0.6875em;
+  font-size: 0.625em;
   justify-content: center;
-  line-height: 1.8;
-  padding: 0.09090909090909em 0.3636363636364em;
+  line-height: 2;
+  padding: .05rem .5rem .1rem;
   text-decoration: none;
   text-transform: uppercase;
 
@@ -30,6 +30,7 @@ a[href].tags:visited {
 a[href].tags:hover,
 a[href].tags:focus {
   background-color: var(--lightgray);
+  color: initial;
 }
 
 // Context-specific styles
