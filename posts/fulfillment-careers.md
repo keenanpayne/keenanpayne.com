@@ -1,4 +1,5 @@
 ---
+permalink: '/fulfillment-careers/'
 title:  'Searching for fulfillment by switching careers'
 meta: 
   description: Have you ever wondered if switching careers would help you feel more fulfilled? So have I, and many others. 

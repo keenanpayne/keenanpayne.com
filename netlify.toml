@@ -6,13 +6,13 @@
 
 # Redirects
 [[redirects]]
-  from = "/blog/*"
-  to = "/:splat"
+  from = "/blog"
+  to = "/archive"
   status = 301
 
 [[redirects]]
-  from = "/blog"
-  to = "/archive"
+  from = "/blog/*"
+  to = "/:splat"
   status = 301
 
 [[redirects]]

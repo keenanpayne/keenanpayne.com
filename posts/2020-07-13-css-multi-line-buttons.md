@@ -1,4 +1,5 @@
 ---
+permalink: '/css-multi-line-buttons/'
 title:  'Building beautiful multi-line buttons with CSS'
 meta: 
   description: 'Learn how to build beautiful multi-line buttons with CSS and HTML.'

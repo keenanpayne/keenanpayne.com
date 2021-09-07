@@ -1,4 +1,5 @@
 ---
+permalink: '/providing-client-project-updates/'
 title:  'Providing your client with regular project updates'
 meta: 
   description: 'Learn the importance of providing regular project updates to your clients and how to send a perfect update.'

@@ -1,4 +1,5 @@
 ---
+permalink: '/mindset-upon-completing-project/'
 title:  'What is your mindset after completing a project?'
 meta: 
   description: 'A brief reflection discussing what I do after completing a project, and questioning why I do it.'

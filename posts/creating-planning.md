@@ -1,4 +1,5 @@
 ---
+permalink: '/creating-planning/'
 title:  'Create first, plan later'
 meta: 
   description: Do you procrastinate by planning instead of doing? How this occurs in my life and how I'm going to overcome it.

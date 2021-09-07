@@ -1,4 +1,5 @@
 ---
+permalink: '/naming-typography-patterns-css/'
 title:  'Naming typography patterns in CSS'
 meta: 
   description: 'Why do we name patterns the way that we do when writing CSS? How are the patterns that we write providing clarity and utility to ourselves and others?'

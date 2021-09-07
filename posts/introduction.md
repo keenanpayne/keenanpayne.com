@@ -1,4 +1,5 @@
 ---
+permalink: '/introduction/'
 title:  "Just another 'hello, world' introduction"
 meta: 
   description: 'A brief introduction to me and this blog.'

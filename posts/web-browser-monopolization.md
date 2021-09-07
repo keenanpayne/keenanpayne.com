@@ -1,4 +1,5 @@
 ---
+permalink: '/web-browser-monopolization/'
 title:  "How do we address the monopolization of web browsers?"
 date: 2021-07-30
 type: Essay

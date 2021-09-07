@@ -1,4 +1,5 @@
 ---
+permalink: '/improve-work-well-being-deliberate-reflection/'
 title:  'How to improve your work and well-being with deliberate reflection'
 meta: 
   description: 'Learn how I use the practice of deliberate reflection to reliably improve my work and well-being.'

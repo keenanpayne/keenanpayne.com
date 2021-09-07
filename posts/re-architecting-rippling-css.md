@@ -1,4 +1,5 @@
 ---
+permalink: '/re-architecting-rippling-css/'
 title:  'Re-architecting the CSS for Rippling.com'
 meta: 
   description: 'An overview of the architectural work that I will be working on with Rippling.'
