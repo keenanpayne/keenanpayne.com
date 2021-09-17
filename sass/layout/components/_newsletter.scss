@@ -6,14 +6,17 @@
   --newsletter-background: #ffd466;
 
   background-color: var(--newsletter-background);
-  display: grid;
-  grid-template-columns: repeat(10, 1fr);
   margin-bottom: 5rem;
   padding-bottom: 5rem;
   padding-top: 5rem;
-
+  
   @media (prefers-color-scheme: dark) {
     --newsletter-background: #fe4d6e;
+  }
+  
+  @media (min-width: 640px) { 
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
   }
 }
 
