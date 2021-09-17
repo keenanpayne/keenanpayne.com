@@ -2,7 +2,24 @@
 // Side-by-side
 // ==================================================
 
-// TODO: Turn this into a utility class: _display-flex
 .sideBySide { 
   display: flex;
+  margin-top: 3rem;
+
+  @media (min-width: 720px) { 
+    transform: translateX(-2.5vw);
+    width: calc(100% + 5vw);
+  }
+
+  @media (min-width: 960px) { 
+    transform: translateX(-5vw);
+    width: calc(100% + 10vw);
+  }
+
+  // Descendants
+  figure { 
+    &:not(:first-of-type) { 
+      margin-left: 1.5rem;
+    }
+  }
 }

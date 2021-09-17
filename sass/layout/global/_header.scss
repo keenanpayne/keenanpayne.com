@@ -5,8 +5,14 @@
 .header {
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 2rem 1.5rem;
+  padding: 1rem;
+
+  @media (min-width: 480px) { 
+    flex-direction: row;
+    padding: 2rem 1.5rem;
+  }
 }
 
 .header-left { 
@@ -25,5 +31,10 @@
 }
 
 .header-right { 
-  text-align: right;
+  margin-top: 1rem;
+  
+  @media (min-width: 480px) { 
+    margin-top: 0;
+    text-align: right;
+  }
 }

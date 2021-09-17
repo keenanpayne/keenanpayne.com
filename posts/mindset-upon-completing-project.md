@@ -11,7 +11,7 @@ tags:
 
 When you complete a project, and I use the term "project" to refer to anything that requires multiple steps to achieve an outcome, what do you do afterward? Do you look back at what you just accomplished and analyze what you created and the means by which you created it? Do you sit back and relax, basking in the sense of calmness achieved as a result of accomplishing something that one sets out to do? Or, do you march perilously toward your next project, forging a trail of accomplishments paved by your own ambition?
 
-Think about it for a minute.
+**Think about it for a minute.**
 
 Odds are, you do a bit of each to varying degrees depending on what you just finished and your inclinations. None of the options that I presented are mutually exclusive, nor are they representative of every possible state one might be in upon completing a project. However, I think they do a decent job of defining archetypes that represent the past, present, and future mindsets, respectively.
 

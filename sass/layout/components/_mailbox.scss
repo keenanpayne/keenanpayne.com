@@ -8,10 +8,14 @@
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
   color: initial;
   filter: saturate(70%);
-  margin: calc(1.45rem + 1vw) auto calc(1.45rem + 1vw);
-  max-width: 800px;
-  padding: calc(1.45rem + 1vw) calc(2.9rem + 1vw);
+  margin: 3rem auto;
+  max-width: 60ch;
+  padding: 1rem 1.5rem;
   position: relative; 
+
+  @media (min-width: 640px) { 
+    padding: 2.5rem 3rem;
+  }
 
   &:before, 
   &:after {
@@ -46,13 +50,13 @@
 // NOTE: Some magic font-sizes in here
 .mailbox-icon:before {
   content: '📬';
-  font-size: 2.44141rem;
+  font-size: 3rem;
   line-height: 1;
   position: absolute;
   right: -.35em;
   top: -.75em; 
 
-  @media (min-width: 768px) {
-    font-size: 5.96046rem; 
+  @media (min-width: 640px) {
+    font-size: 5rem; 
   }
 }

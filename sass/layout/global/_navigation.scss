@@ -12,7 +12,11 @@
   display: inline-block;
 
   &:not(:first-of-type) { 
-    margin-left: 1.5rem;
+    margin-left: 1rem;
+
+    @media (min-width: 320px) { 
+      margin-left: 1.5rem;
+    }
   }
   
   // Descendants
@@ -28,6 +32,10 @@
   &.-cta { 
     border-left: 1px solid var(--midgray);
     font-weight: bold;
-    padding-left: 1.5rem;
+    padding-left: 1rem;
+
+    @media (min-width: 320px) { 
+      padding-left: 1.5rem;
+    }
   }
 }

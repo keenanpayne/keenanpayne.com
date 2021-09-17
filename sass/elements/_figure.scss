@@ -3,13 +3,20 @@
 // ==================================================
 
 figure { 
-  margin: 0;
+  margin: 3rem 0;
+
+  + figure { 
+    margin-top: 0;
+  }
 }
 
 figcaption { 
   @extend ._text-small;
 
   font-style: italic;
-  line-height: 1.5;
-  margin-top: .5rem;
+  margin-top: 1rem;
+}
+
+.figure-caption { 
+  margin-bottom: .5rem;
 }

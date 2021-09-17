@@ -9,8 +9,12 @@ p {
     background-color: var(--background);
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
-    padding: 1.35rem 1.5rem;
+    padding: 1rem 1.25rem;
     position: relative;
+    
+    @media (min-width: 480px) { 
+      padding: 1.35rem 1.5rem;
+    }
 
     // Descendants
     .icon {
