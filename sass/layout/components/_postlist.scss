@@ -45,7 +45,7 @@
 
 .postlist-header { 
   flex: 1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .postlist-lede { 
@@ -90,7 +90,6 @@
   --toggle-border: var(--navy);
 
   border-bottom: 1px solid var(--toggle-border);
-  font-weight: 400;
   margin-bottom: 1.5rem;
   padding-bottom: .25rem;
 

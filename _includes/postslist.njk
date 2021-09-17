@@ -1,5 +1,5 @@
 <section class="postlist -stack _container">
-  <div class="postlist-toggle _text-small">
+  <div class="postlist-toggle">
     {{ label }}
   </div>
 
@@ -34,17 +34,19 @@
           </p>
         </header>
 
-        <ul class="postlist-tags">
-          {%- for tag in post.data.tags | filterTagList -%}
-            <li class="postlist-tag">
-              {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+        {% if postsListTags !== false %}
+          <ul class="postlist-tags">
+            {%- for tag in post.data.tags | filterTagList -%}
+              <li class="postlist-tag">
+                {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
 
-              <a href="{{ tagUrl | url }}" class="tags">
-                {{ tag }}
-              </a>
-            </li>
-          {%- endfor -%}
-        </ul>
+                <a href="{{ tagUrl | url }}" class="tags">
+                  {{ tag }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {% endif %}
       </article>
     {%- endfor -%}
   </div>

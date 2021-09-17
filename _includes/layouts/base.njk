@@ -26,7 +26,7 @@
 
       <div class="header-right">
         {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-        <ul class="nav _text-small">
+        <ul class="nav">
           {%- for entry in collections.all | eleventyNavigation -%}
             <li class="nav-item{% if entry.url == page.url %} -active{% endif %}">
               <a href="{{ entry.url | url }}">

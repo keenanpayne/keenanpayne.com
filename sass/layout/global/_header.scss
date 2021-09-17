@@ -7,11 +7,22 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
 
   @media (min-width: 480px) { 
     flex-direction: row;
-    padding: 2rem 1.5rem;
+    padding: 2rem 1rem;
+  }
+
+  @media (min-width: 640px) { 
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 960px) { 
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
 

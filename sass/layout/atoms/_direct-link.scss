@@ -4,9 +4,12 @@
 
 .direct-link {
   font-family: sans-serif;
+  font-size: 80%;
   font-style: normal;
+  font-weight: 400;
   margin-left: .1em;
   text-decoration: none;
+  vertical-align: .25rem;
 }
 
 a[href].direct-link,
@@ -18,5 +21,5 @@ a[href].direct-link:focus,
 a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
-  color: var(--lightgray);
+  color: var(--color-secondary-light);
 }
