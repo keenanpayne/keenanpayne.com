@@ -12,7 +12,7 @@
   margin-right: auto;
   max-width: 60ch;
 
-  @media (min-width: 640px) { 
+  @media (--min-640) { 
     padding-left: 0;
   }
 }

@@ -55,11 +55,11 @@
   ul ul { 
     padding-left: 1.5rem;
 
-    @media (min-width: 480px) { 
+    @media (--min-480) { 
       padding-left: 2rem;
     }
 
-    @media (min-width: 640px) { 
+    @media (--min-640) { 
       padding-left: 3rem;
     }
   }
@@ -71,7 +71,7 @@
   img { 
     // NOTE: This is kind of a hack because I have some transparent PNG drawings 
     //       (e.g., creating-planning.md) that don't look good without a white background
-    @media (prefers-color-scheme: dark) { 
+    @media (--dark) { 
       background-color: var(--white);
     }
   }
@@ -85,7 +85,7 @@
     margin: 0 -0.4em;
     padding: 0.1em 0.4em; 
 
-    @media (prefers-color-scheme: dark) { 
+    @media (--dark) { 
       background-color: var(--light-yellow);
       margin: 0 -0.1em;
     }

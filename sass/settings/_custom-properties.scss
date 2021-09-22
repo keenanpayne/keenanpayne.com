@@ -38,7 +38,7 @@
 }
 
 /* Dark Mode */
-@media (prefers-color-scheme: dark) {
+@media (--dark) {
   :root {
     --small-text-color: var(--white);
     --label-color: var(--white);

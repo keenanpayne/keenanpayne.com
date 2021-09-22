@@ -14,7 +14,7 @@
   &:not(:first-of-type) { 
     margin-left: 1rem;
 
-    @media (min-width: 320px) { 
+    @media (--min-320) { 
       margin-left: 1.5rem;
     }
   }
@@ -34,7 +34,7 @@
     font-weight: bold;
     padding-left: 1rem;
 
-    @media (min-width: 320px) { 
+    @media (--min-320) { 
       padding-left: 1.5rem;
     }
   }

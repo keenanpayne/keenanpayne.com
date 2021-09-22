@@ -1,0 +1,27 @@
+//
+// Media Queries
+// -------------
+
+// Min-width breakpoints
+@custom-media --min-320 (width >= 320px);
+@custom-media --min-480 (width >= 480px);
+@custom-media --min-560 (width >= 560px);
+@custom-media --min-640 (width >= 640px);
+@custom-media --min-720 (width >= 720px);
+@custom-media --min-960 (width >= 960px);
+@custom-media --min-1120 (width >= 1120px);
+@custom-media --min-1260 (width >= 1260px);
+@custom-media --min-1440 (width >= 1440px);
+
+// Max-width breakpoints
+@custom-media --max-320 (width < 320px);
+@custom-media --max-480 (width < 480px);
+@custom-media --max-640 (width < 640px);
+@custom-media --max-720 (width < 720px);
+@custom-media --max-960 (width < 960px);
+@custom-media --max-1120 (width < 1120px);
+@custom-media --max-1260 (width < 1260px);
+@custom-media --max-1440 (width < 1440px);
+
+// Color schemes
+@custom-media --dark (prefers-color-scheme: dark)

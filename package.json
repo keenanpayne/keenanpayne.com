@@ -37,7 +37,7 @@
     "watch": "^1.0.2"
   },
   "scripts": {
-    "assets:sass": "sass sass/app.scss _site/css/app.css",
+    "assets:sass": "sass sass/app.scss | postcss --output _site/css/app.css",
     "assets:build:dev": "watch 'npm run assets:sass' 'sass/'",
     "assets:build:prod": "npm run assets:sass",
     "app:build:dev": "npm run assets:build:dev & ENV=dev eleventy --watch --serve",

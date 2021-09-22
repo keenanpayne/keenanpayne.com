@@ -6,12 +6,12 @@
   display: flex;
   margin-top: 3rem;
 
-  @media (min-width: 720px) { 
+  @media (--min-720) { 
     transform: translateX(-2.5vw);
     width: calc(100% + 5vw);
   }
 
-  @media (min-width: 960px) { 
+  @media (--min-960) { 
     transform: translateX(-5vw);
     width: calc(100% + 10vw);
   }

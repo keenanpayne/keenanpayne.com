@@ -10,11 +10,11 @@
   padding-bottom: 5rem;
   padding-top: 5rem;
   
-  @media (prefers-color-scheme: dark) {
+  @media (--dark) {
     --newsletter-background: #fe4d6e;
   }
   
-  @media (min-width: 640px) { 
+  @media (--min-640) { 
     display: grid;
     grid-template-columns: repeat(10, 1fr);
   }

@@ -11,11 +11,11 @@ blockquote {
   padding-left: 1rem;
   padding-top: .75rem;
   
-  @media (prefers-color-scheme: dark) {
+  @media (--dark) {
     --blockquote-border: var(--light-yellow);
   }
   
-  @media (min-width: 480px) { 
+  @media (--min-480) { 
     margin-left: 1.5rem;
     padding-left: 1.5rem;
   }

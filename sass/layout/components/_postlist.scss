@@ -93,7 +93,7 @@
   margin-bottom: 1.5rem;
   padding-bottom: .25rem;
 
-  @media (prefers-color-scheme: dark) {
+  @media (--dark) {
     --toggle-border: var(--white);
   }
 }

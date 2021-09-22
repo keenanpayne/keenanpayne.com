@@ -13,7 +13,7 @@
   padding: 1rem 1.5rem;
   position: relative; 
 
-  @media (min-width: 640px) { 
+  @media (--min-640) { 
     padding: 2.5rem 3rem;
   }
 
@@ -56,7 +56,7 @@
   right: -.35em;
   top: -.75em; 
 
-  @media (min-width: 640px) {
+  @media (--min-640) {
     font-size: 5rem; 
   }
 }

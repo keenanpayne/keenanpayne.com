@@ -12,7 +12,7 @@ p {
     padding: 1rem 1.25rem;
     position: relative;
     
-    @media (min-width: 480px) { 
+    @media (--min-480) { 
       padding: 1.35rem 1.5rem;
     }
 
