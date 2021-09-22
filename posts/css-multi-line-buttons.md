@@ -78,8 +78,9 @@ html: '<button class="-bg-yellow">
       <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="white"/>
     </svg>
   </div>
-</button>'
-scss='button {
+</button>',
+
+scss:'button {
   --button-background: transparent;
   --button-color: black;
 
@@ -133,9 +134,9 @@ html: '<button class="-bg-yellow">
       <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="white"/>
     </svg>
   </div>
-</button>'
+</button>',
 
-scss='button {
+scss: 'button {
   --button-background: transparent;
   --button-color: black;
 
@@ -203,9 +204,9 @@ html: '<button class="-bg-yellow">
       <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="white"/>
     </svg>
   </div>
-</button>'
+</button>',
 
-scss='button {
+scss: 'button {
   --button-background: transparent;
   --button-color: black;
 
@@ -299,9 +300,9 @@ html: '<button class="-bg-yellow">
       </svg>
     </div>
   </div>
-</button>'
+</button>',
 
-scss='button {
+scss: 'button {
   --button-background: transparent;
   --button-color: black;
 
@@ -392,9 +393,9 @@ html: '<button class="-bg-yellow">
       </svg>
     </div>
   </div>
-</button>'
+</button>',
 
-scss='// Pacman Arrow
+scss: '// Pacman Arrow
 
 .arrowPacman {
   --arrow-width: 20px;

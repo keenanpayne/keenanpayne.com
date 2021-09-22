@@ -1,5 +1,5 @@
 //
-// Codepen
+// Codepen Embeds
 // ==================================================
 
 .codepen { 
@@ -7,4 +7,29 @@
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
   padding: 1rem 1.5rem;
+}
+
+.cp_embed_wrapper { 
+  margin-bottom: 2rem; 
+  margin-top: 2rem;
+
+  @media (--min-720) { 
+    transform: translateX(-2.5vw);
+    width: calc(100% + 5vw);
+  }
+
+  @media (--min-960) { 
+    transform: translateX(-5vw);
+    width: calc(100% + 10vw);
+  }
+
+  @media (--min-1120) { 
+    transform: translateX(-7.5vw);
+    width: calc(100% + 15vw);
+  }
+
+  @media (--min-1440) { 
+    transform: translateX(-10vw);
+    width: calc(100% + 20vw);
+  }
 }

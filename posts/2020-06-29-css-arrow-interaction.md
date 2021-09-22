@@ -22,6 +22,7 @@ I helped build the [Asana for Marketers](https://asana.com/teams/marketing) page
 Our goal is to create an animation of an arrow following itself (hence the name "Pacman arrow") when we hover over an element on the page. We also want this interaction to exist in multiple elements throughout the page, so it is essential to build this in a context-agnostic way.
 
 ## Writing the markup
+
 We'll start by writing the markup for this interaction. For this tutorial, I will be putting this arrow animation inside of a `<button>` element with some accompanying text. However, once you finish this tutorial, you should be able to use this interaction inside of any element. 
 
 {% include components/codepen.html,
@@ -72,7 +73,8 @@ html: '<button>
     </div>
   </div>
 </button>',
-scss='button {
+
+scss:'button {
   background-color: white;
   border: 2px solid black;
   border-radius: 25px;
@@ -109,7 +111,8 @@ html: '<button>
     </div>
   </div>
 </button>',
-scss='.arrowPacman {
+
+scss:'.arrowPacman {
   --arrow-width: 20px;
   --arrow-spacer: 4px;
   --arrow-plus-spacer: calc(var(--arrow-width) + var(--arrow-spacer));
@@ -163,7 +166,8 @@ html: '<button>
     </div>
   </div>
 </button>',
-scss='.arrowPacman {
+
+scss:'.arrowPacman {
   --arrow-width: 20px;
   --arrow-spacer: 4px;
   --arrow-plus-spacer: calc(var(--arrow-width) + var(--arrow-spacer));
@@ -222,7 +226,8 @@ html: '<button>
     </div>
   </div>
 </button>',
-scss='.arrowPacman {
+
+scss:'.arrowPacman {
   --arrow-width: 20px;
   --arrow-spacer: 4px;
   --arrow-plus-spacer: calc(var(--arrow-width) + var(--arrow-spacer));
@@ -291,7 +296,8 @@ html: '<button>
     </div>
   </div>
 </button>',
-scss='.arrowPacman {
+
+scss:'.arrowPacman {
   --arrow-width: 20px;
   --arrow-spacer: 4px;
   --arrow-plus-spacer: calc(var(--arrow-width) + var(--arrow-spacer));
