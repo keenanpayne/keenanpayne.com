@@ -3,18 +3,27 @@
 // ==================================================
 
 .direct-link {
+  display: none;
   font-family: sans-serif;
-  font-size: 80%;
+  font-size: 75%;
   font-style: normal;
   font-weight: 400;
-  margin-left: .1em;
+  left: -1em;
+  position: absolute;
   text-decoration: none;
-  vertical-align: .25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity var(--transition) ease-in-out;
+
+  @media (--min-720) { 
+    display: block;
+  }
 }
 
 a[href].direct-link,
 a[href].direct-link:visited {
   color: transparent;
+  opacity: 0;
 }
 
 a[href].direct-link:focus,
@@ -22,4 +31,5 @@ a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
   color: var(--color-secondary-light);
+  opacity: 1;
 }

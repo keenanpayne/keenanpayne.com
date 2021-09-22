@@ -3,7 +3,7 @@
 // ==================================================
 
  :root {
-  /* Color Scheme */
+  // Color Scheme
   --lightgray: #e0e0e0;
   --gray: #C0C0C0;
   --midgray: #909090;
@@ -14,7 +14,7 @@
   --black: #000;
   --light-yellow: #fbf4e6;
 
-  /* Migrate from old website */
+  // Migrate from old website
   --color-base: #fffdf7;
   --color-base-mid: #ffd466;
   --color-base-light: #fff8e6;
@@ -25,10 +25,13 @@
   --color-tertiary-mid: #fe4d6e;
   --color-tertiary-light: #ffccd6;
 
-  /* Fonts */
+  // Fonts
   --font-family-mono: 'Space Mono', Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
 
-  /* Context-Specific */
+  // Transitions
+  --transition: 150ms;
+
+  // Context-Specific
   --pre-background: var(--lightgray);
 
   --small-text-color: var(--midgray);

@@ -29,6 +29,10 @@
 // ------------
 
 .post-content { 
+  h2, h3, h4, h5 { 
+    position: relative;
+  }
+  
   h2 { 
     margin-bottom: 1.5rem;
     margin-top: 3rem;
