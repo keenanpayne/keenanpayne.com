@@ -1,0 +1,73 @@
+//
+// Personal Introduction
+// ==================================================
+
+.hello { 
+  --hello-size: 45px;
+
+  background: var(--color-secondary-mid);
+  border-radius: 5px;
+  bottom: .75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  height: var(--hello-size);
+  left: .75rem;
+  opacity: .75;
+  position: fixed;
+  transition: all var(--transition-long);
+  width: var(--hello-size);
+
+  &:hover { 
+    opacity: 1;
+  }
+
+  // Modifiers
+  &.-active { 
+    border-radius: 10px;
+    opacity: 1;
+    height: 300px;
+    width: 300px;
+
+    .hello-text { 
+      display: none;
+    }
+
+    .hello-description { 
+      display: block;
+    }
+  }
+}
+
+.hello-text { 
+  display: block;
+  font-size: 1.25rem;
+  height: var(--hello-size);
+  line-height: 2.25;
+  text-align: center;
+  user-select: none;
+}
+
+.hello-description { 
+  display: none;
+  padding: .75rem 1rem;
+}
+
+.hello-close {
+  display: block;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.hello-hide { 
+  bottom: .5rem;
+  display: block;
+  left: 50%;
+  opacity: .75;
+  position: absolute;
+  transform: translateX(-50%);
+  transition: opacity var(--transition);
+
+  &:hover { 
+    opacity: 1;
+  }
+}
