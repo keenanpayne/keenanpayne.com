@@ -19,4 +19,9 @@ blockquote {
     margin-left: 1.5rem;
     padding-left: 1.5rem;
   }
+
+  // Descendants
+  > p { 
+    margin-bottom: .75rem;
+  }
 }

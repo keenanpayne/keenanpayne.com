@@ -55,6 +55,10 @@
     }
   }
 
+  ul { 
+    margin-bottom: 1.5rem;
+  }
+
   ul,
   ul ul { 
     padding-left: 1.5rem;
@@ -78,6 +82,10 @@
     @media (--dark) { 
       background-color: var(--white);
     }
+  }
+
+  p + p { 
+    margin-bottom: 1.5rem;
   }
   
   p mark { 

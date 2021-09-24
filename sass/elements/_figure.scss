@@ -5,6 +5,7 @@
 figure { 
   margin: 3rem 0;
 
+  // Descendants
   + figure { 
     margin-top: 0;
   }

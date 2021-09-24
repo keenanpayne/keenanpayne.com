@@ -14,6 +14,8 @@ layout: layouts/home.njk
 eleventyComputed:
   title: Tagged “{{ tag }}”
 permalink: /tags/{{ tag | slug }}/
+templateClass: page-tags
+
 ---
 
 <h1 class="_text-align-center">
@@ -22,7 +24,3 @@ permalink: /tags/{{ tag | slug }}/
 
 {% set postslist = collections[ tag ] %}
 {% include "postslist.njk" %}
-
-<p class="_text-align-center">
-  See <a href="{{ '/tags/' | url }}">all tags</a>.
-</p>

@@ -50,4 +50,14 @@
       </article>
     {%- endfor -%}
   </div>
+
+  {% if tag or postListReadMore %}
+    <p class="postlist-tagsLink _text-align-center">
+      {% if tag %}
+        <a href="{{ '/tags/' | url }}">All Tags</a>
+      {% elif postListReadMore %}
+        <a href="{{ '/archive/' | url }}">View Archive</a>
+      {% endif %}
+    </p>
+  {% endif %}
 </section>

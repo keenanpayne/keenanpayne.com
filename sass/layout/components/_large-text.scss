@@ -5,9 +5,12 @@
 p.-large { 
   @extend ._text-h3;
 
-  transform: translateX(-2.5vw);
   margin-bottom: 2.5rem;
   margin-top: 2rem;
   text-align: center;
-  width: calc(100% + 5vw);
+  
+  @media (--min-720) { 
+    transform: translateX(-2.5vw);
+    width: calc(100% + 5vw);
+  }
 }

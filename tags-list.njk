@@ -9,11 +9,11 @@ templateClass: _container
 </h1>
 
 <div class="_text-align-center">
-{%- for tag in collections.tagList -%}
-  {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+  {%- for tag in collections.tagList -%}
+    {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
 
-  <a href="{{ tagUrl | url }}" class="tags -large">
-    {{ tag }}
-  </a>
-{%- endfor -%}
+    <a href="{{ tagUrl | url }}" class="tags -large">
+      {{ tag }}
+    </a>
+  {%- endfor -%}
 </div>

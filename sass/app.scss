@@ -46,9 +46,11 @@
 @import "layout/components/sideBySide";
 
 // Global
+@import "layout/global/footer";
 @import "layout/global/header";
 @import "layout/global/navigation";
 
 // Pages
 @import "layout/pages/home";
 @import "layout/pages/post";
+@import "layout/pages/tags";
