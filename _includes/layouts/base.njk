@@ -57,20 +57,6 @@
       </p>
     </footer>
 
-    <aside class="hello" onclick="this.classList.toggle('-active');">
-      <span class="hello-text">👋🏻</span>
-
-      {# TODO: Update text #}
-      <span class="hello-description">
-        <span class="hello-close">&times;</span>
-
-        I'm a freelance web developer with over ten years of experience. I strive to help businesses large and small succeed on the web.
-
-        {# TODO: Hide entire hello component when clicked and store preference in localStorage #}
-        <span class="hello-hide _label">
-          Hide Forever
-        </span>
-      </span>
-    </aside>
+    {% include "components/hello.html" %}
   </body>
 </html>
