@@ -6,7 +6,11 @@
     <meta name="description" content="{{ description or metadata.description }}">
 
     <title>
-      {{ title or metadata.title }}
+      {% if title %}
+        {{ title ~ ' | Keenan Payne' }}
+      {% else %}
+        {{ metadata.title }}
+      {% endif %}
     </title>
     
     <link rel="stylesheet" href="{{ '/css/app.css' | url }}">
@@ -28,17 +32,12 @@
         {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
         <ul class="nav">
           {%- for entry in collections.all | eleventyNavigation -%}
-            <li class="nav-item{% if entry.url == page.url %} -active{% endif %}">
+            <li class="nav-item{% if entry.url == page.url %} -active{% endif %} {{ '-cta' if entry.cta }}">
               <a href="{{ entry.url | url }}">
                 {{ entry.title }}
               </a>
             </li>
           {%- endfor -%}
-
-          <li class="nav-item -cta">
-            <a href="#">
-              Subscribe
-            </a>
         </ul>
       </div>
     </header>
