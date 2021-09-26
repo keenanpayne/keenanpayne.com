@@ -4,13 +4,15 @@
 
 .newsletter {
   --newsletter-background: var(--yellow-dark);
-
+  
   background-color: var(--newsletter-background);
-  margin-top: 3rem;
+  border-radius: 65px 5px;
+  margin: 3rem 1rem;
+  max-width: 1080px;
   padding: 3rem 1rem 3.5rem;
   
   @media (--dark) {
-    --newsletter-background: var(--red);
+    --newsletter-background: var(--exodus-fruit);
   }
   
   @media (--min-720) { 
@@ -20,6 +22,8 @@
 
   @media (--min-960) { 
     margin-top: 5rem;
+    margin-left: auto;
+    margin-right: auto;
     padding-bottom: 5.5rem;
     padding-top: 5rem;
   }
