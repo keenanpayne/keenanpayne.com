@@ -7,6 +7,8 @@
   --root-background-end: var(--gray-dark);
 
   // S/O: https://www.css-gradient.com/
+  // TODO: Contemplate if I want to add more color stops 
+  //       to the background gradient to make it more dynamic
   background: var(--root-background-start);
   background: linear-gradient(to bottom right, var(--root-background-start), var(--root-background-end));
   color: var(--text-color);

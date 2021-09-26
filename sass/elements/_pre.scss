@@ -5,7 +5,6 @@
 pre {
   @extend ._text-small;
 
-  background-color: var(--lightgray);
   direction: ltr;
   font-family: var(--font-family-mono);
   hyphens: none;
@@ -17,4 +16,8 @@ pre {
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
+
+  &[class*="language-"] { 
+    // TODO: Update colors for dark mode
+  }
 }

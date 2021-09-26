@@ -54,6 +54,18 @@
     margin-top: 0;
   }
 
+  a {
+    --link-color-visited: var(--plum-dark);
+
+    @media (--dark) { 
+      --link-color-visited: var(--gray-lightish);
+    }
+
+    &:visited {
+      color: var(--link-color-visited);
+    }
+  }
+
   li { 
     line-height: 1.5;
 

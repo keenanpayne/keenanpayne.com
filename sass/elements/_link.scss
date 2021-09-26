@@ -2,11 +2,9 @@
 // Links
 // ==================================================
 
-// TODO: Set a visited link color for blog post links
 a[href] {
   --link-color: var(--plum-dark);
   --link-color-hover: var(--plum-light);
-  --link-color-visited: var(--plum-dark);
 
   color: var(--link-color);
 
@@ -14,13 +12,8 @@ a[href] {
     color: var(--link-color-hover);
   }
 
-  &:visited {
-    color: var(--link-color-visited);
-  }
-
   @media (--dark) {
-    --link-color: var(--gray-light);
-    --link-color-hover: var(--gray-lightish);
-    --link-color-visited: var(--gray-lightish);
+    --link-color: var(--gray-white);
+    --link-color-hover: var(--gray-light);
   }
 }

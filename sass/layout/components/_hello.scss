@@ -9,7 +9,7 @@
   --hello-max-height: 227px;
   --hello-max-width: 300px;
   
-  background: var(--lightgray);
+  background-color: var(--gray-darkest);
   border-radius: 20px;
   bottom: 1.5rem;
   color: initial;
@@ -21,6 +21,10 @@
   transform: translateY(calc(100% + 1.5rem));
   width: 140px;
   -webkit-tap-highlight-color: transparent;
+
+  @media (--dark) { 
+    background-color: var(--gray-lighter);
+  }
 
   // Expanded and Contracted
   &.-expanded {
@@ -52,8 +56,9 @@
   &:not(.-expanded) {
     cursor: pointer;
   }
+
   &:not(.-expanded):hover {
-    background: var(--midgray);
+    background: var(--gray-dark);
   }
 
   // Modifiers
@@ -109,8 +114,7 @@
 }
 
 .hello-me {
-  background: url('https://en.gravatar.com/userimage/1206436/62a4a44b601d73187583c068d8311bd5.jpg?size=100') no-repeat center center;
-  background-size: cover;
+  background: url('https://en.gravatar.com/userimage/1206436/62a4a44b601d73187583c068d8311bd5.jpg?size=100') no-repeat center center / cover;
 }
 
 .hello-name {
@@ -129,7 +133,7 @@
 }
 
 .hello-top {
-  background: #6422EB;
+  background: var(--steel-pink);
   display: flex;
   flex-direction: row;
   height: 70px;
@@ -148,13 +152,13 @@
   width: 50px;
 
   &:hover .hello-x {
-    background: #CB9AFB;
+    background: var(--light-pink);
   }
 }
 
 .hello-x {
-  --hello-x-primary: #BA87F9;
-  --hello-x-secondary: #6422EB;
+  --hello-x-primary: var(--heliotrope);
+  --hello-x-secondary: var(--deep-cove);
 
   background-color: var(--hello-x-primary);
   border-radius: 10px;
@@ -189,6 +193,7 @@
 .hello-text {
   margin-bottom: 0;
   padding: 1rem 1rem .5rem;
+  user-select: none;
 }
 
 .hello-links {
@@ -203,7 +208,7 @@
   transition: background-color var(--transition);
 
   &:hover {
-    background-color: var(--lightgray);
+    background-color: var(--gray-light);
   }
 
   // Descendants
