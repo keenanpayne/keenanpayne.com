@@ -23,6 +23,27 @@
     padding-bottom: 5.5rem;
     padding-top: 5rem;
   }
+
+  // Modifiers
+  &.-stacked {
+    --newsletter-background: transparent;
+  
+    @media (--min-720) {
+      display: block;
+    }
+
+    .newsletter-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .newsletter-cta {
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 3rem;
+      max-width: 500px;
+    }
+  }
 }
 
 .newsletter-title {
@@ -55,7 +76,7 @@
 }
 
 .newsletter-form {
-  margin-bottom: calc(0.725rem + 1vw);
+  margin-bottom: 1rem;
 }
 
 .newsletter-form-fields {

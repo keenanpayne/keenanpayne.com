@@ -5,6 +5,9 @@ eleventyNavigation:
   key: Subscribe
   order: 3
   cta: true
+templateClass: page-subscribe
 ---
 
-{% include "newsletter.njk" %}
+{% set newsletterModifiers = '-stacked' %}
+
+{% include "newsletter.njk"  %}
