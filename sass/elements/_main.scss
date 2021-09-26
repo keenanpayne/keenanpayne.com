@@ -3,6 +3,13 @@
 // ==================================================
 
 main {
+  flex: 1;
+  margin-top: 3rem;
+
+  @media (--min-960) {
+    margin-top: 5rem;
+  }
+  
   :first-child {
     margin-top: 0;
   }

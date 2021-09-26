@@ -3,8 +3,7 @@
 // ==================================================
 
 // External
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
 // Settings
 @import "settings/custom-media";
@@ -52,6 +51,4 @@
 @import "layout/global/navigation";
 
 // Pages
-@import "layout/pages/home";
 @import "layout/pages/post";
-@import "layout/pages/tags";

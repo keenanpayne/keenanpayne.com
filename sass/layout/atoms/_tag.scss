@@ -6,15 +6,17 @@
   @extend ._text-smaller;
 
   align-items: center;
-  border: 1px solid var(--lightgray);
-  border-radius: 0.25em; 
-  color: var(--darkgray);
+  background-color: var(--global-element-color);
+  border: 1px solid var(--gray-lightish);
+  border-radius: 0.25em;
+  box-shadow: 0 1px 1px 0px rgb(100 100 100 / 15%);
   display: inline-flex;
   justify-content: center;
   line-height: 2;
-  padding: .05rem .5rem .1rem;
+  padding: .06rem .5rem .1rem;
   text-decoration: none;
   text-transform: uppercase;
+  transition: all var(--transition-long);
 
   // Modifiers
   &.-large { 
@@ -31,7 +33,9 @@ a[href].tags:visited {
 
 a[href].tags:hover,
 a[href].tags:focus {
-  background-color: var(--lightgray);
+  background-color: var(--gray-lighter);
+  border-color: var(--gray-darker);
+  box-shadow: none;
   color: initial;
 }
 

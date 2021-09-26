@@ -3,9 +3,21 @@
 // ==================================================
 
 .footer { 
+  background-color: var(--global-element-color);
+  box-shadow: var(--shadow);
+  margin: .5rem .35rem;
   padding-bottom: 1.5rem;
   padding-top: 1.5rem;
   text-align: center;
+  z-index: 1;
+  
+  @media (--min-480) {
+    margin: 1rem .75rem;
+  }
+
+  @media (--min-640) { 
+    margin: 1.25rem 1rem;
+  }
 
   // Descendants
   a { 

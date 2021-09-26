@@ -13,7 +13,7 @@
   text-decoration: none;
   top: 50%;
   transform: translateY(-50%);
-  transition: opacity var(--transition) ease-in-out;
+  transition: opacity var(--transition-quick) ease-in-out;
 
   @media (--min-720) { 
     display: block;
@@ -30,6 +30,6 @@ a[href].direct-link:focus,
 a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
-  color: var(--color-secondary-light);
+  color: var(--gray-darkest);
   opacity: 1;
 }

@@ -3,7 +3,6 @@
 // ==================================================
 
 .post { 
-  padding-top: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
 }
@@ -29,6 +28,14 @@
 // ------------
 
 .post-content { 
+  @media (--min-960) {
+    font-size: 1.125rem;
+  }
+
+  @media (--min-1440) {
+    font-size: 1.25rem;
+  }
+
   h2, h3, h4, h5 { 
     position: relative;
   }

@@ -41,6 +41,14 @@
 
 .postlist-link { 
   text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--gray-darker);
+    text-decoration-thickness: 2px;
+    text-underline-position: from-font;
+    text-underline-offset: 0;
+  }
 }
 
 .postlist-header { 
@@ -54,13 +62,6 @@
 
 .postlist-item-active .postlist-title {
   font-weight: bold;
-}
-
-.postlist-title:hover { 
-  text-decoration: underline;
-  text-underline-position: from-font;
-  text-underline-offset: 0;
-  text-decoration-thickness: 1px;
 }
 
 .postlist-meta { 
