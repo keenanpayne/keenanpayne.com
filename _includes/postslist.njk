@@ -1,7 +1,9 @@
 <section class="postlist -stack _container">
-  <div class="postlist-toggle">
-    {{ label }}
-  </div>
+  {% if label or tag %}
+    <div class="postlist-toggle">
+      {{ label if label else 'Tagged: ' ~ tag }}
+    </div>
+  {% endif %}
 
   <div class="postlist-items">
     {%- for post in postslist | reverse -%}
@@ -29,9 +31,11 @@
             </a>
           </h3>
 
-          <p class="postlist-lede">
-            This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
-          </p>
+          {% if post.data.lede %}
+            <p class="postlist-lede">
+              This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
+            </p>
+          {% endif %}
         </header>
 
         {% if postsListTags !== false %}
@@ -54,9 +58,9 @@
   {% if tag or postListReadMore %}
     <p class="postlist-tagsLink _text-align-center">
       {% if tag %}
-        <a href="{{ '/tags/' | url }}">All Tags</a>
+        <a href="{{ '/tags/' | url }}">All Tags →</a>
       {% elif postListReadMore %}
-        <a href="{{ '/archive/' | url }}">View Archive</a>
+        <a href="{{ '/archive/' | url }}">View Archive →</a>
       {% endif %}
     </p>
   {% endif %}

@@ -5,7 +5,7 @@ meta:
   description: 'A brief reflection on what metrics one might use when evaluating different static site generators.'
 type: Reflections
 tags: 
-  - Web Development
+  - Static Site Generators
 date: 2018-07-26
 ---
 

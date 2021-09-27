@@ -17,9 +17,5 @@ permalink: /tags/{{ tag | slug }}/
 templateClass: page-tags
 ---
 
-<h1 class="_text-align-center">
-  Tagged “{{ tag }}”
-</h1>
-
 {% set postslist = collections[ tag ] %}
 {% include "postslist.njk" %}

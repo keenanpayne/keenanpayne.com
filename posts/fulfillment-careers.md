@@ -7,6 +7,8 @@ meta:
   twitter_image: 
 type: Mailbox
 date: 2021-05-17
+tags:
+  - Careers
 ---
 
 _I've decided to begin publishing conversations between myself and others—with their permission—when I believe the conversations we have might be valuable for others. I'm happy to respond to questions, although I can't promise I'll respond to all of them._

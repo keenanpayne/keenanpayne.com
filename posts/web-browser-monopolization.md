@@ -5,6 +5,7 @@ date: 2021-07-30
 type: Essay
 tags:
   - Web Browsers
+  - Corporate Monopolies
 ---
 
 {% include type/twitter-essay.html, link: "https://twitter.com/KeenanPayne_/status/1421215458766647297" %}

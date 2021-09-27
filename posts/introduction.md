@@ -6,7 +6,7 @@ meta:
 date: 2017-12-22
 type: Article
 tags:
-  - Personal
+  - Life Updates
 ---
 
 Hello, my name is Keenan Payne, which you probably already discerned if you're reading this post. If you haven't, greetings it's nice to meet you. 👋🏻
