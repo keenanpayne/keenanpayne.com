@@ -45,6 +45,8 @@
   // Modifiers
   &.-stacked {
     --newsletter-background: transparent;
+
+    box-shadow: none;
   
     @media (--min-720) {
       display: block;
