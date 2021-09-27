@@ -24,6 +24,10 @@
   a { 
     display: inline-block;
     max-width: 27ch;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 

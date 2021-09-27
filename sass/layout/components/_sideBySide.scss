@@ -3,23 +3,20 @@
 // ==================================================
 
 .sideBySide { 
-  display: flex;
+  @include pullContentOutside();
+
   margin-top: 3rem;
-
-  @media (--min-720) { 
-    transform: translateX(-2.5vw);
-    width: calc(100% + 5vw);
-  }
-
-  @media (--min-960) { 
-    transform: translateX(-5vw);
-    width: calc(100% + 10vw);
+  
+  @media (--min-640) {
+    display: flex;
   }
 
   // Descendants
   figure { 
     &:not(:first-of-type) { 
-      margin-left: 1.5rem;
+      @media (--min-640) {
+        margin-left: 1.5rem;
+      }
     }
   }
 }

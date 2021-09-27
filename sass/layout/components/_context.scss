@@ -20,7 +20,7 @@ p {
     .icon {
       @extend ._text-h5;
 
-      background: white;
+      background-color: var(--white);
       bottom: 0;
       height: 35px;
       line-height: 1;

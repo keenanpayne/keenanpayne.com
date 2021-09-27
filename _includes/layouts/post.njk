@@ -22,13 +22,17 @@ permalink: "/{{ title | slug }}/"
     </h1>
 
     {%- if tags -%}
-      {%- for tag in tags | filterTagList -%}
-        {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+      <div class="post-tags">
+        {%- for tag in tags | filterTagList -%}
+          <div class="post-tag">
+            {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
 
-        <a href="{{ tagUrl | url }}" class="tags">
-          {{ tag }}
-        </a>
-      {%- endfor %}
+            <a href="{{ tagUrl | url }}" class="tags">
+              {{ tag }}
+            </a>
+          </div>
+        {%- endfor -%}
+      </div>
     {%- endif -%}
   </header>
 

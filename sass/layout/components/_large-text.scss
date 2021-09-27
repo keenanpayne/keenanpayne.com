@@ -3,14 +3,16 @@
 // ==================================================
 
 p.-large { 
+  @include pullContentOutside('true');
+
   @extend ._text-h3;
 
   margin-bottom: 2.5rem;
   margin-top: 2rem;
   text-align: center;
   
-  @media (--min-720) { 
-    transform: translateX(-2.5vw);
-    width: calc(100% + 5vw);
+  @media (--min-960) {
+    margin-bottom: 3.5rem;
+    margin-top: 3rem;
   }
 }

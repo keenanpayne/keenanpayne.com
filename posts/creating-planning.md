@@ -62,7 +62,7 @@ For others, planning yields little more than perpetual uncertainty and a misguid
 
 Thus, I’ve found myself standing beneath a light shining on my primary mode of procrastination, guiding my actions towards planning instead of doing. I’ve created no shortage of projects, to-do lists, systems, strategies, plans, timelines, commitments, and goals that are all designed to get me from point A to point B, from idea to creation. Where, then, are my creations?
 
-{% include type/p_large.html, content: "Planning is a solution to a problem encountered by doing something." %}
+{% include type/p_large.html, content: "Planning is a solution to a problem encountered by <em>doing</em> something." %}
 
 Planning as a form of procrastination inhibits my ability to engage in acts of creativity that are engaging and rewarding. Planning is no substitute for doing. To plan is to anticipate, while to do is to create. The former does not preclude the latter, but I'm no longer going to allow planning to impede my creative process.
 

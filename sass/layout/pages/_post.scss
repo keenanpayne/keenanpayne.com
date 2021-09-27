@@ -22,6 +22,14 @@
   justify-content: space-between;
 }
 
+.post-tag {
+  display: inline-block;
+
+  &:not(:first-of-type) { 
+    margin-left: 0.5em;
+  }
+}
+
 
 //
 // Post Content
@@ -103,7 +111,7 @@
     }
   }
 
-  p + p { 
+  p:not(:last-of-type):not(.-large) { 
     margin-bottom: 1.5rem;
   }
   
@@ -120,5 +128,9 @@
       background-color: var(--light-yellow);
       margin: 0 -0.1em;
     }
+  }
+
+  > figure {
+    @include pullContentOutside();
   }
 }
