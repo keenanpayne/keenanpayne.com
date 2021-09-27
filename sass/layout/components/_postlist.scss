@@ -93,8 +93,13 @@
   
   // Descendants
   a { 
-    text-decoration-color: var(--gray-darker);
-    text-decoration-thickness: 2px;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--gray-darker);
+      text-decoration-thickness: 2px;
+    }
   }
 }
 
