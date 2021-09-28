@@ -67,9 +67,7 @@ module.exports = function(eleventyConfig) {
     breaks: false,
     linkify: true
   }).use(markdownItAnchor, {
-    permalink: true,
-    permalinkClass: "direct-link",
-    permalinkSymbol: "§"
+    permalink: markdownItAnchor.permalink.headerLink()
   }).disable('code').use(require('markdown-it-footnote')); // Addressing https://www.11ty.dev/docs/languages/markdown/#there-are-extra-and-in-my-output
 
   eleventyConfig.setLibrary("md", markdownLibrary);
