@@ -41,7 +41,7 @@
     "assets:build:dev": "watch 'npm run assets:sass' 'sass/'",
     "assets:build:prod": "npm run assets:sass",
     "app:build:dev": "npm run assets:build:dev & ENV=dev eleventy --watch --serve",
-    "app:build:prod": "npm run assets:build:prod; ENV=prod eleventy",
+    "app:build:prod": "mkdir -p _site/css && npm run assets:build:prod && ENV=prod eleventy",
     "start": "npm run app:build:dev",
     "debug": "DEBUG=* eleventy"
   },
