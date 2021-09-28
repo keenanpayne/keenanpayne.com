@@ -1,0 +1,43 @@
+//
+// Root element (i.e., <html>)
+// ==================================================
+
+:root {
+  --root-background-start: var(--gray-light);
+  --root-background-end: var(--gray-dark);
+
+  // S/O: https://www.css-gradient.com/
+  // TODO: Contemplate if I want to add more color stops 
+  //       to the background gradient to make it more dynamic
+  background: var(--root-background-start);
+  background: linear-gradient(to bottom right, var(--root-background-start), var(--root-background-end));
+  color: var(--text-color);
+  font-family: -apple-system, system-ui, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  position: relative;
+
+  @media (--dark) {
+    --root-background-start: var(--plum-light);
+    --root-background-end: var(--plum-dark);
+  }
+
+  // S/O: https://www.toptal.com/designers/subtlepatterns/tag/paper/page/2/
+  &:after {
+    background: url('https://www.toptal.com/designers/subtlepatterns/patterns/ricepaper2.png') repeat center center / 240px 240px;
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: .35;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+
+    @media (--dark) {
+      opacity: .035;
+    }
+  }
+}

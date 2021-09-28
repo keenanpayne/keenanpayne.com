@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+permalink: "/{{ title | slug }}/"
+---
+
+<section class="post _container">
+  <header class="post-header">
+    <div class="post-meta">
+      {%- if type -%}
+        <span class="_label">
+          {{ type }}
+        </span>
+      {%- endif -%}
+
+      <time class="_text-smaller" datetime="{{ page.date | htmlDateString }}">
+        {{ page.date | readableDate }}
+      </time>
+    </div>
+
+    <h1 class="post-title">
+      {{ title }}
+    </h1>
+
+    {%- if tags -%}
+      <div class="post-tags">
+        {%- for tag in tags | filterTagList -%}
+          <div class="post-tag">
+            {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+
+            <a href="{{ tagUrl | url }}" class="tags">
+              {{ tag }}
+            </a>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </header>
+
+  <div class="post-content">
+    {{ content | safe }}
+  </div>
+
+  {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
+  {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+
+  {%- if nextPost or previousPost -%}
+    <div class="postNav">
+      {%- if nextPost -%}
+        <p class="postNav-next">
+          <span class="postNav-label _label">
+            Next
+          </span>
+          
+          <a href="{{ nextPost.url | url }}">
+            {{ nextPost.data.title }}
+          </a>
+        </p>
+      {% endif -%}
+
+      {%- if previousPost -%}
+        <p class="postNav-prev">
+          <span class="postNav-label _label">
+            Previous
+          </span>
+          
+          <a href="{{ previousPost.url | url }}">
+            {{ previousPost.data.title }}
+          </a>
+        </p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% include "newsletter.njk" %}

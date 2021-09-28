@@ -1,0 +1,40 @@
+//
+// Footnotes
+// ==================================================
+
+.footnotes { 
+  @extend ._text-small;
+}
+
+.footnotes-list { 
+  padding-left: 1.5rem;
+  margin-bottom: 0;
+  margin-right: auto;
+  max-width: 65ch;
+
+  @media (--min-640) { 
+    padding-left: 0;
+  }
+}
+
+.footnote-item:not(:first-of-type) { 
+  margin-top: 1rem;
+}
+
+.footnotes-sep { 
+  background-color: var(--midgray);
+  border: none;
+  height: 1px;
+  margin-bottom: 1rem;
+  margin-top: 5rem;
+  overflow: visible;
+  position: relative;
+
+  &:before { 
+    @extend ._label;
+
+    content: 'Footnotes';
+    position: absolute;
+    bottom: .25rem;
+  }
+}

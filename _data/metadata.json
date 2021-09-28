@@ -1,0 +1,21 @@
+{
+  "title": "Keenan Payne",
+  "url": "https://keenanpayne.com/",
+  "language": "en",
+  "description": "This is the home page of Keenan Payne, a freelance web developer. Learn how I can help you grow as a freelancer or help your business succeed on the web.",
+  "feed": {
+    "subtitle": "This is the home page of Keenan Payne, a freelance web developer. Learn how I can help you grow as a freelancer or help your business succeed on the web.",
+    "filename": "feed.xml",
+    "path": "/feed.xml",
+    "id": "https://keenanpayne.com/"
+  },
+  "jsonfeed": {
+    "path": "/feed.json",
+    "url": "https://keenanpayne.com/feed.json"
+  },
+  "author": {
+    "name": "Keenan Payne",
+    "email": "contact@keenanpayne.com",
+    "url": "https://keenanpayne.com/"
+  }
+}

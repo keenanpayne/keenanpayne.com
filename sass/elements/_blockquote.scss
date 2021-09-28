@@ -1,0 +1,27 @@
+//
+// Blockquote
+// ==================================================
+
+blockquote { 
+  --blockquote-border: var(--blue);
+
+  border-left: 3px solid var(--blockquote-border);
+  margin: 1.5rem 1rem;
+  padding-bottom: .75rem;
+  padding-left: 1rem;
+  padding-top: .75rem;
+  
+  @media (--dark) {
+    --blockquote-border: var(--light-yellow);
+  }
+  
+  @media (--min-480) { 
+    margin-left: 1.5rem;
+    padding-left: 1.5rem;
+  }
+
+  // Descendants
+  > p { 
+    margin-bottom: .75rem;
+  }
+}

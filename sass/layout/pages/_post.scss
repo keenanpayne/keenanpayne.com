@@ -1,0 +1,136 @@
+//
+// Blog Post
+// ==================================================
+
+.post { 
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.post-header {
+  margin-bottom: 2rem;
+}
+
+.post-title { 
+  margin-bottom: 1.25rem;
+  margin-top: 1rem;
+}
+
+.post-meta { 
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-tag {
+  display: inline-block;
+
+  &:not(:first-of-type) { 
+    margin-left: 0.5em;
+  }
+}
+
+
+//
+// Post Content
+// ------------
+
+.post-content { 
+  @media (--min-960) {
+    font-size: 1.125rem;
+  }
+
+  @media (--min-1440) {
+    font-size: 1.25rem;
+  }
+
+  h2, h3, h4, h5 { 
+    position: relative;
+  }
+  
+  h2 { 
+    margin-bottom: 1.5rem;
+    margin-top: 3rem;
+  }
+  
+  h3 { 
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+  }
+  
+  h2 + h3 { 
+    margin-top: 0;
+  }
+
+  p a {
+    --link-color-visited: var(--plum-dark);
+
+    @media (--dark) { 
+      --link-color-visited: var(--gray-lightish);
+    }
+
+    &:visited {
+      color: var(--link-color-visited);
+    }
+  }
+
+  li { 
+    line-height: 1.5;
+
+    &:not(:first-of-type) { 
+      margin-top: .75rem;
+    }
+  }
+
+  ul { 
+    margin-bottom: 1.5rem;
+  }
+
+  ul,
+  ul ul { 
+    padding-left: 1.5rem;
+
+    @media (--min-480) { 
+      padding-left: 2rem;
+    }
+
+    @media (--min-640) { 
+      padding-left: 3rem;
+    }
+  }
+
+  ul ul {
+    margin-top: .5rem;
+  }
+
+  img { 
+    // NOTE: This is kind of a hack because I have some transparent PNG drawings 
+    //       (e.g., creating-planning.md) that don't look good without a white background
+    @media (--dark) { 
+      background-color: var(--white);
+    }
+  }
+
+  p:not(:last-of-type):not(.-large) { 
+    margin-bottom: 1.5rem;
+  }
+  
+  p mark { 
+    background: transparent;
+    background-image: linear-gradient(to right, rgba(255, 225, 0, 0.15), rgba(255, 225, 0, 0.6) 7.5%, rgba(255, 225, 0, 0.25));
+    border-radius: 0.8em 0.3em;
+    -webkit-box-decoration-break: clone;
+            box-decoration-break: clone;
+    margin: 0 -0.4em;
+    padding: 0.1em 0.4em; 
+
+    @media (--dark) { 
+      background-color: var(--light-yellow);
+      margin: 0 -0.1em;
+    }
+  }
+
+  > figure {
+    @include pullContentOutside();
+  }
+}

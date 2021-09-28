@@ -1,0 +1,41 @@
+//
+// Navigation
+// ==================================================
+
+.nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  display: inline-block;
+
+  &:not(:first-of-type) { 
+    margin-left: 1rem;
+
+    @media (--min-320) { 
+      margin-left: 1.5rem;
+    }
+  }
+  
+  // Descendants
+  a[href]:not(:hover) {
+    text-decoration: none;
+  }
+
+  // Modifiers
+  &.-active {
+    text-decoration: underline;
+  }
+
+  &.-cta { 
+    border-left: 1px solid var(--midgray);
+    font-weight: bold;
+    padding-left: 1rem;
+
+    @media (--min-320) { 
+      padding-left: 1.5rem;
+    }
+  }
+}

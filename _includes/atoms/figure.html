@@ -1,20 +1,22 @@
 <figure>
-  <img src="{{ include.src|slugify:'raw' }}" alt="{{ include.alt }}" {% if include.width %} width="{{ include.width }}" {% endif %}>
+  <img src="{{ src|slugify:'raw' }}" alt="{{ alt }}" {% if width %} width="{{ width }}" {% endif %}>
 
-  {% if include.caption %}
+  {%- if caption -%}
     <figcaption>
-      {{ include.caption }}
+      <p class="figure-caption">
+        {{ caption }}
+      </p>
 
-      {% if include.source_title and include.source_link %}
-        <p>
+      {%- if source_title and source_link -%}
+        <p class="figure-source">
           <small>
             <strong>Source:</strong>
-            <a href="{{ include.source_link }}" title="{{ include.source_title }}" target="_blank">
-              {{ include.source_title }}
+            <a href="{{ source_link }}" title="{{ source_title }}" target="_blank">
+              {{ source_title }}
             </a>
           </small>
         </p>
-      {% endif %}
+      {%- endif -%}
     </figcaption>
-  {% endif %}
+  {%- endif -%}
 </figure>

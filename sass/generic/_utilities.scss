@@ -1,0 +1,45 @@
+//
+// Utility Classes
+// ==================================================
+
+._hidden {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px;
+}
+
+._text-align-center { 
+  text-align: center;
+}
+
+._block-center { 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+._container { 
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--content-max-width);
+}
+
+._label { 
+  color: var(--label-color);
+  font-family: var(--font-family-mono);
+  font-variant: all-small-caps;
+  letter-spacing: .0125em;
+  line-height: 1.325;
+  word-spacing: -.1em;
+}
+
+._bg-white { 
+  background-color: var(--white);
+}
+
+._font-family-mono {
+  font-family: var(--font-family-mono);
+}

@@ -1,0 +1,50 @@
+//
+// Post Navigation
+// ==================================================
+
+.postNav { 
+  align-items: top;
+  border-top: 1px solid var(--midgray);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  padding-top: 3rem;
+
+  @media (--min-480) { 
+    flex-direction: row;
+  }
+
+  @media (--min-720) { 
+    margin-bottom: 5rem;
+  }
+  
+  // Descendants
+  a { 
+    display: inline-block;
+    max-width: 27ch;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+.postNav-prev,
+.postNav-next {
+  margin: 0;
+}
+
+.postNav-next + .postNav-prev { 
+  margin-top: 1.5rem;
+
+  @media (--min-480) { 
+    margin-top: 0;
+  }
+}
+
+.postNav-label { 
+  display: block;
+  margin-bottom: .2rem;
+}

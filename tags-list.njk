@@ -1,0 +1,20 @@
+---
+permalink: /tags/
+layout: layouts/home.njk
+title: Tags
+templateClass: _container
+---
+
+<h1 class="_text-align-center">
+  Tags
+</h1>
+
+<div class="_text-align-center">
+  {%- for tag in collections.tagList -%}
+    {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+
+    <a href="{{ tagUrl | url }}" class="tags -large">
+      {{ tag }}
+    </a>
+  {%- endfor -%}
+</div>

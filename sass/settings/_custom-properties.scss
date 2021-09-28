@@ -1,0 +1,74 @@
+//
+// Custom Properties
+// ==================================================
+
+ :root {
+  // Color Scheme
+  --lightgray: #f3f3f3;
+  --gray: #C0C0C0;
+  --midgray: #909090;
+  --darkgray: #050505;
+  --navy: #17050F;
+  --blue: #082840;
+  --white: #fff;
+  --black: #000;
+  --light-yellow: #fbf4e6;
+
+  --gray-lighter: #fcfcfc;
+  --gray-light: #efefef;
+  --gray-lightish: #d3d1db;
+  --gray-dark: #C7C4D7;
+  --gray-darker: #a7a5b4;
+  --gray-darkest: #908e9b;
+
+  --plum-light: #2B2638;
+  --plum-dark: #100f16;
+
+  --yellow-light: #fff8e6;
+  --yellow-dark: #ffd466;
+
+  --red: #fe0130;
+
+  // S/O https://flatuicolors.com/palette/au
+  --exodus-fruit: #686de0;
+  --steel-pink: #be2edd;
+  --heliotrope: #e056fd;
+  --deep-cove: #130f40;
+  --light-pink: #ed98ff;
+
+  // Fonts
+  --font-family-mono: 'Space Mono', Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+
+  // Transitions
+  --transition: 150ms;
+  --transition-quick: 75ms;
+  --transition-long: 300ms;
+
+  // Context-Specific
+  --text-color: var(--darkgray);
+
+  --shadow: 0 3px 7px 0px rgb(150 150 150 / 25%);
+
+  --pre-background: var(--lightgray);
+
+  --small-text-color: var(--midgray);
+  --label-color: var(--black);
+
+
+  // S/O https://flatuicolors.com/palette/au
+  --exodus-fruit: #686de0;
+  --content-max-width: 700px;
+
+  --global-element-color: var(--white);
+}
+
+/* Dark Mode */
+@media (--dark) {
+  :root {
+    --text-color: var(--white);
+    --small-text-color: var(--white);
+    --label-color: var(--white);
+    --global-element-color: var(--darkgray);
+    --shadow: 0 3px 7px 0px rgb(0 0 0 / 30%);
+  }
+}

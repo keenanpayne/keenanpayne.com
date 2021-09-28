@@ -1,0 +1,12 @@
+//
+// Paragraph
+// ==================================================
+
+p {
+  line-height: 1.5;
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

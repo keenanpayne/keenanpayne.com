@@ -1,0 +1,60 @@
+//
+// Tags
+// ==================================================
+
+.tags {
+  @extend ._text-smaller;
+
+  --tags-background: var(--white);
+
+  align-items: center;
+  background-color: var(--tags-background);
+  border: 1px solid var(--gray-lightish);
+  border-radius: 0.25em;
+  box-shadow: 0 1px 1px 0px rgb(100 100 100 / 15%);
+  display: inline-flex;
+  justify-content: center;
+  line-height: 2;
+  padding: .06rem .5rem .1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all var(--transition);
+
+  @media (--dark) { 
+    --tags-background: var(--plum-light);
+
+    border-color: var(--gray-dark);
+    box-shadow: none;
+  }
+
+  // Modifiers
+  &.-large { 
+    @extend ._text-h5;
+
+    margin: .25rem;
+  }
+}
+
+a[href].tags,
+a[href].tags:visited {
+  color: inherit;
+}
+
+a[href].tags:hover,
+a[href].tags:focus {
+  background-color: var(--gray-lighter);
+  border-color: var(--gray-darker);
+  box-shadow: none;
+  color: initial;
+
+  @media (--dark) { 
+    background-color: var(--plum-dark);
+    border-color: var(--gray-darkest);
+    color: currentColor;
+  }
+}
+
+// Context-specific styles
+.postlist-item > .tags {
+  align-self: center;
+}

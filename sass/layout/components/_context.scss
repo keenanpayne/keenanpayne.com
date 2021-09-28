@@ -1,0 +1,63 @@
+//
+// Context Styles
+// ==================================================
+
+p {
+  &.-context { 
+    --background: transparent;
+  
+    background-color: var(--background);
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem;
+    position: relative;
+    
+    @media (--min-480) { 
+      padding: 1.35rem 1.5rem;
+    }
+
+    // Descendants
+    .icon {
+      @extend ._text-h5;
+
+      background-color: var(--white);
+      bottom: 0;
+      height: 35px;
+      line-height: 1;
+      padding: .5rem;
+      position: absolute;
+      right: 0;
+      width: 35px;
+    }
+
+    // Modifiers
+    &.-twitter { 
+      --background: rgb(29 161 242 / 30%);
+
+      span { 
+        display: block;
+        margin-bottom: 1rem;
+      }
+    }
+    
+    &.-notice { 
+      --background: var(--light-yellow);
+    
+      color: var(--darkgray);
+    }
+    
+    &.-question { 
+      --background: var(--lightgray);
+    
+      color: var(--darkgray);
+    }
+
+    &.-note { 
+      border: 1px solid var(--lightgray);
+    }
+
+    &.-tip { 
+      border: 1px solid var(--light-yellow);
+    }
+  }
+}

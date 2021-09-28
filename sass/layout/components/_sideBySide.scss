@@ -1,0 +1,22 @@
+//
+// Side-by-side
+// ==================================================
+
+.sideBySide { 
+  @include pullContentOutside();
+
+  margin-top: 3rem;
+  
+  @media (--min-640) {
+    display: flex;
+  }
+
+  // Descendants
+  figure { 
+    &:not(:first-of-type) { 
+      @media (--min-640) {
+        margin-left: 1.5rem;
+      }
+    }
+  }
+}

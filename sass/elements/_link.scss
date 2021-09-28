@@ -1,0 +1,19 @@
+//
+// Links
+// ==================================================
+
+a[href] {
+  --link-color: var(--plum-dark);
+  --link-color-hover: var(--plum-light);
+
+  color: var(--link-color);
+
+  &:hover { 
+    color: var(--link-color-hover);
+  }
+
+  @media (--dark) {
+    --link-color: var(--gray-white);
+    --link-color-hover: var(--gray-light);
+  }
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ description or metadata.description }}">
+
+    <title>
+      {% if title %}
+        {{ title ~ ' | Keenan Payne' }}
+      {% else %}
+        {{ metadata.title }}
+      {% endif %}
+    </title>
+    
+    <link rel="stylesheet" href="{{ '/css/app.css' | url }}">
+    <link rel="stylesheet" href="{{ '/css/prism-base16-monokai.dark.css' | url }}">
+    <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
+    <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-left">
+        <h1 class="header-logo _text-h4">
+          <a href="{{ '/' | url }}">
+            {{ metadata.title }}
+          </a>
+        </h1>
+      </div>
+
+      <div class="header-right">
+        {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+        <ul class="nav">
+          {%- for entry in collections.all | eleventyNavigation -%}
+            <li class="nav-item{% if entry.url == page.url %} -active{% endif %} {{ '-cta' if entry.cta }}">
+              <a href="{{ entry.url | url }}">
+                {{ entry.title }}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </header>
+
+    <main class="{% if templateClass %}{{ templateClass }}{% endif %}">
+      {{ content | safe }}
+    </main>
+
+    <footer class="footer">
+      <p class="_label">
+        <a href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank">
+          CC0 — No Rights Reserved
+        </a>
+        <br>
+        Do as you wish ✌🏻
+      </p>
+    </footer>
+
+    {% include "components/hello.html" %}
+
+    <script src="https://cdn.usefathom.com/script.js" data-site="FCWPKZQR" defer></script>
+  </body>
+</html>

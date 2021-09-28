@@ -1,0 +1,24 @@
+//
+// Figure
+// ==================================================
+
+figure { 
+  margin: 3rem 0;
+
+  // Descendants
+  + figure { 
+    margin-top: 0;
+  }
+}
+
+figcaption { 
+  @extend ._text-small;
+
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+// TODO: Refactor to remove overriding `!important`
+.figure-caption { 
+  margin-bottom: .5rem !important;
+}
