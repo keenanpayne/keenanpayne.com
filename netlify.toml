@@ -1,9 +1,3 @@
-# Settings in the [build] context are global and are applied to all contexts
-# unless otherwise overridden by more specific contexts.
-[build]
-  publish = "_site/"
-  command = "npm run app:build:prod"
-
 # Redirects
 [[redirects]]
   from = "/blog"
