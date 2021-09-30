@@ -18,7 +18,7 @@
   padding: .06rem .5rem .1rem;
   text-decoration: none;
   text-transform: uppercase;
-  transition: all var(--transition);
+  // transition: all var(--transition);
 
   @media (--dark) { 
     --tags-background: var(--plum-light);
