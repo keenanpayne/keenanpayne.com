@@ -41,23 +41,23 @@ p {
     }
     
     &.-notice { 
-      --background: var(--light-yellow);
+      --background: var(--gray-lighter);
     
-      color: var(--darkgray);
+      color: var(--plum-dark);
     }
     
     &.-question { 
-      --background: var(--lightgray);
+      --background: var(--gray-lighter);
     
-      color: var(--darkgray);
+      color: var(--plum-dark);
     }
 
     &.-note { 
-      border: 1px solid var(--lightgray);
+      border: 1px solid var(--gray-darker);
     }
 
     &.-tip { 
-      border: 1px solid var(--light-yellow);
+      border: 1px solid var(--gray-lighter);
     }
   }
 }

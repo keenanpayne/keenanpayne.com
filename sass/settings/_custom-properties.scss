@@ -4,15 +4,7 @@
 
  :root {
   // Color Scheme
-  --lightgray: #f3f3f3;
-  --gray: #C0C0C0;
-  --midgray: #909090;
-  --darkgray: #050505;
-  --navy: #17050F;
-  --blue: #082840;
   --white: #fff;
-  --black: #000;
-  --light-yellow: #fbf4e6;
 
   --gray-lighter: #fcfcfc;
   --gray-light: #efefef;
@@ -26,8 +18,6 @@
 
   --yellow-light: #fff8e6;
   --yellow-dark: #ffd466;
-
-  --red: #fe0130;
 
   // S/O https://flatuicolors.com/palette/au
   --exodus-fruit: #686de0;
@@ -45,14 +35,14 @@
   --transition-long: 300ms;
 
   // Context-Specific
-  --text-color: var(--darkgray);
+  --text-color: var(--plum-dark);
 
   --shadow: 0 3px 7px 0px rgb(150 150 150 / 25%);
 
-  --pre-background: var(--lightgray);
+  --pre-background: var(--gray-lighter);
 
-  --small-text-color: var(--midgray);
-  --label-color: var(--black);
+  --small-text-color: var(--gray-dark);
+  --label-color: var(--plum-dark);
 
 
   // S/O https://flatuicolors.com/palette/au
@@ -68,7 +58,7 @@
     --text-color: var(--white);
     --small-text-color: var(--white);
     --label-color: var(--white);
-    --global-element-color: var(--darkgray);
+    --global-element-color: var(--plum-dark);
     --shadow: 0 3px 7px 0px rgb(0 0 0 / 30%);
   }
 }

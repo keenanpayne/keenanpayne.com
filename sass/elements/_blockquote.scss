@@ -3,7 +3,7 @@
 // ==================================================
 
 blockquote { 
-  --blockquote-border: var(--blue);
+  --blockquote-border: var(--plum-light);
 
   border-left: 3px solid var(--blockquote-border);
   margin: 1.5rem 1rem;
@@ -12,7 +12,7 @@ blockquote {
   padding-top: .75rem;
   
   @media (--dark) {
-    --blockquote-border: var(--light-yellow);
+    --blockquote-border: var(--gray-light);
   }
   
   @media (--min-480) { 

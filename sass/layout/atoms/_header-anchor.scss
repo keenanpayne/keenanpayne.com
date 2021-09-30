@@ -3,9 +3,15 @@
 // ==================================================
 
 a[href].header-anchor {
-  color: var(--white);
+  --header-anchor-color: var(--plum-dark);
+
+  color: var(--header-anchor-color);
   position: relative;
   text-decoration: none;
+
+  @media (--dark) {
+    --header-anchor-color: var(--white);
+  }
 
   @media (--min-720) { 
     display: block;
@@ -17,7 +23,7 @@ a[href].header-anchor {
   &:hover,
   &:hover:visited {
     &::before {
-      color: var(--white);
+      color: var(--header-anchor-color);
       opacity: .75;
     }
   }
@@ -37,5 +43,6 @@ a[href].header-anchor {
     top: 50%;
     transform: translateY(-50%);
     transition: opacity var(--transition-quick) ease-in-out;
+    z-index: -1; // Disallow user selection
   }
 }
