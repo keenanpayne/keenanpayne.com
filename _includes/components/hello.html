@@ -1,5 +1,5 @@
 {# TODO: Add `-visible` class once user has scrolled 50% down the page #}
-<div class="hello -visible" onclick="this.classList.add('-expanded')" aria-label="Open Keenan's profile">
+<div role="button" class="hello -visible" onclick="this.classList.add('-expanded')" aria-label="Open Keenan's profile">
   <div class="hello-from">
     <div class="hello-from-contents">
       <div class="hello-avatar hello-me"></div>
@@ -17,12 +17,12 @@
 
         <div class="hello-name -large">Keenan Payne</div>
 
-        <div class="hello-close" onclick="document.querySelector('.hello').classList.remove('-expanded');event.stopPropagation();" aria-label="Close Keenan's profile">
+        <button class="-flat hello-close" onclick="document.querySelector('.hello').classList.remove('-expanded');event.stopPropagation();" aria-label="Close Keenan's profile">
           <div class="hello-x">
             <div class="hello-x-line1"></div>
             <div class="hello-x-line2"></div>
           </div>
-        </div>
+        </button>
       </div>
 
       <div class="hello-bottom">

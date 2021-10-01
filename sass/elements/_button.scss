@@ -1,0 +1,13 @@
+//
+// Buttons
+// ==================================================
+
+button,
+.button {
+  // Modifiers
+  &.-flat {
+    background-color: transparent;
+    border: 0;
+    box-shadow: 0;
+  }
+}
