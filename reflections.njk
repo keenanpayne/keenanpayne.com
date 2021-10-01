@@ -1,0 +1,13 @@
+---
+layout: layouts/home.njk
+---
+
+{% set label = 'Reflections' %}
+{% set postslist = collections.reflections %}
+{% set postListReadMore = true %}
+
+{% include "postslist.njk" %}
+
+{# {%- for item in collections.typeList -%}
+  {{ item ~ ' ' }}
+{%- endfor -%} #}
