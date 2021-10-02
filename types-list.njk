@@ -1,0 +1,20 @@
+---
+permalink: /types/
+layout: layouts/home.njk
+title: Types
+templateClass: _container
+---
+
+<h1 class="_text-align-center">
+  Types
+</h1>
+
+<div class="_text-align-center">
+  {%- for type in collections.typeList -%}
+    {% set typeUrl %}/type/{{ type | slug | plural }}/{% endset %}
+
+    <a href="{{ typeUrl | url }}" class="tags -large">
+      {{ type }}
+    </a>
+  {%- endfor -%}
+</div>
