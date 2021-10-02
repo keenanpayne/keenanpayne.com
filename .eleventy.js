@@ -18,6 +18,10 @@ module.exports = function(eleventyConfig) {
   // Alias `layout: post` to `layout: layouts/post.njk`
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
+  eleventyConfig.addFilter("plural", string => {
+    return `${string}s`;
+  });
+
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("LLL dd, yyyy");
   });
@@ -76,14 +80,38 @@ module.exports = function(eleventyConfig) {
     return typeSet;
   });
 
-  // Explicitly create a collection for a single post type
-  eleventyConfig.addCollection('reflections', function(collection) {
-    // Get all posts and sort reverse-chronologically 
-    // then filter based on whether they have a `Type` key
-    // that contains 'Reflections'
-    return collection.getAllSorted().reverse().filter(function(item) {
+  // Explicitly create collections for each post type
+  // Get all posts and sort reverse-chronologically 
+  // then filter based on whether they have a `Type` key
+  // that contains 'Reflections'
+  eleventyConfig.addCollection('essay', function(collection) {
+    return collection.getAllSorted().filter(function(item) {
       if ("type" in item.data) {
-        return item.data.type == 'Reflections' ? item : false;
+        return item.data.type == 'Essay' ? item : false;
+      }
+    });
+  });
+
+  eleventyConfig.addCollection('tutorial', function(collection) {
+    return collection.getAllSorted().filter(function(item) {
+      if ("type" in item.data) {
+        return item.data.type == 'Tutorial' ? item : false;
+      }
+    });
+  });
+
+  eleventyConfig.addCollection('article', function(collection) {
+    return collection.getAllSorted().filter(function(item) {
+      if ("type" in item.data) {
+        return item.data.type == 'Article' ? item : false;
+      }
+    });
+  });
+
+  eleventyConfig.addCollection('reflection', function(collection) {
+    return collection.getAllSorted().filter(function(item) {
+      if ("type" in item.data) {
+        return item.data.type == 'Reflection' ? item : false;
       }
     });
   });

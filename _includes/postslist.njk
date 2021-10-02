@@ -7,17 +7,22 @@
 
   <div class="postlist-items">
     {%- for post in postslist | reverse -%}
+      {% set date = post.data.date %}
+      {% set type = post.data.type %}
+
       <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
         <div class="postlist-meta">
-          {%- if post.data.type -%}
-            <span class="_label">
-              {{ post.data.type }}
-            </span>
+          {%- if type -%}
+            <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+              {{ type }}
+            </a>
           {%- endif -%}
 
-          <time class="postlist-time _text-smaller" datetime="{{ post.date | htmlDateString }}">
-            {{ post.date | readableDate }}
-          </time>
+          {%- if date -%}
+            <time class="postlist-time _text-smaller" datetime="{{ date | htmlDateString }}">
+              {{ date | readableDate }}
+            </time>
+          {%- endif -%}
         </div>
 
         <header class="postlist-header">

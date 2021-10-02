@@ -3,7 +3,7 @@ title:  'Walking quickly, then slowly'
 meta: 
   description: 'Are you aware of how fast you typically walk?'
 date: 2021-09-06
-type: Reflections
+type: Reflection
 tags:
   - Walking
 ---
