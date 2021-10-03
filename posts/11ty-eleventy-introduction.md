@@ -2,9 +2,7 @@
 permalink: '/11ty-eleventy-introduction/'
 title:  'Introduction to Eleventy (11ty)'
 meta: 
-  description: 
-  facebook_image: 
-  twitter_image: 
+  description: This is a simple introduction to Eleventy (11ty), a popular static site generator.
 type: Tutorial
 date: 2021-10-03
 tags:
