@@ -15,9 +15,9 @@ tags:
 
 [Eleventy](https://www.11ty.dev/) (11ty) is a static site generator (SSG) built on top of [Node.js](https://nodejs.org/en/) that compiles static website assets (i.e., HTML files). Eleventy provides a platform that helps web developers create organized and [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself) codebases through its support for [templating languages](https://www.11ty.dev/docs/languages/), a robust [templating engine](https://www.11ty.dev/docs/templates/), flexible [data models](https://www.11ty.dev/docs/data/), and [plugins](https://www.11ty.dev/docs/plugins/).  
 
-While Eleventy offers a lot, it's designed as a [zero-configuration](https://www.11ty.dev/docs/glossary/zero-config) platform that provides as much or as little overhead as you would like. This preference for simplicity, combined with a philosophy of tooling agnosticism (just look at their support for templating languages), provide a flexible and empowering developer experience.
+While Eleventy offers a lot, it's designed as a [zero-configuration](https://www.11ty.dev/docs/glossary/zero-config) platform that provides as much or as little overhead as you would like. This preference for simplicity, combined with a philosophy of tooling agnosticism, provide a flexible and empowering developer experience.
 
-Large websites don't only benefit from what Eleventy offers. Unless you are building the simplest low-maintenance websites, odds are that some aspect of Eleventy or another SSG will improve your workflow and codebase.
+Large websites won't only benefit from what Eleventy offers. Unless you are building the simplest low-maintenance websites, odds are that some aspect of Eleventy or another SSG will improve your workflow and codebase.
 
 ## SSG Ecosystem
 
@@ -48,3 +48,20 @@ Understand what problems you’re solving, determine which of these are most imp
 
 ## Getting Started
 
+I plan on writing more about how to use Eleventy for web development projects, but you needn't wait for me to shill my own articles when there are so many wonderful resources for learning how to use the software. 
+
+**[Eleventy documentation](https://www.11ty.dev/docs/getting-started/)**
+
+Documentation is _always_ my first stop when learning new software. I start by seeing how the developers of the software advise that I get started and then reach for external resources as-needed. 
+
+Overall, the Eleventy documentation is really great. The introductory "Getting Started" resource that I've included hits core concepts at a high-level, making it suitable for folks who already have decent technical know-how with similar software. 
+
+**[Learn Eleventy From Scratch](https://piccalil.li/course/learn-eleventy-from-scratch/)**
+
+This course—formerly paid but now free—is currently the best resource for learning how to use Eleventy from the ground-up for just about anyone. 
+
+Taught by [Andy Bell](https://twitter.com/piccalilli_), this course teaches you the ins-and-outs of Eleventy without glossing over the smaller details. 
+
+**[Beginner's Guide to Eleventy](https://www.tatianamac.com/posts/beginner-eleventy-tutorial-parti/)**
+
+This tutorial, written by [Tatiana Mac](https://twitter.com/TatianaTMac) is another excellent resource for anybody getting started with Eleventy. The first part in the series covers how Eleventy fits into the world of SSGs while the second part goes incredibly deep on how to install the software. 
