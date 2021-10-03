@@ -13,7 +13,7 @@ tags:
 
 {% include atoms/figure.html, src: "/images/posts/eleventy-introduction/homepage.png", alt: "Screenshot of Eleventy homepage", caption: "", source_title: "https://11ty.dev", source_link: "https://11ty.dev" %}
 
-[Eleventy](https://www.11ty.dev/) (11ty) is a static site generator (SSG) built on top of [Node.js](https://nodejs.org/en/) that compiles static website assets (i.e., HTML files) using content inside of different files (e.g., markdown, templates, JSON, etc.). Eleventy provides a platform that helps web developers create organized and [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself) codebases through its support for [templating languages](https://www.11ty.dev/docs/languages/), a robust [templating engine](https://www.11ty.dev/docs/templates/), flexible [data models](https://www.11ty.dev/docs/data/), and [plugins](https://www.11ty.dev/docs/plugins/).  
+[Eleventy](https://www.11ty.dev/) (11ty) is a static site generator (SSG) built on top of [Node.js](https://nodejs.org/en/) that compiles static website assets (i.e., HTML files) using content inside of various "source" files (e.g., markdown, templates, JSON, etc.). Eleventy provides a platform that helps web developers create organized and [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself) codebases through its support for [templating languages](https://www.11ty.dev/docs/languages/), a robust [templating engine](https://www.11ty.dev/docs/templates/), flexible [data models](https://www.11ty.dev/docs/data/), and [plugins](https://www.11ty.dev/docs/plugins/).  
 
 Eleventy is designed as a [zero-configuration](https://www.11ty.dev/docs/glossary/#zero-config) platform that provides as much or as little overhead as you would like. This preference for simplicity, combined with a philosophy of tooling agnosticism, offers a flexible and empowering developer experience.
 
@@ -39,7 +39,7 @@ I've used different SSGs in the past, predominantly Jekyll and Hugo. While I enj
 
 {% include type/p_large.html, content: "The most important advice I would give those choosing software for <em>any</em> project is to be mindful about what you’re choosing and why." %}
 
-Understand what problems you’re solving, determine which of these are most important, then choose a piece of software that seems to solve your most important problems in an ideal way. 
+Understand what problems you’re solving, determine which of these are most important, then choose a piece of software that solves your most important problems in an ideal way. 
 
 **If you're choosing the right tool for the job or at least _trying_ to, that's what matters.**
 
