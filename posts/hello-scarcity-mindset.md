@@ -9,6 +9,8 @@ tags:
   - Freelancing
 ---
 
+{% include atoms/figure.html, src: "/images/posts/scarcity-mindset/tunnel.jpg", alt: "Low-light photo of railroad tunnel", caption: "", source_title: "Photo by Florian van Duyn on Unsplash", source_link: "https://unsplash.com/photos/zE6ivbPzPGU" %}
+
 The scarcity mindset frames our current circumstances as "not enough." It's feast or famine as a freelancer, so you better eat while you can.
 I fell victim to the scarcity mindset while freelancing, which caused me to accept more projects than I could personally handle. Doing so caused ripple effects throughout my entire life:
 
