@@ -18,6 +18,10 @@ module.exports = function(eleventyConfig) {
   // Alias `layout: post` to `layout: layouts/post.njk`
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
+  eleventyConfig.addFilter("plural", string => {
+    return `${string}s`;
+  });
+
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("LLL dd, yyyy");
   });
@@ -47,7 +51,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
 
-  // Create an array of all tags
+  // Create a collection of all tags
   eleventyConfig.addCollection("tagList", function(collection) {
     let tagSet = new Set();
     collection.getAll().forEach(item => {
@@ -55,6 +59,61 @@ module.exports = function(eleventyConfig) {
     });
 
     return filterTagList([...tagSet]);
+  });
+
+  // Create a collection of all content types
+  eleventyConfig.addCollection('typeList', function(collection) {
+    // Create a new Set object to store unique
+    // collection of values for content types
+    //   Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set
+    let typeSet = new Set();
+    
+    // Get all items items from Eleventy
+    //   Ref: https://www.11ty.dev/docs/collections/#getall()
+    collection.getAll().filter(function(item) {
+      // Filter items based on the `Type` key existing 
+      // Store value of `Type` key in `typeSet` if we haven't already
+      return "type" in item.data ? typeSet.add(item.data.type) : false;
+    });
+
+    // Return all content types
+    return typeSet;
+  });
+
+  // Explicitly create collections for each post type
+  // Get all posts and sort reverse-chronologically 
+  // then filter based on whether they have a `Type` key
+  // that contains 'Reflections'
+  eleventyConfig.addCollection('essay', function(collection) {
+    return collection.getAllSorted().filter(function(item) {
+      if ("type" in item.data) {
+        return item.data.type == 'Essay' ? item : false;
+      }
+    });
+  });
+
+  eleventyConfig.addCollection('tutorial', function(collection) {
+    return collection.getAllSorted().filter(function(item) {
+      if ("type" in item.data) {
+        return item.data.type == 'Tutorial' ? item : false;
+      }
+    });
+  });
+
+  eleventyConfig.addCollection('article', function(collection) {
+    return collection.getAllSorted().filter(function(item) {
+      if ("type" in item.data) {
+        return item.data.type == 'Article' ? item : false;
+      }
+    });
+  });
+
+  eleventyConfig.addCollection('reflection', function(collection) {
+    return collection.getAllSorted().filter(function(item) {
+      if ("type" in item.data) {
+        return item.data.type == 'Reflection' ? item : false;
+      }
+    });
   });
 
   // Copy the `images` and `css` folders to the output

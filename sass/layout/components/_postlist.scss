@@ -71,6 +71,14 @@
   margin-bottom: .35rem;
 }
 
+.postlist-type {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .postlist-tags { 
   list-style-type: none;
   margin-bottom: 0;
