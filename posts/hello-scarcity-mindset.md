@@ -3,7 +3,7 @@ permalink: '/hello-scarcity-mindset/'
 title:  'Hello, scarcity mindset'
 meta: 
   description: 
-type: Reflections
+type: Reflection
 date: 2021-10-07
 tags:
   - Freelancing
