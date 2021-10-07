@@ -45,8 +45,8 @@ permalink: "/{{ title | slug }}/"
 
   {%- if nextPost or previousPost -%}
     <div class="postNav">
-      {%- if nextPost -%}
-        <p class="postNav-next">
+      <p class="postNav-next">
+        {%- if nextPost -%}
           <span class="postNav-label _label">
             Next
           </span>
@@ -54,11 +54,11 @@ permalink: "/{{ title | slug }}/"
           <a href="{{ nextPost.url | url }}">
             {{ nextPost.data.title }}
           </a>
-        </p>
-      {% endif -%}
+        {%- endif -%}
+      </p>
 
-      {%- if previousPost -%}
-        <p class="postNav-prev">
+      <p class="postNav-prev">
+        {%- if previousPost -%}
           <span class="postNav-label _label">
             Previous
           </span>
@@ -66,8 +66,8 @@ permalink: "/{{ title | slug }}/"
           <a href="{{ previousPost.url | url }}">
             {{ previousPost.data.title }}
           </a>
-        </p>
-      {%- endif -%}
+        {%- endif -%}
+      </p>
     </div>
   {%- endif -%}
 </section>
