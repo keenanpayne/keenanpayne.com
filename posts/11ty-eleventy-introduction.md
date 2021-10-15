@@ -6,6 +6,7 @@ meta:
 type: Tutorial
 date: 2021-10-03
 tags:
+  - Eleventy
   - Static Site Generators
 ---
 
