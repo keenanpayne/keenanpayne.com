@@ -23,7 +23,7 @@ In this article, I discuss my motivations for this project, how I went about exe
 
 ## Why my website is meaningful to me
 
-I've treated my website as such a trivial thing for so long that committing to spending time rebuilding it required a shift in my mindset. I reflected on the value my website provides to me—inspiration, challenge, ownership, character, communication—and reaffirmed my interest and dedication to it by doing so.
+I've treated my website as such a trivial thing for so long that committing to spending time rebuilding it required a shift in my mindset. I [reflected](/improve-work-well-being-deliberate-reflection/) on the value my website provides to me—inspiration, challenge, ownership, character, communication—and reaffirmed my interest and dedication to it by doing so.
 
 While reflecting, I recalled how much I enjoyed working on my website growing up. I spent _so much time_ tinkering with designs, learning new technology, emulating others, and trying to express myself through my passion for coding.
 
