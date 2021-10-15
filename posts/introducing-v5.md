@@ -17,7 +17,7 @@ It's time for that to change. With the significant amount of free time I have fo
 
 Over the past few months, I've completely rebuilt and redesigned my website. You're looking at it right now! [^1]
 
-[^1]: If you're looking at this on or around the date of publishing.
+[^1]: That is, if you're looking at this on or around the date of publishing.
 
 In this article, I discuss my motivations for this project, how I went about executing it, and what's on the horizon.
 
@@ -25,7 +25,7 @@ In this article, I discuss my motivations for this project, how I went about exe
 
 I've treated my website as such a trivial thing for so long that committing to spending time rebuilding it required a shift in my mindset. I [reflected](/improve-work-well-being-deliberate-reflection/) on the value my website provides to me—inspiration, challenge, ownership, character, communication—and reaffirmed my interest and dedication to it by doing so.
 
-While reflecting, I recalled how much I enjoyed working on my website growing up. I spent _so much time_ tinkering with designs, learning new technology, emulating others, and trying to express myself through my passion for coding.
+While reflecting, I recalled how much I enjoyed working on my website growing up. I spent _so much time_ tinkering with designs, learning new technology, emulating others, and expressing myself through my passion for coding.
 
 So, with all of this free time on my hands, why not invest myself in something I'm passionate about and see where it leads me?
 
@@ -33,7 +33,9 @@ So, with all of this free time on my hands, why not invest myself in something I
 
 Not only did I require a shift in mindset to begin investing time into my website, but I also needed to shift my approach towards executing personal projects so that I could _actually finish them._
 
-I tend to start more projects than I complete, and that has occurred with rebuilding my website a couple of times in the past few years. I would get things off the ground only to lose interest or find myself preoccupied with client projects. I wanted to start this project and feel confident that I would follow through with completing it.
+I tend to start more projects than I complete, and that has occurred with rebuilding my website a couple of times in the past few years. I would get things off the ground only to lose interest or find myself preoccupied with client projects. 
+
+I wanted to start this project and feel confident that I would follow through with completing it.
 
 **What did I do?** I began treating myself like a client.
 
@@ -72,8 +74,8 @@ This dilemma underscores why [gaining clarity on the value of spending time buil
 
 At the current moment, my goals are to:
 
-- Encourage communication and engagement with content that I'm sharing.
 - Providing myself with a way to effortlessly share content with the world in various mediums and contexts.
+- Encourage communication and engagement with content that I'm sharing.
 
 Being paralyzed by choice is real, so getting clear with my highest-level goals helps guide my actions.
 
