@@ -2,14 +2,15 @@
 layout: layouts/base.njk
 permalink: "/{{ title | slug }}/"
 ---
+{# TODO: Create macros for repeated elements here and in `postslist.njk` #}
 
 <section class="post _container">
   <header class="post-header">
     <div class="post-meta">
       {%- if type -%}
-        <span class="_label">
+        <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
           {{ type }}
-        </span>
+        </a>
       {%- endif -%}
 
       <time class="_text-smaller" datetime="{{ page.date | htmlDateString }}">
