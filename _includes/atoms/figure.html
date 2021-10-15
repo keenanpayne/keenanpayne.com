@@ -1,5 +1,7 @@
 <figure>
-  <img src="{{ src|slugify:'raw' }}" alt="{{ alt }}" {% if width %} width="{{ width }}" {% endif %}>
+  <a href="{{ src|slugify:'raw' }}">
+    <img src="{{ src|slugify:'raw' }}" alt="{{ alt }}" {% if width %} width="{{ width }}" {% endif %}>
+  </a>
 
   {%- if caption -%}
     <figcaption>
