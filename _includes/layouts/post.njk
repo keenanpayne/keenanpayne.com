@@ -73,4 +73,31 @@ permalink: "/{{ title | slug }}/"
   {%- endif -%}
 </section>
 
+{# TODO: Lazy-load comments #}
+<div id="disqus_thread"></div>
+
+<noscript>Please enable JavaScript to view the comments.</noscript>
+
+<script> 
+  // Disqus configuration   
+  var disqus_config = function () {
+    this.page.url = 'https://keenanpayne.com{{ permalink }}'; 
+  };
+
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://keenan-payne.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+
+  // Disqus theme switching
+  // Ref: https://thisdevbrain.com/disqus-auto-theme-switching/
+  document.addEventListener('themeChanged', function (e) { 
+    if (document.readyState == 'complete') {
+      DISQUS.reset({ reload: true, config: disqus_config });
+    }
+  });
+</script>
+
 {% include "newsletter.njk" %}
