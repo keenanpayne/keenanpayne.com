@@ -15,10 +15,10 @@ figcaption {
   @extend ._text-small;
 
   font-style: italic;
-  margin-top: 1rem;
+  margin-top: .5rem;
 }
 
 // TODO: Refactor to remove overriding `!important`
 .figure-caption { 
-  margin-bottom: .5rem !important;
+  margin-bottom: .25rem !important;
 }

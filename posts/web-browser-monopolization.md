@@ -6,9 +6,8 @@ type: Essay
 tags:
   - Web Browsers
   - Corporate Monopolies
+source: https://twitter.com/KeenanPayne_/status/1421215458766647297
 ---
-
-{% include type/twitter-essay.html, link: "https://twitter.com/KeenanPayne_/status/1421215458766647297" %}
 
 I recently stumbled upon an interesting Twitter thread by [Jeff Johnson](https://twitter.com/lapcatsoftware) on the state of corporate monopolization of the web, Safari and Chrome, web browser complexity, and fostering competition in the web browser landscape.
 

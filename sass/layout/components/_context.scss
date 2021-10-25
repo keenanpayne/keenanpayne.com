@@ -4,60 +4,131 @@
 
 p {
   &.-context { 
+    --border: transparent;
     --background: transparent;
   
     background-color: var(--background);
+    border-top: 5px solid var(--border);
+    border-radius: 3px;
+    box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
-    padding: 1rem 1.25rem;
+    padding: 1.75rem 1rem 1rem;
     position: relative;
     
     @media (--min-480) { 
-      padding: 1.35rem 1.5rem;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    @media (--min-720) { 
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    // Context label
+    &::before {
+      @extend ._text-smaller;
+
+      background-color: var(--border);
+      border-bottom-right-radius: 3px;
+      border-top-left-radius: 3px;
+      content: var(--text);
+      font-weight: bold;
+      font-variant: all-small-caps;
+      left: 0;
+      line-height: 1;
+      padding: .25rem .5rem;
+      position: absolute;
+      top: -5px;
     }
 
     // Descendants
+    span:not(.icon) { 
+      display: block;
+      max-width: 95%;
+    }
+
     .icon {
+      --size: 40px;
+
       @extend ._text-h5;
 
-      background-color: var(--white);
       bottom: 0;
-      height: 35px;
+      height: var(--size);
       line-height: 1;
-      padding: .5rem;
+      opacity: .3;
+      padding: .75rem .6rem .6rem .75rem;
       position: absolute;
       right: 0;
-      width: 35px;
+      width: var(--size);
+
+      @media (--dark) {
+        opacity: .5;
+      }
+
+      @media (--min-480) {
+        --size: 45px;
+      }
     }
 
     // Modifiers
     &.-twitter { 
-      --background: rgb(29 161 242 / 30%);
-
-      span { 
-        display: block;
-        margin-bottom: 1rem;
-      }
+      --color-light: rgb(29 161 242 / 25%);
+      --border: rgb(29 161 242 / 70%);
+      --background: var(--color-light);
+      --text: 'Tweet';
     }
     
     &.-notice { 
-      --background: var(--gray-lighter);
+      --border: var(--yellow-dark);
+      --background: var(--white);
+      --text: 'Notice';
     
-      color: var(--plum-dark);
+      
+      .icon {
+        opacity: .3;
+      }
+      
+      @media (--dark) {
+        color: var(--plum-dark);
+      }
     }
     
     &.-question { 
-      --background: var(--gray-lighter);
+      --border: var(--exodus-fruit);
+      --background: var(--global-element-color);
+      --text: 'Questions';
     
-      color: var(--plum-dark);
+      color: var(--text-color);
+
+      &::before {
+        color: var(--white);
+      }
     }
 
-    &.-note { 
-      border: 1px solid var(--gray-darker);
+    &.-note,
+    &.-tip { 
+      --border: var(--yellow-dark);
+      --background: var(--gray-lighter);
+      --text: 'Note';
+    
+      border-left: 3px solid var(--border);
+      border-right: 3px solid var(--border);
+      border-bottom: 3px solid var(--border);
+      color: var(--text-color);
+
+      @media (--dark) {
+        --background: var(--plum-light);
+      }
+
+      &::before {
+        color: var(--plum-dark);
+      }
     }
 
     &.-tip { 
-      border: 1px solid var(--gray-lighter);
+      --text: 'Tip';
     }
   }
 }
