@@ -56,7 +56,7 @@ html: '<button class="-bg-yellow">
 
 Now that we have the markup for our button let's start adding some styles.
 
-{% include type/note.html content: 'I am using <a href="https://sass-lang.com/">Sass</a> as the pre-processor for my CSS for convenience (e.g., <a href="https://sass-lang.com/guide#topic-3">nesting</a>, <a href="https://sass-lang.com/documentation/syntax/comments">comments</a>, and <a href="https://sass-lang.com/documentation/at-rules/mixin">mixins</a> in this tutorial).' %}
+{% include type/note.html content: 'I am using <a href="https://sass-lang.com/">Sass</a> as the pre-processor for my CSS for convenience (e.g., <a href="https://sass-lang.com/guide#topic-3">nesting</a>, <a href="https://sass-lang.com/documentation/syntax/comments">comments</a>, and <a href="https://sass-lang.com/documentation/at-rules/mixin">mixins</a>)' %}
 
 {% include components/codepen.html,
 tab: 'css,result',
