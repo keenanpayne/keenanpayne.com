@@ -74,9 +74,8 @@ p {
 
     // Modifiers
     &.-twitter { 
-      --color-light: rgb(29 161 242 / 25%);
       --border: rgb(29 161 242 / 70%);
-      --background: var(--color-light);
+      --background: rgb(29 161 242 / 25%);
       --text: 'Tweet';
     }
     
