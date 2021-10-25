@@ -64,6 +64,19 @@
       max-width: 500px;
     }
   }
+
+  &.-standalone {
+    .newsletter-cta {
+      background: var(--yellow-dark);
+      border-radius: 3px;
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
+
+      @media (--dark) {
+        background: var(--exodus-fruit);
+      }
+    }
+  }
 }
 
 .newsletter-title {
@@ -128,7 +141,10 @@
   }
 
   > input[type="submit"] { 
-    background-color: var(--plum-light);
+    --background: var(--plum-light);
+    --hover: var(--plum-dark);
+
+    background-color: var(--background);
     border: 0;
     border-radius: 0;
     box-shadow: 0;
@@ -143,8 +159,13 @@
       width: auto;
     }
 
+    @media (--dark) {
+      --background: var(--plum-light);
+      --hover: var(--plum-dark);
+    }
+
     &:hover {
-      background-color: var(--plum-dark);
+      background-color: var(--hover);
     }
   }
 }
