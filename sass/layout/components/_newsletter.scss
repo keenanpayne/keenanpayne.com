@@ -3,13 +3,15 @@
 // ==================================================
 
 .newsletter {
+  @extend ._container, .-large;
+
   --newsletter-background: var(--yellow-dark);
   
   background-color: var(--newsletter-background);
-  border-radius: 40px 5px;
+  border-radius: var(--border-radius-large);
   box-shadow: var(--shadow);
-  margin: 3rem 1rem;
-  max-width: 960px;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
   padding: 3rem 2rem 3.5rem;
   
   @media (--dark) {
@@ -23,15 +25,11 @@
 
   @media (--min-720) {
     display: grid;
-    border-top-left-radius: 65px;
-    border-bottom-right-radius: 65px;
     grid-template-columns: repeat(12, 1fr);
   }
   
   @media (--min-960) { 
     margin-top: 5rem;
-    margin-left: auto;
-    margin-right: auto;
     padding-bottom:  5.5rem;
     padding-top: 5rem;
   }
@@ -39,7 +37,6 @@
   @media (--min-1120) { 
     padding-left: 0;
     padding-right: 0;
-    max-width: 1080px;
   }
 
   // Modifiers
@@ -68,7 +65,7 @@
   &.-standalone {
     .newsletter-cta {
       background: var(--yellow-dark);
-      border-radius: 3px;
+      border-radius: var(--border-radius);
       box-shadow: var(--shadow);
       padding: 1.5rem;
 
@@ -133,9 +130,6 @@
   
   > input[type="email"] {
     background-color: var(--white);
-    border: 0;
-    border-radius: 0;
-    box-shadow: 0;
     flex: 1;
     padding: 1rem .75rem;
   }
@@ -145,11 +139,7 @@
     --hover: var(--plum-dark);
 
     background-color: var(--background);
-    border: 0;
-    border-radius: 0;
-    box-shadow: 0;
     color: var(--white);
-    cursor: pointer;
     display: inline-block;
     padding: .75rem 1.25rem;
     transition: background-color var(--transition);

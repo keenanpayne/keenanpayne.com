@@ -78,6 +78,10 @@
     }
   }
 
+  strong {
+    font-weight: 600;
+  }
+
   li { 
     line-height: 1.5;
 
@@ -125,47 +129,5 @@
 
   > figure {
     @include pullContentOutside();
-  }
-}
-
-//
-// Disqus Commenting
-// -----------------
-// TODO: Move into separate file
-
-#disqus_thread {
-  color: var(--plum-dark);
-  padding: 1.5rem;
-  
-  @media (--min-720) {
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
-    padding: 3rem;
-  }
-
-  @media (--min-960) {
-    margin-left: 3rem;
-    margin-right: 3rem;
-    padding-left: 6rem;
-    padding-right: 6rem;
-  }
-
-  @media (--min-1120) {
-    padding-left: 9rem;
-    padding-right: 9rem;
-  }
-
-  // TODO: Adding a background color because the light/dark automatic theme
-  //       switching for Disqus doesn't seem to be working
-  @media (--dark) {
-    // color: var(--white);
-    background-color: var(--gray-light);
-  }
-
-  // Descendants
-  iframe {
-    margin-left: auto !important;
-    margin-right: auto !important;
-    max-width: 960px !important;
   }
 }

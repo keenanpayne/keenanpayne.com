@@ -1,0 +1,35 @@
+//
+// Comments
+// ==================================================
+// NOTE: The automatic light/dark theme switching for 
+//       doesn't seem to be working so I'm sticking 
+//       the light theme for right now.
+
+.comments {
+  --background: var(--gray-lighter);
+
+  background-color: var(--background);
+  border-radius: var(--border-radius-large);
+  color: var(--plum-dark);
+  padding: 1.5rem;
+  
+  @media (--min-720) {
+    padding: 3rem;
+  }
+
+  @media (--min-960) {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  @media (--dark) {
+    --background: var(--gray-light);
+  }
+
+  // Descendants
+  iframe {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    max-width: 960px !important;
+  }
+}

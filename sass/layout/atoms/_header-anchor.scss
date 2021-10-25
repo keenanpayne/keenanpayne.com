@@ -13,10 +13,6 @@ a[href].header-anchor {
     --header-anchor-color: var(--white);
   }
 
-  @media (--min-720) { 
-    display: block;
-  }
-
   // Hover and focus state
   &:focus,
   &:focus:visited,

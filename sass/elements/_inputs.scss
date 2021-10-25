@@ -3,7 +3,14 @@
 // ==================================================
 
 input {
-  // Safari quirks
-  margin: 0;
-  -webkit-appearance: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0;
+  margin: 0; // Safari quirk
+  -webkit-appearance: none; // Safari quirk
+
+  // Input types
+  &[type="submit"] {
+    cursor: pointer;
+  }
 }

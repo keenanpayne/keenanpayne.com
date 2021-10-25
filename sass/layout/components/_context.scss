@@ -9,7 +9,7 @@ p {
   
     background-color: var(--background);
     border-top: 5px solid var(--border);
-    border-radius: 3px;
+    border-radius: var(--border-radius);
     box-shadow: var(--shadow);
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
