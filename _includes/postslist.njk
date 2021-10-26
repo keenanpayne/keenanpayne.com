@@ -1,8 +1,16 @@
 {# TODO: Create macros for repeated elements here and `post.njk` #}
 <section class="postlist -stack _container">
   {% if label or tag %}
-    <div class="postlist-toggle">
-      {{ label if label else 'Tagged: ' ~ tag }}
+    <div class="postlist-header">
+      <div class="postlist-label">
+        {{ label if label else 'Tagged: ' ~ tag }}
+      </div>
+
+      {% if description %}
+        <p class="_text-small">
+          {{ description | safe }}
+        </p>
+      {% endif %}
     </div>
   {% endif %}
 
