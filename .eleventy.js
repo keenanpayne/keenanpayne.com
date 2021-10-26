@@ -117,12 +117,17 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addCollection('draft', function(collection) {
-    return collection.getAllSorted().filter(function(item) {
+    return collection.getFilteredByGlob("drafts/*.md").filter(function(item) {
       if ("type" in item.data) {
         return item.data.type == 'Draft' ? item : false;
       }
     });
   });
+
+  // Filter source file names using a glob
+  // eleventyConfig.addCollection("draft", function(collection) {
+  //   return collection.getFilteredByGlob("**/*.md");
+  // });
 
   // Copy the `images` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("images");
