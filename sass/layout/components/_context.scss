@@ -96,10 +96,14 @@ p {
     
     &.-question { 
       --border: var(--exodus-fruit);
-      --background: var(--global-element-color);
+      --background: var(--gray-light);
       --text: 'Questions';
     
       color: var(--text-color);
+
+      @media (--dark) { 
+        --background: var(--plum-mid);
+      }
 
       &::before {
         color: var(--white);

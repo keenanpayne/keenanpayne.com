@@ -3,32 +3,42 @@
 // ==================================================
 
 .header {
+  --background: var(--gray-lighter);
+  --border: var(--gray-dark);
+
   align-items: center;
-  background-color: var(--global-element-color);
-  box-shadow: var(--shadow);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: .5rem .35rem 0;
   padding-bottom: 1rem;
   padding-top: 1rem;
   z-index: 1;
   
   @media (--min-480) { 
     flex-direction: row;
-    margin: 1rem .75rem 0;
     padding: 2rem 1rem;
   }
 
   @media (--min-640) { 
-    margin: 1.25rem 1rem 0;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  @media (--min-720) { 
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   @media (--min-960) { 
     padding-left: 3rem;
     padding-right: 3rem;
+  }
+
+  @media (--dark) { 
+    --background: var(--plum-mid);
+    --border: var(--plum-dark);
   }
 }
 
