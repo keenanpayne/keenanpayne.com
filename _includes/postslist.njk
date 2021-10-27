@@ -15,65 +15,74 @@
   {% endif %}
 
   <div class="postlist-items">
-    {%- for post in postslist | reverse -%}
-      {% set date = post.data.date %}
-      {% set type = post.data.type %}
+    {# Check if items exist in collection #}
+    {% if postslist.length %}
+      {%- for post in postslist | reverse -%}
+        {% set date = post.data.date %}
+        {% set type = post.data.type %}
 
-      <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-        <div class="postlist-meta">
-          {%- if type -%}
-            <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
-              {{ type }}
-            </a>
-          {%- endif -%}
+        <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+          <div class="postlist-meta">
+            {%- if type -%}
+              <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+                {{ type }}
+              </a>
+            {%- endif -%}
 
-          {%- if date -%}
-            <time class="postlist-time _text-smaller" datetime="{{ date | htmlDateString }}">
-              {{ date | readableDate }}
-            </time>
-          {%- endif -%}
-        </div>
+            {%- if date -%}
+              <time class="postlist-time _text-smaller" datetime="{{ date | htmlDateString }}">
+                {{ date | readableDate }}
+              </time>
+            {%- endif -%}
+          </div>
 
-        <header class="postlist-header">
-          <h2 class="postlist-title _text-h3">
-            <a href="{{ post.url | url }}" class="postlist-link">
-              {% if post.data.title %}
-                {{ post.data.title }}
-              {% else %}
-                <code>{{ post.url }}</code>
-              {% endif %}
-            </a>
-          </h2>
-
-          {% if post.data.lede %}
-            <p class="postlist-lede">
-              This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
-            </p>
-          {% endif %}
-        </header>
-
-        {% if postsListTags !== false %}
-          <ul class="postlist-tags">
-            {%- for tag in post.data.tags | filterTagList -%}
-              <li class="postlist-tag ">
-                {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-
-                {% if tag == "drafts" %}
-                  <span class="tag -inactive">
-                    {{ tag | replace('drafts', 'draft') }}
-                  </span>
+          <header class="postlist-header">
+            <h2 class="postlist-title _text-h3">
+              <a href="{{ post.url | url }}" class="postlist-link">
+                {% if post.data.title %}
+                  {{ post.data.title }}
                 {% else %}
-                  <a href="{{ tagUrl | url }}" class="tag">
-                    {{ tag }}
-                  </a>
+                  <code>{{ post.url }}</code>
                 {% endif %}
-              </li>
-            {%- endfor -%}
-          </ul>
-        {% endif %}
-      </article>
-    {%- endfor -%}
-  </div>
+              </a>
+            </h2>
+
+            {% if post.data.lede %}
+              <p class="postlist-lede">
+                This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
+              </p>
+            {% endif %}
+          </header>
+
+          {% if postsListTags !== false %}
+            <ul class="postlist-tags">
+              {%- for tag in post.data.tags | filterTagList -%}
+                <li class="postlist-tag ">
+                  {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+
+                  {% if tag == "drafts" %}
+                    <span class="tag -inactive">
+                      {{ tag | replace('drafts', 'draft') }}
+                    </span>
+                  {% else %}
+                    <a href="{{ tagUrl | url }}" class="tag">
+                      {{ tag }}
+                    </a>
+                  {% endif %}
+                </li>
+              {%- endfor -%}
+            </ul>
+          {% endif %}
+        </article>
+      {%- endfor -%}
+    </div>
+  
+  {# If collection is empty #}
+  {% else %}
+    {% set content = 'No content is published here yet.' %}
+
+    {% include "type/notice.html" %}
+  {% endif %}
 
   {% if tag or postListReadMore %}
     <p class="postlist-tagsLink _text-align-center">

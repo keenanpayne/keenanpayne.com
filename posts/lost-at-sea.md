@@ -8,8 +8,6 @@ tags:
   - Capitalism
 ---
 
-{% include type/notice.html, content: "<strong>Heads up:</strong> This article is still a work-in-progress." %}
-
 For over ten years, I've had some semblance of direction in my life, stewarding my ship towards achieving financial security. Not knowing where this might manifest, I followed every lead I could, searching for a paycheck like a drug dog sniffs luggage. Good work, [capitalism](/tags/capitalism).
 
 Thirteen years of work and plenty of good luck have helped fulfill my capitalist desires—food is on the table, rent is covered, and the future contains a decent degree of financial certainty. I'm extraordinarily grateful for this. This good fortune has allowed me to take a break from my career as a freelance web developer for some time as I pursue different passions.
