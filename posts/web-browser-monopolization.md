@@ -13,7 +13,7 @@ I recently stumbled upon an interesting Twitter thread by [Jeff Johnson](https:/
 
 I have a different perspective on many points he discussed that I want to share in the pursuit of advancing this discussion. 
 
-{% include type/notice.html, content: "Jeff, the author of the Twitter thread that I responded to, has deleted his thread because of vicious responses from folks. I find this unfortunate, as sincerely-held opinions, however disagreeable they might be, provide a valuable perspective as we attempt to understand the state of the world and address its issues.<br><br>I'm not keeping this essay published to draw negative attention towards Jeff or his opinions, but rather to advance the discussion that he started. However, I'm happy to unpublish or remove the original quotes if requested." %}
+{% include type/notice.html, content: "Jeff, the author of the Twitter thread that I responded to, has deleted his thread because of vicious responses from folks. I find this unfortunate, as sincerely-held opinions, however disagreeable they might be, provide a valuable perspective as we attempt to understand the state of the world and address its issues.<br>I'm not keeping this essay published to draw negative attention towards Jeff or his opinions, but rather to advance the discussion that he started. However, I'm happy to unpublish or remove the original quotes if requested." %}
 ## Web browser complexity
 
 <blockquote class="twitter-tweet" data-dnt="true">
@@ -62,7 +62,7 @@ Should the automotive industry have remained stagnant, reducing complexity and f
 
 What about regulations placed on the automotive industry over the past century that benefit consumers? Regulations increase overhead for manufacturers but improve safety and reliability for consumers. How do you balance that trade-off? 
 
-{% include type/question.html, content: "How do you balance the trade-off of regulations on companies and industries to increase competition, promote innovation, and respect the needs of consumers in the industry?<br><br>How do we incentivize tech companies like Google and Apple to continue investing in web browsers in a way that benefits both the company <em>and</em> the consumer?<br><br>How can the Justice Department's antitrust powers increase competition in the web browser market?<br><br>What if the paradigm shifts to web browsers being 'sponsored' by corporations?" %}
+{% include type/question.html, content: "How do you balance the trade-off of regulations on companies and industries to increase competition, promote innovation, and respect the needs of consumers in the industry?<br>How do we incentivize tech companies like Google and Apple to continue investing in web browsers in a way that benefits both the company <em>and</em> the consumer?<br>How can the Justice Department's antitrust powers increase competition in the web browser market?<br>What if the paradigm shifts to web browsers being 'sponsored' by corporations?" %}
 
 Regardless of how we get there, I think the incentive structure for corporate involvement in web browser development needs to change. Google and Apple have different incentive structures, which is evident by their choices for Chromium and Safari, respectively. 
 

@@ -3,20 +3,19 @@
 // ==================================================
 
 .footer { 
-  background-color: var(--global-element-color);
-  box-shadow: var(--shadow);
-  margin: .5rem .35rem;
+  --background: var(--gray-lighter);
+  --border: var(--gray-darker);
+
+  background-color: var(--background);
+  border-top: 1px solid var(--border);
   padding-bottom: 1.5rem;
   padding-top: 1.5rem;
   text-align: center;
   z-index: 1;
-  
-  @media (--min-480) {
-    margin: 1rem .75rem;
-  }
 
-  @media (--min-640) { 
-    margin: 1.25rem 1rem;
+  @media (--dark) { 
+    --background: var(--plum-dark);
+    --border: var(--plum-light);
   }
 
   // Descendants

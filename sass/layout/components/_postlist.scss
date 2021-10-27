@@ -111,18 +111,21 @@
   }
 }
 
-.postlist-toggle { 
-  --toggle-border: var(--plum-dark);
+.postlist-label { 
+  --border: var(--plum-dark);
 
-  border-bottom: 1px solid var(--toggle-border);
-  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: .5rem;
   padding-bottom: .25rem;
 
   @media (--dark) {
-    --toggle-border: var(--white);
+    --border: var(--white);
   }
 }
 
+.postlist-items {
+  margin-top: 1.5rem;
+}
 
 
 //

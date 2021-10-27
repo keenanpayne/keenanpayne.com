@@ -33,3 +33,12 @@
     max-width: 960px !important;
   }
 }
+
+//
+// Disqus-specific overrides
+// -------------------------
+
+.disqus_recommendations { 
+  display: none;
+  visibility: hidden;
+}

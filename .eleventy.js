@@ -116,6 +116,12 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  eleventyConfig.addCollection('draft', function(collection) {
+    return collection.getFilteredByGlob("drafts/*.md").filter(function(item) {
+      return item;
+    });
+  });
+
   // Copy the `images` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("css");

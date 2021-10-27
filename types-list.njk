@@ -13,7 +13,7 @@ templateClass: _container
   {%- for type in collections.typeList -%}
     {% set typeUrl %}/type/{{ type | slug | plural }}/{% endset %}
 
-    <a href="{{ typeUrl | url }}" class="tags -large">
+    <a href="{{ typeUrl | url }}" class="tag -large">
       {{ type }}
     </a>
   {%- endfor -%}

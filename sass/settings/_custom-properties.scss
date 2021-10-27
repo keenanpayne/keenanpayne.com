@@ -14,6 +14,7 @@
   --gray-darkest: #908e9b;
 
   --plum-light: #2B2638;
+  --plum-mid: #1e1c29;
   --plum-dark: #100f16;
 
   --yellow-light: #fff8e6;
@@ -36,7 +37,8 @@
 
   // Border-radius
   --border-radius: 3px;
-  --border-radius-large: 15px;
+  --border-radius-medium: 6px;
+  --border-radius-large: 9px;
 
   // Context-Specific
   --text-color: var(--plum-dark);
@@ -52,8 +54,6 @@
   // S/O https://flatuicolors.com/palette/au
   --exodus-fruit: #686de0;
   --content-max-width: 700px;
-
-  --global-element-color: var(--white);
 }
 
 /* Dark Mode */
@@ -62,7 +62,6 @@
     --text-color: var(--white);
     --small-text-color: var(--white);
     --label-color: var(--white);
-    --global-element-color: var(--plum-dark);
     --shadow: 0 3px 7px 0px rgb(0 0 0 / 30%);
   }
 }

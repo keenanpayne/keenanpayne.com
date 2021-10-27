@@ -28,7 +28,7 @@ permalink: "/{{ title | slug }}/"
           <div class="post-tag">
             {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
 
-            <a href="{{ tagUrl | url }}" class="tags">
+            <a href="{{ tagUrl | url }}" class="tag">
               {{ tag }}
             </a>
           </div>
@@ -38,6 +38,11 @@ permalink: "/{{ title | slug }}/"
   </header>
 
   <div class="post-content">
+    {%- if type == 'Draft' -%}
+      {# TODO: Fix this so that notices for drafts are automatically displayed #}
+      {# {% include "type/notice.html" with content: "<strong>Heads up:</strong> This article is still a work-in-progress." %} #}
+    {%- endif -%}
+
     {{ content | safe }}
   </div>
 
