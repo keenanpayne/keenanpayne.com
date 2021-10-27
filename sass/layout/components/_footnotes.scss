@@ -38,3 +38,7 @@
     bottom: .25rem;
   }
 }
+
+.footnote-ref { 
+  @extend ._text-small;
+}

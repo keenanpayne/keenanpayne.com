@@ -55,12 +55,18 @@
         {% if postsListTags !== false %}
           <ul class="postlist-tags">
             {%- for tag in post.data.tags | filterTagList -%}
-              <li class="postlist-tag">
+              <li class="postlist-tag ">
                 {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
 
-                <a href="{{ tagUrl | url }}" class="tags">
-                  {{ tag }}
-                </a>
+                {% if tag == "drafts" %}
+                  <span class="tag -inactive">
+                    {{ tag | replace('drafts', 'draft') }}
+                  </span>
+                {% else %}
+                  <a href="{{ tagUrl | url }}" class="tag">
+                    {{ tag }}
+                  </a>
+                {% endif %}
               </li>
             {%- endfor -%}
           </ul>

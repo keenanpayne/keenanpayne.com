@@ -46,7 +46,7 @@ module.exports = function(eleventyConfig) {
   });
 
   function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts", "drafts"].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
   }
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
@@ -118,9 +118,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection('draft', function(collection) {
     return collection.getFilteredByGlob("drafts/*.md").filter(function(item) {
-      if ("type" in item.data) {
-        return item.data.type == 'Draft' ? item : false;
-      }
+      return item;
     });
   });
 

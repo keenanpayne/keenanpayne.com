@@ -1,14 +1,14 @@
 //
-// Tags
+// Tag
 // ==================================================
 
-.tags {
+.tag {
   @extend ._text-smaller;
 
-  --tags-background: var(--white);
+  --tag-background: var(--white);
 
   align-items: center;
-  background-color: var(--tags-background);
+  background-color: var(--tag-background);
   border: 1px solid var(--gray-lightish);
   border-radius: var(--border-radius);
   box-shadow: 0 1px 1px 0px rgb(100 100 100 / 15%);
@@ -21,7 +21,7 @@
   transition: all var(--transition);
 
   @media (--dark) { 
-    --tags-background: var(--plum-light);
+    --tag-background: var(--plum-light);
 
     border-color: var(--gray-dark);
     box-shadow: none;
@@ -33,15 +33,29 @@
 
     margin: .25rem;
   }
+
+  &.-inactive { 
+    --tag-background: var(--exodus-fruit);
+
+    border-color: var(--exodus-fruit);
+    color: var(--gray-lighter);
+    
+    @media (--dark) { 
+      --tag-background: var(--yellow-dark);
+  
+      border-color: var(--yellow-dark);
+      color: var(--plum-dark);
+    }
+  }
 }
 
-a[href].tags,
-a[href].tags:visited {
+a[href].tag,
+a[href].tag:visited {
   color: inherit;
 }
 
-a[href].tags:hover,
-a[href].tags:focus {
+a[href].tag:hover,
+a[href].tag:focus {
   background-color: var(--gray-lighter);
   border-color: var(--gray-darker);
   box-shadow: none;
@@ -55,6 +69,6 @@ a[href].tags:focus {
 }
 
 // Context-specific styles
-.postlist-item > .tags {
+.postlist-item > .tag {
   align-self: center;
 }

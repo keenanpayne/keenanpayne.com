@@ -1,7 +1,7 @@
 ---
 permalink: '/lost-at-sea/'
 title:  'Lost at Sea'
-type: Draft # Update to reflection when published
+type: Reflection
 date: 2021-10-25
 tags:
   - Life Updates
