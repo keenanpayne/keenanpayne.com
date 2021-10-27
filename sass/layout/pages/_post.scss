@@ -3,8 +3,13 @@
 // ==================================================
 
 .post { 
+  margin-bottom: 3rem;
   padding-left: 1rem;
   padding-right: 1rem;
+
+  @media (--min-720) {
+    margin-bottom: 5rem;
+  }
 }
 
 .post-header {
