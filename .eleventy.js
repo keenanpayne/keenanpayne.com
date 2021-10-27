@@ -46,7 +46,7 @@ module.exports = function(eleventyConfig) {
   });
 
   function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ["all", "nav", "post", "posts", "drafts"].indexOf(tag) === -1);
   }
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
@@ -123,11 +123,6 @@ module.exports = function(eleventyConfig) {
       }
     });
   });
-
-  // Filter source file names using a glob
-  // eleventyConfig.addCollection("draft", function(collection) {
-  //   return collection.getFilteredByGlob("**/*.md");
-  // });
 
   // Copy the `images` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("images");
