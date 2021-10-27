@@ -9,12 +9,22 @@
 }
 
 .nav-item {
-  display: inline-block;
+  display: block;
+  text-align: center;
+
+  @media (--min-480) {
+    display: inline-block;
+  }
 
   &:not(:first-of-type) { 
-    margin-left: 1rem;
+    margin-top: 1rem;
 
-    @media (--min-320) { 
+    @media (--min-480) { 
+      margin-left: 1rem;
+      margin-top: 0;
+    }
+
+    @media (--min-640) { 
       margin-left: 1.5rem;
     }
   }
@@ -30,11 +40,14 @@
   }
 
   &.-cta { 
-    border-left: 1px solid var(--gray-dark);
     font-weight: bold;
-    padding-left: 1rem;
-
-    @media (--min-320) { 
+    
+    @media (--min-480) { 
+      border-left: 1px solid var(--gray-dark);
+      padding-left: 1rem;
+    }
+    
+    @media (--min-640) { 
       padding-left: 1.5rem;
     }
   }
