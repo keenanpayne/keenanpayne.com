@@ -26,6 +26,6 @@ With the driving force behind my actions in life obviated, I feel unsure of what
 
 Still, I've struggled to avoid a state of ennui, lost in the stranded island of my head as the motivations behind my actions fade in and out of view.
 
-{% include type/question.html, content: 'What propels me towards action?<br><br>Towards what end am I taking action, if any?<br><br>Do my actions need an "end"?' %}
+{% include type/question.html, content: 'What propels me towards action?<br>Towards what end am I taking action, if any?<br>Do my actions need an "end"?' %}
 
 All I can do is continue charting my path forward. I will use this time to explore different facets of my being, spend time with people I love, and continue learning and growing. Let's see where life takes me.
