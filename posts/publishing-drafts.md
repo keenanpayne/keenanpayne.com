@@ -21,6 +21,8 @@ Convincing myself that just because improvements _can_ be made doesn't mean that
 
 In a recent conversation with my life coach, [David Schlussel](https://yogilifecoach.com/), it struck me that an approach I could take towards facilitating my content publishing is to begin sharing drafts of my writing with the public. If I have internal barriers around sharing things that I feel are "incomplete" or "not ready," then I can label them as such and kick them out the door. Perhaps they will still provide some insight for folks or provide an opportunity for feedback from readers.
 
+{% include type/notice.html, content: 'Click <a href="https://keenanpayne.com/type/drafts">here</a> to view my currently published drafts.' %}
+
 Publishing drafts feels like a good step in the direction of sharing more content with the world. It provides momentum, which keeps me motivated and engaged, fueling my creativity.
 
 Here's to more writing and more publishing!
