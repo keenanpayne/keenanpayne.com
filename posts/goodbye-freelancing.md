@@ -1,4 +1,5 @@
 ---
+permalink: '/goodbye-freelancing/'
 title:  'Taking a break from my freelancing career'
 meta: 
   description: ''
