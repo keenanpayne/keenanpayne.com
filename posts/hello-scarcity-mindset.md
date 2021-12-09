@@ -26,7 +26,7 @@ As a result of all of this, I got burnt out. This led to many bouts with anxiety
 
 Still, we should all be aware of the tendency to fall into a scarcity mindset. This awareness can help with mindful decision-making. 
 
-I'd be curious to know how I would feel if I were to do another year of freelancing and try keeping my scarcity mindset in check. 
+I'd be curious to know how I would feel if I were to do [another year of freelancing](/goodbye-freelancing/) and try keeping my scarcity mindset in check. 
 
 **How would reducing the hustle and raising my investment in each project change how I feel?**
 

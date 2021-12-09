@@ -13,7 +13,7 @@ journey: keenanpayne.com
 
 Finding the time and energy to work on my personal website has been difficult over the past five years. Between my day-to-day work building websites for others and my desire to spend time away from screens, keenanpayne.com hasn't been getting much love. I've done an occasional "facelift" here and there, but the underlying aesthetic and technology have remained.
 
-It's time for that to change. With the significant amount of free time I have following my departure from freelancing, client projects are no longer occupying my screen time. Instead, I'm spending time working on my website.
+It's time for that to change. With the significant amount of free time I have following [my break from freelancing](/goodbye-freelancing/), client projects are no longer occupying my screen time. Instead, I'm spending time working on my website.
 
 Over the past few months, I've completely rebuilt and redesigned my website. You're looking at it right now! [^1]
 

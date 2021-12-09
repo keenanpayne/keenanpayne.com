@@ -37,12 +37,12 @@ Lastly, I worked with several wonderful clients while freelancing. I became conn
 
 ## Looking forward
 
-I'm going to take some time over the next year to continue engaging in my daily practices, cultivate areas of interest, spend time with friends and family, travel, and see where the world takes me.
+I'm going to take some time over the next year to continue engaging in my [daily practices](/practices/), cultivate areas of interest, spend time with friends and family, travel, and see where the world takes me.
 
 Instead of focusing on my actions being a means to a financial end, I'm going to allow them to be the end in and of themselves.
 
 {% include type/question.html, content: "What happens when my focus isn't on earning money and, instead, on the authentic enjoyment I receive from whatever I'm doing?" %}
 
-You will doubtlessly see me around these parts as I continue writing and publishing whatever I'm thinking about, learning, or building. Writing is one of my favorite practices and one where I will continue to invest a great deal of time.
+You will doubtlessly see me around these parts as I continue writing and publishing whatever I'm thinking about, learning, or building. Writing is one of my favorite [practices](/practices/) and one where I will continue to invest a great deal of time.
 
 If you want to stay up-to-date with whatever the hell I'm doing, subscribe to [my newsletter](/subscribe) and get this nonsense delivered straight to your inbox whenever I feel like sending it.
