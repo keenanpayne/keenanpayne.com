@@ -11,7 +11,11 @@ figure {
   }
 
   > a {
-    display: inline-block;
+    display: block;
+
+    > img {
+      width: 100%;
+    }
   }
 }
 
