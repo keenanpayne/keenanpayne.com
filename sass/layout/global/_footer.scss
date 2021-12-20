@@ -8,7 +8,7 @@
 
   background-color: var(--background);
   border-top: 1px solid var(--border);
-  padding: 1.5rem 1rem;
+  padding: 1.5rem;
   z-index: 1;
   
   @media (--dark) { 
@@ -17,18 +17,15 @@
   }
 
   @media (--min-640) { 
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    padding: 1.5rem;
   }
 
   @media (--min-720) { 
-    padding-left: 2rem;
-    padding-right: 2rem;
+    padding: 2rem;
   }
 
   @media (--min-960) { 
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding: 3rem;
   }
 
   // Descendants
@@ -67,8 +64,6 @@
 }
 
 .footer-right { 
-  padding-bottom: .125rem; // Horizontally align with Twitter CTA
-
   @media (--min-480) { 
     text-align: right;
   }

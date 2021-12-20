@@ -6,19 +6,19 @@
   --background: var(--gray-lighter);
   --border: var(--gray-dark);
 
-  align-items: center;
+  align-items: baseline;
   background-color: var(--background);
   border-bottom: 1px solid var(--border);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
+  padding: 1.5rem;
   z-index: 1;
   
   @media (--min-480) { 
-    flex-direction: row;
-    padding: 2rem 1rem;
+    align-items: center;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
   }
 
   @media (--min-640) { 
@@ -54,14 +54,5 @@
   // Descendants
   :link:not(:hover) {
     text-decoration: none;
-  }
-}
-
-.header-right { 
-  margin-top: 1rem;
-  
-  @media (--min-480) { 
-    margin-top: 0;
-    text-align: right;
   }
 }
