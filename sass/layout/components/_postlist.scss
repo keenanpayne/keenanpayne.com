@@ -45,7 +45,7 @@
   &:hover {
     text-decoration: underline;
     text-decoration-color: var(--gray-darker);
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 3px;
     text-underline-position: from-font;
     text-underline-offset: 0;
   }
@@ -68,7 +68,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: .125rem;
+  margin-bottom: .25rem;
 }
 
 .postlist-type {
@@ -115,6 +115,7 @@
   --border: var(--plum-dark);
 
   border-bottom: 1px solid var(--border);
+  font-weight: 500;
   margin-bottom: .5rem;
   padding-bottom: .25rem;
 

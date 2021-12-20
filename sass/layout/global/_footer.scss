@@ -8,14 +8,27 @@
 
   background-color: var(--background);
   border-top: 1px solid var(--border);
-  padding-bottom: 1.5rem;
-  padding-top: 1.5rem;
-  text-align: center;
+  padding: 1.5rem 1rem;
   z-index: 1;
-
+  
   @media (--dark) { 
     --background: var(--plum-dark);
     --border: var(--plum-light);
+  }
+
+  @media (--min-640) { 
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (--min-720) { 
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  @media (--min-960) { 
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 
   // Descendants
@@ -24,6 +37,67 @@
     
     &:hover { 
       text-decoration: underline;
+    }
+  }
+}
+
+.footer-content { 
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-left,
+.footer-right { 
+  flex-basis: 100%;
+  text-align: center;
+
+  @media (--min-480) { 
+    flex-basis: 50%;
+    text-align: unset;
+  }
+}
+
+.footer-left { 
+  padding-bottom: 1.5rem;
+
+  @media (--min-480) { 
+    padding-bottom: 0;
+  }
+}
+
+.footer-right { 
+  padding-bottom: .125rem; // Horizontally align with Twitter CTA
+
+  @media (--min-480) { 
+    text-align: right;
+  }
+}
+
+.footer-twitter { 
+  text-align: left;
+
+  // Descendants
+  span { 
+    display: block;
+    margin-bottom: .25rem;
+  }
+
+  a { 
+    font-weight: 700;
+    margin-left: -.25rem; // Offset padding for flush text alignment
+    padding: .25rem;
+    text-transform: lowercase;
+
+    &:hover { 
+      background-color: var(--plum-dark);
+      color: var(--white);
+      text-decoration: none;
+
+      @media (--dark) { 
+        background-color: var(--gray-light);
+        color: var(--plum-dark);
+      }
     }
   }
 }
