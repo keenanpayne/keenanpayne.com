@@ -5,14 +5,10 @@
 
 h1,
 ._text-h1 {
-  font-size: 1.953rem;
+  font-size: 2.441rem;
   line-height: 1.1;
   margin-bottom: 1rem;
   margin-top: 0;
-  
-  @media (--min-480) { 
-    font-size: 2.441rem;
-  }
 
   @media (--min-640) { 
     font-size: 3.052rem;
@@ -21,12 +17,8 @@ h1,
 
 h2,
 ._text-h2 {
-  font-size: 1.563rem;
+  font-size: 1.953rem;
   line-height: 1.15;
-  
-  @media (--min-480) { 
-    font-size: 1.953rem;
-  }
   
   @media (--min-640) { 
     font-size: 2.441rem;
@@ -35,12 +27,8 @@ h2,
 
 h3,
 ._text-h3 {
-  font-size: 1.25rem;
+  font-size: 1.563rem;
   line-height: 1.35;
-
-  @media (--min-480) { 
-    font-size: 1.563rem;
-  }
 
   @media (--min-640) { 
     font-size: 1.953rem;
@@ -60,7 +48,7 @@ h4,
 h5,
 ._text-h5 {
   font-size: 1.125rem;
-  line-height: 1.35;
+  line-height: 1.45;
 
   @media (--min-640) { 
     font-size: 1.25rem;

@@ -37,14 +37,13 @@
 // ------------
 
 .post-content { 
-  @media (--min-960) {
-    font-size: 1.125rem;
-  }
+  font-size: 1.125rem;
 
   @media (--min-1440) {
     font-size: 1.25rem;
   }
 
+  // Descendants
   h2, h3, h4, h5 { 
     position: relative;
   }

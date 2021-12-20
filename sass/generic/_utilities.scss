@@ -43,6 +43,10 @@
   letter-spacing: .0125em;
   line-height: 1.325;
   word-spacing: -.1em;
+  
+  @media (--min-480) { 
+    font-size: 1.125rem;
+  }
 }
 
 ._bg-white { 
