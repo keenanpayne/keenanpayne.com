@@ -8,7 +8,7 @@ tags:
   - Android
 ---
 
-{% include atoms/figure.html, src: "/images/posts/android-iphone/htc-wildfire.jpeg", alt: "HTC Wildfire S", caption: "" %}
+{% include atoms/figure.html, src: "/images/posts/android-iphone/apple-tech-stack.jpg", alt: "iPhone next to iPad, Apple Watch, and MacBook Air", caption: "Photography by Marcus Payne", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
 
 I remember getting my first smartphone in 2011 when I was still a senior in High School. It was an HTC Wildfire S, offered by AT&T as a "free" upgrade from whatever flip phone I was currently using (maybe a Motorola Razr, but I can't remember). Choosing between Android or iOS devices was moot given I couldn't afford an iPhone and also largely irrelevant; all that mattered to 17-year-old me was finally getting my hands on a smartphone. Thus began my ten-year relationship with Android phones.
 
@@ -21,6 +21,8 @@ I want to briefly document my history with Android and why I decided to make the
 ## Me and Android
 
 My first smartphone being an Android likely set the course for my hardware preferences more than I would have initially thought. For ten years, I mainly stayed within the Android ecosystem, deviating _ever so slightly_ as I briefly tried the ill-fated [HTC Windows Phone 8x](https://en.wikipedia.org/wiki/HTC_Windows_Phone_8X) back when Windows Phones were still a thing (RIP).
+
+{% include atoms/figure.html, src: "/images/posts/android-iphone/htc-wildfire.jpeg", alt: "HTC Wildfire S", caption: "" %}
 
 I enjoyed using Android over the years. I typically stuck to devices that provided as much of a "vanilla" Android experience as possible (e.g., Google Pixel and OnePlus phones) since so many Android devices were filled with bloatware and unappealing Android skins. Thankfully, the state of Android skins has improved, although the state of bloatware is still unfortunate, although somewhat moot given the hardware advancements.  
 
