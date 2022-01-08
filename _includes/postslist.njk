@@ -18,7 +18,7 @@
     {# Check if items exist in collection #}
     {% if postslist.length %}
       {%- for post in postslist | reverse -%}
-        {# {% first_image post %} #}
+        {% first_image post %}
         
         {% set date = post.data.date %}
         {% set type = post.data.type %}
