@@ -1,10 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ description or metadata.description }}">
-
     <title>
       {% if title %}
         {{ title ~ ' | Keenan Payne' }}
@@ -16,6 +12,22 @@
     <link rel="stylesheet" href="{{ '/css/app.css' | url }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ meta.description or metadata.description }}">
+
+    {# Twitter Cards #}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@keenanpayne_" />
+    <meta name="twitter:creator" content="@keenanpayne_" />
+    <meta property="og:url" content="{{ metadata.url | replace('.com/', '.com') ~ page.url }}" />
+    <meta property="og:title" content="{{ metadata.title }}" />
+    <meta property="og:description" content="{{ meta.description or metadata.description }}" />
+
+    {% if meta.image or metadata.image %}
+      <meta property="og:image" content="{{ meta.image or metadata.image }}" />
+    {% endif %}
   </head>
   <body>
     <header class="header">
