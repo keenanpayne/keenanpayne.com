@@ -137,6 +137,32 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setLibrary("md", markdownLibrary);
 
+  // Retrieve first image for post in collection
+  // Ref: https://github.com/11ty/eleventy/issues/230
+  eleventyConfig.addShortcode('first_image', post => extractFirstImage(post));
+  
+  /**
+   * @param {*} doc A large object full of all sorts of information about a document.
+   * @returns {String} the markup of the first image.
+   */
+  function extractFirstImage(doc) {
+    if (!doc.hasOwnProperty('templateContent')) {
+      console.warn('❌ Failed to extract image: Document has no property `templateContent`.');
+      return;
+    }
+  
+    const content = doc.templateContent;
+  
+    if (content.includes('<img')) {
+      const imgTagBegin = content.indexOf('<img');
+      const imgTagEnd = content.indexOf('>', imgTagBegin);
+  
+      return content.substring(imgTagBegin, imgTagEnd + 1);
+    }
+  
+    return '';
+  }
+
   // Override Browsersync defaults (used only with --serve)
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {

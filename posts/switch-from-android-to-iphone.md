@@ -3,6 +3,7 @@ permalink: '/switch-from-android-to-iphone/'
 title:  'Switching from Android to iPhone after ten years'
 meta:
   description: 'After ten years of Android devices, I plunged into the Apple ecosystem after purchasing an iPhone 13 Pro.'
+  image: '/images/posts/android-iphone/apple-tech-stack.jpg'
 type: Article
 date: 2021-12-26
 tags:

@@ -23,5 +23,5 @@
 <meta property="og:description" content="{{ meta.description or metadata.description }}" />
 
 {% if meta.image or metadata.image %}
-  <meta property="og:image" content="{{ meta.image or metadata.image }}" />
+  <meta property="og:image" content="{{ metadata.url | replace('.com/', '.com') ~ meta.image or metadata.image }}" />
 {% endif %}
