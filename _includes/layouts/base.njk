@@ -1,13 +1,12 @@
+{# Settings #}
+{% set pageUrl = metadata.url | replace('.com/', '.com') ~ page.url %}
+{% set pageTitle = title ~ ' | ' ~ metadata.title if title else metadata.title %}
+
+{# Markup #}
 <!doctype html>
 <html lang="en">
   <head>
-    <title>
-      {% if title %}
-        {{ title ~ ' | Keenan Payne' }}
-      {% else %}
-        {{ metadata.title }}
-      {% endif %}
-    </title>
+    <title>{{ pageTitle }}</title>
     
     <link rel="stylesheet" href="{{ '/css/app.css' | url }}">
     <link rel="alternate" href="{{ metadata.feed.path | url }}" type="application/atom+xml" title="{{ metadata.title }}">
