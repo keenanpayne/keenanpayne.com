@@ -26,6 +26,14 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("LLL dd, yyyy");
   });
 
+  eleventyConfig.addFilter("postMonth", dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("LLL dd");
+  });
+
+  eleventyConfig.addFilter("postYear", dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("yyyy");
+  });
+
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
@@ -46,7 +54,7 @@ module.exports = function(eleventyConfig) {
   });
 
   function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ["all", "nav", "post", "posts", "Featured"].indexOf(tag) === -1);
   }
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
@@ -121,6 +129,11 @@ module.exports = function(eleventyConfig) {
       return item;
     });
   });
+  
+  // Collection for featured content
+  eleventyConfig.addCollection('featured', function(collection) {
+    return collection.getFilteredByTag('Featured');
+  });
 
   // Copy the `images` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("images");
@@ -139,13 +152,14 @@ module.exports = function(eleventyConfig) {
 
   // Retrieve first image for post in collection
   // Ref: https://github.com/11ty/eleventy/issues/230
-  eleventyConfig.addShortcode('first_image', post => extractFirstImage(post));
+  eleventyConfig.addShortcode('first_image', post => extractFirstImage(post, 'tag'));
+  eleventyConfig.addShortcode('first_image_link', post => extractFirstImage(post, 'link'));
   
   /**
    * @param {*} doc A large object full of all sorts of information about a document.
    * @returns {String} the markup of the first image.
    */
-  function extractFirstImage(doc) {
+  function extractFirstImage(doc, type) {
     if (!doc.hasOwnProperty('templateContent')) {
       console.warn('❌ Failed to extract image: Document has no property `templateContent`.');
       return;
@@ -154,10 +168,19 @@ module.exports = function(eleventyConfig) {
     const content = doc.templateContent;
   
     if (content.includes('<img')) {
-      const imgTagBegin = content.indexOf('<img');
-      const imgTagEnd = content.indexOf('>', imgTagBegin);
-  
-      return content.substring(imgTagBegin, imgTagEnd + 1);
+      if (type == 'tag') {
+        const imgTagBegin = content.indexOf('<img');
+        const imgTagEnd = content.indexOf('>', imgTagBegin);
+
+        return content.substring(imgTagBegin, imgTagEnd + 1);
+      }
+
+      if (type == 'link') {
+        const imgSrcBegin = content.indexOf('src="');
+        const imgSrcEnd = content.indexOf('" ');
+
+        return content.substring(imgSrcBegin + 5, imgSrcEnd);
+      }
     }
   
     return '';

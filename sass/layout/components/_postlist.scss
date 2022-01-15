@@ -159,3 +159,105 @@
     padding: 1.25rem 1.5rem;
   }
 }
+
+
+//
+// v2 Styles
+// ---------
+
+.v2-postlist-featured {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+  padding-left: 1.5rem;
+  width: 100%;
+
+  @media (--min-720) {
+    margin-bottom: 5rem;
+  }
+}
+
+.v2-postlist-label {
+  grid-column: 1 / -1;
+  margin-bottom: .5rem;
+  position: relative;
+
+  @media (--min-720) {
+    grid-column: 1 / span 9;
+  }
+
+  &::after {
+    background-color: var(--white);
+    content: '';
+    height: 1px;
+    position: absolute;
+    left: 5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(100% - 5rem);
+  }
+}
+
+.v2-postlist-items {
+  grid-column: 1 / -1;
+
+  @media (--min-720) {
+    grid-column: 1 / span 9;
+  }
+}
+
+.v2-postlist-item {
+  margin-left: auto;
+  max-width: 75ch;
+  padding-right: 0.25rem;
+  position: relative;
+  
+  // TODO: Hacky overrides
+  .postlist-meta {
+    margin-bottom: .5rem;
+  }
+
+  .postlist-lede {
+    margin-bottom: 1.5rem;
+  }
+
+  .postlist-time {
+    font-size: 1rem;
+    line-height: 1.15;
+    bottom: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+  }
+
+  .postlist-tags {
+    display: none;
+  }
+}
+
+.v2-postlist-image {
+  display: block;
+  height: 350px;
+  margin-bottom: 1.5rem;
+  width: 100%;
+
+  @media (--min-720) {
+    height: 500px;
+  }
+}
+
+.postlist-time-month,
+.postlist-time-year {
+  display: block;
+  font-weight: bold;
+  font-weight: 1rem;
+}
+
+.postlist-articleLink {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

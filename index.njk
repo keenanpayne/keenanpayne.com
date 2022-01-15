@@ -4,6 +4,7 @@ layout: layouts/home.njk
 
 {% set label = 'Recently Published' %}
 {% set postslist = collections.posts | head(-5) %}
+{% set postslistfeatured = collections.featured | head(-1) %}
 {% set postslistCounter = collections.posts | length %}
 {# {% set postsListTags = false %} #}
 {% set postListReadMore = true %}
