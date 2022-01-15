@@ -5,10 +5,6 @@
 main {
   flex: 1;
   margin-top: 3rem;
-
-  @media (--min-960) {
-    margin-top: 5rem;
-  }
   
   // Vertical Rhythm
   :first-child {

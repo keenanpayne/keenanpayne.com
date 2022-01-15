@@ -111,16 +111,25 @@
   }
 }
 
-.postlist-label { 
-  --border: var(--plum-dark);
-
-  border-bottom: 1px solid var(--border);
+.postlist-label {
   font-weight: 500;
-  margin-bottom: .5rem;
-  padding-bottom: .25rem;
+  position: relative;
 
-  @media (--dark) {
-    --border: var(--white);
+  &::after {
+    --bg-color: var(--exodus-fruit);
+
+    background-color: var(--bg-color);
+    content: '';
+    height: 2px;
+    position: absolute;
+    left: 5rem;
+    top: calc(50% + 1px);
+    transform: translateY(-50%);
+    width: calc(100% - 5rem);
+
+    @media (--dark) {
+      --bg-color: var(--yellow-dark);
+    }
   }
 }
 
@@ -176,26 +185,14 @@
   @media (--min-720) {
     margin-bottom: 5rem;
   }
-}
 
-.v2-postlist-label {
-  grid-column: 1 / -1;
-  margin-bottom: .5rem;
-  position: relative;
+  // TODO: Hacky overrides
+  .postlist-header {
+    grid-column: 1 / -1;
 
-  @media (--min-720) {
-    grid-column: 1 / span 9;
-  }
-
-  &::after {
-    background-color: var(--white);
-    content: '';
-    height: 1px;
-    position: absolute;
-    left: 5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: calc(100% - 5rem);
+    @media (--min-720) {
+      grid-column: 1 / span 9;
+    }
   }
 }
 
@@ -238,12 +235,18 @@
 
 .v2-postlist-image {
   display: block;
+  filter: sepia(.1) brightness(0.9);
   height: 350px;
   margin-bottom: 1.5rem;
+  transition: filter var(--transition-long);
   width: 100%;
 
   @media (--min-720) {
     height: 500px;
+  }
+
+  &:hover {
+    filter: none;
   }
 }
 

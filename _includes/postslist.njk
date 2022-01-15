@@ -1,99 +1,90 @@
-{# TODO: Most recent article tagged "featured" #}
-{%- if postslistfeatured -%}
-  <section class="v2-postlist-featured">
-    {% if label %}
-      <div class="v2-postlist-label _label">
-        Featured
-      </div>
-    {% endif %}
+{# 
+ # Macros 
+ #}
+{% macro postMeta(post) %}
+  {% set type = post.data.type %}
+  {% set date = post.data.date %}
 
-    <div class="v2-postlist-items">
-      {# Check if items exist in collection #}
-      {% if postslistfeatured.length %}
-        {%- for post in postslistfeatured | reverse -%}
-          <div class="v2-postlist-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
-          
-          {% set date = post.data.date %}
-          {% set type = post.data.type %}
-          {% set title = post.data.title %}
-          {% set lede = post.data.lede %}
+  <div class="postlist-meta">
+    {%- if type -%}
+      <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+        {{ type }}
+      </a>
+    {%- endif -%}
 
-          <article class="v2-postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-            <div class="postlist-meta">
-              {%- if type -%}
-                <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
-                  {{ type }}
-                </a>
-              {%- endif -%}
+    {%- if date -%}
+      <time class="postlist-time _text-small" datetime="{{ date | htmlDateString }}">
+        <span class="postlist-time-month">
+          {{ date | postMonth }}
+        </span>
 
-              {%- if date -%}
-                <time class="postlist-time _text-small" datetime="{{ date | htmlDateString }}">
-                  <span class="postlist-time-month">
-                    {{ date | postMonth }}
-                  </span>
+        <span class="postlist-time-year">
+          {{ date | postYear }}
+        </span>
+      </time>
+    {%- endif -%}
+  </div>
+{% endmacro %}
 
-                  <span class="postlist-time-year">
-                    {{ date | postYear }}
-                  </span>
-                </time>
-              {%- endif -%}
-            </div>
+{% macro postHeader(post) %}
+  {% set url = post.data.url %}
+  {% set title = post.data.title %}
 
-            <header class="postlist-header">
-              <h2 class="postlist-title _text-h2">
-                <a href="{{ post.url | url }}" class="postlist-link">
-                  {% if title %}
-                    {{ title }}
-                  {% else %}
-                    <code>{{ post.url }}</code>
-                  {% endif %}
-                </a>
-              </h2>
-            </header>
+  <header class="postlist-header">
+    <h2 class="postlist-title _text-h2">
+      <a href="{{ url | url }}" class="postlist-link">
+        {% if title %}
+          {{ title }}
+        {% else %}
+          <code>{{ url }}</code>
+        {% endif %}
+      </a>
+    </h2>
+  </header>
+{% endmacro %}
 
-            {% if lede %}
-              <p class="postlist-lede _text-h5">
-                {{ lede }}
-              </p>
-            {% endif %}
+{% macro postLede(post) %}
+  {% set lede = post.data.lede %}
 
-            <p>
-              <a class="postlist-articleLink _label" href="{{ post.url }}" title="Read {{ title }}">
-                Read {{ type }}
-              </a>
-            </p>
+  {% if lede %}
+    <p class="postlist-lede _text-h5">
+      {{ lede }}
+    </p>
+  {% endif %}
+{% endmacro %}
 
-            {% if postsListTags !== false %}
-              <ul class="postlist-tags">
-                {%- for tag in post.data.tags | filterTagList -%}
-                  <li class="postlist-tag ">
-                    {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+{% macro postTags(post) %}
+  <ul class="postlist-tags">
+    {%- for tag in post.data.tags | filterTagList -%}
+      <li class="postlist-tag ">
+        {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
 
-                    {% if tag == "drafts" %}
-                      <span class="tag -inactive">
-                        {{ tag | replace('drafts', 'draft') }}
-                      </span>
-                    {% else %}
-                      <a href="{{ tagUrl | url }}" class="tag">
-                        {{ tag }}
-                      </a>
-                    {% endif %}
-                  </li>
-                {%- endfor -%}
-              </ul>
-            {% endif %}
-          </article>
-        {%- endfor -%}
-      {%- endif -%}
-    </div>
-  </section>
-{%- endif -%}
+        {% if tag == "drafts" %}
+          <span class="tag -inactive">
+            {{ tag | replace('drafts', 'draft') }}
+          </span>
+        {% else %}
+          <a href="{{ tagUrl | url }}" class="tag">
+            {{ tag }}
+          </a>
+        {% endif %}
+      </li>
+    {%- endfor -%}
+  </ul>
+{% endmacro %}
 
-{# TODO: Create macros for repeated elements here and `post.njk` #}
-<section class="postlist -stack _container">
+{% macro postReadMore(post) %}
+  <p>
+    <a class="postlist-articleLink _label" href="{{ post.url }}" title="Read {{ post.data.title }}">
+      Read {{ post.data.type }}
+    </a>
+  </p>
+{% endmacro %}
+
+{% macro postLabel(label) %}
   {% if label or tag %}
     <div class="postlist-header">
-      <div class="postlist-label">
+      <div class="postlist-label _label">
         {{ label if label else 'Tagged: ' ~ tag }}
       </div>
 
@@ -104,82 +95,74 @@
       {% endif %}
     </div>
   {% endif %}
+{% endmacro %}
+
+
+{# 
+ # Featured Post 
+ #}
+{%- if postslistFeatured -%}
+  <section class="v2-postlist-featured">
+    {{ postLabel(labelFeatured) }}
+
+    <div class="v2-postlist-items">
+      {# Check if items exist in collection #}
+      {% if postslistFeatured.length %}
+        {%- for post in postslistFeatured | reverse -%}
+          <div class="v2-postlist-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
+          
+          {% set title = post.data.title %}
+
+          <article class="v2-postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+            {{ postMeta(post) }}
+            {{ postHeader(post) }}
+            {{ postLede(post) }}
+            {{ postReadMore(post) }}
+
+            {% if postsListTags !== false %}
+              {{ postTags(post) }}
+            {% endif %}
+          </article>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </section>
+{%- endif -%}
+
+
+{#  
+ # Recent Posts
+ #}
+<section class="postlist -stack _container">
+  {{ postLabel(labelRecent) }}
 
   <div class="postlist-items">
     {# Check if items exist in collection #}
     {% if postslist.length %}
       {%- for post in postslist | reverse -%}
-        {% set date = post.data.date %}
-        {% set type = post.data.type %}
-        {% set tags = post.data.tags %}
-
         {# Exclude featured posts #}
-        {%- if not tags.includes('Featured') -%}
+        {%- if not post.data.tags.includes('Featured') -%}
           {% first_image post %}
 
           <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-            <div class="postlist-meta">
-              {%- if type -%}
-                <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
-                  {{ type }}
-                </a>
-              {%- endif -%}
-
-              {%- if date -%}
-                <time class="postlist-time _text-small" datetime="{{ date | htmlDateString }}">
-                  {{ date | readableDate }}
-                </time>
-              {%- endif -%}
-            </div>
-
-            <header class="postlist-header">
-              <h2 class="postlist-title _text-h3">
-                <a href="{{ post.url | url }}" class="postlist-link">
-                  {% if post.data.title %}
-                    {{ post.data.title }}
-                  {% else %}
-                    <code>{{ post.url }}</code>
-                  {% endif %}
-                </a>
-              </h2>
-
-              {% if post.data.lede %}
-                <p class="postlist-lede">
-                  This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
-                </p>
-              {% endif %}
-            </header>
+            {{ postMeta(post) }}
+            {{ postHeader(post) }}
+            {{ postLede(post) }}
 
             {% if postsListTags !== false %}
-              <ul class="postlist-tags">
-                {%- for tag in tags | filterTagList -%}
-                  <li class="postlist-tag ">
-                    {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
-
-                    {% if tag == "drafts" %}
-                      <span class="tag -inactive">
-                        {{ tag | replace('drafts', 'draft') }}
-                      </span>
-                    {% else %}
-                      <a href="{{ tagUrl | url }}" class="tag">
-                        {{ tag }}
-                      </a>
-                    {% endif %}
-                  </li>
-                {%- endfor -%}
-              </ul>
+              {{ postTags(post) }}
             {% endif %}
           </article>
         {%- endif -%}
       {%- endfor -%}
-    </div>
   
-  {# If collection is empty #}
-  {% else %}
-    {% set content = 'No content is published here yet.' %}
+    {# If collection is empty #}
+    {% else %}
+      {% set content = 'No content is published here yet.' %}
 
-    {% include "type/notice.html" %}
-  {% endif %}
+      {% include "type/notice.html" %}
+    {% endif %}
+  </div>
 
   {% if tag or postListReadMore %}
     <p class="postlist-tagsLink _text-align-center">
