@@ -3,12 +3,7 @@
 // ==================================================
 
 .header {
-  --background: var(--gray-lighter);
-  --border: var(--gray-dark);
-
   align-items: baseline;
-  background-color: var(--background);
-  border-bottom: 1px solid var(--border);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -32,13 +27,8 @@
   }
 
   @media (--min-960) { 
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-
-  @media (--dark) { 
-    --background: var(--plum-mid);
-    --border: var(--plum-dark);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
