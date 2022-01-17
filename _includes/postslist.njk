@@ -1,3 +1,5 @@
+{# TODO: Break out featured post and recent posts into separate files #}
+
 {# 
  # Macros 
  #}
@@ -135,6 +137,23 @@
   </section>
 {%- endif -%}
 
+
+{#  
+ # Mission Statement
+ #}
+<section class="missionStatement">
+  {%- if missionStatementLabel -%}
+    <h2 class="missionStatement-label _text-h5">
+      {{ missionStatementLabel }}
+    </h2>
+  {%- endif -%}
+
+  {%- if missionStatementText -%}
+    <p class="missionStatement-text">
+      {{ missionStatementText }}
+    </p>
+  {%- endif -%}
+</section>
 
 {#  
  # Recent Posts

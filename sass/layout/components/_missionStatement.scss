@@ -1,0 +1,47 @@
+//
+// Mission Statement
+// ==================================================
+
+.missionStatement {
+  margin: 5rem auto;
+  max-width: 105ch;
+  padding-left: .75rem;
+  padding-right: .75rem;
+  
+  @media (--min-720) {
+    margin-bottom: 7.5rem;
+    margin-top: 7.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    text-align: center;
+  }
+
+  @media (--min-1120) {
+    margin-bottom: 10rem;
+    margin-top: 10rem;
+  }
+}
+
+.missionStatement-label {
+  border-bottom: 1px solid var(--exodus-fruit);
+  display: inline-block;
+  margin-bottom: 0;
+
+  @media (--dark) {
+    border-bottom-color: var(--dark-yellow);
+  }
+}
+
+.missionStatement-text {
+  @include h3;
+
+  margin-top: 1rem;
+
+  @media (--min-960) {
+    @include h2;
+  }
+
+  // @media (--min-1120) {
+  //   @include h2;
+  // }
+}
