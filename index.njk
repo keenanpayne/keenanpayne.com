@@ -6,8 +6,8 @@ layout: layouts/home.njk
 {% set postslist = collections.posts | head(-5) %}
 {% set labelFeatured = 'Featured' %}
 {% set postslistFeatured = collections.featured | head(-1) %}
+{% set postsListFeaturedTags = false %}
 {% set postslistCounter = collections.posts | length %}
-{# {% set postsListTags = false %} #}
 {% set postListReadMore = true %}
 
 {% include "postslist.njk" %}

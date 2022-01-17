@@ -2,13 +2,17 @@
 // Utility Classes
 // ==================================================
 
-._hidden {
+@mixin a11yHidden() {
   height: 1px;
   left: -10000px;
   overflow: hidden;
   position: absolute;
   top: auto;
   width: 1px;
+}
+
+._hidden {
+  @include a11yHidden();
 }
 
 ._text-align-center { 

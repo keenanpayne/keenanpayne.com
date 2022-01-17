@@ -4,8 +4,16 @@
 {% macro postMeta(post) %}
   {% set type = post.data.type %}
   {% set date = post.data.date %}
+  {% set series = post.data.series %}
 
   <div class="postlist-meta">
+    {%- if series -%}
+      <span class="postlist-series">
+        Series:
+        <a href="#" title="View more posts from {{ series }}">{{ series }}</a>
+      </span>
+    {%- endif -%}
+    
     {%- if type -%}
       <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
         {{ type }}
@@ -74,11 +82,9 @@
 {% endmacro %}
 
 {% macro postReadMore(post) %}
-  <p>
-    <a class="postlist-articleLink _label" href="{{ post.url }}" title="Read {{ post.data.title }}">
-      Read {{ post.data.type }}
-    </a>
-  </p>
+  <a class="postlist-articleLink _label" href="{{ post.url }}" title="Read {{ post.data.title }}">
+    Read {{ post.data.type }}
+  </a>
 {% endmacro %}
 
 {% macro postLabel(label) %}
@@ -119,7 +125,7 @@
             {{ postLede(post) }}
             {{ postReadMore(post) }}
 
-            {% if postsListTags !== false %}
+            {% if postsListFeaturedTags !== false %}
               {{ postTags(post) }}
             {% endif %}
           </article>

@@ -57,7 +57,7 @@
 }
 
 .postlist-lede { 
-  margin-top: .5rem;
+  margin-bottom: 1.5rem;
 }
 
 .postlist-item-active .postlist-title {
@@ -68,7 +68,13 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: .25rem;
+  margin-bottom: .45rem;
+}
+
+.postlist-series {
+  @media (--max-720) {
+    @include a11yHidden();
+  }
 }
 
 .postlist-type {
@@ -180,10 +186,12 @@
   margin-bottom: 2.5rem;
   overflow: hidden;
   padding-left: 1.5rem;
+  padding-right: 1.5rem;
   width: 100%;
 
   @media (--min-720) {
     margin-bottom: 5rem;
+    padding-right: 0;
   }
 
   // TODO: Hacky overrides
@@ -191,6 +199,10 @@
     grid-column: 1 / -1;
 
     @media (--min-720) {
+      grid-column: 1 / span 10;
+    }
+
+    @media (--min-1120) {
       grid-column: 1 / span 9;
     }
   }
@@ -200,48 +212,44 @@
   grid-column: 1 / -1;
 
   @media (--min-720) {
+    grid-column: 1 / span 10;
+  }
+
+  @media (--min-1120) {
     grid-column: 1 / span 9;
   }
 }
 
 .v2-postlist-item {
   margin-left: auto;
-  max-width: 75ch;
-  padding-right: 0.25rem;
+  max-width: 70ch;
+  padding-right: 0.15rem;
   position: relative;
   
   // TODO: Hacky overrides
-  .postlist-meta {
-    margin-bottom: .5rem;
-  }
-
-  .postlist-lede {
-    margin-bottom: 1.5rem;
-  }
-
   .postlist-time {
-    font-size: 1rem;
-    line-height: 1.15;
     bottom: 0;
+    font-size: 1rem;
+    line-height: 1;
     position: absolute;
     right: 0;
     text-align: right;
-  }
-
-  .postlist-tags {
-    display: none;
   }
 }
 
 .v2-postlist-image {
   display: block;
   filter: sepia(.1) brightness(0.9);
-  height: 350px;
+  height: 300px;
   margin-bottom: 1.5rem;
   transition: filter var(--transition-long);
   width: 100%;
 
   @media (--min-720) {
+    height: 400px;
+  }
+
+  @media (--min-960) {
     height: 500px;
   }
 
@@ -258,6 +266,7 @@
 }
 
 .postlist-articleLink {
+  line-height: 2;
   text-decoration: none;
 
   &:hover {
