@@ -38,7 +38,7 @@
 {% endmacro %}
 
 {% macro postHeader(post) %}
-  {% set url = post.data.url %}
+  {% set url = post.url %}
   {% set title = post.data.title %}
 
   <header class="postlist-header">
@@ -168,7 +168,7 @@
       {%- for post in postslist | reverse -%}
         {# Exclude featured posts #}
         {%- if not post.data.tags.includes('Featured') -%}
-          {% first_image post %}
+          {# {% first_image post %} #}
 
           <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
             {{ postMeta(post) }}
