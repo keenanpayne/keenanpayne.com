@@ -16,4 +16,13 @@ a[href] {
     --link-color: var(--gray-white);
     --link-color-hover: var(--gray-light);
   }
+
+  // Modifiers
+  &.-underline-hover { 
+    text-decoration: none;
+
+    &:hover { 
+      text-decoration: underline;
+    }
+  }
 }

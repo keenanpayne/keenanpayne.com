@@ -240,17 +240,21 @@
 .v2-postlist-image {
   display: block;
   filter: sepia(.1) brightness(0.9);
-  height: 300px;
+  height: 250px;
   margin-bottom: 1.5rem;
   transition: filter var(--transition-long);
   width: 100%;
 
   @media (--min-720) {
-    height: 400px;
+    height: 300px;
   }
 
   @media (--min-960) {
-    height: 500px;
+    height: 350px;
+  }
+
+  @media (--min-1120) {
+    height: 400px;
   }
 
   &:hover {
@@ -261,15 +265,30 @@
 .postlist-time-month,
 .postlist-time-year {
   display: block;
-  font-weight: bold;
-  font-weight: 1rem;
+  font-weight: 300;
 }
 
 .postlist-articleLink {
   line-height: 2;
+  position: relative;
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
+
+    &::after { 
+      transform: translate(80%, -50%);
+    }
+  }
+
+  // Psuedo-element for arrow 
+  &::after { 
+    content: '→';
+    font-size: 1.5em;
+    position: absolute;
+    top: 45%;
+    transform: translate(55%, -50%);
+    transition: transform var(--transition);
+    user-select: none;
   }
 }

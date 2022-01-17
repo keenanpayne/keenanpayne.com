@@ -10,9 +10,10 @@
 
   <div class="postlist-meta">
     {%- if series -%}
-      <span class="postlist-series">
-        Series:
-        <a href="#" title="View more posts from {{ series }}">{{ series }}</a>
+      <span class="postlist-series _label">
+        <a class="-underline-hover" href="#" title="View more posts from {{ series }}">
+          {{ series }}
+        </a>
       </span>
     {%- endif -%}
     
