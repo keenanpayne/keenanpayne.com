@@ -23,5 +23,9 @@
 @custom-media --max-1260 (width < 1260px);
 @custom-media --max-1440 (width < 1440px);
 
+// Min-height breakpoints
+@custom-media --min-h-960 (height >= 960px);
+@custom-media --min-h-1120 (height >= 1120px);
+
 // Color schemes
 @custom-media --dark (prefers-color-scheme: dark)
