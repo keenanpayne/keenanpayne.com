@@ -35,13 +35,12 @@
 .missionStatement-text {
   @include h3;
 
+  hyphens: none;
   margin-top: 1rem;
-
+  
   @media (--min-960) {
     @include h2;
-  }
 
-  // @media (--min-1120) {
-  //   @include h2;
-  // }
+    line-height: 1.15;
+  }
 }
