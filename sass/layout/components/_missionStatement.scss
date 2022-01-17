@@ -3,22 +3,29 @@
 // ==================================================
 
 .missionStatement {
-  margin: 5rem auto;
+  // NOTE: Bottom margin is larger than the top
+  //       for better optical centering
+  --margin-top: 5rem;
+  --margin-bottom-multiplier: 1.1;
+
+  margin-bottom: calc(var(--margin-top) * var(--margin-bottom-multiplier));
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: var(--margin-top);
   max-width: 105ch;
   padding-left: .75rem;
   padding-right: .75rem;
   
   @media (--min-720) {
-    margin-bottom: 7.5rem;
-    margin-top: 7.5rem;
+    --margin-top: 7.5rem;
+
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     text-align: center;
   }
 
   @media (--min-1120) {
-    margin-bottom: 10rem;
-    margin-top: 10rem;
+    --margin-top: 10rem;
   }
 }
 
