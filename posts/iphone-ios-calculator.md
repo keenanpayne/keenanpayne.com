@@ -2,10 +2,11 @@
 permalink: '/iphone-ios-calculator/'
 title:  'The iPhone calculator is terrible and Apple should be embarrassed'
 meta:
-  description: ''
+  description: 'Few things have surprised me while switching from Android to iPhone more than how terrible the iOS calculator is. I certainly didn't anticipate that something as seemingly trivial as a calculator app would be what irks me to my core following my change in devices.'
   image: '/images/posts/android-iphone/iphone-calculator.jpg'
+  image_alt: 'Keenan standing at a counter holding an iPhone with the calculator app open'
 type: Article
-date: 2022-01-16
+date: 2022-01-17
 tags:
   - iPhone
   - Technology
