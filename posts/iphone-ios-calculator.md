@@ -5,6 +5,7 @@ meta:
   description: 'Few things have surprised me while switching from Android to iPhone more than how terrible the iOS calculator is. I certainly didn't anticipate that something as seemingly trivial as a calculator app would be what irks me to my core following my change in devices.'
   image: '/images/posts/android-iphone/iphone-calculator.jpg'
   image_alt: 'Keenan standing at a counter holding an iPhone with the calculator app open'
+lede: 'Few things have surprised me while switching from Android to iPhone more than how terrible the iOS calculator is. I certainly didn't anticipate that something as seemingly trivial as a calculator app would be what irks me to my core following my change in devices.'
 type: Article
 date: 2022-01-17
 tags:
