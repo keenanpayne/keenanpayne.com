@@ -1,5 +1,5 @@
 ---
-permalink: '/ios-calculator/'
+permalink: '/iphone-ios-calculator/'
 title:  'The iPhone calculator is terrible and Apple should be embarrassed'
 meta:
   description: ''
