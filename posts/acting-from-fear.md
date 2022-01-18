@@ -4,7 +4,7 @@ title:  'Acting out of fear'
 meta:
   description: 'An ongoing refrain for my self-reflection practice is the idea of "purposeful behavior." Reflecting on what underpins my behavior (e.g., thoughts, actions, motivations, emotions, desires, etc.) helps bridge the gap between my authentic self and my behavior.'
   image: '/images/posts/mirror/mirror.jpg'
-  image_alt: ''
+  image_alt: 'Public domain image of theatrical people looking in mirror'
 lede: An ongoing refrain for my self-reflection practice is the idea of "purposeful behavior." Reflecting on what underpins my behavior (e.g., thoughts, actions, motivations, emotions, desires, etc.) helps bridge the gap between my authentic self and my behavior.
 type: Reflection
 date: 2022-01-17
@@ -12,7 +12,7 @@ tags:
   - Self-Reflection
 ---
 
-{% include atoms/figure.html, src: "/images/posts/mirror/mirror.jpg", alt: "Rupture entre Lord-donnant et Miss-prend, danseuse du Théâtre de Londres", caption: "In the end, we'll end up looking ridiculous to someone.", source_title: "The New York Public Library", source_link: "https://digitalcollections.nypl.org/items/590d9f10-f033-0132-6114-58d385a7b928" %}
+{% include atoms/figure.html, src: "/images/posts/mirror/mirror.jpg", alt: "Public domain image of theatrical people looking in mirror", caption: "", source_title: "The New York Public Library", source_link: "https://digitalcollections.nypl.org/items/590d9f10-f033-0132-6114-58d385a7b928" %}
 
 An ongoing refrain for my self-reflection practice is the idea of "purposeful behavior." Reflecting on what underpins my behavior (e.g., thoughts, actions, motivations, emotions, desires, etc.) helps bridge the gap between my authentic self and my behavior.
 
