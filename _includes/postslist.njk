@@ -51,7 +51,7 @@
 
             {% if post.data.lede %}
               <p class="postlist-lede">
-                This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
+                {{ post.data.lede }}
               </p>
             {% endif %}
           </header>
