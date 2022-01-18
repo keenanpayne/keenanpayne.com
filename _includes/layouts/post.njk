@@ -13,6 +13,7 @@ permalink: "/{{ title | slug }}/"
         </a>
       {%- endif -%}
 
+      {# Resources are timeless #}
       {%- if type != 'Resource' -%}
         <time class="_text-small" datetime="{{ page.date | htmlDateString }}">
           {{ page.date | readableDate }}
