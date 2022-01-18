@@ -102,6 +102,10 @@
   }
 
   img { 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    
     // NOTE: This is kind of a hack because I have some transparent PNG drawings 
     //       (e.g., creating-planning.md) that don't look good without a white background
     @media (--dark) { 
