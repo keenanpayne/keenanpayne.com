@@ -11,6 +11,8 @@ tags:
   - Self-Reflection
 ---
 
+{% include atoms/figure.html, src: "/images/posts/mirror/mirror.jpg", alt: "Rupture entre Lord-donnant et Miss-prend, danseuse du Théâtre de Londres", caption: "In the end, we'll end up looking ridiculous to someone.", source_title: "The New York Public Library", source_link: "https://digitalcollections.nypl.org/items/590d9f10-f033-0132-6114-58d385a7b928" %}
+
 An ongoing refrain for my self-reflection practice is the idea of "purposeful behavior." Reflecting on what underpins my behavior (e.g., thoughts, actions, motivations, emotions, desires, etc.) helps bridge the gap between my authentic self and my behavior.
 
 Such reflection has recently drawn me to the subject of fear. Fear and confidence are primordial counterparts that play an outsized role in determining the behavior of most living things. When we feel afraid, we think, believe, and act differently than if we are overflowing with confidence (though exaggerated feelings of self-confidence seem to indicate fear-based roots, in my opinion).
@@ -22,6 +24,8 @@ Fear is what drives much of mainstream media coverage. Fear helps drive financia
 And while fear seems to inevitably permeate every facet of our world, it's how fear manifests in my life that has recently caught my attention. I believe that understanding and addressing my own fears will help continue the momentum towards a less fear-based world. Or, perhaps I'm too afraid to tackle significant, societal fear-based issues, and I feel more comfortable reflecting on my life while hiking through the woods.
 
 I've begun questioning the merits of my seemingly obsessive-compulsive desire to fix my hair all of the time. As if passersby may notice a "misplaced" hair on my head. Am I afraid of what others might think of me? Am I afraid of "stacking up" against so many other people in the world? This is a pretty small and trivial instance of how fear might manifest in my life, leading to actions whose roots I have never questioned. Regardless, I now ask, "for whom do I fix my hair?"
+
+{% include atoms/figure.html, src: "/images/posts/mirror/face-mirror.jpg", alt: "Actor with a lacquer mirror", caption: "", source_title: 'The New York Public Library', source_link: "https://digitalcollections.nypl.org/items/152dc690-069f-0135-8a59-7b4dfdd030de" %}
 
 With deeper roots, the road of self-reflection takes me to more significant places. During [my sabbatical from freelancing](/goodbye-freelancing/), I've begun digging beneath the behavior which has dominated my career, which seems to manifest primarily from financial fear. My fear of not having "enough" money has inspired me to move cities, change jobs, take on more projects than I can feasibly manage, and attempt to monetize various [practices](/practices/) in my life. **Money, money, money.**
 

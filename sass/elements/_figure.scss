@@ -12,10 +12,6 @@ figure {
 
   > a {
     display: block;
-
-    > img {
-      width: 100%;
-    }
   }
 }
 
@@ -24,6 +20,7 @@ figcaption {
 
   font-style: italic;
   margin-top: .5rem;
+  text-align: center;
 }
 
 // TODO: Refactor to remove overriding `!important`
