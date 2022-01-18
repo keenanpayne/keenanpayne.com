@@ -13,9 +13,11 @@ permalink: "/{{ title | slug }}/"
         </a>
       {%- endif -%}
 
-      <time class="_text-small" datetime="{{ page.date | htmlDateString }}">
-        {{ page.date | readableDate }}
-      </time>
+      {%- if type != 'Resource' -%}
+        <time class="_text-small" datetime="{{ page.date | htmlDateString }}">
+          {{ page.date | readableDate }}
+        </time>
+      {%- endif -%}
     </div>
 
     <h1 class="post-title">
