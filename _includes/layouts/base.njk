@@ -1,6 +1,11 @@
 {# Settings #}
 {% set pageUrl = metadata.url | replace('.com/', '.com') ~ page.url %}
-{% set pageTitle = title ~ ' | ' ~ metadata.title if title else metadata.title %}
+
+{%- if meta.title -%}
+  {% set pageTitle = meta.title ~ ' | ' ~ metadata.title if title else metadata.title %}
+{%- else -%}
+  {% set pageTitle = title ~ ' | ' ~ metadata.title if title else metadata.title %}
+{%- endif -%}
 
 {# Markup #}
 <!doctype html>

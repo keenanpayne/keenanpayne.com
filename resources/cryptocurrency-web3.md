@@ -2,6 +2,7 @@
 permalink: '/resources/cryptocurrency-web3/'
 title:  'Cryptocurrency/Web3'
 meta: 
+  title:  'Cryptocurrency & Web3 Resources'
   description: 
   image: '/images/resources/crypto/coinbase.jpg'
 type: Resource
