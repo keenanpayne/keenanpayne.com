@@ -4,7 +4,7 @@ permalink: "/{{ title | slug }}/"
 ---
 
 {# Page Classes #}
-{%- set pageClass = type | plural; %}
+{%- set pageClass = type | lower | plural %}
 
 {# TODO: Create macros for repeated elements here and in `postslist.njk` #}
 <section class="post _container {{ pageClass }}">

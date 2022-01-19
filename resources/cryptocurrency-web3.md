@@ -11,10 +11,12 @@ tags:
   - Technology
   - The Internet
 ---
-  
-<div class="{{ pageClass }}-group">
 
-## Media sources
+<section class="resources-groups">
+
+<div class="resources-group">
+
+## 🗞️ Media sources
 
 ### Podcasts
 - [Bankless](http://podcast.banklesshq.com/)
@@ -28,23 +30,23 @@ tags:
 - [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/bitcoin.pdf)
 - [Bitcoin P2P e-cash paper](https://satoshi.nakamotoinstitute.org/emails/cryptography/1/)
 - [SoK: Decentralized Exchanges (DEX) with Automated Market Maker (AMM) Protocols](https://arxiv.org/abs/2103.12732)
-- Blind Signatures for Untraceable Payments
+- [Blind Signatures for Untraceable Payments](https://link.springer.com/chapter/10.1007/978-1-4757-0602-4_18)
 
 ### Courses
-- Web3 MOOC: Massive Open Online Courses
-- MIT — Blockchain and Money
-- Solidity Path: Beginner to Intermediate Smart Contracts
-- Binance Academy
-- DeFi Orientation
+- [Web3 MOOC: Massive Open Online Courses](https://www.youtube.com/playlist?list=PLxVihxZC42nF_MCN9PTvZMIifRjx9cZ2J)
+- [MIT — Blockchain and Money](https://ocw.mit.edu/courses/sloan-school-of-management/15-s12-blockchain-and-money-fall-2018/)
+- [Solidity Path: Beginner to Intermediate Smart Contracts](https://cryptozombies.io/)
+- [Binance Academy](https://academy.binance.com/en)
+- [DeFi Orientation](https://learn.nateliason.com/p/defi-orientation)
 
 </div>
 
-<div class="{{ pageClass }}-group">
+<div class="resources-group">
 
-## Individual media content
+## 📰 Individual media content
 
 ### Podcast Episodes
-- Bankless — Layer Zero | Justin Drake
+- [Bankless — Layer Zero | Justin Drake](http://podcast.banklesshq.com/layer-zero-justin-drake)
 - [Is ETH on Its Way to Becoming Ultra-Sound Money? Yes, Says Justin Drake](https://pca.st/pwqgxl8i)
 - [Chris Dixon and Naval Ravikant — The Wonders of Web3, How to Pick the Right Hill to Climb, Finding the Right Amount of Crypto Regulation, Friends with Benefits, and the Untapped Potential of NFTs (#542)](https://tim.blog/2021/10/28/chris-dixon-naval-ravikant/)
 - [Left Reckoning — Episode 37 - Blockchain, Smart Contracts, & False Promise + Biden Sending Haitians to Gitmo? ft. David Gerard](https://pca.st/podcast/b7afde50-3663-0139-331b-0acc26574db2)
@@ -55,9 +57,9 @@ tags:
 
 </div>
 
-<div class="{{ pageClass }}-group">
+<div class="resources-group">
 
-## Software
+## 👩‍💻 Software
 
 ### Crypto / DeFi analytics
 - [WhaleWatcher](https://whalewatcher.finance/)
@@ -70,12 +72,21 @@ tags:
 ### Crypto / DeFi portfolio management + taxes  
 - [CoinTracker — Track your crypto portfolio and taxes](https://www.cointracker.io/)
 - [ENS](https://ens.domains/)
-- Mirror: Content Creation on Ethereum Blockchain
+- [Mirror: Content Creation on Ethereum Blockchain](https://mirror.xyz/)
 
 ### Collaboration
 - [Collab Land](https://collab.land/)
 
-### Cryptocurrency wallets  
+### SDKs
+- [WalletConnect](https://walletconnect.org/)
+
+</div>
+
+<div class="resources-group">
+
+## 💰 Crypto wallets
+
+### Software wallets
 - [Enjin | NFTs for Everyone](https://enjin.io/)
 - [Coinbase](https://www.coinbase.com/)
 - [Metamask](https://metamask.io/)
@@ -83,20 +94,17 @@ tags:
 - [Trust Wallet](https://trustwallet.com/)
 - [Argent](https://www.argent.xyz/)
 - [WallETH — Your native Ethereum Wallet](https://walleth.org/)
-- ### Hardware wallets
-  - [Hardware Wallets](https://hardware-wallets.io/)
-  - [Trezor](https://trezor.io/)
-  - [Ledger](https://www.ledger.com/)
 
-### SDKs
-- [WalletConnect](https://walletconnect.org/)
+### Hardware wallets
+- [Hardware Wallets](https://hardware-wallets.io/)
+- [Trezor](https://trezor.io/)
+- [Ledger](https://www.ledger.com/)
 
 </div>
 
-<div class="{{ pageClass }}-group">
+<div class="resources-group">
 
-## NFT
-- [Showtime — Crypto Art](https://tryshowtime.com/)
+## 🎨 NFT
 
 ### Marketplaces  
 - [OpenSea](https://opensea.io/)
@@ -105,4 +113,8 @@ tags:
 - [PartyBid](https://www.partybid.app/)
 - [Kalamint](https://kalamint.io/)
 
+### Communities
+- [Showtime — Crypto Art](https://tryshowtime.com/)
+
 </div>
+</section>
