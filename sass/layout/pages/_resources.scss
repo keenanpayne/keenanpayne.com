@@ -1,0 +1,16 @@
+//
+// Resources
+// ==================================================
+
+.resources {
+  max-width: 90%; 
+}
+
+.resources-groups {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.resources-group {
+  flex-basis: 33%;
+}
