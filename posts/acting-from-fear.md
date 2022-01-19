@@ -12,7 +12,7 @@ tags:
   - Self-Reflection
 ---
 
-{% include atoms/figure.html, src: "/images/posts/mirror/mirror.jpg", alt: "Public domain image of theatrical people looking in mirror", caption: "", source_title: "The New York Public Library", source_link: "https://digitalcollections.nypl.org/items/590d9f10-f033-0132-6114-58d385a7b928" %}
+{% include atoms/figure.html, src: "/images/posts/mirror/mirror.jpg", alt: "Public domain image of theatrical people looking in mirror", caption: "In the end, we always find a way to look ridiculous.", source_title: "The New York Public Library", source_link: "https://digitalcollections.nypl.org/items/590d9f10-f033-0132-6114-58d385a7b928" %}
 
 An ongoing refrain for my self-reflection practice is the idea of "purposeful behavior." Reflecting on what underpins my behavior (e.g., thoughts, actions, motivations, emotions, desires, etc.) helps bridge the gap between my authentic self and my behavior.
 
@@ -28,10 +28,10 @@ I've begun questioning the merits of my seemingly obsessive-compulsive desire to
 
 {% include atoms/figure.html, src: "/images/posts/mirror/face-mirror.jpg", alt: "Actor with a lacquer mirror", caption: "", source_title: 'The New York Public Library', source_link: "https://digitalcollections.nypl.org/items/152dc690-069f-0135-8a59-7b4dfdd030de" %}
 
-With deeper roots, the road of self-reflection takes me to more significant places. During [my sabbatical from freelancing](/goodbye-freelancing/), I've begun digging beneath the behavior which has dominated my career, which seems to manifest primarily from financial fear. My fear of not having "enough" money has inspired me to move cities, change jobs, take on more projects than I can feasibly manage, and attempt to monetize various [practices](/practices/) in my life. **Money, money, money.**
+With deeper roots, the road of self-reflection takes me to more significant places. During [my sabbatical from freelancing](/goodbye-freelancing/), I've begun digging beneath the behavior which has dominated my career, which seems to manifest primarily from financial fear. My fear of not having enough money has inspired me to move cities, change jobs, take on more projects than I can reasonably manage, and attempt to monetize various [practices](/practices/) in my life. **Money, money, money.**
 
-What about this essay that I'm writing and publishing? Have I articulated my thoughts from fear-based roots? Is that act of publishing in-and-of-itself fear-based? Perhaps I'm concerned with how people will perceive me based on what I've written, or maybe I fear that nobody will read it at all. I've let fear block me from publishing my writing, which led me to begin [publishing drafts](/publishing-drafts/).
+What about this essay that I'm writing and publishing? Have I articulated my thoughts from fear-based roots? Is that act of publishing in-and-of-itself fear-based? Perhaps I'm concerned with how people will perceive me based on what I've written, or maybe I fear that nobody will read it at all. I've let fear block me from publishing my writing in the past, which led me to begin [publishing drafts](/publishing-drafts/).
 
-{% include type/p_large.html, content: "Clarifying what underlies my behavior helps me create continuity between my authentic self and my actions." %}
+{% include type/p_large.html, content: "Clarifying what underlies my behavior helps create continuity between my authentic self and my actions." %}
 
 Fear, like confidence or any other emotional state, serves a purpose. Behavior predicated on fear isn't always a bad thing. Sometimes it can be trivial and other times, hugely beneficial. I just want to ensure that I'm making fear work for _me_, not the other way around.

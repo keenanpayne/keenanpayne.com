@@ -15,4 +15,9 @@ p.-large {
     padding-left: .5rem;
     padding-right: .5rem;
   }
+
+  @media (--min-1120) {
+    padding-left: .65rem;
+    padding-right: .65rem;
+  }
 }
