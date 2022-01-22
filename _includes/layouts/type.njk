@@ -3,4 +3,6 @@ layout: layouts/base.njk
 templateClass: page-home
 ---
 
-{# {% include "posttype.njk" %} #}
+{% import "organisms/entries/entries.njk" as entries with context %}
+
+{{ entries.recent('Type: ' ~ title | plural, collections[title | lower], true, false, true) }}

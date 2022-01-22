@@ -2,14 +2,13 @@
 layout: layouts/home.njk
 ---
 
-{% import "organisms/entries/postslist.njk" as entries with context %}
+{% import "organisms/entries/entries.njk" as entries with context %}
+{% import "organisms/mission/mission.njk" as mission with context %}
 
-{% set missionStatementLabel = 'Personal Note' %}
-{% set missionStatementText = "Welcome to my digital home. This is a space for writing, through which I seek a better understanding of myself and the world around me. You can also find projects I've worked on throughout my decade-plus career as a professional web developer." %}
-
-{# TODO: Break out featured post and recent posts into separate files #}
 {{ entries.featured('Featured', collections.featured | head(-1), false, '-grid -large') }}
-{% include "mission.njk" %}
+
+{{ mission.centered('Personal Note', "Welcome to my digital home. This is a space for writing, through which I seek a better understanding of myself and the world around me. You can also find projects I've worked on throughout my decade-plus career as a professional web developer.") }}
+
 {{ entries.recent('Recently Published', collections.posts | head(-5), true, false, true) }}
+
 {% include "newsletter.njk" %}
-{# {% include "postslist-journey.njk" %} #}

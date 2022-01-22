@@ -7,8 +7,8 @@ eleventyNavigation:
   order: 2
 ---
 
-{% set label = 'Archive' %}
-{% set postslist = collections.posts %}
+{% import "organisms/entries/entries.njk" as entries with context %}
 
-{# {% include "postslist.njk" %} #}
+{{ entries.recent('Archive', collections.posts, true, false, true) }}
+
 {% include "newsletter.njk" %}

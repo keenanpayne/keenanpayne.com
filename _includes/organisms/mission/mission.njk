@@ -1,0 +1,18 @@
+{#  
+ # Mission Statement
+ #}
+{% macro centered(label, text) %}
+  <section class="missionStatement">
+    {%- if label -%}
+      <h2 class="missionStatement-label _text-h5">
+        {{ label }}
+      </h2>
+    {%- endif -%}
+
+    {%- if text -%}
+      <p class="missionStatement-text _type-my-voice">
+        {{ text }}
+      </p>
+    {%- endif -%}
+  </section>
+{%- endmacro -%}
