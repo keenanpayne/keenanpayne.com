@@ -6,10 +6,10 @@ layout: layouts/home.njk
 {% import "organisms/mission/mission.njk" as mission with context %}
 {% import "organisms/newsletter.njk" as  newsletter with context %}
 
-{{ entries.featured('Featured', collections.featured | head(-1), false, '-grid -large') }}
+{{ entries.output('Featured', collections.featured | head(-1), false, '-featured', false) }}
 
 {{ mission.centered('Personal Note', "Welcome to my digital home. This is a space for writing, through which I seek a better understanding of myself and the world around me. You can also find projects I've worked on throughout my decade-plus career as a professional web developer.") }}
 
-{{ entries.recent('Recently Published', collections.posts | head(-5), true, false, true) }}
+{{ entries.output('Recently Published', collections.posts | head(-5), true, false, true) }}
 
 {{ newsletter.large() }}

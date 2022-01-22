@@ -3,21 +3,23 @@
 {% import "organisms/entries/macros.njk" as entries with context %}
 
 {# 
- # Featured Post 
+ # Output
  #}
- {%- macro featured(label, collection, tags) -%}
-  <section class="v2-postlist-featured">
+{%- macro output(label, collection, tags, modifiers, more) -%}
+  <section class="postlist {{ modifiers if modifiers else '-stack _container' }}">
     {{ entries.postLabel(label) }}
 
-    <div class="v2-postlist-items">
+    <div class="postlist-items">
       {# Check if items exist in collection #}
       {% if collection.length %}
         {%- for post in collection | reverse -%}
-          <div class="v2-postlist-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
-          
-          {% set title = post.data.title %}
+          {# Exclude featured posts #}
+          {%- if post.data.tags.includes('Featured') -%}
+            <div class="postlist-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
+          {%- endif -%}
 
-          <article class="v2-postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+
+          <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
             {{ entries.postMeta(post) }}
             {{ entries.postHeader(post) }}
             {{ entries.postLede(post) }}
@@ -27,38 +29,6 @@
               {{ entries.postTags(post) }}
             {% endif %}
           </article>
-        {%- endfor -%}
-      {%- endif -%}
-    </div>
-  </section>
-{%- endmacro -%}
-
-
-{#  
- # Recent Posts
- #}
-{% macro recent(label, collection, tags, modifiers, more) %}
-  <section class="postlist {{ modifiers if modifiers else '-stack' }}  _container">
-    {{ entries.postLabel(label) }}
-
-    <div class="postlist-items">
-      {# Check if items exist in collection #}
-      {% if collection.length %}
-        {%- for post in collection | reverse -%}
-          {# Exclude featured posts #}
-          {%- if not post.data.tags.includes('Featured') -%}
-            {# {% first_image post %} #}
-
-            <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-              {{ entries.postMeta(post) }}
-              {{ entries.postHeader(post) }}
-              {{ entries.postLede(post) }}
-
-              {% if tags !== false %}
-                {{ entries.postTags(post) }}
-              {% endif %}
-            </article>
-          {%- endif -%}
         {%- endfor -%}
     
       {# If collection is empty #}
@@ -166,4 +136,4 @@
       {%- endfor -%}
     </div>
   </section>
- {%- endmacro -%}
+{%- endmacro -%}

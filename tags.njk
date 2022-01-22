@@ -20,4 +20,4 @@ templateClass: page-tags
 
 {% import "organisms/entries/entries.njk" as entries with context %}
 
-{{ entries.recent(false, collections[ tag ], true, false, true) }}
+{{ entries.output(false, collections[ tag ], true, false, true) }}

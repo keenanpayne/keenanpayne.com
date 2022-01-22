@@ -139,8 +139,35 @@
   }
 }
 
-.postlist-items {
-  margin-top: 1.5rem;
+.postlist-time-month,
+.postlist-time-year {
+  display: block;
+  font-weight: 300;
+}
+
+.postlist-articleLink {
+  line-height: 2;
+  position: relative;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+
+    &::after { 
+      transform: translate(80%, -50%);
+    }
+  }
+
+  // Psuedo-element for arrow 
+  &::after { 
+    content: '→';
+    font-size: 1.5em;
+    position: absolute;
+    top: 45%;
+    transform: translate(55%, -50%);
+    transition: transform var(--transition);
+    user-select: none;
+  }
 }
 
 
@@ -149,6 +176,10 @@
 // ---------
 
 .postlist.-stack {
+  .postlist-items {
+    margin-top: 1.5rem;
+  }
+  
   .postlist-item + .postlist-item {
     margin-top: 3rem;
   }
@@ -192,12 +223,7 @@
   }
 }
 
-
-//
-// v2 Styles
-// ---------
-
-.v2-postlist-featured {
+.postlist.-featured { 
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   margin-bottom: 2.5rem;
@@ -211,7 +237,7 @@
     padding-right: 0;
   }
 
-  // TODO: Hacky overrides
+  // Overrides
   .postlist-header {
     grid-column: 1 / -1;
 
@@ -223,89 +249,58 @@
       grid-column: 1 / span 9;
     }
   }
-}
 
-.v2-postlist-items {
-  grid-column: 1 / -1;
-
-  @media (--min-720) {
-    grid-column: 1 / span 10;
-  }
-
-  @media (--min-1120) {
-    grid-column: 1 / span 9;
-  }
-}
-
-.v2-postlist-item {
-  margin-left: auto;
-  max-width: 70ch;
-  padding-right: 0.15rem;
-  position: relative;
+  .postlist-items {
+    grid-column: 1 / -1;
   
-  // TODO: Hacky overrides
-  .postlist-time {
-    bottom: 0;
-    font-size: 1rem;
-    line-height: 1;
-    position: absolute;
-    right: 0;
-    text-align: right;
-  }
-}
-
-.v2-postlist-image {
-  display: block;
-  filter: sepia(.1) brightness(0.9);
-  height: 250px;
-  margin-bottom: 1.5rem;
-  transition: filter var(--transition-long);
-  width: 100%;
-
-  @media (--min-720) {
-    height: 300px;
-  }
-
-  @media (--min-960) {
-    height: 350px;
-  }
-
-  @media (--min-1120) {
-    height: 400px;
-  }
-
-  &:hover {
-    filter: none;
-  }
-}
-
-.postlist-time-month,
-.postlist-time-year {
-  display: block;
-  font-weight: 300;
-}
-
-.postlist-articleLink {
-  line-height: 2;
-  position: relative;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-
-    &::after { 
-      transform: translate(80%, -50%);
+    @media (--min-720) {
+      grid-column: 1 / span 10;
+    }
+  
+    @media (--min-1120) {
+      grid-column: 1 / span 9;
     }
   }
-
-  // Psuedo-element for arrow 
-  &::after { 
-    content: '→';
-    font-size: 1.5em;
-    position: absolute;
-    top: 45%;
-    transform: translate(55%, -50%);
-    transition: transform var(--transition);
-    user-select: none;
+  
+  .postlist-item {
+    margin-left: auto;
+    max-width: 70ch;
+    padding-right: 0.15rem;
+    position: relative;
+    
+    // TODO: Hacky overrides
+    .postlist-time {
+      bottom: 0;
+      font-size: 1rem;
+      line-height: 1;
+      position: absolute;
+      right: 0;
+      text-align: right;
+    }
+  }
+  
+  .postlist-image {
+    display: block;
+    filter: sepia(.1) brightness(0.9);
+    height: 250px;
+    margin-bottom: 1.5rem;
+    transition: filter var(--transition-long);
+    width: 100%;
+  
+    @media (--min-720) {
+      height: 300px;
+    }
+  
+    @media (--min-960) {
+      height: 350px;
+    }
+  
+    @media (--min-1120) {
+      height: 400px;
+    }
+  
+    &:hover {
+      filter: none;
+    }
   }
 }

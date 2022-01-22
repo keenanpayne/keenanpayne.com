@@ -10,6 +10,6 @@ eleventyNavigation:
 {% import "organisms/entries/entries.njk" as entries with context %}
 {% import "organisms/newsletter.njk" as  newsletter with context %}
 
-{{ entries.recent('Archive', collections.posts, true, false, true) }}
+{{ entries.output('Archive', collections.posts, true, false, true) }}
 
 {{ newsletter.large() }}

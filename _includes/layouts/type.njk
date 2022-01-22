@@ -5,4 +5,4 @@ templateClass: page-home
 
 {% import "organisms/entries/entries.njk" as entries with context %}
 
-{{ entries.recent('Type: ' ~ title | plural, collections[title | lower], true, false, true) }}
+{{ entries.output('Type: ' ~ title | plural, collections[title | lower], true, false, true) }}
