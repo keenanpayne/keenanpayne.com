@@ -154,6 +154,23 @@
   }
 }
 
+.postlist.-grid { 
+  .postlist-items { 
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 5rem;
+  }
+
+  .postlist-item { 
+    grid-column: auto / span -1;
+
+    @media (--min-960) {
+      grid-column-end: span 6;
+      margin-top: 0;
+    }
+  }
+}
+
 .postlist.-journey { 
   max-width: 1260px;
 

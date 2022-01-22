@@ -1,0 +1,102 @@
+{% macro postMeta(post) %}
+  {% set type = post.data.type %}
+  {% set date = post.data.date %}
+  {% set series = post.data.series %}
+
+  <div class="postlist-meta">
+    {%- if series -%}
+      <span class="postlist-series _label">
+        <a class="-underline-hover" href="#" title="View more posts from {{ series }}">
+          {{ series }}
+        </a>
+      </span>
+    {%- endif -%}
+    
+    {%- if type -%}
+      <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+        {{ type }}
+      </a>
+    {%- endif -%}
+
+    {%- if date -%}
+      <time class="postlist-time _text-small" datetime="{{ date | htmlDateString }}">
+        <span class="postlist-time-month">
+          {{ date | postMonth }}
+        </span>
+
+        <span class="postlist-time-year">
+          {{ date | postYear }}
+        </span>
+      </time>
+    {%- endif -%}
+  </div>
+{% endmacro %}
+
+{% macro postHeader(post) %}
+  {% set url = post.url %}
+  {% set title = post.data.title %}
+
+  <header class="postlist-header">
+    <h2 class="postlist-title _text-h3">
+      <a href="{{ url | url }}" class="postlist-link">
+        {% if title %}
+          {{ title }}
+        {% else %}
+          <code>{{ url }}</code>
+        {% endif %}
+      </a>
+    </h2>
+  </header>
+{% endmacro %}
+
+{% macro postLede(post) %}
+  {% set lede = post.data.lede %}
+
+  {% if lede %}
+    <p class="postlist-lede _text-h5">
+      {{ lede }}
+    </p>
+  {% endif %}
+{% endmacro %}
+
+{% macro postTags(post) %}
+  <ul class="postlist-tags">
+    {%- for tag in post.data.tags | filterTagList -%}
+      <li class="postlist-tag ">
+        {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+
+        {% if tag == "drafts" %}
+          <span class="tag -inactive">
+            {{ tag | replace('drafts', 'draft') }}
+          </span>
+        {% else %}
+          <a href="{{ tagUrl | url }}" class="tag">
+            {{ tag }}
+          </a>
+        {% endif %}
+      </li>
+    {%- endfor -%}
+  </ul>
+{% endmacro %}
+
+{% macro postReadMore(post) %}
+  <a class="postlist-articleLink _label" href="{{ post.url }}" title="Read {{ post.data.title }}">
+    Read {{ post.data.type }}
+  </a>
+{% endmacro %}
+
+{% macro postLabel(label) %}
+  {% if label or tag %}
+    <div class="postlist-header">
+      <div class="postlist-label _label">
+        {{ label if label else 'Tagged: ' ~ tag }}
+      </div>
+
+      {% if description %}
+        <p class="_text-small">
+          {{ description | safe }}
+        </p>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endmacro %}

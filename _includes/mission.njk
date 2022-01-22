@@ -1,0 +1,16 @@
+{#  
+ # Mission Statement
+ #}
+<section class="missionStatement">
+  {%- if missionStatementLabel -%}
+    <h2 class="missionStatement-label _text-h5">
+      {{ missionStatementLabel }}
+    </h2>
+  {%- endif -%}
+
+  {%- if missionStatementText -%}
+    <p class="missionStatement-text _type-my-voice">
+      {{ missionStatementText }}
+    </p>
+  {%- endif -%}
+</section>
