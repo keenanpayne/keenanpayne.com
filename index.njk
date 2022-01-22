@@ -4,6 +4,7 @@ layout: layouts/home.njk
 
 {% import "organisms/entries/entries.njk" as entries with context %}
 {% import "organisms/mission/mission.njk" as mission with context %}
+{% import "organisms/newsletter.njk" as  newsletter with context %}
 
 {{ entries.featured('Featured', collections.featured | head(-1), false, '-grid -large') }}
 
@@ -11,4 +12,4 @@ layout: layouts/home.njk
 
 {{ entries.recent('Recently Published', collections.posts | head(-5), true, false, true) }}
 
-{% include "newsletter.njk" %}
+{{ newsletter.large() }}

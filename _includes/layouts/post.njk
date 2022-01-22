@@ -5,6 +5,8 @@ permalink: "/{{ title | slug }}/"
 
 {# TODO: Use macros from `postslist.njk` inside of here #}
 
+{% import "organisms/newsletter.njk" as  newsletter with context %}
+
 <section class="post _container">
   <header class="post-header">
     <div class="post-meta">
@@ -87,4 +89,4 @@ permalink: "/{{ title | slug }}/"
 
 {% include "components/comments.html" %}
 
-{% include "newsletter.njk" %}
+{{ newsletter.large() }}

@@ -8,6 +8,6 @@ eleventyNavigation:
 templateClass: page-subscribe
 ---
 
-{% set newsletterModifiers = '-stacked -standalone' %}
+{% import "organisms/newsletter.njk" as  newsletter with context %}
 
-{% include "newsletter.njk"  %}
+{{ newsletter.large('-stacked -standalone') }}
