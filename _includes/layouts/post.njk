@@ -5,7 +5,11 @@ permalink: "/{{ title | slug }}/"
 
 {% import "organisms/newsletter.njk" as  newsletter with context %}
 
-<section class="post _container">
+{# Page Classes #}
+{%- set pageClass = type | lower | plural %}
+
+{# TODO: Create macros for repeated elements here and in `postslist.njk` #}
+<section class="post _container {{ pageClass }}">
   <header class="post-header">
     <div class="post-meta">
       {%- if type -%}
@@ -14,9 +18,12 @@ permalink: "/{{ title | slug }}/"
         </a>
       {%- endif -%}
 
-      <time class="_text-small" datetime="{{ page.date | htmlDateString }}">
-        {{ page.date | readableDate }}
-      </time>
+      {# Resources are timeless #}
+      {%- if type != 'Resource' -%}
+        <time class="_text-small" datetime="{{ page.date | htmlDateString }}">
+          {{ page.date | readableDate }}
+        </time>
+      {%- endif -%}
     </div>
 
     <h1 class="post-title">

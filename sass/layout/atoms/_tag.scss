@@ -2,7 +2,9 @@
 // Tag
 // ==================================================
 
-.tag {
+// NOTE: Important to negate `.token`, which is introduced
+//       by the syntax highlighting library for HTML
+.tag:not(.token) {
   @extend ._text-smaller;
 
   --tag-background: var(--white);

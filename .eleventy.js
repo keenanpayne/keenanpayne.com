@@ -135,6 +135,12 @@ module.exports = function(eleventyConfig) {
     return collection.getFilteredByTag('Featured');
   });
 
+  eleventyConfig.addCollection('resource', function(collection) {
+    return collection.getFilteredByGlob("resources/*.md").filter(function(item) {
+      return item;
+    });
+  });
+
   // Copy the `images` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("css");
