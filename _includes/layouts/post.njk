@@ -19,7 +19,9 @@ permalink: "/{{ title | slug }}/"
       {%- endif -%}
 
       {# Resources are timeless #}
-      {%- if type != 'Resource' -%}
+      {%- if type == 'Book' -%}
+        {{ page.date | postYear }}
+      {%- elif type != 'Resource' -%}
         <time class="_text-small" datetime="{{ page.date | htmlDateString }}">
           {{ page.date | readableDate }}
         </time>
@@ -55,6 +57,10 @@ permalink: "/{{ title | slug }}/"
     {%- if type == 'Draft' -%}
       {# TODO: Fix this so that notices for drafts are automatically displayed #}
       {# {% include "type/notice.html" with content: "<strong>Heads up:</strong> This article is still a work-in-progress." %} #}
+    {%- endif -%}
+
+    {%- if type == 'Book' -%}
+      <img class="post-imageBook" src="{{ book.cover }}" alt="{{ title }}" />
     {%- endif -%}
 
     {{ content | safe }}

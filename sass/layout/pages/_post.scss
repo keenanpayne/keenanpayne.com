@@ -62,6 +62,10 @@
     margin-top: 0;
   }
 
+  h4 { 
+    margin-bottom: .25rem;
+  }
+
   h5 {
     margin-bottom: 1rem;
   }
@@ -135,4 +139,10 @@
   > figure {
     @include pullContentOutside();
   }
+}
+
+// Featured images
+.post-imageBook { 
+  margin-bottom: 3rem;
+  max-width: 300px;
 }

@@ -124,19 +124,28 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Collection for drafts
   eleventyConfig.addCollection('draft', function(collection) {
     return collection.getFilteredByGlob("drafts/*.md").filter(function(item) {
       return item;
     });
   });
   
-  // Collection for featured content
+  // Collection for featured posts
   eleventyConfig.addCollection('featured', function(collection) {
     return collection.getFilteredByTag('Featured');
   });
 
+  // Collection for resources
   eleventyConfig.addCollection('resource', function(collection) {
     return collection.getFilteredByGlob("resources/*.md").filter(function(item) {
+      return item;
+    });
+  });
+
+  // Collection for bookshelf
+  eleventyConfig.addCollection('book', function(collection) { 
+    return collection.getFilteredByGlob('bookshelf/*.md').filter(function(item) { 
       return item;
     });
   });

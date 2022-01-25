@@ -11,19 +11,29 @@
 
     <div class="postlist-items">
       {# Check if items exist in collection #}
-      {% if collection.length %}
-        {%- for post in collection | reverse -%}
+      {% if collection.length %} {%- for post in collection | reverse -%}
           {# Exclude featured posts #}
           {%- if post.data.tags.includes('Featured') -%}
             <div class="postlist-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
           {%- endif -%}
 
-
           <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-            {{ entries.postMeta(post) }}
-            {{ entries.postHeader(post) }}
-            {{ entries.postLede(post) }}
-            {{ entries.postReadMore(post) }}
+            {%- if post.data.type != 'Book' -%}
+              {{ entries.postMeta(post) }}
+              {{ entries.postHeader(post) }}
+              {{ entries.postLede(post) }}
+              {{ entries.postReadMore(post) }}
+            {%- else -%}
+              <img src="{{ post.data.book.cover }}" alt="{{ post.data.title }}" />
+              {{ entries.postHeader(post) }}
+              <p>
+                {{ post.data.book.subtitle }}
+              </p>
+              <p>
+                By: {{ post.data.book.author }}
+              </p>
+              {{ entries.postLede(post) }}
+            {% endif %}
 
             {% if tags !== false %}
               {{ entries.postTags(post) }}

@@ -1,6 +1,7 @@
 //
 // Post List
 // ==================================================
+// TODO: Rename `.postlist` to `.entries`
 
 .postlist { 
   margin-bottom: 3rem;
@@ -199,6 +200,27 @@
       grid-column-end: span 6;
       margin-top: 0;
     }
+  }
+}
+
+.postlist.-media { 
+  .postlist-items { 
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 5rem;
+  }
+
+  .postlist-item { 
+    grid-column: auto / span -1;
+
+    @media (--min-960) {
+      grid-column-end: span 3;
+      margin-top: 0;
+    }
+  }
+
+  .postlist-title { 
+    @include h5();
   }
 }
 
