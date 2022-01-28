@@ -23,11 +23,30 @@
   justify-content: space-between;
 }
 
+.post-tags { 
+  display: flex;
+  flex-direction: column;
+
+  @media (--min-560) { 
+    flex-direction: row;
+  }
+}
+
 .post-tag {
   display: inline-block;
 
   &:not(:first-of-type) { 
-    margin-left: 0.5em;
+    @media (--min-560) { 
+      margin-left: 0.5em;
+    }
+  }
+
+  &:not(:last-of-type) { 
+    margin-bottom: .5em;
+
+    @media (--min-560) { 
+      margin-bottom: 0;
+    }
   }
 }
 
