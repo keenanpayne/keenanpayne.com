@@ -1,6 +1,6 @@
 ---
 permalink: '/resources/cryptocurrency-web3/'
-title:  'Cryptocurrency/Web3'
+title:  'Blockchain, Cryptocurrency, Web3, NFT'
 meta: 
   title:  'Cryptocurrency & Web3 Resources'
   description: 
