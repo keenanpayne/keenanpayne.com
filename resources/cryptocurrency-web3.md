@@ -1,6 +1,6 @@
 ---
 permalink: '/resources/cryptocurrency-web3/'
-title:  'Cryptocurrency/Web3'
+title:  'Blockchain, Cryptocurrency, Web3, NFT'
 meta: 
   title:  'Cryptocurrency & Web3 Resources'
   description: 
@@ -53,6 +53,7 @@ tags:
 - [Left Reckoning — Episode 37 - Blockchain, Smart Contracts, & False Promise + Biden Sending Haitians to Gitmo? ft. David Gerard](https://pca.st/podcast/b7afde50-3663-0139-331b-0acc26574db2)
 
 ### Videos
+- [Line Goes Up](https://www.youtube.com/watch?v=YQ_xWvX1n9g)
 - [Top 50 Cryptocurrencies summarized in 1 sentence](https://www.youtube.com/watch?v=V-B6-ySxpbs)
 - [NFTs: Nasty F*cking Things (The Jimquisition)](https://youtu.be/AxaHugHihh0)
 
@@ -105,7 +106,7 @@ tags:
 
 <div class="resources-group">
 
-## 🎨 NFT
+## 🌄 NFT
 
 ### Marketplaces  
 - [OpenSea](https://opensea.io/)
