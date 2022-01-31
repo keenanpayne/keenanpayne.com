@@ -1,5 +1,4 @@
 {# TODO: Break out featured post and recent posts into separate files #}
-
 {% import "organisms/entries/macros.njk" as entries with context %}
 
 {# 
@@ -34,14 +33,14 @@
                   {{ entries.postReadMore(post) }}
                 {%- endif -%}
               {%- else -%}
-                <img src="{{ post.data.book.cover }}" alt="{{ post.data.title }}" />
+                <img class="postlist-media-image" src="{{ post.data.book.cover }}" alt="{{ post.data.title }}" />
                 {{ entries.postHeader(post) }}
 
-                <p>
+                <p class="postlist-media-subtitle">
                   {{ post.data.book.subtitle }}
                 </p>
 
-                <p>
+                <p class="postlist-media-author _text-small">
                   By: {{ post.data.book.author }}
                 </p>
 
@@ -63,15 +62,17 @@
       {% endif %}
     </div>
 
-    {% if tag or more %}
-      <p class="postlist-tagsLink _text-align-center">
-        {% if tag %}
-          <a href="{{ '/tags/' | url }}">All Tags →</a>
-        {% elif more %}
-          <a href="{{ '/archive/' | url }}">View Archive →</a>
-        {% endif %}
-      </p>
-    {% endif %}
+    {%- if title != 'Book' -%}
+      {%- if tag or more -%}
+        <p class="postlist-tagsLink _text-align-center">
+          {% if tag %}
+            <a href="{{ '/tags/' | url }}">All Tags →</a>
+          {% elif more %}
+            <a href="{{ '/archive/' | url }}">View Archive →</a>
+          {% endif %}
+        </p>
+      {%- endif -%}
+    {%- endif -%}
   </section>
 {%- endmacro -%}
 
@@ -141,7 +142,7 @@
             </h3>
 
             <p class="postlist-lede">
-              This is a lede for the article that will be displayed in multiple contexts — meta description, tiles, and article header.
+              {{ entries.postLede(post) }}
             </p>
           </header>
 

@@ -1,7 +1,7 @@
 ---
 layout: layouts/type.njk
 title: Book
-description: Books that I've read.
+description:
 eleventyNavigation:
   key: Bookshelf
   order: 4
