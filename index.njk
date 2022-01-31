@@ -10,6 +10,6 @@ layout: layouts/home.njk
 
 {{ mission.centered('Personal Note', "Welcome to my digital home. This is a space for writing, through which I seek a better understanding of myself and the world around me. You can also find projects I've worked on throughout my decade-plus career as a professional web developer.") }}
 
-{{ entries.output('Recently Published', collections.posts | head(-5), true, false, true) }}
+{{ entries.output('Recently Published', collections.posts | head(-5), true, false, true, false) }}
 
 {{ newsletter.large() }}

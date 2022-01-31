@@ -5,7 +5,7 @@
 {# 
  # Output
  #}
-{%- macro output(label, collection, tags, modifiers, more) -%}
+{%- macro output(label, collection, tags, modifiers, more, readlink) -%}
   <section class="postlist {{ modifiers if modifiers else '-stack _container' }}">
     {{ entries.postLabel(label) }}
 
@@ -13,30 +13,44 @@
       {# Check if items exist in collection #}
       {% if collection.length %} {%- for post in collection | reverse -%}
           {# Exclude featured posts #}
-          {%- if post.data.tags.includes('Featured') -%}
-            <div class="postlist-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
-          {%- endif -%}
 
+          {# TODO: The featured post is currently being displayed twice —  
+                   once at the top of the page and again at the bottom.
+                   I'm not sure if this is what I want to have happen, I may 
+                   want to exclude featured post from other entries lists. #}
           <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-            {%- if post.data.type != 'Book' -%}
-              {{ entries.postMeta(post) }}
-              {{ entries.postHeader(post) }}
-              {{ entries.postLede(post) }}
-              {{ entries.postReadMore(post) }}
-            {%- else -%}
-              <img src="{{ post.data.book.cover }}" alt="{{ post.data.title }}" />
-              {{ entries.postHeader(post) }}
-              <p>
-                {{ post.data.book.subtitle }}
-              </p>
-              <p>
-                By: {{ post.data.book.author }}
-              </p>
-              {{ entries.postLede(post) }}
-            {% endif %}
+            {%- if post.data.tags.includes('Featured') == true -%}
+              <div class="postlist-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
+            {%- endif -%}
+
+            <div class="postlist-item-content">
+              {# Books are treated special #}
+              {%- if post.data.type != 'Book' -%}
+                {{ entries.postMeta(post) }}
+                {{ entries.postHeader(post) }}
+                {{ entries.postLede(post) }}
+
+                {%- if readlink != false -%}
+                  {{ entries.postReadMore(post) }}
+                {%- endif -%}
+              {%- else -%}
+                <img src="{{ post.data.book.cover }}" alt="{{ post.data.title }}" />
+                {{ entries.postHeader(post) }}
+
+                <p>
+                  {{ post.data.book.subtitle }}
+                </p>
+
+                <p>
+                  By: {{ post.data.book.author }}
+                </p>
+
+                {{ entries.postLede(post) }}
+              {% endif %}
+            </div>
 
             {% if tags !== false %}
-              {{ entries.postTags(post) }}
+              {# {{ entries.postTags(post) }} #}
             {% endif %}
           </article>
         {%- endfor -%}

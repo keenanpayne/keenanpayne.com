@@ -29,7 +29,7 @@
 
 @mixin h3() {
   font-size: 1.563rem;
-  line-height: 1.35;
+  line-height: 1.15;
 
   @media (--min-640) { 
     font-size: 1.953rem;
@@ -48,7 +48,7 @@
 @mixin h5() {
   font-size: 1.125rem;
   font-weight: normal;
-  line-height: 1.45;
+  line-height: 1.4;
 
   @media (--min-640) { 
     font-size: 1.25rem;

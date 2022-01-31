@@ -19,7 +19,7 @@
     {%- endif -%}
 
     {%- if date -%}
-      <time class="postlist-time _text-small" datetime="{{ date | htmlDateString }}">
+      {# <time class="postlist-time _text-small" datetime="{{ date | htmlDateString }}">
         <span class="postlist-time-month">
           {{ date | postMonth }}
         </span>
@@ -27,7 +27,7 @@
         <span class="postlist-time-year">
           {{ date | postYear }}
         </span>
-      </time>
+      </time> #}
     {%- endif -%}
   </div>
 {% endmacro %}

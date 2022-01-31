@@ -256,7 +256,6 @@
 
   @media (--min-720) {
     margin-bottom: 5rem;
-    padding-right: 0;
   }
 
   // Overrides
@@ -285,8 +284,6 @@
   }
   
   .postlist-item {
-    margin-left: auto;
-    max-width: 70ch;
     padding-right: 0.15rem;
     position: relative;
     
@@ -299,6 +296,11 @@
       right: 0;
       text-align: right;
     }
+  }
+
+  .postlist-item-content { 
+    margin-left: auto;
+    max-width: 60ch;
   }
   
   .postlist-image {

@@ -26,6 +26,10 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("LLL dd, yyyy");
   });
 
+  eleventyConfig.addFilter("longDate", dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("DDDD");
+  });
+
   eleventyConfig.addFilter("postMonth", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("LLL dd");
   });

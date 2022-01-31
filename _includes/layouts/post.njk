@@ -7,6 +7,7 @@ permalink: "/{{ title | slug }}/"
 
 {# Page Classes #}
 {%- set pageClass = type | lower | plural %}
+{%- set date = page.date %}
 
 {# TODO: Create macros for repeated elements here and in `postslist.njk` #}
 <section class="post _container {{ pageClass }}">
@@ -19,12 +20,14 @@ permalink: "/{{ title | slug }}/"
       {%- endif -%}
 
       {# Resources are timeless #}
-      {%- if type == 'Book' -%}
-        {{ page.date | postYear }}
-      {%- elif type != 'Resource' -%}
-        <time class="_text-small" datetime="{{ page.date | htmlDateString }}">
-          {{ page.date | readableDate }}
-        </time>
+      {%- if date -%}
+      <time class="_text-small" datetime="{{ date | htmlDateString }}">
+        {%- if type == 'Book' -%}
+          {{ date | postYear }}
+        {%- elif type != 'Resource' -%}
+          {{ date | readableDate }}
+        {%- endif -%}
+      </time>
       {%- endif -%}
     </div>
 
@@ -66,6 +69,17 @@ permalink: "/{{ title | slug }}/"
     {{ content | safe }}
   </div>
 
+  <footer class="post-footer _text-small">
+    {%- if title -%}
+      <a href="{{ permalink | url }}">{{ title }}</a> is a <a href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">{{ type | lower }}</a>
+
+      published on 
+      <time class="postlist-time" datetime="{{ date | htmlDateString }}">
+        {{ date | longDate }}
+      </time>.
+    {%- endif -%}
+  </footer>
+
   {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
   {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
 
@@ -74,7 +88,7 @@ permalink: "/{{ title | slug }}/"
       <p class="postNav-next">
         {%- if nextPost -%}
           <span class="postNav-label _label">
-            Next
+            Next Post
           </span>
           
           <a href="{{ nextPost.url | url }}">
@@ -86,7 +100,7 @@ permalink: "/{{ title | slug }}/"
       <p class="postNav-prev">
         {%- if previousPost -%}
           <span class="postNav-label _label">
-            Previous
+            Previous Post
           </span>
           
           <a href="{{ previousPost.url | url }}">
