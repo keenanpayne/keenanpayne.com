@@ -4,7 +4,7 @@
 {# 
  # Output
  #}
-{%- macro output(label, collection, tags, modifiers, more, readlink) -%}
+{%- macro output(label, collection, tags, modifiers, more, readlink = false) -%}
   <section class="postlist {{ modifiers if modifiers else '-stack _container' }}">
     {{ entries.postLabel(label) }}
 

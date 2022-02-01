@@ -57,10 +57,6 @@
   margin-bottom: .5rem;
 }
 
-.postlist-lede { 
-  margin-bottom: 1.5rem;
-}
-
 .postlist-item-active .postlist-title {
   font-weight: bold;
 }
@@ -172,7 +168,7 @@
 }
 
 .postlist-media-image { 
-  margin-bottom: .5rem
+  margin-bottom: 1rem
 }
 
 
@@ -225,6 +221,10 @@
 
   .postlist-title { 
     @include h5();
+  }
+
+  .postlist-header { 
+    margin-bottom: .25rem;
   }
 }
 

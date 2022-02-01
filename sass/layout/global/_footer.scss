@@ -67,6 +67,11 @@
   @media (--min-480) { 
     text-align: right;
   }
+
+  // Descendants
+  > p { 
+    line-height: 1.15;
+  }
 }
 
 .footer-twitter { 
@@ -75,7 +80,6 @@
   // Descendants
   span { 
     display: block;
-    margin-bottom: .125rem;
   }
 
   a { 
