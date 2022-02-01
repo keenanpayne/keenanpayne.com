@@ -29,7 +29,6 @@
   }
   
   @media (--min-960) { 
-    margin-top: 5rem;
     padding-bottom:  3.5rem;
     padding-top: 3rem;
   }
@@ -39,7 +38,7 @@
     padding-right: 0;
   }
 
-  @media (--min-1120) and (--min-h-750) { 
+  @media (--min-1120) and (--min-h-700) { 
     padding-bottom: 5.5rem;
     padding-top: 5rem;
   }
@@ -162,5 +161,16 @@
     &:hover {
       background-color: var(--hover);
     }
+  }
+}
+
+
+//
+// Context-Specific Styles
+// -----------------------
+
+.entries + .newsletter { 
+  @media (--min-960) { 
+    margin-top: 5rem;
   }
 }

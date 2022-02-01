@@ -14,7 +14,7 @@ permalink: "/{{ title | slug }}/"
   <header class="post-header">
     <div class="post-meta">
       {%- if type -%}
-        <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+        <a class="entries-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
           {{ type }}
         </a>
       {%- endif -%}
@@ -74,7 +74,7 @@ permalink: "/{{ title | slug }}/"
       <a href="{{ permalink | url }}">{{ title }}</a> is a <a href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">{{ type | lower }}</a>
 
       published on 
-      <time class="postlist-time" datetime="{{ date | htmlDateString }}">
+      <time class="entries-time" datetime="{{ date | htmlDateString }}">
         {{ date | longDate }}
       </time>.
     {%- endif -%}

@@ -3,9 +3,9 @@
   {% set date = post.data.date %}
   {% set series = post.data.series %}
 
-  <div class="postlist-meta">
+  <div class="entries-meta">
     {%- if series -%}
-      <span class="postlist-series _label">
+      <span class="entries-series _label">
         <a class="-underline-hover" href="#" title="View more posts from {{ series }}">
           {{ series }}
         </a>
@@ -13,18 +13,18 @@
     {%- endif -%}
     
     {%- if type -%}
-      <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+      <a class="entries-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
         {{ type }}
       </a>
     {%- endif -%}
 
     {%- if date -%}
-      {# <time class="postlist-time _text-small" datetime="{{ date | htmlDateString }}">
-        <span class="postlist-time-month">
+      {# <time class="entries-time _text-small" datetime="{{ date | htmlDateString }}">
+        <span class="entries-time-month">
           {{ date | postMonth }}
         </span>
 
-        <span class="postlist-time-year">
+        <span class="entries-time-year">
           {{ date | postYear }}
         </span>
       </time> #}
@@ -36,9 +36,9 @@
   {% set url = post.url %}
   {% set title = post.data.title %}
 
-  <header class="postlist-header">
-    <h2 class="postlist-title _text-h3">
-      <a href="{{ url | url }}" class="postlist-link">
+  <header class="entries-header">
+    <h2 class="entries-title _text-h3">
+      <a href="{{ url | url }}" class="entries-link">
         {% if title %}
           {{ title }}
         {% else %}
@@ -53,16 +53,16 @@
   {% set lede = post.data.lede %}
 
   {% if lede %}
-    <p class="postlist-lede _text-h5">
+    <p class="entries-lede _text-h5">
       {{ lede }}
     </p>
   {% endif %}
 {% endmacro %}
 
 {% macro postTags(post) %}
-  <ul class="postlist-tags">
+  <ul class="entries-tags">
     {%- for tag in post.data.tags | filterTagList -%}
-      <li class="postlist-tag ">
+      <li class="entries-tag ">
         {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
 
         {% if tag == "drafts" %}
@@ -80,15 +80,15 @@
 {% endmacro %}
 
 {% macro postReadMore(post) %}
-  <a class="postlist-articleLink _label" href="{{ post.url }}" title="Read {{ post.data.title }}">
+  <a class="entries-articleLink _label" href="{{ post.url }}" title="Read {{ post.data.title }}">
     Read {{ post.data.type }}
   </a>
 {% endmacro %}
 
 {% macro postLabel(label) %}
   {% if label or tag %}
-    <div class="postlist-header">
-      <div class="postlist-label _label">
+    <div class="entries-header">
+      <div class="entries-label _label">
         {{ label if label else 'Tagged: ' ~ tag }}
       </div>
 

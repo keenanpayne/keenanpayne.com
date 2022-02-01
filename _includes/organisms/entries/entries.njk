@@ -5,10 +5,10 @@
  # Output
  #}
 {%- macro output(label, collection, tags, modifiers, more, readlink = false) -%}
-  <section class="postlist {{ modifiers if modifiers else '-stack _container' }}">
+  <section class="entries {{ modifiers if modifiers else '-stack _container' }}">
     {{ entries.postLabel(label) }}
 
-    <div class="postlist-items">
+    <div class="entries-items">
       {# Check if items exist in collection #}
       {% if collection.length %} {%- for post in collection | reverse -%}
           {# Exclude featured posts #}
@@ -17,12 +17,12 @@
                    once at the top of the page and again at the bottom.
                    I'm not sure if this is what I want to have happen, I may 
                    want to exclude featured post from other entries lists. #}
-          <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+          <article class="entries-item{% if post.url == url %} entries-item-active{% endif %}">
             {%- if post.data.tags.includes('Featured') == true -%}
-              <div class="postlist-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
+              <div class="entries-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
             {%- endif -%}
 
-            <div class="postlist-item-content">
+            <div class="entries-item-content">
               {# Books are treated special #}
               {%- if post.data.type != 'Book' -%}
                 {{ entries.postMeta(post) }}
@@ -33,14 +33,14 @@
                   {{ entries.postReadMore(post) }}
                 {%- endif -%}
               {%- else -%}
-                <img class="postlist-media-image" src="{{ post.data.book.cover }}" alt="{{ post.data.title }}" />
+                <img class="entries-media-image" src="{{ post.data.book.cover }}" alt="{{ post.data.title }}" />
                 {{ entries.postHeader(post) }}
 
-                <p class="postlist-media-subtitle">
+                <p class="entries-media-subtitle">
                   {{ post.data.book.subtitle }}
                 </p>
 
-                <p class="postlist-media-author _text-small">
+                <p class="entries-media-author _text-small">
                   By: {{ post.data.book.author }}
                 </p>
 
@@ -64,7 +64,7 @@
 
     {%- if title != 'Book' -%}
       {%- if tag or more -%}
-        <p class="postlist-tagsLink _text-align-center">
+        <p class="entries-tagsLink _text-align-center">
           {% if tag %}
             <a href="{{ '/tags/' | url }}">All Tags →</a>
           {% elif more %}
@@ -82,8 +82,8 @@
  #}
 
  {%- macro journey() -%}
-  <section class="postlist -journey">
-    <header class="postlist-headline">
+  <section class="entries -journey">
+    <header class="entries-headline">
       <h2>
         Essays
       </h2>
@@ -93,21 +93,21 @@
       </p>
     </header>
     
-    <div class="postlist-items">
+    <div class="entries-items">
       {# TODO: Only display the intro and topics when displaying a specific journey #}
-      <article class="postlist-item -intro">
+      <article class="entries-item -intro">
         {# TODO: Dynamic journey name #}
         <h3>
           Cryptocurrency and the world of web3
         </h3>
 
         {# TODO: Dynamic journey description #}
-        <p class="postlist-item-description">
+        <p class="entries-item-description">
           The advent of ever-popular and powerful cryptocurrency technology has inspired me to learn more about what makes this world tick. 
         </p>  
       </article>
 
-      <article class="postlist-item -topics">
+      <article class="entries-item -topics">
         <h3>Topics</h3>
 
         {# TODO: Display categories/tags applied to posts in this journey #}
@@ -123,16 +123,16 @@
       </article>
 
       {%- for post in postslist | reverse -%}
-        <article class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+        <article class="entries-item{% if post.url == url %} entries-item-active{% endif %}">
           {%- if post.data.type -%}
-            <span class="postlist-type">
+            <span class="entries-type">
               {{ post.data.type }}
             </span>
           {%- endif -%}
 
-          <header class="postlist-header">
-            <h3 class="postlist-title">
-              <a href="{{ post.url | url }}" class="postlist-link">
+          <header class="entries-header">
+            <h3 class="entries-title">
+              <a href="{{ post.url | url }}" class="entries-link">
                 {% if post.data.title %}
                   {{ post.data.title }}
                 {% else %}
@@ -141,14 +141,14 @@
               </a>
             </h3>
 
-            <p class="postlist-lede">
+            <p class="entries-lede">
               {{ entries.postLede(post) }}
             </p>
           </header>
 
-          <ul class="postlist-tags">
+          <ul class="entries-tags">
             {%- for tag in post.data.tags | filterTagList -%}
-              <li class="postlist-tag">
+              <li class="entries-tag">
                 {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
 
                 <a href="{{ tagUrl | url }}" class="tag">
