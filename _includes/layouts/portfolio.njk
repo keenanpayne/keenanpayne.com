@@ -22,11 +22,7 @@ permalink: "/{{ title | slug }}/"
       {# Resources are timeless #}
       {%- if date -%}
         <time class="_text-small" datetime="{{ date | htmlDateString }}">
-          {%- if type == 'Book' -%}
-            {{ date | postYear }}
-          {%- elif type != 'Resource' -%}
-            {{ date | readableDate }}
-          {%- endif -%}
+          {{ date | postYear }}
         </time>
       {%- endif -%}
     </div>
@@ -34,51 +30,13 @@ permalink: "/{{ title | slug }}/"
     <h1 class="post-title">
       {{ title }}
     </h1>
-
-    {%- if tags -%}
-      <div class="post-tags">
-        {%- for tag in tags | filterTagList -%}
-          <div class="post-tag">
-            {%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
-
-            {% if tag == "drafts" %}
-              <span class="tag -inactive">
-                {{ tag | replace('drafts', 'draft') }}
-              </span>
-            {% else %}
-              <a href="{{ tagUrl | url }}" class="tag">
-                {{ tag }}
-              </a>
-            {% endif %}
-          </div>
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
   </header>
 
   <div class="post-content">
-    {%- if type == 'Draft' -%}
-      {# TODO: Fix this so that notices for drafts are automatically displayed #}
-      {# {% include "type/notice.html" with content: "<strong>Heads up:</strong> This article is still a work-in-progress." %} #}
-    {%- endif -%}
-
-    {%- if type == 'Book' -%}
-      <img class="post-imageBook" src="{{ book.cover }}" alt="{{ title }}" />
-    {%- endif -%}
+    <img class="post-imageBook" src="{{ book.cover }}" alt="{{ title }}" />
 
     {{ content | safe }}
   </div>
-
-  <footer class="post-footer _text-small">
-    {%- if title -%}
-      <a href="{{ permalink | url }}">{{ title }}</a> is a <a href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">{{ type | lower }}</a>
-
-      published on 
-      <time class="postlist-time" datetime="{{ date | htmlDateString }}">
-        {{ date | longDate }}
-      </time>.
-    {%- endif -%}
-  </footer>
 
   {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
   {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
@@ -111,7 +69,3 @@ permalink: "/{{ title | slug }}/"
     </div>
   {%- endif -%}
 </section>
-
-{% include "components/comments.html" %}
-
-{{ newsletter.large() }}

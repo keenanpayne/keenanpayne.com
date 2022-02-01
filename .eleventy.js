@@ -147,6 +147,13 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Collection for portfolio
+  eleventyConfig.addCollection('portfolio', function(collection) {
+    return collection.getFilteredByGlob("portfolio/*.md").filter(function(item) {
+      return item;
+    });
+  });
+
   // Collection for bookshelf
   eleventyConfig.addCollection('book', function(collection) { 
     return collection.getFilteredByGlob('bookshelf/*.md').filter(function(item) { 

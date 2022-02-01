@@ -11,5 +11,5 @@
 
 [[redirects]]
   from = "/work"
-  to = "/"
+  to = "/type/portfolio"
   status = 301
