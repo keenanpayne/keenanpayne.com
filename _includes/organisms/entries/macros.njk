@@ -49,6 +49,18 @@
   </header>
 {% endmacro %}
 
+{% macro postImage(post, background = false) %}
+  {% set title = post.data.title %}
+
+  <a href="{{ post.url | url }}" title="{{ title }}">
+    {% if background == true %}
+      <div class="entries-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
+    {% else %}
+      <img class="entries-media-image" src="{{ post.data.book.cover }}" alt="{{ title }}" />
+    {% endif %}
+  </a>
+{% endmacro %}
+
 {% macro postLede(post) %}
   {% set lede = post.data.lede %}
 

@@ -19,7 +19,7 @@
                    want to exclude featured post from other entries lists. #}
           <article class="entries-item{% if post.url == url %} entries-item-active{% endif %}">
             {%- if post.data.tags.includes('Featured') == true -%}
-              <div class="entries-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
+              {{ entries.postImage(post, true) }}
             {%- endif -%}
 
             <div class="entries-item-content">
@@ -33,7 +33,7 @@
                   {{ entries.postReadMore(post) }}
                 {%- endif -%}
               {%- else -%}
-                <img class="entries-media-image" src="{{ post.data.book.cover }}" alt="{{ post.data.title }}" />
+                {{ entries.postImage(post) }}
                 {{ entries.postHeader(post) }}
 
                 <p class="entries-media-subtitle">
