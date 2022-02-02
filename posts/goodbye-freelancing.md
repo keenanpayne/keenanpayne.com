@@ -11,6 +11,8 @@ tags:
 
 It feels like just the other day I announced I was [leaving Asana to pursue freelancing](/goodbye-asana-hello-freelancing/). Now, almost eighteen months later, I'm taking a break from my freelancing career as I search for the next step on my journey through life.
 
+Full disclosure, I actually started this sabbatical in September 2021. I've been enjoying myself so much that I've neglected writing this until now. What can I say? I've been enjoying my lack of responsibilities.
+
 This is a big shift, so I'll share what I've been up to for the past eighteen months, and where I'm headed.
 
 ## Where I've been
