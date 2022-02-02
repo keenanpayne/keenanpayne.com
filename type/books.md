@@ -7,4 +7,5 @@ eleventyNavigation:
   order: 4
 templateClass: page-books
 modifiers: -media
+archiveLink: false
 ---

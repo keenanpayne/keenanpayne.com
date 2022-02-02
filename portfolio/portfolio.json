@@ -1,3 +1,6 @@
 {
-  "layout": "layouts/portfolio.njk"
+  "layout": "layouts/post.njk",
+  "type": "Portfolio",
+  "tags": "",
+  "long_form": "Portfolio Item"
 }

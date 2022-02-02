@@ -34,13 +34,7 @@
   }
 
   @media (--min-1120) { 
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  @media (--min-1120) and (--min-h-700) { 
-    padding-bottom: 5.5rem;
-    padding-top: 5rem;
+    padding: 5rem 0 5.5rem;
   }
 
   // Modifiers

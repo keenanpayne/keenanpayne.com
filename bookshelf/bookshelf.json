@@ -1,3 +1,6 @@
 {
-  "layout": "layouts/post.njk"
+  "layout": "layouts/post.njk",
+  "type": "Book",
+  "tags": "",
+  "long_form": "Book Review"
 }

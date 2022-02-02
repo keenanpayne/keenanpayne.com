@@ -4,8 +4,8 @@
 
 .entries { 
   margin-bottom: 3rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .entries + .entries { 
@@ -53,7 +53,6 @@
 
 .entries-header { 
   flex: 1;
-  margin-bottom: .5rem;
 }
 
 .entries-item-active .entries-title {
@@ -79,6 +78,10 @@
   &:hover {
     text-decoration: underline;
   }
+}
+
+.entries-lede { 
+  margin-top: .5rem;
 }
 
 .entries-tags { 
@@ -224,6 +227,15 @@
 
   .entries-header { 
     margin-bottom: .25rem;
+  }
+
+  // Stacked modifiers
+  &.-portfolio { 
+    .entries-item { 
+      @media (--min-960) {
+        grid-column-end: span 6;
+      }
+    }
   }
 }
 

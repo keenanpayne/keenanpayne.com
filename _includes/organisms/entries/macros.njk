@@ -32,9 +32,9 @@
   </div>
 {% endmacro %}
 
-{% macro postHeader(post) %}
-  {% set url = post.url %}
-  {% set title = post.data.title %}
+{% macro postHeader(entry) %}
+  {% set url = entry.url %}
+  {% set title = entry.data.title %}
 
   <header class="entries-header">
     <h2 class="entries-title _text-h3">
@@ -49,14 +49,15 @@
   </header>
 {% endmacro %}
 
-{% macro postImage(post, background = false) %}
-  {% set title = post.data.title %}
+{% macro postImage(entry, background = false) %}
+  {% set cover = entry.data.cover %}
+  {% set title = entry.data.title %}
 
-  <a href="{{ post.url | url }}" title="{{ title }}">
+  <a href="{{ entry.url | url }}" title="{{ title }}">
     {% if background == true %}
-      <div class="entries-image" style="background: url('{% first_image_link post %}') no-repeat center center / cover; background-size: cover;"></div>
+      <div class="entries-image" style="background: url('{% first_image_link entry %}') no-repeat center center / cover; background-size: cover;"></div>
     {% else %}
-      <img class="entries-media-image" src="{{ post.data.book.cover }}" alt="{{ title }}" />
+      <img class="entries-image" src="{{ cover }}" alt="{{ title }}" />
     {% endif %}
   </a>
 {% endmacro %}

@@ -1,15 +1,17 @@
 ---
-permalink: '/portfolio/go-fund-me/'
+permalink: '/portfolio/gofundme/'
 title: 'GoFundMe Heroes'
+
 meta: 
   description: 
-  image: '/images/portfolio/go-fund-me/og.jpg'
-tags: 
+  image: '/images/portfolio/gfm/og.png'
+
+cover: '/images/portfolio/gfm/og.png'
+
 portfolio: 
   client: 'GoFundMe'
-  project: 'Heroes'
+  project: 'Heroes content portel'
   url: https://www.gofundme.com/c/heroes
-  image: ''
   role: 'Web Developer'
   collaborators: 
     - name: Tony Mingo
@@ -22,4 +24,4 @@ portfolio:
   videos: 
 ---
 
-Testing
+<img src="/images/portfolio/gfm/homepage.png" alt="GoFundMe Heroes homepage" />

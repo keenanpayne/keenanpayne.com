@@ -2,9 +2,14 @@
 layout: layouts/home.njk
 permalink: /archive/
 title: Post Archive
+
 eleventyNavigation:
   key: Archive
   order: 2
+
+sections: 
+  entries:
+    read_Link: false
 ---
 
 {% import "organisms/entries/entries.njk" as entries with context %}

@@ -5,7 +5,6 @@ meta:
   title:  'Cryptocurrency & Web3 Resources'
   description: 
   image: '/images/resources/crypto/coinbase.jpg'
-type: Resource
 date: 2022-01-18
 tags:
   - Cryptocurrency/Web3

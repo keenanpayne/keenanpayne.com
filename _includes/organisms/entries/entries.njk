@@ -1,17 +1,57 @@
 {# TODO: Break out featured post and recent posts into separate files #}
 {% import "organisms/entries/macros.njk" as entries with context %}
 
+{#  
+ # Macros
+ #}
+
+{# Articles #}
+{% macro article(entry) %}
+  {{ entries.postMeta(entry) }}
+  {{ entries.postHeader(entry) }}
+  {{ entries.postLede(entry) }}
+
+  {%- if sections.entries.read_Link != false -%}
+    {{ entries.postReadMore(entry) }}
+  {%- endif -%}
+{% endmacro %}
+
+{# Books #}
+{% macro book(entry) %}
+  {{ entries.postImage(entry) }}
+  {{ entries.postHeader(entry) }}
+
+  <p class="entries-media-subtitle">
+    {{ entry.data.book.subtitle }}
+  </p>
+
+  <p class="entries-media-author _text-small">
+    By: {{ entry.data.book.author }}
+  </p>
+
+  {{ entries.postLede(entry) }}
+{% endmacro %}
+
+{# Portfolio Items #}
+{% macro portfolio(entry) %}
+  {{ entries.postImage(entry) }}
+
+  {{ entries.postHeader(entry) }}
+{% endmacro %}
+
+
 {# 
  # Output
  #}
-{%- macro output(label, collection, tags, modifiers, more, readlink = false) -%}
+{%- macro output(label, collection, tags, modifiers, more) -%}
   <section class="entries {{ modifiers if modifiers else '-stack _container' }}">
     {{ entries.postLabel(label) }}
 
     <div class="entries-items">
       {# Check if items exist in collection #}
-      {% if collection.length %} {%- for post in collection | reverse -%}
-          {# Exclude featured posts #}
+      {% if collection.length %} 
+        {%- for post in collection | reverse -%}
+          {% set type = post.data.type %}
 
           {# TODO: The featured post is currently being displayed twice —  
                    once at the top of the page and again at the bottom.
@@ -24,27 +64,12 @@
 
             <div class="entries-item-content">
               {# Books are treated special #}
-              {%- if post.data.type != 'Book' -%}
-                {{ entries.postMeta(post) }}
-                {{ entries.postHeader(post) }}
-                {{ entries.postLede(post) }}
-
-                {%- if readlink != false -%}
-                  {{ entries.postReadMore(post) }}
-                {%- endif -%}
+              {%- if type == 'Book' -%}
+                {{ book(post) }}
+              {%- elif type == 'Portfolio' -%}
+                {{ portfolio(post) }}
               {%- else -%}
-                {{ entries.postImage(post) }}
-                {{ entries.postHeader(post) }}
-
-                <p class="entries-media-subtitle">
-                  {{ post.data.book.subtitle }}
-                </p>
-
-                <p class="entries-media-author _text-small">
-                  By: {{ post.data.book.author }}
-                </p>
-
-                {{ entries.postLede(post) }}
+                {{ article(post) }}
               {% endif %}
             </div>
 
@@ -140,11 +165,11 @@
                 {% endif %}
               </a>
             </h3>
-
-            <p class="entries-lede">
-              {{ entries.postLede(post) }}
-            </p>
           </header>
+
+          <p class="entries-lede">
+            {{ entries.postLede(post) }}
+          </p>
 
           <ul class="entries-tags">
             {%- for tag in post.data.tags | filterTagList -%}

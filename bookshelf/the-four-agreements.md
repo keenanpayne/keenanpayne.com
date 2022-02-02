@@ -1,21 +1,25 @@
 ---
 permalink: '/books/the-four-agreements/'
 title:  'The Four Agreements'
+
 meta: 
   title:  'The Four Agreements'
   description: 
   image: '/images/books/the-four-agreements.jpeg'
-type: Book
+
 date: 2022-01-24
+
 tags:
   - Personal Transformation
   - Personal Commitments
   - Spirituality
+
+cover: '/images/books/the-four-agreements.jpeg'
+
 book:
   subtitle: 'A Practical Guide to Personal Freedom'
   url: https://www.thefouragreements.com/
   author: 'Don Miguel Ruiz'
-  cover: '/images/books/the-four-agreements.jpeg'
   rating: ''
 ---
 

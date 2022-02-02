@@ -15,21 +15,6 @@
     padding-bottom: 2rem;
     padding-top: 2rem;
   }
-
-  @media (--min-640) { 
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  @media (--min-720) { 
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
-
-  @media (--min-960) { 
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
 }
 
 .header-left { 
