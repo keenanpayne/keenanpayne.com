@@ -17,7 +17,7 @@ portfolio:
     - name: Tony Mingo
       url: https://tonymingo.com/
   description: 'Description of the portfolio item'
-  timeline: 
+  timeline: '2019'
   constraints: 
   testimonials: 
   screenshots:

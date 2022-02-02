@@ -169,8 +169,18 @@
   }
 }
 
-.entries-media-image { 
+.entries-image { 
   margin-bottom: 1rem
+}
+
+// Portfolio Items
+.entries-portfolio-meta {
+  --border-color: var(--exodus-fruit);
+
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  padding-top: .5rem;
 }
 
 

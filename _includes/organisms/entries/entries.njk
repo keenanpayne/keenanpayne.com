@@ -34,9 +34,32 @@
 
 {# Portfolio Items #}
 {% macro portfolio(entry) %}
-  {{ entries.postImage(entry) }}
+  {% set portfolio = entry.data.portfolio %}
 
+  {{ entries.postImage(entry) }}
   {{ entries.postHeader(entry) }}
+
+  <p>
+    {{ portfolio.description }}
+  </p>
+
+  <div class="entries-portfolio-meta ">
+    <div>
+      <p class="_label">
+        Timeline
+      </p>
+
+      {{ portfolio.timeline }}
+    </div>
+
+    <div>
+      <p class="_label">
+        Role
+      </p>
+
+      {{ portfolio.role }}
+    </div>
+  </div>
 {% endmacro %}
 
 

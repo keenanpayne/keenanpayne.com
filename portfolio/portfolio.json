@@ -2,5 +2,6 @@
   "layout": "layouts/post.njk",
   "type": "Portfolio",
   "tags": "",
-  "long_form": "Portfolio Item"
+  "long_form": "Portfolio Item",
+  "cta": false
 }

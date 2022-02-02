@@ -112,6 +112,10 @@ permalink: "/{{ title | slug }}/"
   {%- endif -%}
 </section>
 
-{% include "components/comments.html" %}
+{% if comments != false %}
+  {% include "components/comments.html" %}
+{% endif %}
 
-{{ newsletter.large() }}
+{% if cta != false %}
+  {{ newsletter.large() }}
+{% endif %}
