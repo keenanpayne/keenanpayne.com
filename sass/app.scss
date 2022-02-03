@@ -11,6 +11,8 @@
 
 // Mixins
 @import "mixins/pullContentOutside";
+@import "mixins/typography";
+@import "mixins/visibility";
 
 // Libraries
 @import "libs/prism-base16-monokai.dark";
@@ -33,6 +35,7 @@
 @import "elements/main";
 @import "elements/paragraph";
 @import "elements/pre";
+@import "elements/small";
 @import "elements/table";
 @import "elements/video";
 

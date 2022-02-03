@@ -216,16 +216,16 @@
 }
 
 .entries.-media { 
-  .entries-items { 
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: 5rem;
+  .entries-items {
+    @media (--min-720) { 
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-gap: 5rem;
+    }
   }
 
   .entries-item { 
-    grid-column: auto / span -1;
-
-    @media (--min-960) {
+    @media (--min-720) {
       grid-column-end: span 3;
       margin-top: 0;
     }
@@ -242,7 +242,7 @@
   // Stacked modifiers
   &.-portfolio { 
     .entries-item { 
-      @media (--min-960) {
+      @media (--min-720) {
         grid-column-end: span 6;
       }
     }
