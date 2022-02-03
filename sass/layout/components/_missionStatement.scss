@@ -6,7 +6,7 @@
   // NOTE: Bottom margin is larger than the top
   //       for better optical centering
   --margin-top: 5rem;
-  --margin-bottom-multiplier: 1.1;
+  --margin-bottom-multiplier: 1.15;
 
   margin-bottom: calc(var(--margin-top) * var(--margin-bottom-multiplier));
   margin-left: auto;
@@ -17,15 +17,14 @@
   padding-right: .75rem;
   
   @media (--min-720) {
-    --margin-top: 7.5rem;
-
+    
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     text-align: center;
   }
-
-  @media (--min-1120) {
-    --margin-top: 10rem;
+  
+  @media (--min-960) {
+    --margin-top: 7.5rem;
   }
 }
 

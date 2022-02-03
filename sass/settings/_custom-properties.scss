@@ -31,6 +31,18 @@
   --font-family-serif: 'Merriweather', serif;
   --font-family-mono: 'Space Mono', Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
 
+  // Font Weights
+  --font-weight-regular: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 700;
+  
+  --font-weight-mono-regular: 400;
+  --font-weight-mono-bold: 700;
+
+  --font-weight-serif-light: 300;
+  --font-weight-serif-regular: 400;
+  --font-weight-serif-bold: 700;
+
   // Transitions
   --transition: 150ms;
   --transition-quick: 75ms;

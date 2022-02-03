@@ -93,4 +93,4 @@ To what extent am I comfortable with my actions and values being out of alignmen
 
 ---
 
-{% include type/question.html, content: "How do I feel about what I've just written?<br>Does what I've written capture enough of my confusion?' %}
+{% include type/question.html, content: "How do I feel about what I've just written?<br>Does what I've written capture enough of my confusion?" %}

@@ -6,6 +6,7 @@ blockquote {
   color: var(--text-color);
   font-family: var(--font-family-serif);
   font-style: italic;
+  font-weight: var(--font-weight-serif-light);
   margin: 1.5rem 0;
   padding-bottom: 1.5rem;
   padding-top: 1.5rem;
@@ -75,5 +76,14 @@ blockquote {
 
   cite { 
     @extend ._text-small;
+
+    display: block;
+    font-weight: var(--font-weight-serif-bold);
+    line-height: 2;
+
+    &::before { 
+      content: "—";
+      display: inline-block;
+    }
   }
 }

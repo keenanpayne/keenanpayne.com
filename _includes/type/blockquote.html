@@ -4,8 +4,6 @@
   </p>
 
   {% if author %}
-    <cite>
-      —{{ author }}{% if author_position %}, {{ author_position }}{% endif %}
-    </cite>
+    <cite>{{ author }}{% if author_position %}, {{ author_position }}{% endif %}</cite>
   {% endif %}
 </blockquote>

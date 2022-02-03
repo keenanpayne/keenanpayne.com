@@ -13,7 +13,7 @@ I recently stumbled upon an interesting Twitter thread by [Jeff Johnson](https:/
 
 I have a different perspective on many points he discussed that I want to share in the pursuit of advancing this discussion. 
 
-{% include type/notice.html, content: "Jeff, the author of the Twitter thread that I responded to, has deleted his thread because of vicious responses from folks. I find this unfortunate, as sincerely-held opinions, however disagreeable they might be, provide a valuable perspective as we attempt to understand the state of the world and address its issues.<br>I'm not keeping this essay published to draw negative attention towards Jeff or his opinions, but rather to advance the discussion that he started. However, I'm happy to unpublish or remove the original quotes if requested." %}
+{% include type/notice.html, content: "Jeff, the author of the Twitter thread that I responded to, has deleted his thread because of vicious responses from folks. I find this unfortunate, as sincerely-held opinions, however disagreeable they might be, provide a valuable perspective as we attempt to understand the state of the world and address its issues.<br><br>I'm not keeping this essay published to draw negative attention towards Jeff or his opinions, but rather to advance the discussion that he started. However, I'm happy to unpublish or remove the original quotes if requested." %}
 ## Web browser complexity
 
 <blockquote class="twitter-tweet" data-dnt="true">

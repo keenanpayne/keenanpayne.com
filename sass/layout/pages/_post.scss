@@ -114,7 +114,7 @@
   }
 
   strong {
-    font-weight: 600;
+    font-weight: var(--font-weight-bold);
   }
 
   li { 
@@ -169,6 +169,12 @@
 
   > figure {
     @include pullContentOutside();
+  }
+
+  hr { 
+    & + p {
+      margin-top: 1.5rem;
+    }
   }
 }
 
