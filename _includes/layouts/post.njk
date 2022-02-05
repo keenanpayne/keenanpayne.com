@@ -5,12 +5,47 @@ permalink: "/{{ title | slug }}/"
 
 {% import "organisms/newsletter.njk" as  newsletter with context %}
 
-{# Page Classes #}
-{%- set pageClass = type | lower | plural %}
-{%- set date = page.date %}
+{% set pageClass = type | lower | plural %}
+{% set date = page.date %}
+{% set draft = type == 'Draft' %}
+{% set book = type == 'Book' %}
+{% set resource = type == 'Resource' %}
+{% set portfolio = type == 'Portfolio' %}
+
+{# Macros #}
+{% macro caseStudy() %}
+  {% set client = case_study.client %}
+  {% set project = case_study.project %}
+  {% set url = case_study.url %}
+  {% set role = case_study.role %}
+  {% set year = case_study.year %}
+
+  {# TODO: Check for existence of values for table #}
+  <table>
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Project</th>
+        <th>Role</th>
+        <th>Year</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>{{ client }}</td>
+        <td>{{ project }}</td>
+        <td>{{ role }}</td>
+        <td>{{ year }}</td>
+        <td><a href="{{ url }}" title="Visit {{ client }} {{ project }}">Visit Site</a></td>
+      </tr>
+    </tbody>
+  </table>
+{% endmacro %}
 
 {# TODO: Create macros for repeated elements here and in `postslist.njk` #}
-<section class="post _container {{ pageClass }}">
+<section class="post _container {{ '-large' if portfolio }} {{ pageClass }}">
   <header class="post-header">
     <div class="post-meta">
       {%- if type -%}
@@ -22,16 +57,17 @@ permalink: "/{{ title | slug }}/"
       {# Resources are timeless #}
       {%- if date -%}
         <time class="_text-small" datetime="{{ date | htmlDateString }}">
-          {%- if type == 'Book' -%}
+          {%- if book -%}
             {{ date | postYear }}
-          {%- elif type != 'Resource' -%}
+          {%- elif portfolio -%}
+          {%- else -%}
             {{ date | readableDate }}
           {%- endif -%}
         </time>
       {%- endif -%}
     </div>
 
-    <h1 class="post-title">
+    <h1 class="post-title {{ '_text-large' if portfolio }}">
       {{ title }}
     </h1>
 
@@ -57,13 +93,17 @@ permalink: "/{{ title | slug }}/"
   </header>
 
   <div class="post-content">
-    {%- if type == 'Draft' -%}
+    {%- if draft -%}
       {# TODO: Fix this so that notices for drafts are automatically displayed #}
       {# {% include "type/notice.html" with content: "<strong>Heads up:</strong> This article is still a work-in-progress." %} #}
     {%- endif -%}
 
-    {%- if type == 'Book' -%}
+    {%- if book -%}
       <img class="post-imageBook" src="{{ cover }}" alt="{{ title }}" />
+    {%- endif -%}
+
+    {%- if portfolio -%}
+      {{ caseStudy() }}
     {%- endif -%}
 
     {{ content | safe }}

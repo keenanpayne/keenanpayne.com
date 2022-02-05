@@ -40,20 +40,20 @@
   {{ entries.postHeader(entry) }}
 
   <p>
-    {{ portfolio.project }}
+    {{ case_study.project }}
   </p>
 
   <p>
-    {{ portfolio.description }}
+    {{ case_study.description }}
   </p>
 
-  <div class="entries-portfolio-meta ">
+  <div class="entries-portfolio-meta">
     <div>
       <p class="_label">
-        Timeline
+        Year
       </p>
 
-      {{ portfolio.timeline }}
+      {{ case_study.year }}
     </div>
 
     <div>
@@ -61,7 +61,7 @@
         Role
       </p>
 
-      {{ portfolio.role }}
+      {{ case_study.role }}
     </div>
   </div>
 {% endmacro %}
@@ -79,14 +79,17 @@
       {% if collection.length %} 
         {%- for post in collection | reverse -%}
           {% set type = post.data.type %}
+          {% set tags = post.data.tags %}
 
           {# TODO: The featured post is currently being displayed twice —  
                    once at the top of the page and again at the bottom.
                    I'm not sure if this is what I want to have happen, I may 
                    want to exclude featured post from other entries lists. #}
           <article class="entries-item{% if post.url == url %} entries-item-active{% endif %}">
-            {%- if post.data.tags.includes('Featured') == true -%}
-              {{ entries.postImage(post, true) }}
+              {%- if tags -%}
+              {%- if tags.includes('Featured') == true -%}
+                {{ entries.postImage(post, true) }}
+              {%- endif -%}
             {%- endif -%}
 
             <div class="entries-item-content">
