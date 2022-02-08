@@ -2,7 +2,7 @@
   <ul class="social">
 	  {% for network in site.social %}
     <li class="social-link-wrapper">
-      <a class="social-link -{{ network.name|downcase }}" href="{{ network.url }}" title="{{ network.name }}">{{ network.name }}</a>
+      <a class="social-link -{{ network.name|downcase }}" href="{{ network.url }}" title="{{ network.name }}" target="_blank" rel="noopener">{{ network.name }}</a>
     </li>
     {% endfor %}
   </ul>
