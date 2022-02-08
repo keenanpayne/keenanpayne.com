@@ -35,7 +35,7 @@ I suppose this is an exercise in vulnerability through [self-reflection](/tags/s
 
 My writing practice is an area where I experience confusion and resistance. While I love writing for self-reflection, learning, and sharing, I struggle with feelings of self-doubt, overthinking, and an obsession with the "perfection" of what I've written. 
 
-{% include type/note.html content: "Contemplating my creative struggles is something I've <a href='https://keenanpayne.com/one-more-thing/'>discussed before</a>" %}
+{% include type/note.html content: "Contemplating my creative struggles is something I've <a href='/one-more-thing/'>discussed before</a>" %}
 
 {% include type/question.html, content: 'Must my writing be an arduous endeavor?' %}
 
