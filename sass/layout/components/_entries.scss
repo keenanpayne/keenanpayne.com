@@ -348,6 +348,18 @@
     @media (--min-1120) {
       height: 400px;
     }
+
+    @media (--min-1120) and (--min-h-960) {
+      height: 450px;
+    }
+
+    @media (--min-1120) and (--min-h-1080) {
+      height: 500px;
+    }
+  
+    @media (--min-1600) and (--min-h-1080) {
+      height: 550px;
+    }
   
     &:hover {
       filter: none;

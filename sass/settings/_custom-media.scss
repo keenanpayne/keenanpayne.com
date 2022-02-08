@@ -12,6 +12,7 @@
 @custom-media --min-1120 (width >= 1120px);
 @custom-media --min-1260 (width >= 1260px);
 @custom-media --min-1440 (width >= 1440px);
+@custom-media --min-1600 (width >= 1600px);
 
 // Max-width breakpoints
 @custom-media --max-320 (width < 320px);
@@ -26,6 +27,7 @@
 // Min-height breakpoints
 @custom-media --min-h-700 (height >= 700px);
 @custom-media --min-h-960 (height >= 960px);
+@custom-media --min-h-1080 (height >= 1080px);
 @custom-media --min-h-1120 (height >= 1120px);
 
 // Color schemes
