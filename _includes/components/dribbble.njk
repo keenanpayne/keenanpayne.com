@@ -1,10 +1,10 @@
-<div class="dribbble {{ modifier }}">
+<div class="dribbble {{ section.modifier }}">
   <h2 class="dribbble-headline _text-h1">
     Dribbble Shots
   </h2>
 
   <div class="dribbble-items">
-    {%- for item in items -%}
+    {%- for item in section.items -%}
       {%- if item.src -%}
         <div class="dribbble-item">
           {%- if item.type == 'video' -%}

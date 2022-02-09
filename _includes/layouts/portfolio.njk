@@ -52,9 +52,14 @@ permalink: "/{{ title | slug }}/"
       </tbody>
     </table>
 
+    {% for section in sections %}
+      {% include "components/" + section.type + ".njk" %}
+    {% endfor %}
+
     {{ content | safe }}
   </div>
 
+  {# TODO: Update this to display featured images so that other content looks more compelling #}
   {% include "components/postNav.njk" %}
 </section>
 
