@@ -1,0 +1,63 @@
+---
+layout: layouts/base.njk
+permalink: "/{{ title | slug }}/"
+---
+
+{% import "organisms/newsletter.njk" as  newsletter with context %}
+
+{% set date = page.date %}
+
+<section class="portfolio">
+  <header class="portfolio-header">
+    <div class="portfolio-meta">
+      {%- if type -%}
+        <a class="-underline-hover _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+          Case Study
+        </a>
+      {%- endif -%}
+    </div>
+
+    <h1 class="portfolio-title">
+      {{ title }}
+    </h1>
+  </header>
+
+  <div class="portfolio-content">
+    {% set client = case_study.client %}
+    {% set project = case_study.project %}
+    {% set url = case_study.url %}
+    {% set role = case_study.role %}
+    {% set year = case_study.year %}
+
+    {# TODO: Check for existence of values for table #}
+    <table class="portfolio-table">
+      <thead>
+        <tr>
+          <th>Client</th>
+          <th>Project</th>
+          <th>Role</th>
+          <th>Year</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>{{ client }}</td>
+          <td>{{ project }}</td>
+          <td>{{ role }}</td>
+          <td>{{ year }}</td>
+          <td><a href="{{ url }}" title="Visit {{ client }} {{ project }}" target="_blank" rel="noopener">Visit Site</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    {{ content | safe }}
+  </div>
+
+  {% include "components/postNav.njk" %}
+</section>
+
+{% if comments != false %}
+  {% include "components/comments.html" %}
+{% endif %}

@@ -180,7 +180,7 @@
       {%- for post in postslist | reverse -%}
         <article class="entries-item{% if post.url == url %} entries-item-active{% endif %}">
           {%- if post.data.type -%}
-            <span class="entries-type">
+            <span class="-underline-hover">
               {{ post.data.type }}
             </span>
           {%- endif -%}
