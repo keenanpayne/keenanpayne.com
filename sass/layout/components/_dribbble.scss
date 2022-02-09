@@ -1,0 +1,65 @@
+//
+// Dribbble
+// ==================================================
+
+.dribbble {
+  background: #ea4c89 url('/images/dribbble-ball-icon.png') no-repeat center 110%;
+  background-size: cover;
+  background-size: 600px;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  padding: 2.25rem 3rem 1.5rem;
+  position: relative;
+
+  @media (--min-640) {
+    background-position-x: 110%;
+  }
+
+  @media (--min-720) {
+    background-position-y: 120%;
+  }
+
+  // Grid Layout
+  &.-two-col {
+    .dribbble-item {
+      @media (--min-640) {
+        grid-column: auto / span 3;
+      }
+    }
+  }
+
+  &.-three-col {
+    .dribbble-item {
+      @media (--min-640) {
+        grid-column: auto / span 3;
+      }
+    
+      @media (--min-1120) {
+        grid-column-end: span 2;
+      }
+    }
+  }
+}
+
+// NOTE: `!important` overrides due to conflict in `._post.scss`
+.dribbble-headline {
+  color: var(--white);
+  margin-bottom: 1rem !important;
+  margin-top: 2rem !important;
+}
+
+.dribbble-items {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.dribbble-item {
+  grid-column: 1 / -1;
+}
+
+.dribbble-text {
+  color: white;
+  margin-top: 1.5rem;
+  text-align: right;
+}

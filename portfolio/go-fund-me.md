@@ -21,10 +21,25 @@ case_study:
   description: 'Description of the portfolio item'
   year: '2019'
   constraints: 
+  dribbble:
+    - type: video
+      src: https://cdn.dribbble.com/users/133571/screenshots/11292376/media/331109413b0560fa3ed2c40f6c83be5f.mp4
+    - type: video
+      src: https://cdn.dribbble.com/users/133571/screenshots/11115406/media/3c4d4eab4d97a0f1fc62dd780d8cf37a.mp4
+    - type: video
+      src: https://cdn.dribbble.com/users/133571/screenshots/11115360/media/5c18910360eb6df31476335f6a7f54d3.mp4
+    - type: image
+      src: https://cdn.dribbble.com/users/133571/screenshots/11115393/media/07eed17452f1dfcd19730c56fed69342.png?compress=1&resize=1200x900&vertical=top
+    - type: image
+      src: https://cdn.dribbble.com/users/133571/screenshots/11115383/media/5e005b82099d17a6c7edf1ae22aa3418.png?compress=1&resize=1200x900&vertical=top
 ---
+
+{% include components/dribbble.html, items: case_study.dribbble, modifier: '-three-col' %}
 
 <div class="sideBySide">
   {% include atoms/figure.html, src: '/images/portfolio/gfm/homepage.png', alt: 'GoFundMe Heroes homepage', caption: "" %}
+
+  {% include atoms/figure.html, src: '/images/portfolio/gfm/homepage.png', alt: '', caption: "" %}
 
   {% include atoms/figure.html, src: '/images/portfolio/gfm/homepage.png', alt: '', caption: "" %}
 </div>

@@ -1,0 +1,21 @@
+<div class="dribbble {{ modifier }}">
+  <h2 class="dribbble-headline _text-h1">
+    Dribbble Shots
+  </h2>
+
+  <div class="dribbble-items">
+    {%- for item in items -%}
+      {%- if item.src -%}
+        <div class="dribbble-item">
+          {%- if item.type == 'video' -%}
+            <video controls src="{{ item.src }}"></video>
+          {%- else -%}
+            <img src="{{ item.src }}" alt="{{ item.alt }}" />
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <p class="dribbble-text _text-small">Dribbble shots courtesy of<br><a href="https://visualsbymarcus.com" target="_blank" rel="noopener">Visuals by Marcus</a></p>
+</div>
