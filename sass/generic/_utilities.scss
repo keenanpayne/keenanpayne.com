@@ -26,6 +26,14 @@
       --content-max-width: 1080px;
     }
   }
+
+  &.-fluid {
+    --content-max-width: 95%;
+  }
+}
+
+._pull-outside {
+  @include pullContentOutside();
 }
 
 

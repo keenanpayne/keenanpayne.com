@@ -45,7 +45,7 @@ permalink: "/{{ title | slug }}/"
 {% endmacro %}
 
 {# TODO: Create macros for repeated elements here and in `postslist.njk` #}
-<section class="post _container {{ '-large' if portfolio }} {{ pageClass }}">
+<section class="post _container {{ '-fluid' if portfolio }} {{ pageClass }}">
   <header class="post-header">
     <div class="post-meta">
       {%- if type -%}

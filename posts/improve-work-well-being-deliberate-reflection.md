@@ -86,7 +86,7 @@ The first step is setting aside time for reflection after completing a project. 
 
 I suggest doing your reflection somewhere that inspires you. I enjoy being out in nature when I'm reflecting, as that setting is where I have the greatest number of ideas. Pick a setting that puts you at ease and inspires you. 
 
-<div class="sideBySide">
+<div class="sideBySide _pull-outside">
   {% include atoms/figure.html, src: '/images/posts/improve-project-execution/hike-1.jpg', alt: 'Picture of the Presidio in San Francisco', caption: "The Presidio is one of my favorite areas to hike in San Francisco" %}
 
   {% include atoms/figure.html, src: '/images/posts/improve-project-execution/hike-2.jpg', alt: 'Picture of Baker Beach in San Francisco', caption: "I also love walking around the beach, so ,I: can frequently be found at Baker Beach" %}

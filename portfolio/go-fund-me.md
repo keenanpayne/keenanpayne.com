@@ -23,7 +23,11 @@ case_study:
   constraints: 
 ---
 
-<img src="/images/portfolio/gfm/homepage.png" alt="GoFundMe Heroes homepage" />
+<div class="sideBySide">
+  {% include atoms/figure.html, src: '/images/portfolio/gfm/homepage.png', alt: 'GoFundMe Heroes homepage', caption: "" %}
+
+  {% include atoms/figure.html, src: '/images/portfolio/gfm/homepage.png', alt: '', caption: "" %}
+</div>
 
 {% include type/blockquote.html, content: "Keenan makes a great development partner. As a designer, I appreciate his magical ability to talk about projects in common terms and teach us a few things along the way.", author: "Anthony Mingo", author_position: "Lead Designer" %}
 
