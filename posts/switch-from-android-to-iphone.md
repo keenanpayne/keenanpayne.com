@@ -4,11 +4,13 @@ title:  'Switching from Android to iPhone after ten years'
 meta:
   description: 'After ten years of Android devices, I plunged into the Apple ecosystem after purchasing an iPhone 13 Pro.'
   image: '/images/posts/android-iphone/apple-tech-stack.jpg'
+  image_alt: 'iPhone 13 Pro next to iPad Pro, Macbook Air, and Aple Watch'
 type: Article
 date: 2021-12-26
 tags:
   - iPhone
   - Android
+  - Technology
 ---
 
 {% include atoms/figure.html, src: "/images/posts/android-iphone/apple-tech-stack.jpg", alt: "iPhone next to iPad, Apple Watch, and MacBook Air", caption: "Photography by Marcus Payne", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
