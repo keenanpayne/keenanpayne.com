@@ -110,24 +110,31 @@
 }
 
 .entries-label {
+  border-bottom: 1px solid var(--exodus-fruit);
   font-weight: 500;
+  margin-bottom: .5em;
   position: relative;
 
+  @media (--dark) {
+    border-bottom-color: var(--yellow-dark);
+  }
+
+  // TODO: Fix styles because text is overlapping with border
   &::after {
-    --bg-color: var(--exodus-fruit);
+    // --bg-color: var(--exodus-fruit);
 
-    background-color: var(--bg-color);
-    content: '';
-    height: 2px;
-    position: absolute;
-    left: 5rem;
-    top: calc(50% + 1px);
-    transform: translateY(-50%);
-    width: calc(100% - 5rem);
+    // background-color: var(--bg-color);
+    // content: '';
+    // height: 2px;
+    // position: absolute;
+    // left: 5rem;
+    // top: calc(50% + 1px);
+    // transform: translateY(-50%);
+    // width: calc(100% - 5rem);
 
-    @media (--dark) {
-      --bg-color: var(--yellow-dark);
-    }
+    // @media (--dark) {
+    //   --bg-color: var(--yellow-dark);
+    // }
   }
 }
 
