@@ -69,6 +69,10 @@
 
     margin-bottom: 1.5rem;
     margin-top: 3rem;
+
+    @media (--min-960) {
+      margin-top: 5rem;
+    }
   }
 }
 
@@ -83,4 +87,78 @@
 
     max-width: 47ch;
   }
+}
+
+.services-offering {
+  // Descendants
+  p {
+    max-width: 65ch;
+  }
+}
+
+.services-process {
+  @media (--min-1120) {
+    @include container(1080px);
+  }
+}
+
+.services-items {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1.5rem;
+
+  @media (--min-960) {
+    grid-gap: 3rem;
+  }
+
+  // Descendants
+  h3 {
+    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+  }
+}
+
+.services-items-item {
+  grid-column: 1 / -1;
+
+  @media (--min-640) {
+    grid-column: auto / span 2;
+  }
+}
+
+.services-items-icon {
+  max-width: 50px;
+
+  // Descendants
+  path {
+    fill: var(--white);
+  }
+}
+
+.services-tools {
+  --border-color: var(--exodus-fruit);
+
+  border-bottom: 5px solid var( --border-color);
+  border-top: 5px solid var( --border-color);
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+  padding-bottom: 3rem;
+
+  @media (--dark) {
+    --border-color: var(--yellow-dark);
+  }
+}
+
+.services-tools-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1.5rem;
+}
+
+.services-tools-item {
+
+}
+
+.services-faq {
+
 }

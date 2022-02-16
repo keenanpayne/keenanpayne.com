@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 permalink: "/{{ title | slug }}/"
 ---
+{# TODO: Create generic abstractions for similarities with `portfolio.njk` #}
 
 {% set date = page.date %}
 
@@ -24,7 +25,7 @@ permalink: "/{{ title | slug }}/"
     </p>
   </header>
 
-  <div class="services-content _container -large">
+  <div class="services-content">
     {% for section in sections %}
       {% include "components/" + section.type + ".njk" %}
     {% endfor %}
