@@ -56,6 +56,15 @@
   }
 }
 
+@mixin h6() {
+  font-size: 1rem;
+  font-weight: normal;
+
+  @media (--min-640) { 
+    font-size: 1.125rem;
+  }
+}
+
 
 //
 // Regular Text

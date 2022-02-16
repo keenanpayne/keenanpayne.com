@@ -1,6 +1,7 @@
 //
 // Portfolio
 // ==================================================
+// TODO: Create generic abstractions for similarities with `_services.scss`
 
 .portfolio { 
   margin-bottom: 5rem;
@@ -9,7 +10,15 @@
 .portfolio-header {
   margin-bottom: 2.25rem;
   margin-top: 1rem;
-  text-align: center;
+  
+  @media (--max-640) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (--min-640) {
+    text-align: center;
+  }
 }
 
 .portfolio-footer { 
@@ -28,7 +37,11 @@
   margin-bottom: 1.25rem;
   margin-top: .5rem;
 
-  @media (--min-720) {
+  @media (--min-960) {
+    @include text-large();
+  }
+
+  @media (--min-1120) {
     @include text-larger();
   }
 }

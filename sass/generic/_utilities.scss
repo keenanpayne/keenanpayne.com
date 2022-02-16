@@ -61,6 +61,10 @@
   @include h5;
 }
 
+._text-h6 {
+  @include h6;
+}
+
 ._text-small {
   @include text-small();
 }

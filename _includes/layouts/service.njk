@@ -24,7 +24,7 @@ permalink: "/{{ title | slug }}/"
     </p>
   </header>
 
-  <div class="services-content">
+  <div class="services-content _container -large">
     {% for section in sections %}
       {% include "components/" + section.type + ".njk" %}
     {% endfor %}
