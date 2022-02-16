@@ -1,0 +1,34 @@
+---
+layout: layouts/base.njk
+permalink: "/{{ title | slug }}/"
+---
+
+{% set date = page.date %}
+
+<section class="services">
+  <header class="services-header">
+    <div class="services-meta">
+      {%- if type -%}
+        <a class="-underline-hover _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+          Service
+        </a>
+      {%- endif -%}
+    </div>
+
+    <h1 class="services-title">
+      {{ title }}
+    </h1>
+
+    <p class="services-lede _text-h4">
+      {{ lede }}
+    </p>
+  </header>
+
+  <div class="services-content">
+    {% for section in sections %}
+      {% include "components/" + section.type + ".njk" %}
+    {% endfor %}
+
+    {{ content | safe }}
+  </div>
+</section>

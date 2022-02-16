@@ -154,6 +154,13 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Collection for services
+  eleventyConfig.addCollection('services', function(collection) {
+    return collection.getFilteredByGlob("services/*.md").filter(function(item) {
+      return item;
+    });
+  });
+
   // Collection for bookshelf
   eleventyConfig.addCollection('book', function(collection) { 
     return collection.getFilteredByGlob('bookshelf/*.md').filter(function(item) { 
