@@ -53,6 +53,7 @@
   max-width: 40ch;
   
   @media (--min-640) {
+    line-height: 1.2;
     margin-left: auto;
     margin-right: auto;
   }
@@ -61,7 +62,11 @@
 .services-content {
   @include h5();
 
-  margin-top: 5rem;
+  margin-top: 3rem;
+
+  @media (--min-720) { 
+    margin-top: 5rem;
+  }
 
   // More affordance for headlines
   h2 {
@@ -97,23 +102,24 @@
 }
 
 .services-process {
-  @media (--min-1120) {
-    @include container(1080px);
-  }
+  // @media (--min-1120) {
+  //   @include container(1080px);
+  // }
 }
 
 .services-items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1.5rem;
+  grid-gap: 3rem;
+  margin-top: 3rem;
 
-  @media (--min-960) {
-    grid-gap: 3rem;
+  @media (--min-1120) {
+    grid-column-gap: 5rem;
   }
 
   // Descendants
   h3 {
-    margin-bottom: 0.5rem;
+    margin-bottom: .75rem;
     margin-top: 1rem;
   }
 }
@@ -124,20 +130,45 @@
   @media (--min-640) {
     grid-column: auto / span 2;
   }
+
+  // Descendants
+  p { 
+    @include h6();
+  }
 }
 
 .services-items-icon {
-  max-width: 50px;
+  --icon-size: 35px;
+
+  max-width: var(--icon-size);
+
+  @media (--min-1120) { 
+    --icon-size: 40px;
+  }
+
+  @media (--min-1440) { 
+    --icon-size: 45px;
+  }
+
+  @media (--min-1600) { 
+    --icon-size: 50px;
+  }
 
   // Descendants
   path {
-    fill: var(--white);
+    fill: var(--plum-dark);
+
+    @media (--dark) { 
+      fill: var(--yellow-light);
+    }
   }
 }
 
 .services-tools {
+  --background-color: var(--gray-light);
   --border-color: var(--exodus-fruit);
 
+  background-color: var(--background-color);
   border-bottom: 5px solid var( --border-color);
   border-top: 5px solid var( --border-color);
   margin-bottom: 5rem;
@@ -145,6 +176,7 @@
   padding-bottom: 3rem;
 
   @media (--dark) {
+    --background-color: var(--plum-dark);
     --border-color: var(--yellow-dark);
   }
 }
@@ -152,13 +184,53 @@
 .services-tools-items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1.5rem;
+
+  @media (--min-720) { 
+    grid-gap: .75rem;
+  }
+
+  @media (--min-1120) { 
+    grid-gap: 1.5rem;
+  }
 }
 
 .services-tools-item {
+  // Descendants
+  h3 { 
+    @include h4;
 
+    margin-bottom: 0;
+  }
 }
 
 .services-faq {
+  @media (--max-720) { 
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
 
+.services-faq-item { 
+  --border-color: var(--exodus-fruit);
+
+  &:not(:last-of-type) { 
+    border-bottom: 3px solid var(--border-color);
+    padding-bottom: 1.5rem;
+
+    @media (--dark) { 
+      --border-color: var(--yellow-dark);
+    }
+  }
+
+  // Descendants
+  h3 { 
+    @include h4;
+
+    margin-bottom: .5rem;
+  }
+
+  ul { 
+    margin-bottom: 0;
+    margin-top: 0;
+  }
 }
