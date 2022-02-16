@@ -12,18 +12,21 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: var(--margin-top);
-  max-width: 105ch;
+  max-width: 90ch;
   padding-left: .75rem;
   padding-right: .75rem;
   
   @media (--min-720) {
-    
     padding-left: 1.5rem;
     padding-right: 1.5rem;
     text-align: center;
   }
   
   @media (--min-960) {
+    --margin-top: 6.25rem;
+  }
+  
+  @media (--min-1440) {
     --margin-top: 7.5rem;
   }
 }
