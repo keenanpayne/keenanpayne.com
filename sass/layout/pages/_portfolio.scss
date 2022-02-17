@@ -46,12 +46,31 @@
   }
 }
 
-.portfolio-table {
-  margin-bottom: 5rem;
-  margin-left: auto;
-  margin-right: auto;
+.portfolio-details { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  margin-bottom: 1.5rem;
+}
 
-  @media (--min-720) {
-    text-align: center;
+.portfolio-detail { 
+  --border-color: var(--exodus-fruit);
+
+  border-bottom: 1px solid var( --border-color);
+  border-top: 1px solid var( --border-color);
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+
+  @media (--dark) {
+    --border-color: var(--yellow-dark);
+  }
+
+  // Descendants
+  > p { 
+    &:first-of-type { 
+      @include h6;
+
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: .25rem;
+    }
   }
 }

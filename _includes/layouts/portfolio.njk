@@ -8,7 +8,7 @@ permalink: "/{{ title | slug }}/"
 
 {% set date = page.date %}
 
-<section class="portfolio">
+<section class="portfolio _container">
   <header class="portfolio-header">
     <div class="portfolio-meta">
       {%- if type -%}
@@ -31,27 +31,34 @@ permalink: "/{{ title | slug }}/"
     {% set year = case_study.year %}
 
     {# TODO: Check for existence of values for table #}
-    <table class="portfolio-table">
-      <thead>
-        <tr>
-          <th>Client</th>
-          <th>Project</th>
-          <th>Role</th>
-          <th>Year</th>
-          <th>URL</th>
-        </tr>
-      </thead>
+    <div class="portfolio-details">
+      <div class="portfolio-detail">
+        <p>Client</p>
+        <p>{{ client }}</p>
+      </div>
 
-      <tbody>
-        <tr>
-          <td>{{ client }}</td>
-          <td>{{ project }}</td>
-          <td>{{ role }}</td>
-          <td>{{ year }}</td>
-          <td><a href="{{ url }}" title="Visit {{ client }} {{ project }}" target="_blank" rel="noopener">Visit Site</a></td>
-        </tr>
-      </tbody>
-    </table>
+      {% if project %}
+      <div class="portfolio-detail">
+        Project
+        {{ project }}
+      </div>
+      {% endif %}
+
+      <div class="portfolio-detail">
+        <p>Role</p>
+        <p>{{ role }}</p>
+      </div>
+
+      <div class="portfolio-detail">
+        <p>Year</p>
+        <p>{{ year }}</p>
+      </div>
+      
+      <div class="portfolio-detail">
+        <p>URL</p>
+        <p><a href="{{ url }}" title="Visit {{ client }} {{ project }}" target="_blank" rel="noopener">Visit Site</a></p>
+      </div>
+    </div>
 
     {% for section in sections %}
       {% include "components/" + section.type + ".njk" %}
