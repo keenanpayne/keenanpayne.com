@@ -67,6 +67,11 @@
   @media (--min-480) { 
     text-align: right;
   }
+
+  // Descendants
+  > p { 
+    line-height: 1.15;
+  }
 }
 
 .footer-twitter { 
@@ -75,11 +80,10 @@
   // Descendants
   span { 
     display: block;
-    margin-bottom: .125rem;
   }
 
   a { 
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
     margin-left: -.25rem; // Offset padding for flush text alignment
     padding: .25rem;
     text-transform: lowercase;

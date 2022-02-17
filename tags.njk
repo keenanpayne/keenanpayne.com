@@ -9,6 +9,7 @@ pagination:
     - post
     - posts
     - tagList
+    - Featured
   addAllPagesToCollections: true
 layout: layouts/home.njk
 eleventyComputed:
@@ -17,5 +18,6 @@ permalink: /tags/{{ tag | slug }}/
 templateClass: page-tags
 ---
 
-{% set postslist = collections[ tag ] %}
-{% include "postslist.njk" %}
+{% import "organisms/entries/entries.njk" as entries with context %}
+
+{{ entries.output(false, collections[ tag ], true, false, true) }}

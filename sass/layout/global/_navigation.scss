@@ -36,11 +36,12 @@
 
   // Modifiers
   &.-active {
+    font-weight: var(--font-weight-semibold);
     text-decoration: underline;
   }
 
   &.-cta { 
-    font-weight: bold;
+    font-weight: var(--font-weight-bold);
     
     @media (--min-480) { 
       border-left: 1px solid var(--gray-dark);

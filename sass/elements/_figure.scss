@@ -3,7 +3,7 @@
 // ==================================================
 
 figure { 
-  margin: 3rem 0;
+  margin: 1.5rem 0;
 
   // Descendants
   + figure { 
@@ -19,7 +19,7 @@ figcaption {
   @extend ._text-small;
 
   font-style: italic;
-  margin-top: .5rem;
+  margin-top: 1em;
   text-align: center;
 }
 

@@ -1,6 +1,16 @@
 ---
 layout: layouts/base.njk
 templateClass: page-home
+
+sections: 
+  entries:
+    read_Link: false
 ---
 
-{% include "posttype.njk" %}
+{% import "organisms/entries/entries.njk" as entries with context %}
+
+{% if archiveLink == false %}
+  {{ entries.output('Type: ' ~ title | plural, collections[title | lower], true, modifiers, false) }}
+{% else %}
+  {{ entries.output('Type: ' ~ title | plural, collections[title | lower], true, modifiers, true) }}
+{% endif %}

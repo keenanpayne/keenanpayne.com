@@ -1,0 +1,367 @@
+//
+// Post List
+// ==================================================
+
+.entries { 
+  margin-bottom: 3rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.entries + .entries { 
+  margin-top: 5rem;
+}
+
+.entries-headline { 
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  // Descendants
+  h1 { 
+    margin-bottom: 0;
+  }
+  
+  p { 
+    margin-top: 0;
+  }
+}
+
+.entries-item.-intro { 
+  grid-area: 1 / span 2;
+}
+
+.entries-item-description { 
+  margin-top: 0;
+}
+
+.entries-title {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.entries-link { 
+  text-decoration: none;
+  
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--gray-darker);
+    text-decoration-thickness: 3px;
+    text-underline-position: from-font;
+    text-underline-offset: 0;
+  }
+}
+
+.entries-header { 
+  flex: 1;
+}
+
+.entries-item-active .entries-title {
+  font-weight: bold;
+}
+
+.entries-meta { 
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .45rem;
+}
+
+.entries-series {
+  @media (--max-720) {
+    @include a11yHidden();
+  }
+}
+
+.entries-lede { 
+  margin-top: .5rem;
+}
+
+.entries-tags { 
+  list-style-type: none;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.entries-tag { 
+  display: inline-block;
+
+  &:not(:first-of-type) { 
+    margin-left: 0.5em;
+  }
+}
+
+.entries-tagsLink { 
+  font-size: 1.125rem;
+  font-weight: 500;
+  margin-top: 3rem;
+  
+  // Descendants
+  a { 
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--gray-darker);
+      text-decoration-thickness: 2px;
+    }
+  }
+}
+
+.entries-label {
+  border-bottom: 1px solid var(--exodus-fruit);
+  font-weight: 500;
+  margin-bottom: .5em;
+  position: relative;
+
+  @media (--dark) {
+    border-bottom-color: var(--yellow-dark);
+  }
+
+  // TODO: Fix styles because text is overlapping with border
+  &::after {
+    // --bg-color: var(--exodus-fruit);
+
+    // background-color: var(--bg-color);
+    // content: '';
+    // height: 2px;
+    // position: absolute;
+    // left: 5rem;
+    // top: calc(50% + 1px);
+    // transform: translateY(-50%);
+    // width: calc(100% - 5rem);
+
+    // @media (--dark) {
+    //   --bg-color: var(--yellow-dark);
+    // }
+  }
+}
+
+.entries-time-month,
+.entries-time-year {
+  display: block;
+  font-weight: 300;
+}
+
+.entries-articleLink {
+  line-height: 2;
+  position: relative;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+
+    &::after { 
+      transform: translate(80%, -50%);
+    }
+  }
+
+  // Psuedo-element for arrow 
+  &::after { 
+    content: '→';
+    font-size: 1.5em;
+    position: absolute;
+    top: 45%;
+    transform: translate(55%, -50%);
+    transition: transform var(--transition);
+    user-select: none;
+  }
+}
+
+.entries-image { 
+  margin-bottom: 1rem
+}
+
+// Portfolio Items
+.entries-portfolio-meta {
+  --border-color: var(--exodus-fruit);
+
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  padding-top: .5rem;
+}
+
+
+//
+// Modifiers
+// ---------
+
+.entries.-stack {
+  .entries-items {
+    margin-top: 1.5rem;
+  }
+  
+  .entries-item + .entries-item {
+    margin-top: 3rem;
+  }
+}
+
+.entries.-grid { 
+  .entries-items { 
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 5rem;
+  }
+
+  .entries-item { 
+    grid-column: auto / span -1;
+
+    @media (--min-960) {
+      grid-column-end: span 6;
+      margin-top: 0;
+    }
+  }
+}
+
+.entries.-media { 
+  .entries-items {
+    @media (--min-720) { 
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-gap: 5rem;
+    }
+  }
+
+  .entries-item { 
+    @media (--min-720) {
+      grid-column-end: span 3;
+      margin-top: 0;
+    }
+  }
+
+  .entries-title { 
+    @include h5();
+  }
+
+  .entries-header { 
+    margin-bottom: .25rem;
+  }
+
+  // Stacked modifiers
+  &.-portfolio { 
+    .entries-item { 
+      @media (--min-720) {
+        grid-column-end: span 6;
+      }
+    }
+  }
+}
+
+.entries.-journey { 
+  max-width: 1260px;
+
+  .entries-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    padding: 0;
+  }
+  
+  .entries-item {
+    border: 1px solid var(--plum-dark);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    line-height: 1.65;
+    min-height: 150px;
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+.entries.-featured { 
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  margin-bottom: 2.5rem;
+  overflow: hidden;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  width: 100%;
+
+  @media (--min-720) {
+    margin-bottom: 5rem;
+  }
+
+  // Overrides
+  .entries-header {
+    grid-column: 1 / -1;
+
+    @media (--min-720) {
+      grid-column: 1 / span 10;
+    }
+
+    @media (--min-1120) {
+      grid-column: 1 / span 9;
+    }
+  }
+
+  .entries-items {
+    grid-column: 1 / -1;
+  
+    @media (--min-720) {
+      grid-column: 1 / span 10;
+    }
+  
+    @media (--min-1120) {
+      grid-column: 1 / span 9;
+    }
+  }
+  
+  .entries-item {
+    padding-right: 0.15rem;
+    position: relative;
+    
+    // TODO: Hacky overrides
+    .entries-time {
+      bottom: 0;
+      font-size: 1rem;
+      line-height: 1;
+      position: absolute;
+      right: 0;
+      text-align: right;
+    }
+  }
+
+  .entries-item-content { 
+    margin-left: auto;
+    max-width: 60ch;
+  }
+  
+  .entries-image {
+    display: block;
+    filter: sepia(.1) brightness(0.9);
+    height: 250px;
+    margin-bottom: 1.5rem;
+    transition: filter var(--transition-long);
+    width: 100%;
+  
+    @media (--min-720) {
+      height: 300px;
+    }
+  
+    @media (--min-960) {
+      height: 350px;
+    }
+  
+    @media (--min-1120) {
+      height: 400px;
+    }
+
+    @media (--min-1120) and (--min-h-960) {
+      height: 450px;
+    }
+
+    @media (--min-1120) and (--min-h-1080) {
+      height: 500px;
+    }
+  
+    @media (--min-1600) and (--min-h-1080) {
+      height: 550px;
+    }
+  
+    &:hover {
+      filter: none;
+    }
+  }
+}

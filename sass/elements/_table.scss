@@ -3,10 +3,24 @@
 // ==================================================
 
 table {
-  margin: 1em 0;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  text-align: left;
 
   td,
   th {
-    padding-right: 1em;
+    &:not(:last-of-type) { 
+      padding-right: 1.5rem;
+    }
+  }
+
+  th { 
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+  }
+
+  td { 
+    padding-bottom: 0;
+    padding-top: 0;
   }
 }

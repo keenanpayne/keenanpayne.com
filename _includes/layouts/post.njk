@@ -3,23 +3,31 @@ layout: layouts/base.njk
 permalink: "/{{ title | slug }}/"
 ---
 
-{# Page Classes #}
-{%- set pageClass = type | lower | plural %}
+{% import "organisms/newsletter.njk" as  newsletter with context %}
 
-{# TODO: Create macros for repeated elements here and in `postslist.njk` #}
+{% set pageClass = type | lower | plural %}
+{% set date = page.date %}
+{% set draft = type == 'Draft' %}
+{% set book = type == 'Book' %}
+{% set resource = type == 'Resource' %}
+
 <section class="post _container {{ pageClass }}">
   <header class="post-header">
     <div class="post-meta">
       {%- if type -%}
-        <a class="postlist-type _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+        <a class="-underline-hover _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
           {{ type }}
         </a>
       {%- endif -%}
 
       {# Resources are timeless #}
-      {%- if type != 'Resource' -%}
-        <time class="_text-small" datetime="{{ page.date | htmlDateString }}">
-          {{ page.date | readableDate }}
+      {%- if date -%}
+        <time class="_text-small" datetime="{{ date | htmlDateString }}">
+          {%- if book -%}
+            {{ date | postYear }}
+          {%- else -%}
+            {{ date | readableDate }}
+          {%- endif -%}
         </time>
       {%- endif -%}
     </div>
@@ -50,46 +58,36 @@ permalink: "/{{ title | slug }}/"
   </header>
 
   <div class="post-content">
-    {%- if type == 'Draft' -%}
+    {%- if draft -%}
       {# TODO: Fix this so that notices for drafts are automatically displayed #}
       {# {% include "type/notice.html" with content: "<strong>Heads up:</strong> This article is still a work-in-progress." %} #}
+    {%- endif -%}
+
+    {%- if book -%}
+      <img class="post-imageBook" src="{{ cover }}" alt="{{ title }}" />
     {%- endif -%}
 
     {{ content | safe }}
   </div>
 
-  {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
-  {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
+  <footer class="post-footer _text-small">
+    {%- if title -%}
+      <a href="{{ permalink | url }}">{{ title }}</a> is {{ 'a' if long_form else 'an' }} <a href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">{{ long_form | lower if long_form else type | lower }}</a>
 
-  {%- if nextPost or previousPost -%}
-    <div class="postNav">
-      <p class="postNav-next">
-        {%- if nextPost -%}
-          <span class="postNav-label _label">
-            Next
-          </span>
-          
-          <a href="{{ nextPost.url | url }}">
-            {{ nextPost.data.title }}
-          </a>
-        {%- endif -%}
-      </p>
+      published on 
+      <time class="entries-time" datetime="{{ date | htmlDateString }}">
+        {{ date | longDate }}
+      </time>.
+    {%- endif -%}
+  </footer>
 
-      <p class="postNav-prev">
-        {%- if previousPost -%}
-          <span class="postNav-label _label">
-            Previous
-          </span>
-          
-          <a href="{{ previousPost.url | url }}">
-            {{ previousPost.data.title }}
-          </a>
-        {%- endif -%}
-      </p>
-    </div>
-  {%- endif -%}
+  {% include "components/postNav.njk" %}
 </section>
 
-{% include "components/comments.html" %}
+{% if comments != false %}
+  {% include "components/comments.html" %}
+{% endif %}
 
-{% include "newsletter.njk" %}
+{% if cta != false %}
+  {{ newsletter.large() }}
+{% endif %}

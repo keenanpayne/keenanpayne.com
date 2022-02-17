@@ -1,0 +1,219 @@
+{# TODO: Break out featured post and recent posts into separate files #}
+{% import "organisms/entries/macros.njk" as entries with context %}
+
+{#  
+ # Macros
+ #}
+
+{# Articles #}
+{% macro article(entry) %}
+  {{ entries.postMeta(entry) }}
+  {{ entries.postHeader(entry) }}
+  {{ entries.postLede(entry) }}
+
+  {%- if sections.entries.read_Link != false -%}
+    {{ entries.postReadMore(entry) }}
+  {%- endif -%}
+{% endmacro %}
+
+{# Books #}
+{% macro book(entry) %}
+  {{ entries.postImage(entry) }}
+  {{ entries.postHeader(entry) }}
+
+  <p class="entries-media-subtitle">
+    {{ entry.data.book.subtitle }}
+  </p>
+
+  <p class="entries-media-author _text-small">
+    By: {{ entry.data.book.author }}
+  </p>
+
+  {{ entries.postLede(entry) }}
+{% endmacro %}
+
+{# Portfolio Items #}
+{% macro portfolio(entry) %}
+  {% set portfolio = entry.data.portfolio %}
+
+  {{ entries.postImage(entry) }}
+  {{ entries.postHeader(entry) }}
+
+  <p>
+    {{ case_study.project }}
+  </p>
+
+  <p>
+    {{ case_study.description }}
+  </p>
+
+  <div class="entries-portfolio-meta">
+    <div>
+      <p class="_label">
+        Year
+      </p>
+
+      {{ case_study.year }}
+    </div>
+
+    <div>
+      <p class="_label">
+        Role
+      </p>
+
+      {{ case_study.role }}
+    </div>
+  </div>
+{% endmacro %}
+
+
+{# 
+ # Output
+ #}
+{%- macro output(label, collection, tags, modifiers, more) -%}
+  <section class="entries {{ modifiers if modifiers else '-stack _container' }}">
+    {{ entries.postLabel(label) }}
+
+    <div class="entries-items">
+      {# Check if items exist in collection #}
+      {% if collection.length %} 
+        {%- for post in collection | reverse -%}
+          {% set type = post.data.type %}
+          {% set tags = post.data.tags %}
+
+          {# TODO: The featured post is currently being displayed twice —  
+                   once at the top of the page and again at the bottom.
+                   I'm not sure if this is what I want to have happen, I may 
+                   want to exclude featured post from other entries lists. #}
+          <article class="entries-item{% if post.url == url %} entries-item-active{% endif %}">
+              {%- if tags -%}
+              {%- if tags.includes('Featured') == true -%}
+                {{ entries.postImage(post, true) }}
+              {%- endif -%}
+            {%- endif -%}
+
+            <div class="entries-item-content">
+              {# Books are treated special #}
+              {%- if type == 'Book' -%}
+                {{ book(post) }}
+              {%- elif type == 'Portfolio' -%}
+                {{ portfolio(post) }}
+              {%- else -%}
+                {{ article(post) }}
+              {% endif %}
+            </div>
+
+            {% if tags !== false %}
+              {# {{ entries.postTags(post) }} #}
+            {% endif %}
+          </article>
+        {%- endfor -%}
+    
+      {# If collection is empty #}
+      {% else %}
+        {% set content = 'No content is published here yet.' %}
+
+        {% include "type/notice.html" %}
+      {% endif %}
+    </div>
+
+    {%- if title != 'Book' -%}
+      {%- if tag or more -%}
+        <p class="entries-tagsLink _text-align-center">
+          {% if tag %}
+            <a href="{{ '/tags/' | url }}">All Tags →</a>
+          {% elif more %}
+            <a href="{{ '/archive/' | url }}">View Archive →</a>
+          {% endif %}
+        </p>
+      {%- endif -%}
+    {%- endif -%}
+  </section>
+{%- endmacro -%}
+
+
+{#  
+ # Journey 
+ #}
+
+ {%- macro journey() -%}
+  <section class="entries -journey">
+    <header class="entries-headline">
+      <h2>
+        Essays
+      </h2>
+
+      <p>
+        <a href="{{ '/posts/' | url }}">View all posts →</a>
+      </p>
+    </header>
+    
+    <div class="entries-items">
+      {# TODO: Only display the intro and topics when displaying a specific journey #}
+      <article class="entries-item -intro">
+        {# TODO: Dynamic journey name #}
+        <h3>
+          Cryptocurrency and the world of web3
+        </h3>
+
+        {# TODO: Dynamic journey description #}
+        <p class="entries-item-description">
+          The advent of ever-popular and powerful cryptocurrency technology has inspired me to learn more about what makes this world tick. 
+        </p>  
+      </article>
+
+      <article class="entries-item -topics">
+        <h3>Topics</h3>
+
+        {# TODO: Display categories/tags applied to posts in this journey #}
+        <ul>
+          {# TODO: Display number of posts associated with a topic next to name
+                    e.g., Blockchain (10) #}
+          <li>Blockchain</li>
+          <li>Coins</li>
+          <li>NFT</li>
+          <li>Community</li>
+          <li>Investing</li>
+        </ul>
+      </article>
+
+      {%- for post in postslist | reverse -%}
+        <article class="entries-item{% if post.url == url %} entries-item-active{% endif %}">
+          {%- if post.data.type -%}
+            <span class="-underline-hover">
+              {{ post.data.type }}
+            </span>
+          {%- endif -%}
+
+          <header class="entries-header">
+            <h3 class="entries-title">
+              <a href="{{ post.url | url }}" class="entries-link">
+                {% if post.data.title %}
+                  {{ post.data.title }}
+                {% else %}
+                  <code>{{ post.url }}</code>
+                {% endif %}
+              </a>
+            </h3>
+          </header>
+
+          <p class="entries-lede">
+            {{ entries.postLede(post) }}
+          </p>
+
+          <ul class="entries-tags">
+            {%- for tag in post.data.tags | filterTagList -%}
+              <li class="entries-tag">
+                {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+
+                <a href="{{ tagUrl | url }}" class="tag">
+                  {{ tag }}
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        </article>
+      {%- endfor -%}
+    </div>
+  </section>
+{%- endmacro -%}

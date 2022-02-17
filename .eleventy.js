@@ -26,6 +26,18 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("LLL dd, yyyy");
   });
 
+  eleventyConfig.addFilter("longDate", dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("DDDD");
+  });
+
+  eleventyConfig.addFilter("postMonth", dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("LLL dd");
+  });
+
+  eleventyConfig.addFilter("postYear", dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("yyyy");
+  });
+
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
@@ -46,7 +58,7 @@ module.exports = function(eleventyConfig) {
   });
 
   function filterTagList(tags) {
-    return (tags || []).filter(tag => ["all", "nav", "post", "posts"].indexOf(tag) === -1);
+    return (tags || []).filter(tag => ["all", "nav", "post", "posts", "Featured"].indexOf(tag) === -1);
   }
 
   eleventyConfig.addFilter("filterTagList", filterTagList)
@@ -116,14 +128,42 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Collection for drafts
   eleventyConfig.addCollection('draft', function(collection) {
     return collection.getFilteredByGlob("drafts/*.md").filter(function(item) {
       return item;
     });
   });
+  
+  // Collection for featured posts
+  eleventyConfig.addCollection('featured', function(collection) {
+    return collection.getFilteredByTag('Featured');
+  });
 
+  // Collection for resources
   eleventyConfig.addCollection('resource', function(collection) {
     return collection.getFilteredByGlob("resources/*.md").filter(function(item) {
+      return item;
+    });
+  });
+
+  // Collection for portfolio
+  eleventyConfig.addCollection('portfolio', function(collection) {
+    return collection.getFilteredByGlob("portfolio/*.md").filter(function(item) {
+      return item;
+    });
+  });
+
+  // Collection for services
+  eleventyConfig.addCollection('services', function(collection) {
+    return collection.getFilteredByGlob("services/*.md").filter(function(item) {
+      return item;
+    });
+  });
+
+  // Collection for bookshelf
+  eleventyConfig.addCollection('book', function(collection) { 
+    return collection.getFilteredByGlob('bookshelf/*.md').filter(function(item) { 
       return item;
     });
   });
@@ -145,13 +185,14 @@ module.exports = function(eleventyConfig) {
 
   // Retrieve first image for post in collection
   // Ref: https://github.com/11ty/eleventy/issues/230
-  eleventyConfig.addShortcode('first_image', post => extractFirstImage(post));
+  eleventyConfig.addShortcode('first_image', post => extractFirstImage(post, 'tag'));
+  eleventyConfig.addShortcode('first_image_link', post => extractFirstImage(post, 'link'));
   
   /**
    * @param {*} doc A large object full of all sorts of information about a document.
    * @returns {String} the markup of the first image.
    */
-  function extractFirstImage(doc) {
+  function extractFirstImage(doc, type) {
     if (!doc.hasOwnProperty('templateContent')) {
       console.warn('❌ Failed to extract image: Document has no property `templateContent`.');
       return;
@@ -160,10 +201,19 @@ module.exports = function(eleventyConfig) {
     const content = doc.templateContent;
   
     if (content.includes('<img')) {
-      const imgTagBegin = content.indexOf('<img');
-      const imgTagEnd = content.indexOf('>', imgTagBegin);
-  
-      return content.substring(imgTagBegin, imgTagEnd + 1);
+      if (type == 'tag') {
+        const imgTagBegin = content.indexOf('<img');
+        const imgTagEnd = content.indexOf('>', imgTagBegin);
+
+        return content.substring(imgTagBegin, imgTagEnd + 1);
+      }
+
+      if (type == 'link') {
+        const imgSrcBegin = content.indexOf('src="');
+        const imgSrcEnd = content.indexOf('" ');
+
+        return content.substring(imgSrcBegin + 5, imgSrcEnd);
+      }
     }
   
     return '';

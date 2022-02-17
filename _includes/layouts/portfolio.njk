@@ -1,0 +1,76 @@
+---
+layout: layouts/base.njk
+permalink: "/{{ title | slug }}/"
+---
+{# TODO: Create generic abstractions for similarities with `service.njk` #}
+
+{% import "organisms/newsletter.njk" as  newsletter with context %}
+
+{% set date = page.date %}
+
+<section class="portfolio _container">
+  <header class="portfolio-header">
+    <div class="portfolio-meta">
+      {%- if type -%}
+        <a class="-underline-hover _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+          Case Study
+        </a>
+      {%- endif -%}
+    </div>
+
+    <h1 class="portfolio-title">
+      {{ title }}
+    </h1>
+  </header>
+
+  <div class="portfolio-content">
+    {% set client = case_study.client %}
+    {% set project = case_study.project %}
+    {% set url = case_study.url %}
+    {% set role = case_study.role %}
+    {% set year = case_study.year %}
+
+    {# TODO: Check for existence of values for table #}
+    <div class="portfolio-details">
+      <div class="portfolio-detail">
+        <p>Client</p>
+        <p>{{ client }}</p>
+      </div>
+
+      {% if project %}
+      <div class="portfolio-detail">
+        Project
+        {{ project }}
+      </div>
+      {% endif %}
+
+      <div class="portfolio-detail">
+        <p>Role</p>
+        <p>{{ role }}</p>
+      </div>
+
+      <div class="portfolio-detail">
+        <p>Year</p>
+        <p>{{ year }}</p>
+      </div>
+      
+      <div class="portfolio-detail">
+        <p>URL</p>
+        <p><a href="{{ url }}" title="Visit {{ client }} {{ project }}" target="_blank" rel="noopener">Visit Site</a></p>
+      </div>
+    </div>
+
+    {% for section in sections %}
+      {% include "components/" + section.type + ".njk" %}
+    {% endfor %}
+
+    {{ content | safe }}
+  </div>
+
+  {# TODO: Update this to display featured images so that other content looks more compelling #}
+  {% include "components/postNav.njk" %}
+</section>
+
+{% if comments != false %}
+  {% include "components/comments.html" %}
+{% endif %}

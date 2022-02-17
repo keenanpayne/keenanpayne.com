@@ -2,13 +2,19 @@
 layout: layouts/home.njk
 permalink: /archive/
 title: Post Archive
+
 eleventyNavigation:
   key: Archive
   order: 2
+
+sections: 
+  entries:
+    read_Link: false
 ---
 
-{% set label = 'Archive' %}
-{% set postslist = collections.posts %}
+{% import "organisms/entries/entries.njk" as entries with context %}
+{% import "organisms/newsletter.njk" as  newsletter with context %}
 
-{% include "postslist.njk" %}
-{% include "newsletter.njk" %}
+{{ entries.output('Archive', collections.posts, true, false, false) }}
+
+{{ newsletter.large() }}

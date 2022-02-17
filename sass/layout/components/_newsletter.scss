@@ -18,25 +18,19 @@
     --newsletter-background: var(--exodus-fruit);
   }
 
-  @media (--min-480) { 
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-
   @media (--min-720) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
   }
   
   @media (--min-960) { 
-    margin-top: 5rem;
-    padding-bottom:  5.5rem;
-    padding-top: 5rem;
+    padding-bottom: 4.5rem;
+    padding-top: 4rem;
   }
 
-  @media (--min-1120) { 
-    padding-left: 0;
-    padding-right: 0;
+  @media (--min-1440) { 
+    padding-bottom: 5.5rem;
+    padding-top: 5rem;
   }
 
   // Modifiers
@@ -44,6 +38,7 @@
     --newsletter-background: transparent;
 
     box-shadow: none;
+    margin-top: 0;
   
     @media (--min-720) {
       display: block;
@@ -78,6 +73,7 @@
 
 .newsletter-title {
   margin-bottom: 1rem;
+  margin-top: 0;
 }
 
 .newsletter-description { 
@@ -157,5 +153,16 @@
     &:hover {
       background-color: var(--hover);
     }
+  }
+}
+
+
+//
+// Context-Specific Styles
+// -----------------------
+
+.entries + .newsletter { 
+  @media (--min-960) { 
+    margin-top: 5rem;
   }
 }

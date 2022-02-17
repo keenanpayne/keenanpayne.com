@@ -9,12 +9,24 @@
 }
 
 .post-header {
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.post-footer { 
+  border-top: 1px solid var(--gray-dark);
+  font-family: var(--font-family-serif);
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+
+  // Descendants
+  > a:first-of-type { 
+    font-style: italic;
+  }
 }
 
 .post-title { 
   margin-bottom: 1.25rem;
-  margin-top: 1rem;
+  margin-top: .5rem;
 }
 
 .post-meta { 
@@ -81,6 +93,10 @@
     margin-top: 0;
   }
 
+  h4 { 
+    margin-bottom: .25rem;
+  }
+
   h5 {
     margin-bottom: 1rem;
   }
@@ -98,7 +114,7 @@
   }
 
   strong {
-    font-weight: 600;
+    font-weight: var(--font-weight-bold);
   }
 
   li { 
@@ -154,4 +170,16 @@
   > figure {
     @include pullContentOutside();
   }
+
+  hr { 
+    & + p {
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+// Featured images
+.post-imageBook { 
+  margin-bottom: 3rem;
+  max-width: 300px;
 }

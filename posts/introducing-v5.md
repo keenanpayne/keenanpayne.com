@@ -51,7 +51,7 @@ Staying deliberate and focused saved me time and helped me get the project launc
 
 Below is a side-by-side comparison of my website before and after this redesign. Both sport a minimal aesthetic, which aligns with my design sensibilities (and capabilities). Keeping the design as straightforward as possible helps me focus on core functionality.
 
-<div class="sideBySide">
+<div class="sideBySide _pull-outside">
   {% include atoms/figure.html, src: '/images/posts/introducing-v5/before.png', alt: 'Screenshot of my website before redesigning it' %}
 
   {% include atoms/figure.html, src: '/images/posts/introducing-v5/after.png', alt: 'Screenshot of my website after redesigning it' %}

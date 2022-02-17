@@ -1,13 +1,19 @@
 ---
 layout: layouts/home.njk
+
+sections: 
+  entries:
+    read_Link: false
 ---
 
-{% set label = 'Recently Published' %}
-{% set postslist = collections.posts | head(-5) %}
-{% set postslistCounter = collections.posts | length %}
-{# {% set postsListTags = false %} #}
-{% set postListReadMore = true %}
+{% import "organisms/entries/entries.njk" as entries with context %}
+{% import "organisms/mission/mission.njk" as mission with context %}
+{% import "organisms/newsletter.njk" as  newsletter with context %}
 
-{% include "postslist.njk" %}
-{% include "newsletter.njk" %}
-{# {% include "postslist-journey.njk" %} #}
+{{ entries.output('Featured', collections.featured | head(-1), false, '-featured', false, true) }}
+
+{{ mission.centered('Personal Note', "Welcome to my digital home. Here you will find fragments of my life shared publicly through creative, personal, and professional endeavors.") }}
+
+{{ entries.output('Recently Published', collections.posts | head(-5), true, false, true, false) }}
+
+{{ newsletter.large() }}

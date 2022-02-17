@@ -10,8 +10,12 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 
-  @media (--min-1120) {
+  @media (--min-960) {
     grid-gap: 3rem;
+  }
+
+  @media (--min-1120) {
+    grid-gap: 5rem;
   }
 }
 
@@ -24,15 +28,22 @@
 
   // Descendants
   h2 {
-    border-bottom: 2px solid var(--exodus-fruit);
+    --border-color: var(--exodus-fruit);
+
+    @include h3();
+
+    border-bottom: 2px solid var(--border-color);
     margin-bottom: 2rem;
+    margin-top: 1.5rem;
 
     @media (--dark) {
-      border-color: var(--gray-dark)
+      --border-color: var(--gray-dark);
     }
   }
 
   h3 {
+    @include h4();
+
     margin-bottom: .65rem;
     margin-top: 2rem;
   }

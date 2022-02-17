@@ -34,7 +34,7 @@ p {
       border-bottom-right-radius: 3px;
       border-top-left-radius: 3px;
       content: var(--text);
-      font-weight: bold;
+      font-weight: var(--font-weight-bold);
       font-variant: all-small-caps;
       left: 0;
       line-height: 1;
@@ -96,13 +96,13 @@ p {
     
     &.-question { 
       --border: var(--exodus-fruit);
-      --background: var(--gray-light);
+      --background: var(--gray-lighter);
       --text: 'Questions';
     
       color: var(--text-color);
 
       @media (--dark) { 
-        --background: var(--plum-mid);
+        --background: var(--deep-cove);
       }
 
       &::before {

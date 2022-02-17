@@ -1,0 +1,22 @@
+//
+// Visibility
+// ==================================================
+// Ref: https://www.a11yproject.com/posts/how-to-hide-content/
+
+@mixin a11yHidden() {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px;
+}
+
+@mixin a11yVisible() {
+  height: initial;
+  left: initial;
+  overflow: initial;
+  position: initial;
+  top: initial;
+  width: initial;
+}

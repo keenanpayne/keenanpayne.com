@@ -7,7 +7,12 @@ layout: layouts/home.njk
 permalink: /page-list/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber }}/{% endif %}
 title: Page List
 ---
-<table>
+
+<table class="_container -large">
+  <h1 class="_text-align-center">
+    {{ title }}
+  </h1>
+
   <thead>
     <tr>
       <th>URL</th>
