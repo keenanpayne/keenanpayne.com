@@ -100,12 +100,6 @@
   }
 }
 
-.services-process {
-  // @media (--min-1120) {
-  //   @include container(1080px);
-  // }
-}
-
 .services-items {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
