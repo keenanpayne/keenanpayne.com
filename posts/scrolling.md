@@ -2,10 +2,10 @@
 permalink: '/scrolling/'
 title:  'Avoid altering scrolling mechanics by scroll-jacking'
 meta:
-  description: ''
+  description: 'Thoughts on how important scrolling is for navigating our devices and what can go wrong when we try to change such mechanics through scroll-jacking.'
   image: '/images/posts/android-iphone/macbook-iphone-watch-stack.jpg'
-  image_alt: ''
-lede: 
+  image_alt: 'iPhone and Apple Watch stacked on top of Macbook Air'
+lede: 'Thoughts on how important scrolling is for navigating our devices and what can go wrong when we try to change such mechanics through scroll-jacking.'
 type: Article
 date: 2022-03-09
 tags:
@@ -116,7 +116,7 @@ If you have any examples or resources you would like to share, don't hesitate to
 
 - [Scrolljacking, by Robin Rendle](https://www.robinrendle.com/notes/scrolljacking/)
 
-<h3 class="_text-h4"> Libraries</h3>
+<h3 class="_text-h4">Libraries</h3>
 
 - [Smooth Scrollbar](https://idiotwu.github.io/smooth-scrollbar/)
   - I _frequently_ see this library used across the web. I hate it. No, I don't hate who creates, uses, or maintains it. But I hate how the library is used. It may be a "high performance" plugin, but I strongly dislike having the momentum and physics of scrolling changed.
