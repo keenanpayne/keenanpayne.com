@@ -1,8 +1,8 @@
 ---
 permalink: '/scrolling/'
-title:  'Avoid altering scrolling mechanics by scroll-jacking'
+title:  "Don't alter scrolling mechanics by scroll-jacking"
 meta:
-  description: 'Thoughts on how important scrolling is for navigating our devices and what can go wrong when we try to change such mechanics through scroll-jacking.'
+  description: 'Thoughts on how important scrolling is for navigating our devices and what can go wrong when we try to change the mechanics by scroll-jacking.'
   image: '/images/posts/android-iphone/macbook-iphone-watch-stack.jpg'
   image_alt: 'iPhone and Apple Watch stacked on top of Macbook Air'
 lede: 'Thoughts on how important scrolling is for navigating our devices and what can go wrong when we try to change such mechanics through scroll-jacking.'
