@@ -168,6 +168,13 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Collection for games
+  eleventyConfig.addCollection('game', function(collection) { 
+    return collection.getFilteredByGlob('games/*.md').filter(function(item) { 
+      return item;
+    });
+  });
+
   // Copy the `images` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("css");
