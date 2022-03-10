@@ -14,7 +14,7 @@ tags:
   - Android
 ---
 
-{% include atoms/figure.html, src: "/images/posts/android-iphone/apple-tech-stack.jpg", alt: "iPhone next to iPad, Apple Watch, and MacBook Air", caption: "Photography by Marcus Payne", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
+{% include atoms/figure.html, src: "/images/posts/android-iphone/apple-tech-stack.jpg", alt: "iPhone next to iPad, Apple Watch, and MacBook Air", caption: "I'm officially all-in on Apple devices", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
 
 I remember getting my first smartphone in 2011 when I was still a senior in High School. It was an HTC Wildfire S, offered by AT&T as a "free" upgrade from whatever flip phone I was currently using (maybe a Motorola Razr, but I can't remember). Choosing between Android or iOS devices was moot given I couldn't afford an iPhone and also largely irrelevant; all that mattered to 17-year-old me was finally getting my hands on a smartphone. Thus began my ten-year relationship with Android phones.
 

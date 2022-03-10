@@ -21,10 +21,11 @@
 
 @mixin h2() {
   font-size: 1.953rem;
-  line-height: 1;
+  line-height: 1.2;
   
   @media (--min-640) { 
     font-size: 2.441rem;
+    line-height: 1.1;
   }
 }
 
