@@ -15,7 +15,7 @@ tags:
   - User Experience (UX)
 ---
 
-{% include atoms/figure.html, src: "/images/posts/android-iphone/macbook-iphone-watch-stack.jpg", alt: "", caption: "", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
+{% include atoms/figure.html, src: "/images/posts/android-iphone/macbook-iphone-watch-stack.jpg", alt: "iPhone and Apple Watch stacked on top of Macbook Air", caption: "", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
 
 Scrolling is how I use a computer. I also scroll _a lot_ on my smartphone. I scroll elsewhere—through menus on video game consoles, books on my Kindle, apps on my Apple Watch&hellip;
 
@@ -52,7 +52,7 @@ I emphasize that scrolling mechanics are frequently changed for **no good reason
 
 This isn't to say there aren't well-intentioned web designers and developers behind the scenes making such decisions who surely mean no ill will to the rest of us. I've been there. But we can do better.
 
-{% include atoms/figure.html, src: "/images/posts/android-iphone/me-on-iphone-with-laptop.jpg", alt: "", caption: "", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
+{% include atoms/figure.html, src: "/images/posts/android-iphone/me-on-iphone-with-laptop.jpg", alt: "Me scrolling on my iPhone with a Macbook nearby", caption: "", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
 
 ## Deciding whether to alter scrolling mechanics  
 
