@@ -111,6 +111,12 @@
   @include a11yVisible();
 }
 
+._hidden-720 {
+  @media (--min-720) {
+    @Include a11yHidden();
+  }
+}
+
 
 //
 // Colors
