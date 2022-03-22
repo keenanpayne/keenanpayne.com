@@ -5,6 +5,7 @@ eleventyNavigation:
   key: About
   order: 1
 templateClass: about _container
+hello: false
 ---
 
 <p class="_text-h4">Hey there, I'm Keenan ✌🏻</p>
