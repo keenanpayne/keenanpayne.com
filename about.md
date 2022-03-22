@@ -38,3 +38,11 @@ Long story short, I build beautiful, scalable web experiences that everyone will
 We're both humans, so why not get a little personal? 
 
 Photos are displayed newest-to-oldest.
+
+<div class="about-images">
+  <img src="/images/about/jan-28-2022.jpg" alt="Me hiking in Lake Tahoe" />
+  <img src="/images/about/dec-26-2021.jpeg" alt="Me being cold" />
+  <img src="/images/about/jun-27-2021.jpg" alt="Me in grayscale" />
+  <img src="/images/about/jul-5-2020.jpg" alt="Hanging out with my high school buddies" />
+  <img src="/images/about/jul-5-(2)-2020.jpg" alt="Hanging out with my high school buddies" />
+</div>
