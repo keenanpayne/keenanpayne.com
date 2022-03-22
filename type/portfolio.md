@@ -6,7 +6,7 @@ description:
 
 # eleventyNavigation:
 #   key: Portfolio
-#   order: 2
+#   order: 
 
 templateClass: page-portfolio
 modifiers: -media -portfolio

@@ -32,6 +32,7 @@
 @import "elements/img";
 @import "elements/inputs";
 @import "elements/link";
+@import "elements/list";
 @import "elements/main";
 @import "elements/paragraph";
 @import "elements/pre";
@@ -66,6 +67,7 @@
 @import "layout/global/navigation";
 
 // Pages
+@import "layout/pages/about";
 @import "layout/pages/portfolio";
 @import "layout/pages/services";
 @import "layout/pages/post";

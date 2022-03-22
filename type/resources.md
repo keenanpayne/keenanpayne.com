@@ -3,6 +3,6 @@ title: Resource
 description: Collections of resources that I find valuable across various domains.
 # eleventyNavigation:
 #   key: Resources
-#   order: 3
+#   order: 
 archiveLink: false
 ---
