@@ -38,7 +38,7 @@ This is why I'm such a stickler for how scrolling is implemented.
 
 And why shouldn't I be?
 
-{% include type/p_large.html, content: "Scrolling is one of my primary means for navigating a bevy of technological devices." %}
+{% include type/p_large.html, content: 'Scrolling is one of my primary means for<br class="_hidden-720"> navigating a bevy of devices.' %}
 
 ## The current state of scrolling  
 
@@ -60,26 +60,26 @@ Anybody building websites or user interfaces should recognize the importance of 
 
 I _never_ want core scrolling functionality to change. If I can't quickly jump down your page using the `Space` key or `CMD + ⇩`, you've fucked up. 
 
-You _might_ be able to get away with altering the physics, but only if it's for a **very good reason**. 
+You _might_ be able to get away with altering the physics, but only if it's for a **Very Good Reason**. 
 
-Spoiler alert: it probably isn't.
+**Spoiler alert:** it probably isn't.
 
 Furthermore, I don't want to notice or pay attention to scrolling when visiting your website. I like the action of scrolling to be as "invisible" as possible when navigating an interface so I can accomplish what I've set out to do.
 
 {% include type/p_large.html, content: "The goal isn't to enjoy scrolling. The goal is to use scrolling to do something enjoyable." %}
 
-Here are some **very bad reasons** for altering scrolling:  
+Here are some **Very Bad Reasons** for altering scrolling:  
 - You _think_ it adds to the "experience"
 - You _think_ it feels "cool" or "fun"
 - You _think_ it makes your website "dynamic"
 - You _think_ it enhances the animations
 - You _think_ I will enjoy it
 
-Here are some **very reasonable reasons** for altering scrolling:  
+Here are some **Very Reasonable Reasons** for altering scrolling:  
 - Scrolling is part of the mechanics for a game
 - You intentionally want to create something experimental and push the boundaries of human-computer interaction while acknowledging the downsides that such alterations incur
 
-Here are some **very good reasons** for altering scrolling:  
+Here are some **Very Good Reasons** for altering scrolling:  
 - *[crickets chirping](https://www.youtube.com/watch?v=RktX4lbe_g4)*  
 
 ## Focus on what matters  
@@ -94,11 +94,9 @@ Focus your attention elsewhere—the content of your website, art direction, ani
 
 {% include type/p_large.html, content: "Focus on what matters. Don't create new problems by solving a problem that doesn't exist." %}
 
-## Examples and resources  
+## Examples  
 
-I haven't proactively searched for resources on this subject. Instead, today's screed is brought to you by _Keenan's Stream of Consciousness (TM)_. I will update this section with examples of scroll-jacking and other resources as I find them.
-
-If you have any examples or resources you would like to share, don't hesitate to drop a comment down below, shoot me an [email](/contact), or hit me up on [Twitter](https://twitter.com/KeenanPayne_)!
+I will update this section with examples of scroll-jacking as I find them. In no way am I trying to publicly roast, embarrass, etc. I simply wish to inform so that our industry can improve as a collective through quality user experiences.
 
 <h3 class="_text-h4">Very good examples</h3>
 
@@ -110,7 +108,9 @@ If you have any examples or resources you would like to share, don't hesitate to
 
 <h3 class="_text-h4">Very bad examples</h3>
 
-- _The fate of unlucky souls rest here_
+- [Ramotion: Design Agency](https://www.ramotion.com/)
+
+## Resources
 
 <h3 class="_text-h4">Articles</h3>
 

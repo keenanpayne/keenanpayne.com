@@ -4,7 +4,7 @@ title: Book
 description:
 # eleventyNavigation:
 #   key: Bookshelf
-#   order: 4
+#   order: 
 templateClass: page-books
 modifiers: -media
 archiveLink: false

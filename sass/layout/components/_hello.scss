@@ -6,7 +6,7 @@
 .hello {
   // TODO: Dynamically generate and store in custom
   //       property based on height of content
-  --hello-max-height: 227px;
+  --hello-max-height: 285px;
   --hello-max-width: 300px;
   
   background-color: var(--gray-lighter);
@@ -20,7 +20,7 @@
   position: fixed;
   transition: all var(--transition-long) cubic-bezier(0.4, 0.0, 0.2, 1);
   transform: translateY(calc(100% + 1.5rem));
-  width: 140px;
+  width: 130px;
   -webkit-tap-highlight-color: transparent;
 
   @media (--min-320) { 
@@ -221,28 +221,39 @@
 }
 
 .hello-text {
+  font-family: var(--font-family-serif);
   padding: 1rem 1rem .5rem;
   user-select: none;
 
   @media (--min-720) { 
     margin-bottom: 0;
   }
+
+  // Descendants
+  > p {
+    margin-bottom: .25rem;
+  }
+}
+
+.hello-text-intro {
+  display: block;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: .25rem;
 }
 
 .hello-links {
   align-items: center;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: start;
+  padding-left: .5rem;
+  padding-right: .5rem;
 }
 
 .hello-link {
   padding: .75rem;
   text-decoration: none;
   transition: background-color var(--transition);
-
-  @media (--min-720) { 
-    padding: 1rem;
-  }
 
   &:hover {
     background-color: var(--gray-light);
@@ -253,10 +264,5 @@
     height: 25px;
     position: relative;
     width: 25px;
-
-    @media (--min-720) { 
-      height: 30px;
-      width: 30px;
-    }
   }
 }

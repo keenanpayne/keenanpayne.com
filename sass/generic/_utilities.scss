@@ -75,6 +75,11 @@
   font-family: var(--font-family-mono);
 }
 
+._font-family-serif { 
+  font-family: var(--font-family-serif); 
+  font-weight: var(--font-weight-serif-light);
+}
+
 ._type-my-voice { 
   font-family: var(--font-family-serif);
   font-style: italic;
@@ -109,6 +114,12 @@
 
 ._visible { 
   @include a11yVisible();
+}
+
+._hidden-720 {
+  @media (--min-720) {
+    @Include a11yHidden();
+  }
 }
 
 

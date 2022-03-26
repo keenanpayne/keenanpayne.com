@@ -70,6 +70,8 @@
       </div>
     </footer>
 
-    {% include "components/hello.html" %}
+    {% if hello != false %}
+      {% include "components/hello.html" %}
+    {% endif %}
   </body>
 </html>
