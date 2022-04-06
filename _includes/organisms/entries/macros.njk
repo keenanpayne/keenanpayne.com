@@ -37,7 +37,7 @@
   {% set title = entry.data.title %}
 
   <header class="entries-header">
-    <h2 class="entries-title _text-h3">
+    <h2 class="entries-title">
       <a href="{{ url | url }}" class="entries-link">
         {% if title %}
           {{ title }}
@@ -66,7 +66,7 @@
   {% set lede = post.data.lede %}
 
   {% if lede %}
-    <p class="entries-lede _text-h5">
+    <p class="entries-lede _text-h6">
       {{ lede }}
     </p>
   {% endif %}

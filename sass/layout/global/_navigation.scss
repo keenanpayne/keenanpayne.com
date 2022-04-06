@@ -21,7 +21,7 @@
   }
 
   &:not(:first-of-type) { 
-    margin-top: 1rem;
+    margin-top: .5rem;
 
     @media (--min-480) { 
       margin-left: 1rem;

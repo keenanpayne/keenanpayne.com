@@ -86,7 +86,7 @@
                    I'm not sure if this is what I want to have happen, I may 
                    want to exclude featured post from other entries lists. #}
           <article class="entries-item{% if post.url == url %} entries-item-active{% endif %}">
-              {%- if tags -%}
+            {%- if tags -%}
               {%- if tags.includes('Featured') == true -%}
                 {{ entries.postImage(post, true) }}
               {%- endif -%}
