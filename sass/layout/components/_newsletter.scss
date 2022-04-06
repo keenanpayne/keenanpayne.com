@@ -12,7 +12,7 @@
   box-shadow: var(--shadow);
   margin-bottom: 3rem;
   margin-top: 3rem;
-  padding: 3rem 2rem 3.5rem;
+  padding: 3rem 1.5rem 3.5rem;
   
   @media (--dark) {
     --newsletter-background: var(--exodus-fruit);
@@ -20,12 +20,11 @@
 
   @media (--min-720) {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(16, 1fr);
   }
   
   @media (--min-960) { 
-    padding-bottom: 4.5rem;
-    padding-top: 4rem;
+    padding: 4rem 0 4.5rem;
   }
 
   @media (--min-1440) { 
@@ -81,16 +80,12 @@
   max-width: 50ch;
 
   @media (--min-720) {
-    grid-column: 2 / span 10;
+    grid-column: 4 / span 10;
   }
   
   @media (--min-960) { 
-    grid-column: 1 / span 5;
+    grid-column: 2 / span 7;
     margin-bottom: 0;
-  }
-  
-  @media (--min-1120) { 
-    grid-column: 2 / span 4;
   }
 }
 
@@ -98,16 +93,12 @@
   max-width: 500px;
 
   @media (--min-720) {
-    grid-column: 2 / span 10;
+    grid-column: 4 / span 10;
   }
 
   @media (--min-960) { 
-    grid-column: 7 / -1;
+    grid-column: 10 / span 6;
     margin-top: .5rem;
-  }
-  
-  @media (--min-1120) { 
-    grid-column-end: span 5;
   }
 }
 

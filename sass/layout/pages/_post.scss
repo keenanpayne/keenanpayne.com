@@ -26,7 +26,7 @@
 
 .post-title { 
   margin-bottom: 1.25rem;
-  margin-top: .5rem;
+  margin-top: .75rem;
 }
 
 .post-meta { 
@@ -80,13 +80,13 @@
   }
   
   h2 { 
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     margin-top: 3rem;
   }
   
   h3 { 
     margin-bottom: 1rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
   
   h2 + h3 { 
@@ -101,25 +101,11 @@
     margin-bottom: 1rem;
   }
 
-  p a {
-    --link-color-visited: var(--plum-dark);
-
-    @media (--dark) { 
-      --link-color-visited: var(--gray-lightish);
-    }
-
-    &:visited {
-      color: var(--link-color-visited);
-    }
-  }
-
   strong {
     font-weight: var(--font-weight-bold);
   }
 
   li { 
-    line-height: 1.5;
-
     &:not(:first-of-type) { 
       margin-top: .5rem;
     }
@@ -149,7 +135,7 @@
   }
 
   p:not(:last-of-type):not(.-large) { 
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
   }
   
   p mark { 

@@ -36,7 +36,7 @@
 }
 
 .entries-title {
-  margin-bottom: 0;
+  margin-bottom: .4em;
   margin-top: 0;
 }
 
@@ -96,17 +96,6 @@
   font-size: 1.125rem;
   font-weight: 500;
   margin-top: 3rem;
-  
-  // Descendants
-  a { 
-    text-decoration: none;
-    
-    &:hover {
-      text-decoration: underline;
-      text-decoration-color: var(--gray-darker);
-      text-decoration-thickness: 2px;
-    }
-  }
 }
 
 .entries-label {
@@ -195,6 +184,11 @@
   
   .entries-item + .entries-item {
     margin-top: 3rem;
+  }
+
+  // Descendants
+  .entries-title {
+    @include h3();
   }
 }
 

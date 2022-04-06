@@ -8,7 +8,7 @@ templateClass: about _container
 hello: false
 ---
 
-<p class="_text-h4">Hey there, I'm Keenan ✌🏻</p>
+<p class="_text-h3">Hey there, I'm Keenan ✌🏻</p>
 
 <p class="_text-h5">Thank you for visiting my website! <br class="_hidden-720">Welcome to my little corner of the internet.</p>
 
@@ -36,9 +36,7 @@ Long story short, I build beautiful, scalable web experiences that everyone will
   Pictures of me
 </h2>
 
-We're both humans, so why not get a little personal? 
-
-Photos are displayed newest-to-oldest.
+We're both humans, so why not get a little personal?<br>Photos are displayed newest-to-oldest.
 
 <div class="about-images">
   <img src="/images/about/jan-28-2022.jpg" alt="Me hiking in Lake Tahoe" />
