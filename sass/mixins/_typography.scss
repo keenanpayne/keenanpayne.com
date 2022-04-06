@@ -33,9 +33,9 @@
 @mixin h3() {
   font-size: 1.563rem;
   font-weight: var(--font-weight-bold);
-  letter-spacing: -.02em;
+  letter-spacing: -.025em;
   line-height: 1.1;
-  margin-bottom: .5em;
+  margin-bottom: .35em;
 
   @media (--min-640) { 
     font-size: 1.953rem;
