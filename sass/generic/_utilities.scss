@@ -92,6 +92,7 @@
   font-size: 1rem;
   font-family: var(--font-family-mono);
   font-variant: all-small-caps;
+  font-weight: var(--font-weight-mono-regular);
   letter-spacing: .0125em;
   line-height: 1.325;
   word-spacing: -.1em;
@@ -102,6 +103,18 @@
 
   @media (--min-1600) {
     font-size: 1.25rem;
+  }
+}
+
+// TODO: Fix specificity issues when used on links
+._label-sans {
+  --link-color: var(--gray-darkest-1) !important;
+
+  font-variant: all-small-caps;
+  font-weight: var(--font-weight-bold);
+
+  @media (--dark) {
+    --link-color: var(--gray-lighter) !important;
   }
 }
 
