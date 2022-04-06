@@ -25,7 +25,7 @@
 }
 
 .post-title { 
-  margin-bottom: 1.25rem;
+  margin-bottom: .25rem;
   margin-top: 1rem;
 }
 
@@ -41,6 +41,11 @@
 
   @media (--min-560) { 
     flex-direction: row;
+  }
+
+  // Add extra space above tags if they are not empty
+  .post-title + &:not(:empty) { 
+    margin-top: 1.25rem;
   }
 }
 

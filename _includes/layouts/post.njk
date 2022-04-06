@@ -36,6 +36,7 @@ permalink: "/{{ title | slug }}/"
       {{ title }}
     </h1>
 
+    {# TODO: Do not render if `tags` is empty #}
     {%- if tags -%}
       <div class="post-tags">
         {%- for tag in tags | filterTagList -%}
