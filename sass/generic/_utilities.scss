@@ -84,10 +84,12 @@
   font-family: var(--font-family-serif);
   font-style: italic;
   font-weight: var(--font-weight-serif-light);
+  line-height: 1.4;
 }
 
 ._label { 
   color: var(--label-color);
+  font-size: 1rem;
   font-family: var(--font-family-mono);
   font-variant: all-small-caps;
   letter-spacing: .0125em;

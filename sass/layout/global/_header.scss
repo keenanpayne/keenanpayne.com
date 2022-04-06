@@ -23,11 +23,16 @@
 }
 
 .header-logo {
-  font-weight: 800;
+  font-size: 1.563rem;
+  font-weight: var(--font-weight-heavy);
   letter-spacing: -0.045em;
   line-height: 0.825;
   margin-bottom: 0;
   margin-top: 0;
+
+  @media (--min-720) { 
+    font-size: 1.953rem;
+  }
 
   // Descendants
   :link:not(:hover) {
