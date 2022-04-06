@@ -3,10 +3,14 @@
 // ==================================================
 
 p {
-  line-height: 1.6;
+  line-height: 1.45;
   margin-top: 0;
 
   &:last-child {
     margin-bottom: 0;
   }
+}
+
+strong {
+  font-weight: var(--font-weight-bold);
 }

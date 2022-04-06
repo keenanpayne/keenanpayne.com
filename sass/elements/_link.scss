@@ -2,6 +2,31 @@
 // Links
 // ==================================================
 
+//
+// Mixins
+// ------
+
+@mixin linkHoverBackground() {
+  text-decoration: underline;
+  text-decoration-color: var(--gray-darkest);
+  
+  &:hover { 
+    background-color: var(--plum-dark);
+    color: var(--white);
+    text-decoration: none;
+
+    @media (--dark) { 
+      background-color: var(--gray-light);
+      color: var(--plum-dark);
+    }
+  }
+}
+
+
+//
+// Styles
+// ------
+
 a[href] {
   --link-color: var(--plum-dark);
   --link-color-hover: var(--plum-light);
@@ -17,6 +42,10 @@ a[href] {
     --link-color-hover: var(--gray-light);
   }
 
+  p & {
+    @include linkHoverBackground();
+  }
+
   // Modifiers
   &.-underline-hover { 
     text-decoration: none;
@@ -24,5 +53,9 @@ a[href] {
     &:hover { 
       text-decoration: underline;
     }
+  }
+  
+  &.-hover-background {
+    @include linkHoverBackground();
   }
 }

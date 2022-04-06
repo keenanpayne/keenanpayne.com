@@ -11,6 +11,7 @@ p {
     border-top: 5px solid var(--border);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow);
+    font-weight: var(--font-weight-semibold);
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
     padding: 1.5rem 1rem 1rem;
@@ -51,8 +52,6 @@ p {
 
     .icon {
       --size: 40px;
-
-      @extend ._text-h5;
 
       bottom: 0;
       height: var(--size);
