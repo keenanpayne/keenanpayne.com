@@ -24,7 +24,7 @@ case_study:
 
 sections: 
   - type: lede
-    text: 'I was hired by the GoFundMe team in 2019 to help build out a new WordPress content portal, <a href="https://www.gofundme.com/c/heroes">GoFundMe Heroes</a>.'
+    text: 'I was hired by the GoFundMe team in 2019 to help build out a new WordPress content portal for <a href="https://www.gofundme.com/c/heroes">GoFundMe Heroes</a>, an initiative designd to highlight standout projects from "heroes" on GoFundMe.'
   - type: testimonial
     text: 'Keenan makes a great development partner. As a designer, I appreciate his magical ability to talk about projects in common terms and teach us a few things along the way.'
     author: Anthony Mingo
