@@ -8,7 +8,7 @@ permalink: "/{{ title | slug }}/"
 
 {% set date = page.date %}
 
-<section class="portfolio _container">
+<section class="portfolio">
   <header class="portfolio-header">
     <div class="portfolio-meta">
       {%- if type -%}
@@ -38,10 +38,10 @@ permalink: "/{{ title | slug }}/"
       </div>
 
       {% if project %}
-      <div class="portfolio-detail">
-        Project
-        {{ project }}
-      </div>
+        <div class="portfolio-detail">
+          <p>Project</p>
+          <p>{{ project }}</p>
+        </div>
       {% endif %}
 
       <div class="portfolio-detail">
@@ -63,9 +63,12 @@ permalink: "/{{ title | slug }}/"
     {% for section in sections %}
       {% include "components/" + section.type + ".njk" %}
     {% endfor %}
-
-    {{ content | safe }}
+    
+    <div class="portfolio-subcontent _container -fluid">
+      {{ content | safe }}
+    </div>
   </div>
+
 
   {# TODO: Update this to display featured images so that other content looks more compelling #}
   {% include "components/postNav.njk" %}

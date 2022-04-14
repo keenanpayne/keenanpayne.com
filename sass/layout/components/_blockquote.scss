@@ -2,7 +2,7 @@
 // Blockquote
 // ==================================================
 
-blockquote { 
+.blockquote { 
   color: var(--text-color);
   font-family: var(--font-family-serif);
   font-style: italic;
@@ -58,7 +58,7 @@ blockquote {
   }
 
   // Descendants
-  p { 
+  p {
     margin-bottom: 0;
     padding-left: 2rem;
     padding-right: 2rem;

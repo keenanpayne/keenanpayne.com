@@ -25,7 +25,6 @@
 
 // Elements
 @import "elements/body";
-@import "elements/blockquote";
 @import "elements/button";
 @import "elements/code";
 @import "elements/figure";
@@ -47,6 +46,7 @@
 @import "layout/atoms/tag";
 
 // Components
+@import "layout/components/blockquote";
 @import "layout/components/codepen";
 @import "layout/components/comments";
 @import "layout/components/context";
@@ -56,11 +56,13 @@
 @import "layout/components/hello";
 @import "layout/components/highlight";
 @import "layout/components/large-text";
+@import "layout/components/lede";
 @import "layout/components/mailbox";
 @import "layout/components/missionStatement";
 @import "layout/components/newsletter";
 @import "layout/components/postNav";
 @import "layout/components/sideBySide";
+@import "layout/components/testimonial";
 
 // Global
 @import "layout/global/footer";
