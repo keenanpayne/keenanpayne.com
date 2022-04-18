@@ -6,7 +6,7 @@ meta:
   description: 
   image: '/images/portfolio/gfm/og.png'
 
-cover: '/images/portfolio/gfm/og.png'
+cover: '/images/portfolio/gfm/dribbble.png'
 
 case_study: 
   client: 'GoFundMe'
@@ -18,7 +18,7 @@ case_study:
       url: https://tonymingo.com/
   technologies:
     - WordPress
-  description: 'Description of the portfolio item'
+  description: 'I was hired by the GoFundMe team in 2019 to help build out a new WordPress content portal for <a href="https://www.gofundme.com/c/heroes">GoFundMe Heroes</a>, an initiative designd to highlight standout projects from "heroes" on GoFundMe.'
   year: '2019'
   constraints: 
 

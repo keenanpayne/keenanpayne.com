@@ -208,18 +208,9 @@
   }
 }
 
-.entries.-media { 
-  .entries-items {
-    @media (--min-720) { 
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-gap: 5rem;
-    }
-  }
-
+.entries.-media {
   .entries-item { 
     @media (--min-720) {
-      grid-column-end: span 3;
       margin-top: 0;
     }
   }
@@ -236,7 +227,7 @@
   &.-portfolio { 
     .entries-item { 
       @media (--min-720) {
-        grid-column-end: span 6;
+        
       }
     }
   }

@@ -37,32 +37,32 @@
   {% set portfolio = entry.data.portfolio %}
 
   {{ entries.postImage(entry) }}
-  {{ entries.postHeader(entry) }}
 
-  <p>
-    {{ case_study.project }}
-  </p>
+  <div class="entries-portfolio-content">
+    {{ entries.postHeader(entry) }}
 
-  <p>
-    {{ case_study.description }}
-  </p>
+    <p>
+      {# {{ case_study.description | safe }} #}
+      I was hired by the GoFundMe team in 2019 to help build out a new WordPress content portal for <a href="https://www.gofundme.com/c/heroes">GoFundMe Heroes</a>, an initiative designd to highlight standout projects from "heroes" on GoFundMe.
+    </p>
+  
+    {# <div class="entries-portfolio-meta">
+      <div>
+        <p class="_label">
+          Year
+        </p>
 
-  <div class="entries-portfolio-meta">
-    <div>
-      <p class="_label">
-        Year
-      </p>
+        {{ case_study.year }}
+      </div>
 
-      {{ case_study.year }}
-    </div>
+      <div>
+        <p class="_label">
+          Role
+        </p>
 
-    <div>
-      <p class="_label">
-        Role
-      </p>
-
-      {{ case_study.role }}
-    </div>
+        {{ case_study.role }}
+      </div>
+    </div> #}
   </div>
 {% endmacro %}
 

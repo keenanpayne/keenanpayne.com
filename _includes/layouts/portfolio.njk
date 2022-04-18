@@ -63,12 +63,11 @@ permalink: "/{{ title | slug }}/"
     {% for section in sections %}
       {% include "components/" + section.type + ".njk" %}
     {% endfor %}
-    
+
     <div class="portfolio-subcontent _container -fluid">
       {{ content | safe }}
     </div>
   </div>
-
 
   {# TODO: Update this to display featured images so that other content looks more compelling #}
   {% include "components/postNav.njk" %}

@@ -7,7 +7,7 @@
   box-shadow: 10px 10px 0 0 var(--exodus-fruit);
   color: var(--plum-dark);
   grid-column: 1 / -1;
-  margin: 0 auto;
+  margin: 1.5rem auto;
   padding: 2.5rem 1.5rem;
 
   @media (--min-640) { 
@@ -50,6 +50,16 @@
   display: block;
 }
 
+.testimonial-author { 
+  @include h5;
+
+  margin-bottom: .25rem;
+  margin-top: 1.5rem;
+}
+
 .testimonial-position { 
   @include h6;
+
+  color: var(--gray-darkest-1);
+  font-weight: var(--font-weight-serif-light);
 }
