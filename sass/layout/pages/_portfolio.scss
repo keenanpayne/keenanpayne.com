@@ -4,20 +4,19 @@
 // TODO: Create generic abstractions for similarities with `_services.scss`
 
 .portfolio { 
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
   margin-bottom: 5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .portfolio-header {
-  margin-bottom: 2.25rem;
-  
-  @media (--max-640) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+  grid-column: 1 / -1;
+}
 
-  @media (--min-640) {
-    text-align: center;
-  }
+.portfolio-meta {
+  padding-left: .25em;
 }
 
 .portfolio-footer { 
@@ -45,40 +44,93 @@
   }
 }
 
-.portfolio-details { 
-  display: grid;
+.portfolio-details {
+  align-content: flex-start;
+  display: flex;
+  flex-wrap: wrap;
   grid-column: 1 / -1;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  margin-bottom: 1.5rem;
+  padding-left: .25rem;
+
+  @media (--min-960) {
+    grid-column: 1 / span 3;
+  }
 }
 
 .portfolio-detail { 
   --border-color: var(--exodus-fruit);
 
-  border-bottom: 1px solid var( --border-color);
-  border-top: 1px solid var( --border-color);
-  padding: 1rem;
+  flex-basis: 50%;
+  padding-bottom: 1.5rem;
 
   @media (--dark) {
     --border-color: var(--yellow-dark);
   }
 
-  // Descendants
-  > p { 
-    &:first-of-type { 
-      @include h6;
+  @media (--min-960) {
+    padding-bottom: 2.25rem;
+  }
 
-      font-weight: var(--font-weight-semibold);
+  &:first-of-type {
+    flex-basis: 100%;
+  }
+
+  // Descendants
+  p {
+    &:first-of-type {
       margin-bottom: .25rem;
+    }
+  }
+
+  // Modifiers
+  &.-full-width {
+    flex-basis: 100%;
+  }
+
+  &.-year {
+    flex-basis: 20%;
+  }
+
+  &.-services {
+    flex-basis: 80%;
+
+    // Descendants
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline-block;
+      list-style-type: none;
+
+      &:not(:last-of-type) {
+        &::after {
+          content: ','
+        }
+      }
     }
   }
 }
 
+.portfolio-cover {
+  align-self: center;
+  grid-column: 1 / -1;
+  width: 100%;
+  
+  @media (--min-960) {
+    grid-column: 5 / -1;
+    padding-right: 1.5rem;
+  }
+}
+
+.portfolio-cover-img {
+  box-shadow: 10px 10px var(--exodus-fruit);
+}
+
 .portfolio-content { 
   display: grid;
+  grid-column: 1 / -1;
   grid-template-columns: repeat(10, 1fr);
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
 }
 
 .portfolio-subcontent { 

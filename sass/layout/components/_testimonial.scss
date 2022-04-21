@@ -17,27 +17,11 @@
   @media (--min-720) {
     padding: 3.75rem 2.25rem;
   }
-
-  @media (--min-800) { 
-    grid-column: 3 / span 7;
-  }
   
   @media (--min-960) { 
     box-shadow: 15px 15px 0 0 var(--exodus-fruit);
-    grid-column: 4 / span 6;
+    grid-column: 3 / span 6;
     padding: 5rem 3rem;
-  }
-  
-  @media (--min-1120) { 
-    grid-column: 5 / span 5;
-  }
-}
-
-.testimonial-text { 
-  @include h5;
-
-  @media (--min-960) { 
-    @include h4;
   }
 }
 

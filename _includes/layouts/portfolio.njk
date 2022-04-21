@@ -29,36 +29,65 @@ permalink: "/{{ title | slug }}/"
     {% set url = case_study.url %}
     {% set role = case_study.role %}
     {% set year = case_study.year %}
+    {% set cover = case_study.cover %}
+    {% set description = case_study.description %}
+    {% set challenges = case_study.challenges %}
+    {% set solution = case_study.solution %}
+    {% set services = case_study.services %}
 
     {# TODO: Check for existence of values for table #}
     <div class="portfolio-details">
-      <div class="portfolio-detail">
-        <p>Client</p>
-        <p>{{ client }}</p>
-      </div>
-
-      {% if project %}
-        <div class="portfolio-detail">
-          <p>Project</p>
-          <p>{{ project }}</p>
+      {% if description %}
+        <div class="portfolio-detail -full-width -description">
+          <p class="_label">The client</p>
+          <p class="_text-h6">{{ description | safe }}</p>
         </div>
       {% endif %}
 
-      <div class="portfolio-detail">
-        <p>Role</p>
-        <p>{{ role }}</p>
-      </div>
+      {% if challenges %}
+        <div class="portfolio-detail -full-width -description">
+          <p class="_label">Challenges</p>
+          <p class="_text-h6">{{ challenges | safe }}</p>
+        </div>
+      {% endif %}
 
-      <div class="portfolio-detail">
-        <p>Year</p>
-        <p>{{ year }}</p>
-      </div>
+      {% if solution %}
+        <div class="portfolio-detail -full-width -description">
+          <p class="_label">The solution</p>
+          <p class="_text-h6">{{ solution | safe }}</p>
+        </div>
+      {% endif %}
+
+      {% if year %}
+        <div class="portfolio-detail -year">
+          <p class="_label">Year</p>
+          <p>{{ year }}</p>
+        </div>
+      {% endif %}
+
+      {% if services %}
+        <div class="portfolio-detail -services">
+          <p class="_label">Services Offered</p>
+
+          <ul>
+            {% for service in services %}
+              <li>{{ service }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
       
       <div class="portfolio-detail">
-        <p>URL</p>
-        <p><a href="{{ url }}" title="Visit {{ client }} {{ project }}" target="_blank" rel="noopener">Visit Site</a></p>
+        <p><a href="{{ url }}" title="Visit {{ client }} {{ project }}" target="_blank" rel="noopener">Visit Site ↠</a></p>
       </div>
     </div>
+
+    {% if cover %}
+      <div class="portfolio-cover">
+        <img class="portfolio-cover-img" src="{{ cover }}" alt="{{ client }} project cover" />
+      </div>
+    {% endif %}
 
     {% for section in sections %}
       {% include "components/" + section.type + ".njk" %}
