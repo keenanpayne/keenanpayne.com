@@ -10,20 +10,30 @@
 <meta name="description" content="{{ meta.description or metadata.description }}">
 <link rel="canonical" href="{{ pageUrl }}">
 
-{# Twitter Cards #}
-<meta name="twitter:card" content="summary" />
+{# Social Sharing #}
+<meta property="og:url" content="{{ pageUrl }}" />
+<meta property="og:title" content="{{ pageTitle }}" />
+
 <meta name="twitter:site" content="@keenanpayne_" />
 <meta name="twitter:creator" content="@keenanpayne_" />
 
-{# OpenGraph #}
-<meta property="og:url" content="{{ pageUrl }}" />
-<meta property="og:title" content="{{ pageTitle }}" />
-<meta property="og:description" content="{{ meta.description or metadata.description }}" />
+{% if meta.description or metadata.description %}
+  <meta property="og:description" content="{{ meta.description or metadata.description }}" />
+
+  <meta property="twitter:description" content="{{ meta.description or metadata.description }}" />
+{% endif %}
 
 {% if meta.image or metadata.image %}
   <meta property="og:image" content="{{ metadata.url | replace('.com/', '.com') ~ meta.image or metadata.image }}" />
 
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ metadata.url | replace('.com/', '.com') ~ meta.image or metadata.image }}">
+
   {% if meta.image_alt %}
     <meta property="og:image:alt" content="{{ meta.image_alt }}" />
+
+    <meta property="twitter:image:alt" content="{{ meta.image_alt }}" />
   {% endif %}
+{% else %}
+  <meta name="twitter:card" content="summary" />
 {% endif %}
