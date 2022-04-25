@@ -18,17 +18,17 @@ modifier: narrow
 
 I had a dream I was racing someone uphill riding a bicycle. Looking over at my competition, I noticed them cruising up the hill, leaving me behind.
 
-I looked at the person's bike to see if they were riding a leaner, meaner, more efficient ride.
+I looked at the person's bike to see if they had a leaner, meaner, more efficient ride.
 
-Nope, they weren't. We were riding the exact same bicycle.
+Nope, we were riding the exact same bicycle.
 
 I looked at the person's outfit to see if they dressed in a way that might help propel them forward. 
 
-Surprisingly, we were wearing the same outfit. 
+Surprisingly, we were wearing the same clothes.
 
 I finally paid attention to my own situation, looking down at my bike. 
 
-It turns out I was in a much higher gear than the other person. I was working harder to travel less ground. Nothing about my competitor's situation directly impacted my situation.
+It turns out I was in a much higher gear than the other person; I was working harder while traveling less ground. Nothing about my competitor's situation directly impacted my situation.
 
 I brought my attention inward, and upon shifting to a lower gear, I began cruising up the hill. Thoughts of competition left my mind as I focused on my ascension.
 
