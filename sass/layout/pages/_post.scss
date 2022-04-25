@@ -16,7 +16,7 @@
         max-width: 45ch;
 
         &:not(:last-of-type):not(.-large) { 
-          margin-bottom: 1.65rem;
+          margin-bottom: 1.5rem;
         }
       }
     }
@@ -42,6 +42,15 @@
 .post-title { 
   margin-bottom: .25rem;
   margin-top: 1rem;
+}
+
+.post-lede {
+  margin-top: .75rem;
+  
+  // Context-specific
+  & + .post-tags {
+    margin-top: 1rem;
+  }
 }
 
 .post-meta { 

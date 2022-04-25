@@ -37,8 +37,13 @@ permalink: "/{{ title | slug }}/"
       {{ title }}
     </h1>
 
-    {# TODO: Do not render if `tags` is empty #}
-    {%- if tags -%}
+    {%- if lede -%}
+      <p class="post-lede _text-h4">
+        {{ lede }}
+      </p>
+    {%- endif -%}
+
+    {%- if tags.length > 1 -%}
       <div class="post-tags">
         {%- for tag in tags | filterTagList -%}
           <div class="post-tag">
