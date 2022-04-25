@@ -10,24 +10,24 @@ cover: '/images/portfolio/gfm/dribbble.png'
 
 case_study: 
   client: 'GoFundMe'
+  project: 'Heroes content portal'
+  year: 2019
+  url: https://www.gofundme.com/c/heroes
+  role: 'Frontend Developer'
   the_client: 'The marketing team at GoFundMe wanted to highlight standout projects from "heroes" on the platform.'
   the_challenge: 'Working within an existing WordPress codebase, I had to extend post taxonomies to support the editorial format for heroes content.'
   the_solution: 'I worked with web engineers at the company to learn the ins and outs of the codebase while designing a solution. I leveraged existing technologies and paradigms to build a seamless extension to the existing content editing workflow.'
-  project: 'Heroes content portal'
-  url: https://www.gofundme.com/c/heroes
-  services: 
-    - Web Development
   credits: 
     - name: Tony Mingo
       url: https://tonymingo.com/
+  services: 
+    - Web Development
   technologies:
     - WordPress
     - HTML
     - CSS
     - JavaScript
-  year: 2019
   cover: 'https://cdn.dribbble.com/users/133571/screenshots/11115383/media/5e005b82099d17a6c7edf1ae22aa3418.png'
-  constraints: 
 
 sections: 
   - type: lede
