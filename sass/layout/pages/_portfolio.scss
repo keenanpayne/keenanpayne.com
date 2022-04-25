@@ -187,7 +187,7 @@
 }
 
 .portfolio-cta {
-  background-color: var(--background);
+  background-color: var(--background, var(--exodus-fruit));
 }
 
 .portfolio-cta-content {
