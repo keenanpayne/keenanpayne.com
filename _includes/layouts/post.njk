@@ -5,7 +5,10 @@ permalink: "/{{ title | slug }}/"
 
 {% import "organisms/newsletter.njk" as  newsletter with context %}
 
-{% set modifier = '-' ~ modifier %}
+{% if modifier %}
+  {% set modifier = '-' ~ modifier %}
+{% endif %}
+
 {% set pageClass = type | lower | plural %}
 {% set date = page.date %}
 {% set draft = type == 'Draft' %}
