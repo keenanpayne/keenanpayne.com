@@ -51,6 +51,10 @@
   grid-column: 1 / -1;
   padding-left: .25rem;
 
+  @media (--min-640) {
+    grid-column: 1 / span 8;
+  }
+
   @media (--min-960) {
     grid-column: 1 / span 5;
   }
@@ -64,29 +68,21 @@
   --border-color: var(--exodus-fruit);
 
   flex-basis: 50%;
-  padding-bottom: 1.5rem;
 
+  
   @media (--dark) {
     --border-color: var(--yellow-dark);
   }
-
+  
   @media (--min-960) {
-    padding-bottom: 2.25rem;
     padding-right: 1.5rem
   }
 
-  &:first-of-type {
-    flex-basis: 100%;
-  }
+  &:not(:last-of-type) {
+    padding-bottom: 1.5rem;
 
-  // Descendants
-  p {
-    &:first-of-type {
-      margin-bottom: .25rem;
-    }
-
-    &:last-of-type {
-      max-width: 55ch;
+    @media (--min-960) {
+      padding-bottom: 2.25rem;
     }
   }
 
@@ -103,35 +99,37 @@
     }
   }
 
-  &.-year {
-    flex-basis: 20%;
-  }
-
-  &.-services {
-    flex-basis: 80%;
-
-    // Descendants
-    ul {
-      margin: 0;
-      padding: 0;
+  // Descendants
+  p {
+    &:first-of-type {
+      margin-bottom: .25rem;
     }
 
-    li {
-      display: inline-block;
-      list-style-type: none;
+    &:last-of-type {
+      max-width: 55ch;
+    }
+  }
 
-      &:not(:last-of-type) {
-        &::after {
-          content: ','
-        }
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    display: inline-block;
+    list-style-type: none;
+
+    &:not(:last-of-type) {
+      &::after {
+        content: ','
       }
     }
   }
 }
 
 .portfolio-cover {
-  align-self: center;
   grid-column: 1 / -1;
+  margin-top: 1.5rem;
   width: 100%;
   
   @media (--min-960) {
@@ -152,6 +150,32 @@
   }
 }
 
+.portfolio-intro {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-gap: 3rem;
+  padding: 3rem 1.5rem;
+
+  @media (--min-960) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (--min-1120) {
+    padding: 5rem 3rem;
+  }
+
+  @media (--min-1440) {
+    padding-bottom: 6.5rem;
+    padding-top: 6.5rem;
+  }
+}
+
+.portfolio-intro-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50ch;
+}
+
 .portfolio-content { 
   display: grid;
   grid-column: 1 / -1;
@@ -160,4 +184,22 @@
 
 .portfolio-subcontent { 
   grid-column: 1 / -1;
+}
+
+.portfolio-cta {
+  background-color: var(--background);
+}
+
+.portfolio-cta-content {
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+}
+
+.portfolio-cta-title {
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+.portfolio-cta-description {
+  max-width: 35ch;
 }
