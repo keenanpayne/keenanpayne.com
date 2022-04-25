@@ -6,6 +6,21 @@
   margin-bottom: 5rem;
   padding-left: 1rem;
   padding-right: 1rem;
+
+  // Modifiers
+  &.-narrow {
+    .post-content {
+      > p {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 45ch;
+
+        &:not(:last-of-type):not(.-large) { 
+          margin-bottom: 1.65rem;
+        }
+      }
+    }
+  }
 }
 
 .post-header {
