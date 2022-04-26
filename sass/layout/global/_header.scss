@@ -15,6 +15,12 @@
     padding-bottom: 2rem;
     padding-top: 2rem;
   }
+
+  // Modifiers
+  &.-inverted {
+    background-color: rgba(255, 255, 255, .35);
+    border-bottom: 1px solid rgba(255, 255, 255, .7);
+  }
 }
 
 .header-left { 

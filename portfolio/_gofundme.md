@@ -8,6 +8,9 @@ meta:
 
 cover: '/images/portfolio/gfm/dribbble.png'
 
+rootStyles: '--root-background: linear-gradient(180deg, rgba(25,175,110,1) 0%, rgba(150,215,180,0.5575980392156863) 30vh, rgba(239,239,239,1) 60vh, rgba(199,196,215,1) 85%);'
+headerInversion: true
+
 case_study:
   client: 'GoFundMe'
   client_size: '201 to 500'

@@ -9,7 +9,7 @@
 
 {# Markup #}
 <!doctype html>
-<html lang="en">
+<html lang="en" style="{{ rootStyles }}">
   <head>
     <title>{{ pageTitle }}</title>
     
@@ -20,7 +20,7 @@
     {% include "globals/meta.njk" %}
   </head>
   <body>
-    <header class="header">
+    <header class="header {% if headerInversion %}-inverted{% endif %}">
       <div class="header-left">
         <h1 class="header-logo">
           <a href="{{ '/' | url }}">

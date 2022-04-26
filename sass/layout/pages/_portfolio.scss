@@ -3,6 +3,8 @@
 // ==================================================
 // TODO: Create generic abstractions for similarities with `_services.scss`
 
+
+
 .portfolio { 
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -187,7 +189,11 @@
 }
 
 .portfolio-cta {
-  background-color: var(--background, var(--exodus-fruit));
+  background-color: var(--yellow-dark);
+
+  @media (--dark) {
+    background-color: var(--exodus-fruit);
+  }
 }
 
 .portfolio-cta-content {
