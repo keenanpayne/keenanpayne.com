@@ -1,11 +1,11 @@
 ---
 permalink: '/trust-suspicion/'
 title:  'Trust and suspicion'
-type: Article
+type: Reflection
 date: 2022-04-28
 meta: 
   description: 'Reflections on native browser features and third-party library adoption.'
-  image: '/images/posts/trust-suspicion/zdenek-machacek-jbe0iCwo-U0-unsplash.jpg'
+  image: '/images/posts/trust-suspicion/share.jpg'
   image_alt: 'Picture of rocks stacked atop each other'
 lede: Reflections on native browser features and third-party library adoption.
 tags: 
@@ -13,7 +13,7 @@ tags:
   - Libraries and Frameworks
 ---
 
-{% include atoms/figure.html, src: "/images/posts/trust-suspicion/zdenek-machacek-jbe0iCwo-U0-unsplash.jpg", alt: "Picture of rocks stacked atop each other", caption: "", source_title: "Photo by Zdeněk Macháček on Unsplash", source_link: "https://unsplash.com/photos/jbe0iCwo-U0" %}
+{% include atoms/figure.html, src: "/images/posts/trust-suspicion/rocks.jpg", alt: "Picture of rocks stacked atop each other", caption: "", source_title: "Photo by Zdeněk Macháček on Unsplash", source_link: "https://unsplash.com/photos/jbe0iCwo-U0" %}
 
 I've enjoyed the ongoing conversation on native browser features and third-party libraries and frameworks, spurred by a [recent article](https://adactio.com/journal/19021) from Jeremy Keith.
 
