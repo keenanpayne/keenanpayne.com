@@ -37,7 +37,7 @@ Things are smoother now, which I'm _incredibly_ grateful for. Still, it's import
 
 {% include type/blockquote.html, content: "Third-party code (like the referenced Bootstrap and React) have a history of smoothing over significant cross-browser issues and providing better-than-browser ergonomic APIs. jQuery was created to smooth over cross-browser JavaScript problems. That’s trust.", author: "Chris Coyier" %}
 
-I remember spending _a lot_ of time fumbling over cross-browser issues for almost a decade during the 2000s when web development was a much more finicky bastard.
+I remember spending _a lot_ of time fumbling over cross-browser issues for almost a decade during the 2000s when web development was a more finicky bastard.
 
 {% include type/p_large.html, content: "Who wasn't using a library like jQuery while supporting the likes of Internet Explorer 6?" %}
 
@@ -51,7 +51,7 @@ For example: jQuery did wonders to normalize working across browsers. Write code
 
 Yes, we've been trained. Now it's time to re-train.
 
-Web browsers have changed. We are in an entirely new era where cross-browser support is much more manageable and APIs are much more consistent. Sure, there's room for improvement, but it's a night and day difference from where we were 10 years ago.
+Web browsers have changed. We are in an entirely new era where cross-browser support is more manageable and APIs are more consistent. Sure, there's room for improvement, but it's a night and day difference from where we were 10 years ago.
 
 ## The role of third-party libraries
 
@@ -59,7 +59,7 @@ When browser support for features isn't where we want it to be, libraries can fi
 
 Third-party libraries can be a playground where ideas and paradigms are conceived and proven. Sometimes these become standardized. It's part of how the web evolves.
 
-Third-party libraries can also add more of everything—complexity, room for error, code shipped, dependency hell, abstraction from lower-level technologies—making the experience worse for developers and users alike.
+Third-party libraries can also add more of everything—complexity, room for error, code shipped, dependency hell, abstraction from lower-level technologies. These can make the experience worse for developers and users alike.
 
 But there's no denying that some libraries provide an elegant API that makes writing code more effortless, enabling us to solve _real-world problems_ with less effort.
 
