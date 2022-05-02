@@ -36,4 +36,4 @@ As I looked at my competitor one final time before reaching our summit, I sudden
 
 One of us reaching the peak first didn't exclude the other from the same accomplishment. 
 
-**And so we both finished the race.**
+**So we both finished the race.**
