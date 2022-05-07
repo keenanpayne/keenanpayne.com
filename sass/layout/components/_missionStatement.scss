@@ -35,6 +35,7 @@
   border-bottom: 1px solid var(--exodus-fruit);
   display: inline-block;
   margin-bottom: 0;
+  white-space: nowrap;
 
   @media (--dark) {
     border-bottom-color: var(--dark-yellow);
