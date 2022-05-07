@@ -5,6 +5,10 @@ permalink: "/{{ title | slug }}/"
 
 {% import "organisms/newsletter.njk" as  newsletter with context %}
 
+{% if modifier %}
+  {% set modifier = '-' ~ modifier %}
+{% endif %}
+
 {% set pageClass = type | lower | plural %}
 {% set date = page.date %}
 {% set draft = type == 'Draft' %}
@@ -12,11 +16,11 @@ permalink: "/{{ title | slug }}/"
 {% set game = type == 'Game' %}
 {% set resource = type == 'Resource' %}
 
-<section class="post _container {{ pageClass }}">
+<section class="post _container {{ pageClass }} {{ modifier }}">
   <header class="post-header">
     <div class="post-meta">
       {%- if type -%}
-        <a class="-underline-hover _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+        <a class="-underline-hover _label-sans" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
           {{ type }}
         </a>
       {%- endif -%}
@@ -37,7 +41,13 @@ permalink: "/{{ title | slug }}/"
       {{ title }}
     </h1>
 
-    {%- if tags -%}
+    {%- if lede -%}
+      <p class="post-lede _text-h4">
+        {{ lede }}
+      </p>
+    {%- endif -%}
+
+    {%- if tags.length > 1 -%}
       <div class="post-tags">
         {%- for tag in tags | filterTagList -%}
           <div class="post-tag">

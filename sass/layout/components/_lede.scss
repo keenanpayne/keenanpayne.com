@@ -1,0 +1,22 @@
+//
+// Lede
+// ==================================================
+
+.lede { 
+  @include h3;
+  
+  grid-column: 1 / -1;
+  padding: 2.25rem 1.5rem 0;
+
+  @media (--min-720) { 
+    padding: 5rem 5rem 3rem 3rem;
+  }
+
+  @media (--min-960) { 
+    grid-column: 2 / span 8;
+  }
+
+  @media (--min-1120) { 
+    grid-column: 5 / -1;
+  }
+}

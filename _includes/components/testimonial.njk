@@ -1,0 +1,10 @@
+<blockquote class="testimonial">
+  <p class="testimonial-text _type-my-voice _text-h3">
+    <span>{{ section.text }}</span>
+  </p>
+
+  {% if section.author %}
+    <cite class="testimonial-cite">
+      <span class="testimonial-author">{{ section.author }}{% if section.author_position %},</span> <span class="testimonial-position _text-h6">{{ section.author_position }}</span>{% endif %}</cite>
+  {% endif %}
+</blockquote>

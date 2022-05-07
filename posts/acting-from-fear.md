@@ -2,10 +2,10 @@
 permalink: '/acting-from-fear/'
 title:  'Acting out of fear'
 meta:
-  description: 'An ongoing refrain for my self-reflection practice is the idea of "purposeful behavior." Reflecting on what underpins my behavior (e.g., thoughts, actions, motivations, emotions, desires, etc.) helps bridge the gap between my authentic self and my behavior.'
+  description: 'Reflecting on what underpins my behavior—thoughts, actions, motivations, emotions, and desires—in an attempt to bridge the gap between my authentic self and my behavior.'
   image: '/images/posts/mirror/mirror.jpg'
   image_alt: 'Public domain image of theatrical people looking in mirror'
-lede: An ongoing refrain for my self-reflection practice is the idea of "purposeful behavior." Reflecting on what underpins my behavior (e.g., thoughts, actions, motivations, emotions, desires, etc.) helps bridge the gap between my authentic self and my behavior.
+lede: 'Reflecting on what underpins my behavior—thoughts, actions, motivations, emotions, and desires—in an attempt to bridge the gap between my authentic self and my behavior.'
 type: Reflection
 date: 2022-01-17
 tags:

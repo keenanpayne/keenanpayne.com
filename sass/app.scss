@@ -4,6 +4,7 @@
 
 // External
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300;1,400;1,700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://rsms.me/inter/inter.css');
 
 // Settings
 @import "settings/custom-media";
@@ -24,7 +25,6 @@
 
 // Elements
 @import "elements/body";
-@import "elements/blockquote";
 @import "elements/button";
 @import "elements/code";
 @import "elements/figure";
@@ -46,6 +46,7 @@
 @import "layout/atoms/tag";
 
 // Components
+@import "layout/components/blockquote";
 @import "layout/components/codepen";
 @import "layout/components/comments";
 @import "layout/components/context";
@@ -55,11 +56,13 @@
 @import "layout/components/hello";
 @import "layout/components/highlight";
 @import "layout/components/large-text";
+@import "layout/components/lede";
 @import "layout/components/mailbox";
 @import "layout/components/missionStatement";
 @import "layout/components/newsletter";
 @import "layout/components/postNav";
 @import "layout/components/sideBySide";
+@import "layout/components/testimonial";
 
 // Global
 @import "layout/global/footer";

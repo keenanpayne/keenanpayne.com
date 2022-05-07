@@ -23,11 +23,27 @@
 }
 
 .header-logo {
+  font-size: 1.563rem;
+  font-weight: var(--font-weight-heavy);
+  letter-spacing: -0.045em;
+  line-height: 0.8;
   margin-bottom: 0;
   margin-top: 0;
 
+  @media (--min-720) { 
+    font-size: 1.953rem;
+  }
+
   // Descendants
-  :link:not(:hover) {
+  a {
     text-decoration: none;
+
+    &:hover {
+      color: var(--exodus-fruit);
+
+      @media (--dark) {
+        color: var(--yellow-dark);
+      }
+    }
   }
 }
