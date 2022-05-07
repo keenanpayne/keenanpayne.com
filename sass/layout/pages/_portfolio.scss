@@ -3,6 +3,8 @@
 // ==================================================
 // TODO: Create generic abstractions for similarities with `_services.scss`
 
+
+
 .portfolio { 
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -51,7 +53,15 @@
   grid-column: 1 / -1;
   padding-left: .25rem;
 
+  @media (--min-640) {
+    grid-column: 1 / span 8;
+  }
+
   @media (--min-960) {
+    grid-column: 1 / span 5;
+  }
+
+  @media (--min-1120) {
     grid-column: 1 / span 3;
   }
 }
@@ -60,18 +70,35 @@
   --border-color: var(--exodus-fruit);
 
   flex-basis: 50%;
-  padding-bottom: 1.5rem;
 
+  
   @media (--dark) {
     --border-color: var(--yellow-dark);
   }
-
+  
   @media (--min-960) {
-    padding-bottom: 2.25rem;
+    padding-right: 1.5rem
   }
 
-  &:first-of-type {
+  &:not(:last-of-type) {
+    padding-bottom: 1.5rem;
+
+    @media (--min-960) {
+      padding-bottom: 2.25rem;
+    }
+  }
+
+  // Modifiers
+  &.-full-width {
     flex-basis: 100%;
+
+    @media (--min-960) {
+      padding-right: 3rem;
+    }
+
+    @media (--min-1120) {
+      padding-right: 0;
+    }
   }
 
   // Descendants
@@ -79,52 +106,76 @@
     &:first-of-type {
       margin-bottom: .25rem;
     }
-  }
 
-  // Modifiers
-  &.-full-width {
-    flex-basis: 100%;
-  }
-
-  &.-year {
-    flex-basis: 20%;
-  }
-
-  &.-services {
-    flex-basis: 80%;
-
-    // Descendants
-    ul {
-      margin: 0;
-      padding: 0;
+    &:last-of-type {
+      max-width: 55ch;
     }
+  }
 
-    li {
-      display: inline-block;
-      list-style-type: none;
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 
-      &:not(:last-of-type) {
-        &::after {
-          content: ','
-        }
+  li {
+    display: inline-block;
+    list-style-type: none;
+
+    &:not(:last-of-type) {
+      &::after {
+        content: ','
       }
     }
   }
 }
 
 .portfolio-cover {
-  align-self: center;
   grid-column: 1 / -1;
+  margin-top: 1.5rem;
   width: 100%;
   
   @media (--min-960) {
-    grid-column: 5 / -1;
+    grid-column: 6 / -1;
     padding-right: 1.5rem;
+  }
+
+  @media (--min-1120) {
+    grid-column: 5 / -1;
   }
 }
 
 .portfolio-cover-img {
   box-shadow: 10px 10px var(--exodus-fruit);
+
+  @media (--min-960) {
+    box-shadow: 15px 15px var(--exodus-fruit);
+  }
+}
+
+.portfolio-intro {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-gap: 3rem;
+  padding: 3rem 1.5rem;
+
+  @media (--min-960) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (--min-1120) {
+    padding: 5rem 3rem;
+  }
+
+  @media (--min-1440) {
+    padding-bottom: 6.5rem;
+    padding-top: 6.5rem;
+  }
+}
+
+.portfolio-intro-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50ch;
 }
 
 .portfolio-content { 
@@ -135,4 +186,26 @@
 
 .portfolio-subcontent { 
   grid-column: 1 / -1;
+}
+
+.portfolio-cta {
+  background-color: var(--yellow-dark);
+
+  @media (--dark) {
+    background-color: var(--exodus-fruit);
+  }
+}
+
+.portfolio-cta-content {
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+}
+
+.portfolio-cta-title {
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+.portfolio-cta-description {
+  max-width: 35ch;
 }
