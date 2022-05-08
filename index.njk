@@ -1,10 +1,34 @@
 ---
+hello: false
 layout: layouts/home.njk
 
 sections: 
   entries:
     read_Link: false
 ---
+
+{# TODO: Turn this into a proper component #}
+<section class="intro">
+  <img class="intro-image" src="/images/profile.jpg" alt="Picture of me (Keenan)" />
+
+  <div class="intro-content">
+    <h2 class="intro-title">
+      Hey, I'm Keenan <span class="wave">👋🏻</span>
+    </h2>
+
+    <p class="_text-h4">
+      By trade, I'm a freelance web developer with over 13 years of experience.
+    </p>
+
+    <p>
+      I love learning and sharing with the world. You'll find projects, reflections, learnings, and more shared through my writing and creative practices on this website.
+    </p>
+
+    <p>
+      <a href="/about">More on About page</a>
+    </p>
+  </div>
+</section>
 
 {% import "organisms/entries/entries.njk" as entries with context %}
 {% import "organisms/mission/mission.njk" as mission with context %}
