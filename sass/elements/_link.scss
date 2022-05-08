@@ -7,17 +7,26 @@
 // ------
 
 @mixin linkHoverBackground() {
+  --link-border: var(--gray-darkest-1);
+
   text-decoration: underline;
-  text-decoration-color: var(--gray-darkest);
+  text-decoration-color: var(--link-border);
+
+  @media (--dark) { 
+    --link-border: var(--gray-lighter);
+  }
   
-  &:hover { 
-    background-color: var(--plum-dark);
-    color: var(--white);
+  &:hover {
+    --link-background: var(--plum-dark);
+    --link-color: var(--white);
+
+    background-color: var(--link-background);
+    color: var(--link-color);
     text-decoration: none;
 
     @media (--dark) { 
-      background-color: var(--gray-light);
-      color: var(--plum-dark);
+      --link-background: var(--gray-light);
+      --link-color: var(--plum-dark);
     }
   }
 }
@@ -38,15 +47,19 @@ a[href] {
   }
 
   @media (--dark) {
-    --link-color: var(--gray-white);
+    --link-color: var(--gray-lighter);
     --link-color-hover: var(--gray-light);
   }
 
-  p & {
-    @include linkHoverBackground();
+  // Modifiers
+  &.-inverted { 
+    --link-color: var(--gray-lighter);
+
+    @media (--dark) {
+      --link-color: var(--plum-dark);
+    }
   }
 
-  // Modifiers
   &.-underline-hover { 
     text-decoration: none;
 
@@ -56,6 +69,26 @@ a[href] {
   }
   
   &.-hover-background {
+    @include linkHoverBackground();
+  }
+
+  &.-highlight {
+    --link-background: var(--light-pink);
+
+    background-color: var(--link-background);
+    margin: auto -0.05em;
+    padding: 0.05em 0.225em;
+    position: relative;
+    text-decoration: none;
+    transition: box-shadow var(--transition);
+
+    @media (--dark) { 
+      --link-background: var(--heliotrope);
+    }
+  }
+
+  // Context-specific
+  p & {
     @include linkHoverBackground();
   }
 }

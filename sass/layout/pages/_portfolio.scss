@@ -160,13 +160,10 @@
 
   @media (--min-960) {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (--min-1120) {
     padding: 5rem 3rem;
   }
 
-  @media (--min-1440) {
+  @media (--min-1120) {
     padding-bottom: 6.5rem;
     padding-top: 6.5rem;
   }
