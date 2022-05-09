@@ -27,7 +27,12 @@
     }
   }
 
-  @media (--dark) {
+
+  //
+  // Dark Mode
+  // ---------
+
+  &.-dark-mode {
     --root-background-start: var(--plum-light);
     --root-background-end: var(--plum-dark);
   }
