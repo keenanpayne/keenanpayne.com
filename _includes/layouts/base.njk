@@ -1,8 +1,7 @@
 <!--
 
-✌🏻
-Interested in viewing the full source code?
-Check it out on GitHub.
+Interested in the chaos behind this magic?
+Check it out on GitHub ✌🏻
 https://github.com/keenanpayne/keenanpayne.com
 
 -->
@@ -27,6 +26,28 @@ https://github.com/keenanpayne/keenanpayne.com
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
 
     {% include "globals/meta.njk" %}
+
+    <script type="module" src="https://unpkg.com/dark-mode-toggle"></script>
+
+    <script>
+      // Interaction for <dark-mode-toggle>
+      // Ref: https://github.com/GoogleChromeLabs/dark-mode-toggle
+      document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.querySelector('dark-mode-toggle');
+        const root = document.documentElement;
+        const className = '-dark-mode';
+        const mode = 'dark';
+
+        // Set or remove the `dark` class the first time.
+        toggle.mode === mode ? root.classList.add(className) : root.classList.remove(className);
+
+        // Listen for toggle changes (which includes `prefers-color-scheme` changes)
+        // and toggle the `dark` class accordingly.
+        toggle.addEventListener('colorschemechange', () => {
+          root.classList.toggle(className, toggle.mode === mode);
+        });
+      });
+    </script>
   </head>
   <body>
     <header class="header">
@@ -49,6 +70,15 @@ https://github.com/keenanpayne/keenanpayne.com
               </a>
             </li>
           {%- endfor -%}
+
+          <li class="nav-item -dark-mode">
+            <dark-mode-toggle
+              id="dark-mode-toggle-1"
+              mode="light"
+              appearance="toggle"
+              permanent
+            ></dark-mode-toggle>
+          </li>
         </ul>
       </div>
     </header>

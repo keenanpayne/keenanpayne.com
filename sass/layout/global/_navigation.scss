@@ -1,4 +1,4 @@
-//
+fnav-i//
 // Navigation
 // ==================================================
 
@@ -30,6 +30,11 @@
 
     @media (--min-640) { 
       margin-left: 1.5rem;
+    }
+
+    // Modifiers
+    &.-dark-mode {
+      vertical-align: middle;
     }
   }
   
