@@ -11,6 +11,11 @@
   animation-delay: 2.5s;
   transform-origin: 70% 70%;
   display: inline-block;
+
+  // Modifiers
+  &.-finite {
+    animation-iteration-count: 3;
+  }
 }
 
 @keyframes wave-animation {
