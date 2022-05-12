@@ -25,7 +25,6 @@
 
 .post-header {
   margin-bottom: 1.5rem;
-  padding-right: .5rem;
 }
 
 .post-footer { 
@@ -46,7 +45,7 @@
 }
 
 .post-lede {
-  margin-top: .5rem;
+  margin-top: .75rem;
   
   // Context-specific
   & + .post-tags {
@@ -110,13 +109,13 @@
   }
   
   h2 { 
-    margin-bottom: .75rem;
+    margin-bottom: 1rem;
     margin-top: 3rem;
   }
   
   h3 { 
     margin-bottom: 1rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
   }
   
   h2 + h3 { 
