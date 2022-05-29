@@ -1,0 +1,39 @@
+//
+// Porfolio Grid
+// ==================================================
+
+.portfolioGrid {
+  grid-column: 1 / -1;
+  position: relative;
+
+  // Grid Layout
+  &.-two-col {
+    .portfolioGrid-item {
+      @media (--min-640) {
+        grid-column: auto / span 3;
+      }
+    }
+  }
+
+  &.-three-col {
+    .portfolioGrid-item {
+      @media (--min-640) {
+        grid-column: auto / span 3;
+      }
+    
+      @media (--min-1120) {
+        grid-column-end: span 2;
+      }
+    }
+  }
+}
+
+.portfolioGrid-items {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.portfolioGrid-item {
+  grid-column: 1 / -1;
+}

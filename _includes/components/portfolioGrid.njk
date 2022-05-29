@@ -1,0 +1,52 @@
+{# Component Settings #}
+{% set project = section.project %}
+{% set name = section.name %}
+{% set items = section.items %}
+{% set query = portfolio[project].dribbble %}
+
+{# Markup #}
+{%- if items -%}
+  <div class="portfolioGrid {{ section.modifier }}">
+    <div class="portfolioGrid-items">
+      {%- for item in items -%}
+        {% set res = query[item] %}
+        {% set video = res.video %}
+        {% set image = res.image %}
+        {% set title = res.title %}
+        {% set description = res.description %}
+        {% set link = res.link %}
+
+        <div class="portfolioGrid-item">
+          {# TODO: Lazy-load asset and host on an asset management platform #}
+          {%- if video -%}
+            <video muted controls src="{{ video }}"></video>
+          {%- endif -%}
+
+          {%- if image -%}
+            <img src="{{ image }}" alt="{{ title }}" />
+          {%- endif -%}
+
+          {% if title %}
+            <h3 class="_text-h4">
+              {{ title }}
+            </h3>
+          {% endif %}
+
+          {% if description %}
+            <p class="_text-h6">
+              {{ description }}
+            </p>
+          {% endif %}
+
+          {% if link %}
+            <p>
+              <a href="{{ link }}" target="_blank" rel="noopener">
+                View on Dribbble
+              </a>
+            </p>
+          {% endif %}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}

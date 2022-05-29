@@ -15,7 +15,8 @@ case_study:
   client: 'GoFundMe'
   client_size: '201 to 500'
   client_industry: 'Fundraising'
-  client_description: "Who hasn't heard of GoFundMe? They're the most popular personal fundraising website in the world and have helped facilitate $9 billion in fundraising for personal causes."
+  client_lede: "Building a content hub to highlight people who are making a difference."
+  client_description: "Who hasn't heard of GoFundMe? They're the <em>most popular</em> personal fundraising website in the world and have helped facilitate <strong>$9 billion</strong> in fundraising for personal causes."
   client_color: '#940060'
   project: 'Heroes content portal'
   year: 2019
@@ -24,12 +25,6 @@ case_study:
   the_client: 'The marketing team at GoFundMe wanted to highlight standout projects from "heroes" on the platform.'
   the_challenge: 'Working within an existing WordPress codebase, I had to extend post taxonomies to support the editorial format for heroes content while building a new user interface.'
   the_solution: 'I worked with web engineers at the company to learn the ins and outs of the codebase while designing a solution. I leveraged existing technologies and paradigms to build a seamless extension to the existing content editing workflow.'
-  credits: 
-    - name: Kelsea Little
-      role: Project Manager
-    - name: Tony Mingo
-      role: Design
-      url: https://tonymingo.com/
   services: 
     - Web Development
   technologies:
@@ -45,17 +40,24 @@ sections:
     project: gofundme
     person: 1
     quote: 1
-  - type: dribbble
-    modifier: '-three-col'
+  - type: portfolioGrid
+    project: gofundme
+    modifier: '-two-col'
     items: 
-      - type: video
-        src: https://cdn.dribbble.com/users/133571/screenshots/11292376/media/331109413b0560fa3ed2c40f6c83be5f.mp4
-      - type: video
-        src: https://cdn.dribbble.com/users/133571/screenshots/11115406/media/3c4d4eab4d97a0f1fc62dd780d8cf37a.mp4
-      - type: video
-        src: https://cdn.dribbble.com/users/133571/screenshots/11115360/media/5c18910360eb6df31476335f6a7f54d3.mp4
-      - type: image
-        src: https://cdn.dribbble.com/users/133571/screenshots/11115393/media/07eed17452f1dfcd19730c56fed69342.png?compress=1&resize=1200x900&vertical=top
-      - type: image
-        src: https://cdn.dribbble.com/users/133571/screenshots/11115383/media/5e005b82099d17a6c7edf1ae22aa3418.png
+      - 4
+      - 1
+  - type: testimonial
+    project: gofundme
+    person: 2
+    quote: 1
+  - type: portfolioGrid
+    project: gofundme
+    modifier: '-two-col'
+    items: 
+      - 2
+      - 3
+  - type: testimonial
+    project: gofundme
+    person: 1
+    quote: 2
 ---

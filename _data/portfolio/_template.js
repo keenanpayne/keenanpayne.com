@@ -8,5 +8,13 @@ module.exports = {
         ""
       ],
     }
+  },
+  dribbble: {
+    [1]: {
+      link: "",
+      video_source: "",
+      title: "",
+      description: "",
+    }
   }
 }

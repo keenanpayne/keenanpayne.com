@@ -8,6 +8,7 @@ permalink: "/{{ title | slug }}/"
 
 {% set date = page.date %}
 {% set client = case_study.client %}
+{% set client_lede = case_study.client_lede %}
 {% set client_size = case_study.client_size %}
 {% set client_industry = case_study.client_industry %}
 {% set client_description = case_study.client_description %}
@@ -36,6 +37,10 @@ permalink: "/{{ title | slug }}/"
     <h1 class="portfolio-title">
       {{ title }}
     </h1>
+
+    <h2 class="portfolio-lede _text-h3">
+      {{ client_lede }}
+    </h2>
   </header>
 
   <div class="portfolio-content">
@@ -44,7 +49,7 @@ permalink: "/{{ title | slug }}/"
       {% if client_description %}
         <div class="portfolio-detail -full-width">
           <p class="_label">Description</p>
-          <p>{{ client_description }}</p>
+          <p>{{ client_description | safe }}</p>
         </div>
       {% endif %}
 
