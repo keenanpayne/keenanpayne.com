@@ -4,6 +4,7 @@
 {% set quote = section.quote %}
 {% set query = testimonials[project].people[person] %}
 
+{# Markup #}
 <blockquote class="testimonial">
   <p class="testimonial-text _type-my-voice _text-h3">
     <span>{{ query.quotes[quote] | safe }}</span>
