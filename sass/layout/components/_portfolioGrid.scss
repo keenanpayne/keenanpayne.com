@@ -37,3 +37,15 @@
 .portfolioGrid-item {
   grid-column: 1 / -1;
 }
+ 
+.portfolioGrid-linkIcon {
+  margin-left: .5rem;
+  max-width: 18px;
+  vertical-align: sub;
+
+  > path {
+    @media (--dark) {
+      fill: white;
+    }
+  }
+}
