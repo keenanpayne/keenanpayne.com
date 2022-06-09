@@ -8,6 +8,7 @@
 
 @mixin linkHoverBackground() {
   text-decoration: underline;
+  text-decoration-thickness: .125em;
   text-decoration-color: var(--gray-darkest);
   
   &:hover { 

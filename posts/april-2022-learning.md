@@ -41,7 +41,9 @@ I greatly appreciate Nicky's vulnerability and honesty as she shares her experie
 
 ## Book: [The Icarus Deception](https://www.indiebound.org/book/9781591846079)
 
-I'm a big fan of Seth Godin. I regularly enjoy [his blog](https://seths.blog/), where he publishes wonderfully concise thoughts and reflections daily. I've also enjoyed countless books that he's written.
+I'm a big fan of Seth Godin. I regularly enjoy [his blog](https://seths.blog/), where he publishes wonderfully concise thoughts and reflections daily. I've also enjoyed countless books that he's written. [^1]
+
+[^1]: Big thanks to my BFF [Jon Horiel](https://jonathanhoriel.com) for introducing me to Seth Godin and countless other authors and books over the years. 
 
 In his book, The Icarus Deception, Seth expounds on the purpose and utility of art in the modern world. He challenges the reader to view whatever work we do as art and why such a framing is essential for succeeding in the modern creative economy. 
 
