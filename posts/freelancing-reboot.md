@@ -4,29 +4,34 @@ title:  'Rebooting'
 type: Article
 date: 2022-06-06
 meta: 
-  description: 
+  description: 'Details from my six-month sabbatical and how I lowered my stress, eased my anxiety, and re-oriented my life and career.'
   image: '/images/posts/'
   image_alt: ''
-lede: 
-series: 
+lede: Details from my six-month sabbatical and how I lowered my stress, eased my anxiety, and re-oriented my life and career.
 tags: 
+  - Life Updates
 ---
 
 I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/) to ease some underlying anxiety and stress I've been experiencing in my life. Now I'm back and ready to share what I've been up to and where things are headed in my life.
 
 ## Global stress
 
-Things have been stressful recently. Hasn't life been stressful for everyone&hellip;always? I'm certainly not unique in thi regard.
+Things have been stressful recently. Hasn't life been stressful for everyone&hellip;always? I'm certainly not unique in this regard.
 
-But my relationship with stress and the ways I experience it have changed as I've gotten older. It feels like there are **so many** things to be constantly stressed about.
+My  relationship with stress has changed a lot as I've gotten older. It feels like there are **so many** things to be constantly stressed about.
 
-We're combatting *countless* global emergencies, our politics is rife our with corruption, we're riding an oppressing wave of late-stage capitalism, and we're collectively destroying the only planet we have to inhabit. Yay.
+- We're combatting *countless* global emergencies
+- Politics are rife with corruption
+- We're riding an oppressing wave of late-stage capitalism
+- We're collectively destroying the only planet we have to inhabit. 
+
+Yay.
 
 I call this "global stress", since these stressers aren't contained to just my life. These are something we are all experiencing together.
 
 ## Local stress
 
-Atop the global stress is the local stress. These are the stressers that are generally contained to me and those who I'm closest to.
+Atop the global stress is the local stress, which are stressers that are generally contained to my life and relationships.
 
 I began [freelancing in 2019](/goodbye-asana-hello-freelancing/) and hit the ground running. I had clients as far as the eye can see. And I capitalized on it big time.
 
@@ -69,7 +74,7 @@ I did a lot during my six months away from work:
 
 This was all tremendously beneficial. My anxiety reduced dramatically, though it remains an ongoing battle. My body felt better. I felt more connected with myself and the world. I felt re-energized and motivated again. 
 
-**I'm so incredibly grateful I'm privilged enough to be able to take a six month sabbatical 🙏🏻**
+**I'm so incredibly grateful I'm privilged enough to be able to take a six-month sabbatical 🙏🏻**
 
 ## Gaining clarity
 
