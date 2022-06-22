@@ -10,19 +10,6 @@
   --toc-text-decoration: var(--gray-darker);
   --toc-link-hover-color: var(--exodus-fruit);
   --toc-link-hover-decoration: var(--plum-dark);
-
-  @media (--min-960) { 
-    --toc-background: transparent;
-  }
-
-  @media (--dark) and (--min-960) {
-    --toc-heading-border: var(--yellow-dark);
-    --toc-heading-color: var(--white);
-    --toc-link-color: var(--white);
-    --toc-text-decoration: var(--gray-dark);
-    --toc-link-hover-color: var(--gray-lightish);
-    --toc-link-hover-decoration: var(--yellow-dark);
-  }
 }
 
 .toc { 
@@ -30,17 +17,8 @@
   border-radius: 3px;
   box-shadow: var(--shadow);
   margin-bottom: 1.5rem;
+  margin-top: 1.75rem;
   padding: 0.75rem 1rem 1rem;
-  
-  @media (--min-960) {
-    box-shadow: none;
-    border-radius: 0;
-    bottom: 1rem;
-    left: 1rem;
-    margin-bottom: 0;
-    padding: 0;
-    position: fixed;
-  }
 
   @media (--min-1120) {
     bottom: 1.5rem;
@@ -72,10 +50,6 @@
 
   li { 
     @include text-small;
-
-    &:not(:first-of-type) { 
-
-    }
   }
 
   a { 
@@ -86,11 +60,5 @@
       color: var(--toc-link-hover-color);
       text-decoration-color: var(--toc-link-hover-decoration);
     }
-  }
-}
-
-.toc-nav { 
-  @media (--min-960) {
-    max-width: 15ch;
   }
 }
