@@ -16,8 +16,8 @@
   {%- endif -%}
 {% endmacro %}
 
-{# Books #}
-{% macro book(entry) %}
+{# Media #}
+{% macro media(entry) %}
   {{ entries.postImage(entry) }}
   {{ entries.postHeader(entry) }}
 
@@ -94,8 +94,8 @@
 
             <div class="entries-item-content">
               {# Books are treated special #}
-              {%- if type == 'Book' -%}
-                {{ book(post) }}
+              {%- if type == 'Book' or type == 'Game' -%}
+                {{ media(post) }}
               {%- elif type == 'Portfolio' -%}
                 {{ portfolio(post) }}
               {%- else -%}

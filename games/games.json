@@ -1,0 +1,5 @@
+{
+  "layout": "layouts/post.njk",
+  "type": "Game",
+  "long_form": "Game Review"
+}
