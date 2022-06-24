@@ -77,6 +77,12 @@ permalink: "/{{ title | slug }}/"
       <img class="post-imageBook" src="{{ cover }}" alt="{{ title }}" />
     {%- endif -%}
 
+    {% if toc != false %}
+      <aside class="toc">
+        {{ content | toc | safe }}
+      </aside>
+    {% endif %}
+
     {{ content | safe }}
   </div>
 

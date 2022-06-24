@@ -16,16 +16,16 @@
   color: initial;
   display: none;
   height: 32px;
-  left: .5rem;
   overflow: hidden;
   position: fixed;
+  right: .5rem;
   transition: all var(--transition-long) cubic-bezier(0.4, 0.0, 0.2, 1);
   transform: translateY(calc(100% + 1.5rem));
   width: 130px;
   -webkit-tap-highlight-color: transparent;
 
   @media (--dark) {
-    --hello-background: var(--yellow-dark);
+    --hello-background: var(--gray-lighter);
   }
 
   @media (--min-320) { 
@@ -34,12 +34,12 @@
 
   @media (--min-720) { 
     bottom: 1rem;
-    left: 1rem;
+    right: 1rem;
   }
 
-  @media (--min-960) { 
+  @media (--min-1120) { 
     bottom: 1.5rem;
-    left: 1.5rem;
+    right: 1.5rem;
   }
 
   // Expanded and Contracted
