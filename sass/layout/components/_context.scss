@@ -29,7 +29,7 @@ p {
 
     // Context label
     &::before {
-      @extend ._text-smaller;
+      @extend ._text-small;
 
       background-color: var(--border);
       border-bottom-right-radius: 3px;
@@ -38,6 +38,7 @@ p {
       font-weight: var(--font-weight-bold);
       font-variant: all-small-caps;
       left: 0;
+      letter-spacing: .03em;
       line-height: 1;
       padding: .25rem .5rem;
       position: absolute;
@@ -45,6 +46,16 @@ p {
     }
 
     // Descendants
+    a {
+      // Overriding default linkHoverBackground() styles
+      // to improve readability
+      @media (--dark) {
+        --link-text-decoration: var(--exodus-fruit);
+        --link-hover-background: var(--exodus-fruit);
+        --link-hover-color: var(--white);
+      }
+    }
+
     span:not(.icon) { 
       display: block;
       max-width: 95%;
@@ -96,7 +107,7 @@ p {
     &.-question { 
       --border: var(--exodus-fruit);
       --background: var(--gray-lighter);
-      --text: 'Questions';
+      --text: 'Question';
       --color: var(--plum-dark);
     
       color: var(--color);
