@@ -18,8 +18,10 @@ I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/)
 
 My relationship with stress has changed *a lot* as I've gotten older. The more responsibilities I've gained and the better I understand the world, the more stressed I've become.
 
-This undercurrent of stress has made me feel more anxious and uneasy in my day-to-day life. My capacity for optimism has slowly dwindled as I feel a greater weight on my shoulders and view the world through a more critical lens.
+This undercurrent of stress has made me feel more anxious and uneasy in my day-to-day life. My capacity for optimism has slowly dwindled as I feel a greater weight on my shoulders and view the world through a more nuanced and critical lens. [^1]
 
+[^1]: Knowledge is power?
+  
 Paradoxically, the older I've gotten, the *better* my life has objectively become. I have a successful career, I met the love of my life, I've made lots of money, I have a lot of freedom and autonomy in my day-to-day life, and so much more. 
 
 So why the stress?
@@ -30,7 +32,9 @@ So why the stress?
 
 To reduce my stress, I needed to understand it. I eventually filtered my stress into two buckets, "global stress" and "local stress".
 
-Global stress includes stressors we're all experiencing together such as:
+#### Global stress
+
+Global stress we experience together:
 
 - *Countless* global emergencies (e.g., climate change, pandemics, war)
 - Corrupt politics
@@ -38,7 +42,19 @@ Global stress includes stressors we're all experiencing together such as:
 - Destroying the only planet we have to inhabit
 - Income inequality
 
-Local stress includes stressors generally contained to my life and relationships:
+{% include type/note.html content: 'With global stress, I feel like I have little control over the outcome of my actions.' %}
+
+There's only so much one person can do to improve the state of global stressors 🤷🏻‍♂️ 
+
+I do what I can through political activism, awareness, and volunteering, but I'm a tiny piece of a massive puzzle.
+
+I'm trying to stay productively focused on global issues while not letting them overrun my life.
+
+#### Local stress
+
+I spent a significant amount of my time during my sabbatical reflecting on my local stressors.
+
+Local stress is contained to my life and relationships:
 
 - My career
 - Financial wellbeing
@@ -48,17 +64,19 @@ Local stress includes stressors generally contained to my life and relationships
 - Personal satisfaction
 - Work/life balance
 
-There's only so much one person can do to improve the state of global stressors. I do what I can through political activism, awareness, and volunteering, but I'll no longer allow mindless doomscrolling and YouTube binges. 
+{% include type/note.html content: 'With local stress, I feel empowered to change my circumstances however I prefer.' %}
 
-The real work was understanding and alleviating my local stressors, the most significant of which was my relationship with my career and money.
+I wanted to bring all of these into focus and understand how I could reduce my anxiety and improve my day-to-day happiness. 
+
+The local stressors I focused on were my relationship with *my career* and *money*. 
 
 ## The freelancing grind
 
-After returning to [freelancing in 2019](/goodbye-asana-hello-freelancing/), I had clients as far as the eye can see. This was largely due to the extensive network of folks I met while working at Asana and elsewhere during my career.
+After returning to [freelancing in 2019](/goodbye-asana-hello-freelancing/), I had clients as far as the eye can see. This was thanks to the extensive network of friends and colleagues I met during my first decade working. This included many folks from Asana, as well as previous clients I'd worked with over the years.
 
 I accepted client after client, juggling multiple projects at once. On average, I launched a client project every 36 days! 
 
-To make my life easier—since I had deliberately made it *harder* by accepting so many clients—I hired some buddies as contractors to help.
+To make my life easier—since I had deliberately made it *harder* by accepting so many clients—I hired some buddies as contractors to help (shout to [Jamie](https://jaime.one) and Nels ✌️)
 
 {% include type/p_large.html, content: "Suddenly, I was not only a freelance web developer, but also a project manager and a people manager." %}
 
@@ -70,22 +88,28 @@ My increasingly anxious state made me resentful toward my life circumstances. In
 
 ## Burnout... again.
 
-The compounding negativity and anxiety I experienced led me to burnout.
+All of this led me to burnout.
 
-I won’t go deep into my experience with burnout in this post, but it’s something I want to talk about more in the future. Unfortunately, I’ve experienced severe burnout multiple times during my career and it sucks.
+I won’t go deep into my experience with burnout in this post, but it’s something I want to talk about more in the future. Unfortunately, I’ve experienced severe burnout a couple of times during my career. It sucks.
 
-{% include type/p_large.html, content: "Burnout is something that can happen to anyone in any profession at any time under any circumstances. It’s a serious problem." %}
+{% include type/p_large.html, content: "Burnout is something that can happen to anyone in any profession at any time under any circumstances. It’s a serious problem for folks experiencing it." %}
+
 
 Ultimately, I was battling negative feedback loops that impacted my ability to enjoy life: 
 
 - Mindlessly accepting too many client projects
 - Orienting my career and my contentment around money and wealth
-- Sticking to work that I could comfortably complete, rather than work that would push me to grow
+- Sticking to work that I could comfortably complete quickly, rather than work that would push me to grow
 
-What happens when you can't enjoy life? 
+I set myself up to succeed in some ways but fail in others. 
 
-You get burnt out.
+I was succeeding in things that were overwhelmingly stressful while failing in things that would be enjoyable and help reduce my stress.
 
+So I wasn't enjoying life.
+
+{% include type/question.html, content: 'Want to learn more Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>. [^2]' %}
+
+[^2]: If you're interested in web design, web development, and other adjacent topics, I highly recommend giving A List Apart a read. 
 ## Off the grind
 
 I needed time to decompress, so I took a sabbatical. It was time to prioritize my mental health and wellbeing above work and money.
@@ -97,15 +121,19 @@ I did a lot during my six months away from work:
 - I spent time engaged in intrinsically enjoyable activities such as writing, learning, reading, hiking, and creating (i.e., [my practices](/practices/)).
 - I remained intensely focused on addressing my chronic back pain through regular chiropractic sessions at [PostureWorks](https://posture-works.com/) and my daily yoga practice.
 
-This was all tremendously beneficial. My anxiety reduced dramatically, though it remains an ongoing battle. My body felt better. I felt more connected with myself and the world. I felt re-energized and motivated again. 
+This was all tremendously beneficial. 
 
-**I'm so incredibly grateful I'm privilged enough to be able to take a six-month sabbatical 🙏🏻**
+My anxiety has reduced dramatically, though it remains an ongoing battle. My body feels *much* better. I feel more connected with myself and the world. I feel re-energized and motivated.
+
+**I'm so grateful I was privilged enough to take a six-month sabbatical 🙏🏻**
 
 ## Gaining clarity
 
 I don’t hate web development, nor do I dislike using my skills as a web developer to build things for others. In fact, I love both of these things! It's why I wanted to become a web developer in the first place.
 
-What I hate are the __circumstances I created for myself__. Why I was working, how I was working, what I was working on, and who I was working with were not providing me with a healthy working environment.
+What I hate are the __circumstances I created for myself__. 
+
+Why I was working, how I was working, what I was working on, and who I was working with were not providing me with a healthy working environment.
 
 {% include type/question.html, content: "If I still love web development and I still enjoy building products with and for other people, how can I change my circumstances to avoid anxiety and burnout?" %}
 
@@ -113,17 +141,35 @@ Asking this question helped me _flip the script_.
 
 ### Too many client projects
 
-I realized that juggling multiple client projects and outsourcing development work isn’t my cup of tea. This requires way too much client, people, and project management. [^1]
+I realized that juggling multiple client projects and outsourcing development work isn’t my cup of tea. This requires way too much client, people, and project management. [^3]
 
-[^1]: To my credit, I think I've become a pretty decent manager in the past few years. But I don’t want to be a _manager_—I want to be a _developer_.
+[^3]: To my credit, I think I've become a pretty decent manager in the past few years. But I don’t want to be a _manager_—I want to be a _developer_.
 
-Why have I felt the need to accept so many client projects? What's wrong with working on a single project at a time? Is it because I think client projects are [scarce](/hello-scarcity-mindset/), and therefore I better feast while I can?
+#### Too many questions
 
-**How much is required for one to feast?**
+Why have I felt the need to accept so many client projects? 
 
-I'm not immediately interested in building a creative studio or managing anything larger than myself for the time being. This means I don't need to work multiple client projects. 
+What's wrong with working on a single project at a time? 
 
-Instead, I can work on a single project at a time that I'm passionate about and put 100% of my professional energy into it.
+Do I think client projects are [scarce](/hello-scarcity-mindset/), therefore I better feast while I can?
+
+How much is required to feast?
+
+---
+
+Questioning my actions helped me uncover my motives and predispositions. I learned more about myself and why I was on the path that I was on.
+
+I realized a few things:
+
+- I'm not immediately interested in building a creative studio or managing anything larger than myself.
+- I can afford to live working on a single project at a time.
+- I can always scale up if I want or need to.
+
+These realizations helped me decide to work on only a single project at a time.
+
+I can work on a project I'm passionate about and put 100% of my professional energy into it.
+
+That sounds great.
 
 ### Finding the right challenge
 
@@ -135,12 +181,19 @@ The problem with finding my groove is that my work became monotonous. Despite my
 
 After ten years of focusing my efforts building marketing websites, I decided it was time to change things up. Not only was I overwhelmed with the amount of work I had been doing before my sabbatical, but I was *overwhelmingly bored* with it.
 
-{% include type/p_large.html, content: "I want to reorient my career as a web developer. I want to sink my teeth into new technologies and solve new problems for different people." %}
+{% include type/p_large.html, content: "I want to reorient my career as a web developer by sinking my teeth into new technologies and problems." %}
 ## New work, new me.
 
-I turned my realizations into convictions as I redesigned my professional life. I felt ready to revive my career, but in a way that worked with me, not against me.
+I turned my realizations into convictions as I redesigned my professional life.
 
-**I will no longer optimize my career around the same type of work, simply because I’m good at it or because it pays well.**
+- I will no longer optimize my career around making the most money I possibly can.
+- I will no longer optimize my career around doing the same type of work because I can easily do it.
+- I will only accept client projects that challenge me in an interesting way.
+- I will only work with stakeholders who will be good collaborators and work *together*.
+
+Affirming these to myself helped me confront things that had been holding me back and gave me a guiding light to move forward.
+
+I suddenly felt ready to get back to work, but in a way that worked with me, not against me.
 
 And as luck would have it, shortly after I decided the path I wanted to take my professional career, the folks from [Stable Auto](https://stable.auto/) reached out about collaborating.
 
