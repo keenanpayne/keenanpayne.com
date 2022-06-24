@@ -1,0 +1,9 @@
+{% if toc != false %}
+  <details class="toc">
+    <summary class="toc-summary">
+      Table of Contents
+    </summary>
+
+    {{ content | toc | safe }}
+  </details>
+{% endif %}

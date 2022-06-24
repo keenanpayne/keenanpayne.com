@@ -16,8 +16,7 @@ module.exports = function(eleventyConfig) {
     tags: ['h2'],
     wrapper: 'nav',
     wrapperClass: 'toc-nav',
-    headingText: 'Table of Contents',
-    headingTag: 'h2'
+    headingText: '',
   });
 
   // https://www.11ty.dev/docs/data-deep-merge/
