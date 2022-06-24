@@ -3,14 +3,12 @@
 // ==================================================
 
 :root {
-  --root-background-start: var(--gray-light);
-  --root-background-end: var(--gray-dark);
+  --root-background: var(--gray-light);
 
   // S/O: https://www.css-gradient.com/
   // TODO: Contemplate if I want to add more color stops 
   //       to the background gradient to make it more dynamic
-  background: var(--root-background-start);
-  background: linear-gradient(to bottom right, var(--root-background-start), var(--root-background-end));
+  background: var(--root-background);
   color: var(--text-color);
   color-scheme: light dark;
   font-family: var(--font-family-base);
@@ -28,7 +26,6 @@
   }
 
   @media (--dark) {
-    --root-background-start: var(--plum-light);
-    --root-background-end: var(--plum-dark);
+    --root-background: var(--plum-mid);
   }
 }
