@@ -120,7 +120,7 @@
   }
 
   h4 { 
-    margin-bottom: .25rem;
+    margin-bottom: .5rem;
   }
 
   h5 {
@@ -184,6 +184,8 @@
   }
 
   hr { 
+    @include hr-fancy();
+
     & + p {
       margin-top: 1.5rem;
     }
