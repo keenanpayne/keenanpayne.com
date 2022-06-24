@@ -1,0 +1,64 @@
+//
+// Table of Contents
+// ==================================================
+
+:root { 
+  --toc-background: var(--gray-lighter);
+  --toc-heading-border: var(--exodus-fruit);
+  --toc-heading-color: var(--plum-dark);
+  --toc-link-color: var(--plum-dark);
+  --toc-text-decoration: var(--gray-darker);
+  --toc-link-hover-color: var(--exodus-fruit);
+  --toc-link-hover-decoration: var(--plum-dark);
+}
+
+.toc { 
+  background-color: var(--toc-background);
+  border-radius: 3px;
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+  margin-top: 1.75rem;
+  padding: 0.75rem 1rem 1rem;
+
+  @media (--min-1120) {
+    bottom: 1.5rem;
+    left: 1.5rem;
+  }
+
+  // Descendants
+  h2 { 
+    @extend ._label;
+
+    border-bottom: 1px solid var(--toc-heading-border);
+    color: var(--toc-heading-color);
+    line-height: 1.25;
+    // TODO: Fix overrides
+    margin-bottom: .75rem !important;
+    margin-top: 0 !important;
+  }
+
+  ol {
+    list-style-type: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 0;
+
+    ol { 
+      padding-left: 1em;
+    }
+  }
+
+  li { 
+    @include text-small;
+  }
+
+  a { 
+    color: var(--toc-link-color);
+    text-decoration-color: var(--toc-text-decoration);
+
+    &:hover { 
+      color: var(--toc-link-hover-color);
+      text-decoration-color: var(--toc-link-hover-decoration);
+    }
+  }
+}
