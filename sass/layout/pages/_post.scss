@@ -184,8 +184,6 @@
   }
 
   hr { 
-    @include hr-fancy();
-
     & + p {
       margin-top: 1.5rem;
     }
