@@ -51,9 +51,9 @@ Global stress we experience together:
 - Destroying the only planet we have to inhabit
 - Income inequality
 
-{% include type/note.html content: 'With global stress, I feel like I have little control over the outcome of my actions.' %}
+{% include type/note.html content: 'With global stress, I feel like I have little control over the outcome of my actions.', align: 'left' %}
 
-There's only so much one person can do to improve the state of global stressors 🤷🏻‍♂️ 
+There's only so much one person can do to improve the state of global stressors 🤷🏻‍♂️
 
 I do what I can through political activism, awareness, and volunteering, but I'm a tiny piece of a massive puzzle.
 
@@ -74,7 +74,7 @@ Local stress is largely contained to my life and relationships:
 - Personal satisfaction
 - Work/life balance
 
-{% include type/note.html content: 'With local stress, I feel empowered to change my circumstances however I prefer.' %}
+{% include type/note.html content: 'With local stress, I feel empowered to change my circumstances however I prefer.', align: 'right' %}
 
 I wanted to bring these into focus to understand how I could reduce my anxiety and improve my day-to-day happiness. 
 
