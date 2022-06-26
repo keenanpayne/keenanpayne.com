@@ -129,24 +129,22 @@ p {
     &.-note,
     &.-tip { 
       --border: var(--yellow-dark);
-      --background: var(--gray-lighter);
-      --text: 'Note';
-    
+      
       border-left: 3px solid var(--border);
       border-right: 3px solid var(--border);
       border-bottom: 3px solid var(--border);
-      color: var(--text-color);
-
-      @media (--dark) {
-        --background: var(--plum-light);
-      }
-
+      
       &::before {
         color: var(--plum-dark);
       }
     }
-
+    
     &.-note {
+      --background: var(--gray-lighter);
+      --text: 'Note';
+
+      color: var(--text-color);
+
       @media (--dark) {
         --background: var(--plum-dark);
       }
@@ -172,7 +170,7 @@ p {
       &.-right {
         @media (--min-640) {
           float: right;
-          margin-top: -7rem;
+          margin-top: -5rem;
           margin-left: 1.5rem;
           width: 250px;
         }
@@ -188,7 +186,10 @@ p {
     }
 
     &.-tip { 
+      --background: var(--yellow-light);
       --text: 'Tip';
+
+      color: var(--plum-dark);
     }
 
     &.-further-reading {

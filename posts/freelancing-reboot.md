@@ -12,9 +12,9 @@ tags:
   - Life Updates
 ---
 
-I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/) to ease some underlying anxiety and stress I've been experiencing. Taking some time off helped me decompress and reflect after being on the grind.
+I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/) to ease some underlying anxiety and stress I've been experiencing. Taking time off helped me decompress and reflect after being on the grind.
 
-I've been working since February and the client project is keeping me pretty busy. Not so busy that I couldn't get this published sooner, but oh well. My life updates are generally not-so-timely.
+I've been back to work since February and it's keeping me pretty busy. Not so busy that I couldn't get this published sooner, but oh well. My life updates are generally not-so-timely.
 
 Alright, let's get into what I've been up to and where I'm headed.
 
@@ -45,11 +45,12 @@ To reduce my stress, I needed to understand it. As I identified different stress
 
 Global stress we experience together:
 
-- *Countless* global emergencies (e.g., climate change, pandemics, war)
+- War
+- Global pandemics
+- Climate change
 - Corrupt politics
-- The oppressing wave of late-stage capitalism
-- Destroying the only planet we have to inhabit
 - Income inequality
+- The oppressing wave of late-stage capitalism
 
 {% include type/note.html content: 'With global stress, I feel like I have little control over the outcome of my actions.', align: 'left' %}
 
@@ -78,11 +79,13 @@ Local stress is largely contained to my life and relationships:
 
 I wanted to bring these into focus to understand how I could reduce my anxiety and improve my day-to-day happiness. 
 
-The local stressors I ended up focusing on were my relationship with *my career* and *money*. 
+The local stressors I focused on were my relationship with *my career* and *money*. 
 
 ## The freelancing grind
 
-After returning to [freelancing in 2019](/goodbye-asana-hello-freelancing/), I had clients as far as the eye can see. This was thanks to the extensive network of friends and colleagues I met during my first decade working. Among these were folks from Asana, as well as previous clients and collaborators I'd worked with over the years.
+After returning to [freelancing in 2019](/goodbye-asana-hello-freelancing/), I had clients as far as the eye can see. This was thanks to the extensive network of friends and colleagues I met during my first decade working.
+
+{% include type/tip.html content: 'Doing great work for great people pays off.' %}
 
 **I accepted client after client, juggling multiple projects at once. On average, I launched a client project every 36 days!**
 
