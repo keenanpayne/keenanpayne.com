@@ -12,9 +12,9 @@ tags:
   - Life Updates
 ---
 
-I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/) to ease some underlying anxiety and stress I've been experiencing in my life. This was *desperately* needed and I greatly enjoyed having some time to decompress and reflect.
+I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/) to ease some underlying anxiety and stress I've been experiencing. Taking some time off helped me decompress and reflect after being on the grind.
 
-I've actually been back to work since February. My new client project is keeping me pretty busy, though not so busy that I couldn't get this published sooner. Writing life updates always takes longer than expected, it seems.
+I've been working since February and the client project is keeping me pretty busy. Not so busy that I couldn't get this published sooner, but oh well. My life updates are generally not-so-timely.
 
 Alright, let's get into what I've been up to and where I'm headed.
 

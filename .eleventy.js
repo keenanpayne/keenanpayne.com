@@ -180,7 +180,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css");
 
   // Customize Markdown library and settings:
-  let markdownLibrary = markdownIt({
+  let markdown = markdownIt({
     html: true,
     breaks: false,
     linkify: true
@@ -188,7 +188,13 @@ module.exports = function(eleventyConfig) {
     permalink: markdownItAnchor.permalink.headerLink()
   }).disable('code').use(require('markdown-it-footnote')); // Addressing https://www.11ty.dev/docs/languages/markdown/#there-are-extra-and-in-my-output
 
-  eleventyConfig.setLibrary("md", markdownLibrary);
+  eleventyConfig.setLibrary("md", markdown);
+
+  markdown.renderer.rules.footnote_block_open = () => (
+    '<section class="footnotes">\n' +
+    '<h2 class="footnotes-heading _label">Footnotes</h2>\n' +
+    '<ol class="footnotes-list">\n'
+  );
 
   // Retrieve first image for post in collection
   // Ref: https://github.com/11ty/eleventy/issues/230
