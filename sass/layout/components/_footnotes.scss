@@ -18,8 +18,12 @@
   }
 }
 
-.footnote-item:not(:first-of-type) { 
-  margin-top: 1rem;
+.footnote-item {
+  font-size: var(--font-base);
+
+  &:not(:first-of-type) { 
+    margin-top: 1rem;
+  }
 }
 
 .footnote-ref { 

@@ -22,11 +22,14 @@
   --yellow-dark: #ffd466;
   --exodus-fruit: #686de0; // S/O https://flatuicolors.com/palette/au
 
-  // Fonts
+  // Font Families
   --font-family-base: 'Inter', -apple-system, system-ui, sans-serif;
   --font-family-base-var: 'Inter var', sans-serif;
   --font-family-serif: 'Merriweather', serif;
   --font-family-mono: 'Space Mono', Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+
+  // Font Sizes
+  --font-base: 1rem;
 
   // Font Weights
   --font-weight-lighter: 300;

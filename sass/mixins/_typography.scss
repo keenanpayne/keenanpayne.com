@@ -67,7 +67,7 @@
 }
 
 @mixin h6() {
-  font-size: 1rem;
+  font-size: var(--font-base);
   font-weight: normal;
 
   @media (--min-640) { 
