@@ -6,18 +6,30 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const toc = require('eleventy-plugin-nesting-toc');
+const env = process.env.ENV;
 
 module.exports = function(eleventyConfig) {
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
-+ eleventyConfig.addPlugin(toc, {
-    tags: ['h2'],
+
+  // Show nested TOC for development so I can
+  // easily see content outlines
+  let tocTags = [];
+  
+  if (env == 'dev') {
+    tocTags = ['h2', 'h3', 'h4', 'h5'];
+  } else if (env == 'prod') {
+    tocTags = ['h2'];
+  }
+  
+  eleventyConfig.addPlugin(toc, {
+    tags: tocTags,
     wrapper: 'nav',
     wrapperClass: 'toc-nav',
     headingText: '',
-  });
+ });
 
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);
