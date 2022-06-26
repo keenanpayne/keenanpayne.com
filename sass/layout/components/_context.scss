@@ -37,7 +37,7 @@ p {
       content: var(--text);
       font-weight: var(--font-weight-bold);
       font-variant: all-small-caps;
-      left: 0;
+      left: -1px;
       letter-spacing: .03em;
       line-height: 1;
       padding: .25rem .5rem;
