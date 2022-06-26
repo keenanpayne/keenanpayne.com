@@ -101,7 +101,7 @@ My increasingly anxious state made me resentful of my life circumstances.
 
 **Instead of viewing my career as an _opportunity_, rife with abundance and pleasure, I viewed it as a _burden_.**
 
-## Burnout... again.
+### Burnout... again.
 
 All of this led me to burnout.
 
@@ -143,7 +143,7 @@ All of these were tremendously beneficial.
 
 **I'm so grateful I was privileged enough to take a six-month sabbatical 🙏🏻**
 
-## Gaining clarity
+### Gaining clarity
 
 I don’t hate web development, nor do I dislike using my skills as a web developer to build things for others. In fact, I love both of these things! This is why I became a web developer in the first place.
 
@@ -155,13 +155,11 @@ Why I was working, how I was working, what I was working on, and who I was worki
 
 Asking this question helped me _flip the script_.
 
-### Too many client projects
+#### Too many client projects
 
 I realized that juggling multiple client projects and outsourcing development work isn’t my cup of tea. This requires way too much client, people, and project management. [^3]
 
 [^3]: To my credit, I think I've become a pretty decent manager in the past few years. But I don’t want to be a _manager_—I want to be a _developer_.
-
-#### Too many questions
 
 Why have I felt the need to accept so many client projects? 
 
@@ -187,7 +185,7 @@ I can work on a project I'm passionate about and put 100% of my professional ene
 
 That sounds great.
 
-### Finding the right challenge
+#### Finding the right challenge
 
 I got into a groove working on projects with similar clients, stakeholders, problem domains, and technology stacks. This groove helped me carve out my niche as a marketing website developer.
 
