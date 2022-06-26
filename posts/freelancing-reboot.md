@@ -28,8 +28,8 @@ This undercurrent of stress has made me feel more anxious and uneasy in my day-t
   
 Paradoxically, the older I've become, the *better* my life has objectively become:
 
-- I have a successful career
 - I met the love of my life
+- I have a successful career
 - I've made lots of money
 - I have a significant amount of freedom and autonomy in my day-to-day life
 
@@ -121,7 +121,7 @@ I've failed in things that would be enjoyable (working on a single client and op
 
 I wasn't enjoying life.
 
-{% include type/tip.html, content: 'Want to learn more Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
+{% include type/further-reading.html, content: 'Want to learn more Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
 ## Off the grind
 
 I needed time to decompress, so I took a sabbatical. It was time to prioritize my mental health and wellbeing above work and money.

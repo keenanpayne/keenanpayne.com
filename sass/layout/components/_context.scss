@@ -144,5 +144,28 @@ p {
     &.-tip { 
       --text: 'Tip';
     }
+
+    &.-further-reading {
+      --text: 'Further Reading';
+
+      background-color: transparent;
+      border-bottom: 1px solid var(--exodus-fruit);
+      border-top: 1px solid var(--exodus-fruit);
+      border-radius: 0;
+      box-shadow: none;
+      padding-top: 2rem;
+
+      &::before {
+        background-color: var(--exodus-fruit);
+        border-top-left-radius: 0;
+        color: var(--white);
+        top: -1px;
+      }
+    }
+
+    // Descendants
+    .icon {
+      opacity: 1;
+    }
   }
 }
