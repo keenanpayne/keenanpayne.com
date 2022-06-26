@@ -2,31 +2,31 @@
 permalink: '/freelancing-reboot/'
 title:  'Rebooting my freelancing career'
 type: Article
-date: 2022-06-18
+date: 2022-06-27
 meta: 
-  description: 'Details from my six-month sabbatical and how I lowered my stress, eased my anxiety, and reoriented my life and career.'
+  description: 'Details from my six-month sabbatical—how I lowered my stress, eased my anxiety, and reoriented my life and career.'
   image: '/images/posts/'
   image_alt: ''
-lede: Details from my six-month sabbatical and how I lowered my stress, eased my anxiety, and reoriented my life and career.
+lede: Details from my six-month sabbatical—how I lowered my stress, eased my anxiety, and reoriented my life and career.
 tags: 
   - Life Updates
 ---
 
 I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/) to ease some underlying anxiety and stress I've been experiencing. Taking time off helped me decompress and reflect after being on the grind.
 
-I've been back to work since February and it's keeping me pretty busy. Not so busy that I couldn't get this published sooner, but oh well. My life updates are generally not-so-timely.
+I've been back to work since February and I'm staying busy. Not so busy that I couldn't get this published sooner, but oh well. My life updates are generally not-so-timely.
 
 Alright, let's get into what I've been up to and where I'm headed.
 
 ## I'm stressed, man.
 
-My relationship with stress has changed *a lot* as I've gotten older. The more responsibilities I've gained and the better I understand the world, the more stressed I've become.
+My relationship with stress has changed *a lot* as I've gotten older. The more responsibilities I gain and the better I understand the world, the more stressed I become.
 
 This undercurrent of stress has made me feel more anxious and uneasy in my day-to-day life. My capacity for optimism has slowly dwindled as I feel a greater weight on my shoulders and view the world through a more nuanced and critical lens. [^1]
 
 [^1]: Knowledge is power?
   
-Paradoxically, the older I've become, the *better* my life has objectively become:
+Paradoxically, the older I've become, the *better* my life has objectively gotten:
 
 - I met the love of my life
 - I have a successful career
@@ -58,7 +58,7 @@ There's only so much one person can do to improve the state of global stressors 
 
 I do what I can through political activism, awareness, and volunteering, but I'm a tiny piece of a massive puzzle.
 
-I'm trying to stay productively focused on global issues while not letting them overrun my life.
+I'm trying to focus on global issues while not letting them overrun my life.
 
 **aka: no more mindless [doomscrolling](https://en.wikipedia.org/wiki/Doomscrolling) and unproductive YouTube binges.**
 #### Local stress
@@ -83,31 +83,31 @@ The local stressors I focused on were my relationship with *my career* and *mone
 
 ## The freelancing grind
 
-After returning to [freelancing in 2019](/goodbye-asana-hello-freelancing/), I had clients as far as the eye can see. This was thanks to the extensive network of friends and colleagues I met during my first decade working.
+After returning to [freelancing in 2019](/goodbye-asana-hello-freelancing/), I had clients as far as the eye could see. I had an extensive network of friends and colleagues I met and worked with during my first decade working to thank for this.
 
 {% include type/tip.html content: 'Doing great work for great people pays off.' %}
 
-**I accepted client after client, juggling multiple projects at once. On average, I launched a client project every 36 days!**
+I accepted client after client, juggling multiple projects at once. **On average, I launched a client project every 36 days!**
 
 To make my life easier—since I had deliberately made it *harder* by accepting so many clients—I hired some buddies to lend a helping hand (shout out to [Jamie](https://jaime.one) and Nels ✌️)
 
-{% include type/p_large.html, content: "Suddenly, I was not only a freelance web developer, but also a project manager and a people manager." %}
+{% include type/p_large.html, content: "Suddenly, I was not only a freelance web developer but a project manager and people manager." %}
 
 Managing the planning and execution of everything was exhausting and stressful. Each project had different goals, different stakeholders, and a different process for how we would complete the project. 
 
 Meeting the demand of my client projects while balancing all other areas of life took its toll. I was feeling stressed, overwhelmed, and anxious. I *frequently* felt like I was teetering on the edge of anxiety attacks while working.
 
-My increasingly anxious state made me resentful toward my life circumstances. 
+My increasingly anxious state made me resentful of my life circumstances. 
 
-Instead of viewing my career as an _opportunity_, rife with abundance and pleasure, I viewed it as a _burden_.
+**Instead of viewing my career as an _opportunity_, rife with abundance and pleasure, I viewed it as a _burden_.**
 
 ## Burnout... again.
 
 All of this led me to burnout.
 
-I won’t go deep into my experience with burnout in this post, but it’s something I want to talk about more in the future. Unfortunately, I’ve experienced severe burnout a couple of times during my career. It sucks.
+I won’t go deep into my experience with burnout in this post, but it’s something I want to talk about more in the future. Unfortunately, I’ve experienced burnout several times during my career. **It sucks.**
 
-{% include type/p_large.html, content: "Burnout is something that can happen to anyone in any profession at any time under any circumstances. It’s a serious problem for folks experiencing it." %}
+{% include type/p_large.html, content: "Burnout is something that can happen to anyone in any profession at any time under any circumstances. It’s a severe problem for folks experiencing it." %}
 
 Ultimately, I was battling negative feedback loops that impacted my ability to enjoy life: 
 
@@ -116,31 +116,32 @@ Ultimately, I was battling negative feedback loops that impacted my ability to e
 - Sticking to work that I could comfortably complete quickly, rather than work that would push me to grow
 - Not pushing myself to grow in meaningful ways
 
-During the past two years I've succeeded in some ways but failed in others.
+During the past two years, I've succeeded in some ways but failed in others.
 
-I've succeeded in things that are overwhelmingly stressful (managing multiple projects and optimizing my work around money).
+I've succeeded in overwhelmingly stressful things like managing multiple projects and optimizing my work around money.
 
-I've failed in things that would be enjoyable (working on a single client and optimizing my work aound enjoyment/growth).
+I've failed to orient myself around enjoyable things like working on a single client and optimizing my work around enjoyment/growth.
 
-I wasn't enjoying life.
-
-{% include type/further-reading.html, content: 'Want to learn more Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
+{% include type/further-reading.html, content: 'Want to learn more about Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
 ## Off the grind
 
 I needed time to decompress, so I took a sabbatical. It was time to prioritize my mental health and wellbeing above work and money.
 
 I did a lot during my six months away from work:
-- I spent a lot of time with my girlfriend Elaine, who just finished her master's degree and also lacked professional obligations for the foreseeable future.
-- I reflected and identified stressors in my life and tried to alleviate them to the best of my abilities.
-- I reoriented myself around what I value, rather than what I've been conditioned to value.
-- I spent time engaged in intrinsically enjoyable activities such as writing, learning, reading, hiking, and creating (i.e., [my practices](/practices/)).
-- I remained intensely focused on addressing my chronic back pain through regular chiropractic sessions at [PostureWorks](https://posture-works.com/) and my daily yoga practice.
+- I spent a lot of time with my girlfriend Elaine, who just finished her master's degree and also lacked professional obligations for the foreseeable future
+- I reflected and identified stressors in my life and tried to alleviate them to the best of my abilities
+- I reoriented myself around what I value, not what I was conditioned to value
+- I spent time engaged in intrinsically enjoyable activities such as writing, learning, reading, hiking, and creating (i.e., [my practices](/practices/))
+- I remained intensely focused on addressing my chronic back pain through regular chiropractic sessions at [PostureWorks](https://posture-works.com/) and my daily yoga practice
 
-This was all tremendously beneficial. 
+All of these were tremendously beneficial.
 
-My anxiety has reduced dramatically, though it remains an ongoing battle. My body feels *much* better. I feel more connected with myself and the world. I feel re-energized and motivated.
+- My anxiety has reduced dramatically, though it remains an ongoing battle
+- My body feels *much* better
+- I feel more connected with myself and the world
+- I feel re-energized and motivated
 
-**I'm so grateful I was privilged enough to take a six-month sabbatical 🙏🏻**
+**I'm so grateful I was privileged enough to take a six-month sabbatical 🙏🏻**
 
 ## Gaining clarity
 
@@ -150,7 +151,7 @@ What I hate are the __circumstances I created for myself__.
 
 Why I was working, how I was working, what I was working on, and who I was working with were not providing me with a healthy working environment.
 
-{% include type/question.html, content: "If I still love web development and I still enjoy building products with and for other people, how can I change my circumstances to avoid anxiety and burnout?" %}
+{% include type/question.html, content: "If I still love web development and I enjoy building products with and for other people, how can I change my circumstances to avoid anxiety and burnout?" %}
 
 Asking this question helped me _flip the script_.
 
@@ -166,7 +167,7 @@ Why have I felt the need to accept so many client projects?
 
 What's wrong with working on a single project at a time? 
 
-Do I think client projects are [scarce](/hello-scarcity-mindset/), therefore I better feast while I can?
+Do I think client projects are [scarce](/hello-scarcity-mindset/)? Therefore, I better feast while I can?
 
 How much is required to feast?
 
@@ -178,7 +179,7 @@ I realized a few things:
 
 - I'm not immediately interested in building a creative studio or managing anything larger than myself
 - I can afford to live working on a single project at a time
-- I can always scale up if I want or need to
+- I can scale up the amount of work I take on if I want or need to
 
 These realizations helped me decide to work on only a single project at a time.
 
@@ -188,13 +189,13 @@ That sounds great.
 
 ### Finding the right challenge
 
-I got into a groove working on projects with similar clients, stakeholders, problem domains, and technology stacks. This groove helped me carve out a niche for myself as a marketing website developer.
+I got into a groove working on projects with similar clients, stakeholders, problem domains, and technology stacks. This groove helped me carve out my niche as a marketing website developer.
 
-As I found my groove, I worked on bigger projects with larger budgets for more prestigious clients. This was only possible because of how much time I invested in a single area.
+As I found my groove, I worked on bigger projects with larger budgets for more prestigious clients. I made this possible by investing so much time in a single area. **I've been a specialist.**
 
-The problem with finding my groove is that my work became monotonous. Despite my efficiency and the increased scale of my work, I found my work uninspiring. 
+The problem with finding my groove is that my work became monotonous. Despite my efficiency and the increased scale of my work, I found what I was doing uninspiring. 
 
-After ten years of focusing my efforts building marketing websites, I decided it was time to change things up. Not only was I overwhelmed with the amount of work I had been doing before my sabbatical, but I was *overwhelmingly bored* with it.
+After ten years of focusing my efforts on building marketing websites, I decided it was time to change things up. Not only was I overwhelmed with the amount of work I had been doing before my sabbatical, but I was *overwhelmingly bored* with it.
 
 {% include type/p_large.html, content: "I'm reorienting my career as a web developer by sinking my teeth into new technologies and problems." %}
 ## New work, new me.
@@ -212,30 +213,30 @@ Having clarity provided a guiding light to move forward.
 
 ### Back in the arena
 
-I suddenly felt ready to get back to work, but in a way that worked with me, not against me.
+I suddenly felt ready to return to work, but in a way that worked with me, not against me.
 
-As luck would have it, shortly after I decided the path I wanted to take my professional career, the folks from [Stable Auto](https://stable.auto/) reached out about collaborating.
+As luck would have it, shortly after I decided on the path I wanted to take in my professional career, the folks from [Stable Auto](https://stable.auto/) reached out about collaborating.
 
-The job? Frontend architect tasked with rebuilding a web application to meet the increasing needs of the company's customers while providing a solid technical foundation for future growth.
+The job? Frontend architect tasked with rebuilding a web application to meet the growing needs of the company's customers while providing a solid technical foundation for future growth.
 
-**I would be challenged with a codebase, technology stack, and problem domain that I was entirely unfamiliar with.**
+**I would be challenged with an unfamiliar codebase, technology stack, and problem domain.**
 
 Game on.
 
-I've been working on this project for a few months and *I've been busy*. I'm knee-deep learning new technologies to address the problem at hand. In doing so, I've found myself challenged in ways that are invigorating and rewarding, rather than stressful and anxiety-inducing.
+I've been working on this project for a few months and *I've been busy*. I'm knee-deep learning new technologies to address the problem at hand. In doing this, I've found myself challenged in invigorating and rewarding ways rather than stressful and anxiety-inducing.
 
 ## Moving forward
 
-There's more I'd like to dive into as I think about my experience with burnout, anxiety, stress, and overwhelm. I also think there's a lot to say about the cultural indoctrination that can happen in societies where so much of what we're taught to value revolves around money.
+There's more I'd like to dive into as I think about my experience with burnout, anxiety, stress, and overwhelm. I also think there's more to say about the cultural indoctrination to value money in capitalist societies.
 
 But I've gone on long enough for today. Now you know where I've been, where I'm at, and where I'm headed.
 
-I'm trying to keep a better eye on my mental health in the future so I can address things *proactively*, rather than *reactively*. I don't want burnout and anxiety attacks to be the sign that I need to switch things up again.
+I'm trying to keep a better eye on my mental health in the future, so I can address things *proactively* rather than *reactively*. I don't want burnout and anxiety attacks to be the sign that I need to switch things up again.
 
-To anyone who's experienced or is currently experiencing the same thing, I encourage you to reach out to others to share what you're going through. This is something I wish I had done more during the past couple of years. 
+To anyone who's experienced or is currently experiencing the same thing, I encourage you to reach out to others to share what you're going through. I wish I had reached out to others more during the past couple of years.
 
 **My propensity for independence works against me when I'm keeping things bottled up in myself.**
 
-If you don't have someone to talk to, or you feel like sharing your own story, please leave a comment below or [reach out to me](/contact/) if you would like. You are not alone!
+If you don't have someone to talk to or feel like sharing your own story, please leave a comment below or [reach out to me](/contact/) if you would like. You are not alone!
 
 Upwards and onwards ✌🏻
