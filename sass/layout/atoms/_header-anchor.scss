@@ -32,12 +32,12 @@ a[href].header-anchor {
     font-size: 75%;
     font-style: normal;
     font-weight: var(--font-weight-regular);
-    left: -1em;
+    left: -.9em;
     opacity: 0;
     position: absolute;
     text-decoration: none;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-55%);
     transition: opacity var(--transition-quick) ease-in-out;
     z-index: -1; // Disallow user selection
   }
