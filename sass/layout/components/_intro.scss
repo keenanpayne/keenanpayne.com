@@ -1,0 +1,35 @@
+//
+// Intro
+// ==================================================
+
+.intro { 
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem 3rem;
+  width: 100%;
+
+  @media (--min-720) { 
+    flex-direction: row;
+  }
+}
+
+.intro-image { 
+  box-shadow: 5px 5px 0 0 var(--gray-dark);
+  margin-bottom: 1.5rem;
+  max-width: 150px;
+
+  @media (--min-720) { 
+    margin-bottom: 0;
+    margin-right: 3rem;
+    max-width: 200px;
+  }
+}
+
+.intro-content { 
+  max-width: 65ch;
+}
+
+.intro-title { 
+  margin-bottom: .25em;
+  margin-top: 0;
+}

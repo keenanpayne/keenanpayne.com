@@ -6,9 +6,7 @@
 //       the light theme for right now.
 
 .comments {
-  --background: var(--gray-lighter);
-
-  background-color: var(--background);
+  background-color: var(--white);
   border-radius: var(--border-radius-large);
   color: var(--plum-dark);
   margin-bottom: 3rem;
@@ -21,10 +19,6 @@
   @media (--min-960) {
     padding-left: 6rem;
     padding-right: 6rem;
-  }
-
-  @media (--dark) {
-    --background: var(--gray-light);
   }
 
   // Descendants

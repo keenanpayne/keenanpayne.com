@@ -12,11 +12,14 @@
   background: var(--root-background-start);
   background: linear-gradient(to bottom right, var(--root-background-start), var(--root-background-end));
   color: var(--text-color);
+  color-scheme: light dark;
   font-family: var(--font-family-base);
   margin: 0;
   min-height: 100vh;
   padding: 0;
   position: relative;
+  transition: color var(--transition), background var(--transition) ease-in-out;
+
 
   @supports (font-variation-settings: normal) {
     html { 

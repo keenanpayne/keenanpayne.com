@@ -79,7 +79,7 @@
 
     display: block;
     font-weight: var(--font-weight-serif-bold);
-    line-height: 2;
+    letter-spacing: .025em;
 
     &::before { 
       content: "—";

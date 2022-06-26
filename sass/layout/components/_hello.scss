@@ -4,12 +4,13 @@
 // Ref: https://codepen.io/ainalem/pen/RqYZNO
 
 .hello {
+  --hello-background: var(--plum-light);
   // TODO: Dynamically generate and store in custom
   //       property based on height of content
   --hello-max-height: 285px;
   --hello-max-width: 300px;
   
-  background-color: var(--gray-lighter);
+  background-color: var(--hello-background);
   border-radius: 20px;
   bottom: .5rem;
   color: initial;
@@ -22,6 +23,10 @@
   transform: translateY(calc(100% + 1.5rem));
   width: 130px;
   -webkit-tap-highlight-color: transparent;
+
+  @media (--dark) {
+    --hello-background: var(--yellow-dark);
+  }
 
   @media (--min-320) { 
     display: block;
@@ -69,10 +74,12 @@
   }
 
   &:not(.-expanded):hover {
-    background: var(--yellow-light);
+    --hello-hover-background: var(--plum-dark);
+
+    background: var(--hello-hover-background);
 
     @media (--dark) { 
-      background: var(--gray-dark);
+      --hello-hover-background: var(--yellow-light);
     }
   }
 
@@ -139,17 +146,29 @@
 }
 
 .hello-name {
+  --hello-name-color: var(--white);
+
+  color: var(--hello-name-color);
   line-height: 32px;
   font-size: .875em;
   margin-left: 10px;
 
+  @media (--dark) {
+    --hello-name-color: var(--gray-darkest-1);
+  }
+
   // Modifiers
   &.-large {
-    color: var(--white);
+    --hello-name-color: var(--white);
+
     font-size: 1.125em;
     line-height: 60px;
     margin-left: 20px;
     user-select: none;
+
+    @media (--dark) {
+      --hello-name-color: var(--plum-dark);
+    }
 
     @media (--min-720) { 
       font-size: 1.25em;
@@ -159,12 +178,18 @@
 }
 
 .hello-top {
-  background: var(--steel-pink);
+  --hello-top-background: var(--plum-light);
+
+  background: var(--hello-top-background);
   display: flex;
   flex-direction: row;
   height: 60px;
   transition: height 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
   width: var(--hello-max-width);
+
+  @media (--dark) {
+    --hello-top-background: var(--yellow-dark);
+  }
 
   @media (--min-720) { 
     height: 70px;
@@ -182,18 +207,19 @@
   width: 50px;
 
   &:hover .hello-x {
-    background: var(--light-pink);
+    background-color: var(--yellow-light);
   }
 }
 
 .hello-x {
-  --hello-x-primary: var(--heliotrope);
-  --hello-x-secondary: var(--deep-cove);
+  --hello-x-primary: var(--gray-light);
+  --hello-x-secondary: var(--gray-darkest-1);
 
   background-color: var(--hello-x-primary);
   border-radius: 10px;
   height: 20px;
   position: relative;
+  transition: background-color var(--transition-quick);
   width: 20px;
 }
 
@@ -230,8 +256,8 @@
   }
 
   // Descendants
-  > p {
-    margin-bottom: .25rem;
+  > p:not(:last-of-type) {
+    margin-bottom: .5rem;
   }
 }
 

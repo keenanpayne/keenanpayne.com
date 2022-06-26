@@ -97,11 +97,12 @@ p {
       --border: var(--exodus-fruit);
       --background: var(--gray-lighter);
       --text: 'Questions';
+      --color: var(--plum-dark);
     
-      color: var(--text-color);
+      color: var(--color);
 
       @media (--dark) { 
-        --background: var(--deep-cove);
+        --color: var(--plum-dark);
       }
 
       &::before {
