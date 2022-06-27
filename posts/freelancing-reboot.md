@@ -8,15 +8,20 @@ meta:
   image: '/posts/reboot-freelancing/airport.jpg'
   image_alt: 'Early morning overlooking the Salt Lake City airport'
 lede: Details from my six-month sabbatical—how I lowered my stress, eased my anxiety, and reoriented my life and career.
+series: Life Updates
 tags: 
   - Life Updates
+  - Freelancing
+  - Sabbatical
+  - Anxiety
+  - Stress
 ---
 
 {% include atoms/figure.html, src: "/images/posts/reboot-freelancing/airport.jpg", alt: "Early morning overlooking the Salt Lake City airport", caption: "Flight mishaps had me sleeping in the Salt Lake City airport this winter. At least the sunrise was pretty." %}
 
 I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/) to ease some underlying anxiety and stress I've been experiencing. Taking time off helped me decompress and reflect after being on the grind.
 
-I've been back to work since February and I'm staying busy. Not so busy that I couldn't get this published sooner, but oh well. My life updates are generally not-so-timely.
+I've been back to work since February and I'm staying busy. Not so busy that I couldn't get this published sooner, but such is the way for my not-so-timely life updates.
 
 Alright, let's get into what I've been up to and where I'm headed.
 
@@ -84,16 +89,18 @@ I wanted to bring these into focus to understand how I could reduce my anxiety a
 The local stressors I focused on were my relationship with *my career* and *money*. 
 
 <div class="sideBySide _pull-outside">
+  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/me.jpg', alt: 'Me hiking in the mountains', caption: "🏔 Me hiking in the mountains" %}
+
   {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/jon.jpg', alt: 'Snowboarding with Jon', caption: '✌🏻 Hitting the slopes with <a href="https://jonathanhoriel.com" target="_blank" rel="noopener">Jon</a>' %}
 
   {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/cort.jpg', alt: 'Portrait of a new friend, Cort.', caption: "💨 Portrait of a new friend, Cort." %}
-
-  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/me.jpg', alt: 'Hiking in the mountains', caption: "🏔 Hiking in the mountains" %}
 </div>
+
+<hr class="-fancy" />
 
 ## The freelancing grind
 
-After returning to [freelancing in 2019](/goodbye-asana-hello-freelancing/), I had clients as far as the eye could see. I had an extensive network of friends and colleagues I met and worked with during my first decade working to thank for this.
+After returning to [freelancing in 2019](/goodbye-asana-hello-freelancing/), I had clients as far as the eye could see. I had an extensive network of friends and colleagues I met and collaborated with during my first decade working to thank for this.
 
 {% include type/tip.html content: 'Doing great work for great people pays off.' %}
 
@@ -123,14 +130,14 @@ Ultimately, I was battling negative feedback loops that impacted my ability to e
 
 - Mindlessly accepting too many client projects
 - Orienting my career and my contentment around money and wealth
-- Sticking to work that I could comfortably complete quickly, rather than work that would push me to grow
+- Accepting projects I could complete easily, rather than work that would push me to grow
 - Not pushing myself to grow in meaningful ways
 
 During the past two years, I've succeeded in some ways but failed in others.
 
 I've succeeded in overwhelmingly stressful things like managing multiple projects and optimizing my work around money.
 
-I've failed to orient myself around enjoyable things like working on a single client and optimizing my work around enjoyment/growth.
+I've failed to orient myself around enjoyable things like optimizing my work around enjoyment/growth or spending time doing intrinsically enjoyable activities.
 
 {% include type/further-reading.html, content: 'Want to learn more about Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
 
@@ -139,6 +146,8 @@ I've failed to orient myself around enjoyable things like working on a single cl
 
   {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/outside-lands.jpg', alt: 'Outside Lands, 2021', caption: "Outside Lands, 2021" %}
 </div>
+
+<hr class="-fancy" />
 
 ## Off the grind
 
@@ -153,12 +162,12 @@ I did a lot during my six months away from work:
 
 All of these were tremendously beneficial.
 
-- My anxiety has reduced dramatically, though it remains an ongoing battle
+- My anxiety reduced dramatically
 - My body feels *much* better
 - I feel more connected with myself and the world
 - I feel re-energized and motivated
 
-**I'm so grateful I was privileged enough to take a six-month sabbatical 🙏🏻**
+**I'm so grateful I was privileged enough to take a sabbatical 🙏🏻**
 
 ### Gaining clarity
 
@@ -178,41 +187,41 @@ I realized that juggling multiple client projects and outsourcing development wo
 
 [^3]: To my credit, I think I've become a pretty decent manager in the past few years. But I don’t want to be a _manager_—I want to be a _developer_.
 
-Why have I felt the need to accept so many client projects? 
-
-What's wrong with working on a single project at a time? 
-
-Do I think client projects are [scarce](/hello-scarcity-mindset/)? Therefore, I better feast while I can?
-
-How much is required to feast?
-
-<hr class="-fancy" />
+- Why have I felt the need to accept so many client projects? 
+- What's wrong with working with a single client at a time? 
+- Do I think client projects are [scarce](/hello-scarcity-mindset/)? Therefore, I better feast while I can?
+- How much is required to feast?
 
 Questioning my actions helped me uncover my motives and predispositions. I learned more about myself and why I was on the path that I was on.
 
 I realized a few things:
 
 - I'm not immediately interested in building a creative studio or managing anything larger than myself
-- I can afford to live working on a single project at a time
+- I can afford to live working with a single client at a time
 - I can scale up the amount of work I take on if I want or need to
 
-These realizations helped me decide to work on only a single project at a time.
+These realizations helped me decide reduce the amount of work I had been doing and focus on a single client project at a time.
 
 I can work on a project I'm passionate about and put 100% of my professional energy into it.
 
-That sounds great.
+**That sounds great.**
 
 #### Finding the right challenge
 
 I got into a groove working on projects with similar clients, stakeholders, problem domains, and technology stacks. This groove helped me carve out my niche as a marketing website developer.
 
-As I found my groove, I worked on bigger projects with larger budgets for more prestigious clients. I made this possible by investing so much time in a single area. **I've been a specialist.**
+As I found my groove, I worked on bigger projects with larger budgets for more prestigious clients. I made this possible by investing so much time in a single area. 
+
+**In my groove, I became a specialist.**
 
 The problem with finding my groove is that my work became monotonous. Despite my efficiency and the increased scale of my work, I found what I was doing uninspiring. 
 
 After ten years of focusing my efforts on building marketing websites, I decided it was time to change things up. Not only was I overwhelmed with the amount of work I had been doing before my sabbatical, but I was *overwhelmingly bored* with it.
 
 {% include type/p_large.html, content: "I'm reorienting my career as a web developer by sinking my teeth into new technologies and problems." %}
+
+<hr class="-fancy" />
+
 ## New work, new me.
 
 I turned my realizations into convictions as I redesigned my professional life.
