@@ -21,6 +21,7 @@
 
   text-decoration: underline;
   text-decoration-color: var(--link-text-decoration);
+  text-decoration-thickness: .125em;
   
   &:hover { 
     background-color: var(--link-hover-background);
