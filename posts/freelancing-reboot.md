@@ -84,7 +84,7 @@ I wanted to bring these into focus to understand how I could reduce my anxiety a
 The local stressors I focused on were my relationship with *my career* and *money*. 
 
 <div class="sideBySide _pull-outside">
-  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/jon.jpg', alt: 'Snowboarding with Jon', caption: "✌🏻 Snowboarding with Jon" %}
+  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/jon.jpg', alt: 'Snowboarding with Jon', caption: '✌🏻 Hitting the slopes with <a href="https://jonathanhoriel.com" target="_blank" rel="noopener">Jon</a>' %}
 
   {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/cort.jpg', alt: 'Portrait of a new friend, Cort.', caption: "💨 Portrait of a new friend, Cort." %}
 
