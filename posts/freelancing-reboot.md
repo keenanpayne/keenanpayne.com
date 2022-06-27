@@ -10,6 +10,7 @@ meta:
 lede: Details from my six-month sabbatical—how I lowered my stress, eased my anxiety, and reoriented my life and career.
 series: Life Updates
 tags: 
+  - Featured
   - Life Updates
   - Freelancing
   - Sabbatical
@@ -158,6 +159,7 @@ I did a lot during my six months away from work:
 - I reflected and identified stressors in my life and tried to alleviate them to the best of my abilities
 - I reoriented myself around what I value, not what I was conditioned to value
 - I spent time engaged in intrinsically enjoyable activities such as writing, learning, reading, hiking, and creating (i.e., [my practices](/practices/))
+- I worked with [David Schlussel](http://yogilifecoach.com) as my life coach and yoga teacher
 - I remained intensely focused on addressing my chronic back pain through regular chiropractic sessions at [PostureWorks](https://posture-works.com/) and my daily yoga practice
 
 All of these were tremendously beneficial.
