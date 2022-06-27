@@ -6,20 +6,28 @@
 // Mixins
 // ------
 
+// TODO: Animate background as a `:before` pseudo-element 
+//       to add a nice micro-interaction
 @mixin linkHoverBackground() {
+  --link-text-decoration: var(--exodus-fruit);
+  --link-hover-background: var(--exodus-fruit);
+  --link-hover-color: var(--white);
+
+  @media (--dark) {
+    --link-text-decoration: var(--yellow-dark);
+    --link-hover-background: var(--yellow-dark);
+    --link-hover-color: var(--plum-dark);
+  }
+
   text-decoration: underline;
+  text-decoration-color: var(--link-text-decoration);
   text-decoration-thickness: .125em;
-  text-decoration-color: var(--gray-darkest);
   
   &:hover { 
-    background-color: var(--plum-dark);
-    color: var(--white);
+    background-color: var(--link-hover-background);
+    color: var(--link-hover-color);
     text-decoration: none;
 
-    @media (--dark) { 
-      background-color: var(--gray-light);
-      color: var(--plum-dark);
-    }
   }
 }
 

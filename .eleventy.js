@@ -5,12 +5,31 @@ const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
+const toc = require('eleventy-plugin-nesting-toc');
+const env = process.env.ENV;
 
 module.exports = function(eleventyConfig) {
   // Add plugins
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
+
+  // Show nested TOC for development so I can
+  // easily see content outlines
+  let tocTags = [];
+  
+  if (env == 'dev') {
+    tocTags = ['h2', 'h3', 'h4', 'h5'];
+  } else if (env == 'prod') {
+    tocTags = ['h2'];
+  }
+  
+  eleventyConfig.addPlugin(toc, {
+    tags: tocTags,
+    wrapper: 'nav',
+    wrapperClass: 'toc-nav',
+    headingText: '',
+ });
 
   // https://www.11ty.dev/docs/data-deep-merge/
   eleventyConfig.setDataDeepMerge(true);
@@ -173,7 +192,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("css");
 
   // Customize Markdown library and settings:
-  let markdownLibrary = markdownIt({
+  let markdown = markdownIt({
     html: true,
     breaks: false,
     linkify: true
@@ -181,7 +200,13 @@ module.exports = function(eleventyConfig) {
     permalink: markdownItAnchor.permalink.headerLink()
   }).disable('code').use(require('markdown-it-footnote')); // Addressing https://www.11ty.dev/docs/languages/markdown/#there-are-extra-and-in-my-output
 
-  eleventyConfig.setLibrary("md", markdownLibrary);
+  eleventyConfig.setLibrary("md", markdown);
+
+  markdown.renderer.rules.footnote_block_open = () => (
+    '<section class="footnotes">\n' +
+    '<h2 class="footnotes-heading _label">Footnotes</h2>\n' +
+    '<ol class="footnotes-list">\n'
+  );
 
   // Retrieve first image for post in collection
   // Ref: https://github.com/11ty/eleventy/issues/230

@@ -21,6 +21,7 @@
     "node": ">=14"
   },
   "dependencies": {
+    "eleventy-plugin-nesting-toc": "^1.3.0",
     "sass": "^1.39.0"
   },
   "devDependencies": {

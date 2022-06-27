@@ -77,6 +77,8 @@ permalink: "/{{ title | slug }}/"
       <img class="post-imageBook" src="{{ cover }}" alt="{{ title }}" />
     {%- endif -%}
 
+    {% include "components/toc.njk" %}
+
     {{ content | safe }}
   </div>
 

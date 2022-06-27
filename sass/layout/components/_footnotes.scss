@@ -2,8 +2,9 @@
 // Footnotes
 // ==================================================
 
-.footnotes { 
-  @extend ._text-small;
+.footnotes-heading {
+  border-bottom: 1px solid var(--gray-dark);
+  margin-bottom: 1em;
 }
 
 .footnotes-list { 
@@ -17,25 +18,11 @@
   }
 }
 
-.footnote-item:not(:first-of-type) { 
-  margin-top: 1rem;
-}
+.footnote-item {
+  font-size: var(--font-base);
 
-.footnotes-sep { 
-  background-color: var(--gray-dark);
-  border: none;
-  height: 1px;
-  margin-bottom: 1rem;
-  margin-top: 5rem;
-  overflow: visible;
-  position: relative;
-
-  &:before { 
-    @extend ._label;
-
-    content: 'Footnotes';
-    position: absolute;
-    bottom: .25rem;
+  &:not(:first-of-type) { 
+    margin-top: 1rem;
   }
 }
 

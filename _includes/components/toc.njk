@@ -1,0 +1,13 @@
+{# Hide TOC using `toc: false` in YAML #}
+{% if toc != false %}
+  {# Hide TOC if no headings exist #}
+  {% if content | toc %}
+    <details class="toc">
+      <summary class="toc-summary">
+        Table of Contents
+      </summary>
+
+      {{ content | toc | safe }}
+    </details>
+  {% endif %}
+{% endif %}
