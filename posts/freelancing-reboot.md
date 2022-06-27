@@ -5,12 +5,14 @@ type: Article
 date: 2022-06-27
 meta: 
   description: 'Details from my six-month sabbatical—how I lowered my stress, eased my anxiety, and reoriented my life and career.'
-  image: '/images/posts/'
-  image_alt: ''
+  image: '/posts/reboot-freelancing/airport.jpg'
+  image_alt: 'Early morning overlooking the Salt Lake City airport'
 lede: Details from my six-month sabbatical—how I lowered my stress, eased my anxiety, and reoriented my life and career.
 tags: 
   - Life Updates
 ---
+
+{% include atoms/figure.html, src: "/images/posts/reboot-freelancing/airport.jpg", alt: "Early morning overlooking the Salt Lake City airport", caption: "Flight mishaps had me sleeping in the Salt Lake City airport this winter. At least the sunrise was pretty." %}
 
 I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/) to ease some underlying anxiety and stress I've been experiencing. Taking time off helped me decompress and reflect after being on the grind.
 
@@ -81,6 +83,14 @@ I wanted to bring these into focus to understand how I could reduce my anxiety a
 
 The local stressors I focused on were my relationship with *my career* and *money*. 
 
+<div class="sideBySide _pull-outside">
+  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/jon.jpg', alt: 'Snowboarding with Jon', caption: "✌🏻 Snowboarding with Jon" %}
+
+  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/cort.jpg', alt: 'Portrait of a new friend, Cort.', caption: "💨 Portrait of a new friend, Cort." %}
+
+  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/me-aila.jpg', alt: 'Me and my niece, Aila', caption: "😁 Me and my niece, Aila" %}
+</div>
+
 ## The freelancing grind
 
 After returning to [freelancing in 2019](/goodbye-asana-hello-freelancing/), I had clients as far as the eye could see. I had an extensive network of friends and colleagues I met and worked with during my first decade working to thank for this.
@@ -123,6 +133,13 @@ I've succeeded in overwhelmingly stressful things like managing multiple project
 I've failed to orient myself around enjoyable things like working on a single client and optimizing my work around enjoyment/growth.
 
 {% include type/further-reading.html, content: 'Want to learn more about Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
+
+<div class="sideBySide">
+  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/winter-2.jpg', alt: 'Leadville, Colorado', caption: "Leadville, Colorado" %}
+
+  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/outside-lands.jpg', alt: 'Outside Lands, 2021', caption: "Outside Lands, 2021" %}
+</div>
+
 ## Off the grind
 
 I needed time to decompress, so I took a sabbatical. It was time to prioritize my mental health and wellbeing above work and money.
@@ -214,6 +231,8 @@ Having clarity provided a guiding light to move forward.
 I suddenly felt ready to return to work, but in a way that worked with me, not against me.
 
 As luck would have it, shortly after I decided on the path I wanted to take in my professional career, the folks from [Stable Auto](https://stable.auto/) reached out about collaborating.
+
+{% include atoms/figure.html, src: '/images/posts/reboot-freelancing/stable-auto.png', alt: 'Stable Auto: Predict & improve EV charging station performance.' %}
 
 The job? Frontend architect tasked with rebuilding a web application to meet the growing needs of the company's customers while providing a solid technical foundation for future growth.
 

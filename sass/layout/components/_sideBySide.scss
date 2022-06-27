@@ -10,12 +10,21 @@
   }
 
   // Descendants
-  figure { 
+  figure {
     margin-top: 0;
+
     &:not(:first-of-type) { 
       @media (--min-640) {
         margin-left: 1.5rem;
       }
     }
+  }
+
+  figcaption { 
+    @extend ._text-smaller;
+
+    font-family: var(--font-family-mono);
+    font-style: normal;
+    text-align: left;
   }
 }
