@@ -88,7 +88,7 @@ The local stressors I focused on were my relationship with *my career* and *mone
 
   {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/cort.jpg', alt: 'Portrait of a new friend, Cort.', caption: "💨 Portrait of a new friend, Cort." %}
 
-  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/me-aila.jpg', alt: 'Me and my niece, Aila', caption: "😁 Me and my niece, Aila" %}
+  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/me.jpg', alt: 'Hiking in the mountains', caption: "🏔 Hiking in the mountains" %}
 </div>
 
 ## The freelancing grind
@@ -135,7 +135,7 @@ I've failed to orient myself around enjoyable things like working on a single cl
 {% include type/further-reading.html, content: 'Want to learn more about Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
 
 <div class="sideBySide">
-  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/winter-2.jpg', alt: 'Leadville, Colorado', caption: "Leadville, Colorado" %}
+  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/leadville.jpg', alt: 'Leadville, Colorado', caption: "Leadville, Colorado" %}
 
   {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/outside-lands.jpg', alt: 'Outside Lands, 2021', caption: "Outside Lands, 2021" %}
 </div>
