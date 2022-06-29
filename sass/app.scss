@@ -29,6 +29,7 @@
 @import "elements/code";
 @import "elements/figure";
 @import "elements/headings";
+@import "elements/hr";
 @import "elements/img";
 @import "elements/inputs";
 @import "elements/link";
@@ -65,6 +66,7 @@
 @import "layout/components/postNav";
 @import "layout/components/sideBySide";
 @import "layout/components/testimonial";
+@import "layout/components/toc";
 @import "layout/components/wave";
 
 // Global
@@ -78,3 +80,6 @@
 @import "layout/pages/services";
 @import "layout/pages/post";
 @import "layout/pages/resources";
+
+// Embeds
+@import "embed/tweet";

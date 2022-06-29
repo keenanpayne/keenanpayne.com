@@ -1,0 +1,47 @@
+//
+// Horizontal Rule
+// ==================================================
+
+// Mixin
+// Ref: https://css-tricks.com/examples/hrs/
+@mixin hr-fancy() {
+  --hr-color: var(--gray-dark);
+
+  @media (--dark) {
+    --hr-color: var(--gray-darkest-1);
+  }
+
+  border: none;
+  border-top: 2px solid var(--hr-color);
+  color: var(--hr-color);
+  margin-top: 3rem;
+  overflow: visible; // For IE
+  padding: 0;
+  text-align: center;
+
+  @media (--min-800) {
+    transform: translateX(-5%);
+    width: 110%;
+  }
+
+  &:after {
+    background: var(--root-background);
+    content: "§";
+    display: inline-block;
+    font-family: var(--font-family-serif);
+    font-size: 1.35em;
+    font-weight: var(--font-weight-serif-light);
+    padding: .1em .35em;
+    position: relative;
+    top: -.85em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+// Utility class
+hr {
+  &.-fancy {
+    @include hr-fancy();
+  }
+}

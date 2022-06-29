@@ -18,30 +18,27 @@ a[href].header-anchor {
   &:focus:visited,
   &:hover,
   &:hover:visited {
-    &::after {
+    &::before {
       color: var(--header-anchor-color);
       opacity: .75;
     }
   }
 
   // Pseudo-element for header link
-  &::after {
-    content: '#';
+  &::before {
+    content: '§';
     color: transparent;
-    display: inline-block;
     font-family: sans-serif;
-    font-size: 70%;
+    font-size: 75%;
     font-style: normal;
     font-weight: var(--font-weight-regular);
-    margin-left: .25em;
+    left: -.9em;
     opacity: 0;
+    position: absolute;
     text-decoration: none;
+    top: 50%;
+    transform: translateY(-55%);
     transition: opacity var(--transition-quick) ease-in-out;
-    vertical-align: middle;
     z-index: -1; // Disallow user selection
-
-    &:hover {
-      opacity: .75;
-    }
   }
 }

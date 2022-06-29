@@ -29,7 +29,7 @@ p {
 
     // Context label
     &::before {
-      @extend ._text-smaller;
+      @extend ._text-small;
 
       background-color: var(--border);
       border-bottom-right-radius: 3px;
@@ -37,14 +37,25 @@ p {
       content: var(--text);
       font-weight: var(--font-weight-bold);
       font-variant: all-small-caps;
-      left: 0;
+      left: -1px;
+      letter-spacing: .03em;
       line-height: 1;
       padding: .25rem .5rem;
       position: absolute;
-      top: -5px;
+      top: -4px;
     }
 
     // Descendants
+    a {
+      // Overriding default linkHoverBackground() styles
+      // to improve readability
+      @media (--dark) {
+        --link-text-decoration: var(--exodus-fruit);
+        --link-hover-background: var(--exodus-fruit);
+        --link-hover-color: var(--white);
+      }
+    }
+
     span:not(.icon) { 
       display: block;
       max-width: 95%;
@@ -68,6 +79,11 @@ p {
 
       @media (--min-480) {
         --size: 45px;
+      }
+
+      // Descendants
+      path {
+        fill: currentColor;
       }
     }
 
@@ -96,12 +112,13 @@ p {
     &.-question { 
       --border: var(--exodus-fruit);
       --background: var(--gray-lighter);
-      --text: 'Questions';
+      --text: 'Question';
+      --color: var(--plum-dark);
     
-      color: var(--text-color);
+      color: var(--color);
 
       @media (--dark) { 
-        --background: var(--deep-cove);
+        --color: var(--plum-dark);
       }
 
       &::before {
@@ -112,25 +129,89 @@ p {
     &.-note,
     &.-tip { 
       --border: var(--yellow-dark);
-      --background: var(--gray-lighter);
-      --text: 'Note';
-    
+      
       border-left: 3px solid var(--border);
       border-right: 3px solid var(--border);
       border-bottom: 3px solid var(--border);
-      color: var(--text-color);
-
-      @media (--dark) {
-        --background: var(--plum-light);
-      }
-
+      
       &::before {
         color: var(--plum-dark);
       }
     }
+    
+    &.-note {
+      --background: var(--gray-lighter);
+      --text: 'Note';
+
+      color: var(--text-color);
+
+      @media (--dark) {
+        --background: var(--plum-dark);
+      }
+
+      // Modifiers
+      &.-left {
+        @media (--min-640) {
+          float: left;
+          margin-bottom: 0;
+          margin-right: 1.5rem;
+          width: 250px;
+        }
+
+        @media (--min-800) {
+          margin-left: -2.5rem;
+        }
+
+        @media (--min-960) {
+          margin-left: -5rem;
+        }
+      }
+
+      &.-right {
+        @media (--min-640) {
+          float: right;
+          margin-top: -5rem;
+          margin-left: 1.5rem;
+          width: 250px;
+        }
+
+        @media (--min-800) {
+          margin-right: -2.5rem;
+        }
+
+        @media (--min-960) {
+          margin-right: -5rem;
+        }
+      }
+    }
 
     &.-tip { 
+      --background: var(--yellow-light);
       --text: 'Tip';
+
+      color: var(--plum-dark);
+    }
+
+    &.-further-reading {
+      --text: 'Further Reading';
+
+      background-color: transparent;
+      border-bottom: 1px solid var(--exodus-fruit);
+      border-top: 1px solid var(--exodus-fruit);
+      border-radius: 0;
+      box-shadow: none;
+      padding-top: 2rem;
+
+      &::before {
+        background-color: var(--exodus-fruit);
+        border-top-left-radius: 0;
+        color: var(--white);
+      }
+    }
+
+    // Descendants
+    .icon {
+      opacity: 1;
     }
   }
 }

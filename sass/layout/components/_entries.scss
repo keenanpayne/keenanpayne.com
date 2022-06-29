@@ -299,7 +299,7 @@
     // TODO: Hacky overrides
     .entries-time {
       bottom: 0;
-      font-size: 1rem;
+      font-size: var(--font-base);
       line-height: 1;
       position: absolute;
       right: 0;

@@ -20,19 +20,16 @@
 
   --yellow-light: #fff8e6;
   --yellow-dark: #ffd466;
+  --exodus-fruit: #686de0; // S/O https://flatuicolors.com/palette/au
 
-  // S/O https://flatuicolors.com/palette/au
-  --exodus-fruit: #686de0;
-  --steel-pink: #be2edd;
-  --heliotrope: #e056fd;
-  --deep-cove: #130f40;
-  --light-pink: #ed98ff;
-
-  // Fonts
+  // Font Families
   --font-family-base: 'Inter', -apple-system, system-ui, sans-serif;
   --font-family-base-var: 'Inter var', sans-serif;
   --font-family-serif: 'Merriweather', serif;
   --font-family-mono: 'Space Mono', Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+
+  // Font Sizes
+  --font-base: 1rem;
 
   // Font Weights
   --font-weight-lighter: 300;
@@ -62,6 +59,7 @@
   --text-color: var(--plum-dark);
 
   --shadow: 0 3px 7px 0px rgb(150 150 150 / 25%);
+  --shadow-hover: 0 2px 9px 1px rgb(150 150 150 / 45%);
 
   --pre-background: var(--gray-lighter);
 
@@ -81,5 +79,6 @@
     --small-text-color: var(--white);
     --label-color: var(--white);
     --shadow: 0 3px 7px 0px rgb(0 0 0 / 30%);
+    --shadow-hover: 0 2px 9px 1px rgb(0 0 0 / 70%);
   }
 }
