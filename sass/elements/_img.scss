@@ -5,6 +5,7 @@
 img { 
   --image-filter: grayscale(25%);
 
+  height: auto;
   max-width: 100%;
 
   // Reducing image vibrancy for dark mode
