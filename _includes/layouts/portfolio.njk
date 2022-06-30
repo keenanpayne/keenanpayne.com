@@ -48,28 +48,28 @@ permalink: "/{{ title | slug }}/"
     <div class="portfolio-details">
       {% if client_description %}
         <div class="portfolio-detail -full-width">
-          <p class="_label">Description</p>
-          <p>{{ client_description | safe }}</p>
+          <p class="portfolio-label _label">Description</p>
+          <p class="portfolio-stat">{{ client_description | safe }}</p>
         </div>
       {% endif %}
 
       {% if client_size %}
         <div class="portfolio-detail">
-          <p class="_label">Company Size</p>
-          <p>{{ client_size }}</p>
+          <p class="portfolio-label _label">Company Size</p>
+          <p class="portfolio-stat">{{ client_size }}</p>
         </div>
       {% endif %}
 
       {% if client_industry %}
         <div class="portfolio-detail">
-          <p class="_label">Industry</p>
-          <p>{{ client_industry }}</p>
+          <p class="portfolio-label _label">Industry</p>
+          <p class="portfolio-stat">{{ client_industry }}</p>
         </div>
       {% endif %}
 
       {% if services %}
         <div class="portfolio-detail">
-          <p class="_label">Services Offered</p>
+          <p class="portfolio-label _label">Services Offered</p>
 
           <ul>
             {% for service in services %}
@@ -81,14 +81,14 @@ permalink: "/{{ title | slug }}/"
 
       {% if year %}
         <div class="portfolio-detail">
-          <p class="_label">Year</p>
-          <p>{{ year }}</p>
+          <p class="portfolio-label _label">Year</p>
+          <p class="portfolio-stat">{{ year }}</p>
         </div>
       {% endif %}
 
       {% if technologies %}
         <div class="portfolio-detail -full-width">
-          <p class="_label">Technologies</p>
+          <p class="portfolio-label _label">Technologies</p>
 
           <ul>
             {% for technology in technologies %}
@@ -99,8 +99,8 @@ permalink: "/{{ title | slug }}/"
       {% endif %}
 
       {% if url %}
-        <div class="portfolio-detail">
-          <p>
+        <div class="portfolio-detail -full-width">
+          <p class="portfolio-stat">
             <a href="{{ url }}" title="Visit {{ client }} {{ project }}" target="_blank" rel="noopener">Visit Site</a>
           </p>
         </div>

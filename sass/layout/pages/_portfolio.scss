@@ -60,30 +60,30 @@
   padding-left: .25rem;
 
   @media (--min-640) {
-    grid-column: 1 / span 8;
+    grid-column: 1 / span 7;
   }
 
   @media (--min-960) {
+    padding-right: 3rem;
     grid-column: 1 / span 5;
   }
 
   @media (--min-1120) {
-    grid-column: 1 / span 3;
+    grid-column: 1 / span 4;
   }
 }
 
 .portfolio-detail { 
-  --border-color: var(--exodus-fruit);
+  --border-color: var(--gray-dark);
 
   flex-basis: 50%;
-
   
   @media (--dark) {
-    --border-color: var(--yellow-dark);
+    --border-color: var(--gray-darkest);
   }
-  
-  @media (--min-960) {
-    padding-right: 1.5rem
+
+  &:last-of-type {
+    text-align: right;
   }
 
   &:not(:last-of-type) {
@@ -97,27 +97,9 @@
   // Modifiers
   &.-full-width {
     flex-basis: 100%;
-
-    @media (--min-960) {
-      padding-right: 3rem;
-    }
-
-    @media (--min-1120) {
-      padding-right: 0;
-    }
   }
 
   // Descendants
-  p {
-    &:first-of-type {
-      margin-bottom: .25rem;
-    }
-
-    &:last-of-type {
-      max-width: 55ch;
-    }
-  }
-
   ul {
     margin: 0;
     padding: 0;
@@ -135,13 +117,22 @@
   }
 }
 
+.portfolio-label {
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: .25rem;
+}
+
+.portfolio-stat {
+  max-width: 55ch;
+}
+
 .portfolio-cover {
   grid-column: 1 / -1;
-  margin-top: 1.5rem;
   width: 100%;
   
   @media (--min-960) {
     grid-column: 6 / -1;
+    margin-top: 1.5rem;
     padding-right: 1.5rem;
   }
 
