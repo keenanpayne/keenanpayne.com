@@ -9,6 +9,7 @@ meta:
   image_alt: 'Early morning overlooking the Salt Lake City airport'
 lede: Details from my six-month sabbatical—how I lowered my stress, eased my anxiety, and reoriented my life and career.
 series: Life Updates
+cover: 'https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1120/blog-posts/freelancing-reboot/airport_yaegse.jpg'
 tags: 
   - Featured
   - Life Updates

@@ -55,7 +55,11 @@
 
   <a href="{{ entry.url | url }}" title="{{ title }}">
     {% if background == true %}
-      <div class="entries-image" style="background: url('{% first_image_link entry %}') no-repeat center center / cover; background-size: cover;"></div>
+      {% if cover %}
+        <div class="entries-image" style="background: url('{{ cover }}') no-repeat center center / cover; background-size: cover;"></div>
+      {% else %}
+        <div class="entries-image" style="background: url('{% first_image_link entry %}') no-repeat center center / cover; background-size: cover;"></div>
+      {% endif %}
     {% else %}
       <img class="entries-image" src="{{ cover }}" alt="{{ title }}" />
     {% endif %}
