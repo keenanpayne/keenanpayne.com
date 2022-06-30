@@ -1,3 +1,4 @@
+// Ref: https://sia.codes/posts/eleventy-and-cloudinary-images/
 // Set constants for the Cloudinary URL and fallback widths for images when not supplied by the shorcode params
 const CLOUDNAME = "keenan-payne"
 const FOLDER = ""
