@@ -2,8 +2,8 @@
 permalink: '/june-2022-learning/'
 title:  'Learning Notes, June 2022'
 meta: 
-  description:
-lede:
+  description: My most expansive monthly learning notes thusfar. Buckle up for some great content.
+lede: My most expansive monthly learning notes thusfar. Buckle up for some great content.
 type: Article
 series: Learning Notes
 date: 2022-07-15
