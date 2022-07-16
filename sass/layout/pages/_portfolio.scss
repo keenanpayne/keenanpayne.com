@@ -198,6 +198,10 @@
   @media (--dark) {
     background-color: var(--exodus-fruit);
   }
+
+  @media (--min-720) {
+    text-align: center;
+  }
 }
 
 .portfolio-cta-content {
@@ -206,10 +210,19 @@
 }
 
 .portfolio-cta-title {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   margin-top: 0;
 }
 
 .portfolio-cta-description {
   max-width: 35ch;
+
+  @media (--min-720) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &:first-of-type {
+    margin-bottom: 2.25rem;
+  }
 }

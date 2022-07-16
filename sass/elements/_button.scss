@@ -10,4 +10,12 @@ button,
     border: 0;
     box-shadow: none;
   }
+
+  &.-primary {
+    background-color: var(--link-hover-background);
+    border-radius: var(--border-radius);
+    color: var(--plum-dark);
+    padding: 0.75rem 1rem;
+    text-decoration: none;
+  }
 }
