@@ -2,15 +2,27 @@
 {% set project = section.project %}
 {% set person = section.person %}
 {% set quote = section.quote %}
-{% set query = portfolio[project].people[person] %}
+{% set testimonial = section.testimonial %}
+{% set personQuery = portfolio[project].people[person] %}
+{% set testimonialQuery = portfolio[project].testimonials[testimonial] %}
 
 {# Markup #}
-<blockquote class="testimonial">
-  <p class="testimonial-text _type-my-voice _text-h3">
-    <span>{{ query.quotes[quote] | safe }}</span>
-  </p>
+{# Check if person IDs match #}
+{% if person == testimonialQuery.person_id %}
+  <blockquote class="testimonial">
+      <p class="testimonial-text _type-my-voice _text-h3">
+      <span>{{ testimonialQuery.content | safe }}</span>
+    </p>
 
-  <cite class="testimonial-cite">
-    <span class="testimonial-author">{{ query.name }}{% if query.position %},</span> <span class="testimonial-position _text-h6">{{ query.position }}</span>{% endif %}
-  </cite>
-</blockquote>
+    <cite class="testimonial-cite">
+      <span class="testimonial-author">
+        {{ personQuery.name }}
+
+        {%- if personQuery.position -%},</span>
+          <span class="testimonial-position _text-h6">
+            {{ personQuery.position }}
+          </span>
+        {%- endif -%}
+    </cite>
+  </blockquote>
+{% endif %}

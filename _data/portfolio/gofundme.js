@@ -29,24 +29,43 @@ module.exports = {
     [1]: {
       name: "Kelsea Little",
       position: "Brand Storyteller, Project Manager",
-      url: "https://www.linkedin.com/in/kelsealittle/",
-      quotes: [
-        "Keenan came well recommended, and after speaking with him I was impressed by his positive attitude and willingness to work into our team workflow.",
-        "Working with Keenan, we launched the GoFundMe Heroes Hub, a beautiful home for our editorial brand content. It's been very well received and <strong>our team loves using it</strong>.",
-        "Keenan was amazing at communication, meeting/exceeding deadlines, and making himself available for fixes & troubleshooting in the immediate stretch after the project had launched.",
-        "I would recommend Keenan very highly, he was amazing to work with and I hope to be able to work with him again in the future!"
-      ],
+      url: "https://www.linkedin.com/in/kelsealittle/"
     },
     [2]: {
       name: "Tony Mingo",
       position: "Lead Designer",
-      url: "https://tonymingo.com/",
-      quotes: [
-        "Keenan makes a great development partner. As a designer, I appreciate his magical ability to talk about projects in common terms and teach us a few things along the way.",
-        "I would recommend Keenan to anyone. Aside from his mastery of web development, <strong>he's patient, sharp, and empathetic</strong>.",
-        "Keenan Payne is like a well-designed website. Technical and complex on the inside, with an intuitive, easy-to-use UI on the outside."
-      ]
+      url: "https://tonymingo.com/"
     }
+  },
+  testimonials: {
+    [1]: {
+      person_id: 1,
+      content: "Keenan came well recommended, and after speaking with him I was impressed by his positive attitude and willingness to work into our team workflow."
+    },
+    [2]: {
+      person_id: 1,
+      content: "Working with Keenan, we launched the GoFundMe Heroes Hub, a beautiful home for our editorial brand content. It's been very well received and <strong>our team loves using it</strong>."
+    },
+    [3]: {
+      person_id: 1,
+      content: "Keenan was amazing at communication, meeting/exceeding deadlines, and making himself available for fixes & troubleshooting in the immediate stretch after the project had launched."
+    },
+    [4]: {
+      person_id: 1,
+      content: "I would recommend Keenan very highly, he was amazing to work with and I hope to be able to work with him again in the future!"
+    },
+    [5]: {
+      person_id: 2,
+      content: "Keenan makes a great development partner. As a designer, I appreciate his magical ability to talk about projects in common terms and teach us a few things along the way."
+    },
+    [6]: {
+      person_id: 2,
+      content: "I would recommend Keenan to anyone. Aside from his mastery of web development, <strong>he's patient, sharp, and empathetic</strong>."
+    },
+    [7]: {
+      person_id: 2,
+      content: "Keenan Payne is like a well-designed website. Technical and complex on the inside, with an intuitive, easy-to-use UI on the outside."
+    },
   },
   dribbble: {
     [1]: {
