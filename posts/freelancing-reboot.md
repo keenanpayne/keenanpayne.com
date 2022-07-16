@@ -9,6 +9,7 @@ meta:
   image_alt: 'Early morning overlooking the Salt Lake City airport'
 lede: Details from my six-month sabbatical—how I lowered my stress, eased my anxiety, and reoriented my life and career.
 series: Life Updates
+cover: 'https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1120/blog-posts/freelancing-reboot/airport_yaegse.jpg'
 tags: 
   - Featured
   - Life Updates
@@ -18,7 +19,7 @@ tags:
   - Stress
 ---
 
-{% include atoms/figure.html, src: "/images/posts/reboot-freelancing/airport.jpg", alt: "Early morning overlooking the Salt Lake City airport", caption: "Flight mishaps had me sleeping in the Salt Lake City airport this winter. At least the sunrise was pretty." %}
+{% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/airport_yaegse.jpg', alt: "Early morning overlooking the Salt Lake City airport", caption: "Flight mishaps had me sleeping in the Salt Lake City airport this winter. At least the sunrise was pretty.", lazy: false %}
 
 I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/) to ease some underlying anxiety and stress I've been experiencing. Taking time off helped me decompress and reflect after being on the grind.
 
@@ -90,11 +91,9 @@ I wanted to bring these into focus to understand how I could reduce my anxiety a
 The local stressors I focused on were my relationship with *my career* and *money*. 
 
 <div class="sideBySide _pull-outside">
-  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/me.jpg', alt: 'Me hiking in the mountains', caption: "🏔 Me hiking in the mountains" %}
-
-  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/jon.jpg', alt: 'Snowboarding with Jon', caption: '✌🏻 Hitting the slopes with <a href="https://jonathanhoriel.com" target="_blank" rel="noopener">Jon</a>' %}
-
-  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/cort.jpg', alt: 'Portrait of a new friend, Cort.', caption: "💨 Portrait of a new friend, Cort." %}
+  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/me-1_esh321.jpg', alt: "Me hiking in the mountains", caption: "🏔 Me hiking in the mountains" %}
+  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/jon_es6erq.jpg', alt: "Snowboarding with Jon", caption: "✌🏻 Hitting the slopes with <a href="https://jonathanhoriel.com" target="_blank" rel="noopener">Jon</a>" %}
+  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/cort_fe7xzl.jpg', alt: "Portrait of a new friend, Cort.", caption: "💨 Portrait of a new friend, Cort." %}
 </div>
 
 <hr class="-fancy" />
@@ -143,9 +142,8 @@ I've failed to orient myself around enjoyable things like optimizing my work aro
 {% include type/further-reading.html, content: 'Want to learn more about Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
 
 <div class="sideBySide">
-  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/leadville.jpg', alt: 'Leadville, Colorado', caption: "Leadville, Colorado" %}
-
-  {% include atoms/figure.html, src: '/images/posts/reboot-freelancing/outside-lands.jpg', alt: 'Outside Lands, 2021', caption: "Outside Lands, 2021" %}
+  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/leadville_zlwebd.jpg', alt: "Leadville, Colorado", caption: "Leadville, Colorado" %}
+  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/outside-lands_u5yliu.jpg', alt: "Outside Lands, 2021", caption: "Outside Lands, 2021" %}
 </div>
 
 <hr class="-fancy" />
@@ -243,7 +241,7 @@ I suddenly felt ready to return to work, but in a way that worked with me, not a
 
 As luck would have it, shortly after I decided on the path I wanted to take in my professional career, the folks from [Stable Auto](https://stable.auto/) reached out about collaborating.
 
-{% include atoms/figure.html, src: '/images/posts/reboot-freelancing/stable-auto.png', alt: 'Stable Auto: Predict & improve EV charging station performance.' %}
+{% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/stable-auto_so0xvu.jpg', alt: "Stable Auto: Predict & improve EV charging station performance." %}
 
 The job? Frontend architect tasked with rebuilding a web application to meet the growing needs of the company's customers while providing a solid technical foundation for future growth.
 

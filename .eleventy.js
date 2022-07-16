@@ -6,6 +6,8 @@ const pluginNavigation = require("@11ty/eleventy-navigation");
 const markdownIt = require("markdown-it");
 const markdownItAnchor = require("markdown-it-anchor");
 const toc = require('eleventy-plugin-nesting-toc');
+const { srcset, src } = require('./_includes/shortcodes/images');
+
 const env = process.env.ENV;
 
 module.exports = function(eleventyConfig) {
@@ -13,6 +15,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
+
+  // Shortcodes
+  eleventyConfig.addShortcode('src', src);
+  eleventyConfig.addShortcode('srcset', srcset);
 
   // Show nested TOC for development so I can
   // easily see content outlines

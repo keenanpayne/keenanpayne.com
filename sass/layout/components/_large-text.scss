@@ -11,6 +11,12 @@ p.-large {
   margin-top: 2rem;
   text-align: center;
   
+  @media (--min-720) {
+    &::before {
+      @include clearfix();
+    }
+  }
+  
   @media (--min-960) {
     margin-bottom: 3.5rem;
     margin-top: 3rem;

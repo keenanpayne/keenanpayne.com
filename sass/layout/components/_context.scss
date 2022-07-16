@@ -208,6 +208,21 @@ p {
         color: var(--white);
       }
     }
+    
+    &.-tldr {
+      --background: var(--pre-background);
+      --border: var(--gray-lightish);
+      --text: "TL;DR";
+      
+      color: var(--plum-dark);
+      border-left: 5px solid var(--border);
+      border-right: 5px solid var(--border);
+      border-bottom: 5px solid var(--border);
+      
+      &::before {
+        background-color: var(--gray-lightish);
+      }
+    }
 
     // Descendants
     .icon {
