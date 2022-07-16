@@ -1,4 +1,4 @@
-<figure>
+<figure {% if class %} class="{{ class }}" {% endif %}>
   <a href="{% src imgSrc %}" title="View full image">
     <img {% if imgSrc %} src="{% src imgSrc %}" {% endif %} {% if set != false %} srcset="{% srcset imgSrc %}" {% endif %} {% if alt %} alt="{{ alt }}" {% endif %} {% if width %} width="{{ width }}" {% endif %} {% if lazy != false %} loading="lazy" {% endif %}>
   </a>
