@@ -4,18 +4,26 @@
 
 button,
 .button {
+  background-color: var(--background, initial);
+
   // Modifiers
   &.-flat {
-    background-color: transparent;
+    --background: transparent;
+
     border: 0;
     box-shadow: none;
   }
 
-  &.-primary {
-    background-color: var(--link-hover-background);
+  &.-ghost {
+    --border: var(--exodus-fruit);
+
+    border: 3px solid var(--border);
     border-radius: var(--border-radius);
-    color: var(--plum-dark);
     padding: 0.75rem 1rem;
     text-decoration: none;
+
+    @media (--dark) {
+      --border: var(--yellow-dark);
+    }
   }
 }

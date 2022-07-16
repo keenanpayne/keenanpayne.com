@@ -92,6 +92,7 @@
 }
 
 @mixin text-large() { 
+  line-height: .95;
   font-size: 3.815rem;
 }
 
