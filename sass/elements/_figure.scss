@@ -13,6 +13,28 @@ figure {
   > a {
     display: block;
   }
+  
+  // Modifiers
+  &.-float-left,
+  &.-float-right {
+    @media (--min-720) {
+      max-width: 42.5%;
+    }
+  }
+  
+  &.-float-left {
+    @media (--min-720) {
+      float: left;
+      margin-right: 3rem;
+    }
+  }
+  
+  &.-float-right {
+    @media (--min-720) {
+      float: right;
+      margin-left: 3rem;
+    }
+  }
 }
 
 figcaption { 

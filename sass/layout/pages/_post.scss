@@ -184,7 +184,9 @@
   }
 
   > figure {
-    @include pullContentOutside();
+    &:not(.-float-left):not(.-float-right) {
+      @include pullContentOutside();
+    }
   }
 
   hr { 
