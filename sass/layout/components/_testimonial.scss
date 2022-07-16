@@ -8,21 +8,27 @@
   color: var(--plum-dark);
   grid-column: 1 / -1;
   margin: 0 auto;
-  padding: 1.5rem 1.25rem;
+  padding: 1.75rem 1.25rem;
   
   @media (--min-640) { 
-    grid-column: 2 / span 8;
-    padding: 2.5rem 1.5rem;
-  }
-
-  @media (--min-720) {
-    padding: 3.75rem 2.25rem;
+    padding: 2.25rem 1.75rem;
   }
   
-  @media (--min-960) { 
+  @media (--min-720) {
+    padding: 3.375rem 2rem;
+  }
+  
+  @media (--min-800) {
+    grid-column: 2 / span 8;
+  }
+  
+  @media (--min-960) {
     box-shadow: 15px 15px 0 0 var(--exodus-fruit);
+    padding: 3.75rem 3rem;
+  }
+  
+  @media (--min-1120) {
     grid-column: 3 / span 6;
-    padding: 5rem 3rem;
   }
 }
 
@@ -30,7 +36,7 @@
   align-items: center;
   display: flex;
   font-style: normal;
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
 }
 
 .testimonial-author,
@@ -46,11 +52,21 @@
   @include h5;
 
   font-weight: var(--font-weight-semibold);
+  line-height: 1.15;
+
+  @media (--min-800) {
+    line-height: 1.25;
+  }
 }
 
 .testimonial-position { 
   color: var(--gray-darkest-1);
   font-weight: var(--font-weight-serif-light);
+  line-height: 1.15;
+
+  @media (--min-800) {
+    line-height: 1.25;
+  }
 }
 
 .testimonial-image {
