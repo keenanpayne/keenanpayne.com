@@ -6,7 +6,7 @@ meta:
 lede:
 type: Article
 series: Learning Notes
-date: 2022-07-14
+date: 2022-07-15
 ---
 
 ## Video: [Hamming, Learning to Learn: You and Your Research, 6 June 1995](https://www.youtube.com/watch?v=e3msMuwqp-o)
