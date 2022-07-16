@@ -19,7 +19,7 @@ module.exports = {
   ],
   lede: "Building a content hub to highlight people who are making a difference.",
   description: "Who hasn't heard of GoFundMe? They're the <em>most popular</em> personal fundraising website in the world and have helped facilitate <strong>$9 billion</strong> in fundraising for personal causes.",
-  cover: '/images/portfolio/gfm/dribbble.pngg',
+  cover: '/images/portfolio/gfm/dribbble.png',
   pillars: {
     client: 'The marketing team at GoFundMe wanted to highlight standout projects from "heroes" on the platform.',
     challenge: "Working within an existing WordPress codebase, I had to extend post taxonomies to support the editorial format for heroes content while building a new user interface.",
@@ -32,7 +32,7 @@ module.exports = {
       url: "https://www.linkedin.com/in/kelsealittle/",
       quotes: [
         "Keenan came well recommended, and after speaking with him I was impressed by his positive attitude and willingness to work into our team workflow.",
-        "We were able to launch the GoFundMe Heroes Hub, a beautiful new home for all of our editorial brand content. It has been very well received and <strong>our team loves using it</strong> to post new content.",
+        "Working with Keenan, we launched the GoFundMe Heroes Hub, a beautiful home for our editorial brand content. It's been very well received and <strong>our team loves using it</strong>.",
         "Keenan was amazing at communication, meeting/exceeding deadlines, and making himself available for fixes & troubleshooting in the immediate stretch after the project had launched.",
         "I would recommend Keenan very highly, he was amazing to work with and I hope to be able to work with him again in the future!"
       ],
@@ -43,7 +43,7 @@ module.exports = {
       url: "https://tonymingo.com/",
       quotes: [
         "Keenan makes a great development partner. As a designer, I appreciate his magical ability to talk about projects in common terms and teach us a few things along the way.",
-        "I would recommend Keenan to anyone. Aside from his obvious mastery of web development, <strong>he's patient, sharp, and empathetic</strong> — a rare breed in my experience.",
+        "I would recommend Keenan to anyone. Aside from his mastery of web development, <strong>he's patient, sharp, and empathetic</strong>.",
         "Keenan Payne is like a well-designed website. Technical and complex on the inside, with an intuitive, easy-to-use UI on the outside."
       ]
     }
