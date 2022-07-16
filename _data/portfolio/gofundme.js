@@ -28,13 +28,15 @@ module.exports = {
   people: {
     [1]: {
       name: "Kelsea Little",
-      position: "Brand Storyteller, Project Manager",
-      url: "https://www.linkedin.com/in/kelsealittle/"
+      position: "Project Manager, Brand Storyteller",
+      url: "https://www.linkedin.com/in/kelsealittle/",
+      image: "https://res.cloudinary.com/keenan-payne/image/upload/v1657998867/people/kelsea-little_s31zkg.jpg",
     },
     [2]: {
       name: "Tony Mingo",
       position: "Lead Designer",
-      url: "https://tonymingo.com/"
+      url: "https://tonymingo.com/",
+      image: "https://res.cloudinary.com/keenan-payne/image/upload/v1657998867/people/tony-mingo_zfmkfl.jpg",
     }
   },
   testimonials: {
