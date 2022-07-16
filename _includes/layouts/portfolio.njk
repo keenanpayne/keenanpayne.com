@@ -6,23 +6,24 @@ permalink: "/{{ title | slug }}/"
 
 {% import "organisms/newsletter.njk" as  newsletter with context %}
 
-{% set date = page.date %}
-{% set client = case_study.client %}
-{% set client_lede = case_study.client_lede %}
-{% set client_size = case_study.client_size %}
-{% set client_industry = case_study.client_industry %}
-{% set client_description = case_study.client_description %}
-{% set client_color = case_study.client_color %}
-{% set project = case_study.project %}
-{% set year = case_study.year %}
-{% set url = case_study.url %}
-{% set role = case_study.role %}
-{% set the_client = case_study.the_client %}
-{% set the_challenge = case_study.the_challenge %}
-{% set the_solution = case_study.the_solution %}
-{% set services = case_study.services %}
-{% set technologies = case_study.technologies %}
-{% set cover = case_study.cover %}
+{% set portfolioItem = portfolio[data] %}
+
+{% if portfolioItem %}
+  {% set client = portfolioItem.name %}
+  {% set project = portfolioItem.project %}
+  {% set year = portfolioItem.year %}
+  {% set lede = portfolioItem.lede %}
+  {% set size = portfolioItem.size %}
+  {% set industry = portfolioItem.industry %}
+  {% set description = portfolioItem.description %}
+  {% set color = portfolioItem.color %}
+  {% set url = portfolioItem.url %}
+  {% set role = portfolioItem.role %}
+  {% set pillars = portfolioItem.pillars %}
+  {% set services = portfolioItem.services %}
+  {% set technologies = portfolioItem.technologies %}
+  {% set cover = portfolioItem.cover %}
+{% endif %}
 
 <section class="portfolio _container -extra-large">
   <header class="portfolio-header">
@@ -34,36 +35,39 @@ permalink: "/{{ title | slug }}/"
       {%- endif -%}
     </div>
 
-    <h1 class="portfolio-title">
-      {{ title }}
-    </h1>
+    {% if client %}
+      <h1 class="portfolio-title">
+        {{ client }}
+      </h1>
+    {% endif %}
 
-    <h2 class="portfolio-lede _text-h3">
-      {{ client_lede }}
-    </h2>
+    {% if lede %}
+      <h2 class="portfolio-lede _text-h3">
+        {{ lede }}
+      </h2>
+    {% endif %}
   </header>
 
   <div class="portfolio-content">
-
     <div class="portfolio-details">
-      {% if client_description %}
+      {% if description %}
         <div class="portfolio-detail -full-width">
           <p class="portfolio-label _label">Description</p>
-          <p class="portfolio-stat">{{ client_description | safe }}</p>
+          <p class="portfolio-stat">{{ description | safe }}</p>
         </div>
       {% endif %}
 
-      {% if client_size %}
+      {% if size %}
         <div class="portfolio-detail">
           <p class="portfolio-label _label">Company Size</p>
-          <p class="portfolio-stat">{{ client_size }}</p>
+          <p class="portfolio-stat">{{ size }}</p>
         </div>
       {% endif %}
 
-      {% if client_industry %}
+      {% if industry %}
         <div class="portfolio-detail">
           <p class="portfolio-label _label">Industry</p>
-          <p class="portfolio-stat">{{ client_industry }}</p>
+          <p class="portfolio-stat">{{ industry }}</p>
         </div>
       {% endif %}
 
@@ -114,25 +118,31 @@ permalink: "/{{ title | slug }}/"
     {% endif %}
 
     <div class="portfolio-intro">
-      {% if the_client %}
-        <div class="portfolio-intro-content">
-          <p class="_text-h3">The problem</p>
-          <p class="_text-h5">{{ the_client | safe }}</p>
-        </div>
-      {% endif %}
+      {% if pillars %}
+        {% set client = pillars.client %}
+        {% set challenge = pillars.challenge %}
+        {% set solution = pillars.solution %}
 
-      {% if the_challenge %}
-        <div class="portfolio-intro-content">
-          <p class="_text-h3">The challenge</p>
-          <p class="_text-h5">{{ the_challenge | safe }}</p>
-        </div>
-      {% endif %}
+        {% if client %}
+          <div class="portfolio-intro-content">
+            <p class="_text-h3">The client</p>
+            <p class="_text-h5">{{ pillars.client }}</p>
+          </div>
+        {% endif %}
 
-      {% if the_solution %}
-        <div class="portfolio-intro-content">
-          <p class="_text-h3">The solution</p>
-          <p class="_text-h5">{{ the_solution | safe }}</p>
-        </div>
+        {% if challenge %}
+          <div class="portfolio-intro-content">
+            <p class="_text-h3">The challenge</p>
+            <p class="_text-h5">{{ challenge | safe }}</p>
+          </div>
+        {% endif %}
+
+        {% if solution %}
+          <div class="portfolio-intro-content">
+            <p class="_text-h3">The solution</p>
+            <p class="_text-h5">{{ solution | safe }}</p>
+          </div>
+        {% endif %}
       {% endif %}
     </div>
 
@@ -149,7 +159,7 @@ permalink: "/{{ title | slug }}/"
   {% include "components/postNav.njk" %}
 </section>
 
-<section class="portfolio-cta" style="--background: {{ client_color }};">
+<section class="portfolio-cta">
   <div class="portfolio-cta-content _container -large">
     <h2 class="portfolio-cta-title">
       Like what you see?

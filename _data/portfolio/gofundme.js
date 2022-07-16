@@ -1,5 +1,30 @@
 module.exports = {
   name: "GoFundMe",
+  project: "Heroes content portal",
+  year: 2019,
+  size: "201 to 500",
+  industry: "Fundraising",
+  color: "#940060",
+  url: "https://www.gofundme.com/c/heroes",
+  role: "Frontend Developer",
+  services: [
+    "Web Development"
+  ],
+  technologies: [
+    "WordPress",
+    "PHP",
+    "HTML",
+    "CSS",
+    "JavaScript"
+  ],
+  lede: "Building a content hub to highlight people who are making a difference.",
+  description: "Who hasn't heard of GoFundMe? They're the <em>most popular</em> personal fundraising website in the world and have helped facilitate <strong>$9 billion</strong> in fundraising for personal causes.",
+  cover: '/images/portfolio/gfm/dribbble.pngg',
+  pillars: {
+    client: 'The marketing team at GoFundMe wanted to highlight standout projects from "heroes" on the platform.',
+    challenge: "Working within an existing WordPress codebase, I had to extend post taxonomies to support the editorial format for heroes content while building a new user interface.",
+    solution: "I worked with web engineers at the company to learn the ins and outs of the codebase while designing a solution. I leveraged existing technologies and paradigms to build a seamless extension to the existing content editing workflow.",
+  },
   people: {
     [1]: {
       name: "Kelsea Little",
