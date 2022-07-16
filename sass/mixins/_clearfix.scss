@@ -4,7 +4,7 @@
 // Ref: https://css-tricks.com/snippets/css/clear-fix/
 
 @mixin clearfix {
-	content: "";
-	display: table;
-	clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
