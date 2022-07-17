@@ -75,6 +75,7 @@
   border-radius: 50%;
   height: var(--size);
   margin-right: .5rem;
+  user-select: none;
   width: var(--size);
 
   @media (--min-560) {
