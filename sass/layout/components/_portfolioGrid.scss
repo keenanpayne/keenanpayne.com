@@ -7,10 +7,18 @@
   position: relative;
 
   // Grid Layout
+  &.-one-col {
+    .portfolioGrid-item {
+      @media (--min-720) {
+        grid-column: 2 / span 10;
+      }
+    }
+  }
+
   &.-two-col {
     .portfolioGrid-item {
-      @media (--min-640) {
-        grid-column: auto / span 3;
+      @media (--min-720) {
+        grid-column: auto / span 6;
       }
     }
   }
@@ -18,11 +26,11 @@
   &.-three-col {
     .portfolioGrid-item {
       @media (--min-640) {
-        grid-column: auto / span 3;
+        grid-column: auto / span 6;
       }
     
-      @media (--min-1120) {
-        grid-column-end: span 2;
+      @media (--min-960) {
+        grid-column-end: span 4;
       }
     }
   }
@@ -31,9 +39,14 @@
 .portfolioGrid-items {
   display: grid;
   grid-gap: 1.5rem;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(12, 1fr);
 }
 
 .portfolioGrid-item {
   grid-column: 1 / -1;
+}
+
+.portfolioGrid-link {
+  @include linkHoverBackground();
+  @include externalLink($size: 16px, $left: 10px);
 }

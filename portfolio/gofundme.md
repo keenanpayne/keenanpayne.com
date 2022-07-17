@@ -20,6 +20,11 @@ sections:
     items: 
       - 4
       - 1
+  - type: portfolioGrid
+    project: gofundme
+    modifier: '-one-col'
+    items: 
+      - 4 # TODO: Replace with three new shots
   - type: testimonial
     project: gofundme
     person: 2
