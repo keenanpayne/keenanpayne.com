@@ -12,6 +12,8 @@
 
 // Mixins
 @import "mixins/clearfix";
+@import "mixins/externalLink";
+@import "mixins/linkHoverBackground";
 @import "mixins/pullContentOutside";
 @import "mixins/typography";
 @import "mixins/visibility";
@@ -63,6 +65,7 @@
 @import "layout/components/mailbox";
 @import "layout/components/missionStatement";
 @import "layout/components/newsletter";
+@import "layout/components/portfolioGrid";
 @import "layout/components/postNav";
 @import "layout/components/sideBySide";
 @import "layout/components/testimonial";

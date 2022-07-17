@@ -2,19 +2,25 @@
 // Intro
 // ==================================================
 
-.intro { 
+.intro {
+  --intro-box-shadow: var(--exodus-fruit);
+
   display: flex;
   flex-direction: column;
   padding: 0 1.5rem 3rem;
   width: 100%;
+
+  @media (--dark) {
+    --intro-box-shadow: var(--yellow-dark);
+  }
 
   @media (--min-720) { 
     flex-direction: row;
   }
 }
 
-.intro-image { 
-  box-shadow: 5px 5px 0 0 var(--gray-dark);
+.intro-image {
+  box-shadow: 5px 5px 0 0 var(--intro-box-shadow);
   margin-bottom: 1.5rem;
   max-width: 150px;
 

@@ -121,9 +121,9 @@
       {%- if tag or more -%}
         <p class="entries-tagsLink _text-align-center">
           {% if tag %}
-            <a href="{{ '/tags/' | url }}">All Tags →</a>
+            <a class="-hover-background" href="{{ '/tags/' | url }}">All Tags →</a>
           {% elif more %}
-            <a href="{{ '/archive/' | url }}">View Archive →</a>
+            <a class="-hover-background" href="{{ '/archive/' | url }}">View Archive →</a>
           {% endif %}
         </p>
       {%- endif -%}

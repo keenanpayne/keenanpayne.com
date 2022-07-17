@@ -2,7 +2,7 @@
 // Set constants for the Cloudinary URL and fallback widths for images when not supplied by the shorcode params
 const CLOUDNAME = "keenan-payne"
 const FOLDER = ""
-const BASE_URL = `https://res.cloudinary.com/${CLOUDNAME}/image/upload/`;
+const BASE_URL = `https://res.cloudinary.com/${CLOUDNAME}/image/upload/q_auto,f_auto/`;
 const FALLBACK_WIDTHS = [ 300, 600, 680, 1360 ];
 const FALLBACK_WIDTH = 680;
 

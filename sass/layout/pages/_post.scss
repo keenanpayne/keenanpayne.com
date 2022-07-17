@@ -35,8 +35,14 @@
   padding-top: 1.5rem;
 
   // Descendants
-  > a:first-of-type { 
-    font-style: italic;
+  > a {
+    &:first-of-type { 
+      font-style: italic;
+    }
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
@@ -46,7 +52,8 @@
 }
 
 .post-lede {
-  margin-top: .5rem;
+  margin-bottom: 1rem;
+  margin-top: .75rem;
   
   // Context-specific
   & + .post-tags {
@@ -127,14 +134,6 @@
     margin-top: 0;
   }
 
-  h4 { 
-    margin-bottom: .5rem;
-  }
-
-  h5 {
-    margin-bottom: 1rem;
-  }
-
   strong {
     font-weight: var(--font-weight-bold);
   }
@@ -168,24 +167,33 @@
     }
   }
 
-  p:not(:last-of-type):not(.-large) { 
-    margin-bottom: 1.25rem;
-  }
-  
-  p mark { 
-    background: transparent;
-    background-image: linear-gradient(to right, rgba(255, 225, 0, 0.15), rgba(255, 225, 0, 0.6) 7.5%, rgba(255, 225, 0, 0.25));
-    border-radius: 0.8em 0.3em;
-    -webkit-box-decoration-break: clone;
-            box-decoration-break: clone;
-    margin: 0 -0.4em;
-    padding: 0.1em 0.4em; 
+  p {
+    &:not(:last-of-type):not(.-large) { 
+      margin-bottom: 1.25rem;
+    }
 
-    @media (--dark) { 
-      background-color: var(--gray-lighter);
-      margin: 0 -0.1em;
+    a {
+      @include linkHoverBackground();
+      @include externalLink();
+    }
+
+    mark { 
+      background: transparent;
+      background-image: linear-gradient(to right, rgba(255, 225, 0, 0.15), rgba(255, 225, 0, 0.6) 7.5%, rgba(255, 225, 0, 0.25));
+      border-radius: 0.8em 0.3em;
+      -webkit-box-decoration-break: clone;
+              box-decoration-break: clone;
+      margin: 0 -0.4em;
+      padding: 0.1em 0.4em; 
+  
+      @media (--dark) { 
+        background-color: var(--gray-lighter);
+        margin: 0 -0.1em;
+      }
     }
   }
+
+  
 
   > figure {
     &:not(.-float-left):not(.-float-right) {

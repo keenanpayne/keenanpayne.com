@@ -1,12 +1,11 @@
 //
 // Portfolio
 // ==================================================
-// TODO: Create generic abstractions for similarities with `_services.scss`
 
 .portfolio { 
   display: grid;
   grid-template-columns: repeat(10, 1fr);
-  margin-bottom: 5rem;
+  margin-bottom: 3rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
@@ -32,7 +31,7 @@
 }
 
 .portfolio-title { 
-  margin-bottom: 1.25rem;
+  margin-bottom: .5rem;
   margin-top: .5rem;
 
   @media (--min-960) {
@@ -44,6 +43,12 @@
   }
 }
 
+.portfolio-lede {
+  margin-bottom: 1em;
+  margin-top: 0;
+  max-width: 26ch;
+}
+
 .portfolio-details {
   align-content: flex-start;
   display: flex;
@@ -51,33 +56,39 @@
   grid-column: 1 / -1;
   padding-left: .25rem;
 
+  @media (--min-640) {
+    grid-column: 1 / span 7;
+  }
+
   @media (--min-960) {
-    grid-column: 1 / span 3;
+    padding-right: 3rem;
+    grid-column: 1 / span 5;
+  }
+
+  @media (--min-1120) {
+    grid-column: 1 / span 4;
   }
 }
 
 .portfolio-detail { 
-  --border-color: var(--exodus-fruit);
+  --border-color: var(--gray-dark);
 
   flex-basis: 50%;
-  padding-bottom: 1.5rem;
-
+  
   @media (--dark) {
-    --border-color: var(--yellow-dark);
+    --border-color: var(--gray-darkest-1);
   }
 
-  @media (--min-960) {
-    padding-bottom: 2.25rem;
+  &:last-of-type {
+    margin-top: 1rem;
+    text-align: right;
   }
 
-  &:first-of-type {
-    flex-basis: 100%;
-  }
+  &:not(:last-of-type) {
+    padding-bottom: 1.5rem;
 
-  // Descendants
-  p {
-    &:first-of-type {
-      margin-bottom: .25rem;
+    @media (--min-960) {
+      padding-bottom: 2.25rem;
     }
   }
 
@@ -86,53 +97,149 @@
     flex-basis: 100%;
   }
 
-  &.-year {
-    flex-basis: 20%;
+  // Descendants
+  ul {
+    margin: 0;
+    padding: 0;
   }
 
-  &.-services {
-    flex-basis: 80%;
+  li {
+    display: inline-block;
+    list-style-type: none;
 
-    // Descendants
-    ul {
-      margin: 0;
-      padding: 0;
-    }
-
-    li {
-      display: inline-block;
-      list-style-type: none;
-
-      &:not(:last-of-type) {
-        &::after {
-          content: ','
-        }
+    &:not(:last-of-type) {
+      &::after {
+        content: ','
       }
     }
   }
 }
 
+.portfolio-label {
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: .25rem;
+}
+
+.portfolio-stat {
+  max-width: 55ch;
+}
+
 .portfolio-cover {
-  align-self: center;
   grid-column: 1 / -1;
   width: 100%;
   
   @media (--min-960) {
-    grid-column: 5 / -1;
+    grid-column: 6 / -1;
+    margin-top: 1.5rem;
     padding-right: 1.5rem;
+  }
+
+  @media (--min-1120) {
+    grid-column: 5 / -1;
   }
 }
 
 .portfolio-cover-img {
   box-shadow: 10px 10px var(--exodus-fruit);
+
+  @media (--min-960) {
+    box-shadow: 15px 15px var(--exodus-fruit);
+  }
+}
+
+.portfolio-intro {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-gap: 3rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @media (--min-960) {
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+.portfolio-intro-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50ch;
 }
 
 .portfolio-content { 
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: repeat(10, 1fr);
+
+  // Vertical rhythm for descendants
+  & > * {
+    margin-bottom: 3rem;
+
+    @media (--min-960) {
+      margin-bottom: 5rem;
+    }
+
+    @media (--min-1120) {
+      margin-bottom: 6.5rem;
+    }
+  }
 }
 
 .portfolio-subcontent { 
   grid-column: 1 / -1;
+}
+
+.portfolio-cta {
+  background: var(--green-1);
+  background: linear-gradient(90deg, var(--green-1) 0%, var(--green-2) 100%);
+  color: var(--white);
+
+  @media (--max-720) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (--min-720) {
+    text-align: center;
+  }
+}
+
+.portfolio-cta-content {
+  max-width: 55ch;
+  padding-bottom: 5rem;
+  padding-top: 5rem;
+
+  @media (--max-720) {
+    margin-left: 0;
+  }
+
+  @media (--min-720) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.portfolio-cta-title {
+  @include h1();
+
+  margin-bottom: 1.25rem;
+  margin-top: 0;
+
+  @media (--min-960) {
+    @include text-large();
+  }
+}
+
+.portfolio-cta-description {
+  max-width: 35ch;
+
+  @media (--min-720) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &:first-of-type {
+    margin-bottom: 2.25rem;
+  }
 }

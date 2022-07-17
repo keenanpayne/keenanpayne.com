@@ -29,6 +29,14 @@
     }
   }
 
+  &.-extra-large {
+    @include container(100%);
+
+    @media (--min-1440) {
+      @include container(1440px);
+    }
+  }
+
   &.-fluid {
     @include container(95%);    
   }

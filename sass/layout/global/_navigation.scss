@@ -32,17 +32,6 @@
       margin-left: 1.5rem;
     }
   }
-  
-  // Descendants
-  a[href]:not(:hover) {
-    text-decoration: none;
-  }
-
-  // Modifiers
-  &.-active {
-    font-weight: var(--font-weight-semibold);
-    text-decoration: underline;
-  }
 
   &.-cta { 
     font-weight: var(--font-weight-bold);
@@ -54,6 +43,20 @@
     
     @media (--min-640) { 
       padding-left: 1.5rem;
+    }
+  }
+}
+
+.nav-link {
+  text-decoration: none;
+  
+  // Modifiers
+  &.-active {
+    font-weight: var(--font-weight-semibold);
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
     }
   }
 }

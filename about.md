@@ -14,7 +14,7 @@ hello: false
 
 By trade, I'm a web developer [^1]. I spend my "working" time building websites and web applications. Like the website you're on right now—I built this! ✨
 
-I've also built websites for cool companies like <a href="https://asana.com" target="_blank" rel="noopener">Asana</a>, <a href="https://trysparrow.com/" target="_blank" rel="noopener">Sparrow</a>, <a href="https://www.gofundme.com/c/heroes" target="_blank" rel="noopener">GoFundMe</a>, <a href="https://collectivei.com/" target="_blank" rel="noopener">Collective[i], <a href="https://transform.co" target="_blank" rel="noopener">Transform</a>, and <a href="https://neuralink.com/" target="_blank" rel="noopener">Neuralink</a>,  to name _a few_. I've been doing this for 13 years professionally, so I've lent a hand working on _countless_ of projects. [^2]
+I've also built websites for cool companies like <a href="https://asana.com" target="_blank" rel="noopener">Asana</a>, <a href="https://trysparrow.com/" target="_blank" rel="noopener">Sparrow</a>, <a href="https://www.gofundme.com/c/heroes" target="_blank" rel="noopener">GoFundMe</a>, <a href="https://collectivei.com/" target="_blank" rel="noopener">Collective[i]</a>, <a href="https://transform.co" target="_blank" rel="noopener">Transform</a>, and <a href="https://neuralink.com/" target="_blank" rel="noopener">Neuralink</a>,  to name _a few_. I've been doing this for 13 years professionally, so I've lent a hand working on _countless_ of projects. [^2]
 
 [^1]: My trade struggles naming job positions and titles. I'm also referred to as a frontend developer/engineer, software developer/engineer, or <strong>webmaster</strong>. 
 
@@ -30,7 +30,7 @@ I specialize in [frontend architecture](/services/frontend-architecture), which 
 
 Long story short, I build beautiful, scalable web experiences that everyone will love. I'll help you meet your goals and do so by crafting the highest-quality product I can, given the circumstances.
 
-{% include type/note.html content: 'If you want to see my resume, testimonials from clients and collaborators, or all that fun stuff, check out <a href="https://www.linkedin.com/in/keenanpayne" target="_blank" rel="noopener">my Linked In profile</a>.' %}
+{% include type/note.html content: 'If you want to see my resume, testimonials from clients and collaborators, or all that fun stuff, check out <a href="https://www.linkedin.com/in/keenanpayne" target="_blank" rel="noopener">my LinkedIn profile</a>.' %}
 
 <h2 class="_text-h4">
   Pictures of me

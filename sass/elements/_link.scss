@@ -2,60 +2,22 @@
 // Links
 // ==================================================
 
-//
-// Mixins
-// ------
-
-// TODO: Animate background as a `:before` pseudo-element 
-//       to add a nice micro-interaction
-@mixin linkHoverBackground() {
-  --link-text-decoration: var(--exodus-fruit);
-  --link-hover-background: var(--exodus-fruit);
-  --link-hover-color: var(--white);
-
-  @media (--dark) {
-    --link-text-decoration: var(--yellow-dark);
-    --link-hover-background: var(--yellow-dark);
-    --link-hover-color: var(--plum-dark);
-  }
-
-  text-decoration: underline;
-  text-decoration-color: var(--link-text-decoration);
-  text-decoration-thickness: .125em;
-  
-  &:hover { 
-    background-color: var(--link-hover-background);
-    color: var(--link-hover-color);
-    text-decoration: none;
-
-  }
-}
-
-
-//
-// Styles
-// ------
-
-a[href] {
-  --link-color: var(--plum-dark);
-  --link-color-hover: var(--plum-light);
-
-  color: var(--link-color);
+a {
+  color: var(--link-color, initial);
 
   &:hover { 
-    color: var(--link-color-hover);
-  }
-
-  @media (--dark) {
-    --link-color: var(--gray-white);
-    --link-color-hover: var(--gray-light);
-  }
-
-  p & {
-    @include linkHoverBackground();
+    color: var(--link-color-hover, initial);
   }
 
   // Modifiers
+  &.-inverted { 
+    --link-color: var(--gray-lighter);
+
+    @media (--dark) {
+      --link-color: var(--plum-dark);
+    }
+  }
+
   &.-underline-hover { 
     text-decoration: none;
 
@@ -66,5 +28,24 @@ a[href] {
   
   &.-hover-background {
     @include linkHoverBackground();
+  }
+
+  &.-external-link {
+    @include externalLink();
+  }
+
+  &.-highlight {
+    --link-background: var(--light-pink);
+
+    background-color: var(--link-background);
+    margin: auto -0.05em;
+    padding: 0.05em 0.225em;
+    position: relative;
+    text-decoration: none;
+    transition: box-shadow var(--transition);
+
+    @media (--dark) { 
+      --link-background: var(--heliotrope);
+    }
   }
 }

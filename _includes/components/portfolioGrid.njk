@@ -1,0 +1,61 @@
+{# Component Settings #}
+{% set project = section.project %}
+{% set name = section.name %}
+{% set items = section.items %}
+{% set source = section.source %}
+
+{% if source == 'dribbble' %}
+  {% set query = portfolio[project].dribbble %}
+{% elif source == 'assets' %}
+  {% set query = portfolio[project].assets %}
+{% endif %}
+
+{# Markup #}
+{%- if items -%}
+  <div class="portfolioGrid {{ section.modifier }}">
+    <div class="portfolioGrid-items">
+      {%- for item in items -%}
+        {% set res = query[item] %}
+        {% set video = res.video %}
+        {% set image = res.image %}
+        {% set title = res.title %}
+        {% set description = res.description %}
+        {% set link = res.link %}
+
+        <div class="portfolioGrid-item">
+          {# TODO: Lazy-load asset and host on an asset management platform #}
+          {%- if video -%}
+            <video muted controls src="{{ video }}"></video>
+          {%- endif -%}
+
+          {%- if image -%}
+            <img src="{{ image }}" alt="{{ title }}" loading="lazy" />
+          {%- endif -%}
+
+          {% if title %}
+            <h3 class="portfolioGrid-title _text-h4">
+              {%- if link -%}
+                <a class="portfolioGrid-link" href="{{ link }}" target="_blank" rel="noopener">
+              {%- endif -%}
+
+              {%- if title -%}
+                {{ title }}
+              {%- endif -%}
+
+              {%- if link -%}
+                </a>
+              {%- endif -%}
+            </h3>
+          {% endif %}
+
+          {% if description %}
+            <p class="portfolioGrid-description _text-h6">
+              {{ description }}
+            </p>
+          {% endif %}
+
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
