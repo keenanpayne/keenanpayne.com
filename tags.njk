@@ -17,6 +17,9 @@ eleventyComputed:
 permalink: /tags/{{ tag | slug }}/
 templateClass: page-tags
 hello: false
+sections: 
+  entries:
+    read_Link: false
 ---
 
 {% import "organisms/entries/entries.njk" as entries with context %}

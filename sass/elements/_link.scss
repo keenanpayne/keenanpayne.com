@@ -2,57 +2,11 @@
 // Links
 // ==================================================
 
-//
-// Mixins
-// ------
-
-// TODO: Animate background as a `:before` pseudo-element 
-//       to add a nice micro-interaction
-@mixin linkHoverBackground() {
-  --link-text-decoration: var(--exodus-fruit);
-  --link-hover-background: var(--exodus-fruit);
-  --link-hover-color: var(--white);
-  --link-spacing: .125em;
-
-  @media (--dark) {
-    --link-text-decoration: var(--yellow-dark);
-    --link-hover-background: var(--yellow-dark);
-    --link-hover-color: var(--plum-dark);
-  }
-
-  margin-left: calc(var(--link-spacing) * -1);
-  margin-right: calc(var(--link-spacing) * -1);
-  padding-left: var(--link-spacing);
-  padding-right: var(--link-spacing);
-  text-decoration: underline;
-  text-decoration-color: var(--link-text-decoration);
-  text-decoration-thickness: var(--link-spacing);
-  
-  &:hover { 
-    background-color: var(--link-hover-background);
-    color: var(--link-hover-color);
-    text-decoration: none;
-  }
-}
-
-
-//
-// Styles
-// ------
-
-a[href] {
-  --link-color: var(--plum-dark);
-  --link-color-hover: var(--plum-light);
-
-  color: var(--link-color);
+a {
+  color: var(--link-color, initial);
 
   &:hover { 
-    color: var(--link-color-hover);
-  }
-
-  @media (--dark) {
-    --link-color: var(--gray-lighter);
-    --link-color-hover: var(--gray-light);
+    color: var(--link-color-hover, initial);
   }
 
   // Modifiers
@@ -76,6 +30,10 @@ a[href] {
     @include linkHoverBackground();
   }
 
+  &.-external-link {
+    @include externalLink();
+  }
+
   &.-highlight {
     --link-background: var(--light-pink);
 
@@ -88,43 +46,6 @@ a[href] {
 
     @media (--dark) { 
       --link-background: var(--heliotrope);
-    }
-  }
-
-  // Context-specific
-  p &, 
-  li & {
-    @include linkHoverBackground();
-
-    // Ref: https://christianoliff.com/blog/styling-external-links-with-an-icon-in-css/
-    // TODO: This feels like a clunky implementation—find a cleaner solution.
-    &[href^="http"],
-    &[href^="https://"] {
-      &:hover {
-        &::after {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='white' d='M488 0h-135.3c-13.25 0-25.09 7.906-30.19 20.16c-5.062 12.28-2.281 26.25 7.094 35.63l40.69 40.69L177.4 289.4c-12.5 12.5-12.5 32.75 0 45.25C183.6 340.9 191.8 344 200 344s16.38-3.125 22.62-9.375l192.9-192.9l40.69 40.69C462.5 188.7 470.8 192 479.3 192c4.219 0 8.469-.8125 12.56-2.5C504.1 184.4 512 172.6 512 159.3V24C512 10.75 501.3 0 488 0zM392 320c-13.25 0-24 10.75-24 24v112c0 4.406-3.594 8-8 8h-304c-4.406 0-8-3.594-8-8v-304c0-4.406 3.594-8 8-8h112C181.3 144 192 133.3 192 120S181.3 96 168 96h-112C25.13 96 0 121.1 0 152v304C0 486.9 25.13 512 56 512h304c30.88 0 56-25.12 56-56v-112C416 330.8 405.3 320 392 320z'/%3E%3C/svg%3E");
-
-          @media (--dark) {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='black' d='M488 0h-135.3c-13.25 0-25.09 7.906-30.19 20.16c-5.062 12.28-2.281 26.25 7.094 35.63l40.69 40.69L177.4 289.4c-12.5 12.5-12.5 32.75 0 45.25C183.6 340.9 191.8 344 200 344s16.38-3.125 22.62-9.375l192.9-192.9l40.69 40.69C462.5 188.7 470.8 192 479.3 192c4.219 0 8.469-.8125 12.56-2.5C504.1 184.4 512 172.6 512 159.3V24C512 10.75 501.3 0 488 0zM392 320c-13.25 0-24 10.75-24 24v112c0 4.406-3.594 8-8 8h-304c-4.406 0-8-3.594-8-8v-304c0-4.406 3.594-8 8-8h112C181.3 144 192 133.3 192 120S181.3 96 168 96h-112C25.13 96 0 121.1 0 152v304C0 486.9 25.13 512 56 512h304c30.88 0 56-25.12 56-56v-112C416 330.8 405.3 320 392 320z'/%3E%3C/svg%3E");
-          }
-        }
-      }
-      
-      &::after {
-        content: "";
-        width: 14px;
-        height: 14px;
-        margin-left: 4px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='black' d='M488 0h-135.3c-13.25 0-25.09 7.906-30.19 20.16c-5.062 12.28-2.281 26.25 7.094 35.63l40.69 40.69L177.4 289.4c-12.5 12.5-12.5 32.75 0 45.25C183.6 340.9 191.8 344 200 344s16.38-3.125 22.62-9.375l192.9-192.9l40.69 40.69C462.5 188.7 470.8 192 479.3 192c4.219 0 8.469-.8125 12.56-2.5C504.1 184.4 512 172.6 512 159.3V24C512 10.75 501.3 0 488 0zM392 320c-13.25 0-24 10.75-24 24v112c0 4.406-3.594 8-8 8h-304c-4.406 0-8-3.594-8-8v-304c0-4.406 3.594-8 8-8h112C181.3 144 192 133.3 192 120S181.3 96 168 96h-112C25.13 96 0 121.1 0 152v304C0 486.9 25.13 512 56 512h304c30.88 0 56-25.12 56-56v-112C416 330.8 405.3 320 392 320z'/%3E%3C/svg%3E");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        display: inline-block;
-        
-        @media (--dark) {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='white' d='M488 0h-135.3c-13.25 0-25.09 7.906-30.19 20.16c-5.062 12.28-2.281 26.25 7.094 35.63l40.69 40.69L177.4 289.4c-12.5 12.5-12.5 32.75 0 45.25C183.6 340.9 191.8 344 200 344s16.38-3.125 22.62-9.375l192.9-192.9l40.69 40.69C462.5 188.7 470.8 192 479.3 192c4.219 0 8.469-.8125 12.56-2.5C504.1 184.4 512 172.6 512 159.3V24C512 10.75 501.3 0 488 0zM392 320c-13.25 0-24 10.75-24 24v112c0 4.406-3.594 8-8 8h-304c-4.406 0-8-3.594-8-8v-304c0-4.406 3.594-8 8-8h112C181.3 144 192 133.3 192 120S181.3 96 168 96h-112C25.13 96 0 121.1 0 152v304C0 486.9 25.13 512 56 512h304c30.88 0 56-25.12 56-56v-112C416 330.8 405.3 320 392 320z'/%3E%3C/svg%3E");
-        }
-      }
     }
   }
 }

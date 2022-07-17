@@ -42,8 +42,8 @@ https://github.com/keenanpayne/keenanpayne.com
         {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
         <ul class="nav">
           {%- for entry in collections.all | eleventyNavigation -%}
-            <li class="nav-item{% if entry.url == page.url %} -active{% endif %} {{ '-cta' if entry.cta }}">
-              <a href="{{ entry.url | url }}">
+            <li class="nav-item {{ '-cta' if entry.cta }}">
+              <a class="nav-link {% if entry.url == page.url %} -active{% endif %}" href="{{ entry.url | url }}">
                 {{ entry.title }}
               </a>
             </li>

@@ -27,8 +27,16 @@
           {%- endif -%}
 
           {% if title %}
-            <h3 class="_text-h4">
+            <h3 class="portfolioGrid-title _text-h4">
+              {%- if link -%}
+                <a class="portfolioGrid-link" href="{{ link }}" target="_blank" rel="noopener">
+              {%- endif -%}
+
               {{ title }}
+
+              {%- if link -%}
+                </a>
+              {%- endif -%}
             </h3>
           {% endif %}
 
@@ -38,11 +46,6 @@
             </p>
           {% endif %}
 
-          {% if link %}
-            <p>
-              <a href="{{ link }}" target="_blank" rel="noopener">View on Dribbble</a>
-            </p>
-          {% endif %}
         </div>
       {%- endfor -%}
     </div>

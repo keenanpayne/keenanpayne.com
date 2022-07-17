@@ -4,4 +4,10 @@
 
 li {
   line-height: 1.5;
+
+  // Descendants
+  a {
+    @include linkHoverBackground();
+    @include externalLink();
+  }
 }

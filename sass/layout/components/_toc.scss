@@ -5,10 +5,7 @@
 :root { 
   --toc-background: var(--gray-lighter);
   --toc-border-radius: 3px;
-  --toc-link-color: var(--plum-dark);
   --toc-text-decoration: var(--gray-darker);
-  --toc-link-hover-color: var(--exodus-fruit);
-  --toc-link-hover-decoration: var(--plum-dark);
   --toc-summary-background: var(--exodus-fruit);
   --toc-summary-color: var(--white);
 }
@@ -56,14 +53,8 @@
     font-size: var(--font-base);
   }
 
-  a { 
-    color: var(--toc-link-color);
-    text-decoration-color: var(--toc-text-decoration);
-
-    &:hover { 
-      color: var(--toc-link-hover-color);
-      text-decoration-color: var(--toc-link-hover-decoration);
-    }
+  a {
+    --link-color: var(--plum-dark);
   }
 }
 

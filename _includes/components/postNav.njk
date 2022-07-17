@@ -9,7 +9,7 @@
           Next Post
         </span>
         
-        <a href="{{ nextPost.url | url }}">
+        <a class="-hover-background" href="{{ nextPost.url | url }}">
           {{ nextPost.data.title }}
         </a>
       {%- endif -%}
@@ -21,7 +21,7 @@
           Previous Post
         </span>
         
-        <a href="{{ previousPost.url | url }}">
+        <a class="-hover-background" href="{{ previousPost.url | url }}">
           {{ previousPost.data.title }}
         </a>
       {%- endif -%}
