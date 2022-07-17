@@ -150,9 +150,11 @@ permalink: "/{{ title | slug }}/"
       {% include "components/" + section.type + ".njk" %}
     {% endfor %}
 
-    <div class="portfolio-subcontent _container -fluid">
-      {{ content | safe }}
-    </div>
+    {% if content %}
+      <div class="portfolio-subcontent _container -fluid">
+        {{ content | safe }}
+      </div>
+    {% endif %}
   </div>
 
   {# TODO: Update this to display featured images so that other content looks more compelling #}
