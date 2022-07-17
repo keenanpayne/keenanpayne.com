@@ -1,9 +1,6 @@
 //
 // Portfolio
 // ==================================================
-// TODO: Create generic abstractions for similarities with `_services.scss`
-
-
 
 .portfolio { 
   display: grid;
@@ -83,6 +80,7 @@
   }
 
   &:last-of-type {
+    margin-top: 1rem;
     text-align: right;
   }
 
@@ -193,11 +191,9 @@
 }
 
 .portfolio-cta {
-  background-color: var(--yellow-dark);
-
-  @media (--dark) {
-    background-color: var(--exodus-fruit);
-  }
+  background: var(--green-1);
+  background: linear-gradient(90deg, var(--green-1) 0%, var(--green-2) 100%);
+  color: var(--white);
 
   @media (--max-720) {
     padding-left: 1.5rem;
@@ -225,8 +221,14 @@
 }
 
 .portfolio-cta-title {
+  @include h1();
+
   margin-bottom: 1.25rem;
   margin-top: 0;
+
+  @media (--min-960) {
+    @include text-large();
+  }
 }
 
 .portfolio-cta-description {
