@@ -4,7 +4,17 @@
 
 button,
 .button {
+  @include externalLink($size: 16px, $left: 8px);
+
   background-color: var(--background, initial);
+  color: var(--color, initial);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+
+  &:hover {
+    background-color: var(--background-hover, initial);
+    color: var(--color-hover, initial);
+  }
 
   // Modifiers
   &.-flat {
@@ -14,16 +24,38 @@ button,
     box-shadow: none;
   }
 
+  &.-primary {
+    --background: var(--exodus-fruit);
+    --background-hover: var(--plum-dark);
+    --color: var(--white);
+    --color-hover: var(--white);
+    --link-color: var(--color);
+    --link-color-hover: var(--color-hover);
+
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1rem;
+
+    @media (--dark) {
+      --background: var(--yellow-dark);
+      --background-hover: var(--gray-dark);
+      --color: var(--plum-dark);
+      --color-hover: var(--color);
+    }
+  }
+
   &.-ghost {
+    --background-hover: var(--exodus-fruit);
     --border: var(--exodus-fruit);
+    --color-hover: var(--white);
 
     border: 3px solid var(--border);
     border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
-    text-decoration: none;
 
     @media (--dark) {
+      --background-hover: var(--yellow-dark);
       --border: var(--yellow-dark);
+      --color-hover: var(--plum-dark);
     }
   }
 }
