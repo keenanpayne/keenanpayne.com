@@ -50,3 +50,7 @@
   @include linkHoverBackground();
   @include externalLink($size: 16px, $left: 10px);
 }
+
+.portfolioGrid-description {
+  max-width: 50ch;
+}

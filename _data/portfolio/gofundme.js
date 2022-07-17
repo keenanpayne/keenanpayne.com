@@ -91,8 +91,25 @@ module.exports = {
     [4]: {
       link: "https://dribbble.com/shots/11115360-GoFundMe-Heroes-Landing-page",
       video: "https://res.cloudinary.com/keenan-payne/video/upload/v1657996399/portfolio/gofundme/homepage-scroll_y9telw.mp4",
-      title: "Content hub landing page",
+      title: "Content hub homepage",
       description: "Highlighting the homepage for GoFundMe Heroes content",
     }
+  },
+  assets: {
+    [1]: {
+      image: "https://res.cloudinary.com/keenan-payne/image/upload/v1658011021/portfolio/gofundme/homepage_ffr7ea.png",
+      title: "GoFundMe Heroes homepage",
+      description: ""
+    },
+    [2]: {
+      image: "https://res.cloudinary.com/keenan-payne/image/upload/v1658011021/portfolio/gofundme/article_u2wfvx.png",
+      title: "GoFundMe Heroes full article",
+      description: ""
+    },
+    [3]: {
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1658011020/portfolio/gofundme/podcast-player_r3zz5v.mp4",
+      title: "Article podcast player",
+      description: "I integrated the Libsyn podcast player for GoFundMe Heroes content that contain a podcast."
+    },
   }
 }

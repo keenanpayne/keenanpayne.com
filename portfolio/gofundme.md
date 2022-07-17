@@ -17,14 +17,16 @@ sections:
   - type: portfolioGrid
     project: gofundme
     modifier: '-two-col'
+    source: dribbble
     items: 
       - 4
       - 1
   - type: portfolioGrid
     project: gofundme
     modifier: '-one-col'
+    source: assets
     items: 
-      - 4 # TODO: Replace with three new shots
+      - 1
   - type: testimonial
     project: gofundme
     person: 2
@@ -32,6 +34,7 @@ sections:
   - type: portfolioGrid
     project: gofundme
     modifier: '-two-col'
+    source: dribbble
     items: 
       - 2
       - 3
@@ -39,4 +42,20 @@ sections:
     project: gofundme
     person: 1
     testimonial: 3
+  - type: portfolioGrid
+    project: gofundme
+    modifier: '-one-col'
+    source: assets
+    items: 
+      - 2
+  - type: portfolioGrid
+    project: gofundme
+    modifier: '-one-col'
+    source: assets
+    items: 
+      - 3
+  - type: testimonial
+    project: gofundme
+    person: 2
+    testimonial: 5
 ---
