@@ -30,7 +30,7 @@ I specialize in [frontend architecture](/services/frontend-architecture), which 
 
 Long story short, I build beautiful, scalable web experiences that everyone will love. I'll help you meet your goals and do so by crafting the highest-quality product I can, given the circumstances.
 
-{% include type/note.html content: 'If you want to see my resume, testimonials from clients and collaborators, or all that fun stuff, check out <a href="https://www.linkedin.com/in/keenanpayne" target="_blank" rel="noopener">my Linked In profile</a>.' %}
+{% include type/note.html content: 'If you want to see my resume, testimonials from clients and collaborators, or all that fun stuff, check out <a href="https://www.linkedin.com/in/keenanpayne" target="_blank" rel="noopener">my LinkedIn profile</a>.' %}
 
 <h2 class="_text-h4">
   Pictures of me
