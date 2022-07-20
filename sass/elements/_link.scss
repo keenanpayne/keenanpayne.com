@@ -3,10 +3,10 @@
 // ==================================================
 
 a {
-  color: var(--link-color, initial);
+  color: var(--link-color, var(--link-color, var(--text-color)));
 
   &:hover { 
-    color: var(--link-color-hover, initial);
+    color: var(--link-color-hover, var(--link-color, var(--text-color)));
   }
 
   // Modifiers

@@ -7,13 +7,13 @@ button,
   @include externalLink($size: 16px, $left: 8px);
 
   background-color: var(--background, initial);
-  color: var(--color, initial);
+  color: var(--color, var(--link-color, var(--text-color)));
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
 
   &:hover {
     background-color: var(--background-hover, initial);
-    color: var(--color-hover, initial);
+    color: var(--color-hover, var(--link-color, var(--text-color)));
   }
 
   // Modifiers
