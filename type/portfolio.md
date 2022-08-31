@@ -9,7 +9,7 @@ description:
 #   order: 
 
 templateClass: page-portfolio
-modifiers: -media -portfolio
+modifiers: -portfolio
 archiveLink: false
 
 sections: 
