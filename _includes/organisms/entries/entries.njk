@@ -35,6 +35,7 @@
 {# Portfolio Items #}
 {% macro portfolio(entry) %}
   {% set portfolio = entry.data.portfolio %}
+  {% set portfolioItem = portfolio[entry.data.title | lower] %}
 
   {{ entries.postImage(entry) }}
 
@@ -42,7 +43,11 @@
     {{ entries.postHeader(entry) }}
 
     <p>
-      {# {{ case_study.description | safe }} #}
+      {{ portfolioItem.role }}
+      <p class="text-h3">
+        {# {{ portfolioItem.lede }} #}
+      </h1>
+
       I was hired by the GoFundMe team in 2019 to help build out a new WordPress content portal for <a href="https://www.gofundme.com/c/heroes">GoFundMe Heroes</a>, an initiative designd to highlight standout projects from "heroes" on GoFundMe.
     </p>
   
