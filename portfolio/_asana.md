@@ -4,9 +4,9 @@ title: 'Asana'
 
 meta: 
   description: 
-  image: ''
+  image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.png'
 
-cover: ''
+cover: 'https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.png'
 
 case_study: 
   client: 'Asana'
