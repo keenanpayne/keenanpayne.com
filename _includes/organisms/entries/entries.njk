@@ -42,13 +42,18 @@
   <div class="entries-portfolio-content">
     {{ entries.postHeader(entry) }}
 
-    <p>
-      {{ portfolioItem.role }}
-      <p class="text-h3">
-        {# {{ portfolioItem.lede }} #}
-      </h1>
+    <p class="entries-lede _text-h5">
+        {{ portfolioItem.lede }}
+    </p>
 
-      I was hired by the GoFundMe team in 2019 to help build out a new WordPress content portal for <a href="https://www.gofundme.com/c/heroes">GoFundMe Heroes</a>, an initiative designd to highlight standout projects from "heroes" on GoFundMe.
+    <p>
+      {{ portfolioItem.overview | safe}}
+    </p>
+
+    <p>
+      <a class="-hover-background" href="{{ entry.url }}" title="Visit the {{ portfolioItem.name }} case study">
+        Visit the case study →
+      </a>
     </p>
   
     {# <div class="entries-portfolio-meta">
