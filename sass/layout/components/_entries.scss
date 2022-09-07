@@ -232,9 +232,15 @@
   }
 
   .entries-item-content {
-    display: grid;
-    grid-gap: 1.5rem;
-    grid-template-columns: repeat(6, 1fr);
+    @media (--min-800) { 
+      display: grid;
+      grid-gap: 1.5rem;
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media (--min-960) {
+      align-items: center;
+    }
 
     > a { 
       grid-column: auto / span 3;
@@ -246,12 +252,24 @@
     }
 
     .entries-portfolio-content { 
-      grid-column: auto / span 2;
+      grid-column: auto / span 3;
+
+      @media (--min-1120) { 
+        grid-column-end: span 2;
+      }
     }
   }
 
   .entries-item {
     margin-top: 1.5rem;
+
+    &:not(:last-of-type) { 
+      margin-bottom: 3rem;
+
+      @media (--min-800) { 
+        margin-bottom: 0;
+      }
+    }
   }
 }
 
