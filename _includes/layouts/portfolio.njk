@@ -117,8 +117,8 @@ permalink: "/{{ title | slug }}/"
       </div>
     {% endif %}
 
-    <div class="portfolio-intro">
-      {% if pillars %}
+    {% if pillars %}
+      <div class="portfolio-intro">
         {% set client = pillars.client %}
         {% set challenge = pillars.challenge %}
         {% set solution = pillars.solution %}
@@ -143,8 +143,8 @@ permalink: "/{{ title | slug }}/"
             <p class="_text-h5">{{ solution | safe }}</p>
           </div>
         {% endif %}
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
 
     {% for section in sections %}
       {% include "components/" + section.type + ".njk" %}

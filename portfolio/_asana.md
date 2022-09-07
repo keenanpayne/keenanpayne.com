@@ -1,28 +1,27 @@
 ---
 permalink: '/portfolio/asana/'
 title: 'Asana'
-
 meta: 
   description: 
   image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.png'
+data: asana
 
 cover: 'https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.png'
 
-case_study: 
-  client: 'Asana'
-  project:
-  url: https://asana.com
-  role: 'Senior Web Developer'
-  technologies:
-    - Amazon Web Services
-    - Statamic
-    - WordPress
-  description:
-  year: '2014–2019'
-  constraints: 
+sections: 
+  - type: portfolioGrid
+    project: asana
+    modifier: '-one-col'
+    source: dribbble
+    items: 
+      - 1
+  - type: portfolioGrid
+    project: asana
+    modifier: '-one-col'
+    source: assets
+    items: 
+      - 1
 ---
-
-<p class="_text-h5">I worked at Asana for five years. During this time, I worked on many cross-functional projects and exercised my web development experiences across a wide range of languages and technologies. I also helped scale our web development team and infrastructure to support a rapidly growing business with ever-growing needs.</p>
 
 ## During my time at Asana...
 
