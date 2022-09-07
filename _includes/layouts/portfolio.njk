@@ -15,7 +15,7 @@ permalink: "/{{ title | slug }}/"
   {% set lede = portfolioItem.lede %}
   {% set size = portfolioItem.size %}
   {% set industry = portfolioItem.industry %}
-  {% set description = portfolioItem.description %}
+  {% set overview = portfolioItem.overview %}
   {% set color = portfolioItem.color %}
   {% set url = portfolioItem.url %}
   {% set role = portfolioItem.role %}
@@ -29,7 +29,7 @@ permalink: "/{{ title | slug }}/"
   <header class="portfolio-header">
     <div class="portfolio-meta">
       {%- if type -%}
-        <a class="-underline-hover _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+        <a class="-underline-hover _label" href="/portfolio" title="View portfolio">
           Case Study
         </a>
       {%- endif -%}
@@ -50,10 +50,10 @@ permalink: "/{{ title | slug }}/"
 
   <div class="portfolio-content">
     <div class="portfolio-details">
-      {% if description %}
+      {% if overview %}
         <div class="portfolio-detail -full-width">
-          <p class="portfolio-label _label">Description</p>
-          <p class="portfolio-stat">{{ description | safe }}</p>
+          <p class="portfolio-label _label">Overview</p>
+          <p class="portfolio-stat">{{ overview | safe }}</p>
         </div>
       {% endif %}
 
