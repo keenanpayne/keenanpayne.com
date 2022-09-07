@@ -17,7 +17,7 @@ module.exports = {
     "CSS",
     "JavaScript"
   ],
-  overview: 'I was hired by the GoFundMe team in 2019 to help build out a new WordPress content portal for GoFundMe Heroes, an initiative designd to highlight standout projects from "heroes" on GoFundMe.',
+  overview: 'I was hired by the GoFundMe team in 2019 to help build out a new WordPress content portal for GoFundMe Heroes, an initiative designed to highlight standout projects from "heroes" on GoFundMe.',
   lede: "Building a content hub to highlight people who are making a difference.",
   description: "Who hasn't heard of GoFundMe? They're the <em>most popular</em> personal fundraising website in the world and have helped facilitate <strong>$9 billion</strong> in fundraising for personal causes.",
   cover: 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_1532/v1657996527/portfolio/gofundme/cover_cwiwux.png',
