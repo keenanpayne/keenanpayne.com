@@ -140,10 +140,10 @@
 }
 
 .portfolio-cover-img {
-  box-shadow: 10px 10px var(--exodus-fruit);
+  box-shadow: 10px 10px var(--exodus-fruit), var(--shadow);
 
   @media (--min-960) {
-    box-shadow: 15px 15px var(--exodus-fruit);
+    box-shadow: 15px 15px var(--exodus-fruit), var(--shadow);
   }
 }
 

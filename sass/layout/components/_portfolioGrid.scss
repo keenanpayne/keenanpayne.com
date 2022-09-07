@@ -44,6 +44,12 @@
 
 .portfolioGrid-item {
   grid-column: 1 / -1;
+
+  // Descendants
+  img, 
+  video { 
+    box-shadow: var(--shadow);
+  }
 }
 
 .portfolioGrid-link {

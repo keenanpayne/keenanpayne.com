@@ -33,7 +33,7 @@ button,
     --link-color-hover: var(--color-hover);
 
     border-radius: var(--border-radius);
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.15rem;
 
     @media (--dark) {
       --background: var(--yellow-dark);
@@ -43,7 +43,18 @@ button,
     }
   }
 
+  &.-secondary {
+    --background: var(--exodus-fruit);
+    --background-hover: var(--exodus-fruit-dark);
+    --color: var(--white);
+    --color-hover: var(--white);
+
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1.15rem;
+  }
+
   &.-ghost {
+    --background: var(--pre-background);
     --background-hover: var(--exodus-fruit);
     --border: var(--exodus-fruit);
     --color-hover: var(--white);
@@ -53,6 +64,7 @@ button,
     padding: 0.75rem 1rem;
 
     @media (--dark) {
+      --background: var(--plum-dark);
       --background-hover: var(--yellow-dark);
       --border: var(--yellow-dark);
       --color-hover: var(--plum-dark);
