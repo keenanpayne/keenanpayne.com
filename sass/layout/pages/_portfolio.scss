@@ -104,12 +104,15 @@
   }
 
   li {
-    display: inline-block;
     list-style-type: none;
-
-    &:not(:last-of-type) {
-      &::after {
-        content: ','
+    
+    &.-inline { 
+      display: inline-block;
+  
+      &:not(:last-of-type) {
+        &::after {
+          content: ','
+        }
       }
     }
   }

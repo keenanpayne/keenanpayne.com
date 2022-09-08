@@ -23,6 +23,7 @@ permalink: "/{{ title | slug }}/"
   {% set services = portfolioItem.services %}
   {% set technologies = portfolioItem.technologies %}
   {% set cover = portfolioItem.cover %}
+  {% set people = portfolioItem.people %}
 {% endif %}
 
 <section class="portfolio _container -extra-large">
@@ -77,7 +78,9 @@ permalink: "/{{ title | slug }}/"
 
           <ul>
             {% for service in services %}
-              <li>{{ service }}</li>
+              <li class="-inline">
+                {{- service -}}
+              </li>
             {% endfor %}
           </ul>
         </div>
@@ -96,7 +99,32 @@ permalink: "/{{ title | slug }}/"
 
           <ul>
             {% for technology in technologies %}
-              <li>{{ technology }}</li>
+              <li class="-inline">
+                {{- technology -}}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+  
+      {% if people %}
+        <div class="portfolio-detail -full-width">
+          <p class="portfolio-label _label">Collaborators</p>
+
+          <ul>
+            {% for id, person in people %}
+              {% set name = person.name %}
+              {% set url = person.url %}
+
+              <li>
+                {% if url %}
+                  <a href="{{ url }}">
+                    {{ name }}
+                  </a>
+                {% else %}
+                  {{ name }}
+                {% endif %}
+              </li>
             {% endfor %}
           </ul>
         </div>
