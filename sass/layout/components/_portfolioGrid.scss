@@ -60,3 +60,61 @@
 .portfolioGrid-description {
   max-width: 50ch;
 }
+
+.portfolioGrid-enlarge {
+  background: var(--background);
+  border-left: 1px solid var(--border);
+  height: 50px;
+  text-align: center;
+  width: 50px;
+  
+  &:hover { 
+    background: var(--background-hover);
+  }
+
+  // Descendants
+  svg { 
+    height: 100%;
+    width: 20px;
+  }
+
+  path { 
+    fill: var(--text-color);
+  }
+}
+
+.portfolioGrid.-contained { 
+  --background: var(--yellow-dark);
+  --background-hover: var(--yellow-light);
+  --border: var(--plum-light);
+  
+  @media (--dark) { 
+    --background: var(--exodus-fruit);
+    --background-hover: var(--exodus-fruit-dark);
+    --border: var(--gray-lighter);
+  }
+
+  .portfolioGrid-item {
+    border: 1px solid var(--border);
+    background-color: var(--background);
+  }
+  
+  .portfolioGrid-imageTile { 
+    background: var(--background);
+    background-size: cover;
+    border-bottom: 1px solid var(--border);
+    display: block;
+    height: 300px;
+    width: 100%;
+  }
+  
+  .portfolioGrid-title {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.5;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-left: 1rem;
+  }
+}

@@ -17,9 +17,13 @@ sections:
       - 1
   - type: portfolioGrid
     project: asana
-    modifier: '-one-col'
+    contained: true
+    enlarge: true
+    modifier: '-three-col -contained'
     source: assets
     items: 
+      - 1
+      - 1
       - 1
 ---
 
