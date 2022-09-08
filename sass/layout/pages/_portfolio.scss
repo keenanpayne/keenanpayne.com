@@ -194,8 +194,8 @@
 }
 
 .portfolio-cta {
-  background: var(--green-1);
-  background: linear-gradient(90deg, var(--green-1) 0%, var(--green-2) 100%);
+  background: var(--pink-glamour);
+  background: linear-gradient(90deg, var(--carmine-pink) 0%, var(--pink-glamour) 100%);
   color: var(--white);
 
   @media (--max-720) {
@@ -226,7 +226,6 @@
 .portfolio-cta-title {
   @include h1();
 
-  margin-bottom: 1.25rem;
   margin-top: 0;
 
   @media (--min-960) {
