@@ -12,7 +12,7 @@
   box-shadow: var(--shadow);
   margin-bottom: 3rem;
   margin-top: 3rem;
-  padding: 3rem 1.5rem 3.5rem;
+  padding: 1.5rem 1.5rem 3rem;
   
   @media (--dark) {
     --newsletter-background: var(--exodus-fruit);
@@ -24,12 +24,7 @@
   }
   
   @media (--min-960) { 
-    padding: 4rem 0 4.5rem;
-  }
-
-  @media (--min-1440) { 
-    padding-bottom: 5.5rem;
-    padding-top: 5rem;
+    padding-top: 0;
   }
 
   // Modifiers
