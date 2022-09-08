@@ -11,6 +11,23 @@ cover: 'https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfol
 sections: 
   - type: portfolioGrid
     project: asana
+    contained: true
+    enlarge: true
+    modifier: '-three-col -contained'
+    source: assets
+    headline: 'Landing pages'
+    description: |
+      I collaborated with marketers to build countless landing pages announcing new product features and corning the work management market.
+
+      It was not uncommon for me to turn around complex landing pages in two weeks at Asana. I worked on <em>many</em> tight deadlines and consistently produced high-quality work.
+    items: 
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+  - type: portfolioGrid
+    project: asana
     modifier: '-one-col'
     source: dribbble
     items: 
@@ -19,12 +36,30 @@ sections:
     project: asana
     contained: true
     enlarge: true
+    modifier: '-two-col -contained'
+    source: assets
+    eyebrow: 2014
+    headline: 'Asana Blog'
+    description: |
+      I helped consolidate multiple WordPress blogs that served different purposes. Furthermore, I took ownership over WordPress, building a custom theme for the blog and custom plugins for various functionality. 
+      
+      As such, I was responsible for onboarding folks at Asana to WordPress by helping manage accounts, writing documentation on the platform and our systems, and troubleshooting issues from stakeholders.
+    items: 
+      - 6
+      - 7
+  - type: portfolioGrid
+    project: asana
+    contained: true
+    enlarge: true
     modifier: '-three-col -contained'
     source: assets
+    eyebrow: 2015
+    headline: 'Wavelength'
+    description: 
     items: 
-      - 1
-      - 1
-      - 1
+      - 8
+      - 9
+      - 10
 ---
 
 ## During my time at Asana...
@@ -36,26 +71,3 @@ Asana grew from 70 to 700 employees in my five years there, with the web develop
 - I helped our hiring initiatives by interviewing candidates, crafting interview questions, and making key hiring decisions.
 
 I helped incorporate robust build processes for managing assets in our codebase for an improved developer experience.
-
-I collaborated with marketers to build countless landing pages announcing new product features and corning the work management market.
-  - It was not uncommon for me to turn around complex landing pages in two weeks at Asana (due to reasons we won't get into). I worked on _many_ tight deadlines and consistently produced high-quality work.
-
-I helped consolidate multiple WordPress blogs that served different purposes. Furthermore, I took ownership over WordPress, building a custom theme for the blog and custom plugins for various functionality. 
-  - As such, I was responsible for onboarding folks at Asana to WordPress by helping manage accounts, writing documentation on the platform and our systems, and troubleshooting issues from stakeholders.
-
-## View my work
-
-Below are some aspects of the Asana website that I led the development. 
-
-Be aware that I have not worked at Asana for almost two years, so I'm no longer responsible for any bugs or jankiness.
-
-- [Asana for Marketers](https://asana.com/teams/marketing)
-- [Asana Product](https://asana.com/product)
-- [Asana Workload](https://asana.com/product/workload)
-- [Asana Timeline](https://asana.com/product/timeline)
-- [Asana Uses](https://asana.com/uses)
-- [Asana Customers](https://asana.com/customers)
-- [Asana Press](https://asana.com/press)
-- [Asana App Integrations](https://asana.com/apps)
-- [Asana Blog](https://blog.asana.com/)
-- [Wavelength by Asana](https://wavelength.asana.com/)

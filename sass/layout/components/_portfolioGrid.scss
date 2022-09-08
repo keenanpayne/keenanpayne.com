@@ -36,6 +36,20 @@
   }
 }
 
+.portfolioGrid-header { 
+  margin-bottom: 1.5rem;
+  max-width: 60ch;
+}
+
+.portfolioGrid-label { 
+  margin-bottom: .5rem;
+}
+
+.portfolioGrid-headline {
+  margin-bottom: .75rem;
+  margin-top: 0;
+}
+
 .portfolioGrid-items {
   display: grid;
   grid-gap: 1.5rem;

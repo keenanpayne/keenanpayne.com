@@ -5,6 +5,9 @@
 {% set source = section.source %}
 {% set contained = section.contained %}
 {% set enlarge = section.enlarge %}
+{% set headline = section.headline %}
+{% set description = section.description %}
+{% set eyebrow = section.eyebrow %}
 
 {% if source == 'dribbble' %}
   {% set query = portfolio[project].dribbble %}
@@ -15,6 +18,28 @@
 {# Markup #}
 {%- if items -%}
   <div class="portfolioGrid {{ section.modifier }}">
+    {% if headline or description %}
+      <header class="portfolioGrid-header">
+        {% if eyebrow %}
+          <p class="portfolioGrid-label _label">
+            {{ eyebrow }}
+          </p>
+        {% endif %}
+
+        {% if headline %}
+          <h2 class="portfolioGrid-headline">
+            {{ headline }}
+          </h2>
+        {% endif %}
+
+        {% if description %}
+          <p class="_text-h5">
+            {{ description | nl2br | safe }}
+          </p>
+        {% endif %}
+      </header>
+    {% endif %}
+
     <div class="portfolioGrid-items">
       {%- for item in items -%}
         {% set res = query[item] %}
@@ -32,7 +57,8 @@
 
           {%- if image -%}
             {% if contained %}
-              <div class="portfolioGrid-imageTile" style="--background: url({{ image }})"></div>
+              {# TODO: Lazy-load this background image #}
+              <a href="{{ image }}" title="Enlarge image for {{ title }}" class="portfolioGrid-imageTile" style="--background: url({{ image }})"></a>
             {% else %}
               <img src="{{ image }}" alt="{{ title }}" loading="lazy" />
             {% endif%}
@@ -53,9 +79,9 @@
               {%- endif -%}
 
               {% if enlarge %}
-                <a title="Enlarge image" href="{{ image }}" class="portfolioGrid-enlarge">
+                <a title="Enlarge image for {{ title }}" href="{{ image }}" class="portfolioGrid-enlarge">
                   <span class="_hidden">
-                    Enlarge image
+                    Enlarge image for {{ title }}
                   </span>
 
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
