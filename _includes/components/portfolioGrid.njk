@@ -17,7 +17,7 @@
 
 {# Markup #}
 {%- if items -%}
-  <div class="portfolioGrid {{ section.modifier }}">
+  <div class="portfolioGrid {{ section.modifier }} {{ '-contained' if contained }}">
     {% if headline or description %}
       <header class="portfolioGrid-header">
         {% if eyebrow %}
@@ -48,6 +48,8 @@
         {% set title = res.title %}
         {% set description = res.description %}
         {% set link = res.link %}
+        {% set imageTransform = res.image_transform %}
+        {% set imageURL = 'https://res.cloudinary.com/keenan-payne/image/upload/' ~ imageTransform ~ '/' ~ image %}
 
         <div class="portfolioGrid-item">
           {# TODO: Lazy-load asset and host on an asset management platform #}
@@ -58,9 +60,9 @@
           {%- if image -%}
             {% if contained %}
               {# TODO: Lazy-load this background image #}
-              <a href="{{ image }}" title="Enlarge image for {{ title }}" class="portfolioGrid-imageTile" style="--background: url({{ image }})"></a>
+              <a href="{{ imageURL }}" title="Enlarge image for {{ title }}" class="portfolioGrid-imageTile" style="--background: url({{ imageURL }})"></a>
             {% else %}
-              <img src="{{ image }}" alt="{{ title }}" loading="lazy" />
+              <img src="{{ imageURL }}" alt="{{ title }}" loading="lazy" />
             {% endif%}
           {%- endif -%}
 
@@ -79,7 +81,7 @@
               {%- endif -%}
 
               {% if enlarge %}
-                <a title="Enlarge image for {{ title }}" href="{{ image }}" class="portfolioGrid-enlarge">
+                <a title="Enlarge image for {{ title }}" href="{{ imageURL }}" class="portfolioGrid-enlarge">
                   <span class="_hidden">
                     Enlarge image for {{ title }}
                   </span>
