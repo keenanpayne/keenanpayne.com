@@ -38,7 +38,7 @@
 
 .portfolioGrid-header { 
   margin-bottom: 1.5rem;
-  max-width: 60ch;
+  max-width: 65ch;
 }
 
 .portfolioGrid-label { 
@@ -97,10 +97,11 @@
   }
 }
 
-.portfolioGrid.-contained { 
+.portfolioGrid.-contained {
   --background: var(--yellow-dark);
   --background-hover: var(--yellow-light);
   --border: var(--plum-light);
+  --image-height: auto;
   
   @media (--dark) { 
     --background: var(--exodus-fruit);
@@ -118,7 +119,7 @@
     background-size: cover;
     border-bottom: 1px solid var(--border);
     display: block;
-    height: 300px;
+    height: var(--image-height);
     width: 100%;
   }
   
@@ -130,5 +131,14 @@
     margin-bottom: 0;
     margin-top: 0;
     padding-left: 1rem;
+  }
+
+  // Column adjustments
+  &.-two-col { 
+    --image-height: 350px;
+  }
+
+  &.-three-col { 
+    --image-height: 300px;
   }
 }

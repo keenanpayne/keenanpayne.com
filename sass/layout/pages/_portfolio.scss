@@ -32,7 +32,7 @@
 
 .portfolio-title { 
   margin-bottom: .5rem;
-  margin-top: .5rem;
+  margin-top: .75rem;
 
   @media (--min-960) {
     @include text-large();
@@ -79,11 +79,6 @@
     --border-color: var(--gray-darkest-1);
   }
 
-  &:last-of-type {
-    margin-top: 1rem;
-    text-align: right;
-  }
-
   &:not(:last-of-type) {
     padding-bottom: 1.5rem;
 
@@ -92,9 +87,25 @@
     }
   }
 
+  &:nth-of-type(even):not(.-full-width) { 
+    border-right: 1px solid var(--border-color);
+  }
+
+  &:nth-child(odd):not(.-full-width) { 
+    .portfolio-label,
+    .portfolio-stat { 
+      padding-left: 1rem;
+    }
+  }
+
   // Modifiers
   &.-full-width {
     flex-basis: 100%;
+  }
+
+  &.-cta { 
+    margin-top: 1rem;
+    text-align: right;
   }
 
   // Descendants
@@ -120,7 +131,7 @@
 
 .portfolio-label {
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: .25rem;
+  margin-bottom: .5rem;
 }
 
 .portfolio-stat {
