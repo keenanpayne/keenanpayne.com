@@ -7,9 +7,8 @@
 
 .comments {
   background-color: var(--white);
-  border-radius: var(--border-radius-large);
+  box-shadow: var(--shadow);
   color: var(--plum-dark);
-  margin-bottom: 3rem;
   padding: 1.5rem;
   
   @media (--min-720) {

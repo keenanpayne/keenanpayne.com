@@ -73,7 +73,7 @@
 .portfolioGrid-caption {
   max-width: 50ch;
   padding-bottom: 0.45rem;
-  border-top: 1px solid black;
+  border-top: 1px solid var(--plum-light);
   padding-left: 1rem;
   padding-top: 0.5rem;
   color: var(--gray-darkest-1);
@@ -135,6 +135,7 @@
   
   .portfolioGrid-title {
     align-items: center;
+    color: var(--text-color);
     display: flex;
     justify-content: space-between;
     line-height: 1.5;
