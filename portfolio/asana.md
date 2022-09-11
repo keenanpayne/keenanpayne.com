@@ -54,11 +54,16 @@ sections:
     items: 
       - 6
       - 7
+  - type: testimonial
+    project: asana
+    person: 1
+    testimonial: 1
+    hide_citation: true
   - type: portfolioGrid
     project: asana
     contained: true
     enlarge: true
-    modifier: '-three-col'
+    modifier: '-two-col'
     source: assets
     headline: 'Landing pages'
     description: |
@@ -89,6 +94,7 @@ sections:
       - 21
       - 22
       - 23
+  # TODO: INSERT "behind the scenes" anecdotes here
   - type: portfolioGrid
     project: asana
     contained: true
@@ -109,7 +115,7 @@ sections:
     project: asana
     contained: true
     enlarge: true
-    modifier: '-three-col'
+    modifier: '-two-col'
     source: assets
     eyebrow: 2018
     headline: 'Product Tour'
@@ -126,8 +132,6 @@ sections:
 ---
 
 <!-- Highlight Webby awards and nominations -->
-
-I'm quite proud of how many things I built so long ago are still in use today. Hell, even the Asana blog is standing strong atop my 2014 code!
 
 ## Behind the scenes
 
