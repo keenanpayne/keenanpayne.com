@@ -46,7 +46,7 @@
         {% set video = res.video %}
         {% set image = res.image %}
         {% set title = res.title %}
-        {% set description = res.description %}
+        {% set caption = res.caption %}
         {% set link = res.link %}
         {% set imageTransform = res.image_transform %}
         {% set imageURL = 'https://res.cloudinary.com/keenan-payne/image/upload/' ~ imageTransform ~ '/' ~ image %}
@@ -69,7 +69,7 @@
           {% if title %}
             <h3 class="portfolioGrid-title {% if contained %} _text-h5 {% else %} _text-h4 {% endif %}">
               {%- if link -%}
-                <a class="portfolioGrid-link" href="{{ link }}" target="_blank" rel="noopener">
+                <a class="portfolioGrid-link -no-invert" href="{{ link }}" target="_blank" rel="noopener">
               {%- endif -%}
 
               {%- if title -%}
@@ -94,12 +94,11 @@
             </h3>
           {% endif %}
 
-          {% if description %}
-            <p class="portfolioGrid-description _text-h6">
-              {{ description }}
+          {% if caption %}
+            <p class="portfolioGrid-caption _text-h6">
+              {{ caption | safe }}
             </p>
           {% endif %}
-
         </div>
       {%- endfor -%}
     </div>

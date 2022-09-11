@@ -60,19 +60,32 @@
   grid-column: 1 / -1;
 
   // Descendants
-  img, 
-  video { 
+  img { 
     box-shadow: var(--shadow);
   }
 }
 
 .portfolioGrid-link {
-  @include linkHoverBackground();
+  @include linkHoverBackground($dark: false);
   @include externalLink($size: 16px, $left: 10px);
 }
 
-.portfolioGrid-description {
+.portfolioGrid-caption {
   max-width: 50ch;
+  padding-bottom: 0.45rem;
+  border-top: 1px solid black;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  color: var(--gray-darkest-1);
+  
+  // Descendants
+  > a { 
+    --text-color: var(--gray-darkest-1);
+
+    &:hover { 
+      --text-color: var(--plum-dark);
+    }
+  }
 }
 
 .portfolioGrid-enlarge {
@@ -102,22 +115,19 @@
   --background-hover: var(--yellow-light);
   --border: var(--plum-light);
   --image-height: auto;
-  
-  @media (--dark) { 
-    --background: var(--exodus-fruit);
-    --background-hover: var(--exodus-fruit-dark);
-    --border: var(--gray-lighter);
-  }
+  --text-color: var(--plum-dark);
 
   .portfolioGrid-item {
     border: 1px solid var(--border);
     background-color: var(--background);
+    height: fit-content;
   }
   
   .portfolioGrid-imageTile { 
     background: var(--background);
     background-size: cover;
     border-bottom: 1px solid var(--border);
+    background-position: top center;
     display: block;
     height: var(--image-height);
     width: 100%;
@@ -130,6 +140,7 @@
     line-height: 1.5;
     margin-bottom: 0;
     margin-top: 0;
+    min-height: 50px;
     padding-left: 1rem;
   }
 
