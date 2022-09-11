@@ -107,7 +107,7 @@ permalink: "/{{ title | slug }}/"
         </div>
       {% endif %}
   
-      {% if people %}
+      {% if people | length >= 1 and people[1].name !== "Keenan Payne"  %}
         <div class="portfolio-detail -full-width">
           <p class="portfolio-label _label">Collaborators</p>
 
