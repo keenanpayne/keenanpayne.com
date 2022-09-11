@@ -9,12 +9,13 @@ module.exports = {
       ],
     }
   },
-  dribbble: {
-    [1]: {
-      link: "",
-      video_source: "",
-      title: "",
-      description: "",
-    }
+  assets: {
+    link: "",
+    shot_link: "",
+    image: "",
+    video: "",
+    asset_transform: "f_auto,q_auto",
+    title: "",
+    caption: ""
   }
 }

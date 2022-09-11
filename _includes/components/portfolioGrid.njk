@@ -2,18 +2,12 @@
 {% set project = section.project %}
 {% set name = section.name %}
 {% set items = section.items %}
-{% set source = section.source %}
 {% set contained = section.contained %}
 {% set enlarge = section.enlarge %}
 {% set headline = section.headline %}
 {% set description = section.description %}
 {% set eyebrow = section.eyebrow %}
-
-{% if source == 'dribbble' %}
-  {% set query = portfolio[project].dribbble %}
-{% elif source == 'assets' %}
-  {% set query = portfolio[project].assets %}
-{% endif %}
+{% set query = portfolio[project].assets %}
 
 {# Markup #}
 {%- if items -%}
@@ -48,13 +42,15 @@
         {% set title = res.title %}
         {% set caption = res.caption %}
         {% set link = res.link %}
-        {% set imageTransform = res.image_transform %}
-        {% set imageURL = 'https://res.cloudinary.com/keenan-payne/image/upload/' ~ imageTransform ~ '/' ~ image %}
+        {% set shotLink = res.shot_link %}
+        {% set assetTransform = res.asset_transform %}
+        {% set videoURL = 'https://res.cloudinary.com/keenan-payne/video/upload/' ~ assetTransform ~ '/' ~ video %}
+        {% set imageURL = 'https://res.cloudinary.com/keenan-payne/image/upload/' ~ assetTransform ~ '/' ~ image %}
 
-        <div class="portfolioGrid-item">
+        <div class="portfolioGrid-item {{ '-video' if video }} {{ '-image' if image }}">
           {# TODO: Lazy-load asset and host on an asset management platform #}
           {%- if video -%}
-            <video muted controls src="{{ video }}"></video>
+            <video muted controls src="{{ videoURL }}"></video>
           {%- endif -%}
 
           {%- if image -%}
@@ -69,7 +65,7 @@
           {% if title %}
             <h3 class="portfolioGrid-title {% if contained %} _text-h5 {% else %} _text-h4 {% endif %}">
               {%- if link -%}
-                <a class="portfolioGrid-link -no-invert" href="{{ link }}" target="_blank" rel="noopener">
+                <a class="portfolioGrid-link {{ '-no-invert' if contained }}" href="{{ link }}" target="_blank" rel="noopener">
               {%- endif -%}
 
               {%- if title -%}
@@ -81,7 +77,7 @@
               {%- endif -%}
 
               {% if enlarge %}
-                <a title="Enlarge image for {{ title }}" href="{{ imageURL }}" class="portfolioGrid-enlarge">
+                <a title="Enlarge image for {{ title }}" href="{% if shotLink %}{{ shotLink }}{% elif image %}{{ imageURL }}{% elif video %}{{ videoURL }}{% else %}#{% endif %}" class="portfolioGrid-enlarge" target="_blank" rel="noopener">
                   <span class="_hidden">
                     Enlarge image for {{ title }}
                   </span>
@@ -95,7 +91,7 @@
           {% endif %}
 
           {% if caption %}
-            <p class="portfolioGrid-caption _text-h6">
+            <p class="portfolioGrid-caption _text-small">
               {{ caption | safe }}
             </p>
           {% endif %}

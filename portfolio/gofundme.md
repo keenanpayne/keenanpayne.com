@@ -11,10 +11,17 @@ data: gofundme
 #       This will likely require creating a separate layout for displaying portfolio items.
 cover: 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_1532/v1657996527/portfolio/gofundme/cover_cwiwux.png'
 
-# rootStyles: '--root-background: linear-gradient(180deg, rgba(25,175,110,1) 0%, rgba(150,215,180,0.5575980392156863) 30vh, rgba(239,239,239,1) 60vh, rgba(199,196,215,1) 85%);'
 # headerInversion: true
 
 sections: 
+  - type: portfolioGrid
+    project: gofundme
+    modifier: '-two-col'
+    contained: true
+    enlarge: true
+    items: 
+      - 1
+      - 5
   - type: testimonial
     project: gofundme
     person: 1
@@ -22,27 +29,22 @@ sections:
   - type: portfolioGrid
     project: gofundme
     modifier: '-two-col'
-    source: dribbble
+    contained: true
+    enlarge: true
     items: 
-      - 4
-      - 1
-  - type: portfolioGrid
-    project: gofundme
-    modifier: '-one-col'
-    source: assets
-    items: 
-      - 1
+      - 7
+      - 6
   - type: testimonial
     project: gofundme
     person: 2
     testimonial: 6
   - type: portfolioGrid
     project: gofundme
-    modifier: '-two-col'
-    source: dribbble
+    modifier: '-one-col'
+    contained: true
+    enlarge: true
     items: 
-      - 2
-      - 3
+      - 4
   - type: testimonial
     project: gofundme
     person: 1
@@ -50,13 +52,7 @@ sections:
   - type: portfolioGrid
     project: gofundme
     modifier: '-one-col'
-    source: assets
-    items: 
-      - 2
-  - type: portfolioGrid
-    project: gofundme
-    modifier: '-one-col'
-    source: assets
+    contained: true
     items: 
       - 3
   - type: testimonial

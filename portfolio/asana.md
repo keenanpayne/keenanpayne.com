@@ -14,7 +14,6 @@ sections:
     contained: true
     enlarge: true
     modifier: '-three-col'
-    source: assets
     eyebrow: 2017
     headline: 'Asana.com Redesign'
     description: I helped spearhead a redesign and technical overhaul of Asana.com to support the ongoing evolution of the product and brand.
@@ -31,7 +30,6 @@ sections:
     contained: true
     enlarge: true
     modifier: '-three-col'
-    source: assets
     eyebrow: 2019
     headline: 'Visual Overhaul'
     description: I redesigned our most highly-trafficked pages while providing a visual facelift to styles shared across our web properties (e.g., typography, spacing, fonts, colors).
@@ -46,7 +44,6 @@ sections:
     contained: true
     enlarge: true
     modifier: '-two-col'
-    source: assets
     eyebrow: 2014
     headline: 'Asana Blog'
     description: |
@@ -64,7 +61,6 @@ sections:
     contained: true
     enlarge: true
     modifier: '-two-col'
-    source: assets
     headline: 'Landing pages'
     description: |
       I collaborated closely with the marketing and brand design teams to build landing pages for positioning and marketing Asana.
@@ -73,19 +69,11 @@ sections:
       - 4
       - 3
       - 11
-  # - type: portfolioGrid
-  #   project: asana
-  #   modifier: '-one-col'
-  #   source: dribbble
-  #   contained: true
-  #   items: 
-  #     - 1
   - type: portfolioGrid
     project: asana
     contained: true
     enlarge: true
     modifier: '-three-col'
-    source: assets
     eyebrow: 2015
     headline: 'Asana for Developers'
     description: I built the initial documentation platform for Asana, which included API documentation and a news portal.
@@ -100,7 +88,6 @@ sections:
     contained: true
     enlarge: true
     modifier: '-three-col'
-    source: assets
     eyebrow: 2017
     headline: 'Wavelength'
     description: |
@@ -116,7 +103,6 @@ sections:
     contained: true
     enlarge: true
     modifier: '-two-col'
-    source: assets
     eyebrow: 2018
     headline: 'Product Tour'
     description: |

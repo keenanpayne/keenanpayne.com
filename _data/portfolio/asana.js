@@ -37,14 +37,6 @@ module.exports = {
     }
   },
   cover: 'https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.jpg',
-  dribbble: {
-    [1]: {
-      link: "https://dribbble.com/shots/6478133-Asana-for-Marketers-Landing-page",
-      video: "https://res.cloudinary.com/keenan-payne/video/upload/f_auto,w_1300/v1662587263/portfolio/asana/asana-for-marketers-dribbble_syb54y.mp4",
-      title: "Asana for Marketers",
-      caption: "",
-    },
-  },
   assets: {
     [1]: {
       link: "https://asana.com/teams/marketing",
@@ -242,6 +234,14 @@ module.exports = {
       image: "v1662929518/portfolio/asana/asana-product-tour-finished_eas3ua.png",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Use-case finished",
+    },
+    [30]: {
+      link: "https://asana.com/teams/marketing",
+      shot_link: "https://dribbble.com/shots/6478133-Asana-for-Marketers-Landing-page",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/f_auto,w_1300/v1662587263/portfolio/asana/asana-for-marketers-dribbble_syb54y.mp4",
+      asset_transform: "f_auto,q_auto,w_800",
+      title: "Asana for Marketers",
+      caption: ""
     },
   }
 }
