@@ -12,6 +12,14 @@
 
 .portfolio-header {
   grid-column: 1 / -1;
+  
+  @media (--min-640) {
+    grid-column: 2 / span 8;
+  }
+  
+  @media (--min-960) { 
+    grid-column: 1 / -1;
+  }
 }
 
 .portfolio-meta {
@@ -57,7 +65,7 @@
   padding-left: .25rem;
 
   @media (--min-640) {
-    grid-column: 1 / span 7;
+    grid-column: 2 / span 8;
   }
 
   @media (--min-960) {

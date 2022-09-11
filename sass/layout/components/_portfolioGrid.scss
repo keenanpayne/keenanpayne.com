@@ -71,12 +71,11 @@
 }
 
 .portfolioGrid-caption {
-  max-width: 50ch;
-  padding-bottom: 0.45rem;
+  color: var(--gray-darkest-1);
   border-top: 1px solid var(--plum-light);
+  padding-bottom: 0.45rem;
   padding-left: 1rem;
   padding-top: 0.5rem;
-  color: var(--gray-darkest-1);
   
   // Descendants
   > a { 
@@ -121,6 +120,13 @@
     border: 1px solid var(--border);
     background-color: var(--background);
     height: fit-content;
+
+    // Modifiers
+    &.-video { 
+      .portfolioGrid-title { 
+        margin-top: -4px;
+      }
+    }
   }
   
   .portfolioGrid-imageTile { 
