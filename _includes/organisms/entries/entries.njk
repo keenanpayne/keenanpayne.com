@@ -36,43 +36,35 @@
 {% macro portfolio(entry) %}
   {% set portfolio = entry.data.portfolio %}
   {% set portfolioItem = portfolio[entry.data.title | lower] %}
+  {% set lede = portfolioItem.lede %}
+  {% set overview = portfolioItem.overview %}
+  {% set url = entry.url %}
+  {% set name = portfolioItem.name %}
 
   {{ entries.postImage(entry) }}
 
   <div class="entries-portfolio-content">
     {{ entries.postHeader(entry) }}
 
-    <p class="entries-lede _text-h5">
-        {{ portfolioItem.lede }}
-    </p>
+    {% if lede %}
+      <p class="entries-lede _text-h5">
+        {{ lede }}
+      </p>
+    {% endif %}
 
-    <p>
-      {{ portfolioItem.overview | safe}}
-    </p>
+    {% if overview %}
+      <p>
+        {{ overview | safe}}
+      </p>
+    {% endif %}
 
-    <p>
-      <a class="-hover-background" href="{{ entry.url }}" title="Visit the {{ portfolioItem.name }} case study">
-        View case study →
-      </a>
-    </p>
-  
-    {# <div class="entries-portfolio-meta">
-      <div>
-        <p class="_label">
-          Year
-        </p>
-
-        {{ case_study.year }}
-      </div>
-
-      <div>
-        <p class="_label">
-          Role
-        </p>
-
-        {{ case_study.role }}
-      </div>
-    </div> #}
+    {% if url %}
+      <p>
+        <a class="-hover-background" href="{{ url }}" title="Visit the {{ name }} case study">
+          View case study →
+        </a>
+      </p>
+    {% endif %}
   </div>
 {% endmacro %}
 
