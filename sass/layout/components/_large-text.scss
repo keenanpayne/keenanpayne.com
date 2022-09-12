@@ -6,9 +6,14 @@ p.-large {
   @extend ._text-h4;
   @extend ._type-my-voice;
 
+  --horizontal-padding: 0;
+  --vertical-margin: 2.5rem;
+
   font-weight: var(--font-weight-serif-bold);
-  margin-bottom: 2.5rem;
-  margin-top: 2rem;
+  margin-bottom: var(--vertical-margin);
+  margin-top: var(--vertical-margin);
+  padding-left: var(--horizontal-padding);
+  padding-right: var(--horizontal-padding);
   text-align: center;
   
   @media (--min-720) {
@@ -18,14 +23,11 @@ p.-large {
   }
   
   @media (--min-960) {
-    margin-bottom: 3.5rem;
-    margin-top: 3rem;
-    padding-left: .5rem;
-    padding-right: .5rem;
+    --horizontal-padding: .5rem;
+    --vertical-margin: 3rem;
   }
 
   @media (--min-1120) {
-    padding-left: .65rem;
-    padding-right: .65rem;
+    --horizontal-padding: .65rem;
   }
 }
