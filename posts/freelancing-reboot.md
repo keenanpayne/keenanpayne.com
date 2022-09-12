@@ -126,6 +126,8 @@ I won’t go deep into my experience with burnout in this post, but it’s somet
 
 {% include type/p_large.html, content: "Burnout is something that can happen to anyone in any profession at any time under any circumstances. It’s a severe problem for folks experiencing it." %}
 
+{% include type/further-reading.html, content: 'Want to learn more about Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
+
 Ultimately, I was battling negative feedback loops that impacted my ability to enjoy life: 
 
 - Mindlessly accepting too many client projects
@@ -139,7 +141,7 @@ I've succeeded in overwhelmingly stressful things like managing multiple project
 
 I've failed to orient myself around enjoyable things like optimizing my work around enjoyment/growth or spending time doing intrinsically enjoyable activities.
 
-{% include type/further-reading.html, content: 'Want to learn more about Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
+{% include type/blockquote.html, content: "Efficiency is highly overrated; Goofing off is highly underrated. Regularly scheduled sabbaths, sabbaticals, vacations, breaks, aimless walks and time off are essential for top performance of any kind. The best work ethic requires a good rest ethic.", author: "Kevin Kelly", author_source_title: "103 Bits of Advice I Wish I Had Known", author_source_link: "https://kk.org/thetechnium/103-bits-of-advice-i-wish-i-had-known/" %}
 
 <div class="sideBySide">
   {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/leadville_zlwebd.jpg', alt: "Leadville, Colorado", caption: "Leadville, Colorado" %}
