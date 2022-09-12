@@ -50,7 +50,8 @@
 .nav-link {
   --link-spacing: .185em;
 
-  padding: var(--link-spacing) calc(var(--link-spacing) * 2);
+  border-radius: var(--border-radius-pill);
+  padding: var(--link-spacing) calc(var(--link-spacing) * 3);
   text-decoration: none;
   
   // Modifiers
