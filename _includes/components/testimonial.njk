@@ -2,6 +2,7 @@
 {% set project = section.project %}
 {% set person = section.person %}
 {% set quote = section.quote %}
+{% set hide_citation = section.hide_citation %}
 {% set testimonial = section.testimonial %}
 {% set personQuery = portfolio[project].people[person] %}
 {% set testimonialQuery = portfolio[project].testimonials[testimonial] %}
@@ -23,24 +24,26 @@
       </p>
     {% endif %}
 
-    <cite class="testimonial-cite">
-      {% if image %}
-        <img class="testimonial-image" src="{{ image }}" alt="{{ name }}" />
-      {% endif %}
+    {% if not hide_citation %}
+      <cite class="testimonial-cite">
+        {% if image %}
+          <img class="testimonial-image" src="{{ image }}" alt="{{ name }}" />
+        {% endif %}
 
-      <p class="testimonial-author">
-        {%- if name -%}
-          <span class="testimonial-name">
-            {{- name -}}
-          </span>
-        {%- endif -%}
+        <p class="testimonial-author">
+          {%- if name -%}
+            <span class="testimonial-name">
+              {{- name -}}
+            </span>
+          {%- endif -%}
 
-        {%- if position -%},
-          <span class="testimonial-position">
-            {{- position -}}
-          </span>
-        {%- endif -%}
-      </p>
-    </cite>
+          {%- if position -%},
+            <span class="testimonial-position">
+              {{- position -}}
+            </span>
+          {%- endif -%}
+        </p>
+      </cite>
+    {%- endif -%}
   </blockquote>
 {% endif %}

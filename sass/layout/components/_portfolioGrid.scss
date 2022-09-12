@@ -36,6 +36,20 @@
   }
 }
 
+.portfolioGrid-header { 
+  margin-bottom: 1.5rem;
+  max-width: 65ch;
+}
+
+.portfolioGrid-label { 
+  margin-bottom: .5rem;
+}
+
+.portfolioGrid-headline {
+  margin-bottom: .75rem;
+  margin-top: 0;
+}
+
 .portfolioGrid-items {
   display: grid;
   grid-gap: 1.5rem;
@@ -44,13 +58,105 @@
 
 .portfolioGrid-item {
   grid-column: 1 / -1;
+
+  // Descendants
+  img { 
+    box-shadow: var(--shadow);
+  }
 }
 
 .portfolioGrid-link {
-  @include linkHoverBackground();
+  @include linkHoverBackground($dark: false);
   @include externalLink($size: 16px, $left: 10px);
 }
 
-.portfolioGrid-description {
-  max-width: 50ch;
+.portfolioGrid-caption {
+  color: var(--gray-darkest-1);
+  border-top: 1px solid var(--plum-light);
+  padding-bottom: 0.45rem;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  
+  // Descendants
+  > a { 
+    --text-color: var(--gray-darkest-1);
+
+    &:hover { 
+      --text-color: var(--plum-dark);
+    }
+  }
+}
+
+.portfolioGrid-enlarge {
+  background: var(--background);
+  border-left: 1px solid var(--border);
+  height: 50px;
+  text-align: center;
+  width: 50px;
+  
+  &:hover { 
+    background: var(--background-hover);
+  }
+
+  // Descendants
+  svg { 
+    height: 100%;
+    width: 20px;
+  }
+
+  path { 
+    fill: var(--text-color);
+  }
+}
+
+.portfolioGrid.-contained {
+  --background: var(--yellow-dark);
+  --background-hover: var(--yellow-light);
+  --border: var(--plum-light);
+  --image-height: auto;
+  --text-color: var(--plum-dark);
+
+  .portfolioGrid-item {
+    border: 1px solid var(--border);
+    background-color: var(--background);
+    height: fit-content;
+
+    // Modifiers
+    &.-video { 
+      .portfolioGrid-title { 
+        margin-top: -4px;
+      }
+    }
+  }
+  
+  .portfolioGrid-imageTile { 
+    background: var(--background);
+    background-size: cover;
+    border-bottom: 1px solid var(--border);
+    background-position: top center;
+    display: block;
+    height: var(--image-height);
+    width: 100%;
+  }
+  
+  .portfolioGrid-title {
+    align-items: center;
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    line-height: 1.5;
+    margin-bottom: 0;
+    margin-top: 0;
+    min-height: 50px;
+    padding-left: 1rem;
+  }
+
+  // Column adjustments
+  &.-two-col { 
+    --image-height: 350px;
+  }
+
+  &.-three-col { 
+    --image-height: 300px;
+  }
 }

@@ -17,6 +17,7 @@ module.exports = {
     "CSS",
     "JavaScript"
   ],
+  overview: 'I was hired by the GoFundMe team in 2019 to help build out a new WordPress content portal for GoFundMe Heroes, an initiative designed to highlight standout projects from "heroes" on GoFundMe.',
   lede: "Building a content hub to highlight people who are making a difference.",
   description: "Who hasn't heard of GoFundMe? They're the <em>most popular</em> personal fundraising website in the world and have helped facilitate <strong>$9 billion</strong> in fundraising for personal causes.",
   cover: 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_1532/v1657996527/portfolio/gofundme/cover_cwiwux.png',
@@ -69,47 +70,58 @@ module.exports = {
       content: "Keenan Payne is like a well-designed website. Technical and complex on the inside, with an intuitive, easy-to-use UI on the outside."
     },
   },
-  dribbble: {
-    [1]: {
-      link: "https://dribbble.com/shots/11292376-GoFundMe-Heroes-Featured-article-carousel",
-      video: "https://res.cloudinary.com/keenan-payne/video/upload/f_auto,w_1300/v1657996399/portfolio/gofundme/carousel_yhtnmh.mp4",
-      title: "Featured article carousel",
-      description: "The interactive carousel that highlights featured campaigns on the GoFundMe Heroes Hub homepage.",
-    },
-    [2]: {
-      link: "https://dribbble.com/shots/11115393-GoFundMe-Heroes-Article-template",
-      image: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto/v1657996710/portfolio/gofundme/article_la1hge.png",
-      title: "Article template",
-      description: "",
-    },
-    [3]: {
-      link: "https://dribbble.com/shots/11115406-GoFundMe-Heroes-Full-article-template",
-      video: "https://res.cloudinary.com/keenan-payne/video/upload/f_auto,w_1300/v1657996399/portfolio/gofundme/article-scroll-purple_b1nuzy.mp4",
-      title: "Full article template",
-      description: "",
-    },
-    [4]: {
-      link: "https://dribbble.com/shots/11115360-GoFundMe-Heroes-Landing-page",
-      video: "https://res.cloudinary.com/keenan-payne/video/upload/f_auto,w_1300/v1657996399/portfolio/gofundme/homepage-scroll_y9telw.mp4",
-      title: "Content hub homepage",
-      description: "Highlighting the homepage for GoFundMe Heroes content",
-    }
-  },
   assets: {
     [1]: {
-      image: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto/v1658011021/portfolio/gofundme/homepage_ffr7ea.png",
-      title: "GoFundMe Heroes homepage",
+      link: "https://www.gofundme.com/c/heroes",
+      image: "v1658011021/portfolio/gofundme/homepage_ffr7ea.png",
+      asset_transform: "f_auto,q_auto",
+      title: "Heroes homepage",
       description: ""
     },
     [2]: {
-      image: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto/v1658011021/portfolio/gofundme/article_u2wfvx.png",
-      title: "GoFundMe Heroes full article",
+      link: "https://www.gofundme.com/c/heroes/lance-cooper-saveflintchallenge",
+      image: "v1658011021/portfolio/gofundme/article_u2wfvx.png",
+      asset_transform: "f_auto,q_auto",
+      title: "Heroes Article",
       description: ""
     },
     [3]: {
-      video: "https://res.cloudinary.com/keenan-payne/video/upload/f_auto,w_1300/v1658011020/portfolio/gofundme/podcast-player_r3zz5v.mp4",
+      video: "v1658011020/portfolio/gofundme/podcast-player_r3zz5v.mp4",
+      asset_transform: "f_auto,w_1300",
       title: "Article podcast player",
       description: "I integrated the Libsyn podcast player for GoFundMe Heroes content that contain a podcast."
     },
+    [4]: {
+      link: "https://www.gofundme.com/c/heroes",
+      shot_link: "https://dribbble.com/shots/11292376-GoFundMe-Heroes-Featured-article-carousel",
+      video: "v1657996399/portfolio/gofundme/carousel_yhtnmh.mp4",
+      asset_transform: "f_auto,w_1300",
+      title: "Featured article carousel",
+      description: "The interactive carousel that highlights featured campaigns on the GoFundMe Heroes Hub homepage.",
+    },
+    [5]: {
+      link: "https://www.gofundme.com/c/heroes/lance-cooper-saveflintchallenge",
+      shot_link: "https://dribbble.com/shots/11115393-GoFundMe-Heroes-Article-template",
+      image: "v1657996710/portfolio/gofundme/article_la1hge.png",
+      asset_transform: "f_auto,q_auto,w_1000",
+      title: "Article template",
+      description: "",
+    },
+    [6]: {
+      link: "https://www.gofundme.com/c/heroes/lance-cooper-saveflintchallenge",
+      shot_link: "https://dribbble.com/shots/11115406-GoFundMe-Heroes-Full-article-template",
+      video: "v1657996399/portfolio/gofundme/article-scroll-purple_b1nuzy.mp4",
+      asset_transform: "f_auto,w_1300",
+      title: "Full article template",
+      description: "",
+    },
+    [7]: {
+      link: "https://www.gofundme.com/c/heroes",
+      shot_link: "https://dribbble.com/shots/11115360-GoFundMe-Heroes-Landing-page",
+      video: "v1657996399/portfolio/gofundme/homepage-scroll_y9telw.mp4",
+      asset_transform: "f_auto,w_1300",
+      title: "Content hub homepage",
+      description: "Highlighting the homepage for GoFundMe Heroes content",
+    }
   }
 }

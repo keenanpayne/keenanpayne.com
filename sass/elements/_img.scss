@@ -10,10 +10,11 @@ img {
 
   // Reducing image vibrancy for dark mode
   // Ref: https://medium.com/dev-channel/re-colorization-for-dark-mode-19e2e17b584b
-  &:not([src*='.svg']) {
-    @media (--dark) {
-      filter: var(--image-filter);
-    }
-  }
+  // TODO: Turn this into an opt-in setting
+  // &:not([src*='.svg']) {
+  //   @media (--dark) {
+  //     filter: var(--image-filter);
+  //   }
+  // }
 }
 

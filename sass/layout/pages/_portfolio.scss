@@ -12,6 +12,14 @@
 
 .portfolio-header {
   grid-column: 1 / -1;
+  
+  @media (--min-640) {
+    grid-column: 2 / span 8;
+  }
+  
+  @media (--min-960) { 
+    grid-column: 1 / -1;
+  }
 }
 
 .portfolio-meta {
@@ -32,7 +40,7 @@
 
 .portfolio-title { 
   margin-bottom: .5rem;
-  margin-top: .5rem;
+  margin-top: .75rem;
 
   @media (--min-960) {
     @include text-large();
@@ -57,7 +65,7 @@
   padding-left: .25rem;
 
   @media (--min-640) {
-    grid-column: 1 / span 7;
+    grid-column: 2 / span 8;
   }
 
   @media (--min-960) {
@@ -79,11 +87,6 @@
     --border-color: var(--gray-darkest-1);
   }
 
-  &:last-of-type {
-    margin-top: 1rem;
-    text-align: right;
-  }
-
   &:not(:last-of-type) {
     padding-bottom: 1.5rem;
 
@@ -92,9 +95,25 @@
     }
   }
 
+  &:nth-of-type(even):not(.-full-width) { 
+    border-right: 1px solid var(--border-color);
+  }
+
+  &:nth-child(odd):not(.-full-width) { 
+    .portfolio-label,
+    .portfolio-stat { 
+      padding-left: 1rem;
+    }
+  }
+
   // Modifiers
   &.-full-width {
     flex-basis: 100%;
+  }
+
+  &.-cta { 
+    margin-top: 1rem;
+    text-align: right;
   }
 
   // Descendants
@@ -104,12 +123,15 @@
   }
 
   li {
-    display: inline-block;
     list-style-type: none;
-
-    &:not(:last-of-type) {
-      &::after {
-        content: ','
+    
+    &.-inline { 
+      display: inline-block;
+  
+      &:not(:last-of-type) {
+        &::after {
+          content: ','
+        }
       }
     }
   }
@@ -117,7 +139,7 @@
 
 .portfolio-label {
   border-bottom: 1px solid var(--border-color);
-  margin-bottom: .25rem;
+  margin-bottom: .5rem;
 }
 
 .portfolio-stat {
@@ -140,10 +162,10 @@
 }
 
 .portfolio-cover-img {
-  box-shadow: 10px 10px var(--exodus-fruit);
+  box-shadow: 10px 10px var(--exodus-fruit), var(--shadow);
 
   @media (--min-960) {
-    box-shadow: 15px 15px var(--exodus-fruit);
+    box-shadow: 15px 15px var(--exodus-fruit), var(--shadow);
   }
 }
 
@@ -191,8 +213,8 @@
 }
 
 .portfolio-cta {
-  background: var(--green-1);
-  background: linear-gradient(90deg, var(--green-1) 0%, var(--green-2) 100%);
+  background: var(--pink-glamour);
+  background: linear-gradient(90deg, var(--carmine-pink) 0%, var(--pink-glamour) 100%);
   color: var(--white);
 
   @media (--max-720) {
@@ -223,7 +245,6 @@
 .portfolio-cta-title {
   @include h1();
 
-  margin-bottom: 1.25rem;
   margin-top: 0;
 
   @media (--min-960) {

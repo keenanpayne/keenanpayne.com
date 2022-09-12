@@ -224,12 +224,57 @@
   .entries-header { 
     margin-bottom: .25rem;
   }
+}
 
-  // Stacked modifiers
-  &.-portfolio { 
-    .entries-item { 
-      @media (--min-720) {
-        
+.entries.-portfolio {
+  .entries-lede { 
+    max-width: 30ch;
+  }
+
+  .entries-item-content {
+    @media (--min-800) { 
+      display: grid;
+      grid-gap: 1.5rem;
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @media (--min-960) {
+      align-items: center;
+    }
+    
+    .entries-image { 
+      height: auto;
+      width: 100%;
+      
+      @media (--min-800) {
+        margin-bottom: 0;
+      }
+    }
+    
+    .entries-portfolio-content { 
+      grid-column: auto / span 3;
+      max-width: 55ch;
+      padding-bottom: .5rem;
+      
+      @media (--min-1120) { 
+        grid-column-end: span 2;
+      }
+    }
+
+    // Descendants
+    > a { 
+      grid-column: auto / span 3;
+    }
+  }
+
+  .entries-item {
+    margin-top: 1.5rem;
+
+    &:not(:last-of-type) { 
+      margin-bottom: 3rem;
+
+      @media (--min-800) { 
+        margin-bottom: 0;
       }
     }
   }

@@ -15,7 +15,7 @@ permalink: "/{{ title | slug }}/"
   {% set lede = portfolioItem.lede %}
   {% set size = portfolioItem.size %}
   {% set industry = portfolioItem.industry %}
-  {% set description = portfolioItem.description %}
+  {% set overview = portfolioItem.overview %}
   {% set color = portfolioItem.color %}
   {% set url = portfolioItem.url %}
   {% set role = portfolioItem.role %}
@@ -23,13 +23,14 @@ permalink: "/{{ title | slug }}/"
   {% set services = portfolioItem.services %}
   {% set technologies = portfolioItem.technologies %}
   {% set cover = portfolioItem.cover %}
+  {% set people = portfolioItem.people %}
 {% endif %}
 
 <section class="portfolio _container -extra-large">
   <header class="portfolio-header">
     <div class="portfolio-meta">
       {%- if type -%}
-        <a class="-underline-hover _label" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
+        <a class="-underline-hover _label" href="/portfolio" title="View portfolio">
           Case Study
         </a>
       {%- endif -%}
@@ -50,10 +51,10 @@ permalink: "/{{ title | slug }}/"
 
   <div class="portfolio-content">
     <div class="portfolio-details">
-      {% if description %}
+      {% if overview %}
         <div class="portfolio-detail -full-width">
-          <p class="portfolio-label _label">Description</p>
-          <p class="portfolio-stat">{{ description | safe }}</p>
+          <p class="portfolio-label _label">Overview</p>
+          <p class="portfolio-stat">{{ overview | safe }}</p>
         </div>
       {% endif %}
 
@@ -77,7 +78,9 @@ permalink: "/{{ title | slug }}/"
 
           <ul>
             {% for service in services %}
-              <li>{{ service }}</li>
+              <li class="-inline">
+                {{- service -}}
+              </li>
             {% endfor %}
           </ul>
         </div>
@@ -96,14 +99,39 @@ permalink: "/{{ title | slug }}/"
 
           <ul>
             {% for technology in technologies %}
-              <li>{{ technology }}</li>
+              <li class="-inline">
+                {{- technology -}}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+  
+      {% if people | length >= 1 and people[1].name !== "Keenan Payne"  %}
+        <div class="portfolio-detail -full-width">
+          <p class="portfolio-label _label">Collaborators</p>
+
+          <ul>
+            {% for id, person in people %}
+              {% set name = person.name %}
+              {% set url = person.url %}
+
+              <li>
+                {% if url %}
+                  <a href="{{ url }}">
+                    {{ name }}
+                  </a>
+                {% else %}
+                  {{ name }}
+                {% endif %}
+              </li>
             {% endfor %}
           </ul>
         </div>
       {% endif %}
 
       {% if url %}
-        <div class="portfolio-detail -full-width">
+        <div class="portfolio-detail -full-width -cta">
           <p class="portfolio-stat">
             <a class="button -ghost" href="{{ url }}" title="Visit {{ client }} {{ project }}" target="_blank" rel="noopener">Visit Site</a>
           </p>
@@ -117,8 +145,8 @@ permalink: "/{{ title | slug }}/"
       </div>
     {% endif %}
 
-    <div class="portfolio-intro">
-      {% if pillars %}
+    {% if pillars %}
+      <div class="portfolio-intro">
         {% set client = pillars.client %}
         {% set challenge = pillars.challenge %}
         {% set solution = pillars.solution %}
@@ -143,8 +171,8 @@ permalink: "/{{ title | slug }}/"
             <p class="_text-h5">{{ solution | safe }}</p>
           </div>
         {% endif %}
-      {% endif %}
-    </div>
+      </div>
+    {% endif %}
 
     {% for section in sections %}
       {% include "components/" + section.type + ".njk" %}
@@ -172,7 +200,7 @@ permalink: "/{{ title | slug }}/"
     </p>
 
     <p class="portfolio-cta-description _text-h5">
-      <a class="button -primary" href="/contact">
+      <a class="button -secondary" href="/contact">
         Get in Touch
       </a>
     </p>

@@ -16,14 +16,14 @@
   display: block;
   text-align: right;
 
-  @media (--min-480) {
+  @media (--min-560) {
     display: inline-block;
   }
 
   &:not(:first-of-type) { 
     margin-top: .35rem;
 
-    @media (--min-480) { 
+    @media (--min-560) { 
       margin-left: 1rem;
       margin-top: 0;
     }
@@ -36,7 +36,7 @@
   &.-cta { 
     font-weight: var(--font-weight-bold);
     
-    @media (--min-480) { 
+    @media (--min-560) { 
       border-left: 1px solid var(--gray-dark);
       padding-left: 1rem;
     }
@@ -48,6 +48,10 @@
 }
 
 .nav-link {
+  --link-spacing: .185em;
+
+  border-radius: var(--border-radius-pill);
+  padding: var(--link-spacing) calc(var(--link-spacing) * 3);
   text-decoration: none;
   
   // Modifiers

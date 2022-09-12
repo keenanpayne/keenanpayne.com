@@ -23,7 +23,7 @@
 @mixin h2() {
   font-size: 1.953rem;
   letter-spacing: -.02em;
-  line-height: 1.1;
+  line-height: 1.15;
   
   @media (--min-640) { 
     font-size: 2.441rem;

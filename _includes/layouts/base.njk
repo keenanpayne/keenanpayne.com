@@ -43,7 +43,7 @@ https://github.com/keenanpayne/keenanpayne.com
         <ul class="nav">
           {%- for entry in collections.all | eleventyNavigation -%}
             <li class="nav-item {{ '-cta' if entry.cta }}">
-              <a class="nav-link {% if entry.url == page.url %} -active{% endif %}" href="{{ entry.url | url }}">
+              <a class="nav-link {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
                 {{ entry.title }}
               </a>
             </li>

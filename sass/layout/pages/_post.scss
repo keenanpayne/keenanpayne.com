@@ -4,8 +4,8 @@
 
 .post { 
   margin-bottom: 5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 
   // Modifiers
   &.-narrow {
@@ -31,7 +31,7 @@
 .post-footer { 
   border-top: 1px solid var(--gray-dark);
   font-family: var(--font-family-serif);
-  margin-top: 3rem;
+  margin-top: 1.5rem;
   padding-top: 1.5rem;
 
   // Descendants
