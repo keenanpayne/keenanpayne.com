@@ -241,28 +241,29 @@
     @media (--min-960) {
       align-items: center;
     }
-
-    > a { 
-      grid-column: auto / span 3;
-    }
-
+    
     .entries-image { 
       height: auto;
       width: 100%;
-
+      
       @media (--min-800) {
         margin-bottom: 0;
       }
     }
-
+    
     .entries-portfolio-content { 
       grid-column: auto / span 3;
       max-width: 55ch;
       padding-bottom: .5rem;
-
+      
       @media (--min-1120) { 
         grid-column-end: span 2;
       }
+    }
+
+    // Descendants
+    > a { 
+      grid-column: auto / span 3;
     }
   }
 
