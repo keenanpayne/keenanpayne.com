@@ -92,7 +92,7 @@ The local stressors I focused on were my relationship with *my career* and *mone
 
 <div class="sideBySide _pull-outside">
   {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/me-1_esh321.jpg', alt: "Me hiking in the mountains", caption: "🏔 Me hiking in the mountains" %}
-  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/jon_es6erq.jpg', alt: "Snowboarding with Jon", caption: "✌🏻 Hitting the slopes with <a href="https://jonathanhoriel.com" target="_blank" rel="noopener">Jon</a>" %}
+  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/jon_es6erq.jpg', alt: "Snowboarding with Jon", caption: '✌🏻 Hitting the slopes with <a href="https://jonathanhoriel.com" target="_blank" rel="noopener">Jon</a>' %}
   {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/cort_fe7xzl.jpg', alt: "Portrait of a new friend, Cort.", caption: "💨 Portrait of a new friend, Cort." %}
 </div>
 
