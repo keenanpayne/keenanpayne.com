@@ -115,24 +115,24 @@ sections:
       - 27
       - 28
       - 29
+
+# TODO: Highlight Webby awards and nominations
+# TODO: Figure out how to display these alongside other case study content
+# ## Behind the scenes
+
+# https://fontawesome.com/icons/solar-system?s=light&f=classic
+# ### Internal style guide and pattern library
+# I honed my skills in frontend architecture as I helped design and develop the first attempts at a pattern library and web style guide. As a rapidly-growing company, I anticipated the need for greater consistency across our codebase and brand identity as our marketing and sales became more aggressive. 
+
+# I led the charge on building a "componentized" frontend, helped establish coding standards, and reduced the amount of code written to solve common problems.
+
+# https://fontawesome.com/icons/person-circle-plus?s=solid&f=classic
+# ### Hiring
+# Asana grew from 70 to 700 employees in my five years there, with the web development team alone increasing from 2 to 10. 
+
+# I helped our hiring initiatives by interviewing candidates, crafting interview questions, and making key hiring decisions.
+
+# https://fontawesome.com/icons/users-gear?s=solid&f=classic
+# ### Developer experience
+# I helped incorporate robust build processes for managing assets in our codebase for an improved developer experience.
 ---
-
-<!-- Highlight Webby awards and nominations -->
-
-## Behind the scenes
-
-<!-- https://fontawesome.com/icons/solar-system?s=light&f=classic -->
-### Internal style guide and pattern library
-I honed my skills in frontend architecture as I helped design and develop the first attempts at a pattern library and web style guide. As a rapidly-growing company, I anticipated the need for greater consistency across our codebase and brand identity as our marketing and sales became more aggressive. 
-
-I led the charge on building a "componentized" frontend, helped establish coding standards, and reduced the amount of code written to solve common problems.
-
-<!-- https://fontawesome.com/icons/person-circle-plus?s=solid&f=classic -->
-### Hiring
-Asana grew from 70 to 700 employees in my five years there, with the web development team alone increasing from 2 to 10. 
-
-I helped our hiring initiatives by interviewing candidates, crafting interview questions, and making key hiring decisions.
-
-<!-- https://fontawesome.com/icons/users-gear?s=solid&f=classic -->
-### Developer experience
-I helped incorporate robust build processes for managing assets in our codebase for an improved developer experience.
