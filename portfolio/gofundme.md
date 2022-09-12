@@ -3,13 +3,13 @@ permalink: "/portfolio/gofundme/"
 title: "GoFundMe"
 meta: 
   description: "Building a content hub to highlight people who are making a difference."
-  image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1657996840/portfolio/gofundme/og_sqqaf6.png'
+  image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1662955280/portfolio/asana/cover_f0k9td.png'
 data: gofundme
 
 # TODO: Currently being used to display cover image for each item in portfolio. 
 #       Ideally, this is automatically retrieved from `gofundme.js`.
 #       This will likely require creating a separate layout for displaying portfolio items.
-cover: 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_1532/v1657996527/portfolio/gofundme/cover_cwiwux.png'
+cover: 'https://res.cloudinary.com/keenan-payne/image/upload/v1662955280/portfolio/asana/cover_f0k9td.png'
 
 # headerInversion: true
 
