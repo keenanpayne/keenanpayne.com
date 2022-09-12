@@ -29,6 +29,7 @@ I don’t plan on covering the similarities and differences between different SS
 - [A List of Static Site Generators for Jamstack Sites](https://jamstack.org/generators/)
 - [Jekyll alternatives: The benefits to JavaScript static site generators](https://www.takeshape.io/articles/jekyll-alternatives-the-benefits-to-javascript-static-site-generators/)
 - [Comparing Static Site Generator Build Times](https://css-tricks.com/comparing-static-site-generator-build-times/)
+- [11ty: The Good, the Bad, and the... Possum?](https://www.aleksandrhovhannisyan.com/blog/eleventy-the-good-the-bad-and-the-possum/)
 
 ## My Take  
 
@@ -48,18 +49,18 @@ Understand what problems you’re solving, determine which of these are most imp
 
 I plan on writing more about how to use Eleventy for web development projects, but you needn't wait for me to shill my articles when there are so many excellent resources available.
 
-##### [Eleventy documentation](https://www.11ty.dev/docs/getting-started/)
+#### [Eleventy documentation](https://www.11ty.dev/docs/getting-started/)
 
 Documentation is _always_ my first stop when learning new software. I start by seeing how the documentation advises I get started and then reach for external resources as needed.
 
 Overall, I think the Eleventy documentation is great. The introductory "Getting Started" resource that I've included hits core concepts at a high level, making it suitable for folks who already have decent technical know-how with similar software. 
 
-##### [Learn Eleventy From Scratch](https://piccalil.li/course/learn-eleventy-from-scratch/)
+#### [Learn Eleventy From Scratch](https://piccalil.li/course/learn-eleventy-from-scratch/)
 
 This course—formerly paid but now free—is currently the best resource for learning how to use Eleventy from the ground up.
 
 Taught by [Andy Bell](https://twitter.com/piccalilli_), this course teaches you the ins and outs of Eleventy without glossing over the more minor details.
 
-##### [Beginner's Guide to Eleventy](https://www.tatianamac.com/posts/beginner-eleventy-tutorial-parti/)
+#### [Beginner's Guide to Eleventy](https://www.tatianamac.com/posts/beginner-eleventy-tutorial-parti/)
 
 This tutorial, written by [Tatiana Mac](https://twitter.com/TatianaTMac), is another excellent resource for anybody getting started with Eleventy. The first part of the series covers how Eleventy fits into the world of SSGs, while the second part goes incredibly deep on installing the software.
