@@ -5,13 +5,15 @@ type: Reflection
 date: 2022-09-19
 meta: 
   description: Reflecting on how political purpose might provide my actions with more significant meaning.
-  image: ''
+  image: 'https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1000/v1663605403/Blog%20Posts/political-purpose/1999.278_-_County_Election_lyrmci.jpg'
   image_alt: ''
 lede: Reflecting on how political purpose might provide my actions with more significant meaning.
 tags:
   - Life Updates
   - Politics
 ---
+
+{% include atoms/figure.html, src: "https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1200/v1663605403/Blog%20Posts/political-purpose/1999.278_-_County_Election_lyrmci", alt: "County Election in 1800's on watercolor", caption: "County Election in 1800's on watercolor", source_title: "Art Institute Chicago", source_link: "https://www.artic.edu/artworks/151565/county-election" %}
 
 I was struck by a quote on the importance of political purpose while reading George Orwell's [Why I Write](https://www.indiebound.org/book/9780143036357):
 
