@@ -31,7 +31,7 @@
 .post-footer { 
   border-top: 1px solid var(--gray-dark);
   font-family: var(--font-family-serif);
-  margin-top: 1.5rem;
+  margin-top: 3rem;
   padding-top: 1.5rem;
 
   // Descendants
@@ -179,7 +179,7 @@
 
     mark { 
       background: transparent;
-      background-image: linear-gradient(to right, rgba(255, 225, 0, 0.15), rgba(255, 225, 0, 0.6) 7.5%, rgba(255, 225, 0, 0.25));
+      background-image: linear-gradient(to right, rgba(255, 225, 0, 0.15), rgba(255, 225, 0, 0.6) 7.5%, rgba(255, 225, 0, 0.7) 30%, rgba(255, 225, 0, 0.8) 60%, rgba(255, 225, 0, 0.35));
       border-radius: 0.8em 0.3em;
       -webkit-box-decoration-break: clone;
               box-decoration-break: clone;
@@ -187,7 +187,9 @@
       padding: 0.1em 0.4em; 
   
       @media (--dark) { 
-        background-color: var(--gray-lighter);
+        background: var(--yellow-dark);
+        box-shadow: 2px 0 6px 1px var(--yellow-dark);
+        border-radius: 0.75em 0.45em;
         margin: 0 -0.1em;
       }
     }

@@ -3,22 +3,20 @@
 // ==================================================
 
 .blockquote { 
+  @include pullContentOutside;
+  
   color: var(--text-color);
   font-family: var(--font-family-serif);
   font-style: italic;
-  margin: 1.5rem 0;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
   padding-bottom: 1.5rem;
   padding-top: 1.5rem;
   position: relative;
 
-  @media (--min-480) { 
-    margin-left: .75rem;
-    margin-right: .75rem;
-  }
-
-  @media (--min-640) { 
-    margin-left: 1.5rem;
-    margin-right: 1.5rem;
+  @media (--max-640) {
+    margin-left: 0;
+    margin-right: 0;
   }
 
   //  Pseudo-elements for quote icons
@@ -58,13 +56,15 @@
 
   // Descendants
   p {
-    margin-bottom: 0;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    --horizontal-padding: 2rem;
 
-    @media (--min-720) { 
-      padding-left: 3rem;
-      padding-right: 3rem;
+    line-height: 1.35;
+    margin-bottom: 0;
+    padding-left: var(--horizontal-padding);
+    padding-right: var(--horizontal-padding);
+
+    @media (--min-640) { 
+      --horizontal-padding: 3rem;
     }
     
     // TODO: Hacky override from `_post.scss`
@@ -72,17 +72,37 @@
       margin-bottom: .75rem !important;
     }
   }
+}
 
-  cite { 
-    @extend ._text-small;
+.blockquote-content {
+  @media (--min-720) {
+    @include h4;
+  }
 
-    display: block;
-    font-weight: var(--font-weight-serif-bold);
-    letter-spacing: .025em;
+  @media (--min-960) {
+    @include h3;
+  }
+}
 
-    &::before { 
-      content: "—";
-      display: inline-block;
-    }
+.blockquote-cite {
+  @include h6;
+
+  display: block;
+  font-style: normal;
+  font-family: var(--font-family-base);
+  margin-left: -1em;
+  margin-top: 1rem;
+
+  @media (--min-720) {
+    @include h5;
+  }
+
+  @media (--min-960) {
+    @include h4;
+  }
+
+  &::before { 
+    content: "—";
+    display: inline-block;
   }
 }
