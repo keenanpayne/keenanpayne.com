@@ -21,7 +21,7 @@ This video marks the end of a lecture series Hamming gave to the Naval Postgradu
 - Spending time in meaningful ways
 - How to choose important things to work on
 
-{% include type/blockquote.html, content: "As far as I know, and as far as you know, you have one life to lead.s You might as well lead a life you would like to have. I would suggest leading a life of doing something significant.", author: "Richard Hamming" %}
+{% include type/blockquote.html, content: "As far as I know, and as far as you know, you have one life to lead. You might as well lead a life you would like to have. I would suggest leading a life of doing something significant.", author: "Richard Hamming" %}
 
 You don't need to be a computer scientist or mathematician to find inspiration in what Hamming offers. 
 
