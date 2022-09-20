@@ -45,7 +45,7 @@ I feel the urge to make a similar change in my life. I want to put my skills, pa
 
 {% include type/p_large.html, content: "I want to align my actions more closely with my values." %}
 
-I'm not entirely sure how this will manifest. Without a plan of attack for making such a change, I run the risk of maintaining the status quo and keeping to business as usual.
+I'm not entirely sure how this will manifest. Without a planning for change, I run the risk of maintaining the status quo and keeping to business as usual. But <mark>planning without action</mark> can simply be [a form of procrastination](/creating-planning/).
 
 By sharing these thoughts publically, I hope I can create some accountability with myself and maintain momentum toward making a change.
 
