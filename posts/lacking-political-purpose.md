@@ -51,7 +51,7 @@ By sharing these thoughts publically, I hope I can create some accountability wi
 
 ### Brainstorming opportunities to engage with my political purpose
 
-Here are a few ideas I've been considering that involve using my skills as a web developer in ways that align with my political beliefs:
+Here are a few ideas I've had that involve using my skills as a web developer in ways that align with my political beliefs:
 
 - Improve the online presence of political candidates with a similar political ideology/agenda.
 - Collaborate with leftist publishers like [Jacobin](https://jacobin.com) to introduce more folks to Social Democratic, Socialist, and Marxist ideologies through compelling and thoughtful journalism.
