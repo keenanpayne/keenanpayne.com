@@ -93,12 +93,8 @@
   margin-left: -1em;
   margin-top: 1rem;
 
-  @media (--min-720) {
-    @include h5;
-  }
-
   @media (--min-960) {
-    @include h4;
+    @include h5;
   }
 
   &::before { 
