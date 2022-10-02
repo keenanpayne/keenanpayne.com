@@ -95,10 +95,6 @@
     }
   }
 
-  &:nth-of-type(even):not(.-full-width) { 
-    border-right: 1px solid var(--border-color);
-  }
-
   &:nth-child(odd):not(.-full-width) { 
     .portfolio-label,
     .portfolio-stat { 
@@ -262,5 +258,54 @@
 
   &:first-of-type {
     margin-bottom: 2.25rem;
+  }
+}
+
+// TODO: Move into separate file
+.awards {
+  --border: var(--exodus-fruit);
+
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+  
+  @media (--dark) {
+    --border: var(--yellow-dark);
+  }
+
+  @media (--min-480) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.awards-item {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  // Descendants
+  img {
+    display: block;
+    margin-bottom: .5rem;
+    max-width: 100px;
+
+    @media (--dark) {
+      filter: invert(100%);
+    }
+  }
+}
+
+.awards-name {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: .2rem;
+}
+
+.awards-details {
+  // Descendants
+  span {
+    display: block;
   }
 }

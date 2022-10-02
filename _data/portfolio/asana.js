@@ -243,5 +243,23 @@ module.exports = {
       title: "Asana for Marketers",
       caption: ""
     },
-  }
+  },
+  awards: {
+    [1]: {
+      name: "Webby",
+      year: "2017",
+      category: "Websites and Mobile Sites",
+      details: "Web Services & Applications",
+      status: "Nominee",
+      link: "https://winners.webbyawards.com/2017/websites-and-mobile-sites/general-websites-and-mobile-sites/web-services-applications/20776/asana"
+    },
+    [2]: {
+      name: "Webby",
+      year: "2019",
+      category: "Websites and Mobile Sites",
+      details: "Web Services & Applications",
+      status: "Honoree",
+      link: "https://winners.webbyawards.com/2019/websites-and-mobile-sites/general-websites-and-mobile-sites/web-services-applications/89220/asana"
+    }
+  },
 }

@@ -116,7 +116,6 @@ sections:
       - 28
       - 29
 
-# TODO: Highlight Webby awards and nominations
 # TODO: Figure out how to display these alongside other case study content
 # ## Behind the scenes
 

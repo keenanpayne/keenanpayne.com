@@ -24,6 +24,7 @@ permalink: "/{{ title | slug }}/"
   {% set technologies = portfolioItem.technologies %}
   {% set cover = portfolioItem.cover %}
   {% set people = portfolioItem.people %}
+  {% set awards = portfolioItem.awards %}
 {% endif %}
 
 <section class="portfolio _container -extra-large">
@@ -130,6 +131,44 @@ permalink: "/{{ title | slug }}/"
         </div>
       {% endif %}
 
+      {% if awards %}
+        <div class="portfolio-detail -full-width">
+          <p class="portfolio-label _label">Awards</p>
+
+          <div class="awards">
+            {% for id, award in awards %}
+              {% set award = awards[id] %}
+              {% set name = award.name %}
+              {% set year = award.year %}
+              {% set category = award.category %}
+              {% set details = award.details %}
+              {% set status = award.status %}
+              {% set link = award.link %}
+
+              <a class="awards-item" href="{{ link }}" title="{{ name }} {{ status }} for {{ category }} and {{ details }} in {{ year }}">
+                {% if name == "Webby" %}
+                  <img src="https://res.cloudinary.com/keenan-payne/image/upload/v1664670539/portfolio/awards/webby_s9jarp.png" alt="{{ name }}" />
+                {% endif %}
+
+                <div class="awards-name _text-small">
+                  <span>{{ name }} {{ status }}, {{ year }}</span>
+                </div>
+
+                <p class="awards-details _text-smaller">
+                  <span>
+                    {{ category }}
+                  </span>
+
+                  <span>
+                    {{ details }}
+                  </span>
+                </p>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+      
       {% if url %}
         <div class="portfolio-detail -full-width -cta">
           <p class="portfolio-stat">
