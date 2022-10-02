@@ -22,7 +22,7 @@ module.exports = {
     "AWS",
     "Python",
   ],
-  overview: 'At Asana, I worked on cross-functional projects across various technologies and stakeholders. I helped grow our team from 2–10 people while scaling our technology to handle the requirements of a rapidly-growing company.',
+  overview: "I worked on cross-functional projects across various technologies and stakeholders as the second marketing web developer. I helped grow our team from 2 to 10 people while scaling our technology to handle the requirements of a rapidly-growing company.",
   lede: "",
   caption: "",
   people: {
@@ -33,7 +33,7 @@ module.exports = {
   testimonials: {
     [1]: {
       person_id: 1,
-      content: "I'm quite proud of how many things I built so long ago are still in use today. Hell, even the Asana blog is standing strong atop my 2014 code!"
+      content: "I'm proud that the Asana blog is still standing strong atop my <strong>2014</strong> code"
     }
   },
   cover: 'https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.jpg',
