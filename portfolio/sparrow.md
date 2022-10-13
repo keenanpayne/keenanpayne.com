@@ -3,17 +3,17 @@ permalink: '/portfolio/sparrow/'
 title: 'Sparrrow'
 meta: 
   description: 
-  image: ''
+  image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png'
 data: sparrow
 
-cover: ''
+cover: 'https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png'
 
 sections: 
   - type: portfolioGrid
     project: sparrow
     contained: true
     enlarge: true
-    modifier: '-three-col'
+    modifier: '-two-col'
     eyebrow: ''
     headline: ''
     description: ''

@@ -24,6 +24,7 @@ module.exports = {
   ],
   overview: "I worked on cross-functional projects across various technologies and stakeholders as the second marketing web developer. I helped grow our team from 2 to 10 people while scaling our technology to handle the requirements of a rapidly-growing company.",
   lede: "",
+  cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png",
   caption: "",
   people: {
     [1]: {
@@ -36,7 +37,7 @@ module.exports = {
       content: "I'm proud that the Asana blog is still standing strong atop my <strong>2014</strong> code"
     }
   },
-  cover: 'https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.jpg',
+  cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.jpg",
   assets: {
     [1]: {
       link: "https://asana.com/teams/marketing",
