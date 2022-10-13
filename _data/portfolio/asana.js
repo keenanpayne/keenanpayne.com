@@ -23,7 +23,7 @@ module.exports = {
     "Python",
   ],
   overview: "I worked on cross-functional projects across various technologies and stakeholders as the second marketing web developer. I helped grow our team from 2 to 10 people while scaling our technology to handle the requirements of a rapidly-growing company.",
-  lede: "",
+  lede: "Five years helping grow a company, website, and brand.",
   cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png",
   caption: "",
   people: {

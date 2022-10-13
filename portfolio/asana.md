@@ -3,11 +3,8 @@ permalink: '/portfolio/asana/'
 title: 'Asana'
 meta: 
   description: 
-  image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.png'
+  image: "https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.png"
 data: asana
-
-cover: 'https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.png'
-
 sections: 
   - type: portfolioGrid
     project: asana

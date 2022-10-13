@@ -5,8 +5,8 @@ module.exports = {
   size: "50–100",
   industry: "HR Software",
   color: "#3ED0DA",
-  url: "https://trysparrow.com",
   role: "Web Developer",
+  url: "https://trysparrow.com",
   services: [
     "Web Development",
   ],
@@ -20,6 +20,7 @@ module.exports = {
   ],
   overview: "I rebuilt the Sparrow website from the ground-up as the company geared up for their Series A fundraising round. The website is geared toward positioning Sparrow as a disrupter in the HR software market.",
   lede: "Finally, stress-free employee leave.",
+  cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png",
   caption: "",
   people: {
     [1]: {
@@ -28,7 +29,7 @@ module.exports = {
     [2]: {
       name: "Deborah Hanus"
     },
-    [2]: {
+    [3]: {
       name: "Everyone from Play Studio"
     }
   },
@@ -38,7 +39,6 @@ module.exports = {
       content: ""
     }
   },
-  cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png",
   assets: {
     [1]: {
       link: "",
