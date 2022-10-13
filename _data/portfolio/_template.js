@@ -1,12 +1,37 @@
 module.exports = {
   name: "",
+  project: "",
+  year: "",
+  size: "",
+  industry: "",
+  color: "#",
+  role: "",
+  url: "",
+  services: [
+    "",
+  ],
+  technologies: [
+    "",
+  ],
+  overview: "",
+  lede: "",
+  cover: "  ",
+  caption: "",
   people: {
     [1]: {
-      name: "",
+      name: ""
+    }
+  },
+  name: "",
+  people: {
+    [1]: {
       position: "",
-      quotes: [
-        ""
-      ],
+    }
+  },
+  testimonials: {
+    [1]: {
+      person_id: 1,
+      content: ""
     }
   },
   assets: {
