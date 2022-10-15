@@ -3,7 +3,7 @@ permalink: "/portfolio/gofundme/"
 title: "GoFundMe"
 meta: 
   description: "Building a content hub to highlight people who are making a difference."
-  image: "https://res.cloudinary.com/keenan-payne/image/upload/v1662955280/portfolio/asana/cover_f0k9td.png"
+  image: "https://res.cloudinary.com/keenan-payne/image/upload/v1665763480/portfolio/gofundme/cover_m7erev.png"
 data: gofundme
 # headerInversion: true
 sections: 
