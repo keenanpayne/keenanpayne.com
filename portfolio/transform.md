@@ -16,9 +16,27 @@ sections:
     description: ''
     items: 
       - 1
-  - type: testimonial
+      - 5
+  - type: portfolioGrid
     project: transform
-    person: 1
-    testimonial: 1
-    hide_citation: true
+    contained: true
+    enlarge: true
+    modifier: '-two-col'
+    eyebrow: ''
+    headline: ''
+    description: ''
+    items: 
+      - 2
+      - 3
+  - type: portfolioGrid
+    project: transform
+    contained: true
+    enlarge: true
+    modifier: '-two-col'
+    eyebrow: ''
+    headline: ''
+    description: ''
+    items: 
+      - 4
+      - 6
 ---
