@@ -20,7 +20,7 @@ module.exports = {
   overview: 'I built a WordPress content portal to highlight standout projects from "heroes" on the GoFundMe platform, integrating it into their existing codebase and design paradigms.',
   lede: "Building a content hub to highlight people who are making a difference.",
   description: "Who hasn't heard of GoFundMe? They're the <em>most popular</em> personal fundraising website in the world and have helped facilitate <strong>$9 billion</strong> in fundraising for personal causes.",
-  cover: 'https://res.cloudinary.com/keenan-payne/image/upload/v1665763480/portfolio/gofundme/cover_m7erev.png',
+  cover: 'v1665763480/portfolio/gofundme/cover_m7erev.png',
   pillars: {
     client: 'The marketing team at GoFundMe wanted to highlight standout projects from "heroes" on the platform.',
     challenge: "Working within an existing WordPress codebase, I had to extend post taxonomies to support the editorial format for this content while building a new user interface.",

@@ -20,7 +20,7 @@ module.exports = {
   ],
   overview: "Transform is the first centralized ‘metrics store’ that empowers data analysts to deliver accurate, timely, confident, and fast insights.",
   lede: "",
-  cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1665763707/portfolio/transform/cover_yrt6ni.png",
+  cover: "v1665763707/portfolio/transform/cover_yrt6ni.png",
   caption: "",
   people: {
     [1]: {

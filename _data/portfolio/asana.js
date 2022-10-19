@@ -24,7 +24,7 @@ module.exports = {
   ],
   overview: "As the second web developer at Asana, I helped manage our marketing website and various internal web dev projects. I was involved in growing our team <em>5x</em>, scaling our website <em>10x</em> to meet our rapidly increasing business requirements, and building gorgeous landing pages to help convert visitors into users and customers.",
   lede: "Five years of growing a company, website, and brand.",
-  cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png",
+  cover: "v1661998554/portfolio/asana/cover_scey3k.jpg",
   caption: "",
   people: {
     [1]: {
@@ -37,7 +37,6 @@ module.exports = {
       content: "I'm proud that the Asana blog is still standing strong atop my <strong>2014</strong> code."
     }
   },
-  cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.jpg",
   assets: {
     [1]: {
       link: "https://asana.com/teams/marketing",

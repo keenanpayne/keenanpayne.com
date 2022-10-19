@@ -21,7 +21,7 @@ module.exports = {
   ],
   overview: "I rebuilt the Sparrow website from the ground up as the company geared up for its Series A fundraising round. We designed the website to position Sparrow as a disrupter in the employee automation software market.",
   lede: "Building a marketing website for an emerging employee automation platform.",
-  cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png",
+  cover: "v1665630813/portfolio/sparrow/cover_qommce.png",
   caption: "",
   people: {
     [1]: {
