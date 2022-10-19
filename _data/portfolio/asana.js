@@ -2,7 +2,7 @@ module.exports = {
   name: "Asana",
   project: "Full-Time Employment",
   year: "2014–2019",
-  size: "70 to 700",
+  size: "started 70, grew to 700",
   industry: "Software",
   color: "#940060",
   role: "Web Developer",
