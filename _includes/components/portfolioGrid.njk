@@ -48,9 +48,15 @@
         {% set imageURL = 'https://res.cloudinary.com/keenan-payne/image/upload/' ~ assetTransform ~ '/' ~ image %}
 
         <div class="portfolioGrid-item {{ '-video' if video }} {{ '-image' if image }}">
-          {# TODO: Lazy-load asset and host on an asset management platform #}
           {%- if video -%}
-            <video muted controls src="{{ videoURL }}"></video>
+            {# TODO: Allow some videos to autoplay when subtle, 
+                     but default to none 
+              
+              Attributes for autoplay: `autoplay loop playsinline`
+            #}
+            <video class="--js-lazy" muted controls>
+              <source data-src="{{ videoURL }}">
+            </video>
           {%- endif -%}
 
           {%- if image -%}
