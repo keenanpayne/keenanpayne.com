@@ -67,14 +67,16 @@ module.exports = {
       image: "v1665535808/portfolio/sparrow/product_qctyv5.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Product",
-      caption: ""
+      caption: "",
+      preventLazy: true
     },
     [5]: {
       link: "https://trysparrow.com/employee/",
       image: "v1665535808/portfolio/sparrow/employee_iqnm8p.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Employee Experience",
-      caption: ""
+      caption: "",
+      preventLazy: true
     },
     [6]: {
       link: "https://trysparrow.com/careers/",
@@ -95,7 +97,8 @@ module.exports = {
       image: "v1665535807/portfolio/sparrow/blog_s1vhmo.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Blog",
-      caption: ""
+      caption: "",
+      preventLazy: true
     },
     [9]: {
       link: "https://trysparrow.com/careers/",
@@ -116,21 +119,24 @@ module.exports = {
       image: "v1665535806/portfolio/sparrow/careers_io0n30.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Careers",
-      caption: ""
+      caption: "",
+      preventLazy: true
     },
     [12]: {
       link: "https://trysparrow.com/demo/",
       image: "v1665535806/portfolio/sparrow/demo_rdnm3m.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Schedule a demo",
-      caption: ""
+      caption: "",
+      preventLazy: true
     },
     [13]: {
       link: "https://trysparrow.com/blog/virtual-panel-creating-best-in-class-paid-leave-policies-at-your-company/",
       image: "v1665535806/portfolio/sparrow/article_mbyxau.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Blog article",
-      caption: ""
+      caption: "",
+      preventLazy: true
     },
     [14]: {
       link: "https://trysparrow.com",
@@ -167,21 +173,24 @@ module.exports = {
       image: "v1665535804/portfolio/sparrow/homepage_jcyvdo.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Homepage",
-      caption: ""
+      caption: "",
+      preventLazy: true
     },
     [19]: {
       link: "https://trysparrow.com/why-sparrow/",
       image: "v1665535804/portfolio/sparrow/experience_bhmspo.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Why Sparrow",
-      caption: ""
+      caption: "",
+      preventLazy: true
     },
     [20]: {
       link: "https://trysparrow.com/security/",
       image: "v1665535804/portfolio/sparrow/security_tuxqae.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Security",
-      caption: ""
+      caption: "",
+      preventLazy: true
     },
     [21]: {
       link: "https://trysparrow.com/security/",

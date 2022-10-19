@@ -1,29 +1,37 @@
 // Simple video lazy loading
 // Ref: https://web.dev/lazy-loading-video/
 document.addEventListener("DOMContentLoaded", function() {
-  var lazyVideos = [].slice.call(document.querySelectorAll("video.--js-lazy"));
-  if (!lazyVideos) return;
+  var lazyElements = [].slice.call(document.querySelectorAll("[data-lazy]"));
+  
+  if (!lazyElements) return;
 
   if ("IntersectionObserver" in window) {
-    var lazyVideoObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(video) {
-        if (video.isIntersecting) {
-          for (var source in video.target.children) {
-            var videoSource = video.target.children[source];
-            if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
-              videoSource.src = videoSource.dataset.src;
+    var lazyElementsObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(element) {
+        if (element.isIntersecting) {
+          // Lazy load videos
+          if (element.target == 'video') {
+            for (var source in element.target.children) {
+              var videoSource = element.target.children[source];
+              if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                videoSource.src = videoSource.dataset.src;
+              }
             }
-          }
+  
+            element.target.load();
 
-          video.target.load();
-          video.target.classList.remove("--js-lazy");
-          lazyVideoObserver.unobserve(video.target);
+          // Lazy load images
+          } else {
+            var imageSource = element.target.dataset.src;
+            element.target.style.setProperty('--background', `url(${imageSource})`);
+          }
+          lazyElementsObserver.unobserve(element.target);
         }
       });
     });
 
-    lazyVideos.forEach(function(lazyVideo) {
-      lazyVideoObserver.observe(lazyVideo);
+    lazyElements.forEach(function(lazyElement) {
+      lazyElementsObserver.observe(lazyElement);
     });
   }
 });

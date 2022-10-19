@@ -42,6 +42,7 @@
         {% set title = res.title %}
         {% set caption = res.caption %}
         {% set autoplay = res.autoplay %}
+        {% set preventLazy = res.preventLazy %}
         {% set link = res.link %}
         {% set shotLink = res.shot_link %}
         {% set assetTransform = res.asset_transform %}
@@ -51,9 +52,9 @@
         <div class="portfolioGrid-item {{ '-video' if video }} {{ '-image' if image }}">
           {%- if video -%}
             <video 
-              class="--js-lazy" 
               muted 
               controls
+              data-lazy
               {% if autoplay %} 
                 autoplay loop playsinline 
               {% endif %}
@@ -64,8 +65,17 @@
 
           {%- if image -%}
             {% if contained %}
-              {# TODO: Lazy-load this background image #}
-              <a href="{{ imageURL }}" title="Enlarge image for {{ title }}" class="portfolioGrid-imageTile" style="--background: url({{ imageURL }})"></a>
+              <a 
+                href="{{ imageURL }}" 
+                title="Enlarge image for {{ title }}" 
+                class="portfolioGrid-imageTile" 
+                data-src="{{ imageURL }}" 
+                {% if preventLazy %} 
+                  style="--background: url({{ imageURL }})" 
+                {% else %}
+                  data-lazy
+                {% endif %}>
+              </a>
             {% else %}
               <img src="{{ imageURL }}" alt="{{ title }}" loading="lazy" />
             {% endif%}
