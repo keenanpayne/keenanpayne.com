@@ -135,9 +135,10 @@ module.exports = {
     [14]: {
       link: "https://trysparrow.com",
       video: "v1665535806/portfolio/sparrow/homepage-calculator_ipbu0a.mp4",
-      asset_transform: "f_auto,q_auto,w_1100",
+      asset_transform: "f_auto,q_auto,w_1300",
       title: "Cost calculator",
-      caption: ""
+      caption: "",
+      autoplay: true
     },
     [15]: {
       link: "https://trysparrow.com",
@@ -158,7 +159,8 @@ module.exports = {
       video: "v1665535805/portfolio/sparrow/homepage-hero_ncjwti.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Homepage hero",
-      caption: ""
+      caption: "",
+      autoplay: true
     },
     [18]: {
       link: "https://trysparrow.com",
@@ -184,16 +186,18 @@ module.exports = {
     [21]: {
       link: "https://trysparrow.com/security/",
       video: "v1665535804/portfolio/sparrow/security_s62dnl.mp4",
-      asset_transform: "f_auto,q_auto,w_600",
+      asset_transform: "f_auto,q_auto,w_800",
       title: "Security animation",
-      caption: ""
+      caption: "",
+      autoplay: true
     },
     [22]: {
       link: "https://trysparrow.com",
       video: "v1665535804/portfolio/sparrow/navigation_ukg4hk.mp4",
-      asset_transform: "f_auto,q_auto,w_1100",
+      asset_transform: "f_auto,q_auto,w_1300",
       title: "Global navigation",
-      caption: ""
+      caption: "",
+      autoplay: true
     },
   },
 }

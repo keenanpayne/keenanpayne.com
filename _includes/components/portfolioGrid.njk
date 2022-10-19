@@ -41,6 +41,7 @@
         {% set image = res.image %}
         {% set title = res.title %}
         {% set caption = res.caption %}
+        {% set autoplay = res.autoplay %}
         {% set link = res.link %}
         {% set shotLink = res.shot_link %}
         {% set assetTransform = res.asset_transform %}
@@ -49,12 +50,14 @@
 
         <div class="portfolioGrid-item {{ '-video' if video }} {{ '-image' if image }}">
           {%- if video -%}
-            {# TODO: Allow some videos to autoplay when subtle, 
-                     but default to none 
-              
-              Attributes for autoplay: `autoplay loop playsinline`
-            #}
-            <video class="--js-lazy" muted controls>
+            <video 
+              class="--js-lazy" 
+              muted 
+              controls
+              {% if autoplay %} 
+                autoplay loop playsinline 
+              {% endif %}
+            >
               <source data-src="{{ videoURL }}">
             </video>
           {%- endif -%}

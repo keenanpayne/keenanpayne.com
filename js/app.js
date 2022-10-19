@@ -2,7 +2,6 @@
 // Ref: https://web.dev/lazy-loading-video/
 document.addEventListener("DOMContentLoaded", function() {
   var lazyVideos = [].slice.call(document.querySelectorAll("video.--js-lazy"));
-  console.log(lazyVideos);
   if (!lazyVideos) return;
 
   if ("IntersectionObserver" in window) {
@@ -11,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function() {
         if (video.isIntersecting) {
           for (var source in video.target.children) {
             var videoSource = video.target.children[source];
-            console.log(videoSource);
             if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
               videoSource.src = videoSource.dataset.src;
             }
