@@ -5,6 +5,8 @@ meta:
   description: 
   image: "https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.png"
 data: asana
+featured:
+  position: 1
 sections: 
   - type: portfolioGrid
     project: asana
@@ -29,7 +31,7 @@ sections:
     modifier: '-three-col'
     eyebrow: 2019
     headline: 'Visual Overhaul'
-    description: I redesigned our most highly-trafficked pages while providing a visual facelift to styles shared across our web properties (e.g., typography, spacing, fonts, colors).
+    description: I redesigned our highest-trafficked pages while providing a visual facelift to styles shared across our web properties (e.g., typography, spacing, fonts, colors).
     items: 
       - 12
       - 2
@@ -73,7 +75,7 @@ sections:
     modifier: '-three-col'
     eyebrow: 2015
     headline: 'Asana for Developers'
-    description: I built the initial documentation platform for Asana, which included API documentation and a news portal.
+    description: I built the initial API documentation and news platform for Asana.
     items: 
       - 20
       - 21
@@ -90,7 +92,7 @@ sections:
     description: |
       Wavelength was a content marketing strategy to position Asana as a thought leader in work management and corporate leadership.
 
-      I built a custom WordPress theme for the Wavelength website, along with custom taxonomies to portray it as a digital magazine.
+      I built a custom WordPress theme for the Wavelength website and custom taxonomies to portray it as a digital magazine.
     items: 
       - 8
       - 9
@@ -103,11 +105,9 @@ sections:
     eyebrow: 2018
     headline: 'Product Tour'
     description: |
-      I built a "Product Tour" interactive component to aid our marketing efforts for specific product use cases.
+      This interactive component acted as an Asana product tour, aiding our marketing efforts for different customer use cases.
 
-      We relied heavily on imagery and animations throughout the component, causing me to consider how to mitigate performance implications carefully.
-
-      I implemented deep linking for each page in this component, which allowed our marketing team to track and reference specific pieces of content.
+      I implemented deep linking and GTM tracking for each aspect of this component, allowing the marketing team to track and reference specific pieces of content.
     items: 
       - 27
       - 28

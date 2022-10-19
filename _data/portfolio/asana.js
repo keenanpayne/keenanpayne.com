@@ -2,7 +2,7 @@ module.exports = {
   name: "Asana",
   project: "Full-Time Employment",
   year: "2014–2019",
-  size: "Started at 70, grew to 700",
+  size: "70 to 700",
   industry: "Software",
   color: "#940060",
   role: "Web Developer",
@@ -22,8 +22,8 @@ module.exports = {
     "AWS",
     "Python",
   ],
-  overview: "I worked on cross-functional projects across various technologies and stakeholders as the second marketing web developer. I helped grow our team from 2 to 10 people while scaling our technology to handle the requirements of a rapidly-growing company.",
-  lede: "Five years helping grow a company, website, and brand.",
+  overview: "As the second web developer at Asana, I helped manage our marketing website and various internal web dev projects. I was involved in growing our team <em>5x</em>, scaling our website <em>10x</em> to meet our rapidly increasing business requirements, and building gorgeous landing pages to help convert visitors into users and customers.",
+  lede: "Five years of growing a company, website, and brand.",
   cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png",
   caption: "",
   people: {
@@ -34,7 +34,7 @@ module.exports = {
   testimonials: {
     [1]: {
       person_id: 1,
-      content: "I'm proud that the Asana blog is still standing strong atop my <strong>2014</strong> code"
+      content: "I'm proud that the Asana blog is still standing strong atop my <strong>2014</strong> code."
     }
   },
   cover: "https://res.cloudinary.com/keenan-payne/image/upload/v1661998554/portfolio/asana/cover_scey3k.jpg",
