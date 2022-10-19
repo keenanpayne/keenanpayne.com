@@ -15,28 +15,19 @@ sections:
     headline: ''
     description: ''
     items: 
+      - 4
+      - 3
+      - 2
+      - 6
+  - type: portfolioGrid
+    project: transform
+    contained: true
+    enlarge: true
+    modifier: '-two-col'
+    eyebrow: ''
+    headline: ''
+    description: ''
+    items: 
       - 1
       - 5
-  - type: portfolioGrid
-    project: transform
-    contained: true
-    enlarge: true
-    modifier: '-two-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
-      - 2
-      - 3
-  - type: portfolioGrid
-    project: transform
-    contained: true
-    enlarge: true
-    modifier: '-two-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
-      - 4
-      - 6
 ---
