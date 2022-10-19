@@ -39,9 +39,9 @@ Long story short, I build beautiful, scalable web experiences that everyone will
 We're both humans, so why not get a little personal?<br>Photos are displayed newest-to-oldest.
 
 <div class="about-images">
-  <img src="/images/about/jan-28-2022.jpg" alt="Me hiking in Lake Tahoe" />
-  <img src="/images/about/dec-26-2021.jpeg" alt="Me being cold" />
-  <img src="/images/about/jun-27-2021.jpg" alt="Me in grayscale" />
-  <img src="/images/about/jul-5-2020.jpg" alt="Hanging out with my high school buddies" />
-  <img src="/images/about/jul-5-(2)-2020.jpg" alt="Hanging out with my high school buddies" />
+  <img src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jan-28-2022_pwxnxq.jpg" alt="Me hiking in Lake Tahoe" />
+  <img src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204077/people/me/dec-26-2021_iuhh3w.jpg" alt="Me being cold" />
+  <img src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jun-27-2021_o8sd0l.jpg" alt="Me in grayscale" />
+  <img src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jul-5-2020_lwglyk.jpg" alt="Hanging out with my high school buddies" />
+  <img src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jul-5-_2_-2020_mps19o.jpg" alt="Hanging out with my high school buddies" />
 </div>
