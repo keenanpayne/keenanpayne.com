@@ -9,8 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
     var lazyElementsObserver = new IntersectionObserver(function(entries, observer) {
       entries.forEach(function(element) {
         if (element.isIntersecting) {
+          const elementTag = element.target.tagName;
+
           // Lazy load videos
-          if (element.target.tagName == 'VIDEO') {
+          if (elementTag == 'VIDEO') {
             for (var source in element.target.children) {
               var videoSource = element.target.children[source];
               if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
@@ -20,11 +22,17 @@ document.addEventListener("DOMContentLoaded", function() {
   
             element.target.load();
 
-          // Lazy load images
-          } else {
+          // Lazy load background images
+          } else if (elementTag == 'A') {
             var imageSource = element.target.dataset.src;
             element.target.style.setProperty('--background', `url(${imageSource})`);
+
+          // Lazy load images
+          } else if (elementTag == 'IMG') {
+            var imageSource = element.target.dataset.src;
+            element.target.src = imageSource;
           }
+
           lazyElementsObserver.unobserve(element.target);
         }
       });
