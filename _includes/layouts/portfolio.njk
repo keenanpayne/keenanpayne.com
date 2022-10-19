@@ -114,11 +114,11 @@ permalink: "/{{ title | slug }}/"
           <ul>
             {% for id, person in people %}
               {% set name = person.name %}
-              {% set url = person.url %}
+              {% set personUrl = person.url %}
 
               <li>
-                {% if url %}
-                  <a href="{{ url }}">
+                {% if personUrl %}
+                  <a href="{{ personUrl }}" target="_blank" rel="noopener">
                     {{ name }}
                   </a>
                 {% else %}
