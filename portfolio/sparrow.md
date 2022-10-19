@@ -2,116 +2,66 @@
 permalink: '/portfolio/sparrow/'
 title: 'Sparrow'
 meta: 
-  description: 
-  image: "https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png"
+  description: 'Building a marketing website for an emerging employee automation platform.'
+  image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png'
 data: sparrow
 sections: 
   - type: portfolioGrid
     project: sparrow
     contained: true
     enlarge: true
-    modifier: '-two-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
-      - 2
-      - 3
-  - type: portfolioGrid
-    project: sparrow
-    contained: true
-    enlarge: true
-    modifier: '-two-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
-      - 1
-      - 6
-  - type: portfolioGrid
-    project: sparrow
-    contained: true
-    enlarge: true
     modifier: '-three-col'
     eyebrow: ''
     headline: ''
     description: ''
     items: 
-      - 4
-      - 5
-      - 7
-  - type: portfolioGrid
-    project: sparrow
-    contained: true
-    enlarge: true
-    modifier: '-three-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
-      - 8
-      - 11
-      - 12
-  - type: portfolioGrid
-    project: sparrow
-    contained: true
-    enlarge: true
-    modifier: '-two-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
-      - 9
-      - 10
-  - type: portfolioGrid
-    project: sparrow
-    contained: true
-    enlarge: true
-    modifier: '-three-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
-      - 13
-      - 16
       - 18
+      - 19
+      - 4
+      - 11
+      - 8
+      - 5
+      - 20
+      - 12
+      - 13
+      - 7
+      - 16
   - type: portfolioGrid
     project: sparrow
     contained: true
     enlarge: true
     modifier: '-two-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
-      - 14
-      - 15
-  - type: portfolioGrid
-    project: sparrow
-    contained: true
-    enlarge: true
-    modifier: '-three-col'
     eyebrow: ''
     headline: ''
     description: ''
     items: 
       - 17
+      - 1
+      - 15
+      - 6
+      - 2
+      - 3
+      - 9
+      - 10
       - 21
+  - type: portfolioGrid
+    project: sparrow
+    contained: true
+    enlarge: true
+    modifier: '-one-col'
+    eyebrow: ''
+    headline: ''
+    description: ''
+    items: 
       - 22
   - type: portfolioGrid
     project: sparrow
     contained: true
     enlarge: true
-    modifier: '-two-col'
+    modifier: '-one-col'
     eyebrow: ''
     headline: ''
     description: ''
     items: 
-      - 19
-      - 20
-  - type: testimonial
-    project: sparrow
-    person: 1
-    testimonial: 1
-    hide_citation: true
+      - 14
 ---
