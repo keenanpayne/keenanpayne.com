@@ -75,8 +75,9 @@ module.exports = {
       link: "https://www.gofundme.com/c/heroes",
       image: "v1658011021/portfolio/gofundme/homepage_ffr7ea.png",
       asset_transform: "f_auto,q_auto",
-      title: "Heroes homepage",
-      description: ""
+      title: "1",
+      description: "",
+      preventLazy: true
     },
     [2]: {
       link: "https://www.gofundme.com/c/heroes/lance-cooper-saveflintchallenge",
@@ -98,6 +99,7 @@ module.exports = {
       asset_transform: "f_auto,w_1300",
       title: "Featured article carousel",
       description: "The interactive carousel that highlights featured campaigns on the GoFundMe Heroes Hub homepage.",
+      autoplay: true
     },
     [5]: {
       link: "https://www.gofundme.com/c/heroes/lance-cooper-saveflintchallenge",
@@ -106,6 +108,7 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_1000",
       title: "Article template",
       description: "",
+      preventLazy: true
     },
     [6]: {
       link: "https://www.gofundme.com/c/heroes/lance-cooper-saveflintchallenge",
