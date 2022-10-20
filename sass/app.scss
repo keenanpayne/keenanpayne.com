@@ -29,9 +29,6 @@
 @import "generic/root";
 @import "generic/utilities";
 
-// TODO: New styles
-@import "new";
-
 // Elements
 @import "elements/body";
 @import "elements/button";
@@ -82,11 +79,12 @@
 @import "layout/global/navigation";
 
 // Pages
-@import "layout/pages/about";
 @import "layout/pages/portfolio";
 @import "layout/pages/services";
 @import "layout/pages/post";
-@import "layout/pages/resources";
 
 // Embeds
 @import "embed/tweet";
+
+// TODO: New styles
+@import "new";

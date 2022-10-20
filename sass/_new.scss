@@ -55,16 +55,8 @@
   grid-gap: spacing(2);
 }
 
-@mixin container($size: 1440px) {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: #{$size};
-  padding-left: spacing(3);
-  padding-right: spacing(3);
-  width: 100%;
-}
-
 // UNSCOPED
+
 
 // SCOPED
 :root.newStyles {

@@ -4,7 +4,7 @@ title: About Keenan
 eleventyNavigation:
   key: About
   order: 1
-templateClass: about _container
+templateClass: _container -small
 hello: false
 ---
 

@@ -9,6 +9,12 @@ p {
   &:last-child {
     margin-bottom: 0;
   }
+
+  // Descendants
+  a {
+    @include linkHoverBackground();
+    @include externalLink($size: 12px, $left: 4px);
+  }
 }
 
 strong {
