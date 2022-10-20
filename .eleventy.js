@@ -211,7 +211,7 @@ module.exports = function(eleventyConfig) {
 
   markdown.renderer.rules.footnote_block_open = () => (
     '<section class="footnotes">\n' +
-    '<h2 class="footnotes-heading _label">Footnotes</h2>\n' +
+    '<h2 class="_label">Footnotes</h2>\n' +
     '<ol class="footnotes-list">\n'
   );
 

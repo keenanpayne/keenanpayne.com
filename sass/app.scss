@@ -37,21 +37,21 @@
 @import "elements/button";
 @import "elements/code";
 @import "elements/figure";
-// @import "elements/headings";
+@import "elements/headings";
 @import "elements/hr";
 @import "elements/img";
 @import "elements/inputs";
 @import "elements/link";
 @import "elements/list";
 @import "elements/main";
-// @import "elements/paragraph";
+@import "elements/paragraph";
 @import "elements/pre";
 @import "elements/small";
 @import "elements/table";
 @import "elements/video";
 
 // Atoms
-// @import "layout/atoms/container";
+@import "layout/atoms/container";
 @import "layout/atoms/header-anchor";
 @import "layout/atoms/tag";
 
@@ -61,15 +61,13 @@
 @import "layout/components/comments";
 @import "layout/components/context";
 @import "layout/components/dribbble";
-// @import "layout/components/entries";
+@import "layout/components/entries";
 @import "layout/components/footnotes";
 @import "layout/components/hello";
 @import "layout/components/highlight";
-// @import "layout/components/intro";
 @import "layout/components/large-text";
 @import "layout/components/lede";
 @import "layout/components/mailbox";
-@import "layout/components/missionStatement";
 @import "layout/components/newsletter";
 @import "layout/components/portfolioGrid";
 @import "layout/components/postNav";

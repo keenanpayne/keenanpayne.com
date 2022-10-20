@@ -77,7 +77,7 @@
  # Output
  #}
 {%- macro output(label, collection, tags, modifiers, more) -%}
-  <section class="entries {{ modifiers if modifiers else '-stack _container' }}">
+  <section class="entries _container {{ modifiers if modifiers else '' }}">
     {{ entries.postLabel(label) }}
 
     <div class="entries-items">

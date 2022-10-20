@@ -3,31 +3,11 @@
   {% set date = post.data.date %}
   {% set series = post.data.series %}
 
-  <div class="entries-meta">
-    {%- if series -%}
-      {# <span class="entries-series">
-        <a class="-underline-hover" href="#" title="View more posts from {{ series }}">
-          {{ series }}
-        </a>
-      </span> #}
-    {%- endif -%}
-    
+  <div class="entries-meta">    
     {%- if type -%}
       <a class="-underline-hover _label-sans" href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">
         {{ type }}
       </a>
-    {%- endif -%}
-
-    {%- if date -%}
-      {# <time class="entries-time _text-small" datetime="{{ date | htmlDateString }}">
-        <span class="entries-time-month">
-          {{ date | postMonth }}
-        </span>
-
-        <span class="entries-time-year">
-          {{ date | postYear }}
-        </span>
-      </time> #}
     {%- endif -%}
   </div>
 {% endmacro %}

@@ -14,57 +14,54 @@ sections:
     <p class="intro-subheading">I'm passionate about building things on the web that help individuals and businesses achieve their goals.</p>
   </div>
 
-  <div class="intro-right entries">
-    <p class="label">Services I Offer</p>
+  <div class="intro-right collections -vertical">
+    <p class="_label">Services I Offer</p>
 
-    <article class="entries-entry">
-      <h2 class="entries-heading">Frontend development</h2>
-      <p class="entries-description">I can help with a variety of frontend development projects. From deploying scalable marketing websites to complex web applications, I've got you covered.</p>
+    <article class="collections-entry">
+      <h2 class="collections-heading">Frontend development</h2>
+      <p class="collections-description">I can help with a variety of frontend development projects. From deploying scalable marketing websites to complex web applications, I've got you covered.</p>
     </article>
 
-    <article class="entries-entry">
-      <h2 class="entries-heading">Rapid prototyping</h2>
-      <p class="entries-description">Looking for a quick prototype of your idea or product? Let me help you rapidly prototype your website or web application.</p>
+    <article class="collections-entry">
+      <h2 class="collections-heading">Rapid prototyping</h2>
+      <p class="collections-description">Looking for a quick prototype of your idea or product? Let me help you rapidly prototype your website or web application.</p>
     </article>
 
-    <article class="entries-entry">
-      <h2 class="entries-heading">Hiring</h2>
-      <p class="entries-description">Trying to grow your web development team? I can help craft interview processes, requirements, and find a great match for your company.</p>
+    <article class="collections-entry">
+      <h2 class="collections-heading">Hiring</h2>
+      <p class="collections-description">Trying to grow your web development team? I can help craft interview processes, requirements, and find a great match for your company.</p>
     </article>
   </div>
 </section>
 
-<section class="caseStudies entries">
-  <article class="caseStudies-item entries-entry">
-    <img class="entries-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/v1661998554/portfolio/asana/cover_scey3k.jpg" alt="" />
-    <h2 class="entries-heading">Asana</h2>
-    <p class="entries-description">Five years helping grow a company, website, and brand.</p>
-    <a class="entries-link more" href="">View case study →</a>
+<section class="caseStudies collections -horizontal">
+  <article class="caseStudies-item collections-entry">
+    <img class="collections-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/v1661998554/portfolio/asana/cover_scey3k.jpg" alt="" />
+    <h2 class="collections-heading">Asana</h2>
+    <p class="collections-description">Five years helping grow a company, website, and brand.</p>
+    <a class="collections-link more" href="">View case study →</a>
   </article>
 
-  <article class="caseStudies-item entries-entry">
-    <img class="entries-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/v1665763480/portfolio/gofundme/cover_m7erev.png" alt="" />
-    <h2 class="entries-heading">GoFundMe</h2>
-    <p class="entries-description">Building a content hub to highlight people who are making a difference.</p>
-    <a class="entries-link more" href="">View case study →</a>
+  <article class="caseStudies-item collections-entry">
+    <img class="collections-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/v1665763480/portfolio/gofundme/cover_m7erev.png" alt="" />
+    <h2 class="collections-heading">GoFundMe</h2>
+    <p class="collections-description">Building a content hub to highlight people who are making a difference.</p>
+    <a class="collections-link more" href="">View case study →</a>
   </article>
 
-  <article class="caseStudies-item entries-entry">
-    <img class="entries-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/v1665630813/portfolio/sparrow/cover_qommce.png" alt="" />
-    <h2 class="entries-heading">Sparrow</h2>
-    <p class="entries-description">Rebuilding the website for a rapidly growing employee leave management platform.</p>
-    <a class="entries-link more" href="">View case study →</a>
+  <article class="caseStudies-item collections-entry">
+    <img class="collections-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/v1665630813/portfolio/sparrow/cover_qommce.png" alt="" />
+    <h2 class="collections-heading">Sparrow</h2>
+    <p class="collections-description">Rebuilding the website for a rapidly growing employee leave management platform.</p>
+    <a class="collections-link more" href="">View case study →</a>
   </article>
 </section>
 
 {% import "organisms/entries/entries.njk" as entries with context %}
-{% import "organisms/mission/mission.njk" as mission with context %}
 {% import "organisms/newsletter.njk" as  newsletter with context %}
 
-{{ entries.output('Featured', collections.featured | head(-1), false, '-featured', false, true) }}
+{{ entries.output('Featured', collections.featured | head(-1), false, false, false, true) }}
 
-{# {{ mission.centered('Hello there 👋🏻', "Welcome to my digital home. Here you will find fragments of my life shared publicly through creative, personal, and professional endeavors.") }} #}
-
-{{ entries.output('Recently Published', collections.posts | head(-5), true, false, true, false) }}
+{{ entries.output('Recently Published', collections.posts | head(-3), true, false, true, false) }}
 
 {{ newsletter.large('-pre-footer') }}

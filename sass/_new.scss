@@ -55,21 +55,25 @@
   grid-gap: spacing(2);
 }
 
-@mixin container {
+@mixin container($size: 1440px) {
   margin-left: auto;
   margin-right: auto;
-  max-width: 1440px;
+  max-width: #{$size};
   padding-left: spacing(3);
   padding-right: spacing(3);
   width: 100%;
 }
 
+// UNSCOPED
+
+// SCOPED
 :root.newStyles {
   // Custom properties
+  --color-black: #101010;
   --color-heading: #100F16;
   --color-label: #101010;
   --color-paragraph: #1E1C29;
-  --color-border: #D3D1DB;
+  --color-border: #a8a5b5;
   
   --font-family-serif: Georgia, 'Times New Roman', Times, serif;
   
@@ -78,26 +82,13 @@
     @include grid;
   }
   
-  .container {
-    @include container();
-  }
-  
   p {
     color: var(--color-paragraph);
+    letter-spacing: -.01em;
     margin-bottom: 0;
     margin-top: 0;
   }
 
-  .label {
-    border-bottom: 1px solid var(--color-border);
-    color: var(--color-label);
-    font-family: var(--font-family-mono);
-    font-size: 18px;
-    font-variant: all-small-caps;
-    line-height: 1;
-    margin-bottom: 0;
-    margin-top: 0;
-  }
 
   //
   // Components
@@ -130,33 +121,41 @@
     max-width: 35ch;
   }
 
-  // Entries
-  .entries-entry {
-    margin-top: spacing(3); 
+  // Collection
+  .collections {
+    &.-vertical {
+      .collections-entry {
+        margin-top: spacing(2.5);
+      
+        &:not(:first-of-type) {
+          margin-top: spacing(3.5);
+        }
+      }
+    }
   }
 
-  .entries-image {
+  .collections-image {
     margin-bottom: spacing(2);
   }
 
-  .entries-heading {
+  .collections-heading {
     @include newH3;
   }
 
-  .entries-description {
+  .collections-description {
     @include large-paragraph;
 
-    margin-top: spacing(1.5); 
+    margin-top: spacing(.75); 
     max-width: 95%;
   }
 
-  .entries-link {
+  .collections-link {
     margin-top: spacing(2);
   }
 
   // More Link
   .more {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--color-black);
     display: block;
     font-weight: var(--font-weight-extra-bold);
     letter-spacing: -.5px;

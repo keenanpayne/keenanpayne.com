@@ -15,7 +15,7 @@ permalink: "/{{ title | slug }}/"
 {% set book = type == 'Book' %}
 {% set resource = type == 'Resource' %}
 
-<section class="post _container {{ pageClass }} {{ modifier }}">
+<section class="post _container -small {{ pageClass }} {{ modifier }}">
   <header class="post-header">
     <div class="post-meta">
       {%- if type -%}
