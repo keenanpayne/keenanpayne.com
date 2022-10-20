@@ -3,6 +3,8 @@
 // ==================================================
 
 .header {
+  @include container;
+  
   padding-bottom: spacing(4);
   padding-top: spacing(4);
 }

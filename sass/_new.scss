@@ -49,6 +49,21 @@
   line-height: 33px;
 }
 
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: spacing(2);
+}
+
+@mixin container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1440px;
+  padding-left: spacing(3);
+  padding-right: spacing(3);
+  width: 100%;
+}
+
 :root.newStyles {
   // Custom properties
   --color-heading: #100F16;
@@ -60,17 +75,11 @@
   
   // Layout
   .grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: spacing(2);
+    @include grid;
   }
   
   .container {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1440px;
-    padding-left: spacing(3);
-    padding-right: spacing(3);
+    @include container();
   }
   
   p {
@@ -89,24 +98,45 @@
     margin-bottom: 0;
     margin-top: 0;
   }
-  
-  .introduction {
+
+  //
+  // Components
+  // ----------
+
+  // Introduction
+  .intro {
+    @include grid;
+    @include container;
+
+    margin-top: spacing(8);
+  }
+
+  .intro-left {
     grid-column: 1 / span 6;
   }
 
-  .introduction-heading {
+  .intro-right {
+    grid-column: 7 / -1;
+  }
+
+  .intro-heading {
     @include newH1;
   }
 
-  .introduction-subheading {
+  .intro-subheading {
     @include subheading();
 
     margin-top: spacing(4);
     max-width: 35ch;
   }
-  
-  .entries {
-    grid-column: 7 / span 5;
+
+  // Entries
+  .entries-entry {
+    margin-top: spacing(3); 
+  }
+
+  .entries-image {
+    margin-bottom: spacing(2);
   }
 
   .entries-heading {
@@ -120,11 +150,32 @@
     max-width: 95%;
   }
 
-  .entries-entry {
-    margin-top: spacing(3); 
+  .entries-link {
+    margin-top: spacing(2);
   }
 
-  ._beneath-homepage {
-    margin-top: spacing(8);
+  // More Link
+  .more {
+    border-bottom: 2px solid black;
+    display: block;
+    font-weight: var(--font-weight-extra-bold);
+    letter-spacing: -.5px;
+    text-align: right;
+    text-decoration: none;
+  }
+
+  //
+  // Page Sections
+  // -------------
+
+  .caseStudies {
+    @include grid;
+    @include container;
+
+    margin-top: spacing(9);
+  }
+
+  .caseStudies-item {
+    grid-column: auto / span 4;
   }
 }

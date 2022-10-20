@@ -7,36 +7,54 @@ sections:
     read_Link: false
 ---
 
-{# TODO: Turn this into a proper component #}
-<section class="grid _beneath-homepage">
-  <div class="introduction">
-    <h2 class="introduction-heading">Fifteen years of professional web development</h2>
-    <p class="introduction-subheading">I'm passionate about building things on the web that help individuals and businesses achieve their goals.</p>
+{# TODO: Turn these into proper components #}
+<section class="intro">
+  <div class="intro-left">
+    <h2 class="intro-heading">Fifteen years of professional web development</h2>
+    <p class="intro-subheading">I'm passionate about building things on the web that help individuals and businesses achieve their goals.</p>
   </div>
 
-  <div class="entries">
-    <p class="label">
-      Services I Offer
-    </p>
+  <div class="intro-right entries">
+    <p class="label">Services I Offer</p>
 
     <article class="entries-entry">
       <h2 class="entries-heading">Frontend development</h2>
-
       <p class="entries-description">I can help with a variety of frontend development projects. From deploying scalable marketing websites to complex web applications, I've got you covered.</p>
     </article>
 
     <article class="entries-entry">
       <h2 class="entries-heading">Rapid prototyping</h2>
-
       <p class="entries-description">Looking for a quick prototype of your idea or product? Let me help you rapidly prototype your website or web application.</p>
     </article>
 
     <article class="entries-entry">
       <h2 class="entries-heading">Hiring</h2>
-
       <p class="entries-description">Trying to grow your web development team? I can help craft interview processes, requirements, and find a great match for your company.</p>
     </article>
   </div>
+</section>
+
+<section class="caseStudies entries">
+  <article class="caseStudies-item entries-entry">
+    <img class="entries-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/v1661998554/portfolio/asana/cover_scey3k.jpg" alt="" />
+    <h2 class="entries-heading">Asana</h2>
+    <p class="entries-description">Five years helping grow a company, website, and brand.</p>
+    <a class="entries-link more" href="">View case study →</a>
+  </article>
+
+  <article class="caseStudies-item entries-entry">
+    <img class="entries-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/v1665763480/portfolio/gofundme/cover_m7erev.png" alt="" />
+    <h2 class="entries-heading">GoFundMe</h2>
+    <p class="entries-description">Building a content hub to highlight people who are making a difference.</p>
+    <a class="entries-link more" href="">View case study →</a>
+  </article>
+
+  <article class="caseStudies-item entries-entry">
+    <img class="entries-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/v1665630813/portfolio/sparrow/cover_qommce.png" alt="" />
+    <h2 class="entries-heading">Sparrow</h2>
+    <p class="entries-description">Rebuilding the website for a rapidly growing employee leave management platform.</p>
+    <a class="entries-link more" href="">View case study →</a>
+  </article>
 </section>
 
 {% import "organisms/entries/entries.njk" as entries with context %}
