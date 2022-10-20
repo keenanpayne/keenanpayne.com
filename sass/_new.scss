@@ -51,6 +51,23 @@
   grid-gap: spacing(2);
 }
 
+// UNSCOPED
+._h1 {
+  @include newH1;
+}
+
+._h2 {
+  @include newH2;
+}
+
+._h3 {
+  @include newH3;
+}
+
+._subheading {
+  @include subheading;
+}
+
 
 // SCOPED
 :root.newStyles {  
@@ -86,6 +103,20 @@
 
   // Collection
   .collections {
+    &.-horizontal {
+      @include grid;
+
+      margin-top: spacing(var(--top-margin, 0));
+
+      .collections-label {
+        grid-column: 1 / -1;
+      }
+
+      .collections-entry {
+        grid-column: auto / span 4;
+      }
+    }
+
     &.-vertical {
       .collections-entry {
         margin-top: spacing(2.5);
@@ -131,13 +162,6 @@
   // -------------
 
   .caseStudies {
-    @include grid;
-    @include container;
-
     margin-top: spacing(9);
-  }
-
-  .caseStudies-item {
-    grid-column: auto / span 4;
   }
 }

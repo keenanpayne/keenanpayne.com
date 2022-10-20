@@ -1,4 +1,5 @@
 module.exports = {
+  featured: true,
   name: "Asana",
   project: "Full-Time Employment",
   year: "2014–2019",

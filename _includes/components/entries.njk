@@ -1,0 +1,49 @@
+{# Component Settings #}
+{% set heading = section.heading %}
+{% set items = section.items %}
+{% set spacing = section.spacing %}
+
+{# Markup #}
+<section class="collections -horizontal _container" style="--top-margin: {{ spacing if spacing else 0 }}">
+  <p class="collections-label _label">
+    {{ heading }}
+  </p>
+
+  {% if items %}
+    {% set itemsFrom = items.from %}
+
+    {% if itemsFrom == 'portfolio' %}
+      {% for id, obj in portfolio %}
+        {% set itemName = obj.name %}
+        {% set itemLede = obj.lede %}
+        {% set itemFeatured = obj.featured %}
+        {% set itemCover = obj.cover %}
+
+        {# TODO: Filter based on `includes` key in markdown file #}
+        {% if itemFeatured %}
+          <article class="collections-entry">
+            {% if itemCover %}
+              <img class="collections-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/{{ itemCover }}" alt="{{ itemName }}" />
+            {% endif %}
+
+            {% if itemName %}
+              <h2 class="collections-heading">
+                {{ itemName }}
+              </h2>
+            {% endif %}
+
+            {% if itemLede %}
+              <p class="collections-description">
+                {{ itemLede | safe }}
+              </p>
+            {% endif %}
+
+            <a class="collections-link more" href="/portfolio/{{ itemName | lower }}">
+              View case study →
+            </a>
+          </article>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+</section>
