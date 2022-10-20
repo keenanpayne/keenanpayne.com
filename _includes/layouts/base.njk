@@ -71,6 +71,10 @@ https://github.com/keenanpayne/keenanpayne.com
     </header>
 
     <main class="{% if templateClass %}{{ templateClass }}{% endif %}">
+      {% for section in sections %}
+        {% include "components/" + section.type + ".njk" %}
+      {% endfor %}
+      
       {{ content | safe }}
     </main>
 

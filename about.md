@@ -1,5 +1,5 @@
 ---
-layout: layouts/home.njk
+
 title: About Keenan
 eleventyNavigation:
   key: About

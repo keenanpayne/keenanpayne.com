@@ -1,7 +1,4 @@
 ---
-hello: false
-layout: layouts/home.njk
-
 sections: 
   - type: intro
     heading: "Fifteen years of professional web development"
@@ -26,11 +23,15 @@ talking with folks who want to collaborate next year."
 
 {# TODO: Turn these into proper components #}
 
-{# {% import "organisms/entries/entries.njk" as entries with context %}
-{% import "organisms/newsletter.njk" as  newsletter with context %}
 
+{#
+{% import "organisms/newsletter.njk" as  newsletter with context %}
+{{ newsletter.large('-pre-footer') }} 
+
+{% import "organisms/entries/entries.njk" as entries with context %}
 {{ entries.output('Featured', collections.featured | head(-1), false, false, false, true) }}
 
 {{ entries.output('Recently Published', collections.posts | head(-3), true, false, true, false) }}
 
-{{ newsletter.large('-pre-footer') }} #}
+
+#}
