@@ -1,0 +1,130 @@
+// 
+// New Styles
+// ==========
+
+//
+// Mixins
+// ------
+
+// Typography
+@mixin newH1 {
+  color: var(--color-heading);
+  font-size: 68px;
+  font-weight: var(--font-weight-extra-bold);
+  letter-spacing: -3px;
+  line-height: 66px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+@mixin newH2 {
+  font-size: 46px;
+  line-height: 44px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+@mixin newH3 {
+  font-size: 32px;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+@mixin large-paragraph {
+  font-size: 20px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 28px;
+}
+
+@mixin small-paragraph {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+@mixin subheading {
+  font-style: italic;
+  font-family: var(--font-family-serif);
+  font-size: 25px;
+  line-height: 33px;
+}
+
+:root.newStyles {
+  // Custom properties
+  --color-heading: #100F16;
+  --color-label: #101010;
+  --color-paragraph: #1E1C29;
+  --color-border: #D3D1DB;
+  
+  --font-family-serif: Georgia, 'Times New Roman', Times, serif;
+  
+  // Layout
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: spacing(2);
+  }
+  
+  .container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+    padding-left: spacing(3);
+    padding-right: spacing(3);
+  }
+  
+  p {
+    color: var(--color-paragraph);
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .label {
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-label);
+    font-family: var(--font-family-mono);
+    font-size: 18px;
+    font-variant: all-small-caps;
+    line-height: 1;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+  
+  .introduction {
+    grid-column: 1 / span 6;
+  }
+
+  .introduction-heading {
+    @include newH1;
+  }
+
+  .introduction-subheading {
+    @include subheading();
+
+    margin-top: spacing(4);
+    max-width: 35ch;
+  }
+  
+  .entries {
+    grid-column: 7 / span 5;
+  }
+
+  .entries-heading {
+    @include newH3;
+  }
+
+  .entries-description {
+    @include large-paragraph;
+
+    margin-top: spacing(1.5); 
+    max-width: 95%;
+  }
+
+  .entries-entry {
+    margin-top: spacing(3); 
+  }
+
+  ._beneath-homepage {
+    margin-top: spacing(8);
+  }
+}

@@ -17,7 +17,7 @@ https://github.com/keenanpayne/keenanpayne.com
 
 {# Markup #}
 <!doctype html>
-<html lang="en" style="{{ rootStyles }}">
+<html lang="en" style="{{ rootStyles }}" class="newStyles">
   <head>
     <title>{{ pageTitle }}</title>
     
@@ -29,28 +29,44 @@ https://github.com/keenanpayne/keenanpayne.com
     
     {% include "globals/meta.njk" %}
   </head>
-  <body>
+  <body class="container">
     <header class="header">
-      <div class="header-left">
+      <div class="header-container">
         <h1 class="header-logo">
           <a href="{{ '/' | url }}">
             Keenan<br> 
             Payne
           </a>
         </h1>
-      </div>
 
-      <div class="header-right">
         {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-        <ul class="nav">
-          {%- for entry in collections.all | eleventyNavigation -%}
-            <li class="nav-item {{ '-cta' if entry.cta }}">
-              <a class="nav-link {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
+        <div class="navigation">
+          <nav class="navigation-icons">
+            <a class="navigation-icons-item" href="">
+              {% include "svg/calendar.svg" %}
+            </a>
+
+            <a class="navigation-icons-item" href="">
+              {% include "svg/hand.svg" %}
+            </a>
+
+            <a class="navigation-icons-item" href="">
+              {% include "svg/search.svg" %}
+            </a>
+
+            <a class="navigation-icons-item" href="">
+              {% include "svg/mailbox.svg" %}
+            </a>
+          </nav>
+
+          <nav class="navigation-primary">
+            {%- for entry in collections.all | eleventyNavigation -%}
+              <a class="navigation-primary-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
                 {{ entry.title }}
               </a>
-            </li>
-          {%- endfor -%}
-        </ul>
+            {%- endfor -%}
+          </nav>
+        </div>
       </div>
     </header>
 

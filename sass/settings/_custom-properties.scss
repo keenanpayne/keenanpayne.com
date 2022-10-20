@@ -3,6 +3,9 @@
 // ==================================================
 
  :root {
+  // Spacing
+  --spacing-unit: 8px;
+
   // Color Scheme
   --white: #fff;
 
@@ -40,6 +43,7 @@
   --font-weight-regular: 400;
   --font-weight-semibold: 500;
   --font-weight-bold: 600;
+  --font-weight-extra-bold: 700;
   --font-weight-heavy: 800;
   
   --font-weight-mono-regular: 400;
