@@ -1,0 +1,59 @@
+{# Imports #}
+{% import "molecules/entry.njk" as entry %}
+
+{# Component Settings #}
+{% set heading = section.heading %}
+{% set items = section.items %}
+{% set spacing = section.spacing %}
+{% set orientation = section.orientation %}
+{% set columns = section.columns %}
+{% set layout = '-' ~ orientation ~ '-' ~ columns ~ '-columns' %}
+
+{# Markup #}
+<section class="collections {{ layout if orientation and columns else '-' ~ orientation }} _container" style="--top-margin: {{ spacing if spacing else 0 }}">
+  {% if heading %}
+    <p class="collections-label _label">
+      {{ heading }}
+    </p>
+  {% endif %}
+
+  {% if items %}
+    {% set itemsFrom = items.from %}
+    {% set itemsLimit = items.limit %}
+
+    {# Featured Articles #}
+    {% if itemsFrom == 'featured' or itemsFrom == 'posts' %}
+      {% set collection = collections[itemsFrom] | head(-itemsLimit) %}
+
+      {% if collection.length %} 
+        {%- for post in collection | reverse -%}
+          {{ entry.output(
+            post.data.cover,
+            post.data.title,
+            post.data.lede,
+            post.url,
+            'Read article'
+          ) }}
+        {%- endfor -%}
+      {% else %}
+        {% set content = 'No content is published here yet.' %}
+        {% include "type/notice.html" %}
+      {% endif %}
+    {% endif %}
+
+    {# Portfolio Items #}
+    {% if itemsFrom == 'portfolio' %}
+      {% for id, item in portfolio %}
+        {% if item.featured %}
+          {{ entry.output(
+            'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover,
+            item.name,
+            item.lede,
+            '/portfolio/' ~ item.name | lower,
+            'View case study'
+          ) }}
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+  {% endif %}
+</section>

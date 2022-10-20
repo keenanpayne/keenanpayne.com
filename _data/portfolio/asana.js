@@ -1,8 +1,9 @@
 module.exports = {
+  featured: true,
   name: "Asana",
   project: "Full-Time Employment",
   year: "2014–2019",
-  size: "started 70, grew to 700",
+  size: "Started 70, grew to 700",
   industry: "Software",
   color: "#940060",
   role: "Web Developer",

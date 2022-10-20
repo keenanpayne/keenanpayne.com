@@ -6,6 +6,7 @@ meta:
   image: '/images/posts/android-iphone/macbook-iphone-watch-stack.jpg'
   image_alt: 'iPhone and Apple Watch stacked on top of Macbook Air'
 lede: 'Thoughts on how important scrolling is for navigating our devices and what can go wrong when we try to change such mechanics through scroll-jacking.'
+cover: '/images/posts/android-iphone/macbook-iphone-watch-stack.jpg'
 type: Article
 date: 2022-03-09
 tags:

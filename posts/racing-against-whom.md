@@ -8,6 +8,7 @@ meta:
   image: '/images/posts/racing/david-marcu-VfUN94cUy4o-unsplash.jpg'
   image_alt: 'Cyclist in the countryside of Romania'
 lede: On the perils of viewing endeavors as a zero-sum game and losing sight of not only what we're doing, but how we're doing it.
+cover: '/images/posts/racing/david-marcu-VfUN94cUy4o-unsplash.jpg'
 tags: 
   - Featured
   - Storytelling

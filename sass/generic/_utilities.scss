@@ -88,22 +88,16 @@
 }
 
 ._label { 
-  color: var(--label-color);
-  font-size: var(--font-base);
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-label);
   font-family: var(--font-family-mono);
+  font-size: 20px;
   font-variant: all-small-caps;
-  font-weight: var(--font-weight-mono-regular);
-  letter-spacing: .0125em;
-  line-height: 1.325;
+  letter-spacing: .01em;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-top: 0;
   word-spacing: -.1em;
-  
-  @media (--min-480) { 
-    font-size: 1.125rem;
-  }
-
-  @media (--min-1600) {
-    font-size: 1.25rem;
-  }
 }
 
 // TODO: Fix specificity issues when used on links
@@ -112,6 +106,7 @@
 
   font-variant: all-small-caps;
   font-weight: var(--font-weight-bold);
+  margin-bottom: spacing(1);
 
   @media (--dark) {
     --link-color: var(--gray-lighter) !important;

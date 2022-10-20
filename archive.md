@@ -1,0 +1,28 @@
+---
+permalink: /archive/
+title: Writing Archive
+eleventyNavigation:
+  key: Writing
+  order: 3
+sections: 
+  - type: intro
+    heading: "Writing archives"
+    subheading: "Writing is one of my favorite hobbies. You can find some of what I've shared online here."
+  - type: entries
+    heading: "Featured articles"
+    spacing: 10
+    orientation: horizontal
+    columns: 2
+    items: 
+      from: featured
+      limit: 2
+  - type: entries
+    heading: "All articles"
+    spacing: 10
+    orientation: vertical-narrow
+    items: 
+      from: posts
+      limit: -100
+  - type: newsletter
+    spacing: 10
+---

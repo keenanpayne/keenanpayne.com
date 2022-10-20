@@ -2,39 +2,23 @@
 // Layout Container
 // ==================================================
 
-//
-// Mixins
-// ------
-
-@mixin container($size) {
+// Mixin
+@mixin container($size: 1440px) {
   margin-left: auto;
   margin-right: auto;
   max-width: #{$size};
+  padding-left: spacing(3);
+  padding-right: spacing(3);
+  width: 100%;
 }
 
-
-// 
-// Utility Styles
-// --------------
-
+// Styles
 ._container { 
-  @include container(var(--content-max-width));
+  @include container(var(--container-large));
 
   // Modifiers
-  &.-large {
-    @include container(95%);
-
-    @media (--min-1120) {
-      @include container(1080px);
-    }
-  }
-
-  &.-extra-large {
-    @include container(100%);
-
-    @media (--min-1440) {
-      @include container(1440px);
-    }
+  &.-small {
+    @include container(var(--container-small));
   }
 
   &.-fluid {

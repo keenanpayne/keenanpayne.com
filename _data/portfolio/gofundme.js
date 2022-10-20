@@ -1,4 +1,5 @@
 module.exports = {
+  featured: true,
   name: "GoFundMe",
   project: "Heroes content portal",
   year: 2019,

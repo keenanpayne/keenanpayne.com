@@ -1,0 +1,13 @@
+//
+// @function spacing()
+//
+// This is a helper spacing function used for creating consistent spacing
+// increments that can be used throughout the website
+//
+// @param $n {integer} The spacing multiplier that we want to use
+// @returns {integer} The calculated pixel amount for spacing
+//
+
+@function spacing($n, $spacing-unit: var(--spacing-unit)) {
+  @return calc(#{$n} * #{$spacing-unit});
+}

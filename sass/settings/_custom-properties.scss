@@ -3,6 +3,9 @@
 // ==================================================
 
  :root {
+  // Spacing
+  --spacing-unit: 8px;
+
   // Color Scheme
   --white: #fff;
 
@@ -26,11 +29,18 @@
   --pink-glamour: #eb4d4b;
   --carmine-pink: #ff7979;
 
+  // TODO: New custom properties
+  --color-black: #101010;
+  --color-heading: #100F16;
+  --color-label: #101010;
+  --color-paragraph: #1E1C29;
+  --color-border: #a8a5b5;
+
   // Font Families
   --font-family-base: 'Inter', -apple-system, system-ui, sans-serif;
   --font-family-base-var: 'Inter var', sans-serif;
   --font-family-serif: 'Merriweather', serif;
-  --font-family-mono: 'Space Mono', Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+  --font-family-mono: 'IBM Plex Mono', Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
 
   // Font Sizes
   --font-base: 1rem;
@@ -40,10 +50,10 @@
   --font-weight-regular: 400;
   --font-weight-semibold: 500;
   --font-weight-bold: 600;
+  --font-weight-extra-bold: 700;
   --font-weight-heavy: 800;
   
-  --font-weight-mono-regular: 400;
-  --font-weight-mono-bold: 700;
+  --font-weight-mono-medium: 400;
 
   --font-weight-serif-light: 300;
   --font-weight-serif-regular: 400;
@@ -74,7 +84,10 @@
 
   // S/O https://flatuicolors.com/palette/au
   --exodus-fruit: #686de0;
-  --content-max-width: 700px;
+
+  // Container
+  --container-small: 800px;
+  --container-large: 1440px;
 }
 
 /* Dark Mode */
@@ -85,5 +98,11 @@
     --label-color: var(--white);
     --shadow: 0 3px 7px 0px rgb(0 0 0 / 30%);
     --shadow-hover: 0 2px 9px 1px rgb(0 0 0 / 70%);
+
+    // TODO: New custom properties
+    --color-black: #fcfcfc;
+    --color-heading: #fcfcfc;
+    --color-label: #fcfcfc;
+    --color-paragraph: #fcfcfc;
   }
 }

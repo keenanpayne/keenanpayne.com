@@ -2,57 +2,50 @@
 // Navigation
 // ==================================================
 
-.nav {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.navigation {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
 
   @media print {
     display: none;
   }
 }
 
-.nav-item {
-  display: block;
-  text-align: right;
+
+//
+// Primary Navigation
+// ------------------
+
+.navigation-primary {
+  display: flex;
+  flex-direction: column;
 
   @media (--min-560) {
-    display: inline-block;
-  }
-
-  &:not(:first-of-type) { 
-    margin-top: .35rem;
-
-    @media (--min-560) { 
-      margin-left: 1rem;
-      margin-top: 0;
-    }
-
-    @media (--min-640) { 
-      margin-left: 1.5rem;
-    }
-  }
-
-  &.-cta { 
-    font-weight: var(--font-weight-bold);
-    
-    @media (--min-560) { 
-      border-left: 1px solid var(--gray-dark);
-      padding-left: 1rem;
-    }
-    
-    @media (--min-640) { 
-      padding-left: 1.5rem;
-    }
+    flex-direction: row;
   }
 }
 
-.nav-link {
-  --link-spacing: .185em;
-
-  border-radius: var(--border-radius-pill);
-  padding: var(--link-spacing) calc(var(--link-spacing) * 3);
+.navigation-primary-item {
+  font-size: 18px;
   text-decoration: none;
+
+  &:not(:first-of-type) { 
+    margin-top: spacing(1.5);
+    
+    @media (--min-560) {
+      margin-top: 0;
+      margin-left: spacing(3);
+    }
+
+    @media (--min-720) {
+      margin-left: spacing(6);
+    }
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
   
   // Modifiers
   &.-active {
@@ -62,5 +55,32 @@
     &:hover {
       text-decoration: none;
     }
+  }
+}
+
+
+//
+// Icon Navigation
+// ---------------
+
+.navigation-icons {
+  align-items: center;
+  align-self: end;
+  display: flex;
+  margin-bottom: spacing(1.5);
+  
+  @media (--min-720) {
+    margin-bottom: spacing(2);
+  }
+}
+
+.navigation-icons-item {
+  &:not(:first-of-type) {
+    margin-left: spacing(4);
+  }
+
+  // Descendants
+  svg {
+    height: 22px;
   }
 }

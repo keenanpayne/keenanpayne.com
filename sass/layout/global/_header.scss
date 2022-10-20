@@ -3,36 +3,34 @@
 // ==================================================
 
 .header {
-  align-items: baseline;
+  @include container;
+  
+  margin-bottom: spacing(3);
+  padding-bottom: spacing(4);
+  padding-top: spacing(4);
+  
+  @media (--min-720) {
+    margin-bottom: spacing(6);
+  }
+}
+
+.header-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1.5rem;
-  z-index: 1;
   
-  @media (--min-560) { 
-    align-items: center;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+  @media (--min-560) {
+    align-items: end;
   }
-}
-
-.header-left { 
-  display: flex;
-  flex-direction: column;
 }
 
 .header-logo {
-  font-size: 1.563rem;
+  font-size: 40px;
   font-weight: var(--font-weight-heavy);
-  letter-spacing: -0.045em;
-  line-height: 0.8;
+  letter-spacing: -.05em;
+  line-height: .775;
   margin-bottom: 0;
   margin-top: 0;
-
-  @media (--min-720) { 
-    font-size: 1.953rem;
-  }
 
   // Descendants
   a {

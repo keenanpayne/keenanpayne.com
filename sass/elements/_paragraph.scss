@@ -3,11 +3,26 @@
 // ==================================================
 
 p {
+  color: var(--color-paragraph);
+  font-size: 18px;
+  letter-spacing: -.01em;
   line-height: 1.45;
+  margin-bottom: 0;
   margin-top: 0;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  & + &,
+  & + img {
+    margin-top: spacing(1.5);
+  }
+
+  // Descendants
+  a {
+    @include linkHoverBackground();
+    @include externalLink($size: 12px, $left: 4px);
   }
 }
 

@@ -10,13 +10,13 @@ cover: ''
 lede: Thoughtfully making foundational decisions on how to construct complex user interfaces.
 ---
 
-<section class="services-intro _container -large">
+<section class="services-intro _container">
 <p class="services-callout">Scaling codebases is difficult. When needs outpace available resources, technical debt accrues more quickly and becomes difficult to mitigate.</p>
 
 <p class="services-callout">Everyone and everything suffers as technical debt piles up. Developers can end up working a sub-par codebase that impedes the ability to produce high-quality work efficiently; stakeholders cannot meet the needs of a growing company; your company is limited in its ability to grow and make an impact.</p>
 </section>
 
-<section class="services-offering _container -large">
+<section class="services-offering _container">
 <h2>What I offer</h2>
 
 Frontend architecture is a subset of my frontend development specialization. The emphasis on __architecture__ intends to illuminate the _concerted_—not _inherent_—effort required to craft resilient and scalable user interfaces.
@@ -27,7 +27,7 @@ After working together, you will receive a bespoke frontend architecture designe
 </section>
 
 <section class="services-process">
-<div class="_container -large">
+<div class="_container">
 <h2>My process</h2>
 <div class="services-items">
 <div class="services-items-item">

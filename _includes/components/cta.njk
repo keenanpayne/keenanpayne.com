@@ -1,0 +1,35 @@
+{# Component Settings #}
+{% set heading = section.heading %}
+{% set subheading = section.subheading %}
+{% set link = section.link %}
+{% set spacing = section.spacing %}
+
+{# Markup #}
+<section class="cta" style="--top-margin: {{ spacing if spacing else 0 }}">
+  <div class="cta-content _container">
+    {% if heading %}
+      <h2 class="cta-title">
+        {{ heading }}
+      </h2>
+    {% endif %}
+
+    {% if subheading %}
+      <p class="cta-subheading">
+        {{ subheading }}
+      </p>
+    {% endif %}
+
+    {% if link %}
+      {% set text = link.text %}
+      {% set url = link.url %}
+
+      {% if url and text %}
+        <p class="cta-link">
+          <a class="button -primary -large" href="{{ url }}">
+            {{ text }}
+          </a>
+        </p>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>

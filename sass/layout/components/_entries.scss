@@ -106,30 +106,6 @@
   @media (--dark) {
     border-bottom-color: var(--yellow-dark);
   }
-
-  // TODO: Fix styles because text is overlapping with border
-  &::after {
-    // --bg-color: var(--exodus-fruit);
-
-    // background-color: var(--bg-color);
-    // content: '';
-    // height: 2px;
-    // position: absolute;
-    // left: 5rem;
-    // top: calc(50% + 1px);
-    // transform: translateY(-50%);
-    // width: calc(100% - 5rem);
-
-    // @media (--dark) {
-    //   --bg-color: var(--yellow-dark);
-    // }
-  }
-}
-
-.entries-time-month,
-.entries-time-year {
-  display: block;
-  font-weight: 300;
 }
 
 .entries-articleLink {
@@ -157,9 +133,43 @@
   }
 }
 
-.entries-image { 
-  margin-bottom: 1rem
+.entries-image {
+  display: block;
+  filter: sepia(.1) brightness(0.9);
+  height: 250px;
+  margin-bottom: 1.5rem;
+  transition: filter var(--transition-long);
+  width: 100%;
+
+  @media (--min-720) {
+    height: 300px;
+  }
+
+  @media (--min-960) {
+    height: 350px;
+  }
+
+  @media (--min-1120) {
+    height: 400px;
+  }
+
+  @media (--min-1120) and (--min-h-960) {
+    height: 450px;
+  }
+
+  @media (--min-1120) and (--min-h-1080) {
+    height: 500px;
+  }
+
+  @media (--min-1600) and (--min-h-1080) {
+    height: 550px;
+  }
+
+  &:hover {
+    filter: none;
+  }
 }
+
 
 // Portfolio Items
 .entries-portfolio-meta {
@@ -175,56 +185,6 @@
 //
 // Modifiers
 // ---------
-
-.entries.-stack {
-  .entries-items {
-    margin-top: 1.5rem;
-  }
-  
-  .entries-item + .entries-item {
-    margin-top: 3rem;
-  }
-
-  // Descendants
-  .entries-title {
-    @include h3();
-
-    margin-bottom: 0;
-  }
-}
-
-.entries.-grid { 
-  .entries-items { 
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: 5rem;
-  }
-
-  .entries-item { 
-    grid-column: auto / span -1;
-
-    @media (--min-960) {
-      grid-column-end: span 6;
-      margin-top: 0;
-    }
-  }
-}
-
-.entries.-media {
-  .entries-item { 
-    @media (--min-720) {
-      margin-top: 0;
-    }
-  }
-
-  .entries-title { 
-    @include h5();
-  }
-
-  .entries-header { 
-    margin-bottom: .25rem;
-  }
-}
 
 .entries.-portfolio {
   .entries-lede { 
@@ -277,123 +237,6 @@
       @media (--min-800) { 
         margin-bottom: 0;
       }
-    }
-  }
-}
-
-.entries.-journey { 
-  max-width: 1260px;
-
-  .entries-items {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-    padding: 0;
-  }
-  
-  .entries-item {
-    border: 1px solid var(--plum-dark);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    line-height: 1.65;
-    min-height: 150px;
-    padding: 1.25rem 1.5rem;
-  }
-}
-
-.entries.-featured { 
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  margin-bottom: 2.5rem;
-  overflow: hidden;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  width: 100%;
-
-  @media (--min-720) {
-    margin-bottom: 5rem;
-  }
-
-  // Overrides
-  .entries-header {
-    grid-column: 1 / -1;
-
-    @media (--min-720) {
-      grid-column: 1 / span 10;
-    }
-
-    @media (--min-1120) {
-      grid-column: 1 / span 9;
-    }
-  }
-
-  .entries-items {
-    grid-column: 1 / -1;
-  
-    @media (--min-720) {
-      grid-column: 1 / span 10;
-    }
-  
-    @media (--min-1120) {
-      grid-column: 1 / span 9;
-    }
-  }
-  
-  .entries-item {
-    padding-right: 0.15rem;
-    position: relative;
-    
-    // TODO: Hacky overrides
-    .entries-time {
-      bottom: 0;
-      font-size: var(--font-base);
-      line-height: 1;
-      position: absolute;
-      right: 0;
-      text-align: right;
-    }
-  }
-
-  .entries-item-content { 
-    margin-left: auto;
-    max-width: 60ch;
-  }
-  
-  .entries-image {
-    display: block;
-    filter: sepia(.1) brightness(0.9);
-    height: 250px;
-    margin-bottom: 1.5rem;
-    transition: filter var(--transition-long);
-    width: 100%;
-  
-    @media (--min-720) {
-      height: 300px;
-    }
-  
-    @media (--min-960) {
-      height: 350px;
-    }
-  
-    @media (--min-1120) {
-      height: 400px;
-    }
-
-    @media (--min-1120) and (--min-h-960) {
-      height: 450px;
-    }
-
-    @media (--min-1120) and (--min-h-1080) {
-      height: 500px;
-    }
-  
-    @media (--min-1600) and (--min-h-1080) {
-      height: 550px;
-    }
-  
-    &:hover {
-      filter: none;
     }
   }
 }

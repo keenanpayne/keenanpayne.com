@@ -3,12 +3,15 @@
 // ==================================================
 
 // External
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300;1,400;1,700&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,300;1,400;1,700&family=IBM+Plex+Mono:wght@500&display=swap');
 @import url('https://rsms.me/inter/inter.css');
 
 // Settings
 @import "settings/custom-media";
 @import "settings/custom-properties";
+
+// Functions
+@import "functions/spacing";
 
 // Mixins
 @import "mixins/clearfix";
@@ -57,13 +60,11 @@
 @import "layout/components/dribbble";
 @import "layout/components/entries";
 @import "layout/components/footnotes";
-@import "layout/components/hello";
+@import "layout/components/hello"; // TODO: Remove
 @import "layout/components/highlight";
-@import "layout/components/intro";
 @import "layout/components/large-text";
 @import "layout/components/lede";
 @import "layout/components/mailbox";
-@import "layout/components/missionStatement";
 @import "layout/components/newsletter";
 @import "layout/components/portfolioGrid";
 @import "layout/components/postNav";
@@ -78,11 +79,12 @@
 @import "layout/global/navigation";
 
 // Pages
-@import "layout/pages/about";
 @import "layout/pages/portfolio";
 @import "layout/pages/services";
 @import "layout/pages/post";
-@import "layout/pages/resources";
 
 // Embeds
 @import "embed/tweet";
+
+// TODO: New styles
+@import "new";
