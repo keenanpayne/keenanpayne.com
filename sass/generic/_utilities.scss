@@ -107,6 +107,7 @@
 
   font-variant: all-small-caps;
   font-weight: var(--font-weight-bold);
+  margin-bottom: spacing(1);
 
   @media (--dark) {
     --link-color: var(--gray-lighter) !important;

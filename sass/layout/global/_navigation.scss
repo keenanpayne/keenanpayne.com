@@ -12,6 +12,7 @@
   }
 }
 
+
 //
 // Primary Navigation
 // ------------------
@@ -53,7 +54,7 @@
   align-items: center;
   align-self: end;
   display: flex;
-  margin-bottom: spacing(2.5);
+  margin-bottom: spacing(2);
 }
 
 .navigation-icons-item {
@@ -63,6 +64,6 @@
 
   // Descendants
   svg {
-    height: 20px;
+    height: 22px;
   }
 }

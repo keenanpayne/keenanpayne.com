@@ -5,6 +5,7 @@
 .header {
   @include container;
   
+  margin-bottom: spacing(8);
   padding-bottom: spacing(4);
   padding-top: spacing(4);
 }
@@ -17,10 +18,10 @@
 }
 
 .header-logo {
-  font-size: 38px;
+  font-size: 40px;
   font-weight: var(--font-weight-heavy);
-  letter-spacing: -1.44px;
-  line-height: 30px;
+  letter-spacing: -.05em;
+  line-height: .775;
   margin-bottom: 0;
   margin-top: 0;
 

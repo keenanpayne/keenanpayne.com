@@ -38,10 +38,8 @@ Long story short, I build beautiful, scalable web experiences that everyone will
 
 We're both humans, so why not get a little personal?<br>Photos are displayed newest-to-oldest.
 
-<div class="about-images">
-  <img src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jan-28-2022_pwxnxq.jpg" alt="Me hiking in Lake Tahoe" />
-  <img data-lazy data-src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204077/people/me/dec-26-2021_iuhh3w.jpg" alt="Me being cold" />
-  <img data-lazy data-src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jun-27-2021_o8sd0l.jpg" alt="Me in grayscale" />
-  <img data-lazy data-src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jul-5-2020_lwglyk.jpg" alt="Hanging out with my high school buddies" />
-  <img data-lazy data-src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jul-5-_2_-2020_mps19o.jpg" alt="Hanging out with my high school buddies" />
-</div>
+<img src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jan-28-2022_pwxnxq.jpg" alt="Me hiking in Lake Tahoe" />
+<img data-lazy data-src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204077/people/me/dec-26-2021_iuhh3w.jpg" alt="Me being cold" />
+<img data-lazy data-src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jun-27-2021_o8sd0l.jpg" alt="Me in grayscale" />
+<img data-lazy data-src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jul-5-2020_lwglyk.jpg" alt="Hanging out with my high school buddies" />
+<img data-lazy data-src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jul-5-_2_-2020_mps19o.jpg" alt="Hanging out with my high school buddies" />

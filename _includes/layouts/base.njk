@@ -42,20 +42,20 @@ https://github.com/keenanpayne/keenanpayne.com
         {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
         <div class="navigation">
           <nav class="navigation-icons">
-            <a class="navigation-icons-item" href="">
-              {% include "svg/calendar.svg" %}
-            </a>
-
-            <a class="navigation-icons-item" href="">
+            <a class="navigation-icons-item" href="" title="Learn more about me">
               {% include "svg/hand.svg" %}
             </a>
 
-            <a class="navigation-icons-item" href="">
+            <a class="navigation-icons-item" href="" title="Search my website">
               {% include "svg/search.svg" %}
             </a>
 
-            <a class="navigation-icons-item" href="">
+            <a class="navigation-icons-item" href="/newsletter" title="Subscribe to my newsletter">
               {% include "svg/mailbox.svg" %}
+            </a>
+            
+            <a class="navigation-icons-item" href="" title="Schedule time to talk">
+              {% include "svg/calendar.svg" %}
             </a>
           </nav>
 
@@ -78,7 +78,7 @@ https://github.com/keenanpayne/keenanpayne.com
       <div class="footer-content">
         <div class="footer-left">
           <div class="footer-twitter">
-            <span class="_label">
+            <span class="_label-sans">
               Follow me
             </span>
             <a class="-hover-background _text-h4" target="_blank" rel="noopener" href="https://Twitter.com/KeenanPayne_" title="Visit Keenan's Twitter profile">

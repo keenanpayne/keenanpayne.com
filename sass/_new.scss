@@ -1,7 +1,3 @@
-// 
-// New Styles
-// ==========
-
 //
 // Mixins
 // ------
@@ -55,43 +51,18 @@
   grid-gap: spacing(2);
 }
 
-// UNSCOPED
-
 
 // SCOPED
-:root.newStyles {
-  // Custom properties
-  --color-black: #101010;
-  --color-heading: #100F16;
-  --color-label: #101010;
-  --color-paragraph: #1E1C29;
-  --color-border: #a8a5b5;
-  
-  --font-family-serif: Georgia, 'Times New Roman', Times, serif;
-  
+:root.newStyles {  
   // Layout
   .grid {
     @include grid;
   }
-  
-  p {
-    color: var(--color-paragraph);
-    letter-spacing: -.01em;
-    margin-bottom: 0;
-    margin-top: 0;
-  }
-
-
-  //
-  // Components
-  // ----------
 
   // Introduction
   .intro {
     @include grid;
     @include container;
-
-    margin-top: spacing(8);
   }
 
   .intro-left {
