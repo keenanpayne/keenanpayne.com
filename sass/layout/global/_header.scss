@@ -5,16 +5,23 @@
 .header {
   @include container;
   
-  margin-bottom: spacing(6);
+  margin-bottom: spacing(3);
   padding-bottom: spacing(4);
   padding-top: spacing(4);
+  
+  @media (--min-720) {
+    margin-bottom: spacing(6);
+  }
 }
 
 .header-container {
-  align-items: end;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  
+  @media (--min-560) {
+    align-items: end;
+  }
 }
 
 .header-logo {

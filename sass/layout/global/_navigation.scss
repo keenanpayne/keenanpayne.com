@@ -19,7 +19,11 @@
 
 .navigation-primary {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  @media (--min-560) {
+    flex-direction: row;
+  }
 }
 
 .navigation-primary-item {
@@ -27,7 +31,16 @@
   text-decoration: none;
 
   &:not(:first-of-type) { 
-    margin-left: spacing(6);
+    margin-top: spacing(1.5);
+    
+    @media (--min-560) {
+      margin-top: 0;
+      margin-left: spacing(3);
+    }
+
+    @media (--min-720) {
+      margin-left: spacing(6);
+    }
   }
 
   &:hover {
@@ -54,7 +67,11 @@
   align-items: center;
   align-self: end;
   display: flex;
-  margin-bottom: spacing(2);
+  margin-bottom: spacing(1.5);
+  
+  @media (--min-720) {
+    margin-bottom: spacing(2);
+  }
 }
 
 .navigation-icons-item {

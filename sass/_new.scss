@@ -5,50 +5,72 @@
 // Typography
 @mixin newH1 {
   color: var(--color-heading);
-  font-size: 68px;
+  font-size: 46px;
   font-weight: var(--font-weight-extra-bold);
   letter-spacing: -3px;
-  line-height: 66px;
+  line-height: .97;
   margin-bottom: 0;
   margin-top: 0;
+  
+  @media (--min-480) {
+    font-size: 68px;
+  }
 }
 
 @mixin newH2 {
-  font-size: 46px;
-  line-height: 44px;
+  font-size: 36px;
+  line-height: 1.045;
   margin-bottom: 0;
   margin-top: 0;
+  
+  @media (--min-480) {
+    font-size: 46px;
+  }
 }
 
 @mixin newH3 {
-  font-size: 32px;
+  font-size: 26px;
   line-height: 1;
   margin-bottom: 0;
   margin-top: 0;
+  
+  @media (--min-480) {
+    font-size: 32px;
+  }
 }
 
 @mixin large-paragraph {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: var(--font-weight-semibold);
-  line-height: 28px;
+  line-height: 1.4;
+  
+  @media (--min-480) {
+    font-size: 20px;
+  }
 }
 
 @mixin small-paragraph {
   font-size: 14px;
-  line-height: 20px;
+  line-height: 1.43;
 }
 
 @mixin subheading {
   font-style: italic;
   font-family: var(--font-family-serif);
-  font-size: 25px;
-  line-height: 35px;
+  font-size: 22px;
+  line-height: 1.4;
+
+  @media (--min-480) {
+    font-size: 25px;
+  }
 }
 
 @mixin grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-gap: spacing(2);
+  @media (--min-720) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: spacing(2);
+  }
 }
 
 // UNSCOPED
@@ -83,22 +105,43 @@
   }
 
   .intro-left {
-    grid-column: 1 / span 6;
+    margin-bottom: spacing(7);
+    grid-column: 1 / span 7;
+
+    @media (--min-720) {
+      margin-bottom: 0;
+    }
+
+    @media (--min-1120) {
+      grid-column-end: span 6;
+    }
   }
 
   .intro-right {
-    grid-column: 7 / -1;
+    grid-column: 8 / -1;
+
+    @media (--min-1120) {
+      grid-column-start: 7;
+    }
   }
 
   .intro-heading {
-    @include newH1;
+    @include newH2;
+
+    @media (--min-960) {
+      @include newH1;
+    }
   }
 
   .intro-subheading {
     @include subheading();
 
-    margin-top: spacing(3);
+    margin-top: spacing(2);
     max-width: 35ch;
+    
+    @media (--min-560) {
+      margin-top: spacing(3);
+    }
   }
 
   // Collection
@@ -114,7 +157,27 @@
       }
 
       .collections-entry {
-        grid-column: auto / span 4;
+        grid-column: auto / span 6;
+
+        &:first-of-type {
+          margin-top: spacing(2);
+
+          @media (--min-720) {
+            margin-top: 0;
+          }
+        }
+
+        &:not(:first-of-type) {
+          margin-top: spacing(3);
+
+          @media (--min-720) {
+            margin-top: 0;
+          }
+        }
+
+        @media (--min-960) {
+          grid-column: auto / span 4;
+        }
       }
     }
 
@@ -150,16 +213,44 @@
 
       .collections-entry {
         grid-column: auto / span 6;
+
+        &:first-of-type {
+          margin-top: spacing(2);
+
+          @media (--min-720) {
+            margin-top: 0;
+          }
+        }
+
+        &:not(:first-of-type) {
+          margin-top: spacing(3);
+
+          @media (--min-720) {
+            margin-top: 0;
+          }
+        }
+
+        @media (--min-720) {
+          margin-top: 0;
+        }
       }
     }
   }
 
   .collections-image {
-    --image-height: 250px;
+    --image-height: 175px;
 
     height: var(--image-height);
     margin-bottom: spacing(2);
     width: 100%;
+
+    @media (--min-640) {
+      --image-height: 225px;
+    }
+
+    @media (--min-1260) {
+      --image-height: 250px;
+    }
   }
 
   .collections-heading {
@@ -209,7 +300,10 @@
   margin-top: spacing(var(--top-margin, 0));
   padding-bottom: spacing(10);
   padding-top: spacing(10);
-  text-align: center;
+  
+  @media (--min-480) {
+    text-align: center;
+  }
 }
 
 .cta-title {

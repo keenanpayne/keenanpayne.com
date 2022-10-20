@@ -39,11 +39,27 @@
 }
 
 .newsletter-description { 
-  grid-column: 2 / span 4;
+  grid-column: 1 / span 7;
+  
+  @media (--min-960) {
+    grid-column-end: span 5;
+  }
+
+  @media (--min-1120) {
+    grid-column: 2 / span 4;
+  }
 }
 
 .newsletter-cta { 
-  grid-column: 7 / span 5;
+  grid-column: 8 / -1;
+  
+  @media (--min-960) {
+    grid-column: 7 / span 5;
+  }
+
+  @media (--min-1120) {
+    grid-column-end: span 4;
+  }
 }
 
 .newsletter-form {
