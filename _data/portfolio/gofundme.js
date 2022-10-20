@@ -17,14 +17,14 @@ module.exports = {
     "CSS",
     "JavaScript"
   ],
-  overview: 'I was hired by the GoFundMe team in 2019 to help build out a new WordPress content portal for GoFundMe Heroes, an initiative designed to highlight standout projects from "heroes" on GoFundMe.',
+  overview: 'I built a WordPress content portal to highlight standout projects from "heroes" on the GoFundMe platform, integrating it into their existing codebase and design paradigms.',
   lede: "Building a content hub to highlight people who are making a difference.",
   description: "Who hasn't heard of GoFundMe? They're the <em>most popular</em> personal fundraising website in the world and have helped facilitate <strong>$9 billion</strong> in fundraising for personal causes.",
-  cover: 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_1532/v1657996527/portfolio/gofundme/cover_cwiwux.png',
+  cover: 'v1665763480/portfolio/gofundme/cover_m7erev.png',
   pillars: {
     client: 'The marketing team at GoFundMe wanted to highlight standout projects from "heroes" on the platform.',
-    challenge: "Working within an existing WordPress codebase, I had to extend post taxonomies to support the editorial format for heroes content while building a new user interface.",
-    solution: "I worked with web engineers at the company to learn the ins and outs of the codebase while designing a solution. I leveraged existing technologies and paradigms to build a seamless extension to the existing content editing workflow.",
+    challenge: "Working within an existing WordPress codebase, I had to extend post taxonomies to support the editorial format for this content while building a new user interface.",
+    solution: "I learned the codebase's ins and outs while implementing my solution. I used existing technologies and paradigms to build a seamless extension to their content editing workflow.",
   },
   people: {
     [1]: {
@@ -75,8 +75,9 @@ module.exports = {
       link: "https://www.gofundme.com/c/heroes",
       image: "v1658011021/portfolio/gofundme/homepage_ffr7ea.png",
       asset_transform: "f_auto,q_auto",
-      title: "Heroes homepage",
-      description: ""
+      title: "1",
+      description: "",
+      preventLazy: true
     },
     [2]: {
       link: "https://www.gofundme.com/c/heroes/lance-cooper-saveflintchallenge",
@@ -98,6 +99,7 @@ module.exports = {
       asset_transform: "f_auto,w_1300",
       title: "Featured article carousel",
       description: "The interactive carousel that highlights featured campaigns on the GoFundMe Heroes Hub homepage.",
+      autoplay: true
     },
     [5]: {
       link: "https://www.gofundme.com/c/heroes/lance-cooper-saveflintchallenge",
@@ -106,6 +108,7 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_1000",
       title: "Article template",
       description: "",
+      preventLazy: true
     },
     [6]: {
       link: "https://www.gofundme.com/c/heroes/lance-cooper-saveflintchallenge",

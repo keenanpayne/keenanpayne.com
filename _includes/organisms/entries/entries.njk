@@ -33,6 +33,7 @@
 {% endmacro %}
 
 {# Portfolio Items #}
+{# TODO: Turn into a separate component — separate from entries.njk #}
 {% macro portfolio(entry) %}
   {% set portfolio = entry.data.portfolio %}
   {% set portfolioItem = portfolio[entry.data.title | lower] %}
@@ -40,8 +41,11 @@
   {% set overview = portfolioItem.overview %}
   {% set url = entry.url %}
   {% set name = portfolioItem.name %}
+  {% set cover = portfolioItem.cover %}
 
-  {{ entries.postImage(entry) }}
+  <a href="{{ url }}" title="{{ name }}">
+    <img class="entries-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/{{ cover }}" alt="{{ name }}" />
+  </a>
 
   <div class="entries-portfolio-content">
     {{ entries.postHeader(entry) }}
@@ -54,7 +58,7 @@
 
     {% if overview %}
       <p>
-        {{ overview | safe}}
+        {{ overview | safe }}
       </p>
     {% endif %}
 

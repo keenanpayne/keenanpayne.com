@@ -196,6 +196,7 @@ module.exports = function(eleventyConfig) {
   // Copy the `images` and `css` folders to the output
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("js");
 
   // Customize Markdown library and settings:
   let markdown = markdownIt({

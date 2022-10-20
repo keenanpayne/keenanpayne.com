@@ -41,6 +41,8 @@
         {% set image = res.image %}
         {% set title = res.title %}
         {% set caption = res.caption %}
+        {% set autoplay = res.autoplay %}
+        {% set preventLazy = res.preventLazy %}
         {% set link = res.link %}
         {% set shotLink = res.shot_link %}
         {% set assetTransform = res.asset_transform %}
@@ -48,15 +50,32 @@
         {% set imageURL = 'https://res.cloudinary.com/keenan-payne/image/upload/' ~ assetTransform ~ '/' ~ image %}
 
         <div class="portfolioGrid-item {{ '-video' if video }} {{ '-image' if image }}">
-          {# TODO: Lazy-load asset and host on an asset management platform #}
           {%- if video -%}
-            <video muted controls src="{{ videoURL }}"></video>
+            <video 
+              muted 
+              controls
+              data-lazy
+              {% if autoplay %} 
+                autoplay loop playsinline 
+              {% endif %}
+            >
+              <source data-src="{{ videoURL }}">
+            </video>
           {%- endif -%}
 
           {%- if image -%}
             {% if contained %}
-              {# TODO: Lazy-load this background image #}
-              <a href="{{ imageURL }}" title="Enlarge image for {{ title }}" class="portfolioGrid-imageTile" style="--background: url({{ imageURL }})"></a>
+              <a 
+                href="{{ imageURL }}" 
+                title="Enlarge image for {{ title }}" 
+                class="portfolioGrid-imageTile" 
+                data-src="{{ imageURL }}" 
+                {% if preventLazy %} 
+                  style="--background: url({{ imageURL }})" 
+                {% else %}
+                  data-lazy
+                {% endif %}>
+              </a>
             {% else %}
               <img src="{{ imageURL }}" alt="{{ title }}" loading="lazy" />
             {% endif%}

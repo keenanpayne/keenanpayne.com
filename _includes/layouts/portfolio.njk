@@ -114,11 +114,11 @@ permalink: "/{{ title | slug }}/"
           <ul>
             {% for id, person in people %}
               {% set name = person.name %}
-              {% set url = person.url %}
+              {% set personUrl = person.url %}
 
               <li>
-                {% if url %}
-                  <a href="{{ url }}">
+                {% if personUrl %}
+                  <a href="{{ personUrl }}" target="_blank" rel="noopener">
                     {{ name }}
                   </a>
                 {% else %}
@@ -179,7 +179,7 @@ permalink: "/{{ title | slug }}/"
 
     {% if cover %}
       <div class="portfolio-cover">
-        <img class="portfolio-cover-img" src="{{ cover }}" alt="{{ client }} project cover" />
+        <img class="portfolio-cover-img" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/{{ cover }}" alt="{{ client }} project cover" />
       </div>
     {% endif %}
 
