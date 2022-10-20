@@ -22,6 +22,7 @@
     --newsletter-border: var(--gray-lightish);
     
     background-color: var(--newsletter-background);
+    margin-top: spacing(var(--top-margin, 0));
     padding-bottom: spacing(8);
     padding-top: spacing(8);
     
