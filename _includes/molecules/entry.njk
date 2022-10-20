@@ -1,0 +1,23 @@
+{% import "atoms/more.njk" as more %}
+
+{% macro output(cover, heading, lede, linkUrl, linkText) %}
+  <article class="collections-entry">
+    {% if cover %}
+      <img class="collections-image" src="{{ cover }}" alt="{{ itemName }}" />
+    {% endif %}
+
+    {% if heading %}
+      <h2 class="collections-heading">
+        {{ heading }}
+      </h2>
+    {% endif %}
+
+    {% if lede %}
+      <p class="collections-description">
+        {{ lede | safe }}
+      </p>
+    {% endif %}
+
+    {{ more.output('collections-link', linkUrl, linkText) }}
+  </article>
+{% endmacro %}
