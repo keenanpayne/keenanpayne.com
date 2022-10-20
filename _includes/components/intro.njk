@@ -1,0 +1,57 @@
+{# Component Settings #}
+{% set heading = section.heading %}
+{% set subheading = section.subheading %}
+{% set right = section.right %}
+
+{# Markup #}
+<section class="intro">
+  {% if heading %}
+    <p class="testimonial-text _type-my-voice _text-h3">
+      <span>{{ content | safe }}</span>
+    </p>
+
+    <header class="intro-left">
+      <h2 class="intro-heading">
+        {{ heading }}
+      </h2>
+
+      <p class="intro-subheading">
+        {{ subheading }}
+      </p>
+    </header>
+  {% endif %}
+
+  {% if right %}
+    {% set rightHeading = right.heading %}
+    {% set rightItems = right.items %}
+
+    <div class="intro-right collections -vertical">
+      <p class="_label">
+        {{ rightHeading }}
+      </p>
+
+      {% if rightItems %}
+        {% if rightItems == 'services' %}
+          {% for id, obj in services %}
+            {% set name = obj.name %}
+            {% set description = obj.description %}
+
+            <article class="collections-entry">
+              {% if name %}
+                <h2 class="collections-heading">
+                  {{ name }}
+                </h2>
+              {% endif %}
+
+              {% if description %}
+                <p class="collections-description">
+                  {{ description }}
+                </p>
+              {% endif %}
+            </article>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
+</section>

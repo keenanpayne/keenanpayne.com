@@ -3,38 +3,16 @@ hello: false
 layout: layouts/home.njk
 
 sections: 
-  entries:
-    read_Link: false
+  - type: intro
+    heading: "Fifteen years of professional web development"
+    subheading: "I'm passionate about building things on the web that help individuals and businesses achieve their goals."
+    right:
+      heading: "Services I Offer"
+      items: services
 ---
 
 {# TODO: Turn these into proper components #}
-<section class="intro">
-  <div class="intro-left">
-    <h2 class="intro-heading">Fifteen years of professional web development</h2>
-    <p class="intro-subheading">I'm passionate about building things on the web that help individuals and businesses achieve their goals.</p>
-  </div>
-
-  <div class="intro-right collections -vertical">
-    <p class="_label">Services I Offer</p>
-
-    <article class="collections-entry">
-      <h2 class="collections-heading">Frontend development</h2>
-      <p class="collections-description">I can help with a variety of frontend development projects. From deploying scalable marketing websites to complex web applications, I've got you covered.</p>
-    </article>
-
-    <article class="collections-entry">
-      <h2 class="collections-heading">Rapid prototyping</h2>
-      <p class="collections-description">Looking for a quick prototype of your idea or product? Let me help you rapidly prototype your website or web application.</p>
-    </article>
-
-    <article class="collections-entry">
-      <h2 class="collections-heading">Hiring</h2>
-      <p class="collections-description">Trying to grow your web development team? I can help craft interview processes, requirements, and find a great match for your company.</p>
-    </article>
-  </div>
-</section>
-
-<section class="caseStudies collections -horizontal">
+{# <section class="caseStudies collections -horizontal">
   <article class="caseStudies-item collections-entry">
     <img class="collections-image" src="https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/v1661998554/portfolio/asana/cover_scey3k.jpg" alt="" />
     <h2 class="collections-heading">Asana</h2>
@@ -55,13 +33,13 @@ sections:
     <p class="collections-description">Rebuilding the website for a rapidly growing employee leave management platform.</p>
     <a class="collections-link more" href="">View case study →</a>
   </article>
-</section>
+</section> #}
 
-{% import "organisms/entries/entries.njk" as entries with context %}
+{# {% import "organisms/entries/entries.njk" as entries with context %}
 {% import "organisms/newsletter.njk" as  newsletter with context %}
 
 {{ entries.output('Featured', collections.featured | head(-1), false, false, false, true) }}
 
 {{ entries.output('Recently Published', collections.posts | head(-3), true, false, true, false) }}
 
-{{ newsletter.large('-pre-footer') }}
+{{ newsletter.large('-pre-footer') }} #}
