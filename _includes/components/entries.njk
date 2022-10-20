@@ -1,4 +1,5 @@
 {% import "atoms/more.njk" as more %}
+{% import "organisms/entries/entries.njk" as entries with context %}
 
 {# Component Settings #}
 {% set heading = section.heading %}
@@ -14,6 +15,17 @@
   {% if items %}
     {% set itemsFrom = items.from %}
 
+    {# Featured Articles #}
+    {% if itemsFrom == 'featured' %}
+      {{ entries.output('Featured', collections.featured | head(-1), false, false, false, true) }}
+    {% endif %}
+
+    {# Recently Published #}
+    {% if itemsFrom == 'recent' %}
+      {{ entries.output('Recently Published', collections.posts | head(-3), true, false, true, false) }}
+    {% endif %}
+
+    {# Portfolio Items #}
     {% if itemsFrom == 'portfolio' %}
       {% for id, obj in portfolio %}
         {% set itemName = obj.name %}

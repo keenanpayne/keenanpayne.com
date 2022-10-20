@@ -11,6 +11,7 @@ sections:
     spacing: 8
     items: 
       from: portfolio
+      limit: 3
   - type: cta
     heading: "Interested in working together?"
     subheading: "I'm scheduled out until the end of 2022 but I am interested in 
@@ -19,19 +20,18 @@ talking with folks who want to collaborate next year."
       text: "Get in touch"
       url: "/contact"
     spacing: 10
+  - type: entries
+    heading: "Featured article"
+    spacing: 10
+    items: 
+      from: featured
+      limit: 1
+  - type: entries
+    heading: "Recent writings"
+    spacing: 10
+    items: 
+      from: recent
+      limit: 3
+  - type: newsletter
+    spacing: 10
 ---
-
-{# TODO: Turn these into proper components #}
-
-
-{#
-{% import "organisms/newsletter.njk" as  newsletter with context %}
-{{ newsletter.large('-pre-footer') }} 
-
-{% import "organisms/entries/entries.njk" as entries with context %}
-{{ entries.output('Featured', collections.featured | head(-1), false, false, false, true) }}
-
-{{ entries.output('Recently Published', collections.posts | head(-3), true, false, true, false) }}
-
-
-#}
