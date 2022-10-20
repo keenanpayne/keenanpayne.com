@@ -42,6 +42,7 @@ https://github.com/keenanpayne/keenanpayne.com
         {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
         <div class="navigation">
           <nav class="navigation-icons">
+            {# TODO: Build new component that mimics `hello` #}
             <a class="navigation-icons-item" href="" title="Learn more about me">
               {% include "svg/hand.svg" %}
             </a>
@@ -104,9 +105,5 @@ https://github.com/keenanpayne/keenanpayne.com
         </div>
       </div>
     </footer>
-
-    {% if hello != false %}
-      {% include "components/hello.html" %}
-    {% endif %}
   </body>
 </html>
