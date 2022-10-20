@@ -50,7 +50,7 @@ https://github.com/keenanpayne/keenanpayne.com
               {% include "svg/search.svg" %}
             </a>
 
-            <a class="navigation-icons-item" href="/newsletter" title="Subscribe to my newsletter">
+            <a class="navigation-icons-item" href="/subscribe" title="Subscribe to my newsletter">
               {% include "svg/mailbox.svg" %}
             </a>
             
@@ -71,10 +71,12 @@ https://github.com/keenanpayne/keenanpayne.com
     </header>
 
     <main class="{% if templateClass %}{{ templateClass }}{% endif %}">
-      {% for section in sections %}
-        {% include "components/" + section.type + ".njk" %}
-      {% endfor %}
-      
+      {% if ignoreBaseOutput != true %}
+        {% for section in sections %}
+          {% include "components/" + section.type + ".njk" %}
+        {% endfor %}
+      {% endif %}
+        
       {{ content | safe }}
     </main>
 

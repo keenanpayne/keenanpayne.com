@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 permalink: "/{{ title | slug }}/"
+ignoreBaseOutput: true
 ---
 {# TODO: Create generic abstractions for similarities with `service.njk` #}
 
@@ -29,14 +30,6 @@ permalink: "/{{ title | slug }}/"
 
 <section class="portfolio _container">
   <header class="portfolio-header">
-    <div class="portfolio-meta">
-      {%- if type -%}
-        <a class="-underline-hover _label" href="/portfolio" title="View portfolio">
-          Case Study
-        </a>
-      {%- endif -%}
-    </div>
-
     {% if client %}
       <h1 class="portfolio-title">
         {{ client }}

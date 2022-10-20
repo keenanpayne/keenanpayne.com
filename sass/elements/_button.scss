@@ -71,4 +71,9 @@ button,
       --color-hover: var(--plum-dark);
     }
   }
+
+  &.-large {
+    padding: spacing(2) spacing(2.5);
+    font-size: 22px;
+  }
 }

@@ -42,7 +42,7 @@
   font-style: italic;
   font-family: var(--font-family-serif);
   font-size: 25px;
-  line-height: 33px;
+  line-height: 35px;
 }
 
 @mixin grid {
@@ -97,16 +97,17 @@
   .intro-subheading {
     @include subheading();
 
-    margin-top: spacing(4);
+    margin-top: spacing(3);
     max-width: 35ch;
   }
 
   // Collection
   .collections {
+    margin-top: spacing(var(--top-margin, 0));
+
+    // Modifiers
     &.-horizontal {
       @include grid;
-
-      margin-top: spacing(var(--top-margin, 0));
 
       .collections-label {
         grid-column: 1 / -1;
@@ -126,14 +127,52 @@
         }
       }
     }
+
+    &.-vertical-narrow {
+      .collections-entry {
+        margin-top: spacing(3);
+        max-width: var(--container-small);
+      
+        &:not(:first-of-type) {
+          margin-top: spacing(5);
+        }
+      }
+    }
+
+    &.-horizontal-2-columns {
+      --image-height: 300px;
+
+      @include grid;
+
+      .collections-label {
+        grid-column: 1 / -1;
+      }
+
+      .collections-entry {
+        grid-column: auto / span 6;
+      }
+    }
   }
 
   .collections-image {
+    --image-height: 250px;
+
+    height: var(--image-height);
     margin-bottom: spacing(2);
+    width: 100%;
   }
 
   .collections-heading {
     @include newH3;
+
+    // Descendants
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 
   .collections-description {
@@ -151,10 +190,16 @@
   .more {
     border-bottom: 2px solid var(--color-black);
     display: block;
+    font-size: 18px;
     font-weight: var(--font-weight-extra-bold);
     letter-spacing: -.5px;
+    transition: color var(--transition-quick);
     text-align: right;
     text-decoration: none;
+
+    &:hover {
+      color: var(--exodus-fruit-dark);
+    }
   }
 }
 
@@ -181,5 +226,5 @@
 }
 
 .cta-link {
-  margin-top: spacing(3.5);
+  margin-top: spacing(5);
 }

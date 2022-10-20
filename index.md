@@ -1,4 +1,5 @@
 ---
+title: 'Keenan Payne | Freelance Web Development'
 sections: 
   - type: intro
     heading: "Fifteen years of professional web development"
@@ -7,6 +8,7 @@ sections:
       heading: "Services I offer"
       items: services
   - type: entries
+    orientation: horizontal
     heading: "Highlighted projects"
     spacing: 8
     items: 
@@ -14,24 +16,19 @@ sections:
       limit: 3
   - type: cta
     heading: "Interested in working together?"
-    subheading: "I'm scheduled out until the end of 2022 but I am interested in 
-talking with folks who want to collaborate next year."
+    subheading: "I'm scheduled out until the end of 2022 but I am interested in talking with folks who want to collaborate next year."
     link:
       text: "Get in touch"
       url: "/contact"
     spacing: 10
   - type: entries
-    heading: "Featured article"
+    orientation: horizontal
+    columns: 2
+    heading: "Featured articles"
     spacing: 10
     items: 
       from: featured
-      limit: 1
-  - type: entries
-    heading: "Recent writings"
-    spacing: 10
-    items: 
-      from: posts
-      limit: 3
+      limit: 4
   - type: newsletter
     spacing: 10
 ---

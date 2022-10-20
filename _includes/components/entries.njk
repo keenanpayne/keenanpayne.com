@@ -5,12 +5,17 @@
 {% set heading = section.heading %}
 {% set items = section.items %}
 {% set spacing = section.spacing %}
+{% set orientation = section.orientation %}
+{% set columns = section.columns %}
+{% set layout = '-' ~ orientation ~ '-' ~ columns ~ '-columns' %}
 
 {# Markup #}
-<section class="collections -horizontal _container" style="--top-margin: {{ spacing if spacing else 0 }}">
-  <p class="collections-label _label">
-    {{ heading }}
-  </p>
+<section class="collections {{ layout if orientation and columns else '-' ~ orientation }} _container" style="--top-margin: {{ spacing if spacing else 0 }}">
+  {% if heading %}
+    <p class="collections-label _label">
+      {{ heading }}
+    </p>
+  {% endif %}
 
   {% if items %}
     {% set itemsFrom = items.from %}
@@ -30,8 +35,6 @@
             'Read article'
           ) }}
         {%- endfor -%}
-    
-      {# If collection is empty #}
       {% else %}
         {% set content = 'No content is published here yet.' %}
         {% include "type/notice.html" %}
@@ -46,7 +49,7 @@
             'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover,
             item.name,
             item.lede,
-            '/portfolio/' ~ itemName | lower,
+            '/portfolio/' ~ item.name | lower,
             'View case study'
           ) }}
         {% endif %}

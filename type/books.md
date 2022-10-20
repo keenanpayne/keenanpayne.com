@@ -1,5 +1,4 @@
 ---
-layout: layouts/type.njk
 title: Book
 description:
 # eleventyNavigation:
