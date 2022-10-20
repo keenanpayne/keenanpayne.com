@@ -274,32 +274,53 @@
   }
 
   .collections-link {
-    margin-top: spacing(2);
+    margin-top: spacing(1);
+
+    @media (--min-720) {
+      margin-top: spacing(2);
+    }
   }
 
   // More Link
   .more {
+    --more-hover-color: var(--exodus-fruit-dark);
+
     border-bottom: 2px solid var(--color-black);
     display: block;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: var(--font-weight-extra-bold);
     letter-spacing: -.5px;
     transition: color var(--transition-quick);
     text-align: right;
     text-decoration: none;
 
+    @media (--dark) {
+      --more-hover-color: var(--yellow-dark);
+    }
+    
+    @media (--min-720) {
+      font-size: 18px;
+    }
+
     &:hover {
-      color: var(--exodus-fruit-dark);
+      color: var(--more-hover-color);
+      border-bottom-color: var(--more-hover-color);
     }
   }
 }
 
 .cta {
-  background-color: var(--yellow-light);
+  --cta-background: var(--yellow-light);
+
+  background-color: var(--cta-background);
   border-top: 1px solid var(--color-border);
   margin-top: spacing(var(--top-margin, 0));
   padding-bottom: spacing(10);
   padding-top: spacing(10);
+
+  @media (--dark) {
+    --cta-background: var(--exodus-fruit);
+  }
   
   @media (--min-480) {
     text-align: center;

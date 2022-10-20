@@ -74,6 +74,10 @@ button,
 
   &.-large {
     padding: spacing(2) spacing(2.5);
-    font-size: 22px;
+    font-size: 20px;
+
+    @media (--min-720) {
+      font-size: 22px;
+    }
   }
 }

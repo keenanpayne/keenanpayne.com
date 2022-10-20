@@ -69,11 +69,8 @@
 
 .post-tags { 
   display: flex;
-  flex-direction: column;
-
-  @media (--min-560) { 
-    flex-direction: row;
-  }
+  flex-direction: row;
+  flex-wrap: wrap;
 
   // Add extra space above tags if they are not empty
   .post-title + &:not(:empty) { 
@@ -84,10 +81,8 @@
 .post-tag {
   display: inline-block;
 
-  &:not(:first-of-type) { 
-    @media (--min-560) { 
-      margin-left: 0.5em;
-    }
+  &:not(:last-of-type) { 
+    margin-right: 0.5em;
   }
 
   &:not(:last-of-type) { 
