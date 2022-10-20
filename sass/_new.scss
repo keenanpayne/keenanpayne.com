@@ -157,3 +157,29 @@
     text-decoration: none;
   }
 }
+
+.cta {
+  background-color: var(--yellow-light);
+  border-top: 1px solid var(--color-border);
+  margin-top: spacing(var(--top-margin, 0));
+  padding-bottom: spacing(10);
+  padding-top: spacing(10);
+  text-align: center;
+}
+
+.cta-title {
+  @include newH2;
+}
+
+.cta-subheading {
+  @include subheading;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: spacing(2);
+  max-width: 45ch;
+}
+
+.cta-link {
+  margin-top: spacing(3.5);
+}
