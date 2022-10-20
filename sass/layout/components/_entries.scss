@@ -281,27 +281,6 @@
   }
 }
 
-.entries.-journey { 
-  max-width: 1260px;
-
-  .entries-items {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 1rem;
-    padding: 0;
-  }
-  
-  .entries-item {
-    border: 1px solid var(--plum-dark);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    line-height: 1.65;
-    min-height: 150px;
-    padding: 1.25rem 1.5rem;
-  }
-}
-
 .entries.-featured { 
   display: grid;
   grid-template-columns: repeat(12, 1fr);
