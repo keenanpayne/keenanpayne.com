@@ -1,3 +1,5 @@
+{% import "atoms/more.njk" as more %}
+
 {# Component Settings #}
 {% set heading = section.heading %}
 {% set items = section.items %}
@@ -38,9 +40,7 @@
               </p>
             {% endif %}
 
-            <a class="collections-link more" href="/portfolio/{{ itemName | lower }}">
-              View case study →
-            </a>
+            {{ more.output('collections-link', '/portfolio/{{ itemName | lower }}', 'View case study') }}
           </article>
         {% endif %}
       {% endfor %}
