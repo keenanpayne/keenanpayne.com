@@ -118,7 +118,7 @@
 ._label-sans {
   --link-color: var(--gray-darkest-1) !important;
 
-  font-size: 20px;
+  font-size: 18px;
   font-variant: all-small-caps;
   font-weight: var(--font-weight-bold);
   letter-spacing: .0075em;
@@ -126,6 +126,10 @@
 
   @media (--dark) {
     --link-color: var(--gray-lighter) !important;
+  }
+
+  @media (--min-720) {
+    font-size: 20px;
   }
 }
 
