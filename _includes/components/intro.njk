@@ -1,3 +1,6 @@
+{# Imports #}
+{% import "atoms/label.njk" as label with context %}
+
 {# Component Settings #}
 {% set heading = section.heading %}
 {% set subheading = section.subheading %}
@@ -26,9 +29,7 @@
     {% set rightItems = right.items %}
 
     <div class="intro-right collections -vertical">
-      <p class="_label">
-        {{ rightHeading }}
-      </p>
+      {{ label.output(rightHeading) }}
 
       {% if rightItems %}
         {% if rightItems == 'services' %}

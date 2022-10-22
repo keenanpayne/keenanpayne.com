@@ -72,7 +72,7 @@
   }
 }
 
-.portfolio-detail { 
+.portfolio-detail {
   --border-color: var(--gray-dark);
 
   flex-basis: 50%;
@@ -104,7 +104,7 @@
 
   // Descendants
   ul {
-    margin: 0;
+    margin-bottom: 0;
     padding: 0;
   }
 
@@ -124,8 +124,9 @@
 }
 
 .portfolio-label {
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: .5rem;
+  & + * {
+    margin-top: .5rem;
+  }
 }
 
 .portfolio-stat {

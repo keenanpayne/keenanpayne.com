@@ -77,7 +77,7 @@
 {% endmacro %}
 
 {% macro postReadMore(post) %}
-  <a class="entries-articleLink _label" href="{{ post.url }}" title="Read {{ post.data.title }}">
+  <a class="entries-articleLink _label-sans" href="{{ post.url }}" title="Read {{ post.data.title }}">
     Read {{ post.data.type }}
   </a>
 {% endmacro %}
@@ -85,7 +85,7 @@
 {% macro postLabel(label) %}
   {% if label or tag %}
     <div class="entries-header">
-      <div class="entries-label _label">
+      <div class="entries-label _label-sans">
         {{ label if label else 'Tagged: ' ~ tag }}
       </div>
 

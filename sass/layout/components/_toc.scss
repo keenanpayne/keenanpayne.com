@@ -60,8 +60,6 @@
 }
 
 .toc-summary {
-  @extend ._label;
-
   background-color: var(--toc-summary-background);
   border-radius: var(--toc-border-radius);
   cursor: pointer;

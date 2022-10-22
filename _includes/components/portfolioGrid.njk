@@ -1,3 +1,6 @@
+{# Imports #}
+{% import "atoms/label.njk" as label with context %}
+
 {# Component Settings #}
 {% set project = section.project %}
 {% set name = section.name %}
@@ -14,23 +17,21 @@
   <div class="portfolioGrid {{ section.modifier }} {{ '-contained' if contained }}">
     {% if headline or description %}
       <header class="portfolioGrid-header">
-        {% if eyebrow %}
-          <p class="portfolioGrid-label _label">
-            {{ eyebrow }}
-          </p>
-        {% endif %}
+        {{ label.output(eyebrow) }}
 
-        {% if headline %}
-          <h2 class="portfolioGrid-headline">
-            {{ headline }}
-          </h2>
-        {% endif %}
+        <div class="portfolioGrid-header-contents">
+          {% if headline %}
+            <h2 class="portfolioGrid-headline">
+              {{ headline }}
+            </h2>
+          {% endif %}
 
-        {% if description %}
-          <p class="_text-h5">
-            {{ description | nl2br | safe }}
-          </p>
-        {% endif %}
+          {% if description %}
+            <p class="_text-h5">
+              {{ description | nl2br | safe }}
+            </p>
+          {% endif %}
+        </div>
       </header>
     {% endif %}
 

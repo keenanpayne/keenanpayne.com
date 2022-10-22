@@ -5,6 +5,8 @@ ignoreBaseOutput: true
 ---
 {# TODO: Create generic abstractions for similarities with `service.njk` #}
 
+{# Imports #}
+{% import "atoms/label.njk" as label with context %}
 {% import "organisms/newsletter.njk" as  newsletter with context %}
 
 {% set portfolioItem = portfolio[data] %}
@@ -53,21 +55,23 @@ ignoreBaseOutput: true
 
       {% if size %}
         <div class="portfolio-detail">
-          <p class="portfolio-label _label">Company Size</p>
+          {{ label.output('Company Size', 'portfolio-label') }}
+
           <p class="portfolio-stat">{{ size }}</p>
         </div>
       {% endif %}
 
       {% if industry %}
         <div class="portfolio-detail">
-          <p class="portfolio-label _label">Industry</p>
+          {{ label.output('Industry', 'portfolio-label') }}
+
           <p class="portfolio-stat">{{ industry }}</p>
         </div>
       {% endif %}
 
       {% if services %}
         <div class="portfolio-detail">
-          <p class="portfolio-label _label">Services Offered</p>
+          {{ label.output('Services Offered', 'portfolio-label') }}
 
           <ul>
             {% for service in services %}
@@ -81,14 +85,15 @@ ignoreBaseOutput: true
 
       {% if year %}
         <div class="portfolio-detail">
-          <p class="portfolio-label _label">Year</p>
+          {{ label.output('Year', 'portfolio-label') }}
+
           <p class="portfolio-stat">{{ year }}</p>
         </div>
       {% endif %}
 
       {% if technologies %}
         <div class="portfolio-detail -full-width">
-          <p class="portfolio-label _label">Technologies</p>
+          {{ label.output('Technologies', 'portfolio-label') }}
 
           <ul>
             {% for technology in technologies %}
@@ -102,7 +107,7 @@ ignoreBaseOutput: true
   
       {% if people | length >= 1 and people[1].name !== "Keenan Payne"  %}
         <div class="portfolio-detail -full-width">
-          <p class="portfolio-label _label">Collaborators</p>
+          {{ label.output('Collaborators', 'portfolio-label') }}
 
           <ul>
             {% for id, person in people %}
@@ -125,7 +130,7 @@ ignoreBaseOutput: true
 
       {% if awards %}
         <div class="portfolio-detail -full-width">
-          <p class="portfolio-label _label">Awards</p>
+          {{ label.output('Awards', 'portfolio-label') }}
 
           <div class="awards">
             {% for id, award in awards %}

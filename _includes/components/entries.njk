@@ -1,4 +1,5 @@
 {# Imports #}
+{% import "atoms/label.njk" as label with context %}
 {% import "molecules/entry.njk" as entry %}
 
 {# Component Settings #}
@@ -11,11 +12,7 @@
 
 {# Markup #}
 <section class="collections {{ layout if orientation and columns else '-' ~ orientation }} _container" style="--top-margin: {{ spacing if spacing else 0 }}">
-  {% if heading %}
-    <p class="collections-label _label">
-      {{ heading }}
-    </p>
-  {% endif %}
+  {{ label.output(heading, 'collections-label' )}}
 
   {% if items %}
     {% set itemsFrom = items.from %}

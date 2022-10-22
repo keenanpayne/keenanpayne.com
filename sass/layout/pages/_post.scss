@@ -65,6 +65,12 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+
+  // Descendants
+  > a {
+    flex: 1;
+    padding-right: spacing(1.5);
+  }
 }
 
 .post-tags { 
@@ -80,17 +86,22 @@
 
 .post-tag {
   display: inline-block;
-
+  
   &:not(:last-of-type) { 
     margin-right: 0.5em;
   }
-
+  
   &:not(:last-of-type) { 
     margin-bottom: .5em;
-
+    
     @media (--min-560) { 
       margin-bottom: 0;
     }
+  }
+  
+  // Descendants
+  a {
+    padding-bottom: 0 !important; // TODO: Fix specificity issue
   }
 }
 

@@ -152,6 +152,8 @@
     &.-horizontal {
       @include grid;
 
+      grid-row-gap: calc(1 * var(--spacing-unit));
+
       .collections-label {
         grid-column: 1 / -1;
       }
@@ -183,11 +185,7 @@
 
     &.-vertical {
       .collections-entry {
-        margin-top: spacing(2.5);
-      
-        &:not(:first-of-type) {
-          margin-top: spacing(3.5);
-        }
+        margin-top: spacing(3);
       }
     }
 
@@ -213,22 +211,7 @@
 
       .collections-entry {
         grid-column: auto / span 6;
-
-        &:first-of-type {
-          margin-top: spacing(2);
-
-          @media (--min-720) {
-            margin-top: 0;
-          }
-        }
-
-        &:not(:first-of-type) {
-          margin-top: spacing(3);
-
-          @media (--min-720) {
-            margin-top: 0;
-          }
-        }
+        margin-top: spacing(3);
 
         @media (--min-720) {
           margin-top: 0;
@@ -275,10 +258,6 @@
 
   .collections-link {
     margin-top: spacing(1);
-
-    @media (--min-720) {
-      margin-top: spacing(2);
-    }
   }
 
   // More Link

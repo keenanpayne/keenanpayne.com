@@ -1,0 +1,9 @@
+{% macro output(text, class) %}
+  {% if text %}
+    <p class="_label {{ class }}">
+      <span>
+        {{ text }}
+      </span>
+    </p>
+  {% endif %}
+{% endmacro %}

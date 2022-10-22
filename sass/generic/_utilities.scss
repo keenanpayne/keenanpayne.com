@@ -88,25 +88,41 @@
 }
 
 ._label { 
-  border-bottom: 1px solid var(--color-border);
+  align-items: center;
   color: var(--color-label);
+  display: flex;
   font-family: var(--font-family-mono);
-  font-size: 20px;
+  font-size: 18px;
   font-variant: all-small-caps;
   letter-spacing: .01em;
   line-height: 1;
   margin-bottom: 0;
   margin-top: 0;
   word-spacing: -.1em;
+
+  &:after {
+    background-color: var(--color-border-light);
+    content: '';
+    display: block;
+    flex: 1;
+    height: 1px;
+    margin-top: .2em;
+  }
+
+  > span {
+    padding-right: spacing(1);
+  }
 }
 
 // TODO: Fix specificity issues when used on links
 ._label-sans {
   --link-color: var(--gray-darkest-1) !important;
 
+  font-size: 20px;
   font-variant: all-small-caps;
   font-weight: var(--font-weight-bold);
-  margin-bottom: spacing(1);
+  letter-spacing: .0075em;
+  line-height: 1;
 
   @media (--dark) {
     --link-color: var(--gray-lighter) !important;
