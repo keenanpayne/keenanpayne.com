@@ -25,12 +25,16 @@
 }
 
 .header-logo {
-  font-size: 40px;
+  font-size: 36px;
   font-weight: var(--font-weight-heavy);
   letter-spacing: -.05em;
   line-height: .775;
   margin-bottom: 0;
   margin-top: 0;
+
+  @media (--min-720) {
+    font-size: 40px;
+  }
 
   // Descendants
   a {
