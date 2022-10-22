@@ -64,10 +64,16 @@
 // ---------------
 
 .navigation-icons {
+  @include a11yHidden;
+
   align-items: center;
   align-self: end;
   display: flex;
   margin-bottom: spacing(1.5);
+
+  @media (--min-560) {
+    @include a11yVisible;
+  }
   
   @media (--min-720) {
     margin-bottom: spacing(2);
