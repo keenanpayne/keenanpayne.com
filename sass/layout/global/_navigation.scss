@@ -31,7 +31,7 @@
   text-decoration: none;
 
   &:not(:first-of-type) { 
-    margin-top: spacing(1.5);
+    margin-top: spacing(1.25);
     
     @media (--min-560) {
       margin-top: 0;
