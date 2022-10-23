@@ -2,7 +2,7 @@
 // Newsletter
 // ==================================================
 
-.newsletter {  
+.newsletter { 
   // Modifiers
   &.-standalone {
     .newsletter-cta {
@@ -18,17 +18,15 @@
   }
 
   &.-pre-footer {
-    --newsletter-background: var(--yellow-dark);
-    --newsletter-border: var(--gray-lightish);
-    
-    background-color: var(--newsletter-background);
+    background-color: var(--yellow-dark);
+    color: var(--plum-dark);
     margin-top: spacing(var(--top-margin, 0));
     padding-bottom: spacing(8);
     padding-top: spacing(8);
-    
-    @media (--dark) {
-      --newsletter-background: var(--exodus-fruit);
-      --newsletter-border: var(--exodus-fruit-dark);
+
+    // Descendants
+    p {
+      color: var(--plum-dark);
     }
   }
 }
