@@ -63,7 +63,9 @@ https://github.com/keenanpayne/keenanpayne.com
           <nav class="navigation-primary">
             {%- for entry in collections.all | eleventyNavigation -%}
               <a class="navigation-primary-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
-                {{ entry.title }}
+                <span data-content="{{ entry.title }}">
+                  {{ entry.title }}
+                </span>
               </a>
             {%- endfor -%}
           </nav>

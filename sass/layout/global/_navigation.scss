@@ -27,8 +27,36 @@
 }
 
 .navigation-primary-item {
+  --underline-color: var(--exodus-fruit);
+  
   font-size: 18px;
+  position: relative;
   text-decoration: none;
+  transition: clip-path 275ms ease;
+  
+  @media (--dark) {
+    --underline-color: var(--yellow-dark);
+  }
+  
+  &:hover span::before, 
+  &:focus span::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  // Descendants
+  span {
+    display: inline-block;
+    position: relative;
+    
+    &::before {
+      clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+      color: var(--underline-color);
+      content: attr(data-content);
+      position: absolute;
+      text-decoration: underline;
+      transition: clip-path 275ms ease;
+    }
+  }
 
   &:not(:first-of-type) { 
     margin-top: spacing(1.25);
@@ -41,10 +69,6 @@
     @media (--min-720) {
       margin-left: spacing(6);
     }
-  }
-
-  &:hover {
-    text-decoration: underline;
   }
   
   // Modifiers
