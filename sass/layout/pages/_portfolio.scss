@@ -31,8 +31,7 @@
 }
 
 .portfolio-title { 
-  margin-bottom: .5rem;
-  margin-top: .75rem;
+  margin-bottom: .75rem;
   
   @media (--min-960) {
     @include text-large();
@@ -143,6 +142,22 @@
 
 .portfolio-stat {
   max-width: 55ch;
+
+  // Descendants
+  > strong {
+    position: relative;
+    
+    &::after {
+      background: linear-gradient(to right, var(--orange), var(--carmine-pink), var(--exodus-fruit));
+      bottom: 0;
+      border-radius: 1px;
+      content: '';
+      height: 3px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
 }
 
 .portfolio-cover {
