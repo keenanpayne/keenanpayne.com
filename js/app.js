@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {
           // Lazy load background images
           } else if (elementTag == 'A') {
             var imageSource = element.target.dataset.src;
-            element.target.style.setProperty('--background', `url(${imageSource})`);
+            element.target.style.setProperty('--background', `url("${imageSource}")`);
 
           // Lazy load images
           } else if (elementTag == 'IMG') {
