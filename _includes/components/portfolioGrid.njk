@@ -49,6 +49,7 @@
         {% set assetTransform = res.asset_transform %}
         {% set videoURL = 'https://res.cloudinary.com/keenan-payne/video/upload/' ~ assetTransform ~ '/' ~ video %}
         {% set imageURL = 'https://res.cloudinary.com/keenan-payne/image/upload/' ~ assetTransform ~ '/' ~ image %}
+        {% set imageURLRaw = 'https://res.cloudinary.com/keenan-payne/image/upload/' ~ image %}
 
         <div class="portfolioGrid-item {{ '-video' if video }} {{ '-image' if image }}">
           {%- if video -%}
@@ -67,7 +68,7 @@
           {%- if image -%}
             {% if contained %}
               <a 
-                href="{{ imageURL }}" 
+                href="{{ imageURLRaw }}" 
                 title="Enlarge image for {{ title }}" 
                 class="portfolioGrid-imageTile" 
                 data-src="{{ imageURL }}" 
