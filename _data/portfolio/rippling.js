@@ -23,6 +23,18 @@ module.exports = {
   overview: "Rippling offers a unified platform for managing employees, payroll, benefits, expenses, IT, and HR for companies.<br><br>In under two years, Rippling has gone from market disrupter to market leader with its innovative employee management platform, going from a valuation of <strong>$1b to $10b</strong> and becoming the go-to software for companies worldwide.",
   lede: "Building a high-performing marketing website for a rapidly growing employee management platform.",
   cover: "v1666628553/portfolio/rippling/cover_alt_nbrk5p.png",
+  people: {
+    [1]: {
+      name: "Ilija Vujinovic",
+      position: "Design Partner",
+      url: "https://dribbble.com/ilijav"
+    },
+    [2]: {
+      name: "Rob Schneiderman",
+      position: "Development Partner",
+      url: "https://www.linkedin.com/in/robert-schneiderman/"
+    }
+  },
   assets: {
     [1]: {
       shot_link: "https://dribbble.com/shots/11657790-Rippling-Homepage",
@@ -43,8 +55,7 @@ module.exports = {
       link: "",
       shot_link: "https://dribbble.com/shots/11658119-Rippling-Pricing",
       image: "v1666627885/portfolio/rippling/pricing_bvuf6h.png",
-      asset_transform: "f_auto,q_auto,w_800",
-      title: "Pricing",
+      asset_transform: "f_auto,q_auto,w_800",      title: "Pricing",
       caption: ""
     },
     [4]: {
