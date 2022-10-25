@@ -141,6 +141,10 @@
   grid-row-gap: calc(1.5 * var(--spacing-unit));
 }
 
+.portfolio-detail-person {
+  white-space: nowrap;
+}
+
 .portfolio-detail-position {
   color: var(--gray-darkest);
   display: block;
