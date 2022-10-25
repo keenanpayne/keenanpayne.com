@@ -3,7 +3,7 @@ module.exports = {
   name: "Rippling",
   project: "Website rebuild",
   year: "2020–2021",
-  size: "10001 to 50000",
+  size: "1000 to 5000",
   industry: "HR and IT management software",
   color: "#ffb81c",
   role: "Web Developer",
@@ -20,8 +20,8 @@ module.exports = {
     "WordPress",
     "Lottie"
   ],
-  overview: "",
-  lede: "",
+  overview: "Rippling offers a unified platform for managing employees, payroll, benefits, expenses, IT, and HR for companies.<br><br>In under two years, Rippling has gone from market disrupter to market leader with its innovative employee management platform, going from a valuation of <strong>$1b to $10b</strong> and becoming the go-to software for companies worldwide.",
+  lede: "Building a high-performing marketing website for a rapidly growing employee management platform.",
   cover: "v1666628553/portfolio/rippling/cover_alt_nbrk5p.png",
   assets: {
     [1]: {
@@ -69,10 +69,10 @@ module.exports = {
       caption: ""
     },
     [7]: {
-      image: "v1666627851/portfolio/rippling/apps-for-everything_pxzxyv.gif",
-      asset_transform: "f_auto,q_auto,w_1300",
+      video: "v1666627851/portfolio/rippling/apps-for-everything_pxzxyv",
+      asset_transform: "f_mp4,w_1300",
       title: "Apps for Everything animation",
-      caption: ""
+      autoplay: true
     },
   }
 }
