@@ -27,7 +27,7 @@ module.exports = {
     [1]: {
       name: "Play Studio",
       position: "Design Partner",
-      url: "https://www.play.studio/rippling/"
+      url: "https://www.play.studio/sparrow/"
     },
     [2]: {
       name: "Jaime Hernández",
