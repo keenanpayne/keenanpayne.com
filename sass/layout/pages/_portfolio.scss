@@ -134,6 +134,23 @@
   }
 }
 
+.portfolio-detail-people {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: calc(1 * var(--spacing-unit));
+  grid-row-gap: calc(1.5 * var(--spacing-unit));
+}
+
+.portfolio-detail-position {
+  color: var(--gray-darkest);
+  display: block;
+  font-size: 12px;
+
+  @media (--dark) {
+    color: var(--gray-darker);
+  }
+}
+
 .portfolio-label {
   & + * {
     margin-top: .5rem;
