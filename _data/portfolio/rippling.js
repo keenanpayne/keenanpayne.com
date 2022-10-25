@@ -1,5 +1,4 @@
 module.exports = {
-  featured: true,
   name: "Rippling",
   project: "Website rebuild",
   year: "2020–2021",
