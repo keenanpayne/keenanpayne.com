@@ -2,8 +2,8 @@
 permalink: '/portfolio/rippling/'
 title: 'Rippling'
 meta: 
-  description: ''
-  image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1666628151/portfolio/rippling/cover_rcfvoh.png'
+  description: 'Building a high-performing marketing website for a rapidly growing employee management platform.'
+  image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1666628553/portfolio/rippling/cover_alt_nbrk5p.png'
 data: rippling
 sections: 
   - type: portfolioGrid
@@ -21,13 +21,11 @@ sections:
       - 2
       - 5
       - 6
-  # TODO: Figure out why this isn't displaying. Maybe I need to transform with 
-  #       Cloudinary from gif to MP4?
-  # - type: portfolioGrid
-  #   project: rippling
-  #   contained: true
-  #   enlarge: true
-  #   modifier: '-one-col'
-  #   items: 
-  #     - 7
+  - type: portfolioGrid
+    project: rippling
+    contained: true
+    enlarge: true
+    modifier: '-one-col'
+    items: 
+      - 7
 ---
