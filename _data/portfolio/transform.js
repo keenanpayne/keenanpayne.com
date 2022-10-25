@@ -24,7 +24,14 @@ module.exports = {
   caption: "",
   people: {
     [1]: {
-      name: "Everyone from Play Studio"
+      name: "Play Studio",
+      position: "Design Partner",
+      url: "https://www.play.studio/rippling/"
+    },
+    [2]: {
+      name: "Jaime Hernández",
+      position: "Development Partner",
+      url: "https://jaime.one/"
     }
   },
   testimonials: {

@@ -109,18 +109,27 @@ ignoreBaseOutput: true
         <div class="portfolio-detail -full-width">
           {{ label.output('Collaborators', 'portfolio-label') }}
 
-          <ul>
+          <ul class="portfolio-detail-people">
             {% for id, person in people %}
               {% set name = person.name %}
               {% set personUrl = person.url %}
+              {% set personPosition = person.position %}
 
-              <li>
+              <li class="portfolio-detail-person">
                 {% if personUrl %}
                   <a href="{{ personUrl }}" target="_blank" rel="noopener">
-                    {{ name }}
+                {% endif %}
+
+                {{ name }}
+
+                {% if personUrl %}
                   </a>
-                {% else %}
-                  {{ name }}
+                {% endif %}
+
+                {% if personPosition %}
+                  <span class="portfolio-detail-position">
+                    {{ personPosition }}
+                  </span>
                 {% endif %}
               </li>
             {% endfor %}

@@ -31,8 +31,7 @@
 }
 
 .portfolio-title { 
-  margin-bottom: .5rem;
-  margin-top: .75rem;
+  margin-bottom: .75rem;
   
   @media (--min-960) {
     @include text-large();
@@ -135,6 +134,27 @@
   }
 }
 
+.portfolio-detail-people {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: calc(1 * var(--spacing-unit));
+  grid-row-gap: calc(1.5 * var(--spacing-unit));
+}
+
+.portfolio-detail-person {
+  white-space: nowrap;
+}
+
+.portfolio-detail-position {
+  color: var(--gray-darkest);
+  display: block;
+  font-size: 12px;
+
+  @media (--dark) {
+    color: var(--gray-darker);
+  }
+}
+
 .portfolio-label {
   & + * {
     margin-top: .5rem;
@@ -143,6 +163,22 @@
 
 .portfolio-stat {
   max-width: 55ch;
+
+  // Descendants
+  > strong {
+    position: relative;
+    
+    &::after {
+      background: linear-gradient(to right, var(--orange), var(--carmine-pink), var(--exodus-fruit));
+      bottom: 0;
+      border-radius: 1px;
+      content: '';
+      height: 3px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
 }
 
 .portfolio-cover {

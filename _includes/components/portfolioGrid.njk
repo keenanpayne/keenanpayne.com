@@ -48,7 +48,9 @@
         {% set shotLink = res.shot_link %}
         {% set assetTransform = res.asset_transform %}
         {% set videoURL = 'https://res.cloudinary.com/keenan-payne/video/upload/' ~ assetTransform ~ '/' ~ video %}
+        {% set videoURLRaw = 'https://res.cloudinary.com/keenan-payne/video/upload/' ~ video %}
         {% set imageURL = 'https://res.cloudinary.com/keenan-payne/image/upload/' ~ assetTransform ~ '/' ~ image %}
+        {% set imageURLRaw = 'https://res.cloudinary.com/keenan-payne/image/upload/' ~ image %}
 
         <div class="portfolioGrid-item {{ '-video' if video }} {{ '-image' if image }}">
           {%- if video -%}
@@ -67,12 +69,12 @@
           {%- if image -%}
             {% if contained %}
               <a 
-                href="{{ imageURL }}" 
+                href="{{ imageURLRaw }}" 
                 title="Enlarge image for {{ title }}" 
                 class="portfolioGrid-imageTile" 
                 data-src="{{ imageURL }}" 
                 {% if preventLazy %} 
-                  style="--background: url({{ imageURL }})" 
+                  style='--background: url({{ imageURL }})'
                 {% else %}
                   data-lazy
                 {% endif %}>
@@ -97,7 +99,7 @@
               {%- endif -%}
 
               {% if enlarge %}
-                <a title="Enlarge image for {{ title }}" href="{% if shotLink %}{{ shotLink }}{% elif image %}{{ imageURL }}{% elif video %}{{ videoURL }}{% else %}#{% endif %}" class="portfolioGrid-enlarge" target="_blank" rel="noopener">
+                <a title="Enlarge image for {{ title }}" href="{% if shotLink %}{{ shotLink }}{% elif image %}{{ imageURLRaw }}{% elif video %}{{ videoURLRaw }}{% else %}#{% endif %}" class="portfolioGrid-enlarge" target="_blank" rel="noopener">
                   <span class="_hidden">
                     Enlarge image for {{ title }}
                   </span>

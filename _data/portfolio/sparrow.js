@@ -23,17 +23,22 @@ module.exports = {
   overview: "I rebuilt the Sparrow website from the ground up as the company geared up for its Series A fundraising round. We designed the website to position Sparrow as a disrupter in the employee automation software market.",
   lede: "Building a marketing website for an emerging employee automation platform.",
   cover: "v1665630813/portfolio/sparrow/cover_qommce.png",
-  caption: "",
   people: {
     [1]: {
-      name: "Keenan Payne"
+      name: "Play Studio",
+      position: "Design Partner",
+      url: "https://www.play.studio/sparrow/"
     },
     [2]: {
-      name: "Deborah Hanus"
+      name: "Jaime Hernández",
+      position: "Development Partner",
+      url: "https://jaime.one/"
     },
     [3]: {
-      name: "Everyone from Play Studio"
-    }
+      name: "Nels Anderek",
+      position: "Development Partner",
+      url: "https://www.linkedin.com/in/nelsandereck/"
+    },
   },
   testimonials: {
     [1]: {
