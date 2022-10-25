@@ -49,13 +49,15 @@ module.exports = {
       video: "v1666627851/portfolio/rippling/homepage_svzjje.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Homepage",
+      autoplay: true,
       caption: ""
     },
     [3]: {
       link: "",
       shot_link: "https://dribbble.com/shots/11658119-Rippling-Pricing",
       image: "v1666627885/portfolio/rippling/pricing_bvuf6h.png",
-      asset_transform: "f_auto,q_auto,w_800",      title: "Pricing",
+      asset_transform: "f_auto,q_auto,w_800",
+      title: "Pricing",
       caption: ""
     },
     [4]: {
@@ -80,9 +82,9 @@ module.exports = {
       caption: ""
     },
     [7]: {
-      video: "v1666627851/portfolio/rippling/apps-for-everything_pxzxyv",
-      asset_transform: "f_mp4,w_1300",
-      title: "Apps for Everything animation",
+      video: "v1666661501/portfolio/rippling/apps-for-everything_ybtpxj.mp4",
+      asset_transform: "f_auto,q_auto,w_1300",
+      title: "Apps for Everything",
       autoplay: true
     },
   }
