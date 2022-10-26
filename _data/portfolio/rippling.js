@@ -1,9 +1,10 @@
 module.exports = {
+  featured: true,
   name: "Rippling",
   project: "Website rebuild",
   year: "2020–2021",
   size: "1000 to 5000",
-  industry: "HR and IT management software",
+  industry: "Employee management software",
   color: "#ffb81c",
   role: "Web Developer",
   url: "https://rippling.com",
@@ -19,7 +20,7 @@ module.exports = {
     "WordPress",
     "Lottie"
   ],
-  overview: "Rippling offers a unified platform for managing employees, payroll, benefits, expenses, IT, and HR for companies.<br><br>In under two years, Rippling has gone from market disrupter to market leader with its innovative employee management platform, going from a valuation of <strong>$1b to $10b</strong> and becoming the go-to software for companies worldwide.",
+  overview: "Rippling offers a unified platform for managing employees, payroll, benefits, expenses, IT, and HR for companies. <br><br>In under two years, Rippling has gone from market disrupter to market leader with its innovative employee management platform, going from a valuation of <strong>$1b to $10b</strong> and becoming the go-to software for companies worldwide.",
   lede: "Building a high-performing marketing website for a rapidly growing employee management platform.",
   cover: "v1666628553/portfolio/rippling/cover_alt_nbrk5p.png",
   people: {

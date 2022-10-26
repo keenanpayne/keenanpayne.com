@@ -19,7 +19,7 @@ module.exports = {
     "JavaScript"
   ],
   overview: 'I built a WordPress content portal to highlight standout projects from "heroes" on the GoFundMe platform, integrating it into their existing codebase and design paradigms.',
-  lede: "Building a content hub to highlight people who are making a difference.",
+  lede: "Building a content hub for the world's leading fundraising platform to highlight people making a difference.",
   description: "Who hasn't heard of GoFundMe? They're the <em>most popular</em> personal fundraising website in the world and have helped facilitate <strong>$9 billion</strong> in fundraising for personal causes.",
   cover: 'v1665763480/portfolio/gofundme/cover_m7erev.png',
   pillars: {
