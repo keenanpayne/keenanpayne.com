@@ -44,8 +44,8 @@ module.exports = {
   assets: {
     [1]: {
       link: "https://transform.co/product/",
-      video: "v1665698496/portfolio/transform/product_vj1sms.mp4",
-      asset_transform: "f_auto,q_auto,w_800",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666816581/portfolio/transform/product_sg2aox.mp4",
+      asset_transform: "f_auto,q_auto,w_1000",
       title: "Product Overview",
       caption: ""
     },
@@ -59,7 +59,7 @@ module.exports = {
     },
     [3]: {
       link: "https://transform.co/product/",
-      image: "v1665698495/portfolio/transform/product_xvqys3.png",
+      image: "https://res.cloudinary.com/keenan-payne/image/upload/v1666819080/portfolio/transform/product_ynveod.png",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Product",
       caption: "",
@@ -75,10 +75,11 @@ module.exports = {
     },
     [5]: {
       link: "https://web.archive.org/web/20220406001101/https://transform.co/",
-      video: "v1665698495/portfolio/transform/homepage-features_kfv2ls.mp4",
-      asset_transform: "f_auto,q_auto,w_800",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666817055/portfolio/transform/homepage_zcuyu6.mp4",
+      asset_transform: "f_auto,q_auto,w_1000",
       title: "Homepage",
-      caption: ""
+      caption: "",
+      autoplay: true
     },
     [6]: {
       link: "https://transform.co/careers/",
