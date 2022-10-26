@@ -1,6 +1,6 @@
 module.exports = {
   name: "Sparrow",
-  project: "Website Rebuild",
+  project: "Website rebuild",
   year: "2021",
   size: "50 to 100",
   industry: "HR Software",
@@ -19,7 +19,7 @@ module.exports = {
     "Eleventy",
     "Lottie"
   ],
-  overview: "I rebuilt the Sparrow website from the ground up as the company geared up for its Series A fundraising round. We designed the website to position Sparrow as a disrupter in the employee automation software market. <br><br>Sparrow has since raised <strong>$20m</strong> in Series A funding and is using their website to expand their customer base.",
+  overview: "I rebuilt the Sparrow website from the ground up as the company geared up for its Series A fundraising round. We designed the website to position Sparrow as a disrupter in the employee automation software market. <br><br>Sparrow has since raised <strong>$20m in Series A funding</strong> and is using their website to expand their customer base.",
   lede: "Building a marketing website for an emerging employee automation platform.",
   cover: "v1665630813/portfolio/sparrow/cover_qommce.png",
   people: {

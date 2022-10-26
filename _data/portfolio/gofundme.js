@@ -12,11 +12,11 @@ module.exports = {
     "Web Development"
   ],
   technologies: [
-    "WordPress",
-    "PHP",
     "HTML",
     "CSS",
-    "JavaScript"
+    "JavaScript",
+    "PHP",
+    "WordPress",
   ],
   overview: 'I built a WordPress content portal to highlight standout projects from "heroes" on the GoFundMe platform, integrating it into their existing codebase and design paradigms.',
   lede: "Building a content hub for the world's leading fundraising platform to highlight people making a difference.",

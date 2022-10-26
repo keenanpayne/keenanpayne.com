@@ -17,8 +17,18 @@ sections:
     items: 
       - 4
       - 3
+  - type: portfolioGrid
+    project: transform
+    contained: true
+    enlarge: true
+    modifier: '-three-col'
+    eyebrow: ''
+    headline: ''
+    description: ''
+    items: 
       - 2
       - 6
+      - 7
   - type: portfolioGrid
     project: transform
     contained: true

@@ -1,6 +1,6 @@
 module.exports = {
   name: "Transform",
-  project: "Website Rebuild",
+  project: "Website rebuild",
   year: "2021",
   size: "11 to 50",
   industry: "Data Software",
@@ -13,13 +13,14 @@ module.exports = {
   technologies: [
     "HTML",
     "CSS",
+    "Sass",
     "JavaScript",
     "Eleventy",
     "Netlify CMS",
     "Lottie"
   ],
-  overview: "Transform is the first centralized ‘metrics store’ that empowers data analysts to deliver accurate, timely, confident, and fast insights.",
-  lede: "",
+  overview: "I rebuilt the Transform website from the ground up as the company geared up for its Series A fundraising round. We designed the website to position Transform as a disrupter in the data management software market. <br><br>Transform has since raised <strong>$24m in Series A funding</strong> and is using their website to expand their customer base and recruit top talent.",
+  lede: "Building a marketing website for the world's first centralized metrics store.",
   cover: "v1665763707/portfolio/transform/cover_yrt6ni.png",
   caption: "",
   people: {
@@ -85,7 +86,13 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_800",
       title: "Careers",
       caption: "",
-      preventLazy: true
+    },
+    [7]: {
+      link: "https://web.archive.org/web/20210803081337/https://transform.co/demo",
+      image: "v1666801402/portfolio/transform/demo_tohpun.png",
+      asset_transform: "f_auto,q_auto,w_800",
+      title: "Request a Demo",
+      caption: "",
     },
   }
 }
