@@ -38,8 +38,8 @@
     <div class="portfolioGrid-items">
       {%- for item in items -%}
         {% set res = query[item] %}
-        {% set video = res.video %}
-        {% set image = res.image %}
+        {% set video = res.video | replace("https://res.cloudinary.com/keenan-payne/video/upload/", "") %}
+        {% set image = res.image | replace("https://res.cloudinary.com/keenan-payne/image/upload/", "") %}
         {% set title = res.title %}
         {% set caption = res.caption %}
         {% set autoplay = res.autoplay %}
