@@ -24,38 +24,31 @@
       {# Posts #}
       {% if itemsFrom == 'featured' or itemsFrom == 'posts' %}
         {%- for post in collection | reverse -%}
-          {{ entry.output(
-            post.data.cover,
-            post.data.title,
-            post.data.lede,
-            post.url,
-            'Read article'
-          ) }}
+          {% set entryCover = post.data.cover %}
+          {% set entryTitle = post.data.title %}
+          {% set entryLede = post.data.lede %}
+          {% set entryUrl = post.url %}
+
+          {{ entry.output(entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
         {% endfor %}
 
       {# Portfolio #}
       {% elif itemsFrom == 'portfolio' %}
         {% for id, item in portfolio %}
+          {% set portfolioCover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
+          {% set portfolioName = item.name %}
+          {% set portfolioLede = item.lede %}
+          {% set portfolioUrl = '/portfolio/' ~ item.name | lower | replace(' ', '-') %}
+          {% set portfolioMore = 'View case study' %}
+
           {% if not item.template %}
             {% if onlyFeatured %}
               {% if item.featured %}
-                {{ entry.output(
-                  'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover,
-                  item.name,
-                  item.lede,
-                  '/portfolio/' ~ item.name | lower,
-                  'View case study'
-                ) }}
+                {{ entry.output(portfolioCover, portfolioName, portfolioLede, portfolioUrl, portfolioMore) }}
               {% endif %}
             {% else %}
               {% if not item.featured %}
-                {{ entry.output(
-                  'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover,
-                  item.name,
-                  item.lede,
-                  '/portfolio/' ~ item.name | lower,
-                  'View case study'
-                ) }}
+                {{ entry.output(portfolioCover, portfolioName, portfolioLede, portfolioUrl, portfolioMore) }}
               {% endif %}
             {% endif %}
           {% endif %}
