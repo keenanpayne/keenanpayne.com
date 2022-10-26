@@ -112,7 +112,7 @@
   --background: var(--yellow-dark);
   --background-hover: var(--yellow-light);
   --border: var(--plum-light);
-  --image-height: auto;
+  --image-height: 300px;
   --text-color: var(--plum-dark);
 
   .portfolioGrid-item {
@@ -151,11 +151,19 @@
   }
 
   // Column adjustments
-  &.-two-col { 
-    --image-height: 350px;
+  &.-one-col { 
+    @media (--min-960) {
+      --image-height: 600px;
+    }
+
+    @media (--min-1120) {
+      --image-height: 800px;
+    }
   }
 
-  &.-three-col { 
-    --image-height: 300px;
+  &.-two-col { 
+    @media (--min-960) {
+      --image-height: 375px;
+    }
   }
 }
