@@ -149,18 +149,29 @@
     margin-top: spacing(var(--top-margin, 0));
 
     // Modifiers
-    &.-horizontal {
+    &.-horizontal,
+    &.-horizontal-2-columns {
       @include grid;
-
-      grid-row-gap: calc(1 * var(--spacing-unit));
 
       .collections-label {
         grid-column: 1 / -1;
       }
 
-      .collections-entry {
-        grid-column: auto / span 6;
+      .collections-content {
+        flex: 1;
+      }
 
+      .collections-entry {
+        display: flex;
+        flex-direction: column;
+        grid-column: auto / span 6;
+      }
+    }
+
+    &.-horizontal {
+      grid-row-gap: calc(1 * var(--spacing-unit));
+
+      .collections-entry {
         &:first-of-type {
           margin-top: spacing(2);
 
@@ -183,6 +194,16 @@
       }
     }
 
+    &.-horizontal-2-columns {
+      .collections-entry {
+        margin-top: spacing(3);
+
+        @media (--min-720) {
+          margin-top: 0;
+        }
+      }
+    }
+
     &.-vertical {
       .collections-entry {
         margin-top: spacing(3);
@@ -196,25 +217,6 @@
       
         &:not(:first-of-type) {
           margin-top: spacing(5);
-        }
-      }
-    }
-
-    &.-horizontal-2-columns {
-      --image-height: 300px;
-
-      @include grid;
-
-      .collections-label {
-        grid-column: 1 / -1;
-      }
-
-      .collections-entry {
-        grid-column: auto / span 6;
-        margin-top: spacing(3);
-
-        @media (--min-720) {
-          margin-top: 0;
         }
       }
     }
