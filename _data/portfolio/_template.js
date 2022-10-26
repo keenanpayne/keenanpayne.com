@@ -1,4 +1,6 @@
 module.exports = {
+  template: true,
+  featured: true/false,
   name: "",
   project: "",
   year: "",
@@ -13,19 +15,21 @@ module.exports = {
   technologies: [
     "",
   ],
+  caption: "",
   overview: "",
   lede: "",
-  cover: "  ",
-  caption: "",
-  people: {
-    [1]: {
-      name: ""
-    }
+  cover: "",
+  pillars: {
+    client: "",
+    challenge: "",
+    solution: "",
   },
-  name: "",
   people: {
     [1]: {
+      name: "",
       position: "",
+      url: "",
+      image: "",
     }
   },
   testimonials: {
