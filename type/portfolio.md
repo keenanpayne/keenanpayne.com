@@ -18,6 +18,14 @@ sections:
     items: 
       from: portfolio
       limit: 3
+      featured: true
+  - type: entries
+    orientation: horizontal
+    spacing: 8
+    items: 
+      from: portfolio
+      featured: false
+      limit: 1
   - type: cta
     heading: "Interested in working together?"
     subheading: "I'm scheduled out until the end of 2022 but I am interested in talking with folks who want to collaborate next year."

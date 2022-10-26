@@ -17,12 +17,12 @@
   {% if items %}
     {% set itemsFrom = items.from %}
     {% set itemsLimit = items.limit %}
+    {% set onlyFeatured = items.featured %}
+    {% set collection = collections[itemsFrom] | head(-itemsLimit) %}
 
-    {# Featured Articles #}
-    {% if itemsFrom == 'featured' or itemsFrom == 'posts' %}
-      {% set collection = collections[itemsFrom] | head(-itemsLimit) %}
-
-      {% if collection.length %} 
+    {% if collection.length %} 
+      {# Posts #}
+      {% if itemsFrom == 'featured' or itemsFrom == 'posts' %}
         {%- for post in collection | reverse -%}
           {{ entry.output(
             post.data.cover,
@@ -31,26 +31,39 @@
             post.url,
             'Read article'
           ) }}
-        {%- endfor -%}
-      {% else %}
-        {% set content = 'No content is published here yet.' %}
-        {% include "type/notice.html" %}
-      {% endif %}
-    {% endif %}
+        {% endfor %}
 
-    {# Portfolio Items #}
-    {% if itemsFrom == 'portfolio' %}
-      {% for id, item in portfolio %}
-        {% if item.featured %}
-          {{ entry.output(
-            'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover,
-            item.name,
-            item.lede,
-            '/portfolio/' ~ item.name | lower,
-            'View case study'
-          ) }}
-        {% endif %}
-      {% endfor %}
+      {# Portfolio #}
+      {% elif itemsFrom == 'portfolio' %}
+        {% for id, item in portfolio %}
+          {% if not item.template %}
+            {% if onlyFeatured %}
+              {% if item.featured %}
+                {{ entry.output(
+                  'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover,
+                  item.name,
+                  item.lede,
+                  '/portfolio/' ~ item.name | lower,
+                  'View case study'
+                ) }}
+              {% endif %}
+            {% else %}
+              {% if not item.featured %}
+                {{ entry.output(
+                  'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover,
+                  item.name,
+                  item.lede,
+                  '/portfolio/' ~ item.name | lower,
+                  'View case study'
+                ) }}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% else %}
+      {% set content = 'No content is published here yet.' %}
+      {% include "type/notice.html" %}
     {% endif %}
   {% endif %}
 </section>

@@ -5,6 +5,7 @@ meta:
   description: 'Building a high-performing marketing website for a rapidly growing employee management platform.'
   image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1666628553/portfolio/rippling/cover_alt_nbrk5p.png'
 data: rippling
+featured: true
 sections: 
   - type: portfolioGrid
     project: rippling
