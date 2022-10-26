@@ -139,8 +139,8 @@
     margin-top: spacing(2);
     max-width: 35ch;
     
-    @media (--min-560) {
-      margin-top: spacing(3);
+    @media (--min-720) {
+      margin-top: spacing(2.5);
     }
   }
 
