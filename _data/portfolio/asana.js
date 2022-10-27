@@ -119,7 +119,7 @@ module.exports = {
       caption: ""
     },
     [12]: {
-      link: "https://web.archive.org/web/20171119132904/https://asana.com/how-to/marketing/full",
+      link: "https://web.archive.org/web/20190329043705/https://asana.com/",
       image: "v1662676706/portfolio/asana/asana-homepage_a1gzqf.jpg",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Homepage — 2019",
@@ -131,7 +131,6 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_600",
       title: "Pricing — 2017",
       caption: "",
-      preventLazy: true
     },
     [14]: {
       link: "https://web.archive.org/web/20171130230805/https://asana.com/",
@@ -154,7 +153,6 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_600",
       title: "Careers — 2017",
       caption: "",
-      preventLazy: true
     },
     [17]: {
       link: "https://web.archive.org/web/20171129223741/https://asana.com/company",
@@ -178,7 +176,6 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_600",
       title: "Apps & Integrations — 2017",
       caption: "",
-      preventLazy: true
     },
     [20]: {
       link: "https://web.archive.org/web/20190405051809/https://asana.com/developers",
@@ -206,7 +203,7 @@ module.exports = {
       image: "v1662926173/portfolio/asana/asana-developers-api-explorer_xriekl.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Asana API Explorer",
-      caption: 'Built by <a href="https://www.linkedin.com/in/epelz/">Eric Pelz</a>'
+      caption: 'Built alongside <a href="https://www.linkedin.com/in/epelz/">Eric Pelz</a>'
     },
     [24]: {
       link: "https://web.archive.org/web/20190413124418/https://asana.com/pricing",
@@ -225,7 +222,6 @@ module.exports = {
       image: "v1662929205/portfolio/asana/asana-press-2017_dnb2nq.png",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Press — 2017",
-      preventLazy: true
     },
     [27]: {
       link: "https://web.archive.org/web/20190630214525/https://asana.com/#productTour",
@@ -251,6 +247,57 @@ module.exports = {
       video: "https://res.cloudinary.com/keenan-payne/video/upload/f_auto,w_1300/v1662587263/portfolio/asana/asana-for-marketers-dribbble_syb54y.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Asana for Marketers",
+      caption: ""
+    },
+    [31]: {
+      link: "https://asana.com/product/workload",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895695/portfolio/asana/workload-scroll_dcb2fa.mp4",
+      asset_transform: "f_auto,q_auto,w_800",
+      title: "Asana Workload",
+      caption: ""
+    },
+    [32]: {
+      link: "https://asana.com/teams/marketing",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895693/portfolio/asana/asana-for-marketers-features_z9ub5m.mp4",
+      asset_transform: "f_auto,q_auto,w_800",
+      title: "Asana for Marketers features",
+      caption: ""
+    },
+    [33]: {
+      link: "https://asana.com/product",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895693/portfolio/asana/product-scroll_jswrtb.mp4",
+      asset_transform: "f_auto,q_auto,w_800",
+      title: "Product Animations",
+      caption: ""
+    },
+    [34]: {
+      link: "https://asana.com/product/workload",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895692/portfolio/asana/workload-hero_nnctxf.mp4",
+      asset_transform: "f_auto,q_auto,w_1300",
+      title: "Workload Hero Animations",
+      caption: "",
+      autoplay: true
+    },
+    [35]: {
+      link: "https://web.archive.org/web/20171119132904/https://asana.com/how-to/marketing/full",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895692/portfolio/asana/marketing-ebook-scroll_w5xjbm.mp4",
+      asset_transform: "f_auto,q_auto,w_800",
+      title: "The Marketer's Playbook",
+      caption: ""
+    },
+    [36]: {
+      link: "https://wavelength.asana.com/about",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895692/portfolio/asana/wavelength-about-scroll_sebcvf.mp4",
+      asset_transform: "f_auto,q_auto,w_1300",
+      title: "Wavelength About",
+      caption: "",
+      autoplay: true
+    },
+    [37]: {
+      link: "https://web.archive.org/web/20190329043705/https://asana.com/",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895692/portfolio/asana/2019-homepage-animation_tmep45.mp4",
+      asset_transform: "f_auto,q_auto,w_800",
+      title: "Homepage animation — 2019",
       caption: ""
     },
   },

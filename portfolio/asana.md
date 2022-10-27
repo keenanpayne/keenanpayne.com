@@ -43,6 +43,14 @@ sections:
     contained: true
     enlarge: true
     modifier: '-two-col'
+    items: 
+      - 37
+      - 33
+  - type: portfolioGrid
+    project: asana
+    contained: true
+    enlarge: true
+    modifier: '-two-col'
     eyebrow: 2014
     headline: 'Asana Blog'
     description: |
@@ -60,6 +68,7 @@ sections:
     contained: true
     enlarge: true
     modifier: '-two-col'
+    eyebrow: "2014–2019"
     headline: 'Landing pages'
     description: |
       I collaborated closely with the marketing and brand design teams to build landing pages for positioning and marketing Asana.
@@ -68,6 +77,16 @@ sections:
       - 4
       - 3
       - 11
+      - 31
+      - 32
+      - 35
+  - type: portfolioGrid
+    project: asana
+    contained: true
+    enlarge: true
+    modifier: '-one-col'
+    items: 
+      - 34
   - type: portfolioGrid
     project: asana
     contained: true
@@ -81,7 +100,6 @@ sections:
       - 21
       - 22
       - 23
-  # TODO: INSERT "behind the scenes" anecdotes here
   - type: portfolioGrid
     project: asana
     contained: true
@@ -97,6 +115,13 @@ sections:
       - 8
       - 9
       - 10
+  - type: portfolioGrid
+    project: asana
+    contained: true
+    enlarge: true
+    modifier: '-one-col'
+    items: 
+      - 36
   - type: portfolioGrid
     project: asana
     contained: true
