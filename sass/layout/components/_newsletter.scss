@@ -32,7 +32,7 @@
 }
 
 .newsletter-title {
-  margin-bottom: 1rem;
+  margin-bottom: 1rem !important; // TODO: Address specificity issue
   margin-top: 0;
 }
 
