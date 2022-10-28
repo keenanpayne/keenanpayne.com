@@ -2,7 +2,7 @@ module.exports = {
   name: "Refactor Capital",
   project: "Website rebuild",
   year: "2021",
-  size: "1",
+  size: "5",
   industry: "Venture Capital",
   color: "#963326",
   role: "Web Developer",
