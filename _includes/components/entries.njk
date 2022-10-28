@@ -17,7 +17,7 @@
   {% if items %}
     {% set itemsFrom = items.from %}
     {% set itemsLimit = items.limit %}
-    {% set onlyFeatured = items.featured %}
+    {% set featured = items.featured %}
     {% set collection = collections[itemsFrom] | head(-itemsLimit) %}
 
     {% if collection.length %} 
@@ -33,26 +33,34 @@
         {% endfor %}
 
       {# Portfolio #}
+      {# TODO: Clean this up; too much duplicate code and confusing logic. #}
       {% elif itemsFrom == 'portfolio' %}
-        {% for id, item in portfolio %}
-          {% set portfolioCover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
-          {% set portfolioName = item.name %}
-          {% set portfolioLede = item.lede %}
-          {% set portfolioUrl = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
-          {% set portfolioMore = 'View case study' %}
+        {% if featured %}
+          {% for feature in featured %}
+            {% set item = portfolio[feature] %}
+            {% set cover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
+            {% set name = item.name %}
+            {% set lede = item.lede %}
+            {% set url = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
+            {% set more = 'View case study' %}
 
-          {% if not item.template %}
-            {% if onlyFeatured %}
-              {% if item.featured %}
-                {{ entry.output(portfolioCover, portfolioName, portfolioLede, portfolioUrl, portfolioMore) }}
-              {% endif %}
-            {% else %}
+            {{ entry.output(cover, name, lede, url, more) }}
+          {% endfor %}
+        {% else %}
+          {% for id, item in portfolio %}
+            {% set portfolioCover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
+            {% set portfolioName = item.name %}
+            {% set portfolioLede = item.lede %}
+            {% set portfolioUrl = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
+            {% set portfolioMore = 'View case study' %}
+
+            {% if not item.template %}
               {% if not item.featured %}
                 {{ entry.output(portfolioCover, portfolioName, portfolioLede, portfolioUrl, portfolioMore) }}
               {% endif %}
             {% endif %}
-          {% endif %}
-        {% endfor %}
+          {% endfor %}
+        {% endif %}
       {% endif %}
     {% else %}
       {% set content = 'No content is published here yet.' %}

@@ -14,17 +14,24 @@ sections:
     subheading: "Below are a few of my favorite projects I've worked on over the past few years."
   - type: entries
     orientation: horizontal
+    heading: "Featured projects"
+    columns: 2
     spacing: 8
     items: 
       from: portfolio
-      limit: 3
-      featured: true
+      limit: 6
+      featured:
+        - asana
+        - rippling
+        - gofundme
+        - collectivei
+        - sparrow
   - type: entries
     orientation: horizontal
+    heading: "Even more projects"
     spacing: 8
     items: 
       from: portfolio
-      featured: false
       limit: 1
   - type: cta
     heading: "Interested in working together?"

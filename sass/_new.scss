@@ -19,7 +19,7 @@
 
 @mixin newH2 {
   font-size: 36px;
-  line-height: 1.045;
+  line-height: 1;
   margin-bottom: 0;
   margin-top: 0;
   
@@ -195,6 +195,16 @@
     }
 
     &.-horizontal-2-columns {
+      .collections-image {
+        @media (--min-1260) {
+          --image-height: 300px;
+        }
+
+        @media (--min-1440) {
+          --image-height: 325px;
+        }
+      }
+
       .collections-entry {
         margin-top: spacing(3);
 
