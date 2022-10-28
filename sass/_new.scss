@@ -69,7 +69,8 @@
   @media (--min-720) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-gap: spacing(2);
+    grid-column-gap: calc(3 * var(--spacing-unit));
+    grid-row-gap: calc(5 * var(--spacing-unit));
   }
 }
 
@@ -147,21 +148,23 @@
   // Collection
   .collections {
     margin-top: spacing(var(--top-margin, 0));
+  }
 
+  .collections-label {
+    margin-bottom: spacing(1);
+  }
+
+  .collections-items {
     // Modifiers
     &.-horizontal,
     &.-horizontal-2-columns {
       @include grid;
 
-      .collections-label {
-        grid-column: 1 / -1;
-      }
-
       .collections-content {
         flex: 1;
       }
 
-      .collections-entry {
+      .collections-item {
         display: flex;
         flex-direction: column;
         grid-column: auto / span 6;
@@ -171,7 +174,7 @@
     &.-horizontal {
       grid-row-gap: calc(1 * var(--spacing-unit));
 
-      .collections-entry {
+      .collections-item {
         &:first-of-type {
           margin-top: spacing(2);
 
@@ -205,7 +208,7 @@
         }
       }
 
-      .collections-entry {
+      .collections-item {
         margin-top: spacing(3);
 
         @media (--min-720) {
@@ -215,13 +218,15 @@
     }
 
     &.-vertical {
-      .collections-entry {
-        margin-top: spacing(3);
+      .collections-item {
+        &:not(:first-of-type) {
+          margin-top: spacing(3);
+        }
       }
     }
 
     &.-vertical-narrow {
-      .collections-entry {
+      .collections-item {
         margin-top: spacing(3);
         max-width: var(--container-small);
       

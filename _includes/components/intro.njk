@@ -1,5 +1,6 @@
 {# Imports #}
 {% import "atoms/label.njk" as label with context %}
+{% import "molecules/entry.njk" as entry %}
 
 {# Component Settings #}
 {% set heading = section.heading %}
@@ -28,30 +29,21 @@
     {% set rightHeading = right.heading %}
     {% set rightItems = right.items %}
 
-    <div class="intro-right collections -vertical">
-      {{ label.output(rightHeading) }}
+    {# TODO: Use existing abstractions in `entries.njk` #}
+    <div class="intro-right collections">
+      {{ label.output(rightHeading, 'collections-label') }}
 
       {% if rightItems %}
-        {% if rightItems == 'services' %}
-          {% for id, obj in services %}
-            {% set name = obj.name %}
-            {% set description = obj.description %}
+        <div class="collections-items -vertical">
+          {% if rightItems == 'services' %}
+            {% for id, obj in services %}
+              {% set name = obj.name %}
+              {% set description = obj.description %}
 
-            <article class="collections-entry">
-              {% if name %}
-                <h2 class="collections-heading">
-                  {{ name }}
-                </h2>
-              {% endif %}
-
-              {% if description %}
-                <p class="collections-description">
-                  {{ description }}
-                </p>
-              {% endif %}
-            </article>
-          {% endfor %}
-        {% endif %}
+              {{ entry.output(false, name, description) }}
+            {% endfor %}
+          {% endif %}
+        </div>
       {% endif %}
     </div>
   {% endif %}

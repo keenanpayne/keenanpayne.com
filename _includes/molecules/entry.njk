@@ -1,7 +1,7 @@
 {% import "atoms/more.njk" as more %}
 
 {% macro output(cover, heading, lede, linkUrl, linkText) %}
-  <article class="collections-entry">
+  <article class="collections-item">
     <div class="collections-content">
       {% if cover %}
         <a href="{{ linkUrl }}" title="{{ heading }}">

@@ -11,60 +11,62 @@
 {% set layout = '-' ~ orientation ~ '-' ~ columns ~ '-columns' %}
 
 {# Markup #}
-<section class="collections {{ layout if orientation and columns else '-' ~ orientation }} _container" style="--top-margin: {{ spacing if spacing else 0 }}">
+<section class="collections _container" style="--top-margin: {{ spacing if spacing else 0 }}">
   {{ label.output(heading, 'collections-label' )}}
 
   {% if items %}
-    {% set itemsFrom = items.from %}
-    {% set itemsLimit = items.limit %}
-    {% set featured = items.featured %}
-    {% set collection = collections[itemsFrom] | head(-itemsLimit) %}
+    <div class="collections-items {{ layout if orientation and columns else '-' ~ orientation }}">
+      {% set itemsFrom = items.from %}
+      {% set itemsLimit = items.limit %}
+      {% set featured = items.featured %}
+      {% set collection = collections[itemsFrom] | head(-itemsLimit) %}
 
-    {% if collection.length %} 
-      {# Posts #}
-      {% if itemsFrom == 'featured' or itemsFrom == 'posts' %}
-        {%- for post in collection | reverse -%}
-          {% set entryCover = post.data.cover %}
-          {% set entryTitle = post.data.title %}
-          {% set entryLede = post.data.lede %}
-          {% set entryUrl = post.url %}
+      {% if collection.length %} 
+        {# Posts #}
+        {% if itemsFrom == 'featured' or itemsFrom == 'posts' %}
+          {%- for post in collection | reverse -%}
+            {% set entryCover = post.data.cover %}
+            {% set entryTitle = post.data.title %}
+            {% set entryLede = post.data.lede %}
+            {% set entryUrl = post.url %}
 
-          {{ entry.output(entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
-        {% endfor %}
-
-      {# Portfolio #}
-      {# TODO: Clean this up; too much duplicate code and confusing logic. #}
-      {% elif itemsFrom == 'portfolio' %}
-        {% if featured %}
-          {% for feature in featured %}
-            {% set item = portfolio[feature] %}
-            {% set cover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
-            {% set name = item.name %}
-            {% set lede = item.lede %}
-            {% set url = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
-            {% set more = 'View case study' %}
-
-            {{ entry.output(cover, name, lede, url, more) }}
+            {{ entry.output(entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
           {% endfor %}
-        {% else %}
-          {% for id, item in portfolio %}
-            {% set portfolioCover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
-            {% set portfolioName = item.name %}
-            {% set portfolioLede = item.lede %}
-            {% set portfolioUrl = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
-            {% set portfolioMore = 'View case study' %}
 
-            {% if not item.template %}
-              {% if not item.featured %}
-                {{ entry.output(portfolioCover, portfolioName, portfolioLede, portfolioUrl, portfolioMore) }}
+        {# Portfolio #}
+        {# TODO: Clean this up; too much duplicate code and confusing logic. #}
+        {% elif itemsFrom == 'portfolio' %}
+          {% if featured %}
+            {% for feature in featured %}
+              {% set item = portfolio[feature] %}
+              {% set cover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
+              {% set name = item.name %}
+              {% set lede = item.lede %}
+              {% set url = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
+              {% set more = 'View case study' %}
+
+              {{ entry.output(cover, name, lede, url, more) }}
+            {% endfor %}
+          {% else %}
+            {% for id, item in portfolio %}
+              {% set portfolioCover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
+              {% set portfolioName = item.name %}
+              {% set portfolioLede = item.lede %}
+              {% set portfolioUrl = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
+              {% set portfolioMore = 'View case study' %}
+
+              {% if not item.template %}
+                {% if not item.featured %}
+                  {{ entry.output(portfolioCover, portfolioName, portfolioLede, portfolioUrl, portfolioMore) }}
+                {% endif %}
               {% endif %}
-            {% endif %}
-          {% endfor %}
+            {% endfor %}
+          {% endif %}
         {% endif %}
+      {% else %}
+        {% set content = 'No content is published here yet.' %}
+        {% include "type/notice.html" %}
       {% endif %}
-    {% else %}
-      {% set content = 'No content is published here yet.' %}
-      {% include "type/notice.html" %}
-    {% endif %}
+    </div>
   {% endif %}
 </section>
