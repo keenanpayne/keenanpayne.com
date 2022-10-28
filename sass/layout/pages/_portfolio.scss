@@ -137,7 +137,7 @@
 .portfolio-detail-people {
   @media (--min-640) {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-column-gap: calc(1 * var(--spacing-unit));
     grid-row-gap: calc(1.5 * var(--spacing-unit));
   }
