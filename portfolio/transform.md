@@ -17,6 +17,8 @@ sections:
     items: 
       - 4
       - 3
+      - 1
+      - 5
   - type: portfolioGrid
     project: transform
     contained: true
@@ -29,15 +31,4 @@ sections:
       - 2
       - 6
       - 7
-  - type: portfolioGrid
-    project: transform
-    contained: true
-    enlarge: true
-    modifier: '-two-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
-      - 1
-      - 5
 ---
