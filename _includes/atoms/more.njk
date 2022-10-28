@@ -1,5 +1,7 @@
 {% macro output(class, link, text) %}
-  <a class="more {{ class }}" href="{{ link }}">
-    {{ text }} →
-  </a>
+  {% if link and text %}
+    <a class="more {{ class }}" href="{{ link }}">
+      {{ text }} →
+    </a>
+  {% endif %}
 {% endmacro %}
