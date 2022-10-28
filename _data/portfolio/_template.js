@@ -39,12 +39,14 @@ module.exports = {
     }
   },
   assets: {
-    link: "",
-    shot_link: "",
-    image: "",
-    video: "",
-    asset_transform: "f_auto,q_auto",
-    title: "",
-    caption: ""
-  }
+    [1]: {
+      link: "",
+      shot_link: "",
+      image: "",
+      video: "",
+      asset_transform: "f_auto,q_auto",
+      title: "",
+      caption: ""
+    }
+  },
 }
