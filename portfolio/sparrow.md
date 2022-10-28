@@ -37,22 +37,13 @@ sections:
     items: 
       - 17
       - 1
-      - 15
       - 6
+      - 21
+      - 14
       - 2
-      - 3
       - 9
       - 10
-      - 21
-  - type: portfolioGrid
-    project: sparrow
-    contained: true
-    enlarge: true
-    modifier: '-one-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
+      - 3
       - 22
   - type: portfolioGrid
     project: sparrow
@@ -63,5 +54,5 @@ sections:
     headline: ''
     description: ''
     items: 
-      - 14
+      - 15
 ---

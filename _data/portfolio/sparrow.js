@@ -48,21 +48,21 @@ module.exports = {
   assets: {
     [1]: {
       link: "https://trysparrow.com/product/#tech-overview",
-      video: "v1665535808/portfolio/sparrow/product-tech_ve2lir.mp4",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666926427/portfolio/sparrow/product-technology_fm8gox.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Product — Technology",
       caption: ""
     },
     [2]: {
       link: "https://trysparrow.com/employee/",
-      video: "v1665535808/portfolio/sparrow/employee_p8qplj.mp4",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666927200/portfolio/sparrow/employee_inutrk.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Employee Experience",
       caption: ""
     },
     [3]: {
       link: "https://trysparrow.com/payroll/",
-      video: "v1665535808/portfolio/sparrow/payroll_qcsbpp.mp4",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666927083/portfolio/sparrow/payroll_yeaat2.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Payroll Experience",
       caption: ""
@@ -81,11 +81,10 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_600",
       title: "Employee Experience",
       caption: "",
-      preventLazy: true
     },
     [6]: {
       link: "https://trysparrow.com/careers/",
-      video: "v1665535807/portfolio/sparrow/stories_cvz6gb.mp4",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666926724/portfolio/sparrow/stories_nbf0gn.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Stories",
       caption: ""
@@ -103,18 +102,17 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_600",
       title: "Blog",
       caption: "",
-      preventLazy: true
     },
     [9]: {
       link: "https://trysparrow.com/careers/",
-      video: "v1665535807/portfolio/sparrow/representation_bhmmgz.mp4",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666926955/portfolio/sparrow/representation_pf1yya.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Representation",
       caption: ""
     },
     [10]: {
       link: "https://trysparrow.com/product/#service-experience",
-      video: "v1665535806/portfolio/sparrow/product-service_e5fznr.mp4",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666926203/portfolio/sparrow/product-experience_jxra6a.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Product — Service Experience",
       caption: ""
@@ -125,7 +123,6 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_600",
       title: "Careers",
       caption: "",
-      preventLazy: true
     },
     [12]: {
       link: "https://trysparrow.com/demo/",
@@ -133,7 +130,6 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_600",
       title: "Schedule a demo",
       caption: "",
-      preventLazy: true
     },
     [13]: {
       link: "https://trysparrow.com/blog/virtual-panel-creating-best-in-class-paid-leave-policies-at-your-company/",
@@ -141,22 +137,21 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_600",
       title: "Blog article",
       caption: "",
-      preventLazy: true
     },
     [14]: {
       link: "https://trysparrow.com",
-      video: "v1665535806/portfolio/sparrow/homepage-calculator_ipbu0a.mp4",
-      asset_transform: "f_auto,q_auto,w_1300",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666927972/portfolio/sparrow/calculator_kx3w5x.mp4",
+      asset_transform: "f_auto,q_auto,w_800",
       title: "Cost calculator",
       caption: "",
-      autoplay: true
     },
     [15]: {
       link: "https://trysparrow.com",
-      video: "v1665535805/portfolio/sparrow/homepage-solutions_unmcae.mp4",
-      asset_transform: "f_auto,q_auto,w_800",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666926547/portfolio/sparrow/homepage-solutions_qbmx4h.mp4",
+      asset_transform: "f_auto,q_auto,w_1300",
       title: "Sparrow solutions",
-      caption: ""
+      caption: "",
+      autoplay: true
     },
     [16]: {
       link: "https://trysparrow.com/faq/",
@@ -167,7 +162,7 @@ module.exports = {
     },
     [17]: {
       link: "https://trysparrow.com",
-      video: "v1665535805/portfolio/sparrow/homepage-hero_ncjwti.mp4",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666926011/portfolio/sparrow/homepage-hero_bmmhss.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Homepage hero",
       caption: "",
@@ -195,23 +190,21 @@ module.exports = {
       asset_transform: "f_auto,q_auto,w_600",
       title: "Security",
       caption: "",
-      preventLazy: true
     },
     [21]: {
       link: "https://trysparrow.com/security/",
-      video: "v1665535804/portfolio/sparrow/security_s62dnl.mp4",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666927423/portfolio/sparrow/security_jqwjd8.mp4",
       asset_transform: "f_auto,q_auto,w_800",
-      title: "Security animation",
+      title: "Security",
       caption: "",
-      autoplay: true
+      autoplay: true,
     },
     [22]: {
       link: "https://trysparrow.com",
-      video: "v1665535804/portfolio/sparrow/navigation_ukg4hk.mp4",
-      asset_transform: "f_auto,q_auto,w_1300",
+      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666927728/portfolio/sparrow/navigation_vnkm9u.mp4",
+      asset_transform: "f_auto,q_auto,w_800",
       title: "Global navigation",
       caption: "",
-      autoplay: true
     },
   },
 }
