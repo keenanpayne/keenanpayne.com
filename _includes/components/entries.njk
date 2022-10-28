@@ -38,7 +38,7 @@
           {% set portfolioCover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
           {% set portfolioName = item.name %}
           {% set portfolioLede = item.lede %}
-          {% set portfolioUrl = '/portfolio/' ~ item.name | lower | replace(' ', '-') %}
+          {% set portfolioUrl = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
           {% set portfolioMore = 'View case study' %}
 
           {% if not item.template %}
