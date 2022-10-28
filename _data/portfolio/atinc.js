@@ -24,7 +24,7 @@ module.exports = {
     [1]: {
       name: "Paladar Studio",
       position: "Design Partner",
-      url: "https://www.paladarstudio.com"
+      url: "https://www.paladarstudio.com/work/at-inc"
     },
     [2]: {
       name: "Jaime Hernández",
