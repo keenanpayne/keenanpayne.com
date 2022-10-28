@@ -271,7 +271,11 @@
     @include large-paragraph;
 
     margin-top: spacing(.75); 
-    max-width: 95%;
+    max-width: 45ch;
+
+    @media (--min-640) {
+      padding-right: spacing(.5);
+    }
   }
 
   .collections-link {

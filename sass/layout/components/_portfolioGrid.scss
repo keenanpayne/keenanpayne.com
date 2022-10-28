@@ -29,7 +29,7 @@
         grid-column: auto / span 6;
       }
     
-      @media (--min-960) {
+      @media (--min-1120) {
         grid-column-end: span 4;
       }
     }
@@ -112,8 +112,12 @@
   --background: var(--yellow-dark);
   --background-hover: var(--yellow-light);
   --border: var(--plum-light);
-  --image-height: 300px;
+  --image-height: 250px;
   --text-color: var(--plum-dark);
+
+  @media (--min-1120) {
+    --image-height: 300px;
+  }
 
   .portfolioGrid-item {
     border: 1px solid var(--border);
