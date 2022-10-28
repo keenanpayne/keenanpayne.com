@@ -11,9 +11,15 @@
 
       {% if heading %}
         <h2 class="collections-heading">
-          <a href="{{ linkUrl }}">
-            {{ heading }}
-          </a>
+          {% if linkUrl %}
+            <a href="{{ linkUrl }}">
+          {% endif %}
+
+          {{ heading }}
+
+          {% if linkUrl %}
+            </a>
+          {% endif %}
         </h2>
       {% endif %}
 
