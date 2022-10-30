@@ -86,14 +86,23 @@ https://github.com/keenanpayne/keenanpayne.com
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-left">
-          <div class="footer-twitter">
-            <span class="_label-sans">
+          <div class="footer-socials">
+            <span class="footer-socials-label _label-sans">
               Follow me
             </span>
-            
-            <a class="-hover-background _text-h4" target="_blank" rel="noopener" href="https://Twitter.com/KeenanPayne_" title="Visit Keenan's Twitter profile">
-              @KeenanPayne_
-            </a>
+
+            <ul class="footer-socials-list">
+              {% for id, item in socials %}
+                  <li class="footer-socials-item">
+                  {% set name = item.name %}
+                  {% set icon = "svg/" ~ name ~ ".svg" %}
+
+                  <a class="footer-socials-link {{ '-' ~ name | lower }}" target="_blank" rel="noopener" href="{{ item.url }}" title="Find me on {{ name }}">
+                    {% include icon %}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
           </div>
         </div>
 

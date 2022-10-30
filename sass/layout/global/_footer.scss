@@ -65,24 +65,65 @@
   }
 }
 
-.footer-twitter { 
+.footer-socials { 
   text-align: left;
+}
+
+.footer-socials-label { 
+  display: block;
+  margin-bottom: spacing(1.5);
+}
+
+.footer-socials-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
   // Descendants
-  span { 
-    display: block;
-    margin-bottom: .25rem;
+  svg { 
+    fill: currentColor;
+    height: 25px;
+  }
+}
 
-    @media (--min-720) {
-      margin-bottom: .5rem;
-    }
+.footer-socials-item { 
+  &:not(:last-of-type) { 
+    margin-right: spacing(2);
+  }
+}
+
+.footer-socials-link { 
+  &:hover { 
+    background-color: transparent;
+    color: var(--brand-color);
+    text-decoration: none;
   }
 
-  a { 
-    font-weight: var(--font-weight-bold);
-    margin-left: -.25rem; // Offset padding for flush text alignment
-    padding: .25rem;
-    text-decoration: none !important; // TODO: Address specificity issue
-    text-transform: lowercase;
+  &::after { 
+    display: none !important; // Overriding external link styles
+  }
+
+  // Modifiers
+  &.-twitter { 
+    --brand-color: #1DA1F2;
+  }
+
+  &.-linkedin { 
+    --brand-color: #0277b5;
+  }
+
+  &.-dribbble { 
+    --brand-color: #ea4c89;
+  }
+
+  &.-behance { 
+    --brand-color: #0057ff;
+  }
+
+  &.-codepen { 
+    --brand-color: #47cf73  ;
   }
 }
