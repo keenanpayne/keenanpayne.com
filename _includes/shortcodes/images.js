@@ -2,9 +2,9 @@
 // Set constants for the Cloudinary URL and fallback widths for images when not supplied by the shorcode params
 const CLOUDNAME = "keenan-payne"
 const FOLDER = ""
-const BASE_URL = `https://res.cloudinary.com/${CLOUDNAME}/image/upload/q_auto,f_auto/`;
+const BASE_URL = `https://res.cloudinary.com/${CLOUDNAME}/image/upload/`;
 const FALLBACK_WIDTHS = [ 300, 600, 680, 1360 ];
-const FALLBACK_WIDTH = 680;
+const FALLBACK_WIDTH = 1360;
 
 // Generate srcset attribute using the fallback widths or a supplied array of widths
 function getSrcset(file, widths) {
