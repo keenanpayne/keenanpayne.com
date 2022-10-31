@@ -94,7 +94,7 @@ https://github.com/keenanpayne/keenanpayne.com
             <ul class="footer-socials-list">
               {% for id, item in socials %}
                   <li class="footer-socials-item">
-                  {% set name = item.name %}
+                  {% set name = item.name | lower %}
                   {% set icon = "svg/" ~ name ~ ".svg" %}
 
                   <a class="footer-socials-link {{ '-' ~ name | lower }}" target="_blank" rel="noopener" href="{{ item.url }}" title="Find me on {{ name }}">

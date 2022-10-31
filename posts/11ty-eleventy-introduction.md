@@ -10,6 +10,8 @@ tags:
   - Static Site Generators
 ---
 
+{% include atoms/figure.html, src: "/images/posts/eleventy-introduction/homepage.png", alt: "Screenshot of Eleventy homepage", caption: "", source_title: "https://11ty.dev", source_link: "https://11ty.dev" %}
+
 [Eleventy](https://www.11ty.dev/) (11ty) is a static site generator (SSG) built on top of [Node.js](https://nodejs.org/en/) that compiles static website assets (i.e., HTML files) using content inside of various "source" files (e.g., markdown, templates, JSON, etc.). Eleventy provides a platform that helps web developers create organized and [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself) codebases through its support for [templating languages](https://www.11ty.dev/docs/languages/), a robust [templating engine](https://www.11ty.dev/docs/templates/), flexible [data models](https://www.11ty.dev/docs/data/), and [plugins](https://www.11ty.dev/docs/plugins/).  
 
 Eleventy is designed as a [zero-configuration](https://www.11ty.dev/docs/glossary/#zero-config) platform that provides as much or as little overhead as you would like. This preference for simplicity, combined with a philosophy of tooling agnosticism, offers a flexible and empowering developer experience.
