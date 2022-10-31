@@ -23,7 +23,11 @@
 {% endif %}
 
 {% if meta.image or metadata.image %}
-  <meta property="og:image" content="{{ metadata.url | replace('.com/', '.com') ~ meta.image or metadata.image }}" />
+  {% if 'https://res.cloudinary.com/' in meta.image %}
+    <meta property="og:image" content="{{ meta.image }}" />
+  {% else %}
+    <meta property="og:image" content="{{ metadata.url | replace('.com/', '.com') ~ meta.image or metadata.image }}" />
+  {% endif %}
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="{{ metadata.url | replace('.com/', '.com') ~ meta.image or metadata.image }}">
