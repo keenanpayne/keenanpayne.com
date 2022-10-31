@@ -2,8 +2,8 @@
 permalink: '/portfolio/neuralink/'
 title: 'Neuralink'
 meta: 
-  description: ""
-  image: "https://res.cloudinary.com/keenan-payne/image/upload/v1667232277/portfolio/neuralink/cover_ap9jq9.png"
+  description: "Helping an Elon Musk-founded startup tell the story of brain-machine interfaces."
+  image: "https://res.cloudinary.com/keenan-payne/image/upload/v1667235215/portfolio/neuralink/cover_cuoloi.png"
 data: neuralink
 sections: 
   - type: portfolioGrid
