@@ -19,12 +19,6 @@ I build beautiful web pages, architect codebases from scratch, embark on large-s
 
 I've built websites for cool companies like <a href="/portfolio/asana" title="View Asana case study">Asana</a>, <a href="/portfolio/rippling" title="View Rippling case study">Rippling</a>, <a href="/portfolio/gofundme" title="View GoFundMe case study">GoFundMe</a>, and <a href="/portfolio/" title="View portfolio">so many others</a>. I've been doing this for 15 years professionally, so I've lent a hand working on _countless_ of projects.
 
-<a href="https://concisecss.com/" target="_blank" rel="noopener">Concise CSS</a> is a personal achievement on my journey towards web development mastery. The project was conceived from my annoyance tediously writing duplicate code across different client projects. [^2] Through this project, I met my friend and ongoing professional collaborator, <a href="https://jaime.one/" target="_blank" rel="noopener">Jaime Hernández</a>.
-
-[^2]: The web development landscape was _much_ different in 2012. Component-based methodologies, paradigms, and frameworks were slowly arising from similar pain points across the industry. Frameworks like Bootstrap and Concise were designed to address such issues as thoughtfully as possible. We've learned a lot since then.
-
-Long story short, I build beautiful, scalable web experiences that everyone will love. I'll help you meet your goals and do so by crafting the highest-quality product I can, given the circumstances.
-
 {% include type/note.html content: 'If you want to see my resume, testimonials from clients and collaborators, or all that fun stuff, check out <a href="https://www.linkedin.com/in/keenanpayne" target="_blank" rel="noopener">my LinkedIn profile</a>.' %}
 
 <h2 class="_text-h4">
