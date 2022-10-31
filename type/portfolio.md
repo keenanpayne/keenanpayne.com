@@ -23,6 +23,7 @@ sections:
       featured:
         - asana
         - rippling
+        - neuralink
         - gofundme
         - collectivei
         - sparrow
