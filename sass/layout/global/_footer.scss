@@ -66,7 +66,11 @@
 }
 
 .footer-socials { 
-  text-align: left;
+  text-align: center;
+
+  @media (--min-480) {
+    text-align: left;
+  }
 }
 
 .footer-socials-label { 
@@ -75,9 +79,6 @@
 }
 
 .footer-socials-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -90,8 +91,14 @@
 }
 
 .footer-socials-item { 
+  display: inline-block;
+
   &:not(:last-of-type) { 
-    margin-right: spacing(2);
+    margin-right: spacing(1);
+    
+    @media (--min-640) {
+      margin-right: spacing(2);
+    }
   }
 }
 
