@@ -88,11 +88,13 @@
 }
 
 ._label { 
+  --border-color: var(--exodus-fruit);
+
   align-items: center;
   color: var(--color-label);
   display: flex;
   font-family: var(--font-family-mono);
-  font-size: 18px;
+  font-size: 20px;
   font-variant: all-small-caps;
   letter-spacing: .01em;
   line-height: 1;
@@ -100,8 +102,12 @@
   margin-top: 0;
   word-spacing: -.1em;
 
+  @media (--dark) {
+    --border-color: var(--yellow-dark);
+  }
+
   &:after {
-    background-color: var(--color-border-light);
+    background-color: var(--border-color);
     content: '';
     display: block;
     flex: 1;
