@@ -3,7 +3,7 @@ module.exports = {
   project: "Website rebuild",
   year: "2021",
   size: "11 to 50",
-  industry: "Data Software",
+  industry: "SaaS — Business intelligence",
   color: "#483FE1",
   role: "Web Developer",
   url: "https://transform.co",

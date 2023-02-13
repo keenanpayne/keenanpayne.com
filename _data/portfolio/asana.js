@@ -4,7 +4,7 @@ module.exports = {
   project: "Full-Time Employment",
   year: "2014–2019",
   size: "Started at 70, left at 700, now 1600+",
-  industry: "Work management software",
+  industry: "SaaS — Work management",
   color: "#940060",
   role: "Web Developer",
   services: [

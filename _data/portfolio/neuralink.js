@@ -4,7 +4,7 @@ module.exports = {
   project: "Website rebuild",
   year: "2020–2021",
   size: "251 to 500",
-  industry: "Neuroscience and medical technology",
+  industry: "Medical technology",
   color: "#A7CEEF",
   role: "Web Developer",
   url: "https://neuralink.com",

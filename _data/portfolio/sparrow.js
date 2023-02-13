@@ -4,7 +4,7 @@ module.exports = {
   project: "Website rebuild",
   year: "2021",
   size: "50 to 100",
-  industry: "HR Software",
+  industry: "SaaS — HR management",
   color: "#3ED0DA",
   role: "Web Developer",
   url: "https://trysparrow.com",

@@ -4,7 +4,7 @@ module.exports = {
   project: "Website rebuild",
   year: "2020–2021",
   size: "1000 to 5000",
-  industry: "Employee management software",
+  industry: "SaaS — HR & IT management",
   color: "#ffb81c",
   role: "Web Developer",
   url: "https://rippling.com",

@@ -4,7 +4,7 @@ module.exports = {
   project: "Heroes content portal",
   year: 2019,
   size: "201 to 500",
-  industry: "Fundraising",
+  industry: "SaaS — Fundraising",
   color: "#940060",
   url: "https://www.gofundme.com/c/heroes",
   role: "Frontend Developer",

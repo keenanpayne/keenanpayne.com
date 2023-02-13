@@ -1,10 +1,10 @@
 module.exports = {
   featured: true,
-  name: "Collective Intelligence",
+  name: "Collective [i]",
   project: "Website rebuild",
   year: "2021",
   size: "51 to 100",
-  industry: "AI/ML Software",
+  industry: "SaaS — AI/ML sales forecasting",
   color: "#384acf",
   role: "Web Developer",
   url: "http://collectivei.com",
