@@ -314,6 +314,8 @@
   --cta-background: var(--yellow-light);
 
   background-color: var(--cta-background);
+  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
   margin-top: spacing(var(--top-margin, 0));
   padding-bottom: spacing(10);
   padding-top: spacing(10);
