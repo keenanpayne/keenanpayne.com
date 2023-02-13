@@ -5,10 +5,12 @@
 .footer { 
   --background: var(--gray-lighter);
   --border: var(--gray-darker);
+  --vertical-padding: 1.5rem;
 
   background-color: var(--background);
   border-top: 1px solid var(--border);
-  padding: 1.5rem;
+  padding-bottom: var(--vertical-padding);
+  padding-top: var(--vertical-padding);
   z-index: 1;
   
   @media (--dark) { 
@@ -16,16 +18,12 @@
     --border: var(--plum-light);
   }
 
-  @media (--min-640) { 
-    padding: 1.5rem;
-  }
-
   @media (--min-720) { 
-    padding: 2rem;
+    --vertical-padding: 2rem;
   }
 
   @media (--min-960) { 
-    padding: 3rem;
+    --vertical-padding: 3rem;
   }
 }
 
