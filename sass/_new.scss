@@ -311,17 +311,19 @@
 }
 
 .cta {
-  --cta-background: var(--yellow-light);
+  --background: var(--yellow-light);
+  --border: var(--color-border);
 
-  background-color: var(--cta-background);
-  border-bottom: 1px solid var(--color-border);
-  border-top: 1px solid var(--color-border);
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  border-top: 1px solid var(--border);
   margin-top: spacing(var(--top-margin, 0));
   padding-bottom: spacing(10);
   padding-top: spacing(10);
 
   @media (--dark) {
-    --cta-background: var(--exodus-fruit);
+    --background: var(--exodus-fruit);
+    --border: transparent;
   }
   
   @media (--min-480) {
