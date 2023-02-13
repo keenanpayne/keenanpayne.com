@@ -42,10 +42,6 @@
   @media (--min-960) {
     grid-column-end: span 5;
   }
-
-  @media (--min-1120) {
-    grid-column: 2 / span 4;
-  }
 }
 
 .newsletter-cta { 
