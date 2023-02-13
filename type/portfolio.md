@@ -29,7 +29,7 @@ sections:
         - sparrow
   - type: entries
     orientation: horizontal
-    heading: "Even more projects"
+    heading: "More projects"
     spacing: 8
     items: 
       from: portfolio
