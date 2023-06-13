@@ -5,10 +5,15 @@
 .newsletter { 
   // Modifiers
   &.-standalone {
+    .newsletter-container {
+      max-width: 60ch;
+    }
+
     .newsletter-cta {
       background: var(--yellow-dark);
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
+      margin-top: 1.5rem;
       padding: 1.5rem;
 
       @media (--dark) {

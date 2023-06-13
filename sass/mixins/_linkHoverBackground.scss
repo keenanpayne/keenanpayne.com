@@ -8,7 +8,7 @@
   --link-text-decoration: var(--exodus-fruit);
   --link-hover-background: var(--exodus-fruit);
   --link-color-hover: var(--white);
-  --link-spacing: .125em;
+  --link-spacing: .1em;
 
   @if ($dark) {
     @media (--dark) {
