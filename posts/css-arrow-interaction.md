@@ -371,4 +371,4 @@ That's it! We now have a cute little "Pacman arrow" animation for our button.
 ## Conclusion
 I hope you all had as much fun building this micro-interaction as I did. While the approach I took in this article works well for animating arrows, this same approach can be applied to create all sorts of interactions in different directions. 
 
-If like this article, consider subscribing to my [newsletter](https://keenanpayne.us3.list-manage.com/subscribe/post?u=adccd14711a389b26182cef03&id=c7f1290469) for more content just like this. Also, don't hesitate to reach out to me in the comments or on [Twitter](https://twitter.com/KeenanPayne_) to share what you've built, and ask questions. 
+If like this article, consider subscribing to my [newsletter](/subscribe) for more content just like this. Also, don't hesitate to reach out to me in the comments or on [Twitter](https://twitter.com/KeenanPayne_) to share what you've built, and ask questions. 
