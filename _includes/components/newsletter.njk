@@ -1,0 +1,38 @@
+{# Component Settings #}
+{% set spacing = section.spacing %}
+
+{# Markup #}
+<section id="newsletter" class="newsletter -pre-footer" style="--top-margin: {{ spacing if spacing else 0 }}">
+  <div class="newsletter-container grid _container">
+    <div class="newsletter-description">
+      <h2 class="newsletter-title {{ '_text-h1' if modifiers == '-standalone' else '_h2' }}">
+        Subscribe to a darn good newsletter
+      </h2>
+      
+      <p class="_text-h5">
+        Get my semi-regular newsletter where I share new tutorials and articles to help you grow as a web developer.
+      </p>
+    </div>
+
+    <div class="newsletter-cta">
+      <form
+        action="https://buttondown.email/api/emails/embed-subscribe/kp"
+        method="post"
+        target="popupwindow"
+        onsubmit="window.open('https://buttondown.email/kp', 'popupwindow')"
+        class="newsletter-form embeddable-buttondown-form"
+      >
+        <div class="newsletter-form-fields"> 
+          <label class="_label-sans" for="bd-email">Enter your email</label>
+          <input type="email" name="email" id="bd-email" />
+          <input type="submit" value="Subscribe" />
+        </div>
+      </form>
+
+      <p class="_text-small">
+        <em>Your email won’t be shared with anyone else. <br>
+        You can unsubcribe at any time.</em> 
+      </p>
+    </div>  
+  </div>
+</section>
