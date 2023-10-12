@@ -229,7 +229,19 @@
       }
     }
 
-    &.-vertical-narrow {
+    &.-archive {
+      display: grid;
+      
+      @media (--min-480) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5rem;
+      }
+      
+      @media (--min-960) {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 3rem;
+      }
+
       .collections-item {
         margin-top: spacing(3);
         max-width: var(--container-small);
@@ -282,7 +294,7 @@
     }
   }
 
-  .collections-content:has(.collections-description) + .collections-link {
+  .collections-link {
     margin-top: spacing(2);
   }
 
