@@ -42,7 +42,14 @@
               {% set cover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
               {% set name = item.name %}
               {% set lede = item.lede %}
-              {% set url = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
+
+              {# Special case due to square brackets #}
+              {% if item.name == 'Collective [i]' %}
+                {% set url = '/portfolio/collective-intelligence' %}
+              {% else %}
+                {% set url = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
+              {% endif %}
+
               {% set more = 'View case study' %}
 
               {{ entry.output(cover, name, lede, url, more) }}
@@ -52,8 +59,14 @@
               {% set portfolioCover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
               {% set portfolioName = item.name %}
               {% set portfolioLede = item.lede %}
-              {% set portfolioUrl = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
               {% set portfolioMore = 'View case study' %}
+
+              {# Special case due to square brackets #}
+              {% if item.name == 'Collective [i]' %}
+                {% set portfolioUrl = '/portfolio/collective-intelligence' %}
+              {% else %}
+                {% set portfolioUrl = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
+              {% endif %}
 
               {% if not item.template %}
                 {% if not item.featured %}
