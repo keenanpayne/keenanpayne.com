@@ -2,10 +2,16 @@
 // Blog Post
 // ==================================================
 
-.post { 
+.post {
+  --post-font-size: 1.125rem;
+
   margin-bottom: 5rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+
+  @media (--min-1440) {
+    --post-font-size: 1.25rem;
+  }
 
   // Modifiers
   &.-narrow {
@@ -110,11 +116,7 @@
 // ------------
 
 .post-content { 
-  font-size: 1.125rem;
-
-  @media (--min-1440) {
-    font-size: 1.25rem;
-  }
+  font-size: var(--post-font-size);
 
   // Descendants
   h2, h3, h4, h5 { 
@@ -144,6 +146,8 @@
   }
 
   li { 
+    font-size: var(--post-font-size);
+
     &:not(:first-of-type) { 
       margin-top: .5rem;
     }
@@ -173,6 +177,8 @@
   }
 
   p {
+    font-size: var(--post-font-size);
+
     &:not(:last-of-type):not(.-large) { 
       margin-bottom: 1.25rem;
     }
