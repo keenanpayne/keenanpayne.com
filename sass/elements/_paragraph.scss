@@ -22,7 +22,7 @@ p {
   // Descendants
   a {
     @include linkHoverBackground();
-    @include externalLink($size: 12px, $left: 4px);
+    @include externalLink();
   }
 }
 

@@ -3,7 +3,7 @@
 // ==================================================
 // Ref: https://christianoliff.com/blog/styling-external-links-with-an-icon-in-css/
 
-@mixin externalLink($size: 14px, $left: 4px) {
+@mixin externalLink($size: 12px, $left: 6px) {
   &[href^="http"],
   &[href^="https://"] {
     &:hover {
