@@ -39,8 +39,15 @@
   --color-border-light: #d3d1db;
 
   // Font Families
-  --font-family-base: 'Inter', -apple-system, system-ui, sans-serif;
-  --font-family-base-var: 'Inter var', sans-serif;
+  --font-family-base: -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Noto Sans",
+    Helvetica,
+    Arial,
+    sans-serif,
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
   --font-family-serif: 'Merriweather', serif;
   --font-family-mono: 'IBM Plex Mono', Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
 
