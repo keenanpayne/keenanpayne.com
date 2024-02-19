@@ -20,7 +20,7 @@ sections:
         - neuralink
   - type: cta
     heading: "Interested in working together?"
-    subheading: "I'm booked until until Q2 2023, but I'm interested in talking with folks who want to collaborate in Q3–Q4."
+    subheading: "I have availability in Q2–Q4 2024 and would love to help you with your next project."
     link:
       text: "Get in touch"
       url: "/contact"
