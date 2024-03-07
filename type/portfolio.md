@@ -1,6 +1,7 @@
 ---
 permalink: '/portfolio/'
 layout: layouts/base.njk
+seoPriority: 0.9
 title: Portfolio
 description:
 

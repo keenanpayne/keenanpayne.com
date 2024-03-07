@@ -4,6 +4,7 @@ title: Writing Archive
 eleventyNavigation:
   key: Writing
   order: 3
+changefreq: weekly
 sections: 
   - type: intro
     heading: "Writing archives"

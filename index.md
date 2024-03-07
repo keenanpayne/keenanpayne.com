@@ -1,5 +1,7 @@
 ---
 title: 'Keenan Payne | Freelance Web Development'
+changefreq: weekly
+seoPriority: 1.0
 sections: 
   - type: intro
     heading: "Fifteen years of professional web development"
