@@ -12,7 +12,15 @@ templateClass: _container -small
   <strong>This form is for general inquiries.</strong> <br />If you're interested in working together, please fill out the <a class="-hover-background" href="/project-inquiry/">project inquiry form</a>.
 </p>
 
-<form class="ContactForm" name="Contact" netlify action="/form-submission-success" method="POST">
+<form 
+  class="ContactForm" 
+  name="Contact" 
+  netlify 
+  action="/form-submission-success" 
+  method="POST"
+>
+  <input type="hidden" name="subject" value="New %{formName} form submission on keenanpayne.com — (%{submissionId})" className="_hidden" />
+  
   <p class="ContactForm-item -full">
     <label>
       Name
