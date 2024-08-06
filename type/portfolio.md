@@ -40,6 +40,6 @@ sections:
     subheading: "I'm booked until until Q2 2023, but I'm interested in talking with folks who want to collaborate in Q3–Q4."
     link:
       text: "Get in touch"
-      url: "/contact"
+      url: "/project-inquiry"
     spacing: 10
 ---
