@@ -161,3 +161,14 @@
 ._bg-white { 
   background-color: var(--white);
 }
+
+
+//
+// Max character lengths
+// ----------------------
+
+@each $size in (15, 30, 45, 60, 75, 90, 105, 120) {
+  ._max-ch-#{$size} {
+    max-width: #{$size}ch;
+  }
+}
