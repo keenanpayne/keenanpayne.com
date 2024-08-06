@@ -1,0 +1,111 @@
+//
+// Contact Form
+// ------------
+
+.ContactForm {
+  column-gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin-bottom: spacing(5);
+  
+  @media (--min-960) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.ContactForm-item {
+  grid-column: 1 / -1;
+  margin-top: spacing(3);
+  
+  @media (--min-960) {
+    grid-column: auto;
+    margin-top: spacing(5);
+  }
+
+  // Modifiers
+  &.-full {
+    @media (--min-960) {
+      grid-column: span 2;
+    }
+  }
+}
+
+.ContactForm-input {
+  border: 1px solid var(--gray-darkest);
+  display: block;
+  font-family: var(--font-family-base);
+  font-size: .9rem;
+  padding: .5rem;
+  width: 100%;
+  
+  // Specific inputs
+  &[type="text"],
+  &[type="email"],
+  &[type="date"],
+  &[type="url"] {
+    margin-top: spacing(.75);
+  }
+
+  &[type="checkbox"] {
+    height: 18px;
+    width: 18px;
+  }
+
+  // Placeholders
+  &::placeholder {
+    color: var(--gray-darkest);
+    font-size: .9rem;
+  }
+}
+
+textarea.ContactForm-input,
+select.ContactForm-input {
+  font-size: .9rem;
+  margin-top: spacing(.75);
+}
+
+textarea.ContactForm-input {
+  line-height: 1.325;
+}
+
+.ContactForm-button {
+  background-color: var(--yellow-dark);
+  border: 2px solid var(--yellow-dark);
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: var(--font-family-base);
+  font-size: 1.25rem;
+  padding: .75rem 3rem;
+  transition: all 150ms;
+  width: 100%;
+
+  @media (--min-480) {
+    width: auto;
+  }
+
+  &:hover {
+    background-color: var(--gray-light);
+    border-color: var(--plum-dark);
+    color: var(--plum-dark);
+  }
+}
+
+.ContactForm-checkbox {
+  align-items: center;
+  display: flex;
+  gap: .75rem;
+
+  &:first-of-type {
+    margin-top: .5rem;
+  }
+
+  &:not(:first-of-type) {
+    margin-top: .75rem;
+  }
+  
+  // Descendants
+  span {
+    font-size: .9rem;
+    line-height: 1;
+  }
+}
