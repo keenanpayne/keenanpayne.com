@@ -1,20 +1,42 @@
 ---
-
 eleventyNavigation:
   key: Contact
-  order: 4
+  order: 5
 title: Contact
-templateClass: _container -small _text-align-center
+templateClass: _container -small
 ---
 
 <h1>Get in Touch</h1>
 
-<p class="_text-h4">No spam, please.</p>
-
-<hr class="-fancy">
-
-<p class="_text-h5">
-  <a class="-hover-background" href="mailto:contact@keenanpayne.com?subject=Contact from keenanpayne.com">
-    contact@keenanpayne.com
-  </a>
+<p class="_max-ch-30">
+  <strong>This form is for general inquiries.</strong> <br />If you're interested in working together, please fill out the <a class="-hover-background" href="/project-inquiry/">project inquiry form</a>.
 </p>
+
+<form class="ContactForm" name="Contact" netlify action="/form-submission-success" method="POST">
+  <p class="ContactForm-item -full">
+    <label>
+      Name
+      <input class="ContactForm-input" type="text" name="Name" placeholder="First and last name" required />
+    </label>
+  </p>
+
+  <p class="ContactForm-item -full">
+    <label>
+      Email 
+      <input class="ContactForm-input" type="email" name="Email" placeholder="email@company.com" required />
+    </label>
+  </p>
+
+  <p class="ContactForm-item -full">
+    <label>
+      What would you like to share?
+      <textarea class="ContactForm-input" name="Message" rows="5"></textarea>
+    </label>
+  </p>
+
+  <p class="ContactForm-item -full">
+    <button type="submit" class="ContactForm-button">
+      Submit
+    </button>
+  </p>
+</form>
