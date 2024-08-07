@@ -4,7 +4,7 @@ module.exports = {
   year: "2021",
   size: "11 to 50",
   industry: "SaaS — Business intelligence",
-  color: "#483FE1",
+  color: "#b4b9fe",
   role: "Web Developer",
   url: "https://web.archive.org/web/20220406001101/https://transform.co/",
   services: [
@@ -25,15 +25,15 @@ module.exports = {
   caption: "",
   people: {
     [1]: {
+      name: "Jaime Hernández",
+      position: "Development Partner",
+      url: "https://jaime.one/"
+    },
+    [2]: {
       name: "Play Studio",
       position: "Design Partner",
       url: "https://www.play.studio/"
     },
-    [2]: {
-      name: "Jaime Hernández",
-      position: "Development Partner",
-      url: "https://jaime.one/"
-    }
   },
   testimonials: {
     [1]: {
