@@ -4,7 +4,7 @@ module.exports = {
   year: "2021",
   size: "5",
   industry: "Venture Capital",
-  color: "#963326",
+  color: "#ffecd3",
   role: "Web Developer",
   url: "https://refactor.com",
   services: [
@@ -14,27 +14,28 @@ module.exports = {
     "HTML",
     "CSS",
     "JavaScript",
+    "Eleventy",
     "Netlify CMS",
     "Lottie"
   ],
-  overview: "Refactor Capital is an early-stage venture capital firm that invests in companies that deploy technology that saves lives and our planet.",
+  overview: "I helped rebuild the Refactor Capital website from the ground up, leveraging Eleventy and Netlify CMS to create a fast, scalable, and easy-to-manage website.",
   lede: "Building a website for an early-stage venture capital firm investing in companies that save lives and our planet.",
   cover: "v1666930080/portfolio/refactorcapital/cover_azg7re.png",
   people: {
     [1]: {
-      name: "Play Studio",
-      position: "Design Partner",
-      url: "https://www.play.studio/refactor/"
-    },
-    [2]: {
       name: "Jaime Hernández",
       position: "Development Partner",
       url: "https://jaime.one/"
     },
-    [3]: {
+    [2]: {
       name: "Nels Anderek",
       position: "Development Partner",
       url: "https://www.linkedin.com/in/nelsandereck/"
+    },
+    [3]: {
+      name: "Play Studio",
+      position: "Design Partner",
+      url: "https://www.play.studio/"
     },
   },
   assets: {
