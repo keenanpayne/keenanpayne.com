@@ -232,7 +232,7 @@
     &.-archive {
       display: grid;
       
-      @media (--min-480) {
+      @media (--min-640) {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1.5rem;
       }
@@ -245,10 +245,6 @@
       .collections-item {
         margin-top: spacing(3);
         max-width: var(--container-small);
-      
-        &:not(:first-of-type) {
-          margin-top: spacing(5);
-        }
       }
     }
   }
