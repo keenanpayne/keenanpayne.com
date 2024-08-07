@@ -20,24 +20,24 @@ module.exports = {
     "Eleventy",
     "Lottie"
   ],
-  overview: "I rebuilt the Sparrow website from the ground up as the company geared up for its Series A fundraising round. We designed the website to position Sparrow as a disrupter in the employee automation software market. <br><br>Sparrow has since raised <strong>$20m in Series A funding</strong> and is using their website to expand their customer base.",
+  overview: "I helped rebuild the Sparrow website from the ground up as the company geared up for its Series A fundraising round. The website was designed to position Sparrow as a disrupter in the employee automation software market. <br><br>Sparrow has since raised <strong>$20m in Series A funding</strong> and is using their website to expand their customer base.",
   lede: "Building a marketing website for an emerging employee automation platform.",
   cover: "v1665630813/portfolio/sparrow/cover_qommce.png",
   people: {
     [1]: {
-      name: "Play Studio",
-      position: "Design Partner",
-      url: "https://www.play.studio/sparrow/"
-    },
-    [2]: {
       name: "Jaime Hernández",
       position: "Development Partner",
       url: "https://jaime.one/"
     },
-    [3]: {
+    [2]: {
       name: "Nels Anderek",
       position: "Development Partner",
       url: "https://www.linkedin.com/in/nelsandereck/"
+    },
+    [3]: {
+      name: "Play Studio",
+      position: "Design Partner",
+      url: "https://www.play.studio/"
     },
   },
   testimonials: {
@@ -47,11 +47,12 @@ module.exports = {
     }
   },
   assets: {
+    // TODO: Fix this video since the scrolling doesn't look good
     [1]: {
       link: "https://trysparrow.com/product/#tech-overview",
       video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666926427/portfolio/sparrow/product-technology_fm8gox.mp4",
       asset_transform: "f_auto,q_auto,w_800",
-      title: "Product — Technology",
+      title: "Product — Tech Overview",
       caption: ""
     },
     [2]: {
@@ -70,9 +71,9 @@ module.exports = {
     },
     [4]: {
       link: "https://trysparrow.com/product/#tech-overview",
-      image: "v1665535808/portfolio/sparrow/product_qctyv5.png",
+      image: "v1723058862/portfolio/sparrow/sparrow-product-tech-overview_eagedg.png",
       asset_transform: "f_auto,q_auto,w_600",
-      title: "Product",
+      title: "Product — Tech Overview",
       caption: "",
       preventLazy: true
     },
