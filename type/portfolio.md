@@ -14,6 +14,7 @@ sections:
     heading: "Case studies"
     subheading: "Below are a few of my favorite projects I've worked on over the past few years."
   - type: entries
+    showCovers: true
     orientation: horizontal
     heading: "Featured projects"
     columns: 2
@@ -29,6 +30,7 @@ sections:
         - collectivei
         - sparrow
   - type: entries
+    showCovers: true
     orientation: horizontal
     heading: "More projects"
     spacing: 8

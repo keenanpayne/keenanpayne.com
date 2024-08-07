@@ -8,6 +8,7 @@
 {% set spacing = section.spacing %}
 {% set orientation = section.orientation %}
 {% set columns = section.columns %}
+{% set showCovers = section.showCovers %}
 {% set layout = '-' ~ orientation ~ '-' ~ columns ~ '-columns' %}
 
 {# Markup #}
@@ -30,7 +31,7 @@
             {% set entryLede = post.data.lede %}
             {% set entryUrl = post.url %}
 
-            {{ entry.output(entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
+            {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
           {% endfor %}
 
         {# Portfolio #}
@@ -52,7 +53,7 @@
 
               {% set more = 'View case study' %}
 
-              {{ entry.output(cover, name, lede, url, more) }}
+              {{ entry.output(showCovers, cover, name, lede, url, more) }}
             {% endfor %}
           {% else %}
             {% for id, item in portfolio %}
@@ -70,7 +71,7 @@
 
               {% if not item.template %}
                 {% if not item.featured %}
-                  {{ entry.output(portfolioCover, portfolioName, portfolioLede, portfolioUrl, portfolioMore) }}
+                  {{ entry.output(showCovers, portfolioCover, portfolioName, portfolioLede, portfolioUrl, portfolioMore) }}
                 {% endif %}
               {% endif %}
             {% endfor %}

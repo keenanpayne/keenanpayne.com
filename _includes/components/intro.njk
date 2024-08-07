@@ -40,7 +40,7 @@
               {% set name = obj.name %}
               {% set description = obj.description %}
 
-              {{ entry.output(false, name, description) }}
+              {{ entry.output(false, false, name, description) }}
             {% endfor %}
           {% endif %}
         </div>

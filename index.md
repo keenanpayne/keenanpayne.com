@@ -10,6 +10,7 @@ sections:
       heading: "Services I offer"
       items: services
   - type: entries
+    showCovers: true
     orientation: horizontal
     heading: "Featured projects"
     spacing: 8
@@ -22,6 +23,7 @@ sections:
         - neuralink
   - type: cta
   - type: entries
+    showCovers: true
     orientation: horizontal
     columns: 2
     heading: "Featured articles"

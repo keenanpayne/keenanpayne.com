@@ -10,6 +10,7 @@ sections:
     heading: "Writing archives"
     subheading: "Writing is one of my favorite hobbies. You can find some of what I've shared online here."
   # - type: entries
+  #   showCovers: true
   #   heading: "Featured articles"
   #   spacing: 10
   #   orientation: horizontal
@@ -18,6 +19,7 @@ sections:
   #     from: featured
   #     limit: 2
   - type: entries
+    showCovers: false
     heading: "All articles"
     spacing: 10
     orientation: archive

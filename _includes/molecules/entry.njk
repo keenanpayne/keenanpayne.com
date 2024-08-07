@@ -1,12 +1,14 @@
 {% import "atoms/more.njk" as more %}
 
-{% macro output(cover, heading, lede, linkUrl, linkText) %}
+{% macro output(showCovers, cover, heading, lede, linkUrl, linkText) %}
   <article class="collections-item">
     <div class="collections-content">
-      {% if cover %}
-        <a href="{{ linkUrl }}" title="{{ heading }}">
-          <div class="collections-image" style="background: url('{{ cover }}') no-repeat center center / cover; background-size: cover;"></div>
-        </a>
+      {% if showCovers %}
+        {% if cover %}
+          <a href="{{ linkUrl }}" title="{{ heading }}">
+            <div class="collections-image" style="background: url('{{ cover }}') no-repeat center center / cover; background-size: cover;"></div>
+          </a>
+        {% endif %}
       {% endif %}
 
       {% if heading %}
