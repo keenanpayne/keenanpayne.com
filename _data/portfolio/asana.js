@@ -5,7 +5,7 @@ module.exports = {
   year: "2014–2019",
   size: "Started at 70, left at 700, now 1600+",
   industry: "SaaS — Work management",
-  color: "#940060",
+  color: "#710c3a",
   role: "Web Developer",
   services: [
     "Web Development",
@@ -36,49 +36,49 @@ module.exports = {
   },
   assets: {
     [1]: {
-      link: "https://asana.com/teams/marketing",
+      link: "https://web.archive.org/web/20190103205503/https://asana.com/teams/marketing",
       image: "v1662587359/portfolio/asana/asana-for-marketers_tmx4lt.jpg",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Asana for Marketers",
       caption: ""
     },
     [2]: {
-      link: "https://asana.com/product",
+      link: "https://web.archive.org/web/20190103063635/https://asana.com/product",
       image: "v1662671936/portfolio/asana/asana-product_neys2x.jpg",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Product — 2019",
       caption: ""
     },
     [3]: {
-      link: "https://asana.com/product/workload",
+      link: "https://web.archive.org/web/20190103063635/https://asana.com/product/workload",
       image: "v1662671930/portfolio/asana/asana-workload_t0iwqk.jpg",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Asana Workload",
       caption: ""
     },
     [4]: {
-      link: "https://asana.com/product/timeline",
+      link: "https://web.archive.org/web/20190609185901/https://asana.com/product/timeline",
       image: "v1662671887/portfolio/asana/asana-timeline_uyi5l9.jpg",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Asana Timeline",
       caption: ""
     },
     [5]: {
-      link: "https://asana.com/apps",
+      link: "https://web.archive.org/web/20190721231954/https://asana.com/apps",
       image: "v1662671875/portfolio/asana/asana-apps_led7a7.jpg",
       asset_transform: "f_auto,q_auto,w_600",
       title: "Apps & Integrations — 2019",
       caption: ""
     },
     [6]: {
-      link: "https://blog.asana.com/",
+      link: "https://web.archive.org/web/20201203044723/https://blog.asana.com/",
       image: "v1662671925/portfolio/asana/asana-blog_gty4s8.jpg",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Blog",
       caption: ""
     },
     [7]: {
-      link: "https://blog.asana.com/2022/08/ceo-political-activism/",
+      link: "https://web.archive.org/web/20201203044723/https://blog.asana.com/2022/08/ceo-political-activism/",
       image: "v1662671909/portfolio/asana/asana-blog-article_xfyil4.jpg",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Blog Article",
@@ -236,7 +236,7 @@ module.exports = {
       title: "Use-case finished",
     },
     [30]: {
-      link: "https://asana.com/teams/marketing",
+      link: "https://web.archive.org/web/20190103205503/https://asana.com/teams/marketing",
       shot_link: "https://dribbble.com/shots/6478133-Asana-for-Marketers-Landing-page",
       video: "https://res.cloudinary.com/keenan-payne/video/upload/f_auto,w_1300/v1662587263/portfolio/asana/asana-for-marketers-dribbble_syb54y.mp4",
       asset_transform: "f_auto,q_auto,w_800",
@@ -244,28 +244,28 @@ module.exports = {
       caption: ""
     },
     [31]: {
-      link: "https://asana.com/product/workload",
+      link: "https://web.archive.org/web/20190609185901/https://asana.com/product/workload",
       video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895695/portfolio/asana/workload-scroll_dcb2fa.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Asana Workload",
       caption: ""
     },
     [32]: {
-      link: "https://asana.com/teams/marketing",
+      link: "https://web.archive.org/web/20190103205503/https://asana.com/teams/marketing",
       video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895693/portfolio/asana/asana-for-marketers-features_z9ub5m.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Asana for Marketers features",
       caption: ""
     },
     [33]: {
-      link: "https://asana.com/product",
+      link: "https://web.archive.org/web/20190103063635/https://asana.com/product",
       video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895693/portfolio/asana/product-scroll_jswrtb.mp4",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Product Animations",
       caption: ""
     },
     [34]: {
-      link: "https://asana.com/product/workload",
+      link: "https://web.archive.org/web/20190609185901/https://asana.com/product/workload",
       video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666895692/portfolio/asana/workload-hero_nnctxf.mp4",
       asset_transform: "f_auto,q_auto,w_1300",
       title: "Workload Hero Animations",
