@@ -168,6 +168,7 @@
   // Descendants
   > strong {
     position: relative;
+    white-space: pre;
     
     &::after {
       background: linear-gradient(to right, var(--orange), var(--carmine-pink), var(--exodus-fruit));
