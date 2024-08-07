@@ -6,7 +6,7 @@ module.exports = {
   industry: "SaaS — Business intelligence",
   color: "#483FE1",
   role: "Web Developer",
-  url: "https://transform.co",
+  url: "https://web.archive.org/web/20220406001101/https://transform.co/",
   services: [
     "Web Development",
   ],
@@ -19,7 +19,7 @@ module.exports = {
     "Netlify CMS",
     "Lottie"
   ],
-  overview: "I rebuilt the Transform website from the ground up as the company geared up for its Series A fundraising round. We designed the website to position Transform as a disrupter in the data management software market. <br><br>Transform has since raised <strong>$24m in Series A funding</strong> and is using their website to expand their customer base and recruit top talent.",
+  overview: "I helped rebuild the Transform website from the ground up as the company geared up for its Series A fundraising round. The website was designed to position Transform as a disrupter in the data management software market. <br><br>Transform went on to raise <strong>$24m in Series A funding</strong> and used their website to expand their customer base and recruit top talent. Following their rapid growth, Transform was <strong>acquired by Dbt Labs in 2022</strong>.",
   lede: "Building a marketing website for the world's first centralized metrics store.",
   cover: "v1665763707/portfolio/transform/cover_yrt6ni.png",
   caption: "",
@@ -27,7 +27,7 @@ module.exports = {
     [1]: {
       name: "Play Studio",
       position: "Design Partner",
-      url: "https://www.play.studio/rippling/"
+      url: "https://www.play.studio/"
     },
     [2]: {
       name: "Jaime Hernández",
@@ -43,14 +43,14 @@ module.exports = {
   },
   assets: {
     [1]: {
-      link: "https://transform.co/product/",
+      link: "https://web.archive.org/web/20220121080334/https://transform.co/product/",
       video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666816581/portfolio/transform/product_sg2aox.mp4",
       asset_transform: "f_auto,q_auto,w_1000",
       title: "Product Overview",
       caption: ""
     },
     [2]: {
-      link: "https://transform.co/culture/",
+      link: "https://web.archive.org/web/20220121092415/https://transform.co/culture/",
       image: "v1665698495/portfolio/transform/company_fphzkp.png",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Company",
@@ -58,7 +58,7 @@ module.exports = {
       preventLazy: true
     },
     [3]: {
-      link: "https://transform.co/product/",
+      link: "https://web.archive.org/web/20220121080334/https://transform.co/product/",
       image: "https://res.cloudinary.com/keenan-payne/image/upload/v1666819080/portfolio/transform/product_ynveod.png",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Product",
@@ -82,7 +82,7 @@ module.exports = {
       autoplay: true
     },
     [6]: {
-      link: "https://transform.co/careers/",
+      link: "https://web.archive.org/web/20220126194825/https://transform.co/careers/",
       image: "v1665698495/portfolio/transform/careers_si5c3x.png",
       asset_transform: "f_auto,q_auto,w_800",
       title: "Careers",
