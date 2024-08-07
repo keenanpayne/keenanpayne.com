@@ -5,7 +5,7 @@ module.exports = {
   year: "2020–2021",
   size: "1000 to 5000",
   industry: "SaaS — HR & IT management",
-  color: "#ffb81c",
+  color: "#442432",
   role: "Web Developer",
   url: "https://rippling.com",
   external_case_study: "https://www.play.studio/rippling/",
