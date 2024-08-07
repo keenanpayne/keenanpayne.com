@@ -76,7 +76,7 @@ module.exports = {
       link: "https://www.gofundme.com/c/heroes",
       image: "v1658011021/portfolio/gofundme/homepage_ffr7ea.png",
       asset_transform: "f_auto,q_auto",
-      title: "1",
+      title: "Heroes Homepage",
       description: "",
       preventLazy: true
     },
