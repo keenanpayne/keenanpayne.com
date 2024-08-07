@@ -3,6 +3,8 @@
 // ==================================================
 
 .portfolio { 
+  --portfolio-color: var(--exodus-fruit);
+
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   padding-left: 1.5rem;
@@ -45,7 +47,7 @@
   @include h4;
 
   margin-top: 0;
-  max-width: 26ch;
+  max-width: 29ch;
   
   @media (--min-1120) {
     @include h3;
@@ -185,6 +187,7 @@
 
 .portfolio-cover {
   grid-column: 1 / -1;
+  margin-top: .25rem;
   order: -1;
   width: 100%;
   
@@ -200,10 +203,10 @@
 }
 
 .portfolio-cover-img {
-  box-shadow: 10px 10px var(--exodus-fruit), var(--shadow);
+  box-shadow: 10px 10px var(--portfolio-color), var(--shadow);
 
   @media (--min-960) {
-    box-shadow: 15px 15px var(--exodus-fruit), var(--shadow);
+    box-shadow: 15px 15px var(--portfolio-color), var(--shadow);
   }
 }
 

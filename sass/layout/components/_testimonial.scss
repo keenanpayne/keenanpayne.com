@@ -4,7 +4,7 @@
 
 .testimonial { 
   background-color: var(--gray-lighter);
-  box-shadow: 10px 10px 0 0 var(--exodus-fruit), var(--shadow);
+  box-shadow: 10px 10px 0 0 var(--portfolio-color), var(--shadow);
   color: var(--plum-dark);
   grid-column: 1 / -1;
   margin: 0 auto;
@@ -23,7 +23,7 @@
   }
   
   @media (--min-960) {
-    box-shadow: 15px 15px 0 0 var(--exodus-fruit), var(--shadow);
+    box-shadow: 15px 15px 0 0 var(--portfolio-color), var(--shadow);
     padding: 3.75rem 3rem;
   }
   
