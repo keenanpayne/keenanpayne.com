@@ -21,12 +21,6 @@ sections:
         - rippling
         - neuralink
   - type: cta
-    heading: "Interested in working together?"
-    subheading: "I have availability in Q4 2024 and would love to help you with your next project."
-    link:
-      text: "Get in touch"
-      url: "/project-inquiry"
-    spacing: 10
   - type: entries
     orientation: horizontal
     columns: 2
