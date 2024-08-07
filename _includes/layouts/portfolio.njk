@@ -235,23 +235,7 @@ ignoreBaseOutput: true
   {% include "components/postNav.njk" %}
 </section>
 
-<section class="portfolio-cta">
-  <div class="portfolio-cta-content">
-    <h2 class="portfolio-cta-title">
-      Like what you see?
-    </h2>
-
-    <p class="portfolio-cta-description _text-h3">
-      Reach out and let's talk about how I can help with your next project.
-    </p>
-
-    <p class="portfolio-cta-description _text-h6">
-      <a class="button -secondary -large" href="/project-inquiry">
-        Get in Touch
-      </a>
-    </p>
-  </div>
-</section>
+{% include "components/cta.njk" %}
 
 {% if comments != false %}
   {% include "components/comments.html" %}
