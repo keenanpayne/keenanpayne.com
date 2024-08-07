@@ -56,11 +56,6 @@ sections:
     items: 
       - 6
       - 7
-  - type: testimonial
-    project: asana
-    person: 1
-    testimonial: 1
-    hide_citation: true
   - type: portfolioGrid
     project: asana
     contained: true

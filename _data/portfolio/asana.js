@@ -34,12 +34,6 @@ module.exports = {
       name: "Keenan Payne"
     }
   },
-  testimonials: {
-    [1]: {
-      person_id: 1,
-      content: "I'm proud that the Asana blog is still standing strong atop my <strong>2014</strong> code."
-    }
-  },
   assets: {
     [1]: {
       link: "https://asana.com/teams/marketing",
