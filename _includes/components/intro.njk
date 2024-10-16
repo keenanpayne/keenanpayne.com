@@ -2,6 +2,9 @@
 {% import "atoms/label.njk" as label with context %}
 {% import "molecules/entry.njk" as entry %}
 
+{# Global Settings #}
+{% set introText = introText %}
+
 {# Component Settings #}
 {% set heading = section.heading %}
 {% set subheading = section.subheading %}
@@ -9,21 +12,29 @@
 
 {# Markup #}
 <section class="intro">
-  {% if heading %}
-    <p class="testimonial-text _type-my-voice _text-h3">
-      <span>{{ content | safe }}</span>
-    </p>
+  <p class="testimonial-text _type-my-voice _text-h3">
+    <span>{{ content | safe }}</span>
+  </p>
 
+  {% if right %}
     <header class="intro-left">
-      <h2 class="intro-heading">
+  {% else %}
+    <header class="intro-left -full-width">
+  {% endif %}
+    <h2 class="intro-heading">
+      {% if heading %}
         {{ heading }}
-      </h2>
+      {% else %}
+        {{ title }}
+      {% endif %}
+    </h2>
 
+    {% if subheading %}
       <p class="intro-subheading">
         {{ subheading }}
       </p>
-    </header>
-  {% endif %}
+    {% endif %}
+  </header>
 
   {% if right %}
     {% set rightHeading = right.heading %}
