@@ -7,6 +7,7 @@ type: Reflection
 date: 2021-10-07
 tags:
   - Freelancing
+lede: "Examining my relationship with the scarcity mindset and how it affected my freelancing career."
 ---
 
 {% include atoms/figure.html, src: "/images/posts/scarcity-mindset/tunnel.jpg", alt: "Low-light photo of railroad tunnel", caption: "", source_title: "Photo by Florian van Duyn on Unsplash", source_link: "https://unsplash.com/photos/zE6ivbPzPGU" %}

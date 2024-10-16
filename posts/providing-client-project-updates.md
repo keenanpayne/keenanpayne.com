@@ -7,6 +7,7 @@ date: 2020-07-06
 type: Article
 tags:
   - Freelancing
+lede: "Learn the importance of providing regular project updates to your clients and how to send a perfect update."
 ---
 
 Your client wants to be kept in the loop with what you are doing. Period. Nobody who is exchanging money for professional services feels comfortable being left in the dark by whoever is providing a service. This is true for lawyers, general contractors, and yes, web developers. As a web developer, perhaps your communication isn't as imperative as that of a lawyer, but you should treat it *like it is*.
