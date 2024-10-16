@@ -1,15 +1,19 @@
 ---
 layout: layouts/base.njk
 changefreq: weekly
+eleventyComputed:
+  title: "{{ type | plural }}"
+  introText: "{{ type | plural }}"
 sections: 
-  entries:
-    read_Link: false
+  - type: intro
+  - type: entries
+    showCovers: false
+    heading: "Archives"
+    spacing: 10
+    orientation: archive
+    items: 
+      from: posts
+      limit: -100
+  - type: newsletter
+    spacing: 10
 ---
-
-{% import "organisms/entries/entries.njk" as entries with context %}
-
-{% if archiveLink == false %}
-  {{ entries.output('Type: ' ~ title | plural, collections[title | lower], true, modifiers, false) }}
-{% else %}
-  {{ entries.output('Type: ' ~ title | plural, collections[title | lower], true, modifiers, true) }}
-{% endif %}
