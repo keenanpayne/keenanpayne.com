@@ -7,4 +7,5 @@ description:
 templateClass: page-books
 modifiers: -media
 archiveLink: false
+type: Book
 ---

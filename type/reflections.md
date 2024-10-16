@@ -1,3 +1,4 @@
 ---
 title: Reflection
+type: Reflection
 ---

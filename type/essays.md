@@ -1,3 +1,4 @@
 ---
 title: Essay
+type: Essay
 ---

@@ -1,3 +1,4 @@
 ---
 title: Article
+type: Article
 ---
