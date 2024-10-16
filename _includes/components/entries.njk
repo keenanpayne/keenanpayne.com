@@ -21,18 +21,33 @@
       {% set itemsLimit = items.limit %}
       {% set featured = items.featured %}
       {% set collection = collections[itemsFrom] | head(-itemsLimit) %}
+      {% set tag = tag %}
 
       {% if collection.length %} 
         {# Posts #}
         {% if itemsFrom == 'featured' or itemsFrom == 'posts' %}
-          {%- for post in collection | reverse -%}
-            {% set entryCover = post.data.cover %}
-            {% set entryTitle = post.data.title %}
-            {% set entryLede = post.data.lede %}
-            {% set entryUrl = post.url %}
+          {# Filter based on tags #}
+          {% if tag %}
+            {% for post in collection | reverse %}
+              {% if post.data.tags and post.data.tags.includes(tag) %}
+                {% set entryCover = post.data.cover %}
+                {% set entryTitle = post.data.title %}
+                {% set entryLede = post.data.lede %}
+                {% set entryUrl = post.url %}
 
-            {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
-          {% endfor %}
+                {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            {%- for post in collection | reverse -%}
+              {% set entryCover = post.data.cover %}
+              {% set entryTitle = post.data.title %}
+              {% set entryLede = post.data.lede %}
+              {% set entryUrl = post.url %}
+
+              {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
+            {% endfor %}
+          {% endif %}
 
         {# Portfolio #}
         {# TODO: Clean this up; too much duplicate code and confusing logic. #}
