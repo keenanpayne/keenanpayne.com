@@ -1,4 +1,11 @@
 ---
+layout: layouts/base.njk
+permalink: /tags/{{ tag | slug }}/
+eleventyComputed:
+  title: Articles tagged “{{ tag }}”
+  tag: "{{ tag }}"
+  introText: "Articles tagged with {{ tag }}"
+changefreq: weekly
 pagination:
   data: collections
   size: 1
@@ -11,16 +18,16 @@ pagination:
     - tagList
     - Featured
   addAllPagesToCollections: true
-
-eleventyComputed:
-  title: Tagged “{{ tag }}”
-permalink: /tags/{{ tag | slug }}/
-templateClass: page-tags
 sections: 
-  entries:
-    read_Link: false
+  - type: intro
+  - type: entries
+    showCovers: false
+    heading: "All articles"
+    spacing: 10
+    orientation: archive
+    items: 
+      from: posts
+      limit: -100
+  - type: newsletter
+    spacing: 10
 ---
-
-{% import "organisms/entries/entries.njk" as entries with context %}
-
-{{ entries.output(false, collections[ tag ], true, false, true) }}
