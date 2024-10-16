@@ -1,7 +1,11 @@
 ---
 permalink: /types/
-title: Types
+title: Post Types
 templateClass: _container
+exclude: 
+  - Portfolio
+  - Service
+  - Book
 ---
 
 <h1 class="_text-align-center">
@@ -10,10 +14,13 @@ templateClass: _container
 
 <div class="_text-align-center">
   {%- for type in collections.typeList -%}
-    {% set typeUrl %}/type/{{ type | slug | plural }}/{% endset %}
+  {# Exclude types #}
+  {%- if exclude and not exclude.includes(type) -%}
+      {% set typeUrl %}/type/{{ type | slug | plural }}/{% endset %}
 
-    <a href="{{ typeUrl | url }}" class="tag -large">
-      {{ type }}
-    </a>
+      <a href="{{ typeUrl | url }}" class="tag -large">
+        {{ type }}
+      </a>
+    {%- endif -%}
   {%- endfor -%}
 </div>
