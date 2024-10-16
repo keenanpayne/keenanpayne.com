@@ -116,6 +116,15 @@
     @media (--min-1120) {
       grid-column-end: span 6;
     }
+
+    // Modifiers
+    &.-full-width {
+      grid-column: 1 / -1;
+
+      @media (--min-1120) {
+        grid-column-end: span 12;
+      }
+    }
   }
 
   .intro-right {
