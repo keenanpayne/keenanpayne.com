@@ -22,6 +22,7 @@
       {% set featured = items.featured %}
       {% set collection = collections[itemsFrom] | head(-itemsLimit) %}
       {% set tag = tag %}
+      {% set type = type %}
 
       {% if collection.length %} 
         {# Posts #}
@@ -30,6 +31,18 @@
           {% if tag %}
             {% for post in collection | reverse %}
               {% if post.data.tags and post.data.tags.includes(tag) %}
+                {% set entryCover = post.data.cover %}
+                {% set entryTitle = post.data.title %}
+                {% set entryLede = post.data.lede %}
+                {% set entryUrl = post.url %}
+
+                {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
+              {% endif %}
+            {% endfor %}
+          {# Filter based on type #}
+          {% elif type %}
+            {% for post in collection | reverse %}
+              {% if post.data.type == type %}
                 {% set entryCover = post.data.cover %}
                 {% set entryTitle = post.data.title %}
                 {% set entryLede = post.data.lede %}
