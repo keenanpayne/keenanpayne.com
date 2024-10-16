@@ -12,7 +12,6 @@ cover: 'https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_112
 tags: 
   - Featured
   - Freelancing
-  - Sabbatical
 ---
 
 {% include atoms/figure.html, src: "https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1120,h_650,c_fill/v1729107552/blog-posts/oliver-roos-PCNdauVPbjA-unsplash_krgdbc.jpg", alt: "Landscape photography of splitted road surrounded with trees", caption: "", source_title: "Photo by Oliver Roos on Unsplash", source_link: "https://unsplash.com/photos/landscape-photography-of-splitted-road-surrounded-with-trees-PCNdauVPbjA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" %}  
