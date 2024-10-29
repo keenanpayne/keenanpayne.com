@@ -36,7 +36,7 @@ module.exports = function(eleventyConfig) {
   if (env == 'dev') {
     tocTags = ['h2', 'h3', 'h4', 'h5'];
   } else if (env == 'prod') {
-    tocTags = ['h2'];
+    tocTags = ['h2', 'h3'];
   }
   
   eleventyConfig.addPlugin(toc, {
