@@ -86,7 +86,7 @@ At Donald Trump's recent [Bund Rally at Madison Square Garden](https://en.wikipe
 
 {% include type/question.html, content: "Will your problems be solved, or will your life be better if illegal immigrants are deported and immigration into our country is made more difficult?" %}
 
-I not find Donald Trump's anti-immigrant policy to be racist, but wholly unproductive and antithetical to what our country needs. We *need* immigrants to help our country grow and prosper, and we need a legal and ethical way for legal immigration to occur. Furthermore, prioritizing the inhumane deportation of immigrants solves nothing other than to further our own inhumanity, as we seek to punish others for simply wanting to live a better life and be productive members of society. 
+I not find Donald Trump's anti-immigrant policy to be racist, but wholly unproductive and antithetical to what our country needs. We *need* immigrants to help our country grow and prosper, and we need a legal and ethical way for legal immigration to occur. Furthermore, prioritizing the inhumane deportation of immigrants solves nothing other than to further our own inhumanity, as we seek punishment for others simply wanting to live a better life and be productive members of society.
 
 As outlined in his policy platform, Donald Trump doesn't only want to deport illegal immigrants. He also seeks to "deport pro-Hamas radicals." What exactly does this mean? How do you classify who is a "pro-Hamas radical"? Is anybody protesting for Palestinian rights a "pro-Hamas radical"? Are American citizens protesting for Palestinian rights open to deportation? This is a terrifying thought to consider.
 
@@ -132,17 +132,17 @@ Despite having some disagreements on the details of how each of these areas shou
 
 ### Kamala Harris has a history of fighting for Americans
 
-As Attorney General of California, Kamala Harris took on big banks after the fallout from the Great Recession and subprime mortgage crisis. Kamala Harris played a crucial role in reaching a [$25 billion agreement as part of the 2012 National Mortgage Settlement](https://www.justice.gov/opa/pr/federal-government-and-state-attorneys-general-reach-25-billion-agreement-five-largest) in which the five largest mortgage services (Ally/GMAC, Bank of America, Citi, JPMorgan Chase, and Wells Fargo) were ordered to provide homeowner relief after being found of abusing mortgage loan servicing and foreclosures. Furthermore, [Kamala secured $18 billion specifically for California homeowners](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-secures-18-billion-california-commitment) who were hit by the crisis. Kamala Harris also pushed for the [California Homeowner Bill of Rights in 2012](https://oag.ca.gov/hbor), which is considered one of the nation's strongest foreclosure protection laws.
+As Attorney General of California, Kamala Harris took on big banks after the fallout from the Great Recession and subprime mortgage crisis. Kamala Harris played a crucial role in reaching a [$25 billion agreement as part of the 2012 National Mortgage Settlement](https://www.justice.gov/opa/pr/federal-government-and-state-attorneys-general-reach-25-billion-agreement-five-largest) in which the five largest mortgage services (Ally/GMAC, Bank of America, Citi, JPMorgan Chase, and Wells Fargo) were ordered to provide homeowner relief after being found of abusing mortgage loan servicing and foreclosures. Furthermore, [Kamala secured $18 billion specifically for California homeowners](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-secures-18-billion-california-commitment) who were hit by the crisis, and pushed for the [California Homeowner Bill of Rights in 2012](https://oag.ca.gov/hbor), which is considered one of the nation's strongest foreclosure protection laws.
 
 In 2016, [Kamala Harris obtained a $1.1 billion judgment against predatory for-profit schools](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-obtains-11-billion-judgment-against-predatory) to help provide relief for individuals who were taken advantage of by these businesses. This same year, [Kamala Harris joined 12 other State Attorneys General in filing an antitrust lawsuit to block the merger of insurance companies Anthem and Cigna](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-joins-us-and-12-other-state-attorneys-general) and also saw [Kamala Harris taking on BP](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-announces-14-million-settlement-bp-underground) for endangering the environment, water supply, and health of Californians, resulting in a $14 million settlement. 
 
 In 2011, [Kamala Harris helped orchestrate a statewide seizure of 1,209 illegal firearms](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-announces-seizure-1200-guns-mentally-unstable). 
 
-During Kamala Harris's time as Attorney General of California, she [prosecuted drug traffickers](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-announces-51-arrests-multi-state-drug), [seized illegal drugs](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-announces-arrests-and-seizure-meth-valued-2), [seized more illegal drugs](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-announces-major-500lb-meth-bust-linked-mexican), and [seized more illegal drugs](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-announces-dismantling-international).
+During Kamala Harris's time as Attorney General of California, she [prosecuted drug traffickers](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-announces-51-arrests-multi-state-drug), [seized illegal drugs](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-announces-arrests-and-seizure-meth-valued-2), [seized more illegal drugs](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-announces-major-500lb-meth-bust-linked-mexican), and [seized even more illegal drugs](https://oag.ca.gov/news/press-releases/attorney-general-kamala-d-harris-announces-dismantling-international).
 
-### Kamala Harris chose Tim Walz as vice presidential candidate
+### Kamala Harris chose Tim Walz as her vice presidential candidate
 
-Kamala Harris's aptitude and *potential* political direction are clearly illustrated by her choice of Tim Walz as a vice presidential running mate. Nothing was stopping her from choosing a neoliberal Democratic normie, short of public pressure.
+Kamala Harris's aptitude and *potential* political direction are clearly illustrated by her choice of Tim Walz as a vice presidential running mate. Nothing was stopping her from choosing a neoliberal Democratic normie, which would have been the easy "establishment" choice. Instead, she chose Tim Walz, who has a proven track record of fighting for the American people.
 
 [What makes Tim Walz so great?](https://mn.gov/governor/accomplishments/accomplishments.jsp) Here are some highlights from his time as governor: 
 
@@ -162,6 +162,8 @@ Kamala Harris's aptitude and *potential* political direction are clearly illustr
 - Signed legislation to prevent abuse of elderly people by assisted-living centers and allocated $173 million to help fund nursing homes
 
 Tim Walz is a badass. It's as simple as that. He has fought for the American people and is a faithful civil servant.
+
+## Conclusion
 
 ### I believe the American people and our country will be in a better place after a Kamala Harris presidency
 
