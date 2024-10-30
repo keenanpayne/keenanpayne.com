@@ -2,10 +2,10 @@
 permalink: '/why-i-am-voting-for-kamala-harris-2024-election/'
 title: "Why I'm voting for Kamala Harris in the 2024 election"
 meta: 
-  description: "I believe that the American people and our country as a whole will be in a better place after four years of a Kamala Harris presidency."
+  description: "I believe that the American people and our country will be in a better place after four years of a Kamala Harris presidency."
   image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1730243421/blog-posts/shutterstock_2509718761_pskpdg.jpg'
 cover: 'https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1120/v1730243421/blog-posts/shutterstock_2509718761_pskpdg.jpg'
-lede: "I believe that the American people and our country as a whole will be in a better place after four years of a Kamala Harris presidency."
+lede: "I believe that the American people and our country will be in a better place after four years of a Kamala Harris presidency."
 type: Essay
 date: 2024-10-29
 tags:
@@ -167,4 +167,4 @@ Tim Walz is a badass. It's as simple as that. He has fought for the American peo
 
 ### I believe the American people and our country will be in a better place after a Kamala Harris presidency
 
-Ultimately, I see voting in a presidential election as a pragmatic tool for enacting favorable political change. To this end, I believe that the American people and our country as a whole will be in a better place after four years of a Kamala Harris presidency. Conversely, I believe that the lives of the American people and our country as a whole will suffer significantly if Donald Trump is elected as president, hence my voting decision.
+Ultimately, I see voting in a presidential election as a pragmatic tool for enacting favorable political change. To this end, I believe that the American people and our country will be in a better place after four years of a Kamala Harris presidency. Conversely, I believe that the lives of the American people and our country will suffer significantly if Donald Trump is elected as president, hence my voting decision.
