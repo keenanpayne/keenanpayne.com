@@ -10,8 +10,8 @@
 
 @mixin h1() {
   font-size: 2.441rem;
-  letter-spacing: -0.025em;
-  line-height: 1;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
   margin-bottom: 1rem;
   margin-top: 0;
 
@@ -34,8 +34,8 @@
 @mixin h3() {
   font-size: 1.563rem;
   font-weight: var(--font-weight-bold);
-  letter-spacing: -.015em;
-  line-height: 1.1;
+  letter-spacing: -.01em;
+  line-height: 1.2;
   margin-bottom: .35em;
 
   @media (--min-640) { 
