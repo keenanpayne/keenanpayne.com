@@ -22,15 +22,15 @@ sections:
         - rippling
         - neuralink
   - type: cta
-  - type: entries
-    showCovers: true
-    orientation: horizontal
-    columns: 2
-    heading: "Featured articles"
-    spacing: 10
-    items: 
-      from: featured
-      limit: 4
+  # - type: entries
+  #   showCovers: true
+  #   orientation: horizontal
+  #   columns: 2
+  #   heading: "Featured articles"
+  #   spacing: 10
+  #   items: 
+  #     from: featured
+  #     limit: 4
   - type: newsletter
-    spacing: 10
+    spacing: 0
 ---
