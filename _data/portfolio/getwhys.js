@@ -26,9 +26,39 @@ module.exports = {
   caption: "",
   people: {
     [1]: {
+      name: "Philippe Boutros",
+      position: "Co-Founder",
+      url: "https://www.linkedin.com/in/philippeboutros",
+      image: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1743026378/portfolio/getwhys/philippe_cy0mlq.jpg",
+    },
+    [2]: {
       name: "Jaime Hernández",
       position: "Development Partner",
       url: "https://jaime.one/"
+    },
+    [3]: {
+      name: "Elliot Matson",
+      position: "Design Partner",
+      url: "https://www.elliotmatson.com",
+      image: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1743026684/portfolio/getwhys/elliot_a1cwp1.jpg",
+    },
+  },
+  testimonials: {
+    [1]: {
+      person_id: 1,
+      content: "Keenan is a wizard and our launch wouldn't have been the same without him. He put together a beautiful site for us, on relatively short notice, at a great rate. He's really easy to communicate with and brings an experienced point-of-view to the table, which we highly valued."
+    },
+    [2]: {
+      person_id: 1,
+      content: "In the craziness of our launch, Keenan was exactly what we needed—cool-headed, efficient, and dependable. We're planning to keep working with him for as long as he'll have us!"
+    },
+    [3]: {
+      person_id: 3,
+      content: "I was thrilled when I saw what Keenan had put together based on my brand. He utilized the system I had created and made his own creative decisions about how to best implement it across a variety of pages and UI use cases."
+    },
+    [4]: {
+      person_id: 3,
+      content: "When I had to work with him closer as the company launch approached, he was awesome to collaborate with, super laid-back, fast and efficient. Would totally recommend him to anyone in need of a developer with a great creative eye."
     },
   },
   assets: {
