@@ -2,7 +2,7 @@
 permalink: '/portfolio/neuralink/'
 title: 'Neuralink'
 meta: 
-  description: "Helping an Elon Musk-founded startup tell the story of brain-machine interfaces."
+  description: "Helping an Elon Musk-funded startup tell the story of brain-machine interfaces."
   image: "https://res.cloudinary.com/keenan-payne/image/upload/v1667235215/portfolio/neuralink/cover_cuoloi.png"
 data: neuralink
 sections: 

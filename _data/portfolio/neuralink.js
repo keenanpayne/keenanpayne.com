@@ -20,7 +20,7 @@ module.exports = {
     "Lottie"
   ],
   overview: 'I worked closely with Neuralink founders and leadership to build a website that helps raise awareness of their mission and recruit top talent in advance of their <a href="https://www.youtube.com/watch?v=DVvmgjBL74w&t=1652s">2020 summer update</a>. <br><br>The Neuralink website has received <strong>millions of views</strong> since its launch and has been an invaluable asset for the rapidly growing company.',
-  lede: "Helping an Elon Musk-founded startup tell the story of brain-machine interfaces.",
+  lede: "Helping an Elon Musk-funded startup tell the story of brain-machine interfaces.",
   cover: "v1667235215/portfolio/neuralink/cover_cuoloi.png",
   people: {
     [1]: {
