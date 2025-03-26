@@ -1,11 +1,11 @@
 ---
-title: 'Keenan Payne | Freelance Web Development'
+title: 'Keenan Payne | Web design and web development in Denver'
 changefreq: weekly
 seoPriority: 1.0
 sections: 
   - type: intro
-    heading: "Fifteen years of professional web development"
-    subheading: "I'm passionate about building things on the web that help individuals and businesses achieve their goals."
+    heading: "Professional and personal web design and development services"
+    subheading: "During my fifteen years as a software professional, I've helped countless clients—from individuals to unicorn startups—succeed on the web. I've helped sales teams generate <strong>millions of dollars in revenue</strong>, marketing teams sign up <strong>hundreds of thousands of users to SaaS</strong>, and empowered global organizations with <strong>intuitive and resilient software</strong>."
     right:
       heading: "Services I offer"
       items: services
