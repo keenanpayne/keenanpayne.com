@@ -1,7 +1,7 @@
 {
   "name": "keenanpayne",
   "private": true,
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "The personal website for Keenan Payne.",
   "author": {
     "name": "Keenan Payne",
@@ -35,9 +35,9 @@
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.2.0",
     "markdown-it-footnote": "^4.0.0",
-    "postcss": "^8.3.8",
-    "postcss-cli": "^8.3.1",
-    "postcss-custom-media": "^8.0.0",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "postcss-custom-media": "^11.0.5",
     "postcss-media-minmax": "^5.0.0",
     "watch": "^1.0.2"
   },
