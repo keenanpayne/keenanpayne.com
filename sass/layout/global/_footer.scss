@@ -129,6 +129,18 @@
   }
 
   &.-codepen { 
-    --brand-color: #47cf73  ;
+    --brand-color: #47cf73;
+  }
+
+  &.-mastodon { 
+    --brand-color: #615ef8;
+  }
+
+  &.-bluesky { 
+    --brand-color: #208bfe;
+  }
+
+  &.-threads { 
+    --brand-color: #0a0a0a;
   }
 }
