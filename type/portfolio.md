@@ -27,7 +27,7 @@ sections:
         - rippling
         - neuralink
         - gofundme
-        - collectivei
+        - getwhys
         - sparrow
   - type: entries
     showCovers: true
