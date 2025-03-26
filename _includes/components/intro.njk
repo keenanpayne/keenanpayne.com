@@ -31,7 +31,7 @@
 
     {% if subheading %}
       <p class="intro-subheading">
-        {{ subheading }}
+        {{ subheading | safe }}
       </p>
     {% endif %}
   </header>
