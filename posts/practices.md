@@ -9,7 +9,7 @@ tags:
   - Practices
 ---
 
-{% include atoms/figure.html, src: "/images/posts/practices/writing-during-war.jpg", alt: "Low-light photo of railroad tunnel", caption: "", source_title: "The New York Public Library", source_link: "https://digitalcollections.nypl.org/items/510d47e2-08c6-a3d9-e040-e00a18064a99" %}
+{% include "atoms/figure.html", src: "/images/posts/practices/writing-during-war.jpg", alt: "Low-light photo of railroad tunnel", caption: "", source_title: "The New York Public Library", source_link: "https://digitalcollections.nypl.org/items/510d47e2-08c6-a3d9-e040-e00a18064a99" %}
 
 I've begun framing many activities I routinely engage in as "practices." These activities include yoga, meditation, writing, reading, and so on.
 
@@ -17,7 +17,7 @@ I find framing these activities as "practices" useful because it best captures m
 
 Describing an activity as a "practice" also captures my intention with engaging in it, which is as a practitioner. I get out of my practices what I put into them. Through this effort, I experience joy in my practice while learning and growing.
 
-{% include type/p_large.html, content: "Having an activity so aligned with my values that I feel compelled to do it without an expected outcome is the baseline for qualifying my activities as a practice." %}
+{% include "type/p_large.html", content: "Having an activity so aligned with my values that I feel compelled to do it without an expected outcome is the baseline for qualifying my activities as a practice." %}
 
 I also see my practices as an exercise in meditation; I strive to experience the present moment so fully that any downstream consequence from my practice is irrelevant.
 
@@ -27,4 +27,4 @@ I've also found that practicing something regularly without expecting an outcome
 
 I acknowledge that this may be semantic hoop-jumping, but it's working for me.
 
-{% include type/question.html, content: "What activities in your life are you a practitioner of?" %}
+{% include "type/question.html", content: "What activities in your life are you a practitioner of?" %}

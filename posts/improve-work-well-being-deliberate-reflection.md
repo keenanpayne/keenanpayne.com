@@ -26,7 +26,7 @@ Today I'm going to talk about the framework I used to solve my problem with unre
 ## Reflecting on unrealistic deadlines
 I recently shared a [project that I completed for Rippling](/blog/re-architecting-rippling-css), where I mentioned that the project's timeline was tight, and as a result, I was rushed to get the work finished so that the website could launch on time. What was the result? Well, we launched the website, but at a significant cost to the quality of what I was able to build, as well as my well-being while building it.
 
-{% include atoms/figure.html, src: "/images/posts/improve-project-execution/rippling.jpg", alt: "Rippling re-branding collection", caption: "Play did a wonderful job handling the re-branding for Rippling", source_title: "Play case study", source_link: "https://www.play.studio/rippling/" %}
+{% include "atoms/figure.html", src: "/images/posts/improve-project-execution/rippling.jpg", alt: "Rippling re-branding collection", caption: "Play did a wonderful job handling the re-branding for Rippling", source_title: "Play case study", source_link: "https://www.play.studio/rippling/" %}
 
 After launching the new Rippling website, I decided to take a one-month sabbatical to unwind and reflect on the myriad of projects that I had been working on since I started freelancing. Something I kept coming back to while reflecting was the timeline for the Rippling project. 
 - Why was the timeline so tight? 
@@ -51,7 +51,7 @@ Until recently, I spent most of my time reflecting on projects while working on 
 
 What was missing from my process was taking the impromptu reflections that I had during the project's execution and making time to follow-up on them after I had completed the project. I call this time to explicitly follow-up on my thoughts *deliberate reflection*. The distinguishing factor is that deliberate reflection is done with intention, whereas impromptu reflection is done in-the-moment and occurs organically.
 
-{% include type/p_large.html, content: "If I am always looking forward and am never looking back, how will I learn from the past to improve how I approach the future?" %}
+{% include "type/p_large.html", content: "If I am always looking forward and am never looking back, how will I learn from the past to improve how I approach the future?" %}
 
 Building in time for deliberate reflection allows me to focus on *thinking about* the work, as opposed to *doing* the work. Creating this separation allows me more time to flesh out my thoughts, which provides me with greater clarity around my experiences and how these experiences have made me feel. Having this deep understanding is crucial when manifesting positive change in my life.
 
@@ -82,14 +82,14 @@ Now, let's go over each of these steps in more detail.
 ### Setting aside time to reflect
 The first step is setting aside time for reflection after completing a project. The amount of time that I spend reflecting is commensurate with the size of whatever I just completed. 
 
-{% include type/p_large.html, content: "The larger the project you complete, the more time you will want to spend afterward reflecting on what you just completed." %}
+{% include "type/p_large.html", content: "The larger the project you complete, the more time you will want to spend afterward reflecting on what you just completed." %}
 
 I suggest doing your reflection somewhere that inspires you. I enjoy being out in nature when I'm reflecting, as that setting is where I have the greatest number of ideas. Pick a setting that puts you at ease and inspires you. 
 
 <div class="sideBySide _pull-outside">
-  {% include atoms/figure.html, src: '/images/posts/improve-project-execution/hike-1.jpg', alt: 'Picture of the Presidio in San Francisco', caption: "The Presidio is one of my favorite areas to hike in San Francisco" %}
+  {% include "atoms/figure.html", src: '/images/posts/improve-project-execution/hike-1.jpg', alt: 'Picture of the Presidio in San Francisco', caption: "The Presidio is one of my favorite areas to hike in San Francisco" %}
 
-  {% include atoms/figure.html, src: '/images/posts/improve-project-execution/hike-2.jpg', alt: 'Picture of Baker Beach in San Francisco', caption: "I also love walking around the beach, so ,I: can frequently be found at Baker Beach" %}
+  {% include "atoms/figure.html", src: '/images/posts/improve-project-execution/hike-2.jpg', alt: 'Picture of Baker Beach in San Francisco', caption: "I also love walking around the beach, so ,I: can frequently be found at Baker Beach" %}
 </div>
 
 ### Have a brainstorming session

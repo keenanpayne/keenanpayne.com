@@ -13,7 +13,7 @@ date: 2022-07-15
 
 By far, the most impactful thing I watched this month was this video from Richard Hamming, an American mathematician whose work helped advance the fields of computer engineering and telecommunications.
 
-{% include components/image.njk, imgSrc: 'blog-posts/june-2022-learning/richard-hamming_e2c29e.jpg', alt: "Richard Hamming in his NPS office", caption: "Richard Hamming in his NPS office", source_link: "https://amturing.acm.org/photo/hamming_1000652.cfm", source_title: "A.M. Turing Awards", class: "-float-right" %}
+{% include "components/image.njk", imgSrc: 'blog-posts/june-2022-learning/richard-hamming_e2c29e.jpg', alt: "Richard Hamming in his NPS office", caption: "Richard Hamming in his NPS office", source_link: "https://amturing.acm.org/photo/hamming_1000652.cfm", source_title: "A.M. Turing Awards", class: "-float-right" %}
 
 This video marks the end of a lecture series Hamming gave to the Naval Postgraduate School. In it, Hamming discusses: 
 
@@ -21,7 +21,7 @@ This video marks the end of a lecture series Hamming gave to the Naval Postgradu
 - Spending time in meaningful ways
 - How to choose important things to work on
 
-{% include type/blockquote.html, content: "As far as I know, and as far as you know, you have one life to lead. You might as well lead a life you would like to have. I would suggest leading a life of doing something significant.", author: "Richard Hamming" %}
+{% include "type/blockquote.html", content: "As far as I know, and as far as you know, you have one life to lead. You might as well lead a life you would like to have. I would suggest leading a life of doing something significant.", author: "Richard Hamming" %}
 
 You don't need to be a computer scientist or mathematician to find inspiration in what Hamming offers. 
 
@@ -31,7 +31,7 @@ You don't need to be a computer scientist or mathematician to find inspiration i
 
 This article by Kevin Kelly, co-founder of [Wired magazine](https://www.wired.com), provides _countless_ bits of life advice that resonate with me.
 
-{% include type/blockquote.html, content: "The consistency of your endeavors (exercise, companionship, work) is more important than the quantity. Nothing beats small things done every day, which is way more important than what you do occasionally.", author: "Kevin Kelly" %}
+{% include "type/blockquote.html", content: "The consistency of your endeavors (exercise, companionship, work) is more important than the quantity. Nothing beats small things done every day, which is way more important than what you do occasionally.", author: "Kevin Kelly" %}
 
 <hr class="-fancy" />
 
@@ -39,7 +39,7 @@ This article by Kevin Kelly, co-founder of [Wired magazine](https://www.wired.co
 
 [Last month](/may-2022-learning/#podcast%3A-the-growth-equation-%E2%80%94-doing-real-things%2C-satisfaction%2C-practices%2C-and-momentum), I shared a podcast I'd listened to called [The Growth Equation](https://thegrowtheq.com/), hosted by Brad Stulberg and Steve Magness. This month, I read a great article from Steve sharing his top advice for managing and pushing through discomfort.
 
-{% include type/blockquote.html, content: "Anything that makes you feel uncomfortable is an opportunity to desensitize the alarm in your brain. It’s not the discomfort that matters, it’s how you respond to it.", author: "Steve Magness" %}
+{% include "type/blockquote.html", content: "Anything that makes you feel uncomfortable is an opportunity to desensitize the alarm in your brain. It’s not the discomfort that matters, it’s how you respond to it.", author: "Steve Magness" %}
 
 As I've [rebooted my freelancing career](/freelancing-reboot/), I'm striving to pay closer attention to my levels of comfort and discomfort. I want to be comfortable enough so I'm not overwhelmed and [anxious](/tags/anxiety/) but uncomfortable enough to encourage growth—i.e., focusing on [desirable difficulties](https://en.wikipedia.org/wiki/Desirable_difficulty). 
 
@@ -57,7 +57,7 @@ Giving something away for free—that is, "gifting"—promotes a culture of abun
 
 Giving something away for free is a gift to the world.
 
-{% include type/p_large.html, content: "I want to do more gifting." %}
+{% include "type/p_large.html", content: "I want to do more gifting." %}
 
 <hr class="-fancy" />
 
@@ -69,9 +69,9 @@ Lost in the fervent battle for our ideals is our need for building solidarity an
 
 **Effecting change on society and politics happens when citizens align around common interests.**
 
-{% include type/p_large.html, content: 'Moralistic browbeating and reactionary "canceling" impede solidarity and reinforce a punitive moral framework.' %}
+{% include "type/p_large.html", content: 'Moralistic browbeating and reactionary "canceling" impede solidarity and reinforce a punitive moral framework.' %}
 
-{% include components/image.njk, imgSrc: 'blog-posts/june-2022-learning/1957.330_-_Two_Beggars_Fighting_vv2fa7.jpg', alt: "Two Beggars Fighting by Jacques Bellange", caption: "Two Beggars Fighting by Jacques Bellange", source_link: "https://www.artic.edu/artworks/6072/two-beggars-fighting", source_title: "Art Institute Chicago", class: "-float-left" %}
+{% include "components/image.njk", imgSrc: 'blog-posts/june-2022-learning/1957.330_-_Two_Beggars_Fighting_vv2fa7.jpg', alt: "Two Beggars Fighting by Jacques Bellange", caption: "Two Beggars Fighting by Jacques Bellange", source_link: "https://www.artic.edu/artworks/6072/two-beggars-fighting", source_title: "Art Institute Chicago", class: "-float-left" %}
 
 Let's focus on working-class solidarity and collective class consciousness.
 
@@ -89,17 +89,17 @@ This court ruling between eyeo and Axel Springer is interesting. eyeo is a devel
 
 **This court case revolved around who "owns" the underlying code for things distributed across the internet (e.g., websites, email).**
 
-{% include type/question.html, content: "When you receive your Morning Brew newsletter, who owns the underlying code for that email once it's in your inbox—you or Axel Springer?" %}
+{% include "type/question.html", content: "When you receive your Morning Brew newsletter, who owns the underlying code for that email once it's in your inbox—you or Axel Springer?" %}
 
-{% include type/question.html, content: "When you view an article on Business Insider, does Axel Springer own the underlying code for that article after it's on your web browser?" %}
+{% include "type/question.html", content: "When you view an article on Business Insider, does Axel Springer own the underlying code for that article after it's on your web browser?" %}
 
 Seemingly tricky questions. Who "owns" what in these scenarios? 
 
 The write-up from eyeo thoroughly sums it up:
 
-{% include type/blockquote.html, content: "While the website HTML copyright protections sought by the plaintiff appear innocent on the surface, the technical ramifications are onerous and dangerous.<br><br> In practice, most of the modern browser features that the Internet ecosystem enjoys today would have become instantly illegal, and copyright sanctions would have become enforceable: all privacy and anti-tracking technologies; all website language translation features; all accessibility utilities for blind and handicapped readers; all ad blockers; and all CSS modifications of any kind. <br><br>The burden would have fallen upon code developers and ordinary users to seek explicit permission from a website publisher to grant an exception to run their browser features — before visiting each and every website." %}
+{% include "type/blockquote.html", content: "While the website HTML copyright protections sought by the plaintiff appear innocent on the surface, the technical ramifications are onerous and dangerous.<br><br> In practice, most of the modern browser features that the Internet ecosystem enjoys today would have become instantly illegal, and copyright sanctions would have become enforceable: all privacy and anti-tracking technologies; all website language translation features; all accessibility utilities for blind and handicapped readers; all ad blockers; and all CSS modifications of any kind. <br><br>The burden would have fallen upon code developers and ordinary users to seek explicit permission from a website publisher to grant an exception to run their browser features — before visiting each and every website." %}
 
-{% include type/tldr.html content: "I own the code in my possession for this website as it exists (i.e., files and folders on my computer). However, once you open a web page I share on the internet publicly and it's on your computer, I no longer own it." %}
+{% include "type/tldr.html" content: "I own the code in my possession for this website as it exists (i.e., files and folders on my computer). However, once you open a web page I share on the internet publicly and it's on your computer, I no longer own it." %}
 
 <hr class="-fancy" />
 
@@ -109,11 +109,11 @@ I've listened to [yet another](/march-2022-learning/#podcast%3A-command-line-her
 
 Embracing failure isn't easy, but it's inevitable. Something will _eventually_ go wrong. That's just life.
 
-{% include type/blockquote.html, content: "Failure is inevitable, but you never want to fail the same way twice." %}
+{% include "type/blockquote.html", content: "Failure is inevitable, but you never want to fail the same way twice." %}
 
 Given this inevitability, planning for perfection is unrealistic and unhelpful. 
 
-{% include type/p_large.html, content: 'If we embrace the inevitability of failure, we can prepare ourselves to handle it in a healthy way that helps us learn and grow.' %}
+{% include "type/p_large.html", content: 'If we embrace the inevitability of failure, we can prepare ourselves to handle it in a healthy way that helps us learn and grow.' %}
 
 Something that's helped me handle failure is keeping a tight feedback loop between identifying a problem and addressing the problem. 
 
@@ -131,7 +131,7 @@ To support his writing, and my own learning, I [recently purchased](https://twit
 
 In Anything You Want, Sivers shares his tales of building and selling [CD Baby](https://en.wikipedia.org/wiki/CD_Baby). Being a chronic business creator, I find his tales inspiring.
 
-{% include type/blockquote.html, content: "When you make [a business] a dream come true for yourself, it'll be a dream come true for someone else, too." %}
+{% include "type/blockquote.html", content: "When you make [a business] a dream come true for yourself, it'll be a dream come true for someone else, too." %}
 
 Hooray [capitalism](/tags/capitalism/)!
 
@@ -155,13 +155,13 @@ You'll probably "save time" by investing in where you're at, unless that grass i
 
 Hell Yeah or No contains Sivers' thoughts on what's worth doing.
 
-{% include type/question.html, content: "How do you decide what's worth doing?" %}
+{% include "type/question.html", content: "How do you decide what's worth doing?" %}
 
 I have no idea how I decide. It feels like I'm throwing darts at a dartboard most of the time.
 
 I like Sivers' "Hell Yeah" heuristic. If I don't respond with "Hell yeah!" when deciding to do something, that indicates it may not be worth doing.
 
-{% include type/question.html, content: "What would I spend my time doing if I didn't worry about money, fame, renown, attention, and approval?" %}
+{% include "type/question.html", content: "What would I spend my time doing if I didn't worry about money, fame, renown, attention, and approval?" %}
 
 <hr class="-fancy" />
 
@@ -169,6 +169,6 @@ I like Sivers' "Hell Yeah" heuristic. If I don't respond with "Hell yeah!" when 
 
 I'm continuing to work through The Icarus Deception, which I started in [April](/april-2022-learning/).
 
-{% include type/blockquote.html, content: "The opportunity isn't in being momentarily popular to the anonymous masses, it's in being missed when you're gone and doing work that matters for the tribe that you choose." %}
+{% include "type/blockquote.html", content: "The opportunity isn't in being momentarily popular to the anonymous masses, it's in being missed when you're gone and doing work that matters for the tribe that you choose." %}
 
-{% include type/question.html, content: "Who do you want your customers/consumers/readers to change after interacting with you, your art, or whatever you've created?" %}
+{% include "type/question.html", content: "Who do you want your customers/consumers/readers to change after interacting with you, your art, or whatever you've created?" %}

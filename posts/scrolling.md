@@ -16,7 +16,7 @@ tags:
   - User Experience (UX)
 ---
 
-{% include atoms/figure.html, src: "/images/posts/android-iphone/macbook-iphone-watch-stack.jpg", alt: "iPhone and Apple Watch stacked on top of Macbook Air", caption: "", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
+{% include "atoms/figure.html", src: "/images/posts/android-iphone/macbook-iphone-watch-stack.jpg", alt: "iPhone and Apple Watch stacked on top of Macbook Air", caption: "", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
 
 Scrolling is how I use a computer. I also scroll _a lot_ on my smartphone. I scroll elsewhere—through menus on video game consoles, books on my Kindle, apps on my Apple Watch&hellip;
 
@@ -39,13 +39,13 @@ This is why I'm such a stickler for how scrolling is implemented.
 
 And why shouldn't I be?
 
-{% include type/p_large.html, content: 'Scrolling is one of my primary means for<br class="_hidden-720"> navigating a bevy of devices — how about you?' %}
+{% include "type/p_large.html", content: 'Scrolling is one of my primary means for<br class="_hidden-720"> navigating a bevy of devices — how about you?' %}
 
 ## The current state of scrolling  
 
 In my experience, websites are the primary offender for altering scrolling mechanics for **no good reason**. There's nothing more jarring than loading a web page, beginning to scroll through it, and immediately recognizing how unnatural the scrolling feels.
 
-{% include type/note.html content: 'Changing how default scrolling mechanics work in an application is commonly referred to as <em>scroll-jacking</em>.' %}
+{% include "type/note.html" content: 'Changing how default scrolling mechanics work in an application is commonly referred to as <em>scroll-jacking</em>.' %}
 
 What's worse is realizing that such a core mechanic was altered for **no good reason**.
 
@@ -53,7 +53,7 @@ I emphasize that scrolling mechanics are frequently changed for **no good reason
 
 This isn't to say there aren't well-intentioned web designers and developers behind the scenes making such decisions who surely mean no ill will to the rest of us. I've been there. But we can do better.
 
-{% include atoms/figure.html, src: "/images/posts/android-iphone/me-on-iphone-with-laptop.jpg", alt: "Me scrolling on my iPhone with a Macbook nearby", caption: "", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
+{% include "atoms/figure.html", src: "/images/posts/android-iphone/me-on-iphone-with-laptop.jpg", alt: "Me scrolling on my iPhone with a Macbook nearby", caption: "", source_title: "Visuals by Marcus", source_link: "https://www.instagram.com/visuals_by_marcus/" %}
 
 ## Deciding whether to alter scrolling mechanics  
 
@@ -67,7 +67,7 @@ You _might_ be able to get away with altering the physics, but only if it's for 
 
 Furthermore, I don't want to notice or pay attention to scrolling when visiting your website. I like the action of scrolling to be as "invisible" as possible when navigating an interface so I can accomplish what I've set out to do.
 
-{% include type/p_large.html, content: "The goal isn't to enjoy scrolling. The goal is to use scrolling to do something enjoyable." %}
+{% include "type/p_large.html", content: "The goal isn't to enjoy scrolling. The goal is to use scrolling to do something enjoyable." %}
 
 Here are some **Very Bad Reasons** for altering scrolling:  
 - You _think_ it adds to the "experience"
@@ -93,7 +93,7 @@ Don't do it if you aren't **100% confident** that changing the scrolling mechani
 
 Focus your attention elsewhere—the content of your website, art direction, animations, accessibility, usability, etc.
 
-{% include type/p_large.html, content: "Focus on what matters. Don't create new problems by solving a problem that doesn't exist." %}
+{% include "type/p_large.html", content: "Focus on what matters. Don't create new problems by solving a problem that doesn't exist." %}
 
 ## Examples  
 

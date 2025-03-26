@@ -27,7 +27,7 @@ What sparked my inspiration was [Roam Research](https://roamresearch.com/), a wr
 
 I reach for one of the _many_ writing prompts that I've captured, determined to make progress on it. While I sit at my desk, I notice my inability to put pen to paper, to breathe life into what feels like a lifeless idea, and summon the creative forces necessary to do any more than contemplate how I _might_ do something, rather than actually _do_ it. I stop, push my desire to engage with this idea to the back of my mind, and find something else to do.
 
-{% include atoms/figure.html, src: '/images/posts/muses/lightbulbs.png', alt: 'Inspiration fades while stagnation prevails' caption='Inspiration fades while stagnation prevails' %}
+{% include "atoms/figure.html", src: '/images/posts/muses/lightbulbs.png', alt: 'Inspiration fades while stagnation prevails' caption='Inspiration fades while stagnation prevails' %}
 
 ## Noticing and questioning the pattern
 
@@ -37,7 +37,7 @@ With more muses left behind than exes [^1], I have a pattern for handling our se
 
 [^1]: For the record, all of my exes *do not* [live in Texas](https://youtu.be/0KCWqnldEag?t=28) like I'm [George Strait](https://www.youtube.com/watch?v=Jk7uXaNuWNE).
 
-{% include type/p_large.html, content: "I deserve more than half-hearted rationalizations about why I don't engage with what inspires me." %}
+{% include "type/p_large.html", content: "I deserve more than half-hearted rationalizations about why I don't engage with what inspires me." %}
 
 This relationship between myself and my muses is a pattern, a feedback loop that has so ingrained itself into my psyche that noticing its existence is difficult. Doubt overcomes me as I question whether things have to be this way.
 
@@ -58,11 +58,11 @@ Planning, and the actions that arise from it, are a godsend for some, stacking t
 
 For others, planning yields little more than perpetual uncertainty and a misguided feeling of accomplishment. When will I begin writing? As soon as I'm "organized enough" to begin, rather than simply writing. This is planning over doing; planning as procrastination. 
 
-{% include atoms/figure.html, src: '/images/posts/muses/chart.png', alt: 'Planning as procrastination' caption='What does your ratio of planning to creating look like?' width='800' %}
+{% include "atoms/figure.html", src: '/images/posts/muses/chart.png', alt: 'Planning as procrastination' caption='What does your ratio of planning to creating look like?' width='800' %}
 
 Thus, I’ve found myself standing beneath a light shining on my primary mode of procrastination, guiding my actions towards planning instead of doing. I’ve created no shortage of projects, to-do lists, systems, strategies, plans, timelines, commitments, and goals that are all designed to get me from point A to point B, from idea to creation. Where, then, are my creations?
 
-{% include type/p_large.html, content: "Planning is a solution to a problem encountered by <em>doing</em> something." %}
+{% include "type/p_large.html", content: "Planning is a solution to a problem encountered by <em>doing</em> something." %}
 
 Planning as a form of procrastination inhibits my ability to engage in acts of creativity that are engaging and rewarding. Planning is no substitute for doing. To plan is to anticipate, while to do is to create. The former does not preclude the latter, but I'm no longer going to allow planning to impede my creative process.
 

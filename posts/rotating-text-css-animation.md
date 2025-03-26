@@ -107,7 +107,7 @@ The first step in the animation is ensuring that all of the adjectives in our he
 }
 ```
 
-{% include type/tip.html, content: "Hiding content on the web is tricky. For deeper dives, I recommend reading Scott O'Hara's <a href='https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html'>article on inclusively hiding content</a> and Zell Liew's article on <a href='https://zellwk.com/blog/hide-content-accessibly/'>using opacity to hide content</a>." %}
+{% include "type/tip.html", content: "Hiding content on the web is tricky. For deeper dives, I recommend reading Scott O'Hara's <a href='https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html'>article on inclusively hiding content</a> and Zell Liew's article on <a href='https://zellwk.com/blog/hide-content-accessibly/'>using opacity to hide content</a>." %}
 
 With the adjectives hidden, we can write an animation using CSS keyframes that toggle the `opacity` property.
 

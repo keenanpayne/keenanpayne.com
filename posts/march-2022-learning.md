@@ -23,7 +23,7 @@ The Power of Now has been incredibly impactful after struggling with anxiety, st
 
 This book is easy to read in short spurts, making it the perfect companion when I'm experiencing moments of high anxiety.
 
-{% include type/blockquote.html, content: "It is the quality of your consciousness at this moment that is the main determinant of what kind of future you will experience, so to surrender is the most important thing you can do to bring about positive change." %}
+{% include "type/blockquote.html", content: "It is the quality of your consciousness at this moment that is the main determinant of what kind of future you will experience, so to surrender is the most important thing you can do to bring about positive change." %}
 
 ## Article: [My first impressions of web3](https://moxie.org/2022/01/07/web3-first-impressions.html)
 
@@ -33,7 +33,7 @@ The time I spent investigating the underlying technology paved the way for my lo
 
 This article by Moxie Marlinspike, creator of [Signal](https://www.signal.org/), put the nail in the coffin for my interest in the current version and utilization of blockchain technology. He outlines how purportedly "decentralized" platforms work, why such platforms aren't truly decentralized, and why decentralization may not even be an ideal outcome for a rapidly evolving ecosystem.
 
-{% include type/blockquote.html, content: "The people at the end of the line who are flipping NFTs do not fundamentally care about distributed trust models or payment mechanics, but they care about where the money is." %}
+{% include "type/blockquote.html", content: "The people at the end of the line who are flipping NFTs do not fundamentally care about distributed trust models or payment mechanics, but they care about where the money is." %}
 
 
 ## Book: [Several Short Sentences About Writing](https://www.indiebound.org/book/9780307279415)
@@ -42,7 +42,7 @@ Several Short Sentences About Writing is changing the way I write. I never reali
 
 If you're a writer, do yourself a favor and read this book.
 
-{% include type/blockquote.html, content: "Every word in a sentence is optional until it proves to be essential." %}
+{% include "type/blockquote.html", content: "Every word in a sentence is optional until it proves to be essential." %}
 
 ## Podcast: [Command Line Heroes](https://www.redhat.com/en/command-line-heroes)
 

@@ -41,7 +41,7 @@ I wanted to start this project and feel confident that I would follow through wi
 
 Approaching my website as I would a client project required defining the project's scope of work. Doing so involved agreeing upon deadlines, defining deliverables, sequencing work, creating tasks, and deciding on the minimum viable product.
 
-{% include type/p_large.html, content: 'Without a scope of work, it can be difficult to know when something is "complete."' %}
+{% include "type/p_large.html", content: 'Without a scope of work, it can be difficult to know when something is "complete."' %}
 
 With a rough scope-of-work drafted, I began working. Knowing what I was personally committed to completing before launching the project helped me keep my eye on the ball and prevented me from chasing shiny objects and obsessing over "imperfection." 
 
@@ -52,9 +52,9 @@ Staying deliberate and focused saved me time and helped me get the project launc
 Below is a side-by-side comparison of my website before and after this redesign. Both sport a minimal aesthetic, which aligns with my design sensibilities (and capabilities). Keeping the design as straightforward as possible helps me focus on core functionality.
 
 <div class="sideBySide _pull-outside">
-  {% include atoms/figure.html, src: '/images/posts/introducing-v5/before.png', alt: 'Screenshot of my website before redesigning it' %}
+  {% include "atoms/figure.html", src: '/images/posts/introducing-v5/before.png', alt: 'Screenshot of my website before redesigning it' %}
 
-  {% include atoms/figure.html, src: '/images/posts/introducing-v5/after.png', alt: 'Screenshot of my website after redesigning it' %}
+  {% include "atoms/figure.html", src: '/images/posts/introducing-v5/after.png', alt: 'Screenshot of my website after redesigning it' %}
 </div>
 
 I designed the website from the ground up to support light and dark modes. Currently, the color scheme adapts to whatever your operating system is set to, but in the future, I will add a toggle so that folks can choose whichever theme they want.
@@ -62,7 +62,7 @@ I designed the website from the ground up to support light and dark modes. Curre
 Finally, after many wonderful years with Jekyll, I ended up switching to [Eleventy](/tags/eleventy). Both are excellent [static site generators](/tags/static-site-generators/), but there are many things Eleventy provides that make it more suitable to how I prefer building websites. The most important of these is the ease of configuring and modifying everything with Eleventy's JavaScript API. 
 
 
-{% include type/note.html content: 'To see more reasons why I switched to Eleventy, read <a href="/11ty-eleventy-introduction/">this</a>.' %}
+{% include "type/note.html" content: 'To see more reasons why I switched to Eleventy, read <a href="/11ty-eleventy-introduction/">this</a>.' %}
 
 ## Moving forward
 

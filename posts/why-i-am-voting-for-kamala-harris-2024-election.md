@@ -13,7 +13,7 @@ tags:
   - Politics
 ---
 
-{% include components/image.njk, imgSrc: 'v1730243421/blog-posts/shutterstock_2509718761_pskpdg.jpg', alt: "Digital illustration featuring a silhouette of Kamala Harris to the left in a blue color and Donald Trump to the right in a red color" %}
+{% include "components/image.njk", imgSrc: 'v1730243421/blog-posts/shutterstock_2509718761_pskpdg.jpg', alt: "Digital illustration featuring a silhouette of Kamala Harris to the left in a blue color and Donald Trump to the right in a red color" %}
 
 Politics is not something I tend to write about publicly, not for any particular reason other than that I typically prefer to convey my political beliefs—or *any* beliefs, for that matter—in person. Anyone close to me will undoubtedly know how true this rings. So, why start my public political editorials here?
 
@@ -86,7 +86,7 @@ I need look no further than the "[Agenda 47](https://www.donaldjtrump.com/platfo
 
 At Donald Trump's recent [Bund Rally at Madison Square Garden](https://en.wikipedia.org/wiki/1939_Nazi_rally_at_Madison_Square_Garden)—I mean, [his recent campaign rally at Madison Square Garden](https://apnews.com/article/trump-madison-square-garden-new-york-election-fcfe75be7f8281fde7bffa3adb3bba5d)—he said, "On day one, I will launch the largest deportation program in American history and get criminals out." This is Donald Trump's game plan and pitch to Americans—your life will improve and your problems will be solved if we deport illegal immigrants and make immigration more difficult. 
 
-{% include type/question.html, content: "Will your problems be solved, or will your life be better if illegal immigrants are deported and immigration into our country is made more difficult?" %}
+{% include "type/question.html", content: "Will your problems be solved, or will your life be better if illegal immigrants are deported and immigration into our country is made more difficult?" %}
 
 I see Donald Trump's anti-immigrant policy to be racist and wholly unproductive and antithetical to what our country needs. We *need* immigrants to help our country grow and prosper, and we need legal and ethical circumstances under which immigration can occur. Furthermore, prioritizing the inhumane deportation of immigrants solves nothing other than to further our own inhumanity, as we seek punishment for others simply wanting to live a better life and be productive members of society.
 

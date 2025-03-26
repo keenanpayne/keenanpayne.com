@@ -49,7 +49,7 @@ I eventually became a person that did a particular type of web development at th
 
 In this complacency, I felt unfulfilled in my work and jaded towards my professional circumstances. I saw myself as a cog in a machine and I was dissatisfied with what I was spending my time doing. These feelings coincided with the first time that I reflected on capitalism. I began seeing my work as merely a means to an end for corporations to generate a profit. 
 
-{% include type/p_large.html, content: "I got depressed, smoked a lot of weed, and saw something I used to love doing—web development—as a burden, rather than an opportunity or passion." %}
+{% include "type/p_large.html", content: "I got depressed, smoked a lot of weed, and saw something I used to love doing—web development—as a burden, rather than an opportunity or passion." %}
 
 <mark>I was discontent with my career.</mark> Asana offered a lot of flexibility and wonderful perks. Still, not having control over what projects I was working on, the circumstances surrounding those projects, and having no path for professional growth made me decide to start freelancing.
 
@@ -89,7 +89,7 @@ Of course, like any good scientist, I have new hypotheses as I search for answer
 
 I've thought about switching careers wholesale in the past, and I think it would provide some relief, but only for a period of time (back on the treadmill). I believe fulfillment comes from something deeper, aligning my day-to-day actions with my values. 
 
-{% include type/p_large.html, content: "I am fulfilled when my actions are a genuine expression of who I am, not something born from obligation." %}
+{% include "type/p_large.html", content: "I am fulfilled when my actions are a genuine expression of who I am, not something born from obligation." %}
 
 [//]: # (TODO: Write an article about how I capture and elaborate on questions with Roam)
 

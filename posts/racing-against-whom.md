@@ -15,7 +15,7 @@ tags:
 modifier: narrow
 ---
 
-{% include atoms/figure.html, src: "/images/posts/racing/david-marcu-VfUN94cUy4o-unsplash.jpg", alt: "Cyclist in the countryside of Romania", caption: "", source_title: "Photo by David Marcu on Unsplash", source_link: "https://unsplash.com/photos/VfUN94cUy4o" %}
+{% include "atoms/figure.html", src: "/images/posts/racing/david-marcu-VfUN94cUy4o-unsplash.jpg", alt: "Cyclist in the countryside of Romania", caption: "", source_title: "Photo by David Marcu on Unsplash", source_link: "https://unsplash.com/photos/VfUN94cUy4o" %}
 
 I had a dream I was racing someone uphill riding a bicycle. Looking over at my competition, I noticed them cruising up the hill, leaving me behind.
 

@@ -27,9 +27,9 @@ This is an example of what we are going to be building today. These buttons were
 ### Writing button markup
 We'll start building our buttons by writing accessible markup. Let's start with a  `<button>` element and add a class name to denote the background color. We also wrap our content in `<span>` tags to style each line of text individually.
 
-{% include type/tip.html, content: "If you're wondering why we start with markup instead of writing styles, think about the human body: does the skeleton sit on top of the skin, or does the skin sit on top of the skeleton? Think of the markup as the skeleton for what we are building. Writing the markup first can inform how we approach implementing the design and interactions for this component." %}
+{% include "type/tip.html", content: "If you're wondering why we start with markup instead of writing styles, think about the human body: does the skeleton sit on top of the skin, or does the skin sit on top of the skeleton? Think of the markup as the skeleton for what we are building. Writing the markup first can inform how we approach implementing the design and interactions for this component." %}
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'html,result',
 html: '<button class="-bg-yellow">
   <span>Sign up &amp;</span>
@@ -56,9 +56,9 @@ html: '<button class="-bg-yellow">
 
 Now that we have the markup for our button let's start adding some styles.
 
-{% include type/note.html content: 'I am using <a href="https://sass-lang.com/">Sass</a> as the pre-processor for my CSS for convenience (e.g., <a href="https://sass-lang.com/guide#topic-3">nesting</a>, <a href="https://sass-lang.com/documentation/syntax/comments">comments</a>, and <a href="https://sass-lang.com/documentation/at-rules/mixin">mixins</a>)' %}
+{% include "type/note.html" content: 'I am using <a href="https://sass-lang.com/">Sass</a> as the pre-processor for my CSS for convenience (e.g., <a href="https://sass-lang.com/guide#topic-3">nesting</a>, <a href="https://sass-lang.com/documentation/syntax/comments">comments</a>, and <a href="https://sass-lang.com/documentation/at-rules/mixin">mixins</a>)' %}
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'css,result',
 html: '<button class="-bg-yellow">
   <span>Sign up &amp;</span>
@@ -114,7 +114,7 @@ We start by using [CSS custom properties](https://developer.mozilla.org/en-US/do
 
 Our button is starting to come together! However, we still have to style the text inside of our `<span>` elements. We'll nest the styles for our `<span>` element directly beneath all of the styles for our `<button>` for the purposes of this tutorial, but you could also write these styles within their own class and apply that class to the `<span>` element.
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'css,result',
 html: '<button class="-bg-yellow">
   <span>Sign up &amp;</span>
@@ -184,7 +184,7 @@ To bring our two lines of text together, I set distinct `line-height` values for
 ### Supporting multiple button backgrounds
 The design for this component included two different backgrounds, so we want to write some CSS to support these different contexts.
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'css,result',
 html: '<button class="-bg-yellow">
   <span>Sign up &amp;</span>
@@ -266,7 +266,7 @@ Interaction was not outlined for this component, so I decided to use the [pacman
 
 Let's start by adding the necessary markup required for this micro-interaction:
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'html',
 html: '<button class="-bg-yellow">
   <span>Sign up &amp;</span>
@@ -359,7 +359,7 @@ Now let's add the necessary CSS to make our arrows are formatted correctly, and 
 
 I'm borrowing all of these styles from the tutorial that I've written for the [pacman arrow interaction](/blog/css-arrow-interaction.html) so, if you want a more in-depth overview of how these styles work in creating this interaction, I suggest reading that tutorial. 
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'css,result',
 html: '<button class="-bg-yellow">
   <span>Sign up &amp;</span>

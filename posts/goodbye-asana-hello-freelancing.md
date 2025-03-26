@@ -34,7 +34,7 @@ Overall, I had a wonderful experience working at Asana. I was fortunate to work 
 
 Looking back, I am pleased with the time that I spent at Asana. There are things that I think could have gone better, but such is the case with most areas of our lives. I met a lot of great people, built a lot of great things, and learned a lot of great skills. That's not a bad takeaway from spending five years working somewhere.
 
-{% include atoms/figure.html, src: '/images/posts/goodbye-asana/asana-desk.jpg', alt: 'My Asana office setup', caption: "My Asana office setup. Why is there a bunch of fake grass on my desk? <br> That was a prank, and I kept it on there for almost two years." %}
+{% include "atoms/figure.html", src: '/images/posts/goodbye-asana/asana-desk.jpg', alt: 'My Asana office setup', caption: "My Asana office setup. Why is there a bunch of fake grass on my desk? <br> That was a prank, and I kept it on there for almost two years." %}
 
 ## Reflecting on areas of improvement
 
@@ -74,7 +74,7 @@ I could take my laptop and work in more remote areas of the office to avoid othe
 
 Since I started freelancing, I have primarily been working from home in a desk setup that I configured after leaving Asana (and realizing that my Ikea desk and chair were going to be the death of my back if I didn't upgrade). Now, I have the best of both worlds: I have a desk configuration that is perfectly situated for how I enjoy working, and I have an environment that is conducive to focusing. The only thing I'm missing is face-to-face contact with the people that I enjoyed seeing every day at Asana. I've mitigated this feeling by being proactive in scheduling time to see my closest friends regularly so that I am not lacking in human contact.
 
-{% include atoms/figure.html, src: '/images/posts/goodbye-asana/home-desk.jpg', alt: 'My home office setup', caption: "My current home office setup. <br>I will share a post about how I decided on my equipment in the future." %}
+{% include "atoms/figure.html", src: '/images/posts/goodbye-asana/home-desk.jpg', alt: 'My home office setup', caption: "My current home office setup. <br>I will share a post about how I decided on my equipment in the future." %}
 
 ### Professional agency
 
@@ -84,7 +84,7 @@ This is all fine and good, but it came with one problem: we were usually in a st
 
 As a freelancer, a large part of my job is planning and organizing *how* the work should be done for a project, alongside *doing* the work. I learned after leaving Asana that I need to create the circumstances under which I create high-quality work, not expect those circumstances to arise from external forces. As a result, I am growing comfortable telling clients that I will be organizing and orchestrating the entire development-side of a project while allowing other stakeholders to organize and orchestrate the areas where they are responsible. This enables me to build web projects that I am more proud of, set reasonable deadlines for work that needs to be done, and build confidence in my clients that I can be trusted to run a web project from start to finish. I am the expert, after all, and this is what people are paying me to do. 
 
-{% include type/note.html content: "I will note, perhaps unnecessarily, that I am not trying to rag on Asana in any way. The issues that I experienced during my time working there are not uncommon to others who work in an office setting, specifically one that is in a metropolitan area. Even still, in order to create positive change for myself, I need to clearly understand what areas needed changing. My needs and desires might be different than yours, and that's okay. We all have things that we prioritize, and the trade-offs and decisions that we make are going to be a result of that prioritization." %}
+{% include "type/note.html" content: "I will note, perhaps unnecessarily, that I am not trying to rag on Asana in any way. The issues that I experienced during my time working there are not uncommon to others who work in an office setting, specifically one that is in a metropolitan area. Even still, in order to create positive change for myself, I need to clearly understand what areas needed changing. My needs and desires might be different than yours, and that's okay. We all have things that we prioritize, and the trade-offs and decisions that we make are going to be a result of that prioritization." %}
 
 ## Upward and onward
 

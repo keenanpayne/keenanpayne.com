@@ -73,7 +73,7 @@ You can provide updates using whatever medium you and your client use to communi
 
 The important thing is not *what* you use to provide an update, but rather, that your client is *seeing* your update. Providing project updates to your client will do you and your client no good if left unseen. If you can't decide the best way to provide an update to your client, just ask! 
 
-{% include type/p_large.html, content: "It can <em>never</em> hurt to ask your client what they prefer. Asking shows that you care, and allows you to tailor your updates to the client." %}
+{% include "type/p_large.html", content: "It can <em>never</em> hurt to ask your client what they prefer. Asking shows that you care, and allows you to tailor your updates to the client." %}
 
 ## Conclusion 
 Providing regular project updates to your client is something that you need to do regularly. Providing updates can help build trust between you and your client, hold you accountable for what you are responsible for, and provide transparency to your client on how a project is progressing. 

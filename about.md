@@ -19,7 +19,7 @@ I build beautiful web pages, architect codebases from scratch, embark on large-s
 
 I've built websites for cool companies like <a href="/portfolio/asana" title="View Asana case study">Asana</a>, <a href="/portfolio/rippling" title="View Rippling case study">Rippling</a>, <a href="/portfolio/gofundme" title="View GoFundMe case study">GoFundMe</a>, and <a href="/portfolio/" title="View portfolio">so many others</a>. I've been doing this for 15 years professionally, so I've lent a hand working on _countless_ of projects.
 
-{% include type/note.html content: 'If you want to see my resume, testimonials from clients and collaborators, or all that fun stuff, check out <a href="https://www.linkedin.com/in/keenanpayne" target="_blank" rel="noopener">my LinkedIn profile</a>.' %}
+{% include "type/note.html" content: 'If you want to see my resume, testimonials from clients and collaborators, or all that fun stuff, check out <a href="https://www.linkedin.com/in/keenanpayne" target="_blank" rel="noopener">my LinkedIn profile</a>.' %}
 
 <h2 class="_text-h4">
   Pictures of me

@@ -10,7 +10,7 @@ tags:
   - Static Site Generators
 ---
 
-{% include atoms/figure.html, src: "/images/posts/eleventy-introduction/homepage.png", alt: "Screenshot of Eleventy homepage", caption: "", source_title: "https://11ty.dev", source_link: "https://11ty.dev" %}
+{% include "atoms/figure.html", src: "/images/posts/eleventy-introduction/homepage.png", alt: "Screenshot of Eleventy homepage", caption: "", source_title: "https://11ty.dev", source_link: "https://11ty.dev" %}
 
 [Eleventy](https://www.11ty.dev/) (11ty) is a static site generator (SSG) built on top of [Node.js](https://nodejs.org/en/) that compiles static website assets (i.e., HTML files) using content inside of various "source" files (e.g., markdown, templates, JSON, etc.). Eleventy provides a platform that helps web developers create organized and [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself) codebases through its support for [templating languages](https://www.11ty.dev/docs/languages/), a robust [templating engine](https://www.11ty.dev/docs/templates/), flexible [data models](https://www.11ty.dev/docs/data/), and [plugins](https://www.11ty.dev/docs/plugins/).  
 
@@ -37,13 +37,13 @@ I don’t plan on covering the similarities and differences between different SS
 
 I've used different SSGs in the past, predominantly Jekyll and Hugo. While I enjoyed the ubiquity of Jekyll and the speed of Hugo, what keeps me coming back to Eleventy is its developer experience when used across a spectrum of web projects. About 90% of the projects I work on right now can be built with Eleventy, making it my go-to software for building websites of all shapes and sizes.  
 
-{% include type/p_large.html, content: "The most important advice I would give those choosing software for <em>any</em> project is to be mindful about what you’re choosing and why." %}
+{% include "type/p_large.html", content: "The most important advice I would give those choosing software for <em>any</em> project is to be mindful about what you’re choosing and why." %}
 
 Understand what problems you’re solving, determine which of these are most important, then choose a piece of software that solves your most important problems in an ideal way. 
 
 **If you're choosing the right tool for the job or at least _trying_ to, that's what matters.**
 
-{% include type/tip.html, content: "Don't buy into the hype of software X, paradigm Y, or language Z, and instead, focus on understanding your problem domain and using that as your north star." %}
+{% include "type/tip.html", content: "Don't buy into the hype of software X, paradigm Y, or language Z, and instead, focus on understanding your problem domain and using that as your north star." %}
 
 ## Getting Started
 

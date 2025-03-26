@@ -12,13 +12,13 @@ tags:
   - Traveling
 ---
 
-{% include atoms/figure.html, src: "/images/posts/travel/north-korea.jpg", alt: "The flats of Pyongyang, as photographed from the Juche Tower in North Korea", caption: "The architecture in North Korea is one of many things I find interesting.", source_title: "Photo by Thomas Evans", source_link: "https://unsplash.com/photos/3dSv5LXts8A" %}
+{% include "atoms/figure.html", src: "/images/posts/travel/north-korea.jpg", alt: "The flats of Pyongyang, as photographed from the Juche Tower in North Korea", caption: "The architecture in North Korea is one of many things I find interesting.", source_title: "Photo by Thomas Evans", source_link: "https://unsplash.com/photos/3dSv5LXts8A" %}
   
 I want to visit North Korea. I anticipate disagreement about this between myself and my parents, so naturally, I tell them. I'm a jokester son like that.
 
 But no joke, I _do_ want to visit North Korea. Now, it may not be at _the top_ of my list for potential travel destinations, but it certainly has a place.   
 
-{% include type/p_large.html, content: "Put simply, if you offer me an all-expenses-paid trip to North Korea right now, I would go with little hesitation." %}
+{% include "type/p_large.html", content: "Put simply, if you offer me an all-expenses-paid trip to North Korea right now, I would go with little hesitation." %}
 
 I want to visit North Korea for the same reasons I go anywhere new. I want to exist in new environments, see new landscapes, meet new people, and experience new cultures and ways of living. That's what I enjoy about traveling.
 
@@ -28,7 +28,7 @@ I understand that visiting North Korea entails operating under tight supervision
 
 Okay, so perhaps I haven't always colored within the lines. Perhaps my outsized confidence in talking with people in positions of "authority" came from the countless times I found myself in the principles office or talking with a police officer. These encounters helped me craft my manner of speech and debate, as I became a vigorous defender of my innocence.
 
-{% include type/question.html, content: "Will this confidence hurt me or help me in North Korea?" %}
+{% include "type/question.html", content: "Will this confidence hurt me or help me in North Korea?" %}
 
 Just kidding, it won't hurt me. I think I can keep my trap shut for long enough to stay on the up-and-up. Wait, is "long enough" the entire time I'm there? Huh, that actually might be more difficult than initially planned.   
 

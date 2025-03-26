@@ -14,7 +14,7 @@ tags:
   - Elon Musk
 ---
 
-{% include components/image.njk, imgSrc: 'v1667187409/blog-posts/elon-twitter/cover_u1wjw1.png', alt: "Picture of Elon Musk holding a sink inlaid on the Twitter logo" %}
+{% include "components/image.njk", imgSrc: 'v1667187409/blog-posts/elon-twitter/cover_u1wjw1.png', alt: "Picture of Elon Musk holding a sink inlaid on the Twitter logo" %}
 
 You'd think spending $44b would mean you're purchasing a compelling tangible good, right?
 
@@ -34,16 +34,16 @@ I will dig into why I believe that to be the case.
 
 At the heart of Twitter is an online forum where people can share, discuss, and find content.
 
-{% include type/note.html content: 'Did you know online forums have existed since the 1970s?' %}
+{% include "type/note.html" content: 'Did you know online forums have existed since the 1970s?' %}
 
 Communicating and sharing between people has been a central focus of the internet since its inception.
 
 Over the past fifty years, we've had various iterations and innovations in the digital communication space. Bulletin boards, forums, chat, mailing lists, email, social media platforms, and multimedia content sharing have all eliminated friction in communication between humans.
 
 <div class="sideBySide _pull-outside">
-  {% include components/image.njk, imgSrc: 'v1667178010/blog-posts/elon-twitter/wwiv_jf2ddh', alt: "Screenshot of WWIV", caption: "WWIV, an early bulletin board system from the late 1980s", source_link: "https://www.gizmodo.com.au/2014/10/hey-internet-old-timers-what-was-life-like-during-the-webs-early-days/", source_title: "Gizmodo" %}
-  {% include components/image.njk, imgSrc: 'v1667178010/blog-posts/elon-twitter/mirc_ahtcrb', alt: "Screenshot of mIRC", caption: "mIRC, a popular Internet Relay Chat (IRC) client from the 1990s", source_link: "https://www.reddit.com/r/90s/comments/by1of3/mirc/", source_title: "GeezeZone" %}
-  {% include components/image.njk, imgSrc: 'v1667178010/blog-posts/elon-twitter/vbulletin_kc2m3d', alt: "Screenshot vBulletin", caption: "vBulletin, a popular choice for online forums in the 2000s to today", source_link: "https://geezezone.com/threads/vbulletin-2002-–-now-who-said-web-forums-are-dead.1438/", source_title: "Reddit" %}
+  {% include "components/image.njk", imgSrc: 'v1667178010/blog-posts/elon-twitter/wwiv_jf2ddh', alt: "Screenshot of WWIV", caption: "WWIV, an early bulletin board system from the late 1980s", source_link: "https://www.gizmodo.com.au/2014/10/hey-internet-old-timers-what-was-life-like-during-the-webs-early-days/", source_title: "Gizmodo" %}
+  {% include "components/image.njk", imgSrc: 'v1667178010/blog-posts/elon-twitter/mirc_ahtcrb', alt: "Screenshot of mIRC", caption: "mIRC, a popular Internet Relay Chat (IRC) client from the 1990s", source_link: "https://www.reddit.com/r/90s/comments/by1of3/mirc/", source_title: "GeezeZone" %}
+  {% include "components/image.njk", imgSrc: 'v1667178010/blog-posts/elon-twitter/vbulletin_kc2m3d', alt: "Screenshot vBulletin", caption: "vBulletin, a popular choice for online forums in the 2000s to today", source_link: "https://geezezone.com/threads/vbulletin-2002-–-now-who-said-web-forums-are-dead.1438/", source_title: "Reddit" %}
 </div>
 
 Humans have an intrinsic desire to share and connect, so it makes sense that revolutionary technologies like computers and the internet inspired new means of communicating and sharing.
@@ -64,7 +64,7 @@ Most of all, Twitter rode a wave of momentum from the smartphone revolution, whi
 
 Having a device in our pockets that provided access to the internet meant we could stay plugged into the almighty Twitter feed 📱
 
-{% include type/p_large.html, content: "Without the smartphone revolution, Twitter would have been just another social sharing trend confined to personal computers and likely wouldn't have reached such heights." %}
+{% include "type/p_large.html", content: "Without the smartphone revolution, Twitter would have been just another social sharing trend confined to personal computers and likely wouldn't have reached such heights." %}
 
 But timing is everything, so Twitter became the Goliath it currently is. However, despite becoming a social media Goliath, Twitter has remained remarkably unremarkable.
 
@@ -91,7 +91,7 @@ While Twitter provided the platform that allowed hashtags to flourish as a way o
 
 The contemporary use of hashtags is attributed to [@chrismessina](https://twitter.com/chrismessina), but their use dates back to 1970s programming and 1980s IRC networks ([source](https://en.wikipedia.org/wiki/Hashtag)).
 
-{% include components/image.njk, imgSrc: 'v1667178514/blog-posts/elon-twitter/did-you-know_zrr0up.gif', alt: "The More You Know flying star rainbow gif", caption: "Did you know that Elon Musk paid too much for Twitter?" %}
+{% include "components/image.njk", imgSrc: 'v1667178514/blog-posts/elon-twitter/did-you-know_zrr0up.gif', alt: "The More You Know flying star rainbow gif", caption: "Did you know that Elon Musk paid too much for Twitter?" %}
 
 Despite the mass proliferation of hashtags to categorize content, Twitter failed to innovate beyond the initial phenomenon.
 
@@ -137,7 +137,7 @@ More annoying is that after paying for basic functionality, you still can't edit
 
 **It's editing, for Christ's sake. Not a fucking up-sell.**
 
-{% include type/p_large.html, content: "With thousands of employees and billions of dollars, Twitter bungled a feature that users have requested since the product's inception." %}
+{% include "type/p_large.html", content: "With thousands of employees and billions of dollars, Twitter bungled a feature that users have requested since the product's inception." %}
 
 Why limit editing to a 30min window? Why not display an easily-accessible list of all edits to a tweet to maintain integrity?
 
@@ -160,8 +160,8 @@ The incompetence on display at Twitter isn't limited to its lack of technical in
 Follow along as we revisit just a couple of [Twitter acquisition](https://en.wikipedia.org/wiki/List_of_mergers_and_acquisitions_by_Twitter) missteps...
 
 <div class="sideBySide _pull-outside">
-  {% include components/image.njk, imgSrc: "v1667179215/blog-posts/elon-twitter/vine_whlwzj", alt: "Vine logo" %}
-  {% include components/image.njk, imgSrc: "v1667180497/blog-posts/elon-twitter/periscope_cpzvqo", alt: "Periscope logo" %}
+  {% include "components/image.njk", imgSrc: "v1667179215/blog-posts/elon-twitter/vine_whlwzj", alt: "Vine logo" %}
+  {% include "components/image.njk", imgSrc: "v1667180497/blog-posts/elon-twitter/periscope_cpzvqo", alt: "Periscope logo" %}
 </div>
 
 
@@ -169,13 +169,13 @@ Remember Vine, the precursor to apps like TikTok and the rise of now-ubiquitous 
 
 Twitter purchased Vine in 2012 for **$30m** and shuttered the app in 2015 when it had over **200m** active users.
 
-{% include type/question.html, content: "What could Vine have become if Twitter had never purchased it?" %}
+{% include "type/question.html", content: "What could Vine have become if Twitter had never purchased it?" %}
 
 What about Periscope, which Twitter purchased for **$50–100m** in 2015?
 
 Despite Twitter's foresight into live-streaming video, the company was unable to integrate the ambitions of Vine or Persicope into its app in a way that transcends either company's initial ambitions.
 
-{% include components/image.njk, imgSrc: "v1667179335/blog-posts/elon-twitter/elon-twitter-bio_dpsff0", alt: "Screenshot of Elon Musk's Twitter account with a picture of him holding a sink and his description as 'Chief Twit'.", class: "-float-left", caption: "Imagine spending $44b to purchase a company, then immediately calling yourself a twit." %}
+{% include "components/image.njk", imgSrc: "v1667179335/blog-posts/elon-twitter/elon-twitter-bio_dpsff0", alt: "Screenshot of Elon Musk's Twitter account with a picture of him holding a sink and his description as 'Chief Twit'.", class: "-float-left", caption: "Imagine spending $44b to purchase a company, then immediately calling yourself a twit." %}
 
 ## Final thoughts
 
@@ -185,7 +185,7 @@ The company's dwindling user base and lackluster engagement prove this to be tru
 
 While you can cut costs to improve margins, Twitter can only save itself by fundamentally reimagining its vision.
 
-{% include type/p_large.html, content: "Elon Musk paid $44b for an unoriginal social media app with a floundering user base, unimpressive revenue, and little differentiation from other platforms." %}
+{% include "type/p_large.html", content: "Elon Musk paid $44b for an unoriginal social media app with a floundering user base, unimpressive revenue, and little differentiation from other platforms." %}
 
 Chief Twit, indeed. [^1]
 

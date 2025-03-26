@@ -23,7 +23,7 @@ I will note, perhaps needlessly, that I'm not attempting to capture __everything
 
 ---
 
-{% include type/question.html, content: "Why did I procrastinate thinking about this question?<br>Why didn't I begin capturing my thoughts sooner?" %}
+{% include "type/question.html", content: "Why did I procrastinate thinking about this question?<br>Why didn't I begin capturing my thoughts sooner?" %}
 
 I suppose that the time commitment required to answer this question played a role in my procrastination, not that I fully understood the time commitment for answering it, given its broad scope. Still, I sensed that this would be a multi-hour endeavor if I gave the question my full attention.
 
@@ -35,17 +35,17 @@ I suppose this is an exercise in vulnerability through [self-reflection](/tags/s
 
 My writing practice is an area where I experience confusion and resistance. While I love writing for self-reflection, learning, and sharing, I struggle with feelings of self-doubt, overthinking, and an obsession with the "perfection" of what I've written. 
 
-{% include type/note.html content: "Contemplating my creative struggles is something I've <a href='/one-more-thing/'>discussed before</a>" %}
+{% include "type/note.html" content: "Contemplating my creative struggles is something I've <a href='/one-more-thing/'>discussed before</a>" %}
 
-{% include type/question.html, content: 'Must my writing be an arduous endeavor?' %}
+{% include "type/question.html", content: 'Must my writing be an arduous endeavor?' %}
 
 I mean, writing my thoughts isn't difficult. In fact, stream-of-consciousness writing is effortless without focusing on editing, self-censorship, the reader, and goals for the finished product. I'm aware of this, but I'm still practicing pushing such inclinations out of my mind while writing.
 
-{% include type/question.html, content: 'Why not make my writing effortless?' %}
+{% include "type/question.html", content: 'Why not make my writing effortless?' %}
 
 I edit while I write a lot. Every word, sentence, and turn of phrase is intended to articulate my thoughts to the best of my abilities. I wouldn't want you to think that I'm unintelligent, would I? 
 
-{% include type/question.html, content: 'Why do I care what you think about my intelligence?<br>Even if I knew how you perceived my intelligence, would that matter?' %}
+{% include "type/question.html", content: 'Why do I care what you think about my intelligence?<br>Even if I knew how you perceived my intelligence, would that matter?' %}
 
 If I'm writing to an audience of people at this moment, I couldn't tell you who this audience might be, save for the few friends, family members, and acquaintances who care about me enough personally to read what I write from time to time.
 
@@ -53,7 +53,7 @@ I hope they don't think I'm going crazy.
 
 ---
 
-{% include type/question.html, content: "But what of goals?<br>What's a life with no goals?" %}
+{% include "type/question.html", content: "But what of goals?<br>What's a life with no goals?" %}
 
 Writing without goals, although a personal struggle of mine, is not at all unattainable. I'm getting better at it by the day. 
 
@@ -63,7 +63,7 @@ If I want to retire by 55 with millions in the bank, I need some predictable lon
 
 How do I make such investments? By securing a career as a sought-after web developer. By helping others meet __their__ goals, I earn income that allows me to meet mine. Quid pro quo.
 
-{% include type/question.html, content: 'Why am I so interested in planning for retirement?' %}
+{% include "type/question.html", content: 'Why am I so interested in planning for retirement?' %}
 
 I suppose retirement planning is something that's programmed into my brain, having come of age in a [late capitalist](https://en.wikipedia.org/wiki/Late_capitalism) society. It's a dog-eat-dog world, so I better get to hoarding wealth for some indeterminate future.
 
@@ -71,17 +71,17 @@ The task of hoarding wealth comes at the cost of directing our actions to serve 
 
 ---
 
-{% include type/question.html, content: 'How do I determine the actions I take?' %}
+{% include "type/question.html", content: 'How do I determine the actions I take?' %}
 
 Actions are an atomic unit of being. It's through action that life is made possible; it's the reason I'm writing these very words. But how do I determine what action to take? With experience predicated on answering the question of "what action to take," you would think I would be better at answering it after living twenty-eight years.
 
 I frequently ask myself whether the actions I'm taking are an authentic representation of who I am, who I desire to become, and what I value.
 
-{% include type/question.html, content: 'What do I value?<br>Am I living in accordance with my values?<br>Are my actions an authentic representation of who I am?<br>How frequently do my actions reflect how I would like to be perceived rather than an authentic representation of who I am?' %}
+{% include "type/question.html", content: 'What do I value?<br>Am I living in accordance with my values?<br>Are my actions an authentic representation of who I am?<br>How frequently do my actions reflect how I would like to be perceived rather than an authentic representation of who I am?' %}
 
 ---
 
-{% include type/question.html, content: 'What is meaningful to me?' %}
+{% include "type/question.html", content: 'What is meaningful to me?' %}
 
 My relationships with people I love and care about; the wellbeing of myself and those I care about; experiencing personal growth; spending time helping and empowering others. 
 
@@ -93,4 +93,4 @@ To what extent am I comfortable with my actions and values being out of alignmen
 
 ---
 
-{% include type/question.html, content: "How do I feel about what I've just written?<br>Does what I've written capture enough of my confusion?" %}
+{% include "type/question.html", content: "How do I feel about what I've just written?<br>Does what I've written capture enough of my confusion?" %}

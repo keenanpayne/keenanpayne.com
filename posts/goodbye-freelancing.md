@@ -23,7 +23,7 @@ Specifically, I would like to give a shout-out to [Casey Martin](https://www.pla
 
 During the past eighteen months, I've completed fifteen client projects. Cranking out this much work wouldn't have been feasible (or advisable) by myself, so I must express my deepest gratitude to [Jaime Hernández](https://jaime.one/)—my friend and closest collaborator—who worked tirelessly with me on countless projects. I'd also like to shout out Nels Andereck and Rob Schneiderman, two friends I met while working at Asana, who I also collaborated with during this time. I've loved working with you all.
 
-{% include type/p_large.html, content: "On average, I launched a new client<br>project every 36 days. Whew." %}
+{% include "type/p_large.html", content: "On average, I launched a new client<br>project every 36 days. Whew." %}
 
 Surprisingly, I took home more net income freelancing than working in-house. Comparing these is difficult, as the former requires paying more taxes for self-employment and benefits while the latter provides non-income compensation such as stock options, insurance, and other perks. Nuance aside, the income potential for freelancing provided a delightful surprise.
 
@@ -43,7 +43,7 @@ I'm going to take some time over the next year to continue engaging in my [daily
 
 Instead of focusing on my actions being a means to a financial end, I'm going to allow them to be the end in and of themselves.
 
-{% include type/question.html, content: "What happens when my focus isn't on earning money and, instead, on the authentic enjoyment I receive from whatever I'm doing?" %}
+{% include "type/question.html", content: "What happens when my focus isn't on earning money and, instead, on the authentic enjoyment I receive from whatever I'm doing?" %}
 
 You will doubtlessly see me around these parts as I continue writing and publishing whatever I'm thinking about, learning, or building. Writing is one of my favorite [practices](/practices/) and one where I will continue to invest a great deal of time.
 

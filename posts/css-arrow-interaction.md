@@ -25,7 +25,7 @@ Our goal is to create an animation of an arrow following itself (hence the name 
 
 We'll start by writing the markup for this interaction. For this tutorial, I will be putting this arrow animation inside of a `<button>` element with some accompanying text. However, once you finish this tutorial, you should be able to use this interaction inside of any element. 
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'html,result',
 html: '<button>
   Just Do It
@@ -56,7 +56,7 @@ The real magic of this interaction comes from the CSS that we write for the mark
 ### Styling the button 
 We'll start by writing some simple styles for our `<button>` element:
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'css,result',
 html: '<button>
   Just Do It
@@ -94,7 +94,7 @@ There is nothing too out of the ordinary here. The only thing to note is that we
 ### Styling arrow container
 Now let's get to the fun stuff. To start building our arrow animation, we'll start by adding some styles to the `arrowPacman` class.
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'css,result',
 html: '<button>
   Just Do It
@@ -149,7 +149,7 @@ To ensure that only one of our arrows is visible, we set the `width` property on
 ### Styling SVG elements
 We want to make sure that the two arrows inside of our button have the correct size and spacing, so let's add some styles inside of the `arrowPacman` class to target the `svg` elements. 
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'css,result',
 html: '<button>
   Just Do It
@@ -209,7 +209,7 @@ We set the `width` and `height` of each SVG element accordingly, and give our la
 ### Styling the arrow "clip"
 To create the left-to-right effect that we are looking for, we need to add some styles to our `arrowPacman-clip` element. 
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'css,result',
 html: '<button>
   Just Do It
@@ -279,7 +279,7 @@ Lastly, we set the width of this element to **`44px`** by once again utilizing t
 ### Creating the arrow animation
 Now that we've set the stage let's add the styles necessary to make this animation work. 
 
-{% include components/codepen.html,
+{% include "components/codepen.html",
 tab: 'css,result',
 html: '<button>
   Just Do It

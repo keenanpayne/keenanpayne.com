@@ -14,11 +14,11 @@ tags:
   - Freelancing
 ---
 
-{% include atoms/figure.html, src: "https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1120,h_650,c_fill/v1729107552/blog-posts/oliver-roos-PCNdauVPbjA-unsplash_krgdbc.jpg", alt: "Landscape photography of splitted road surrounded with trees", caption: "", source_title: "Photo by Oliver Roos on Unsplash", source_link: "https://unsplash.com/photos/landscape-photography-of-splitted-road-surrounded-with-trees-PCNdauVPbjA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" %}  
+{% include "atoms/figure.html", src: "https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1120,h_650,c_fill/v1729107552/blog-posts/oliver-roos-PCNdauVPbjA-unsplash_krgdbc.jpg", alt: "Landscape photography of splitted road surrounded with trees", caption: "", source_title: "Photo by Oliver Roos on Unsplash", source_link: "https://unsplash.com/photos/landscape-photography-of-splitted-road-surrounded-with-trees-PCNdauVPbjA?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash" %}  
 
 I found myself inspired by <a href="https://www.linkedin.com/feed/update/urn:li:activity:7252330857485537280/" target="_blank" rel="noopener">a recent LinkedIn post</a> by Jessica Strelioff—a colleague and former co-worker at Asana who runs the wonderful design studio <a href="https://www.goodside.studio" target="_blank" rel="noopener">Goodside</a>—as she reflected on her desire to keep her business small, despite the potential for growth.
 
-{% include type/blockquote.html, content: "We built Goodside to do good work for good people but we also built it to fit into the lives we want to live. Staying small is hard but it's worth it and it's what works for us.", author: "Jessica Strelioff" %}
+{% include "type/blockquote.html", content: "We built Goodside to do good work for good people but we also built it to fit into the lives we want to live. Staying small is hard but it's worth it and it's what works for us.", author: "Jessica Strelioff" %}
 
 This post from Jessica inspired me to reflect on how I tried expanding my business beyond myself throughout 2019–2021. I hired contractors to do the engineering work and positioned myself as a people and project manager rather than an engineer. Doing so allowed me to say "yes" to more projects because I had more hands on deck to help with engineering, thus allowing me to make more money due to how many projects we could take on.
 

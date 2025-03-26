@@ -13,17 +13,17 @@ tags:
   - Libraries and Frameworks
 ---
 
-{% include atoms/figure.html, src: "/images/posts/trust-suspicion/rocks.jpg", alt: "Picture of rocks stacked atop each other", caption: "", source_title: "Photo by Zdeněk Macháček on Unsplash", source_link: "https://unsplash.com/photos/jbe0iCwo-U0" %}
+{% include "atoms/figure.html", src: "/images/posts/trust-suspicion/rocks.jpg", alt: "Picture of rocks stacked atop each other", caption: "", source_title: "Photo by Zdeněk Macháček on Unsplash", source_link: "https://unsplash.com/photos/jbe0iCwo-U0" %}
 
 I've enjoyed the ongoing conversation on native browser features and third-party libraries and frameworks, spurred by a [recent article](https://adactio.com/journal/19021) from Jeremy Keith.
 
 Jeremy's perception is that developers seem to instinctively reach for and trust third-party libraries over native browser implementations/features:
 
-{% include type/blockquote.html, content: "The mindset I’ve noticed is that many developers are suspicious of browser features but trusting of third-party libraries.", author: "Jeremy Keith" %}
+{% include "type/blockquote.html", content: "The mindset I’ve noticed is that many developers are suspicious of browser features but trusting of third-party libraries.", author: "Jeremy Keith" %}
 
 He builds upon this premise by questioning the trustworthiness of third-party libraries compared with native browser features: 
 
-{% include type/blockquote.html, content: "I’m much more trusting of native browser features—HTML elements, CSS features, and JavaScript APIs. They’re not always perfect, but a lot of thought goes into their development. By the time they land in browsers, a whole lot of smart people have kicked the tyres and considered many different angles. As a bonus, I don’t need to install them. Even better, end users don’t need to install them." %}
+{% include "type/blockquote.html", content: "I’m much more trusting of native browser features—HTML elements, CSS features, and JavaScript APIs. They’re not always perfect, but a lot of thought goes into their development. By the time they land in browsers, a whole lot of smart people have kicked the tyres and considered many different angles. As a bonus, I don’t need to install them. Even better, end users don’t need to install them." %}
 
 There's more to his article, so definitely give it a read. 
 
@@ -39,17 +39,17 @@ Things are smoother now, which I'm _incredibly_ grateful for. Still, it's import
 
 [Chris Coyier](https://chriscoyier.net/2022/04/27/trust/) shares his take:
 
-{% include type/blockquote.html, content: "Third-party code (like the referenced Bootstrap and React) have a history of smoothing over significant cross-browser issues and providing better-than-browser ergonomic APIs. jQuery was created to smooth over cross-browser JavaScript problems. That’s trust.", author: "Chris Coyier" %}
+{% include "type/blockquote.html", content: "Third-party code (like the referenced Bootstrap and React) have a history of smoothing over significant cross-browser issues and providing better-than-browser ergonomic APIs. jQuery was created to smooth over cross-browser JavaScript problems. That’s trust.", author: "Chris Coyier" %}
 
 I remember spending _a lot_ of time fumbling over cross-browser issues for almost a decade during the 2000s when web development was a more finicky bastard.
 
-{% include type/p_large.html, content: "Who wasn't using a library like jQuery while supporting the likes of Internet Explorer 6?" %}
+{% include "type/p_large.html", content: "Who wasn't using a library like jQuery while supporting the likes of Internet Explorer 6?" %}
 
 After using third-party libraries to solve so many problems for so many years, I understand why folks might lean on them for so many problems.
 
 [Jim Nielsen](https://blog.jim-nielsen.com/2022/trusting-browsers/) shares his thoughts:
 
-{% include type/blockquote.html, content: "We distrust the browser because we’ve been trained to. Years of fighting browser deficiencies where libraries filled the gaps. Browser enemy; library friend.
+{% include "type/blockquote.html", content: "We distrust the browser because we’ve been trained to. Years of fighting browser deficiencies where libraries filled the gaps. Browser enemy; library friend.
 
 For example: jQuery did wonders to normalize working across browsers. Write code once, run it in any browser — confidently.", author: "Jim Nielsen" %}
 
@@ -75,7 +75,7 @@ Instincts overruling thoughtfulness are where problems can occur. Sometimes your
 
 I like Jim's closing line: 
 
-{% include type/blockquote.html, content: "Where available, default to browser-native features over third party code, abstractions, or idioms.", author: "Jim Nielsen" %}
+{% include "type/blockquote.html", content: "Where available, default to browser-native features over third party code, abstractions, or idioms.", author: "Jim Nielsen" %}
 
 Great idea. 
 

@@ -13,11 +13,11 @@ tags:
   - Politics
 ---
 
-{% include atoms/figure.html, src: "https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1200/v1663605403/Blog%20Posts/political-purpose/1999.278_-_County_Election_lyrmci", alt: "County Election in 1800's on watercolor", caption: "County Election in 1800's on watercolor", source_title: "Art Institute Chicago", source_link: "https://www.artic.edu/artworks/151565/county-election" %}
+{% include "atoms/figure.html", src: "https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1200/v1663605403/Blog%20Posts/political-purpose/1999.278_-_County_Election_lyrmci", alt: "County Election in 1800's on watercolor", caption: "County Election in 1800's on watercolor", source_title: "Art Institute Chicago", source_link: "https://www.artic.edu/artworks/151565/county-election" %}
 
 I was struck by a quote on the importance of political purpose while reading George Orwell's [Why I Write](https://www.indiebound.org/book/9780143036357):
 
-{% include type/blockquote.html, content: "Looking back through my work, I see that it is invariably where I lacked a political purpose that I wrote lifeless books and was betrayed into purple passages, sentences without meaning, decorative adjectives, and humbug generally." author: "George Orwell" %}
+{% include "type/blockquote.html", content: "Looking back through my work, I see that it is invariably where I lacked a political purpose that I wrote lifeless books and was betrayed into purple passages, sentences without meaning, decorative adjectives, and humbug generally." author: "George Orwell" %}
 
 Orwell's comment spurred me to reflect on how a political purpose might give my actions more significant meaning.
 
@@ -25,7 +25,7 @@ I generally consider myself politically aware and engaged. I keep up on current 
 
 These traits are well and good, though I’m confronting an increased feeling of emptiness as I reflect on the impact of my efforts given our current political, social, and economic landscape. 
 
-{% include type/p_large.html, content: "I feel like I'm not doing enough to advocate for the change I want to see in the world." %}
+{% include "type/p_large.html", content: "I feel like I'm not doing enough to advocate for the change I want to see in the world." %}
 
 During these moments of internal strife, I effortlessly belittle myself and my life situation. 
 
@@ -39,11 +39,11 @@ I'm using the skills I've gained during the past 15 years to secure a financial 
 
 What inspired George Orwell to make the change in his life and writing, away from "sentences without meaning," toward his political purpose?
 
-{% include type/blockquote.html, content: "The Spanish war and other events in 1936–7 turned the scale and thereafter I knew where I stood. Every line of serious work that I have written since 1936 has been written, directly or indirectly, against Totalitarianism and for democratic Socialism, as I understand it." author: "George Orwell" %}
+{% include "type/blockquote.html", content: "The Spanish war and other events in 1936–7 turned the scale and thereafter I knew where I stood. Every line of serious work that I have written since 1936 has been written, directly or indirectly, against Totalitarianism and for democratic Socialism, as I understand it." author: "George Orwell" %}
 
 I feel the urge to make a similar change in my life. I want to put my skills, passion, and effort toward advancing a social, political, and economic agenda that will help make the world a better place for everyone.
 
-{% include type/p_large.html, content: "I want to align my actions more closely with my values." %}
+{% include "type/p_large.html", content: "I want to align my actions more closely with my values." %}
 
 I'm not entirely sure how this will manifest. Without a planning for change, I run the risk of maintaining the status quo and keeping to business as usual. But <mark>planning without action</mark> can simply be [a form of procrastination](/creating-planning/).
 

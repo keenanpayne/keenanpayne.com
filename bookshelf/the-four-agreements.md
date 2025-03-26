@@ -34,30 +34,30 @@ book:
 #### Be Impeccable With Your Word.  
   - **Highlight:** The word is a force; it is the power you have to express and communicate; to think, and thereby create the events in your life.
 
-{% include type/note.html content: 'Something that resonated with me following the description of this commitment was how meaningless and harmful Gossip is. When we use our word to manifest negative energy towards others in our lives—regardless of whether or not we know them—we perpetuate negative energy throughout the world.' %}
+{% include "type/note.html" content: 'Something that resonated with me following the description of this commitment was how meaningless and harmful Gossip is. When we use our word to manifest negative energy towards others in our lives—regardless of whether or not we know them—we perpetuate negative energy throughout the world.' %}
 
 #### Don't Take Anything Personally.  
   - **Highlight:** You make something big out of something so little, because you hand the need to be right and make everybody else wrong. You also try hard to be right by giving them your own opinions.
 
-{% include type/note.html content: 'Folks have pointed out that they perceive me as having a desire to "always be right", as well as being inclined to nitpick and correct minor inaccuracies without much tangible benefit, other than to nitpick and correct minor innaccuracies. These are fair critiques; what can I say, I just enjoy diving into the nuance of <em>everything</em>. I am also a loudmouth, happy to voice my opinions to whoever will engage in compelling discourse. I strive to be mindful of how these manifest in my life, to what extent they play a role in my communication with others, and whether they are helping or hurting me.' %}
+{% include "type/note.html" content: 'Folks have pointed out that they perceive me as having a desire to "always be right", as well as being inclined to nitpick and correct minor inaccuracies without much tangible benefit, other than to nitpick and correct minor innaccuracies. These are fair critiques; what can I say, I just enjoy diving into the nuance of <em>everything</em>. I am also a loudmouth, happy to voice my opinions to whoever will engage in compelling discourse. I strive to be mindful of how these manifest in my life, to what extent they play a role in my communication with others, and whether they are helping or hurting me.' %}
 
   - **Highlight:** You get mad because you are afraid, because you are dealing with Fear. If you are not afraid, there is no way you will get mad.
 
-{% include type/question.html, content: "What are the Fear-based agreements I’ve made with myself that cause me to suffer?" %}
+{% include "type/question.html", content: "What are the Fear-based agreements I’ve made with myself that cause me to suffer?" %}
 
   - **Highlight:** Only by making an inventory of our agreements will we uncover all of the conflicts in the mind and eventually make order out of chaos.
 
-{% include type/question.html, content: "What are all of the personal commitments that I’ve made to myself, and what is my gut reaction to them?" %}
+{% include "type/question.html", content: "What are all of the personal commitments that I’ve made to myself, and what is my gut reaction to them?" %}
 
-{% include type/note.html content: 'Conflicting agreements are the reason why humans are frequently unsure of core aspects of their lives—what they want, when they want it, and how they want it.' %}
+{% include "type/note.html" content: 'Conflicting agreements are the reason why humans are frequently unsure of core aspects of their lives—what they want, when they want it, and how they want it.' %}
 
-{% include type/question.html, content: "Which of my agreements/commitments conflict with each other the most, creating the greatest Tension in my life?" %}
+{% include "type/question.html", content: "Which of my agreements/commitments conflict with each other the most, creating the greatest Tension in my life?" %}
 
-{% include type/note.html content: 'The agreements we make with ourselves come from different parts of our being. These agreements have different desires and functions, and each has a unique "voice" and "personality." This complexity makes it difficult for our agreements to live harmoniously at all points in our lives. Such difficulties cause Tension and other negative feelings.' %}
+{% include "type/note.html" content: 'The agreements we make with ourselves come from different parts of our being. These agreements have different desires and functions, and each has a unique "voice" and "personality." This complexity makes it difficult for our agreements to live harmoniously at all points in our lives. Such difficulties cause Tension and other negative feelings.' %}
 
 #### Don't make assumptions
 
-{% include type/note.html content: 'Making assumptions is unfair to people in our lives because we <a href="https://www.psychologytoday.com/us/basics/projection" title="projection" target="_blank">project</a> onto them what we know about ourselves, <em>assuming</em> that they “should” know. This is toxic, unfair, and detrimental to Relationships.' %}
+{% include "type/note.html" content: 'Making assumptions is unfair to people in our lives because we <a href="https://www.psychologytoday.com/us/basics/projection" title="projection" target="_blank">project</a> onto them what we know about ourselves, <em>assuming</em> that they “should” know. This is toxic, unfair, and detrimental to Relationships.' %}
 
 - **Highlight:** It is always better to ask questions than to make an assumption, because assumptions set us up for suffering.
 - **Highlight:** Real love is accepting other people the way they are without trying to change them.

@@ -19,7 +19,7 @@ tags:
   - Stress
 ---
 
-{% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/airport_yaegse.jpg', alt: "Early morning overlooking the Salt Lake City airport", caption: "Flight mishaps had me sleeping in the Salt Lake City airport this winter. At least the sunrise was pretty.", lazy: false %}
+{% include "components/image.njk", imgSrc: 'blog-posts/freelancing-reboot/airport_yaegse.jpg', alt: "Early morning overlooking the Salt Lake City airport", caption: "Flight mishaps had me sleeping in the Salt Lake City airport this winter. At least the sunrise was pretty.", lazy: false %}
 
 I recently took a [six-month sabbatical from freelancing](/goodbye-freelancing/) to ease some underlying anxiety and stress I've been experiencing. Taking time off helped me decompress and reflect after being on the grind.
 
@@ -44,7 +44,7 @@ Paradoxically, the older I've become, the *better* my life has objectively gotte
 
 So why the stress?
 
-{% include type/p_large.html, content: "Understanding and eliminating my stressors were the focus of my sabbatical." %}
+{% include "type/p_large.html", content: "Understanding and eliminating my stressors were the focus of my sabbatical." %}
 
 ### Global and local stress
 
@@ -61,7 +61,7 @@ Global stress we experience together:
 - Income inequality
 - The oppressing wave of late-stage capitalism
 
-{% include type/note.html content: 'With global stress, I feel like I have little control over the outcome of my actions.', align: 'left' %}
+{% include "type/note.html" content: 'With global stress, I feel like I have little control over the outcome of my actions.', align: 'left' %}
 
 There's only so much one person can do to improve the state of global stressors 🤷🏻‍♂️
 
@@ -84,16 +84,16 @@ Local stress is largely contained to my life and relationships:
 - Personal satisfaction
 - Work/life balance
 
-{% include type/note.html content: 'With local stress, I feel empowered to change my circumstances however I prefer.', align: 'right' %}
+{% include "type/note.html" content: 'With local stress, I feel empowered to change my circumstances however I prefer.', align: 'right' %}
 
 I wanted to bring these into focus to understand how I could reduce my anxiety and improve my day-to-day happiness. 
 
 The local stressors I focused on were my relationship with *my career* and *money*. 
 
 <div class="sideBySide _pull-outside">
-  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/me-1_esh321.jpg', alt: "Me hiking in the mountains", caption: "🏔 Me hiking in the mountains" %}
-  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/jon_es6erq.jpg', alt: "Snowboarding with Jon", caption: '✌🏻 Hitting the slopes with <a href="https://jonathanhoriel.com" target="_blank" rel="noopener">Jon</a>' %}
-  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/cort_fe7xzl.jpg', alt: "Portrait of a new friend, Cort.", caption: "💨 Portrait of a new friend, Cort." %}
+  {% include "components/image.njk", imgSrc: 'blog-posts/freelancing-reboot/me-1_esh321.jpg', alt: "Me hiking in the mountains", caption: "🏔 Me hiking in the mountains" %}
+  {% include "components/image.njk", imgSrc: 'blog-posts/freelancing-reboot/jon_es6erq.jpg', alt: "Snowboarding with Jon", caption: '✌🏻 Hitting the slopes with <a href="https://jonathanhoriel.com" target="_blank" rel="noopener">Jon</a>' %}
+  {% include "components/image.njk", imgSrc: 'blog-posts/freelancing-reboot/cort_fe7xzl.jpg', alt: "Portrait of a new friend, Cort.", caption: "💨 Portrait of a new friend, Cort." %}
 </div>
 
 <hr class="-fancy" />
@@ -102,13 +102,13 @@ The local stressors I focused on were my relationship with *my career* and *mone
 
 After returning to [freelancing in 2019](/goodbye-asana-hello-freelancing/), I had clients as far as the eye could see. I had an extensive network of friends and colleagues I met and collaborated with during my first decade working to thank for this.
 
-{% include type/tip.html content: 'Doing great work for great people pays off.' %}
+{% include "type/tip.html" content: 'Doing great work for great people pays off.' %}
 
 I accepted client after client, juggling multiple projects at once. **On average, I launched a client project every 36 days!**
 
 To make my life easier—since I had deliberately made it *harder* by accepting so many clients—I hired some buddies to lend a helping hand (shout out to [Jamie](https://jaime.one) and Nels ✌️)
 
-{% include type/p_large.html, content: "Suddenly, I was not only a freelance web developer but a project manager and people manager." %}
+{% include "type/p_large.html", content: "Suddenly, I was not only a freelance web developer but a project manager and people manager." %}
 
 Managing the planning and execution of everything was exhausting and stressful. Each project had different goals, different stakeholders, and a different process for how we would complete the project. 
 
@@ -124,9 +124,9 @@ All of this led me to burnout.
 
 I won’t go deep into my experience with burnout in this post, but it’s something I want to talk about more in the future. Unfortunately, I’ve experienced burnout several times during my career. **It sucks.**
 
-{% include type/p_large.html, content: "Burnout is something that can happen to anyone in any profession at any time under any circumstances. It’s a severe problem for folks experiencing it." %}
+{% include "type/p_large.html", content: "Burnout is something that can happen to anyone in any profession at any time under any circumstances. It’s a severe problem for folks experiencing it." %}
 
-{% include type/further-reading.html, content: 'Want to learn more about Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
+{% include "type/further-reading.html", content: 'Want to learn more about Burnout? I recommend <a href="https://alistapart.com/article/burnout/" title="Burnout by Scott Boms">this article</a> by Scott Boms on <a href="https://alistapart.com">A List Apart</a>.' %}
 
 Ultimately, I was battling negative feedback loops that impacted my ability to enjoy life: 
 
@@ -141,11 +141,11 @@ I've succeeded in overwhelmingly stressful things like managing multiple project
 
 I've failed to orient myself around enjoyable things like optimizing my work around enjoyment/growth or spending time doing intrinsically enjoyable activities.
 
-{% include type/blockquote.html, content: "Efficiency is highly overrated; Goofing off is highly underrated. Regularly scheduled sabbaths, sabbaticals, vacations, breaks, aimless walks and time off are essential for top performance of any kind. The best work ethic requires a good rest ethic.", author: "Kevin Kelly", author_source_title: "103 Bits of Advice I Wish I Had Known", author_source_link: "https://kk.org/thetechnium/103-bits-of-advice-i-wish-i-had-known/" %}
+{% include "type/blockquote.html", content: "Efficiency is highly overrated; Goofing off is highly underrated. Regularly scheduled sabbaths, sabbaticals, vacations, breaks, aimless walks and time off are essential for top performance of any kind. The best work ethic requires a good rest ethic.", author: "Kevin Kelly", author_source_title: "103 Bits of Advice I Wish I Had Known", author_source_link: "https://kk.org/thetechnium/103-bits-of-advice-i-wish-i-had-known/" %}
 
 <div class="sideBySide">
-  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/leadville_zlwebd.jpg', alt: "Leadville, Colorado", caption: "Leadville, Colorado" %}
-  {% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/outside-lands_u5yliu.jpg', alt: "Outside Lands, 2021", caption: "Outside Lands, 2021" %}
+  {% include "components/image.njk", imgSrc: 'blog-posts/freelancing-reboot/leadville_zlwebd.jpg', alt: "Leadville, Colorado", caption: "Leadville, Colorado" %}
+  {% include "components/image.njk", imgSrc: 'blog-posts/freelancing-reboot/outside-lands_u5yliu.jpg', alt: "Outside Lands, 2021", caption: "Outside Lands, 2021" %}
 </div>
 
 <hr class="-fancy" />
@@ -179,7 +179,7 @@ What I hate are the __circumstances I created for myself__.
 
 Why I was working, how I was working, what I was working on, and who I was working with were not providing me with a healthy working environment.
 
-{% include type/question.html, content: "If I still love web development and I enjoy building products with and for other people, how can I change my circumstances to avoid anxiety and burnout?" %}
+{% include "type/question.html", content: "If I still love web development and I enjoy building products with and for other people, how can I change my circumstances to avoid anxiety and burnout?" %}
 
 Asking this question helped me _flip the script_.
 
@@ -220,7 +220,7 @@ The problem with finding my groove is that my work became monotonous. Despite my
 
 After ten years of focusing my efforts on building marketing websites, I decided it was time to change things up. Not only was I overwhelmed with the amount of work I had been doing before my sabbatical, but I was *overwhelmingly bored* with it.
 
-{% include type/p_large.html, content: "I'm reorienting my career as a web developer by sinking my teeth into new technologies and problems." %}
+{% include "type/p_large.html", content: "I'm reorienting my career as a web developer by sinking my teeth into new technologies and problems." %}
 
 <hr class="-fancy" />
 
@@ -243,7 +243,7 @@ I suddenly felt ready to return to work, but in a way that worked with me, not a
 
 As luck would have it, shortly after I decided on the path I wanted to take in my professional career, the folks from [Stable Auto](https://stable.auto/) reached out about collaborating.
 
-{% include components/image.njk, imgSrc: 'blog-posts/freelancing-reboot/stable-auto_so0xvu.jpg', alt: "Stable Auto: Predict & improve EV charging station performance." %}
+{% include "components/image.njk", imgSrc: 'blog-posts/freelancing-reboot/stable-auto_so0xvu.jpg', alt: "Stable Auto: Predict & improve EV charging station performance." %}
 
 The job? Frontend architect tasked with rebuilding a web application to meet the growing needs of the company's customers while providing a solid technical foundation for future growth.
 

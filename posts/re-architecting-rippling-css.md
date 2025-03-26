@@ -12,9 +12,9 @@ tags:
 I recently led an effort to rebuild the entire website for [Rippling](https://rippling.com), a San Francisco-based startup that builds software that helps companies manage different parts of their organization, such as HR and IT. Rippling had been using its former website since early in the company's life and wanted me to help provide a complete overhaul of their web presence. This overhaul coincided with an extensive marketing campaign by the company, which included a significant advertising push inside of San Francisco boldly targeting their direct competitors. 
 
 <div class="sideBySide _pull-outside">
-  {% include atoms/figure.html, src: '/images/posts/re-architecting-rippling-css/rippling-legacy.png', alt: 'Preview of what the Rippling website looked like before', caption: "Preview of what the Rippling website looked like before" %}
+  {% include "atoms/figure.html", src: '/images/posts/re-architecting-rippling-css/rippling-legacy.png', alt: 'Preview of what the Rippling website looked like before', caption: "Preview of what the Rippling website looked like before" %}
 
-  {% include atoms/figure.html, src: '/images/posts/re-architecting-rippling-css/rippling-new.png', alt: 'Preview of what the Rippling website looks like now', caption: "Preview of what the Rippling website looks like now", source_title: "View the Rippling website", source_link: "https://rippling.com" %}
+  {% include "atoms/figure.html", src: '/images/posts/re-architecting-rippling-css/rippling-new.png', alt: 'Preview of what the Rippling website looks like now', caption: "Preview of what the Rippling website looks like now", source_title: "View the Rippling website", source_link: "https://rippling.com" %}
 </div>
 
 ## Move fast and build things
@@ -45,7 +45,7 @@ There is cross-functional buy-in on improving the architecture of a project as a
 
 In my experience, this is a winning formula for making substantial architectural improvements. Cross-functional buy-in and finding work to address immediately prevents kicking things further down the road while allowing room for incremental improvements alongside other company initiatives. 
 
-{% include type/p_large.html, content: "I find any approach that writes-off architectural concerns in the pursuit of new, short-term goals to be short-sighted. This attitude displays ignorance in the importance of building a strong foundation that facilitates long-term maintenance and scalability." %}
+{% include "type/p_large.html", content: "I find any approach that writes-off architectural concerns in the pursuit of new, short-term goals to be short-sighted. This attitude displays ignorance in the importance of building a strong foundation that facilitates long-term maintenance and scalability." %}
 
 Fortunately, I was not the only person working on redesigning the Rippling website that understood the shortcuts that were taken to achieve our short-term goals. Other engineers on the team were keenly aware that although on the surface the website looks great, the underlying codebase left a bit to be desired. As a result, engineers who have been working with Rippling for much longer than myself (shout-out to Balram and Deb) voiced their concerns to stakeholders about the long-term issues that would surface as a result of leaving the website architecture as-is, as did myself. Such exclamation created the impetus for stakeholder buy-in on tackling large parts of the architectural work shortly after we launched the redesign, which landed us squarely on "prioritize and start," which I am quite happy with. 
 

@@ -24,7 +24,7 @@ With the driving force behind many actions in my life obviated, Noland's predica
 
 Having boundless enthusiasm and interests makes this transition easier. I'm grateful that I have so many areas where I enjoy spending time. Still, I struggle to avoid a state of ennui, lost on the stranded island of my brain as the motivations fueling my actions fade in and out of view.
 
-{% include type/question.html, content: 'What propels me towards action?<br>Towards what end am I taking action, if any?<br>Do my actions need an "end"?' %}
+{% include "type/question.html", content: 'What propels me towards action?<br>Towards what end am I taking action, if any?<br>Do my actions need an "end"?' %}
 
 All I can do is continue charting my path forward. I will use this time to explore different facets of my being, spend time with people I love, and continue learning and growing. 
 

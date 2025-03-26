@@ -13,7 +13,8 @@ I recently stumbled upon an interesting Twitter thread by [Jeff Johnson](https:/
 
 I have a different perspective on many points he discussed that I want to share in the pursuit of advancing this discussion. 
 
-{% include type/notice.html, content: "Jeff, the author of the Twitter thread that I responded to, has deleted his thread because of vicious responses from folks. I find this unfortunate, as sincerely-held opinions, however disagreeable they might be, provide a valuable perspective as we attempt to understand the state of the world and address its issues.<br><br>I'm not keeping this essay published to draw negative attention towards Jeff or his opinions, but rather to advance the discussion that he started. However, I'm happy to unpublish or remove the original quotes if requested." %}
+{% include "type/notice.html", content: "Jeff, the author of the Twitter thread that I responded to, has deleted his thread because of vicious responses from folks. I find this unfortunate, as sincerely-held opinions, however disagreeable they might be, provide a valuable perspective as we attempt to understand the state of the world and address its issues.<br><br>I'm not keeping this essay published to draw negative attention towards Jeff or his opinions, but rather to advance the discussion that he started. However, I'm happy to unpublish or remove the original quotes if requested." %}
+
 ## Web browser complexity
 
 <blockquote class="twitter-tweet" data-dnt="true">
@@ -34,7 +35,7 @@ What I love about being a web developer is the ubiquity of my creations. Buildin
 
 Reducing functionality on the internet to increase privacy, security, and browser competition comes at a cost. In this world, instead of building web applications for Apple devices using HTML, CSS, and JavaScript, am I forced to use Apple’s programming language and IDE, Swift and Xcode, if I want to build a full-featured application? Doesn’t this seem antithetical to the argument against corporate monopolies?
 
-{% include type/p_large.html, content: "Instead of building web applications at the behest of our browser overlords, we're building native applications at the behest of our device overlords." %}
+{% include "type/p_large.html", content: "Instead of building web applications at the behest of our browser overlords, we're building native applications at the behest of our device overlords." %}
 
 **Furthermore, I don't want to build different applications for different platforms.**
 
@@ -62,7 +63,7 @@ Should the automotive industry have remained stagnant, reducing complexity and f
 
 What about regulations placed on the automotive industry over the past century that benefit consumers? Regulations increase overhead for manufacturers but improve safety and reliability for consumers. How do you balance that trade-off? 
 
-{% include type/question.html, content: "How do you balance the trade-off of regulations on companies and industries to increase competition, promote innovation, and respect the needs of consumers in the industry?<br>How do we incentivize tech companies like Google and Apple to continue investing in web browsers in a way that benefits both the company <em>and</em> the consumer?<br>How can the Justice Department's antitrust powers increase competition in the web browser market?<br>What if the paradigm shifts to web browsers being 'sponsored' by corporations?" %}
+{% include "type/question.html", content: "How do you balance the trade-off of regulations on companies and industries to increase competition, promote innovation, and respect the needs of consumers in the industry?<br>How do we incentivize tech companies like Google and Apple to continue investing in web browsers in a way that benefits both the company <em>and</em> the consumer?<br>How can the Justice Department's antitrust powers increase competition in the web browser market?<br>What if the paradigm shifts to web browsers being 'sponsored' by corporations?" %}
 
 Regardless of how we get there, I think the incentive structure for corporate involvement in web browser development needs to change. Google and Apple have different incentive structures, which is evident by their choices for Chromium and Safari, respectively. 
 
@@ -84,7 +85,7 @@ We need incentive structures that allow corporations to meet their goals, but no
 
 On the subject of "openness" on the web, just because I cannot reasonably build a web browser that's up-to-date with the W3C standards does not mean that the web is not still "open". It simply means the barrier of entry is so high that I might want to focus my energy elsewhere. 
 
-{% include type/question.html, content: "What are the principles and features of an 'open' and a 'closed' web?" %}
+{% include "type/question.html", content: "What are the principles and features of an 'open' and a 'closed' web?" %}
 
 There are aspects of the web that blur the lines between an open and closed ecosystem. Features for web languages like HTML, CSS, and JavaScript are often implemented, if not outright conceived, by corporations, independent of the committees charged with steering their direction. Google is the primary offender for blurring these lines on the web, as they implement platform-specific features and functionality for common web languages. This makes it difficult for everyone—the W3C, web browser creators, and web developers—to foster an open ecosystem on the web and create shared buy-in on which features are a priority.
 
@@ -96,6 +97,6 @@ I would be remiss if I didn't mention some impactful web technologies that origi
 
 I’m not saying that the web is perfect. There is massive room for improvement for feature parity, security, fostering an open ecosystem, creating incentive structures that benefit corporations and consumers, and more. However, saying "there's no point in even having 'web standards'" is too nihilistic for me.
 
-{% include type/p_large.html, content: "We have to be flexible and learn to grow, adapt and strive for constant improvement. This is as true for the internet as it is for everything else in life." %}
+{% include "type/p_large.html", content: "We have to be flexible and learn to grow, adapt and strive for constant improvement. This is as true for the internet as it is for everything else in life." %}
 
 Still, I think this is an interesting discussion to have as we fight against corporate monopolization of the internet. There are many problems and many approaches to solving those problems, and I’m grateful to folks like Jeff fostering this discussion.
