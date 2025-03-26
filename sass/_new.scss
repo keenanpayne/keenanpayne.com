@@ -7,13 +7,13 @@
   color: var(--color-heading);
   font-size: 46px;
   font-weight: var(--font-weight-extra-bold);
-  letter-spacing: -.025em;
-  line-height: 1;
+  letter-spacing: -.02em;
+  line-height: 1.05;
   margin-bottom: 0;
   margin-top: 0;
   
   @media (--min-480) {
-    font-size: 68px;
+    font-size: 60px;
   }
 }
 
@@ -41,7 +41,7 @@
 
 @mixin large-paragraph {
   font-size: 18px;
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-regular);
   line-height: 1.4;
   
   @media (--min-480) {
@@ -58,19 +58,20 @@
   font-style: italic;
   font-family: var(--font-family-serif);
   font-size: 22px;
-  line-height: 1.4;
+  font-weight: 200;
+  line-height: 1.55;
 
   @media (--min-480) {
-    font-size: 25px;
+    font-size: 26px;
   }
 }
 
-@mixin grid {
+@mixin grid($columnGap: 3, $rowGap: 5) {
   @media (--min-720) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-column-gap: calc(3 * var(--spacing-unit));
-    grid-row-gap: calc(5 * var(--spacing-unit));
+    grid-column-gap: calc(#{$columnGap} * var(--spacing-unit));
+    grid-row-gap: calc(#{$rowGap} * var(--spacing-unit));
   }
 }
 
@@ -101,7 +102,7 @@
 
   // Introduction
   .intro {
-    @include grid;
+    @include grid(8, 5);
     @include container;
   }
 
@@ -147,10 +148,28 @@
     @include subheading();
 
     margin-top: spacing(2);
-    max-width: 35ch;
     
     @media (--min-720) {
       margin-top: spacing(2.5);
+    }
+
+    // Descendants
+    // TODO: Duplicated from `_portfolio.scss`
+    > strong { 
+      font-weight: var(--font-weight-semibold);
+      position: relative;
+      white-space: pre;
+
+      &::after {
+        background: linear-gradient(to right, var(--orange), var(--carmine-pink), var(--exodus-fruit));
+        bottom: 0;
+        border-radius: 1px;
+        content: '';
+        height: 3px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+      }
     }
   }
 
@@ -181,7 +200,7 @@
     }
 
     &.-horizontal {
-      grid-row-gap: calc(1 * var(--spacing-unit));
+      grid-row-gap: calc(3 * var(--spacing-unit));
 
       .collections-item {
         &:first-of-type {
@@ -234,6 +253,10 @@
 
         &:not(:first-of-type) {
           margin-top: spacing(3);
+          
+          @media (--min-960) { 
+            margin-top: spacing(4);
+          }
         }
       }
     }
@@ -292,7 +315,7 @@
     @include large-paragraph;
 
     margin-top: spacing(1.25);
-    max-width: 45ch;
+    max-width: 48ch;
 
     @media (--min-640) {
       padding-right: spacing(.5);
