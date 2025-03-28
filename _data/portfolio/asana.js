@@ -25,7 +25,7 @@ module.exports = {
     "GTM",
     "Optimizely",
   ],
-  overview: "As the second web developer at Asana, I helped manage our marketing website and various internal software. <br><br>During my time, I helped grow our team <strong>5x</strong> and our website <strong>10x</strong> to meet our rapidly increasing business requirements. <br><br>I built high-performing landing pages that conveyed Asana's value to <strong>tens of millions</strong> of visitors. Along the way, these pages have converted <strong>millions of visitors into users</strong>.",
+  overview: "As the second web developer at Asana, I helped manage our marketing website and various internal software. I helped grow our team <strong>5x</strong> and our website <strong>10x</strong> to meet our rapidly increasing business requirements. <br><br>I built high-performing landing pages that conveyed Asana's value to <strong>tens of millions</strong> of visitors. I built high-performing landing pages that conveyed Asana's value to tens of millions of visitors. These pages converted <strong>millions of visitors</strong> into users and generated <strong>millions in revenue</strong>.",
   lede: "Five years of growing a company, website, and brand for the world's leading work management software.",
   cover: "v1661998554/portfolio/asana/cover_scey3k.jpg",
   caption: "",
