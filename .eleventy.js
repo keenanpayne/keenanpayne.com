@@ -297,9 +297,9 @@ module.exports = function(eleventyConfig) {
 
     // -----------------------------------------------------------------
     // If your site deploys to a subdirectory, change `pathPrefix`.
-    // Don’t worry about leading and trailing slashes, we normalize these.
+    // Don't worry about leading and trailing slashes, we normalize these.
 
-    // If you don’t have a subdirectory, use "" or "/" (they do the same thing)
+    // If you don't have a subdirectory, use "" or "/" (they do the same thing)
     // This is only used for link URLs (it does not affect your file structure)
     // Best paired with the `url` filter: https://www.11ty.dev/docs/filters/url/
 
