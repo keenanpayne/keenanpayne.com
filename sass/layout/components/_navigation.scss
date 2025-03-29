@@ -20,9 +20,22 @@
 .navigation-primary {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   @media (--min-560) {
     flex-direction: row;
+  }
+
+  @media (--min-720) {
+    gap: 1.5rem;
+  }
+
+  @media (--min-800) {
+    gap: 2rem;
+  }
+
+  @media (--min-1120) {
+    gap: 2.25rem;
   }
 }
 
@@ -65,11 +78,6 @@
     
     @media (--min-560) {
       margin-top: 0;
-      margin-left: spacing(3);
-    }
-
-    @media (--min-720) {
-      margin-left: spacing(6);
     }
   }
   

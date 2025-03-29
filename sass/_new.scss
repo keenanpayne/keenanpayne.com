@@ -13,41 +13,22 @@
   }
 }
 
-@mixin small-paragraph {
-  font-size: 14px;
-  line-height: 1.43;
-}
-
 @mixin subheading {
   font-style: italic;
   font-family: var(--font-family-serif);
-  font-size: 22px;
-  font-weight: 200;
+  font-size: var(--step-2);
+  font-weight: var(--font-weight-lighter);
   line-height: 1.55;
-
-  @media (--min-480) {
-    font-size: 26px;
-  }
 }
 
 @mixin grid($columnGap: 3, $rowGap: 5) {
-  @media (--min-720) {
+  @media (--min-960) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: calc(#{$columnGap} * var(--spacing-unit));
     grid-row-gap: calc(#{$rowGap} * var(--spacing-unit));
   }
 }
-
-// UNSCOPED
-._h3 {
-  @include h3;
-}
-
-._subheading {
-  @include subheading;
-}
-
 
 // SCOPED
 :root.newStyles {  
@@ -61,7 +42,9 @@
     @include grid(8, 5);
     @include container;
 
-    align-items: center;
+    @media (--min-1260) {
+      align-items: center;
+    }
 
     // Modifiers
     &.-max-width-applied {
@@ -70,10 +53,10 @@
   }
 
   .intro-left {
-    margin-bottom: spacing(7);
+    margin-bottom: spacing(5);
     grid-column: 1 / span 7;
 
-    @media (--min-720) {
+    @media (--min-960) {
       margin-bottom: 0;
     }
 
@@ -102,8 +85,12 @@
   .intro-heading {
     @include h2;
 
-    @media (--min-960) {
+    @media (--min-800) {
       @include h1;
+    }
+
+    @media (--min-1260) {
+      @include text-large;
     }
   }
 

@@ -6,8 +6,8 @@
   @include container;
   
   margin-bottom: spacing(3);
-  padding-bottom: spacing(4);
-  padding-top: spacing(4);
+  padding-bottom: spacing(3);
+  padding-top: spacing(3);
   
   @media (--min-720) {
     margin-bottom: spacing(6);
@@ -20,7 +20,11 @@
   justify-content: space-between;
   
   @media (--min-560) {
-    align-items: end;
+    flex-direction: column;
+  }
+
+  @media (--min-720) {
+    flex-direction: row;
   }
 }
 

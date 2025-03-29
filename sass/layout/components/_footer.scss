@@ -38,7 +38,7 @@
   flex-basis: 100%;
   text-align: center;
 
-  @media (--min-480) { 
+  @media (--min-640) { 
     flex-basis: 50%;
     text-align: unset;
   }
@@ -47,13 +47,13 @@
 .footer-left { 
   padding-bottom: 1.5rem;
 
-  @media (--min-480) { 
+  @media (--min-640) { 
     padding-bottom: 0;
   }
 }
 
 .footer-right { 
-  @media (--min-480) { 
+  @media (--min-640) { 
     text-align: right;
   }
 
@@ -66,7 +66,7 @@
 .footer-socials { 
   text-align: center;
 
-  @media (--min-480) {
+  @media (--min-640) {
     text-align: left;
   }
 }
