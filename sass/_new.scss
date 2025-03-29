@@ -105,6 +105,8 @@
     @include grid(8, 5);
     @include container;
 
+    align-items: center;
+
     // Modifiers
     &.-max-width-applied {
       margin-left: 0;
