@@ -1,0 +1,58 @@
+{# Filters for different entry types in the collections component
+   These macros handle the filtering and selection of items to display
+   based on various criteria like tags, types, and featured status #}
+
+{# Filters posts by a specific tag
+   Args:
+     collection: The collection of posts to filter
+     tag: The tag to filter by
+   Returns:
+     Filtered collection of posts that have the specified tag
+   Note:
+     Reverses the collection to show newest posts first #}
+{% macro filterPostsByTag(collection, tag) %}
+  {% for post in collection | reverse %}
+    {% if post.data.tags and post.data.tags.includes(tag) %}
+      {{ post }}
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{# Filters posts by a specific type
+   Args:
+     collection: The collection of posts to filter
+     type: The type to filter by
+   Returns:
+     Filtered collection of posts that match the specified type
+   Note:
+     Reverses the collection to show newest posts first #}
+{% macro filterPostsByType(collection, type) %}
+  {% for post in collection | reverse %}
+    {% if post.data.type == type %}
+      {{ post }}
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{# Filters portfolio items based on featured status
+   Args:
+     portfolio: The portfolio collection containing all projects
+     featured: Array of featured project IDs or null
+   Returns:
+     Either featured portfolio items or non-featured items
+   Note:
+     When featured is provided, returns only those specific items
+     When featured is null, returns all non-template, non-featured items #}
+{% macro filterPortfolioItems(portfolio, featured) %}
+  {% if featured %}
+    {% for feature in featured %}
+      {{ portfolio[feature] }}
+    {% endfor %}
+  {% else %}
+    {% for id, item in portfolio %}
+      {% if not item.template and not item.featured %}
+        {{ item }}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endmacro %}

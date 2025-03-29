@@ -1,6 +1,8 @@
 {# Imports #}
 {% import "atoms/label.njk" as label with context %}
 {% import "molecules/entry.njk" as entry %}
+{% import "organisms/entries/transformers.njk" as transformers %}
+{% import "organisms/entries/filters.njk" as filters %}
 
 {# Component Settings #}
 {% set heading = section.heading %}
@@ -27,92 +29,35 @@
       {% if collection.length %} 
         {# Posts #}
         {% if itemsFrom == 'featured' or itemsFrom == 'posts' %}
-          {# Filter based on tags #}
           {% if tag %}
-            {% for post in collection | reverse %}
-              {% if post.data.tags and post.data.tags.includes(tag) %}
-                {% set entryCover = post.data.cover %}
-                {% set entryTitle = post.data.title %}
-                {% set entryLede = post.data.lede %}
-                {% set entryUrl = post.url %}
-
-                {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
-              {% endif %}
+            {% for post in filters.filterPostsByTag(collection, tag) %}
+              {% set entryCover, entryTitle, entryLede, entryUrl, entryMore = transformers.transformPost(post) %}
+              {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, entryMore) }}
             {% endfor %}
-          {# Filter based on type #}
           {% elif type %}
-            {% for post in collection | reverse %}
-              {% if post.data.type == type %}
-                {% set entryCover = post.data.cover %}
-                {% set entryTitle = post.data.title %}
-                {% set entryLede = post.data.lede %}
-                {% set entryUrl = post.url %}
-
-                {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
-              {% endif %}
+            {% for post in filters.filterPostsByType(collection, type) %}
+              {% set entryCover, entryTitle, entryLede, entryUrl, entryMore = transformers.transformPost(post) %}
+              {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, entryMore) }}
             {% endfor %}
           {% else %}
             {%- for post in collection | reverse -%}
-              {% set entryCover = post.data.cover %}
-              {% set entryTitle = post.data.title %}
-              {% set entryLede = post.data.lede %}
-              {% set entryUrl = post.url %}
-
-              {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Read article') }}
+              {% set entryCover, entryTitle, entryLede, entryUrl, entryMore = transformers.transformPost(post) %}
+              {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, entryMore) }}
             {% endfor %}
           {% endif %}
 
         {# Portfolio #}
         {% elif itemsFrom == 'portfolio' %}
-          {% if featured %}
-            {% for feature in featured %}
-              {% set item = portfolio[feature] %}
-              {% set cover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
-              {% set name = item.name %}
-              {% set lede = item.lede %}
-
-              {# Special case due to square brackets #}
-              {% if item.name == 'Collective [i]' %}
-                {% set url = '/portfolio/collective-intelligence' %}
-              {% else %}
-                {% set url = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
-              {% endif %}
-
-              {% set more = 'View case study' %}
-
-              {{ entry.output(showCovers, cover, name, lede, url, more) }}
-            {% endfor %}
-          {% else %}
-            {% for id, item in portfolio %}
-              {% set portfolioCover = 'https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_1000/' ~ item.cover %}
-              {% set portfolioName = item.name %}
-              {% set portfolioLede = item.lede %}
-              {% set portfolioMore = 'View case study' %}
-
-              {# Special case due to square brackets #}
-              {% if item.name == 'Collective [i]' %}
-                {% set portfolioUrl = '/portfolio/collective-intelligence' %}
-              {% else %}
-                {% set portfolioUrl = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
-              {% endif %}
-
-              {% if not item.template %}
-                {% if not item.featured %}
-                  {{ entry.output(showCovers, portfolioCover, portfolioName, portfolioLede, portfolioUrl, portfolioMore) }}
-                {% endif %}
-              {% endif %}
-            {% endfor %}
-          {% endif %}
+          {% for item in filters.filterPortfolioItems(portfolio, featured) %}
+            {% set cover, name, lede, url, more = transformers.transformPortfolioItem(item) %}
+            {{ entry.output(showCovers, cover, name, lede, url, more) }}
+          {% endfor %}
 
         {# Services #}
         {% elif itemsFrom == 'services' %}
           {% for service in collection | sort(attribute='data.order') %}
-            {% set entryTitle = service.data.title %}
-            {% set entryLede = service.data.lede %}
-            {% set entryUrl = service.url %}
-            {% set entryCover = service.data.cover if service.data.cover else '' %}
-
-            {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Learn more') }}
+            {% set entryCover, entryTitle, entryLede, entryUrl, entryMore = transformers.transformService(service) %}
+            {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, entryMore) }}
           {% endfor %}
         {% endif %}
       {% else %}
