@@ -9,9 +9,10 @@
 {% set heading = section.heading %}
 {% set subheading = section.subheading %}
 {% set right = section.right %}
+{% set maxWidth = section.maxWidth %}
 
 {# Markup #}
-<section class="intro">
+<section class="intro {% if maxWidth %}-max-width-applied{% endif %}" style="max-width: {{ maxWidth }};">
   <p class="testimonial-text _type-my-voice _text-h3">
     <span>{{ content | safe }}</span>
   </p>

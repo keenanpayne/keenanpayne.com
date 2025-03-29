@@ -104,6 +104,11 @@
   .intro {
     @include grid(8, 5);
     @include container;
+
+    // Modifiers
+    &.-max-width-applied {
+      margin-left: 0;
+    }
   }
 
   .intro-left {
