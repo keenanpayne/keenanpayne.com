@@ -5,7 +5,7 @@ seoPriority: 1.0
 sections: 
   - type: intro
     heading: "Professional and personal web design and development services"
-    subheading: "During my fifteen years as a software professional, I've helped countless clients—from individuals to unicorn startups—succeed on the web. I've helped sales teams generate <strong>millions of dollars in revenue</strong>, marketing teams sign up <strong>hundreds of thousands of users to SaaS</strong>, and empowered global organizations with <strong>intuitive and resilient software</strong>."
+    subheading: "During my fifteen years as a software professional, I've helped countless clients—from individuals to unicorn startups—succeed on the web. My work has helped companies generate <strong>millions in revenue</strong>, sign up <strong>millions of SaaS users</strong>, and empowered global organizations with <strong>scalable software</strong>."
     right:
       heading: "Services I offer"
       items:
