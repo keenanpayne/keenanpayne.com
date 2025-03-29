@@ -9,13 +9,20 @@
    Returns:
      Filtered collection of posts that have the specified tag
    Note:
-     Reverses the collection to show newest posts first #}
+     Reverses the collection to show newest posts first
+     Returns empty array if collection or tag is missing #}
 {% macro filterPostsByTag(collection, tag) %}
-  {% for post in collection | reverse %}
-    {% if post.data.tags and post.data.tags.includes(tag) %}
-      {{ post }}
-    {% endif %}
-  {% endfor %}
+  {% if not collection or not tag %}
+    {{ [] }}
+  {% else %}
+    {% set filtered = [] %}
+    {% for post in collection | reverse %}
+      {% if post.data.tags and post.data.tags.includes(tag) %}
+        {% set filtered = filtered | push(post) %}
+      {% endif %}
+    {% endfor %}
+    {{ filtered }}
+  {% endif %}
 {% endmacro %}
 
 {# Filters posts by a specific type
@@ -25,13 +32,20 @@
    Returns:
      Filtered collection of posts that match the specified type
    Note:
-     Reverses the collection to show newest posts first #}
+     Reverses the collection to show newest posts first
+     Returns empty array if collection or type is missing #}
 {% macro filterPostsByType(collection, type) %}
-  {% for post in collection | reverse %}
-    {% if post.data.type == type %}
-      {{ post }}
-    {% endif %}
-  {% endfor %}
+  {% if not collection or not type %}
+    {{ [] }}
+  {% else %}
+    {% set filtered = [] %}
+    {% for post in collection | reverse %}
+      {% if post.data.type == type %}
+        {% set filtered = filtered | push(post) %}
+      {% endif %}
+    {% endfor %}
+    {{ filtered }}
+  {% endif %}
 {% endmacro %}
 
 {# Filters portfolio items based on featured status
@@ -42,17 +56,28 @@
      Either featured portfolio items or non-featured items
    Note:
      When featured is provided, returns only those specific items
-     When featured is null, returns all non-template, non-featured items #}
+     When featured is null, returns all non-template, non-featured items
+     Returns empty array if portfolio is missing #}
 {% macro filterPortfolioItems(portfolio, featured) %}
-  {% if featured %}
-    {% for feature in featured %}
-      {{ portfolio[feature] }}
-    {% endfor %}
+  {% if not portfolio %}
+    {{ [] }}
   {% else %}
-    {% for id, item in portfolio %}
-      {% if not item.template and not item.featured %}
-        {{ item }}
-      {% endif %}
-    {% endfor %}
+    {% if featured %}
+      {% set filtered = [] %}
+      {% for feature in featured %}
+        {% if portfolio[feature] %}
+          {% set filtered = filtered | push(portfolio[feature]) %}
+        {% endif %}
+      {% endfor %}
+      {{ filtered }}
+    {% else %}
+      {% set filtered = [] %}
+      {% for id, item in portfolio %}
+        {% if not item.template and not item.featured %}
+          {% set filtered = filtered | push(item) %}
+        {% endif %}
+      {% endfor %}
+      {{ filtered }}
+    {% endif %}
   {% endif %}
 {% endmacro %}

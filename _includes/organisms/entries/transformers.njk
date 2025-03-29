@@ -3,6 +3,19 @@
    expected by the entry component. Each returns a tuple of values in the order:
    (cover, title, lede, url, more) #}
 
+{# Base transformer that handles common functionality
+   Args:
+     cover: The cover image URL
+     title: The entry title
+     lede: The entry description
+     url: The entry URL
+     more: The "read more" text
+   Returns:
+     Tuple of (cover, title, lede, url, more) for the entry component #}
+{% macro transformBase(cover, title, lede, url, more) %}
+  {{ cover, title, lede, url, more }}
+{% endmacro %}
+
 {# Transforms a blog post into the entry format
    Args:
      post: The post object containing data from the collections
@@ -15,7 +28,7 @@
   {% set entryUrl = post.url %}
   {% set entryMore = 'Read article' %}
   
-  {{ entryCover, entryTitle, entryLede, entryUrl, entryMore }}
+  {{ transformBase(entryCover, entryTitle, entryLede, entryUrl, entryMore) }}
 {% endmacro %}
 
 {# Transforms a portfolio item into the entry format
@@ -39,7 +52,7 @@
     {% set url = '/portfolio/' ~ item.name | lower | replace(' ', '-') | replace('.', '') %}
   {% endif %}
 
-  {{ cover, name, lede, url, more }}
+  {{ transformBase(cover, name, lede, url, more) }}
 {% endmacro %}
 
 {# Transforms a service into the entry format
@@ -56,5 +69,5 @@
   {% set entryCover = service.data.cover if service.data.cover else '' %}
   {% set entryMore = 'Learn more' %}
 
-  {{ entryCover, entryTitle, entryLede, entryUrl, entryMore }}
+  {{ transformBase(entryCover, entryTitle, entryLede, entryUrl, entryMore) }}
 {% endmacro %}
