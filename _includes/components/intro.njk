@@ -12,11 +12,7 @@
 {% set maxWidth = section.maxWidth %}
 
 {# Markup #}
-<section class="intro {% if maxWidth %}-max-width-applied{% endif %}" style="max-width: {{ maxWidth }};">
-  <p class="testimonial-text _type-my-voice _text-h3">
-    <span>{{ content | safe }}</span>
-  </p>
-
+<section class="intro {% if maxWidth %}-max-width-applied{% endif %}" style="{% if maxWidth %}max-width: {{ maxWidth }};{% endif %}">
   {% if right %}
     <header class="intro-left">
   {% else %}
@@ -42,7 +38,9 @@
     {% set rightItems = right.items %}
 
     <div class="intro-right collections">
-      {{ label.output(rightHeading, 'collections-label') }}
+      {% if rightHeading %}
+        {{ label.output(rightHeading, 'collections-label') }}
+      {% endif %}
 
       {% if rightItems %}
         <div class="collections-items -vertical">
