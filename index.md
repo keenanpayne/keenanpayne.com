@@ -8,7 +8,9 @@ sections:
     subheading: "During my fifteen years as a software professional, I've helped countless clients—from individuals to unicorn startups—succeed on the web. I've helped sales teams generate <strong>millions of dollars in revenue</strong>, marketing teams sign up <strong>hundreds of thousands of users to SaaS</strong>, and empowered global organizations with <strong>intuitive and resilient software</strong>."
     right:
       heading: "Services I offer"
-      items: services
+      items:
+        from: services
+        limit: 3
   - type: entries
     showCovers: true
     orientation: horizontal

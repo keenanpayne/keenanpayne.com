@@ -15,20 +15,12 @@ sections:
     subheading: "During my fifteen years as a software professional, I've helped countless clients—from individuals to unicorn startups—succeed on the web. I've helped generate millions of dollars in revenue, sign up hundreds of thousands of users to SaaS, empower global teams with intuitive and resilient software, and build intuitive and innovative products."
     maxWidth: 105ch
   - type: entries
-    showCovers: true
+    showCovers: false
     orientation: horizontal
-    heading: "Featured projects"
-    columns: 2
+    heading: "Services I offer"
     spacing: 8
     items: 
-      from: portfolio
-      limit: 6
-      featured:
-        - asana
-        - rippling
-        - neuralink
-        - gofundme
-        - getwhys
-        - sparrow
+      from: services
+      limit: 3
   - type: cta
 ---

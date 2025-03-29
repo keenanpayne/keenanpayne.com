@@ -46,12 +46,20 @@
 
       {% if rightItems %}
         <div class="collections-items -vertical">
-          {% if rightItems == 'services' %}
-            {% for id, obj in services %}
-              {% set name = obj.name %}
-              {% set description = obj.description %}
+          {% if rightItems.from == 'services' %}
+            {% set collection = collections.services | sort(attribute='data.order') %}
+            {% set itemsLimit = rightItems.limit %}
+            
+            {% if itemsLimit %}
+              {% set collection = collection | head(itemsLimit) %}
+            {% endif %}
 
-              {{ entry.output(false, false, name, description) }}
+            {% for service in collection %}
+              {% set entryTitle = service.data.title %}
+              {% set entryLede = service.data.lede %}
+              {% set entryUrl = service.url %}
+
+              {{ entry.output(false, false, entryTitle, entryLede, entryUrl, 'Learn more') }}
             {% endfor %}
           {% endif %}
         </div>

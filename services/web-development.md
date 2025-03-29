@@ -1,14 +1,12 @@
 ---
-permalink: '/services/frontend-architecture/'
-title: 'Frontend Architecture'
+permalink: '/services/web-development/'
+title: Web Development
+lede: Simply put, I can help you build anything on the internet. Whether you need a website to sell your product or services, or you need someone to help build your SaaS MVP, I've got you covered.
+order: 1
+tags: services
+--- 
 
-meta: 
-  description: 'Thoughtfully making foundational decisions on how to construct complex user interfaces.'
-  image: ''
-
-cover: ''
-lede: Thoughtfully making foundational decisions on how to construct complex user interfaces.
----
+<p>Thoughtfully making foundational decisions on how to construct complex user interfaces.</p>
 
 <section class="services-intro _container">
 <p class="services-callout">Scaling codebases is difficult. When needs outpace available resources, technical debt accrues more quickly and becomes difficult to mitigate.</p>

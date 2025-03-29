@@ -63,7 +63,6 @@
           {% endif %}
 
         {# Portfolio #}
-        {# TODO: Clean this up; too much duplicate code and confusing logic. #}
         {% elif itemsFrom == 'portfolio' %}
           {% if featured %}
             {% for feature in featured %}
@@ -104,6 +103,17 @@
               {% endif %}
             {% endfor %}
           {% endif %}
+
+        {# Services #}
+        {% elif itemsFrom == 'services' %}
+          {% for service in collection | sort(attribute='data.order') %}
+            {% set entryTitle = service.data.title %}
+            {% set entryLede = service.data.lede %}
+            {% set entryUrl = service.url %}
+            {% set entryCover = service.data.cover if service.data.cover else '' %}
+
+            {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Learn more') }}
+          {% endfor %}
         {% endif %}
       {% else %}
         {% set content = 'No content is published here yet.' %}
@@ -112,3 +122,4 @@
     </div>
   {% endif %}
 </section>
+ı
