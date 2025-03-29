@@ -1,4 +1,7 @@
 {
   "layout": "layouts/service.njk",
-  "type": "Service"
+  "type": "Service",
+  "long_form": "Service Item",
+  "cta": false,
+  "comments": false
 }
