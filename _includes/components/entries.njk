@@ -14,11 +14,12 @@
 {% set layout = '-' ~ orientation ~ '-' ~ columns ~ '-columns' %}
 
 {# Markup #}
-<section class="collections _container" style="--top-margin: {{ spacing if spacing else 0 }}">
+<section class="collections _container" style="--top-margin: {{ spacing | default(0) }}">
   {{ label.output(heading, 'collections-label' )}}
 
   {% if items %}
-    <div class="collections-items {{ layout if orientation and columns else '-' ~ orientation }}">
+    {% set itemClass = orientation and columns ? layout : '-' ~ orientation %}
+    <div class="collections-items {{ itemClass }}">
       {% set itemsFrom = items.from %}
       {% set itemsLimit = items.limit %}
       {% set featured = items.featured %}
