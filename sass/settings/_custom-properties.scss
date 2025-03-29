@@ -3,6 +3,9 @@
 // ==================================================
 
  :root {
+  // Background
+  --root-background: var(--gray-light);
+
   // Spacing
   --spacing-unit: 8px;
 
@@ -102,6 +105,7 @@
 /* Dark Mode */
 @media (--dark) {
   :root {
+    --root-background: var(--plum-mid);
     --text-color: var(--white);
     --small-text-color: var(--white);
     --label-color: var(--white);

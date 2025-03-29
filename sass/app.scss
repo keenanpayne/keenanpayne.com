@@ -24,11 +24,11 @@
 @import "libs/prism-base16-monokai.dark";
 
 // Generic
-@import "generic/global";
-@import "generic/root";
 @import "generic/utilities";
 
 // Elements
+@import "elements/global";
+@import "elements/root";
 @import "elements/body";
 @import "elements/button";
 @import "elements/code";
@@ -59,32 +59,28 @@
 @import "layout/components/context";
 @import "layout/components/dribbble";
 @import "layout/components/entries";
+@import "layout/components/footer";
 @import "layout/components/footnotes";
+@import "layout/components/header";
 @import "layout/components/hello"; // TODO: Remove
 @import "layout/components/highlight";
 @import "layout/components/large-text";
 @import "layout/components/lede";
 @import "layout/components/mailbox";
+@import "layout/components/navigation";
 @import "layout/components/newsletter";
 @import "layout/components/portfolioGrid";
 @import "layout/components/postNav";
 @import "layout/components/sideBySide";
 @import "layout/components/testimonial";
+@import "layout/components/tweet";
 @import "layout/components/toc";
 @import "layout/components/wave";
-
-// Global
-@import "layout/global/footer";
-@import "layout/global/header";
-@import "layout/global/navigation";
 
 // Pages
 @import "layout/pages/portfolio";
 @import "layout/pages/services";
 @import "layout/pages/post";
-
-// Embeds
-@import "embed/tweet";
 
 // TODO: New styles
 @import "new";

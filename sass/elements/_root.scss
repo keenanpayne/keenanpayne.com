@@ -1,13 +1,8 @@
 //
-// Root element (i.e., <html>)
+// <html>
 // ==================================================
 
 :root {
-  --root-background: var(--gray-light);
-
-  // S/O: https://www.css-gradient.com/
-  // TODO: Contemplate if I want to add more color stops 
-  //       to the background gradient to make it more dynamic
   background: var(--root-background);
   color: var(--text-color);
   color-scheme: light dark;
@@ -23,9 +18,5 @@
     html { 
       font-family: var(--font-family-base-var); 
     }
-  }
-
-  @media (--dark) {
-    --root-background: var(--plum-mid);
   }
 }
