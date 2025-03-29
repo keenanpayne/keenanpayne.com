@@ -17,7 +17,7 @@ I have a different perspective on many points he discussed that I want to share 
 
 ## Web browser complexity
 
-<blockquote class="twitter-tweet" data-dnt="true">
+<blockquote class="tweet" data-dnt="true">
   <p lang="en" dir="ltr">
     The web has massive feature bloat. It's a privacy and security nightmare.
 
@@ -41,7 +41,7 @@ Reducing functionality on the internet to increase privacy, security, and browse
 
 ## Web browser competition
 
-<blockquote class="twitter-tweet" data-dnt="true">
+<blockquote class="tweet" data-dnt="true">
   <p lang="en" dir="ltr">
     The more features that are added to the web, the less browser competition is possible! This is essential to recognize.
 
@@ -71,7 +71,7 @@ We need incentive structures that allow corporations to meet their goals, but no
 
 ## Oppenness on the web
 
-<blockquote class="twitter-tweet" data-dnt="true">
+<blockquote class="tweet" data-dnt="true">
   <p lang="en" dir="ltr">
     In a sense, there's no point in even having "web standards" anymore.
 
