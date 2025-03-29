@@ -30,7 +30,10 @@
     "@11ty/eleventy-plugin-rss": "^2.0.3",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "autoprefixer": "^10.4.21",
+    "concurrently": "^8.2.2",
     "eleventy-plugin-external-links": "^1.1.2",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
     "luxon": "^3.6.0",
     "markdown-it": "^14.1.0",
     "markdown-it-anchor": "^9.2.0",
@@ -39,16 +42,51 @@
     "postcss-cli": "^11.0.1",
     "postcss-custom-media": "^11.0.5",
     "postcss-media-minmax": "^5.0.0",
+    "prettier": "^3.2.5",
+    "stylelint": "^16.2.1",
+    "stylelint-config-standard-scss": "^13.0.0",
     "watch": "^1.0.2"
   },
   "scripts": {
+    "clean": "rm -rf _site",
+    "clean:deps": "rm -rf node_modules package-lock.json",
+    "clean:all": "npm run clean && npm run clean:deps",
+    
     "assets:sass": "sass sass/app.scss | postcss --output _site/css/app.css",
     "assets:build:dev": "watch 'npm run assets:sass' 'sass/'",
-    "assets:build:prod": "npm run assets:sass",
-    "app:build:dev": "npm run assets:build:dev & ENV=dev eleventy --watch --serve --port=3000",
+    "assets:build:prod": "NODE_ENV=production npm run assets:sass",
+    
+    "app:build:dev": "concurrently \"npm run assets:build:dev\" \"ENV=dev eleventy --watch --serve --port=3000\"",
     "app:build:prod": "mkdir -p _site/css && npm run assets:build:prod && ENV=prod eleventy",
+    
     "start": "npm run app:build:dev",
-    "debug": "DEBUG=* eleventy"
+    "dev": "npm run clean && npm run start",
+    "build": "npm run clean && npm run app:build:prod",
+    "serve": "eleventy --serve --port=3000",
+    "serve:prod": "npm run build && (cd _site && python3 -m http.server 8080)",
+    
+    "lint": "concurrently \"npm run lint:js\" \"npm run lint:css\"",
+    "lint:js": "eslint . --max-warnings 0",
+    "lint:css": "stylelint '**/*.scss'",
+    "lint:fix": "concurrently \"npm run lint:js:fix\" \"npm run lint:css:fix\"",
+    "lint:js:fix": "eslint . --fix",
+    "lint:css:fix": "stylelint '**/*.scss' --fix",
+    
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md,scss}\"",
+    "check:format": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md,scss}\"",
+    
+    "validate": "npm run lint && npm run check:format",
+    "fix": "npm run lint:fix && npm run format",
+    
+    "debug": "DEBUG=* eleventy",
+    "audit": "npm audit && npm outdated",
+    "audit:fix": "npm audit fix && npm update",
+    "size": "du -h _site/ | sort -hr",
+    "size:detail": "du -h _site/ | sort -hr > size-report.txt",
+    
+    "prebuild": "npm run clean",
+    "predev": "npm run clean",
+    "postinstall": "echo 'Installation complete! Run npm run dev to start development server.'"
   },
   "volta": {
     "node": "20.19.0"
