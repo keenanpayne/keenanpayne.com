@@ -3,42 +3,6 @@
 // ------
 
 // Typography
-@mixin newH1 {
-  color: var(--color-heading);
-  font-size: 46px;
-  font-weight: var(--font-weight-extra-bold);
-  letter-spacing: -.02em;
-  line-height: 1.05;
-  margin-bottom: 0;
-  margin-top: 0;
-  
-  @media (--min-480) {
-    font-size: 60px;
-  }
-}
-
-@mixin newH2 {
-  font-size: 36px;
-  line-height: 1;
-  margin-bottom: 0;
-  margin-top: 0;
-  
-  @media (--min-480) {
-    font-size: 46px;
-  }
-}
-
-@mixin newH3 {
-  font-size: 26px;
-  line-height: 1.125;
-  margin-bottom: 0;
-  margin-top: 0;
-  
-  @media (--min-480) {
-    font-size: 32px;
-  }
-}
-
 @mixin large-paragraph {
   font-size: 18px;
   font-weight: var(--font-weight-regular);
@@ -76,16 +40,8 @@
 }
 
 // UNSCOPED
-._h1 {
-  @include newH1;
-}
-
-._h2 {
-  @include newH2;
-}
-
 ._h3 {
-  @include newH3;
+  @include h3;
 }
 
 ._subheading {
@@ -144,10 +100,10 @@
   }
 
   .intro-heading {
-    @include newH2;
+    @include h2;
 
     @media (--min-960) {
-      @include newH1;
+      @include h1;
     }
   }
 
@@ -305,7 +261,7 @@
   }
 
   .collections-heading {
-    @include newH3;
+    @include h3;
 
     // Descendants
     a {
@@ -383,7 +339,7 @@
 }
 
 .cta-title {
-  @include newH2;
+  @include h2;
 }
 
 .cta-subheading {

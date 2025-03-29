@@ -57,6 +57,13 @@
   // Font Sizes
   --font-base: 1rem;
 
+  --font-size-h1: 3.052rem;
+  --font-size-h2: 2.441rem;
+  --font-size-h3: 1.953rem;
+  --font-size-h4: 1.563rem;
+  --font-size-h5: 1.25rem;
+  --font-size-h6: 1rem;
+
   // Font Weights
   --font-weight-lighter: 300;
   --font-weight-regular: 400;
@@ -117,5 +124,16 @@
     --color-heading: #fcfcfc;
     --color-label: #fcfcfc;
     --color-paragraph: #fcfcfc;
+  }
+}
+
+@media (--min-640) {
+  :root {
+    --font-size-h1: 3.815rem;
+    --font-size-h2: 3.052rem;
+    --font-size-h3: 2.441rem;
+    --font-size-h4: 1.953rem;
+    --font-size-h5: 1.563rem;
+    --font-size-h6: 1.25rem;
   }
 }
