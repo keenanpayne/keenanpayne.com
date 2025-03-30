@@ -1,5 +1,5 @@
 ---
-permalink: '/services/'
+permalink: "/services/"
 layout: layouts/base.njk
 seoPriority: 0.9
 title: Web Development and Web Design Services
@@ -9,7 +9,7 @@ eleventyNavigation:
   key: Services
   order: 2
 
-sections: 
+sections:
   - type: intro
     heading: "Professional and personal web design and web development services"
     subheading: "During my fifteen years as a software professional, I've helped countless clients—from individuals to unicorn startups—succeed on the web. I've helped generate millions of dollars in revenue, sign up hundreds of thousands of users to SaaS, empower global teams with intuitive and resilient software, and build intuitive and innovative products."
@@ -19,7 +19,7 @@ sections:
     orientation: horizontal
     heading: "Services I offer"
     spacing: 8
-    items: 
+    items:
       from: services
       limit: 3
   - type: cta
