@@ -1,0 +1,3 @@
+# Prettier breaks the syntax highlighting for these files
+/posts/css-arrow-interaction.md
+/posts/css-multi-line-buttons.md
