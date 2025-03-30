@@ -1,14 +1,14 @@
 ---
-permalink: '/trust-suspicion/'
-title:  'Trust and suspicion'
+permalink: "/trust-suspicion/"
+title: "Trust and suspicion"
 type: Reflection
 date: 2022-04-28
-meta: 
-  description: 'Reflections on native browser features and third-party library adoption.'
-  image: '/images/posts/trust-suspicion/share.jpg'
-  image_alt: 'Picture of rocks stacked atop each other'
+meta:
+  description: "Reflections on native browser features and third-party library adoption."
+  image: "/images/posts/trust-suspicion/share.jpg"
+  image_alt: "Picture of rocks stacked atop each other"
 lede: Reflections on native browser features and third-party library adoption.
-tags: 
+tags:
   - Web Browsers
   - Libraries and Frameworks
 ---
@@ -21,11 +21,11 @@ Jeremy's perception is that developers seem to instinctively reach for and trust
 
 {% include "type/blockquote.html", content: "The mindset I’ve noticed is that many developers are suspicious of browser features but trusting of third-party libraries.", author: "Jeremy Keith" %}
 
-He builds upon this premise by questioning the trustworthiness of third-party libraries compared with native browser features: 
+He builds upon this premise by questioning the trustworthiness of third-party libraries compared with native browser features:
 
 {% include "type/blockquote.html", content: "I’m much more trusting of native browser features—HTML elements, CSS features, and JavaScript APIs. They’re not always perfect, but a lot of thought goes into their development. By the time they land in browsers, a whole lot of smart people have kicked the tyres and considered many different angles. As a bonus, I don’t need to install them. Even better, end users don’t need to install them." %}
 
-There's more to his article, so definitely give it a read. 
+There's more to his article, so definitely give it a read.
 
 Seeing others weigh in on the topic inspired me to share my thoughts. Let's get into it.
 
@@ -33,7 +33,7 @@ Seeing others weigh in on the topic inspired me to share my thoughts. Let's get 
 
 It's important to remember that the current era of web browser cohesion and cooperation follows an era of fractured browser support, corporate opaqueness, and inconsistent APIs.
 
-Web browser vendors haven't historically done an outstanding job building trust amongst web developers. We've sailed some rough waters during the past couple of decades. 
+Web browser vendors haven't historically done an outstanding job building trust amongst web developers. We've sailed some rough waters during the past couple of decades.
 
 Things are smoother now, which I'm _incredibly_ grateful for. Still, it's important to remember where we've been.
 
@@ -49,9 +49,7 @@ After using third-party libraries to solve so many problems for so many years, I
 
 [Jim Nielsen](https://blog.jim-nielsen.com/2022/trusting-browsers/) shares his thoughts:
 
-{% include "type/blockquote.html", content: "We distrust the browser because we’ve been trained to. Years of fighting browser deficiencies where libraries filled the gaps. Browser enemy; library friend.
-
-For example: jQuery did wonders to normalize working across browsers. Write code once, run it in any browser — confidently.", author: "Jim Nielsen" %}
+{% include "type/blockquote.html", content: "We distrust the browser because we’ve been trained to. Years of fighting browser deficiencies where libraries filled the gaps. Browser enemy; library friend. For example: jQuery did wonders to normalize working across browsers. Write code once, run it in any browser — confidently.", author: "Jim Nielsen" %}
 
 Yes, we've been trained. Now it's time to re-train.
 
@@ -73,11 +71,11 @@ Ultimately, we write software to solve problems. It's our responsibility as deve
 
 Instincts overruling thoughtfulness are where problems can occur. Sometimes your instincts are correct, sometimes they lead you astray.
 
-I like Jim's closing line: 
+I like Jim's closing line:
 
 {% include "type/blockquote.html", content: "Where available, default to browser-native features over third party code, abstractions, or idioms.", author: "Jim Nielsen" %}
 
-Great idea. 
+Great idea.
 
 Here are some reminders when deciding whether to use third-party libraries:
 

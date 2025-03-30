@@ -1,7 +1,7 @@
 ---
-permalink: '/june-2022-learning/'
-title:  'Learning Notes, June 2022'
-meta: 
+permalink: "/june-2022-learning/"
+title: "Learning Notes, June 2022"
+meta:
   description: My most expansive monthly learning notes thusfar. Buckle up for some great content.
 lede: My most expansive monthly learning notes thusfar. Buckle up for some great content.
 type: Article
@@ -15,7 +15,7 @@ By far, the most impactful thing I watched this month was this video from Richar
 
 {% include "components/image.njk", imgSrc: 'blog-posts/june-2022-learning/richard-hamming_e2c29e.jpg', alt: "Richard Hamming in his NPS office", caption: "Richard Hamming in his NPS office", source_link: "https://amturing.acm.org/photo/hamming_1000652.cfm", source_title: "A.M. Turing Awards", class: "-float-right" %}
 
-This video marks the end of a lecture series Hamming gave to the Naval Postgraduate School. In it, Hamming discusses: 
+This video marks the end of a lecture series Hamming gave to the Naval Postgraduate School. In it, Hamming discusses:
 
 - The importance of spending one's time doing significant work
 - Spending time in meaningful ways
@@ -23,7 +23,7 @@ This video marks the end of a lecture series Hamming gave to the Naval Postgradu
 
 {% include "type/blockquote.html", content: "As far as I know, and as far as you know, you have one life to lead. You might as well lead a life you would like to have. I would suggest leading a life of doing something significant.", author: "Richard Hamming" %}
 
-You don't need to be a computer scientist or mathematician to find inspiration in what Hamming offers. 
+You don't need to be a computer scientist or mathematician to find inspiration in what Hamming offers.
 
 <hr class="-fancy" />
 
@@ -35,13 +35,13 @@ This article by Kevin Kelly, co-founder of [Wired magazine](https://www.wired.co
 
 <hr class="-fancy" />
 
-## Article: [An Olympic Trainer Shares His Top Secrets for Pushing Through Discomfort](https://www.menshealth.com/fitness/a40299457/steve-magness-do-hard-things/) 
+## Article: [An Olympic Trainer Shares His Top Secrets for Pushing Through Discomfort](https://www.menshealth.com/fitness/a40299457/steve-magness-do-hard-things/)
 
 [Last month](/may-2022-learning/#podcast%3A-the-growth-equation-%E2%80%94-doing-real-things%2C-satisfaction%2C-practices%2C-and-momentum), I shared a podcast I'd listened to called [The Growth Equation](https://thegrowtheq.com/), hosted by Brad Stulberg and Steve Magness. This month, I read a great article from Steve sharing his top advice for managing and pushing through discomfort.
 
 {% include "type/blockquote.html", content: "Anything that makes you feel uncomfortable is an opportunity to desensitize the alarm in your brain. It’s not the discomfort that matters, it’s how you respond to it.", author: "Steve Magness" %}
 
-As I've [rebooted my freelancing career](/freelancing-reboot/), I'm striving to pay closer attention to my levels of comfort and discomfort. I want to be comfortable enough so I'm not overwhelmed and [anxious](/tags/anxiety/) but uncomfortable enough to encourage growth—i.e., focusing on [desirable difficulties](https://en.wikipedia.org/wiki/Desirable_difficulty). 
+As I've [rebooted my freelancing career](/freelancing-reboot/), I'm striving to pay closer attention to my levels of comfort and discomfort. I want to be comfortable enough so I'm not overwhelmed and [anxious](/tags/anxiety/) but uncomfortable enough to encourage growth—i.e., focusing on [desirable difficulties](https://en.wikipedia.org/wiki/Desirable_difficulty).
 
 I'm also improving my ability to manage discomfort so I can navigate difficult situations with greater ease and satisfaction.
 
@@ -77,7 +77,7 @@ Let's focus on working-class solidarity and collective class consciousness.
 
 Let's work together where we can.
 
-We can't agree on *everything*, but that's life.
+We can't agree on _everything_, but that's life.
 
 **Who wants to build a coalition?**
 
@@ -93,7 +93,7 @@ This court ruling between eyeo and Axel Springer is interesting. eyeo is a devel
 
 {% include "type/question.html", content: "When you view an article on Business Insider, does Axel Springer own the underlying code for that article after it's on your web browser?" %}
 
-Seemingly tricky questions. Who "owns" what in these scenarios? 
+Seemingly tricky questions. Who "owns" what in these scenarios?
 
 The write-up from eyeo thoroughly sums it up:
 
@@ -103,7 +103,7 @@ The write-up from eyeo thoroughly sums it up:
 
 <hr class="-fancy" />
 
-## Podcast: [Fail Better: Embracing Failure](https://www.redhat.com/en/command-line-heroes/season-2/fail-better) 
+## Podcast: [Fail Better: Embracing Failure](https://www.redhat.com/en/command-line-heroes/season-2/fail-better)
 
 I've listened to [yet another](/march-2022-learning/#podcast%3A-command-line-heroes) fantastic episode of Command Line Heroes about embracing failure.
 
@@ -111,11 +111,11 @@ Embracing failure isn't easy, but it's inevitable. Something will _eventually_ g
 
 {% include "type/blockquote.html", content: "Failure is inevitable, but you never want to fail the same way twice." %}
 
-Given this inevitability, planning for perfection is unrealistic and unhelpful. 
+Given this inevitability, planning for perfection is unrealistic and unhelpful.
 
 {% include "type/p_large.html", content: 'If we embrace the inevitability of failure, we can prepare ourselves to handle it in a healthy way that helps us learn and grow.' %}
 
-Something that's helped me handle failure is keeping a tight feedback loop between identifying a problem and addressing the problem. 
+Something that's helped me handle failure is keeping a tight feedback loop between identifying a problem and addressing the problem.
 
 When noticing an area of improvement, I try to consider whether I should take the time to make the improvement at that moment, rather than put it on the back burner.
 
@@ -125,9 +125,9 @@ I've got too many "improvements" on the back burner as it is 😅
 
 ## Book: [Anything You Want](https://sive.rs/a)
 
-I've enjoyed reading [Derek Sivers'](https://sive.rs) blog for a long time. I enjoy his approachability, honesty, and down-to-earth writing style. 
+I've enjoyed reading [Derek Sivers'](https://sive.rs) blog for a long time. I enjoy his approachability, honesty, and down-to-earth writing style.
 
-To support his writing, and my own learning, I [recently purchased](https://twitter.com/KeenanPayne_/status/1530688658851778561) hardcover copies of his books *Anything You Want*, *Hell Yeah or No*, and *How to Live*.
+To support his writing, and my own learning, I [recently purchased](https://twitter.com/KeenanPayne_/status/1530688658851778561) hardcover copies of his books _Anything You Want_, _Hell Yeah or No_, and _How to Live_.
 
 In Anything You Want, Sivers shares his tales of building and selling [CD Baby](https://en.wikipedia.org/wiki/CD_Baby). Being a chronic business creator, I find his tales inspiring.
 
@@ -147,7 +147,7 @@ By fully committing to something, we remove ourselves from participating in the 
 
 You can wonder whether the grass will be greener, or you can fully invest in what you have and where you're at.
 
-You'll probably "save time" by investing in where you're at, unless that grass is *really* green.
+You'll probably "save time" by investing in where you're at, unless that grass is _really_ green.
 
 <hr class="-fancy" />
 

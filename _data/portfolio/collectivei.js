@@ -7,9 +7,7 @@ module.exports = {
   color: "#050100",
   role: "Web Developer",
   url: "http://collectivei.com",
-  services: [
-    "Web Development",
-  ],
+  services: ["Web Development"],
   technologies: [
     "HTML",
     "CSS",
@@ -22,7 +20,8 @@ module.exports = {
   ],
   caption: "",
   lede: "Building a website for a company using AI and ML to grow, manage, and predict revenue.",
-  overview: "I helped rebuild the Collective[i] website from the ground up to help the company position itself as an innovative solution to revenue growth, management, and predictions using its artificial intelligence and machine learning platform.",
+  overview:
+    "I helped rebuild the Collective[i] website from the ground up to help the company position itself as an innovative solution to revenue growth, management, and predictions using its artificial intelligence and machine learning platform.",
   cover: "v1666806684/portfolio/collectivei/cover_tolwvc.png",
   people: {
     [1]: {
@@ -34,7 +33,7 @@ module.exports = {
       name: "Play Studio",
       position: "Design Partner",
       url: "https://www.play.studio/"
-    },
+    }
   },
   testimonials: {
     [1]: {
@@ -106,22 +105,23 @@ module.exports = {
       video: "v1666808142/portfolio/collectivei/forecast_zuvrwp.mp4",
       asset_transform: "f_auto,q_auto,w_1000",
       title: "Forecasts",
-      caption: "",
+      caption: ""
     },
     [10]: {
       link: "https://web.archive.org/web/20210917061307/https://collectivei.com/product/#intelligent-insightstm",
       video: "v1666807916/portfolio/collectivei/insights_ayppcj.mp4",
       asset_transform: "f_auto,q_auto,w_1000",
       title: "Intelligent Insights",
-      caption: "",
+      caption: ""
     },
     [11]: {
       link: "https://web.archive.org/web/20210917061307/https://collectivei.com/product/#virtual-dealroomstm",
-      video: "https://res.cloudinary.com/keenan-payne/video/upload/v1666808439/portfolio/collectivei/virtual-dealrooms_sbf59j.mp4",
+      video:
+        "https://res.cloudinary.com/keenan-payne/video/upload/v1666808439/portfolio/collectivei/virtual-dealrooms_sbf59j.mp4",
       asset_transform: "f_auto,q_auto,w_1300",
       title: "Virtual DealRooms",
       caption: "",
       autoplay: true
-    },
+    }
   }
-}
+};

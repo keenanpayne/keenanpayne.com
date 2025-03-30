@@ -28,7 +28,7 @@
       @media (--min-640) {
         grid-column: auto / span 6;
       }
-    
+
       @media (--min-1120) {
         grid-column-end: span 4;
       }
@@ -36,7 +36,7 @@
   }
 }
 
-.portfolioGrid-header { 
+.portfolioGrid-header {
   margin-bottom: 1.5rem;
 }
 
@@ -45,7 +45,7 @@
 }
 
 .portfolioGrid-headline {
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
   margin-top: 1.5rem;
 }
 
@@ -59,7 +59,7 @@
   grid-column: 1 / -1;
 
   // Descendants
-  img { 
+  img {
     box-shadow: var(--shadow);
   }
 }
@@ -75,12 +75,12 @@
   padding-bottom: 0.45rem;
   padding-left: 1rem;
   padding-top: 0.5rem;
-  
+
   // Descendants
-  > a { 
+  > a {
     --text-color: var(--gray-darkest-1);
 
-    &:hover { 
+    &:hover {
       --text-color: var(--plum-dark);
     }
   }
@@ -92,18 +92,18 @@
   height: 50px;
   text-align: center;
   width: 50px;
-  
-  &:hover { 
+
+  &:hover {
     background: var(--background-hover);
   }
 
   // Descendants
-  svg { 
+  svg {
     height: 100%;
     width: 20px;
   }
 
-  path { 
+  path {
     fill: var(--text-color);
   }
 }
@@ -125,14 +125,14 @@
     height: fit-content;
 
     // Modifiers
-    &.-video { 
-      .portfolioGrid-title { 
+    &.-video {
+      .portfolioGrid-title {
         margin-top: -4px;
       }
     }
   }
-  
-  .portfolioGrid-imageTile { 
+
+  .portfolioGrid-imageTile {
     background: var(--background);
     background-size: cover;
     border-bottom: 1px solid var(--border);
@@ -141,7 +141,7 @@
     height: var(--image-height);
     width: 100%;
   }
-  
+
   .portfolioGrid-title {
     align-items: center;
     color: var(--text-color);
@@ -155,7 +155,7 @@
   }
 
   // Column adjustments
-  &.-one-col { 
+  &.-one-col {
     @media (--min-960) {
       --image-height: 600px;
     }
@@ -165,7 +165,7 @@
     }
   }
 
-  &.-two-col { 
+  &.-two-col {
     @media (--min-960) {
       --image-height: 375px;
     }

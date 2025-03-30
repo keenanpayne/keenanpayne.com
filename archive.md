@@ -5,7 +5,7 @@ eleventyNavigation:
   key: Writing
   order: 3
 changefreq: weekly
-sections: 
+sections:
   - type: intro
     heading: "Writing archives"
     subheading: "Writing is one of my favorite hobbies. You can find some of what I've shared online here."
@@ -15,7 +15,7 @@ sections:
   #   spacing: 10
   #   orientation: horizontal
   #   columns: 2
-  #   items: 
+  #   items:
   #     from: featured
   #     limit: 2
   - type: entries
@@ -23,7 +23,7 @@ sections:
     heading: "All articles"
     spacing: 10
     orientation: archive
-    items: 
+    items:
       from: posts
       limit: -100
   - type: newsletter

@@ -1,6 +1,6 @@
 ---
-permalink: '/publishing-drafts/'
-title:  'Publishing drafts'
+permalink: "/publishing-drafts/"
+title: "Publishing drafts"
 type: Article
 date: 2021-10-31
 tags:
@@ -9,9 +9,9 @@ tags:
   - Project Updates
 ---
 
-Publishing content is difficult. Well, that's not true. In fact, publishing content on the internet is extremely easy—there are countless websites where one can sign up for a _free_ account and publish just about _anything_ for the masses to consume. If anything, publishing content couldn't be easier.   
+Publishing content is difficult. Well, that's not true. In fact, publishing content on the internet is extremely easy—there are countless websites where one can sign up for a _free_ account and publish just about _anything_ for the masses to consume. If anything, publishing content couldn't be easier.
 
-But I'm not referring to the difficulty of publishing content on the internet, but rather, the cognitive leaps creators jump through while taking a creation from idea to fruition.  
+But I'm not referring to the difficulty of publishing content on the internet, but rather, the cognitive leaps creators jump through while taking a creation from idea to fruition.
 
 Getting creations from a state of revising to a state of completion is where I've struggled the most as a writer. It's all too easy to fall down the [One More Thing](/one-more-thing) rabbit hole, continually [moving the goal posts](https://en.wikipedia.org/wiki/Moving_the_goalposts) as I ferociously edit my work, only to receive diminishing returns.
 

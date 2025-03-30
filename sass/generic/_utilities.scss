@@ -2,12 +2,11 @@
 // Utility Classes
 // ==================================================
 
-
 //
 // Layout
 // -------
 
-._block-center { 
+._block-center {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -16,7 +15,6 @@
 ._pull-outside {
   @include pullContentOutside();
 }
-
 
 //
 // Type Sizes
@@ -50,24 +48,23 @@
   @include text-small();
 }
 
-._text-smaller { 
+._text-smaller {
   @include text-smaller();
 }
 
-._text-large { 
+._text-large {
   @include text-large();
 }
 
-._text-larger { 
+._text-larger {
   @include text-larger();
 }
-
 
 //
 // Text Styles
 // -----------
 
-._text-align-center { 
+._text-align-center {
   text-align: center;
 }
 
@@ -75,19 +72,19 @@
   font-family: var(--font-family-mono);
 }
 
-._font-family-serif { 
-  font-family: var(--font-family-serif); 
+._font-family-serif {
+  font-family: var(--font-family-serif);
   font-weight: var(--font-weight-serif-light);
 }
 
-._type-my-voice { 
+._type-my-voice {
   font-family: var(--font-family-serif);
   font-style: italic;
   font-weight: var(--font-weight-serif-light);
   line-height: 1.35;
 }
 
-._label { 
+._label {
   --border-color: var(--exodus-fruit);
 
   align-items: center;
@@ -96,11 +93,11 @@
   font-family: var(--font-family-mono);
   font-size: 20px;
   font-variant: all-small-caps;
-  letter-spacing: .01em;
+  letter-spacing: 0.01em;
   line-height: 1;
   margin-bottom: 0;
   margin-top: 0;
-  word-spacing: -.1em;
+  word-spacing: -0.1em;
 
   @media (--dark) {
     --border-color: var(--yellow-dark);
@@ -108,11 +105,11 @@
 
   &:after {
     background-color: var(--border-color);
-    content: '';
+    content: "";
     display: block;
     flex: 1;
     height: 1px;
-    margin-top: .2em;
+    margin-top: 0.2em;
   }
 
   > span {
@@ -134,7 +131,6 @@
   }
 }
 
-
 //
 // Visibility
 // ----------
@@ -143,25 +139,23 @@
   @include a11yHidden();
 }
 
-._visible { 
+._visible {
   @include a11yVisible();
 }
 
 ._hidden-720 {
   @media (--min-720) {
-    @Include a11yHidden();
+    @include a11yHidden();
   }
 }
-
 
 //
 // Colors
 // ------
 
-._bg-white { 
+._bg-white {
   background-color: var(--white);
 }
-
 
 //
 // Max character lengths

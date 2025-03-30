@@ -1,7 +1,7 @@
 ---
-permalink: '/11ty-eleventy-introduction/'
-title:  'Introduction to Eleventy (11ty)'
-meta: 
+permalink: "/11ty-eleventy-introduction/"
+title: "Introduction to Eleventy (11ty)"
+meta:
   description: This is a simple introduction to Eleventy (11ty), a popular static site generator.
 type: Tutorial
 date: 2021-10-03
@@ -12,7 +12,7 @@ tags:
 
 {% include "atoms/figure.html", src: "/images/posts/eleventy-introduction/homepage.png", alt: "Screenshot of Eleventy homepage", caption: "", source_title: "https://11ty.dev", source_link: "https://11ty.dev" %}
 
-[Eleventy](https://www.11ty.dev/) (11ty) is a static site generator (SSG) built on top of [Node.js](https://nodejs.org/en/) that compiles static website assets (i.e., HTML files) using content inside of various "source" files (e.g., markdown, templates, JSON, etc.). Eleventy provides a platform that helps web developers create organized and [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself) codebases through its support for [templating languages](https://www.11ty.dev/docs/languages/), a robust [templating engine](https://www.11ty.dev/docs/templates/), flexible [data models](https://www.11ty.dev/docs/data/), and [plugins](https://www.11ty.dev/docs/plugins/).  
+[Eleventy](https://www.11ty.dev/) (11ty) is a static site generator (SSG) built on top of [Node.js](https://nodejs.org/en/) that compiles static website assets (i.e., HTML files) using content inside of various "source" files (e.g., markdown, templates, JSON, etc.). Eleventy provides a platform that helps web developers create organized and [DRY](https://en.wikipedia.org/wiki/Don't_repeat_yourself) codebases through its support for [templating languages](https://www.11ty.dev/docs/languages/), a robust [templating engine](https://www.11ty.dev/docs/templates/), flexible [data models](https://www.11ty.dev/docs/data/), and [plugins](https://www.11ty.dev/docs/plugins/).
 
 Eleventy is designed as a [zero-configuration](https://www.11ty.dev/docs/glossary/#zero-config) platform that provides as much or as little overhead as you would like. This preference for simplicity, combined with a philosophy of tooling agnosticism, offers a flexible and empowering developer experience.
 
@@ -20,7 +20,7 @@ Large websites won't only benefit from what Eleventy offers. Unless you are buil
 
 ## SSG Ecosystem
 
-Eleventy exists in an expansive ecosystem of SSGs, alongside [Next.js](https://nextjs.org/), [Jekyll](https://jekyllrb.com/), [Hugo](https://gohugo.io/), [Gatsby](https://www.gatsbyjs.org/), and [so many others](https://jamstack.org/generators/). In fact, Eleventy might seem like an underdog among these. However, its frequency of updates and thriving community provide me with confidence in using it for my projects.  
+Eleventy exists in an expansive ecosystem of SSGs, alongside [Next.js](https://nextjs.org/), [Jekyll](https://jekyllrb.com/), [Hugo](https://gohugo.io/), [Gatsby](https://www.gatsbyjs.org/), and [so many others](https://jamstack.org/generators/). In fact, Eleventy might seem like an underdog among these. However, its frequency of updates and thriving community provide me with confidence in using it for my projects.
 
 I don’t plan on covering the similarities and differences between different SSGs in this article. Instead, here's a list of resources you can consult if you're evaluating this type of software.
 
@@ -31,15 +31,15 @@ I don’t plan on covering the similarities and differences between different SS
 - [Comparing Static Site Generator Build Times](https://css-tricks.com/comparing-static-site-generator-build-times/)
 - [11ty: The Good, the Bad, and the... Possum?](https://www.aleksandrhovhannisyan.com/blog/eleventy-the-good-the-bad-and-the-possum/)
 
-## My Take  
+## My Take
 
-**I use Eleventy for _a lot_ of projects**  
+**I use Eleventy for _a lot_ of projects**
 
-I've used different SSGs in the past, predominantly Jekyll and Hugo. While I enjoyed the ubiquity of Jekyll and the speed of Hugo, what keeps me coming back to Eleventy is its developer experience when used across a spectrum of web projects. About 90% of the projects I work on right now can be built with Eleventy, making it my go-to software for building websites of all shapes and sizes.  
+I've used different SSGs in the past, predominantly Jekyll and Hugo. While I enjoyed the ubiquity of Jekyll and the speed of Hugo, what keeps me coming back to Eleventy is its developer experience when used across a spectrum of web projects. About 90% of the projects I work on right now can be built with Eleventy, making it my go-to software for building websites of all shapes and sizes.
 
 {% include "type/p_large.html", content: "The most important advice I would give those choosing software for <em>any</em> project is to be mindful about what you’re choosing and why." %}
 
-Understand what problems you’re solving, determine which of these are most important, then choose a piece of software that solves your most important problems in an ideal way. 
+Understand what problems you’re solving, determine which of these are most important, then choose a piece of software that solves your most important problems in an ideal way.
 
 **If you're choosing the right tool for the job or at least _trying_ to, that's what matters.**
 
@@ -53,7 +53,7 @@ I plan on writing more about how to use Eleventy for web development projects, b
 
 Documentation is _always_ my first stop when learning new software. I start by seeing how the documentation advises I get started and then reach for external resources as needed.
 
-Overall, I think the Eleventy documentation is great. The introductory "Getting Started" resource that I've included hits core concepts at a high level, making it suitable for folks who already have decent technical know-how with similar software. 
+Overall, I think the Eleventy documentation is great. The introductory "Getting Started" resource that I've included hits core concepts at a high level, making it suitable for folks who already have decent technical know-how with similar software.
 
 #### [Learn Eleventy From Scratch](https://piccalil.li/course/learn-eleventy-from-scratch/)
 

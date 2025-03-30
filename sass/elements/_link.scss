@@ -5,12 +5,12 @@
 a {
   color: var(--link-color, var(--link-color, var(--text-color)));
 
-  &:hover { 
+  &:hover {
     color: var(--link-color-hover, var(--link-color, var(--text-color)));
   }
 
   // Modifiers
-  &.-inverted { 
+  &.-inverted {
     --link-color: var(--gray-lighter);
 
     @media (--dark) {
@@ -18,14 +18,14 @@ a {
     }
   }
 
-  &.-underline-hover { 
+  &.-underline-hover {
     text-decoration: none;
 
-    &:hover { 
+    &:hover {
       text-decoration: underline;
     }
   }
-  
+
   &.-hover-background {
     @include linkHoverBackground();
   }
@@ -44,7 +44,7 @@ a {
     text-decoration: none;
     transition: box-shadow var(--transition);
 
-    @media (--dark) { 
+    @media (--dark) {
       --link-background: var(--heliotrope);
     }
   }

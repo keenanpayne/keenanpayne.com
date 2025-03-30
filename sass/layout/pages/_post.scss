@@ -21,7 +21,7 @@
         margin-right: auto;
         max-width: 45ch;
 
-        &:not(:last-of-type):not(.-large) { 
+        &:not(:last-of-type):not(.-large) {
           margin-bottom: 1.5rem;
         }
       }
@@ -31,10 +31,10 @@
 
 .post-header {
   margin-bottom: 1.5rem;
-  padding-right: .5rem;
+  padding-right: 0.5rem;
 }
 
-.post-footer { 
+.post-footer {
   border-top: 1px solid var(--gray-dark);
   font-family: var(--font-family-serif);
   margin-top: 3rem;
@@ -42,7 +42,7 @@
 
   // Descendants
   > a {
-    &:first-of-type { 
+    &:first-of-type {
       font-style: italic;
     }
 
@@ -52,21 +52,21 @@
   }
 }
 
-.post-title { 
+.post-title {
   margin-top: 1.25rem;
 }
 
 .post-lede {
   margin-bottom: 1.25rem;
-  margin-top: .75rem;
-  
+  margin-top: 0.75rem;
+
   // Context-specific
   & + .post-tags {
-    margin-top: .75rem;
+    margin-top: 0.75rem;
   }
 }
 
-.post-meta { 
+.post-meta {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -78,67 +78,69 @@
   }
 }
 
-.post-tags { 
+.post-tags {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 
   // Add extra space above tags if they are not empty
-  .post-title + &:not(:empty) { 
+  .post-title + &:not(:empty) {
     margin-top: 1.25rem;
   }
 }
 
 .post-tag {
   display: inline-block;
-  
-  &:not(:last-of-type) { 
+
+  &:not(:last-of-type) {
     margin-right: 0.5em;
   }
-  
-  &:not(:last-of-type) { 
-    margin-bottom: .5em;
-    
-    @media (--min-560) { 
+
+  &:not(:last-of-type) {
+    margin-bottom: 0.5em;
+
+    @media (--min-560) {
       margin-bottom: 0;
     }
   }
-  
+
   // Descendants
   a {
     padding-bottom: 0 !important; // TODO: Fix specificity issue
   }
 }
 
-
 //
 // Post Content
 // ------------
 
-.post-content { 
+.post-content {
   font-size: var(--post-font-size);
 
   // Descendants
-  h2, h3, h4, h5 { 
+  h2,
+  h3,
+  h4,
+  h5 {
     position: relative;
   }
-  
-  h2 { 
+
+  h2 {
     margin-bottom: 1rem;
     margin-top: 3rem;
   }
-  
+
   hr + h2 {
     margin-top: 1rem;
   }
 
-  h3 { 
+  h3 {
     margin-bottom: 1rem;
     margin-top: 3rem;
     max-width: 35ch;
   }
-  
-  h2 + h3 { 
+
+  h2 + h3 {
     margin-top: 1.25rem;
   }
 
@@ -146,33 +148,33 @@
     font-weight: var(--font-weight-bold);
   }
 
-  li { 
+  li {
     font-size: var(--post-font-size);
 
-    &:not(:first-of-type) { 
-      margin-top: .5rem;
+    &:not(:first-of-type) {
+      margin-top: 0.5rem;
     }
   }
-  
-  ul { 
+
+  ul {
     margin-bottom: 1.5rem;
     padding-left: 1.5rem;
   }
 
   ul ul {
-    margin-bottom: .75rem;
-    margin-top: .5rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0.5rem;
     padding-left: 1.5rem;
   }
 
-  img { 
+  img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    
-    // NOTE: This is kind of a hack because I have some transparent PNG drawings 
+
+    // NOTE: This is kind of a hack because I have some transparent PNG drawings
     //       (e.g., creating-planning.md) that don't look good without a white background
-    @media (--dark) { 
+    @media (--dark) {
       background-color: var(--white);
     }
   }
@@ -180,7 +182,7 @@
   p {
     font-size: var(--post-font-size);
 
-    &:not(:last-of-type):not(.-large) { 
+    &:not(:last-of-type):not(.-large) {
       margin-bottom: 1.25rem;
     }
 
@@ -189,16 +191,23 @@
       @include externalLink();
     }
 
-    mark { 
+    mark {
       background: transparent;
-      background-image: linear-gradient(to right, rgba(255, 225, 0, 0.15), rgba(255, 225, 0, 0.6) 7.5%, rgba(255, 225, 0, 0.7) 30%, rgba(255, 225, 0, 0.8) 60%, rgba(255, 225, 0, 0.35));
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 225, 0, 0.15),
+        rgba(255, 225, 0, 0.6) 7.5%,
+        rgba(255, 225, 0, 0.7) 30%,
+        rgba(255, 225, 0, 0.8) 60%,
+        rgba(255, 225, 0, 0.35)
+      );
       border-radius: 0.8em 0.3em;
       -webkit-box-decoration-break: clone;
-              box-decoration-break: clone;
+      box-decoration-break: clone;
       margin: 0 -0.4em;
-      padding: 0.1em 0.4em; 
-  
-      @media (--dark) { 
+      padding: 0.1em 0.4em;
+
+      @media (--dark) {
         background: var(--yellow-dark);
         box-shadow: 2px 0 6px 1px var(--yellow-dark);
         border-radius: 0.75em 0.45em;
@@ -213,7 +222,7 @@
     }
   }
 
-  hr { 
+  hr {
     & + p {
       margin-top: 1.5rem;
     }
@@ -221,7 +230,7 @@
 }
 
 // Featured images
-.post-imageBook { 
+.post-imageBook {
   margin-bottom: 3rem;
   max-width: 300px;
 }

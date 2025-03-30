@@ -1,17 +1,17 @@
 ---
 permalink: "/portfolio/gofundme/"
 title: "GoFundMe"
-meta: 
+meta:
   description: "Building a content hub to highlight people who are making a difference."
   image: "https://res.cloudinary.com/keenan-payne/image/upload/v1665763480/portfolio/gofundme/cover_m7erev.png"
 data: gofundme
-sections: 
+sections:
   - type: portfolioGrid
     project: gofundme
-    modifier: '-two-col'
+    modifier: "-two-col"
     contained: true
     enlarge: true
-    items: 
+    items:
       - 1
       - 5
   - type: testimonial
@@ -20,10 +20,10 @@ sections:
     testimonial: 2
   - type: portfolioGrid
     project: gofundme
-    modifier: '-two-col'
+    modifier: "-two-col"
     contained: true
     enlarge: true
-    items: 
+    items:
       - 7
       - 6
   - type: testimonial
@@ -32,10 +32,10 @@ sections:
     testimonial: 6
   - type: portfolioGrid
     project: gofundme
-    modifier: '-one-col'
+    modifier: "-one-col"
     contained: true
     enlarge: true
-    items: 
+    items:
       - 4
   - type: testimonial
     project: gofundme
@@ -43,9 +43,9 @@ sections:
     testimonial: 3
   - type: portfolioGrid
     project: gofundme
-    modifier: '-one-col'
+    modifier: "-one-col"
     contained: true
-    items: 
+    items:
       - 3
   - type: testimonial
     project: gofundme

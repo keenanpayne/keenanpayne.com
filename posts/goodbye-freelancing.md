@@ -1,8 +1,8 @@
 ---
-permalink: '/goodbye-freelancing/'
-title:  'Taking a break from my freelancing career'
-meta: 
-  description: ''
+permalink: "/goodbye-freelancing/"
+title: "Taking a break from my freelancing career"
+meta:
+  description: ""
 date: 2021-12-06
 type: Article
 tags:
@@ -18,7 +18,7 @@ This is a big shift, so I'll share what I've been up to for the past eighteen mo
 ## Where I've been
 
 Fortunately, I've had a successful second stint as a freelance web developer. One measure of "success" is that I never had to search for work and instead relied on connections I made throughout my career to find projects and clients. Having a steady stream of leads allowed me to focus on running my business and executing client projects.
-  
+
 Specifically, I would like to give a shout-out to [Casey Martin](https://www.play.studio/), [Kelsey Aroian](http://www.kelseyaroian.com/), [Vanessa Koch](https://www.vanessakoch.com/), [Tony Mingo](https://tonymingo.com/), [Natalia Kowaleczko](https://natiko.design/), and Michael Spradlin who all helped me find client work during this time. Thank you all so much.
 
 During the past eighteen months, I've completed fifteen client projects. Cranking out this much work wouldn't have been feasible (or advisable) by myself, so I must express my deepest gratitude to [Jaime Hernández](https://jaime.one/)—my friend and closest collaborator—who worked tirelessly with me on countless projects. I'd also like to shout out Nels Andereck and Rob Schneiderman, two friends I met while working at Asana, who I also collaborated with during this time. I've loved working with you all.
@@ -28,8 +28,6 @@ During the past eighteen months, I've completed fifteen client projects. Crankin
 Surprisingly, I took home more net income freelancing than working in-house. Comparing these is difficult, as the former requires paying more taxes for self-employment and benefits while the latter provides non-income compensation such as stock options, insurance, and other perks. Nuance aside, the income potential for freelancing provided a delightful surprise.
 
 I also learned _a lot_ during the past eighteen months. Working on so many projects with various stakeholders and collaborators, competing priorities, tight deadlines, and requirements forced me to improve all aspects of my professional skillset. I improved my communication, became a project _and_ people manager, and bolstered my core competencies as a web developer.
-
-
 
 Much of my learning happened as I struggled to communicate with so many people, missed deadlines, improperly prioritized work, and used the wrong tools for the wrong job.
 

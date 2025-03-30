@@ -1,20 +1,20 @@
 ---
-permalink: '/july-2022-learning/'
-title:  'Learning Notes, July 2022'
-meta: 
+permalink: "/july-2022-learning/"
+title: "Learning Notes, July 2022"
+meta:
   description: Let's ignore that I'm publishing this towards the end of August. Regardless, here's what I learned in July.
 lede: Let's ignore that I'm publishing this towards the end of August. Regardless, here's what I learned in July.
 type: Article
 series: Learning Notes
 date: 2022-08-22
-tags: 
+tags:
   - Burnout
   - Anxiety
   - Writing
   - Learning
 ---
 
-Things have been busy in my world. Summer traveling and client work have been my primary focus for the past few weeks, hence these belatedly-published learning notes. Better late than never! 
+Things have been busy in my world. Summer traveling and client work have been my primary focus for the past few weeks, hence these belatedly-published learning notes. Better late than never!
 
 ## Magazine: [Anxy: The Workaholism Issue](https://anxymag.com/pages/issue-2-workaholism)
 
@@ -24,14 +24,13 @@ This belief was deftly challenged while reading the workaholism issue of Anxy. T
 
 {% include "type/blockquote.html", content: "People who have high work engagement—a positive, fulfilling, work-related state of mind are probably not workaholics. Engaged workers are driven to work because they find it intrinsically pleasurable. They truly enjoy it—while workaholics are driven to work because they feel an inner compulsion." %}
 
-This new perspective has pushed me to consider whether my "*inclination*" to work is more of a "*compulsion*".
+This new perspective has pushed me to consider whether my "_inclination_" to work is more of a "_compulsion_".
 
 Maybe incessantly contemplating the various goals, projects, and tasks I'm working on (or want to work on) at any given time isn't simply a sign of my work ethic. Perhaps this behavior underlies some of the anxiety and stress that have led me to burnout multiple times in my career.
 
-
 <hr class="-fancy" />
 
-## Article: [Burnout](https://alistapart.com/article/burnout/) 
+## Article: [Burnout](https://alistapart.com/article/burnout/)
 
 I appreciate and admire the vulnerability of folks who have shared their experiences with burnout.
 

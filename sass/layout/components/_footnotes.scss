@@ -7,13 +7,13 @@
   margin-bottom: 1em;
 }
 
-.footnotes-list { 
+.footnotes-list {
   padding-left: 1.5rem;
   margin-bottom: 0;
   margin-right: auto;
   max-width: 65ch;
 
-  @media (--min-640) { 
+  @media (--min-640) {
     padding-left: 0;
   }
 }
@@ -21,11 +21,11 @@
 .footnote-item {
   font-size: var(--font-base);
 
-  &:not(:first-of-type) { 
+  &:not(:first-of-type) {
     margin-top: 1rem;
   }
 }
 
-.footnote-ref { 
+.footnote-ref {
   @extend ._text-small;
 }

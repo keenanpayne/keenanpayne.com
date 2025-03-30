@@ -1,8 +1,8 @@
 ---
-permalink: '/elements-hang-outside-parents-without-scrollbars/'
-title:  'Allow elements to hang outside of their fixed-width parents without scrollbars'
-meta: 
-  description: 'Learn about how I tackled the issue of elements existing outside of a fixed-width parent using CSS.'
+permalink: "/elements-hang-outside-parents-without-scrollbars/"
+title: "Allow elements to hang outside of their fixed-width parents without scrollbars"
+meta:
+  description: "Learn about how I tackled the issue of elements existing outside of a fixed-width parent using CSS."
 type: Tutorial
 tags:
   - CSS

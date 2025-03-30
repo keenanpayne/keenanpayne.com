@@ -1,9 +1,9 @@
 ---
-permalink: '/one-more-thing/'
-title:  'One More Thing'
+permalink: "/one-more-thing/"
+title: "One More Thing"
 date: 2021-10-29
 type: Reflection
-tags: 
+tags:
   - Creativity
 ---
 

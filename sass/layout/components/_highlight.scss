@@ -12,8 +12,8 @@
   &:empty:before {
     content: " ";
   }
-  
-  // Avoid double line breaks when using display: block; 
+
+  // Avoid double line breaks when using display: block;
   & + br {
     display: none;
   }
@@ -26,7 +26,7 @@
 
 .highlight-line-active {
   background-color: #444;
-  background-color: hsla(0, 0%, 27%, .8);
+  background-color: hsla(0, 0%, 27%, 0.8);
 }
 
 .highlight-line-add {

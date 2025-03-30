@@ -3,14 +3,14 @@
 // ==================================================
 // TODO: Create generic abstractions for similarities with `_portfolio.scss`
 
-.services { 
+.services {
   margin-bottom: 5rem;
 }
 
 .services-header {
   margin-bottom: 2.25rem;
   margin-top: 1rem;
-  
+
   @media (--max-640) {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -21,21 +21,21 @@
   }
 }
 
-.services-footer { 
+.services-footer {
   border-top: 1px solid var(--gray-dark);
   font-family: var(--font-family-serif);
   margin-top: 3rem;
   padding-top: 1.5rem;
 
   // Descendants
-  > a:first-of-type { 
+  > a:first-of-type {
     font-style: italic;
   }
 }
 
-.services-title { 
+.services-title {
   margin-bottom: 1.25rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 
   @media (--min-960) {
     @include text-large();
@@ -51,7 +51,7 @@
   font-style: italic;
   font-weight: var(--font-weight-serif-light);
   max-width: 50ch;
-  
+
   @media (--min-640) {
     margin-left: auto;
     margin-right: auto;
@@ -63,7 +63,7 @@
 
   margin-top: 3rem;
 
-  @media (--min-720) { 
+  @media (--min-720) {
     margin-top: 5rem;
   }
 
@@ -112,7 +112,7 @@
 
   // Descendants
   h3 {
-    margin-bottom: .75rem;
+    margin-bottom: 0.75rem;
     margin-top: 1rem;
   }
 }
@@ -125,7 +125,7 @@
   }
 
   // Descendants
-  p { 
+  p {
     @include h6();
   }
 }
@@ -135,15 +135,15 @@
 
   max-width: var(--icon-size);
 
-  @media (--min-1120) { 
+  @media (--min-1120) {
     --icon-size: 40px;
   }
 
-  @media (--min-1440) { 
+  @media (--min-1440) {
     --icon-size: 45px;
   }
 
-  @media (--min-1600) { 
+  @media (--min-1600) {
     --icon-size: 50px;
   }
 
@@ -151,7 +151,7 @@
   path {
     fill: var(--plum-dark);
 
-    @media (--dark) { 
+    @media (--dark) {
       fill: var(--yellow-light);
     }
   }
@@ -162,8 +162,8 @@
   --border-color: var(--exodus-fruit);
 
   background-color: var(--background-color);
-  border-bottom: 5px solid var( --border-color);
-  border-top: 5px solid var( --border-color);
+  border-bottom: 5px solid var(--border-color);
+  border-top: 5px solid var(--border-color);
   margin-bottom: 5rem;
   margin-top: 5rem;
   padding-bottom: 3rem;
@@ -178,18 +178,18 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-  @media (--min-720) { 
-    grid-gap: .75rem;
+  @media (--min-720) {
+    grid-gap: 0.75rem;
   }
 
-  @media (--min-1120) { 
+  @media (--min-1120) {
     grid-gap: 1.5rem;
   }
 }
 
 .services-tools-item {
   // Descendants
-  h3 { 
+  h3 {
     @include h4;
 
     margin-bottom: 0;
@@ -197,32 +197,32 @@
 }
 
 .services-faq {
-  @media (--max-720) { 
+  @media (--max-720) {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 }
 
-.services-faq-item { 
+.services-faq-item {
   --border-color: var(--exodus-fruit);
 
-  &:not(:last-of-type) { 
+  &:not(:last-of-type) {
     border-bottom: 3px solid var(--border-color);
     padding-bottom: 1.5rem;
 
-    @media (--dark) { 
+    @media (--dark) {
       --border-color: var(--yellow-dark);
     }
   }
 
   // Descendants
-  h3 { 
+  h3 {
     @include h4;
 
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 
-  ul { 
+  ul {
     margin-bottom: 0;
     margin-top: 0;
   }

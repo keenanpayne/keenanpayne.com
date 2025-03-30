@@ -1,10 +1,10 @@
 ---
-permalink: '/services/web-development/'
+permalink: "/services/web-development/"
 title: Web Development
 lede: Simply put, I can help you build anything on the internet. Whether you need a website to sell your product or services, or you need someone to help build your SaaS MVP, I've got you covered.
 order: 1
 tags: services
---- 
+---
 
 <p>Thoughtfully making foundational decisions on how to construct complex user interfaces.</p>
 
@@ -17,11 +17,12 @@ tags: services
 <section class="services-offering _container">
 <h2>What I offer</h2>
 
-Frontend architecture is a subset of my frontend development specialization. The emphasis on __architecture__ intends to illuminate the _concerted_—not _inherent_—effort required to craft resilient and scalable user interfaces.
+Frontend architecture is a subset of my frontend development specialization. The emphasis on **architecture** intends to illuminate the _concerted_—not _inherent_—effort required to craft resilient and scalable user interfaces.
 
-I offer my specialization in frontend architecture to organizations intent on designing and developing long-term solutions for complex user interfaces. 
+I offer my specialization in frontend architecture to organizations intent on designing and developing long-term solutions for complex user interfaces.
 
-After working together, you will receive a bespoke frontend architecture designed to your specific needs! If we've done our job correctly, we will have addressed any core concerns that you and others have been encountering with your codebase/existing frontend architecture while keeping an eye on how your company may grow in the future. 
+After working together, you will receive a bespoke frontend architecture designed to your specific needs! If we've done our job correctly, we will have addressed any core concerns that you and others have been encountering with your codebase/existing frontend architecture while keeping an eye on how your company may grow in the future.
+
 </section>
 
 <section class="services-process">
@@ -33,7 +34,8 @@ After working together, you will receive a bespoke frontend architecture designe
 
 <h3>Requirements gathering</h3>
 
-I work rigorously to [gather requirements](#faq-requirements) for your project so that smart architectural choices can be made that solve your short-term goals while keeping an eye towards the future. 
+I work rigorously to [gather requirements](#faq-requirements) for your project so that smart architectural choices can be made that solve your short-term goals while keeping an eye towards the future.
+
 </div>
 
 <div class="services-items-item">
@@ -41,6 +43,7 @@ I work rigorously to [gather requirements](#faq-requirements) for your project s
 <h3>Time</h3>
 
 The quality of what I produce is time- and scope-dependent. I can craft a resilient and composable codebase with a flexible time horizon and a clear goal. Crafting complex frontend architectures typically requires _significant_ time investment, but I firmly believe that it is worth the effort for any long-term software development endeavor.
+
 </div>
 
 <div class="services-items-item">
@@ -50,6 +53,7 @@ The quality of what I produce is time- and scope-dependent. I can craft a resili
 I will happily integrate with your preferred tooling/frameworks if you have already made core architectural decisions. For areas with greater ambiguity, I can guide the decision-making process governing essential decisions that can provide confidence in choosing the right tool that solves your needs.
 
 Learn how I incorporate build tooling [here](#faq-tooling).
+
 </div>
 
 <div class="services-items-item">
@@ -60,6 +64,7 @@ Learn how I incorporate build tooling [here](#faq-tooling).
 Well-written documentation provides developers with a resource that guides them through complex codebases. Documentation provides clarity for developers and stakeholders alike, paving the way for mindful decision-making as well as consistent and efficient development.
 
 Documentation is an up-front investment I make for all large frontend architecture projects. I write documentation by hand and generate it automatically using various tools.
+
 </div>
 </div>
 </div>
@@ -165,13 +170,13 @@ Documentation is an up-front investment I make for all large frontend architectu
 
 Interview team members to become educated on the company and problem domain. Some sample questions include
 
-  - What is your current tech stack?
-  - What is your "ideal" tech stack?
-  - What past architectural decisions have you made?
-      - What has gone well?
-      - What has gone wrong?
-  - What shortcomings you definitely want to avoid having learning from the past?
-  - If one thing could be an "out-of-the-park" success for you and your team, what would that be?
+- What is your current tech stack?
+- What is your "ideal" tech stack?
+- What past architectural decisions have you made?
+  - What has gone well?
+  - What has gone wrong?
+- What shortcomings you definitely want to avoid having learning from the past?
+- If one thing could be an "out-of-the-park" success for you and your team, what would that be?
 </div>
 
 <div class="services-faq-item">
@@ -179,8 +184,9 @@ Interview team members to become educated on the company and problem domain. Som
 
 I implement robust build processes using Node.js and NPM to provide a modern and intuitive developer experience. Don't expect a big Webpack mess with my projects—I focus on providing only the simplest solutions to problems before finding advanced solutions (i.e., starting with `npm scripts`).
 
-Webpack is fine, of course, but it's often used as a _starting point_ when it should be viewed as a _potential future outcome_ following smaller-scale build process implementations. 
+Webpack is fine, of course, but it's often used as a _starting point_ when it should be viewed as a _potential future outcome_ following smaller-scale build process implementations.
 
 Mindfulness matters when it comes to making decisions that are so frequently addressed as "one size fits all."
+
 </div>
 </section>

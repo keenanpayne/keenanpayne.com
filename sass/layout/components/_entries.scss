@@ -2,36 +2,36 @@
 // Post List
 // ==================================================
 
-.entries { 
+.entries {
   margin-bottom: 3rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
 
-.entries + .entries { 
+.entries + .entries {
   margin-top: 5rem;
 }
 
-.entries-headline { 
+.entries-headline {
   align-items: center;
   display: flex;
   justify-content: space-between;
 
   // Descendants
-  h1 { 
+  h1 {
     margin-bottom: 0;
   }
-  
-  p { 
+
+  p {
     margin-top: 0;
   }
 }
 
-.entries-item.-intro { 
+.entries-item.-intro {
   grid-area: 1 / span 2;
 }
 
-.entries-item-description { 
+.entries-item-description {
   margin-top: 0;
 }
 
@@ -40,9 +40,9 @@
   margin-top: 0;
 }
 
-.entries-link { 
+.entries-link {
   text-decoration: none;
-  
+
   &:hover {
     text-decoration: underline;
     text-decoration-color: var(--gray-darker);
@@ -52,7 +52,7 @@
   }
 }
 
-.entries-header { 
+.entries-header {
   flex: 1;
 }
 
@@ -60,11 +60,11 @@
   font-weight: bold;
 }
 
-.entries-meta { 
+.entries-meta {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .entries-series {
@@ -73,26 +73,26 @@
   }
 }
 
-.entries-lede { 
-  margin-top: .25rem;
+.entries-lede {
+  margin-top: 0.25rem;
 }
 
-.entries-tags { 
+.entries-tags {
   list-style-type: none;
   margin-bottom: 0;
   margin-top: 0;
   padding-left: 0;
 }
 
-.entries-tag { 
+.entries-tag {
   display: inline-block;
 
-  &:not(:first-of-type) { 
+  &:not(:first-of-type) {
     margin-left: 0.5em;
   }
 }
 
-.entries-tagsLink { 
+.entries-tagsLink {
   font-size: 1.125rem;
   font-weight: 500;
   margin-top: 3rem;
@@ -100,7 +100,7 @@
 
 .entries-label {
   border-bottom: 1px solid var(--exodus-fruit);
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   position: relative;
 
   @media (--dark) {
@@ -116,14 +116,14 @@
   &:hover {
     text-decoration: underline;
 
-    &::after { 
+    &::after {
       transform: translate(80%, -50%);
     }
   }
 
-  // Psuedo-element for arrow 
-  &::after { 
-    content: '→';
+  // Psuedo-element for arrow
+  &::after {
+    content: "→";
     font-size: 1.5em;
     position: absolute;
     top: 45%;
@@ -135,7 +135,7 @@
 
 .entries-image {
   display: block;
-  filter: sepia(.1) brightness(0.9);
+  filter: sepia(0.1) brightness(0.9);
   height: 250px;
   margin-bottom: 1.5rem;
   transition: filter var(--transition-long);
@@ -170,7 +170,6 @@
   }
 }
 
-
 // Portfolio Items
 .entries-portfolio-meta {
   --border-color: var(--exodus-fruit);
@@ -178,22 +177,21 @@
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
 }
-
 
 //
 // Modifiers
 // ---------
 
 .entries.-portfolio {
-  .entries-lede { 
-    margin-bottom: .5em;
+  .entries-lede {
+    margin-bottom: 0.5em;
     max-width: 33ch;
   }
 
   .entries-item-content {
-    @media (--min-800) { 
+    @media (--min-800) {
       display: grid;
       grid-gap: 1.5rem;
       grid-template-columns: repeat(6, 1fr);
@@ -202,28 +200,28 @@
     @media (--min-960) {
       align-items: center;
     }
-    
-    .entries-image { 
+
+    .entries-image {
       height: auto;
       width: 100%;
-      
+
       @media (--min-800) {
         margin-bottom: 0;
       }
     }
-    
-    .entries-portfolio-content { 
+
+    .entries-portfolio-content {
       grid-column: auto / span 3;
       max-width: 55ch;
-      padding-bottom: .5rem;
-      
-      @media (--min-1120) { 
+      padding-bottom: 0.5rem;
+
+      @media (--min-1120) {
         grid-column-end: span 2;
       }
     }
 
     // Descendants
-    > a { 
+    > a {
       grid-column: auto / span 3;
     }
   }
@@ -231,10 +229,10 @@
   .entries-item {
     margin-top: 1.5rem;
 
-    &:not(:last-of-type) { 
+    &:not(:last-of-type) {
       margin-bottom: 3rem;
 
-      @media (--min-800) { 
+      @media (--min-800) {
         margin-bottom: 0;
       }
     }

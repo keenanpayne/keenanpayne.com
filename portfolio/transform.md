@@ -1,20 +1,20 @@
 ---
-permalink: '/portfolio/transform/'
-title: 'Transform'
-meta: 
-  description: 
+permalink: "/portfolio/transform/"
+title: "Transform"
+meta:
+  description:
   image: "https://res.cloudinary.com/keenan-payne/image/upload/v1665763707/portfolio/transform/cover_yrt6ni.png"
 data: transform
-sections: 
+sections:
   - type: portfolioGrid
     project: transform
     contained: true
     enlarge: true
-    modifier: '-two-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
+    modifier: "-two-col"
+    eyebrow: ""
+    headline: ""
+    description: ""
+    items:
       - 4
       - 3
       - 1
@@ -23,11 +23,11 @@ sections:
     project: transform
     contained: true
     enlarge: true
-    modifier: '-three-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
+    modifier: "-three-col"
+    eyebrow: ""
+    headline: ""
+    description: ""
+    items:
       - 2
       - 6
       - 7

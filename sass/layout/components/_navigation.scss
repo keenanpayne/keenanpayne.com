@@ -12,7 +12,6 @@
   }
 }
 
-
 //
 // Primary Navigation
 // ------------------
@@ -41,17 +40,17 @@
 
 .navigation-primary-item {
   --underline-color: var(--exodus-fruit);
-  
+
   font-size: 18px;
   position: relative;
   text-decoration: none;
   transition: clip-path 275ms ease;
-  
+
   @media (--dark) {
     --underline-color: var(--yellow-dark);
   }
-  
-  &:hover span::before, 
+
+  &:hover span::before,
   &:focus span::before {
     @media (pointer: fine) {
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
@@ -62,7 +61,7 @@
   span {
     display: inline-block;
     position: relative;
-    
+
     &::before {
       clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
       color: var(--underline-color);
@@ -73,14 +72,14 @@
     }
   }
 
-  &:not(:first-of-type) { 
+  &:not(:first-of-type) {
     margin-top: spacing(1.25);
-    
+
     @media (--min-560) {
       margin-top: 0;
     }
   }
-  
+
   // Modifiers
   &.-active {
     --underline-color: var(--text-color);
@@ -99,7 +98,6 @@
   }
 }
 
-
 //
 // Icon Navigation
 // ---------------
@@ -115,7 +113,7 @@
   @media (--min-560) {
     @include a11yVisible;
   }
-  
+
   @media (--min-720) {
     margin-bottom: spacing(2);
   }

@@ -1,7 +1,7 @@
 ---
-permalink: '/march-2022-learning/'
-title:  'Learning Notes, March 2022'
-meta: 
+permalink: "/march-2022-learning/"
+title: "Learning Notes, March 2022"
+meta:
   description: Check out what I've been using to further my learning during March 2022.
 lede: Check out what I've been using to further my learning during March 2022.
 type: Article
@@ -27,14 +27,13 @@ This book is easy to read in short spurts, making it the perfect companion when 
 
 ## Article: [My first impressions of web3](https://moxie.org/2022/01/07/web3-first-impressions.html)
 
-In the span of six months, I've fallen into and climbed out of the cryptocurrency/web3/NFT rabbit hole. I went __deep__. I "invested" in coins and NFTs, involved myself in various crypto communities (primarily as a lurker), and spent __a lot__ of time learning about the underlying blockchain technology. 
+In the span of six months, I've fallen into and climbed out of the cryptocurrency/web3/NFT rabbit hole. I went **deep**. I "invested" in coins and NFTs, involved myself in various crypto communities (primarily as a lurker), and spent **a lot** of time learning about the underlying blockchain technology.
 
-The time I spent investigating the underlying technology paved the way for my losing interest in crypto. I now see it as __much__ more detrimental than beneficial.
+The time I spent investigating the underlying technology paved the way for my losing interest in crypto. I now see it as **much** more detrimental than beneficial.
 
 This article by Moxie Marlinspike, creator of [Signal](https://www.signal.org/), put the nail in the coffin for my interest in the current version and utilization of blockchain technology. He outlines how purportedly "decentralized" platforms work, why such platforms aren't truly decentralized, and why decentralization may not even be an ideal outcome for a rapidly evolving ecosystem.
 
 {% include "type/blockquote.html", content: "The people at the end of the line who are flipping NFTs do not fundamentally care about distributed trust models or payment mechanics, but they care about where the money is." %}
-
 
 ## Book: [Several Short Sentences About Writing](https://www.indiebound.org/book/9780307279415)
 
@@ -54,6 +53,6 @@ This show is well-researched, concise, and contains countless interviews with de
 
 I recently accepted my first client project after taking a lovely six-month [sabbatical](/goodbye-freelancing/). However, the project I've accepted is a bit outside of my wheelhouse. Instead of building marketing websites for clients, I'm working on a React.js/TypeScript/Firebase web application. How exciting!
 
-Having never used these technologies in a real-world project, I needed to get up to speed __quickly__. I worked through a few tutorials before eventually stumbling on this course, offered by Jeff Delaney, creator and author of the immensely popular YouTube channel and course platform [Fireship](https://www.youtube.com/c/Fireship).
+Having never used these technologies in a real-world project, I needed to get up to speed **quickly**. I worked through a few tutorials before eventually stumbling on this course, offered by Jeff Delaney, creator and author of the immensely popular YouTube channel and course platform [Fireship](https://www.youtube.com/c/Fireship).
 
 Boy, am I happy I found this course when I did. I quickly learned the fundamentals of these technologies while building a fun web application.

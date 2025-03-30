@@ -1,7 +1,7 @@
 ---
-permalink: '/may-2022-learning/'
-title:  'Learning Notes, May 2022'
-meta: 
+permalink: "/may-2022-learning/"
+title: "Learning Notes, May 2022"
+meta:
   description: Check out what I've been using to further my learning during May 2022.
 lede: Check out what I've been using to further my learning during May 2022.
 type: Article
@@ -11,7 +11,7 @@ date: 2022-06-09
 
 ## Book: [The Practice: Shipping Creative Work](https://www.indiebound.org/book/9780593328972)
 
-[Last month](/april-2022-learning/) I was reading *The Icarus Deception* by Seth Godin. Now, I'm working through *The Practice*. I frequently fall back on the wisdom shared in Seth's writing when I feel stuck in my creative endeavors.
+[Last month](/april-2022-learning/) I was reading _The Icarus Deception_ by Seth Godin. Now, I'm working through _The Practice_. I frequently fall back on the wisdom shared in Seth's writing when I feel stuck in my creative endeavors.
 
 {% include "type/blockquote.html", content: "Working in anticipation of what we’ll get in return takes us out of the world of self-trust and back into the never-ending search for reassurance and the perfect outcome. We believe that we need a guarantee, and that the only way to get that guarantee is with external feedback and results. It draws our eye to the mirror instead of the work.", author: "Seth Godin" %}
 
@@ -21,7 +21,7 @@ Seth's framing of creative endeavors as "[practices](/tags/practices)" is someth
 
 ## Book: [Creative Visualization](https://www.indiebound.org/book/9781608684649)
 
-I began reading Creative Visualization [last month](/april-2022-learning/), and I continue to find it inspiring and applicable as I design my ideal post-sabbatical working environment. 
+I began reading Creative Visualization [last month](/april-2022-learning/), and I continue to find it inspiring and applicable as I design my ideal post-sabbatical working environment.
 
 {% include "type/blockquote.html", content: "To create prosperity, we need to visualize ourselves living as we desire to live, doing what we love, feeling satisfied with what we attain, and in a context of other people doing the same.", author: "Shakti Gawain" %}
 
@@ -41,7 +41,7 @@ I loved the art direction of this essay. In particular, I enjoyed the web animat
 
 Shoptalk Show is one of my favorite web development podcasts. Web dev veterans [Chris Coyier](http://chriscoyier.net) and [Dave Rupert](https://daverupert.com) host the show each week as they discuss what's happening in the world of web development, projects that they're working on, issues they've encountered, and more.
 
-Episode 516 was a standout episode for me. The subject of shipping creative work and "Twitter-driven development" inspired a slew of thoughts. I captured these in a Twitter thread which you can read by clicking the tweet below or checking out the essay on [this Typefully post](https://typefully.com/KeenanPayne_/shoptalk-show-516-shipping-creative-work-and-Q9oMR2p). 
+Episode 516 was a standout episode for me. The subject of shipping creative work and "Twitter-driven development" inspired a slew of thoughts. I captured these in a Twitter thread which you can read by clicking the tweet below or checking out the essay on [this Typefully post](https://typefully.com/KeenanPayne_/shoptalk-show-516-shipping-creative-work-and-Q9oMR2p).
 
 <blockquote class="tweet"><p lang="en" dir="ltr">The most recent <a href="https://twitter.com/ShopTalkShow?ref_src=twsrc%5Etfw">@ShopTalkShow</a> episode didn&#39;t disappoint 👌 <br><br>I loved the convo on the toll of &quot;not shipping&quot;—i.e., not releasing work/creations/projects—and the impact that has on individuals and businesses. I feel this in my bones.<a href="https://t.co/YrJPWSLLYu">https://t.co/YrJPWSLLYu</a></p>&mdash; Keenan Payne (@KeenanPayne_) <a href="https://twitter.com/KeenanPayne_/status/1530364036847505408?ref_src=twsrc%5Etfw">May 28, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -51,7 +51,7 @@ Episode 516 was a standout episode for me. The subject of shipping creative work
 
 Another podcast I enjoy is The Growth Equation, hosted by Brad Stulberg and Steve Magness. Each episode features these two talking about personal performance and sustainable success.
 
-This episode struck a chord as I began thinking about the importance of doing "real things" in the world. I captured these in a Twitter thread, which you can read by clicking the Tweet below. You can also read the full essay on [this Typefully post](https://typefully.com/KeenanPayne_/JlDHqXy). 
+This episode struck a chord as I began thinking about the importance of doing "real things" in the world. I captured these in a Twitter thread, which you can read by clicking the Tweet below. You can also read the full essay on [this Typefully post](https://typefully.com/KeenanPayne_/JlDHqXy).
 
 <blockquote class="tweet"><p lang="en" dir="ltr">I enjoyed the conversation between <a href="https://twitter.com/BStulberg?ref_src=twsrc%5Etfw">@BStulberg</a> and <a href="https://twitter.com/stevemagness?ref_src=twsrc%5Etfw">@stevemagness</a> on The Growth Equation on the importance of doing &quot;real things&quot; in the world 🚵🏻‍♂️<a href="https://t.co/mIE8fAPMsy">https://t.co/mIE8fAPMsy</a></p>&mdash; Keenan Payne (@KeenanPayne_) <a href="https://twitter.com/KeenanPayne_/status/1530630169450319874?ref_src=twsrc%5Etfw">May 28, 2022</a></blockquote>
 

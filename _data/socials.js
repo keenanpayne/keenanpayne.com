@@ -1,15 +1,15 @@
 module.exports = {
   [1]: {
     name: "LinkedIn",
-    url: "https://linkedin.com/in/keenanpayne",
+    url: "https://linkedin.com/in/keenanpayne"
   },
   [2]: {
     name: "Dribbble",
-    url: "https://dribbble.com/keenanpayne",
+    url: "https://dribbble.com/keenanpayne"
   },
   [3]: {
     name: "CodePen",
-    url: "https://codepen.com/keenanpayne",
+    url: "https://codepen.com/keenanpayne"
   },
   [4]: {
     name: "Bluesky",
@@ -17,7 +17,7 @@ module.exports = {
   },
   [5]: {
     name: "Twitter",
-    url: "https://twitter.com/KeenanPayne_",
+    url: "https://twitter.com/KeenanPayne_"
   },
   [6]: {
     name: "Mastodon",
@@ -30,6 +30,6 @@ module.exports = {
   },
   [8]: {
     name: "Behance",
-    url: "https://behance.com/keenanpayne",
-  },
-}
+    url: "https://behance.com/keenanpayne"
+  }
+};

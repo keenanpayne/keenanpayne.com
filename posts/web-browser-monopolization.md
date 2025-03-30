@@ -1,6 +1,6 @@
 ---
-permalink: '/web-browser-monopolization/'
-title:  "How do we address the monopolization of web browsers?"
+permalink: "/web-browser-monopolization/"
+title: "How do we address the monopolization of web browsers?"
 date: 2021-07-30
 type: Essay
 tags:
@@ -11,7 +11,7 @@ source: https://twitter.com/KeenanPayne_/status/1421215458766647297
 
 I recently stumbled upon an interesting Twitter thread by [Jeff Johnson](https://twitter.com/lapcatsoftware) on the state of corporate monopolization of the web, Safari and Chrome, web browser complexity, and fostering competition in the web browser landscape.
 
-I have a different perspective on many points he discussed that I want to share in the pursuit of advancing this discussion. 
+I have a different perspective on many points he discussed that I want to share in the pursuit of advancing this discussion.
 
 {% include "type/notice.html", content: "Jeff, the author of the Twitter thread that I responded to, has deleted his thread because of vicious responses from folks. I find this unfortunate, as sincerely-held opinions, however disagreeable they might be, provide a valuable perspective as we attempt to understand the state of the world and address its issues.<br><br>I'm not keeping this essay published to draw negative attention towards Jeff or his opinions, but rather to advance the discussion that he started. However, I'm happy to unpublish or remove the original quotes if requested." %}
 
@@ -24,12 +24,13 @@ I have a different perspective on many points he discussed that I want to share 
     I personally think we should abolish JavaScript and not allow arbitrary remotely loaded code to execute on our computers.
 
     "I want web sites to do everything a native app can do" is a suicidal mistake.
+
   </p> 
   
   <cite>Jeff Johnson (@lapcatsoftware)<br>July 30, 2021</cite>
 </blockquote>
 
-I'm not convinced that web browsers having more functionality is problematic. Functionality increases complexity, but having a full-featured web is democratizing, allowing developers to build websites and applications for devices without worrying about platform-specific constraints. I believe we can enjoy a feature-rich internet while acknowledging that this comes at a cost—privacy, security, and competition—all of which we need to address. 
+I'm not convinced that web browsers having more functionality is problematic. Functionality increases complexity, but having a full-featured web is democratizing, allowing developers to build websites and applications for devices without worrying about platform-specific constraints. I believe we can enjoy a feature-rich internet while acknowledging that this comes at a cost—privacy, security, and competition—all of which we need to address.
 
 What I love about being a web developer is the ubiquity of my creations. Building websites and web applications allows me to build once and ship everywhere, so long as web browsers provide a consistent user experience (hence the issue between web developers and Safari).
 
@@ -52,20 +53,22 @@ Reducing functionality on the internet to increase privacy, security, and browse
     Imagine a small company trying to write their own web browser from scratch nowadays. It's just not possible! The web is so complex, there's no choice but to adopt one of the few existing browser engines: Chromium, WebKit, Gecko. That's it. The competitive landscape is bleak.
 
     "Everyone has to adopt Chromium" is exactly Google's plan.
-    
+
     Who controls the dominant browser engine controls the web.
+
   </p>
 
-  <cite>Jeff Johnson (@lapcatsoftware)<br>July 30, 2021</cite>
+<cite>Jeff Johnson (@lapcatsoftware)<br>July 30, 2021</cite>
+
 </blockquote>
 
 Should the automotive industry have remained stagnant, reducing complexity and functionality for the sake of increased competition? There's a high barrier of entry for automobile manufacturing, but it's not an industry without competition.
 
-What about regulations placed on the automotive industry over the past century that benefit consumers? Regulations increase overhead for manufacturers but improve safety and reliability for consumers. How do you balance that trade-off? 
+What about regulations placed on the automotive industry over the past century that benefit consumers? Regulations increase overhead for manufacturers but improve safety and reliability for consumers. How do you balance that trade-off?
 
 {% include "type/question.html", content: "How do you balance the trade-off of regulations on companies and industries to increase competition, promote innovation, and respect the needs of consumers in the industry?<br>How do we incentivize tech companies like Google and Apple to continue investing in web browsers in a way that benefits both the company <em>and</em> the consumer?<br>How can the Justice Department's antitrust powers increase competition in the web browser market?<br>What if the paradigm shifts to web browsers being 'sponsored' by corporations?" %}
 
-Regardless of how we get there, I think the incentive structure for corporate involvement in web browser development needs to change. Google and Apple have different incentive structures, which is evident by their choices for Chromium and Safari, respectively. 
+Regardless of how we get there, I think the incentive structure for corporate involvement in web browser development needs to change. Google and Apple have different incentive structures, which is evident by their choices for Chromium and Safari, respectively.
 
 We need incentive structures that allow corporations to meet their goals, but not at the expense of the consumer (e.g., privacy, choice of browser) or web developers through unilateral decision-making for the progression of web browsers (we see you, Google).
 
@@ -76,14 +79,15 @@ We need incentive structures that allow corporations to meet their goals, but no
     In a sense, there's no point in even having "web standards" anymore.
 
     Web standards theoretically allow *anybody* to implement a browser engine. But if the "standards" are sufficiently huge, then practically *nobody* can implement a browser engine.
-    
+
     The web is not "open" if nobody new can write a web browser engine. It's the illusion of openness.
+
   </p> 
   
   <cite>Jeff Johnson (@lapcatsoftware)<br>July 30, 2021</cite>
 </blockquote>
 
-On the subject of "openness" on the web, just because I cannot reasonably build a web browser that's up-to-date with the W3C standards does not mean that the web is not still "open". It simply means the barrier of entry is so high that I might want to focus my energy elsewhere. 
+On the subject of "openness" on the web, just because I cannot reasonably build a web browser that's up-to-date with the W3C standards does not mean that the web is not still "open". It simply means the barrier of entry is so high that I might want to focus my energy elsewhere.
 
 {% include "type/question.html", content: "What are the principles and features of an 'open' and a 'closed' web?" %}
 

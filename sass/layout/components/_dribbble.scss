@@ -3,7 +3,8 @@
 // ==================================================
 
 .dribbble {
-  background: #ea4c89 url('/images/dribbble-ball-icon.png') no-repeat center 110%;
+  background: #ea4c89 url("/images/dribbble-ball-icon.png") no-repeat center
+    110%;
   background-size: cover;
   background-size: 600px;
   grid-column: 1 / -1;
@@ -34,7 +35,7 @@
       @media (--min-640) {
         grid-column: auto / span 3;
       }
-    
+
       @media (--min-1120) {
         grid-column-end: span 2;
       }

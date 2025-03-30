@@ -1,12 +1,12 @@
 ---
-permalink: '/lacking-political-purpose/'
-title: 'Lacking political purpose'
+permalink: "/lacking-political-purpose/"
+title: "Lacking political purpose"
 type: Reflection
 date: 2022-09-19
-meta: 
+meta:
   description: Reflecting on how political purpose might provide my actions with more significant meaning.
-  image: 'https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1000/v1663605403/Blog%20Posts/political-purpose/1999.278_-_County_Election_lyrmci.jpg'
-  image_alt: ''
+  image: "https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1000/v1663605403/Blog%20Posts/political-purpose/1999.278_-_County_Election_lyrmci.jpg"
+  image_alt: ""
 lede: Reflecting on how political purpose might provide my actions with more significant meaning.
 tags:
   - Life Updates
@@ -21,15 +21,15 @@ I was struck by a quote on the importance of political purpose while reading Geo
 
 Orwell's comment spurred me to reflect on how a political purpose might give my actions more significant meaning.
 
-I generally consider myself politically aware and engaged. I keep up on current events; I put substantial time into educating myself before voting; I strive to maintain an open mind when confronting new ideas; I eagerly and tactfully debate folks with different beliefs in the pursuit of fostering open dialogue; I've canvassed for political candidates, etc. 
+I generally consider myself politically aware and engaged. I keep up on current events; I put substantial time into educating myself before voting; I strive to maintain an open mind when confronting new ideas; I eagerly and tactfully debate folks with different beliefs in the pursuit of fostering open dialogue; I've canvassed for political candidates, etc.
 
-These traits are well and good, though I’m confronting an increased feeling of emptiness as I reflect on the impact of my efforts given our current political, social, and economic landscape. 
+These traits are well and good, though I’m confronting an increased feeling of emptiness as I reflect on the impact of my efforts given our current political, social, and economic landscape.
 
 {% include "type/p_large.html", content: "I feel like I'm not doing enough to advocate for the change I want to see in the world." %}
 
-During these moments of internal strife, I effortlessly belittle myself and my life situation. 
+During these moments of internal strife, I effortlessly belittle myself and my life situation.
 
-Of course I'm not doing enough to help push for a better world. I spend my time writing code, so companies can generate obscene amounts of wealth that invariably gets funneled into the hands of the _few_ rather than the _many_. What do I get in return? A chunk of the wealth, putting me in company with the _few_. 
+Of course I'm not doing enough to help push for a better world. I spend my time writing code, so companies can generate obscene amounts of wealth that invariably gets funneled into the hands of the _few_ rather than the _many_. What do I get in return? A chunk of the wealth, putting me in company with the _few_.
 
 Tearing myself down does no good, especially while reflecting on how I can put myself in service of advocating for a better world.
 
@@ -60,10 +60,10 @@ Here are a few ideas I've had that involve using my skills as a web developer in
 Stepping outside of my vocation as a web developer, I've considered:
 
 - Running for some civic/legislative/governmental position in my community.
-- Helping advance political campaigns through volunteer efforts. 
-- Finding more ways to foster engagement between people with seemingly disparate beliefs. 
+- Helping advance political campaigns through volunteer efforts.
+- Finding more ways to foster engagement between people with seemingly disparate beliefs.
 
-Who knows? There are countless ways I can more closely align my actions with my values and put myself in service of a political purpose. 
+Who knows? There are countless ways I can more closely align my actions with my values and put myself in service of a political purpose.
 
 Making this change isn't something I want to rush, but it is something I want to continue thinking about and act on sooner rather than later.
 

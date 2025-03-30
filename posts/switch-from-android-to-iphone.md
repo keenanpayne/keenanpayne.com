@@ -1,11 +1,11 @@
 ---
-permalink: '/switch-from-android-to-iphone/'
-title:  'Switching from Android to iPhone after ten years'
+permalink: "/switch-from-android-to-iphone/"
+title: "Switching from Android to iPhone after ten years"
 meta:
-  description: 'After ten years of Android devices, I plunged into the Apple ecosystem after purchasing an iPhone 13 Pro.'
-  image: '/images/posts/android-iphone/apple-tech-stack.jpg'
-lede: 'After ten years of Android devices, I plunged into the Apple ecosystem after purchasing an iPhone 13 Pro.'
-cover: '/images/posts/android-iphone/apple-tech-stack.jpg'
+  description: "After ten years of Android devices, I plunged into the Apple ecosystem after purchasing an iPhone 13 Pro."
+  image: "/images/posts/android-iphone/apple-tech-stack.jpg"
+lede: "After ten years of Android devices, I plunged into the Apple ecosystem after purchasing an iPhone 13 Pro."
+cover: "/images/posts/android-iphone/apple-tech-stack.jpg"
 series: Switching from Android to iPhone
 type: Article
 date: 2021-12-26
@@ -31,7 +31,7 @@ My first smartphone being an Android likely set the course for my hardware prefe
 
 {% include "atoms/figure.html", src: "/images/posts/android-iphone/htc-wildfire.jpeg", alt: "HTC Wildfire S", caption: "" %}
 
-I enjoyed using Android over the years. I typically stuck to devices that provided as much of a "vanilla" Android experience as possible (e.g., Google Pixel and OnePlus phones) since so many Android devices were filled with bloatware and unappealing Android skins. Thankfully, the state of Android skins has improved, although the state of bloatware is still unfortunate, although somewhat moot given the hardware advancements.  
+I enjoyed using Android over the years. I typically stuck to devices that provided as much of a "vanilla" Android experience as possible (e.g., Google Pixel and OnePlus phones) since so many Android devices were filled with bloatware and unappealing Android skins. Thankfully, the state of Android skins has improved, although the state of bloatware is still unfortunate, although somewhat moot given the hardware advancements.
 
 And you know what? I loved using Android phones! They typically offered everything I needed out of a smartphone:
 
@@ -62,7 +62,7 @@ Apple prides itself on providing a top-tier experience for people who use their 
 
 {% include "type/p_large.html", content: "I'm curious about the interconnectivity between devices in the Apple ecosystem, given I'm an avid macOS user who owns an Apple TV and iPad Pro." %}
 
-**In retrospect, I suppose it's a bit funny that I own so many Apple devices while continuing to use an Android phone for so long.**  
+**In retrospect, I suppose it's a bit funny that I own so many Apple devices while continuing to use an Android phone for so long.**
 
 While my commitment to using Android phones amongst so many Apple devices is funny, Apple devices can stand on their own two feet compared to competitors. I haven't felt too limited using Android over the years, but now that I own an iPhone, I'm curious to see how the interaction between all of my Apple devices is enhanced.
 

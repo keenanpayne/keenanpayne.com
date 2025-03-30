@@ -1,8 +1,8 @@
 ---
-permalink: '/practices/'
-title:  'Turning activities into practices'
-meta: 
-  description: ''
+permalink: "/practices/"
+title: "Turning activities into practices"
+meta:
+  description: ""
 date: 2021-12-08
 type: Essay
 tags:

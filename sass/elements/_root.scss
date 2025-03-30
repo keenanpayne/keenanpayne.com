@@ -11,12 +11,13 @@
   min-height: 100vh;
   padding: 0;
   position: relative;
-  transition: color var(--transition), background var(--transition) ease-in-out;
-
+  transition:
+    color var(--transition),
+    background var(--transition) ease-in-out;
 
   @supports (font-variation-settings: normal) {
-    html { 
-      font-family: var(--font-family-base-var); 
+    html {
+      font-family: var(--font-family-base-var);
     }
   }
 }

@@ -1,34 +1,43 @@
 // Simple video lazy loading
 // Ref: https://web.dev/lazy-loading-video/
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var lazyElements = [].slice.call(document.querySelectorAll("[data-lazy]"));
 
   if (!lazyElements) return;
 
   if ("IntersectionObserver" in window) {
-    var lazyElementsObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(element) {
+    var lazyElementsObserver = new IntersectionObserver(function (
+      entries,
+      observer
+    ) {
+      entries.forEach(function (element) {
         if (element.isIntersecting) {
           const elementTag = element.target.tagName;
 
           // Lazy load videos
-          if (elementTag == 'VIDEO') {
+          if (elementTag == "VIDEO") {
             for (var source in element.target.children) {
               var videoSource = element.target.children[source];
-              if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+              if (
+                typeof videoSource.tagName === "string" &&
+                videoSource.tagName === "SOURCE"
+              ) {
                 videoSource.src = videoSource.dataset.src;
               }
             }
-  
+
             element.target.load();
 
-          // Lazy load background images
-          } else if (elementTag == 'A') {
+            // Lazy load background images
+          } else if (elementTag == "A") {
             var imageSource = element.target.dataset.src;
-            element.target.style.setProperty('--background', `url("${imageSource}")`);
+            element.target.style.setProperty(
+              "--background",
+              `url("${imageSource}")`
+            );
 
-          // Lazy load images
-          } else if (elementTag == 'IMG') {
+            // Lazy load images
+          } else if (elementTag == "IMG") {
             var imageSource = element.target.dataset.src;
             element.target.src = imageSource;
           }
@@ -38,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
 
-    lazyElements.forEach(function(lazyElement) {
+    lazyElements.forEach(function (lazyElement) {
       lazyElementsObserver.observe(lazyElement);
     });
   }

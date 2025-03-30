@@ -2,7 +2,7 @@
 // Large Text
 // ==================================================
 
-p.-large { 
+p.-large {
   @extend ._text-h4;
   @extend ._type-my-voice;
 
@@ -15,19 +15,19 @@ p.-large {
   padding-left: var(--horizontal-padding);
   padding-right: var(--horizontal-padding);
   text-align: center;
-  
+
   @media (--min-720) {
     &::before {
       @include clearfix();
     }
   }
-  
+
   @media (--min-960) {
-    --horizontal-padding: .5rem;
+    --horizontal-padding: 0.5rem;
     --vertical-margin: 3rem;
   }
 
   @media (--min-1120) {
-    --horizontal-padding: .65rem;
+    --horizontal-padding: 0.65rem;
   }
 }

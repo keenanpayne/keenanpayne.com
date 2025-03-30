@@ -2,7 +2,7 @@
 // Global Footer
 // ==================================================
 
-.footer { 
+.footer {
   --background: var(--gray-lighter);
   --border: var(--gray-darker);
   --vertical-padding: 1.5rem;
@@ -12,58 +12,58 @@
   padding-bottom: var(--vertical-padding);
   padding-top: var(--vertical-padding);
   z-index: 1;
-  
-  @media (--dark) { 
+
+  @media (--dark) {
     --background: var(--plum-dark);
     --border: var(--plum-light);
   }
 
-  @media (--min-720) { 
+  @media (--min-720) {
     --vertical-padding: 2rem;
   }
 
-  @media (--min-960) { 
+  @media (--min-960) {
     --vertical-padding: 3rem;
   }
 }
 
-.footer-content { 
+.footer-content {
   align-items: flex-end;
   display: flex;
   flex-wrap: wrap;
 }
 
 .footer-left,
-.footer-right { 
+.footer-right {
   flex-basis: 100%;
   text-align: center;
 
-  @media (--min-640) { 
+  @media (--min-640) {
     flex-basis: 50%;
     text-align: unset;
   }
 }
 
-.footer-left { 
+.footer-left {
   padding-bottom: 1.5rem;
 
-  @media (--min-640) { 
+  @media (--min-640) {
     padding-bottom: 0;
   }
 }
 
-.footer-right { 
-  @media (--min-640) { 
+.footer-right {
+  @media (--min-640) {
     text-align: right;
   }
 
   // Descendants
-  > p { 
+  > p {
     line-height: 1.15;
   }
 }
 
-.footer-socials { 
+.footer-socials {
   text-align: center;
 
   @media (--min-640) {
@@ -71,7 +71,7 @@
   }
 }
 
-.footer-socials-label { 
+.footer-socials-label {
   display: block;
   margin-bottom: spacing(1.5);
 }
@@ -82,65 +82,65 @@
   padding: 0;
 
   // Descendants
-  svg { 
+  svg {
     fill: currentColor;
     height: 25px;
   }
 }
 
-.footer-socials-item { 
+.footer-socials-item {
   display: inline-block;
 
-  &:not(:last-of-type) { 
+  &:not(:last-of-type) {
     margin-right: spacing(1);
-    
+
     @media (--min-640) {
       margin-right: spacing(2);
     }
   }
 }
 
-.footer-socials-link { 
-  &:hover { 
+.footer-socials-link {
+  &:hover {
     background-color: transparent;
     color: var(--brand-color);
     text-decoration: none;
   }
 
-  &::after { 
+  &::after {
     display: none !important; // Overriding external link styles
   }
 
   // Modifiers
-  &.-twitter { 
-    --brand-color: #1DA1F2;
+  &.-twitter {
+    --brand-color: #1da1f2;
   }
 
-  &.-linkedin { 
+  &.-linkedin {
     --brand-color: #0277b5;
   }
 
-  &.-dribbble { 
+  &.-dribbble {
     --brand-color: #ea4c89;
   }
 
-  &.-behance { 
+  &.-behance {
     --brand-color: #0057ff;
   }
 
-  &.-codepen { 
+  &.-codepen {
     --brand-color: #47cf73;
   }
 
-  &.-mastodon { 
+  &.-mastodon {
     --brand-color: #615ef8;
   }
 
-  &.-bluesky { 
+  &.-bluesky {
     --brand-color: #208bfe;
   }
 
-  &.-threads { 
+  &.-threads {
     --brand-color: #0a0a0a;
   }
 }

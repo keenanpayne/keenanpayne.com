@@ -2,18 +2,18 @@
 // <figure>
 // ==================================================
 
-figure { 
+figure {
   margin: 1.5rem 0;
 
   // Descendants
-  + figure { 
+  + figure {
     margin-top: 0;
   }
 
   > a {
     display: block;
   }
-  
+
   // Modifiers
   &.-float-left,
   &.-float-right {
@@ -21,14 +21,14 @@ figure {
       max-width: 42.5%;
     }
   }
-  
+
   &.-float-left {
     @media (--min-720) {
       float: left;
       margin-right: 3rem;
     }
   }
-  
+
   &.-float-right {
     @media (--min-720) {
       float: right;
@@ -37,7 +37,7 @@ figure {
   }
 }
 
-figcaption { 
+figcaption {
   @extend ._text-small;
 
   font-style: italic;
@@ -46,6 +46,6 @@ figcaption {
 }
 
 // TODO: Refactor to remove overriding `!important`
-.figure-caption { 
-  margin-bottom: .25rem !important;
+.figure-caption {
+  margin-bottom: 0.25rem !important;
 }

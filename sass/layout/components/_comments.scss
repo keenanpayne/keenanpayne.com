@@ -1,8 +1,8 @@
 //
 // Comments
 // ==================================================
-// NOTE: The automatic light/dark theme switching for 
-//       doesn't seem to be working so I'm sticking 
+// NOTE: The automatic light/dark theme switching for
+//       doesn't seem to be working so I'm sticking
 //       the light theme for right now.
 
 .comments {
@@ -13,7 +13,7 @@
   color: var(--plum-dark);
   padding-bottom: var(--padding-vertical);
   padding-top: var(--padding-vertical);
-  
+
   @media (--min-720) {
     --padding-vertical: 3rem;
   }
@@ -30,7 +30,7 @@
 // Disqus-specific overrides
 // -------------------------
 
-.disqus_recommendations { 
+.disqus_recommendations {
   display: none;
   visibility: hidden;
 }

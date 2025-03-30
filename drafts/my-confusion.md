@@ -1,6 +1,6 @@
 ---
-permalink: '/my-confusion/'
-title:  'What am I confused about?'
+permalink: "/my-confusion/"
+title: "What am I confused about?"
 type: Reflection
 series: Mailbox
 date: 2021-11-08
@@ -19,7 +19,7 @@ tags:
 
 Huh, that's broad. So broad, in fact, that I procrastinated responding to the message, concerned with the avalanche of thought that might manifest once I gave it my full attention. With my period of procrastination complete, I'm ready to be buried beneath a pile of unknowing as I capture my thoughts on a question whose answers reveal more obscurity than clarity.
 
-I will note, perhaps needlessly, that I'm not attempting to capture __everything__ that confuses me. That would be an impossible and silly endeavor. Instead, I will work my way through this question one step at a time, capturing my thoughts until I've exhausted my desire to engage with the prompt.
+I will note, perhaps needlessly, that I'm not attempting to capture **everything** that confuses me. That would be an impossible and silly endeavor. Instead, I will work my way through this question one step at a time, capturing my thoughts until I've exhausted my desire to engage with the prompt.
 
 ---
 
@@ -33,7 +33,7 @@ I suppose this is an exercise in vulnerability through [self-reflection](/tags/s
 
 ---
 
-My writing practice is an area where I experience confusion and resistance. While I love writing for self-reflection, learning, and sharing, I struggle with feelings of self-doubt, overthinking, and an obsession with the "perfection" of what I've written. 
+My writing practice is an area where I experience confusion and resistance. While I love writing for self-reflection, learning, and sharing, I struggle with feelings of self-doubt, overthinking, and an obsession with the "perfection" of what I've written.
 
 {% include "type/note.html" content: "Contemplating my creative struggles is something I've <a href='/one-more-thing/'>discussed before</a>" %}
 
@@ -43,7 +43,7 @@ I mean, writing my thoughts isn't difficult. In fact, stream-of-consciousness wr
 
 {% include "type/question.html", content: 'Why not make my writing effortless?' %}
 
-I edit while I write a lot. Every word, sentence, and turn of phrase is intended to articulate my thoughts to the best of my abilities. I wouldn't want you to think that I'm unintelligent, would I? 
+I edit while I write a lot. Every word, sentence, and turn of phrase is intended to articulate my thoughts to the best of my abilities. I wouldn't want you to think that I'm unintelligent, would I?
 
 {% include "type/question.html", content: 'Why do I care what you think about my intelligence?<br>Even if I knew how you perceived my intelligence, would that matter?' %}
 
@@ -55,13 +55,13 @@ I hope they don't think I'm going crazy.
 
 {% include "type/question.html", content: "But what of goals?<br>What's a life with no goals?" %}
 
-Writing without goals, although a personal struggle of mine, is not at all unattainable. I'm getting better at it by the day. 
+Writing without goals, although a personal struggle of mine, is not at all unattainable. I'm getting better at it by the day.
 
-Other aspects of our lives, on the other hand, are __begging__ for goals.
+Other aspects of our lives, on the other hand, are **begging** for goals.
 
 If I want to retire by 55 with millions in the bank, I need some predictable long-term returns on my investments.
 
-How do I make such investments? By securing a career as a sought-after web developer. By helping others meet __their__ goals, I earn income that allows me to meet mine. Quid pro quo.
+How do I make such investments? By securing a career as a sought-after web developer. By helping others meet **their** goals, I earn income that allows me to meet mine. Quid pro quo.
 
 {% include "type/question.html", content: 'Why am I so interested in planning for retirement?' %}
 
@@ -83,11 +83,11 @@ I frequently ask myself whether the actions I'm taking are an authentic represen
 
 {% include "type/question.html", content: 'What is meaningful to me?' %}
 
-My relationships with people I love and care about; the wellbeing of myself and those I care about; experiencing personal growth; spending time helping and empowering others. 
+My relationships with people I love and care about; the wellbeing of myself and those I care about; experiencing personal growth; spending time helping and empowering others.
 
 Aligning my actions in service of these—which are effectively my [foundational values](https://www.theminimalists.com/v/)—makes time spent feel worthwhile.
 
-I noticed that concerning myself with money __didn't__ make the cut for my foundational values. Yet, I still spend so much time striving to meet my financial goals through the actions I take. In striving for the "American dream," it appears that my values and actions are out of lockstep.
+I noticed that concerning myself with money **didn't** make the cut for my foundational values. Yet, I still spend so much time striving to meet my financial goals through the actions I take. In striving for the "American dream," it appears that my values and actions are out of lockstep.
 
 To what extent am I comfortable with my actions and values being out of alignment?
 

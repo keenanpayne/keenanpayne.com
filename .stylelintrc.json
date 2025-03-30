@@ -29,8 +29,5 @@
     "scss/selector-no-redundant-nesting-selector": true,
     "scss/at-import-partial-extension": null
   },
-  "ignoreFiles": [
-    "_site/**/*.css",
-    "node_modules/**"
-  ]
-} 
+  "ignoreFiles": ["_site/**/*.css", "node_modules/**"]
+}

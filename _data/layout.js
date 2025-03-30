@@ -1,1 +1,1 @@
-module.exports = "layouts/base.njk"
+module.exports = "layouts/base.njk";

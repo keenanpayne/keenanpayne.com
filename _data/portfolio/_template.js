@@ -1,6 +1,6 @@
 module.exports = {
   template: true,
-  featured: true/false,
+  featured: true / false,
   name: "",
   project: "",
   year: "",
@@ -9,12 +9,8 @@ module.exports = {
   color: "#",
   role: "",
   url: "",
-  services: [
-    "",
-  ],
-  technologies: [
-    "",
-  ],
+  services: [""],
+  technologies: [""],
   caption: "",
   overview: "",
   lede: "",
@@ -22,14 +18,14 @@ module.exports = {
   pillars: {
     client: "",
     challenge: "",
-    solution: "",
+    solution: ""
   },
   people: {
     [1]: {
       name: "",
       position: "",
       url: "",
-      image: "",
+      image: ""
     }
   },
   testimonials: {
@@ -48,5 +44,5 @@ module.exports = {
       title: "",
       caption: ""
     }
-  },
-}
+  }
+};

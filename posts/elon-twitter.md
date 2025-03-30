@@ -1,10 +1,10 @@
 ---
-permalink: '/elon-twitter/'
-title:  'Elon Musk paid $44b for an unremarkable technology company called Twitter'
-meta: 
+permalink: "/elon-twitter/"
+title: "Elon Musk paid $44b for an unremarkable technology company called Twitter"
+meta:
   description: You'd think so much money would purchase a compelling tangible good, right? Alas, I find Twitter so technologically unremarkable I'm writing a whole essay about it, so here we go.
-  image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1667187409/blog-posts/elon-twitter/cover_u1wjw1.png'
-cover: 'https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1120/v1667187409/blog-posts/elon-twitter/cover_u1wjw1.png'
+  image: "https://res.cloudinary.com/keenan-payne/image/upload/v1667187409/blog-posts/elon-twitter/cover_u1wjw1.png"
+cover: "https://res.cloudinary.com/keenan-payne/image/upload/q_auto,f_auto,w_1120/v1667187409/blog-posts/elon-twitter/cover_u1wjw1.png"
 lede: Imagine spending $44b to purchase a company, then immediately calling yourself a twit. Yikes.
 type: Essay
 date: 2022-10-30
@@ -24,7 +24,7 @@ Caveats before proceeding:
 
 - 👩‍💻 Not every employee is an engineer responsible for the product Twitter provides
 - 🤝 I'm critiquing the company and platform, not the employees
-- 🥁 I'm not saying Twitter is worthless, though it's undoubtedly *worth less*
+- 🥁 I'm not saying Twitter is worthless, though it's undoubtedly _worth less_
 
 My thesis is that despite employing ~7.5k people and having tens of billions of dollars in market capitalization, Twitter has failed to provide an innovative platform that serves the needs of its users.
 
@@ -127,9 +127,9 @@ As if they couldn't offer this for free and shove ads on it as they do elsewhere
 
 Let's dive into one recent "innovation"—the ability to edit a tweet.
 
-*Wow, what an idea.*
+_Wow, what an idea._
 
-Twitter rolled this out on September 1st, *sixteen years* after the product was released. Despite users asking for editing for years, Twitter still managed to bungle the execution 🤦🏻‍♂️
+Twitter rolled this out on September 1st, _sixteen years_ after the product was released. Despite users asking for editing for years, Twitter still managed to bungle the execution 🤦🏻‍♂️
 
 Tweet editing is limited to users with a Twitter blue subscription (**$4.99/mo**) because, of course.
 
@@ -163,7 +163,6 @@ Follow along as we revisit just a couple of [Twitter acquisition](https://en.wik
   {% include "components/image.njk", imgSrc: "v1667179215/blog-posts/elon-twitter/vine_whlwzj", alt: "Vine logo" %}
   {% include "components/image.njk", imgSrc: "v1667180497/blog-posts/elon-twitter/periscope_cpzvqo", alt: "Periscope logo" %}
 </div>
-
 
 Remember Vine, the precursor to apps like TikTok and the rise of now-ubiquitous video shorts/reels?
 

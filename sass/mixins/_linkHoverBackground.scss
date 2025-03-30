@@ -2,13 +2,13 @@
 // Links with background on hover
 // ==================================================
 
-// TODO: Animate background as a `:before` pseudo-element 
+// TODO: Animate background as a `:before` pseudo-element
 //       to add a nice micro-interaction
 @mixin linkHoverBackground($dark: true) {
   --link-text-decoration: var(--exodus-fruit);
   --link-hover-background: var(--exodus-fruit);
   --link-color-hover: var(--white);
-  --link-spacing: .1em;
+  --link-spacing: 0.1em;
 
   @if ($dark) {
     @media (--dark) {
@@ -25,8 +25,8 @@
   text-decoration: underline;
   text-decoration-color: var(--link-text-decoration);
   text-decoration-thickness: var(--link-spacing);
-  
-  &:hover { 
+
+  &:hover {
     background-color: var(--link-hover-background);
     color: var(--link-color-hover);
     text-decoration: none;

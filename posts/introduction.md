@@ -1,8 +1,8 @@
 ---
-permalink: '/introduction/'
-title:  "Just another 'hello, world' introduction"
-meta: 
-  description: 'A brief introduction to me and this blog.'
+permalink: "/introduction/"
+title: "Just another 'hello, world' introduction"
+meta:
+  description: "A brief introduction to me and this blog."
 date: 2017-12-22
 type: Article
 tags:

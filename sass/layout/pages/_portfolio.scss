@@ -2,7 +2,7 @@
 // Portfolio
 // ==================================================
 
-.portfolio { 
+.portfolio {
   --portfolio-color: var(--exodus-fruit);
 
   display: grid;
@@ -13,31 +13,31 @@
 
 .portfolio-header {
   grid-column: 1 / -1;
-  
-  @media (--min-720) { 
+
+  @media (--min-720) {
     grid-column: 1 / -1;
   }
 }
 
-.portfolio-footer { 
+.portfolio-footer {
   border-top: 1px solid var(--gray-dark);
   font-family: var(--font-family-serif);
   margin-top: 3rem;
   padding-top: 1.5rem;
 
   // Descendants
-  > a:first-of-type { 
+  > a:first-of-type {
     font-style: italic;
   }
 }
 
-.portfolio-title { 
+.portfolio-title {
   margin-bottom: 1rem;
-  
+
   @media (--min-960) {
     @include text-large();
   }
-  
+
   @media (--min-1120) {
     @include text-larger();
   }
@@ -48,7 +48,7 @@
 
   margin-top: 0;
   max-width: 29ch;
-  
+
   @media (--min-1120) {
     @include h3;
 
@@ -58,8 +58,8 @@
 
 .portfolio-details {
   grid-column: 1 / -1;
-  padding-left: .25rem;
-  
+  padding-left: 0.25rem;
+
   @media (--min-560) {
     align-content: flex-start;
     display: flex;
@@ -86,7 +86,7 @@
   @media (--dark) {
     --border-color: var(--gray-darkest-1);
   }
-  
+
   @media (--min-560) {
     flex-basis: 50%;
   }
@@ -95,10 +95,10 @@
     padding-bottom: 1.75rem;
   }
 
-  &:nth-child(odd):not(.-full-width) { 
+  &:nth-child(odd):not(.-full-width) {
     @media (--min-560) {
       .portfolio-label,
-      .portfolio-stat { 
+      .portfolio-stat {
         padding-left: 1rem;
       }
     }
@@ -109,7 +109,7 @@
     flex-basis: 100%;
   }
 
-  &.-cta { 
+  &.-cta {
     margin-top: 1rem;
     text-align: right;
   }
@@ -122,13 +122,13 @@
 
   li {
     list-style-type: none;
-    
-    &.-inline { 
+
+    &.-inline {
       display: inline-block;
-  
+
       &:not(:last-of-type) {
         &::after {
-          content: ','
+          content: ",";
         }
       }
     }
@@ -160,7 +160,7 @@
 
 .portfolio-label {
   & + * {
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
 }
 
@@ -171,12 +171,17 @@
   > strong {
     position: relative;
     white-space: pre;
-    
+
     &::after {
-      background: linear-gradient(to right, var(--orange), var(--carmine-pink), var(--exodus-fruit));
+      background: linear-gradient(
+        to right,
+        var(--orange),
+        var(--carmine-pink),
+        var(--exodus-fruit)
+      );
       bottom: 0;
       border-radius: 1px;
-      content: '';
+      content: "";
       height: 3px;
       left: 0;
       position: absolute;
@@ -187,10 +192,10 @@
 
 .portfolio-cover {
   grid-column: 1 / -1;
-  margin-top: .25rem;
+  margin-top: 0.25rem;
   order: -1;
   width: 100%;
-  
+
   @media (--min-720) {
     grid-column: 6 / -1;
     order: initial;
@@ -203,10 +208,14 @@
 }
 
 .portfolio-cover-img {
-  box-shadow: 10px 10px var(--portfolio-color), var(--shadow);
+  box-shadow:
+    10px 10px var(--portfolio-color),
+    var(--shadow);
 
   @media (--min-960) {
-    box-shadow: 15px 15px var(--portfolio-color), var(--shadow);
+    box-shadow:
+      15px 15px var(--portfolio-color),
+      var(--shadow);
   }
 }
 
@@ -230,13 +239,13 @@
   max-width: 50ch;
 }
 
-.portfolio-content { 
+.portfolio-content {
   display: grid;
   grid-column: 1 / -1;
   grid-template-columns: repeat(10, 1fr);
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 
-  @media (--min-720) { 
+  @media (--min-720) {
     margin-top: 0;
   }
 
@@ -250,7 +259,7 @@
   }
 }
 
-.portfolio-subcontent { 
+.portfolio-subcontent {
   grid-column: 1 / -1;
 }
 
@@ -261,7 +270,7 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 1rem;
-  
+
   @media (--dark) {
     --border: var(--yellow-dark);
   }
@@ -285,7 +294,7 @@
   // Descendants
   img {
     display: block;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     max-width: 100px;
 
     @media (--dark) {
@@ -297,7 +306,7 @@
 .awards-name {
   display: flex;
   justify-content: space-between;
-  margin-bottom: .2rem;
+  margin-bottom: 0.2rem;
 }
 
 .awards-details {

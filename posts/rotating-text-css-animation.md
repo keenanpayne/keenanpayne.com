@@ -1,8 +1,8 @@
 ---
-permalink: '/rotating-text-css-animation/'
-title:  'Rotating text with CSS animations'
-meta: 
-  description: 'Learn how to make rotating text using only HTML and CSS in this tutorial.'
+permalink: "/rotating-text-css-animation/"
+title: "Rotating text with CSS animations"
+meta:
+  description: "Learn how to make rotating text using only HTML and CSS in this tutorial."
 date: 2019-07-12
 type: Tutorial
 tags:
@@ -11,7 +11,7 @@ tags:
 
 I've been toying with different ideas for how I can describe the work that I do to people visiting my website. One idea that I had involved rotating a single word or phrase inside of a sentence to list the different qualities of my work. Here's a quick tutorial of the prototype that I built for how this effect might be achieved using HTML and CSS.
 
-Here's an example of what we will be building: 
+Here's an example of what we will be building:
 
 <p class="codepen" data-height="500" data-theme-id="0" data-default-tab="result" data-user="keenanpayne" data-slug-hash="mxjGmo" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Rotating text with CSS animations">
   <span>See the Pen <a href="https://codepen.io/keenanpayne/pen/mxjGmo/">
@@ -31,7 +31,7 @@ For my adjectives, I made a list of what I wanted to rotate through:
 - maintainable
 - perfect
 
-Having a rough idea of the copy that I will be using helps me understand what the markup will need to look like as I'm coding. 
+Having a rough idea of the copy that I will be using helps me understand what the markup will need to look like as I'm coding.
 
 ## Marking up the DOM
 
@@ -53,14 +53,14 @@ After marking up the DOM, I styled my text so that I could get an understanding 
 
 ```css
 .rotatingText {
-  font-family: 'Georgia', serif;
+  font-family: "Georgia", serif;
   font-style: italic;
   font-size: 18px;
   text-align: center;
 }
 
-.rotatingText-adjective { 
-  font-family: 'Open Sans', sans-serif;
+.rotatingText-adjective {
+  font-family: "Open Sans", sans-serif;
   font-size: 50px;
   font-style: normal;
   font-weight: 700;
@@ -90,7 +90,7 @@ Our headline is starting to come together after adding some styles. Now it's tim
 The first step in the animation is ensuring that all of the adjectives in our headline are hidden until the animation runs. Hiding things on the web can be done in many different ways, and it's important that our approach will not impact the accessibility of our content for visitors using screen readers or other assistive technologies. For this project, the visibility of our content will change by toggling the [`opacity`](https://developer.mozilla.org/en-US/docs/Web/CSS/opacity) property on the `.rotatingText-adjective` class.
 
 ```css/8/-1
-.rotatingText-adjective { 
+.rotatingText-adjective {
   font-family: 'Open Sans', sans-serif;
   font-size: 50px;
   font-style: normal;
@@ -116,11 +116,12 @@ With the adjectives hidden, we can write an animation using CSS keyframes that t
   0% {
     opacity: 0;
   }
-  
-  20%, 80% {
+
+  20%,
+  80% {
     opacity: 1;
   }
-  
+
   100% {
     opacity: 0;
   }
@@ -133,7 +134,7 @@ We then add this animation to each of our adjectives so that it runs one after a
 .rotatingText-adjective:nth-of-type(1) {
   animation-name: rotate;
   animation-duration: 1.5s;
-  animation-delay: .5s;
+  animation-delay: 0.5s;
 }
 
 .rotatingText-adjective:nth-of-type(2) {
@@ -156,6 +157,7 @@ We then add this animation to each of our adjectives so that it runs one after a
 </p>
 
 ### Finessing the last adjective
+
 The animation is successfully running! However, our last adjective slides away with the rest, so we'll need to make some adjustments so that it stays on the screen. To do this, we can create a set of keyframes specifically for our last animation:
 
 ```css
@@ -163,7 +165,7 @@ The animation is successfully running! However, our last adjective slides away w
   0% {
     opacity: 0;
   }
-  
+
   100% {
     opacity: 1;
   }
@@ -193,12 +195,13 @@ Now that the visibility of the text is toggled, we can update our keyframes to c
     opacity: 0;
     transform: translate3d(0, 50px, 0);
   }
-  
-  20%, 80% {
+
+  20%,
+  80% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
-  
+
   100% {
     opacity: 0;
     transform: translate3d(0, -25px, 0);
@@ -218,8 +221,9 @@ We will use a slightly modified version of this code for our last adjective. Bec
     opacity: 0;
     transform: translate3d(0, 50px, 0);
   }
-  
-  50%, 100% {
+
+  50%,
+  100% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
@@ -237,6 +241,7 @@ With that, we have a fully functional rotating headline just like we wanted:
 Our final code looks like this:
 
 ### HTML
+
 ```html
 <p class="rotatingText">
   I'll make your website&hellip;
@@ -248,6 +253,7 @@ Our final code looks like this:
 ```
 
 ### CSS
+
 ```css
 .rotatingText {
   font-family: "Georgia", serif;
@@ -296,12 +302,13 @@ Our final code looks like this:
     opacity: 0;
     transform: translate3d(0, 50px, 0);
   }
-  
-  20%, 80% {
+
+  20%,
+  80% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }
-  
+
   100% {
     opacity: 0;
     transform: translate3d(0, -25px, 0);
@@ -313,8 +320,9 @@ Our final code looks like this:
     opacity: 0;
     transform: translate3d(0, 50px, 0);
   }
-  
-  50%, 100% {
+
+  50%,
+  100% {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }

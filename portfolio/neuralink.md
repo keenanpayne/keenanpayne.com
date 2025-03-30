@@ -1,30 +1,30 @@
 ---
-permalink: '/portfolio/neuralink/'
-title: 'Neuralink'
-meta: 
+permalink: "/portfolio/neuralink/"
+title: "Neuralink"
+meta:
   description: "Helping an Elon Musk-funded startup tell the story of brain-machine interfaces."
   image: "https://res.cloudinary.com/keenan-payne/image/upload/v1667235215/portfolio/neuralink/cover_cuoloi.png"
 data: neuralink
-sections: 
+sections:
   - type: portfolioGrid
     project: neuralink
-    modifier: '-two-col'
-    items: 
+    modifier: "-two-col"
+    items:
       - 10
       - 11
       - 12
       - 13
   - type: portfolioGrid
     project: neuralink
-    modifier: '-one-col'
-    items: 
+    modifier: "-one-col"
+    items:
       - 17
   - type: portfolioGrid
     project: neuralink
     contained: true
     enlarge: true
-    modifier: '-two-col'
-    items: 
+    modifier: "-two-col"
+    items:
       - 1
       - 2
       - 4
@@ -35,20 +35,20 @@ sections:
       - 8
   - type: portfolioGrid
     project: neuralink
-    modifier: '-one-col'
-    items: 
+    modifier: "-one-col"
+    items:
       - 15
   - type: portfolioGrid
     project: neuralink
     contained: true
     enlarge: true
-    modifier: '-two-col'
-    items: 
+    modifier: "-two-col"
+    items:
       - 14
       - 16
   - type: portfolioGrid
     project: neuralink
-    modifier: '-one-col'
-    items: 
+    modifier: "-one-col"
+    items:
       - 9
 ---

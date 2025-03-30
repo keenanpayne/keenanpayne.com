@@ -2,7 +2,7 @@
 // Table of Contents
 // ==================================================
 
-:root { 
+:root {
   --toc-background: var(--gray-lighter);
   --toc-border-radius: 3px;
   --toc-text-decoration: var(--gray-darker);
@@ -10,7 +10,7 @@
   --toc-summary-color: var(--white);
 }
 
-.toc { 
+.toc {
   background-color: var(--toc-background);
   border-radius: var(--toc-border-radius);
   box-shadow: var(--shadow);
@@ -44,14 +44,14 @@
     margin-top: 0;
     padding-left: 0;
 
-    ol { 
+    ol {
       padding-left: 1em;
     }
   }
 
-  li { 
+  li {
     font-size: var(--font-base);
-    margin-top: .5rem;
+    margin-top: 0.5rem;
   }
 
   a {

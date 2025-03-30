@@ -13,7 +13,7 @@
 }
 
 // Styles
-._container { 
+._container {
   @include container(var(--container-large));
 
   // Modifiers
@@ -22,6 +22,6 @@
   }
 
   &.-fluid {
-    @include container(95%);    
+    @include container(95%);
   }
 }

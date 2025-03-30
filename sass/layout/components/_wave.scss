@@ -19,13 +19,29 @@
 }
 
 @keyframes wave-animation {
-  0% { transform: rotate( 0.0deg) }
-  // The following five values can be played with to make the waving more or less extreme 
-  5% { transform: rotate(14.0deg) }
-  10% { transform: rotate(-8.0deg) }
-  15% { transform: rotate(14.0deg) }
-  20% { transform: rotate(-4.0deg) }
-  25% { transform: rotate(10.0deg) }
-  30% { transform: rotate( 0.0deg) }  // Reset for the last half to pause
-  100% { transform: rotate( 0.0deg) }
+  0% {
+    transform: rotate(0deg);
+  }
+  // The following five values can be played with to make the waving more or less extreme
+  5% {
+    transform: rotate(14deg);
+  }
+  10% {
+    transform: rotate(-8deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-4deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(0deg);
+  } // Reset for the last half to pause
+  100% {
+    transform: rotate(0deg);
+  }
 }

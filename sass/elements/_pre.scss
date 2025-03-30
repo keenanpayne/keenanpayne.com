@@ -9,7 +9,7 @@ pre {
   font-family: var(--font-family-mono);
   hyphens: none;
   line-height: 1.375;
-  margin: .5em 0;
+  margin: 0.5em 0;
   padding: 1em;
   tab-size: 2;
   text-align: left;
@@ -17,7 +17,7 @@ pre {
   word-spacing: normal;
   word-break: normal;
 
-  &[class*="language-"] { 
+  &[class*="language-"] {
     // TODO: Update colors for dark mode
     margin-bottom: 1.5rem;
   }

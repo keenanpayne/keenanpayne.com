@@ -1,7 +1,7 @@
 ---
-permalink: '/april-2022-learning/'
-title:  'Learning Notes, April 2022'
-meta: 
+permalink: "/april-2022-learning/"
+title: "Learning Notes, April 2022"
+meta:
   description: Check out what I've been using to further my learning during April 2022.
 lede: Check out what I've been using to further my learning during April 2022.
 type: Article
@@ -11,7 +11,7 @@ date: 2022-05-12
 
 ## Book: [Creative Visualization](https://www.indiebound.org/book/9781608684649)
 
-Creative Visualization has been popping up a lot recently. I first introduced to it through Eckhart Tolle's *The Power of Now*, which I discussed [last month](/march-2022-learning/). It was recommended again in James Clear's *Atomic Habits*, which finally spurred me to read it. 
+Creative Visualization has been popping up a lot recently. I first introduced to it through Eckhart Tolle's _The Power of Now_, which I discussed [last month](/march-2022-learning/). It was recommended again in James Clear's _Atomic Habits_, which finally spurred me to read it.
 
 This book is an easy to read, providing succinct and insightful meditations on living a meaningful and purposeful life by harnessing our creative potential using visualization techniques.
 
@@ -19,7 +19,7 @@ This book is an easy to read, providing succinct and insightful meditations on l
 
 ## Book: [Atomic Habits](https://www.indiebound.org/book/9780735211292)
 
-One of my foundational values is to *always be learning and growing*. As a result, I’ve long been interested in understanding and implementing techniques for changing my own behavior (e.g., habits, routines).
+One of my foundational values is to _always be learning and growing_. As a result, I’ve long been interested in understanding and implementing techniques for changing my own behavior (e.g., habits, routines).
 
 In striving to be the best version of myself, I've read countless books on behavior change and habits. Atomic Habits initially caught my eye due to its massive popularity in the personal development field. Since I'm going through a period of intense personal and professional growth, I wanted to see what all of the fuss is about.
 
@@ -43,9 +43,9 @@ I greatly appreciate Nicky's vulnerability and honesty as she shares her experie
 
 I'm a big fan of Seth Godin. I regularly enjoy [his blog](https://seths.blog/), where he publishes wonderfully concise thoughts and reflections daily. I've also enjoyed countless books that he's written. [^1]
 
-[^1]: Big thanks to my BFF [Jon Horiel](https://jonathanhoriel.com) for introducing me to Seth Godin and countless other authors and books over the years. 
+[^1]: Big thanks to my BFF [Jon Horiel](https://jonathanhoriel.com) for introducing me to Seth Godin and countless other authors and books over the years.
 
-In his book, The Icarus Deception, Seth expounds on the purpose and utility of art in the modern world. He challenges the reader to view whatever work we do as art and why such a framing is essential for succeeding in the modern creative economy. 
+In his book, The Icarus Deception, Seth expounds on the purpose and utility of art in the modern world. He challenges the reader to view whatever work we do as art and why such a framing is essential for succeeding in the modern creative economy.
 
 Seth's writing is approachable, inspiring, and practical. I reach for it whenever I want to feel inspired and reaffirm the value and utility of the art I'm creating.
 

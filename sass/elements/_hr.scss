@@ -32,9 +32,9 @@
     font-family: var(--font-family-serif);
     font-size: 1.35em;
     font-weight: var(--font-weight-serif-light);
-    padding: .1em .35em;
+    padding: 0.1em 0.35em;
     position: relative;
-    top: -.85em;
+    top: -0.85em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -43,7 +43,7 @@
 // Utility class
 hr {
   @include clearfix();
-  
+
   &.-fancy {
     @include hr-fancy();
   }

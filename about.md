@@ -1,5 +1,4 @@
 ---
-
 title: About Keenan
 eleventyNavigation:
   key: About
@@ -13,7 +12,7 @@ templateClass: _container -small
 
 By trade, I'm a web developer [^1]. I spend my "working" time building websites and web applications. Like the website you're on right now—I built this! ✨
 
-[^1]: My trade struggles naming job positions and titles. I'm also referred to as a frontend developer/engineer, software developer/engineer, or <strong>webmaster</strong>. 
+[^1]: My trade struggles naming job positions and titles. I'm also referred to as a frontend developer/engineer, software developer/engineer, or <strong>webmaster</strong>.
 
 I build beautiful web pages, architect codebases from scratch, embark on large-scale refactoring efforts, hire teams of web developers, mentor others on their development journies&hellip; you get the point. I do a lot.
 

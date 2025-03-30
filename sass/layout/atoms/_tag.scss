@@ -17,12 +17,12 @@
   display: inline-flex;
   justify-content: center;
   line-height: 2;
-  padding: .05rem .5rem;
+  padding: 0.05rem 0.5rem;
   text-decoration: none;
   text-transform: uppercase;
   transition: all var(--transition);
 
-  @media (--dark) { 
+  @media (--dark) {
     --tag-background: var(--plum-light);
 
     border-color: var(--gray-dark);
@@ -30,21 +30,21 @@
   }
 
   // Modifiers
-  &.-large { 
+  &.-large {
     @extend ._text-h5;
 
-    margin: .25rem;
+    margin: 0.25rem;
   }
 
-  &.-inactive { 
+  &.-inactive {
     --tag-background: var(--exodus-fruit);
 
     border-color: var(--exodus-fruit);
     color: var(--gray-lighter);
-    
-    @media (--dark) { 
+
+    @media (--dark) {
       --tag-background: var(--yellow-dark);
-  
+
       border-color: var(--yellow-dark);
       color: var(--plum-dark);
     }
@@ -63,7 +63,7 @@ a[href].tag:focus {
   box-shadow: none;
   color: initial;
 
-  @media (--dark) { 
+  @media (--dark) {
     background-color: var(--plum-dark);
     border-color: var(--gray-darkest);
     color: currentColor;

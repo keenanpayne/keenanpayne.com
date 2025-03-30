@@ -1,6 +1,6 @@
 ---
-permalink: '/lost-at-sea/'
-title:  'Lost at Sea'
+permalink: "/lost-at-sea/"
+title: "Lost at Sea"
 type: Reflection
 date: 2021-10-26
 tags:
@@ -26,6 +26,6 @@ Having boundless enthusiasm and interests makes this transition easier. I'm grat
 
 {% include "type/question.html", content: 'What propels me towards action?<br>Towards what end am I taking action, if any?<br>Do my actions need an "end"?' %}
 
-All I can do is continue charting my path forward. I will use this time to explore different facets of my being, spend time with people I love, and continue learning and growing. 
+All I can do is continue charting my path forward. I will use this time to explore different facets of my being, spend time with people I love, and continue learning and growing.
 
 I'm excited to see where life takes me.

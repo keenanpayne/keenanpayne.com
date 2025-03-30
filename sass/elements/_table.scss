@@ -9,17 +9,17 @@ table {
 
   td,
   th {
-    &:not(:last-of-type) { 
+    &:not(:last-of-type) {
       padding-right: 1.5rem;
     }
   }
 
-  th { 
-    padding-bottom: .5rem;
-    padding-top: .5rem;
+  th {
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
   }
 
-  td { 
+  td {
     padding-bottom: 0;
     padding-top: 0;
   }

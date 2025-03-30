@@ -1,20 +1,20 @@
 ---
-permalink: '/portfolio/sparrow/'
-title: 'Sparrow'
-meta: 
-  description: 'Building a marketing website for an emerging employee automation platform.'
-  image: 'https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png'
+permalink: "/portfolio/sparrow/"
+title: "Sparrow"
+meta:
+  description: "Building a marketing website for an emerging employee automation platform."
+  image: "https://res.cloudinary.com/keenan-payne/image/upload/v1665630813/portfolio/sparrow/cover_qommce.png"
 data: sparrow
-sections: 
+sections:
   - type: portfolioGrid
     project: sparrow
     contained: true
     enlarge: true
-    modifier: '-three-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
+    modifier: "-three-col"
+    eyebrow: ""
+    headline: ""
+    description: ""
+    items:
       - 18
       - 19
       - 4
@@ -30,11 +30,11 @@ sections:
     project: sparrow
     contained: true
     enlarge: true
-    modifier: '-two-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
+    modifier: "-two-col"
+    eyebrow: ""
+    headline: ""
+    description: ""
+    items:
       - 17
       - 1
       - 6
@@ -49,10 +49,10 @@ sections:
     project: sparrow
     contained: true
     enlarge: true
-    modifier: '-one-col'
-    eyebrow: ''
-    headline: ''
-    description: ''
-    items: 
+    modifier: "-one-col"
+    eyebrow: ""
+    headline: ""
+    description: ""
+    items:
       - 15
 ---

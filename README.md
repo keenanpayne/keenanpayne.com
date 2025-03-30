@@ -111,17 +111,20 @@ npm run debug
 ## Development Workflow
 
 1. **Starting Development**:
+
    ```bash
    npm install        # Install dependencies
    npm run dev       # Start development server
    ```
 
 2. **Code Quality**:
+
    - Run `npm run validate` before committing to check all code quality rules
    - Use `npm run fix` to automatically fix common issues
    - Format your code with `npm run format`
 
 3. **Building for Production**:
+
    ```bash
    npm run build    # Creates optimized production build
    npm run serve:prod # Serves production build locally

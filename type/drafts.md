@@ -4,9 +4,9 @@ description: <strong>Heads up:</strong> Content here is all a work-in-progress
 
 # eleventyNavigation:
 #   key: Drafts
-#   order: 
+#   order:
 
-sections: 
+sections:
   entries:
     read_Link: false
 ---

@@ -1,7 +1,7 @@
 ---
-permalink: '/introducing-v5/'
-title:  'Introducing keenanpayne.com v5'
-meta: 
+permalink: "/introducing-v5/"
+title: "Introducing keenanpayne.com v5"
+meta:
   description:
 type: Article
 date: 2021-10-15
@@ -33,7 +33,7 @@ So, with all of this free time on my hands, why not invest myself in something I
 
 Not only did I require a shift in mindset to begin investing time into my website, but I also needed to shift my approach towards executing personal projects so that I could _actually finish them._
 
-I tend to start more projects than I complete, and that has occurred with rebuilding my website a couple of times in the past few years. I would get things off the ground only to lose interest or find myself preoccupied with client projects. 
+I tend to start more projects than I complete, and that has occurred with rebuilding my website a couple of times in the past few years. I would get things off the ground only to lose interest or find myself preoccupied with client projects.
 
 I wanted to start this project and feel confident that I would follow through with completing it.
 
@@ -43,7 +43,7 @@ Approaching my website as I would a client project required defining the project
 
 {% include "type/p_large.html", content: 'Without a scope of work, it can be difficult to know when something is "complete."' %}
 
-With a rough scope-of-work drafted, I began working. Knowing what I was personally committed to completing before launching the project helped me keep my eye on the ball and prevented me from chasing shiny objects and obsessing over "imperfection." 
+With a rough scope-of-work drafted, I began working. Knowing what I was personally committed to completing before launching the project helped me keep my eye on the ball and prevented me from chasing shiny objects and obsessing over "imperfection."
 
 Staying deliberate and focused saved me time and helped me get the project launched.
 
@@ -54,13 +54,13 @@ Below is a side-by-side comparison of my website before and after this redesign.
 <div class="sideBySide _pull-outside">
   {% include "atoms/figure.html", src: '/images/posts/introducing-v5/before.png', alt: 'Screenshot of my website before redesigning it' %}
 
-  {% include "atoms/figure.html", src: '/images/posts/introducing-v5/after.png', alt: 'Screenshot of my website after redesigning it' %}
+{% include "atoms/figure.html", src: '/images/posts/introducing-v5/after.png', alt: 'Screenshot of my website after redesigning it' %}
+
 </div>
 
 I designed the website from the ground up to support light and dark modes. Currently, the color scheme adapts to whatever your operating system is set to, but in the future, I will add a toggle so that folks can choose whichever theme they want.
 
-Finally, after many wonderful years with Jekyll, I ended up switching to [Eleventy](/tags/eleventy). Both are excellent [static site generators](/tags/static-site-generators/), but there are many things Eleventy provides that make it more suitable to how I prefer building websites. The most important of these is the ease of configuring and modifying everything with Eleventy's JavaScript API. 
-
+Finally, after many wonderful years with Jekyll, I ended up switching to [Eleventy](/tags/eleventy). Both are excellent [static site generators](/tags/static-site-generators/), but there are many things Eleventy provides that make it more suitable to how I prefer building websites. The most important of these is the ease of configuring and modifying everything with Eleventy's JavaScript API.
 
 {% include "type/note.html" content: 'To see more reasons why I switched to Eleventy, read <a href="/11ty-eleventy-introduction/">this</a>.' %}
 
@@ -81,6 +81,6 @@ Being paralyzed by choice is real, so getting clear with my highest-level goals 
 
 ## Tell me what you think
 
-There's nothing I would love more than to hear feedback from folks who visit my website. 
+There's nothing I would love more than to hear feedback from folks who visit my website.
 
 If you have any feedback or suggestions on my website, please don't hesitate to [reach out](/contact/) through email or on [Twitter](https://twitter.com/KeenanPayne_) to let me know what you think.

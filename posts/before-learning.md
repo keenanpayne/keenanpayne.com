@@ -1,10 +1,10 @@
 ---
-permalink: '/before-learning/'
-title:  'Questions I ask myself before learning something new'
+permalink: "/before-learning/"
+title: "Questions I ask myself before learning something new"
 meta:
-  description: 'Personal inquiry to cultivate intentional learning and outcomes.'
-  image: '/images/public-domain/la-piana.jpg'
-  image_alt: 'La Piana by Edward Lear'
+  description: "Personal inquiry to cultivate intentional learning and outcomes."
+  image: "/images/public-domain/la-piana.jpg"
+  image_alt: "La Piana by Edward Lear"
 lede: Personal inquiry to cultivate intentional learning and outcomes.
 type: Reflection
 date: 2022-02-09

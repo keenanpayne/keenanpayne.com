@@ -2,16 +2,16 @@
 // Codepen Embeds
 // ==================================================
 
-.codepen { 
+.codepen {
   border: 1px solid var(--plum-dark);
   margin-bottom: 1.5rem;
   margin-top: 1.5rem;
   padding: 1rem 1.5rem;
 }
 
-.cp_embed_wrapper { 
-  @include pullContentOutside('false', 'true');
+.cp_embed_wrapper {
+  @include pullContentOutside("false", "true");
 
-  margin-bottom: 1.5rem; 
+  margin-bottom: 1.5rem;
   margin-top: 1.5rem;
 }
