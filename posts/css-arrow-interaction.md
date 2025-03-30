@@ -25,11 +25,10 @@ Our goal is to create an animation of an arrow following itself (hence the name 
 
 We'll start by writing the markup for this interaction. For this tutorial, I will be putting this arrow animation inside of a `<button>` element with some accompanying text. However, once you finish this tutorial, you should be able to use this interaction inside of any element.
 
-{% include "components/codepen.html",
-tab: 'html,result',
-html: '<button>
+```html
+<button> 
   Just Do It
-  
+
   <div class="arrowPacman">
     <div class="arrowPacman-clip">
       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,8 +40,8 @@ html: '<button>
       </svg>
     </div>
   </div>
-</button>'
-%}
+</button>
+```
 
 The markup for this element is pretty straight-forward. We wrap our arrow inside of a `div` containing the class name `arrowPacman`. This element will be the outer-most container for our arrows.
 
@@ -58,23 +57,21 @@ The real magic of this interaction comes from the CSS that we write for the mark
 
 We'll start by writing some simple styles for our `<button>` element:
 
-{% include "components/codepen.html", tab: 'css,result', html: '<button> Just Do It
-
-  <div class="arrowPacman">
-    <div class="arrowPacman-clip">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="black"/>
-      </svg>
-
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="black"/>
-      </svg>
-    </div>
-
-  </div>
-</button>',
-
-scss:'button { background-color: white; border: 2px solid black; border-radius: 25px; box-shadow: none; color: black; cursor: pointer; display: inline-block; font-weight: 600; padding: .75rem 2.5rem .75rem 1rem; position: relative; white-space: nowrap; }' %}
+```scss
+button { 
+  background-color: white; 
+  border: 2px solid black; 
+  border-radius: 25px; 
+  box-shadow: none; 
+  color: black; 
+  cursor: pointer; 
+  display: inline-block; 
+  font-weight: 600; 
+  padding: .75rem 2.5rem .75rem 1rem; 
+  position: relative; 
+  white-space: nowrap;
+}
+```
 
 There is nothing too out of the ordinary here. The only thing to note is that we are giving our button some extra padding on the right side to account for the space that arrow will take up.
 
@@ -82,27 +79,34 @@ There is nothing too out of the ordinary here. The only thing to note is that we
 
 Now let's get to the fun stuff. To start building our arrow animation, we'll start by adding some styles to the `arrowPacman` class.
 
-{% include "components/codepen.html", tab: 'css,result', html: '<button> Just Do It
+```scss
+.arrowPacman { 
+  --arrow-width: 20px; 
+  --arrow-spacer: 4px; 
+  --arrow-plus-spacer: calc(var(--arrow-width) + var(--arrow-spacer));
 
-  <div class="arrowPacman">
-    <div class="arrowPacman-clip">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="black"/>
-      </svg>
+  overflow: hidden; 
+  position: absolute; 
+  right: -.2em; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  width: var(--arrow-plus-spacer); 
+}
 
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="black"/>
-      </svg>
-    </div>
-
-  </div>
-</button>',
-
-scss:'.arrowPacman { --arrow-width: 20px; --arrow-spacer: 4px; --arrow-plus-spacer: calc(var(--arrow-width) + var(--arrow-spacer));
-
-overflow: hidden; position: absolute; right: -.2em; top: 50%; transform: translate(-50%, -50%); width: var(--arrow-plus-spacer); }
-
-button { background-color: white; border: 2px solid black; border-radius: 25px; box-shadow: none; color: black; cursor: pointer; display: inline-block; font-weight: 600; padding: .75rem 2.5rem .75rem 1rem; position: relative; white-space: nowrap; }' %}
+button { 
+  background-color: white; 
+  border: 2px solid black; 
+  border-radius: 25px; 
+  box-shadow: none; 
+  color: black; 
+  cursor: pointer; 
+  display: inline-block; 
+  font-weight: 600; 
+  padding: .75rem 2.5rem .75rem 1rem; 
+  position: relative; 
+  white-space: nowrap;
+}
+```
 
 The first thing you will notice is that I am using [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) inside of the `arrowPacman` class to store a few values. These properties are important because creating this animation relies on clever use of our arrow width, as well as the space between our two arrows. We do this by storing each of these values in `--arrow-width`, and `--arrow-spacer`, respectively. We will also be using the combined width of both the arrow and it's spacer, so we store that value in `--arrow-plus-spacer` where we make use of the CSS [`calc`](https://developer.mozilla.org/en-US/docs/Web/CSS/calc) function to add the value of the two custom properties that we previously declared.
 
@@ -114,35 +118,16 @@ To ensure that only one of our arrows is visible, we set the `width` property on
 
 We want to make sure that the two arrows inside of our button have the correct size and spacing, so let's add some styles inside of the `arrowPacman` class to target the `svg` elements.
 
-{% include "components/codepen.html", tab: 'css,result', html: '<button> Just Do It
+```scss
+svg { 
+  height: 16px; 
+  width: var(--arrow-width);
 
-  <div class="arrowPacman">
-    <div class="arrowPacman-clip">
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="black"/>
-      </svg>
-
-      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="black"/>
-      </svg>
-    </div>
-
-  </div>
-</button>',
-
-scss:'.arrowPacman { --arrow-width: 20px; --arrow-spacer: 4px; --arrow-plus-spacer: calc(var(--arrow-width) + var(--arrow-spacer));
-
-overflow: hidden; position: absolute; right: -.2em; top: 50%; transform: translate(-50%, -50%); width: var(--arrow-plus-spacer);
-
-svg { height: 16px; width: var(--arrow-width);
-
-    &:last-of-type {
-      margin-left: var(--arrow-spacer);
-    }
-
-} }
-
-button { background-color: white; border: 2px solid black; border-radius: 25px; box-shadow: none; color: black; cursor: pointer; display: inline-block; font-weight: 600; padding: .75rem 2.5rem .75rem 1rem; position: relative; white-space: nowrap; }' %}
+  &:last-of-type {
+    margin-left: var(--arrow-spacer);
+  }
+}
+```
 
 We set the `width` and `height` of each SVG element accordingly, and give our last SVG a `margin-left` value of **`--arrow-spacer`**. This added space ensures that our two arrows are not sitting right next to each other.
 
@@ -150,7 +135,9 @@ We set the `width` and `height` of each SVG element accordingly, and give our la
 
 To create the left-to-right effect that we are looking for, we need to add some styles to our `arrowPacman-clip` element.
 
-{% include "components/codepen.html", tab: 'css,result', html: '<button> Just Do It
+```html
+<button> 
+  Just Do It
 
   <div class="arrowPacman">
     <div class="arrowPacman-clip">
@@ -162,25 +149,19 @@ To create the left-to-right effect that we are looking for, we need to add some 
         <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="black"/>
       </svg>
     </div>
-
   </div>
-</button>',
+</button>
+```
 
-scss:'.arrowPacman { --arrow-width: 20px; --arrow-spacer: 4px; --arrow-plus-spacer: calc(var(--arrow-width) + var(--arrow-spacer));
-
-overflow: hidden; position: absolute; right: -.2em; top: 50%; transform: translate(-50%, -50%); width: var(--arrow-plus-spacer);
-
-svg { height: 16px; width: var(--arrow-width);
-
-    &:last-of-type {
-      margin-left: var(--arrow-spacer);
-    }
-
-} }
-
-.arrowPacman-clip { align-items: center; display: flex; overflow: hidden; transform: translateX(calc(var(--arrow-plus-spacer) \* -1)); width: calc(var(--arrow-plus-spacer) + var(--arrow-width)); }
-
-button { background-color: white; border: 2px solid black; border-radius: 25px; box-shadow: none; color: black; cursor: pointer; display: inline-block; font-weight: 600; padding: .75rem 2.5rem .75rem 1rem; position: relative; white-space: nowrap; }' %}
+```scss
+.arrowPacman-clip { 
+  align-items: center; 
+  display: flex; 
+  overflow: hidden; 
+  transform: translateX(calc(var(--arrow-plus-spacer) \* -1)); 
+  width: calc(var(--arrow-plus-spacer) + var(--arrow-width)); 
+}
+```
 
 We use [flexbox](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox) to align our two arrows. Next, we set the `transform` property to **`-24px`** by utilizing the `--arrow-plus-spacer` custom property that we declared earlier, and multiplying it by **`-1`**. This moves our entire `arrowPacman-clip` to the left, which is how we will create the left-to-right animation.
 
@@ -190,7 +171,9 @@ Lastly, we set the width of this element to **`44px`** by once again utilizing t
 
 Now that we've set the stage let's add the styles necessary to make this animation work.
 
-{% include "components/codepen.html", tab: 'css,result', html: '<button> Just Do It
+```html
+<button> 
+  Just Do It
 
   <div class="arrowPacman">
     <div class="arrowPacman-clip">
@@ -202,31 +185,75 @@ Now that we've set the stage let's add the styles necessary to make this animati
         <path d="M7.10081 0L5.88245 1.23617L10.7016 6.12576H0V7.87423H10.7016L5.88245 12.7638L7.10081 14L14 7L7.10081 0Z" fill="black"/>
       </svg>
     </div>
-
   </div>
-</button>',
+</button>
+```
 
-scss:'.arrowPacman { --arrow-width: 20px; --arrow-spacer: 4px; --arrow-plus-spacer: calc(var(--arrow-width) + var(--arrow-spacer));
+```scss
+.arrowPacman { 
+  --arrow-width: 20px; 
+  --arrow-spacer: 4px; 
+  --arrow-plus-spacer: calc(var(--arrow-width) + var(--arrow-spacer));
 
-overflow: hidden; position: absolute; right: -.2em; top: 50%; transform: translate(-50%, -50%); width: var(--arrow-plus-spacer);
+  overflow: hidden; 
+  position: absolute; 
+  right: -.2em; 
+  top: 50%; 
+  transform: translate(-50%, -50%); 
+  width: var(--arrow-plus-spacer);
 
-svg { height: 16px; width: var(--arrow-width);
+  svg { 
+    height: 16px; 
+    width: var(--arrow-width);
 
     &:last-of-type {
       margin-left: var(--arrow-spacer);
     }
+  }
+}
 
-} }
+.arrowPacman-clip { 
+  align-items: center; 
+  display: flex; 
+  overflow: hidden; 
+  transform: translateX(calc(var(--arrow-plus-spacer) \* -1)); 
+  width: calc(var(--arrow-plus-spacer) + var(--arrow-width)); 
+}
 
-.arrowPacman-clip { align-items: center; display: flex; overflow: hidden; transform: translateX(calc(var(--arrow-plus-spacer) \* -1)); width: calc(var(--arrow-plus-spacer) + var(--arrow-width)); }
+@keyframes pacman { 
+  to { 
+    transform: translateX(0); 
+  } 
+}
 
-@keyframes pacman { to { transform: translateX(0); } }
+@mixin arrowPacmanInteraction() { 
+  .arrowPacman-clip { 
+    animation-delay: 150ms; 
+    animation-duration: 0.8s; 
+    animation-name: pacman; 
+    animation-iteration-count: infinite; 
+    animation-timing-function: cubic-bezier(0.55, 0, 0.21, 1); } 
+  }
 
-@mixin arrowPacmanInteraction() { .arrowPacman-clip { animation-delay: 150ms; animation-duration: 0.8s; animation-name: pacman; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(0.55, 0, 0.21, 1); } }
+  button { 
+    background-color: white; 
+    border: 2px solid black; 
+    border-radius: 25px; 
+    box-shadow: none; 
+    color: black; 
+    cursor: pointer; 
+    display: inline-block; 
+    font-weight: 600; 
+    padding: .75rem 2.5rem .75rem 1rem; 
+    position: relative; 
+    white-space: nowrap;
 
-button { background-color: white; border: 2px solid black; border-radius: 25px; box-shadow: none; color: black; cursor: pointer; display: inline-block; font-weight: 600; padding: .75rem 2.5rem .75rem 1rem; position: relative; white-space: nowrap;
-
-&:hover { @include arrowPacmanInteraction(); } }' %}
+    &:hover { 
+      @include arrowPacmanInteraction(); 
+    } 
+  }
+}
+```
 
 The first thing we do is use [CSS @keyframes](https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes) to define the `pacman` animation, which contains the styles that will be applied for our animation. Because we want to move our arrow left to right, we define our styles as `transform: translateX(0)`. We intend to apply styles to the `arrowPacman-clip` element. Because we've moved the `arrowPacman-clip` element to the left by **-24px** earlier, resetting the value to **0** gives us the left-to-right animation.
 
