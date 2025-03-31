@@ -21,7 +21,7 @@ sections:
   - type: entries
     showCovers: false
     heading: "All articles"
-    spacing: 10
+    spacing: 5
     orientation: archive
     items:
       from: posts

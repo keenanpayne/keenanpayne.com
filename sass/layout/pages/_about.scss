@@ -1,0 +1,26 @@
+//
+// About
+// ==================================================
+
+.about-photos {
+  align-items: start;
+  display: flex;
+  flex-flow: column wrap;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  margin-top: 1.5rem;
+
+  @media (--min-960) {
+    flex-direction: row;
+  }
+}
+
+.about-photo {
+  @media (--min-960) {
+    max-height: 400px;
+  }
+
+  @media (--min-1440) {
+    max-height: 500px;
+  }
+}

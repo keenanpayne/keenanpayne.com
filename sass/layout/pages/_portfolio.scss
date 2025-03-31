@@ -92,7 +92,11 @@
   }
 
   &:not(:last-of-type) {
-    padding-bottom: 1.75rem;
+    padding-bottom: 1.5rem;
+
+    @media (--min-1120) {
+      padding-bottom: 3rem;
+    }
   }
 
   &:nth-child(odd):not(.-full-width) {
@@ -247,15 +251,6 @@
 
   @media (--min-720) {
     margin-top: 0;
-  }
-
-  // Vertical rhythm for descendants
-  & > * {
-    margin-bottom: 3rem;
-
-    @media (--min-960) {
-      margin-bottom: 5rem;
-    }
   }
 }
 

@@ -66,6 +66,7 @@
 @import "layout/components/highlight";
 @import "layout/components/large-text";
 @import "layout/components/lede";
+@import "layout/components/longform";
 @import "layout/components/mailbox";
 @import "layout/components/navigation";
 @import "layout/components/newsletter";
@@ -78,6 +79,7 @@
 @import "layout/components/wave";
 
 // Pages
+@import "layout/pages/about";
 @import "layout/pages/portfolio";
 @import "layout/pages/services";
 @import "layout/pages/post";

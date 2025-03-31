@@ -13,6 +13,10 @@
   }
 }
 
+.ContactForm-inner {
+  max-width: 600px;
+}
+
 .ContactForm-item {
   grid-column: 1 / -1;
   margin-top: spacing(3);

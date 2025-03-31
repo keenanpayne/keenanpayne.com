@@ -6,7 +6,7 @@
   // Modifiers
   &.-standalone {
     .newsletter-container {
-      max-width: 60ch;
+      max-width: 850px;
     }
 
     .newsletter-cta {
@@ -37,7 +37,7 @@
 }
 
 .newsletter-title {
-  margin-bottom: 1rem !important; // TODO: Address specificity issue
+  margin-bottom: 1rem;
   margin-top: 0;
 }
 

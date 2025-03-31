@@ -53,12 +53,12 @@
 }
 
 .post-title {
-  margin-top: 1.25rem;
+  margin-top: 1.5rem;
 }
 
 .post-lede {
-  margin-bottom: 1.25rem;
-  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 
   // Context-specific
   & + .post-tags {
@@ -135,9 +135,15 @@
   }
 
   h3 {
+    @include h4;
+
     margin-bottom: 1rem;
     margin-top: 3rem;
     max-width: 35ch;
+  }
+
+  h4 {
+    @include h5;
   }
 
   h2 + h3 {

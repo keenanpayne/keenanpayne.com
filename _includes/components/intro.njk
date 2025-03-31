@@ -9,16 +9,17 @@
 {% set heading = section.heading %}
 {% set subheading = section.subheading %}
 {% set right = section.right %}
-{% set maxWidth = section.maxWidth %}
+{% set headerMaxWidth = section.headerMaxWidth %}
+{% set subheadingMaxWidth = section.subheadingMaxWidth %}
 
 {# Markup #}
-<section class="intro {% if maxWidth %}-max-width-applied{% endif %}" style="{% if maxWidth %}max-width: {{ maxWidth }};{% endif %}">
+<section class="intro _container">
   {% if right %}
-    <header class="intro-left">
+    <header class="intro-left" style="{% if maxWidth %}max-width: {{ maxWidth }};{% endif %}">
   {% else %}
     <header class="intro-left -full-width">
   {% endif %}
-    <h2 class="intro-heading">
+    <h2 class="intro-heading" style="{% if headerMaxWidth %}max-width: {{ headerMaxWidth }};{% endif %}">
       {% if heading %}
         {{ heading }}
       {% else %}
@@ -27,7 +28,7 @@
     </h2>
 
     {% if subheading %}
-      <p class="intro-subheading">
+      <p class="intro-subheading" style="{% if subheadingMaxWidth %}max-width: {{ subheadingMaxWidth }};{% endif %}">
         {{ subheading | safe }}
       </p>
     {% endif %}
@@ -43,7 +44,7 @@
       {% endif %}
 
       {% if rightItems %}
-        <div class="collections-items -vertical">
+        <div class="collections-items -homepage-services">
           {% if rightItems.from == 'services' %}
             {% set collection = collections.services | sort(attribute='data.order') %}
             {% set itemsLimit = rightItems.limit %}

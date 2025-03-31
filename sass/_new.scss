@@ -3,24 +3,6 @@
 // ------
 
 // Typography
-@mixin large-paragraph {
-  font-size: 18px;
-  font-weight: var(--font-weight-regular);
-  line-height: 1.4;
-
-  @media (--min-480) {
-    font-size: 20px;
-  }
-}
-
-@mixin subheading {
-  font-style: italic;
-  font-family: var(--font-family-serif);
-  font-size: var(--step-2);
-  font-weight: var(--font-weight-lighter);
-  line-height: 1.55;
-}
-
 @mixin grid($columnGap: 3, $rowGap: 5) {
   @media (--min-960) {
     display: grid;
@@ -33,22 +15,23 @@
 // SCOPED
 :root.newStyles {
   // Layout
-  .grid {
+  ._grid {
     @include grid;
   }
 
   // Introduction
   .intro {
-    @include grid(8, 5);
     @include container;
 
-    @media (--min-1260) {
-      align-items: center;
+    @media (--min-1120) {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-column-gap: calc(5 * var(--spacing-unit));
+      grid-row-gap: calc(5 * var(--spacing-unit));
     }
 
-    // Modifiers
-    &.-max-width-applied {
-      margin-left: 0;
+    @media (--min-1120) {
+      align-items: center;
     }
   }
 
@@ -95,15 +78,21 @@
   }
 
   .intro-subheading {
-    @include subheading();
-
-    margin-top: spacing(2);
-
-    @media (--min-720) {
-      margin-top: spacing(2.5);
-    }
+    font-style: italic;
+    font-family: var(--font-family-serif);
+    font-size: var(--step-2);
+    font-weight: var(--font-weight-lighter);
+    line-height: 1.55;
+    margin-top: spacing(1.5);
 
     // Descendants
+    br {
+      display: none;
+
+      @media (--min-1440) {
+        display: block;
+      }
+    }
     // TODO: Duplicated from `_portfolio.scss`
     > strong {
       font-weight: var(--font-weight-semibold);
@@ -134,28 +123,40 @@
   }
 
   .collections-label {
-    margin-bottom: spacing(1);
+    margin-bottom: spacing(1.5);
   }
 
   .collections-items {
     // Modifiers
     &.-horizontal,
-    &.-horizontal-2-columns {
-      @include grid;
-
-      .collections-content {
-        flex: 1;
-      }
-
+    &.-horizontal-2-columns,
+    &.-services {
       .collections-item {
         display: flex;
         flex-direction: column;
         grid-column: auto / span 6;
       }
+
+      .collections-content {
+        flex: 1;
+      }
     }
 
     &.-horizontal {
+      @include grid;
+
       grid-row-gap: calc(3 * var(--spacing-unit));
+
+      .collections-text {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: spacing(3);
+        padding-right: spacing(3);
+      }
+
+      .collections-description {
+        max-width: 30ch;
+      }
 
       .collections-item {
         &:first-of-type {
@@ -180,14 +181,49 @@
       }
     }
 
+    &.-services {
+      @include grid(5, 5);
+
+      .collections-description {
+        max-width: 32ch;
+      }
+
+      .collections-item {
+        &:not(:first-of-type) {
+          margin-top: spacing(3);
+
+          @media (--min-720) {
+            margin-top: 0;
+          }
+        }
+
+        @media (--min-960) {
+          grid-column: auto / span 4;
+        }
+      }
+    }
+
     &.-horizontal-2-columns {
+      @include grid;
+
+      .collections-text {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: spacing(5);
+        padding-right: spacing(5);
+      }
+
+      .collections-description {
+        max-width: 45ch;
+      }
+
       .collections-image {
         @media (--min-1260) {
-          --image-height: 300px;
+          --image-height: 325px;
         }
 
         @media (--min-1440) {
-          --image-height: 325px;
+          --image-height: 350px;
         }
       }
 
@@ -200,18 +236,23 @@
       }
     }
 
-    &.-vertical {
+    &.-homepage-services {
+      align-items: baseline;
+      display: flex;
+      flex-direction: column;
+      gap: spacing(3);
+      
+      @media (--min-800) {
+        flex-direction: row;
+      }
+
+      @media (--min-1120) {
+        flex-direction: column;
+      }
+
       .collections-item {
         &:first-of-type {
-          margin-top: spacing(2);
-        }
-
-        &:not(:first-of-type) {
-          margin-top: spacing(3);
-
-          @media (--min-960) {
-            margin-top: spacing(4);
-          }
+          margin-top: spacing(1);
         }
       }
     }
@@ -253,7 +294,7 @@
   }
 
   .collections-heading {
-    @include h3;
+    @include h4;
 
     // Descendants
     a {
@@ -267,18 +308,22 @@
   }
 
   .collections-description {
-    @include large-paragraph;
-
-    margin-top: spacing(1.25);
+    margin-top: spacing(1);
     max-width: 48ch;
 
     @media (--min-640) {
       padding-right: spacing(0.5);
     }
+
+    @media (--min-1120) {
+      @include h6;
+
+      margin-top: spacing(1);
+    }
   }
 
   .collections-link {
-    margin-top: spacing(2);
+    margin-top: spacing(3);
   }
 
   // More Link
@@ -287,7 +332,6 @@
 
     border-bottom: 1px solid var(--color-black);
     display: inline-block;
-    font-size: 16px;
     letter-spacing: -0.5px;
     transition: color var(--transition-quick);
     text-align: right;
@@ -296,10 +340,6 @@
 
     @media (--dark) {
       --more-hover-color: var(--yellow-dark);
-    }
-
-    @media (--min-720) {
-      font-size: 18px;
     }
 
     &:hover {
@@ -335,9 +375,8 @@
 }
 
 .cta-subheading {
-  @include subheading;
+  @include h5;
 
-  font-weight: var(--font-weight-lighter);
   margin-left: auto;
   margin-right: auto;
   margin-top: spacing(2);

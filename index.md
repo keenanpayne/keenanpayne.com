@@ -4,8 +4,8 @@ changefreq: weekly
 seoPriority: 1.0
 sections:
   - type: intro
-    heading: "Professional and personal web design and development services"
-    subheading: "During my fifteen years as a software professional, I've helped countless clients—from individuals to unicorn startups—succeed on the web. My work has helped companies generate <strong>millions in revenue</strong>, sign up <strong>millions of SaaS users</strong>, and empowered global organizations with <strong>scalable software</strong>."
+    heading: "Professional and personal web design and web development services"
+    subheading: "During my fifteen years as a software professional, my work <br />has helped companies generate <strong>millions in revenue</strong>, sign up <strong>millions of SaaS users</strong>, and empowered global organizations with <strong>scalable software</strong>."
     right:
       heading: "Services I offer"
       items:
@@ -15,7 +15,7 @@ sections:
     showCovers: true
     orientation: horizontal
     heading: "Featured projects"
-    spacing: 8
+    spacing: 5
     items:
       from: portfolio
       limit: 3

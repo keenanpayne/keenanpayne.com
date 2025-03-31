@@ -1,6 +1,6 @@
 {%- macro large(modifiers) -%}
   <section id="newsletter" class="newsletter {{ modifiers }}">
-    <div class="newsletter-container _container {{ 'grid' if modifiers != '-standalone' else '-small' }}">
+    <div class="newsletter-container _container {{ '_grid' if modifiers != '-standalone' else '-small' }}">
       <div class="newsletter-description">
         <h2 class="newsletter-title {{ '_text-h1' if modifiers == '-standalone' }}">
           Subscribe to a darn good newsletter

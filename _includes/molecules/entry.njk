@@ -11,27 +11,29 @@
         {% endif %}
       {% endif %}
 
-      {% if heading %}
-        <h2 class="collections-heading">
-          {% if linkUrl %}
-            <a href="{{ linkUrl }}">
-          {% endif %}
+      <div class="collections-text">
+        {% if heading %}
+          <h2 class="collections-heading">
+            {% if linkUrl %}
+              <a href="{{ linkUrl }}">
+            {% endif %}
 
-          {{ heading }}
+            {{ heading }}
 
-          {% if linkUrl %}
-            </a>
-          {% endif %}
-        </h2>
-      {% endif %}
+            {% if linkUrl %}
+              </a>
+            {% endif %}
+          </h2>
+        {% endif %}
 
-      {% if lede %}
-        <p class="collections-description">
-          {{ lede | safe }}
-        </p>
-      {% endif %}
+        {% if lede %}
+          <p class="collections-description">
+            {{ lede | safe }}
+          </p>
+        {% endif %}
+
+        {{ more.output('collections-link', linkUrl, linkText) }}
+      </div>
     </div>
-
-    {{ more.output('collections-link', linkUrl, linkText) }}
   </article>
 {% endmacro %}

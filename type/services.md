@@ -13,12 +13,13 @@ sections:
   - type: intro
     heading: "Professional and personal web design and web development services"
     subheading: "During my fifteen years as a software professional, I've helped countless clients—from individuals to unicorn startups—succeed on the web. I've helped generate millions of dollars in revenue, sign up hundreds of thousands of users to SaaS, empower global teams with intuitive and resilient software, and build intuitive and innovative products."
-    maxWidth: 105ch
+    headerMaxWidth: 26ch
+    subheadingMaxWidth: 55ch
   - type: entries
     showCovers: false
-    orientation: horizontal
+    orientation: services
     heading: "Services I offer"
-    spacing: 8
+    spacing: 5
     items:
       from: services
       limit: 3

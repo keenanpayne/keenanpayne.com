@@ -4,6 +4,7 @@
 
 .portfolioGrid {
   grid-column: 1 / -1;
+  margin-top: 3rem;
   position: relative;
 
   // Grid Layout
@@ -45,7 +46,7 @@
 }
 
 .portfolioGrid-headline {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   margin-top: 1.5rem;
 }
 
