@@ -107,7 +107,7 @@ Here I am, writing an essay for the platform, forced to use a (great) tool like 
 
 Why doesn't Twitter provide an editor with this functionality? Doesn't it see the use case for its users?
 
-<blockquote class="tweet"><p lang="en" dir="ltr">At least <a href="https://twitter.com/typefully?ref_src=twsrc%5Etfw">@typefully</a> exists 🙏🏻 But think about it—how much would it theoretically cost to build an app like Typefully in-house at Twitter?<br><br>Does it cost $10m? $100m? $500m? $1b? Idfk. <br><br>BUT I SURE AS HELL KNOW IT COSTS LESS THAN $30B 🤯 <a href="https://t.co/56ZZpBIYaF">pic.twitter.com/56ZZpBIYaF</a></p>&mdash; Keenan Payne (@KeenanPayne_) <a href="https://twitter.com/KeenanPayne_/status/1530364078564118528?ref_src=twsrc%5Etfw">May 28, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">At least <a href="https://twitter.com/typefully?ref_src=twsrc%5Etfw">@typefully</a> exists 🙏🏻 But think about it—how much would it theoretically cost to build an app like Typefully in-house at Twitter?<br><br>Does it cost $10m? $100m? $500m? $1b? Idfk. <br><br>BUT I SURE AS HELL KNOW IT COSTS LESS THAN $30B 🤯 <a href="https://t.co/56ZZpBIYaF">pic.twitter.com/56ZZpBIYaF</a></p>&mdash; Keenan Payne (@KeenanPayne_) <a href="https://twitter.com/KeenanPayne_/status/1530364078564118528?ref_src=twsrc%5Etfw">May 28, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ### Character limits
 
@@ -121,7 +121,7 @@ Because a halfway-decent reading experience is a "premium" feature.
 
 As if they couldn't offer this for free and shove ads on it as they do elsewhere 🙄
 
-<blockquote class="tweet"><p lang="en" dir="ltr">Relax while Reader turns those long Threads into a more beautiful reading experience <a href="https://t.co/v5thmTfGcz">pic.twitter.com/v5thmTfGcz</a></p>&mdash; Twitter Blue (@TwitterBlue) <a href="https://twitter.com/TwitterBlue/status/1458110905472860162?ref_src=twsrc%5Etfw">November 9, 2021</a></blockquote>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Relax while Reader turns those long Threads into a more beautiful reading experience <a href="https://t.co/v5thmTfGcz">pic.twitter.com/v5thmTfGcz</a></p>&mdash; Twitter Blue (@TwitterBlue) <a href="https://twitter.com/TwitterBlue/status/1458110905472860162?ref_src=twsrc%5Etfw">November 9, 2021</a></blockquote>
 
 ### Tweet editing
 
