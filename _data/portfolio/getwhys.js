@@ -20,6 +20,7 @@ module.exports = {
   overview:
     "I helped the GetWhys founders launch their initial website in Q3, 2024 as they solidified their product offerings and signed their first customers before endeavoring to secure seed funding. <br /><br />Six months later, I helped the small but mighty GetWhys team redesign and rebuild their marketing website after <strong>securing $2.75m in seed funding</strong>. <br /><br />The GetWhys team has been delighted by how well <strong>their new website converts</strong>, and how it portrays their growing brand. ",
   cover: "v1743003774/portfolio/getwhys/getwhys_f3dw1o.png",
+  lede: "Redesigning and rebuilding the marketing website for an innovative AI platform.",
   caption: "",
   people: {
     [1]: {
