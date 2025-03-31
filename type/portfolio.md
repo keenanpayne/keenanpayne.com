@@ -18,7 +18,7 @@ sections:
     orientation: horizontal
     heading: "Featured projects"
     columns: 2
-    spacing: 8
+    spacing: 5
     items:
       from: portfolio
       limit: 6
@@ -33,7 +33,7 @@ sections:
     showCovers: true
     orientation: horizontal
     heading: "More projects"
-    spacing: 8
+    spacing: 10
     items:
       from: portfolio
       limit: 1
