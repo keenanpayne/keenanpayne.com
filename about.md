@@ -25,6 +25,7 @@ I've built websites for cool companies like <a href="/portfolio/asana" title="Vi
 ### Pictures of me
 
 We're both humans, so why not get a little personal?<br>Photos are displayed newest-to-oldest.
+
 </div>
 </div>
 
