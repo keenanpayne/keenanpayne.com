@@ -3,48 +3,9 @@ eleventyNavigation:
   key: Contact
   order: 5
 title: Contact
-templateClass: _container -small
+sections:
+  - type: intro
+    heading: "Get in touch"
+    subheading: <strong>This form is for general inquiries.</strong> <br />If you're interested in working together, please fill out the <a class="-hover-background" href="/project-inquiry/">project inquiry form</a>.
+  - type: contact
 ---
-
-<h1>Get in Touch</h1>
-
-<p class="_max-ch-30">
-  <strong>This form is for general inquiries.</strong> <br />If you're interested in working together, please fill out the <a class="-hover-background" href="/project-inquiry/">project inquiry form</a>.
-</p>
-
-<form 
-  class="ContactForm" 
-  name="Contact" 
-  netlify 
-  action="/form-submission-success" 
-  method="POST"
->
-  <input type="hidden" name="subject" value="New %{formName} form submission on keenanpayne.com — (%{submissionId})" className="_hidden" />
-  
-  <p class="ContactForm-item -full">
-    <label>
-      Name
-      <input class="ContactForm-input" type="text" name="Name" placeholder="First and last name" required />
-    </label>
-  </p>
-
-  <p class="ContactForm-item -full">
-    <label>
-      Email 
-      <input class="ContactForm-input" type="email" name="Email" placeholder="email@company.com" required />
-    </label>
-  </p>
-
-  <p class="ContactForm-item -full">
-    <label>
-      What would you like to share?
-      <textarea class="ContactForm-input" name="Message" rows="5"></textarea>
-    </label>
-  </p>
-
-  <p class="ContactForm-item -full">
-    <button type="submit" class="ContactForm-button">
-      Submit
-    </button>
-  </p>
-</form>
