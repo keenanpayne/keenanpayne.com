@@ -112,7 +112,7 @@
             {% set entryUrl = service.url %}
             {% set entryCover = service.data.cover if service.data.cover else '' %}
 
-            {{ entry.output(showCovers, entryCover, entryTitle, entryLede, entryUrl, 'Learn more') }}
+            {{ entry.output(showCovers, entryCover, entryTitle, entryLede, '', 'Learn more') }}
           {% endfor %}
         {% endif %}
       {% else %}

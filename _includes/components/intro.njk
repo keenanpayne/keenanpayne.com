@@ -57,7 +57,7 @@
               {% set entryLede = service.data.lede %}
               {% set entryUrl = service.url %}
 
-              {{ entry.output(false, false, entryTitle, entryLede, entryUrl, '') }}
+              {{ entry.output(false, false, entryTitle, entryLede, '', '') }}
             {% endfor %}
           {% endif %}
         </div>
