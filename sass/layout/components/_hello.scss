@@ -4,7 +4,7 @@
 // Ref: https://codepen.io/ainalem/pen/RqYZNO
 
 .hello {
-  --hello-background: var(--plum-light);
+  --hello-background: var(--plum-1);
   // TODO: Dynamically generate and store in custom
   //       property based on height of content
   --hello-max-height: 285px;
@@ -25,7 +25,7 @@
   -webkit-tap-highlight-color: transparent;
 
   @media (--dark) {
-    --hello-background: var(--gray-lighter);
+    --hello-background: var(--gray-1);
   }
 
   @media (--min-320) {
@@ -76,12 +76,12 @@
   }
 
   &:not(.-expanded):hover {
-    --hello-hover-background: var(--plum-dark);
+    --hello-hover-background: var(--plum-3);
 
     background: var(--hello-hover-background);
 
     @media (--dark) {
-      --hello-hover-background: var(--yellow-light);
+      --hello-hover-background: var(--yellow-1);
     }
   }
 
@@ -157,7 +157,7 @@
   margin-left: 10px;
 
   @media (--dark) {
-    --hello-name-color: var(--gray-darkest-1);
+    --hello-name-color: var(--gray-7);
   }
 
   // Modifiers
@@ -170,7 +170,7 @@
     user-select: none;
 
     @media (--dark) {
-      --hello-name-color: var(--plum-dark);
+      --hello-name-color: var(--plum-3);
     }
 
     @media (--min-720) {
@@ -181,7 +181,7 @@
 }
 
 .hello-top {
-  --hello-top-background: var(--plum-light);
+  --hello-top-background: var(--plum-1);
 
   background: var(--hello-top-background);
   display: flex;
@@ -191,7 +191,7 @@
   width: var(--hello-max-width);
 
   @media (--dark) {
-    --hello-top-background: var(--yellow-dark);
+    --hello-top-background: var(--yellow-2);
   }
 
   @media (--min-720) {
@@ -210,13 +210,13 @@
   width: 50px;
 
   &:hover .hello-x {
-    background-color: var(--yellow-light);
+    background-color: var(--yellow-1);
   }
 }
 
 .hello-x {
-  --hello-x-primary: var(--gray-light);
-  --hello-x-secondary: var(--gray-darkest-1);
+  --hello-x-primary: var(--gray-2);
+  --hello-x-secondary: var(--gray-7);
 
   background-color: var(--hello-x-primary);
   border-radius: 10px;
@@ -244,7 +244,7 @@
 
 .hello-bottom {
   background: var(--white);
-  color: var(--plum-dark);
+  color: var(--plum-3);
   height: var(--hello-max-height);
   width: var(--hello-max-width);
 }
@@ -285,7 +285,7 @@
   transition: background-color var(--transition);
 
   &:hover {
-    background-color: var(--gray-light);
+    background-color: var(--gray-2);
   }
 
   // Descendants

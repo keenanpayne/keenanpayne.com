@@ -3,7 +3,7 @@
 // ==================================================
 
 .portfolio {
-  --portfolio-color: var(--exodus-fruit);
+  --portfolio-color: var(--purple-1);
 
   display: grid;
   grid-template-columns: repeat(10, 1fr);
@@ -20,7 +20,7 @@
 }
 
 .portfolio-footer {
-  border-top: 1px solid var(--gray-dark);
+  border-top: 1px solid var(--gray-4);
   font-family: var(--font-family-serif);
   margin-top: 3rem;
   padding-top: 1.5rem;
@@ -81,10 +81,10 @@
 }
 
 .portfolio-detail {
-  --border-color: var(--gray-dark);
+  --border-color: var(--gray-4);
 
   @media (--dark) {
-    --border-color: var(--gray-darkest-1);
+    --border-color: var(--gray-7);
   }
 
   @media (--min-560) {
@@ -153,12 +153,12 @@
 }
 
 .portfolio-detail-position {
-  color: var(--gray-darkest);
+  color: var(--gray-6);
   display: block;
   font-size: 12px;
 
   @media (--dark) {
-    color: var(--gray-darker);
+    color: var(--gray-5);
   }
 }
 
@@ -180,8 +180,8 @@
       background: linear-gradient(
         to right,
         var(--orange),
-        var(--carmine-pink),
-        var(--exodus-fruit)
+        var(--pink),
+        var(--purple-1)
       );
       bottom: 0;
       border-radius: 1px;
@@ -260,14 +260,14 @@
 
 // TODO: Move into separate file
 .awards {
-  --border: var(--exodus-fruit);
+  --border: var(--purple-1);
 
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 1rem;
 
   @media (--dark) {
-    --border: var(--yellow-dark);
+    --border: var(--yellow-2);
   }
 
   @media (--min-320) {

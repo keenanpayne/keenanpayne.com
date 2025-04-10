@@ -11,10 +11,10 @@ a {
 
   // Modifiers
   &.-inverted {
-    --link-color: var(--gray-lighter);
+    --link-color: var(--gray-1);
 
     @media (--dark) {
-      --link-color: var(--plum-dark);
+      --link-color: var(--plum-3);
     }
   }
 

@@ -11,7 +11,7 @@
 
   align-items: center;
   background-color: var(--tag-background);
-  border: 1px solid var(--gray-lightish);
+  border: 1px solid var(--gray-3);
   border-radius: var(--border-radius);
   box-shadow: 0 1px 1px 0px rgb(100 100 100 / 15%);
   display: inline-flex;
@@ -23,9 +23,9 @@
   transition: all var(--transition);
 
   @media (--dark) {
-    --tag-background: var(--plum-light);
+    --tag-background: var(--plum-1);
 
-    border-color: var(--gray-dark);
+    border-color: var(--gray-4);
     box-shadow: none;
   }
 
@@ -37,16 +37,16 @@
   }
 
   &.-inactive {
-    --tag-background: var(--exodus-fruit);
+    --tag-background: var(--purple-1);
 
-    border-color: var(--exodus-fruit);
-    color: var(--gray-lighter);
+    border-color: var(--purple-1);
+    color: var(--gray-1);
 
     @media (--dark) {
-      --tag-background: var(--yellow-dark);
+      --tag-background: var(--yellow-2);
 
-      border-color: var(--yellow-dark);
-      color: var(--plum-dark);
+      border-color: var(--yellow-2);
+      color: var(--plum-3);
     }
   }
 }
@@ -58,14 +58,14 @@ a[href].tag:visited {
 
 a[href].tag:hover,
 a[href].tag:focus {
-  background-color: var(--gray-lighter);
-  border-color: var(--gray-darker);
+  background-color: var(--gray-1);
+  border-color: var(--gray-5);
   box-shadow: none;
   color: initial;
 
   @media (--dark) {
-    background-color: var(--plum-dark);
-    border-color: var(--gray-darkest);
+    background-color: var(--plum-3);
+    border-color: var(--gray-6);
     color: currentColor;
   }
 }

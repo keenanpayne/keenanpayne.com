@@ -22,13 +22,13 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   width: 100%;
-  
+
   @media (--min-560) {
     flex-direction: row;
   }
-  
+
   @media (--min-720) {
     border-radius: 50px;
     gap: 1.5rem;
@@ -105,14 +105,14 @@
 
 .navigation-icons {
   margin-bottom: 0;
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   background-color: var(--gray-7);
   border-radius: 15px;
   display: flex;
   align-items: center;
   gap: 1.25rem;
   width: 100%;
-  
+
   @media (--min-720) {
     border-radius: 50px;
     width: auto;

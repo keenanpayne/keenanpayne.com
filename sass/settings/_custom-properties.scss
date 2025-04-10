@@ -4,37 +4,40 @@
 
 :root {
   // Background
-  --root-background: var(--gray-light);
+  --root-background: var(--gray-2);
 
   // Spacing
   --spacing-unit: 8px;
 
   // Color Scheme
-  --white: #fff;
+  --white: #ffffff;
 
-  --gray-lighter: #fcfcfc;
-  --gray-light: #efefef;
-  --gray-lightish: #d3d1db;
-  --gray-dark: #c7c4d7;
-  --gray-darker: #a7a5b4;
-  --gray-darkest: #908e9b;
-  --gray-darkest-1: #524c4c; // TODO: Fix weird naming scheme
+  --color-black: #101010;
 
-  --plum-light: #2b2638;
-  --plum-mid: #1e1c29;
-  --plum-dark: #100f16;
+  --gray-1: #fcfcfc;
+  --gray-2: #efefef;
+  --gray-3: #d3d1db;
+  --gray-4: #c7c4d7;
+  --gray-5: #a7a5b4;
+  --gray-6: #908e9b;
+  --gray-7: #524c4c;
 
-  --yellow-light: #fff8e6;
-  --yellow-dark: #ffd466;
-  --exodus-fruit: #686de0; // S/O https://flatuicolors.com/palette/au
-  --exodus-fruit-dark: #5b5fbb;
-  // Ref: https://flatuicolors.com/palette/cn
-  --pink-glamour: #eb4d4b;
-  --carmine-pink: #ff7979;
   --orange: #f27121;
 
+  --pink: #ff7979;
+
+  --yellow-1: #fff8e6;
+  --yellow-2: #ffd466;
+
+  --purple-1: #686de0;
+  --purple-2: #5b5fbb;
+  --purple-3: #3b3f8f;
+
+  --plum-1: #2b2638;
+  --plum-2: #1e1c29;
+  --plum-3: #100f16;
+
   // TODO: New custom properties
-  --color-black: #101010;
   --color-heading: #100f16;
   --color-label: #101010;
   --color-paragraph: #1e1c29;
@@ -101,18 +104,18 @@
   --border-radius-pill: 20px;
 
   // Context-Specific
-  --text-color: var(--plum-dark);
+  --text-color: var(--plum-3);
 
   --shadow: 0 3px 7px 0px rgb(150 150 150 / 25%);
   --shadow-hover: 0 2px 9px 1px rgb(150 150 150 / 45%);
 
-  --pre-background: var(--gray-lighter);
+  --pre-background: var(--gray-1);
 
-  --small-text-color: var(--gray-dark);
-  --label-color: var(--plum-dark);
+  --small-text-color: var(--gray-4);
+  --label-color: var(--plum-3);
 
   // S/O https://flatuicolors.com/palette/au
-  --exodus-fruit: #686de0;
+  --purple-1: #686de0;
 
   // Container
   --container-small: 800px;
@@ -122,7 +125,7 @@
 /* Dark Mode */
 @media (--dark) {
   :root {
-    --root-background: var(--plum-mid);
+    --root-background: var(--plum-2);
     --text-color: var(--white);
     --small-text-color: var(--white);
     --label-color: var(--white);

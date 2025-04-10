@@ -10,28 +10,28 @@
     }
 
     .newsletter-cta {
-      background: var(--yellow-dark);
+      background: var(--yellow-2);
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
       margin-top: 1.5rem;
       padding: 1.5rem;
 
       @media (--dark) {
-        background: var(--exodus-fruit);
+        background: var(--purple-1);
       }
     }
   }
 
   &.-pre-footer {
-    background-color: var(--yellow-dark);
-    color: var(--plum-dark);
+    background-color: var(--yellow-2);
+    color: var(--plum-3);
     margin-top: spacing(var(--top-margin, 0));
     padding-bottom: spacing(8);
     padding-top: spacing(8);
 
     // Descendants
     p {
-      color: var(--plum-dark);
+      color: var(--plum-3);
     }
   }
 }
@@ -83,8 +83,8 @@
   }
 
   > input[type="submit"] {
-    --background: var(--plum-light);
-    --hover: var(--plum-dark);
+    --background: var(--plum-1);
+    --hover: var(--plum-3);
 
     background-color: var(--background);
     color: var(--white);
@@ -98,8 +98,8 @@
     }
 
     @media (--dark) {
-      --background: var(--plum-light);
-      --hover: var(--plum-dark);
+      --background: var(--plum-1);
+      --hover: var(--plum-3);
     }
 
     &:hover {

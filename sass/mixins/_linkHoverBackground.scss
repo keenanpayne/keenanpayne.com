@@ -5,16 +5,16 @@
 // TODO: Animate background as a `:before` pseudo-element
 //       to add a nice micro-interaction
 @mixin linkHoverBackground($dark: true) {
-  --link-text-decoration: var(--exodus-fruit);
-  --link-hover-background: var(--exodus-fruit);
+  --link-text-decoration: var(--purple-1);
+  --link-hover-background: var(--purple-1);
   --link-color-hover: var(--white);
   --link-spacing: 0.1em;
 
   @if ($dark) {
     @media (--dark) {
-      --link-text-decoration: var(--yellow-dark);
-      --link-hover-background: var(--yellow-dark);
-      --link-color-hover: var(--plum-dark);
+      --link-text-decoration: var(--yellow-2);
+      --link-hover-background: var(--yellow-2);
+      --link-color-hover: var(--plum-3);
     }
   }
 

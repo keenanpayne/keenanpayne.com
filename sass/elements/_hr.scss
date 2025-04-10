@@ -5,10 +5,10 @@
 // Mixin
 // Ref: https://css-tricks.com/examples/hrs/
 @mixin hr-fancy() {
-  --hr-color: var(--gray-dark);
+  --hr-color: var(--gray-4);
 
   @media (--dark) {
-    --hr-color: var(--gray-darkest-1);
+    --hr-color: var(--gray-7);
   }
 
   border: none;

@@ -71,18 +71,18 @@
 }
 
 .portfolioGrid-caption {
-  color: var(--gray-darkest-1);
-  border-top: 1px solid var(--plum-light);
+  color: var(--gray-7);
+  border-top: 1px solid var(--plum-1);
   padding-bottom: 0.45rem;
   padding-left: 1rem;
   padding-top: 0.5rem;
 
   // Descendants
   > a {
-    --text-color: var(--gray-darkest-1);
+    --text-color: var(--gray-7);
 
     &:hover {
-      --text-color: var(--plum-dark);
+      --text-color: var(--plum-3);
     }
   }
 }
@@ -110,11 +110,11 @@
 }
 
 .portfolioGrid.-contained {
-  --background: var(--yellow-light);
-  --background-hover: var(--yellow-light);
-  --border: var(--plum-light);
+  --background: var(--yellow-1);
+  --background-hover: var(--yellow-1);
+  --border: var(--plum-1);
   --image-height: 250px;
-  --text-color: var(--plum-dark);
+  --text-color: var(--plum-3);
 
   @media (--min-1120) {
     --image-height: 300px;

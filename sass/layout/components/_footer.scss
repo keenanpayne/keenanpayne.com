@@ -3,8 +3,8 @@
 // ==================================================
 
 .footer {
-  --background: var(--gray-lighter);
-  --border: var(--gray-darker);
+  --background: var(--gray-1);
+  --border: var(--gray-5);
   --vertical-padding: 1.5rem;
 
   background-color: var(--background);
@@ -14,8 +14,8 @@
   z-index: 1;
 
   @media (--dark) {
-    --background: var(--plum-dark);
-    --border: var(--plum-light);
+    --background: var(--plum-3);
+    --border: var(--plum-1);
   }
 
   @media (--min-720) {

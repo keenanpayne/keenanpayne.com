@@ -3,10 +3,10 @@
 // ==================================================
 
 :root {
-  --toc-background: var(--gray-lighter);
+  --toc-background: var(--gray-1);
   --toc-border-radius: 3px;
-  --toc-text-decoration: var(--gray-darker);
-  --toc-summary-background: var(--exodus-fruit);
+  --toc-text-decoration: var(--gray-5);
+  --toc-summary-background: var(--purple-1);
   --toc-summary-color: var(--white);
 }
 
@@ -55,7 +55,7 @@
   }
 
   a {
-    --link-color: var(--plum-dark);
+    --link-color: var(--plum-3);
   }
 }
 

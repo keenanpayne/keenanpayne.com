@@ -103,8 +103,8 @@
         background: linear-gradient(
           to right,
           var(--orange),
-          var(--carmine-pink),
-          var(--exodus-fruit)
+          var(--pink),
+          var(--purple-1)
         );
         bottom: 0;
         border-radius: 1px;
@@ -328,7 +328,7 @@
 
   // More Link
   .more {
-    --more-hover-color: var(--exodus-fruit-dark);
+    --more-hover-color: var(--purple-2);
 
     border-bottom: 1px solid var(--color-black);
     display: inline-block;
@@ -339,7 +339,7 @@
     width: fit-content;
 
     @media (--dark) {
-      --more-hover-color: var(--yellow-dark);
+      --more-hover-color: var(--yellow-2);
     }
 
     &:hover {
@@ -350,7 +350,7 @@
 }
 
 .cta {
-  --background: var(--yellow-light);
+  --background: var(--yellow-1);
   --border: var(--color-border);
 
   background-color: var(--background);
@@ -361,7 +361,7 @@
   padding-top: spacing(10);
 
   @media (--dark) {
-    --background: var(--exodus-fruit);
+    --background: var(--purple-1);
     --border: transparent;
   }
 

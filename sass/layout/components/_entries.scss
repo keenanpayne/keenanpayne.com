@@ -45,7 +45,7 @@
 
   &:hover {
     text-decoration: underline;
-    text-decoration-color: var(--gray-darker);
+    text-decoration-color: var(--gray-5);
     text-decoration-thickness: 3px;
     text-underline-position: from-font;
     text-underline-offset: 0;
@@ -99,12 +99,12 @@
 }
 
 .entries-label {
-  border-bottom: 1px solid var(--exodus-fruit);
+  border-bottom: 1px solid var(--purple-1);
   margin-bottom: 0.5em;
   position: relative;
 
   @media (--dark) {
-    border-bottom-color: var(--yellow-dark);
+    border-bottom-color: var(--yellow-2);
   }
 }
 
@@ -172,7 +172,7 @@
 
 // Portfolio Items
 .entries-portfolio-meta {
-  --border-color: var(--exodus-fruit);
+  --border-color: var(--purple-1);
 
   border-top: 1px solid var(--border-color);
   display: flex;

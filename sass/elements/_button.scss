@@ -26,8 +26,8 @@ button,
   }
 
   &.-primary {
-    --background: var(--exodus-fruit);
-    --background-hover: var(--plum-dark);
+    --background: var(--purple-1);
+    --background-hover: var(--plum-3);
     --color: var(--white);
     --color-hover: var(--white);
     --link-color: var(--color);
@@ -37,16 +37,16 @@ button,
     padding: 0.75rem 1.15rem;
 
     @media (--dark) {
-      --background: var(--yellow-dark);
-      --background-hover: var(--yellow-light);
-      --color: var(--plum-dark);
+      --background: var(--yellow-2);
+      --background-hover: var(--yellow-1);
+      --color: var(--plum-3);
       --color-hover: var(--color);
     }
   }
 
   &.-secondary {
-    --background: var(--exodus-fruit);
-    --background-hover: var(--exodus-fruit-dark);
+    --background: var(--purple-1);
+    --background-hover: var(--purple-2);
     --color: var(--white);
     --color-hover: var(--white);
 
@@ -56,8 +56,8 @@ button,
 
   &.-ghost {
     --background: var(--pre-background);
-    --background-hover: var(--exodus-fruit);
-    --border: var(--exodus-fruit);
+    --background-hover: var(--purple-1);
+    --border: var(--purple-1);
     --color-hover: var(--white);
 
     border: 2px solid var(--border);
@@ -65,10 +65,10 @@ button,
     padding: 0.75rem 1rem;
 
     @media (--dark) {
-      --background: var(--plum-dark);
-      --background-hover: var(--yellow-dark);
-      --border: var(--yellow-dark);
-      --color-hover: var(--plum-dark);
+      --background: var(--plum-3);
+      --background-hover: var(--yellow-2);
+      --border: var(--yellow-2);
+      --color-hover: var(--plum-3);
     }
   }
 
