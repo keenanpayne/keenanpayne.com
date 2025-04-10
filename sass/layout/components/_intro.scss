@@ -1,0 +1,98 @@
+.intro {
+  @include container;
+
+  padding-top: spacing(3);
+
+  @media (--min-1120) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: calc(5 * var(--spacing-unit));
+    grid-row-gap: calc(5 * var(--spacing-unit));
+    padding-top: spacing(5);
+  }
+
+  @media (--min-1120) {
+    align-items: center;
+  }
+}
+
+.intro-left {
+  margin-bottom: spacing(5);
+  grid-column: 1 / span 7;
+
+  @media (--min-960) {
+    margin-bottom: 0;
+  }
+
+  @media (--min-1120) {
+    grid-column-end: span 6;
+  }
+
+  // Modifiers
+  &.-full-width {
+    grid-column: 1 / -1;
+
+    @media (--min-1120) {
+      grid-column-end: span 12;
+    }
+  }
+}
+
+.intro-right {
+  grid-column: 8 / -1;
+
+  @media (--min-1120) {
+    grid-column-start: 7;
+  }
+}
+
+.intro-heading {
+  @include h2;
+
+  @media (--min-800) {
+    @include h1;
+  }
+
+  @media (--min-1260) {
+    @include text-large;
+  }
+}
+
+.intro-subheading {
+  font-style: italic;
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-step-2);
+  font-weight: var(--font-weight-lighter);
+  line-height: 1.55;
+  margin-top: spacing(1.5);
+
+  // Descendants
+  br {
+    display: none;
+
+    @media (--min-1440) {
+      display: block;
+    }
+  }
+
+  // TODO: Duplicated from `_portfolio.scss`
+  >strong {
+    font-weight: var(--font-weight-semibold);
+    position: relative;
+    white-space: pre;
+
+    &::after {
+      background: linear-gradient(to right,
+          var(--color-orange),
+          var(--color-pink),
+          var(--color-purple-1));
+      bottom: 0;
+      border-radius: 1px;
+      content: "";
+      height: 3px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
