@@ -18,7 +18,7 @@
   {% if items %}
     <div class="collections-items {{ layout if orientation and columns else '-' ~ orientation }}">
       {% set itemsFrom = items.from %}
-      {% set itemsLimit = items.limit %}
+      {% set itemsLimit = items.limit or 99999 %}
       {% set featured = items.featured %}
       {% set collection = collections[itemsFrom] | head(-itemsLimit) %}
       {% set tag = tag %}
