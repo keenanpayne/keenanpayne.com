@@ -40,36 +40,36 @@ https://github.com/keenanpayne/keenanpayne.com
         </h1>
 
         {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
-        <div class="navigation">
-          <nav class="navigation-icons">
-            {# TODO: Build new component that mimics `hello` #}
-            {# <a class="navigation-icons-item" href="" title="Learn more about me">
-              {% include "svg/hand.svg" %}
+        {# <div class="navigation"> #}
+        <nav class="navigation-primary">
+          {%- for entry in collections.all | eleventyNavigation -%}
+            <a class="navigation-primary-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
+              <span data-content="{{ entry.title }}">
+                {{ entry.title }}
+              </span>
             </a>
+          {%- endfor -%}
+        </nav>
+        {# </div> #}
 
-            <a class="navigation-icons-item" href="" title="Search my website">
-              {% include "svg/search.svg" %}
-            </a> #}
+        <nav class="navigation-icons">
+          {# TODO: Build new component that mimics `hello` #}
+          {# <a class="navigation-icons-item" href="" title="Learn more about me">
+            {% include "svg/hand.svg" %}
+          </a>
 
-            <a class="navigation-icons-item" href="https://calendly.com/keenanpayne/" title="Schedule time to talk" target="_blank" rel="noopener">
-              {% include "svg/calendar.svg" %}
-            </a>
+          <a class="navigation-icons-item" href="" title="Search my website">
+            {% include "svg/search.svg" %}
+          </a> #}
 
-            <a class="navigation-icons-item" href="/subscribe" title="Subscribe to my newsletter">
-              {% include "svg/mailbox.svg" %}
-            </a>
-          </nav>
+          <a class="navigation-icons-item" href="https://calendly.com/keenanpayne/" title="Schedule time to talk" target="_blank" rel="noopener">
+            {% include "svg/calendar.svg" %}
+          </a>
 
-          <nav class="navigation-primary">
-            {%- for entry in collections.all | eleventyNavigation -%}
-              <a class="navigation-primary-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
-                <span data-content="{{ entry.title }}">
-                  {{ entry.title }}
-                </span>
-              </a>
-            {%- endfor -%}
-          </nav>
-        </div>
+          <a class="navigation-icons-item" href="/subscribe" title="Subscribe to my newsletter">
+            {% include "svg/mailbox.svg" %}
+          </a>
+        </nav>
       </div>
     </header>
 
