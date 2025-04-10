@@ -5,13 +5,8 @@
 .header {
   @include container;
 
-  margin-bottom: spacing(3);
   padding-bottom: spacing(3);
   padding-top: spacing(3);
-
-  @media (--min-720) {
-    margin-bottom: spacing(5);
-  }
 }
 
 .header-container {
@@ -20,7 +15,7 @@
   justify-content: space-between;
   gap: 1.5rem;
 
-  @media (--min-720) {
+  @media (--min-800) {
     align-items: center;
     flex-direction: row;
   }
@@ -34,7 +29,7 @@
   margin-bottom: 0;
   margin-top: 0;
 
-  @media (--min-720) {
+  @media (--min-800) {
     font-size: 40px;
   }
 
