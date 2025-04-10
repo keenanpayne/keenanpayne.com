@@ -15,6 +15,7 @@
 // Mixins
 @import "mixins/clearfix";
 @import "mixins/externalLink";
+@import "mixins/grid";
 @import "mixins/linkHoverBackground";
 @import "mixins/pullContentOutside";
 @import "mixins/typography";
@@ -54,6 +55,7 @@
 // Components
 @import "layout/components/blockquote";
 @import "layout/components/codepen";
+@import "layout/components/collections";
 @import "layout/components/comments";
 @import "layout/components/contact";
 @import "layout/components/context";
@@ -86,6 +88,3 @@
 @import "layout/pages/portfolio";
 @import "layout/pages/services";
 @import "layout/pages/post";
-
-// TODO: New styles
-@import "new";

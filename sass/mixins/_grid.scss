@@ -1,0 +1,8 @@
+@mixin grid($columnGap: 3, $rowGap: 5) {
+  @media (--min-960) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: calc(#{$columnGap} * var(--spacing-unit));
+    grid-row-gap: calc(#{$rowGap} * var(--spacing-unit));
+  }
+}

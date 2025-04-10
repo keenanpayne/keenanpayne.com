@@ -166,3 +166,11 @@
     max-width: #{$size}ch;
   }
 }
+
+//
+// Grid
+// ----
+
+._grid {
+  @include grid;
+}
