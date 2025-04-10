@@ -32,10 +32,12 @@
 }
 
 .portfolio-title {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 
   @media (--min-960) {
     @include text-large();
+
+    margin-bottom: 1rem;
   }
 
   @media (--min-1120) {
@@ -196,12 +198,14 @@
 
 .portfolio-cover {
   grid-column: 1 / -1;
+  margin-bottom: spacing(3);
   margin-top: 0.25rem;
   order: -1;
   width: 100%;
 
   @media (--min-720) {
     grid-column: 6 / -1;
+    margin-bottom: 0;
     order: initial;
     padding-right: 1.5rem;
   }

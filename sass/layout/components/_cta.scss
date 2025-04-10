@@ -6,16 +6,21 @@
   border-bottom: 1px solid var(--border);
   border-top: 1px solid var(--border);
   margin-top: spacing(var(--top-margin, 0));
-  padding-bottom: spacing(10);
-  padding-top: spacing(10);
+  padding-bottom: spacing(7.5);
+  padding-top: spacing(7.5);
 
   @media (--dark) {
     --background: var(--color-purple-1);
     --border: transparent;
   }
 
-  @media (--min-480) {
+  @media (--min-720) {
     text-align: center;
+  }
+
+  @media (--min-960) {
+    padding-bottom: spacing(10);
+    padding-top: spacing(10);
   }
 }
 
@@ -26,10 +31,13 @@
 .cta-subheading {
   @include h5;
 
-  margin-left: auto;
-  margin-right: auto;
   margin-top: spacing(2);
-  max-width: 40ch;
+
+  @media (--min-960) {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 40ch;
+  }
 }
 
 .cta-link {

@@ -3,11 +3,10 @@ title: About Keenan
 eleventyNavigation:
   key: About
   order: 1
-templateClass: _container
+templateClass: _container -small
 ---
 
 <section class="longform">
-<div class="_container -small">
 <h1 class="longform-heading">Hey there, I'm Keenan ✌🏻</h1>
 
 <p class="longform-subheading">Thank you for visiting my website! <br class="_hidden-720">Welcome to my little corner of the internet.</p>
@@ -26,7 +25,6 @@ I've built websites for cool companies like <a href="/portfolio/asana" title="Vi
 
 We're both humans, so why not get a little personal?<br>Photos are displayed newest-to-oldest.
 
-</div>
 </div>
 
 <div class="about-photos">
