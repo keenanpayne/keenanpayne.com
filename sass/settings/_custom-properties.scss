@@ -17,7 +17,8 @@
   --color-gray-5: #a7a5b4;
   --color-gray-6: #908e9b;
   --color-gray-7: #524c4c;
-  --color-gray-8: #100f16;
+  --color-gray-8: #393333;
+  --color-gray-9: #100f16;
 
   --color-orange: #f27121;
 
@@ -40,8 +41,8 @@
   --color-pre-background: var(--color-gray-1);
   --color-small-text: var(--color-gray-4);
   --color-label: var(--color-plum-3);
-  --color-heading: var(--color-gray-8);
-  --color-paragraph: var(--color-gray-8);
+  --color-heading: var(--color-gray-9);
+  --color-paragraph: var(--color-gray-9);
 
   // Font Families
   --font-family-base:
@@ -58,11 +59,7 @@
   --font-size-base: 1rem;
 
   /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1,16,1.25,8,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
-  --font-size-step--2: clamp(
-    0.64rem,
-    0.6398rem + 0.2731vw,
-    0.6944rem
-  );
+  --font-size-step--2: clamp(0.64rem, 0.6398rem + 0.2731vw, 0.6944rem);
   --font-size-step--1: clamp(0.8rem, 0.7999rem + 0.1672vw, 0.8333rem);
   --font-size-step-0: clamp(1rem, 1rem + 0vw, 1rem);
   --font-size-step-1: clamp(1.2rem, 1.2502rem + -0.2508vw, 1.25rem);
