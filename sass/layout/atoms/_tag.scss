@@ -7,11 +7,11 @@
 .tag:not(.token) {
   @extend ._text-smaller;
 
-  --tag-background: var(--white);
+  --tag-background: var(--color-white);
 
   align-items: center;
   background-color: var(--tag-background);
-  border: 1px solid var(--gray-3);
+  border: 1px solid var(--color-gray-3);
   border-radius: var(--border-radius);
   box-shadow: 0 1px 1px 0px rgb(100 100 100 / 15%);
   display: inline-flex;
@@ -23,9 +23,9 @@
   transition: all var(--transition);
 
   @media (--dark) {
-    --tag-background: var(--plum-1);
+    --tag-background: var(--color-plum-1);
 
-    border-color: var(--gray-4);
+    border-color: var(--color-gray-4);
     box-shadow: none;
   }
 
@@ -37,16 +37,16 @@
   }
 
   &.-inactive {
-    --tag-background: var(--purple-1);
+    --tag-background: var(--color-purple-1);
 
-    border-color: var(--purple-1);
-    color: var(--gray-1);
+    border-color: var(--color-purple-1);
+    color: var(--color-gray-1);
 
     @media (--dark) {
-      --tag-background: var(--yellow-2);
+      --tag-background: var(--color-yellow-2);
 
-      border-color: var(--yellow-2);
-      color: var(--plum-3);
+      border-color: var(--color-yellow-2);
+      color: var(--color-plum-3);
     }
   }
 }
@@ -58,14 +58,14 @@ a[href].tag:visited {
 
 a[href].tag:hover,
 a[href].tag:focus {
-  background-color: var(--gray-1);
-  border-color: var(--gray-5);
+  background-color: var(--color-gray-1);
+  border-color: var(--color-gray-5);
   box-shadow: none;
   color: initial;
 
   @media (--dark) {
-    background-color: var(--plum-3);
-    border-color: var(--gray-6);
+    background-color: var(--color-plum-3);
+    border-color: var(--color-gray-6);
     color: currentColor;
   }
 }

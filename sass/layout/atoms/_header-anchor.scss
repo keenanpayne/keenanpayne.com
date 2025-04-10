@@ -3,14 +3,14 @@
 // ==================================================
 
 a[href].header-anchor {
-  --header-anchor-color: var(--plum-3);
+  --header-anchor-color: var(--color-plum-3);
 
   color: var(--header-anchor-color);
   position: relative;
   text-decoration: none;
 
   @media (--dark) {
-    --header-anchor-color: var(--white);
+    --header-anchor-color: var(--color-white);
   }
 
   // Hover and focus state

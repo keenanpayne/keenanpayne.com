@@ -3,7 +3,7 @@
 // ==================================================
 
 .footnotes-heading {
-  border-bottom: 1px solid var(--gray-4);
+  border-bottom: 1px solid var(--color-gray-4);
   margin-bottom: 1em;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .footnote-item {
-  font-size: var(--font-base);
+  font-size: var(--font-size-base);
 
   &:not(:first-of-type) {
     margin-top: 1rem;

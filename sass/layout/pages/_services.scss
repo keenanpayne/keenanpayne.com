@@ -22,7 +22,7 @@
 }
 
 .services-footer {
-  border-top: 1px solid var(--gray-4);
+  border-top: 1px solid var(--color-gray-4);
   font-family: var(--font-family-serif);
   margin-top: 3rem;
   padding-top: 1.5rem;
@@ -149,17 +149,17 @@
 
   // Descendants
   path {
-    fill: var(--plum-3);
+    fill: var(--color-plum-3);
 
     @media (--dark) {
-      fill: var(--yellow-1);
+      fill: var(--color-yellow-1);
     }
   }
 }
 
 .services-tools {
-  --background-color: var(--gray-2);
-  --border-color: var(--purple-1);
+  --background-color: var(--color-gray-2);
+  --border-color: var(--color-purple-1);
 
   background-color: var(--background-color);
   border-bottom: 5px solid var(--border-color);
@@ -169,8 +169,8 @@
   padding-bottom: 3rem;
 
   @media (--dark) {
-    --background-color: var(--plum-3);
-    --border-color: var(--yellow-2);
+    --background-color: var(--color-plum-3);
+    --border-color: var(--color-yellow-2);
   }
 }
 
@@ -204,14 +204,14 @@
 }
 
 .services-faq-item {
-  --border-color: var(--purple-1);
+  --border-color: var(--color-purple-1);
 
   &:not(:last-of-type) {
     border-bottom: 3px solid var(--border-color);
     padding-bottom: 1.5rem;
 
     @media (--dark) {
-      --border-color: var(--yellow-2);
+      --border-color: var(--color-yellow-2);
     }
   }
 

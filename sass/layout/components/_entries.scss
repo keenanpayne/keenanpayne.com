@@ -45,7 +45,7 @@
 
   &:hover {
     text-decoration: underline;
-    text-decoration-color: var(--gray-5);
+    text-decoration-color: var(--color-gray-5);
     text-decoration-thickness: 3px;
     text-underline-position: from-font;
     text-underline-offset: 0;
@@ -94,17 +94,17 @@
 
 .entries-tagsLink {
   font-size: 1.125rem;
-  font-weight: 500;
+  font-weight: var(--font-weight-semibold);
   margin-top: 3rem;
 }
 
 .entries-label {
-  border-bottom: 1px solid var(--purple-1);
+  border-bottom: 1px solid var(--color-purple-1);
   margin-bottom: 0.5em;
   position: relative;
 
   @media (--dark) {
-    border-bottom-color: var(--yellow-2);
+    border-bottom-color: var(--color-yellow-2);
   }
 }
 
@@ -172,7 +172,7 @@
 
 // Portfolio Items
 .entries-portfolio-meta {
-  --border-color: var(--purple-1);
+  --border-color: var(--color-purple-1);
 
   border-top: 1px solid var(--border-color);
   display: flex;

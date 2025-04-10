@@ -5,10 +5,10 @@
 // Mixin
 // Ref: https://css-tricks.com/examples/hrs/
 @mixin hr-fancy() {
-  --hr-color: var(--gray-4);
+  --hr-color: var(--color-gray-4);
 
   @media (--dark) {
-    --hr-color: var(--gray-7);
+    --hr-color: var(--color-gray-7);
   }
 
   border: none;
@@ -26,7 +26,7 @@
   }
 
   &:after {
-    background: var(--root-background);
+    background: var(--color-root-background);
     content: "§";
     display: inline-block;
     font-family: var(--font-family-serif);

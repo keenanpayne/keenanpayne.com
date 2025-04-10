@@ -43,10 +43,10 @@
     text-decoration: none;
 
     &:hover {
-      color: var(--purple-1);
+      color: var(--color-purple-1);
 
       @media (--dark) {
-        color: var(--yellow-2);
+        color: var(--color-yellow-2);
       }
     }
   }

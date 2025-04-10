@@ -10,28 +10,28 @@
     }
 
     .newsletter-cta {
-      background: var(--yellow-2);
+      background: var(--color-yellow-2);
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
       margin-top: 1.5rem;
       padding: 1.5rem;
 
       @media (--dark) {
-        background: var(--purple-1);
+        background: var(--color-purple-1);
       }
     }
   }
 
   &.-pre-footer {
-    background-color: var(--yellow-2);
-    color: var(--plum-3);
+    background-color: var(--color-yellow-2);
+    color: var(--color-plum-3);
     margin-top: spacing(var(--top-margin, 0));
     padding-bottom: spacing(8);
     padding-top: spacing(8);
 
     // Descendants
     p {
-      color: var(--plum-3);
+      color: var(--color-plum-3);
     }
   }
 }
@@ -77,17 +77,17 @@
   }
 
   > input[type="email"] {
-    background-color: var(--white);
+    background-color: var(--color-white);
     flex: 1;
     padding: 1rem 0.75rem;
   }
 
   > input[type="submit"] {
-    --background: var(--plum-1);
-    --hover: var(--plum-3);
+    --background: var(--color-plum-1);
+    --hover: var(--color-plum-3);
 
     background-color: var(--background);
-    color: var(--white);
+    color: var(--color-white);
     display: inline-block;
     padding: 0.75rem 1.25rem;
     transition: background-color var(--transition);
@@ -98,8 +98,8 @@
     }
 
     @media (--dark) {
-      --background: var(--plum-1);
-      --hover: var(--plum-3);
+      --background: var(--color-plum-1);
+      --hover: var(--color-plum-3);
     }
 
     &:hover {

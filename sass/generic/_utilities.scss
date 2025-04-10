@@ -85,7 +85,7 @@
 }
 
 ._label {
-  --border-color: var(--purple-1);
+  --border-color: var(--color-purple-1);
 
   align-items: center;
   color: var(--color-label);
@@ -100,7 +100,7 @@
   word-spacing: -0.1em;
 
   @media (--dark) {
-    --border-color: var(--yellow-2);
+    --border-color: var(--color-yellow-2);
   }
 
   &:after {
@@ -119,7 +119,7 @@
 
 // TODO: Fix specificity issues when used on links
 ._label-sans {
-  --link-color: var(--gray-7) !important;
+  --link-color: var(--color-gray-4est-1) !important;
 
   font-size: 18px;
   font-variant: all-small-caps;
@@ -127,7 +127,7 @@
   line-height: 1;
 
   @media (--dark) {
-    --link-color: var(--gray-1) !important;
+    --link-color: var(--color-gray-1) !important;
   }
 }
 
@@ -154,7 +154,7 @@
 // ------
 
 ._bg-white {
-  background-color: var(--white);
+  background-color: var(--color-white);
 }
 
 //

@@ -17,7 +17,7 @@
 // ------------------
 
 .navigation-primary {
-  background-color: var(--purple-3);
+  background-color: var(--color-purple-3);
   border-radius: 15px;
   display: flex;
   flex-direction: column;
@@ -41,14 +41,14 @@
 }
 
 .navigation-primary-item {
-  --underline-color: var(--purple-1);
+  --underline-color: var(--color-purple-1);
 
   position: relative;
   text-decoration: none;
   transition: clip-path 275ms ease;
 
   @media (--dark) {
-    --underline-color: var(--yellow-2);
+    --underline-color: var(--color-yellow-2);
   }
 
   &:hover span::before,
@@ -83,7 +83,7 @@
 
   // Modifiers
   &.-active {
-    --underline-color: var(--text-color);
+    --underline-color: var(--color-text);
 
     font-weight: var(--font-weight-semibold);
 
@@ -106,7 +106,7 @@
 .navigation-icons {
   margin-bottom: 0;
   padding: 0.75rem 1.25rem;
-  background-color: var(--gray-7);
+  background-color: var(--color-gray-7);
   border-radius: 15px;
   display: flex;
   align-items: center;

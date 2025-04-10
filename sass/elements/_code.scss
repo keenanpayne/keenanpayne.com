@@ -9,11 +9,11 @@ code {
 }
 
 p code {
-  background-color: var(--gray-1);
-  border: 1px solid var(--gray-3);
+  background-color: var(--color-gray-1);
+  border: 1px solid var(--color-gray-3);
   border-radius: var(--border-radius);
-  color: var(--plum-3);
-  font-size: var(--font-base);
+  color: var(--color-plum-3);
+  font-size: var(--font-size-base);
   padding-left: 0.35rem;
   padding-right: 0.35rem;
   white-space: nowrap;

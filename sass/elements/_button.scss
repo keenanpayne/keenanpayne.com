@@ -7,14 +7,14 @@ button,
   @include externalLink($size: 16px, $left: 8px);
 
   background-color: var(--background, initial);
-  color: var(--color, var(--link-color, var(--text-color)));
+  color: var(--color, var(--link-color, var(--color-text)));
   cursor: pointer;
   font-weight: var(--font-weight-semibold);
   text-decoration: none;
 
   &:hover {
     background-color: var(--background-hover, initial);
-    color: var(--color-hover, var(--link-color, var(--text-color)));
+    color: var(--color-hover, var(--link-color, var(--color-text)));
   }
 
   // Modifiers
@@ -26,10 +26,10 @@ button,
   }
 
   &.-primary {
-    --background: var(--purple-1);
-    --background-hover: var(--plum-3);
-    --color: var(--white);
-    --color-hover: var(--white);
+    --background: var(--color-purple-1);
+    --background-hover: var(--color-plum-3);
+    --color: var(--color-white);
+    --color-hover: var(--color-white);
     --link-color: var(--color);
     --link-color-hover: var(--color-hover);
 
@@ -37,38 +37,38 @@ button,
     padding: 0.75rem 1.15rem;
 
     @media (--dark) {
-      --background: var(--yellow-2);
-      --background-hover: var(--yellow-1);
-      --color: var(--plum-3);
+      --background: var(--color-yellow-2);
+      --background-hover: var(--color-yellow-1);
+      --color: var(--color-plum-3);
       --color-hover: var(--color);
     }
   }
 
   &.-secondary {
-    --background: var(--purple-1);
-    --background-hover: var(--purple-2);
-    --color: var(--white);
-    --color-hover: var(--white);
+    --background: var(--color-purple-1);
+    --background-hover: var(--color-purple-2);
+    --color: var(--color-white);
+    --color-hover: var(--color-white);
 
     border-radius: var(--border-radius);
     padding: 0.75rem 1.15rem;
   }
 
   &.-ghost {
-    --background: var(--pre-background);
-    --background-hover: var(--purple-1);
-    --border: var(--purple-1);
-    --color-hover: var(--white);
+    --background: var(--color-pre-background);
+    --background-hover: var(--color-purple-1);
+    --border: var(--color-purple-1);
+    --color-hover: var(--color-white);
 
     border: 2px solid var(--border);
     border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
 
     @media (--dark) {
-      --background: var(--plum-3);
-      --background-hover: var(--yellow-2);
-      --border: var(--yellow-2);
-      --color-hover: var(--plum-3);
+      --background: var(--color-plum-3);
+      --background-hover: var(--color-yellow-2);
+      --border: var(--color-yellow-2);
+      --color-hover: var(--color-plum-3);
     }
   }
 

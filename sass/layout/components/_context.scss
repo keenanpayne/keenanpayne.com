@@ -83,8 +83,8 @@ p {
     }
 
     &.-notice {
-      --border: var(--yellow-2);
-      --background: var(--white);
+      --border: var(--color-yellow-2);
+      --background: var(--color-white);
       --text: "Notice";
 
       .icon {
@@ -92,48 +92,48 @@ p {
       }
 
       @media (--dark) {
-        color: var(--plum-3);
+        color: var(--color-plum-3);
       }
     }
 
     &.-question {
-      --border: var(--purple-1);
-      --background: var(--gray-1);
+      --border: var(--color-purple-1);
+      --background: var(--color-gray-1);
       --text: "Question";
-      --color: var(--plum-3);
+      --color: var(--color-plum-3);
 
       color: var(--color);
 
       @media (--dark) {
-        --color: var(--plum-3);
+        --color: var(--color-plum-3);
       }
 
       &::before {
-        color: var(--white);
+        color: var(--color-white);
       }
     }
 
     &.-note,
     &.-tip {
-      --border: var(--yellow-2);
+      --border: var(--color-yellow-2);
 
       border-left: 3px solid var(--border);
       border-right: 3px solid var(--border);
       border-bottom: 3px solid var(--border);
 
       &::before {
-        color: var(--plum-3);
+        color: var(--color-plum-3);
       }
     }
 
     &.-note {
-      --background: var(--gray-1);
+      --background: var(--color-gray-1);
       --text: "Note";
 
-      color: var(--text-color);
+      color: var(--color-text);
 
       @media (--dark) {
-        --background: var(--plum-3);
+        --background: var(--color-plum-3);
       }
 
       // Modifiers
@@ -173,41 +173,41 @@ p {
     }
 
     &.-tip {
-      --background: var(--yellow-1);
+      --background: var(--color-yellow-1);
       --text: "Tip";
 
-      color: var(--plum-3);
+      color: var(--color-plum-3);
     }
 
     &.-further-reading {
       --text: "Further Reading";
 
       background-color: transparent;
-      border-bottom: 1px solid var(--purple-1);
-      border-top: 1px solid var(--purple-1);
+      border-bottom: 1px solid var(--color-purple-1);
+      border-top: 1px solid var(--color-purple-1);
       border-radius: 0;
       box-shadow: none;
       padding-top: 2rem;
 
       &::before {
-        background-color: var(--purple-1);
+        background-color: var(--color-purple-1);
         border-top-left-radius: 0;
-        color: var(--white);
+        color: var(--color-white);
       }
     }
 
     &.-tldr {
-      --background: var(--pre-background);
-      --border: var(--gray-3);
+      --background: var(--color-pre-background);
+      --border: var(--color-gray-3);
       --text: "TL;DR";
 
-      color: var(--plum-3);
+      color: var(--color-plum-3);
       border-left: 5px solid var(--border);
       border-right: 5px solid var(--border);
       border-bottom: 5px solid var(--border);
 
       &::before {
-        background-color: var(--gray-3);
+        background-color: var(--color-gray-3);
       }
     }
 

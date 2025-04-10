@@ -35,7 +35,7 @@
 }
 
 .post-footer {
-  border-top: 1px solid var(--gray-4);
+  border-top: 1px solid var(--color-gray-4);
   font-family: var(--font-family-serif);
   margin-top: 3rem;
   padding-top: 1.5rem;
@@ -181,7 +181,7 @@
     // NOTE: This is kind of a hack because I have some transparent PNG drawings
     //       (e.g., creating-planning.md) that don't look good without a white background
     @media (--dark) {
-      background-color: var(--white);
+      background-color: var(--color-white);
     }
   }
 
@@ -214,8 +214,8 @@
       padding: 0.1em 0.4em;
 
       @media (--dark) {
-        background: var(--yellow-2);
-        box-shadow: 2px 0 6px 1px var(--yellow-2);
+        background: var(--color-yellow-2);
+        box-shadow: 2px 0 6px 1px var(--color-yellow-2);
         border-radius: 0.75em 0.45em;
         margin: 0 -0.1em;
       }

@@ -35,7 +35,7 @@
 }
 
 .ContactForm-input {
-  border: 1px solid var(--gray-6);
+  border: 1px solid var(--color-gray-6);
   display: block;
   font-family: var(--font-family-base);
   font-size: 0.9rem;
@@ -57,7 +57,7 @@
 
   // Placeholders
   &::placeholder {
-    color: var(--gray-6);
+    color: var(--color-gray-6);
     font-size: 0.9rem;
   }
 }
@@ -73,8 +73,8 @@ textarea.ContactForm-input {
 }
 
 .ContactForm-button {
-  background-color: var(--yellow-2);
-  border: 2px solid var(--yellow-2);
+  background-color: var(--color-yellow-2);
+  border: 2px solid var(--color-yellow-2);
   border-radius: 25px;
   cursor: pointer;
   font-family: var(--font-family-base);
@@ -88,9 +88,9 @@ textarea.ContactForm-input {
   }
 
   &:hover {
-    background-color: var(--gray-2);
-    border-color: var(--plum-3);
-    color: var(--plum-3);
+    background-color: var(--color-gray-2);
+    border-color: var(--color-plum-3);
+    color: var(--color-plum-3);
   }
 }
 

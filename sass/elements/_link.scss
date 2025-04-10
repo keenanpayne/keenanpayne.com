@@ -3,18 +3,18 @@
 // ==================================================
 
 a {
-  color: var(--link-color, var(--link-color, var(--text-color)));
+  color: var(--link-color, var(--link-color, var(--color-text)));
 
   &:hover {
-    color: var(--link-color-hover, var(--link-color, var(--text-color)));
+    color: var(--link-color-hover, var(--link-color, var(--color-text)));
   }
 
   // Modifiers
   &.-inverted {
-    --link-color: var(--gray-1);
+    --link-color: var(--color-gray-1);
 
     @media (--dark) {
-      --link-color: var(--plum-3);
+      --link-color: var(--color-plum-3);
     }
   }
 

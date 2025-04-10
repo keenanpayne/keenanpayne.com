@@ -5,7 +5,7 @@
 .blockquote {
   @include pullContentOutside;
 
-  color: var(--text-color);
+  color: var(--color-text);
   font-family: var(--font-family-serif);
   font-style: italic;
   margin-bottom: 1.5rem;

@@ -3,11 +3,11 @@
 // ==================================================
 
 :root {
-  --toc-background: var(--gray-1);
+  --toc-background: var(--color-gray-1);
   --toc-border-radius: 3px;
-  --toc-text-decoration: var(--gray-5);
-  --toc-summary-background: var(--purple-1);
-  --toc-summary-color: var(--white);
+  --toc-text-decoration: var(--color-gray-5);
+  --toc-summary-background: var(--color-purple-1);
+  --toc-summary-color: var(--color-white);
 }
 
 .toc {
@@ -50,12 +50,12 @@
   }
 
   li {
-    font-size: var(--font-base);
+    font-size: var(--font-size-base);
     margin-top: 0.5rem;
   }
 
   a {
-    --link-color: var(--plum-3);
+    --link-color: var(--color-plum-3);
   }
 }
 
