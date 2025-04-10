@@ -22,6 +22,5 @@ sections:
     spacing: 5
     items:
       from: services
-      limit: 3
   - type: cta
 ---
