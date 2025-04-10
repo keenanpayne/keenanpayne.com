@@ -174,3 +174,11 @@
 ._grid {
   @include grid;
 }
+
+//
+// Rainbow Underline
+// ------------------
+
+._rainbow-underline {
+  @include rainbowUnderline;
+}

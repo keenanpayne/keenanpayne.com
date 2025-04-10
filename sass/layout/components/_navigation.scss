@@ -2,85 +2,47 @@
 // Navigation
 // ==================================================
 
-.navigation-primary {
-  border: 1px solid var(--color-purple-2);
-  border-radius: 15px;
+.navigation {
+  border-top: 1px solid var(--color-gray-4);
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0.75rem 1.25rem;
-  width: 100%;
+  margin-top: 1.5rem;
+}
 
-  @media (--min-560) {
-    flex-direction: row;
-  }
+.navigation-primary {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
-  @media (--min-800) {
-    border-radius: 50px;
-    gap: 1.5rem;
-    width: auto;
-  }
-
-  @media (--min-1120) {
-    gap: 1.75rem;
+  @media (--min-960) {
+    justify-content: space-between;
   }
 }
 
 .navigation-primary-item {
-  --underline-color: var(--color-purple-1);
-
+  line-height: 1.5;
+  padding: 1.25rem 1rem;
   position: relative;
   text-decoration: none;
   transition: clip-path 275ms ease;
 
-  @media (--dark) {
-    --underline-color: var(--color-yellow-2);
+  @media (--min-960) {
+    padding: 1.5rem 2rem;
   }
 
-  &:hover span::before,
-  &:focus span::before {
-    @media (pointer: fine) {
-      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-  }
-
-  // Descendants
-  span {
-    display: inline-block;
-    position: relative;
-
-    &::before {
-      clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
-      color: var(--underline-color);
-      content: attr(data-content);
-      position: absolute;
-      text-decoration: underline;
-      transition: clip-path 275ms ease;
-    }
-  }
-
-  &:not(:first-of-type) {
-    margin-top: spacing(1.25);
-
-    @media (--min-560) {
-      margin-top: 0;
-    }
+  &:hover,
+  &:focus {
+    background-color: var(--color-nav-background-hover);
   }
 
   // Modifiers
   &.-active {
-    --underline-color: var(--color-text);
-
+    background-color: var(--color-nav-background-hover);
     font-weight: var(--font-weight-semibold);
 
     &:hover {
       text-decoration: none;
-    }
-
-    span {
-      &::before {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-      }
     }
   }
 }
@@ -91,25 +53,25 @@
 
 .navigation-icons {
   margin-bottom: 0;
-  padding: 0.75rem 1.25rem;
-  background-color: var(--color-gray-8);
-  border-radius: 15px;
   display: flex;
   align-items: center;
   gap: 1.25rem;
 
-  @media (--min-800) {
-    border-radius: 50px;
+  @media (--min-960) {
     width: auto;
   }
 }
 
 .navigation-icons-item {
-  color: var(--color-gray-1);
+  padding: 1.25rem 1rem;
   text-decoration: none;
+
+  @media (--min-960) {
+    padding: 1.5rem 2rem;
+  }
 
   // Descendants
   svg {
-    height: 15px;
+    height: 22px;
   }
 }

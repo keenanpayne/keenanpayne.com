@@ -1,0 +1,21 @@
+@mixin rainbowUnderline {
+  font-weight: var(--font-weight-semibold);
+  position: relative;
+  white-space: pre;
+
+  &::after {
+    background: linear-gradient(
+      to right,
+      var(--color-orange),
+      var(--color-pink),
+      var(--color-purple-1)
+    );
+    bottom: 0;
+    border-radius: 1px;
+    content: "";
+    height: 3px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+}

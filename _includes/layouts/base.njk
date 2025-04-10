@@ -43,13 +43,20 @@ https://github.com/keenanpayne/keenanpayne.com
           </a>
         </h1>
 
-        {#- Read more about `eleventy-navigation` at https://www.11ty.dev/docs/plugins/navigation/ #}
+        <p class="header-tagline">
+          Providing design and development services <strong class="_rainbow-underline">since 2007</strong>
+        </p>
+
+        <a href="/project-inquiry" class="header-button button -primary">
+          Inquire about a project
+        </a>
+      </div>
+
+      <div class="navigation">
         <nav class="navigation-primary">
           {%- for entry in collections.all | eleventyNavigation -%}
             <a class="navigation-primary-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
-              <span data-content="{{ entry.title }}">
-                {{ entry.title }}
-              </span>
+              {{ entry.title }}
             </a>
           {%- endfor -%}
         </nav>

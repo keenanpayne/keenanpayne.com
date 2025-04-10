@@ -43,6 +43,8 @@
   --color-label: var(--color-plum-3);
   --color-heading: var(--color-gray-9);
   --color-paragraph: var(--color-gray-9);
+  --color-nav-background-hover: var(--color-yellow-1);
+  --color-topbar-background: var(--color-yellow-1);
 
   // Font Families
   --font-family-base:
@@ -115,5 +117,7 @@
     --color-black: var(--color-gray-1);
     --color-heading: var(--color-gray-1);
     --color-paragraph: var(--color-gray-1);
+    --color-nav-background-hover: var(--color-purple-1);
+    --color-topbar-background: var(--color-purple-1);
   }
 }

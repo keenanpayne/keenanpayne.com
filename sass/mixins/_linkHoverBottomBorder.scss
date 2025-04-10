@@ -1,0 +1,29 @@
+/* To make this work, you need to add a span with the data-content attribute to the link. 
+   Example:
+    <a href="/">
+      <span data-content="Home">Home</span>
+    </a>
+*/
+
+@mixin linkHoverBottomBorder {
+  &:hover span::before,
+  &:focus span::before {
+    @media (pointer: fine) {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+
+  span {
+    display: inline-block;
+    position: relative;
+
+    &::before {
+      clip-path: polygon(0 0, 0 0, 0% 100%, 0 100%);
+      color: var(--underline-color);
+      content: attr(data-content);
+      position: absolute;
+      text-decoration: underline;
+      transition: clip-path 275ms ease;
+    }
+  }
+}

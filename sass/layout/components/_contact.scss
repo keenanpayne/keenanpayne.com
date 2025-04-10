@@ -73,24 +73,15 @@ textarea.ContactForm-input {
 }
 
 .ContactForm-button {
-  background-color: var(--color-yellow-2);
-  border: 2px solid var(--color-yellow-2);
-  border-radius: 25px;
+  border: 0;
+  box-shadow: none;
   cursor: pointer;
   font-family: var(--font-family-base);
-  font-size: 1.25rem;
-  padding: 0.75rem 3rem;
   transition: all 150ms;
   width: 100%;
 
   @media (--min-480) {
     width: auto;
-  }
-
-  &:hover {
-    background-color: var(--color-gray-2);
-    border-color: var(--color-plum-3);
-    color: var(--color-plum-3);
   }
 }
 
