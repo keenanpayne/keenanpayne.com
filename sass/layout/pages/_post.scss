@@ -3,7 +3,7 @@
 // ==================================================
 
 .post {
-  --post-font-size: 1.125rem;
+  --font-size-base: 1.125rem;
 
   margin-bottom: 5rem;
   padding-left: 1.5rem;
@@ -15,7 +15,7 @@
   }
 
   @media (--min-1440) {
-    --post-font-size: 1.25rem;
+    --font-size-base: 1.25rem;
   }
 
   // Modifiers
@@ -105,26 +105,24 @@
 // ------------
 
 .post-content {
-  font-size: var(--post-font-size);
-
-  // Descendants
-  h2,
-  h3,
-  h4,
-  h5 {
+  // Direct Descendants
+  > h2,
+  > h3,
+  > h4,
+  > h5 {
     position: relative;
   }
 
-  h2 {
+  > h2 {
     margin-bottom: 1rem;
     margin-top: 3rem;
   }
 
-  hr + h2 {
+  > hr + h2 {
     margin-top: 1rem;
   }
 
-  h3 {
+  > h3 {
     @include h4;
 
     margin-bottom: 1rem;
@@ -132,21 +130,32 @@
     max-width: 35ch;
   }
 
-  h4 {
+  > h4 {
     @include h5;
   }
 
-  h2 + h3 {
+  > h2 + h3 {
     margin-top: 1.25rem;
   }
 
+  > p {
+    &:not(:last-of-type) {
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  > figure {
+    &:not(.-float-left):not(.-float-right) {
+      @include pullContentOutside();
+    }
+  }
+
+  // Descendants
   strong {
     font-weight: var(--font-weight-bold);
   }
 
   li {
-    font-size: var(--post-font-size);
-
     &:not(:first-of-type) {
       margin-top: 0.5rem;
     }
@@ -181,12 +190,6 @@
   }
 
   p {
-    font-size: var(--post-font-size);
-
-    &:not(:last-of-type):not(.-large) {
-      margin-bottom: 1.25rem;
-    }
-
     a {
       @include linkHoverBackground();
       @include externalLink();
@@ -214,12 +217,6 @@
         border-radius: 0.75em 0.45em;
         margin: 0 -0.1em;
       }
-    }
-  }
-
-  > figure {
-    &:not(.-float-left):not(.-float-right) {
-      @include pullContentOutside();
     }
   }
 
