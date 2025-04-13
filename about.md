@@ -3,7 +3,7 @@ title: About Keenan
 eleventyNavigation:
   key: About
   order: 1
-templateClass: _container -small
+templateClass: _container -small about
 ---
 
 <section class="longform">
