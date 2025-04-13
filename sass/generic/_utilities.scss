@@ -117,18 +117,10 @@
   }
 }
 
-// TODO: Fix specificity issues when used on links
 ._label-sans {
-  --link-color: var(--color-gray-4est-1) !important;
-
-  font-size: 18px;
   font-variant: all-small-caps;
   font-weight: var(--font-weight-bold);
   line-height: 1;
-
-  @media (--dark) {
-    --link-color: var(--color-gray-1) !important;
-  }
 }
 
 //

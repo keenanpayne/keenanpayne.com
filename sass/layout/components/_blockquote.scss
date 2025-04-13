@@ -58,18 +58,12 @@
   p {
     --horizontal-padding: 2rem;
 
-    line-height: 1.35;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     padding-left: var(--horizontal-padding);
     padding-right: var(--horizontal-padding);
 
     @media (--min-640) {
       --horizontal-padding: 3rem;
-    }
-
-    // TODO: Hacky override from `_post.scss`
-    &:first-of-type {
-      margin-bottom: 0.75rem !important;
     }
   }
 }

@@ -44,8 +44,3 @@ figcaption {
   margin-top: 1.25em;
   text-align: center;
 }
-
-// TODO: Refactor to remove overriding `!important`
-.figure-caption {
-  margin-bottom: 0.25rem !important;
-}

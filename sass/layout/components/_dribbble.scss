@@ -43,11 +43,10 @@
   }
 }
 
-// NOTE: `!important` overrides due to conflict in `._post.scss`
 .dribbble-headline {
   color: var(--color-white);
-  margin-bottom: 1rem !important;
-  margin-top: 2rem !important;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
 }
 
 .dribbble-items {
