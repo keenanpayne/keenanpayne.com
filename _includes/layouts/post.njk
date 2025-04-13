@@ -5,7 +5,7 @@ seoPriority: 0.7
 permalink: "/{{ title | slug }}/"
 ---
 
-{% import "organisms/newsletter.njk" as  newsletter with context %}
+{% import "components/newsletterStandalone.njk" as  newsletter with context %}
 
 {% if modifier %}
   {% set modifier = '-' ~ modifier %}
