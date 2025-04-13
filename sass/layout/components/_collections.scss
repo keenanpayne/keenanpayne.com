@@ -191,7 +191,7 @@
 }
 
 .collections-description {
-  margin-top: spacing(1);
+  margin-top: spacing(0.5);
 
   @media (--min-640) {
     padding-right: spacing(0.5);
@@ -204,7 +204,7 @@
   @media (--min-1120) {
     @include h6;
 
-    margin-top: spacing(1);
+    margin-top: spacing(0.5);
   }
 }
 
