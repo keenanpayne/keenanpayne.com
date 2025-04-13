@@ -1,0 +1,27 @@
+@mixin subtleBackground {
+  --background-color-subtleBackground: var(--color-yellow-1);
+  --text-color-subtleBackground: var(--color-gray-9);
+
+  color: var(--text-color-subtleBackground);
+  font-weight: var(--font-weight-semibold);
+  padding: 0.125rem 0.25rem;
+  position: relative;
+  white-space: pre;
+
+  @media (--dark) {
+    --background-color-subtleBackground: var(--color-purple-4);
+    --text-color-subtleBackground: var(--color-white);
+  }
+
+  &::after {
+    background: var(--background-color-subtleBackground);
+    bottom: 0;
+    border-radius: 5px;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+}
