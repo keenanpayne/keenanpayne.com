@@ -8,9 +8,11 @@
 {# Component Settings #}
 {% set heading = section.heading %}
 {% set subheading = section.subheading %}
+{% set body = section.body %}
 {% set right = section.right %}
 {% set headerMaxWidth = section.headerMaxWidth %}
 {% set subheadingMaxWidth = section.subheadingMaxWidth %}
+{% set bodyMaxWidth = section.bodyMaxWidth %}
 
 {# Markup #}
 <section class="intro _container _page-spacing-top">
@@ -30,6 +32,12 @@
     {% if subheading %}
       <p class="intro-subheading" style="{% if subheadingMaxWidth %}max-width: {{ subheadingMaxWidth }};{% endif %}">
         {{ subheading | safe }}
+      </p>
+    {% endif %}
+    
+    {% if body %}
+      <p class="intro-body" style="{% if bodyMaxWidth %}max-width: {{ bodyMaxWidth }};{% endif %}">
+        {{ body | safe }}
       </p>
     {% endif %}
   </header>
