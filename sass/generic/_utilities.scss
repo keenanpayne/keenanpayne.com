@@ -2,10 +2,7 @@
 // Utility Classes
 // ==================================================
 
-//
 // Layout
-// -------
-
 ._block-center {
   display: block;
   margin-left: auto;
@@ -16,10 +13,7 @@
   @include pullContentOutside();
 }
 
-//
-// Type Sizes
-// ----------
-
+// Typography
 ._text-h1 {
   @include h1;
 }
@@ -60,10 +54,7 @@
   @include text-larger();
 }
 
-//
-// Text Styles
-// -----------
-
+// Text
 ._text-align-center {
   text-align: center;
 }
@@ -123,10 +114,11 @@
   line-height: 1;
 }
 
-//
-// Visibility
-// ----------
+._rainbow-underline {
+  @include rainbowBackground;
+}
 
+// Visibility
 ._hidden {
   @include a11yHidden();
 }
@@ -141,36 +133,19 @@
   }
 }
 
-//
 // Colors
-// ------
-
 ._bg-white {
   background-color: var(--color-white);
 }
 
-//
 // Max character lengths
-// ----------------------
-
 @each $size in (15, 30, 45, 60, 75, 90, 105, 120) {
   ._max-ch-#{$size} {
     max-width: #{$size}ch;
   }
 }
 
-//
-// Grid
-// ----
-
+// Layout
 ._grid {
   @include grid;
-}
-
-//
-// Rainbow Underline
-// ------------------
-
-._rainbow-underline {
-  @include rainbowBackground;
 }
