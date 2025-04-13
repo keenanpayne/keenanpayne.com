@@ -1,6 +1,8 @@
 @mixin rainbowBackground {
   color: var(--color-white);
   font-weight: var(--font-weight-semibold);
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
   padding: 0.125rem 0.325rem;
   position: relative;
   white-space: pre;
