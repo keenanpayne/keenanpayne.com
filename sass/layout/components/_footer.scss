@@ -74,7 +74,7 @@
 
 .footer-socials-label {
   display: block;
-  margin-bottom: spacing(1.5);
+  margin-bottom: spacing(3);
 }
 
 .footer-socials-list {
@@ -141,5 +141,9 @@
 
   &.-threads {
     --brand-color: #0a0a0a;
+
+    @media (--dark) {
+      --brand-color: var(--color-gray-4);
+    }
   }
 }
