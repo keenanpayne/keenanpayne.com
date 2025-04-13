@@ -1,5 +1,7 @@
-@mixin rainbowUnderline {
+@mixin rainbowBackground {
+  color: var(--color-white);
   font-weight: var(--font-weight-semibold);
+  padding: 0.125rem 0.325rem;
   position: relative;
   white-space: pre;
 
@@ -11,9 +13,9 @@
       var(--color-purple-1)
     );
     bottom: 0;
-    border-radius: 1px;
+    border-radius: 3px;
     content: "";
-    height: 3px;
+    height: 100%;
     left: 0;
     position: absolute;
     width: 100%;
