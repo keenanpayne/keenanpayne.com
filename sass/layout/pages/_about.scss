@@ -16,10 +16,6 @@
 
 .about-photo {
   @media (--min-960) {
-    max-height: 400px;
-  }
-
-  @media (--min-1440) {
-    max-height: 500px;
+    max-height: 350px;
   }
 }
