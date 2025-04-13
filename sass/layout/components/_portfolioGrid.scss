@@ -79,11 +79,8 @@
 
   // Descendants
   > a {
-    --color-text: var(--color-gray-7);
-
-    &:hover {
-      --color-text: var(--color-plum-3);
-    }
+    --link-color: var(--color-gray-7);
+    --link-color-hover: var(--color-plum-3);
   }
 }
 

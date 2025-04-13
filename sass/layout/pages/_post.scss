@@ -42,19 +42,9 @@
 .post-footer {
   border-top: 1px solid var(--color-gray-4);
   font-family: var(--font-family-serif);
+  font-style: italic;
   margin-top: 3rem;
   padding-top: 1.5rem;
-
-  // Descendants
-  > a {
-    &:first-of-type {
-      font-style: italic;
-    }
-
-    &:hover {
-      text-decoration: none;
-    }
-  }
 }
 
 .post-title {
@@ -107,11 +97,6 @@
     @media (--min-560) {
       margin-bottom: 0;
     }
-  }
-
-  // Descendants
-  a {
-    padding-bottom: 0 !important; // TODO: Fix specificity issue
   }
 }
 
@@ -170,6 +155,11 @@
   ul {
     margin-bottom: 1.5rem;
     padding-left: 1.5rem;
+
+    a {
+      @include linkHoverBackground();
+      @include externalLink();
+    }
   }
 
   ul ul {

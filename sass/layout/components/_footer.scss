@@ -107,14 +107,12 @@
 }
 
 .footer-socials-link {
+  color: currentColor;
+
   &:hover {
     background-color: transparent;
     color: var(--brand-color);
     text-decoration: none;
-  }
-
-  &::after {
-    display: none !important; // Overriding external link styles
   }
 
   // Modifiers
