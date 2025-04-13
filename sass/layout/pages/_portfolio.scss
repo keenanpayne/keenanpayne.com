@@ -176,7 +176,7 @@
 
   // Descendants
   > strong {
-    @include rainbowUnderline;
+    @include subtleBackground;
   }
 }
 
