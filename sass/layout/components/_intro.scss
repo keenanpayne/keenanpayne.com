@@ -2,7 +2,6 @@
   @include container;
 
   @media (--min-1120) {
-    align-items: center;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: calc(5 * var(--spacing-unit));
