@@ -1,15 +1,12 @@
 .intro {
   @include container;
 
-  padding-top: spacing(3);
-
   @media (--min-1120) {
     align-items: center;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: calc(5 * var(--spacing-unit));
     grid-row-gap: calc(5 * var(--spacing-unit));
-    padding-top: spacing(5);
   }
 }
 

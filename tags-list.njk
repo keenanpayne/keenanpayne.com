@@ -1,15 +1,14 @@
 ---
 permalink: /tags/
-
 title: Tags
-templateClass: _container
+templateClass: _page-spacing-bottom
+sections:
+  - type: intro
+    heading: "Tags"
+    subheading: "Here are all of the topics that I've written about on my website. Click on any tag to find all relevant content."
 ---
 
-<h1 class="_text-align-center">
-  {{ title }}
-</h1>
-
-<div class="_text-align-center">
+<div class="_text-align-center" style="margin-top: 1.5rem">
   {%- for tag in collections.tagList -%}
     {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
 

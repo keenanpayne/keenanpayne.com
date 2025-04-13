@@ -149,3 +149,20 @@
 ._grid {
   @include grid;
 }
+
+// Spacing
+._page-spacing-top {
+  margin-top: 3rem;
+
+  @media (--min-1120) {
+    margin-top: 5rem;
+  }
+}
+
+._page-spacing-bottom {
+  margin-bottom: 3rem;
+
+  @media (--min-1120) {
+    margin-bottom: 5rem;
+  }
+}

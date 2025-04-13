@@ -5,6 +5,7 @@ pagination:
   alias: entries
 permalink: /page-list/{% if pagination.pageNumber > 0 %}{{ pagination.pageNumber }}/{% endif %}
 title: Page List
+templateClass: _container _page-spacing-top _page-spacing-bottom
 ---
 
 <table class="_container">
@@ -14,15 +15,15 @@ title: Page List
 
   <thead>
     <tr>
-      <th>URL</th>
       <th>Page Title</th>
+      <th>URL</th>
     </tr>
   </thead>
   <tbody>
 {%- for entry in entries %}
   <tr>
-    <td><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></td>
     <td>{{ entry.data.title }}</td>
+    <td><a href="{{ entry.url }}"><code>{{ entry.url }}</code></a></td>
   </tr>
 {%- endfor %}
   </tbody>

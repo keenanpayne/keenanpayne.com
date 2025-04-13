@@ -8,11 +8,6 @@
   margin-bottom: 5rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  padding-top: spacing(3);
-
-  @media (--min-1440) {
-    padding-top: spacing(5);
-  }
 
   @media (--min-1440) {
     --font-size-base: 1.25rem;

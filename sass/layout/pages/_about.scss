@@ -2,28 +2,15 @@
 // About
 // ==================================================
 
-.about {
-  padding-top: spacing(3);
-
-  @media (--min-1120) {
-    padding-top: spacing(5);
-  }
-}
-
 .about-photos {
   align-items: start;
   display: flex;
   flex-flow: column wrap;
   gap: 1.5rem;
-  margin-bottom: spacing(3);
   margin-top: spacing(3);
 
   @media (--min-960) {
     flex-direction: row;
-  }
-
-  @media (--min-1120) {
-    padding-top: spacing(5);
   }
 }
 
