@@ -3,11 +3,13 @@
 // ==================================================
 
 :root {
+  --color-text: var(--color-white);
+
   --toc-background: var(--color-gray-1);
   --toc-border-radius: 3px;
   --toc-text-decoration: var(--color-gray-5);
   --toc-summary-background: var(--color-purple-1);
-  --toc-summary-color: var(--color-white);
+  --toc-nav-background: var(--color-purple-4);
 }
 
 .toc {
@@ -55,7 +57,7 @@
   }
 
   a {
-    --link-color: var(--color-plum-3);
+    @include linkHoverBackground;
   }
 }
 
@@ -63,11 +65,10 @@
   background-color: var(--toc-summary-background);
   border-radius: var(--toc-border-radius);
   cursor: pointer;
-  color: var(--toc-summary-color);
-  line-height: 1.25;
   padding: 0.75rem 1rem 1rem;
 }
 
 .toc-nav {
+  background-color: var(--toc-nav-background);
   padding: 1rem 1rem 1.15rem 1.25rem;
 }
