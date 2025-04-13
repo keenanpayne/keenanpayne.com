@@ -9,7 +9,7 @@
     var(--shadow);
   color: var(--color-plum-3);
   grid-column: 1 / -1;
-  margin: 0 auto;
+  margin: 3rem auto 0;
   padding: 1.75rem 1.25rem;
 
   @media (--min-640) {
@@ -56,26 +56,21 @@
   flex-basis: 100%;
 }
 
+.testimonial-name,
+.testimonial-position {
+  line-height: 1.2;
+}
+
 .testimonial-name {
   @include h5;
 
   color: var(--color-plum-3);
   font-weight: var(--font-weight-semibold);
-  line-height: 1.15;
-
-  @media (--min-800) {
-    line-height: 1.25;
-  }
 }
 
 .testimonial-position {
   color: var(--color-gray-7);
   font-weight: var(--font-weight-serif-light);
-  line-height: 1.15;
-
-  @media (--min-800) {
-    line-height: 1.25;
-  }
 }
 
 .testimonial-image {
