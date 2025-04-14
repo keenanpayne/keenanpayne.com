@@ -12,9 +12,9 @@ eleventyNavigation:
 sections:
   - type: intro
     heading: "Professional and personal web design and web development services"
-    subheading: "During my fifteen years as a software professional, my work <br />has helped companies generate <strong>millions in revenue</strong>, sign up <strong>millions of SaaS users</strong>, and empowered global organizations with <strong>scalable software</strong>."
+    subheading: "During my fifteen years as a software professional, my work has helped companies generate <strong>millions in revenue</strong>, sign up <strong>millions of SaaS users</strong>, and empowered global organizations with <strong>scalable software</strong>."
     headerMaxWidth: 26ch
-    subheadingMaxWidth: 55ch
+    subheadingMaxWidth: 60ch
   - type: entries
     showCovers: false
     orientation: services
