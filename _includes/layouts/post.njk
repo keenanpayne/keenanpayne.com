@@ -87,9 +87,9 @@ permalink: "/{{ title | slug }}/"
     {{ content | safe }}
   </div>
 
-  <footer class="post-footer _text-small">
+  <footer class="post-footer">
     {%- if title -%}
-      <p>
+      <p class="_text-small">
         <a href="{{ permalink | url }}">{{ title }}</a> is {{ 'a' if long_form else 'an' }} <a href="/type/{{ type | lower | plural }}" title="View archive for {{ type | lower | plural }}">{{ long_form | lower if long_form else type | lower }}</a>
 
         published on 
