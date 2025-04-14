@@ -4,15 +4,17 @@ title: Web Development
 lede: Simply put, I can help you build anything on the internet. Whether you need a website to sell your product or services, or you need someone to help build your SaaS MVP, I've got you covered.
 order: 1
 tags: services
+sections:
+  - type: intro
+    heading: "Web Development"
+    subheading: "Simply put, I can help you build anything on the internet. Whether you need a website to sell your product or services, or you need someone to help build your SaaS MVP, I've got you covered."
+    body: |
+      Thoughtfully making foundational decisions on how to construct complex user interfaces.
+
+      Scaling codebases is difficult. When needs outpace available resources, technical debt accrues more quickly and becomes difficult to mitigate.
+
+      Everyone and everything suffers as technical debt piles up. Developers can end up working a sub-par codebase that impedes the ability to produce high-quality work efficiently; stakeholders cannot meet the needs of a growing company; your company is limited in its ability to grow and make an impact.
 ---
-
-<p>Thoughtfully making foundational decisions on how to construct complex user interfaces.</p>
-
-<section class="services-intro _container">
-<p class="services-callout">Scaling codebases is difficult. When needs outpace available resources, technical debt accrues more quickly and becomes difficult to mitigate.</p>
-
-<p class="services-callout">Everyone and everything suffers as technical debt piles up. Developers can end up working a sub-par codebase that impedes the ability to produce high-quality work efficiently; stakeholders cannot meet the needs of a growing company; your company is limited in its ability to grow and make an impact.</p>
-</section>
 
 <section class="services-offering _container">
 <h2>What I offer</h2>
