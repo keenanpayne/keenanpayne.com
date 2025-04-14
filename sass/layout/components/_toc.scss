@@ -3,8 +3,9 @@
 // ==================================================
 
 .toc {
-  --color-text: var(--color-white);
+  --link-color: var(--color-white);
 
+  --toc-summary-color: var(--color-white);
   --toc-background: var(--color-gray-1);
   --toc-border-radius: 3px;
   --toc-text-decoration: var(--color-gray-5);
@@ -50,19 +51,23 @@
   }
 
   li {
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-step-0);
     margin-top: 0.5rem;
   }
 
   a {
     @include linkHoverBackground;
+
+    --link-color: var(--color-white);
   }
 }
 
 .toc-summary {
   background-color: var(--toc-summary-background);
   border-radius: var(--toc-border-radius);
+  color: var(--toc-summary-color);
   cursor: pointer;
+  font-weight: var(--font-weight-semibold);
   padding: 0.75rem 1rem 1rem;
 }
 
