@@ -36,25 +36,15 @@
   margin-bottom: 0.5rem;
 
   @media (--min-960) {
-    @include text-large();
-
     margin-bottom: 1rem;
-  }
-
-  @media (--min-1120) {
-    @include text-larger();
   }
 }
 
 .portfolio-lede {
-  @include h4;
-
   margin-top: 0;
   max-width: 29ch;
 
   @media (--min-1120) {
-    @include h3;
-
     margin-bottom: 1.25rem;
   }
 }

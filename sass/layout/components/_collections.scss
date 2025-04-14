@@ -176,10 +176,6 @@
   }
 }
 
-.collections-heading {
-  @include h4;
-}
-
 .collections-description {
   margin-top: spacing(0.5);
 
@@ -192,8 +188,6 @@
   }
 
   @media (--min-1120) {
-    @include h6;
-
     margin-top: spacing(0.5);
   }
 }

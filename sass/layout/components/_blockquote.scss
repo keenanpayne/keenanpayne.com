@@ -68,29 +68,13 @@
   }
 }
 
-.blockquote-content {
-  @media (--min-720) {
-    @include h4;
-  }
-
-  @media (--min-960) {
-    @include h3;
-  }
-}
-
 .blockquote-cite {
-  @include h6;
-
   display: block;
   font-style: normal;
   font-family: var(--font-family-base);
   margin-left: -1em;
   margin-top: 1.25rem;
   text-align: right;
-
-  @media (--min-960) {
-    @include h5;
-  }
 
   &::before {
     content: "—";
