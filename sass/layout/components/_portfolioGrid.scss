@@ -4,8 +4,12 @@
 
 .portfolioGrid {
   grid-column: 1 / -1;
-  margin-top: 3rem;
+  margin-top: spacing(5);
   position: relative;
+
+  @media (--min-960) {
+    margin-top: spacing(10);
+  }
 
   // Grid Layout
   &.-one-col {
@@ -38,7 +42,11 @@
 }
 
 .portfolioGrid-header {
-  margin-bottom: 1.5rem;
+  margin-bottom: spacing(3);
+
+  @media (--min-960) {
+    margin-bottom: spacing(5);
+  }
 }
 
 .portfolioGrid-header-contents {
@@ -46,8 +54,8 @@
 }
 
 .portfolioGrid-headline {
-  margin-bottom: 0.5rem;
-  margin-top: 1.5rem;
+  margin-bottom: spacing(1.5);
+  margin-top: spacing(3);
 }
 
 .portfolioGrid-items {

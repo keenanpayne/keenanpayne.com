@@ -51,7 +51,7 @@
 
 .portfolio-details {
   grid-column: 1 / -1;
-  padding-left: 0.25rem;
+  padding-left: spacing(1);
 
   @media (--min-560) {
     align-content: flex-start;
@@ -64,7 +64,7 @@
   }
 
   @media (--min-720) {
-    padding-right: 3rem;
+    padding-right: spacing(3);
     grid-column: 1 / span 5;
   }
 
@@ -85,10 +85,10 @@
   }
 
   &:not(:last-of-type) {
-    padding-bottom: 1.5rem;
+    padding-bottom: spacing(3);
 
     @media (--min-1120) {
-      padding-bottom: 3rem;
+      padding-bottom: spacing(5);
     }
   }
 
