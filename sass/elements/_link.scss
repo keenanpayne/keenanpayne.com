@@ -11,22 +11,21 @@ a {
 
   // Modifiers
   &.-hover-color {
-    --link-color: inherit;
+    --link-color: currentColor;
     --link-color-hover: var(--color-purple-1);
 
     text-decoration: none;
 
     @media (--dark) {
-      --link-color: inherit;
       --link-color-hover: var(--color-yellow-2);
     }
   }
 
   &.-inverted {
-    --link-color: var(--color-gray-1);
+    --link-color: var(--color-gray-8);
 
     @media (--dark) {
-      --link-color: var(--color-plum-3);
+      --link-color: var(--color-gray-1);
     }
   }
 

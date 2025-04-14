@@ -2,17 +2,15 @@
 // Table of Contents
 // ==================================================
 
-:root {
+.toc {
   --color-text: var(--color-white);
 
   --toc-background: var(--color-gray-1);
   --toc-border-radius: 3px;
   --toc-text-decoration: var(--color-gray-5);
   --toc-summary-background: var(--color-purple-1);
-  --toc-nav-background: var(--color-purple-4);
-}
+  --toc-nav-background: var(--color-plum-3);
 
-.toc {
   background-color: var(--toc-background);
   border-radius: var(--toc-border-radius);
   box-shadow: var(--shadow);

@@ -55,18 +55,18 @@ https://github.com/keenanpayne/keenanpayne.com
       <div class="navigation">
         <nav class="navigation-left">
           {%- for entry in collections.all | eleventyNavigation -%}
-            <a class="navigation-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
+            <a class="-inverted navigation-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
               {{ entry.title }}
             </a>
           {%- endfor -%}
         </nav>
 
         <nav class="navigation-right">
-          <a class="navigation-item" href="https://calendly.com/keenanpayne/" title="Schedule time to talk" target="_blank" rel="noopener">
+          <a class="-inverted navigation-item" href="https://calendly.com/keenanpayne/" title="Schedule time to talk" target="_blank" rel="noopener">
             {% include "svg/calendar.svg" %}
           </a>
 
-          <a class="navigation-item" href="/subscribe" title="Subscribe to my newsletter">
+          <a class="-inverted navigation-item" href="/subscribe" title="Subscribe to my newsletter">
             {% include "svg/mailbox.svg" %}
           </a>
         </nav>
