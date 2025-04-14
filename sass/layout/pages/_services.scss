@@ -1,97 +1,6 @@
 //
 // Services
 // ==================================================
-// TODO: Create generic abstractions for similarities with `_portfolio.scss`
-
-.services {
-  margin-bottom: 5rem;
-}
-
-.services-header {
-  margin-bottom: 2.25rem;
-  margin-top: 1rem;
-
-  @media (--max-640) {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  @media (--min-640) {
-    text-align: center;
-  }
-}
-
-.services-footer {
-  border-top: 1px solid var(--color-gray-4);
-  font-family: var(--font-family-serif);
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-
-  // Descendants
-  > a:first-of-type {
-    font-style: italic;
-  }
-}
-
-.services-title {
-  margin-bottom: 1.25rem;
-  margin-top: 0.5rem;
-
-  @media (--min-960) {
-    @include text-large();
-  }
-
-  @media (--min-1120) {
-    @include text-larger();
-  }
-}
-
-.services-lede {
-  font-family: var(--font-family-serif);
-  font-style: italic;
-  font-weight: var(--font-weight-serif-light);
-  max-width: 50ch;
-
-  @media (--min-640) {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-.services-content {
-  @include h5();
-
-  margin-top: 3rem;
-
-  @media (--min-720) {
-    margin-top: 5rem;
-  }
-
-  // More affordance for headlines
-  h2 {
-    @include h1();
-
-    margin-bottom: 1.5rem;
-    margin-top: 3rem;
-
-    @media (--min-960) {
-      margin-top: 5rem;
-    }
-  }
-}
-
-.services-callout {
-  @include h3();
-
-  max-width: 39ch;
-
-  // Stacked callouts
-  & + & {
-    @include h4();
-
-    max-width: 47ch;
-  }
-}
 
 .services-offering {
   // Descendants
@@ -122,11 +31,6 @@
 
   @media (--min-640) {
     grid-column: auto / span 2;
-  }
-
-  // Descendants
-  p {
-    @include h6();
   }
 }
 
@@ -190,8 +94,6 @@
 .services-tools-item {
   // Descendants
   h3 {
-    @include h4;
-
     margin-bottom: 0;
   }
 }
@@ -217,8 +119,6 @@
 
   // Descendants
   h3 {
-    @include h4;
-
     margin-bottom: 0.5rem;
   }
 
