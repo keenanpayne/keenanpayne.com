@@ -38,6 +38,11 @@
 
 .testimonial-text {
   color: var(--color-plum-3);
+
+  // Descendants
+  strong {
+    text-decoration: underline;
+  }
 }
 
 .testimonial-cite {

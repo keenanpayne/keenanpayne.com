@@ -40,11 +40,10 @@
 }
 
 .intro-subheading {
-  font-style: italic;
   font-family: var(--font-family-serif);
-  font-size: var(--font-size-step-2);
-  font-weight: var(--font-weight-lighter);
-  line-height: 1.6;
+  font-size: var(--font-size-step-4);
+  font-style: italic;
+  line-height: 1.4;
   margin-top: spacing(2);
 
   // Descendants

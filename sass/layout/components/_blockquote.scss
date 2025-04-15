@@ -66,15 +66,17 @@
       --horizontal-padding: 3rem;
     }
   }
+
+  strong {
+    text-decoration: underline;
+  }
 }
 
 .blockquote-cite {
   display: block;
   font-style: normal;
-  font-family: var(--font-family-base);
   margin-left: -1em;
-  margin-top: 1.25rem;
-  text-align: right;
+  margin-top: spacing(5);
 
   &::before {
     content: "—";

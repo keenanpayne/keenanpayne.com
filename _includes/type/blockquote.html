@@ -1,10 +1,10 @@
 <blockquote class="blockquote">
-  <p class="blockquote-content _text-h4">
+  <p class="blockquote-content _text-h3">
     <span>{{ content }}</span>
   </p>
 
   {% if author %}
-    <cite class="blockquote-cite _text-h5">
+    <cite class="blockquote-cite _text-h4">
       {{- author -}}{% if author_position %}, {{- author_position -}}{% endif %}{% if author_source_link %}, <a href="{{ author_source_link }}" target="_blank" rel="noopener" title="{{ author_source_title }} by {{ author }}">{{- author_source_title -}}</a>{% endif %}
     </cite>
   {% endif %}

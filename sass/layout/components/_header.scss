@@ -34,11 +34,9 @@
 
 .header-tagline {
   flex: 1;
-  font-style: italic;
   font-family: var(--font-family-serif);
-  font-size: var(--font-size-step-1);
-  font-weight: var(--font-weight-lighter);
-  line-height: 1.35;
+  font-size: var(--font-size-step-2);
+  line-height: 1.5;
 
   @media (--min-960) {
     line-height: 1;
