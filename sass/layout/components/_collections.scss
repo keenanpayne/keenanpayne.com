@@ -26,14 +26,24 @@
   &.-horizontal-2-columns {
     @include grid;
 
+    .collections-content {
+      --background-color: var(--color-gray-1);
+      --border-color: var(--color-gray-3);
+
+      background-color: var(--background-color);
+      border: 1px solid var(--border-color);
+      flex: 1;
+
+      @media (--dark) {
+        --background-color: var(--color-plum-3);
+        --border-color: var(--color-gray-7);
+      }
+    }
+
     .collections-text {
       margin-left: auto;
       margin-right: auto;
-
-      @media (--min-960) {
-        padding-left: spacing(3);
-        padding-right: spacing(3);
-      }
+      padding: spacing(3) spacing(5);
     }
   }
 
@@ -161,15 +171,10 @@
 }
 
 .collections-image {
-  --image-height: 175px;
+  --image-height: 225px;
 
   height: var(--image-height);
-  margin-bottom: spacing(3);
   width: 100%;
-
-  @media (--min-640) {
-    --image-height: 225px;
-  }
 
   @media (--min-1260) {
     --image-height: 250px;
