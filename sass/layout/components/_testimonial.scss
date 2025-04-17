@@ -3,11 +3,12 @@
 // ==================================================
 
 .testimonial {
+  --color-paragraph: var(--color-plum-3);
+
   background-color: var(--color-gray-1);
   box-shadow:
     10px 10px 0 0 var(--portfolio-color),
     var(--shadow);
-  color: var(--color-plum-3);
   grid-column: 1 / -1;
   margin: 3rem auto 0;
   padding: 1.75rem 1.25rem;
@@ -37,8 +38,6 @@
 }
 
 .testimonial-text {
-  color: var(--color-plum-3);
-
   // Descendants
   strong {
     text-decoration: underline;

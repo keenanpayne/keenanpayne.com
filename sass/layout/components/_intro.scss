@@ -40,17 +40,13 @@
 }
 
 .intro-subheading {
-  font-family: var(--font-family-serif);
-  font-size: var(--font-size-step-4);
-  font-style: italic;
-  line-height: 1.4;
   margin-top: spacing(2);
 
   // Descendants
   br {
     display: none;
 
-    @media (--min-1440) {
+    @media (--min-960) {
       display: block;
     }
   }
