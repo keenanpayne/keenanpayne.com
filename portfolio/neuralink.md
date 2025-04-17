@@ -2,7 +2,7 @@
 permalink: "/portfolio/neuralink/"
 title: "Neuralink"
 meta:
-  description: "Helping a ground-breaking startup tell the story of brain-machine interfaces and hire a team of engineers and scientists."
+  description: "Helping a ground-breaking startup tell the story of brain-machine interfaces and hire a team."
   image: "https://res.cloudinary.com/keenan-payne/image/upload/v1667235215/portfolio/neuralink/cover_cuoloi.png"
 data: neuralink
 sections:
