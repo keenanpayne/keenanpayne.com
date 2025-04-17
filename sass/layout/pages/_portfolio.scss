@@ -9,11 +9,11 @@
   grid-template-columns: repeat(10, 1fr);
   padding-left: 1.5rem;
   padding-right: 1.5rem;
-  margin-top: 3rem;
 }
 
 .portfolio-header {
   grid-column: 1 / -1;
+  margin-bottom: spacing(3);
 
   @media (--min-720) {
     grid-column: 1 / -1;
@@ -35,7 +35,6 @@
 
 .portfolio-details {
   grid-column: 1 / -1;
-  padding-left: spacing(1);
 
   @media (--min-560) {
     align-content: flex-start;
@@ -48,7 +47,6 @@
   }
 
   @media (--min-720) {
-    padding-right: spacing(3);
     grid-column: 1 / span 5;
   }
 
@@ -211,6 +209,7 @@
 
 .portfolio-content {
   display: grid;
+  gap: spacing(3);
   grid-column: 1 / -1;
   grid-template-columns: repeat(10, 1fr);
   margin-top: 0.5rem;
