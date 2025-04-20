@@ -1,49 +1,40 @@
 {# Component Settings #}
-{% set project = section.project %}
-{% set person = section.person %}
-{% set quote = section.quote %}
-{% set hide_citation = section.hide_citation %}
-{% set testimonial = section.testimonial %}
-{% set personQuery = portfolio[project].people[person] %}
-{% set testimonialQuery = portfolio[project].testimonials[testimonial] %}
+{% set id = section.id %}
 
-{% if personQuery %}
-  {% set name = personQuery.name %}
-  {% set image = personQuery.image %}
-  {% set position = personQuery.position %}
-  {% set content = testimonialQuery.content %}
-{% endif %}
-
-{# Markup #}
-{# Check if person IDs match #}
-{% if person == testimonialQuery.person_id %}
-  <blockquote class="testimonial">
-    {% if content %}
-      <p class="testimonial-text _type-my-voice">
-        <span>{{ content | safe }}</span>
-      </p>
-    {% endif %}
-
-    {% if not hide_citation %}
-      <cite class="testimonial-cite">
-        {% if image %}
-          <img class="testimonial-image" src="{{ image }}" alt="{{ name }}" />
+{% if id %}
+  {% for testimonial in collections.testimonials %}
+    {% if testimonial.id == id %}
+      <blockquote class="testimonial">
+        {% if testimonial.content %}
+          <p class="testimonial-text _type-my-voice">
+            <span>{{ testimonial.content | safe }}</span>
+          </p>
         {% endif %}
 
-        <p class="testimonial-author">
-          {%- if name -%}
-            <span class="testimonial-name _text-h5">
-              {{- name -}}
-            </span>
-          {%- endif -%}
+        {% for person in collections.people %}
+          {% if person.id == testimonial.person_id %}
+            <cite class="testimonial-cite">
+              {% if person.image %}
+                <img class="testimonial-image" src="{{ person.image }}" alt="{{ person.name }}" />
+              {% endif %}
 
-          {%- if position -%},
-            <span class="testimonial-position">
-              {{- position -}}
-            </span>
-          {%- endif -%}
-        </p>
-      </cite>
-    {%- endif -%}
-  </blockquote>
+              <p class="testimonial-author">
+                {%- if person.name -%}
+                  <span class="testimonial-name _text-h5">
+                    {{- person.name -}}
+                  </span>
+                {%- endif -%}
+
+                {%- if person.position -%},
+                  <span class="testimonial-position">
+                    {{- person.position -}}
+                  </span>
+                {%- endif -%}
+              </p>
+            </cite>
+          {% endif %}
+        {% endfor %}
+      </blockquote>
+    {% endif %}
+  {% endfor %}
 {% endif %}
