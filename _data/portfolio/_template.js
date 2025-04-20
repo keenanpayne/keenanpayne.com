@@ -20,20 +20,8 @@ module.exports = {
     challenge: "",
     solution: ""
   },
-  people: {
-    [1]: {
-      name: "",
-      position: "",
-      url: "",
-      image: ""
-    }
-  },
-  testimonials: {
-    [1]: {
-      person_id: 1,
-      content: ""
-    }
-  },
+  people: [],
+  testimonials: [],
   assets: {
     [1]: {
       link: "",
