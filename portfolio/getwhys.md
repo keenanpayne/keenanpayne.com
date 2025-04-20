@@ -7,8 +7,6 @@ meta:
 data: getwhys
 sections:
   - type: testimonial
-    project: getwhys
-    person: 1
     testimonial: 1
   - type: portfolioGrid
     project: getwhys
@@ -16,8 +14,6 @@ sections:
     items:
       - 1
   - type: testimonial
-    project: getwhys
-    person: 3
     testimonial: 3
   - type: portfolioGrid
     project: getwhys
@@ -25,16 +21,12 @@ sections:
     items:
       - 2
   - type: testimonial
-    project: getwhys
-    person: 3
-    testimonial: 4
+    testimonial: 2
   - type: portfolioGrid
     project: getwhys
     modifier: "-one-col"
     items:
       - 3
   - type: testimonial
-    project: getwhys
-    person: 1
-    testimonial: 2
+    testimonial: 4
 ---

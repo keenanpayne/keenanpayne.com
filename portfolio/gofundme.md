@@ -15,9 +15,7 @@ sections:
       - 1
       - 5
   - type: testimonial
-    project: gofundme
-    person: 1
-    testimonial: 2
+    testimonial: 6
   - type: portfolioGrid
     project: gofundme
     modifier: "-two-col"
@@ -27,9 +25,7 @@ sections:
       - 7
       - 6
   - type: testimonial
-    project: gofundme
-    person: 2
-    testimonial: 6
+    testimonial: 10
   - type: portfolioGrid
     project: gofundme
     modifier: "-one-col"
@@ -38,9 +34,7 @@ sections:
     items:
       - 4
   - type: testimonial
-    project: gofundme
-    person: 1
-    testimonial: 3
+    testimonial: 7
   - type: portfolioGrid
     project: gofundme
     modifier: "-one-col"
@@ -48,7 +42,5 @@ sections:
     items:
       - 3
   - type: testimonial
-    project: gofundme
-    person: 2
-    testimonial: 5
+    testimonial: 11
 ---
