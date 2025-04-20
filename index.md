@@ -33,6 +33,8 @@ sections:
   #   items:
   #     from: featured
   #     limit: 4
+  # - type: testimonials
+  #   ids: [1, 2, 3, 4]
   - type: newsletter
     spacing: 0
 ---

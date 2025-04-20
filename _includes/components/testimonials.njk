@@ -1,0 +1,12 @@
+{# Component Settings #}
+{% set ids = section.ids %}
+
+{% if ids %}
+  {% for id in ids %}
+    {% for testimonial in collections.testimonials %}
+      {% if testimonial.id == id %}
+        {{ testimonial.content | safe }}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+{% endif %}
