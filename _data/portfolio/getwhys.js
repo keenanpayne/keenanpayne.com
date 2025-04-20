@@ -23,28 +23,6 @@ module.exports = {
   lede: "Redesigning and rebuilding the marketing website for an innovative AI platform.",
   caption: "",
   people: [4, 1, 5],
-  testimonials: {
-    [1]: {
-      person_id: 4,
-      content:
-        "Keenan is a wizard and our launch wouldn't have been the same without him. He put together a beautiful site for us, on relatively short notice, at a great rate. He's really easy to communicate with and brings an experienced point-of-view to the table, which we highly valued."
-    },
-    [2]: {
-      person_id: 4,
-      content:
-        "In the craziness of our launch, Keenan was exactly what we needed—cool-headed, efficient, and dependable. We're planning to keep working with him for as long as he'll have us!"
-    },
-    [3]: {
-      person_id: 5,
-      content:
-        "I was thrilled when I saw what Keenan had put together based on my brand. He utilized the system I had created and made his own creative decisions about how to best implement it across a variety of pages and UI use cases."
-    },
-    [4]: {
-      person_id: 5,
-      content:
-        "When I had to work with him closer as the company launch approached, he was awesome to collaborate with, super laid-back, fast and efficient. Would totally recommend him to anyone in need of a developer with a great creative eye."
-    }
-  },
   assets: {
     [1]: {
       link: "https://getwhys.io",
