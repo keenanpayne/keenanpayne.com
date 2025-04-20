@@ -4,7 +4,13 @@
   "useTabs": false,
   "semi": true,
   "singleQuote": false,
+  "quoteProps": "as-needed",
+  "jsxSingleQuote": false,
   "trailingComma": "none",
   "bracketSpacing": true,
-  "proseWrap": "never"
+  "bracketSameLine": false,
+  "proseWrap": "never",
+  "htmlWhitespaceSensitivity": "css",
+  "endOfLine": "lf",
+  "embeddedLanguageFormatting": "auto"
 }
