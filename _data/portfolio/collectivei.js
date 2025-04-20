@@ -24,12 +24,6 @@ module.exports = {
     "I helped rebuild the Collective[i] website from the ground up to help the company position itself as an innovative solution to revenue growth, management, and predictions using its artificial intelligence and machine learning platform.",
   cover: "v1666806684/portfolio/collectivei/cover_tolwvc.png",
   people: [1, 2],
-  testimonials: {
-    [1]: {
-      person_id: 1,
-      content: ""
-    }
-  },
   assets: {
     [1]: {
       link: "https://web.archive.org/web/20211027014541/https://collectivei.com/",

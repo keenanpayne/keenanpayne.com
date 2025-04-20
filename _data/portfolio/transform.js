@@ -23,12 +23,6 @@ module.exports = {
   cover: "v1665763707/portfolio/transform/cover_yrt6ni.png",
   caption: "",
   people: [1, 2],
-  testimonials: {
-    [1]: {
-      person_id: 1,
-      content: ""
-    }
-  },
   assets: {
     [1]: {
       link: "https://web.archive.org/web/20220121080334/https://transform.co/product/",
