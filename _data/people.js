@@ -37,7 +37,7 @@ module.exports = {
     {
       id: 4,
       name: "Philippe Boutros",
-      position: "Co-Founder",
+      position: "Co-Founder, GetWhys",
       url: "https://www.linkedin.com/in/philippeboutros",
       image:
         "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1743026378/portfolio/getwhys/philippe_cy0mlq.jpg",
@@ -76,7 +76,7 @@ module.exports = {
     {
       id: 9,
       name: "Kelsea Little",
-      position: "Project Manager",
+      position: "Project Manager, GoFundMe",
       url: "https://www.linkedin.com/in/kelsealittle/",
       image:
         "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1657998867/people/kelsea-little_s31zkg.jpg",
