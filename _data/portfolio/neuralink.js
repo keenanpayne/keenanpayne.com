@@ -14,18 +14,7 @@ module.exports = {
     'I worked closely with Neuralink\'s founders and leadership to build a website that helped raise awareness of their mission and recruit top talent ahead of their <a href="https://www.youtube.com/watch?v=DVvmgjBL74w&t=1652s">2020 summer update</a>. <br><br>The Neuralink website has received <strong>millions of views</strong> and has been an invaluable asset for the rapidly growing company.',
   lede: "Helping a ground-breaking startup tell the story of brain-machine interfaces and hire a team.",
   cover: "v1667235215/portfolio/neuralink/cover_cuoloi.png",
-  people: {
-    [1]: {
-      name: "Jaime Hernández",
-      position: "Development Partner",
-      url: "https://jaime.one/"
-    },
-    [2]: {
-      name: "Play Studio",
-      position: "Design Partner",
-      url: "https://www.play.studio/"
-    }
-  },
+  people: [1, 2],
   assets: {
     [1]: {
       link: "https://web.archive.org/web/20210101042939/https://neuralink.com/",

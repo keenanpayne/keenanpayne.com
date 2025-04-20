@@ -22,27 +22,7 @@ module.exports = {
   cover: "v1743003774/portfolio/getwhys/getwhys_f3dw1o.png",
   lede: "Redesigning and rebuilding the marketing website for an innovative AI platform.",
   caption: "",
-  people: {
-    [1]: {
-      name: "Philippe Boutros",
-      position: "Co-Founder",
-      url: "https://www.linkedin.com/in/philippeboutros",
-      image:
-        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1743026378/portfolio/getwhys/philippe_cy0mlq.jpg"
-    },
-    [2]: {
-      name: "Jaime Hernández",
-      position: "Development Partner",
-      url: "https://jaime.one/"
-    },
-    [3]: {
-      name: "Elliot Matson",
-      position: "Design Partner",
-      url: "https://www.elliotmatson.com",
-      image:
-        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1743026684/portfolio/getwhys/elliot_a1cwp1.jpg"
-    }
-  },
+  people: [4, 1, 5],
   testimonials: {
     [1]: {
       person_id: 1,

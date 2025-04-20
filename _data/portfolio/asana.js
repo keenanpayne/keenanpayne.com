@@ -26,11 +26,6 @@ module.exports = {
   lede: "Five years of growing a company, website, and brand for the world's leading work management software.",
   cover: "v1661998554/portfolio/asana/cover_scey3k.jpg",
   caption: "",
-  people: {
-    [1]: {
-      name: "Keenan Payne"
-    }
-  },
   assets: {
     [1]: {
       link: "https://web.archive.org/web/20190103205503/https://asana.com/teams/marketing",

@@ -13,18 +13,7 @@ module.exports = {
     "at.inc is a venture capital firm that invests in early-stage startups. They needed a new website to showcase their portfolio and provide a platform for their team to share their expertise. <br><br> I build the website from the ground up, implementing the design and animations, and integrating Netlify CMS to allow the team to easily manage content.",
   lede: "Helping an early-stage venture capital firm showcase their portfolio and services.",
   cover: "v1666928996/portfolio/atinc/cover_hotv7m.png",
-  people: {
-    [1]: {
-      name: "Paladar Studio",
-      position: "Design Partner",
-      url: "https://www.paladarstudio.com/work/at-inc"
-    },
-    [2]: {
-      name: "Jaime Hernández",
-      position: "Development Partner",
-      url: "https://jaime.one/"
-    }
-  },
+  people: [3, 1],
   assets: {
     [1]: {
       link: "https://www.at.inc/",

@@ -24,22 +24,7 @@ module.exports = {
     solution:
       "I learned the codebase's ins and outs while implementing my solution. I used existing technologies and paradigms to build a seamless extension to their content editing workflow."
   },
-  people: {
-    [1]: {
-      name: "Kelsea Little",
-      position: "Project Manager",
-      url: "https://www.linkedin.com/in/kelsealittle/",
-      image:
-        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1657998867/people/kelsea-little_s31zkg.jpg"
-    },
-    [2]: {
-      name: "Tony Mingo",
-      position: "Design Partner",
-      url: "https://tonymingo.com/",
-      image:
-        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1657998867/people/tony-mingo_zfmkfl.jpg"
-    }
-  },
+  people: [9, 10],
   testimonials: {
     [1]: {
       person_id: 1,

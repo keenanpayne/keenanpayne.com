@@ -22,18 +22,7 @@ module.exports = {
   lede: "Building a marketing website for the world's first centralized metrics store.",
   cover: "v1665763707/portfolio/transform/cover_yrt6ni.png",
   caption: "",
-  people: {
-    [1]: {
-      name: "Jaime Hernández",
-      position: "Development Partner",
-      url: "https://jaime.one/"
-    },
-    [2]: {
-      name: "Play Studio",
-      position: "Design Partner",
-      url: "https://www.play.studio/"
-    }
-  },
+  people: [1, 2],
   testimonials: {
     [1]: {
       person_id: 1,
