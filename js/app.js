@@ -66,11 +66,17 @@ document.addEventListener("DOMContentLoaded", function () {
         ".testimonials-button.-next"
       );
 
-      let currentSlide = 0;
+      let currentSlide = 1;
       const slideCount = slides.length;
 
       const updateSlider = () => {
         container.style.transform = `translateX(-${currentSlide * 100}%)`;
+        slides.forEach((slide) => {
+          slide.classList.add("-inactive");
+          slide.classList.remove("-active");
+        });
+        slides[currentSlide].classList.remove("-inactive");
+        slides[currentSlide].classList.add("-active");
       };
 
       const goToPrevSlide = () => {
