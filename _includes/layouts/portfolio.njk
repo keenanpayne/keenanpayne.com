@@ -106,7 +106,7 @@ ignoreBaseOutput: true
         </div>
       {% endif %}
   
-      {% if people | length >= 1 and people[1].name !== "Keenan Payne"  %}
+      {% if people %}
         <div class="portfolio-detail -full-width">
           {{ label.output('Collaborators', 'portfolio-label') }}
 
