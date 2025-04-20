@@ -24,17 +24,6 @@ sections:
         - rippling
         - neuralink
   - type: cta
-  # - type: entries
-  #   showCovers: true
-  #   orientation: horizontal
-  #   columns: 2
-  #   heading: "Featured articles"
-  #   spacing: 10
-  #   items:
-  #     from: featured
-  #     limit: 4
-  # - type: testimonials
-  #   ids: [1, 2, 3, 4]
   - type: newsletter
     spacing: 0
 ---
