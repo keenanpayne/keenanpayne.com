@@ -1,6 +1,6 @@
-// Simple video lazy loading
-// Ref: https://web.dev/lazy-loading-video/
 document.addEventListener("DOMContentLoaded", function () {
+  // Simple video lazy loading
+  // Ref: https://web.dev/lazy-loading-video/
   var lazyElements = [].slice.call(document.querySelectorAll("[data-lazy]"));
 
   if (!lazyElements) return;
@@ -49,6 +49,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
     lazyElements.forEach(function (lazyElement) {
       lazyElementsObserver.observe(lazyElement);
+    });
+  }
+
+  // Testimonials
+  const testimonials = document.querySelectorAll(".testimonials");
+
+  if (testimonials) {
+    testimonials.forEach((testimonial) => {
+      const container = testimonial.querySelector(".testimonials__container");
+      const slides = testimonial.querySelectorAll(".testimonials__slide");
+      const prevButton = testimonial.querySelector(
+        ".testimonials__button--prev"
+      );
+      const nextButton = testimonial.querySelector(
+        ".testimonials__button--next"
+      );
+
+      let currentSlide = 0;
+      const slideCount = slides.length;
+
+      const updateSlider = () => {
+        container.style.transform = `translateX(-${currentSlide * 100}%)`;
+      };
+
+      const goToPrevSlide = () => {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        updateSlider();
+      };
+
+      const goToNextSlide = () => {
+        currentSlide = (currentSlide + 1) % slideCount;
+        updateSlider();
+      };
+
+      prevButton.addEventListener("click", goToPrevSlide);
+      nextButton.addEventListener("click", goToNextSlide);
+
+      // Initialize the slider
+      updateSlider();
     });
   }
 });
