@@ -31,8 +31,8 @@
   width: 100%;
 
   // Modifiers
-  @media (--min-720) {
-    &.-inactive {
+  &.-inactive {
+    @media (--min-720) {
       opacity: 0.75;
 
       // Pseudo-elements with gradient fading into the left and right sides of the screen
