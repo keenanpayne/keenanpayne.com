@@ -71,9 +71,14 @@
 ._type-my-voice {
   font-family: var(--font-family-serif);
   font-style: italic;
-  font-size: var(--font-size-step-4);
+  font-size: var(--font-size-step-3);
   font-weight: var(--font-weight-serif-regular);
-  line-height: 1.35;
+  line-height: 1.45;
+
+  @media (--min-1260) {
+    font-size: var(--font-size-step-4);
+    line-height: 1.35;
+  }
 }
 
 ._label {
@@ -166,4 +171,12 @@
   @media (--min-1120) {
     margin-bottom: 5rem;
   }
+}
+
+._a11y-hidden {
+  @include a11yHidden();
+}
+
+._a11y-visible {
+  @include a11yVisible();
 }

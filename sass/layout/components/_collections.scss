@@ -43,7 +43,12 @@
     .collections-text {
       margin-left: auto;
       margin-right: auto;
-      padding: spacing(3) spacing(5);
+      padding: spacing(3);
+
+      @media (--min-1440) {
+        padding-left: spacing(5);
+        padding-right: spacing(5);
+      }
     }
   }
 

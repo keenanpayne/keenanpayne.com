@@ -23,7 +23,7 @@
   {% endif %}
     <h2 class="intro-heading _text-large" style="{% if headerMaxWidth %}max-width: {{ headerMaxWidth }};{% endif %}">
       {% if heading %}
-        {{ heading }}
+        {{ heading | safe }}
       {% else %}
         {{ title }}
       {% endif %}
