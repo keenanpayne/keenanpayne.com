@@ -37,5 +37,7 @@ sections:
     items:
       from: portfolio
       limit: 1
+  - type: testimonials
+    ids: [6, 2, 3, 10]
   - type: cta
 ---
