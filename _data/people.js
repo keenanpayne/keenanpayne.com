@@ -1,6 +1,7 @@
 module.exports = {
   people: [
     {
+      id: 1,
       name: "Jaime Hernández",
       position: "Development Partner",
       url: "https://jaime.one/",
@@ -14,6 +15,7 @@ module.exports = {
       ]
     },
     {
+      id: 2,
       name: "Play Studio",
       position: "Design Partner",
       url: "https://www.play.studio/",
@@ -26,10 +28,12 @@ module.exports = {
       ]
     },
     {
+      id: 3,
       name: "Keenan Payne",
       projects: ["Asana"]
     },
     {
+      id: 4,
       name: "Philippe Boutros",
       position: "Co-Founder",
       url: "https://www.linkedin.com/in/philippeboutros",
@@ -38,6 +42,7 @@ module.exports = {
       projects: ["GetWhys"]
     },
     {
+      id: 5,
       name: "Elliot Matson",
       position: "Design Partner",
       url: "https://www.elliotmatson.com",
@@ -46,24 +51,28 @@ module.exports = {
       projects: ["GetWhys"]
     },
     {
+      id: 6,
       name: "Nels Anderek",
       position: "Development Partner",
       url: "https://www.linkedin.com/in/nelsandereck/",
       projects: ["Sparrow", "Refactor Capital"]
     },
     {
+      id: 7,
       name: "Ilija Vujinovic",
       position: "Design Partner",
       url: "https://dribbble.com/ilijav",
       projects: ["Rippling"]
     },
     {
+      id: 8,
       name: "Rob Schneiderman",
       position: "Development Partner",
       url: "https://www.linkedin.com/in/robert-schneiderman/",
       projects: ["Rippling"]
     },
     {
+      id: 9,
       name: "Kelsea Little",
       position: "Project Manager",
       url: "https://www.linkedin.com/in/kelsealittle/",
@@ -72,6 +81,7 @@ module.exports = {
       projects: ["GoFundMe"]
     },
     {
+      id: 10,
       name: "Tony Mingo",
       position: "Design Partner",
       url: "https://tonymingo.com/",
@@ -80,6 +90,7 @@ module.exports = {
       projects: ["GoFundMe"]
     },
     {
+      id: 11,
       name: "Paladar Studio",
       position: "Design Partner",
       url: "https://www.paladarstudio.com/work/at-inc",
