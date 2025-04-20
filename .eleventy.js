@@ -210,6 +210,11 @@ module.exports = function (eleventyConfig) {
     return require("./_data/people.js").people;
   });
 
+  // Collection for testimonials
+  eleventyConfig.addCollection("testimonials", function (collection) {
+    return require("./_data/testimonials.js").testimonials;
+  });
+
   // Collection for bookshelf
   eleventyConfig.addCollection("book", function (collection) {
     return collection
