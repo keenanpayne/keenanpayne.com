@@ -22,29 +22,7 @@ module.exports = {
     "I helped rebuild the Sparrow website from the ground up as the company geared up for its Series A fundraising round. The website was designed to position Sparrow as a disrupter in the employee automation software market. <br><br>Sparrow has since raised <strong>$20m in Series A funding</strong> and is using their website to expand their customer base.",
   lede: "Building a marketing website for an emerging employee automation platform.",
   cover: "v1665630813/portfolio/sparrow/cover_qommce.png",
-  people: {
-    [1]: {
-      name: "Jaime Hernández",
-      position: "Development Partner",
-      url: "https://jaime.one/"
-    },
-    [2]: {
-      name: "Nels Anderek",
-      position: "Development Partner",
-      url: "https://www.linkedin.com/in/nelsandereck/"
-    },
-    [3]: {
-      name: "Play Studio",
-      position: "Design Partner",
-      url: "https://www.play.studio/"
-    }
-  },
-  testimonials: {
-    [1]: {
-      person_id: 2,
-      content: ""
-    }
-  },
+  people: [1, 2, 6],
   assets: {
     // TODO: Fix this video since the scrolling doesn't look good
     [1]: {
