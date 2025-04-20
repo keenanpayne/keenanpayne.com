@@ -15,8 +15,7 @@
     "no-undef": "error",
     "semi": ["error", "always"],
     "quotes": ["error", "double", { "avoidEscape": true }],
-    "indent": ["error", 2],
-    "max-len": ["warn", { "code": 100 }]
+    "indent": ["error", 2]
   },
   "ignorePatterns": ["_site/**", "node_modules/**"]
 }
