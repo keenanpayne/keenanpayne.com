@@ -205,6 +205,11 @@ module.exports = function (eleventyConfig) {
       });
   });
 
+  // Collection for people
+  eleventyConfig.addCollection("people", function (collection) {
+    return require("./_data/people.js").people;
+  });
+
   // Collection for bookshelf
   eleventyConfig.addCollection("book", function (collection) {
     return collection
