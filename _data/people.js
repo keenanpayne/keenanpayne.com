@@ -29,8 +29,10 @@ module.exports = {
     },
     {
       id: 3,
-      name: "Keenan Payne",
-      projects: ["Asana"]
+      name: "Paladar Studio",
+      position: "Design Partner",
+      url: "https://www.paladarstudio.com/work/at-inc",
+      projects: ["at.inc/"]
     },
     {
       id: 4,
@@ -88,13 +90,6 @@ module.exports = {
       image:
         "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1657998867/people/tony-mingo_zfmkfl.jpg",
       projects: ["GoFundMe"]
-    },
-    {
-      id: 11,
-      name: "Paladar Studio",
-      position: "Design Partner",
-      url: "https://www.paladarstudio.com/work/at-inc",
-      projects: ["at.inc/"]
     }
   ]
 };
