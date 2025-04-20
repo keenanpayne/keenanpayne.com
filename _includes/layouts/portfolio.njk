@@ -111,28 +111,25 @@ ignoreBaseOutput: true
           {{ label.output('Collaborators', 'portfolio-label') }}
 
           <ul class="portfolio-detail-people">
-            {% for id, person in people %}
-              {% set name = person.name %}
-              {% set personUrl = person.url %}
-              {% set personPosition = person.position %}
-
-              <li class="portfolio-detail-person">
-                {% if personUrl %}
-                  <a href="{{ personUrl }}" target="_blank" rel="noopener">
+            {% for personId in people %}
+              {% for person in collections.people %}
+                {% if person.id == personId %}
+                  <li class="portfolio-detail-person">
+                    {% if person.url %}
+                      <a href="{{ person.url }}" target="_blank" rel="noopener">
+                        {{ person.name }}
+                      </a>
+                    {% else %}
+                      {{ person.name }}
+                    {% endif %}
+                    {% if person.position %}
+                      <span class="portfolio-detail-position">
+                        {{ person.position }}
+                      </span>
+                    {% endif %}
+                  </li>
                 {% endif %}
-
-                {{ name }}
-
-                {% if personUrl %}
-                  </a>
-                {% endif %}
-
-                {% if personPosition %}
-                  <span class="portfolio-detail-position">
-                    {{ personPosition }}
-                  </span>
-                {% endif %}
-              </li>
+              {% endfor %}
             {% endfor %}
           </ul>
         </div>
