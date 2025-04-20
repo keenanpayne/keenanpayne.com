@@ -5,14 +5,14 @@ module.exports = {
       project: "GetWhys",
       person_id: 4,
       content:
-        "Keenan is a wizard and our launch wouldn't have been the same without him. He put together a beautiful site for us, on relatively short notice, at a great rate. He's really easy to communicate with and brings an experienced point-of-view to the table, which we highly valued."
+        "Keenan is a wizard and <strong>our launch wouldn't have been the same without him</strong>. He put together a beautiful site for us, on relatively short notice, at a great rate. He's really easy to communicate with and brings an experienced point-of-view to the table, which we highly valued."
     },
     {
       id: 2,
       project: "GetWhys",
       person_id: 4,
       content:
-        "In the craziness of our launch, Keenan was exactly what we needed—cool-headed, efficient, and dependable. We're planning to keep working with him for as long as he'll have us!"
+        "In the craziness of our launch, Keenan was exactly what we needed—<strong>cool-headed, efficient, and dependable</strong>. We're planning to keep working with him for as long as he'll have us!"
     },
     {
       id: 3,
@@ -40,7 +40,7 @@ module.exports = {
       project: "GoFundMe",
       person_id: 9,
       content:
-        "Working with Keenan, we launched the GoFundMe Heroes Hub, a beautiful home for our editorial brand content. It's been very well received and our team loves using it."
+        "Working with Keenan, we launched the GoFundMe Heroes Hub, a beautiful home for our editorial brand content. It's been very well received and our team <strong>loves using it</strong>."
     },
     {
       id: 7,
