@@ -3,22 +3,30 @@
 // ==================================================
 
 .testimonial {
+  --background-color: var(--color-gray-1);
+  --border-color: var(--color-gray-3);
   --color-paragraph: var(--color-plum-3);
 
-  background-color: var(--color-gray-1);
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
   box-shadow:
     10px 10px 0 0 var(--portfolio-color),
     var(--shadow);
+  display: flex;
+  flex-direction: column;
   grid-column: 1 / -1;
-  margin: 3rem auto 0;
+  height: 100%;
+  margin: 0;
   padding: 1.75rem 1.25rem;
+  transition: box-shadow 100ms ease-in-out 150ms;
+
+  @media (--dark) {
+    --background-color: var(--color-plum-3);
+    --border-color: var(--color-gray-7);
+  }
 
   @media (--min-640) {
     padding: 2.25rem 1.75rem;
-  }
-
-  @media (--min-720) {
-    padding: 3.375rem 2rem;
   }
 
   @media (--min-800) {
@@ -26,10 +34,7 @@
   }
 
   @media (--min-960) {
-    box-shadow:
-      15px 15px 0 0 var(--portfolio-color),
-      var(--shadow);
-    padding: 3.75rem 3rem;
+    padding: 3.5rem 2.5rem;
   }
 
   @media (--min-1120) {
@@ -38,6 +43,8 @@
 }
 
 .testimonial-text {
+  flex: 1;
+
   // Descendants
   strong {
     text-decoration: underline;

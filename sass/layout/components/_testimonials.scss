@@ -3,48 +3,97 @@
 // ==================================================
 
 .testimonials {
+  overflow: hidden;
   position: relative;
   width: 100%;
-  overflow: hidden;
-  padding: 2rem 0;
 }
 
 .testimonials-container {
   display: flex;
-  transition: transform 0.3s ease-in-out;
+  gap: 5rem;
+  grid-column: 1 / -1;
+  position: relative;
+  transition: transform 300ms ease-in-out;
+  transform: translateX(-100%);
+  width: calc(100% - 575px);
+
+  @media (--min-720) {
+    gap: spacing(5);
+    grid-column: 3 / span 8;
+    width: 100%;
+  }
 }
 
 .testimonials-slide {
   flex: 0 0 100%;
+  position: relative;
+  transition: opacity 300ms ease-in-out;
   width: 100%;
-  padding: 0 1rem;
+
+  // Modifiers
+  @media (--min-720) {
+    &.-inactive {
+      opacity: 0.75;
+
+      // Pseudo-elements with gradient fading into the left and right sides of the screen
+      &::before,
+      &::after {
+        content: "";
+        height: 100%;
+        position: absolute;
+        top: 0;
+        width: 300px;
+      }
+
+      &::before {
+        left: 0;
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 1)
+        );
+      }
+
+      &::after {
+        right: 0;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 1)
+        );
+      }
+    }
+  }
 }
 
 .testimonials-nav {
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
+  z-index: 1;
 }
 
 .testimonials-button {
-  background: rgba(255, 255, 255, 0.8);
+  color: var(--color-white);
+  align-items: center;
+  background: var(--color-gray-7);
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
+  display: flex;
+  height: 40px;
+  justify-content: center;
   pointer-events: auto;
-  transition: background-color 0.2s ease;
+  transition: background-color 150ms ease-in-out;
+  width: 40px;
 
   &:hover {
-    background: rgba(255, 255, 255, 1);
+    background-color: var(--color-gray-8);
+    color: var(--color-white);
   }
 
   // Modifiers
