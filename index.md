@@ -23,6 +23,8 @@ sections:
         - asana
         - rippling
         - neuralink
+  - type: testimonials
+    ids: [1, 2, 3, 4]
   - type: cta
   - type: newsletter
     spacing: 0
