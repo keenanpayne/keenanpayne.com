@@ -57,13 +57,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (testimonials) {
     testimonials.forEach((testimonial) => {
-      const container = testimonial.querySelector(".testimonials__container");
-      const slides = testimonial.querySelectorAll(".testimonials__slide");
+      const container = testimonial.querySelector(".testimonials-container");
+      const slides = testimonial.querySelectorAll(".testimonials-slide");
       const prevButton = testimonial.querySelector(
-        ".testimonials__button--prev"
+        ".testimonials-button.-prev"
       );
       const nextButton = testimonial.querySelector(
-        ".testimonials__button--next"
+        ".testimonials-button.-next"
       );
 
       let currentSlide = 0;
