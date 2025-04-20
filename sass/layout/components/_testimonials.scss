@@ -62,6 +62,17 @@
           rgba(255, 255, 255, 1)
         );
       }
+
+      @media (--dark) {
+        &::before,
+        &::after {
+          background: linear-gradient(
+            to left,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 1)
+          );
+        }
+      }
     }
 
     .testimonial {
