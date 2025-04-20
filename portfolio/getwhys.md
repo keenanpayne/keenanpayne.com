@@ -7,26 +7,26 @@ meta:
 data: getwhys
 sections:
   - type: testimonial
-    testimonial: 1
+    id: 1
   - type: portfolioGrid
     project: getwhys
     modifier: "-one-col"
     items:
       - 1
   - type: testimonial
-    testimonial: 3
+    id: 3
   - type: portfolioGrid
     project: getwhys
     modifier: "-one-col"
     items:
       - 2
   - type: testimonial
-    testimonial: 2
+    id: 2
   - type: portfolioGrid
     project: getwhys
     modifier: "-one-col"
     items:
       - 3
   - type: testimonial
-    testimonial: 4
+    id: 4
 ---
