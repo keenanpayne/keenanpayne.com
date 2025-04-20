@@ -2,11 +2,13 @@
 {% set ids = section.ids %}
 
 {% if ids %}
-  {% for id in ids %}
-    {% for testimonial in collections.testimonials %}
-      {% if testimonial.id == id %}
-        {{ testimonial.content | safe }}
-      {% endif %}
+  <section class="testimonials">
+    {% for id in ids %}
+      {% for testimonial in collections.testimonials %}
+        {% if testimonial.id == id %}
+          {% include "components/testimonial.njk" %}
+        {% endif %}
+      {% endfor %}
     {% endfor %}
-  {% endfor %}
+  </section>
 {% endif %}
