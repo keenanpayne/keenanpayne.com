@@ -1,8 +1,13 @@
+{# Imports #}
+{% import "atoms/label.njk" as label with context %}
+
 {# Component Settings #}
 {% set ids = section.ids %}
 
 {% if ids %}
   <section class="testimonials _grid _page-spacing-top">
+    {{ label.output('Kind words from others', 'testimonials-label _container') }}
+
     <div class="testimonials-container">
       {% for id in ids %}
         {% for testimonial in collections.testimonials %}
