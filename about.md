@@ -8,10 +8,9 @@ sections:
   - type: intro
     heading: "Hey there, I'm Keenan ✌🏻"
     subheading: "Welcome to my little corner of the internet."
-    body: 'By trade, I am a web developer and web designer. In fact, I build this website you are on right now! ✨ <br /><br />I build beautiful web pages, architect codebases from scratch, embark on large-scale refactoring efforts, hire teams of web developers, mentor others on their development journies&hellip; you get the point. I do a lot. <br /><br />I have built websites for cool companies like <a href="/portfolio/asana" title="View Asana case study">Asana</a>, <a href="/portfolio/rippling" title="View Rippling case study">Rippling</a>, <a href="/portfolio/gofundme" title="View GoFundMe case study">GoFundMe</a>, and <a href="/portfolio/" title="View portfolio">so many others</a>. I have been doing this for 15 years professionally, so I have lent a hand working on <em>countless</em> of projects.'
-    # TODO: Display photos of me here
+    body: 'By trade, I am a web developer and web designer. In fact, I built this website you are on right now! ✨ <br /><br />So far, I have spent my career building beautiful things on the internet for myself and others. I create beautiful web pages, design pretty user interfaces, help companies achieve their goals, and <a href="/services" title="View services">so much more</a>. <br /><br />I have been lucky enough to use these skills to help cool companies like <a href="/portfolio/asana" title="View Asana case study">Asana</a>, <a href="/portfolio/rippling" title="View Rippling case study">Rippling</a>, <a href="/portfolio/gofundme" title="View GoFundMe case study">GoFundMe</a>, and <a href="/portfolio/" title="View portfolio">many others</a>. I have been doing this for 15 years professionally, so I have lent a hand working on <em>countless</em> projects. <br /><br />In my free time, I love spending time with my partner, family, and friends. I travel all over the place, usually to see those I love. You may also see me at a concert — I go to about 30 shows a year. Or, you may find me at your local game store playing some Magic: The Gathering.<br /><br />Thank you for taking the time to connect digitally. If you want to get in touch, feel free to <a href="/contact" title="Contact me">reach out</a>.'
     right:
-      heading: "Photos of me"
+      heading: "Photos of me and otherse"
       items:
         from: photosOfMe
         limit: 3
