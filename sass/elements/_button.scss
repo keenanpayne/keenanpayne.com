@@ -44,13 +44,20 @@ button,
   }
 
   &.-secondary {
-    --background: var(--color-purple-1);
-    --background-hover: var(--color-purple-2);
-    --color: var(--color-white);
-    --color-hover: var(--color-white);
+    --background: var(--color-yellow-2);
+    --background-hover: var(--color-yellow-1);
+    --color: var(--color-plum-3);
+    --color-hover: var(--color);
 
     border-radius: var(--border-radius);
     padding: 0.75rem 1.15rem;
+
+    @media (--dark) {
+      --background: var(--color-purple-1);
+      --background-hover: var(--color-purple-2);
+      --color: var(--color-white);
+      --color-hover: var(--color-white);
+    }
   }
 
   &.-ghost {
