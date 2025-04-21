@@ -65,6 +65,7 @@
 }
 
 .portfolioGrid-item {
+  border-radius: var(--border-radius-medium);
   grid-column: 1 / -1;
 
   // Descendants
@@ -94,6 +95,7 @@
 
 .portfolioGrid-enlarge {
   background: var(--background);
+  border-bottom-right-radius: var(--border-radius-medium);
   border-left: 1px solid var(--border);
   height: 50px;
   text-align: center;
@@ -142,10 +144,16 @@
     background: var(--background);
     background-size: cover;
     border-bottom: 1px solid var(--border);
+    border-top-left-radius: var(--border-radius-medium);
+    border-top-right-radius: var(--border-radius-medium);
     background-position: top center;
     display: block;
     height: var(--image-height);
     width: 100%;
+
+    &:hover {
+      background-color: var(--background-hover);
+    }
   }
 
   .portfolioGrid-title {
