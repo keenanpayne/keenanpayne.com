@@ -9,10 +9,11 @@
 {% set columns = section.columns %}
 {% set showCovers = section.showCovers %}
 {% set layout = '-' ~ orientation ~ '-' ~ columns ~ '-columns' %}
+{% set readMore = section.readMore %}
 
 {# Markup #}
 <section class="collections _container _page-spacing-top">
-  {{ label.output(heading, 'collections-label' )}}
+  {{ label.output(heading, 'collections-label', readMore) }}
 
   {% if items %}
     <div class="collections-items {{ layout if orientation and columns else '-' ~ orientation }}">

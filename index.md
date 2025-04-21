@@ -8,6 +8,9 @@ sections:
     subheading: "During my fifteen years as a software professional, my work has generated <strong>millions in revenue</strong>, sign up <strong>millions of SaaS users</strong>, and empowered global organizations with <strong>scalable software</strong>"
     right:
       heading: "Services I offer"
+      readMore:
+        url: "/services"
+        text: "View all services"
       items:
         from: services
         limit: 3
@@ -15,6 +18,9 @@ sections:
     showCovers: true
     orientation: horizontal
     heading: "Featured projects"
+    readMore:
+      url: "/portfolio"
+      text: "View all projects"
     items:
       from: portfolio
       limit: 3

@@ -13,6 +13,7 @@
 {% set headerMaxWidth = section.headerMaxWidth %}
 {% set subheadingMaxWidth = section.subheadingMaxWidth %}
 {% set bodyMaxWidth = section.bodyMaxWidth %}
+{% set readMore = section.readMore %}
 
 {# Markup #}
 <section class="intro _container _page-spacing-top">
@@ -45,10 +46,11 @@
   {% if right %}
     {% set rightHeading = right.heading %}
     {% set rightItems = right.items %}
+    {% set rightReadMore = right.readMore %}
 
     <div class="intro-right collections">
       {% if rightHeading %}
-        {{ label.output(rightHeading, 'collections-label') }}
+        {{ label.output(rightHeading, 'collections-label', rightReadMore) }}
       {% endif %}
 
       {% if rightItems %}
