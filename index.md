@@ -15,7 +15,6 @@ sections:
     showCovers: true
     orientation: horizontal
     heading: "Featured projects"
-    spacing: 5
     items:
       from: portfolio
       limit: 3

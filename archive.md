@@ -9,7 +9,6 @@ sections:
   # - type: entries
   #   showCovers: true
   #   heading: "Featured articles"
-  #   spacing: 10
   #   orientation: horizontal
   #   columns: 2
   #   items:
@@ -18,7 +17,6 @@ sections:
   - type: entries
     showCovers: false
     heading: "All articles"
-    spacing: 5
     orientation: archive
     items:
       from: posts

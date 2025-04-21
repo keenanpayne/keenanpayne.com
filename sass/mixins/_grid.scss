@@ -1,4 +1,4 @@
-@mixin grid($columnGap: 3, $rowGap: 5) {
+@mixin grid($columnGap: 3, $rowGap: 3) {
   display: grid;
 
   @media (--min-960) {

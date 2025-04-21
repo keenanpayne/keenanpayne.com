@@ -19,7 +19,6 @@ sections:
     showCovers: false
     orientation: services
     heading: "Services I offer"
-    spacing: 5
     items:
       from: services
   - type: testimonials

@@ -1,12 +1,10 @@
-.collections {
-  margin-top: spacing(var(--top-margin, 0));
-}
-
 .collections-label {
   margin-bottom: spacing(1.5);
 }
 
 .collections-items {
+  gap: spacing(3);
+
   // Modifiers
   &.-horizontal,
   &.-horizontal-2-columns,
@@ -62,14 +60,6 @@
     }
 
     .collections-item {
-      &:not(:first-of-type) {
-        margin-top: spacing(3);
-
-        @media (--min-720) {
-          margin-top: 0;
-        }
-      }
-
       @media (--min-960) {
         grid-column: auto / span 4;
       }
@@ -114,7 +104,6 @@
     align-items: baseline;
     display: flex;
     flex-direction: column;
-    gap: spacing(3);
 
     @media (--min-800) {
       flex-direction: row;

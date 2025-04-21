@@ -5,14 +5,13 @@
 {# Component Settings #}
 {% set heading = section.heading %}
 {% set items = section.items %}
-{% set spacing = section.spacing %}
 {% set orientation = section.orientation %}
 {% set columns = section.columns %}
 {% set showCovers = section.showCovers %}
 {% set layout = '-' ~ orientation ~ '-' ~ columns ~ '-columns' %}
 
 {# Markup #}
-<section class="collections _container" style="--top-margin: {{ spacing if spacing else 0 }}">
+<section class="collections _container _page-spacing-top">
   {{ label.output(heading, 'collections-label' )}}
 
   {% if items %}
