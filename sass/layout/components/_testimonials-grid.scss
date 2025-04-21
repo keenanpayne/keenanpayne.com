@@ -1,0 +1,27 @@
+//
+// Testimonials Grid
+// ==================================================
+
+.testimonials-grid {
+  --grid-gap: #{spacing(1.5)};
+  --grid-columns: 1;
+
+  @media (--min-640) {
+    --grid-gap: #{spacing(3)};
+    --grid-columns: 2;
+  }
+}
+
+.testimonials-grid-container {
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+}
+
+.testimonials-grid-item {
+  // Descendants
+  .testimonial {
+    height: 100%;
+    margin: 0;
+  }
+} 

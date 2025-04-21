@@ -1,0 +1,20 @@
+{# Imports #}
+{% import "atoms/label.njk" as label with context %}
+
+{# Component Settings #}
+{% set ids = section.ids %}
+
+{# Markup #}
+<section class="testimonials-grid _container _page-spacing-top">
+  <div class="testimonials-grid-container">
+    {% for id in ids %}
+      {% for testimonial in collections.testimonials %}
+        {% if testimonial.id == id %}
+          <div class="testimonials-grid-item">
+            {% include "components/testimonial.njk" %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+</section> -
