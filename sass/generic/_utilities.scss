@@ -120,8 +120,9 @@
     --link-color-hover: var(--color-plum-3);
 
     background-color: var(--link-background);
+    border-radius: var(--border-radius-pill);
     font-size: 1rem;
-    padding: 0 calc(1 * var(--spacing-unit)) 0.25rem;
+    padding: spacing(0.25) spacing(1) spacing(0.5);
     position: absolute;
     right: 0;
     text-decoration: none;
