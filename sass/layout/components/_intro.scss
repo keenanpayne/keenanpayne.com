@@ -55,3 +55,24 @@
     @include subtleBackground;
   }
 }
+
+.intro-body {
+  font-size: var(--font-size-step-1);
+}
+
+.intro-photos {
+  margin-top: spacing(3);
+}
+
+.intro-photo {
+  border-radius: var(--border-radius-large);
+  max-width: 150px;
+
+  &:nth-child(even) {
+    transform: rotate(3deg);
+  }
+
+  &:nth-child(odd) {
+    transform: rotate(-3deg);
+  }
+}
