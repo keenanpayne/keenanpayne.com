@@ -10,14 +10,19 @@
 
 .testimonials-container {
   display: flex;
-  gap: 5rem;
+  gap: 0;
   grid-column: 1 / -1;
   position: relative;
   transition: transform 300ms ease-in-out;
   transform: translateX(-100%);
-  width: calc(100% - 575px);
+  width: calc(100% - 8.75rem);
 
-  @media (--min-720) {
+  @media (--min-560) {
+    gap: spacing(3);
+    width: calc(100% - 13rem);
+  }
+
+  @media (--min-960) {
     gap: spacing(5);
     grid-column: 3 / span 8;
     width: 100%;
@@ -82,14 +87,19 @@
 }
 
 .testimonials-nav {
+  bottom: 1.5rem;
   display: flex;
   justify-content: space-between;
   pointer-events: none;
   position: absolute;
-  top: 50%;
   transform: translateY(-50%);
   width: 100%;
   z-index: 1;
+
+  @media (--min-960) {
+    bottom: initial;
+    top: 50%;
+  }
 }
 
 .testimonials-button {
