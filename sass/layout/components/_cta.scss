@@ -1,25 +1,23 @@
 .cta {
   --background: var(--color-yellow-1);
-  --border: var(--color-gray-5);
-
-  background-color: var(--background);
-  border-top: 1px solid var(--border);
-  margin-top: spacing(var(--top-margin, 0));
-  padding-bottom: spacing(7.5);
-  padding-top: spacing(7.5);
 
   @media (--dark) {
     --background: var(--color-purple-1);
-    --border: transparent;
   }
+}
+
+.cta-content {
+  background-color: var(--background);
+  border-radius: var(--border-radius-large);
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.1);
+  padding: spacing(5) calc(2.5 * var(--spacing-unit));
 
   @media (--min-720) {
     text-align: center;
   }
 
   @media (--min-960) {
-    padding-bottom: spacing(10);
-    padding-top: spacing(10);
+    padding: spacing(10) 0;
   }
 }
 
