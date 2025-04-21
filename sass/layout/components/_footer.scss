@@ -64,6 +64,27 @@
   }
 }
 
+.footer-bottom {
+  margin-top: spacing(5);
+  flex-basis: 100%;
+  text-align: center;
+
+  @media (--min-960) {
+    margin-top: spacing(6);
+  }
+}
+
+.footer-nav-items {
+  display: flex;
+  justify-content: center;
+  gap: spacing(1.5);
+
+  @media (--min-640) {
+    justify-content: flex-start;
+    gap: spacing(2);
+  }
+}
+
 .footer-socials {
   text-align: center;
 
@@ -72,7 +93,7 @@
   }
 }
 
-.footer-socials-label {
+.footer-label {
   display: block;
   margin-bottom: spacing(3);
 }

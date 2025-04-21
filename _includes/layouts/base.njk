@@ -85,9 +85,23 @@ https://github.com/keenanpayne/keenanpayne.com
 
     <footer class="footer">
       <div class="footer-content _container">
-        <div class="footer-left">
+        <nav class="footer-left footer-nav">
+          <span class="footer-label _label-sans">
+            Footer Navigation
+          </span>
+
+          <div class="footer-nav-items">
+            {%- for entry in collections.all | eleventyNavigation -%}
+              <a class="footer-nav-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
+                {{ entry.title }}
+              </a>
+            {%- endfor -%}
+          </div>
+        </nav>
+
+        <div class="footer-right">
           <div class="footer-socials">
-            <span class="footer-socials-label _label-sans">
+            <span class="footer-label _label-sans">
               Follow me
             </span>
 
@@ -106,13 +120,9 @@ https://github.com/keenanpayne/keenanpayne.com
           </div>
         </div>
 
-        <div class="footer-right">
+        <div class="footer-bottom">
           <span class="_text-small">
-            <a class="-underline-hover" href="https://creativecommons.org/share-your-work/public-domain/cc0/" target="_blank" rel="noopener">
-              CC0 — No Rights Reserved
-            </a>
-            <br>
-            Do as you wish ✌🏻
+            Live and direct from Denver, Colorado ✌🏻
           </span>
         </div>
       </div>
