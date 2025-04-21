@@ -36,6 +36,4 @@ sections:
   - type: testimonials
     ids: [6, 2, 3, 10]
   - type: cta
-  - type: newsletter
-    spacing: 0
 ---
