@@ -6,6 +6,11 @@ sections:
   - type: intro
     heading: 'Professional and personal web design and <span class="_a11y-hidden">web</span> development services'
     subheading: "During my seventeen years as a software professional, my work has generated <strong>millions in revenue</strong>, sign up <strong>millions of SaaS users</strong>, and empowered global organizations with <strong>scalable software</strong>"
+    # leftPhotos:
+    #   - src: https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jun-27-2021_o8sd0l.jpg
+    #     alt: "Me in grayscale"
+    #   - src: https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jan-28-2022_pwxnxq.jpg
+    #     alt: "Me hiking in Lake Tahoe"
     right:
       heading: "Services I offer"
       readMore:
