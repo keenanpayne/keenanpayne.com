@@ -7,7 +7,6 @@
   display: flex;
   flex-flow: column wrap;
   gap: 1.5rem;
-  margin-top: spacing(3);
 
   @media (--min-960) {
     flex-direction: row;
