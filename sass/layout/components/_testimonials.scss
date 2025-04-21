@@ -15,11 +15,11 @@
   position: relative;
   transition: transform 300ms ease-in-out;
   transform: translateX(-100%);
-  width: calc(100% - 8.75rem);
+  width: calc(100% - 15rem);
 
   @media (--min-560) {
     gap: spacing(3);
-    width: calc(100% - 13rem);
+    width: calc(100% - 12rem);
   }
 
   @media (--min-960) {
@@ -87,7 +87,7 @@
 }
 
 .testimonials-nav {
-  bottom: 1.5rem;
+  bottom: 5rem;
   display: flex;
   justify-content: space-between;
   pointer-events: none;
