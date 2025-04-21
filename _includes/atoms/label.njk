@@ -1,9 +1,15 @@
-{% macro output(text, class) %}
+{% macro output(text, class, readMore) %}
   {% if text %}
     <p class="_label {{ class }}">
       <span>
         {{ text }}
       </span>
+
+      {% if readMore %}
+        <a href="{{ readMore.url }}" class="_font-smoothing">
+          {{ readMore.text }}
+        </a>
+      {% endif %}
     </p>
   {% endif %}
 {% endmacro %}
