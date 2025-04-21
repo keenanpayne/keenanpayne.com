@@ -9,6 +9,7 @@
 {% set heading = section.heading %}
 {% set subheading = section.subheading %}
 {% set body = section.body %}
+{% set leftPhotos = section.leftPhotos %}
 {% set right = section.right %}
 {% set headerMaxWidth = section.headerMaxWidth %}
 {% set subheadingMaxWidth = section.subheadingMaxWidth %}
@@ -40,6 +41,18 @@
       <p class="intro-body" style="{% if bodyMaxWidth %}max-width: {{ bodyMaxWidth }};{% endif %}">
         {{ body | safe }}
       </p>
+    {% endif %}
+
+    {% if leftPhotos %}
+      <div class="intro-photos">
+        {% for photo in leftPhotos %}
+          <img class="intro-photo" 
+               {% if photo.lazy %}data-lazy data-src="{{ photo.src }}"{% else %}src="{{ photo.src }}"{% endif %}
+               alt="{{ photo.alt }}"
+               {% if photo.width %}width="{{ photo.width }}"{% endif %}
+               {% if photo.height %}height="{{ photo.height }}"{% endif %} />
+        {% endfor %}
+      </div>
     {% endif %}
   </header>
 
