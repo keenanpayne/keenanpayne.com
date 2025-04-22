@@ -82,7 +82,7 @@ module.exports = {
       project: "",
       person_id: 11,
       content:
-        "I've had the pleasure of working with Keenan in both a full-time capacity at Asana and as a freelancer when we hired him for multiple projects at our studio. Keenan is one of those designers with fantastic design sensibility; he's the type of developer that I always want involved in the design process as he finds way to push things further and novel ways to bring ideas to life. He's also super communicative, quick, and comes prepared with recommendations based on your project or business need. If it were up to me, I'd hire Keenan again and again."
+        "I've had the pleasure of working with Keenan in both a full-time capacity at Asana and as a freelancer when we hired him for multiple projects at our studio. Keenan is one of those developers with fantastic design sensibility; he's the type of developer that I always want involved in the design process as he finds way to push things further and novel ways to bring ideas to life. He's also super communicative, quick, and comes prepared with recommendations based on your project or business need. If it were up to me, I'd hire Keenan again and again."
     },
     {
       id: 13,
