@@ -7,16 +7,22 @@
       <blockquote class="testimonial">
         {% if testimonial.content %}
           <div class="testimonial-content">
-            {% if testimonial.content | length > 250 %}
+            {% if testimonial.content | length > 225 %}
               <p class="testimonial-text _type-my-voice testimonial-text-trimmed">
-                <span>{{ testimonial.content | truncate(250) | safe }}</span>
+                <span>{{ testimonial.content | truncate(225) | safe }}</span>
+
+                <button class="testimonial-toggle" onclick="toggleTestimonial(this)">
+                  Read more
+                </button>
               </p>
+
               <p class="testimonial-text _type-my-voice testimonial-text-full _a11y-hidden">
                 <span>{{ testimonial.content | safe }}</span>
+
+                <button class="testimonial-toggle" onclick="toggleTestimonial(this)">
+                  Read less
+                </button>
               </p>
-              <button class="testimonial-toggle" onclick="toggleTestimonial(this)">
-                Read more
-              </button>
             {% else %}
               <p class="testimonial-text _type-my-voice">
                 <span>{{ testimonial.content | safe }}</span>
@@ -55,16 +61,18 @@
           const container = button.closest('.testimonial-content');
           const trimmed = container.querySelector('.testimonial-text-trimmed');
           const full = container.querySelector('.testimonial-text-full');
+          const a11yHiddenClass = '_a11y-hidden';
+          const a11yVisibleClass = '_a11y-visible';
           
-          if (full.classList.contains('_a11y-hidden')) {
-            trimmed.classList.add('_a11y-hidden');
-            full.classList.remove('_a11y-hidden');
-            full.classList.add('_a11y-visible');
+          if (full.classList.contains(a11yHiddenClass)) {
+            trimmed.classList.add(a11yHiddenClass);
+            full.classList.remove(a11yHiddenClass);
+            full.classList.add(a11yVisibleClass);
             button.textContent = 'Show less';
           } else {
-            trimmed.classList.remove('_a11y-hidden');
-            full.classList.add('_a11y-hidden');
-            full.classList.remove('_a11y-visible');
+            trimmed.classList.remove(a11yHiddenClass);
+            full.classList.add(a11yHiddenClass);
+            full.classList.remove(a11yVisibleClass);
             button.textContent = 'Read more';
           }
         }
