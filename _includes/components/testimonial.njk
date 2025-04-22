@@ -11,7 +11,7 @@
               <p class="testimonial-text _type-my-voice testimonial-text-trimmed">
                 <span>{{ testimonial.content | truncate(250) | safe }}</span>
               </p>
-              <p class="testimonial-text _type-my-voice testimonial-text-full" style="display: none;">
+              <p class="testimonial-text _type-my-voice testimonial-text-full _a11y-hidden">
                 <span>{{ testimonial.content | safe }}</span>
               </p>
               <button class="testimonial-toggle" onclick="toggleTestimonial(this)">
@@ -56,13 +56,15 @@
           const trimmed = container.querySelector('.testimonial-text-trimmed');
           const full = container.querySelector('.testimonial-text-full');
           
-          if (trimmed.style.display !== 'none') {
-            trimmed.style.display = 'none';
-            full.style.display = 'block';
+          if (full.classList.contains('_a11y-hidden')) {
+            trimmed.classList.add('_a11y-hidden');
+            full.classList.remove('_a11y-hidden');
+            full.classList.add('_a11y-visible');
             button.textContent = 'Show less';
           } else {
-            trimmed.style.display = 'block';
-            full.style.display = 'none';
+            trimmed.classList.remove('_a11y-hidden');
+            full.classList.add('_a11y-hidden');
+            full.classList.remove('_a11y-visible');
             button.textContent = 'Read more';
           }
         }
