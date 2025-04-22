@@ -1,15 +1,17 @@
 .cta {
   --background: var(--color-yellow-1);
+  --box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.05);
 
   @media (--dark) {
     --background: var(--color-purple-1);
+    --box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.15);
   }
 }
 
 .cta-content {
   background-color: var(--background);
   border-radius: var(--border-radius-large);
-  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--box-shadow);
   padding: spacing(5) calc(2.5 * var(--spacing-unit));
 
   @media (--min-720) {
