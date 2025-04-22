@@ -7,6 +7,7 @@ button,
   @include externalLink($size: 16px, $left: 8px);
 
   background-color: var(--background, initial);
+  border-radius: var(--border-radius);
   color: var(--color, var(--link-color, var(--color-text)));
   cursor: pointer;
   font-weight: var(--font-weight-semibold);
@@ -49,7 +50,6 @@ button,
     --color: var(--color-plum-3);
     --color-hover: var(--color);
 
-    border-radius: var(--border-radius);
     padding: 0.75rem 1.15rem;
 
     @media (--dark) {
@@ -67,7 +67,6 @@ button,
     --color-hover: var(--color-white);
 
     border: 2px solid var(--border);
-    border-radius: var(--border-radius);
     padding: 0.75rem 1rem;
 
     @media (--dark) {
