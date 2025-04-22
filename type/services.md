@@ -22,6 +22,9 @@ sections:
     items:
       from: services
   - type: testimonials
-    ids: [6, 2, 3, 10]
+    ids: [6, 2, 3, 15, 19]
+    readMore:
+      url: "/testimonials"
+      text: "View all testimonials"
   - type: cta
 ---
