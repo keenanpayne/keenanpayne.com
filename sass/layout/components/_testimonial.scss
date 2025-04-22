@@ -4,11 +4,10 @@
 
 .testimonial {
   --background-color: var(--color-gray-1);
-  --border-color: var(--color-gray-3);
   --color-paragraph: var(--color-plum-3);
 
   background-color: var(--background-color);
-  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-medium);
   box-shadow:
     10px 10px 0 0 var(--portfolio-color),
     var(--shadow);
@@ -22,7 +21,6 @@
 
   @media (--dark) {
     --background-color: var(--color-plum-3);
-    --border-color: var(--color-gray-7);
     --color-paragraph: var(--color-white);
   }
 
