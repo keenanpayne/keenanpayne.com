@@ -10,7 +10,7 @@
     {% for id in ids %}
       {% for testimonial in collections.testimonials %}
         {% if testimonial.id == id %}
-          <div class="testimonials-grid-item" onclick="this.classList.toggle('-expanded')">
+          <div class="testimonials-grid-item">
             {% include "components/testimonial.njk" %}
           </div>
         {% endif %}
