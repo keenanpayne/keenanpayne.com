@@ -3,10 +3,11 @@
 
 {# Component Settings #}
 {% set ids = section.ids %}
+{% set readMore = section.readMore %}
 
 {% if ids %}
-  <section class="testimonials _grid _page-spacing-top">
-    {{ label.output('Kind words from others', 'testimonials-label _container') }}
+  <section class="testimonials _container _grid _page-spacing-top">
+    {{ label.output('Kind words from others', 'testimonials-label _container', readMore) }}
 
     <div class="testimonials-container">
       {% for id in ids %}
