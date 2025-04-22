@@ -41,7 +41,7 @@ module.exports = {
       position: "Co-Founder, GetWhys",
       url: "https://www.linkedin.com/in/philippeboutros",
       image:
-        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1743026378/portfolio/getwhys/philippe_cy0mlq.jpg",
+        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_100/v1743026378/portfolio/getwhys/philippe_cy0mlq.jpg",
       projects: ["GetWhys"]
     },
     {
@@ -50,7 +50,7 @@ module.exports = {
       position: "Design Partner",
       url: "https://www.elliotmatson.com",
       image:
-        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1743026684/portfolio/getwhys/elliot_a1cwp1.jpg",
+        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_100/v1743026684/portfolio/getwhys/elliot_a1cwp1.jpg",
       projects: ["GetWhys"]
     },
     {
@@ -80,7 +80,7 @@ module.exports = {
       position: "Project Manager, GoFundMe",
       url: "https://www.linkedin.com/in/kelsealittle/",
       image:
-        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1657998867/people/kelsea-little_s31zkg.jpg",
+        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_100/v1657998867/people/kelsea-little_s31zkg.jpg",
       projects: ["GoFundMe"]
     },
     {
@@ -89,7 +89,7 @@ module.exports = {
       position: "Design Partner",
       url: "https://tonymingo.com/",
       image:
-        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_150/v1657998867/people/tony-mingo_zfmkfl.jpg",
+        "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,w_100/v1657998867/people/tony-mingo_zfmkfl.jpg",
       projects: ["GoFundMe"]
     },
     {
