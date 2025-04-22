@@ -7,7 +7,7 @@ templateClass: _page-spacing-bottom
 sections:
   - type: intro
     heading: "Testimonials"
-    subheading: "What my clients have to say"
+    subheading: "Kind words from clients and collaborators"
   - type: testimonials-grid
     ids:
       [
