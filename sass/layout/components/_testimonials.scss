@@ -118,11 +118,14 @@
 }
 
 .testimonials-button {
-  color: var(--color-white);
+  --background-color: var(--color-gray-7);
+  --color: var(--color-white);
+
   align-items: center;
-  background: var(--color-gray-7);
+  background: var(--background-color);
   border: none;
   border-radius: 50%;
+  color: var(--color);
   cursor: pointer;
   display: flex;
   height: 40px;
@@ -133,7 +136,11 @@
 
   &:hover {
     background-color: var(--color-gray-8);
-    color: var(--color-white);
+  }
+
+  @media (--dark) {
+    --background-color: var(--color-gray-1);
+    --color: var(--color-gray-9);
   }
 
   // Modifiers
