@@ -5,6 +5,7 @@ module.exports = {
       name: "Jaime Hernández",
       position: "Development Partner",
       url: "https://jaime.one/",
+      image: "/images/people/jaime-hernandez.jpeg",
       projects: [
         "Neuralink",
         "Transform",
@@ -96,6 +97,7 @@ module.exports = {
       name: "Kelsey Aroian",
       position: "Brand & Creative, formerly at Front, Asana",
       url: "https://www.linkedin.com/in/kelseyaroian",
+      image: "/images/people/kelsey-aroian.jpeg",
       projects: ["Asana / Studio Projects"]
     },
     {
@@ -103,6 +105,7 @@ module.exports = {
       name: "Sean Anthony Golliher",
       position: "President at Metric PPC",
       url: "https://www.linkedin.com/in/seangolliher",
+      image: "/images/people/sean-golliher.jpeg",
       projects: ["Various Client Projects"]
     },
     {
@@ -110,6 +113,7 @@ module.exports = {
       name: "Matt Buckley",
       position: "Sr Manager, Product Reliability Engineering",
       url: "https://www.linkedin.com/in/mattebuckley",
+      image: "/images/people/matt-buckley.jpeg",
       projects: ["Recording Business Website", "Default Prime"]
     },
     {
@@ -117,6 +121,7 @@ module.exports = {
       name: "Marc Ballinger",
       position: "Production Management & Forecasting Expert",
       url: "https://www.linkedin.com/in/marctballinger",
+      image: "/images/people/marc-ballinger.jpeg",
       projects: ["Mockup Design"]
     },
     {
@@ -124,6 +129,7 @@ module.exports = {
       name: "Austin Slominski",
       position: "Creative Technologist",
       url: "https://www.linkedin.com/in/austin-slominski-5733a570",
+      image: "/images/people/austin-slominski.jpeg",
       projects: ["Spectral Fusion Designs"]
     },
     {
@@ -131,6 +137,7 @@ module.exports = {
       name: "Kyle Pucko",
       position: "Entrepreneur, Digital Marketer",
       url: "https://www.linkedin.com/in/kylepucko",
+      image: "/images/people/kyle-pucko.jpeg",
       projects: ["Startup Beta Page"]
     },
     {
@@ -138,6 +145,7 @@ module.exports = {
       name: "Jeremy Stein",
       position: "CEO and Co-Founder @ SportsGrid",
       url: "https://www.linkedin.com/in/jsstein",
+      image: "/images/people/jeremy-stein.jpeg",
       projects: ["HAML Template Conversion"]
     },
     {
@@ -145,6 +153,7 @@ module.exports = {
       name: "Tim Peter",
       position: "Digital Strategy Expert, Tim Peter & Associates",
       url: "https://www.linkedin.com/in/timpeter",
+      image: "/images/people/tim-peter.jpeg",
       projects: ["Website Redesign"]
     },
     {
@@ -152,6 +161,7 @@ module.exports = {
       name: "James Wasem",
       position: "Project Manager, Author, Pilot",
       url: "https://www.linkedin.com/in/james-wasem-49442319",
+      image: "/images/people/james-wasem.jpeg",
       projects: ["Design Collaboration"]
     },
     {
@@ -159,6 +169,7 @@ module.exports = {
       name: "Daniel Mahoney",
       position: "Broker Associate - Fay Ranches",
       url: "https://www.linkedin.com/in/daniel-mahoney-8975272b",
+      image: "/images/people/daniel-mahoney.jpeg",
       projects: ["Site Overhaul"]
     },
     {
@@ -166,6 +177,7 @@ module.exports = {
       name: "Amer Rehman",
       position: "Advisor, Entrepreneur, Investor",
       url: "https://www.linkedin.com/in/amer-rehman-28aaa",
+      image: "/images/people/amer-rehman.jpeg",
       projects: ["Business Website"]
     },
     {
@@ -173,6 +185,7 @@ module.exports = {
       name: "Brian McMahon",
       position: "Founder @ SparkCures",
       url: "https://www.linkedin.com/in/brianmcm",
+      image: "/images/people/brian-mcmahon.jpeg",
       projects: ["Feature-Rich Web Design"]
     },
     {
@@ -180,6 +193,7 @@ module.exports = {
       name: "Glenn Nano",
       position: "Product Leader, ex-Netflix / LA Times",
       url: "https://www.linkedin.com/in/glennnano",
+      image: "/images/people/glenn-nano.jpeg",
       projects: ["AnswerQi Webapp"]
     },
     {
@@ -187,6 +201,7 @@ module.exports = {
       name: "Jamie Forrest",
       position: "CTO at Coursemojo",
       url: "https://www.linkedin.com/in/jamieforrest",
+      image: "/images/people/jamie-forrest.jpeg",
       projects: ["AnswerQi Redesign"]
     },
     {
@@ -194,6 +209,7 @@ module.exports = {
       name: "Alexander Carlson",
       position: "Vendor Manager at etrailer.com",
       url: "https://www.linkedin.com/in/alexanderwcarlson",
+      image: "/images/people/alexander-carlson.jpeg",
       projects: ["Team Leadership"]
     },
     {
@@ -201,6 +217,7 @@ module.exports = {
       name: "Ali Gray",
       position: "Web Designer at Portland Community College",
       url: "https://www.linkedin.com/in/ali-gray",
+      image: "/images/people/ali-gray.jpeg",
       projects: ["Team Projects"]
     },
     {
@@ -208,6 +225,7 @@ module.exports = {
       name: "Craig Mcninch",
       position: "Manager, Collaboration Tools & Services",
       url: "https://www.linkedin.com/in/craig-mcninch-613a0045",
+      image: "/images/people/craig-mcninch.jpeg",
       projects: ["Spectral Fusion Designs"]
     },
     {
@@ -222,6 +240,7 @@ module.exports = {
       name: "Andrew Hartnett",
       position: "VP of Engineering at Inside Real Estate",
       url: "https://www.linkedin.com/in/andrewhartnett",
+      image: "/images/people/andrew-hartnett.jpeg",
       projects: ["Front-End Development"]
     },
     {
@@ -229,6 +248,7 @@ module.exports = {
       name: "Brad Tramel",
       position: "Web Developer at Minnesota Timberwolves and Lynx",
       url: "https://www.linkedin.com/in/bradtramel",
+      image: "/images/people/brad-tramel.jpeg",
       projects: ["Default Prime"]
     },
     {
@@ -236,6 +256,7 @@ module.exports = {
       name: "Lucas Hahn",
       position: "Manager at PwC, License Management Compliance",
       url: "https://www.linkedin.com/in/hahnlucas",
+      image: "/images/people/lucas-hahn.jpeg",
       projects: ["Default Prime"]
     }
   ]
