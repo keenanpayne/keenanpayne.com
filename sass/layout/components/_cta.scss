@@ -22,6 +22,7 @@
 }
 
 .cta-subheading {
+  font-weight: var(--font-weight-lighter);
   margin-top: spacing(2);
 
   @media (--min-960) {
