@@ -19,6 +19,37 @@
 }
 
 .testimonials-grid-item {
+  position: relative;
+  max-height: 350px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+
+  // Background gradient
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(255, 255, 255, 0.9)
+    );
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  // Modifiers
+  &.-expanded {
+    max-height: none;
+
+    &::after {
+      opacity: 0;
+    }
+  }
+
   // Descendants
   .testimonial {
     height: 100%;
