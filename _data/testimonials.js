@@ -19,7 +19,7 @@ module.exports = {
       project: "GetWhys",
       person_id: 5,
       content:
-        "I was thrilled when I saw what Keenan had put together based on my brand. He utilized the system I had created and made his own creative decisions about how to best implement it across a variety of pages and UI use cases."
+        "I was thrilled when I saw what Keenan had put together based on my brand. He utilized the system I had created and made his own creative decisions about how to best implement it."
     },
     {
       id: 4,
