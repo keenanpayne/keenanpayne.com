@@ -6,9 +6,17 @@
     {% if testimonial.id == id %}
       <blockquote class="testimonial">
         {% if testimonial.content %}
-          <p class="testimonial-text _type-my-voice">
-            <span>{{ testimonial.content | safe }}</span>
-          </p>
+          <div class="testimonial-content">
+            <p class="testimonial-text _type-my-voice testimonial-text-trimmed">
+              <span>{{ testimonial.content | truncate(250) | safe }}</span>
+            </p>
+            <p class="testimonial-text _type-my-voice testimonial-text-full" style="display: none;">
+              <span>{{ testimonial.content | safe }}</span>
+            </p>
+            <button class="testimonial-toggle" onclick="toggleTestimonial(this)">
+              Read more
+            </button>
+          </div>
         {% endif %}
 
         {% for person in collections.people %}
@@ -35,6 +43,24 @@
           {% endif %}
         {% endfor %}
       </blockquote>
+
+      <script>
+        function toggleTestimonial(button) {
+          const container = button.closest('.testimonial-content');
+          const trimmed = container.querySelector('.testimonial-text-trimmed');
+          const full = container.querySelector('.testimonial-text-full');
+          
+          if (trimmed.style.display !== 'none') {
+            trimmed.style.display = 'none';
+            full.style.display = 'block';
+            button.textContent = 'Show less';
+          } else {
+            trimmed.style.display = 'block';
+            full.style.display = 'none';
+            button.textContent = 'Read more';
+          }
+        }
+      </script>
     {% endif %}
   {% endfor %}
 {% endif %}
