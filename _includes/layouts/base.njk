@@ -26,6 +26,10 @@ https://github.com/keenanpayne/keenanpayne.com
     <link rel="alternate" href="{{ metadata.jsonfeed.path | url }}" type="application/json" title="{{ metadata.title }}">
 
     <script src="{{ '/js/app.js' | url }}"></script>
+
+    {# Preconnect to Google Fonts #}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     {% include "globals/meta.njk" %}
   </head>
