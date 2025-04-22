@@ -35,7 +35,7 @@
   }
 
   @media (--min-960) {
-    padding: 3.5rem 2.5rem;
+    padding: 2.5rem;
   }
 
   @media (--min-1120) {
@@ -53,11 +53,15 @@
   }
 }
 
+.testimonial-toggle {
+  margin-bottom: 1rem;
+}
+
 .testimonial-cite {
   align-items: center;
   display: flex;
   font-style: normal;
-  margin-top: 1.25rem;
+  margin-top: spacing(5);
 }
 
 .testimonial-author,
