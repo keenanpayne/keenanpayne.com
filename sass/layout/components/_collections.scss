@@ -26,15 +26,12 @@
 
     .collections-content {
       --background-color: var(--color-gray-1);
-      --border-color: var(--color-gray-3);
 
       background-color: var(--background-color);
-      border: 1px solid var(--border-color);
       flex: 1;
 
       @media (--dark) {
-        --background-color: var(--color-plum-3);
-        --border-color: var(--color-gray-7);
+        --background-color: var(--color-plum-4);
       }
     }
 
@@ -136,6 +133,8 @@
 .collections-image {
   --image-height: 225px;
 
+  border-top-left-radius: var(--border-radius-medium);
+  border-top-right-radius: var(--border-radius-medium);
   height: var(--image-height);
   width: 100%;
 
@@ -158,6 +157,10 @@
   @media (--min-1120) {
     margin-top: spacing(0.5);
   }
+}
+
+.collections-content {
+  border-radius: var(--border-radius-medium);
 }
 
 .collections-link {
