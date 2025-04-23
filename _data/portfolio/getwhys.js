@@ -6,6 +6,7 @@ module.exports = {
   size: "~7",
   industry: "SaaS — Artificial Intelligence (AI)",
   color: "#3B4B8D",
+  url: "https://www.getwhys.io",
   role: "Web Developer",
   services: ["Web Design", "Web Development", "CMS Implementation"],
   technologies: [
