@@ -37,44 +37,7 @@ https://github.com/keenanpayne/keenanpayne.com
   <body>
     {% include "components/topbar.njk" %}
 
-    <header class="header">
-      <div class="header-container">
-        <h1 class="header-logo">
-          <a class="-hover-color" href="{{ '/' | url }}">
-            Keenan<br> 
-            Payne
-          </a>
-        </h1>
-
-        <h2 class="header-tagline">
-          Providing web design and <span class="_a11y-hidden">web</span> development services <strong class="_rainbow-underline">since 2007</strong>
-        </h2>
-
-        <a href="/project-inquiry" class="header-button button -secondary">
-          Inquire about a project →
-        </a>
-      </div>
-
-      <div class="navigation">
-        <nav class="navigation-left">
-          {%- for entry in collections.all | eleventyNavigation -%}
-            <a class="-inverted navigation-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
-              {{ entry.title }}
-            </a>
-          {%- endfor -%}
-        </nav>
-
-        <nav class="navigation-right">
-          <a class="-inverted navigation-item" href="https://calendly.com/keenanpayne/" title="Schedule time to talk" target="_blank" rel="noopener">
-            {% include "svg/calendar.svg" %}
-          </a>
-
-          <a class="-inverted navigation-item" href="/subscribe" title="Subscribe to my newsletter">
-            {% include "svg/mailbox.svg" %}
-          </a>
-        </nav>
-      </div>
-    </header>
+    {% include "components/header.njk" %}
 
     <main class="{% if templateClass %}{{ templateClass }}{% endif %}">
       {% if ignoreBaseOutput != true %}
@@ -86,49 +49,6 @@ https://github.com/keenanpayne/keenanpayne.com
       {{ content | safe }}
     </main>
 
-    <footer class="footer">
-      <div class="footer-content _container">
-        <nav class="footer-left footer-nav">
-          <span class="footer-label _label-sans">
-            Footer Navigation
-          </span>
-
-          <div class="footer-nav-items">
-            {%- for entry in collections.all | eleventyNavigation -%}
-              <a class="footer-nav-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
-                {{ entry.title }}
-              </a>
-            {%- endfor -%}
-          </div>
-        </nav>
-
-        <div class="footer-right">
-          <div class="footer-socials">
-            <span class="footer-label _label-sans">
-              Follow me
-            </span>
-
-            <ul class="footer-socials-list">
-              {% for id, item in socials %}
-                  <li class="footer-socials-item">
-                  {% set name = item.name | lower %}
-                  {% set icon = "svg/" ~ name ~ ".svg" %}
-
-                  <a class="footer-socials-link {{ '-' ~ name | lower }}" target="_blank" rel="noopener" href="{{ item.url }}" title="Find me on {{ name }}">
-                    {% include icon %}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
-
-        <div class="footer-bottom">
-          <span class="_text-small">
-            Live and direct from Denver, Colorado ✌🏻
-          </span>
-        </div>
-      </div>
-    </footer>
+    {% include "components/footer.njk" %}
   </body>
 </html>

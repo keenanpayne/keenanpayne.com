@@ -1,0 +1,44 @@
+<footer class="footer">
+  <div class="footer-content _container">
+    <nav class="footer-left footer-nav">
+      <span class="footer-label _label-sans">
+        Footer Navigation
+      </span>
+
+      <div class="footer-nav-items">
+        {%- for entry in collections.all | eleventyNavigation -%}
+          <a class="footer-nav-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
+            {{ entry.title }}
+          </a>
+        {%- endfor -%}
+      </div>
+    </nav>
+
+    <div class="footer-right">
+      <div class="footer-socials">
+        <span class="footer-label _label-sans">
+          Follow me
+        </span>
+
+        <ul class="footer-socials-list">
+          {% for id, item in socials %}
+              <li class="footer-socials-item">
+              {% set name = item.name | lower %}
+              {% set icon = "svg/" ~ name ~ ".svg" %}
+
+              <a class="footer-socials-link {{ '-' ~ name | lower }}" target="_blank" rel="noopener" href="{{ item.url }}" title="Find me on {{ name }}">
+                {% include icon %}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span class="_text-small">
+        Live and direct from Denver, Colorado ✌🏻
+      </span>
+    </div>
+  </div>
+</footer> 

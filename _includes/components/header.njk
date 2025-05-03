@@ -1,0 +1,38 @@
+<header class="header">
+  <div class="header-container">
+    <h1 class="header-logo">
+      <a class="-hover-color" href="{{ '/' | url }}">
+        Keenan<br> 
+        Payne
+      </a>
+    </h1>
+
+    <h2 class="header-tagline">
+      Providing web design and <span class="_a11y-hidden">web</span> development services <strong class="_rainbow-underline">since 2007</strong>
+    </h2>
+
+    <a href="/project-inquiry" class="header-button button -secondary">
+      Inquire about a project →
+    </a>
+  </div>
+
+  <div class="navigation">
+    <nav class="navigation-left">
+      {%- for entry in collections.all | eleventyNavigation -%}
+        <a class="-inverted navigation-item {% if entry.url == page.url or entry.url in page.url %} -active{% endif %}" href="{{ entry.url | url }}">
+          {{ entry.title }}
+        </a>
+      {%- endfor -%}
+    </nav>
+
+    <nav class="navigation-right">
+      <a class="-inverted navigation-item" href="https://calendly.com/keenanpayne/" title="Schedule time to talk" target="_blank" rel="noopener">
+        {% include "svg/calendar.svg" %}
+      </a>
+
+      <a class="-inverted navigation-item" href="/subscribe" title="Subscribe to my newsletter">
+        {% include "svg/mailbox.svg" %}
+      </a>
+    </nav>
+  </div>
+</header> 
