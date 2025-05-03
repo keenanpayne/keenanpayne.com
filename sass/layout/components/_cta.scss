@@ -1,6 +1,6 @@
 .cta {
   --background: var(--color-yellow-1);
-  --box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.05);
+  --box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.0125);
 
   @media (--dark) {
     --background: var(--color-purple-1);
