@@ -272,6 +272,13 @@ module.exports = {
       person_id: 10,
       content:
         "Keenan makes a great development partner. As a designer, I appreciate his magical ability to talk about projects in common terms and teach us a few things along the way. I would recommend Keenan to anyone. Aside from his mastery of web development, he's patient, sharp, and empathetic. Keenan Payne is like a well-designed website. Technical and complex on the inside, with an intuitive, easy-to-use UI on the outside."
+    },
+    {
+      id: 40,
+      project: "Jim Barrett Fine Art",
+      person_id: 32,
+      content:
+        "I have known and worked with Keenan Payne since 2008. I have found him to be not only a wizard with web related tasks, but he is also a very kind person who is a pleasure to work with. He always puts the clients wishes at the forefront of any design work he takes on. I highly recommend Keenan for any web related and design oriented work."
     }
   ]
 };

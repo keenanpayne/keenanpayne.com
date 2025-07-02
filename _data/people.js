@@ -258,6 +258,14 @@ module.exports = {
       url: "https://www.linkedin.com/in/hahnlucas",
       image: "/images/people/lucas-hahn.jpeg",
       projects: ["Default Prime"]
+    },
+    {
+      id: 32,
+      name: "Jim Barrett",
+      position: "Owner, Jim Barrett Fine Art",
+      url: "https://www.jimbarrettfineart.com/",
+      image: "/images/people/jim-barrett.jpeg",
+      projects: ["Jim Barrett Fine Art"]
     }
   ]
 };
