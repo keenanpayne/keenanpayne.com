@@ -1,0 +1,333 @@
+{
+  "topQualities": [
+    {
+      "word": "great",
+      "count": 18,
+      "percentage": 45
+    },
+    {
+      "word": "efficient",
+      "count": 12,
+      "percentage": 30
+    },
+    {
+      "word": "professional",
+      "count": 12,
+      "percentage": 30
+    },
+    {
+      "word": "easy",
+      "count": 7,
+      "percentage": 18
+    },
+    {
+      "word": "creative",
+      "count": 5,
+      "percentage": 13
+    },
+    {
+      "word": "quick",
+      "count": 5,
+      "percentage": 13
+    },
+    {
+      "word": "highly-recommend",
+      "count": 5,
+      "percentage": 13
+    },
+    {
+      "word": "beautiful",
+      "count": 4,
+      "percentage": 10
+    },
+    {
+      "word": "would-recommend",
+      "count": 4,
+      "percentage": 10
+    },
+    {
+      "word": "communicative",
+      "count": 4,
+      "percentage": 10
+    },
+    {
+      "word": "excellent",
+      "count": 4,
+      "percentage": 10
+    },
+    {
+      "word": "responsive",
+      "count": 4,
+      "percentage": 10
+    }
+  ],
+  "allQualities": [
+    {
+      "word": "great",
+      "count": 18,
+      "percentage": 45
+    },
+    {
+      "word": "efficient",
+      "count": 12,
+      "percentage": 30
+    },
+    {
+      "word": "professional",
+      "count": 12,
+      "percentage": 30
+    },
+    {
+      "word": "easy",
+      "count": 7,
+      "percentage": 18
+    },
+    {
+      "word": "creative",
+      "count": 5,
+      "percentage": 13
+    },
+    {
+      "word": "quick",
+      "count": 5,
+      "percentage": 13
+    },
+    {
+      "word": "highly-recommend",
+      "count": 5,
+      "percentage": 13
+    },
+    {
+      "word": "beautiful",
+      "count": 4,
+      "percentage": 10
+    },
+    {
+      "word": "would-recommend",
+      "count": 4,
+      "percentage": 10
+    },
+    {
+      "word": "communicative",
+      "count": 4,
+      "percentage": 10
+    },
+    {
+      "word": "excellent",
+      "count": 4,
+      "percentage": 10
+    },
+    {
+      "word": "responsive",
+      "count": 4,
+      "percentage": 10
+    },
+    {
+      "word": "pleasure-to-work-with",
+      "count": 4,
+      "percentage": 10
+    },
+    {
+      "word": "wizard",
+      "count": 3,
+      "percentage": 8
+    },
+    {
+      "word": "dependable",
+      "count": 3,
+      "percentage": 8
+    },
+    {
+      "word": "laid-back",
+      "count": 3,
+      "percentage": 8
+    },
+    {
+      "word": "fast",
+      "count": 3,
+      "percentage": 8
+    },
+    {
+      "word": "amazing",
+      "count": 3,
+      "percentage": 8
+    },
+    {
+      "word": "available",
+      "count": 3,
+      "percentage": 8
+    },
+    {
+      "word": "patient",
+      "count": 3,
+      "percentage": 8
+    },
+    {
+      "word": "sharp",
+      "count": 3,
+      "percentage": 8
+    },
+    {
+      "word": "expert",
+      "count": 3,
+      "percentage": 8
+    },
+    {
+      "word": "easy-to-work-with",
+      "count": 3,
+      "percentage": 8
+    },
+    {
+      "word": "experienced",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "cool-headed",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "amazing-to-work-with",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "magical",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "mastery",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "empathetic",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "technical",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "intuitive",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "went-above",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "highly-recommended",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "reliable",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "talented",
+      "count": 2,
+      "percentage": 5
+    },
+    {
+      "word": "fantastic",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "clear",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "above-and-beyond",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "exceeded-expectations",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "excellent-job",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "on-time",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "great-value",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "team-player",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "diligent",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "robust",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "friendly",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "innovative",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "knowledgeable",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "elegant",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "timely",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "organized",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "cutting-edge",
+      "count": 1,
+      "percentage": 3
+    },
+    {
+      "word": "kind",
+      "count": 1,
+      "percentage": 3
+    }
+  ],
+  "totalTestimonials": 40,
+  "analyzedAt": "2025-07-02T23:15:17.522Z"
+}

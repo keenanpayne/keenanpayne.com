@@ -6,6 +6,21 @@
 
 {# Markup #}
 <section class="testimonials-grid _container _page-spacing-top">
+  {# Top Qualities Section #}
+  {% if collections.testimonialAnalysis.topQualities %}
+    <div class="testimonials-qualities">
+      <h3 class="testimonials-qualities-heading">Most mentioned qualities</h3>
+      <div class="testimonials-qualities-grid">
+        {% for quality in collections.testimonialAnalysis.topQualities.slice(0, 8) %}
+          <span class="testimonials-quality-tag">
+            {{ quality.word | replace("-", " ") | title }}
+            <small class="testimonials-quality-count">{{ quality.count }}×</small>
+          </span>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
   <div class="testimonials-grid-container">
     {% for id in ids %}
       {% for testimonial in collections.testimonials %}

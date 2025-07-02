@@ -76,6 +76,7 @@
     "audit:fix": "npm audit fix && npm update",
     "size": "du -h _site/ | sort -hr",
     "size:detail": "du -h _site/ | sort -hr > size-report.txt",
+    "analyze:testimonials": "node scripts/analyze-testimonials.js",
     "prebuild": "npm run clean",
     "predev": "npm run clean",
     "postinstall": "echo 'Installation complete! Run npm run dev to start development server.'"

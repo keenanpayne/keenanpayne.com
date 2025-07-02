@@ -215,6 +215,11 @@ module.exports = function (eleventyConfig) {
     return require("./_data/testimonials.js").testimonials;
   });
 
+  // Collection for testimonial analysis
+  eleventyConfig.addCollection("testimonialAnalysis", function (collection) {
+    return require("./_data/testimonialAnalysis.js")();
+  });
+
   // Collection for bookshelf
   eleventyConfig.addCollection("book", function (collection) {
     return collection
