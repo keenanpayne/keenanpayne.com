@@ -50,6 +50,8 @@
   --color-paragraph: var(--color-gray-9);
   --color-nav-background-hover: var(--color-yellow-1);
   --color-topbar-background: var(--color-yellow-1);
+  --color-accent-background: var(--color-purple-1);
+  --color-accent-background-2: var(--color-purple-2);
 
   // Font Families
   --font-family-base:
@@ -122,5 +124,7 @@
     --color-paragraph: var(--color-gray-1);
     --color-nav-background-hover: var(--color-purple-1);
     --color-topbar-background: var(--color-purple-4);
+    --color-accent-background: var(--color-yellow-2);
+    --color-accent-background-2: var(--color-yellow-3);
   }
 }
