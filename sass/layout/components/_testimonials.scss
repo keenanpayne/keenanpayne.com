@@ -3,6 +3,8 @@
 // ==================================================
 
 .testimonials {
+  display: grid;
+  gap: spacing(1.5);
   overflow: hidden;
   position: relative;
   width: 100%;
@@ -10,145 +12,69 @@
 
 .testimonials-container {
   display: flex;
-  gap: 0;
+  gap: spacing(3);
   grid-column: 1 / -1;
-  position: relative;
-  transition: transform 300ms ease-in-out;
-  transform: translateX(-100%);
-  width: calc(100% - 15rem);
+  overflow-x: auto;
+  padding-bottom: spacing(2);
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  width: 100%;
+
+  // Custom scrollbar styling for webkit browsers
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-gray-2);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gray-5);
+    border-radius: 3px;
+
+    &:hover {
+      background: var(--color-gray-6);
+    }
+  }
+
+  @media (--dark) {
+    &::-webkit-scrollbar-track {
+      background: var(--color-gray-8);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-gray-6);
+
+      &:hover {
+        background: var(--color-gray-5);
+      }
+    }
+  }
 
   @media (--min-560) {
-    gap: spacing(3);
-    width: calc(100% - 12rem);
+    gap: spacing(4);
   }
 
   @media (--min-960) {
     gap: spacing(5);
-    grid-column: 3 / span 8;
-    width: 100%;
   }
 }
 
 .testimonials-slide {
-  --background-gradient-before: linear-gradient(
-    to left,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 1)
-  );
-  --background-gradient-after: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 1)
-  );
-
   border-radius: var(--border-radius-medium);
-  flex: 0 0 100%;
-  position: relative;
+  flex: 0 0 auto;
+  min-width: 280px;
   width: 100%;
 
-  @media (--dark) {
-    --background-gradient-before: linear-gradient(
-      to left,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 1)
-    );
-
-    --background-gradient-after: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 1)
-    );
+  @media (--min-560) {
+    min-width: 320px;
+    width: 85%;
   }
-
-  // Pseudo-elements with gradient fading into the left and right sides of the screen
-  &::before,
-  &::after {
-    content: "";
-    height: 100%;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    transition: opacity 150ms ease-in-out;
-    user-select: none;
-    width: 50%;
-    z-index: 1;
-  }
-
-  &::before {
-    background: var(--background-gradient-before);
-    border-top-left-radius: var(--border-radius-medium);
-    border-bottom-left-radius: var(--border-radius-medium);
-    left: 0;
-  }
-
-  &::after {
-    background: var(--background-gradient-after);
-    border-top-right-radius: var(--border-radius-medium);
-    border-bottom-right-radius: var(--border-radius-medium);
-    right: 0;
-  }
-
-  // Modifiers
-  &.-inactive {
-    &::before,
-    &::after {
-      opacity: 1;
-    }
-
-    .testimonial {
-      filter: blur(2px);
-    }
-  }
-}
-
-.testimonials-nav {
-  bottom: 5rem;
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-  position: absolute;
-  transform: translateY(-50%);
-  width: 100%;
-  z-index: 1;
 
   @media (--min-960) {
-    bottom: initial;
-    top: 50%;
-  }
-}
-
-.testimonials-button {
-  --background-color: var(--color-gray-7);
-  --color: var(--color-white);
-
-  align-items: center;
-  background: var(--background-color);
-  border: none;
-  border-radius: 50%;
-  color: var(--color);
-  cursor: pointer;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  pointer-events: auto;
-  transition: background-color 150ms ease-in-out;
-  width: 40px;
-
-  &:hover {
-    background-color: var(--color-gray-8);
-  }
-
-  @media (--dark) {
-    --background-color: var(--color-gray-1);
-    --color: var(--color-gray-9);
-  }
-
-  // Modifiers
-  &.-prev {
-    margin-left: 1rem;
-  }
-
-  &.-next {
-    margin-right: 1rem;
+    min-width: 400px;
+    width: 70%;
   }
 }

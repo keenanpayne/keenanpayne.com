@@ -51,49 +51,4 @@ document.addEventListener("DOMContentLoaded", function () {
       lazyElementsObserver.observe(lazyElement);
     });
   }
-
-  // Testimonials
-  const testimonials = document.querySelectorAll(".testimonials");
-
-  if (testimonials) {
-    testimonials.forEach((testimonial) => {
-      const container = testimonial.querySelector(".testimonials-container");
-      const slides = testimonial.querySelectorAll(".testimonials-slide");
-      const prevButton = testimonial.querySelector(
-        ".testimonials-button.-prev"
-      );
-      const nextButton = testimonial.querySelector(
-        ".testimonials-button.-next"
-      );
-
-      let currentSlide = 1;
-      const slideCount = slides.length;
-
-      const updateSlider = () => {
-        container.style.transform = `translateX(-${currentSlide * 100}%)`;
-        slides.forEach((slide) => {
-          slide.classList.add("-inactive");
-          slide.classList.remove("-active");
-        });
-        slides[currentSlide].classList.remove("-inactive");
-        slides[currentSlide].classList.add("-active");
-      };
-
-      const goToPrevSlide = () => {
-        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-        updateSlider();
-      };
-
-      const goToNextSlide = () => {
-        currentSlide = (currentSlide + 1) % slideCount;
-        updateSlider();
-      };
-
-      prevButton.addEventListener("click", goToPrevSlide);
-      nextButton.addEventListener("click", goToNextSlide);
-
-      // Initialize the slider
-      updateSlider();
-    });
-  }
 });
