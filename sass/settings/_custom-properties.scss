@@ -43,6 +43,7 @@
   // Context-Specific Colors
   --color-root-background: var(--color-gray-2);
   --color-text: var(--color-plum-3);
+  --color-text-inverted: var(--color-white);
   --color-pre-background: var(--color-gray-1);
   --color-small-text: var(--color-gray-4);
   --color-label: var(--color-plum-3);
@@ -115,6 +116,7 @@
   :root {
     --color-root-background: var(--color-plum-2);
     --color-text: var(--color-white);
+    --color-text-inverted: var(--color-plum-3);
     --color-small-text: var(--color-white);
     --color-label: var(--color-white);
     --shadow: 0 3px 7px 0px rgb(0 0 0 / 30%);
