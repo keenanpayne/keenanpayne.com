@@ -4,12 +4,12 @@ const path = require("path");
 module.exports = () => {
   try {
     const analysisPath = path.join(__dirname, "testimonial-analysis.json");
-    
+
     if (fs.existsSync(analysisPath)) {
       const rawData = fs.readFileSync(analysisPath, "utf8");
       return JSON.parse(rawData);
     }
-    
+
     // Fallback if analysis file doesn't exist
     return {
       topQualities: [],
@@ -26,4 +26,4 @@ module.exports = () => {
       analyzedAt: new Date().toISOString()
     };
   }
-}; 
+};

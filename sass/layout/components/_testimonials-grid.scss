@@ -27,7 +27,7 @@
 .testimonials-qualities-heading {
   color: var(--color-text-subtle);
   margin-bottom: #{spacing(1.5)};
-  
+
   @media (--min-1260) {
     line-height: 1.5;
     margin-bottom: 0;
@@ -49,7 +49,7 @@
 .testimonials-quality-tag {
   --tag-border-radius: var(--border-radius-pill);
   --tag-height: 2em;
-  
+
   align-items: center;
   background: var(--color-accent-background);
   border-radius: var(--tag-border-radius);
