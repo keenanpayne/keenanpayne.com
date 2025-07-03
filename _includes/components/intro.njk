@@ -38,9 +38,9 @@
     {% endif %}
     
     {% if body %}
-      <p class="intro-body" style="{% if bodyMaxWidth %}max-width: {{ bodyMaxWidth }};{% endif %}">
+      <div class="intro-body" style="{% if bodyMaxWidth %}max-width: {{ bodyMaxWidth }};{% endif %}">
         {{ body | safe }}
-      </p>
+      </div>
     {% endif %}
 
     {% if leftPhotos %}
