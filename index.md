@@ -4,13 +4,17 @@ changefreq: weekly
 seoPriority: 1.0
 sections:
   - type: intro
-    heading: "Professional and personal web design and web development services"
-    subheading: "During my eighteen years as a software professional, my work has generated <strong>millions in revenue</strong>, sign up <strong>millions of SaaS users</strong>, and empowered global organizations with <strong>scalable software</strong>"
-    # leftPhotos:
-    #   - src: https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jun-27-2021_o8sd0l.jpg
-    #     alt: "Me in grayscale"
-    #   - src: https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jan-28-2022_pwxnxq.jpg
-    #     alt: "Me hiking in Lake Tahoe"
+    heading: "Hello, I'm Keenan 👋🏻 <br />I'm a full-stack web designer and developer"
+    subheading: "During my eighteen years of professional experience, I've helped businesses generate <strong>millions in revenue</strong>, signed up <strong>millions of SaaS users</strong>, and empowered global organizations with <strong>scalable software</strong>"
+    leftPhotos:
+      - src: https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_400/v1666204078/people/me/jun-27-2021_o8sd0l.jpg
+        alt: "Me in grayscale"
+      - src: https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_400/v1666204078/people/me/jan-28-2022_pwxnxq.jpg
+        alt: "Me hiking in Lake Tahoe"
+      - src: https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_500,ar_3:4,e_art:hokusai/v1756156833/people/me/MVIMG_20190812_154512_fb8ghp.jpg
+        alt: "Me at Mayor's Landing in Livingston, Montana"
+      - src: https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_500/v1756156554/people/me/IMG_8884_vkkhr6.jpg
+        alt: "Me enjoying a croissant and coffee in San Francisco"
     right:
       heading: "Services I offer"
       readMore:

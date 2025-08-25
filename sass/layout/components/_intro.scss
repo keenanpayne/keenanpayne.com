@@ -33,10 +33,6 @@
 
 .intro-right {
   grid-column: 8 / -1;
-
-  @media (--min-1120) {
-    grid-column-start: 7;
-  }
 }
 
 .intro-subheading {
@@ -62,12 +58,13 @@
 }
 
 .intro-photos {
-  margin-top: spacing(3);
+  margin-top: spacing(5);
 }
 
 .intro-photo {
   border-radius: var(--border-radius-large);
   max-width: 150px;
+  transition: transform 150ms ease-in-out;
 
   &:nth-child(even) {
     transform: rotate(3deg);
@@ -75,5 +72,12 @@
 
   &:nth-child(odd) {
     transform: rotate(-3deg);
+  }
+
+  &:nth-child(even),
+  &:nth-child(odd) {
+    &:hover {
+      transform: rotate(0deg);
+    }
   }
 }
