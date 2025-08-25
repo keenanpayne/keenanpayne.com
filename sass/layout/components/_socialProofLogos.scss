@@ -1,0 +1,48 @@
+.socialProofLogos {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: spacing(3);
+  justify-content: start;
+
+  @media (--min-800) {
+    gap: spacing(5);
+    justify-content: space-evenly;
+  }
+}
+
+.socialProofLogos-logo {
+  padding-top: spacing(4);
+
+  // Descendants
+  svg {
+    filter: grayscale(100%);
+    max-height: var(--max-height);
+    width: auto;
+
+    @media (--dark) {
+      filter: invert(1) grayscale(100%);
+    }
+  }
+
+  // Modifiers
+  &.-asana {
+    --max-height: 25px;
+  }
+
+  &.-roblox {
+    --max-height: 19px;
+  }
+
+  &.-gofundme {
+    --max-height: 31px;
+  }
+
+  &.-neuralink {
+    --max-height: 28px;
+  }
+
+  &.-stable {
+    --max-height: 28px;
+  }
+}
