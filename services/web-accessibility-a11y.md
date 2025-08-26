@@ -2,6 +2,7 @@
 permalink: "/services/web-accessibility-a11y/"
 title: Web Accessibility (A11y)
 lede: Web accessibility is a core part of my workflow, ensuring that applications are usable by as many people as possible. I implement semantic HTML, ARIA roles, keyboard navigation, and screen reader support to meet WCAG standards and create inclusive digital experiences.
+short_lede: I strive to create inclusive digital experiences that are accessible to everyone.
 order: 8
 tags: services
 sections:

@@ -23,7 +23,7 @@ sections:
         text: "View all services"
       items:
         from: services
-        limit: 3
+        limit: 5
   - type: socialProofLogos
   - type: entries
     showCovers: true

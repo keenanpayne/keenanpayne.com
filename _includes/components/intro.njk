@@ -78,10 +78,10 @@
 
             {% for service in collection %}
               {% set entryTitle = service.data.title %}
-              {% set entryLede = service.data.lede %}
+              {% set entryShortLede = service.data.short_lede %}
               {% set entryUrl = service.url %}
 
-              {{ entry.output(false, false, entryTitle, entryLede, '', '') }}
+              {{ entry.output(false, false, entryTitle, entryShortLede, '', '') }}
             {% endfor %}
           {% elif rightItems.from == 'photosOfMe' %}
             <div class="about-photos">

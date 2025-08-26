@@ -1,13 +1,14 @@
 ---
 permalink: "/services/web-development/"
 title: Web Development
-lede: Simply put, I can help you build anything on the internet. Whether you need a website to sell your product or services, or you need someone to help build your SaaS MVP, I've got you covered.
+lede: I can help you build anything on the internet. From marketing websites to full-scale applications, I've got you covered.
+short_lede: I can help you build anything on the internet. From marketing websites to full-scale applications, I've got you covered.
 order: 1
 tags: services
 sections:
   - type: intro
     heading: "Web Development"
-    subheading: "Simply put, I can help you build anything on the internet. Whether you need a website to sell your product or services, or you need someone to help build your SaaS MVP, I've got you covered."
+    subheading: "I can help you build anything on the internet. Whether you need a website to sell your product or services, or you need someone to help build your SaaS MVP, I've got you covered."
     body: |
       Thoughtfully making foundational decisions on how to construct complex user interfaces.
 
