@@ -1,7 +1,7 @@
 .intro {
   @include container;
 
-  @media (--min-1120) {
+  @media (--min-960) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: calc(5 * var(--spacing-unit));
@@ -25,7 +25,7 @@
   &.-full-width {
     grid-column: 1 / -1;
 
-    @media (--min-1120) {
+    @media (--min-960) {
       grid-column-end: span 12;
     }
   }
@@ -62,9 +62,22 @@
 }
 
 .intro-photo {
+  --photo-width: 150px;
   border-radius: var(--border-radius-large);
-  max-width: 150px;
+  max-width: var(--photo-width);
   transition: transform 150ms ease-in-out;
+
+  @media (--min-960) {
+    --photo-width: 125px;
+  }
+
+  @media (--min-1260) {
+    --photo-width: 135px;
+  }
+
+  @media (--min-1440) {
+    --photo-width: 150px;
+  }
 
   &:nth-child(even) {
     transform: rotate(3deg);
