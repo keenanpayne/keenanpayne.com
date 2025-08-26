@@ -2,11 +2,10 @@
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  gap: spacing(3);
+  gap: spacing(4);
   justify-content: start;
 
   @media (--min-800) {
-    gap: spacing(5);
     justify-content: space-evenly;
   }
 }
@@ -27,22 +26,26 @@
 
   // Modifiers
   &.-asana {
-    --max-height: 25px;
+    --max-height: 26px;
   }
 
   &.-roblox {
-    --max-height: 19px;
+    --max-height: 20px;
   }
 
   &.-gofundme {
-    --max-height: 31px;
+    --max-height: 33px;
   }
 
   &.-neuralink {
-    --max-height: 28px;
+    --max-height: 29px;
   }
 
   &.-stable {
+    --max-height: 30px;
+  }
+
+  &.-rippling {
     --max-height: 28px;
   }
 }
