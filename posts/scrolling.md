@@ -40,7 +40,7 @@ This is why I'm such a stickler for how scrolling is implemented.
 
 And why shouldn't I be?
 
-{% include "type/p_large.html", content: 'Scrolling is one of my primary means for<br class="_hidden-720"> navigating a bevy of devices — how about you?' %}
+{% include "type/p_large.html", content: 'Scrolling is one of my primary means for<br class="_hidden-min-720"> navigating a bevy of devices — how about you?' %}
 
 ## The current state of scrolling
 

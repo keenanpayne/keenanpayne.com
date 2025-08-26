@@ -159,7 +159,15 @@
   @include a11yVisible();
 }
 
-._hidden-720 {
+._visible-min-560 {
+  display: none;
+
+  @media (--min-560) {
+    display: block;
+  }
+}
+
+._hidden-min-720 {
   @media (--min-720) {
     @include a11yHidden();
   }
