@@ -212,3 +212,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
+
+._subtle-background {
+  @include subtleBackground;
+}
