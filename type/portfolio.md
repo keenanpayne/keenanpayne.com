@@ -36,7 +36,7 @@ sections:
       from: portfolio
       limit: 1
   - type: testimonials
-    ids: [6, 2, 3, 15, 19]
+    ids: [6, 41, 2, 15]
     readMore:
       url: "/testimonials"
       text: "View all testimonials"

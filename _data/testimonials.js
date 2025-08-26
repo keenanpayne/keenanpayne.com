@@ -279,6 +279,13 @@ module.exports = {
       person_id: 32,
       content:
         "I have known and worked with Keenan Payne since 2008. I have found him to be not only a wizard with web related tasks, but he is also a very kind person who is a pleasure to work with. He always puts the clients wishes at the forefront of any design work he takes on. I highly recommend Keenan for any web related and design oriented work."
+    },
+    {
+      id: 41,
+      project: "",
+      person_id: 11,
+      content:
+        "Keenan is one of those developers with fantastic design sensibility. He's also super communicative, quick, and comes prepared with recommendations based on your project or business need."
     }
   ]
 };
