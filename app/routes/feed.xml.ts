@@ -1,6 +1,7 @@
 import { rfc3339Date } from "../lib/content/dates.server";
 import { getFeedPosts } from "../lib/content/content.server";
-import { convertToAbsoluteUrls, escapeHtml } from "../lib/content/html.server";
+import { convertToAbsoluteUrls } from "../lib/content/html.server";
+import { escapeHtml } from "../lib/html";
 import { metadata } from "../lib/site";
 
 // Atom feed of every post, newest first

@@ -6,7 +6,8 @@ import type { Route } from "./+types/redirects";
 // so they live with the app.
 export function loader({ params, url }: Route.LoaderArgs) {
   const { pathname } = url;
-  const splat = (params as { "*"?: string })["*"];
+  // Strip leading slashes so `/blog//example.com` can't redirect off-site
+  const splat = (params as { "*"?: string })["*"]?.replace(/^[/\\]+/, "");
 
   if (pathname.startsWith("/work")) return redirect("/portfolio/", 301);
   if (splat) return redirect(`/${splat}`, 301);

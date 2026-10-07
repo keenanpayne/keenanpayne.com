@@ -2,7 +2,8 @@
 // Set constants for the Cloudinary URL and fallback widths for images when not supplied
 const CLOUDNAME = "keenan-payne";
 const FOLDER = "";
-const BASE_URL = `https://res.cloudinary.com/${CLOUDNAME}/image/upload/`;
+export const CLOUDINARY_URL = `https://res.cloudinary.com/${CLOUDNAME}`;
+const BASE_URL = `${CLOUDINARY_URL}/image/upload/`;
 const FALLBACK_WIDTHS = [300, 600, 680, 1360];
 const FALLBACK_WIDTH = 1360;
 

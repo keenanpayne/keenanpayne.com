@@ -10,7 +10,8 @@ import { portfolio } from "../../data/portfolio";
 import testimonialAnalysis from "../../data/testimonial-analysis.json";
 import { testimonials } from "../../data/testimonials";
 import type { PortfolioItem, TestimonialAnalysis } from "../../data/types";
-import { metadata, SITE_ORIGIN } from "../site";
+import { escapeHtml } from "../html";
+import { absoluteUrl, metadata } from "../site";
 import type {
   BasicPageModel,
   EntriesSection,
@@ -28,6 +29,7 @@ import type {
   TestimonialModel
 } from "../types";
 
+import { CLOUDINARY_URL as CLOUDINARY } from "./cloudinary";
 import {
   htmlDateString,
   longDate,
@@ -35,11 +37,7 @@ import {
   readableDate
 } from "./dates.server";
 import { parseFrontMatter } from "./frontmatter.server";
-import {
-  addExternalLinkAttributes,
-  buildTableOfContents,
-  escapeHtml
-} from "./html.server";
+import { addExternalLinkAttributes, buildTableOfContents } from "./html.server";
 import { renderMarkdown } from "./markdown.server";
 import { expandShortcodes } from "./shortcodes.server";
 
@@ -177,37 +175,25 @@ const COLLECTIONS: Record<
   type: { layout: "type", data: { changefreq: "weekly" } }
 };
 
-// Sections shared by every `/type/*` archive page
-const TYPE_SECTIONS: RawSection[] = [
+// Sections shared by every `/type/*` and `/tags/*` archive page
+const archiveSections = (heading: string): RawSection[] => [
   { type: "intro" },
   {
     type: "entries",
     showCovers: false,
-    heading: "Archives",
+    heading,
     orientation: "archive",
     items: { from: "posts", limit: -100 }
   },
   { type: "newsletter", spacing: 10 }
 ];
 
-// Sections shared by every `/tags/*` page
-const TAG_SECTIONS: RawSection[] = [
-  { type: "intro" },
-  {
-    type: "entries",
-    showCovers: false,
-    heading: "All articles",
-    orientation: "archive",
-    items: { from: "posts", limit: -100 }
-  },
-  { type: "newsletter", spacing: 10 }
-];
+const TYPE_SECTIONS = archiveSections("Archives");
+const TAG_SECTIONS = archiveSections("All articles");
 
 const FILTERED_TAGS = ["all", "nav", "post", "posts", "Featured"];
 
 const TESTIMONIAL_TRUNCATE_LENGTH = 225;
-
-const CLOUDINARY = "https://res.cloudinary.com/keenan-payne";
 
 const SOCIAL_PROOF_LOGOS = [
   { name: "asana", svg: asanaLogo },
@@ -449,13 +435,13 @@ function getMeta(url: string, title?: string, meta?: FrontMatter["meta"]) {
   if (meta?.image) {
     image = meta.image.includes("https://res.cloudinary.com/")
       ? meta.image
-      : `${SITE_ORIGIN}${meta.image}`;
+      : absoluteUrl(meta.image);
   }
 
   const result: PageMeta = {
     title: pageTitle,
     description: meta?.description || metadata.description,
-    canonical: `${SITE_ORIGIN}${url}`
+    canonical: absoluteUrl(url)
   };
   if (image) result.image = image;
   if (image && meta?.image_alt) result.imageAlt = meta.image_alt;
@@ -1080,7 +1066,7 @@ export function getNavigation(): LinkModel[] {
 
 export function getSitemapPages() {
   return getIndex().pages.map((page) => ({
-    url: `${SITE_ORIGIN}${page.url}`,
+    url: absoluteUrl(page.url),
     lastmod: htmlDateString(page.date),
     changefreq: page.changefreq ?? "monthly",
     priority: page.seoPriority ?? 0.5
@@ -1090,7 +1076,7 @@ export function getSitemapPages() {
 export function getFeedPosts() {
   return [...getIndex().posts].reverse().map((post) => ({
     title: String(post.data.title ?? ""),
-    url: `${SITE_ORIGIN}${post.url}`,
+    url: absoluteUrl(post.url),
     date: post.date,
     content: renderBody(post)
   }));

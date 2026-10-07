@@ -30,6 +30,11 @@ export function Comments({ url }: { url: string }) {
       const script = document.createElement("script");
       script.src = "https://keenan-payne.disqus.com/embed.js";
       script.setAttribute("data-timestamp", String(+new Date()));
+      // Let the next post with comments try again
+      script.onerror = () => {
+        embedRequested = false;
+        script.remove();
+      };
       (document.head || document.body).appendChild(script);
     }
 
