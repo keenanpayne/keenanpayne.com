@@ -1,0 +1,31 @@
+/* Large Text */
+/* ================================================== */
+
+p.-large {
+  /* Typography: see `._text-h4` and `._type-my-voice` (generic/utilities.css) */
+
+  --horizontal-padding: 0;
+  --vertical-margin: 2.5rem;
+
+  font-weight: var(--font-weight-serif-regular);
+  margin-bottom: var(--vertical-margin);
+  margin-top: var(--vertical-margin);
+  padding-left: var(--horizontal-padding);
+  padding-right: var(--horizontal-padding);
+  text-align: center;
+
+  @media (--min-720) {
+    &::before {
+      @mixin clearfix;
+    }
+  }
+
+  @media (--min-960) {
+    --horizontal-padding: 0.5rem;
+    --vertical-margin: 3rem;
+  }
+
+  @media (--min-1120) {
+    --horizontal-padding: 0.65rem;
+  }
+}

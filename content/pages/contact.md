@@ -1,0 +1,13 @@
+---
+navigation:
+  key: Contact
+  order: 6
+title: Contact
+templateClass: _page-spacing-bottom
+sections:
+  - type: intro
+    heading: "Get in touch"
+    subheading: <strong>This form is for general inquiries.</strong> If you're interested in working together, please fill out the <a class="-hover-background" href="/project-inquiry/">project inquiry form</a>.
+    subheadingMaxWidth: 52ch
+  - type: contact
+---

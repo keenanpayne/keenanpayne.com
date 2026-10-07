@@ -1,0 +1,9 @@
+/* Clearfix */
+/* ================================================== */
+/* Ref: https://css-tricks.com/snippets/css/clear-fix/ */
+
+@define-mixin clearfix {
+  content: "";
+  display: table;
+  clear: both;
+}

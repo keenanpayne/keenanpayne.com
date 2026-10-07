@@ -1,0 +1,229 @@
+/* Blog Post */
+/* ================================================== */
+
+.post {
+  --font-size-base: 1.125rem;
+
+  margin-bottom: 5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @media (--min-1440) {
+    --font-size-base: 1.25rem;
+  }
+
+  /* Modifiers */
+  &.-narrow {
+    .post-content {
+      > p {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 45ch;
+
+        &:not(:last-of-type):not(.-large) {
+          margin-bottom: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+.post-header {
+  margin-bottom: 1.5rem;
+  padding-right: 0.5rem;
+}
+
+.post-footer {
+  border-top: 1px solid var(--color-gray-4);
+  font-family: var(--font-family-serif);
+  font-style: italic;
+  font-weight: var(--font-weight-serif-regular);
+  margin-top: calc(5 * var(--spacing-unit));
+  padding-top: calc(3 * var(--spacing-unit));
+}
+
+.post-title {
+  margin-top: 1.5rem;
+}
+
+.post-lede {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  max-width: 52ch;
+
+  /* Context-specific */
+  & + .post-tags {
+    margin-top: 0.75rem;
+  }
+}
+
+.post-meta {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  /* Descendants */
+  > a {
+    flex: 1;
+    padding-right: calc(1.5 * var(--spacing-unit));
+  }
+}
+
+.post-tags {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  /* Add extra space above tags if they are not empty */
+  .post-title + &:not(:empty) {
+    margin-top: 1.25rem;
+  }
+}
+
+.post-tag {
+  display: inline-block;
+
+  &:not(:last-of-type) {
+    margin-right: 0.5em;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 0.5em;
+
+    @media (--min-560) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/* Post Content */
+/* ------------ */
+
+.post-content {
+  /* Direct Descendants */
+  > h2,
+  > h3,
+  > h4,
+  > h5 {
+    position: relative;
+  }
+
+  > h2 {
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+  }
+
+  > hr + h2 {
+    margin-top: 1rem;
+  }
+
+  > h3 {
+    @mixin h4;
+
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+    max-width: 35ch;
+  }
+
+  > h4 {
+    @mixin h5;
+  }
+
+  > h2 + h3 {
+    margin-top: 1.25rem;
+  }
+
+  > p {
+    &:not(:last-of-type) {
+      margin-bottom: 1.25rem;
+    }
+  }
+
+  > figure {
+    &:not(.-float-left):not(.-float-right) {
+      @mixin pullContentOutside;
+    }
+  }
+
+  /* Descendants */
+  strong {
+    font-weight: var(--font-weight-bold);
+  }
+
+  li {
+    &:not(:first-of-type) {
+      margin-top: 0.5rem;
+    }
+  }
+
+  ul {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+
+    a {
+      @mixin linkHoverBackground;
+      @mixin externalLink;
+    }
+  }
+
+  ul ul {
+    margin-bottom: 0.75rem;
+    margin-top: 0.5rem;
+    padding-left: 1.5rem;
+  }
+
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    /* NOTE: This is kind of a hack because I have some transparent PNG drawings */
+    /* (e.g., creating-planning.md) that don't look good without a white background */
+    @media (--dark) {
+      background-color: var(--color-white);
+    }
+  }
+
+  p {
+    a {
+      @mixin linkHoverBackground;
+      @mixin externalLink;
+    }
+
+    mark {
+      background: transparent;
+      background-image: linear-gradient(
+        to right,
+        rgba(255, 225, 0, 0.15),
+        rgba(255, 225, 0, 0.6) 7.5%,
+        rgba(255, 225, 0, 0.7) 30%,
+        rgba(255, 225, 0, 0.8) 60%,
+        rgba(255, 225, 0, 0.35)
+      );
+      border-radius: 0.8em 0.3em;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      margin: 0 -0.4em;
+      padding: 0.1em 0.4em;
+
+      @media (--dark) {
+        background: var(--color-yellow-2);
+        box-shadow: 2px 0 6px 1px var(--color-yellow-2);
+        border-radius: 0.75em 0.45em;
+        margin: 0 -0.1em;
+      }
+    }
+  }
+
+  hr {
+    & + p {
+      margin-top: 1.5rem;
+    }
+  }
+}
+
+/* Featured images */
+.post-imageBook {
+  margin-bottom: 3rem;
+  max-width: 300px;
+}

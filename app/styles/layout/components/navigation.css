@@ -1,0 +1,67 @@
+/* Navigation */
+/* ================================================== */
+
+.navigation {
+  border-top: 1px solid var(--color-gray-4);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.navigation-left,
+.navigation-right {
+  border-right: 1px solid var(--color-gray-4);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  @media (--min-1120) {
+    border-right: 0;
+  }
+}
+
+.navigation-left {
+  @media (--min-1120) {
+    justify-content: space-between;
+  }
+}
+
+.navigation-item {
+  border-bottom: 1px solid var(--color-gray-4);
+  border-left: 1px solid var(--color-gray-4);
+  flex: 1 0 auto;
+  line-height: 1.75;
+  padding: 1.25rem 1.5rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+
+  @media (--min-1120) {
+    padding: 1.5rem 2rem;
+
+    &:last-of-type {
+      border-right: 1px solid var(--color-gray-4);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--color-nav-background-hover);
+  }
+
+  /* Modifiers */
+  &.-active {
+    background-color: var(--color-nav-background-hover);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  /* Descendants */
+  svg {
+    height: 22px;
+  }
+}

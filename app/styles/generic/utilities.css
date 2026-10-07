@@ -1,0 +1,266 @@
+/* Utility Classes */
+/* ================================================== */
+
+/* Layout */
+._block-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+._pull-outside {
+  @mixin pullContentOutside;
+}
+
+/* Typography */
+._text-h1 {
+  @mixin h1;
+}
+
+._text-h2 {
+  @mixin h2;
+}
+
+._text-h3 {
+  @mixin h3;
+}
+
+/* Also applied to: p.-large (components/large-text.css) */
+._text-h4,
+p.-large {
+  @mixin h4;
+}
+
+._text-h5 {
+  @mixin h5;
+}
+
+/* Also applied to: .tag.-large (atoms/tag.css) */
+._text-h6,
+.tag:not(.token).-large {
+  @mixin h6;
+}
+
+/* Also applied to: figcaption, pre, context labels, and footnote references */
+._text-small,
+.footnote-ref,
+p.-context::before,
+pre,
+figcaption {
+  @mixin text-small;
+}
+
+/* Also applied to: .tag (atoms/tag.css) and side-by-side captions */
+._text-smaller,
+.sideBySide figcaption,
+.tag:not(.token) {
+  @mixin text-smaller;
+}
+
+._text-large {
+  @mixin text-large;
+}
+
+._text-larger {
+  @mixin text-larger;
+}
+
+/* Text */
+._text-align-center {
+  text-align: center;
+}
+
+._font-family-mono {
+  font-family: var(--font-family-mono);
+}
+
+._font-family-serif {
+  font-family: var(--font-family-serif);
+  font-weight: var(--font-weight-serif-regular);
+}
+
+/* Also applied to: p.-large (components/large-text.css) */
+._type-my-voice,
+p.-large {
+  font-family: var(--font-family-serif);
+  font-style: italic;
+  font-size: var(--font-size-step-3);
+  font-weight: var(--font-weight-serif-regular);
+  line-height: 1.2;
+
+  @media (--min-1260) {
+    font-size: var(--font-size-step-4);
+    line-height: 1.3;
+  }
+}
+
+._label {
+  --border-color: var(--color-gray-3);
+
+  align-items: center;
+  color: var(--color-label);
+  display: flex;
+  font-family: var(--font-family-mono);
+  font-size: 20px;
+  font-variant: all-small-caps;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  margin-bottom: 0;
+  margin-top: 0;
+  position: relative;
+  word-spacing: -0.1em;
+
+  @media (--dark) {
+    --border-color: var(--color-gray-7);
+  }
+
+  &:after {
+    background-color: var(--border-color);
+    content: "";
+    display: block;
+    flex: 1;
+    height: 1px;
+    margin-top: 0.2em;
+  }
+
+  > span {
+    padding-right: calc(1 * var(--spacing-unit));
+  }
+
+  > a {
+    --link-background: var(--color-purple-1);
+    --link-background-hover: var(--color-root-background);
+    --link-color: var(--color-white);
+    --link-color-hover: var(--color-plum-3);
+
+    background-color: var(--link-background);
+    border-radius: var(--border-radius-pill);
+    font-size: 1rem;
+    padding: calc(0.25 * var(--spacing-unit)) calc(1 * var(--spacing-unit))
+      calc(0.5 * var(--spacing-unit));
+    position: absolute;
+    right: 0;
+    text-decoration: none;
+
+    @media (--dark) {
+      --link-background: var(--color-yellow-2);
+      --link-color: var(--color-plum-3);
+      --link-color-hover: var(--color-yellow-2);
+    }
+
+    &:hover {
+      background-color: var(--link-background-hover);
+    }
+  }
+}
+
+._label-sans {
+  font-variant: all-small-caps;
+  font-weight: var(--font-weight-bold);
+  line-height: 1;
+}
+
+._rainbow-underline {
+  @mixin rainbowBackground;
+}
+
+/* Visibility */
+._hidden {
+  @mixin a11yHidden;
+}
+
+._visible {
+  @mixin a11yVisible;
+}
+
+._visible-min-560 {
+  display: none;
+
+  @media (--min-560) {
+    display: block;
+  }
+}
+
+._hidden-min-720 {
+  @media (--min-720) {
+    @mixin a11yHidden;
+  }
+}
+
+/* Colors */
+._bg-white {
+  background-color: var(--color-white);
+}
+
+/* Max character lengths */
+._max-ch-15 {
+  max-width: 15ch;
+}
+
+._max-ch-30 {
+  max-width: 30ch;
+}
+
+._max-ch-45 {
+  max-width: 45ch;
+}
+
+._max-ch-60 {
+  max-width: 60ch;
+}
+
+._max-ch-75 {
+  max-width: 75ch;
+}
+
+._max-ch-90 {
+  max-width: 90ch;
+}
+
+._max-ch-105 {
+  max-width: 105ch;
+}
+
+._max-ch-120 {
+  max-width: 120ch;
+}
+
+/* Layout */
+._grid {
+  @mixin grid;
+}
+
+/* Spacing */
+._page-spacing-top {
+  margin-top: 3rem;
+
+  @media (--min-1120) {
+    margin-top: 5rem;
+  }
+}
+
+._page-spacing-bottom {
+  margin-bottom: 3rem;
+
+  @media (--min-1120) {
+    margin-bottom: 5rem;
+  }
+}
+
+._a11y-hidden {
+  @mixin a11yHidden;
+}
+
+._a11y-visible {
+  @mixin a11yVisible;
+}
+
+._font-smoothing {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+._subtle-background {
+  @mixin subtleBackground;
+}

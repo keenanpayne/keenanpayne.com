@@ -1,0 +1,47 @@
+.socialProofLogos {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(4 * var(--spacing-unit));
+  justify-content: start;
+
+  @media (--min-800) {
+    justify-content: space-evenly;
+  }
+}
+
+.socialProofLogos-logo {
+  padding-top: calc(4 * var(--spacing-unit));
+
+  /* Descendants */
+  svg {
+    filter: grayscale(100%);
+    max-height: var(--max-height);
+    width: auto;
+
+    @media (--dark) {
+      filter: invert(1) grayscale(100%);
+    }
+  }
+
+  /* Modifiers */
+  &.-asana {
+    --max-height: 26px;
+  }
+
+  &.-gofundme {
+    --max-height: 33px;
+  }
+
+  &.-neuralink {
+    --max-height: 29px;
+  }
+
+  &.-stable {
+    --max-height: 30px;
+  }
+
+  &.-rippling {
+    --max-height: 28px;
+  }
+}

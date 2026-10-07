@@ -1,0 +1,131 @@
+/* Custom Properties */
+/* ================================================== */
+
+:root {
+  /* Spacing */
+  --spacing-unit: 8px;
+
+  /* Color Scheme */
+  --color-white: #ffffff;
+  --color-black: #101010;
+
+  --color-gray-1: #fcfcfc;
+  --color-gray-2: #ededed;
+  --color-gray-3: #d3d1db;
+  --color-gray-4: #c7c4d7;
+  --color-gray-5: #a7a5b4;
+  --color-gray-6: #908e9b;
+  --color-gray-7: #524c4c;
+  --color-gray-8: #393333;
+  --color-gray-9: #100f16;
+
+  --color-orange: #f27121;
+
+  --color-pink: #ff7979;
+
+  --color-green: #2ecc71;
+
+  --color-yellow-1: #fff8e6;
+  --color-yellow-2: #ffd466;
+  --color-yellow-3: #ffc107;
+
+  --color-purple-1: #686de0;
+  --color-purple-2: #5b5fbb;
+  --color-purple-3: #3b3f8f;
+  --color-purple-4: #2b2e77;
+
+  --color-plum-1: #2b2638;
+  --color-plum-2: #1e1c29;
+  --color-plum-3: #100f16;
+  --color-plum-4: #050508;
+
+  /* Context-Specific Colors */
+  --color-root-background: var(--color-gray-2);
+  --color-text: var(--color-plum-3);
+  --color-text-inverted: var(--color-white);
+  --color-pre-background: var(--color-gray-1);
+  --color-small-text: var(--color-gray-4);
+  --color-label: var(--color-plum-3);
+  --color-heading: var(--color-gray-9);
+  --color-paragraph: var(--color-gray-9);
+  --color-nav-background-hover: var(--color-yellow-1);
+  --color-topbar-background: var(--color-yellow-1);
+  --color-accent-background: var(--color-purple-1);
+  --color-accent-background-2: var(--color-purple-2);
+
+  /* Font Families */
+  --font-family-base:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica,
+    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-family-serif: "Instrument Serif", "Georgia", serif;
+  --font-family-mono:
+    "IBM Plex Mono", Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono",
+    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
+    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L",
+    "Courier New", Courier, monospace;
+
+  /* Font Sizes */
+  --font-size-base: 1rem;
+
+  /* @link https://utopia.fyi/type/calculator?c=320,16,1.2,1,16,1.25,8,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+  --font-size-step--2: clamp(0.64rem, 0.6398rem + 0.2731vw, 0.6944rem);
+  --font-size-step--1: clamp(0.8rem, 0.7999rem + 0.1672vw, 0.8333rem);
+  --font-size-step-0: clamp(1rem, 1rem + 0vw, 1rem);
+  --font-size-step-1: clamp(1.2rem, 1.2502rem + -0.2508vw, 1.25rem);
+  --font-size-step-2: clamp(1.44rem, 1.5629rem + -0.6144vw, 1.5625rem);
+  --font-size-step-3: clamp(1.728rem, 1.9538rem + -1.1292vw, 1.9531rem);
+  --font-size-step-4: clamp(2.0736rem, 2.4426rem + -1.8448vw, 2.4414rem);
+  --font-size-step-5: clamp(2.4883rem, 3.0535rem + -2.826vw, 3.0518rem);
+  --font-size-step-6: clamp(2.986rem, 3.8173rem + -4.1566vw, 3.8147rem);
+  --font-size-step-7: clamp(3.5832rem, 4.7721rem + -5.9445vw, 4.7684rem);
+  --font-size-step-8: clamp(4.2998rem, 5.9657rem + -8.3293vw, 5.9605rem);
+
+  /* Font Weights */
+  --font-weight-lighter: 300;
+  --font-weight-regular: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 600;
+  --font-weight-extra-bold: 700;
+  --font-weight-heavy: 800;
+
+  --font-weight-serif-regular: 400;
+
+  /* Transitions */
+  --transition: 150ms;
+  --transition-quick: 75ms;
+  --transition-long: 300ms;
+
+  /* Border-radius */
+  --border-radius: 3px;
+  --border-radius-medium: 6px;
+  --border-radius-large: 9px;
+  --border-radius-pill: 20px;
+
+  /* Shadows */
+  --shadow: 0 3px 7px 0px rgb(150 150 150 / 25%);
+  --shadow-hover: 0 2px 9px 1px rgb(150 150 150 / 45%);
+
+  /* Container */
+  --container-small: 800px;
+  --container-large: 1440px;
+}
+
+/* Dark Mode */
+@media (--dark) {
+  :root {
+    --color-root-background: var(--color-plum-2);
+    --color-text: var(--color-white);
+    --color-text-inverted: var(--color-plum-3);
+    --color-small-text: var(--color-white);
+    --color-label: var(--color-white);
+    --shadow: 0 3px 7px 0px rgb(0 0 0 / 30%);
+    --shadow-hover: 0 2px 9px 1px rgb(0 0 0 / 70%);
+    --color-black: var(--color-gray-1);
+    --color-heading: var(--color-gray-1);
+    --color-paragraph: var(--color-gray-1);
+    --color-nav-background-hover: var(--color-purple-1);
+    --color-topbar-background: var(--color-purple-4);
+    --color-accent-background: var(--color-yellow-2);
+    --color-accent-background-2: var(--color-yellow-3);
+  }
+}
