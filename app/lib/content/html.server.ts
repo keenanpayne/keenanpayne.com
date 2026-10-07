@@ -122,6 +122,43 @@ function absoluteUrl(url: string, base: string) {
   }
 }
 
+// Splits a `srcset` into its candidates like browsers do: a URL is a run of
+// non-whitespace characters (Cloudinary URLs contain commas), followed by
+// optional descriptors up to the next comma.
+function parseSrcset(srcset: string) {
+  const candidates: Array<{ url: string; descriptors: string }> = [];
+  let position = 0;
+
+  while (position < srcset.length) {
+    while (/[\s,]/.test(srcset[position] ?? "")) position++;
+    if (position >= srcset.length) break;
+
+    const urlStart = position;
+    while (position < srcset.length && !/\s/.test(srcset[position])) position++;
+    let url = srcset.slice(urlStart, position);
+    let descriptors = "";
+
+    if (url.endsWith(",")) {
+      url = url.replace(/,+$/, "");
+    } else {
+      const descriptorsStart = position;
+      let depth = 0;
+      while (position < srcset.length) {
+        const character = srcset[position];
+        if (character === "(") depth++;
+        else if (character === ")") depth = Math.max(0, depth - 1);
+        else if (character === "," && depth === 0) break;
+        position++;
+      }
+      descriptors = srcset.slice(descriptorsStart, position).trim();
+    }
+
+    candidates.push({ url, descriptors });
+  }
+
+  return candidates;
+}
+
 export function convertToAbsoluteUrls(html: string, base: string) {
   return html
     .replace(
@@ -134,12 +171,10 @@ export function convertToAbsoluteUrls(html: string, base: string) {
     .replace(
       SRCSET_ATTRIBUTE,
       (_match, prefix: string, double?: string, single?: string) => {
-        const candidates = (double ?? single!)
-          .split(",")
-          .map((candidate) => {
-            const [url, ...descriptors] = candidate.trim().split(/\s+/);
-            return [absoluteUrl(url, base), ...descriptors].join(" ");
-          })
+        const candidates = parseSrcset(double ?? single!)
+          .map(({ url, descriptors }) =>
+            [absoluteUrl(url, base), descriptors].filter(Boolean).join(" ")
+          )
           .join(", ");
         return double !== undefined
           ? `${prefix}"${candidates}"`

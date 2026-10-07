@@ -1,4 +1,4 @@
-import { rfc822Date } from "../lib/content/dates.server";
+import { rfc3339Date } from "../lib/content/dates.server";
 import { getFeedPosts } from "../lib/content/content.server";
 import { convertToAbsoluteUrls } from "../lib/content/html.server";
 import { metadata } from "../lib/site";
@@ -21,7 +21,7 @@ export function loader() {
       url: post.url,
       title: post.title,
       content_html: convertToAbsoluteUrls(post.content, post.url),
-      date_published: rfc822Date(post.date)
+      date_published: rfc3339Date(post.date)
     }))
   };
 

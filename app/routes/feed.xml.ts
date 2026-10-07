@@ -1,4 +1,4 @@
-import { rfc822Date } from "../lib/content/dates.server";
+import { rfc3339Date } from "../lib/content/dates.server";
 import { getFeedPosts } from "../lib/content/content.server";
 import { convertToAbsoluteUrls, escapeHtml } from "../lib/content/html.server";
 import { metadata } from "../lib/site";
@@ -17,7 +17,7 @@ export function loader() {
 	<entry>
 		<title>${escapeHtml(post.title)}</title>
 		<link href="${post.url}"/>
-		<updated>${rfc822Date(post.date)}</updated>
+		<updated>${rfc3339Date(post.date)}</updated>
 		<id>${post.url}</id>
 		<content type="html">${escapeHtml(convertToAbsoluteUrls(post.content, post.url))}</content>
 	</entry>`
@@ -30,7 +30,7 @@ export function loader() {
 	<subtitle>${escapeHtml(metadata.feed.subtitle)}</subtitle>
 	<link href="${new URL(metadata.feed.path, metadata.url)}" rel="self"/>
 	<link href="${metadata.url}"/>
-	<updated>${updated ? rfc822Date(updated) : ""}</updated>
+	<updated>${updated ? rfc3339Date(updated) : ""}</updated>
 	<id>${metadata.feed.id}</id>
 	<author>
 		<name>${escapeHtml(metadata.author.name)}</name>

@@ -15,5 +15,6 @@ export const postYear = (date: Date) => utc(date).toFormat("yyyy");
 /** https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string */
 export const htmlDateString = (date: Date) => utc(date).toFormat("yyyy-LL-dd");
 
-/** e.g. "Mon, 25 Apr 2022 00:00:00 GMT" */
-export const rfc822Date = (date: Date) => date.toUTCString();
+/** RFC 3339, as Atom and JSON Feed require, e.g. "2022-04-25T00:00:00Z" */
+export const rfc3339Date = (date: Date) =>
+  `${date.toISOString().split(".")[0]}Z`;
