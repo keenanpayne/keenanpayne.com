@@ -67,6 +67,7 @@ export function Generic({
         jp={isService ? "業務" : "記録"}
         title={title}
         lede={intro?.subheading}
+        morphTitle={serviceIndex >= 0}
       />
 
       {(intro?.body || page.content) && (

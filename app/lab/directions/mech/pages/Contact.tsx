@@ -2,12 +2,12 @@ import { useState, type FormEvent } from "react";
 
 import type { BasicPageModel } from "../../../../lib/types";
 import {
+  Button,
   Html,
   introOf,
   MoreLink,
   PageHeader,
   Panel,
-  Tri,
   useDenverTime,
   useTo
 } from "../parts";
@@ -211,12 +211,9 @@ export function Contact({
             )}
 
             <div className="mc-form__actions mc-field--wide">
-              <button className="mc-btn" type="submit">
-                <span>
-                  {variant === "contact" ? "Transmit" : "Send inquiry"}
-                </span>
-                <Tri />
-              </button>
+              <Button type="submit">
+                {variant === "contact" ? "Transmit" : "Send inquiry"}
+              </Button>
               <p className="mc-form__status" role="status">
                 {sent
                   ? "Transmission held — mockup only, nothing was sent."

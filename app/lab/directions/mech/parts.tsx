@@ -2,9 +2,14 @@ import {
   createContext,
   useContext,
   useEffect,
+  useId,
+  useMemo,
+  useRef,
   useState,
+  type CSSProperties,
   type ReactNode
 } from "react";
+import { Link, useViewTransitionState } from "react-router";
 
 import type {
   IntroSection,
@@ -122,12 +127,20 @@ export const HexOutline = ({ className }: { className?: string }) => (
 export const Html = ({
   as: Tag = "div",
   className,
-  html
+  html,
+  style
 }: {
   as?: "div" | "p" | "span" | "h1" | "h2" | "blockquote";
   className?: string;
   html: string;
-}) => <Tag className={className} dangerouslySetInnerHTML={{ __html: html }} />;
+  style?: CSSProperties;
+}) => (
+  <Tag
+    className={className}
+    style={style}
+    dangerouslySetInnerHTML={{ __html: html }}
+  />
+);
 
 /** Pair of hairline ticks that close a HUD label strip */
 export const Ticks = () => (
@@ -252,33 +265,246 @@ export const MoreLink = ({
   </a>
 );
 
-/** Solid chamfered button */
-export const Button = ({
+// Half-width katakana, digits, and symbols cycled through while decoding
+const NOISE = "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉ0123456789#%&*+=/<>";
+const DECODE_MS = 420;
+
+/**
+ * Scrambles a label, then resolves it left to right like a readout decoding.
+ * Writes to the overlay span directly so a hover doesn't re-render.
+ */
+function useDecode(text: string) {
+  const noise = useRef<HTMLSpanElement>(null);
+  const frame = useRef(0);
+
+  useEffect(() => () => cancelAnimationFrame(frame.current), []);
+
+  const decode = () => {
+    const node = noise.current;
+    const label = node?.parentElement;
+    if (!node || !label) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    cancelAnimationFrame(frame.current);
+    const start = performance.now();
+    label.dataset.decoding = "";
+
+    const tick = (now: number) => {
+      const progress = Math.min(1, (now - start) / DECODE_MS);
+      const settled = Math.floor(progress * text.length);
+      node.textContent =
+        text.slice(0, settled) +
+        Array.from(text.slice(settled), (char) =>
+          char === " " ? " " : NOISE[Math.floor(Math.random() * NOISE.length)]
+        ).join("");
+
+      if (progress < 1) frame.current = requestAnimationFrame(tick);
+      else delete label.dataset.decoding;
+    };
+    frame.current = requestAnimationFrame(tick);
+  };
+
+  return [noise, decode] as const;
+}
+
+/**
+ * Solid chamfered button. On hover or focus the primary tones charge with
+ * green from the left, lock on with a targeting reticle, decode their label,
+ * and feed the arrow forward.
+ */
+export function Button({
   href,
+  type = "button",
   tone,
   children
 }: {
-  href: string;
-  tone?: "ghost" | "alert";
-  children: ReactNode;
-}) => (
-  <a className={`mc-btn${tone ? ` mc-btn--${tone}` : ""}`} href={href}>
-    <span>{children}</span>
-    <Tri />
-  </a>
-);
+  /** Renders a link; otherwise a `<button>` */
+  href?: string;
+  type?: "button" | "submit";
+  tone?: "ghost" | "invert";
+  /** Plain text, so it can be decoded on hover */
+  children: string;
+}) {
+  const [noise, decode] = useDecode(children);
+  const primary = tone !== "ghost";
+  const props = {
+    className: `mc-btn${tone ? ` mc-btn--${tone}` : ""}`,
+    onPointerEnter: primary ? decode : undefined,
+    onFocus: primary ? decode : undefined
+  };
+  const content = (
+    <>
+      {primary && <span className="mc-btn__lock" aria-hidden="true" />}
+      <span className="mc-btn__label">
+        <span className="mc-btn__text">{children}</span>
+        {primary && (
+          <span className="mc-btn__noise" ref={noise} aria-hidden="true" />
+        )}
+      </span>
+      <Tri />
+    </>
+  );
+
+  return href ? (
+    <a {...props} href={href}>
+      {content}
+    </a>
+  ) : (
+    <button {...props} type={type}>
+      {content}
+    </button>
+  );
+}
 
 /** Points of a noisy line in a 100×20 box, the same for the same seed */
 function tracePoints(seed: number) {
   let state = seed * 7919 + 13;
-  const points: string[] = [];
+  const points: [number, number][] = [];
   for (let i = 0; i < 64; i++) {
     state = (state * 9301 + 49297) % 233280;
     const swell = 0.25 + 0.6 * Math.abs(Math.sin(i / 7 + seed));
-    const y = 10 + (state / 233280 - 0.5) * 16 * swell;
-    points.push(`${(i * (100 / 63)).toFixed(2)},${y.toFixed(2)}`);
+    points.push([i * (100 / 63), 10 + (state / 233280 - 0.5) * 16 * swell]);
   }
-  return points.join(" ");
+  return points;
+}
+
+// Time for the head to cross one trace, the trail's length (as a share of
+// the width), and the pauses before the next row and before starting over
+const CROSS_MS = 4000;
+const TRAIL = 0.3;
+const ROW_MS = 250;
+const REST_MS = 900;
+
+/** Plays one sweep after a delay; resolves when the head leaves the trace */
+type Sweep = (delay: number) => Promise<void>;
+
+/**
+ * Passes a single sweep from trace to trace across the transmissions on
+ * screen, in reading order, so it reads as one signal running through the
+ * cards. It crosses the gap between neighbours at the same pace, and starts
+ * over from the first card after a short rest.
+ */
+const relay = (() => {
+  const sweeps = new Map<Element, Sweep>();
+  const visible = new Set<Element>();
+  let current: Element | undefined;
+  let running = false;
+  let observer: IntersectionObserver | undefined;
+
+  // Top to bottom (rows within 40px of each other count as one), then left
+  // to right
+  const inReadingOrder = () =>
+    [...visible]
+      .map((element) => ({ element, rect: element.getBoundingClientRect() }))
+      .sort(
+        (a, b) =>
+          Math.round(a.rect.top / 40) - Math.round(b.rect.top / 40) ||
+          a.rect.left - b.rect.left
+      );
+
+  const advance = async () => {
+    if (running) return;
+    const order = inReadingOrder();
+    if (order.length === 0) return;
+
+    const from = order.findIndex((item) => item.element === current);
+    const to = (from + 1) % order.length;
+    let delay = 0;
+    if (from !== -1 && to <= from) delay = REST_MS;
+    else if (from !== -1) {
+      const [a, b] = [order[from].rect, order[to].rect];
+      const sameRow = Math.abs(a.top - b.top) < 40;
+      const gap = (b.left - a.right) / (a.width / CROSS_MS);
+      delay = sameRow ? Math.min(Math.max(gap, 0), 400) : ROW_MS;
+    }
+
+    running = true;
+    current = order[to].element;
+    try {
+      await sweeps.get(current)?.(delay);
+    } catch {
+      // Cancelled because the trace unmounted; move on
+    }
+    running = false;
+    advance();
+  };
+
+  return {
+    join(element: Element, sweep: Sweep) {
+      observer ??= new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
+        }
+        advance();
+      });
+      sweeps.set(element, sweep);
+      observer.observe(element);
+
+      return () => {
+        sweeps.delete(element);
+        visible.delete(element);
+        observer?.unobserve(element);
+      };
+    }
+  };
+})();
+
+/**
+ * Lets a trace take part in the relay: a glowing head rides the line with a
+ * fading trail behind it, which drains off the right edge after the head
+ * moves on to the next card.
+ */
+function useSweep(points: [number, number][]) {
+  const root = useRef<HTMLDivElement>(null);
+  const trail = useRef<SVGSVGElement>(null);
+  const head = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    const [node, trailNode, headNode] = [
+      root.current,
+      trail.current,
+      head.current
+    ];
+    if (!node || !trailNode || !headNode) return;
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const headFrames = points.map(([x, y], i) => ({
+      offset: i / (points.length - 1),
+      transform: `translate(${x}%, ${y * 5}%)`,
+      opacity: i === 0 ? 0 : 1
+    }));
+    // Keeps moving at the same speed after the head leaves, so the tail
+    // slides off the right edge
+    const trailFrames = [
+      { "--mc-sweep": "0%" },
+      { offset: 1 / (1 + TRAIL), "--mc-sweep": "100%" },
+      { "--mc-sweep": `${100 * (1 + TRAIL)}%` }
+    ];
+    let animations: Animation[] = [];
+
+    const sweep: Sweep = (delay) => {
+      animations = [
+        headNode.animate(headFrames, { duration: CROSS_MS, delay }),
+        trailNode.animate(trailFrames, {
+          duration: CROSS_MS * (1 + TRAIL),
+          delay
+        })
+      ];
+      return animations[0].finished.then(() => undefined);
+    };
+
+    node.classList.add("is-live");
+    const leave = relay.join(node, sweep);
+
+    return () => {
+      leave();
+      animations.forEach((animation) => animation.cancel());
+      node.classList.remove("is-live");
+    };
+  }, [points]);
+
+  return { root, trail, head };
 }
 
 /** Deterministic noisy line, like a CPU trace, seeded per item */
@@ -289,20 +515,43 @@ export function Waveform({
   seed: number;
   className?: string;
 }) {
-  const line = tracePoints(seed);
-
-  return (
-    <svg
-      className={["mc-wave", className].filter(Boolean).join(" ")}
-      viewBox="0 0 100 20"
-      preserveAspectRatio="none"
-      aria-hidden="true"
-    >
+  const points = useMemo(() => tracePoints(seed), [seed]);
+  const { root, trail, head } = useSweep(points);
+  const line = points
+    .map(([x, y]) => `${x.toFixed(2)},${y.toFixed(2)}`)
+    .join(" ");
+  const trace = (
+    <>
       <polygon points={`0,20 ${line} 100,20`} className="mc-wave__fill" />
       <polyline points={line} vectorEffect="non-scaling-stroke" />
-    </svg>
+    </>
+  );
+
+  return (
+    <div
+      className={["mc-wave", className].filter(Boolean).join(" ")}
+      ref={root}
+      aria-hidden="true"
+    >
+      <svg viewBox="0 0 100 20" preserveAspectRatio="none">
+        {trace}
+      </svg>
+      <svg
+        className="mc-wave__trail"
+        ref={trail}
+        viewBox="0 0 100 20"
+        preserveAspectRatio="none"
+      >
+        {trace}
+      </svg>
+      <span className="mc-wave__head" ref={head} />
+    </div>
   );
 }
+
+// Names of the shared elements when a service tile expands into its page
+const TILE_TRANSITION = "mc-magi-tile";
+const TITLE_TRANSITION = "mc-service-title";
 
 /** Title block that opens every inner page, set like an episode title card */
 export function PageHeader({
@@ -312,6 +561,7 @@ export function PageHeader({
   title,
   lede,
   aside,
+  morphTitle,
   children
 }: {
   episode?: string;
@@ -322,6 +572,8 @@ export function PageHeader({
   /** HTML */
   lede?: string;
   aside?: ReactNode;
+  /** Receives the title of a service tile that expands into this page */
+  morphTitle?: boolean;
   children?: ReactNode;
 }) {
   return (
@@ -332,7 +584,19 @@ export function PageHeader({
           {eyebrow}
         </p>
         <div className="mc-titlecard">
-          <Html as="h1" className="mc-titlecard__title" html={title} />
+          {morphTitle ? (
+            <h1 className="mc-titlecard__title">
+              {/* Wraps the words, so the morph lands on the text's own box */}
+              <Html
+                as="span"
+                className="mc-titlecard__morph"
+                html={title}
+                style={{ viewTransitionName: TITLE_TRANSITION }}
+              />
+            </h1>
+          ) : (
+            <Html as="h1" className="mc-titlecard__title" html={title} />
+          )}
           {jp && (
             <p className="mc-titlecard__jp" lang="ja">
               {jp}
@@ -358,7 +622,9 @@ export const Feed = ({
   href,
   label,
   className,
-  eager
+  eager,
+  natural,
+  onZoom
 }: {
   src?: string;
   alt?: string;
@@ -366,14 +632,16 @@ export const Feed = ({
   label?: ReactNode;
   className?: string;
   eager?: boolean;
+  /** Shows the image in its own colors, without the amber tint */
+  natural?: boolean;
+  /** Makes the image a button that opens a larger view (see `Lightbox`) */
+  onZoom?: () => void;
 }) => {
-  const Tag = href ? "a" : "div";
-  return (
-    <Tag
-      className={["mc-feed", className].filter(Boolean).join(" ")}
-      href={href}
-      tabIndex={href ? -1 : undefined}
-    >
+  const classes = ["mc-feed", natural && "mc-feed--natural", className]
+    .filter(Boolean)
+    .join(" ");
+  const content = (
+    <>
       {src ? (
         <img src={src} alt={alt} loading={eager ? undefined : "lazy"} />
       ) : (
@@ -382,9 +650,144 @@ export const Feed = ({
         </span>
       )}
       {label && <span className="mc-feed__label">{label}</span>}
+      {onZoom && (
+        <span className="mc-feed__zoom" aria-hidden="true">
+          Enlarge
+        </span>
+      )}
+    </>
+  );
+
+  if (onZoom) {
+    return (
+      <button
+        type="button"
+        className={classes}
+        onClick={onZoom}
+        aria-haspopup="dialog"
+        aria-label={`Enlarge photo: ${alt}`}
+      >
+        {content}
+      </button>
+    );
+  }
+
+  const Tag = href ? "a" : "div";
+  return (
+    <Tag className={classes} href={href} tabIndex={href ? -1 : undefined}>
+      {content}
     </Tag>
   );
 };
+
+export interface LightboxImage {
+  src: string;
+  alt: string;
+  caption: ReactNode;
+}
+
+/**
+ * Larger view of a set of images, as a modal `<dialog>` styled like a HUD
+ * panel, with a caption and previous/next controls (or the arrow keys). Esc,
+ * the close button, or a click outside the panel closes it, and the browser
+ * returns focus to the image that opened it.
+ */
+export function Lightbox({
+  images,
+  index,
+  onChange
+}: {
+  images: LightboxImage[];
+  /** The image on show, or `null` when closed */
+  index: number | null;
+  onChange: (index: number | null) => void;
+}) {
+  const dialog = useRef<HTMLDialogElement>(null);
+  const captionId = useId();
+
+  useEffect(() => {
+    const node = dialog.current;
+    if (!node) return;
+    if (index === null) node.close();
+    else if (!node.open) node.showModal();
+  }, [index]);
+
+  const current = index ?? 0;
+  const image = index === null ? undefined : images[index];
+  const step = (by: number) =>
+    onChange((current + by + images.length) % images.length);
+  const close = () => dialog.current?.close();
+
+  return (
+    <dialog
+      ref={dialog}
+      className="mc-lightbox"
+      aria-labelledby={captionId}
+      onClose={() => onChange(null)}
+      onClick={(event) => event.target === event.currentTarget && close()}
+      onKeyDown={(event) => {
+        if (event.key === "ArrowLeft") step(-1);
+        if (event.key === "ArrowRight") step(1);
+      }}
+    >
+      {image && (
+        <div className="mc-panel mc-lightbox__frame">
+          <div className="mc-panel__head">
+            <span className="mc-panel__label">Frame {pad(current + 1, 3)}</span>
+            <span className="mc-panel__code">
+              Rec · {pad(current + 1)} / {pad(images.length)}
+            </span>
+            {/* First focusable element, so it takes focus on open */}
+            <button
+              type="button"
+              className="mc-lightbox__button"
+              onClick={close}
+            >
+              Close <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+          <figure className="mc-lightbox__figure">
+            <div className="mc-lightbox__media">
+              <img key={image.src} src={image.src} alt={image.alt} />
+            </div>
+            <figcaption id={captionId} className="mc-lightbox__caption">
+              <Tri />
+              {image.caption}
+            </figcaption>
+          </figure>
+
+          {images.length > 1 && (
+            <div className="mc-lightbox__controls">
+              <button
+                type="button"
+                className="mc-lightbox__button"
+                onClick={() => step(-1)}
+              >
+                <Tri dir="left" /> Previous
+              </button>
+              <span className="mc-lightbox__dots" aria-hidden="true">
+                {images.map((item, i) => (
+                  <span
+                    key={item.src}
+                    className={i === current ? "is-current" : undefined}
+                  />
+                ))}
+              </span>
+              <button
+                type="button"
+                className="mc-lightbox__button"
+                onClick={() => step(1)}
+              >
+                Next <Tri />
+              </button>
+            </div>
+          )}
+        </div>
+      )}
+    </dialog>
+  );
+}
 
 //
 // Writing
@@ -538,19 +941,96 @@ export function UnitGrid({ work }: { work: Work[] }) {
 // Services
 // --------
 
+/**
+ * Sets the geometry of the tile-to-page transition: the clicked tile's
+ * outline where it sits on screen, and the same shape scaled up until it
+ * covers the viewport.
+ */
+function setIris(tile: Element) {
+  const rect = tile.getBoundingClientRect();
+  const [cx, cy] = [rect.left + rect.width / 2, rect.top + rect.height / 2];
+  const [a, hh] = [rect.width / 2, rect.height / 2];
+  // How far the top and bottom edges are inset: a quarter of the width for
+  // a hexagon, 16px for the chamfered bars on narrow screens
+  const c = innerWidth >= 640 ? rect.width / 4 : 16;
+
+  // The smallest scale whose shape contains every corner of the viewport
+  const corners = [
+    [0, 0],
+    [innerWidth, 0],
+    [0, innerHeight],
+    [innerWidth, innerHeight]
+  ];
+  const scale =
+    1.02 *
+    Math.max(
+      ...corners.map(([x, y]) => {
+        const [dx, dy] = [Math.abs(x - cx), Math.abs(y - cy)];
+        return Math.max(dy / hh, (dx + (c * dy) / hh) / a);
+      })
+    );
+
+  const outline = (s: number) =>
+    `polygon(${[
+      [c - a, -hh],
+      [a - c, -hh],
+      [a, 0],
+      [a - c, hh],
+      [c - a, hh],
+      [-a, 0]
+    ]
+      .map(([x, y]) => `${cx + x * s}px ${cy + y * s}px`)
+      .join(", ")})`;
+
+  const root = document.documentElement.style;
+  root.setProperty("--mc-iris-from", outline(1));
+  root.setProperty("--mc-iris-to", outline(scale));
+  root.setProperty("--mc-iris-scale", String(scale));
+}
+
+/**
+ * A service tile. Clicking it expands the hexagon to fill the screen,
+ * revealing the service page inside, while the title flies up into the
+ * page's title card (see `PageHeader`'s `morphTitle`).
+ */
+function MagiTile({
+  service,
+  index
+}: {
+  service: LabContent["services"][number];
+  index: number;
+}) {
+  const expanding = useViewTransitionState(service.url);
+
+  return (
+    <Link
+      className={`mc-hex${expanding ? " is-expanding" : ""}`}
+      to={service.url}
+      viewTransition
+      onClick={(event) => setIris(event.currentTarget)}
+      style={expanding ? { viewTransitionName: TILE_TRANSITION } : undefined}
+    >
+      <span className="mc-hex__mode">Sys-{pad(index + 1)}</span>
+      <span
+        className="mc-hex__title"
+        style={expanding ? { viewTransitionName: TITLE_TRANSITION } : undefined}
+      >
+        {service.title}
+      </span>
+      <span className="mc-hex__number" aria-hidden="true">
+        {index + 1}
+      </span>
+    </Link>
+  );
+}
+
 /** Services as a cluster of hexagons, after the MAGI supercomputers */
 export function Magi({ services }: { services: LabContent["services"] }) {
   return (
     <ol className="mc-magi">
       {services.map((service, index) => (
         <li key={service.url} className="mc-magi__cell">
-          <a className="mc-hex" href={service.url}>
-            <span className="mc-hex__mode">Sys-{pad(index + 1)}</span>
-            <span className="mc-hex__title">{service.title}</span>
-            <span className="mc-hex__number" aria-hidden="true">
-              {index + 1}
-            </span>
-          </a>
+          <MagiTile service={service} index={index} />
         </li>
       ))}
       <li className="mc-magi__cell" aria-hidden="true">
@@ -711,13 +1191,9 @@ export function Alert({
         </p>
         <p className="mc-alert__en">Battle stations · Condition one</p>
         <h2 className="mc-alert__heading">{heading}</h2>
-        <a
-          className="mc-btn mc-btn--invert"
-          href={href ?? to("/project-inquiry/")}
-        >
-          <span>{cta}</span>
-          <Tri />
-        </a>
+        <Button tone="invert" href={href ?? to("/project-inquiry/")}>
+          {cta}
+        </Button>
       </div>
       <AlertSide />
     </section>
@@ -750,10 +1226,7 @@ export function Newsletter() {
             type="email"
             placeholder="you@example.com"
           />
-          <button className="mc-btn" type="submit">
-            <span>Subscribe</span>
-            <Tri />
-          </button>
+          <Button type="submit">Subscribe</Button>
         </form>
       </div>
     </Panel>

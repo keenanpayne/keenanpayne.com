@@ -317,11 +317,24 @@ body:has(.mc) {
   }
 }
 
+/* How far the green charge has swept across a primary button */
+@property --mc-charge {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
 /* Chamfered button: the shape is a clipped layer behind the label, so the
-   focus outline isn't clipped with it */
+   focus outline isn't clipped with it. On hover or focus, primary buttons
+   charge with green from the left, a reticle locks on, the label decodes
+   (see `Button`), and the arrow feeds forward. */
 .mc-btn {
   --btn-bg: var(--mc-amber);
   --btn-ink: var(--mc-void);
+  --btn-hot: var(--mc-green);
+  --btn-hot-ink: var(--mc-green-ink);
+  --btn-edge: #f4ffd9;
+  --btn-glow: var(--mc-green);
   --btn-cut: 12px;
 
   position: relative;
@@ -342,6 +355,10 @@ body:has(.mc) {
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
+  transition:
+    color 160ms ease 120ms,
+    filter 300ms ease,
+    transform 80ms ease;
 
   &::before,
   &::after {
@@ -361,20 +378,110 @@ body:has(.mc) {
     transition: background 150ms ease;
   }
 
+  /* The charge: green behind a bright leading edge, swept in from the left */
+  &::before {
+    background: linear-gradient(
+      90deg,
+      var(--btn-hot) calc(var(--mc-charge) - 3px),
+      var(--btn-edge) 0 var(--mc-charge),
+      var(--btn-bg) 0
+    );
+    transition: --mc-charge 440ms cubic-bezier(0.7, 0, 0.2, 1);
+  }
+
   &::after {
     display: none;
   }
 
   &:hover,
   &:focus-visible {
-    --btn-bg: var(--mc-green);
-    --btn-ink: var(--mc-green-ink);
+    outline: none;
+    color: var(--btn-hot-ink);
+    filter: drop-shadow(
+      0 0 10px color-mix(in srgb, var(--btn-glow) 55%, transparent)
+    );
+
+    &::before {
+      --mc-charge: calc(100% + 4px);
+    }
+
+    & .mc-btn__lock {
+      inset: -6px;
+      opacity: 1;
+      animation: mc-blink 1.4s steps(2, jump-none) 320ms infinite;
+    }
+
+    & .mc-tri {
+      animation: mc-feed 700ms cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    }
+  }
+
+  &:active {
+    transform: translateY(1px);
   }
 }
 
+/* Targeting reticle: four corner brackets that snap in onto the button */
+.mc-btn__lock {
+  --c: var(--btn-glow);
+  --l: 9px;
+
+  position: absolute;
+  inset: -16px -22px;
+  background:
+    linear-gradient(var(--c) 0 0) 0 0 / var(--l) 2px,
+    linear-gradient(var(--c) 0 0) 0 0 / 2px var(--l),
+    linear-gradient(var(--c) 0 0) 100% 0 / var(--l) 2px,
+    linear-gradient(var(--c) 0 0) 100% 0 / 2px var(--l),
+    linear-gradient(var(--c) 0 0) 0 100% / var(--l) 2px,
+    linear-gradient(var(--c) 0 0) 0 100% / 2px var(--l),
+    linear-gradient(var(--c) 0 0) 100% 100% / var(--l) 2px,
+    linear-gradient(var(--c) 0 0) 100% 100% / 2px var(--l);
+  background-repeat: no-repeat;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    inset 300ms cubic-bezier(0.3, 1.5, 0.5, 1),
+    opacity 120ms ease;
+}
+
+/* Scrambled glyphs drawn over the real label while it decodes */
+.mc-btn__label {
+  position: relative;
+  display: inline-block;
+}
+
+.mc-btn__noise {
+  position: absolute;
+  inset: 0;
+  display: none;
+  overflow: hidden;
+  text-shadow:
+    1px 0 rgb(255 0 90 / 60%),
+    -1px 0 rgb(0 210 255 / 60%);
+  white-space: nowrap;
+}
+
+.mc-btn__label[data-decoding] {
+  & .mc-btn__text {
+    color: transparent;
+  }
+
+  & .mc-btn__noise {
+    display: block;
+  }
+}
+
+/* Secondary: just a keyline that turns green */
 .mc-btn--ghost {
   --btn-bg: var(--mc-line);
   --btn-ink: var(--mc-amber);
+  --btn-hot-ink: var(--mc-green);
+
+  &::before {
+    background: var(--btn-bg);
+    transition: background 150ms ease;
+  }
 
   &::after {
     display: block;
@@ -385,19 +492,24 @@ body:has(.mc) {
   &:hover,
   &:focus-visible {
     --btn-bg: var(--mc-green);
-    --btn-ink: var(--mc-green);
+
+    filter: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--mc-green);
+    outline-offset: 2px;
   }
 }
 
+/* On the red alert: charges to black with a hazard-yellow edge */
 .mc-btn--invert {
   --btn-bg: #fff;
   --btn-ink: #c10d05;
-
-  &:hover,
-  &:focus-visible {
-    --btn-bg: #150301;
-    --btn-ink: #fff;
-  }
+  --btn-hot: #150301;
+  --btn-hot-ink: #fff;
+  --btn-edge: #ffd02e;
+  --btn-glow: #fff;
 }
 
 /* HUD header
@@ -1395,9 +1507,11 @@ body:has(.mc) {
   }
 }
 
+/* Full color on hover, and always for `natural` images */
 .mc-card:hover .mc-feed,
 .mc-panel:hover > .mc-feed,
-.mc-feed:hover {
+.mc-feed:hover,
+.mc-feed--natural {
   & img {
     filter: none;
   }
@@ -1418,6 +1532,47 @@ body:has(.mc) {
   font-family: var(--mc-mono);
   font-size: 11px;
   text-transform: uppercase;
+}
+
+/* An image that opens the lightbox */
+button.mc-feed {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--mc-line-faint);
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: zoom-in;
+
+  &:focus-visible {
+    outline-offset: -2px;
+  }
+}
+
+/* "Enlarge" hint in the corner, on hover or focus (always on touch) */
+.mc-feed__zoom {
+  position: absolute;
+  z-index: 3;
+  top: 8px;
+  right: 8px;
+  padding: 2px 6px;
+  border: 1px solid rgb(155 255 74 / 50%);
+  background: rgb(0 0 0 / 70%);
+  color: #9bff4a;
+  font-family: var(--mc-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 150ms ease;
+
+  .mc-feed:is(:hover, :focus-visible) > & {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    opacity: 1;
+  }
 }
 
 .mc-feed__none {
@@ -1663,7 +1818,8 @@ body:has(.mc) {
 }
 
 a.mc-hex:hover,
-a.mc-hex:focus-visible {
+a.mc-hex:focus-visible,
+.mc-hex.is-expanding {
   outline: none;
   color: var(--mc-void);
 
@@ -1675,6 +1831,11 @@ a.mc-hex:focus-visible {
   & .mc-hex__title {
     color: inherit;
   }
+}
+
+/* Only the amber shape and the title are captured as the tile expands */
+.mc-hex.is-expanding :is(.mc-hex__mode, .mc-hex__number) {
+  visibility: hidden;
 }
 
 .mc-hex__mode {
@@ -2119,21 +2280,93 @@ a.mc-hex:focus-visible {
   flex-direction: column;
 }
 
+/* How far the sweep has crossed a transmission's trace (see `Waveform`) */
+@property --mc-sweep {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+
 .mc-wave {
-  display: block;
-  width: 100%;
+  position: relative;
   height: 44px;
+  overflow: hidden;
   border-bottom: 1px solid var(--mc-line-faint);
+
+  & svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
 
   & polyline {
     fill: none;
     stroke: var(--mc-green);
     stroke-width: 1.5;
+    transition: opacity 600ms ease;
   }
 }
 
 .mc-wave__fill {
   fill: var(--mc-green-fill);
+}
+
+/* While the sweep runs, the rest of the trace dims like phosphor afterglow */
+.mc-wave.is-live > svg:not(.mc-wave__trail) polyline {
+  opacity: 0.45;
+}
+
+/* A bright copy of the trace, revealed behind the head and fading out over
+   the trail's length (30%, matching `TRAIL`) */
+.mc-wave__trail {
+  display: none;
+  filter: drop-shadow(0 0 3px var(--mc-green));
+  mask-image: linear-gradient(
+    90deg,
+    transparent calc(var(--mc-sweep) - 30%),
+    #000 var(--mc-sweep),
+    transparent var(--mc-sweep)
+  );
+
+  .is-live > & {
+    display: block;
+  }
+
+  & polyline {
+    stroke-width: 2;
+  }
+
+  & .mc-wave__fill {
+    fill: color-mix(in srgb, var(--mc-green) 14%, transparent);
+  }
+}
+
+/* Fills the trace's box, so the dot can be moved in percentages of it */
+.mc-wave__head {
+  position: absolute;
+  inset: 0;
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+
+  .is-live > & {
+    display: block;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--mc-green) 30%, #fff);
+    box-shadow:
+      0 0 6px 1px var(--mc-green),
+      0 0 16px 4px color-mix(in srgb, var(--mc-green) 45%, transparent);
+  }
 }
 
 .mc-quote__text {
@@ -3991,6 +4224,299 @@ textarea.mc-input {
   }
 }
 
+/* Lightbox
+   ========================================================================== */
+
+/* The dialog covers the screen, so a click outside the panel lands on it */
+.mc-lightbox {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 16px;
+  border: 0;
+  background: none;
+  color: var(--mc-ink);
+  font-family: var(--mc-sans);
+
+  &[open] {
+    display: grid;
+    place-items: center;
+  }
+
+  &::backdrop {
+    background:
+      repeating-linear-gradient(
+        0deg,
+        rgb(0 0 0 / 30%) 0 1px,
+        transparent 1px 3px
+      ),
+      rgb(6 3 2 / 88%);
+    animation: mc-fade-in 240ms ease both;
+    backdrop-filter: blur(4px);
+  }
+}
+
+:root:has(.mc-lightbox[open]) {
+  overflow: hidden;
+}
+
+/* Powers on like a CRT: a bright line that opens out to the picture */
+.mc-lightbox__frame {
+  display: flex;
+  flex-direction: column;
+  width: min(1080px, 100%);
+  max-height: 100%;
+  animation: mc-crt-on 460ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+
+  & .mc-panel__code {
+    margin-right: 4px;
+  }
+}
+
+.mc-lightbox__button {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--mc-line-dim);
+  background: none;
+  color: var(--mc-amber);
+  font-family: var(--mc-cond);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--mc-amber);
+    background: var(--mc-amber);
+    color: var(--mc-void);
+  }
+}
+
+.mc-lightbox__figure {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  margin: 0;
+}
+
+/* A fixed height, so the panel doesn't jump while an image loads or when
+   stepping between portrait and landscape images */
+.mc-lightbox__media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: min(720px, calc(100dvh - 240px));
+  background: #000;
+
+  /* Until the image arrives (it then covers this) */
+  &::before {
+    content: "Acquiring signal…";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--mc-muted);
+    font-family: var(--mc-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: mc-blink 1.2s steps(2, jump-none) infinite;
+  }
+
+  /* Flickers in, like a signal locking on, whenever the image changes */
+  & img {
+    position: relative;
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    animation: mc-signal 320ms steps(1, end) both;
+  }
+}
+
+.mc-lightbox__caption {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--mc-line-faint);
+  color: var(--mc-title);
+  font-size: 18px;
+  line-height: 1.4;
+
+  & .mc-tri {
+    color: var(--mc-green);
+  }
+}
+
+.mc-lightbox__controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px 14px;
+  border-top: 1px dashed var(--mc-line-faint);
+}
+
+.mc-lightbox__dots {
+  display: flex;
+  gap: 6px;
+
+  & span {
+    width: 16px;
+    height: 8px;
+    background: var(--mc-line-faint);
+    clip-path: var(--mc-hex);
+  }
+
+  & .is-current {
+    background: var(--mc-green);
+  }
+}
+
+@keyframes mc-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes mc-crt-on {
+  0% {
+    opacity: 0;
+    filter: brightness(4);
+    transform: scale(0.7, 0.006);
+  }
+
+  45% {
+    opacity: 1;
+    filter: brightness(4);
+    transform: scale(1, 0.006);
+  }
+
+  100% {
+    filter: none;
+    transform: none;
+  }
+}
+
+@keyframes mc-signal {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.7;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  75%,
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Service tile to page
+   ==========================================================================
+   The clicked hexagon grows past the edges of the screen with the service
+   page showing through it, while the tile's title flies up into the page's
+   title card. `setIris` measures the tile and sets the `--mc-iris-*`
+   outlines; `MagiTile` and `PageHeader` name the shared elements. */
+
+:root:has(.mc) {
+  &::view-transition-group(*) {
+    animation-duration: 720ms;
+    animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
+  }
+
+  /* The page being left sinks back and dims */
+  &::view-transition-old(root) {
+    animation: mc-recede 720ms cubic-bezier(0.7, 0, 0.2, 1) both;
+  }
+
+  /* The service page shows through the growing hexagon */
+  &::view-transition-new(root) {
+    animation: mc-iris 720ms cubic-bezier(0.7, 0, 0.2, 1) both;
+  }
+
+  /* The tile itself scales with the hexagon, then fades to reveal the page */
+  &::view-transition-old(mc-magi-tile) {
+    animation: mc-tile-grow 720ms cubic-bezier(0.7, 0, 0.2, 1) both;
+  }
+
+  /* The tile's title hands over to the page title partway through the
+     flight, rather than both showing at once */
+  &::view-transition-old(mc-service-title) {
+    animation: mc-title-out 720ms cubic-bezier(0.7, 0, 0.2, 1) both;
+  }
+
+  &::view-transition-new(mc-service-title) {
+    animation: mc-title-in 720ms cubic-bezier(0.7, 0, 0.2, 1) both;
+  }
+}
+
+/* The title's own box, so the morph lands on the words */
+.mc-titlecard__morph {
+  display: inline-block;
+}
+
+@keyframes mc-iris {
+  from {
+    clip-path: var(--mc-iris-from);
+  }
+
+  to {
+    clip-path: var(--mc-iris-to);
+  }
+}
+
+@keyframes mc-recede {
+  to {
+    filter: brightness(0.4);
+    transform: scale(0.96);
+  }
+}
+
+@keyframes mc-tile-grow {
+  30% {
+    opacity: 1;
+  }
+
+  65% {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(var(--mc-iris-scale));
+  }
+}
+
+@keyframes mc-title-out {
+  45%,
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes mc-title-in {
+  0%,
+  35% {
+    opacity: 0;
+  }
+}
+
 /* Motion
    ========================================================================== */
 
@@ -4012,6 +4538,25 @@ textarea.mc-input {
   }
 }
 
+/* Arrow slides out to the right and back in from the left */
+@keyframes mc-feed {
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  45% {
+    transform: translateX(7px);
+    opacity: 0;
+  }
+
+  46% {
+    transform: translateX(-7px);
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .mc *,
   .mc *::before,
@@ -4027,5 +4572,18 @@ textarea.mc-input {
 
   .mc-ticker__run[aria-hidden] {
     display: none;
+  }
+
+  .mc-lightbox::backdrop {
+    animation: none;
+  }
+
+  /* Service tiles swap straight to the page */
+  :root:has(.mc) {
+    &::view-transition-group(*),
+    &::view-transition-old(*),
+    &::view-transition-new(*) {
+      animation: none !important;
+    }
   }
 }

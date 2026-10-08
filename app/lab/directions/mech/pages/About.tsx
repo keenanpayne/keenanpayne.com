@@ -1,9 +1,12 @@
+import { useState } from "react";
+
 import { socials } from "../../../../data/socials";
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
 import {
   Feed,
   Html,
   introOf,
+  Lightbox,
   pad,
   PageHeader,
   Panel,
@@ -12,20 +15,27 @@ import {
   useTo
 } from "../parts";
 
+const photo = (id: string, transform: string) =>
+  `https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,${transform}/${id}`;
+
 const PHOTOS = [
   {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jun-27-2021_o8sd0l.jpg",
+    id: "v1666204078/people/me/jun-27-2021_o8sd0l.jpg",
     alt: "Me in grayscale"
   },
+  { id: "v1666204077/people/me/dec-26-2021_iuhh3w.jpg", alt: "Me being cold" },
   {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204077/people/me/dec-26-2021_iuhh3w.jpg",
-    alt: "Me being cold"
-  },
-  {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jul-5-2020_lwglyk.jpg",
+    id: "v1666204078/people/me/jul-5-2020_lwglyk.jpg",
     alt: "Hanging out with my high school buddies"
   }
-];
+].map((item) => ({ ...item, src: photo(item.id, "w_800") }));
+
+// Larger copies for the lightbox, never upscaled past the original
+const ENLARGED = PHOTOS.map((item) => ({
+  src: photo(item.id, "c_limit,w_1800"),
+  alt: item.alt,
+  caption: item.alt
+}));
 
 export function About({
   page,
@@ -36,6 +46,7 @@ export function About({
 }) {
   const intro = introOf(page);
   const to = useTo();
+  const [enlarged, setEnlarged] = useState<number | null>(null);
 
   const facts: [string, React.ReactNode][] = [
     ["Designation", "KP-01 · Full-stack web developer & designer"],
@@ -89,8 +100,11 @@ export function About({
             <Feed
               className="mc-dossier__photo"
               src={PHOTOS[0].src}
+              alt={PHOTOS[0].alt}
               label="ID · KP-01"
               eager
+              natural
+              onZoom={() => setEnlarged(0)}
             />
             <dl className="mc-spec mc-spec--compact">
               {facts.map(([term, detail]) => (
@@ -106,20 +120,27 @@ export function About({
 
       <Section label="Surveillance archive" jp="写真" code="3 frames">
         <div className="mc-grid mc-grid--3">
-          {PHOTOS.map((photo, index) => (
+          {PHOTOS.map((item, index) => (
             <Panel
               as="figure"
-              key={photo.src}
+              key={item.src}
               className="mc-photo"
               label={`Frame ${pad(index + 1, 3)}`}
               code="Rec"
             >
-              <Feed src={photo.src} alt={photo.alt} />
-              <figcaption>{photo.alt}</figcaption>
+              <Feed
+                src={item.src}
+                alt={item.alt}
+                natural
+                onZoom={() => setEnlarged(index)}
+              />
+              <figcaption>{item.alt}</figcaption>
             </Panel>
           ))}
         </div>
       </Section>
+
+      <Lightbox images={ENLARGED} index={enlarged} onChange={setEnlarged} />
     </>
   );
 }
