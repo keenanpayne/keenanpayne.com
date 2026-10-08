@@ -266,3 +266,32 @@ export interface PortfolioPageModel extends BaseModel {
 }
 
 export type PageModel = BasicPageModel | PostPageModel | PortfolioPageModel;
+
+/** Real site content handed to every design lab direction */
+export interface LabContent {
+  posts: {
+    title: string;
+    url: string;
+    date: string;
+    year: string;
+    type?: string;
+    lede?: string;
+    image?: string;
+  }[];
+  work: {
+    name: string;
+    url: string;
+    /** HTML */
+    lede?: string;
+    cover: string;
+    /** Square crop padded with the cover's edge color */
+    coverSquare: string;
+    year?: string;
+    role?: string;
+    industry?: string;
+    services: string[];
+    technologies: string[];
+  }[];
+  services: { title: string; url: string; lede?: string }[];
+  testimonials: TestimonialModel[];
+}

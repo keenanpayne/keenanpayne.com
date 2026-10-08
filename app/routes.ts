@@ -10,6 +10,10 @@ export default [
   route("blog/*", "routes/redirects.ts", { id: "redirects/blog-posts" }),
   route("work", "routes/redirects.ts", { id: "redirects/work" }),
 
+  // Design lab: experimental aesthetic directions
+  route("lab", "routes/lab.tsx"),
+  route("lab/:direction/*", "routes/lab.$direction.tsx"),
+
   // Every Markdown page (posts, portfolio, services, tags, …) by its URL
   index("routes/page.tsx", { id: "routes/home" }),
   route("*", "routes/page.tsx")
