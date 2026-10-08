@@ -4,6 +4,7 @@ import type { LabContent, PageModel } from "../../lib/types";
 
 import { Mech } from "./mech/Mech";
 import { Monograph } from "./monograph/Monograph";
+import { Portal } from "./portal/Portal";
 
 export interface DirectionProps {
   /** Lab URL prefix for internal links, e.g. `/lab/monograph` */
@@ -22,5 +23,6 @@ export const directionComponents: Record<
   ComponentType<DirectionProps>
 > = {
   monograph: Monograph,
-  mech: Mech
+  mech: Mech,
+  portal: Portal
 };

@@ -290,6 +290,17 @@ export const ICONS = {
     "CC.CCCCCC",
     "CC.CCCCCC"
   ],
+  wrench: [
+    ".CC...CC.",
+    ".CC...CC.",
+    ".CCC.CCC.",
+    "..CCCCC..",
+    "...CCC...",
+    "...CCC...",
+    "...CCC...",
+    "...CCC...",
+    "...CCC..."
+  ],
   print: [
     "..CCCCC..",
     "..C...C..",

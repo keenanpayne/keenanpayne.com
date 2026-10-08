@@ -63,6 +63,29 @@ export const directions: DirectionInfo[] = [
       { label: "Project inquiry", path: "/project-inquiry/" },
       { label: "Not found", path: "/404/" }
     ]
+  },
+  {
+    slug: "portal",
+    name: "Portal",
+    summary:
+      "Early-2000s console-maker web portal. A chunky periwinkle bezel around halftone nav bars, vertical tab rails, pixel-font buttons, rating-badge game cards, skyscraper banner ads, and a pixel mascot with a speech bubble.",
+    reference: "Nintendo.com, circa 2002–2003",
+    date: "2026-10-08",
+    pages: [
+      { label: "Home", path: "/" },
+      { label: "Portfolio", path: "/portfolio/" },
+      { label: "Case study", path: "/portfolio/asana/" },
+      { label: "Writing archive", path: "/archive/" },
+      { label: "Blog post", path: "/acting-from-fear/" },
+      { label: "Tutorial post", path: "/css-multi-line-buttons/" },
+      { label: "About", path: "/about/" },
+      { label: "Services", path: "/services/" },
+      { label: "Service", path: "/services/web-performance/" },
+      { label: "Testimonials", path: "/testimonials/" },
+      { label: "Contact", path: "/contact/" },
+      { label: "Project inquiry", path: "/project-inquiry/" },
+      { label: "Not found", path: "/404/" }
+    ]
   }
 ];
 
