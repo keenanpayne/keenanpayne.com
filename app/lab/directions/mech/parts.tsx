@@ -7,6 +7,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
   type CSSProperties,
   type ReactNode,
   type Ref
@@ -51,6 +52,26 @@ export const sectionOf = <T extends SectionModel["type"]>(
 /** Compares site paths, ignoring a trailing slash */
 export const samePath = (a: string, b: string) =>
   a.replace(/\/$/, "") === b.replace(/\/$/, "");
+
+const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+
+const subscribeToMotion = (onChange: () => void) => {
+  const query = matchMedia(REDUCED_MOTION);
+  query.addEventListener("change", onChange);
+  return () => query.removeEventListener("change", onChange);
+};
+
+/**
+ * Whether the visitor asked for reduced motion, kept up to date if they
+ * change the setting while the page is open. `false` while rendering on the
+ * server and hydrating, then corrected.
+ */
+export const useReducedMotion = () =>
+  useSyncExternalStore(
+    subscribeToMotion,
+    () => matchMedia(REDUCED_MOTION).matches,
+    () => false
+  );
 
 export const pad = (value: number, length = 2) =>
   String(value).padStart(length, "0");
@@ -285,7 +306,7 @@ function useDecode(text: string) {
     const node = noise.current;
     const label = node?.parentElement;
     if (!node || !label) return;
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (matchMedia(REDUCED_MOTION).matches) return;
 
     cancelAnimationFrame(frame.current);
     const start = performance.now();
@@ -480,6 +501,9 @@ function useSweep(points: [number, number][]) {
   const lens = useRef<HTMLSpanElement>(null);
   const trail = useRef<SVGSVGElement>(null);
   const head = useRef<HTMLSpanElement>(null);
+  // Leaves the relay (stopping any sweep in progress) if the visitor turns
+  // on reduced motion, and rejoins if they turn it off
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     const [node, lensNode, trailNode, headNode] = [
@@ -488,8 +512,7 @@ function useSweep(points: [number, number][]) {
       trail.current,
       head.current
     ];
-    if (!node || !lensNode || !trailNode || !headNode) return;
-    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!node || !lensNode || !trailNode || !headNode || reduced) return;
 
     const headFrames = points.map(([x, y], i) => ({
       offset: i / (points.length - 1),
@@ -530,7 +553,7 @@ function useSweep(points: [number, number][]) {
       animations.forEach((animation) => animation.cancel());
       node.classList.remove("is-live");
     };
-  }, [points]);
+  }, [points, reduced]);
 
   return { root, lens, trail, head };
 }
@@ -1039,6 +1062,8 @@ function MagiTile({
   index: number;
 }) {
   const expanding = useViewTransitionState(service.url);
+  // With reduced motion the tile opens its page like any other link
+  const animate = !useReducedMotion();
 
   return (
     <Link
@@ -1047,8 +1072,8 @@ function MagiTile({
       // Loads the page's code and data on hover, so the transition starts
       // without waiting on the network
       prefetch="intent"
-      viewTransition
-      onClick={(event) => setIris(event.currentTarget)}
+      viewTransition={animate}
+      onClick={(event) => animate && setIris(event.currentTarget)}
       style={expanding ? { viewTransitionName: TILE_TRANSITION } : undefined}
     >
       <span className="mc-hex__mode">Sys-{pad(index + 1)}</span>

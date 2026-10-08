@@ -5269,17 +5269,26 @@ textarea.mc-input {
   }
 }
 
+/* Reduced motion: everything holds still. Spins, sweeps, falling weather,
+   blinking, and the button decode stop (the decode, the transmission sweep,
+   and the tile transition also check the setting in script, see
+   `useReducedMotion`), hover and open states switch instantly, and the
+   layers kept ready for animation are released. Clocks still tick. */
 @media (prefers-reduced-motion: reduce) {
   .mc *,
   .mc *::before,
   .mc *::after {
     animation: none !important;
     transition: none !important;
+    will-change: auto !important;
   }
 
+  /* The ticker becomes a row of headlines to scroll through by hand */
   .mc-ticker__track {
     overflow-x: auto;
     mask-image: none;
+    scrollbar-color: var(--mc-line-dim) transparent;
+    scrollbar-width: thin;
   }
 
   .mc-ticker__run[aria-hidden] {
@@ -5290,7 +5299,8 @@ textarea.mc-input {
     animation: none;
   }
 
-  /* Service tiles swap straight to the page */
+  /* Service tiles open without a view transition; this covers one already
+     under way when the setting changes */
   :root:has(.mc) {
     &::view-transition-group(*),
     &::view-transition-old(*),
