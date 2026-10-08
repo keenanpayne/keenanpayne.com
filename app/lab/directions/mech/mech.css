@@ -1534,8 +1534,9 @@ body:has(.mc) {
   text-transform: uppercase;
 }
 
-/* An image that opens the lightbox */
-button.mc-feed {
+/* An image that opens the lightbox (kept low in specificity, so frames
+   like `.mc-dossier__photo` can still size and border it) */
+:where(button).mc-feed {
   width: 100%;
   padding: 0;
   border: 0;
@@ -3002,6 +3003,7 @@ a.mc-hex:focus-visible,
    ========================================================================== */
 
 .mc-dossier__photo {
+  width: calc(100% - 28px);
   margin: 14px 14px 0;
   aspect-ratio: 4 / 3;
   border: 1px solid var(--mc-line-faint);
