@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
 
+import { HtmlContent } from "../../../../components/HtmlContent";
 import type { LabContent, PostPageModel } from "../../../../lib/types";
 import {
-  Html,
   MoreLink,
   Newsletter,
   Panel,
@@ -129,7 +129,7 @@ export function Post({
           </Panel>
         </aside>
 
-        <Html className="mc-prose mc-post__body" html={page.content} />
+        <HtmlContent className="mc-prose mc-post__body" html={page.content} />
       </div>
 
       <footer className="mc-post__footer">

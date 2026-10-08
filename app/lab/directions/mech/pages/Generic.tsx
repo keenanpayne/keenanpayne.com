@@ -1,3 +1,4 @@
+import { HtmlContent } from "../../../../components/HtmlContent";
 import type {
   BasicPageModel,
   EntriesSection,
@@ -80,7 +81,7 @@ export function Generic({
             {page.content && (
               <>
                 <p className="mc-kicker">Details</p>
-                <Html className="mc-prose" html={page.content} />
+                <HtmlContent className="mc-prose" html={page.content} />
               </>
             )}
           </div>

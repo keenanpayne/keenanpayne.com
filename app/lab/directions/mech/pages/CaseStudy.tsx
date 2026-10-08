@@ -1,3 +1,4 @@
+import { HtmlContent } from "../../../../components/HtmlContent";
 import type {
   LabContent,
   PortfolioGridSection,
@@ -253,7 +254,10 @@ export function CaseStudy({
 
       {page.content && (
         <section className="mc-section">
-          <Html className="mc-prose mc-prose--solo" html={page.content} />
+          <HtmlContent
+            className="mc-prose mc-prose--solo"
+            html={page.content}
+          />
         </section>
       )}
 

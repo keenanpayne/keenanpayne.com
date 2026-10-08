@@ -1,3 +1,4 @@
+import { HtmlContent } from "../../../../components/HtmlContent";
 import type {
   BasicPageModel,
   EntriesSection,
@@ -85,7 +86,10 @@ export function Generic({
             <Icon name="file" />
             Details
           </p>
-          <Html className="mg-prose mg-prose--solo" html={page.content} />
+          <HtmlContent
+            className="mg-prose mg-prose--solo"
+            html={page.content}
+          />
         </section>
       )}
 

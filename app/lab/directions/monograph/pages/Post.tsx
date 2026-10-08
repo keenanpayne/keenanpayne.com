@@ -1,5 +1,6 @@
+import { HtmlContent } from "../../../../components/HtmlContent";
 import type { PostPageModel } from "../../../../lib/types";
-import { Html, Icon, MoreLink, Newsletter, PostNav, useTo } from "../parts";
+import { Icon, MoreLink, Newsletter, PostNav, useTo } from "../parts";
 
 export function Post({ page }: { page: PostPageModel }) {
   const to = useTo();
@@ -61,7 +62,7 @@ export function Post({ page }: { page: PostPageModel }) {
           </dl>
         </aside>
 
-        <Html className="mg-prose mg-post__body" html={page.content} />
+        <HtmlContent className="mg-prose mg-post__body" html={page.content} />
       </div>
 
       <footer className="mg-post__footer">

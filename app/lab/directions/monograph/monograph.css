@@ -1511,8 +1511,12 @@ button.mg-pill {
     letter-spacing: 0;
   }
 
-  & .header-anchor {
-    display: none;
+  /* Markdown headings wrap their text in a permalink; keep it reading as
+     the heading */
+  & .header-anchor,
+  & .header-anchor:hover {
+    color: inherit;
+    text-decoration: none;
   }
 
   & hr {

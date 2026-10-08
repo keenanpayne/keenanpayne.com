@@ -1,3 +1,4 @@
+import { HtmlContent } from "../../../../components/HtmlContent";
 import type {
   PortfolioGridSection,
   PortfolioPageModel
@@ -236,7 +237,10 @@ export function CaseStudy({ page }: { page: PortfolioPageModel }) {
 
       {page.content && (
         <section className="mg-section">
-          <Html className="mg-prose mg-prose--solo" html={page.content} />
+          <HtmlContent
+            className="mg-prose mg-prose--solo"
+            html={page.content}
+          />
         </section>
       )}
 
