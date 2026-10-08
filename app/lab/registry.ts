@@ -40,6 +40,29 @@ export const directions: DirectionInfo[] = [
       { label: "Project inquiry", path: "/project-inquiry/" },
       { label: "Not found", path: "/404/" }
     ]
+  },
+  {
+    slug: "mech",
+    name: "Mech",
+    summary:
+      "Mecha command HUD. Amber panels with corner brackets on a black lattice, compressed serif title cards, hexagon clusters, live readouts, and red alert banners with hazard stripes.",
+    reference: "Neon Genesis Evangelion’s NERV and MAGI interfaces",
+    date: "2026-10-08",
+    pages: [
+      { label: "Home", path: "/" },
+      { label: "Portfolio", path: "/portfolio/" },
+      { label: "Case study", path: "/portfolio/asana/" },
+      { label: "Writing archive", path: "/archive/" },
+      { label: "Blog post", path: "/acting-from-fear/" },
+      { label: "Tutorial post", path: "/css-multi-line-buttons/" },
+      { label: "About", path: "/about/" },
+      { label: "Services", path: "/services/" },
+      { label: "Service", path: "/services/web-performance/" },
+      { label: "Testimonials", path: "/testimonials/" },
+      { label: "Contact", path: "/contact/" },
+      { label: "Project inquiry", path: "/project-inquiry/" },
+      { label: "Not found", path: "/404/" }
+    ]
   }
 ];
 

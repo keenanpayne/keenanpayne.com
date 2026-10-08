@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 
 import type { LabContent, PageModel } from "../../lib/types";
 
+import { Mech } from "./mech/Mech";
 import { Monograph } from "./monograph/Monograph";
 
 export interface DirectionProps {
@@ -20,5 +21,6 @@ export const directionComponents: Record<
   string,
   ComponentType<DirectionProps>
 > = {
-  monograph: Monograph
+  monograph: Monograph,
+  mech: Mech
 };
