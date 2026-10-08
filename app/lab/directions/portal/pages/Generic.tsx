@@ -26,7 +26,7 @@ import {
   WorkCard
 } from "../parts";
 import { FACE, ITEMS } from "../sprites";
-import { splitTopics } from "./Post";
+import { splitTopics, type Topic } from "./Post";
 import { serviceItem, Worlds } from "./Services";
 
 function Entries({
@@ -68,7 +68,7 @@ function Service({
     samePath(service.url, page.url)
   );
   const title = intro?.heading ?? intro?.title ?? page.meta.title;
-  const topics = [
+  const topics: Topic[] = [
     ...(intro?.body
       ? [{ id: "overview", title: "Overview", html: intro.body }]
       : []),
@@ -111,7 +111,12 @@ function Service({
       <div className="pt-columns">
         <div className="pt-columns__main">
           {topics.map((topic) => (
-            <KeySection key={topic.id} id={topic.id} title={topic.title}>
+            <KeySection
+              key={topic.id}
+              id={topic.id}
+              title={topic.title}
+              html={topic.titleHtml}
+            >
               <HtmlContent className="pt-prose" html={topic.html} />
             </KeySection>
           ))}

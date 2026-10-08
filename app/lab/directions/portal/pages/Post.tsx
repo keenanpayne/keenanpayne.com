@@ -38,8 +38,10 @@ const count = (html: string, pattern: RegExp) =>
 
 export interface Topic {
   id: string;
-  /** Plain text */
+  /** Plain text, for the content key */
   title?: string;
+  /** Heading HTML, keeping links to the resources a heading names */
+  titleHtml?: string;
   /** HTML */
   html: string;
 }
@@ -63,9 +65,13 @@ export function splitTopics(html: string, first = "Introduction"): Topic[] {
     .map((part, index) => {
       const heading = /^<h2([^>]*)>([\s\S]*?)<\/h2>/.exec(part);
       if (!heading) return { id: "topic-intro", title: first, html: part };
-      const title = decode(heading[2].replace(/<[^>]+>/g, "").trim());
+      // Drop the heading's own permalink; the section has a "To key" link
+      const titleHtml = heading[2]
+        .trim()
+        .replace(/^<a class="header-anchor"[^>]*>([\s\S]*)<\/a>$/, "$1");
+      const title = decode(titleHtml.replace(/<[^>]+>/g, "").trim());
       const id = /id="([^"]+)"/.exec(heading[1])?.[1] ?? `topic-${index}`;
-      return { id, title, html: part.slice(heading[0].length) };
+      return { id, title, titleHtml, html: part.slice(heading[0].length) };
     })
     .filter((topic) => topic.html.replace(/<[^>]+>|\s/g, "").length > 0);
 }
@@ -123,6 +129,7 @@ export function Post({
               key={topic.id}
               id={topic.id}
               title={topic.title}
+              html={topic.titleHtml}
               toKey={topics.length > 1}
             >
               <HtmlContent className="pt-prose" html={topic.html} />

@@ -2092,6 +2092,13 @@ a.pt-tile__head:hover {
   font: bold 13px/1.3 var(--pt-sans);
 }
 
+/* Links to the resource a post heading names */
+.pt-keysec__title a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 .pt-keysec__tag {
   margin-left: 8px;
   padding: 1px 5px;
