@@ -13,7 +13,8 @@ import { Post } from "./pages/Post";
 import { Services } from "./pages/Services";
 import { Testimonials } from "./pages/Testimonials";
 import { Work } from "./pages/Work";
-import { BaseContext, HexOutline, Ticks, useDenverTime } from "./parts";
+import { DenverStatus } from "./Denver";
+import { BaseContext, HexOutline, Ticks } from "./parts";
 
 const FONTS_URL =
   "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho+B1:wght@700;800&family=Share+Tech+Mono&display=swap";
@@ -59,7 +60,6 @@ function PageBody({ path, page, notFound, content }: DirectionProps) {
 
 export function Mech(props: DirectionProps) {
   const { base, path } = props;
-  const time = useDenverTime();
   const to = (target: string) => `${base}${target}`;
 
   return (
@@ -98,16 +98,13 @@ export function Mech(props: DirectionProps) {
             </ul>
           </nav>
 
-          <p className="mc-hud__status">
-            <span className="mc-hud__clock">
-              <span>Den</span>
-              <time>{time ?? "--:--:--"}</time>
-            </span>
+          <div className="mc-hud__status">
+            <DenverStatus />
             <span className="mc-hud__signal">
               <span className="mc-dot" aria-hidden="true" />
               Nominal
             </span>
-          </p>
+          </div>
         </header>
         <div className="mc-ruler" aria-hidden="true" />
 

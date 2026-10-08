@@ -3,11 +3,13 @@ import {
   useContext,
   useEffect,
   useId,
+  useImperativeHandle,
   useMemo,
   useRef,
   useState,
   type CSSProperties,
-  type ReactNode
+  type ReactNode,
+  type Ref
 } from "react";
 import { Link, useViewTransitionState } from "react-router";
 
@@ -334,11 +336,24 @@ export function Button({
   };
   const content = (
     <>
-      {primary && <span className="mc-btn__lock" aria-hidden="true" />}
+      {primary && (
+        <>
+          <span className="mc-btn__glow" aria-hidden="true" />
+          <span className="mc-btn__charge" aria-hidden="true">
+            <span />
+          </span>
+          <span className="mc-btn__lock" aria-hidden="true" />
+        </>
+      )}
       <span className="mc-btn__label">
         <span className="mc-btn__text">{children}</span>
         {primary && (
-          <span className="mc-btn__noise" ref={noise} aria-hidden="true" />
+          // Starts with every glyph the decode can use, hidden, so the
+          // fallback font for the katakana loads with the page rather than
+          // on the first hover
+          <span className="mc-btn__noise" ref={noise} aria-hidden="true">
+            {NOISE}
+          </span>
         )}
       </span>
       <Tri />
@@ -454,19 +469,26 @@ const relay = (() => {
  * Lets a trace take part in the relay: a glowing head rides the line with a
  * fading trail behind it, which drains off the right edge after the head
  * moves on to the next card.
+ *
+ * Everything moves by transform, so it runs on the compositor: the trail is
+ * a lens (as wide as `TRAIL`, faded by a fixed mask) sliding across the
+ * trace, with a bright copy of the trace inside it sliding the opposite way
+ * to stay in place.
  */
 function useSweep(points: [number, number][]) {
   const root = useRef<HTMLDivElement>(null);
+  const lens = useRef<HTMLSpanElement>(null);
   const trail = useRef<SVGSVGElement>(null);
   const head = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    const [node, trailNode, headNode] = [
+    const [node, lensNode, trailNode, headNode] = [
       root.current,
+      lens.current,
       trail.current,
       head.current
     ];
-    if (!node || !trailNode || !headNode) return;
+    if (!node || !lensNode || !trailNode || !headNode) return;
     if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const headFrames = points.map(([x, y], i) => ({
@@ -474,22 +496,28 @@ function useSweep(points: [number, number][]) {
       transform: `translate(${x}%, ${y * 5}%)`,
       opacity: i === 0 ? 0 : 1
     }));
-    // Keeps moving at the same speed after the head leaves, so the tail
-    // slides off the right edge
+    // The lens's right edge follows the head, then keeps going at the same
+    // speed so the tail slides off the right edge. Its offsets are in its
+    // own widths; the copy inside counters them in the trace's widths.
+    const crossed = 1 / (1 + TRAIL);
+    const lensFrames = [
+      { transform: "translateX(-100%)" },
+      { offset: crossed, transform: `translateX(${(1 / TRAIL - 1) * 100}%)` },
+      { transform: `translateX(${100 / TRAIL}%)` }
+    ];
     const trailFrames = [
-      { "--mc-sweep": "0%" },
-      { offset: 1 / (1 + TRAIL), "--mc-sweep": "100%" },
-      { "--mc-sweep": `${100 * (1 + TRAIL)}%` }
+      { transform: `translateX(${TRAIL * 100}%)` },
+      { offset: crossed, transform: `translateX(${(TRAIL - 1) * 100}%)` },
+      { transform: "translateX(-100%)" }
     ];
     let animations: Animation[] = [];
 
     const sweep: Sweep = (delay) => {
+      const timing = { duration: CROSS_MS * (1 + TRAIL), delay };
       animations = [
         headNode.animate(headFrames, { duration: CROSS_MS, delay }),
-        trailNode.animate(trailFrames, {
-          duration: CROSS_MS * (1 + TRAIL),
-          delay
-        })
+        lensNode.animate(lensFrames, timing),
+        trailNode.animate(trailFrames, timing)
       ];
       return animations[0].finished.then(() => undefined);
     };
@@ -504,7 +532,7 @@ function useSweep(points: [number, number][]) {
     };
   }, [points]);
 
-  return { root, trail, head };
+  return { root, lens, trail, head };
 }
 
 /** Deterministic noisy line, like a CPU trace, seeded per item */
@@ -516,7 +544,7 @@ export function Waveform({
   className?: string;
 }) {
   const points = useMemo(() => tracePoints(seed), [seed]);
-  const { root, trail, head } = useSweep(points);
+  const { root, lens, trail, head } = useSweep(points);
   const line = points
     .map(([x, y]) => `${x.toFixed(2)},${y.toFixed(2)}`)
     .join(" ");
@@ -536,14 +564,16 @@ export function Waveform({
       <svg viewBox="0 0 100 20" preserveAspectRatio="none">
         {trace}
       </svg>
-      <svg
-        className="mc-wave__trail"
-        ref={trail}
-        viewBox="0 0 100 20"
-        preserveAspectRatio="none"
-      >
-        {trace}
-      </svg>
+      <span className="mc-wave__lens" ref={lens}>
+        <svg
+          className="mc-wave__trail"
+          ref={trail}
+          viewBox="0 0 100 20"
+          preserveAspectRatio="none"
+        >
+          {trace}
+        </svg>
+      </span>
       <span className="mc-wave__head" ref={head} />
     </div>
   );
@@ -692,18 +722,25 @@ export interface LightboxImage {
  * the close button, or a click outside the panel closes it, and the browser
  * returns focus to the image that opened it.
  */
+export interface LightboxHandle {
+  /** Opens the lightbox on the image at `index` */
+  open: (index: number) => void;
+}
+
 export function Lightbox({
   images,
-  index,
-  onChange
+  ref
 }: {
   images: LightboxImage[];
-  /** The image on show, or `null` when closed */
-  index: number | null;
-  onChange: (index: number | null) => void;
+  ref?: Ref<LightboxHandle>;
 }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const captionId = useId();
+  // Which image is on show (`null` when closed). Kept here, not in the page,
+  // so opening the lightbox re-renders only the lightbox.
+  const [index, onChange] = useState<number | null>(null);
+
+  useImperativeHandle(ref, () => ({ open: onChange }), []);
 
   useEffect(() => {
     const node = dialog.current;
@@ -848,7 +885,10 @@ export function Ticker({ posts }: { posts: Posts }) {
   return (
     <section className="mc-ticker" aria-label="Latest writing">
       <p className="mc-ticker__label">
-        <span className="mc-dot" aria-hidden="true" />
+        <span className="mc-ticker__rec" aria-hidden="true">
+          <span className="mc-dot" />
+          Rec
+        </span>
         Latest transmissions
       </p>
       <div className="mc-ticker__track">
@@ -942,50 +982,48 @@ export function UnitGrid({ work }: { work: Work[] }) {
 // --------
 
 /**
- * Sets the geometry of the tile-to-page transition: the clicked tile's
- * outline where it sits on screen, and the same shape scaled up until it
- * covers the viewport.
+ * Sets the geometry of the tile-to-page transition. The service page is cut
+ * to a regular hexagon just big enough to cover the screen, and starts
+ * shrunk onto the clicked tile; growing it back is a transform, so it runs
+ * on the compositor (animating the cut-out itself would not). The tile's
+ * snapshot makes the mirror-image move, so the two stay aligned as it
+ * fades.
  */
 function setIris(tile: Element) {
   const rect = tile.getBoundingClientRect();
-  const [cx, cy] = [rect.left + rect.width / 2, rect.top + rect.height / 2];
-  const [a, hh] = [rect.width / 2, rect.height / 2];
-  // How far the top and bottom edges are inset: a quarter of the width for
-  // a hexagon, 16px for the chamfered bars on narrow screens
-  const c = innerWidth >= 640 ? rect.width / 4 : 16;
+  const [w, h] = [innerWidth, innerHeight];
 
-  // The smallest scale whose shape contains every corner of the viewport
-  const corners = [
-    [0, 0],
-    [innerWidth, 0],
-    [0, innerHeight],
-    [innerWidth, innerHeight]
-  ];
-  const scale =
-    1.02 *
-    Math.max(
-      ...corners.map(([x, y]) => {
-        const [dx, dy] = [Math.abs(x - cx), Math.abs(y - cy)];
-        return Math.max(dy / hh, (dx + (c * dy) / hh) / a);
-      })
-    );
+  // Half-width and half-height of a flat-topped regular hexagon, centered
+  // on the screen, whose sloped edges clear every corner
+  const a = 1.02 * Math.max(w / 2 + h / (2 * Math.sqrt(3)), h / Math.sqrt(3));
+  const hh = (a * Math.sqrt(3)) / 2;
+  const hexagon = [
+    [-a / 2, -hh],
+    [a / 2, -hh],
+    [a, 0],
+    [a / 2, hh],
+    [-a / 2, hh],
+    [-a, 0]
+  ]
+    .map(([x, y]) => `${w / 2 + x}px ${h / 2 + y}px`)
+    .join(", ");
 
-  const outline = (s: number) =>
-    `polygon(${[
-      [c - a, -hh],
-      [a - c, -hh],
-      [a, 0],
-      [a - c, hh],
-      [c - a, hh],
-      [-a, 0]
-    ]
-      .map(([x, y]) => `${cx + x * s}px ${cy + y * s}px`)
-      .join(", ")})`;
+  // Shrunk onto the tile: matched by width for hexagons, by height for the
+  // chamfered bars on narrow screens
+  const scale = w >= 640 ? rect.width / 2 / a : rect.height / 2 / hh;
+  const dx = rect.left + rect.width / 2 - w / 2;
+  const dy = rect.top + rect.height / 2 - h / 2;
 
   const root = document.documentElement.style;
-  root.setProperty("--mc-iris-from", outline(1));
-  root.setProperty("--mc-iris-to", outline(scale));
-  root.setProperty("--mc-iris-scale", String(scale));
+  root.setProperty("--mc-iris-shape", `polygon(${hexagon})`);
+  root.setProperty(
+    "--mc-iris-from",
+    `translate(${dx}px, ${dy}px) scale(${scale})`
+  );
+  root.setProperty(
+    "--mc-tile-to",
+    `translate(${-dx}px, ${-dy}px) scale(${1 / scale})`
+  );
 }
 
 /**
@@ -1006,6 +1044,9 @@ function MagiTile({
     <Link
       className={`mc-hex${expanding ? " is-expanding" : ""}`}
       to={service.url}
+      // Loads the page's code and data on hover, so the transition starts
+      // without waiting on the network
+      prefetch="intent"
       viewTransition
       onClick={(event) => setIris(event.currentTarget)}
       style={expanding ? { viewTransitionName: TILE_TRANSITION } : undefined}

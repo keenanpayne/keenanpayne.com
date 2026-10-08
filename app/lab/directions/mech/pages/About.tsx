@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef } from "react";
 
 import { socials } from "../../../../data/socials";
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
@@ -7,6 +7,7 @@ import {
   Html,
   introOf,
   Lightbox,
+  type LightboxHandle,
   pad,
   PageHeader,
   Panel,
@@ -46,7 +47,7 @@ export function About({
 }) {
   const intro = introOf(page);
   const to = useTo();
-  const [enlarged, setEnlarged] = useState<number | null>(null);
+  const lightbox = useRef<LightboxHandle>(null);
 
   const facts: [string, React.ReactNode][] = [
     ["Designation", "KP-01 · Full-stack web developer & designer"],
@@ -104,7 +105,7 @@ export function About({
               label="ID · KP-01"
               eager
               natural
-              onZoom={() => setEnlarged(0)}
+              onZoom={() => lightbox.current?.open(0)}
             />
             <dl className="mc-spec mc-spec--compact">
               {facts.map(([term, detail]) => (
@@ -132,7 +133,7 @@ export function About({
                 src={item.src}
                 alt={item.alt}
                 natural
-                onZoom={() => setEnlarged(index)}
+                onZoom={() => lightbox.current?.open(index)}
               />
               <figcaption>{item.alt}</figcaption>
             </Panel>
@@ -140,7 +141,7 @@ export function About({
         </div>
       </Section>
 
-      <Lightbox images={ENLARGED} index={enlarged} onChange={setEnlarged} />
+      <Lightbox ref={lightbox} images={ENLARGED} />
     </>
   );
 }

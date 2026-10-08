@@ -23,89 +23,94 @@ function Gauge() {
   const ticks = Array.from({ length: 60 }, (_, i) => i);
 
   return (
-    <svg className="mc-gauge" viewBox="0 0 320 320" aria-hidden="true">
-      <defs>
-        <pattern
-          id="mc-gauge-stripes"
-          width="10"
-          height="10"
-          patternUnits="userSpaceOnUse"
-          patternTransform="rotate(45)"
-        >
-          <rect width="5" height="10" className="mc-gauge__stripe" />
-        </pattern>
-        <clipPath id="mc-gauge-hex">
-          <path d="M112 72h96l48 88-48 88h-96l-48-88Z" />
-        </clipPath>
-      </defs>
+    <div className="mc-gauge" aria-hidden="true">
+      <svg viewBox="0 0 320 320">
+        <defs>
+          <pattern
+            id="mc-gauge-stripes"
+            width="10"
+            height="10"
+            patternUnits="userSpaceOnUse"
+            patternTransform="rotate(45)"
+          >
+            <rect width="5" height="10" className="mc-gauge__stripe" />
+          </pattern>
+          <clipPath id="mc-gauge-hex">
+            <path d="M112 72h96l48 88-48 88h-96l-48-88Z" />
+          </clipPath>
+        </defs>
 
-      <circle cx="160" cy="160" r="156" className="mc-gauge__line" />
-      <g className="mc-gauge__ticks">
-        {ticks.map((i) => (
-          <line
-            key={i}
-            x1="160"
-            y1={i % 5 ? 12 : 8}
-            x2="160"
-            y2="20"
-            transform={`rotate(${i * 6} 160 160)`}
-          />
-        ))}
-      </g>
-      <circle
-        cx="160"
-        cy="160"
-        r="132"
-        pathLength="100"
-        className="mc-gauge__arc"
-        strokeDasharray="72 100"
-        transform="rotate(-90 160 160)"
-      />
-      <circle
-        cx="160"
-        cy="160"
-        r="132"
-        pathLength="100"
-        className="mc-gauge__hazard"
-        strokeDasharray="20 100"
-        strokeDashoffset="-76"
-        transform="rotate(-90 160 160)"
-      />
-      <circle
-        cx="160"
-        cy="160"
-        r="116"
-        className="mc-gauge__spin"
-        strokeDasharray="2 6 18 6"
-      />
-      <circle cx="160" cy="160" r="104" className="mc-gauge__line" />
+        <circle cx="160" cy="160" r="156" className="mc-gauge__line" />
+        <g className="mc-gauge__ticks">
+          {ticks.map((i) => (
+            <line
+              key={i}
+              x1="160"
+              y1={i % 5 ? 12 : 8}
+              x2="160"
+              y2="20"
+              transform={`rotate(${i * 6} 160 160)`}
+            />
+          ))}
+        </g>
+        <circle
+          cx="160"
+          cy="160"
+          r="132"
+          pathLength="100"
+          className="mc-gauge__arc"
+          strokeDasharray="72 100"
+          transform="rotate(-90 160 160)"
+        />
+        <circle
+          cx="160"
+          cy="160"
+          r="132"
+          pathLength="100"
+          className="mc-gauge__hazard"
+          strokeDasharray="20 100"
+          strokeDashoffset="-76"
+          transform="rotate(-90 160 160)"
+        />
+        <circle cx="160" cy="160" r="104" className="mc-gauge__line" />
 
-      <image
-        href={AVATAR}
-        x="64"
-        y="72"
-        width="192"
-        height="176"
-        preserveAspectRatio="xMidYMid slice"
-        clipPath="url(#mc-gauge-hex)"
-        className="mc-gauge__avatar"
-      />
-      <path d="M112 72h96l48 88-48 88h-96l-48-88Z" className="mc-gauge__tint" />
-      <path
-        d="M112 72h96l48 88-48 88h-96l-48-88Z"
-        className="mc-gauge__frame"
-      />
+        <image
+          href={AVATAR}
+          x="64"
+          y="72"
+          width="192"
+          height="176"
+          preserveAspectRatio="xMidYMid slice"
+          clipPath="url(#mc-gauge-hex)"
+          className="mc-gauge__avatar"
+        />
+        <path
+          d="M112 72h96l48 88-48 88h-96l-48-88Z"
+          className="mc-gauge__tint"
+        />
+        <path
+          d="M112 72h96l48 88-48 88h-96l-48-88Z"
+          className="mc-gauge__frame"
+        />
+      </svg>
 
-      <text x="160" y="46" className="mc-gauge__num">
-        12
-      </text>
-      <text x="282" y="164" className="mc-gauge__num">
-        3
-      </text>
-      <text x="38" y="164" className="mc-gauge__num">
-        9
-      </text>
-    </svg>
+      {/* Its own element, so it turns on the compositor */}
+      <svg viewBox="0 0 320 320" className="mc-gauge__spin">
+        <circle cx="160" cy="160" r="116" strokeDasharray="2 6 18 6" />
+      </svg>
+
+      <svg viewBox="0 0 320 320">
+        <text x="160" y="46" className="mc-gauge__num">
+          12
+        </text>
+        <text x="282" y="164" className="mc-gauge__num">
+          3
+        </text>
+        <text x="38" y="164" className="mc-gauge__num">
+          9
+        </text>
+      </svg>
+    </div>
   );
 }
 

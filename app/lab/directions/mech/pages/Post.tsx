@@ -22,8 +22,12 @@ function SyncBar() {
       const root = document.documentElement;
       const max = root.scrollHeight - root.clientHeight;
       const progress = max > 0 ? Math.min(1, root.scrollTop / max) : 0;
-      bar.current?.style.setProperty("--progress", String(progress));
-      bar.current?.setAttribute("data-value", `${Math.round(progress * 100)}`);
+      const node = bar.current;
+      if (!node) return;
+      node.style.setProperty("--progress", String(progress));
+      // The percentage label only changes once per whole percent
+      const value = `${Math.round(progress * 100)}`;
+      if (node.dataset.value !== value) node.dataset.value = value;
     };
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);

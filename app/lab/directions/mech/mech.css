@@ -317,13 +317,6 @@ body:has(.mc) {
   }
 }
 
-/* How far the green charge has swept across a primary button */
-@property --mc-charge {
-  syntax: "<length-percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
-
 /* Chamfered button: the shape is a clipped layer behind the label, so the
    focus outline isn't clipped with it. On hover or focus, primary buttons
    charge with green from the left, a reticle locks on, the label decodes
@@ -336,6 +329,14 @@ body:has(.mc) {
   --btn-edge: #f4ffd9;
   --btn-glow: var(--mc-green);
   --btn-cut: 12px;
+  --btn-shape: polygon(
+    0 0,
+    calc(100% - var(--btn-cut)) 0,
+    100% var(--btn-cut),
+    100% 100%,
+    var(--btn-cut) 100%,
+    0 calc(100% - var(--btn-cut))
+  );
 
   position: relative;
   isolation: isolate;
@@ -355,9 +356,10 @@ body:has(.mc) {
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
+  /* The label's color switches once, as the charge passes it, rather than
+     fading (which would repaint every frame) */
   transition:
-    color 160ms ease 120ms,
-    filter 300ms ease,
+    color 0s linear 180ms,
     transform 80ms ease;
 
   &::before,
@@ -367,26 +369,8 @@ body:has(.mc) {
     z-index: -1;
     inset: 0;
     background: var(--btn-bg);
-    clip-path: polygon(
-      0 0,
-      calc(100% - var(--btn-cut)) 0,
-      100% var(--btn-cut),
-      100% 100%,
-      var(--btn-cut) 100%,
-      0 calc(100% - var(--btn-cut))
-    );
+    clip-path: var(--btn-shape);
     transition: background 150ms ease;
-  }
-
-  /* The charge: green behind a bright leading edge, swept in from the left */
-  &::before {
-    background: linear-gradient(
-      90deg,
-      var(--btn-hot) calc(var(--mc-charge) - 3px),
-      var(--btn-edge) 0 var(--mc-charge),
-      var(--btn-bg) 0
-    );
-    transition: --mc-charge 440ms cubic-bezier(0.7, 0, 0.2, 1);
   }
 
   &::after {
@@ -397,17 +381,18 @@ body:has(.mc) {
   &:focus-visible {
     outline: none;
     color: var(--btn-hot-ink);
-    filter: drop-shadow(
-      0 0 10px color-mix(in srgb, var(--btn-glow) 55%, transparent)
-    );
 
-    &::before {
-      --mc-charge: calc(100% + 4px);
+    & .mc-btn__glow {
+      opacity: 1;
+    }
+
+    & .mc-btn__charge > span {
+      transform: none;
     }
 
     & .mc-btn__lock {
-      inset: -6px;
       opacity: 1;
+      transform: none;
       animation: mc-blink 1.4s steps(2, jump-none) 320ms infinite;
     }
 
@@ -421,13 +406,48 @@ body:has(.mc) {
   }
 }
 
-/* Targeting reticle: four corner brackets that snap in onto the button */
+/* A soft glow around the button, faded in (opacity runs on the compositor,
+   where an animated drop-shadow filter can't) */
+.mc-btn__glow {
+  position: absolute;
+  z-index: -2;
+  inset: 3px;
+  box-shadow: 0 0 16px 2px color-mix(in srgb, var(--btn-glow) 50%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+
+/* The charge: green behind a bright leading edge, slid in from the left
+   inside a window cut to the button's shape (a transform, so it runs on the
+   compositor). The sheet overhangs the right edge by its edge's width, so
+   the edge is hidden at both ends. */
+.mc-btn__charge {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  clip-path: var(--btn-shape);
+
+  & > span {
+    position: absolute;
+    inset: 0 -4px 0 0;
+    border-right: 3px solid var(--btn-edge);
+    background: var(--btn-hot);
+    transform: translateX(-100%);
+    transition: transform 440ms cubic-bezier(0.7, 0, 0.2, 1);
+    will-change: transform;
+  }
+}
+
+/* Targeting reticle: four corner brackets that snap in onto the button,
+   scaling down from a wider frame */
 .mc-btn__lock {
   --c: var(--btn-glow);
   --l: 9px;
 
   position: absolute;
-  inset: -16px -22px;
+  inset: -6px;
   background:
     linear-gradient(var(--c) 0 0) 0 0 / var(--l) 2px,
     linear-gradient(var(--c) 0 0) 0 0 / 2px var(--l),
@@ -440,8 +460,9 @@ body:has(.mc) {
   background-repeat: no-repeat;
   opacity: 0;
   pointer-events: none;
+  transform: scale(1.18, 1.5);
   transition:
-    inset 300ms cubic-bezier(0.3, 1.5, 0.5, 1),
+    transform 300ms cubic-bezier(0.3, 1.5, 0.5, 1),
     opacity 120ms ease;
 }
 
@@ -451,15 +472,18 @@ body:has(.mc) {
   display: inline-block;
 }
 
+/* Always laid out but hidden until decoding, and fully contained, so
+   rewriting its text every frame never lays out anything else */
 .mc-btn__noise {
   position: absolute;
   inset: 0;
-  display: none;
   overflow: hidden;
+  visibility: hidden;
   text-shadow:
     1px 0 rgb(255 0 90 / 60%),
     -1px 0 rgb(0 210 255 / 60%);
   white-space: nowrap;
+  contain: strict;
 }
 
 .mc-btn__label[data-decoding] {
@@ -468,7 +492,7 @@ body:has(.mc) {
   }
 
   & .mc-btn__noise {
-    display: block;
+    visibility: visible;
   }
 }
 
@@ -492,8 +516,6 @@ body:has(.mc) {
   &:hover,
   &:focus-visible {
     --btn-bg: var(--mc-green);
-
-    filter: none;
   }
 
   &:focus-visible {
@@ -669,6 +691,7 @@ body:has(.mc) {
   text-transform: uppercase;
 }
 
+/* Opens the Denver time and weather popover (see `DenverStatus`) */
 .mc-hud__clock {
   display: flex;
   align-items: baseline;
@@ -677,11 +700,27 @@ body:has(.mc) {
   border: 1px solid var(--mc-green-line);
   background: var(--mc-green-fill);
   color: var(--mc-green);
+  font: inherit;
   font-variant-numeric: tabular-nums;
+  text-transform: inherit;
+  cursor: pointer;
+  anchor-name: --mc-den-clock;
 
   & span {
     color: var(--mc-muted);
     font-size: 11px;
+  }
+
+  &:hover,
+  &:has(+ :popover-open) {
+    border-color: var(--mc-green);
+    background: var(--mc-green);
+    color: var(--mc-green-ink);
+
+    & span {
+      color: inherit;
+      opacity: 0.7;
+    }
   }
 }
 
@@ -716,6 +755,568 @@ body:has(.mc) {
 
   @media (width >= 1000px) {
     display: block;
+  }
+}
+
+/* Denver time and weather popover
+   ========================================================================== */
+
+/* Hangs below the header clock, right edges aligned */
+.mc-den {
+  --sky-ink: #ffb347;
+  --sky-glow: transparent;
+
+  position-anchor: --mc-den-clock;
+  inset: auto;
+  top: calc(anchor(bottom) + 10px);
+  right: anchor(right);
+  width: min(380px, calc(100vw - 32px));
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  color: var(--mc-ink);
+  font-family: var(--mc-sans);
+  font-size: 15px;
+  letter-spacing: normal;
+  line-height: 1.5;
+  text-transform: none;
+
+  &:popover-open {
+    transform-origin: top;
+    animation: mc-den-open 280ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  & .mc-panel__code {
+    margin-right: 4px;
+  }
+
+  & p {
+    margin: 0;
+  }
+}
+
+/* Without anchor positioning, it sits below the header on the right */
+@supports not (anchor-name: --a) {
+  .mc-den {
+    top: 76px;
+    right: var(--mc-gutter);
+  }
+}
+
+.mc-den__close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--mc-line-dim);
+  background: none;
+  color: var(--mc-amber);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    background: var(--mc-amber);
+    color: var(--mc-void);
+  }
+}
+
+.mc-den__time {
+  padding: 12px 16px 14px;
+}
+
+.mc-den__kicker {
+  display: flex;
+  justify-content: space-between;
+  color: var(--mc-muted);
+  font-family: var(--mc-cond);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  & span {
+    font-family: var(--mc-mono);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+}
+
+.mc-den__clock {
+  color: var(--mc-green);
+  font-family: var(--mc-mono);
+  font-size: 44px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+  text-shadow: 0 0 14px color-mix(in srgb, var(--mc-green) 45%, transparent);
+}
+
+.mc-den__date {
+  color: var(--mc-title);
+  font-family: var(--mc-cond);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* The sky readout: a dark monitor in either scheme, restyled per condition */
+.mc-den__sky {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-height: 116px;
+  padding: 14px 16px;
+  overflow: hidden;
+  border-block: 1px solid var(--mc-line-faint);
+  background:
+    radial-gradient(circle at 52px 50%, var(--sky-glow), transparent 55%),
+    linear-gradient(rgb(255 255 255 / 4%) 1px, transparent 1px) 0 0 / 100% 12px,
+    #090504;
+  color: var(--sky-ink);
+}
+
+/* Effects layer: stars, cloud, fog, rain, snow */
+.mc-den__fx {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+}
+
+.mc-den__glyph {
+  position: relative;
+  flex: none;
+  width: 72px;
+  height: 72px;
+  filter: drop-shadow(0 0 8px var(--sky-glow));
+
+  & svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* The sun's dashed ring, its own element so it turns on the compositor */
+.mc-den__ring {
+  animation: mc-spin 24s linear infinite;
+}
+
+.mc-den__temp {
+  font-family: var(--mc-mono);
+  font-size: 48px;
+  line-height: 1;
+  text-shadow: 0 0 16px var(--sky-glow);
+
+  & span {
+    margin-left: 2px;
+    font-size: 20px;
+    vertical-align: top;
+  }
+
+  & small {
+    margin-left: 10px;
+    color: rgb(255 255 255 / 55%);
+    font-size: 15px;
+  }
+}
+
+.mc-den__condition {
+  margin-top: 6px !important;
+  font-family: var(--mc-cond);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mc-den__message {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+  color: #c39069;
+  font-family: var(--mc-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  animation: mc-blink 1.2s steps(2, jump-none) infinite;
+
+  & button {
+    padding: 2px 10px;
+    border: 1px solid currentColor;
+    background: none;
+    color: #ffb347;
+    font: inherit;
+    cursor: pointer;
+  }
+}
+
+.mc-den__readouts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  background: var(--mc-line-faint);
+
+  & div {
+    padding: 8px 12px;
+    background: var(--mc-panel);
+  }
+
+  & dt {
+    color: var(--mc-muted);
+    font-family: var(--mc-cond);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  & dd {
+    margin: 2px 0 0;
+    color: var(--mc-title);
+    font-family: var(--mc-mono);
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  & small {
+    color: var(--mc-muted);
+    font-size: 11px;
+  }
+}
+
+.mc-den__sun {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 16px;
+  border-top: 1px solid var(--mc-line-faint);
+  color: var(--mc-muted);
+  font-family: var(--mc-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.mc-den__status {
+  --tone: var(--mc-green);
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-top: 1px solid var(--mc-line-faint);
+  background: color-mix(in srgb, var(--tone) 10%, transparent);
+  color: var(--tone);
+  font-family: var(--mc-cond);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  & .mc-dot {
+    background: var(--tone);
+    box-shadow: 0 0 8px var(--tone);
+  }
+
+  &[data-tone="amber"] {
+    --tone: var(--mc-amber);
+  }
+
+  &[data-tone="cyan"] {
+    --tone: #3cc8e6;
+  }
+
+  &[data-tone="red"] {
+    --tone: var(--mc-red);
+  }
+}
+
+.mc-den__credit {
+  padding: 6px 16px 10px;
+  color: var(--mc-muted);
+  font-family: var(--mc-mono);
+  font-size: 11px;
+
+  & a {
+    color: var(--mc-amber);
+  }
+}
+
+/* Effect layers: up to three sheets per condition. Moving sheets slide by
+   transform (so they run on the compositor), each by whole tiles of its
+   pattern per loop so it's seamless, and are oversized by that distance so
+   they always cover the readout. */
+.mc-den__fx > span {
+  --dx: 0px;
+  --dy: 0px;
+
+  position: absolute;
+  inset: calc(-1 * var(--dy)) 0 0 calc(-1 * var(--dx));
+  display: none;
+  will-change: transform;
+  animation: mc-shift var(--speed, 1s) linear infinite;
+}
+
+/* Clear: a warm sun glow by day, a field of stars by night */
+.mc-den[data-condition="clear"] {
+  --sky-ink: #ffb347;
+  --sky-glow: rgb(255 150 40 / 40%);
+}
+
+.mc-den[data-condition="clear"][data-night] {
+  --sky-ink: #cdbbff;
+  --sky-glow: rgb(150 110 255 / 30%);
+
+  /* Three grids of different sizes, offset within their tiles, so the
+     stars don't line up */
+  & .mc-den__fx > :first-child {
+    display: block;
+    background:
+      radial-gradient(
+          circle at 20% 30%,
+          rgb(255 255 255 / 85%) 0 1px,
+          transparent 1.5px
+        )
+        0 0 / 67px 43px,
+      radial-gradient(
+          circle at 70% 60%,
+          rgb(205 187 255 / 70%) 0 1px,
+          transparent 1.5px
+        )
+        0 0 / 89px 61px,
+      radial-gradient(
+          circle at 40% 80%,
+          rgb(255 255 255 / 45%) 0 0.8px,
+          transparent 1.2px
+        )
+        0 0 / 41px 37px;
+    animation: mc-twinkle 3.2s ease-in-out infinite alternate;
+  }
+}
+
+/* Cloud: soft banks drifting across at two speeds */
+.mc-den[data-condition="cloudy"] {
+  --sky-ink: #eadccb;
+  --sky-glow: rgb(255 230 200 / 14%);
+
+  & .mc-den__fx > :nth-child(-n + 2) {
+    display: block;
+  }
+
+  & .mc-den__fx > :nth-child(1) {
+    --dx: 240px;
+    --speed: 30s;
+
+    background: radial-gradient(
+        ellipse 70px 20px at 30% 35%,
+        rgb(255 236 214 / 16%),
+        transparent 70%
+      )
+      0 0 / 240px 100% repeat-x;
+  }
+
+  & .mc-den__fx > :nth-child(2) {
+    --dx: 320px;
+    --speed: 30s;
+
+    background: radial-gradient(
+        ellipse 90px 24px at 70% 70%,
+        rgb(255 236 214 / 11%),
+        transparent 70%
+      )
+      0 0 / 320px 100% repeat-x;
+  }
+}
+
+/* Fog: hazy bands that slowly shift, over a softened readout */
+.mc-den[data-condition="fog"] {
+  --sky-ink: #d6ccc0;
+  --sky-glow: rgb(220 210 200 / 16%);
+
+  & .mc-den__fx > :first-child {
+    display: block;
+    background: repeating-linear-gradient(
+      180deg,
+      transparent 0 8px,
+      rgb(225 215 205 / 16%) 8px 16px
+    );
+    filter: blur(3px);
+    animation: mc-fog 9s ease-in-out infinite alternate;
+  }
+}
+
+/* Rain: two sheets of streaks falling at different speeds */
+.mc-den[data-condition="rain"],
+.mc-den[data-condition="storm"] {
+  & .mc-den__fx > :nth-child(-n + 2) {
+    display: block;
+  }
+
+  & .mc-den__fx > :nth-child(1) {
+    --dy: 26px;
+    --speed: 0.45s;
+
+    background: linear-gradient(
+        105deg,
+        transparent 46%,
+        rgb(127 227 255 / 55%) 50%,
+        transparent 54%
+      )
+      0 0 / 14px 26px;
+  }
+
+  & .mc-den__fx > :nth-child(2) {
+    --dy: 38px;
+    --speed: 0.75s;
+
+    background: linear-gradient(
+        105deg,
+        transparent 47%,
+        rgb(127 227 255 / 30%) 50%,
+        transparent 53%
+      )
+      0 0 / 22px 38px;
+  }
+}
+
+.mc-den[data-condition="rain"] {
+  --sky-ink: #7fe3ff;
+  --sky-glow: rgb(60 200 230 / 28%);
+}
+
+/* Snow: three uneven layers of flakes, falling at different speeds */
+.mc-den[data-condition="snow"] {
+  --sky-ink: #f4f8ff;
+  --sky-glow: rgb(220 235 255 / 26%);
+
+  & .mc-den__fx > span {
+    --speed: 6s;
+
+    display: block;
+  }
+
+  & .mc-den__fx > :nth-child(1) {
+    --dy: 82px;
+
+    background: radial-gradient(
+        circle at 30% 20%,
+        #fff 0 1.5px,
+        transparent 2px
+      )
+      0 0 / 47px 41px;
+  }
+
+  & .mc-den__fx > :nth-child(2) {
+    --dy: 59px;
+
+    background: radial-gradient(
+        circle at 70% 60%,
+        rgb(255 255 255 / 70%) 0 1px,
+        transparent 1.5px
+      )
+      0 0 / 71px 59px;
+  }
+
+  & .mc-den__fx > :nth-child(3) {
+    --dy: 74px;
+
+    background: radial-gradient(
+        circle at 50% 50%,
+        rgb(255 255 255 / 45%) 0 0.8px,
+        transparent 1.2px
+      )
+      0 0 / 29px 37px;
+  }
+}
+
+/* Storm: red alert, with rain, lightning flashes, and hazard stripes */
+.mc-den[data-condition="storm"] {
+  --sky-ink: #ff4a3d;
+  --sky-glow: rgb(255 40 30 / 35%);
+
+  & .mc-den__sky {
+    border-top: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 6px;
+      background: repeating-linear-gradient(
+        -45deg,
+        #ffd02e 0 6px,
+        #120402 6px 12px
+      );
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background: #fff;
+      opacity: 0;
+      pointer-events: none;
+      animation: mc-lightning 5.5s linear infinite;
+    }
+  }
+}
+
+/* Unfolds from the top, like a screen powering on */
+@keyframes mc-den-open {
+  from {
+    opacity: 0;
+    transform: scaleY(0.04);
+  }
+
+  60% {
+    opacity: 1;
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes mc-shift {
+  to {
+    transform: translate(var(--dx), var(--dy));
+  }
+}
+
+@keyframes mc-twinkle {
+  to {
+    opacity: 0.45;
+  }
+}
+
+@keyframes mc-fog {
+  to {
+    opacity: 0.6;
+    transform: translateY(6px);
+  }
+}
+
+@keyframes mc-lightning {
+  0%,
+  89%,
+  92%,
+  95%,
+  100% {
+    opacity: 0;
+  }
+
+  90%,
+  94% {
+    opacity: 0.55;
   }
 }
 
@@ -1229,11 +1830,20 @@ body:has(.mc) {
   text-transform: uppercase;
 }
 
+/* Layered SVGs: the dial, the turning ring, then the numbers on top */
 .mc-gauge {
-  display: block;
+  position: relative;
   width: min(100%, 290px);
+  aspect-ratio: 1;
   margin: 18px auto 14px;
-  overflow: visible;
+
+  & svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
 }
 
 .mc-gauge__line {
@@ -1264,12 +1874,13 @@ body:has(.mc) {
 }
 
 .mc-gauge__spin {
-  fill: none;
-  stroke: var(--mc-amber);
-  stroke-width: 3;
-  transform-box: fill-box;
-  transform-origin: center;
   animation: mc-spin 40s linear infinite;
+
+  & circle {
+    fill: none;
+    stroke: var(--mc-amber);
+    stroke-width: 3;
+  }
 }
 
 .mc-gauge__avatar {
@@ -1311,30 +1922,67 @@ body:has(.mc) {
   background: var(--mc-panel);
 }
 
+/* A green data readout with a recording tag, rather than the solid amber
+   that marks buttons. A notch on its right edge points into the feed. */
 .mc-ticker__label {
+  --fill:
+    linear-gradient(var(--mc-green-fill), var(--mc-green-fill)), var(--mc-panel);
+
+  position: relative;
+  z-index: 1;
   display: flex;
   flex: none;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin: 0;
-  padding: 0 14px;
-  background: var(--mc-amber);
-  color: var(--mc-void);
+  padding: 0 20px 0 10px;
+  border-right: 1px solid var(--mc-green-line);
+  background: var(--fill);
+  color: var(--mc-green);
   font-family: var(--mc-cond);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   white-space: nowrap;
 
-  & .mc-dot {
-    background: var(--mc-void);
-    box-shadow: none;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -7px;
+    width: 12px;
+    height: 12px;
+    border: solid var(--mc-green-line);
+    border-width: 1px 1px 0 0;
+    background: var(--fill);
+    transform: translateY(-50%) rotate(45deg);
   }
 
+  /* Just the recording tag on narrow screens */
   @media (width < 640px) {
+    padding-right: 14px;
     font-size: 0;
-    gap: 0;
+  }
+}
+
+.mc-ticker__rec {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 6px;
+  border: 1px solid color-mix(in srgb, var(--mc-red) 55%, transparent);
+  color: var(--mc-red);
+  font-family: var(--mc-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+
+  & .mc-dot {
+    width: 7px;
+    height: 7px;
+    background: var(--mc-red);
+    box-shadow: 0 0 6px var(--mc-red);
   }
 }
 
@@ -1504,6 +2152,18 @@ body:has(.mc) {
 
   &:has(.mc-feed__none)::before {
     display: none;
+  }
+}
+
+/* Tinted images get their own layers up front, so the first hover doesn't
+   stall while the GPU sets up the filter and blend */
+.mc-feed:not(.mc-feed--natural) {
+  & img {
+    will-change: filter;
+  }
+
+  &::before {
+    will-change: opacity;
   }
 }
 
@@ -2281,20 +2941,13 @@ a.mc-hex:focus-visible,
   flex-direction: column;
 }
 
-/* How far the sweep has crossed a transmission's trace (see `Waveform`) */
-@property --mc-sweep {
-  syntax: "<percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
-
 .mc-wave {
   position: relative;
   height: 44px;
   overflow: hidden;
   border-bottom: 1px solid var(--mc-line-faint);
 
-  & svg {
+  & > svg {
     position: absolute;
     inset: 0;
     width: 100%;
@@ -2314,25 +2967,37 @@ a.mc-hex:focus-visible,
 }
 
 /* While the sweep runs, the rest of the trace dims like phosphor afterglow */
-.mc-wave.is-live > svg:not(.mc-wave__trail) polyline {
+.mc-wave.is-live > svg polyline {
   opacity: 0.45;
 }
 
-/* A bright copy of the trace, revealed behind the head and fading out over
-   the trail's length (30%, matching `TRAIL`) */
-.mc-wave__trail {
+/* The trail: a window the trail's length (30%, matching `TRAIL`), faded
+   toward its tail, that slides across the trace (see `useSweep`) */
+.mc-wave__lens {
+  position: absolute;
+  inset: 0 auto 0 0;
   display: none;
-  filter: drop-shadow(0 0 3px var(--mc-green));
-  mask-image: linear-gradient(
-    90deg,
-    transparent calc(var(--mc-sweep) - 30%),
-    #000 var(--mc-sweep),
-    transparent var(--mc-sweep)
-  );
+  width: 30%;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000);
+  transform: translateX(-100%);
+  will-change: transform;
 
   .is-live > & {
     display: block;
   }
+}
+
+/* A bright copy of the trace, as wide as the trace, held in place inside
+   the moving lens */
+.mc-wave__trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% / 0.3);
+  height: 100%;
+  filter: drop-shadow(0 0 3px var(--mc-green));
+  will-change: transform;
 
   & polyline {
     stroke-width: 2;
@@ -3189,13 +3854,11 @@ a.mc-hex:focus-visible,
 .mc-sync__track {
   display: block;
   height: 100%;
+  overflow: clip;
   background: var(--mc-line-faint);
 
   @media (width >= 1200px) {
-    display: flex;
     flex: 1;
-    flex-direction: column;
-    justify-content: flex-end;
     width: 10px;
     padding: 1px;
     border: 1px solid var(--mc-line-dim);
@@ -3203,22 +3866,25 @@ a.mc-hex:focus-visible,
   }
 }
 
+/* A full-size fill slid into view by transform, so scrolling only
+   composites; no layout or repaint */
 .mc-sync__fill {
   display: block;
-  width: calc(var(--progress, 0) * 100%);
+  width: 100%;
   height: 100%;
   background: var(--mc-green);
   box-shadow: 0 0 8px var(--mc-green);
+  transform: translateX(calc((var(--progress, 0) - 1) * 100%));
+  will-change: transform;
 
   @media (width >= 1200px) {
-    width: 100%;
-    height: calc(var(--progress, 0) * 100%);
     background: repeating-linear-gradient(
       0deg,
       var(--mc-green) 0 4px,
       transparent 4px 6px
     );
     box-shadow: none;
+    transform: translateY(calc((1 - var(--progress, 0)) * 100%));
   }
 }
 
@@ -3897,15 +4563,24 @@ textarea.mc-input {
 
 /* Always a dark screen, whichever scheme the page is in */
 .mc-defense__screen {
-  display: block;
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
+  overflow: hidden;
   border: 1px solid var(--mc-line-dim);
   background: #070403;
+  container-type: inline-size;
 
   @media (width >= 960px) {
     aspect-ratio: 16 / 9;
   }
+}
+
+.mc-defense__layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .mc-defense__stop1 {
@@ -3927,9 +4602,23 @@ textarea.mc-input {
   opacity: 0.75;
 }
 
+/* Centered on the dial; `translate` places it, so the spin animation can
+   own `transform` */
 .mc-defense__ring {
-  transform-origin: 400px 250px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  will-change: transform;
   animation: mc-spin linear infinite;
+
+  & svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
 
   & text {
     fill: url(#mc-defense-tint);
@@ -4254,9 +4943,11 @@ textarea.mc-input {
         rgb(0 0 0 / 30%) 0 1px,
         transparent 1px 3px
       ),
-      rgb(6 3 2 / 88%);
+      rgb(6 3 2 / 92%);
+
+    /* No backdrop blur: re-blurring the whole page every frame of the
+       opening animation drops frames on slower devices */
     animation: mc-fade-in 240ms ease both;
-    backdrop-filter: blur(4px);
   }
 }
 
@@ -4431,10 +5122,12 @@ textarea.mc-input {
 
 /* Service tile to page
    ==========================================================================
-   The clicked hexagon grows past the edges of the screen with the service
-   page showing through it, while the tile's title flies up into the page's
-   title card. `setIris` measures the tile and sets the `--mc-iris-*`
-   outlines; `MagiTile` and `PageHeader` name the shared elements. */
+   The service page, cut to a hexagon, grows out of the clicked tile until
+   it covers the screen, while the tile's title flies up into the page's
+   title card. Everything moves by transform and opacity, so it runs on the
+   compositor. `setIris` measures the tile and sets the `--mc-iris-*` and
+   `--mc-tile-to` geometry; `MagiTile` and `PageHeader` name the shared
+   elements. */
 
 :root:has(.mc) {
   &::view-transition-group(*) {
@@ -4442,13 +5135,21 @@ textarea.mc-input {
     animation-timing-function: cubic-bezier(0.7, 0, 0.2, 1);
   }
 
+  /* A dark stage behind the transition, so the page being left can dim by
+     fading (opacity runs on the compositor; a brightness filter over the
+     whole screen doesn't keep up on slower devices) */
+  &::view-transition {
+    background: #070403;
+  }
+
   /* The page being left sinks back and dims */
   &::view-transition-old(root) {
     animation: mc-recede 720ms cubic-bezier(0.7, 0, 0.2, 1) both;
   }
 
-  /* The service page shows through the growing hexagon */
+  /* The service page, cut to a hexagon, grows out of the tile */
   &::view-transition-new(root) {
+    clip-path: var(--mc-iris-shape);
     animation: mc-iris 720ms cubic-bezier(0.7, 0, 0.2, 1) both;
   }
 
@@ -4475,17 +5176,13 @@ textarea.mc-input {
 
 @keyframes mc-iris {
   from {
-    clip-path: var(--mc-iris-from);
-  }
-
-  to {
-    clip-path: var(--mc-iris-to);
+    transform: var(--mc-iris-from);
   }
 }
 
 @keyframes mc-recede {
   to {
-    filter: brightness(0.4);
+    opacity: 0.4;
     transform: scale(0.96);
   }
 }
@@ -4501,7 +5198,7 @@ textarea.mc-input {
 
   to {
     opacity: 0;
-    transform: scale(var(--mc-iris-scale));
+    transform: var(--mc-tile-to);
   }
 }
 
