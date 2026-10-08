@@ -34,6 +34,11 @@ const clockFormat = new Intl.DateTimeFormat("en-GB", {
   second: "2-digit",
   timeZone: ZONE
 });
+const readingFormat = new Intl.DateTimeFormat("en-GB", {
+  hour: "2-digit",
+  minute: "2-digit",
+  timeZone: ZONE
+});
 const dateFormat = new Intl.DateTimeFormat("en-US", {
   weekday: "long",
   month: "long",
@@ -130,6 +135,7 @@ function useNow() {
 /** Loads the forecast on demand, reusing a reading for ten minutes */
 function useForecast() {
   const [forecast, setForecast] = useState<Forecast>();
+  const [readAt, setReadAt] = useState<Date>();
   const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">(
     "idle"
   );
@@ -155,6 +161,7 @@ function useForecast() {
       .then((data) => {
         fetchedAt.current = Date.now();
         setForecast(data);
+        setReadAt(new Date(fetchedAt.current));
         setStatus("ready");
       })
       .catch(() => {
@@ -165,7 +172,7 @@ function useForecast() {
       });
   };
 
-  return { forecast, status, refresh };
+  return { forecast, readAt, status, refresh };
 }
 
 /** Line-art weather glyphs in a 64×64 box */
@@ -259,18 +266,26 @@ function Glyph({ condition, night }: { condition: Condition; night: boolean }) {
 export function DenverStatus() {
   const id = useId();
   const now = useNow();
-  const { forecast, status, refresh } = useForecast();
+  const { forecast, readAt, status, refresh } = useForecast();
 
   const current = forecast?.current;
   const [label, condition] = current
     ? (CODES[current.weather_code] ?? ["Unknown", "cloudy"])
     : ["", undefined];
   const night = current?.is_day === 0;
-  const [tone, statusText] = condition
-    ? STATUS[condition]
-    : status === "error"
-      ? ["amber", "Telemetry offline · Weather unavailable"]
-      : ["amber", "Acquiring telemetry"];
+  // A failed refresh keeps the last reading on screen, marked as outdated
+  const stale = status === "error" && !!current;
+  const [tone, statusText] =
+    status === "error"
+      ? [
+          "amber",
+          stale && readAt
+            ? `Telemetry offline · Last reading ${readingFormat.format(readAt)}`
+            : "Telemetry offline · Weather unavailable"
+        ]
+      : condition
+        ? STATUS[condition]
+        : ["amber", "Acquiring telemetry"];
 
   const fahrenheit = (value: number) => `${Math.round(value)}°`;
   const time = (iso?: string) => iso?.slice(11) ?? "--:--";
@@ -412,6 +427,11 @@ export function DenverStatus() {
         <p className="mc-den__status" data-tone={tone}>
           <span className="mc-dot" aria-hidden="true" />
           {statusText}
+          {stale && (
+            <button type="button" onClick={refresh}>
+              Retry
+            </button>
+          )}
         </p>
         <p className="mc-den__credit">
           Weather data: <a href="https://open-meteo.com/">Open-Meteo</a> ·
