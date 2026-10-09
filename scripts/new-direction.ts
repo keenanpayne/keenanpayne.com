@@ -57,9 +57,11 @@ const name =
     (_match, dash: string, char: string) =>
       (dash ? " " : "") + char.toUpperCase()
   );
-const identifier = slug.replace(/-([a-z0-9])/g, (_match, char: string) =>
+// Suffixed so every slug makes a valid binding that can't clash with a
+// keyword or another name in the index (`new` -> `newDirection`)
+const identifier = `${slug.replace(/-([a-z0-9])/g, (_match, char: string) =>
   char.toUpperCase()
-);
+)}Direction`;
 const today = new Date().toISOString().slice(0, 10);
 
 /** Inserts lines just above a `npm run lab:new` marker comment */
@@ -127,7 +129,7 @@ insertAboveMarker(INDEX, "`npm run lab:new` adds new imports", [
 insertAboveMarker(
   INDEX,
   "`npm run lab:new` adds new directions",
-  [`  ${slug === identifier ? slug : `"${slug}": ${identifier}`}`],
+  [`  ${slug.includes("-") ? JSON.stringify(slug) : slug}: ${identifier}`],
   { comma: true }
 );
 

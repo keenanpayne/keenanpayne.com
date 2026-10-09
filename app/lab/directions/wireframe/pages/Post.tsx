@@ -50,7 +50,7 @@ export function Post({ page }: TemplateProps<"post">) {
 
       {page.type && (
         <p>
-          <a href={page.type.url}>More {page.type.title.toLowerCase()}</a>
+          <a href={page.type.url}>{`More ${page.type.label.toLowerCase()}s`}</a>
         </p>
       )}
 

@@ -1,8 +1,10 @@
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 import type {
   EntriesSection,
   LabContent,
+  LinkModel,
+  PageListSection,
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
@@ -167,6 +169,82 @@ export function KindWords({
           <Quote key={testimonial.id} testimonial={testimonial} />
         ))}
       </div>
+    </Section>
+  );
+}
+
+/** Tags or post types, as a row of links */
+export function LinkList({
+  links,
+  label
+}: {
+  links: LinkModel[];
+  label: string;
+}) {
+  return (
+    <ul className="wireframe-tags" aria-label={label}>
+      {links.map((link) => (
+        <li key={link.url}>
+          <a href={link.url}>{link.text}</a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Every page on the site, by title and URL */
+export function PageTable({ pages }: { pages: PageListSection["pages"] }) {
+  return (
+    <table className="wireframe-table">
+      <thead>
+        <tr>
+          <th>Page</th>
+          <th>URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        {pages.map((page) => (
+          <tr key={page.url}>
+            <td>{page.title}</td>
+            <td>
+              <a href={page.url}>
+                <code>{page.url}</code>
+              </a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
+}
+
+/** Mock newsletter sign-up; the lab never submits anything */
+export function Newsletter() {
+  const [sent, setSent] = useState(false);
+
+  return (
+    <Section title="Newsletter">
+      <p>New articles and tutorials, sent when they’re published.</p>
+      <form
+        className="wireframe-form"
+        onSubmit={(event) => {
+          event.preventDefault();
+          setSent(true);
+        }}
+      >
+        <label className="wireframe-field">
+          Email
+          <input type="email" name="email" required />
+        </label>
+        <p className="wireframe-field--wide">
+          <button type="submit">Subscribe</button>{" "}
+          <span className="wireframe-meta" role="status">
+            {sent
+              ? "Mockup only — nothing was sent."
+              : "Mockup only — this form doesn’t send anything."}
+          </span>
+        </p>
+      </form>
     </Section>
   );
 }
