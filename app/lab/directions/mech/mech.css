@@ -3471,7 +3471,10 @@ a.mc-hex:focus-visible,
 /* Tables and logs
    ========================================================================== */
 
+/* Positioned so it clips the table's absolute parts (the hidden "Link"
+   header) too; otherwise they widen the page on phones. */
 .mc-tableWrap {
+  position: relative;
   overflow-x: auto;
   border: 1px solid var(--mc-line-dim);
   background: var(--mc-panel);
