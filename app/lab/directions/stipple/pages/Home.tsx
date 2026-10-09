@@ -1,4 +1,7 @@
+import { useRef } from "react";
+
 import { Html, useLocalTime, useTo, type TemplateProps } from "../../../site";
+import { Groundwork } from "../Groundwork";
 import {
   Button,
   Contents,
@@ -10,25 +13,25 @@ import {
   Quotes,
   Section,
   ServiceCards,
-  Terrain,
   WorkCard
 } from "../parts";
 
 export function Home({ content }: TemplateProps<"home">) {
   const to = useTo();
   const time = useLocalTime();
+  const copy = useRef<HTMLDivElement>(null);
   const { profile, posts, work, services, testimonials } = content;
 
   return (
     <>
       <header className="st-hero">
-        <Terrain
+        <Groundwork
           className="st-hero__terrain"
           seed={profile.name}
-          shape="drift"
           scale={340}
+          avoid={copy}
         />
-        <div className="st-hero__copy">
+        <div ref={copy} className="st-hero__copy">
           <h1>
             <span className="st-hero__brand">
               <Mark />
