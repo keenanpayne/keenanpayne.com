@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 
 import { HtmlContent } from "../../../../components/HtmlContent";
+import type {
+  PortfolioGridItem,
+  TestimonialModel
+} from "../../../../lib/types";
 import { Html, useTo, type TemplateProps } from "../../../site";
 import {
   Contents,
@@ -8,28 +12,51 @@ import {
   Layout,
   PageHeader,
   PostNav,
+  Quote,
   Section,
   Stipple,
   type Chapter
 } from "../parts";
 
+type Block =
+  | {
+      kind: "gallery";
+      id: string;
+      title?: string;
+      description?: string;
+      items: PortfolioGridItem[];
+    }
+  | { kind: "quote"; id: string; testimonial: TestimonialModel };
+
 export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
   const to = useTo();
   const title = page.client ?? page.meta.title;
 
-  // Galleries with a title open a section; untitled ones carry on the last
-  const galleries = page.sections.flatMap((section, index) =>
-    section.type === "portfolioGrid" && section.items?.length
-      ? [
-          {
-            id: `gallery-${index + 1}`,
-            title: section.headline ?? section.eyebrow,
-            description: section.description,
-            items: section.items
-          }
-        ]
-      : []
-  );
+  // Galleries and client quotes, in page order. Galleries with a title open a
+  // section; untitled ones and quotes carry on the last.
+  const blocks = page.sections.flatMap<Block>((section, index) => {
+    if (section.type === "portfolioGrid" && section.items?.length) {
+      return [
+        {
+          kind: "gallery",
+          id: `gallery-${index + 1}`,
+          title: section.headline ?? section.eyebrow,
+          description: section.description,
+          items: section.items
+        }
+      ];
+    }
+    if (section.type === "testimonial" && section.testimonial) {
+      return [
+        {
+          kind: "quote",
+          id: `quote-${index + 1}`,
+          testimonial: section.testimonial
+        }
+      ];
+    }
+    return [];
+  });
 
   const details: [string, ReactNode][] = [];
   if (page.industry) details.push(["Industry", page.industry]);
@@ -83,8 +110,10 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
   if (page.pillars?.solution) {
     chapters.push({ id: "solution", label: "The solution" });
   }
-  for (const { id, title } of galleries) {
-    if (title) chapters.push({ id, label: title });
+  for (const block of blocks) {
+    if (block.kind === "gallery" && block.title) {
+      chapters.push({ id: block.id, label: block.title });
+    }
   }
   if (page.content) chapters.push({ id: "notes", label: "Notes" });
   if (details.length) chapters.push({ id: "details", label: "Details" });
@@ -135,7 +164,16 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
           </Section>
         )}
 
-        {galleries.map(({ id, title, description, items }) => {
+        {blocks.map((block) => {
+          if (block.kind === "quote") {
+            return (
+              <div key={block.id} className="st-galleryMore">
+                <Quote testimonial={block.testimonial} />
+              </div>
+            );
+          }
+
+          const { id, title, description, items } = block;
           const gallery = (
             <>
               {description && <Html className="st-copy" html={description} />}
@@ -143,7 +181,14 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
                 {items.map((item, index) => (
                   <figure key={index}>
                     {item.video ? (
-                      <video src={item.video} muted loop playsInline autoPlay />
+                      <video
+                        src={item.video}
+                        muted
+                        controls
+                        loop={item.autoplay}
+                        playsInline={item.autoplay}
+                        autoPlay={item.autoplay}
+                      />
                     ) : (
                       item.image && (
                         <Stipple
