@@ -138,7 +138,15 @@ export function useForecast() {
   const [status, setStatus] = useState<Status>(last ? "ready" : "idle");
   const request = useRef<AbortController>(null);
 
-  useEffect(() => () => request.current?.abort(), []);
+  // Cancels a reading on unmount and forgets it, so a remount (e.g. React's
+  // development double mount) can start another
+  useEffect(
+    () => () => {
+      request.current?.abort();
+      request.current = null;
+    },
+    []
+  );
 
   const refresh = () => {
     if (request.current) return;
@@ -175,7 +183,7 @@ export function useForecast() {
       })
       .finally(() => {
         clearTimeout(timeout);
-        request.current = null;
+        if (request.current === controller) request.current = null;
       });
   };
 

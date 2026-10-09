@@ -8,7 +8,7 @@
  * and 2 deep sage (the terrain's own), 3 midtone, 4 ink.
  */
 
-import { grain, hash, terrain, type Levels } from "./dither";
+import { grain, hash, levelFor, terrain, type Levels } from "./dither";
 
 export interface Rect {
   x: number;
@@ -72,14 +72,6 @@ const ease = (value: number) => {
   return t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2;
 };
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-
-/** Ink coverage to a level: off below the cell's threshold, denser is darker */
-const levelFor = (coverage: number, threshold: number) => {
-  if (coverage <= threshold) return 0;
-  if (coverage > 0.8) return 4;
-  if (coverage > 0.56) return 3;
-  return coverage > 0.32 ? 2 : 1;
-};
 
 /**
  * A plot for the site in the open ground between `top` and `bottom` (rows

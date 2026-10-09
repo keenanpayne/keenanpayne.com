@@ -7,6 +7,7 @@ import {
   useTo,
   type TemplateProps
 } from "../../../site";
+import { FrontRange } from "../FrontRange";
 import {
   Facts,
   FormField,
@@ -34,58 +35,75 @@ export function Contact({
   };
 
   return (
-    <Layout
-      rail={
-        <section className="st-railNote" aria-labelledby="st-reach">
-          <Terrain className="st-railNote__art" seed={page.url} scale={120} />
-          <h2 id="st-reach">Direct line</h2>
-          <Facts
-            rows={[
-              ["Email", <a href={`mailto:${email}`}>{email}</a>],
-              ["Based in", location.name],
-              ["Local time", time ? `${time} (${location.timeZoneName})` : "—"]
-            ]}
-          />
-        </section>
-      }
-    >
-      <PageHeader
-        crumbs={
-          kind === "contact" ? (
-            <span>Contact</span>
-          ) : (
-            <>
-              <a href={to("/contact/")}>Contact</a>
-              <span aria-hidden="true">/</span>
-              <span>Project inquiry</span>
-            </>
-          )
-        }
-        title={intro?.heading ?? page.meta.title}
-        lede={intro?.subheading}
-      >
-        <p className="st-actions">
-          {kind === "contact" ? (
-            <More href={to("/project-inquiry/")}>
-              Start a project inquiry instead
-            </More>
-          ) : (
-            <More href={to("/contact/")}>Just saying hello?</More>
-          )}
-        </p>
-      </PageHeader>
+    <>
+      {kind === "contact" && (
+        <FrontRange className="st-vista" location={content.profile.location} />
+      )}
 
-      <form className="st-form" onSubmit={onSubmit}>
-        {formFields(kind === "contact" ? "contact" : "inquiry").map((field) => (
-          <FormField key={field.name} field={field} />
-        ))}
-        <p className="st-form__submit">
-          <button className="st-button" type="submit">
-            {kind === "contact" ? "Send message" : "Send inquiry"}
-          </button>
-          <span role="status">{mockStatus(sent)}</span>
-        </p>
-      </form>
-    </Layout>
+      <Layout
+        rail={
+          <section className="st-railNote" aria-labelledby="st-reach">
+            {kind === "inquiry" && (
+              <Terrain
+                className="st-railNote__art"
+                seed={page.url}
+                scale={120}
+              />
+            )}
+            <h2 id="st-reach">Direct line</h2>
+            <Facts
+              rows={[
+                ["Email", <a href={`mailto:${email}`}>{email}</a>],
+                ["Based in", location.name],
+                [
+                  "Local time",
+                  time ? `${time} (${location.timeZoneName})` : "—"
+                ]
+              ]}
+            />
+          </section>
+        }
+      >
+        <PageHeader
+          crumbs={
+            kind === "contact" ? (
+              <span>Contact</span>
+            ) : (
+              <>
+                <a href={to("/contact/")}>Contact</a>
+                <span aria-hidden="true">/</span>
+                <span>Project inquiry</span>
+              </>
+            )
+          }
+          title={intro?.heading ?? page.meta.title}
+          lede={intro?.subheading}
+        >
+          <p className="st-actions">
+            {kind === "contact" ? (
+              <More href={to("/project-inquiry/")}>
+                Start a project inquiry instead
+              </More>
+            ) : (
+              <More href={to("/contact/")}>Just saying hello?</More>
+            )}
+          </p>
+        </PageHeader>
+
+        <form className="st-form" onSubmit={onSubmit}>
+          {formFields(kind === "contact" ? "contact" : "inquiry").map(
+            (field) => (
+              <FormField key={field.name} field={field} />
+            )
+          )}
+          <p className="st-form__submit">
+            <button className="st-button" type="submit">
+              {kind === "contact" ? "Send message" : "Send inquiry"}
+            </button>
+            <span role="status">{mockStatus(sent)}</span>
+          </p>
+        </form>
+      </Layout>
+    </>
   );
 }

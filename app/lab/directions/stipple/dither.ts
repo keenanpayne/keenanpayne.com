@@ -139,6 +139,17 @@ const BAYER = [
 export const grain = (x: number, y: number, seed: number) =>
   BAYER[(y % 8) * 8 + (x % 8)] * 0.55 + hash(x, y, seed + 7) * 0.45;
 
+/**
+ * Ink coverage to a level for drawn art: off below the cell's threshold,
+ * then sage, deep sage, midtone, and full ink as coverage climbs
+ */
+export const levelFor = (coverage: number, threshold: number) => {
+  if (coverage <= threshold) return 0;
+  if (coverage > 0.8) return 4;
+  if (coverage > 0.56) return 3;
+  return coverage > 0.32 ? 2 : 1;
+};
+
 /* Terrain
    ========================================================================== */
 
