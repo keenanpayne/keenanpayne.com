@@ -1,35 +1,27 @@
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 import { profile } from "../../../data/profile";
-import { coordinates } from "../../site";
+import {
+  celsius,
+  compass,
+  conditionOf,
+  coordinates,
+  useForecast,
+  useNow,
+  zoneName,
+  type Condition
+} from "../../site";
 
 /*
  * Denver clock and weather
  * ==================================================
  * The header clock opens a popover with the local time and live weather
- * from Open-Meteo (https://open-meteo.com/, free, no key). The sky readout
- * is restyled for the current conditions: sun or stars, drifting cloud,
- * fog, rain, snow, or a red storm alert.
+ * (see `site/weather.ts`). The sky readout is restyled for the current
+ * conditions: sun or stars, drifting cloud, fog, rain, snow, or a red storm
+ * alert.
  */
 
-const { city, latitude, longitude, short, timeZone: ZONE } = profile.location;
-
-const FORECAST_URL = `https://api.open-meteo.com/v1/forecast?${new URLSearchParams(
-  {
-    latitude: String(latitude),
-    longitude: String(longitude),
-    current:
-      "temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,wind_direction_10m,is_day",
-    daily: "temperature_2m_max,temperature_2m_min,sunrise,sunset",
-    temperature_unit: "fahrenheit",
-    wind_speed_unit: "mph",
-    timezone: ZONE,
-    forecast_days: "1"
-  }
-)}`;
-
-// Reopening within this window reuses the last reading
-const STALE_MS = 10 * 60_000;
+const { city, short, timeZone: ZONE } = profile.location;
 
 const clockFormat = new Intl.DateTimeFormat("en-GB", {
   hour: "2-digit",
@@ -49,46 +41,6 @@ const dateFormat = new Intl.DateTimeFormat("en-US", {
   timeZone: ZONE
 });
 
-/** A part of a time zone name, e.g. `MDT` or `GMT-6` */
-const zonePart = (now: Date, style: "short" | "shortOffset") =>
-  new Intl.DateTimeFormat("en-US", { timeZone: ZONE, timeZoneName: style })
-    .formatToParts(now)
-    .find((part) => part.type === "timeZoneName")?.value ?? "";
-
-type Condition = "clear" | "cloudy" | "fog" | "rain" | "snow" | "storm";
-
-/** Open-Meteo reports WMO weather codes */
-const CODES: Record<number, [label: string, condition: Condition]> = {
-  0: ["Clear sky", "clear"],
-  1: ["Mainly clear", "clear"],
-  2: ["Partly cloudy", "cloudy"],
-  3: ["Overcast", "cloudy"],
-  45: ["Fog", "fog"],
-  48: ["Freezing fog", "fog"],
-  51: ["Light drizzle", "rain"],
-  53: ["Drizzle", "rain"],
-  55: ["Heavy drizzle", "rain"],
-  56: ["Freezing drizzle", "rain"],
-  57: ["Freezing drizzle", "rain"],
-  61: ["Light rain", "rain"],
-  63: ["Rain", "rain"],
-  65: ["Heavy rain", "rain"],
-  66: ["Freezing rain", "rain"],
-  67: ["Freezing rain", "rain"],
-  71: ["Light snow", "snow"],
-  73: ["Snow", "snow"],
-  75: ["Heavy snow", "snow"],
-  77: ["Snow grains", "snow"],
-  80: ["Light showers", "rain"],
-  81: ["Showers", "rain"],
-  82: ["Violent showers", "rain"],
-  85: ["Snow showers", "snow"],
-  86: ["Heavy snow showers", "snow"],
-  95: ["Thunderstorm", "storm"],
-  96: ["Thunderstorm with hail", "storm"],
-  99: ["Thunderstorm with heavy hail", "storm"]
-};
-
 const STATUS: Record<Condition, [tone: string, text: string]> = {
   clear: ["green", "Condition green · Visibility nominal"],
   cloudy: ["amber", "Cloud cover · Sensors partly obscured"],
@@ -97,86 +49,6 @@ const STATUS: Record<Condition, [tone: string, text: string]> = {
   snow: ["cyan", "Frozen precipitation detected"],
   storm: ["red", "警報 · Thunderstorm detected"]
 };
-
-const COMPASS = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-
-interface Forecast {
-  current: {
-    temperature_2m: number;
-    apparent_temperature: number;
-    relative_humidity_2m: number;
-    weather_code: number;
-    wind_speed_10m: number;
-    wind_direction_10m: number;
-    is_day: number;
-  };
-  daily: {
-    temperature_2m_max: number[];
-    temperature_2m_min: number[];
-    sunrise: string[];
-    sunset: string[];
-  };
-}
-
-/** Ticks once a second; `undefined` until hydrated so SSR markup matches */
-function useNow() {
-  const [now, setNow] = useState<Date>();
-
-  useEffect(() => {
-    const tick = () => setNow(new Date());
-    const first = setTimeout(tick);
-    const timer = setInterval(tick, 1000);
-    return () => {
-      clearTimeout(first);
-      clearInterval(timer);
-    };
-  }, []);
-
-  return now;
-}
-
-/** Loads the forecast on demand, reusing a reading for ten minutes */
-function useForecast() {
-  const [forecast, setForecast] = useState<Forecast>();
-  const [readAt, setReadAt] = useState<Date>();
-  const [status, setStatus] = useState<"idle" | "loading" | "ready" | "error">(
-    "idle"
-  );
-  const request = useRef<AbortController>(null);
-  const fetchedAt = useRef(0);
-
-  useEffect(() => () => request.current?.abort(), []);
-
-  const refresh = () => {
-    if (request.current || Date.now() - fetchedAt.current < STALE_MS) return;
-
-    const controller = new AbortController();
-    request.current = controller;
-    setStatus("loading");
-
-    fetch(FORECAST_URL, {
-      signal: AbortSignal.any([controller.signal, AbortSignal.timeout(8000)])
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        return response.json() as Promise<Forecast>;
-      })
-      .then((data) => {
-        fetchedAt.current = Date.now();
-        setForecast(data);
-        setReadAt(new Date(fetchedAt.current));
-        setStatus("ready");
-      })
-      .catch(() => {
-        if (!controller.signal.aborted) setStatus("error");
-      })
-      .finally(() => {
-        request.current = null;
-      });
-  };
-
-  return { forecast, readAt, status, refresh };
-}
 
 /** Line-art weather glyphs in a 64×64 box */
 function Glyph({ condition, night }: { condition: Condition; night: boolean }) {
@@ -272,9 +144,7 @@ export function DenverStatus() {
   const { forecast, readAt, status, refresh } = useForecast();
 
   const current = forecast?.current;
-  const [label, condition] = current
-    ? (CODES[current.weather_code] ?? ["Unknown", "cloudy"])
-    : ["", undefined];
+  const [label, condition] = forecast ? conditionOf(forecast) : ["", undefined];
   const night = current?.is_day === 0;
   // A failed refresh keeps the last reading on screen, marked as outdated
   const stale = status === "error" && !!current;
@@ -334,10 +204,7 @@ export function DenverStatus() {
             Local time
             {now && (
               <span>
-                {zonePart(now, "short")} ·{" "}
-                {zonePart(now, "shortOffset")
-                  .replace("GMT", "UTC")
-                  .replace("-", "−")}
+                {zoneName(now, "short")} · {zoneName(now, "offset")}
               </span>
             )}
           </p>
@@ -360,9 +227,7 @@ export function DenverStatus() {
                 <p className="mc-den__temp">
                   {fahrenheit(current.temperature_2m)}
                   <span>F</span>
-                  <small>
-                    {Math.round(((current.temperature_2m - 32) * 5) / 9)}°C
-                  </small>
+                  <small>{celsius(current.temperature_2m)}°C</small>
                 </p>
                 <p className="mc-den__condition">
                   {label}
@@ -410,7 +275,7 @@ export function DenverStatus() {
                 <dd>
                   {Math.round(current.wind_speed_10m)}
                   <small> mph </small>
-                  {COMPASS[Math.round(current.wind_direction_10m / 45) % 8]}
+                  {compass(current.wind_direction_10m)}
                 </dd>
               </div>
               <div>

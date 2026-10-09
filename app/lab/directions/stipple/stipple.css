@@ -260,10 +260,11 @@ body:has(.st) .labBar {
   text-transform: lowercase;
   white-space: nowrap;
 
+  /* With the navigation folded into a menu, there's room for the name */
   & span {
     display: none;
 
-    @media (width >= 760px) {
+    @media (width >= 360px) {
       display: inline;
     }
   }
@@ -381,7 +382,7 @@ body:has(.st) .labBar {
     pointer-events: none;
   }
 
-  & ul {
+  & > ul {
     display: flex;
     align-items: center;
     gap: 0;
@@ -392,7 +393,7 @@ body:has(.st) .labBar {
     scrollbar-width: none;
   }
 
-  & a {
+  & > ul a {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -433,6 +434,232 @@ body:has(.st) .labBar {
         display: block;
       }
     }
+  }
+
+  /* On a phone, only Contact stays out; the rest are in the menu */
+  & > ul > li:not(.st-nav__ctaItem) {
+    @media (width < 760px) {
+      display: none;
+    }
+  }
+
+  @media (width < 760px) {
+    padding-right: 3px;
+
+    & > ul a {
+      height: 26px;
+      padding: 0 10px;
+      font-size: 13px;
+    }
+  }
+}
+
+/* Menu
+   ==========================================================================
+   On a phone, the pages fold into an index that fills the window. It sits
+   beneath the header, which draws the window's edges over it, and opens
+   downward from the notch. */
+
+.st-nav__toggle {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 7px;
+  height: 26px;
+  padding: 0 10px 0 8px;
+  border: 1px solid var(--st-line);
+  border-radius: 5px;
+  background: none;
+  color: var(--st-ink);
+  font: 13px/1 var(--st-sans);
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background-color 150ms ease;
+
+  &:hover,
+  &[aria-expanded="true"] {
+    border-color: var(--st-ink);
+  }
+
+  @media (width >= 760px) {
+    display: none;
+  }
+}
+
+.st-dots {
+  width: 13px;
+  height: 13px;
+  fill: currentColor;
+
+  & circle {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition:
+      scale 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 220ms ease;
+  }
+
+  [aria-expanded="true"] > & .st-dots__edge {
+    opacity: 0;
+    scale: 0;
+  }
+}
+
+.st-menu {
+  position: fixed;
+  /* Beneath the header's paper and lines, inside its stacking context */
+  z-index: -1;
+  inset: calc(var(--st-gutter) + 1px) calc(var(--st-gutter) + 1px)
+    calc(var(--st-gutter) + var(--st-notch) + 1px);
+  display: flex;
+  flex-direction: column;
+  padding: calc(var(--st-notch) + 28px) 18px 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  border-radius: calc(var(--st-radius) - 1px) 0 calc(var(--st-radius) - 1px) 0;
+  background: var(--st-paper);
+  clip-path: inset(0);
+  transition: clip-path 420ms cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  @starting-style {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  &[hidden] {
+    display: none;
+  }
+
+  @media (width >= 760px) {
+    display: none;
+  }
+
+  & :where(p, ol, ul) {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+/* The page can't scroll beneath it */
+html:has(.st-menu:not([hidden])) {
+  overflow: hidden;
+}
+
+.st-menu__label {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--st-line);
+  color: var(--st-muted);
+  font: 300 11px/1.4 var(--st-mono);
+}
+
+.st-menu__list {
+  & li {
+    border-bottom: 1px solid var(--st-rule);
+    transition:
+      opacity 360ms ease,
+      translate 480ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transition-delay: calc(80ms + var(--st-i) * 45ms);
+
+    @starting-style {
+      opacity: 0;
+      translate: 0 12px;
+    }
+  }
+
+  & a {
+    display: grid;
+    grid-template-columns: 30px 1fr auto;
+    align-items: center;
+    padding: 13px 2px 11px 0;
+    color: var(--st-ink);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:active .st-menu__text {
+      translate: 4px 0;
+    }
+  }
+
+  & .st-arrow {
+    width: 20px;
+    height: 20px;
+    color: var(--st-faint);
+  }
+
+  & [aria-current="page"] {
+    color: var(--st-olive);
+
+    & .st-menu__text {
+      font-style: italic;
+    }
+  }
+}
+
+.st-menu__number {
+  align-self: start;
+  padding-top: 6px;
+  color: var(--st-muted);
+  font: 300 11px/1 var(--st-mono);
+}
+
+.st-menu__text {
+  font-family: var(--st-serif);
+  font-size: clamp(40px, 12.5vw, 52px);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  transition: translate 150ms ease;
+}
+
+.st-menu__here {
+  width: 24px;
+  height: 24px;
+}
+
+.st-menu__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding: 28px 0 18px !important;
+  font: 300 11px/1.4 var(--st-mono);
+
+  & a {
+    color: var(--st-muted);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--st-ink);
+    }
+  }
+}
+
+/* Land along the window's floor, in whatever room is left */
+.st-menu__land {
+  flex: 1 0 64px;
+  max-height: 180px;
+  margin: auto -18px 0;
+  border-bottom-right-radius: calc(var(--st-radius) - 1px);
+  animation: st-menu-land 900ms 200ms ease both;
+}
+
+@keyframes st-menu-land {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .st-menu,
+  .st-menu__list li,
+  .st-dots circle {
+    transition: none;
+  }
+
+  .st-menu__land {
+    animation: none;
   }
 }
 
@@ -785,6 +1012,15 @@ body:has(.st) .labBar {
     grid-template-columns: minmax(0, 640px) 200px;
     column-gap: clamp(64px, 11vw, 200px);
     padding-right: 48px;
+  }
+}
+
+/* One wide column, lined up with the hero, for pages that read by
+   scanning rather than in order */
+.st-layout--wide {
+  @media (width >= 1080px) {
+    grid-template-columns: minmax(0, 1280px);
+    padding-right: clamp(40px, 9vw, 128px);
   }
 }
 
@@ -1167,6 +1403,224 @@ body:has(.st) .labBar {
   }
 }
 
+/* The wide layout: an opening split in two, and plates, posts, and
+   quotes set across the window
+   ========================================================================== */
+
+/* A section's heading on the left, its copy on the right */
+.st-split {
+  @media (width >= 960px) {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-rows: auto 1fr;
+    column-gap: clamp(48px, 6vw, 96px);
+
+    & .st-section__head {
+      grid-row: span 2;
+      align-items: start;
+    }
+
+    & > :not(.st-section__head) {
+      grid-column: 2;
+    }
+
+    & .st-actions {
+      align-self: start;
+    }
+  }
+}
+
+/* The home page's opening, set larger */
+.st-intro {
+  @media (width >= 960px) {
+    & .st-section__head h2 {
+      font-size: clamp(42px, 4.4vw, 60px);
+      line-height: 1;
+      text-wrap: balance;
+    }
+
+    & .st-copy {
+      font-size: 18px;
+      line-height: 1.55;
+    }
+  }
+}
+
+.st-layout--wide {
+  /* A page's title on the left, its lede and actions on the right */
+  & .st-pageHeader {
+    @media (width >= 960px) {
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      grid-template-rows: auto 1fr;
+      column-gap: clamp(48px, 6vw, 96px);
+      align-items: end;
+
+      &:has(.st-crumbs) {
+        grid-template-rows: auto auto 1fr;
+      }
+
+      & .st-crumbs {
+        grid-column: 1 / -1;
+      }
+
+      & .st-title {
+        grid-row: span 2;
+        align-self: start;
+      }
+
+      & .st-lede {
+        margin-top: 0;
+      }
+
+      & .st-actions {
+        align-self: start;
+      }
+    }
+  }
+
+  & .st-steps {
+    @media (width >= 960px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  & .st-cover:is(.st-terrain, .st-sketch) {
+    @media (width >= 960px) {
+      aspect-ratio: 21 / 9;
+    }
+  }
+
+  /* An index without notes: title and lede, side by side */
+  & .st-entry:not(:has(.st-entry__meta)) {
+    @media (width >= 960px) {
+      grid-template-areas: "title sub";
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      column-gap: clamp(48px, 6vw, 96px);
+    }
+  }
+
+  & .st-cards {
+    @media (width >= 960px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 32px;
+    }
+  }
+
+  /* Side by side, the ways in line up along the bottom */
+  & .st-card {
+    @media (width >= 960px) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  & .st-card__actions {
+    @media (width >= 960px) {
+      margin-top: auto;
+      padding-top: 16px;
+    }
+  }
+
+  & .st-plates {
+    @media (width >= 960px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 56px 32px;
+    }
+  }
+
+  & .st-quotes {
+    columns: 3 280px;
+  }
+
+  /* Posts as an index: title, lede, and notes in a row, between rules */
+  & .st-entries {
+    @media (width >= 960px) {
+      gap: 0;
+    }
+  }
+
+  & .st-entry {
+    @media (width >= 960px) {
+      grid-template-areas: "title sub meta";
+      grid-template-columns: minmax(0, 5fr) minmax(0, 5fr) minmax(0, 2fr);
+      align-items: baseline;
+      padding: 16px 0 18px;
+      border-top: 1px solid var(--st-rule);
+
+      &:last-child {
+        border-bottom: 1px solid var(--st-rule);
+      }
+    }
+  }
+
+  & .st-entry__sub {
+    @media (width >= 960px) {
+      margin-top: 0;
+      color: var(--st-muted);
+    }
+  }
+}
+
+/* A service's Markdown blocks as sections of the page: offering and FAQ
+   split like .st-split, process and tools set across the window */
+.st-layout--wide .st-blocks {
+  @media (width >= 960px) {
+    max-width: none;
+  }
+
+  & > section,
+  & > h2 {
+    margin: 80px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--st-rule);
+  }
+
+  & > h2 {
+    margin-bottom: 24px;
+  }
+
+  & > section h2 {
+    margin: 0 0 24px;
+  }
+
+  & :is(.services-offering, .services-faq) {
+    @media (width >= 960px) {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      align-items: start;
+      column-gap: clamp(48px, 6vw, 96px);
+
+      & > h2 {
+        grid-row: 1 / span 9;
+      }
+
+      & > :not(h2) {
+        grid-column: 2;
+      }
+    }
+  }
+
+  & .services-faq-item:first-of-type {
+    @media (width >= 960px) {
+      margin-top: 0;
+    }
+  }
+
+  & .services-items {
+    margin-top: 0;
+
+    @media (width >= 960px) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  & .services-tools-items {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    margin: 0;
+  }
+}
+
 /* Lists set in the display serif
    ========================================================================== */
 
@@ -1461,6 +1915,86 @@ body:has(.st) .labBar {
 
   &:is(.st-terrain, .st-sketch) {
     aspect-ratio: 16 / 9;
+  }
+}
+
+/* A captioned view: Front Range on Contact, Strata on About */
+.st-view {
+  margin-inline: 0;
+
+  & figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2px 16px;
+    margin-top: 10px;
+    color: var(--st-muted);
+    font-family: var(--st-mono);
+    font-size: 10.5px;
+    font-weight: 300;
+  }
+}
+
+.st-view__art {
+  aspect-ratio: 16 / 9;
+  border-radius: 2px;
+
+  @media (width >= 760px) {
+    aspect-ratio: 21 / 9;
+  }
+}
+
+/* As a page's opener (Contact, About): the window's full width, reaching
+   up behind its tab like the home hero, with the caption lined up with the
+   page beneath */
+.st-vista {
+  --reach: calc(var(--st-notch) + 1px);
+
+  margin: calc(-1 * var(--reach)) 0 0;
+
+  & .st-view__art {
+    height: calc(clamp(300px, 52svh, 560px) + var(--reach));
+    aspect-ratio: auto;
+    border-radius: 0;
+  }
+
+  & figcaption {
+    margin-top: 12px;
+    padding-inline: 18px;
+
+    @media (width >= 760px) {
+      padding-inline: clamp(40px, 9vw, 128px);
+    }
+
+    @media (width >= 1080px) {
+      padding-right: 48px;
+    }
+  }
+
+  & + .st-layout {
+    @media (width >= 760px) {
+      padding-top: 56px;
+    }
+  }
+}
+
+/* The About page's strata: the hovered year, marked at the right edge */
+.st-strata__tick {
+  position: absolute;
+  right: 12px;
+  padding: 2px 7px;
+  border: 1px solid var(--st-line);
+  border-radius: 999px;
+  background: var(--st-paper);
+  color: var(--st-ink);
+  font-family: var(--st-mono);
+  font-size: 10.5px;
+  line-height: 1.3;
+  pointer-events: none;
+  transform: translateY(-50%);
+
+  @media (width >= 760px) {
+    right: clamp(24px, 4vw, 48px);
   }
 }
 
@@ -1918,86 +2452,6 @@ body:has(.st) .labBar {
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.025em;
-/* A captioned view: Front Range on Contact, Strata on About */
-.st-view {
-  margin-inline: 0;
-
-  & figcaption {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 2px 16px;
-    margin-top: 10px;
-    color: var(--st-muted);
-    font-family: var(--st-mono);
-    font-size: 10.5px;
-    font-weight: 300;
-  }
-}
-
-.st-view__art {
-  aspect-ratio: 16 / 9;
-  border-radius: 2px;
-
-  @media (width >= 760px) {
-    aspect-ratio: 21 / 9;
-  }
-}
-
-/* As a page's opener (Contact, About): the window's full width, reaching
-   up behind its tab like the home hero, with the caption lined up with the
-   page beneath */
-.st-vista {
-  --reach: calc(var(--st-notch) + 1px);
-
-  margin: calc(-1 * var(--reach)) 0 0;
-
-  & .st-view__art {
-    height: calc(clamp(300px, 52svh, 560px) + var(--reach));
-    aspect-ratio: auto;
-    border-radius: 0;
-  }
-
-  & figcaption {
-    margin-top: 12px;
-    padding-inline: 18px;
-
-    @media (width >= 760px) {
-      padding-inline: clamp(40px, 9vw, 128px);
-    }
-
-    @media (width >= 1080px) {
-      padding-right: 48px;
-    }
-  }
-
-  & + .st-layout {
-    @media (width >= 760px) {
-      padding-top: 56px;
-    }
-  }
-}
-
-/* The About page's strata: the hovered year, marked at the right edge */
-.st-strata__tick {
-  position: absolute;
-  right: 12px;
-  padding: 2px 7px;
-  border: 1px solid var(--st-line);
-  border-radius: 999px;
-  background: var(--st-paper);
-  color: var(--st-ink);
-  font-family: var(--st-mono);
-  font-size: 10.5px;
-  line-height: 1.3;
-  pointer-events: none;
-  transform: translateY(-50%);
-
-  @media (width >= 760px) {
-    right: clamp(24px, 4vw, 48px);
-  }
-}
-
   line-height: 0.9;
 }
 

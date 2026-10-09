@@ -8,14 +8,12 @@ import {
 } from "../../../site";
 import {
   Button,
-  Contents,
   Entries,
   Layout,
   PageHeader,
   Quotes,
   Section,
-  ServiceArt,
-  type Chapter
+  ServiceArt
 } from "../parts";
 
 export function Service({ page, content }: TemplateProps<"service">) {
@@ -30,17 +28,8 @@ export function Service({ page, content }: TemplateProps<"service">) {
       : []
   );
 
-  const chapters: Chapter[] = [{ id: "overview", label: "Overview" }];
-  for (const { id, section } of lists) {
-    chapters.push({ id, label: section.heading ?? "Examples" });
-  }
-  chapters.push(
-    { id: "other-services", label: "Other services" },
-    { id: "kind-words", label: "Kind words" }
-  );
-
   return (
-    <Layout rail={<Contents chapters={chapters} />}>
+    <Layout wide>
       <PageHeader
         crumbs={
           <>
@@ -61,12 +50,16 @@ export function Service({ page, content }: TemplateProps<"service">) {
 
       <ServiceArt className="st-cover" url={page.url} />
 
-      <Section id="overview" title="Overview">
-        {intro?.body && <Html className="st-prose" html={intro.body} />}
-        {page.content && (
-          <HtmlContent className="st-prose" html={page.content} />
-        )}
-      </Section>
+      {intro?.body && (
+        <Section id="overview" className="st-split" title="Overview">
+          <Html className="st-prose" html={intro.body} />
+        </Section>
+      )}
+
+      {/* The Markdown brings its own sections, each with a heading */}
+      {page.content && (
+        <HtmlContent className="st-prose st-blocks" html={page.content} />
+      )}
 
       {lists.map(({ id, section }) => (
         <Section key={id} id={id} title={section.heading ?? "Examples"}>

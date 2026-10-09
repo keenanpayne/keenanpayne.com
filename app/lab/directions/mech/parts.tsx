@@ -384,6 +384,9 @@ const relay = (() => {
     join(element: Element, sweep: Sweep) {
       observer ??= new IntersectionObserver((entries) => {
         for (const entry of entries) {
+          // An entry can still arrive for a trace that just left; with no
+          // sweep to play, it would spin `advance` forever
+          if (!sweeps.has(entry.target)) continue;
           if (entry.isIntersecting) visible.add(entry.target);
           else visible.delete(entry.target);
         }

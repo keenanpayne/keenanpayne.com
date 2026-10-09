@@ -1,7 +1,6 @@
 import { introOf, pad, useTo, type TemplateProps } from "../../../site";
 import {
   Button,
-  Contents,
   Layout,
   PageHeader,
   Quotes,
@@ -14,17 +13,7 @@ export function Services({ page, content }: TemplateProps<"services">) {
   const intro = introOf(page);
 
   return (
-    <Layout
-      rail={
-        <Contents
-          chapters={[
-            { id: "offer", label: "What I offer" },
-            { id: "process", label: "How it works" },
-            { id: "kind-words", label: "Kind words" }
-          ]}
-        />
-      }
-    >
+    <Layout wide>
       <PageHeader title={intro?.heading ?? "Services"} lede={intro?.subheading}>
         <p className="st-actions">
           <Button href={to("/project-inquiry/")} arrow>

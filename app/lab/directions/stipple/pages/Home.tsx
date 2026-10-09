@@ -4,7 +4,6 @@ import { Html, useLocalTime, useTo, type TemplateProps } from "../../../site";
 import { Groundwork } from "../Groundwork";
 import {
   Button,
-  Contents,
   Entries,
   Layout,
   Mark,
@@ -52,20 +51,12 @@ export function Home({ content }: TemplateProps<"home">) {
         </div>
       </header>
 
-      <Layout
-        rail={
-          <Contents
-            chapters={[
-              { id: "hello", label: "Hello" },
-              { id: "work", label: "Selected work" },
-              { id: "writing", label: "Writing" },
-              { id: "services", label: "Services" },
-              { id: "kind-words", label: "Kind words" }
-            ]}
-          />
-        }
-      >
-        <Section id="hello" title={profile.experience.text}>
+      <Layout wide>
+        <Section
+          id="hello"
+          className="st-split st-intro"
+          title={profile.experience.text}
+        >
           <Html className="st-copy" html={profile.bio} />
           <p className="st-actions">
             <Button href={to("/about/")} small>

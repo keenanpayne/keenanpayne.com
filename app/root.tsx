@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
   useMatches,
+  useRouteError,
   useRouteLoaderData
 } from "react-router";
 
@@ -34,10 +35,16 @@ const FONTS_URL =
 /**
  * Routes with `handle: { bare: true }` (the design lab) opt out of the site
  * chrome and global styles so they can explore a different look in isolation.
+ * Their errors still render in the site's ErrorBoundary, which needs both.
  */
 function useIsBare() {
-  return useMatches().some(
-    (match) => (match.handle as { bare?: boolean } | undefined)?.bare
+  const error = useRouteError();
+  const matches = useMatches();
+  return (
+    !error &&
+    matches.some(
+      (match) => (match.handle as { bare?: boolean } | undefined)?.bare
+    )
   );
 }
 

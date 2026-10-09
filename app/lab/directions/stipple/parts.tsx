@@ -419,16 +419,19 @@ export function PageHeader({
   );
 }
 
-/** The reading column, with a rail beside it on wide screens */
+/** The reading column, with a rail beside it on wide screens, or one wide
+    column that fills the window */
 export function Layout({
   rail,
+  wide,
   children
 }: {
   rail?: ReactNode;
+  wide?: boolean;
   children: ReactNode;
 }) {
   return (
-    <div className="st-layout">
+    <div className={cx("st-layout", wide && "st-layout--wide")}>
       <div className="st-column">{children}</div>
       {rail && <aside className="st-rail">{rail}</aside>}
     </div>
@@ -504,16 +507,22 @@ export function Section({
   id,
   title,
   action,
+  className,
   children
 }: {
   id: string;
   title: ReactNode;
   /** A link beside the title */
   action?: ReactNode;
+  className?: string;
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="st-section" aria-labelledby={`${id}-title`}>
+    <section
+      id={id}
+      className={cx("st-section", className)}
+      aria-labelledby={`${id}-title`}
+    >
       <header className="st-section__head">
         <h2 id={`${id}-title`}>{title}</h2>
         {action}

@@ -1,6 +1,7 @@
+import { use } from "react";
 import { data } from "react-router";
 
-import { directionComponents } from "../lab/directions";
+import { loadDirection } from "../lab/directions";
 import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
 import { rebaseLinks } from "../lab/links.server";
@@ -63,13 +64,15 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
 
 export default function LabDirection({ loaderData }: Route.ComponentProps) {
   const { direction, path, view, navigation, content } = loaderData;
+  // Suspends until the direction's chunk loads (navigations wait on it)
+  const skin = use(loadDirection(direction.slug));
 
   return (
     <>
       <DirectionPage
         // Fresh state for every page, like a full page load
         key={`${direction.slug}${path}`}
-        direction={directionComponents[direction.slug]}
+        direction={skin}
         base={labPath(direction.slug).slice(0, -1)}
         path={path}
         view={view}
