@@ -59,6 +59,14 @@ function hourIn(timeZone: string, date: Date) {
   return part("hour") + part("minute") / 60;
 }
 
+/** A reading's time somewhere, like the clock beside it, e.g. `3:04 PM` */
+const readingTime = (date: Date, timeZone: string) =>
+  new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    timeZone
+  }).format(date);
+
 export function FrontRange({
   location,
   className
@@ -190,14 +198,23 @@ export function FrontRange({
   }, [still]);
 
   const night = current?.is_day === 0;
-  const reading = current
-    ? [
-        `${label}, ${Math.round(current.temperature_2m)}°F`,
-        night && readAt && (condition === "clear" || condition === "cloudy")
-          ? phaseName(moonPhase(readAt))
-          : null
-      ]
-    : [status === "error" ? "Weather unavailable" : null];
+  const weather =
+    current && `${label}, ${Math.round(current.temperature_2m)}°F`;
+  // A failed refresh keeps the last reading, so mark it as outdated
+  const reading =
+    status === "error"
+      ? [
+          "Weather unavailable",
+          weather && readAt
+            ? `last reading ${readingTime(readAt, location.timeZone)}: ${weather}`
+            : null
+        ]
+      : [
+          weather,
+          night && readAt && (condition === "clear" || condition === "cloudy")
+            ? phaseName(moonPhase(readAt))
+            : null
+        ];
 
   return (
     <figure className={cx("st-view", className)}>
