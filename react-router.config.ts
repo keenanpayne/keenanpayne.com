@@ -7,12 +7,12 @@ export default {
   async prerender() {
     const { getPrerenderPaths } =
       await import("./app/lib/content/content.server");
-    const { directions } = await import("./app/lab/registry");
+    const { directions, SAMPLE_PAGES } = await import("./app/lab/registry");
     return [
       ...getPrerenderPaths(),
       "/lab/",
-      ...directions.flatMap(({ slug, pages }) =>
-        pages.map(({ path }) => `/lab/${slug}${path}`)
+      ...directions.flatMap(({ slug }) =>
+        SAMPLE_PAGES.map(({ path }) => `/lab/${slug}${path}`)
       ),
       "/sitemap.xml",
       "/feed.xml",

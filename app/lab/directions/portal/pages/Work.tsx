@@ -1,20 +1,17 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import { Html, introOf, useQueryParam, useTo } from "../../../site";
 import {
   Badge,
   GoDot,
   Go,
   Heading,
-  Html,
   Icon,
   Intro,
-  introOf,
   ItemIcon,
   Pill,
   TagStrip,
   Tile,
   TitleBar,
-  useQueryParam,
-  useTo,
   WorkCard,
   type Work as WorkItem
 } from "../parts";

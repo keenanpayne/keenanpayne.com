@@ -1,10 +1,9 @@
 import { useState } from "react";
 
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import { introOf, pad, postsByYear, postTypes } from "../../../site";
 import {
-  introOf,
   Newsletter,
-  pad,
   PageHeader,
   Panel,
   PostCards,
@@ -62,17 +61,8 @@ export function Archive({
   const intro = introOf(page);
   const [filter, setFilter] = useState<string>();
 
-  const types = [
-    ...new Set(content.posts.map((post) => post.type).filter(Boolean))
-  ] as string[];
-  const byYear = (posts: Posts) => {
-    const years = new Map<string, Posts>();
-    for (const post of posts) {
-      years.set(post.year, [...(years.get(post.year) ?? []), post]);
-    }
-    return [...years];
-  };
-  const allYears = byYear(content.posts);
+  const types = postTypes(content.posts);
+  const allYears = postsByYear(content.posts);
   const shown = filter
     ? content.posts.filter((post) => post.type === filter)
     : content.posts;
@@ -140,7 +130,7 @@ export function Archive({
           ))}
         </div>
 
-        {byYear(shown).map(([year, posts]) => (
+        {postsByYear(shown).map(([year, posts]) => (
           <div className="mc-log" key={year}>
             <h3 className="mc-log__year">
               <span>{year}</span>

@@ -2,34 +2,18 @@ import { HtmlContent } from "../../../../components/HtmlContent";
 import type {
   BasicPageModel,
   EntriesSection,
-  IntroSection,
-  LabContent,
-  SectionModel
+  LabContent
 } from "../../../../lib/types";
+import { Html, introOf } from "../../../site";
 import {
   ArrowCircle,
   Banner,
-  Html,
   Icon,
   KindWords,
   PageHeader,
   Section,
   ServicesLedger
 } from "../parts";
-
-export const introOf = (page: { sections: SectionModel[] }) =>
-  page.sections.find(
-    (section): section is IntroSection => section.type === "intro"
-  );
-
-export const sectionOf = <T extends SectionModel["type"]>(
-  page: { sections: SectionModel[] },
-  type: T
-) =>
-  page.sections.find(
-    (section): section is Extract<SectionModel, { type: T }> =>
-      section.type === type
-  );
 
 function Entries({ section }: { section: EntriesSection }) {
   if (section.entries.length === 0) return null;
@@ -53,16 +37,17 @@ function Entries({ section }: { section: EntriesSection }) {
   );
 }
 
-/** Any other page (service detail, type and tag archives, …) */
+/** A service, or any other page (type and tag archives, …) */
 export function Generic({
   page,
-  content
+  content,
+  isService = false
 }: {
   page: BasicPageModel;
   content: LabContent;
+  isService?: boolean;
 }) {
   const intro = introOf(page);
-  const isService = page.url.includes("/services/");
   const title = intro?.heading ?? intro?.title ?? page.meta.title;
 
   return (

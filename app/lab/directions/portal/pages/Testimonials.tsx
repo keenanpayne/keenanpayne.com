@@ -1,13 +1,6 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import {
-  Heading,
-  Intro,
-  introOf,
-  pad,
-  Quote,
-  sectionOf,
-  TitleBar
-} from "../parts";
+import { introOf, pad, sectionOf } from "../../../site";
+import { Heading, Intro, Quote, TitleBar } from "../parts";
 
 export function Testimonials({
   page,

@@ -1,80 +1,33 @@
 import {
-  createContext,
-  useContext,
   useEffect,
   useId,
   useImperativeHandle,
   useMemo,
   useRef,
   useState,
-  useSyncExternalStore,
-  type CSSProperties,
   type ReactNode,
   type Ref
 } from "react";
 import { Link, useViewTransitionState } from "react-router";
 
 import type {
-  IntroSection,
   LabContent,
   LinkModel,
   PostNavModel,
-  SectionModel,
   TestimonialModel
 } from "../../../lib/types";
+import {
+  Html,
+  pad,
+  prefersReducedMotion,
+  samePath,
+  useReducedMotion,
+  useTo
+} from "../../site";
 
 //
-// Links and content helpers
-// -------------------------
-
-/** Lab URL prefix (e.g. `/lab/mech`) so hard-coded links stay in the lab */
-export const BaseContext = createContext("");
-
-export function useTo() {
-  const base = useContext(BaseContext);
-  return (path: string) => `${base}${path}`;
-}
-
-export const introOf = (page: { sections: SectionModel[] }) =>
-  page.sections.find(
-    (section): section is IntroSection => section.type === "intro"
-  );
-
-export const sectionOf = <T extends SectionModel["type"]>(
-  page: { sections: SectionModel[] },
-  type: T
-) =>
-  page.sections.find(
-    (section): section is Extract<SectionModel, { type: T }> =>
-      section.type === type
-  );
-
-/** Compares site paths, ignoring a trailing slash */
-export const samePath = (a: string, b: string) =>
-  a.replace(/\/$/, "") === b.replace(/\/$/, "");
-
-const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
-
-const subscribeToMotion = (onChange: () => void) => {
-  const query = matchMedia(REDUCED_MOTION);
-  query.addEventListener("change", onChange);
-  return () => query.removeEventListener("change", onChange);
-};
-
-/**
- * Whether the visitor asked for reduced motion, kept up to date if they
- * change the setting while the page is open. `false` while rendering on the
- * server and hydrating, then corrected.
- */
-export const useReducedMotion = () =>
-  useSyncExternalStore(
-    subscribeToMotion,
-    () => matchMedia(REDUCED_MOTION).matches,
-    () => false
-  );
-
-export const pad = (value: number, length = 2) =>
-  String(value).padStart(length, "0");
+// Designations
+// ------------
 
 /** Designation for a case study, e.g. `UNIT-01` (the featured project) */
 export const unitCode = (index: number) =>
@@ -85,26 +38,6 @@ export const recordCode = (posts: LabContent["posts"], url: string) => {
   const index = posts.findIndex((post) => samePath(post.url, url));
   return index < 0 ? "REC-XXX" : `REC-${pad(posts.length - index, 3)}`;
 };
-
-/** Ticking clock in Denver, blank until hydrated so SSR markup matches */
-export function useDenverTime(seconds = true) {
-  const [time, setTime] = useState<string>();
-
-  useEffect(() => {
-    const format = new Intl.DateTimeFormat("en-GB", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: seconds ? "2-digit" : undefined,
-      timeZone: "America/Denver"
-    });
-    const tick = () => setTime(format.format(new Date()));
-    tick();
-    const timer = setInterval(tick, seconds ? 1000 : 15_000);
-    return () => clearInterval(timer);
-  }, [seconds]);
-
-  return time;
-}
 
 //
 // Icons
@@ -146,24 +79,6 @@ export const HexOutline = ({ className }: { className?: string }) => (
 //
 // Building blocks
 // ---------------
-
-export const Html = ({
-  as: Tag = "div",
-  className,
-  html,
-  style
-}: {
-  as?: "div" | "p" | "span" | "h1" | "h2" | "blockquote";
-  className?: string;
-  html: string;
-  style?: CSSProperties;
-}) => (
-  <Tag
-    className={className}
-    style={style}
-    dangerouslySetInnerHTML={{ __html: html }}
-  />
-);
 
 /** Pair of hairline ticks that close a HUD label strip */
 export const Ticks = () => (
@@ -306,7 +221,7 @@ function useDecode(text: string) {
     const node = noise.current;
     const label = node?.parentElement;
     if (!node || !label) return;
-    if (matchMedia(REDUCED_MOTION).matches) return;
+    if (prefersReducedMotion()) return;
 
     cancelAnimationFrame(frame.current);
     const start = performance.now();

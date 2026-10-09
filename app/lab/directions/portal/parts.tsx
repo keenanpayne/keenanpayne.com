@@ -1,20 +1,12 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-  useSyncExternalStore,
-  type ReactNode
-} from "react";
+import { useState, type ReactNode } from "react";
 
 import type {
-  IntroSection,
   LabContent,
   LinkModel,
   PostNavModel,
-  SectionModel,
   TestimonialModel
 } from "../../../lib/types";
+import { Html, pad, useTo } from "../../site";
 
 import {
   DIE,
@@ -32,37 +24,8 @@ import {
 } from "./sprites";
 
 //
-// Links and content helpers
-// -------------------------
-
-/** Lab URL prefix (e.g. `/lab/portal`) so hard-coded links stay in the lab */
-export const BaseContext = createContext("");
-
-export function useTo() {
-  const base = useContext(BaseContext);
-  return (path: string) => `${base}${path}`;
-}
-
-export const introOf = (page: { sections: SectionModel[] }) =>
-  page.sections.find(
-    (section): section is IntroSection => section.type === "intro"
-  );
-
-export const sectionOf = <T extends SectionModel["type"]>(
-  page: { sections: SectionModel[] },
-  type: T
-) =>
-  page.sections.find(
-    (section): section is Extract<SectionModel, { type: T }> =>
-      section.type === type
-  );
-
-/** Compares site paths, ignoring a trailing slash */
-export const samePath = (a: string, b: string) =>
-  a.replace(/\/$/, "") === b.replace(/\/$/, "");
-
-export const pad = (value: number, length = 2) =>
-  String(value).padStart(length, "0");
+// Content helpers
+// ---------------
 
 export const cx = (...names: (string | false | undefined)[]) =>
   names.filter(Boolean).join(" ");
@@ -129,42 +92,6 @@ export function parseDate(date: string) {
 
 /** Short date in brackets, the way news items were stamped: `[Oct 09, 2022]` */
 export const stamp = (date: string) => `[${date}]`;
-
-/** Ticking clock in Denver, blank until hydrated so SSR markup matches */
-export function useDenverTime() {
-  const [time, setTime] = useState<string>();
-
-  useEffect(() => {
-    const format = new Intl.DateTimeFormat("en-US", {
-      hour: "numeric",
-      minute: "2-digit",
-      timeZone: "America/Denver"
-    });
-    const tick = () => setTime(format.format(new Date()));
-    tick();
-    const timer = setInterval(tick, 15_000);
-    return () => clearInterval(timer);
-  }, []);
-
-  return time;
-}
-
-const subscribeToNothing = () => () => {};
-
-/**
- * A query parameter as editable state, starting from the URL. Prerendered
- * markup has no query string, so the server (and hydration) reads it as "".
- */
-export function useQueryParam(name: string) {
-  const fromUrl = useSyncExternalStore(
-    subscribeToNothing,
-    () => new URLSearchParams(window.location.search).get(name) ?? "",
-    () => ""
-  );
-  const [value, setValue] = useState<string>();
-
-  return [value ?? fromUrl, setValue] as const;
-}
 
 //
 // Pixels
@@ -265,24 +192,6 @@ export const Mosaic = ({ seed }: { seed: number }) => (
 //
 // Building blocks
 // ---------------
-
-export const Html = ({
-  as: Tag = "div",
-  className,
-  html,
-  id
-}: {
-  as?: "div" | "p" | "span" | "h1" | "h2" | "h3" | "blockquote";
-  className?: string;
-  html: string;
-  id?: string;
-}) => (
-  <Tag
-    className={className}
-    id={id}
-    dangerouslySetInnerHTML={{ __html: html }}
-  />
-);
 
 /** Section heading with a triple-bar mark, e.g. `≡ NEWS ARCHIVES` */
 export function Heading({

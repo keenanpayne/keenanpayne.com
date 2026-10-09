@@ -2,14 +2,8 @@ import { useEffect, useRef } from "react";
 
 import { HtmlContent } from "../../../../components/HtmlContent";
 import type { LabContent, PostPageModel } from "../../../../lib/types";
-import {
-  MoreLink,
-  Newsletter,
-  Panel,
-  PostNav,
-  recordCode,
-  useTo
-} from "../parts";
+import { readingMinutes, useTo } from "../../../site";
+import { MoreLink, Newsletter, Panel, PostNav, recordCode } from "../parts";
 
 /** Fixed bar along the top of the screen that fills as you read */
 function SyncBar() {
@@ -60,8 +54,7 @@ export function Post({
   content: LabContent;
 }) {
   const to = useTo();
-  const words = page.content.replace(/<[^>]+>/g, " ").split(/\s+/).length;
-  const minutes = Math.max(1, Math.round(words / 230));
+  const minutes = readingMinutes(page.content);
   const code = recordCode(content.posts, page.url);
 
   return (

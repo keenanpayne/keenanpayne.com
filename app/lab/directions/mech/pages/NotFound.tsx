@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-import { MoreLink, useTo } from "../parts";
+import { useTo } from "../../../site";
+import { MoreLink } from "../parts";
 
 const CX = 400;
 const CY = 250;

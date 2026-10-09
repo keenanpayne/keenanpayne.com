@@ -2,7 +2,7 @@ import { Link } from "react-router";
 
 import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
-import { directions, labPath } from "../lab/registry";
+import { directions, labPath, SAMPLE_PAGES } from "../lab/registry";
 import { metadata } from "../lib/site";
 import type { Route } from "./+types/lab";
 
@@ -24,9 +24,9 @@ export default function LabIndex() {
         <p className="lab__eyebrow">keenanpayne.com / lab</p>
         <h1 className="lab__title">Design Lab</h1>
         <p className="lab__intro">
-          A testing ground for new aesthetic directions. Each direction renders
-          the site’s real content in its own visual language, isolated from the
-          production styles.
+          A testing ground for new aesthetic directions. Each direction reskins
+          the same real content and pages in its own visual language, isolated
+          from the production styles.
         </p>
       </header>
 
@@ -41,7 +41,7 @@ export default function LabIndex() {
             </Link>
             <span className="lab__summary">{direction.summary}</span>
             <ul className="lab__pages" aria-label={`${direction.name} pages`}>
-              {direction.pages.map((page) => (
+              {SAMPLE_PAGES.map((page) => (
                 <li key={page.path}>
                   <Link to={labPath(direction.slug, page.path)}>
                     {page.label}
@@ -57,9 +57,8 @@ export default function LabIndex() {
       </ol>
 
       <p className="lab__footnote">
-        Add a direction: create <code>app/lab/directions/&lt;slug&gt;/</code>,
-        then register it in <code>app/lab/registry.ts</code> and{" "}
-        <code>app/lab/directions/index.ts</code>.
+        Add a direction with <code>npm run lab:new &lt;slug&gt;</code>, which
+        starts it as a copy of Wireframe. See <code>app/lab/README.md</code>.
       </p>
 
       <LabBar />

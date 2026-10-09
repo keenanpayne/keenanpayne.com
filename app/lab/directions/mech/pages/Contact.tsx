@@ -1,60 +1,71 @@
 import { useState, type FormEvent } from "react";
 
-import type { BasicPageModel } from "../../../../lib/types";
+import type { BasicPageModel, LabContent } from "../../../../lib/types";
 import {
-  Button,
+  formFields,
   Html,
   introOf,
-  MoreLink,
-  PageHeader,
-  Panel,
-  useDenverTime,
-  useTo
-} from "../parts";
+  useLocalTime,
+  useTo,
+  type FormField as Field
+} from "../../../site";
+import { Button, MoreLink, PageHeader, Panel } from "../parts";
 
-const SERVICES = [
-  "Website design",
-  "Website development",
-  "Web application development",
-  "User Interface (UI) design",
-  "User Experience (UX) research",
-  "Other",
-  "Not sure yet"
-];
+function FormField({ field }: { field: Field }) {
+  const className = field.wide ? "mc-field mc-field--wide" : "mc-field";
 
-const BUDGETS = [
-  "Less than $10,000",
-  "$10,000 - $25,000",
-  "$25,000 - $50,000",
-  "More than $50,000"
-];
+  if (field.kind === "choices") {
+    return (
+      <fieldset className={className}>
+        <legend className="mc-field__label">{field.label}</legend>
+        <div className="mc-toggles">
+          {field.options.map((option) => (
+            <label className="mc-toggle" key={option}>
+              <input type={field.type} name={field.name} value={option} />
+              <span>{option}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    );
+  }
 
-const Field = ({
-  label,
-  wide,
-  children
-}: {
-  label: string;
-  wide?: boolean;
-  children: React.ReactNode;
-}) => (
-  <label className={wide ? "mc-field mc-field--wide" : "mc-field"}>
-    <span className="mc-field__label">{label}</span>
-    {children}
-  </label>
-);
+  return (
+    <label className={className}>
+      <span className="mc-field__label">{field.label}</span>
+      {field.kind === "textarea" ? (
+        <textarea
+          className="mc-input"
+          name={field.name}
+          rows={field.rows}
+          placeholder={field.placeholder}
+        />
+      ) : (
+        <input
+          className="mc-input"
+          type={field.type}
+          name={field.name}
+          placeholder={field.placeholder}
+        />
+      )}
+    </label>
+  );
+}
 
 /** Mock contact and project inquiry forms; the lab never submits anything */
 export function Contact({
   page,
+  content,
   variant
 }: {
   page: BasicPageModel;
+  content: LabContent;
   variant: "contact" | "inquiry";
 }) {
   const intro = introOf(page);
+  const { email, location } = content.profile;
   const to = useTo();
-  const time = useDenverTime();
+  const time = useLocalTime({ hour12: false, seconds: true });
   const [sent, setSent] = useState(false);
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -84,14 +95,12 @@ export function Contact({
               <div>
                 <dt>Frequency</dt>
                 <dd>
-                  <a href="mailto:contact@keenanpayne.com">
-                    contact@keenanpayne.com
-                  </a>
+                  <a href={`mailto:${email}`}>{email}</a>
                 </dd>
               </div>
               <div>
                 <dt>Base</dt>
-                <dd>Denver, Colorado (Mountain Time)</dd>
+                <dd>{`${location.name} (${location.timeZoneName})`}</dd>
               </div>
               <div>
                 <dt>Local time</dt>
@@ -115,100 +124,9 @@ export function Contact({
           code={sent ? "Held" : "Ready"}
         >
           <form className="mc-form" onSubmit={onSubmit}>
-            <Field label="Name">
-              <input
-                className="mc-input"
-                type="text"
-                placeholder="First and last name"
-              />
-            </Field>
-            <Field label="Email">
-              <input
-                className="mc-input"
-                type="email"
-                placeholder="email@company.com"
-              />
-            </Field>
-
-            {variant === "contact" ? (
-              <Field label="What would you like to share?" wide>
-                <textarea className="mc-input" rows={6} />
-              </Field>
-            ) : (
-              <>
-                <Field label="Company">
-                  <input
-                    className="mc-input"
-                    type="text"
-                    placeholder="Company name"
-                  />
-                </Field>
-                <Field label="Website">
-                  <input
-                    className="mc-input"
-                    type="url"
-                    placeholder="If you have one"
-                  />
-                </Field>
-
-                <fieldset className="mc-field mc-field--wide">
-                  <legend className="mc-field__label">
-                    What services are you interested in?
-                  </legend>
-                  <div className="mc-toggles">
-                    {SERVICES.map((service) => (
-                      <label className="mc-toggle" key={service}>
-                        <input type="checkbox" />
-                        <span>{service}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-
-                <Field
-                  label="Please tell me about your company and project"
-                  wide
-                >
-                  <textarea
-                    className="mc-input"
-                    rows={7}
-                    placeholder={
-                      "What does your company do?\nWhat do you hope to do?\nHow can I help you reach your goals?"
-                    }
-                  />
-                </Field>
-
-                <Field label="Ideal launch date">
-                  <input className="mc-input" type="date" />
-                </Field>
-
-                <fieldset className="mc-field">
-                  <legend className="mc-field__label">
-                    Is your launch date flexible?
-                  </legend>
-                  <div className="mc-toggles">
-                    {["Yes", "No"].map((answer) => (
-                      <label className="mc-toggle" key={answer}>
-                        <input type="radio" name="mc-flexible" />
-                        <span>{answer}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-
-                <fieldset className="mc-field mc-field--wide">
-                  <legend className="mc-field__label">Project budget</legend>
-                  <div className="mc-toggles">
-                    {BUDGETS.map((budget) => (
-                      <label className="mc-toggle" key={budget}>
-                        <input type="radio" name="mc-budget" />
-                        <span>{budget}</span>
-                      </label>
-                    ))}
-                  </div>
-                </fieldset>
-              </>
-            )}
+            {formFields(variant).map((field) => (
+              <FormField key={field.name} field={field} />
+            ))}
 
             <div className="mc-form__actions mc-field--wide">
               <Button type="submit">

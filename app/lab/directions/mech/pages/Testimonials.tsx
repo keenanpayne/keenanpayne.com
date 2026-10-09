@@ -1,14 +1,6 @@
 import type { BasicPageModel } from "../../../../lib/types";
-import {
-  Alert,
-  introOf,
-  pad,
-  PageHeader,
-  Panel,
-  Section,
-  sectionOf,
-  Transmission
-} from "../parts";
+import { introOf, pad, sectionOf } from "../../../site";
+import { Alert, PageHeader, Panel, Section, Transmission } from "../parts";
 
 export function Testimonials({ page }: { page: BasicPageModel }) {
   const intro = introOf(page);

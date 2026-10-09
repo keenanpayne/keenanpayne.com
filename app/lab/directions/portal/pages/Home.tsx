@@ -1,5 +1,5 @@
-import { socials } from "../../../../data/socials";
 import type { LabContent } from "../../../../lib/types";
+import { Html, useTo } from "../../../site";
 import {
   Badge,
   GoDot,
@@ -13,13 +13,9 @@ import {
   RATING_TYPES,
   TagStrip,
   Tile,
-  typePath,
-  useTo
+  typePath
 } from "../parts";
 import { FACE, MONITOR } from "../sprites";
-
-export const AVATAR =
-  "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,c_fill,g_face,ar_1:1,w_320/v1666204078/people/me/jun-27-2021_o8sd0l.jpg";
 
 /** Big title art, set like a game logo over a starfield */
 export const Logotype = ({
@@ -48,6 +44,7 @@ export const Logotype = ({
 
 export function Home({ content }: { content: LabContent }) {
   const to = useTo();
+  const { profile } = content;
   const tiles = content.work.slice(0, Math.floor(content.work.length / 3) * 3);
 
   return (
@@ -55,22 +52,12 @@ export function Home({ content }: { content: LabContent }) {
       <section className="pt-hero">
         <div className="pt-hero__screen">
           <div className="pt-hero__copy">
-            <Logotype lines={["Keenan", "Payne"]} />
+            <Logotype lines={profile.name.split(" ")} />
             <p className="pt-hero__tag">
               <GoDot />
               Web developer &amp; designer
             </p>
-            <p className="pt-hero__lede">
-              I’m a full-stack web developer and designer with eighteen years of
-              experience helping teams market and build products on the web. I
-              spent five years growing the website at{" "}
-              <a href={to("/portfolio/asana/")}>Asana</a>, and have since
-              partnered with <a href={to("/portfolio/rippling/")}>Rippling</a>,{" "}
-              <a href={to("/portfolio/gofundme/")}>GoFundMe</a>,{" "}
-              <a href={to("/portfolio/neuralink/")}>Neuralink</a>, and many
-              others. I also <a href={to("/archive/")}>write</a> about craft,
-              career, and the occasional reflection.
-            </p>
+            <Html as="p" className="pt-hero__lede" html={profile.bio} />
           </div>
 
           <div className="pt-hero__art" aria-hidden="true">
@@ -83,7 +70,7 @@ export function Home({ content }: { content: LabContent }) {
               />
             ))}
             <span className="pt-hero__player">
-              <img src={AVATAR} alt="" />
+              <img src={profile.avatar} alt="" />
               <span>1P</span>
             </span>
           </div>
@@ -153,9 +140,9 @@ export function Home({ content }: { content: LabContent }) {
           <Tile title="Elsewhere" icon="house">
             <JumpMenu
               label="Sub categories"
-              options={[1, 4, 6, 2, 3].map((id) => ({
-                href: socials[id].url,
-                text: socials[id].name
+              options={content.socials.map((social) => ({
+                href: social.url,
+                text: social.text
               }))}
             />
           </Tile>

@@ -1,9 +1,8 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import { introOf, pad } from "../../../site";
 import {
   Alert,
-  introOf,
   KindWords,
-  pad,
   PageHeader,
   Readout,
   Section,

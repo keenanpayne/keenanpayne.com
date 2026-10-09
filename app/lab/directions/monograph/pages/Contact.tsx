@@ -1,51 +1,68 @@
 import { useState, type FormEvent } from "react";
 
-import type { BasicPageModel } from "../../../../lib/types";
-import { Html, Icon, MoreLink, PageHeader, useTo } from "../parts";
+import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import {
+  formFields,
+  Html,
+  introOf,
+  useTo,
+  type FormField as Field
+} from "../../../site";
+import { Icon, MoreLink, PageHeader } from "../parts";
 
-import { introOf } from "./Generic";
+function FormField({ field }: { field: Field }) {
+  const className = field.wide ? "mg-field mg-field--wide" : "mg-field";
 
-const SERVICES = [
-  "Website design",
-  "Website development",
-  "Web application development",
-  "User Interface (UI) design",
-  "User Experience (UX) research",
-  "Other",
-  "Not sure yet"
-];
+  if (field.kind === "choices") {
+    return (
+      <fieldset className={className}>
+        <legend className="mg-field__label">{field.label}</legend>
+        <div className="mg-toggles">
+          {field.options.map((option) => (
+            <label className="mg-toggle" key={option}>
+              <input type={field.type} name={field.name} value={option} />
+              <span>{option}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    );
+  }
 
-const BUDGETS = [
-  "Less than $10,000",
-  "$10,000 - $25,000",
-  "$25,000 - $50,000",
-  "More than $50,000"
-];
-
-const Field = ({
-  label,
-  wide,
-  children
-}: {
-  label: string;
-  wide?: boolean;
-  children: React.ReactNode;
-}) => (
-  <label className={wide ? "mg-field mg-field--wide" : "mg-field"}>
-    <span className="mg-field__label">{label}</span>
-    {children}
-  </label>
-);
+  return (
+    <label className={className}>
+      <span className="mg-field__label">{field.label}</span>
+      {field.kind === "textarea" ? (
+        <textarea
+          className="mg-input"
+          name={field.name}
+          rows={field.rows}
+          placeholder={field.placeholder}
+        />
+      ) : (
+        <input
+          className="mg-input"
+          type={field.type}
+          name={field.name}
+          placeholder={field.placeholder}
+        />
+      )}
+    </label>
+  );
+}
 
 /** Mock contact and project inquiry forms; the lab never submits anything */
 export function Contact({
   page,
+  content,
   variant
 }: {
   page: BasicPageModel;
+  content: LabContent;
   variant: "contact" | "inquiry";
 }) {
   const intro = introOf(page);
+  const { email, location } = content.profile;
   const to = useTo();
   const [sent, setSent] = useState(false);
   const onSubmit = (event: FormEvent) => {
@@ -70,14 +87,12 @@ export function Contact({
             <div>
               <dt>Email</dt>
               <dd>
-                <a href="mailto:contact@keenanpayne.com">
-                  contact@keenanpayne.com
-                </a>
+                <a href={`mailto:${email}`}>{email}</a>
               </dd>
             </div>
             <div>
               <dt>Location</dt>
-              <dd>Denver, Colorado (Mountain Time)</dd>
+              <dd>{`${location.name} (${location.timeZoneName})`}</dd>
             </div>
           </dl>
           {variant === "contact" ? (
@@ -97,97 +112,9 @@ export function Contact({
               : "Tell me about your project"}
           </p>
 
-          <Field label="Name">
-            <input
-              className="mg-input"
-              type="text"
-              placeholder="First and last name"
-            />
-          </Field>
-          <Field label="Email">
-            <input
-              className="mg-input"
-              type="email"
-              placeholder="email@company.com"
-            />
-          </Field>
-
-          {variant === "contact" ? (
-            <Field label="What would you like to share?" wide>
-              <textarea className="mg-input" rows={6} />
-            </Field>
-          ) : (
-            <>
-              <Field label="Company">
-                <input
-                  className="mg-input"
-                  type="text"
-                  placeholder="Company name"
-                />
-              </Field>
-              <Field label="Website">
-                <input
-                  className="mg-input"
-                  type="url"
-                  placeholder="If you have one"
-                />
-              </Field>
-
-              <fieldset className="mg-field mg-field--wide">
-                <legend className="mg-field__label">
-                  What services are you interested in?
-                </legend>
-                <div className="mg-toggles">
-                  {SERVICES.map((service) => (
-                    <label className="mg-toggle" key={service}>
-                      <input type="checkbox" />
-                      <span>{service}</span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-
-              <Field label="Please tell me about your company and project" wide>
-                <textarea
-                  className="mg-input"
-                  rows={7}
-                  placeholder={
-                    "What does your company do?\nWhat do you hope to do?\nHow can I help you reach your goals?"
-                  }
-                />
-              </Field>
-
-              <Field label="Ideal launch date">
-                <input className="mg-input" type="date" />
-              </Field>
-
-              <fieldset className="mg-field">
-                <legend className="mg-field__label">
-                  Is your launch date flexible?
-                </legend>
-                <div className="mg-toggles">
-                  {["Yes", "No"].map((answer) => (
-                    <label className="mg-toggle" key={answer}>
-                      <input type="radio" name="mg-flexible" />
-                      <span>{answer}</span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-
-              <fieldset className="mg-field mg-field--wide">
-                <legend className="mg-field__label">Project budget</legend>
-                <div className="mg-toggles">
-                  {BUDGETS.map((budget) => (
-                    <label className="mg-toggle" key={budget}>
-                      <input type="radio" name="mg-budget" />
-                      <span>{budget}</span>
-                    </label>
-                  ))}
-                </div>
-              </fieldset>
-            </>
-          )}
+          {formFields(variant).map((field) => (
+            <FormField key={field.name} field={field} />
+          ))}
 
           <div className="mg-form__actions mg-field--wide">
             <button className="mg-pill" type="submit">

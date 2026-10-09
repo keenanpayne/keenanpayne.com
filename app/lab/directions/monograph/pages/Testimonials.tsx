@@ -1,7 +1,6 @@
 import type { BasicPageModel } from "../../../../lib/types";
+import { introOf, sectionOf } from "../../../site";
 import { Banner, PageHeader, Quote, Section } from "../parts";
-
-import { introOf, sectionOf } from "./Generic";
 
 export function Testimonials({ page }: { page: BasicPageModel }) {
   const intro = introOf(page);

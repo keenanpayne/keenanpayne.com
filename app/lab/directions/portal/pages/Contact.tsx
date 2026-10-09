@@ -1,91 +1,73 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 
-import { socials } from "../../../../data/socials";
-import type { BasicPageModel } from "../../../../lib/types";
+import type { BasicPageModel, LabContent } from "../../../../lib/types";
 import {
-  Directory,
+  formFields,
   Html,
-  Intro,
   introOf,
-  Mascot,
-  Pill,
-  Sprite,
-  TitleBar,
-  useDenverTime,
-  useTo
-} from "../parts";
+  useLocalTime,
+  useTo,
+  type FormField as Field
+} from "../../../site";
+import { Directory, Intro, Mascot, Pill, Sprite, TitleBar } from "../parts";
 import { ITEMS } from "../sprites";
 import { Address } from "./About";
 
-const SERVICES = [
-  "Website design",
-  "Website development",
-  "Web application development",
-  "User Interface (UI) design",
-  "User Experience (UX) research",
-  "Other",
-  "Not sure yet"
-];
+function FormField({ field }: { field: Field }) {
+  const className = field.wide ? "pt-field pt-field--wide" : "pt-field";
 
-const BUDGETS = [
-  "Less than $10,000",
-  "$10,000 - $25,000",
-  "$25,000 - $50,000",
-  "More than $50,000"
-];
+  if (field.kind === "choices") {
+    return (
+      <fieldset className={className}>
+        <legend className="pt-field__label">{field.label}</legend>
+        <div className="pt-choices">
+          {field.options.map((option) => (
+            <label className="pt-choice" key={option}>
+              <input type={field.type} name={field.name} value={option} />
+              <span>{option}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    );
+  }
 
-const Field = ({
-  label,
-  wide,
-  children
-}: {
-  label: string;
-  wide?: boolean;
-  children: ReactNode;
-}) => (
-  <label className={wide ? "pt-field pt-field--wide" : "pt-field"}>
-    <span className="pt-field__label">{label}</span>
-    {children}
-  </label>
-);
-
-const Choices = ({
-  legend,
-  name,
-  type,
-  options,
-  wide
-}: {
-  legend: string;
-  name: string;
-  type: "checkbox" | "radio";
-  options: string[];
-  wide?: boolean;
-}) => (
-  <fieldset className={wide ? "pt-field pt-field--wide" : "pt-field"}>
-    <legend className="pt-field__label">{legend}</legend>
-    <div className="pt-choices">
-      {options.map((option) => (
-        <label className="pt-choice" key={option}>
-          <input type={type} name={name} />
-          <span>{option}</span>
-        </label>
-      ))}
-    </div>
-  </fieldset>
-);
+  return (
+    <label className={className}>
+      <span className="pt-field__label">{field.label}</span>
+      {field.kind === "textarea" ? (
+        <textarea
+          className="pt-input"
+          name={field.name}
+          rows={field.rows}
+          placeholder={field.placeholder}
+        />
+      ) : (
+        <input
+          className="pt-input"
+          type={field.type}
+          name={field.name}
+          placeholder={field.placeholder}
+        />
+      )}
+    </label>
+  );
+}
 
 /** Mock contact and project inquiry forms; the lab never submits anything */
 export function Contact({
   page,
+  content,
   variant
 }: {
   page: BasicPageModel;
+  content: LabContent;
   variant: "contact" | "inquiry";
 }) {
   const intro = introOf(page);
+  const { email, location } = content.profile;
   const to = useTo();
-  const time = useDenverTime();
+  const time = useLocalTime();
   const [sent, setSent] = useState(false);
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -95,8 +77,8 @@ export function Contact({
   const contacts: [ReactNode, ReactNode][] = [
     [
       "General questions:",
-      <a className="pt-tri" href="mailto:contact@keenanpayne.com">
-        contact@keenanpayne.com
+      <a className="pt-tri" href={`mailto:${email}`}>
+        {email}
       </a>
     ],
     [
@@ -114,14 +96,14 @@ export function Contact({
     [
       "Other directories:",
       <span className="pt-dir__links">
-        {[1, 4, 6, 2, 3].map((id) => (
+        {content.socials.map((social) => (
           <a
-            key={id}
+            key={social.url}
             className="pt-tri"
-            href={socials[id].url}
-            rel={socials[id].name === "Mastodon" ? "me" : undefined}
+            href={social.url}
+            rel={social.rel}
           >
-            {socials[id].name}
+            {social.text}
           </a>
         ))}
       </span>
@@ -132,7 +114,7 @@ export function Contact({
         Subscribe by RSS
       </a>
     ],
-    ["Local time:", <span>{time ? `${time} in Denver` : "—"}</span>]
+    ["Local time:", <span>{time ? `${time} in ${location.city}` : "—"}</span>]
   ];
 
   return (
@@ -141,7 +123,7 @@ export function Contact({
 
       <div className="pt-split">
         <aside className="pt-split__aside">
-          <Address />
+          <Address profile={content.profile} />
           <Mascot item="mail" className="pt-split__mascot" />
         </aside>
 
@@ -163,78 +145,9 @@ export function Contact({
               </span>
             </h2>
             <form className="pt-form" onSubmit={onSubmit}>
-              <Field label="Name">
-                <input
-                  className="pt-input"
-                  type="text"
-                  placeholder="First and last name"
-                />
-              </Field>
-              <Field label="Email">
-                <input
-                  className="pt-input"
-                  type="email"
-                  placeholder="email@company.com"
-                />
-              </Field>
-
-              {variant === "contact" ? (
-                <Field label="What would you like to share?" wide>
-                  <textarea className="pt-input" rows={6} />
-                </Field>
-              ) : (
-                <>
-                  <Field label="Company">
-                    <input
-                      className="pt-input"
-                      type="text"
-                      placeholder="Company name"
-                    />
-                  </Field>
-                  <Field label="Website">
-                    <input
-                      className="pt-input"
-                      type="url"
-                      placeholder="If you have one"
-                    />
-                  </Field>
-                  <Choices
-                    legend="What services are you interested in?"
-                    name="pt-services"
-                    type="checkbox"
-                    options={SERVICES}
-                    wide
-                  />
-                  <Field
-                    label="Please tell me about your company and project"
-                    wide
-                  >
-                    <textarea
-                      className="pt-input"
-                      rows={7}
-                      placeholder={
-                        "What does your company do?\nWhat do you hope to do?\nHow can I help you reach your goals?"
-                      }
-                    />
-                  </Field>
-                  <Field label="Ideal launch date">
-                    <input className="pt-input" type="date" />
-                  </Field>
-                  <Choices
-                    legend="Is your launch date flexible?"
-                    name="pt-flexible"
-                    type="radio"
-                    options={["Yes", "No"]}
-                  />
-                  <Choices
-                    legend="Project budget"
-                    name="pt-budget"
-                    type="radio"
-                    options={BUDGETS}
-                    wide
-                  />
-                </>
-              )}
+              {formFields(variant).map((field) => (
+                <FormField key={field.name} field={field} />
+              ))}
 
               <div className="pt-form__actions pt-field--wide">
                 <Pill type="submit" icon="mail" tone="orange">

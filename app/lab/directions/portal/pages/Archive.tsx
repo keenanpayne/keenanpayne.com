@@ -1,17 +1,16 @@
 import { useState } from "react";
 
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import { introOf, pad, useQueryParam, useTo } from "../../../site";
 import {
   Feature,
   Go,
   Heading,
   Icon,
   Intro,
-  introOf,
   MONTH_NAMES,
   NewsList,
   Newsletter,
-  pad,
   parseDate,
   postNews,
   Rating,
@@ -19,8 +18,6 @@ import {
   ratingOf,
   TitleBar,
   typePath,
-  useQueryParam,
-  useTo,
   type Post
 } from "../parts";
 

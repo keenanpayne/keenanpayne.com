@@ -4,19 +4,17 @@ import type {
   PortfolioGridSection,
   PortfolioPageModel
 } from "../../../../lib/types";
+import { Html, samePath, useTo } from "../../../site";
 import {
   BackLink,
   Banner,
   ContentKey,
   Features,
-  Html,
   KeySection,
   LinkCard,
   PostNav,
-  samePath,
   SideGroup,
-  SideList,
-  useTo
+  SideList
 } from "../parts";
 import { FACE, ITEMS, MONITOR } from "../sprites";
 

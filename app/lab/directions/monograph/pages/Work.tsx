@@ -1,4 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import { introOf } from "../../../site";
 import {
   ArrowCircle,
   Banner,
@@ -7,8 +8,6 @@ import {
   Section,
   WorkGrid
 } from "../parts";
-
-import { introOf } from "./Generic";
 
 export function Work({
   page,

@@ -1,34 +1,14 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import { introOf, pad } from "../../../site";
 import {
   Alert,
-  introOf,
   KindWords,
   Magi,
-  pad,
   PageHeader,
   Readout,
   Section,
   ServicesList
 } from "../parts";
-
-const SEQUENCE = [
-  [
-    "Listen",
-    "We talk through your goals, audience, constraints, and what success looks like."
-  ],
-  [
-    "Plan",
-    "A clear scope, timeline, and budget, so there are no surprises later."
-  ],
-  [
-    "Build",
-    "Regular check-ins and working previews as the project comes together."
-  ],
-  [
-    "Launch",
-    "A careful release, documentation for your team, and support after launch."
-  ]
-];
 
 export function Services({
   page,
@@ -67,13 +47,17 @@ export function Services({
         <ServicesList services={content.services} />
       </Section>
 
-      <Section label="Launch sequence" jp="発進" code="4 stages">
+      <Section
+        label="Launch sequence"
+        jp="発進"
+        code={`${content.profile.process.length} stages`}
+      >
         <ol className="mc-sequence">
-          {SEQUENCE.map(([title, copy], index) => (
-            <li key={title}>
+          {content.profile.process.map((step, index) => (
+            <li key={step.title}>
               <span className="mc-sequence__stage">Stage {pad(index + 1)}</span>
-              <h3 className="mc-sequence__title">{title}</h3>
-              <p className="mc-card__copy">{copy}</p>
+              <h3 className="mc-sequence__title">{step.title}</h3>
+              <p className="mc-card__copy">{step.text}</p>
             </li>
           ))}
         </ol>

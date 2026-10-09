@@ -3,15 +3,8 @@ import type {
   PortfolioGridSection,
   PortfolioPageModel
 } from "../../../../lib/types";
-import {
-  ArrowCircle,
-  Banner,
-  Html,
-  Icon,
-  MoreLink,
-  PostNav,
-  useTo
-} from "../parts";
+import { Html, useTo } from "../../../site";
+import { ArrowCircle, Banner, Icon, MoreLink, PostNav } from "../parts";
 
 const COLUMNS: Record<string, number> = {
   "-one-col": 1,

@@ -1,40 +1,30 @@
-import { socials } from "../../../../data/socials";
-import type { BasicPageModel } from "../../../../lib/types";
-import { Html, Icon, PageHeader, Section, useTo } from "../parts";
+import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import { Html, introOf } from "../../../site";
+import { Icon, PageHeader, Section } from "../parts";
 
-import { introOf } from "./Generic";
-
-const PHOTOS = [
-  {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jun-27-2021_o8sd0l.jpg",
-    alt: "Me in grayscale"
-  },
-  {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204077/people/me/dec-26-2021_iuhh3w.jpg",
-    alt: "Me being cold"
-  },
-  {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jul-5-2020_lwglyk.jpg",
-    alt: "Hanging out with my high school buddies"
-  }
-];
-
-export function About({ page }: { page: BasicPageModel }) {
+export function About({
+  page,
+  content
+}: {
+  page: BasicPageModel;
+  content: LabContent;
+}) {
   const intro = introOf(page);
-  const to = useTo();
+  const { facts, photos } = content.profile;
 
-  const facts: [string, React.ReactNode][] = [
-    ["Based in", "Denver, Colorado"],
-    ["Experience", "Eighteen years on the web"],
-    ["Previously", <a href={to("/portfolio/asana/")}>Asana, 2014–2019</a>],
-    ["Shows a year", "About thirty"],
-    ["Off the clock", "Magic: The Gathering, travel, family"],
+  const rows: [string, React.ReactNode][] = [
+    ...facts.map((fact): [string, React.ReactNode] => [
+      fact.label,
+      fact.url ? <a href={fact.url}>{fact.text}</a> : fact.text
+    ]),
     [
       "Elsewhere",
-      [1, 4, 6, 2].map((id, index) => (
-        <span key={id}>
+      content.socials.map((social, index) => (
+        <span key={social.url}>
           {index > 0 && " – "}
-          <a href={socials[id].url}>{socials[id].name}</a>
+          <a href={social.url} rel={social.rel}>
+            {social.text}
+          </a>
         </span>
       ))
     ]
@@ -64,7 +54,7 @@ export function About({ page }: { page: BasicPageModel }) {
             At a glance
           </p>
           <dl className="mg-facts">
-            {facts.map(([term, detail]) => (
+            {rows.map(([term, detail]) => (
               <div key={term}>
                 <dt>{term}</dt>
                 <dd>{detail}</dd>
@@ -76,7 +66,7 @@ export function About({ page }: { page: BasicPageModel }) {
 
       <Section icon="camera" label="Photos of me and others">
         <div className="mg-row mg-row--thirds mg-photos">
-          {PHOTOS.map((photo) => (
+          {photos.map((photo) => (
             <figure className="mg-card" key={photo.src}>
               <div className="mg-figure mg-figure--portrait">
                 <img src={photo.src} alt={photo.alt} loading="lazy" />

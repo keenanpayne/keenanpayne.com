@@ -1,5 +1,8 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from "react";
 
+import { profile } from "../../../data/profile";
+import { coordinates } from "../../site";
+
 /*
  * Denver clock and weather
  * ==================================================
@@ -9,12 +12,12 @@ import { useEffect, useId, useRef, useState, type ReactNode } from "react";
  * fog, rain, snow, or a red storm alert.
  */
 
-const ZONE = "America/Denver";
+const { city, latitude, longitude, short, timeZone: ZONE } = profile.location;
 
 const FORECAST_URL = `https://api.open-meteo.com/v1/forecast?${new URLSearchParams(
   {
-    latitude: "39.7392",
-    longitude: "-104.9903",
+    latitude: String(latitude),
+    longitude: String(longitude),
     current:
       "temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,wind_direction_10m,is_day",
     daily: "temperature_2m_max,temperature_2m_min,sunrise,sunset",
@@ -296,9 +299,9 @@ export function DenverStatus() {
         type="button"
         className="mc-hud__clock"
         popoverTarget={id}
-        aria-label="Denver local time and weather"
+        aria-label={`${city} local time and weather`}
       >
-        <span>Den</span>
+        <span>{city.slice(0, 3)}</span>
         <time>{now ? clockFormat.format(now) : "--:--:--"}</time>
       </button>
 
@@ -307,14 +310,14 @@ export function DenverStatus() {
         popover="auto"
         className="mc-panel mc-den"
         role="dialog"
-        aria-label="Denver local time and weather"
+        aria-label={`${city} local time and weather`}
         data-condition={condition}
         data-night={night ? "" : undefined}
         onToggle={(event) => event.newState === "open" && refresh()}
       >
         <div className="mc-panel__head">
           <span className="mc-panel__label">Atmospheric scan</span>
-          <span className="mc-panel__code">Denver, CO</span>
+          <span className="mc-panel__code">{short}</span>
           <button
             type="button"
             className="mc-den__close"
@@ -434,8 +437,8 @@ export function DenverStatus() {
           )}
         </p>
         <p className="mc-den__credit">
-          Weather data: <a href="https://open-meteo.com/">Open-Meteo</a> ·
-          39.74°N 104.99°W
+          Weather data: <a href="https://open-meteo.com/">Open-Meteo</a> ·{" "}
+          {coordinates(profile.location)}
         </p>
       </div>
     </>

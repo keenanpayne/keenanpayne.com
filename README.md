@@ -72,6 +72,9 @@ npm run size         # Show size of build directory
 
 # Re-count the qualities mentioned in testimonials (app/data/testimonial-analysis.json)
 npm run analyze:testimonials
+
+# Start a design lab direction as a copy of Wireframe
+npm run lab:new -- <slug> ["Display name"]
 ```
 
 ## Project Structure
@@ -83,7 +86,10 @@ npm run analyze:testimonials
 │   ├── components/         # React components
 │   │   ├── layouts/        # Page, post, and portfolio layouts
 │   │   └── sections/       # Page sections (intro, entries, testimonials, …)
-│   ├── data/               # People, testimonials, socials, portfolio case studies, site metadata
+│   ├── data/               # Profile, people, testimonials, socials, portfolio case studies, site metadata
+│   ├── lab/                # Design lab: aesthetic directions over the same content (see app/lab/README.md)
+│   │   ├── directions/     # One folder per direction (its shell, page templates, and styles)
+│   │   └── site/           # What every direction shares: page kinds, navigation, helpers
 │   ├── lib/                # Content loading, Markdown rendering, helpers
 │   │   └── content/        # Server-only content pipeline
 │   ├── routes/             # Route modules (pages, feeds, sitemap, redirects)

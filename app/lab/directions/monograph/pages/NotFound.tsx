@@ -1,4 +1,5 @@
-import { MoreLink, useTo } from "../parts";
+import { useTo } from "../../../site";
+import { MoreLink } from "../parts";
 
 export function NotFound() {
   const to = useTo();

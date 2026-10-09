@@ -1,4 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import { introOf, postsByYear, postTypes } from "../../../site";
 import {
   ArrowCircle,
   MoreLink,
@@ -6,8 +7,6 @@ import {
   PageHeader,
   Section
 } from "../parts";
-
-import { introOf } from "./Generic";
 
 type Posts = LabContent["posts"];
 
@@ -48,13 +47,8 @@ export function Archive({
   content: LabContent;
 }) {
   const intro = introOf(page);
-  const years = new Map<string, Posts>();
-  for (const post of content.posts) {
-    years.set(post.year, [...(years.get(post.year) ?? []), post]);
-  }
-  const types = [
-    ...new Set(content.posts.map((post) => post.type).filter(Boolean))
-  ];
+  const years = postsByYear(content.posts);
+  const types = postTypes(content.posts);
 
   return (
     <>
@@ -65,7 +59,7 @@ export function Archive({
         lede={intro?.subheading}
       >
         <p className="mg-pageHeader__stats">
-          {content.posts.length} articles · {years.size} years ·{" "}
+          {content.posts.length} articles · {years.length} years ·{" "}
           {types.join(", ")}
         </p>
       </PageHeader>
@@ -75,7 +69,7 @@ export function Archive({
       </Section>
 
       <Section icon="list" label="Index">
-        {[...years].map(([year, posts]) => (
+        {years.map(([year, posts]) => (
           <div className="mg-year" key={year}>
             <h3 className="mg-year__label">{year}</h3>
             <ol className="mg-index">

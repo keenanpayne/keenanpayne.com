@@ -7,6 +7,8 @@ import ripplingLogo from "../../assets/svg/rippling.svg?raw";
 import stableLogo from "../../assets/svg/stable.svg?raw";
 import { people } from "../../data/people";
 import { portfolio } from "../../data/portfolio";
+import { profile } from "../../data/profile";
+import { socials } from "../../data/socials";
 import testimonialAnalysis from "../../data/testimonial-analysis.json";
 import { testimonials } from "../../data/testimonials";
 import type { PortfolioItem, TestimonialAnalysis } from "../../data/types";
@@ -1096,6 +1098,7 @@ export function getLabContent(): LabContent {
       title: String(post.data.title ?? ""),
       url: post.url,
       date: readableDate(post.date),
+      iso: htmlDateString(post.date),
       year: postYear(post.date),
       type: optionalString(post.data.type),
       lede: optionalString(post.data.lede ?? post.data.meta?.description),
@@ -1127,10 +1130,28 @@ export function getLabContent(): LabContent {
     lede: optionalString(item.data.short_lede ?? item.data.lede)
   }));
 
+  const { socials: socialIds, ...about } = profile;
+  const image = (id: string, transform: string) =>
+    `${CLOUDINARY}/image/upload/f_auto,q_auto,${transform}/${id}`;
+
   return {
     posts,
     work,
     services,
-    testimonials: resolveTestimonials([6, 41, 2])
+    testimonials: resolveTestimonials([6, 41, 2]),
+    profile: {
+      ...about,
+      avatar: image(about.avatar, "c_fill,g_face,ar_1:1,w_480"),
+      photos: about.photos.map((photo) => ({
+        src: image(photo.image, "w_800"),
+        large: image(photo.image, "c_limit,w_1800"),
+        alt: photo.alt
+      }))
+    },
+    socials: socialIds.map((id) => ({
+      text: socials[id].name,
+      url: socials[id].url,
+      rel: socials[id].name === "Mastodon" ? "me" : undefined
+    }))
   };
 }

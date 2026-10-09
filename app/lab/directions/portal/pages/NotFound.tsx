@@ -1,5 +1,6 @@
 import type { LabContent } from "../../../../lib/types";
-import { BubbleCard, Mascot, Sprite, TitleBar, useTo } from "../parts";
+import { useTo } from "../../../site";
+import { BubbleCard, Mascot, Sprite, TitleBar } from "../parts";
 import { DIE, ITEMS, pixelNumber } from "../sprites";
 
 export function NotFound({ content }: { content: LabContent }) {

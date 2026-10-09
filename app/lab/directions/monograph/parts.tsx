@@ -1,4 +1,4 @@
-import { createContext, useContext, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import type {
   LabContent,
@@ -6,18 +6,7 @@ import type {
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
-
-//
-// Links
-// -----
-
-/** Lab URL prefix (e.g. `/lab/monograph`) so hard-coded links stay in the lab */
-export const BaseContext = createContext("");
-
-export function useTo() {
-  const base = useContext(BaseContext);
-  return (path: string) => `${base}${path}`;
-}
+import { Html, useTo } from "../../site";
 
 //
 // Icons
@@ -83,16 +72,6 @@ export const Icon = ({ name }: { name: IconName }) => (
 //
 // Building blocks
 // ---------------
-
-export const Html = ({
-  as: Tag = "div",
-  className,
-  html
-}: {
-  as?: "div" | "p" | "span" | "h1" | "blockquote";
-  className?: string;
-  html: string;
-}) => <Tag className={className} dangerouslySetInnerHTML={{ __html: html }} />;
 
 export const SectionLabel = ({
   icon,

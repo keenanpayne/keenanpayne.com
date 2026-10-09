@@ -1,25 +1,20 @@
 import type { LabContent } from "../../../../lib/types";
+import { coordinates, Html, pad, useLocalTime, useTo } from "../../../site";
 import {
   Alert,
   Button,
   KindWords,
   Magi,
-  pad,
   Panel,
   PostCards,
   Readout,
   Section,
   Ticker,
-  UnitGrid,
-  useDenverTime,
-  useTo
+  UnitGrid
 } from "../parts";
 
-const AVATAR =
-  "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,c_fill,g_face,ar_1:1,w_480/v1666204078/people/me/jun-27-2021_o8sd0l.jpg";
-
 /** Avatar in a hexagon, ringed by a gauge like a cockpit clock */
-function Gauge() {
+function Gauge({ avatar }: { avatar: string }) {
   const ticks = Array.from({ length: 60 }, (_, i) => i);
 
   return (
@@ -75,7 +70,7 @@ function Gauge() {
         <circle cx="160" cy="160" r="104" className="mc-gauge__line" />
 
         <image
-          href={AVATAR}
+          href={avatar}
           x="64"
           y="72"
           width="192"
@@ -116,19 +111,21 @@ function Gauge() {
 
 export function Home({ content }: { content: LabContent }) {
   const to = useTo();
-  const time = useDenverTime(false);
+  const time = useLocalTime({ hour12: false });
+  const { profile } = content;
+  const { experience, location } = profile;
 
   return (
     <>
       <section className="mc-hero">
         <div className="mc-hero__main">
           <p className="mc-pageHeader__eyebrow">
-            <span className="mc-pageHeader__episode">Episode:18</span>
-            Eighteen years on the web
+            <span className="mc-pageHeader__episode">{`Episode:${experience.years}`}</span>
+            {experience.text}
           </p>
           <div className="mc-titlecard mc-titlecard--hero">
             <h1 className="mc-titlecard__title">
-              Keenan Payne,
+              {`${profile.name},`}
               <span>web developer</span>
               <span>&amp; designer</span>
             </h1>
@@ -136,17 +133,7 @@ export function Home({ content }: { content: LabContent }) {
               ウェブ開発者・デザイナー
             </p>
           </div>
-          <p className="mc-hero__lede">
-            I’m a full-stack web developer and designer with eighteen years of
-            experience helping teams market and build products on the web. I
-            spent five years growing the website at{" "}
-            <a href={to("/portfolio/asana/")}>Asana</a>, and have since
-            partnered with <a href={to("/portfolio/rippling/")}>Rippling</a>,{" "}
-            <a href={to("/portfolio/gofundme/")}>GoFundMe</a>,{" "}
-            <a href={to("/portfolio/neuralink/")}>Neuralink</a>, and many
-            others. I also <a href={to("/archive/")}>write</a> about craft,
-            career, and the occasional reflection.
-          </p>
+          <Html as="p" className="mc-hero__lede" html={profile.bio} />
           <div className="mc-hero__actions">
             <Button href={to("/portfolio/")}>View case studies</Button>
             <Button href={to("/contact/")} tone="ghost">
@@ -161,9 +148,14 @@ export function Home({ content }: { content: LabContent }) {
           label="Pilot status"
           code="Sync stable"
         >
-          <Gauge />
+          <Gauge avatar={profile.avatar} />
           <dl className="mc-readouts mc-readouts--grid">
-            <Readout label="Experience" value="18" unit="yrs" tone="amber" />
+            <Readout
+              label="Experience"
+              value={experience.years}
+              unit="yrs"
+              tone="amber"
+            />
             <Readout
               label="Case studies"
               value={pad(content.work.length, 3)}
@@ -177,8 +169,8 @@ export function Home({ content }: { content: LabContent }) {
             <Readout label="Local time" value={time ?? "--:--"} unit="MT" />
           </dl>
           <p className="mc-hero__coords">
-            <span>Denver, CO</span>
-            <span>39.74°N 104.99°W</span>
+            <span>{location.short}</span>
+            <span>{coordinates(location)}</span>
           </p>
         </Panel>
       </section>

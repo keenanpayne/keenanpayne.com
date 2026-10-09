@@ -4,15 +4,12 @@ import type {
   EntriesSection,
   LabContent
 } from "../../../../lib/types";
+import { Html, introOf, pad, samePath } from "../../../site";
 import {
   Alert,
-  Html,
-  introOf,
   KindWords,
-  pad,
   PageHeader,
   Panel,
-  samePath,
   Section,
   ServicesList,
   Tri
@@ -44,19 +41,20 @@ function Entries({ section }: { section: EntriesSection }) {
   );
 }
 
-/** Any other page (service detail, type and tag archives, …) */
+/** A service, or any other page (type and tag archives, …) */
 export function Generic({
   page,
-  content
+  content,
+  isService = false
 }: {
   page: BasicPageModel;
   content: LabContent;
+  isService?: boolean;
 }) {
   const intro = introOf(page);
   const serviceIndex = content.services.findIndex((service) =>
     samePath(service.url, page.url)
   );
-  const isService = page.url.includes("/services/");
   const title = intro?.heading ?? intro?.title ?? page.meta.title;
 
   return (

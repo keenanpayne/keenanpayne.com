@@ -1,35 +1,32 @@
-import { socials } from "../../../../data/socials";
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import { Html, introOf, pad, relabel, useTo } from "../../../site";
 import {
   Directory,
   Heading,
-  Html,
   Icon,
   Intro,
-  introOf,
   KeySection,
-  pad,
-  TitleBar,
-  useTo
+  TitleBar
 } from "../parts";
 
-export const PHOTOS = [
-  {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jun-27-2021_o8sd0l.jpg",
-    alt: "Me in grayscale"
-  },
-  {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204077/people/me/dec-26-2021_iuhh3w.jpg",
-    alt: "Me being cold"
-  },
-  {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jul-5-2020_lwglyk.jpg",
-    alt: "Hanging out with my high school buddies"
-  }
-];
+// Portal's voice for the shared profile facts
+const FACT_LABELS = {
+  role: "Class:",
+  location: "Home base:",
+  experience: "Experience:",
+  previously: "Previous level:",
+  shows: "Shows a year:",
+  offDuty: "Side quests:"
+};
 
 /** Card with a house tab, like the old "Our address" box */
-export function Address({ children }: { children?: React.ReactNode }) {
+export function Address({
+  profile,
+  children
+}: {
+  profile: LabContent["profile"];
+  children?: React.ReactNode;
+}) {
   const to = useTo();
 
   return (
@@ -41,11 +38,11 @@ export function Address({ children }: { children?: React.ReactNode }) {
         Home base
       </p>
       <p className="pt-address__body">
-        Keenan Payne
+        {profile.name}
         <br />
-        Denver, Colorado
+        {profile.location.name}
         <br />
-        Mountain Time
+        {profile.location.timeZoneName}
       </p>
       <p className="pt-address__foot">
         Got a question or general comment?{" "}
@@ -66,16 +63,24 @@ export function About({
   const intro = introOf(page);
   const to = useTo();
 
-  const facts: [string, React.ReactNode][] = [
-    ["Class:", "Full-stack web developer & designer"],
-    ["Home base:", "Denver, Colorado"],
-    ["Experience:", "Eighteen years on the web"],
-    [
-      "Previous level:",
-      <a className="pt-tri" href={to("/portfolio/asana/")}>
-        Asana, 2014–2019
-      </a>
-    ],
+  const { facts, photos } = content.profile;
+
+  const rows: [string, React.ReactNode][] = relabel(facts, FACT_LABELS).map(
+    (fact) => [
+      fact.label,
+      fact.url ? (
+        <a className="pt-tri" href={fact.url}>
+          {fact.text}
+        </a>
+      ) : (
+        fact.text
+      )
+    ]
+  );
+  // Tally the archive right after the previous level
+  rows.splice(
+    facts.findIndex((fact) => fact.id === "previously") + 1,
+    0,
     [
       "Case studies:",
       <a className="pt-tri" href={to("/portfolio/")}>
@@ -87,45 +92,43 @@ export function About({
       <a className="pt-tri" href={to("/archive/")}>
         {pad(content.posts.length)} published
       </a>
-    ],
-    ["Shows a year:", "About thirty"],
-    ["Side quests:", "Magic: The Gathering, travel, family"],
-    [
-      "Elsewhere:",
-      <span className="pt-dir__links">
-        {[1, 4, 6, 2].map((id) => (
-          <a
-            key={id}
-            className="pt-tri"
-            href={socials[id].url}
-            rel={socials[id].name === "Mastodon" ? "me" : undefined}
-          >
-            {socials[id].name}
-          </a>
-        ))}
-      </span>
     ]
-  ];
+  );
+  rows.push([
+    "Elsewhere:",
+    <span className="pt-dir__links">
+      {content.socials.map((social) => (
+        <a
+          key={social.url}
+          className="pt-tri"
+          href={social.url}
+          rel={social.rel}
+        >
+          {social.text}
+        </a>
+      ))}
+    </span>
+  ]);
 
   return (
     <>
-      <TitleBar title="About" images={PHOTOS.map((photo) => photo.src)} />
+      <TitleBar title="About" images={photos.map((photo) => photo.src)} />
 
       <div className="pt-split">
         <aside className="pt-split__aside">
-          <Address />
+          <Address profile={content.profile} />
           <figure className="pt-player">
-            <img src={PHOTOS[0].src} alt={PHOTOS[0].alt} />
+            <img src={photos[0].src} alt={photos[0].alt} />
             <figcaption>
               <span className="pt-player__tag">1P</span>
-              Keenan
+              {content.profile.name.split(" ")[0]}
             </figcaption>
           </figure>
         </aside>
 
         <div className="pt-split__main">
           <Intro heading={intro?.heading} lede={intro?.subheading} />
-          <Directory title="Player profile" rows={facts} />
+          <Directory title="Player profile" rows={rows} />
           {intro?.body && (
             <KeySection title="Bio" toKey={false}>
               <Html className="pt-prose" html={intro.body} />
@@ -137,7 +140,7 @@ export function About({
       <section className="pt-section">
         <Heading>Photo album</Heading>
         <ul className="pt-album">
-          {PHOTOS.map((photo, index) => (
+          {photos.map((photo, index) => (
             <li key={photo.src}>
               <figure>
                 <img src={photo.src} alt={photo.alt} loading="lazy" />

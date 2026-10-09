@@ -1,5 +1,6 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
 import type { LabContent, PostPageModel } from "../../../../lib/types";
+import { readingMinutes, samePath, useTo } from "../../../site";
 import {
   BackLink,
   Banner,
@@ -9,11 +10,9 @@ import {
   Newsletter,
   PostNav,
   ratingOf,
-  samePath,
   SideGroup,
   SideList,
-  Sprite,
-  useTo
+  Sprite
 } from "../parts";
 import { ITEMS, MONITOR } from "../sprites";
 
@@ -89,8 +88,7 @@ export function Post({
     ""
   );
   const topics = splitTopics(body);
-  const words = body.replace(/<[^>]+>/g, " ").split(/\s+/).length;
-  const minutes = Math.max(1, Math.round(words / 230));
+  const minutes = readingMinutes(body);
   const type = page.type?.label;
   const rating = ratingOf(type);
   const image = content.posts.find((post) =>

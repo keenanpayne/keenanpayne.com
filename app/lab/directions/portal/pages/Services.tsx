@@ -1,34 +1,15 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
+import { introOf } from "../../../site";
 import {
   Heading,
   Icon,
   Intro,
-  introOf,
   NewsList,
   QuotePromo,
   Sprite,
   TitleBar
 } from "../parts";
 import { ITEMS, type Item } from "../sprites";
-
-const SEQUENCE = [
-  [
-    "Listen",
-    "We talk through your goals, audience, constraints, and what success looks like."
-  ],
-  [
-    "Plan",
-    "A clear scope, timeline, and budget, so there are no surprises later."
-  ],
-  [
-    "Build",
-    "Regular check-ins and working previews as the project comes together."
-  ],
-  [
-    "Launch",
-    "A careful release, documentation for your team, and support after launch."
-  ]
-];
 
 /** One power-up per service, cycled in order */
 export const SERVICE_ITEMS: Item[] = [
@@ -45,14 +26,18 @@ export const SERVICE_ITEMS: Item[] = [
 export const serviceItem = (index: number) =>
   SERVICE_ITEMS[Math.max(0, index) % SERVICE_ITEMS.length];
 
-/** The project process as a level select: World 1-1 through 1-4 */
-export const Worlds = () => (
+/** The project process as a level select: World 1-1, 1-2, … */
+export const Worlds = ({
+  steps
+}: {
+  steps: LabContent["profile"]["process"];
+}) => (
   <ol className="pt-worlds">
-    {SEQUENCE.map(([title, copy], index) => (
-      <li key={title}>
+    {steps.map((step, index) => (
+      <li key={step.title}>
         <span className="pt-worlds__label">World 1-{index + 1}</span>
-        <h3 className="pt-worlds__title">{title}</h3>
-        <p>{copy}</p>
+        <h3 className="pt-worlds__title">{step.title}</h3>
+        <p>{step.text}</p>
       </li>
     ))}
   </ol>
@@ -100,7 +85,7 @@ export function Services({
 
       <section className="pt-section">
         <Heading>How it works</Heading>
-        <Worlds />
+        <Worlds steps={content.profile.process} />
       </section>
 
       <div className="pt-pair">

@@ -4,25 +4,22 @@ import type {
   EntriesSection,
   LabContent
 } from "../../../../lib/types";
+import { Html, introOf, samePath, useTo } from "../../../site";
 import {
   BackLink,
   Banner,
   ContentKey,
   Heading,
-  Html,
   Intro,
-  introOf,
   KeySection,
   LinkCard,
   NewsList,
   QuotePromo,
   ratingOf,
-  samePath,
   SideGroup,
   SideList,
   Sprite,
   TitleBar,
-  useTo,
   WorkCard
 } from "../parts";
 import { FACE, ITEMS } from "../sprites";
@@ -122,7 +119,7 @@ function Service({
           ))}
           <section className="pt-section pt-anchor" id={extras[0].id}>
             <Heading>{extras[0].title}</Heading>
-            <Worlds />
+            <Worlds steps={content.profile.process} />
           </section>
           <section className="pt-section pt-anchor" id={extras[1].id}>
             <Heading more={{ href: to("/portfolio/"), text: "All work" }}>
@@ -172,17 +169,17 @@ function Service({
   );
 }
 
-/** Any other page (service detail, type and tag archives, …) */
+/** A service, or any other page (type and tag archives, …) */
 export function Generic({
   page,
-  content
+  content,
+  isService = false
 }: {
   page: BasicPageModel;
   content: LabContent;
+  isService?: boolean;
 }) {
-  if (page.url.includes("/services/")) {
-    return <Service page={page} content={content} />;
-  }
+  if (isService) return <Service page={page} content={content} />;
 
   const intro = introOf(page);
   const title = page.meta.title.split(" | ")[0];

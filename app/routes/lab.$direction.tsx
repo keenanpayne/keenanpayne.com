@@ -5,6 +5,7 @@ import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
 import { rebaseLinks } from "../lab/links.server";
 import { getDirection, labPath } from "../lab/registry";
+import { DirectionPage, navigationFor, resolveView } from "../lab/site";
 import { getLabContent, getPage } from "../lib/content/content.server";
 import { metadata } from "../lib/site";
 import type { Route } from "./+types/lab.$direction";
@@ -25,29 +26,32 @@ export function loader({ params }: Route.LoaderArgs) {
 
   // The site path this mockup mirrors, e.g. `/lab/monograph/about/` -> `/about/`
   const path = `/${params["*"] ?? ""}`;
-  const page = path === "/" ? null : getPage(path);
-  const notFound = path !== "/" && !page;
+  const view = resolveView(path, getPage(path));
 
   const result = rebaseLinks(
     {
       direction,
       path,
-      page: page ?? null,
-      notFound,
+      view,
+      navigation: navigationFor(view, path),
       content: getLabContent()
     },
     labPath(direction.slug).slice(0, -1)
   );
 
-  return notFound && path !== NOT_FOUND_PATH
+  return view.kind === "notFound" && path !== NOT_FOUND_PATH
     ? data(result, { status: 404 })
     : result;
 }
 
 export const meta = ({ loaderData }: Route.MetaArgs) => {
-  const pageTitle = loaderData?.notFound
-    ? "Not found"
-    : (loaderData?.page?.meta.title.split(" | ")[0] ?? "Home");
+  const view = loaderData?.view;
+  const pageTitle =
+    !view || view.kind === "notFound"
+      ? "Not found"
+      : view.kind === "home"
+        ? "Home"
+        : view.page.meta.title.split(" | ")[0];
 
   return [
     {
@@ -58,17 +62,18 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
 };
 
 export default function LabDirection({ loaderData }: Route.ComponentProps) {
-  const { direction, path, page, notFound, content } = loaderData;
-  const Direction = directionComponents[direction.slug];
+  const { direction, path, view, navigation, content } = loaderData;
 
   return (
     <>
-      <Direction
+      <DirectionPage
+        // Fresh state for every page, like a full page load
         key={`${direction.slug}${path}`}
+        direction={directionComponents[direction.slug]}
         base={labPath(direction.slug).slice(0, -1)}
         path={path}
-        page={page}
-        notFound={notFound}
+        view={view}
+        navigation={navigation}
         content={content}
       />
       <LabBar current={direction.slug} path={path} />

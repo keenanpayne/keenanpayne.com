@@ -1,7 +1,7 @@
 import { useEffect, useSyncExternalStore } from "react";
 import { Link, useNavigate } from "react-router";
 
-import { directions, getDirection, labPath } from "./registry";
+import { directions, labPath, SAMPLE_PAGES } from "./registry";
 
 type Theme = "auto" | "light" | "dark";
 const THEMES: Theme[] = ["auto", "light", "dark"];
@@ -43,8 +43,7 @@ const getServerSnapshot = (): Theme => "auto";
 /** Floating switcher shared by every lab page */
 export function LabBar({ current, path }: { current?: string; path?: string }) {
   const navigate = useNavigate();
-  const pages = getDirection(current)?.pages ?? [];
-  const isListed = pages.some((page) => page.path === path);
+  const isListed = SAMPLE_PAGES.some((page) => page.path === path);
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
@@ -76,7 +75,7 @@ export function LabBar({ current, path }: { current?: string; path?: string }) {
           </option>
         ))}
       </select>
-      {current && pages.length > 0 && (
+      {current && (
         <select
           className="labBar__select"
           aria-label="Page"
@@ -84,7 +83,7 @@ export function LabBar({ current, path }: { current?: string; path?: string }) {
           onChange={(event) => navigate(labPath(current, event.target.value))}
         >
           {!isListed && <option value="">{path}</option>}
-          {pages.map((page) => (
+          {SAMPLE_PAGES.map((page) => (
             <option key={page.path} value={page.path}>
               {page.label}
             </option>
