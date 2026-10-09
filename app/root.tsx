@@ -15,6 +15,7 @@ import { Header } from "./components/Header";
 import { Topbar } from "./components/Topbar";
 import { getNavigation } from "./lib/content/content.server";
 import { useMarkHydrated } from "./lib/hydration";
+import { SECURITY_HEADERS } from "./lib/security-headers";
 import { metadata } from "./lib/site";
 import stylesheet from "./styles/app.css?url";
 
@@ -51,6 +52,16 @@ export const links: Route.LinksFunction = () => [
     rel: "preconnect",
     href: "https://fonts.gstatic.com",
     crossOrigin: "anonymous"
+  }
+];
+
+export const middleware: Route.MiddlewareFunction[] = [
+  async (_, next) => {
+    const response = await next();
+    for (const [name, value] of Object.entries(SECURITY_HEADERS)) {
+      response.headers.set(name, value);
+    }
+    return response;
   }
 ];
 
