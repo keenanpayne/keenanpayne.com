@@ -1,4 +1,4 @@
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { profile } from "../../data/profile";
 
@@ -83,4 +83,39 @@ export function useQueryParam(name: string) {
   const [value, setValue] = useState<string>();
 
   return [value ?? fromUrl, setValue] as const;
+}
+
+/**
+ * A phone menu that the navigation folds into while `wide`, a media query,
+ * doesn't match. Escape closes it and hands focus back to its `toggle`;
+ * widening past `wide` or moving to another `path` closes it too.
+ */
+export function useMenu(wide: string, path: string) {
+  const toggle = useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = useState(false);
+  const [openedOn, setOpenedOn] = useState(path);
+
+  if (openedOn !== path) {
+    setOpenedOn(path);
+    setOpen(false);
+  }
+
+  useEffect(() => {
+    if (!open) return;
+    const query = matchMedia(wide);
+    const close = () => setOpen(false);
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || event.defaultPrevented) return;
+      close();
+      toggle.current?.focus();
+    };
+    query.addEventListener("change", close);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      query.removeEventListener("change", close);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open, wide]);
+
+  return { open, setOpen, toggle };
 }

@@ -538,6 +538,8 @@ body:has(.mc) {
    ========================================================================== */
 
 .mc-hud {
+  --mc-hud-h: 64px;
+
   z-index: 50;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -545,6 +547,18 @@ body:has(.mc) {
   gap: 12px 24px;
   padding: 12px var(--mc-gutter) 0;
   background: color-mix(in srgb, var(--mc-void) 90%, transparent);
+
+  /* Phones: one sticky row (ID, clock, menu) over the command deck */
+  @media (width < 760px) {
+    position: sticky;
+    top: 0;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 8px;
+    height: var(--mc-hud-h);
+    padding-block: 0;
+    border-bottom: 1px solid var(--mc-line-dim);
+    backdrop-filter: blur(6px);
+  }
 
   @media (width >= 1000px) {
     position: sticky;
@@ -589,6 +603,7 @@ body:has(.mc) {
 .mc-hud__name {
   display: grid;
   min-width: 0;
+
   color: var(--mc-title);
   font-family: var(--mc-cond);
   font-size: 22px;
@@ -596,6 +611,26 @@ body:has(.mc) {
   letter-spacing: 0.08em;
   line-height: 1.05;
   text-transform: uppercase;
+
+  /* Phones stack the name into a nameplate beside the badge */
+  @media (width < 760px) {
+    font-size: 18px;
+    line-height: 0.95;
+
+    & small {
+      display: none;
+    }
+  }
+
+  /* The badge carries the ID on the narrowest phones */
+  @media (width < 360px) {
+    position: absolute;
+    overflow: hidden;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
 
   & small {
     overflow: hidden;
@@ -618,6 +653,10 @@ body:has(.mc) {
   border-top: 1px solid var(--mc-line-faint);
   border-bottom: 1px solid var(--mc-line-dim);
   scrollbar-width: none;
+
+  @media (width < 760px) {
+    display: none;
+  }
 
   @media (width >= 1000px) {
     grid-column: auto;
@@ -732,6 +771,269 @@ body:has(.mc) {
 
   @media (width >= 1200px) {
     display: flex;
+  }
+}
+
+/* Opens the command deck on phones */
+.mc-hud__toggle {
+  display: none;
+
+  @media (width < 760px) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 12px 0 11px;
+    border: 1px solid var(--mc-line);
+    border-radius: 0;
+    background: transparent;
+    color: var(--mc-amber);
+    font: 600 16px/1 var(--mc-cond);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  &:hover {
+    background: var(--mc-glow);
+  }
+
+  &[aria-expanded="true"] {
+    border-color: var(--mc-amber);
+    background: var(--mc-amber);
+    color: var(--mc-void);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--mc-green);
+    outline-offset: 2px;
+  }
+}
+
+/* Three bars that cross into an X while the deck is open */
+.mc-hud__bars {
+  display: grid;
+  gap: 3px;
+  width: 14px;
+
+  & span {
+    height: 2px;
+    background: currentColor;
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  [aria-expanded="true"] > & span {
+    &:nth-child(1) {
+      transform: translateY(5px) rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      transform: translateY(-5px) rotate(-45deg);
+    }
+  }
+}
+
+/* Command deck (phones)
+   ========================================================================== */
+
+/* Hangs below the sticky header and fills the rest of the screen, with the
+   page held still behind it */
+.mc-deck {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  height: calc(100dvh - var(--mc-hud-h));
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      var(--mc-line-faint) 0 1px,
+      transparent 1px 24px
+    ),
+    var(--mc-panel);
+  background-attachment: local;
+
+  &[hidden] {
+    display: none;
+  }
+
+  /* One pass of the scanner as the deck powers up */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 45%;
+    background: linear-gradient(
+      transparent,
+      var(--mc-glow) 85%,
+      var(--mc-line-dim)
+    );
+    opacity: 0;
+    pointer-events: none;
+    animation: mc-deck-sweep 0.7s cubic-bezier(0.3, 0.6, 0.4, 1);
+  }
+
+  & > .mc-hazard {
+    flex: none;
+    height: 6px;
+  }
+}
+
+:root:has(.mc-deck:not([hidden])) {
+  overflow: hidden;
+}
+
+/* The lab switcher steps aside so it doesn't cover the deck's footer */
+body:has(.mc-deck:not([hidden])) .labBar {
+  display: none;
+}
+
+.mc-deck__head {
+  padding-inline: var(--mc-gutter);
+  background: var(--mc-panel);
+}
+
+.mc-deck__list {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 14px var(--mc-gutter);
+  list-style: none;
+
+  & li {
+    animation: mc-deck-in 0.36s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--mc-i) * 45ms + 90ms);
+  }
+
+  & a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 64px;
+    padding: 0 14px 0 12px;
+    border: 1px solid var(--mc-line-faint);
+    border-left: 3px solid var(--mc-line-dim);
+    background: var(--mc-well);
+    color: var(--mc-title);
+    text-decoration: none;
+
+    &:hover {
+      border-color: var(--mc-amber);
+      color: var(--mc-amber);
+    }
+
+    &[aria-current="page"] {
+      border-color: var(--mc-amber);
+      background: var(--mc-amber);
+      color: var(--mc-void);
+      box-shadow: 0 0 24px var(--mc-glow);
+    }
+  }
+
+  & .mc-tri {
+    color: var(--mc-line);
+  }
+
+  & [aria-current] .mc-tri {
+    color: inherit;
+  }
+}
+
+.mc-deck__num {
+  width: 22px;
+  color: var(--mc-muted);
+  font-family: var(--mc-mono);
+  font-size: 12px;
+
+  [aria-current] > & {
+    color: inherit;
+    opacity: 0.7;
+  }
+}
+
+.mc-deck__text {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--mc-cond);
+  font-size: clamp(28px, 9vw, 34px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* The lit bay already says it on the narrowest phones */
+.mc-deck__here {
+  padding: 3px 6px;
+  border: 1px solid currentColor;
+  font-family: var(--mc-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+
+  @media (width < 400px) {
+    display: none;
+  }
+}
+
+.mc-deck__sector {
+  color: var(--mc-muted);
+  font-family: var(--mc-serif);
+  font-size: 18px;
+  font-weight: 800;
+
+  [aria-current] > & {
+    color: inherit;
+  }
+}
+
+.mc-deck__foot {
+  display: grid;
+  gap: 12px;
+  margin-top: auto;
+  padding: 16px var(--mc-gutter) max(24px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--mc-line-faint);
+  background: var(--mc-panel);
+  font-family: var(--mc-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.mc-deck__signal {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--mc-green);
+}
+
+.mc-deck__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  & a {
+    display: inline-block;
+    padding-block: 6px;
+    color: var(--mc-ink);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--mc-amber);
+    }
   }
 }
 
@@ -5231,6 +5533,25 @@ textarea.mc-input {
 
 /* Motion
    ========================================================================== */
+
+@keyframes mc-deck-in {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+}
+
+@keyframes mc-deck-sweep {
+  from {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(160%);
+  }
+}
 
 @keyframes mc-blink {
   50% {

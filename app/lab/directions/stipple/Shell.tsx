@@ -1,6 +1,6 @@
-import { useEffect, useId, useRef, useState } from "react";
+import { useId } from "react";
 
-import { samePath, useTo, type ShellProps } from "../../site";
+import { samePath, useMenu, useTo, type ShellProps } from "../../site";
 
 import { DenverClock, DenverNotes } from "./Denver";
 import { Arrow, Mark, Signup, Terrain } from "./parts";
@@ -15,31 +15,12 @@ const WIDE = "(width >= 760px)";
  * On a phone the notch keeps Contact and a menu, which opens the pages as
  * an index inside the window.
  */
-export function Shell({ navigation, content, children }: ShellProps) {
+export function Shell({ path, navigation, content, children }: ShellProps) {
   const to = useTo();
   const notes = useId();
   const menu = useId();
-  const toggle = useRef<HTMLButtonElement>(null);
-  const [open, setOpen] = useState(false);
+  const { open, setOpen, toggle } = useMenu(WIDE, path);
   const { profile, socials } = content;
-
-  // Escape closes the menu, and so does widening past where it's used
-  useEffect(() => {
-    if (!open) return;
-    const wide = matchMedia(WIDE);
-    const close = () => setOpen(false);
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key !== "Escape" || event.defaultPrevented) return;
-      close();
-      toggle.current?.focus();
-    };
-    wide.addEventListener("change", close);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      wide.removeEventListener("change", close);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
 
   return (
     <div className="st">

@@ -1,10 +1,39 @@
-import { useState } from "react";
+import { useId, useState, type ReactNode } from "react";
 
 import type { LabContent, SocialLink } from "../../../lib/types";
-import { useTo, type ShellProps, type View } from "../../site";
+import {
+  samePath,
+  useMenu,
+  useTo,
+  type NavItem,
+  type ShellProps,
+  type View
+} from "../../site";
 
-import { Ad, Go, Icon, Mascot, Pill, Sprite, type AdName } from "./parts";
+import {
+  Ad,
+  cx,
+  Go,
+  Icon,
+  ItemIcon,
+  Mascot,
+  Pill,
+  Sprite,
+  type AdName
+} from "./parts";
 import { ICONS, INFO, type IconName, type Item } from "./sprites";
+
+/** Below this, the header folds into the site map */
+const WIDE = "(width >= 640px)";
+
+/** The item each zone's button shows on the site map */
+const ZONE_ITEMS: Record<string, Item> = {
+  "/portfolio/": "case",
+  "/archive/": "pencil",
+  "/about/": "star",
+  "/services/": "wrench",
+  "/contact/": "mail"
+};
 
 const SUB_NAVIGATION = [
   { path: "/", text: "Home" },
@@ -178,20 +207,29 @@ function sceneFor(
   };
 }
 
-/** Raised tab on the top right of the frame: search the writing or work */
-function Search() {
+/**
+ * Raised tab on the top right of the frame: search the writing or work. The
+ * site map carries its own on phones.
+ */
+function Search({ className }: { className?: string }) {
   const to = useTo();
+  const id = useId();
   const [scope, setScope] = useState("/archive/");
 
   return (
-    <form className="pt-search" role="search" method="get" action={to(scope)}>
+    <form
+      className={cx("pt-search", className)}
+      role="search"
+      method="get"
+      action={to(scope)}
+    >
       <p className="pt-search__label">
         <Icon name="arrowRight" />
-        <label htmlFor="pt-search-q">Search</label>
+        <label htmlFor={id}>Search</label>
         <a href={to("/archive/#archive")}>Tips</a>
       </p>
       <div className="pt-search__row">
-        <input id="pt-search-q" className="pt-input" type="search" name="q" />
+        <input id={id} className="pt-input" type="search" name="q" />
       </div>
       <div className="pt-search__row">
         <select
@@ -209,6 +247,160 @@ function Search() {
   );
 }
 
+/** The quick chips on the header's right: Code bank and Work list */
+function Chips({ codeBank }: { codeBank?: SocialLink }) {
+  const to = useTo();
+
+  return (
+    <>
+      {codeBank && (
+        <a className="pt-chip" href={codeBank.url}>
+          <span className="pt-chip__icon">
+            <Icon name="code" />
+          </span>
+          Code bank
+        </a>
+      )}
+      <a className="pt-chip pt-chip--orange" href={to("/portfolio/")}>
+        <span className="pt-chip__icon">
+          <Icon name="list" />
+        </span>
+        Work list
+      </a>
+    </>
+  );
+}
+
+function Hire() {
+  const to = useTo();
+
+  return (
+    <a className="pt-hire" href={to("/project-inquiry/")}>
+      <span className="pt-hire__stars" aria-hidden="true">
+        <Sprite art={ICONS.star} />
+        <Sprite art={ICONS.star} />
+        <Sprite art={ICONS.star} />
+      </span>
+      Hire me
+    </a>
+  );
+}
+
+/** The lavender strip under the header: other pages and elsewhere online */
+function Elsewhere({
+  path,
+  socials,
+  children
+}: {
+  path: string;
+  socials: SocialLink[];
+  children?: ReactNode;
+}) {
+  const to = useTo();
+  const isCurrent = (target: string) =>
+    target === "/" ? path === "/" : path.startsWith(target);
+
+  return (
+    <nav className="pt-subnav" aria-label="Elsewhere">
+      <span className="pt-subnav__arrow" aria-hidden="true">
+        <Icon name="arrowRight" />
+      </span>
+      <ul>
+        {SUB_NAVIGATION.map((item) => (
+          <li key={item.text}>
+            <a
+              href={to(item.path)}
+              aria-current={isCurrent(item.path) ? "page" : undefined}
+            >
+              {item.text}
+            </a>
+          </li>
+        ))}
+        {socials
+          .filter((social) => !isCodeBank(social))
+          .map((social) => (
+            <li key={social.text}>
+              <a href={social.url} rel={social.rel}>
+                {social.text}
+              </a>
+            </li>
+          ))}
+      </ul>
+      {children}
+    </nav>
+  );
+}
+
+/**
+ * The site map, which the header folds into on phones: the zones as big
+ * buttons, then search, the chips, and the lavender strip
+ */
+function SiteMap({
+  id,
+  hidden,
+  navigation,
+  path,
+  socials,
+  codeBank
+}: {
+  id: string;
+  hidden: boolean;
+  navigation: NavItem[];
+  path: string;
+  socials: SocialLink[];
+  codeBank?: SocialLink;
+}) {
+  const to = useTo();
+  const itemFor = (url: string) =>
+    Object.entries(ZONE_ITEMS).find(([zone]) => samePath(url, to(zone)))?.[1];
+
+  return (
+    <div id={id} className="pt-map" hidden={hidden}>
+      <p className="pt-map__head">
+        <Sprite art={INFO} />
+        Site map
+        <span>{`${navigation.length} zones`}</span>
+      </p>
+
+      <nav aria-label="Main">
+        <ul className="pt-map__zones">
+          {navigation.map((item, index) => {
+            const zoneItem = itemFor(item.url);
+            return (
+              <li
+                key={item.url}
+                style={{ "--pt-i": index } as React.CSSProperties}
+              >
+                <a
+                  href={item.url}
+                  aria-current={item.current ? "page" : undefined}
+                >
+                  <span className="pt-map__well">
+                    {zoneItem && <ItemIcon item={zoneItem} />}
+                  </span>
+                  <span className="pt-map__text">{item.text}</span>
+                  {item.current && (
+                    <span className="pt-map__here">You are here</span>
+                  )}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+
+      <Search className="pt-search--map" />
+
+      <div className="pt-map__chips">
+        <Chips codeBank={codeBank} />
+        <Hire />
+      </div>
+
+      <Elsewhere path={path} socials={socials} />
+    </div>
+  );
+}
+
 export function Shell({
   view,
   path,
@@ -218,9 +410,9 @@ export function Shell({
 }: ShellProps) {
   const { profile, socials } = content;
   const to = useTo();
+  const map = useId();
+  const { open, setOpen, toggle } = useMenu(WIDE, path);
   const scene = sceneFor(view, path, profile);
-  const isCurrent = (target: string) =>
-    target === "/" ? path === "/" : path.startsWith(target);
   const codeBank = socials.find(isCodeBank);
 
   return (
@@ -228,8 +420,10 @@ export function Shell({
       <div className="pt-device">
         <div className="pt-top">
           <div className="pt-host">
-            <Mascot item={scene.item} />
-            <p className="pt-bubble">{scene.bubble}</p>
+            <Mascot item={open ? "question" : scene.item} />
+            <p className="pt-bubble">
+              {open ? "Where to next? Pick a zone!" : scene.bubble}
+            </p>
           </div>
           <Search />
         </div>
@@ -256,57 +450,35 @@ export function Shell({
             </nav>
 
             <div className="pt-quick">
-              {codeBank && (
-                <a className="pt-chip" href={codeBank.url}>
-                  <span className="pt-chip__icon">
-                    <Icon name="code" />
-                  </span>
-                  Code bank
-                </a>
-              )}
-              <a className="pt-chip pt-chip--orange" href={to("/portfolio/")}>
-                <span className="pt-chip__icon">
-                  <Icon name="list" />
+              <Chips codeBank={codeBank} />
+              <button
+                ref={toggle}
+                type="button"
+                className="pt-toggle"
+                aria-expanded={open}
+                aria-controls={map}
+                onClick={() => setOpen(!open)}
+              >
+                <span className="pt-toggle__well">
+                  <Icon name={open ? "arrowUp" : "arrowDown"} />
                 </span>
-                Work list
-              </a>
+                Menu
+              </button>
             </div>
           </header>
 
-          <nav className="pt-subnav" aria-label="Elsewhere">
-            <span className="pt-subnav__arrow" aria-hidden="true">
-              <Icon name="arrowRight" />
-            </span>
-            <ul>
-              {SUB_NAVIGATION.map((item) => (
-                <li key={item.text}>
-                  <a
-                    href={to(item.path)}
-                    aria-current={isCurrent(item.path) ? "page" : undefined}
-                  >
-                    {item.text}
-                  </a>
-                </li>
-              ))}
-              {socials
-                .filter((social) => !isCodeBank(social))
-                .map((social) => (
-                  <li key={social.text}>
-                    <a href={social.url} rel={social.rel}>
-                      {social.text}
-                    </a>
-                  </li>
-                ))}
-            </ul>
-            <a className="pt-hire" href={to("/project-inquiry/")}>
-              <span className="pt-hire__stars" aria-hidden="true">
-                <Sprite art={ICONS.star} />
-                <Sprite art={ICONS.star} />
-                <Sprite art={ICONS.star} />
-              </span>
-              Hire me
-            </a>
-          </nav>
+          <SiteMap
+            id={map}
+            hidden={!open}
+            navigation={navigation}
+            path={path}
+            socials={socials}
+            codeBank={codeBank}
+          />
+
+          <Elsewhere path={path} socials={socials}>
+            <Hire />
+          </Elsewhere>
 
           <div className="pt-body">
             <nav className="pt-rail" aria-label="Shortcuts">
