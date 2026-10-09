@@ -28,6 +28,27 @@ export function useLocalTime({
   return time;
 }
 
+/**
+ * The current moment, ticking once a second while `active`. `undefined`
+ * until hydrated, so the server markup matches.
+ */
+export function useNow(active = true) {
+  const [now, setNow] = useState<Date>();
+
+  useEffect(() => {
+    if (!active) return;
+    const tick = () => setNow(new Date());
+    const first = setTimeout(tick);
+    const timer = setInterval(tick, 1000);
+    return () => {
+      clearTimeout(first);
+      clearInterval(timer);
+    };
+  }, [active]);
+
+  return now;
+}
+
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 
 /** Whether the visitor asked for reduced motion, right now (browser only) */

@@ -4,6 +4,7 @@ import type { Direction } from "../site";
 import mech from "./mech";
 import monograph from "./monograph";
 import portal from "./portal";
+import stippleDirection from "./stipple";
 import wireframe from "./wireframe";
 // `npm run lab:new` adds new imports above this line
 
@@ -12,6 +13,7 @@ export const directionComponents: Record<DirectionSlug, Direction> = {
   wireframe,
   monograph,
   mech,
-  portal
+  portal,
+  stipple: stippleDirection
   // `npm run lab:new` adds new directions above this line
 };

@@ -7,3 +7,4 @@ export * from "./helpers";
 export * from "./hooks";
 export * from "./ia";
 export * from "./links";
+export * from "./weather";

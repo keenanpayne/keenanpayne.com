@@ -10,7 +10,7 @@ Every direction at `/lab/<slug>/` is a **skin over one site**: the same content 
 | Content model | `getLabContent()` in `app/lib/content/content.server.ts`, typed as `LabContent` | The shape every direction receives |
 | Information arch. | `site/ia.ts` | The kinds of page (`View`), which URL is which kind, the navigation, the sample pages |
 | Direction contract | `site/direction.tsx` | `Direction`: `stylesheets`, a `Shell`, and one template per kind of page |
-| Shared helpers | `site/` (`helpers.ts`, `hooks.ts`, `forms.ts`, `links.tsx`) | Reading the content the same way everywhere: intros, years, reading time, clocks, form fields |
+| Shared helpers | `site/` (`helpers.ts`, `hooks.ts`, `forms.ts`, `links.tsx`, `weather.ts`) | Reading the content the same way everywhere: intros, years, reading time, clocks, form fields, Denver's weather |
 | Directions | `directions/<slug>/` | How it looks |
 
 A request for `/lab/mech/about/` runs through the route in `app/routes/lab.$direction.tsx`: the loader resolves `/about/` to a `View` (`{ kind: "about", page }`), marks the current navigation item, loads `LabContent`, and rebases every internal link onto `/lab/mech/`. `DirectionPage` then renders the direction’s `Shell` around `templates[view.kind]`.

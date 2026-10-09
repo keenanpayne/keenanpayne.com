@@ -50,6 +50,14 @@ export const directions = [
       "Early-2000s console-maker web portal. A chunky periwinkle bezel around halftone nav bars, vertical tab rails, pixel-font buttons, rating-badge game cards, skyscraper banner ads, and a pixel mascot with a speech bubble.",
     reference: "Nintendo.com, circa 2002–2003",
     date: "2026-10-08"
+  },
+  {
+    slug: "stipple",
+    name: "Stipple",
+    summary:
+      "Olive ink on white, inside a hairline frame that steps around its navigation and footer. Condensed serif display over a quiet grotesk and light monospace, with every image, and a generated terrain, rendered in stippled dither.",
+    reference: "Urbit.org’s dithered, olive-and-sage site design",
+    date: "2026-10-09"
   }
   // `npm run lab:new` adds new directions above this line
 ] as const satisfies readonly DirectionInfo[];
