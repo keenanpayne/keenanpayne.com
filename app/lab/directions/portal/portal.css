@@ -2771,6 +2771,16 @@ a.pt-tile__head:hover {
   & span span {
     color: #e3e7ff;
   }
+
+  /* On a card (a case study's gallery section) rather than the page */
+  .pt-keysec & {
+    color: var(--pt-card-ink);
+    text-shadow: none;
+
+    & span span {
+      color: var(--pt-card-muted);
+    }
+  }
 }
 
 .pt-topten {
