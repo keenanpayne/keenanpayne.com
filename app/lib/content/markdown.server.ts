@@ -5,6 +5,8 @@ import Prism from "prismjs";
 import loadLanguages from "prismjs/components/index.js";
 import prismComponents from "prismjs/components.json";
 
+import { escapeHtml } from "../html";
+
 /**
  * Markdown rendering
  * ==================================================
@@ -89,7 +91,9 @@ function highlight(code: string, info: string) {
   if (!info) return "";
 
   const [language, ...highlightRanges] = info.split("/");
-  let html = code;
+  // Prism escapes what it highlights; `text` and unknown languages are
+  // shown as written
+  let html = escapeHtml(code);
 
   if (language !== "text") {
     const grammar = getGrammar(language);
@@ -101,7 +105,7 @@ function highlight(code: string, info: string) {
   if (highlightRanges.length)
     lines = wrapLines(lines, highlightRanges.join("/"));
 
-  const attributes = ` class="language-${language}"`;
+  const attributes = ` class="language-${escapeHtml(language)}"`;
   return `<pre${attributes}><code${attributes}>${lines.join("\n")}</code></pre>`;
 }
 
