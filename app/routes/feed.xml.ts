@@ -7,10 +7,7 @@ import { metadata } from "../lib/site";
 // Atom feed of every post, newest first
 export function loader() {
   const posts = getFeedPosts();
-  const updated = posts.reduce<Date | undefined>(
-    (newest, post) => (!newest || post.date > newest ? post.date : newest),
-    undefined
-  );
+  const updated = posts[0]?.date;
 
   const entries = posts
     .map(

@@ -3,9 +3,10 @@
  * `undefined` when the path isn't a legacy one.
  */
 export function resolveLegacyPath(pathname: string): string | undefined {
-  if (/^\/work\/?$/.test(pathname)) return "/portfolio/";
+  // Case-insensitive, like the route matching that sends requests here
+  if (/^\/work\/?$/i.test(pathname)) return "/portfolio/";
 
-  const blog = /^\/blog(?:\/(.*))?$/.exec(pathname);
+  const blog = /^\/blog(?:\/(.*))?$/i.exec(pathname);
   if (!blog) return undefined;
 
   // Strip leading slashes so `/blog//example.com` can't redirect off-site

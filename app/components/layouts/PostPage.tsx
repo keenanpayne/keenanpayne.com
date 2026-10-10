@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-import { absoluteUrl, canonicalPath } from "../../lib/site";
+import { absoluteUrl } from "../../lib/site";
 import type { PostPageModel } from "../../lib/types";
 import { Comments } from "../Comments";
 import { HtmlContent } from "../HtmlContent";
@@ -18,7 +18,7 @@ export function PostPage({ page }: { page: PostPageModel }) {
             {page.type && (
               <Link
                 className="-underline-hover _label"
-                to={canonicalPath(page.type.url)}
+                to={page.type.url}
                 title={page.type.title}
               >
                 <span>{page.type.label}</span>
@@ -58,7 +58,7 @@ export function PostPage({ page }: { page: PostPageModel }) {
             <p>
               <Link to={footer.url}>{footer.title}</Link>
               {` is ${footer.article} `}
-              <Link to={canonicalPath(footer.typeUrl)} title={footer.typeTitle}>
+              <Link to={footer.typeUrl} title={footer.typeTitle}>
                 {footer.typeLabel}
               </Link>
               {" published on "}

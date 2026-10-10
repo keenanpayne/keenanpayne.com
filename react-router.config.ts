@@ -1,5 +1,7 @@
 import type { Config } from "@react-router/dev/config";
 
+const RESOURCE_PATHS = ["/sitemap.xml", "/feed.xml", "/feed.json"];
+
 export default {
   // Server-side render every request, and pre-render every known page at
   // build time so it can be served as static HTML.
@@ -7,17 +9,22 @@ export default {
   async prerender() {
     const { getPrerenderPaths } =
       await import("./app/lib/content/content.server");
-    return [...getPrerenderPaths(), "/sitemap.xml", "/feed.xml", "/feed.json"];
+    return [...getPrerenderPaths(), ...RESOURCE_PATHS];
   },
-  // Netlify serves pre-rendered pages without running the server, so their
-  // security headers come from `_headers` instead of the root middleware
   async buildEnd({ reactRouterConfig }) {
-    const { writeFile } = await import("node:fs/promises");
+    const { rm, writeFile } = await import("node:fs/promises");
     const { join } = await import("node:path");
     const { netlifyHeadersFile } = await import("./app/lib/security-headers");
-    await writeFile(
-      join(reactRouterConfig.buildDirectory, "client", "_headers"),
-      netlifyHeadersFile()
+    const client = join(reactRouterConfig.buildDirectory, "client");
+
+    // Netlify serves pre-rendered pages without running the server, so their
+    // security headers come from `_headers` instead of the root middleware
+    await writeFile(join(client, "_headers"), netlifyHeadersFile());
+
+    // Resource routes are pre-rendered with a `.data` file too, which nothing
+    // requests (they aren't navigated to client-side)
+    await Promise.all(
+      RESOURCE_PATHS.map((path) => rm(join(client, `${path}.data`)))
     );
   }
 } satisfies Config;

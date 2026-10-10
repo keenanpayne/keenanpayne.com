@@ -13,7 +13,7 @@ export const SECURITY_HEADERS: Record<string, string> = {
     "object-src 'none'",
     "frame-ancestors 'none'",
     // Netlify Forms post to this origin; the newsletter posts to Buttondown
-    "form-action 'self' https://buttondown.email",
+    "form-action 'self' https://buttondown.com",
     "upgrade-insecure-requests"
   ].join("; "),
   "X-Frame-Options": "DENY",

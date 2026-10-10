@@ -61,6 +61,12 @@ function tocItemHtml(item: TocItem): string {
   return markup;
 }
 
+// `text` is entity-decoded, so re-escape it for the markup. Only `&`, `<`
+// and `>`, which is how browsers serialize text, so hydration sees the same
+// HTML the server sent.
+const escapeText = (text: string) =>
+  text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
 function getParent(previous: TocItem, current: TocItem): TocItem {
   if (current.level > previous.level) return previous;
   if (current.level === previous.level) return previous.parent!;
@@ -82,7 +88,7 @@ export function buildTableOfContents(html: string, tags: string[]) {
   for (const heading of headings) {
     const current: TocItem = {
       slug: heading.getAttribute("id"),
-      text: heading.text.trim(),
+      text: escapeText(heading.text.trim()),
       level: Number(heading.tagName.slice(1)),
       children: []
     };

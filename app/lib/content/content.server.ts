@@ -320,6 +320,8 @@ function loadItem(path: string, source: string): ContentItem {
 
 interface ContentIndex {
   items: ContentItem[];
+  /** `items` without the ones marked `excludeFromCollections` */
+  listed: ContentItem[];
   posts: ContentItem[];
   tagList: string[];
   typeList: string[];
@@ -404,7 +406,7 @@ function getIndex(): ContentIndex {
     )
     .map(({ page }) => page);
 
-  contentIndex = { items, posts, tagList, typeList, pages, byUrl };
+  contentIndex = { items, listed, posts, tagList, typeList, pages, byUrl };
   return contentIndex;
 }
 
@@ -500,7 +502,7 @@ function portfolioEntry(item: PortfolioItem | undefined, showCovers: boolean) {
 
 const servicesByDate = () =>
   getIndex()
-    .items.filter((item) => item.collection === "services")
+    .listed.filter((item) => item.collection === "services")
     .sort(byDate);
 
 // Nunjucks' `sort(attribute='data.order')`
@@ -513,11 +515,11 @@ function getCollection(name: unknown): unknown[] | undefined {
     case "posts":
       return index.posts;
     case "featured":
-      return index.items
+      return index.listed
         .filter((item) => item.tags.includes("Featured"))
         .sort(byDate);
     case "portfolio":
-      return index.items.filter((item) => item.collection === "portfolio");
+      return index.listed.filter((item) => item.collection === "portfolio");
     case "services":
       return servicesByDate();
     default:
@@ -900,7 +902,7 @@ function buildPostPage(item: ContentItem): PostPageModel {
   if (type) {
     model.type = {
       label: type,
-      url: `/type/${typePlural}`,
+      url: `/type/${typePlural}/`,
       title: `View archive for ${typePlural}`
     };
   }
@@ -909,7 +911,7 @@ function buildPostPage(item: ContentItem): PostPageModel {
       url: item.url,
       title: String(data.title),
       article: data.long_form ? "a" : "an",
-      typeUrl: `/type/${typePlural}`,
+      typeUrl: `/type/${typePlural}/`,
       typeTitle: `View archive for ${typePlural}`,
       typeLabel: (data.long_form ?? type ?? "").toLowerCase()
     };
@@ -1040,6 +1042,8 @@ function normalizePath(pathname: string) {
 export function getPage(pathname: string): PageModel | undefined {
   const { byUrl } = getIndex();
   const path = normalizePath(pathname);
+  // Only served as the body of a 404 response
+  if (path === NOT_FOUND_URL) return undefined;
   const build =
     byUrl.get(path) ??
     (!path.endsWith("/") ? byUrl.get(`${path}/`) : undefined);
@@ -1047,7 +1051,7 @@ export function getPage(pathname: string): PageModel | undefined {
 }
 
 export function getNotFoundPage(): PageModel {
-  return getPage(NOT_FOUND_URL)!;
+  return getIndex().byUrl.get(NOT_FOUND_URL)!();
 }
 
 /** Every page that should be pre-rendered at build time */
@@ -1058,7 +1062,7 @@ export function getPrerenderPaths() {
 /** Navigation items, from each page's `navigation` front matter */
 export function getNavigation(): LinkModel[] {
   return getIndex()
-    .items.filter((item) => item.data.navigation)
+    .listed.filter((item) => item.data.navigation)
     .map((item) => ({ item, order: item.data.navigation!.order ?? 0 }))
     .sort((a, b) => a.order - b.order || byDate(a.item, b.item))
     .map(({ item }) => ({
