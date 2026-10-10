@@ -37,12 +37,9 @@ function Gallery({
     <div className={`mc-gallery mc-gallery--${columns}`}>
       {section.items.map((item, itemIndex) => (
         <figure className="mc-gallery__item" key={itemIndex}>
-          <a
-            className="mc-gallery__media"
-            href={item.imageRaw ?? item.link ?? item.image}
-            tabIndex={-1}
-          >
-            {item.video ? (
+          {item.video ? (
+            // Not inside a link, so clicks reach the video's controls
+            <div className="mc-gallery__media">
               <video
                 src={item.video}
                 muted
@@ -51,12 +48,18 @@ function Gallery({
                 playsInline={item.autoplay}
                 autoPlay={item.autoplay}
               />
-            ) : (
-              item.image && (
+            </div>
+          ) : (
+            <a
+              className="mc-gallery__media"
+              href={item.imageRaw ?? item.link ?? item.image}
+              tabIndex={-1}
+            >
+              {item.image && (
                 <img src={item.image} alt={item.title ?? ""} loading="lazy" />
-              )
-            )}
-          </a>
+              )}
+            </a>
+          )}
           {(item.title || item.caption) && (
             <figcaption>
               {item.title &&

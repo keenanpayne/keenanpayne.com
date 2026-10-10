@@ -41,12 +41,9 @@ export function Gallery({ section }: { section: PortfolioGridSection }) {
       <div className={`mg-gallery mg-gallery--${columns}`}>
         {section.items.map((item, index) => (
           <figure className="mg-gallery__item" key={index}>
-            <a
-              className="mg-gallery__media"
-              href={item.imageRaw ?? item.link ?? item.image}
-              tabIndex={-1}
-            >
-              {item.video ? (
+            {item.video ? (
+              // Not inside a link, so clicks reach the video's controls
+              <div className="mg-gallery__media">
                 <video
                   src={item.video}
                   muted
@@ -55,12 +52,18 @@ export function Gallery({ section }: { section: PortfolioGridSection }) {
                   playsInline={item.autoplay}
                   autoPlay={item.autoplay}
                 />
-              ) : (
-                item.image && (
+              </div>
+            ) : (
+              <a
+                className="mg-gallery__media"
+                href={item.imageRaw ?? item.link ?? item.image}
+                tabIndex={-1}
+              >
+                {item.image && (
                   <img src={item.image} alt={item.title ?? ""} loading="lazy" />
-                )
-              )}
-            </a>
+                )}
+              </a>
+            )}
             {(item.title || item.caption) && (
               <figcaption>
                 {item.title &&

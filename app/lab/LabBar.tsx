@@ -80,8 +80,11 @@ export function LabBar({
         className="labBar__select"
         aria-label="Direction"
         value={current ?? ""}
+        // Every direction skins the same pages, so stay on this one
         onChange={(event) =>
-          navigate(event.target.value ? `/lab/${event.target.value}/` : "/lab/")
+          navigate(
+            event.target.value ? labPath(event.target.value, path) : "/lab/"
+          )
         }
       >
         {!current && <option value="">Choose a direction…</option>}

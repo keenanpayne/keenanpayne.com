@@ -63,12 +63,9 @@ function Gallery({ section }: { section: PortfolioGridSection }) {
       {section.items?.map((item, index) => (
         <li key={index}>
           <figure>
-            <a
-              className="pt-gallery__media"
-              href={item.imageRaw ?? item.link ?? item.image}
-              tabIndex={-1}
-            >
-              {item.video ? (
+            {item.video ? (
+              // Not inside a link, so clicks reach the video's controls
+              <div className="pt-gallery__media">
                 <video
                   src={item.video}
                   muted
@@ -77,12 +74,18 @@ function Gallery({ section }: { section: PortfolioGridSection }) {
                   playsInline={item.autoplay}
                   autoPlay={item.autoplay}
                 />
-              ) : (
-                item.image && (
+              </div>
+            ) : (
+              <a
+                className="pt-gallery__media"
+                href={item.imageRaw ?? item.link ?? item.image}
+                tabIndex={-1}
+              >
+                {item.image && (
                   <img src={item.image} alt={item.title ?? ""} loading="lazy" />
-                )
-              )}
-            </a>
+                )}
+              </a>
+            )}
             {(item.title || item.caption) && (
               <figcaption>
                 {item.title &&

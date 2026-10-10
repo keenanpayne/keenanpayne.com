@@ -5280,7 +5280,7 @@ textarea.mc-input {
   }
 }
 
-:root:has(.mc-lightbox[open]) {
+:root:has(.mc-lightbox[open]:not(.sg-stage *)) {
   overflow: hidden;
 }
 
