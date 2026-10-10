@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { Html, useLocalTime, useTo, type TemplateProps } from "../../../site";
+import { Html, useTo, type TemplateProps } from "../../../site";
 import { Groundwork } from "../Groundwork";
 import {
   Button,
@@ -17,7 +17,6 @@ import {
 
 export function Home({ content }: TemplateProps<"home">) {
   const to = useTo();
-  const time = useLocalTime();
   const copy = useRef<HTMLDivElement>(null);
   const { profile, posts, work, services, testimonials } = content;
 
@@ -43,10 +42,6 @@ export function Home({ content }: TemplateProps<"home">) {
             <Button href={to("/portfolio/")} ghost>
               See the work
             </Button>
-          </p>
-          <p className="st-hero__note">
-            {profile.location.short}
-            {time && ` · ${time}`}
           </p>
         </div>
       </header>

@@ -838,6 +838,15 @@ html:has(.st-menu:not([hidden])) {
   @media (width >= 1100px) {
     display: grid;
   }
+
+  /* As tall as the header's controls, so it clears the window's edge alike */
+  & input {
+    padding-block: 3px;
+  }
+
+  & button {
+    height: 22px;
+  }
 }
 
 /* Dot art
@@ -1019,14 +1028,6 @@ html:has(.st-menu:not([hidden])) {
   flex-wrap: wrap;
   gap: 8px;
   margin: 28px 0 0;
-}
-
-.st-hero__note {
-  margin: 12px 0 0;
-  color: var(--st-muted);
-  font-family: var(--st-mono);
-  font-size: 11px;
-  font-weight: 300;
 }
 
 /* Layout
@@ -1792,6 +1793,278 @@ html:has(.st-menu:not([hidden])) {
   }
 }
 
+/* The ledger: clients and case studies as one index. Narrow, each name
+   sits beside a small plate and its lede; wide, the names make a roll and
+   the one you point at fills a plate held beside it.
+   ========================================================================== */
+
+.st-ledger {
+  @media (width >= 960px) {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    column-gap: clamp(48px, 6vw, 96px);
+    align-items: start;
+  }
+}
+
+.st-ledger__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.st-ledger__row {
+  border-top: 1px solid var(--st-rule);
+
+  &:last-child {
+    border-bottom: 1px solid var(--st-rule);
+  }
+}
+
+.st-ledger__link {
+  display: grid;
+  grid-template-areas:
+    "thumb meta"
+    "thumb name"
+    "thumb lede";
+  grid-template-columns: 84px minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  column-gap: 16px;
+  padding: 16px 0;
+  text-decoration: none;
+
+  @media (width >= 960px) {
+    grid-template-areas: "number mark name meta";
+    grid-template-columns: 24px 30px minmax(0, 1fr) auto;
+    grid-template-rows: auto;
+    align-items: center;
+    column-gap: 14px;
+    padding: 9px 0 10px;
+  }
+}
+
+.st-ledger__thumb {
+  grid-area: thumb;
+  aspect-ratio: 1;
+
+  @media (width >= 960px) {
+    display: none;
+  }
+}
+
+.st-ledger__number {
+  display: none;
+  grid-area: number;
+  color: var(--st-faint);
+  font-family: var(--st-mono);
+  font-size: 10.5px;
+  font-weight: 300;
+  transition: color 150ms ease;
+
+  @media (width >= 960px) {
+    display: block;
+  }
+}
+
+.st-ledger__mark {
+  display: none;
+  grid-area: mark;
+  width: 30px;
+  height: 30px;
+  color: var(--st-faint);
+  transition: color 150ms ease;
+
+  @media (width >= 960px) {
+    display: block;
+  }
+}
+
+.st-ledger__name {
+  grid-area: name;
+  font-family: var(--st-serif);
+  font-size: 30px;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  transition: color 150ms ease;
+
+  @media (width >= 960px) {
+    color: var(--st-muted);
+    font-size: clamp(32px, 3.4vw, 44px);
+    letter-spacing: -0.02em;
+  }
+}
+
+.st-ledger__meta {
+  display: flex;
+  flex-wrap: wrap;
+  grid-area: meta;
+  gap: 0 12px;
+  color: var(--st-muted);
+  font-family: var(--st-mono);
+  font-size: 10.5px;
+  font-weight: 300;
+  line-height: 1.45;
+
+  @media (width >= 960px) {
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.st-ledger__lede {
+  display: -webkit-box;
+  grid-area: lede;
+  margin-top: 6px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  /* The plate beside the roll shows it; screen readers still hear it */
+  @media (width >= 960px) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* The one being pointed at */
+.st-ledger__row.is-active {
+  @media (width >= 960px) {
+    & .st-ledger__name {
+      color: var(--st-ink);
+    }
+
+    & .st-ledger__number {
+      color: var(--st-ink);
+    }
+
+    & .st-ledger__mark {
+      color: var(--st-olive);
+    }
+  }
+}
+
+.st-ledger__viewer {
+  display: none;
+
+  @media (width >= 960px) {
+    position: sticky;
+    top: calc(var(--st-gutter) + var(--st-notch) + 40px);
+    display: block;
+  }
+}
+
+.st-ledger__frame {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 10;
+  background: var(--st-wash);
+}
+
+.st-ledger__plate {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 240ms ease;
+
+  &.is-active {
+    opacity: 1;
+  }
+}
+
+.st-ledger__caption {
+  display: block;
+  padding-top: 14px;
+  text-decoration: none;
+
+  & .st-card__meta {
+    margin-bottom: 10px;
+  }
+
+  &:hover .st-ledger__title {
+    color: var(--st-olive);
+  }
+}
+
+.st-ledger__count {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--st-muted);
+  font-family: var(--st-mono);
+  font-size: 10.5px;
+  font-weight: 300;
+}
+
+.st-ledger__title {
+  display: block;
+  font-family: var(--st-serif);
+  font-size: 30px;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  transition: color 150ms ease;
+}
+
+.st-ledger__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-top: 16px;
+
+  & > span:last-child {
+    color: var(--st-muted);
+    font-family: var(--st-mono);
+    font-size: 10.5px;
+    font-weight: 300;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .st-ledger__plate,
+  .st-ledger__name,
+  .st-ledger__number,
+  .st-ledger__mark {
+    transition: none;
+  }
+}
+
+/* Two ways to show the same thing, one pressed */
+.st-switch {
+  display: inline-flex;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--st-rule);
+  border-radius: 999px;
+
+  & button {
+    padding: 1px 9px;
+    border: 0;
+    border-radius: 999px;
+    background: none;
+    color: var(--st-muted);
+    font: 300 10.5px/1.5 var(--st-mono);
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
+
+    &:hover {
+      color: var(--st-ink);
+    }
+
+    &[aria-pressed="true"] {
+      background: var(--st-ink);
+      color: var(--st-paper);
+    }
+  }
+}
+
 /* Plates: an image or terrain, a title, notes, and a way in
    ========================================================================== */
 
@@ -2314,10 +2587,14 @@ html:has(.st-menu:not([hidden])) {
 .st-signup--compact {
   width: 230px;
 
-  & .st-signup__status:not(:empty) {
+  /* Out of the flow even when empty, so the field alone sets the height */
+  & .st-signup__status {
     position: absolute;
     right: 0;
     bottom: calc(100% + 8px);
+  }
+
+  & .st-signup__status:not(:empty) {
     padding: 4px 8px;
     border: 1px solid var(--st-line);
     border-radius: 6px;

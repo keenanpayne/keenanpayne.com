@@ -692,6 +692,119 @@ export function WorkCard({ item }: { item: Work[number] }) {
   );
 }
 
+const count = (n: number) => String(n).padStart(2, "0");
+
+/**
+ * Clients and their case studies as one index. On wide screens, a roll of
+ * names beside a plate of the one you're pointing at; on narrow ones, each
+ * name with a small plate and its lede.
+ */
+export function Ledger({ work }: { work: Work }) {
+  const [active, setActive] = useState(0);
+  const current = work[active];
+
+  return (
+    <div className="st-ledger">
+      <ol className="st-ledger__list">
+        {work.map((item, index) => (
+          <li
+            key={item.url}
+            className={cx("st-ledger__row", index === active && "is-active")}
+          >
+            <a
+              className="st-ledger__link"
+              href={item.url}
+              onPointerEnter={() => setActive(index)}
+              onFocus={() => setActive(index)}
+            >
+              <Stipple
+                className="st-ledger__thumb"
+                src={item.coverSquare}
+                dot={1}
+              />
+              <span className="st-ledger__number">{count(index + 1)}</span>
+              <Mark className="st-ledger__mark" seed={item.name} />
+              <span className="st-ledger__name">{item.name}</span>
+              <span className="st-ledger__meta">
+                <span>{item.role}</span>
+                <span>{item.year}</span>
+              </span>
+              {item.lede && (
+                <Html as="span" className="st-ledger__lede" html={item.lede} />
+              )}
+            </a>
+          </li>
+        ))}
+      </ol>
+
+      {current && (
+        // A second way into what the roll already links to, for pointers
+        <div className="st-ledger__viewer" aria-hidden="true">
+          <a className="st-ledger__frame" href={current.url} tabIndex={-1}>
+            {work.map((item, index) => (
+              <Stipple
+                key={item.url}
+                className={cx(
+                  "st-ledger__plate",
+                  index === active && "is-active"
+                )}
+                src={item.cover}
+              />
+            ))}
+          </a>
+          <a className="st-ledger__caption" href={current.url} tabIndex={-1}>
+            <span className="st-ledger__count">
+              {`${count(active + 1)} / ${count(work.length)}`}
+            </span>
+            <span className="st-ledger__title">{current.name}</span>
+            <span className="st-card__meta">
+              <span>{current.industry}</span>
+              <span>{current.year}</span>
+            </span>
+            {current.lede && (
+              <Html as="span" className="st-card__text" html={current.lede} />
+            )}
+            <span className="st-ledger__actions">
+              <span className="st-button st-button--small">
+                View case study
+              </span>
+              <span>{current.services.join(" · ")}</span>
+            </span>
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** A pair of pressed-or-not buttons that picks how a page shows something */
+export function ViewSwitch<T extends string>({
+  label,
+  views,
+  value,
+  onChange
+}: {
+  label: string;
+  views: { value: T; label: string }[];
+  value: T;
+  onChange: (value: T) => void;
+}) {
+  return (
+    <span className="st-switch" role="group" aria-label={label}>
+      {views.map((view) => (
+        <button
+          key={view.value}
+          type="button"
+          aria-pressed={view.value === value}
+          onClick={() => onChange(view.value)}
+        >
+          {view.label}
+        </button>
+      ))}
+    </span>
+  );
+}
+
 /** Services as plates, each with a scene of its own */
 export function ServiceCards({
   services
