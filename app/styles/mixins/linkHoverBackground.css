@@ -1,0 +1,56 @@
+/* Links with background on hover */
+/* ================================================== */
+
+/* TODO: Animate background as a `:before` pseudo-element */
+/* to add a nice micro-interaction */
+@define-mixin linkHoverBackground $link-color: var(--color-purple-2) {
+  --link-color: $link-color;
+  --link-text-decoration: var(--color-purple-1);
+  --link-hover-background: var(--color-purple-1);
+  --link-color-hover: var(--color-white);
+  --link-spacing: 0.1em;
+
+  margin-left: calc(var(--link-spacing) * -1);
+  margin-right: calc(var(--link-spacing) * -1);
+  padding-left: var(--link-spacing);
+  padding-right: var(--link-spacing);
+  text-decoration: underline;
+  text-decoration-color: var(--link-text-decoration);
+  text-decoration-thickness: var(--link-spacing);
+
+  @media (--dark) {
+    --link-color: var(--color-yellow-1);
+    --link-text-decoration: var(--color-yellow-2);
+    --link-hover-background: var(--color-yellow-2);
+    --link-color-hover: var(--color-plum-3);
+  }
+
+  &:hover {
+    background-color: var(--link-hover-background);
+    color: var(--link-color-hover);
+    text-decoration: none;
+  }
+}
+
+/* Same as `linkHoverBackground`, but keeps the light colors in dark mode */
+@define-mixin linkHoverBackgroundLight {
+  --link-color: var(--color-purple-2);
+  --link-text-decoration: var(--color-purple-1);
+  --link-hover-background: var(--color-purple-1);
+  --link-color-hover: var(--color-white);
+  --link-spacing: 0.1em;
+
+  margin-left: calc(var(--link-spacing) * -1);
+  margin-right: calc(var(--link-spacing) * -1);
+  padding-left: var(--link-spacing);
+  padding-right: var(--link-spacing);
+  text-decoration: underline;
+  text-decoration-color: var(--link-text-decoration);
+  text-decoration-thickness: var(--link-spacing);
+
+  &:hover {
+    background-color: var(--link-hover-background);
+    color: var(--link-color-hover);
+    text-decoration: none;
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "layout": "layouts/base.njk",
-  "type": "Service",
-  "long_form": "Service Item",
-  "cta": false,
-  "comments": false,
-  "templateClass": "_page-spacing-bottom"
-}

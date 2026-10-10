@@ -1,0 +1,43 @@
+import { rfc3339Date } from "../lib/content/dates.server";
+import { getFeedPosts } from "../lib/content/content.server";
+import { convertToAbsoluteUrls } from "../lib/content/html.server";
+import { escapeHtml } from "../lib/html";
+import { metadata } from "../lib/site";
+
+// Atom feed of every post, newest first
+export function loader() {
+  const posts = getFeedPosts();
+  const updated = posts[0]?.date;
+
+  const entries = posts
+    .map(
+      (post) => `
+	<entry>
+		<title>${escapeHtml(post.title)}</title>
+		<link href="${post.url}"/>
+		<updated>${rfc3339Date(post.date)}</updated>
+		<id>${post.url}</id>
+		<content type="html">${escapeHtml(convertToAbsoluteUrls(post.content, post.url))}</content>
+	</entry>`
+    )
+    .join("");
+
+  const xml = `<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>${escapeHtml(metadata.title)}</title>
+	<subtitle>${escapeHtml(metadata.feed.subtitle)}</subtitle>
+	<link href="${new URL(metadata.feed.path, metadata.url)}" rel="self"/>
+	<link href="${metadata.url}"/>
+	<updated>${updated ? rfc3339Date(updated) : ""}</updated>
+	<id>${metadata.feed.id}</id>
+	<author>
+		<name>${escapeHtml(metadata.author.name)}</name>
+		<email>${escapeHtml(metadata.author.email)}</email>
+	</author>${entries}
+</feed>
+`;
+
+  return new Response(xml, {
+    headers: { "Content-Type": "application/atom+xml; charset=utf-8" }
+  });
+}

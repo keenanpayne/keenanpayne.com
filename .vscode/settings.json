@@ -1,5 +1,6 @@
 {
   "search.exclude": {
-    "**/*.css": true
+    "build": true,
+    ".react-router": true
   }
 }

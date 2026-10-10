@@ -1,7 +1,0 @@
-{
-  "layout": "layouts/portfolio.njk",
-  "type": "Portfolio",
-  "long_form": "Portfolio Item",
-  "cta": false,
-  "comments": false
-}

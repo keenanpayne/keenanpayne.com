@@ -1,3 +1,12 @@
+build
+.react-router
+package-lock.json
+
 # Prettier breaks the syntax highlighting for these files
-/posts/css-arrow-interaction.md
-/posts/css-multi-line-buttons.md
+/content/posts/css-arrow-interaction.md
+/content/posts/css-multi-line-buttons.md
+
+# Prettier changes how the HTML in these files renders
+/content/posts/re-architecting-rippling-css.md
+/content/posts/web-browser-monopolization.md
+/content/services/web-development.md

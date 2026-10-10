@@ -4,136 +4,149 @@
 
 Feel free to fork this and use my code and designs for whatever you'd like. You can add credit to myself if you please, but it's not necessary.
 
+The site is built with [React](https://react.dev/) and [React Router](https://reactrouter.com/) (framework mode) with server-side rendering. Every page is also pre-rendered to static HTML at build time, and all content lives in Markdown files.
+
+## Requirements
+
+- Node.js 24 (see `.node-version`; [Volta](https://volta.sh/) picks it up automatically from `package.json`)
+
 ## Available Scripts
 
 ### Development
 
 ```bash
-# Start development server with hot reloading
+# Start the development server at http://localhost:4242
 npm run dev
 
-# Just serve the site without watching for changes
-npm run serve
-
-# Build and serve the production site
+# Build and serve the production site locally
 npm run serve:prod
-
-# Start development server (alternative to dev)
-npm run start
 ```
 
 ### Building
 
 ```bash
-# Build for production
+# Build the client, server, and pre-rendered pages into build/
 npm run build
 
-# Build assets for development
-npm run assets:build:dev
-
-# Build assets for production
-npm run assets:build:prod
+# Serve an existing production build (http://localhost:3000)
+npm run start
 ```
 
 ### Code Quality
 
 ```bash
-# Run all code quality checks
+# Run all code quality checks (types, lint, formatting)
 npm run validate
 
 # Fix all auto-fixable issues
 npm run fix
 
+# Type checking
+npm run typecheck
+
 # Linting
-npm run lint          # Run all linters
-npm run lint:js      # Run JavaScript linting
-npm run lint:css     # Run SCSS linting
+npm run lint         # Run all linters
+npm run lint:js      # Run ESLint
+npm run lint:css     # Run Stylelint
 npm run lint:fix     # Fix all auto-fixable lint issues
 
 # Formatting
-npm run format        # Format all files
-npm run check:format  # Check formatting without making changes
+npm run format       # Format all files
+npm run check:format # Check formatting without making changes
 ```
 
 ### Maintenance
 
 ```bash
 # Clean build artifacts
-npm run clean         # Remove _site directory
-npm run clean:deps    # Remove dependencies
-npm run clean:all     # Remove both build artifacts and dependencies
+npm run clean        # Remove build/ and generated route types
+npm run clean:deps   # Remove dependencies
+npm run clean:all    # Remove both build artifacts and dependencies
 
 # Security and Updates
-npm run audit         # Check for vulnerabilities and outdated deps
-npm run audit:fix     # Try to fix vulnerabilities and update deps
+npm run audit        # Check for vulnerabilities and outdated deps
+npm run audit:fix    # Try to fix vulnerabilities and update deps
 
 # Build Analysis
-npm run size          # Show size of build directory
-npm run size:detail   # Generate detailed size report
-```
+npm run size         # Show size of build directory
 
-### Debugging
-
-```bash
-# Run Eleventy with debug output
-npm run debug
+# Re-count the qualities mentioned in testimonials (app/data/testimonial-analysis.json)
+npm run analyze:testimonials
 ```
 
 ## Project Structure
 
 ```
 .
-├── _site/           # Built site (gitignored)
-├── _data/           # Global data files for Eleventy
-├── _includes/       # Reusable template components
-├── bookshelf/       # Bookshelf content
-├── drafts/         # Draft content (not published)
-├── feed/           # RSS feed configuration
-├── fonts/          # Custom font files
-├── images/         # Static image assets
-├── js/             # JavaScript source files
-├── portfolio/      # Portfolio project content
-├── posts/          # Blog post content
-├── sass/           # SCSS source files
-├── services/       # Service-related content
-├── type/           # TypeScript type definitions
-├── .eleventy.js    # Eleventy configuration
-├── .eleventyignore # Files to ignore during build
-├── .eslintrc.json  # ESLint configuration
-├── .prettierrc     # Prettier configuration
-├── .stylelintrc.json # Stylelint configuration
-├── .node-version   # Node.js version specification
-├── netlify.toml    # Netlify deployment configuration
-├── package.json    # Project dependencies and scripts
-└── postcss.config.js # PostCSS configuration
+├── app/                    # React Router application
+│   ├── assets/svg/         # Inline SVG icons and logos
+│   ├── components/         # React components
+│   │   ├── layouts/        # Page, post, and portfolio layouts
+│   │   └── sections/       # Page sections (intro, entries, testimonials, …)
+│   ├── data/               # People, testimonials, socials, portfolio case studies, site metadata
+│   ├── lib/                # Content loading, Markdown rendering, helpers
+│   │   └── content/        # Server-only content pipeline
+│   ├── routes/             # Route modules (pages, feeds, sitemap, redirects)
+│   ├── styles/             # CSS (compiled with PostCSS)
+│   ├── root.tsx            # Document shell, header, and footer
+│   └── routes.ts           # Route configuration
+├── content/                # Markdown content
+│   ├── bookshelf/          # Book reviews
+│   ├── drafts/             # Draft posts (published, but not listed)
+│   ├── pages/              # Standalone pages (home, about, contact, …)
+│   ├── portfolio/          # Case studies
+│   ├── posts/              # Blog posts
+│   ├── services/           # Service pages
+│   └── type/               # Archive pages for each post type
+├── public/                 # Static files (images)
+├── scripts/                # Maintenance scripts
+├── netlify.toml            # Netlify build settings
+├── postcss.config.js       # PostCSS plugins
+├── react-router.config.ts  # SSR and pre-rendering settings
+└── vite.config.ts          # Vite, React Router, and Netlify plugins
 ```
 
-## Development Workflow
+## Writing Content
 
-1. **Starting Development**:
+Every Markdown file in `content/` becomes a page. Front matter works like it did with Eleventy:
 
-   ```bash
-   npm install        # Install dependencies
-   npm run dev       # Start development server
-   ```
+- `title`, `permalink`, `date`, `tags`, `type`, `lede`, `cover`, and `meta` (`title`, `description`, `image`, `image_alt`)
+- `templateClass` adds classes to the page's `<main>` element
+- `navigation` (`key`, `order`) adds a page to the header and footer navigation
+- `sections` builds a page from components (`intro`, `entries`, `testimonials`, `portfolioGrid`, `cta`, …) — see `app/components/sections/Sections.tsx` for the full list
+- `toc: false` hides a post's table of contents, and `comments: false` / `cta: false` hide comments and the newsletter sign-up
 
-2. **Code Quality**:
+Each folder has its own defaults (layout, URL, and data), defined in `app/lib/content/content.server.ts`. Posts without a `permalink` are published at `/<slugified title>/`.
 
-   - Run `npm run validate` before committing to check all code quality rules
-   - Use `npm run fix` to automatically fix common issues
-   - Format your code with `npm run format`
+Markdown is rendered with [markdown-it](https://github.com/markdown-it/markdown-it) (raw HTML, footnotes, linkable headings, and build-time [Prism](https://prismjs.com/) syntax highlighting). Posts can embed these shortcodes:
 
-3. **Building for Production**:
+```liquid
+{% include "type/note.html", content: "A note", align: "left" %}
+{% include "type/question.html", content: "A question?" %}
+{% include "type/tip.html", content: "A tip" %}
+{% include "type/notice.html", content: "A notice" %}
+{% include "type/tldr.html", content: "The gist" %}
+{% include "type/further-reading.html", content: "Links" %}
+{% include "type/p_large.html", content: "A large paragraph" %}
+{% include "type/blockquote.html", content: "A quote", author: "Someone" %}
+{% include "atoms/figure.html", src: "/images/…", alt: "…", caption: "…", source_title: "…", source_link: "…" %}
+{% include "components/image.njk", imgSrc: "cloudinary/path.jpg", alt: "…", caption: "…" %}
+```
 
-   ```bash
-   npm run build    # Creates optimized production build
-   npm run serve:prod # Serves production build locally
-   ```
+The shortcodes are implemented in `app/lib/content/shortcodes.server.ts`.
 
-4. **Maintenance**:
-   - Regularly run `npm run audit` to check for security issues
-   - Use `npm run size` to monitor build size
-   - Clean up with `npm run clean:all` when needed
+## Styles
+
+Styles are plain CSS in `app/styles/`, compiled with PostCSS:
+
+- [postcss-mixins](https://github.com/postcss/postcss-mixins) for `@define-mixin` / `@mixin`
+- [postcss-nested](https://github.com/postcss/postcss-nested) for nesting
+- [postcss-custom-media](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) for breakpoints like `@media (--min-960)`
+- [postcss-media-minmax](https://github.com/postcss/postcss-media-minmax) and [Autoprefixer](https://github.com/postcss/autoprefixer) for browser support
+
+## Deployment
+
+The site deploys to [Netlify](https://netlify.com) with `npm run build`, publishing `build/client`. Pre-rendered pages are served as static files; any other request (404s and legacy redirects in `app/routes/redirects.ts`) is server-rendered by a Netlify Function generated by [`@netlify/vite-plugin-react-router`](https://www.npmjs.com/package/@netlify/vite-plugin-react-router). The contact and project inquiry forms use [Netlify Forms](https://docs.netlify.com/manage/forms/setup/).
 
 ## Contributing
 
@@ -147,28 +160,26 @@ npm run debug
 
 - [Netlify](https://netlify.com)
   - Superb web hosting and deployment platform
-- [Eleventy](https://11ty.dev/)
-  - Flexible JavaScript static site generator
-- [Sass](https://sass-lang.com/)
-  - CSS preprocessor for better styling
+- [React](https://react.dev/) and [React Router](https://reactrouter.com/)
+  - UI library and full-stack routing framework
+- [Vite](https://vite.dev/)
+  - Build tool and development server
 - [PostCSS](https://postcss.org/)
-  - CSS transformation tool with autoprefixer and custom media queries
+  - CSS transformation tool with mixins, nesting, custom media queries, and autoprefixer
 - [Markdown-it](https://github.com/markdown-it/markdown-it)
   - Markdown parser with support for footnotes and anchors
+- [Prism](https://prismjs.com/)
+  - Syntax highlighting
 - [Luxon](https://moment.github.io/luxon/)
   - Modern JavaScript date/time library
+- [TypeScript](https://www.typescriptlang.org/)
+  - Typed JavaScript
 - [ESLint](https://eslint.org/)
   - JavaScript linting utility
 - [Prettier](https://prettier.io/)
   - Code formatter for consistent style
 - [Stylelint](https://stylelint.io/)
-  - CSS/SCSS linting utility
-- [Eleventy Plugins](https://www.11ty.dev/docs/plugins/)
-  - Navigation, RSS, syntax highlighting, and external links
-- [Node.js](https://nodejs.org/)
-  - JavaScript runtime environment
-- [Git](https://git-scm.com/)
-  - Version control system
+  - CSS linting utility
 
 ## License
 

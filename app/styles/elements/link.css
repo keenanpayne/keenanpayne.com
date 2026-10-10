@@ -1,0 +1,61 @@
+/* <a> */
+/* ================================================== */
+
+a {
+  color: var(--link-color, var(--link-color, var(--color-text)));
+
+  &:hover {
+    color: var(--link-color-hover, var(--link-color, var(--color-text)));
+  }
+
+  /* Modifiers */
+  &.-hover-color {
+    --link-color: currentColor;
+    --link-color-hover: var(--color-purple-1);
+
+    text-decoration: none;
+
+    @media (--dark) {
+      --link-color-hover: var(--color-yellow-2);
+    }
+  }
+
+  &.-inverted {
+    --link-color: var(--color-gray-8);
+
+    @media (--dark) {
+      --link-color: var(--color-gray-1);
+    }
+  }
+
+  &.-underline-hover {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.-hover-background {
+    @mixin linkHoverBackground;
+  }
+
+  &.-external-link {
+    @mixin externalLink;
+  }
+
+  &.-highlight {
+    --link-background: var(--light-pink);
+
+    background-color: var(--link-background);
+    margin: auto -0.05em;
+    padding: 0.05em 0.225em;
+    position: relative;
+    text-decoration: none;
+    transition: box-shadow var(--transition);
+
+    @media (--dark) {
+      --link-background: var(--heliotrope);
+    }
+  }
+}

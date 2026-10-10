@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "4321", "--strictPort"],
+      "port": 4321
+    },
+    {
+      "name": "dev-alt",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "4322", "--strictPort"],
+      "port": 4322
+    },
+    {
+      "name": "dev-3",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "4323", "--strictPort"],
+      "port": 4323
+    },
+    {
+      "name": "dev-4",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "--port", "4324", "--strictPort"],
+      "port": 4324
+    }
+  ]
+}
