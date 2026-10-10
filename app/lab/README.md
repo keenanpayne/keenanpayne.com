@@ -36,6 +36,7 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 - **Links:** URLs in the content are already rebased. For fixed site paths, use `useTo()`: `to("/contact/")`.
 - **Forms:** render `formFields("contact" | "inquiry")`, so every direction asks the same questions.
 - **Styles are scoped.** A direction’s stylesheet stays loaded after the lab navigates to another direction, so prefix every class and custom property (`mc-`, `--mc-`).
+- **Page-wide effects skip the style guide.** A rule that reaches past the direction for something a visitor opens (locking the page’s scroll, hiding the lab bar) must not match it inside the style guide’s previews: `:root:has(.mc-deck:not([hidden], .sg-stage *))`.
 - **Light and dark:** define tokens on `:root`, then override them under `@media (prefers-color-scheme: dark)` with `:root:not([data-theme="light"])`, and again under `:root[data-theme="dark"]` (the lab bar’s switch).
 
 ## Common changes

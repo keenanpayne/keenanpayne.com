@@ -889,12 +889,13 @@ body:has(.mc) {
   }
 }
 
-:root:has(.mc-deck:not([hidden])) {
+/* Not for the style guide's Shell preview, which opens it inside the guide */
+:root:has(.mc-deck:not([hidden], .sg-stage *)) {
   overflow: hidden;
 }
 
 /* The lab switcher steps aside so it doesn't cover the deck's footer */
-body:has(.mc-deck:not([hidden])) .labBar {
+body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   display: none;
 }
 

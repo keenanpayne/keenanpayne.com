@@ -542,8 +542,8 @@ body:has(.st) .labBar {
   }
 }
 
-/* The page can't scroll beneath it */
-html:has(.st-menu:not([hidden])) {
+/* The page can't scroll beneath it (unless it's the style guide's preview) */
+html:has(.st-menu:not([hidden], .sg-stage *)) {
   overflow: hidden;
 }
 
