@@ -4329,7 +4329,9 @@ a.pt-tile__head:hover {
     text-transform: uppercase;
   }
 
-  & ._text-h4,
+  /* The old site's type utilities size nothing here, except that a pull
+     quote's credit keeps its own size */
+  & ._text-h4:not(.blockquote-cite),
   & ._text-h5,
   & ._text-h6 {
     font-size: inherit;

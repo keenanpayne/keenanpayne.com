@@ -2308,13 +2308,6 @@ function Prose({ prose }: SpecimenProps) {
 
   return (
     <>
-      {topics.length === 1 && (
-        <Note>
-          One box: Post gives each h2 a box of its own, but the footnotes’
-          heading sits inside their section, so this body stays whole, as a post
-          with footnotes does.
-        </Note>
-      )}
       {/* The post's column beside its side column */}
       <Field width={704}>
         <div className="pt-columns__main">

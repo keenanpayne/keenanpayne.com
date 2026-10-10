@@ -196,6 +196,15 @@ body:has(.wireframe) {
     padding: 16px;
     background: var(--wireframe-tint);
   }
+
+  /* Callout icons carry no size of their own */
+  & .icon {
+    width: 1em;
+    height: 1em;
+    margin-right: 0.4em;
+    vertical-align: -0.125em;
+    fill: currentcolor;
+  }
 }
 
 .wireframe-cover {

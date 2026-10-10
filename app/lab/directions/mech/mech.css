@@ -3407,6 +3407,9 @@ a.mc-hex:focus-visible,
 .mc-masonry {
   columns: 1;
   column-gap: 20px;
+  /* Each panel is a line of its own; any number of them can end a column */
+  orphans: 1;
+  widows: 1;
 
   @media (width >= 700px) {
     columns: 2;
@@ -3416,9 +3419,14 @@ a.mc-hex:focus-visible,
     columns: 3;
   }
 
+  /* Inline blocks can't be split between columns, and neither can their
+     corner brackets: as blocks, a bracket that pokes above the first panel
+     in a column was left behind at the foot of the column before */
   & > * {
+    display: inline-block;
+    width: 100%;
     margin-bottom: 20px;
-    break-inside: avoid;
+    vertical-align: top;
   }
 }
 
@@ -4656,7 +4664,9 @@ a.mc-hex:focus-visible,
     text-transform: uppercase;
   }
 
-  & ._text-h4,
+  /* The old site's type utilities size nothing here, except that a pull
+     quote's credit keeps its own size */
+  & ._text-h4:not(.blockquote-cite),
   & ._text-h5,
   & ._text-h6 {
     font-size: inherit;

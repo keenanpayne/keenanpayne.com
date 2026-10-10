@@ -909,7 +909,7 @@ function Lists({ content }: SpecimenProps) {
       </Specimen>
       <Specimen
         label="Entries"
-        note="Type archives and other lists of pages, shown with services; without a date, the title falls into the date column from 760px, as on those pages"
+        note="Type archives and other lists of pages, shown with services; with no dates, the titles take the first column"
         wide
       >
         <ol className="mg-index">

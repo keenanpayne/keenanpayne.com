@@ -48,9 +48,15 @@ export interface Topic {
 /**
  * Splits body HTML into one topic per top-level `<h2>`, so each can sit in its
  * own box. Falls back to a single topic when a heading sits inside a wrapper.
+ * Footnotes stay at the end of the last topic, since their heading sits
+ * inside their own `<section>`.
  */
 export function splitTopics(html: string, first = "Introduction"): Topic[] {
-  const parts = html.split(/(?=<h2[\s>])/);
+  const notesAt = html.indexOf('<section class="footnotes">');
+  const body = notesAt < 0 ? html : html.slice(0, notesAt);
+  const notes = notesAt < 0 ? "" : html.slice(notesAt);
+
+  const parts = body.split(/(?=<h2[\s>])/);
   const balanced = parts.every((part) =>
     ["div", "details", "section", "figure", "aside", "ul", "ol"].every(
       (tag) =>
@@ -60,7 +66,7 @@ export function splitTopics(html: string, first = "Introduction"): Topic[] {
   );
   if (!balanced) return [{ id: "topic-intro", title: first, html }];
 
-  return parts
+  const topics = parts
     .map((part, index) => {
       const heading = /^<h2([^>]*)>([\s\S]*?)<\/h2>/.exec(part);
       if (!heading) return { id: "topic-intro", title: first, html: part };
@@ -73,6 +79,11 @@ export function splitTopics(html: string, first = "Introduction"): Topic[] {
       return { id, title, titleHtml, html: part.slice(heading[0].length) };
     })
     .filter((topic) => topic.html.replace(/<[^>]+>|\s/g, "").length > 0);
+
+  if (!notes) return topics;
+  if (topics.length === 0) return [{ id: "topic-intro", title: first, html }];
+  const last = topics[topics.length - 1];
+  return [...topics.slice(0, -1), { ...last, html: last.html + notes }];
 }
 
 export function Post({

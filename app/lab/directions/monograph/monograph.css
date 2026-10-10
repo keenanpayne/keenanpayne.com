@@ -351,6 +351,7 @@ body:has(.mg) {
   height: 200px;
   margin-bottom: 14px;
   background: var(--mg-tint);
+  text-decoration: none;
 
   & img {
     position: absolute;
@@ -814,6 +815,13 @@ body:has(.mg) {
 
     @media (width >= 760px) {
       grid-template-columns: 64px minmax(0, 1fr) minmax(0, 0.6fr) 14px;
+    }
+
+    /* Entries (type and tag archives) have no date to give a column */
+    &:not(:has(.mg-index__date)) {
+      @media (width >= 760px) {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.6fr) 14px;
+      }
     }
   }
 
@@ -1704,6 +1712,7 @@ button.mg-pill {
       width: 14px;
       height: 14px;
       margin-bottom: 8px;
+      fill: currentcolor;
     }
 
     & ._label,
@@ -1751,6 +1760,16 @@ button.mg-pill {
     & hr {
       display: none;
     }
+
+    /* A label under the rule, like a callout's, not a section heading */
+    & h2 {
+      margin: 0 0 8px;
+      padding: 0;
+      border: 0;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0;
+    }
   }
 
   & .footnote-ref a {
@@ -1775,7 +1794,9 @@ button.mg-pill {
     vertical-align: top;
   }
 
-  & ._text-h4,
+  /* The old site's type utilities size nothing here, except that a pull
+     quote's credit keeps its own size */
+  & ._text-h4:not(.blockquote-cite),
   & ._text-h5,
   & ._text-h6 {
     font-size: inherit;
