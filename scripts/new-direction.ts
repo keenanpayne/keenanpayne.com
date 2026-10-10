@@ -27,6 +27,8 @@ import {
 } from "node:fs";
 import { join } from "node:path";
 
+import { RESERVED_SLUGS } from "../app/lab/styleguide/sections.ts";
+
 const DIRECTIONS = "app/lab/directions";
 const REGISTRY = "app/lab/registry.ts";
 const INDEX = `${DIRECTIONS}/index.ts`;
@@ -42,6 +44,10 @@ function fail(message: string): never {
 
 if (!slug || !/^[a-z][a-z0-9]*(-[a-z0-9]+)*$/.test(slug)) {
   fail("Give a slug in kebab-case, e.g. `neo-brutal`.");
+}
+
+if (RESERVED_SLUGS.includes(slug)) {
+  fail(`"${slug}" is reserved for the style guide's URLs.`);
 }
 
 const target = join(DIRECTIONS, slug);

@@ -6,6 +6,14 @@ import { createContext, useContext, type CSSProperties } from "react";
  */
 export const BaseContext = createContext("");
 
+/**
+ * True inside a style guide specimen, where controls show their states but
+ * don't navigate (the guide's stage holds plain link clicks the same way)
+ */
+export const PreviewContext = createContext(false);
+
+export const usePreview = () => useContext(PreviewContext);
+
 /** Builds a link to a site path inside the current direction */
 export function useTo() {
   const base = useContext(BaseContext);

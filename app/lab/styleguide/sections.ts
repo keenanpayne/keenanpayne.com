@@ -151,6 +151,13 @@ export const getSection = (id: string | undefined) =>
 
 export const STYLEGUIDE_PATH = "/lab/styleguide/";
 
+/**
+ * Names a direction can't take: `/lab/styleguide/` is the guide's own route,
+ * and `/lab/styleguide/compare/…` holds its comparisons (`npm run lab:new`
+ * rejects both)
+ */
+export const RESERVED_SLUGS = ["styleguide", "compare"];
+
 /** What a style guide page shows: one direction, or one section across all */
 export type StyleGuideMode =
   | {

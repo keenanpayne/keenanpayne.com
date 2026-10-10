@@ -6,7 +6,7 @@ import type {
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
-import { Html, pad, useTo } from "../../site";
+import { Html, pad, usePreview, useTo } from "../../site";
 
 import {
   DIE,
@@ -442,7 +442,10 @@ export function Tile({
   );
 }
 
-/** Select that jumps to the chosen URL, like the old "Sub Categories" menus */
+/**
+ * Select that jumps to the chosen URL, like the old "Sub Categories" menus.
+ * In the style guide it only shows the choice.
+ */
 export function JumpMenu({
   label,
   options
@@ -450,13 +453,17 @@ export function JumpMenu({
   label: string;
   options: { href: string; text: string }[];
 }) {
+  const preview = usePreview();
+
   return (
     <select
       className="pt-select"
       aria-label={label}
       defaultValue=""
       onChange={(event) => {
-        if (event.target.value) window.location.href = event.target.value;
+        if (event.target.value && !preview) {
+          window.location.href = event.target.value;
+        }
       }}
     >
       <option value="" disabled>

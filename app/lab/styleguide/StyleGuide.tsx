@@ -31,7 +31,7 @@ import {
   type DirectionInfo,
   type DirectionSlug
 } from "../registry";
-import { BaseContext, type Direction } from "../site";
+import { BaseContext, PreviewContext, type Direction } from "../site";
 
 import {
   comparePath,
@@ -178,22 +178,24 @@ function Stage({
 }) {
   return (
     <BaseContext.Provider value={labPath(info.slug).slice(0, -1)}>
-      <div
-        className={cx("sg-stage", frame && "sg-stage--frame")}
-        style={tokens.paper && { background: `var(${tokens.paper.name})` }}
-        onClickCapture={holdLinks}
-        onSubmitCapture={(event) => event.preventDefault()}
-      >
-        <Boundary name={info.name}>
-          {frame ? (
-            children
-          ) : (
-            <div className={`${skin.specimens.root} sg-stage__root`}>
-              {children}
-            </div>
-          )}
-        </Boundary>
-      </div>
+      <PreviewContext.Provider value>
+        <div
+          className={cx("sg-stage", frame && "sg-stage--frame")}
+          style={tokens.paper && { background: `var(${tokens.paper.name})` }}
+          onClickCapture={holdLinks}
+          onSubmitCapture={(event) => event.preventDefault()}
+        >
+          <Boundary name={info.name}>
+            {frame ? (
+              children
+            ) : (
+              <div className={`${skin.specimens.root} sg-stage__root`}>
+                {children}
+              </div>
+            )}
+          </Boundary>
+        </div>
+      </PreviewContext.Provider>
     </BaseContext.Provider>
   );
 }
