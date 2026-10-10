@@ -12,6 +12,7 @@ import {
   PostNav,
   Readout,
   Section,
+  Transmission,
   unitCode
 } from "../parts";
 
@@ -42,7 +43,14 @@ function Gallery({
             tabIndex={-1}
           >
             {item.video ? (
-              <video src={item.video} muted loop playsInline autoPlay />
+              <video
+                src={item.video}
+                muted
+                controls
+                loop={item.autoplay}
+                playsInline={item.autoplay}
+                autoPlay={item.autoplay}
+              />
             ) : (
               item.image && (
                 <img src={item.image} alt={item.title ?? ""} loading="lazy" />
@@ -98,6 +106,7 @@ export function CaseStudy({
     content.work.findIndex((item) => samePath(item.url, page.url))
   );
   let gallery = 0;
+  let quote = 0;
 
   return (
     <article className="mc-case">
@@ -247,6 +256,10 @@ export function CaseStudy({
       {page.sections.map((section, index) =>
         section.type === "portfolioGrid" ? (
           <Gallery key={index} section={section} index={gallery++} />
+        ) : section.type === "testimonial" && section.testimonial ? (
+          <div key={index} className="mc-gallery__continued">
+            <Transmission testimonial={section.testimonial} index={quote++} />
+          </div>
         ) : null
       )}
 

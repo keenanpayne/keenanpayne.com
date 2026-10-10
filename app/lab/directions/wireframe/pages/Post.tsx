@@ -1,6 +1,6 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
 import { readingMinutes, useTo, type TemplateProps } from "../../../site";
-import { Facts, PageHeader, PostNav } from "../parts";
+import { Facts, Newsletter, PageHeader, PostNav } from "../parts";
 
 export function Post({ page }: TemplateProps<"post">) {
   const to = useTo();
@@ -55,6 +55,8 @@ export function Post({ page }: TemplateProps<"post">) {
       )}
 
       <PostNav nav={page.postNav} />
+
+      {page.newsletter && <Newsletter />}
     </article>
   );
 }

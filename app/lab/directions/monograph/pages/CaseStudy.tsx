@@ -4,7 +4,7 @@ import type {
   PortfolioPageModel
 } from "../../../../lib/types";
 import { Html, useTo } from "../../../site";
-import { ArrowCircle, Banner, Icon, MoreLink, PostNav } from "../parts";
+import { ArrowCircle, Banner, Icon, MoreLink, PostNav, Quote } from "../parts";
 
 const COLUMNS: Record<string, number> = {
   "-one-col": 1,
@@ -47,7 +47,14 @@ export function Gallery({ section }: { section: PortfolioGridSection }) {
               tabIndex={-1}
             >
               {item.video ? (
-                <video src={item.video} muted loop playsInline autoPlay />
+                <video
+                  src={item.video}
+                  muted
+                  controls
+                  loop={item.autoplay}
+                  playsInline={item.autoplay}
+                  autoPlay={item.autoplay}
+                />
               ) : (
                 item.image && (
                   <img src={item.image} alt={item.title ?? ""} loading="lazy" />
@@ -225,6 +232,10 @@ export function CaseStudy({ page }: { page: PortfolioPageModel }) {
       {page.sections.map((section, index) =>
         section.type === "portfolioGrid" ? (
           <Gallery key={index} section={section} />
+        ) : section.type === "testimonial" && section.testimonial ? (
+          <div key={index} className="mg-gallery__continued">
+            <Quote testimonial={section.testimonial} />
+          </div>
         ) : null
       )}
 

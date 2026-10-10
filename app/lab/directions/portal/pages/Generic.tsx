@@ -14,6 +14,7 @@ import {
   KeySection,
   LinkCard,
   NewsList,
+  Newsletter,
   QuotePromo,
   ratingOf,
   SideGroup,
@@ -202,11 +203,17 @@ export function Generic({
           )}
         </KeySection>
       )}
-      {page.sections.map((section, index) =>
-        section.type === "entries" ? (
-          <Entries key={index} section={section} title={title} />
-        ) : null
-      )}
+      {page.sections.map((section, index) => {
+        switch (section.type) {
+          case "entries":
+            return <Entries key={index} section={section} title={title} />;
+          case "newsletter":
+          case "newsletterStandalone":
+            return <Newsletter key={index} />;
+          default:
+            return null;
+        }
+      })}
     </>
   );
 }

@@ -2,7 +2,8 @@ import { HtmlContent } from "../../../../components/HtmlContent";
 import type {
   LabContent,
   PortfolioGridSection,
-  PortfolioPageModel
+  PortfolioPageModel,
+  TestimonialSection
 } from "../../../../lib/types";
 import { Html, samePath, useTo } from "../../../site";
 import {
@@ -13,6 +14,7 @@ import {
   KeySection,
   LinkCard,
   PostNav,
+  Quote,
   SideGroup,
   SideList
 } from "../parts";
@@ -24,21 +26,30 @@ const COLUMNS: Record<string, number> = {
   "-three-col": 3
 };
 
-/** A gallery with a headline, plus any headless galleries that follow it */
+/**
+ * A gallery with a headline, plus the headless galleries and client quotes
+ * that follow it, in page order
+ */
 interface Group {
-  head: PortfolioGridSection;
-  grids: PortfolioGridSection[];
+  /** The first gallery; absent while a group holds only quotes */
+  head?: PortfolioGridSection;
+  blocks: (PortfolioGridSection | TestimonialSection)[];
 }
 
 function groupGalleries(sections: PortfolioPageModel["sections"]) {
   const groups: Group[] = [];
   for (const section of sections) {
-    if (section.type !== "portfolioGrid" || !section.items?.length) continue;
     const last = groups[groups.length - 1];
-    if (last && !section.headline && !section.description) {
-      last.grids.push(section);
-    } else {
-      groups.push({ head: section, grids: [section] });
+    if (section.type === "testimonial" && section.testimonial) {
+      if (last) last.blocks.push(section);
+      else groups.push({ blocks: [section] });
+    } else if (section.type === "portfolioGrid" && section.items?.length) {
+      if (last && !section.headline && !section.description) {
+        last.head ??= section;
+        last.blocks.push(section);
+      } else {
+        groups.push({ head: section, blocks: [section] });
+      }
     }
   }
   return groups;
@@ -58,7 +69,14 @@ function Gallery({ section }: { section: PortfolioGridSection }) {
               tabIndex={-1}
             >
               {item.video ? (
-                <video src={item.video} muted loop playsInline autoPlay />
+                <video
+                  src={item.video}
+                  muted
+                  controls
+                  loop={item.autoplay}
+                  playsInline={item.autoplay}
+                  autoPlay={item.autoplay}
+                />
               ) : (
                 item.image && (
                   <img src={item.image} alt={item.title ?? ""} loading="lazy" />
@@ -94,6 +112,7 @@ export function CaseStudy({
   const work = content.work.find((item) => samePath(item.url, page.url));
   const groups = groupGalleries(page.sections);
   const galleryId = (index: number) => `gallery-${index + 1}`;
+  let quote = 0;
 
   const topics = [
     page.overview && { id: "overview", title: "Overview" },
@@ -101,7 +120,7 @@ export function CaseStudy({
     page.pillars?.solution && { id: "solution", title: "The solution" },
     ...groups.map((group, index) => ({
       id: galleryId(index),
-      title: group.head.headline ?? `Gallery ${index + 1}`
+      title: group.head?.headline ?? `Gallery ${index + 1}`
     })),
     page.content && { id: "details", title: "Details" }
   ].filter(Boolean) as { id: string; title: string }[];
@@ -171,23 +190,33 @@ export function CaseStudy({
               id={galleryId(index)}
               title={
                 <>
-                  {group.head.headline ?? `Gallery ${index + 1}`}
-                  {group.head.eyebrow && (
+                  {group.head?.headline ?? `Gallery ${index + 1}`}
+                  {group.head?.eyebrow && (
                     <span className="pt-keysec__tag">{group.head.eyebrow}</span>
                   )}
                 </>
               }
             >
-              {group.head.description && (
+              {group.head?.description && (
                 <Html
                   as="p"
                   className="pt-spec__text pt-gallery__intro"
                   html={group.head.description}
                 />
               )}
-              {group.grids.map((grid, gridIndex) => (
-                <Gallery key={gridIndex} section={grid} />
-              ))}
+              {group.blocks.map((block, blockIndex) =>
+                block.type === "portfolioGrid" ? (
+                  <Gallery key={blockIndex} section={block} />
+                ) : (
+                  block.testimonial && (
+                    <Quote
+                      key={blockIndex}
+                      testimonial={block.testimonial}
+                      index={quote++}
+                    />
+                  )
+                )
+              )}
             </KeySection>
           ))}
 

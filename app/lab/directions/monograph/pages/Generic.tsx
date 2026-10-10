@@ -10,6 +10,7 @@ import {
   Banner,
   Icon,
   KindWords,
+  Newsletter,
   PageHeader,
   Section,
   ServicesLedger
@@ -78,11 +79,17 @@ export function Generic({
         </section>
       )}
 
-      {page.sections.map((section, index) =>
-        section.type === "entries" ? (
-          <Entries key={index} section={section} />
-        ) : null
-      )}
+      {page.sections.map((section, index) => {
+        switch (section.type) {
+          case "entries":
+            return <Entries key={index} section={section} />;
+          case "newsletter":
+          case "newsletterStandalone":
+            return <Newsletter key={index} />;
+          default:
+            return null;
+        }
+      })}
 
       {isService && (
         <>

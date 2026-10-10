@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 import { HtmlContent } from "../../../../components/HtmlContent";
 import { Html, useTo, type TemplateProps } from "../../../site";
-import { Facts, PageHeader, PostNav, Section } from "../parts";
+import { Facts, PageHeader, PostNav, Quote, Section } from "../parts";
 
 export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
   const to = useTo();
@@ -95,7 +95,14 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
               {section.items.map((item, itemIndex) => (
                 <figure key={itemIndex}>
                   {item.video ? (
-                    <video src={item.video} muted loop playsInline autoPlay />
+                    <video
+                      src={item.video}
+                      muted
+                      controls
+                      loop={item.autoplay}
+                      playsInline={item.autoplay}
+                      autoPlay={item.autoplay}
+                    />
                   ) : (
                     item.image && (
                       <img
@@ -120,6 +127,8 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
               ))}
             </div>
           </Section>
+        ) : section.type === "testimonial" && section.testimonial ? (
+          <Quote key={index} testimonial={section.testimonial} />
         ) : null
       )}
 
