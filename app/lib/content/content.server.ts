@@ -7,6 +7,8 @@ import ripplingLogo from "../../assets/svg/rippling.svg?raw";
 import stableLogo from "../../assets/svg/stable.svg?raw";
 import { people } from "../../data/people";
 import { portfolio } from "../../data/portfolio";
+import { profile } from "../../data/profile";
+import { socials } from "../../data/socials";
 import testimonialAnalysis from "../../data/testimonial-analysis.json";
 import { testimonials } from "../../data/testimonials";
 import type { PortfolioItem, TestimonialAnalysis } from "../../data/types";
@@ -17,6 +19,7 @@ import type {
   EntriesSection,
   EntryModel,
   IntroSection,
+  LabContent,
   LinkModel,
   PageMeta,
   PageModel,
@@ -1083,4 +1086,72 @@ export function getFeedPosts() {
     date: post.date,
     content: renderBody(post)
   }));
+}
+
+/** Real site content for the design lab (`/lab/*`), in one flat shape */
+export function getLabContent(): LabContent {
+  const index = getIndex();
+
+  const posts = [...index.posts].reverse().map((post) => {
+    const image = optionalString(post.data.meta?.image);
+    return {
+      title: String(post.data.title ?? ""),
+      url: post.url,
+      date: readableDate(post.date),
+      iso: htmlDateString(post.date),
+      year: postYear(post.date),
+      type: optionalString(post.data.type),
+      lede: optionalString(post.data.lede ?? post.data.meta?.description),
+      // Skip social images that point outside `/public/images`
+      image: image && /^(https:\/\/|\/images\/)/.test(image) ? image : undefined
+    };
+  });
+
+  const work = Object.values(portfolio)
+    .filter((item) => !item.template && item.cover)
+    .sort((a, b) => Number(b.featured ?? 0) - Number(a.featured ?? 0))
+    .map((item) => ({
+      name: item.name,
+      url: portfolioUrl(item),
+      lede: optionalString(item.lede),
+      cover: `${CLOUDINARY}/image/upload/f_auto,q_auto,w_1200/${item.cover}`,
+      // Square, padded with the cover's own edge color, for narrow frames
+      coverSquare: `${CLOUDINARY}/image/upload/f_auto,q_auto,c_pad,ar_1:1,b_auto:border,w_640/${item.cover}`,
+      year: optionalString(item.year),
+      role: optionalString(item.role),
+      industry: optionalString(item.industry),
+      services: item.services ?? [],
+      technologies: item.technologies ?? []
+    }));
+
+  const services = byOrder(servicesByDate()).map((item) => ({
+    title: String(item.data.title ?? ""),
+    url: item.url,
+    lede: optionalString(item.data.short_lede ?? item.data.lede)
+  }));
+
+  const { socials: socialIds, ...about } = profile;
+  const image = (id: string, transform: string) =>
+    `${CLOUDINARY}/image/upload/f_auto,q_auto,${transform}/${id}`;
+
+  return {
+    posts,
+    work,
+    services,
+    testimonials: resolveTestimonials([6, 41, 2]),
+    profile: {
+      ...about,
+      avatar: image(about.avatar, "c_fill,g_face,ar_1:1,w_480"),
+      photos: about.photos.map((photo) => ({
+        src: image(photo.image, "w_800"),
+        large: image(photo.image, "c_limit,w_1800"),
+        alt: photo.alt
+      }))
+    },
+    socials: socialIds.map((id) => ({
+      text: socials[id].name,
+      url: socials[id].url,
+      rel: socials[id].name === "Mastodon" ? "me" : undefined
+    }))
+  };
 }

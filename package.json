@@ -43,7 +43,8 @@
     "audit": "npm audit && npm outdated",
     "audit:fix": "npm audit fix && npm update",
     "size": "du -h build/ | sort -hr",
-    "analyze:testimonials": "node scripts/analyze-testimonials.ts"
+    "analyze:testimonials": "node scripts/analyze-testimonials.ts",
+    "lab:new": "node scripts/new-direction.ts"
   },
   "dependencies": {
     "@netlify/vite-plugin-react-router": "^4.0.0",

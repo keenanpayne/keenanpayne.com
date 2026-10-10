@@ -1,6 +1,8 @@
 // View models passed from route loaders to components. Everything here is
 // plain, serializable data — HTML strings are marked as such in comments.
 
+import type { ProfileFact } from "../data/profile";
+
 export interface LinkModel {
   url: string;
   text: string;
@@ -266,3 +268,73 @@ export interface PortfolioPageModel extends BaseModel {
 }
 
 export type PageModel = BasicPageModel | PostPageModel | PortfolioPageModel;
+
+/** Real site content handed to every design lab direction */
+export interface LabContent {
+  /** Newest first */
+  posts: {
+    title: string;
+    url: string;
+    /** Readable, e.g. `Oct 09, 2022` */
+    date: string;
+    /** `yyyy-mm-dd` */
+    iso: string;
+    year: string;
+    type?: string;
+    lede?: string;
+    image?: string;
+  }[];
+  work: {
+    name: string;
+    url: string;
+    /** HTML */
+    lede?: string;
+    cover: string;
+    /** Square crop padded with the cover's edge color */
+    coverSquare: string;
+    year?: string;
+    role?: string;
+    industry?: string;
+    services: string[];
+    technologies: string[];
+  }[];
+  services: { title: string; url: string; lede?: string }[];
+  testimonials: TestimonialModel[];
+  profile: ProfileModel;
+  /** Profiles elsewhere, in display order */
+  socials: SocialLink[];
+}
+
+export interface SocialLink extends LinkModel {
+  /** `me` for profiles that verify the site (Mastodon) */
+  rel?: string;
+}
+
+/** `app/data/profile.ts`, with image URLs resolved */
+export interface ProfileModel {
+  name: string;
+  role: string;
+  email: string;
+  location: {
+    city: string;
+    name: string;
+    short: string;
+    timeZone: string;
+    timeZoneName: string;
+    latitude: number;
+    longitude: number;
+  };
+  experience: { years: number; text: string };
+  /** HTML */
+  bio: string;
+  facts: ProfileFact[];
+  /** Square, face-centered crop */
+  avatar: string;
+  photos: Array<{
+    src: string;
+    /** For lightboxes; never upscaled past the original */
+    large: string;
+    alt: string;
+  }>;
+  process: Array<{ title: string; text: string }>;
+}

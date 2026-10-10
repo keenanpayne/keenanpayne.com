@@ -7,7 +7,21 @@ export default {
   async prerender() {
     const { getPrerenderPaths } =
       await import("./app/lib/content/content.server");
-    return [...getPrerenderPaths(), "/sitemap.xml", "/feed.xml", "/feed.json"];
+    const { directions, SAMPLE_PAGES } = await import("./app/lab/registry");
+    const { comparePath, STYLE_SECTIONS, styleguidePath } =
+      await import("./app/lab/styleguide/sections");
+    return [
+      ...getPrerenderPaths(),
+      "/lab/",
+      ...directions.flatMap(({ slug }) =>
+        SAMPLE_PAGES.map(({ path }) => `/lab/${slug}${path}`)
+      ),
+      ...STYLE_SECTIONS.map(({ id }) => comparePath(id)),
+      ...directions.map(({ slug }) => styleguidePath(slug)),
+      "/sitemap.xml",
+      "/feed.xml",
+      "/feed.json"
+    ];
   },
   // Netlify serves pre-rendered pages without running the server, so their
   // security headers come from `_headers` instead of the root middleware

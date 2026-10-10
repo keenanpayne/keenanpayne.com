@@ -6,6 +6,8 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useMatches,
+  useRouteError,
   useRouteLoaderData
 } from "react-router";
 
@@ -27,12 +29,26 @@ https://github.com/keenanpayne/keenanpayne.com
 
 */
 
+const FONTS_URL =
+  "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500&display=swap";
+
+/**
+ * Routes with `handle: { bare: true }` (the design lab) opt out of the site
+ * chrome and global styles so they can explore a different look in isolation.
+ * Their errors still render in the site's ErrorBoundary, which needs both.
+ */
+function useIsBare() {
+  const error = useRouteError();
+  const matches = useMatches();
+  return (
+    !error &&
+    matches.some(
+      (match) => (match.handle as { bare?: boolean } | undefined)?.bare
+    )
+  );
+}
+
 export const links: Route.LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
-  {
-    rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500&display=swap"
-  },
   {
     rel: "alternate",
     href: metadata.feed.path,
@@ -73,6 +89,7 @@ export function Layout({ children }: { children: ReactNode }) {
   // Here rather than in `App` so it also runs when the first render is the
   // ErrorBoundary
   useMarkHydrated();
+  const isBare = useIsBare();
 
   return (
     <html lang="en" className="newStyles">
@@ -85,6 +102,12 @@ export function Layout({ children }: { children: ReactNode }) {
         <meta name="author" content="Keenan Payne" />
         <meta name="color-scheme" content="light dark" />
         <Meta />
+        {!isBare && (
+          <>
+            <link rel="stylesheet" href={stylesheet} />
+            <link rel="stylesheet" href={FONTS_URL} />
+          </>
+        )}
         <Links />
       </head>
       <body>
@@ -97,6 +120,10 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function App({ loaderData }: Route.ComponentProps) {
+  const isBare = useIsBare();
+
+  if (isBare) return <Outlet />;
+
   return (
     <>
       <Topbar />

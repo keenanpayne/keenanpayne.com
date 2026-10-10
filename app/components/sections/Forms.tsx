@@ -1,3 +1,5 @@
+import { inquiryBudgets, inquiryServices } from "../../data/inquiry";
+
 // Netlify Forms: the pre-rendered markup is detected at deploy time. The
 // hidden `form-name` input is what Netlify would otherwise inject, so it's
 // rendered here to keep the server and hydrated markup identical.
@@ -60,23 +62,6 @@ export function Contact() {
     </form>
   );
 }
-
-const SERVICES = [
-  ["Services — Website Design", "Website design"],
-  ["Services — Website Development", "Website development"],
-  ["Services — Web Application Development", "Web application development"],
-  ["Services — UI Design", "User Interface (UI) design"],
-  ["Services — UX Research", "User Experience (UX) research"],
-  ["Services — Other", "Other"],
-  ["Services — Not Sure", "Not sure yet"]
-];
-
-const BUDGETS = [
-  "Less than $10,000",
-  "$10,000 - $25,000",
-  "$25,000 - $50,000",
-  "More than $50,000"
-];
 
 function Checkbox({ name, label }: { name: string; label: string }) {
   return (
@@ -151,7 +136,7 @@ export function ProjectInquiry() {
 
       <p className="ContactForm-item">
         What services are you interested in?
-        {SERVICES.map(([name, label]) => (
+        {inquiryServices.map(({ name, label }) => (
           <Checkbox key={name} name={name} label={label} />
         ))}
       </p>
@@ -191,7 +176,7 @@ export function ProjectInquiry() {
         <label>
           Project budget
           <select className="ContactForm-input" name="Project Budget">
-            {BUDGETS.map((budget) => (
+            {inquiryBudgets.map((budget) => (
               <option key={budget} value={budget}>
                 {budget}
               </option>
