@@ -13,6 +13,7 @@ import { Testimonials } from "./pages/Testimonials";
 import { Work } from "./pages/Work";
 import { Writing } from "./pages/Writing";
 import { Shell } from "./Shell";
+import { specimens } from "./specimens";
 import stylesheet from "./wireframe.css?url";
 
 export default {
@@ -33,5 +34,6 @@ export default {
     inquiry: Contact,
     page: Page,
     notFound: NotFound
-  }
+  },
+  specimens
 } satisfies Direction;

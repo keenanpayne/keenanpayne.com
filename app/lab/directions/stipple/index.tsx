@@ -13,6 +13,7 @@ import { Testimonials } from "./pages/Testimonials";
 import { Work } from "./pages/Work";
 import { Writing } from "./pages/Writing";
 import { Shell } from "./Shell";
+import { specimens } from "./specimens";
 import stylesheet from "./stipple.css?url";
 
 const FONTS_URL =
@@ -35,5 +36,6 @@ export default {
     inquiry: Contact,
     page: Page,
     notFound: NotFound
-  }
+  },
+  specimens
 } satisfies Direction;

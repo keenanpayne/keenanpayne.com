@@ -2,6 +2,7 @@ import { useEffect, useSyncExternalStore } from "react";
 import { Link, useNavigate } from "react-router";
 
 import { directions, labPath, SAMPLE_PAGES } from "./registry";
+import { STYLEGUIDE_PATH, styleguidePath } from "./styleguide/sections";
 
 type Theme = "auto" | "light" | "dark";
 const THEMES: Theme[] = ["auto", "light", "dark"];
@@ -41,7 +42,16 @@ const getSnapshot = () => memoryTheme ?? readTheme();
 const getServerSnapshot = (): Theme => "auto";
 
 /** Floating switcher shared by every lab page */
-export function LabBar({ current, path }: { current?: string; path?: string }) {
+export function LabBar({
+  current,
+  path,
+  guide
+}: {
+  current?: string;
+  path?: string;
+  /** On the style guide */
+  guide?: boolean;
+}) {
   const navigate = useNavigate();
   const isListed = SAMPLE_PAGES.some((page) => page.path === path);
   const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
@@ -59,6 +69,12 @@ export function LabBar({ current, path }: { current?: string; path?: string }) {
     <nav className="labBar" aria-label="Design lab">
       <Link className="labBar__home" to="/lab/">
         Lab
+      </Link>
+      <Link
+        to={current ? styleguidePath(current) : STYLEGUIDE_PATH}
+        aria-current={guide ? "page" : undefined}
+      >
+        Guide
       </Link>
       <select
         className="labBar__select"

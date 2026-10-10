@@ -185,7 +185,7 @@ export function Shell({ path, navigation, content, children }: ShellProps) {
 }
 
 /** Nine dots that, open, keep their diagonals: a cross */
-function MenuDots() {
+export function MenuDots() {
   return (
     <svg className="st-dots" viewBox="0 0 14 14" aria-hidden="true">
       {[2, 7, 12].flatMap((y, row) =>

@@ -12,7 +12,7 @@ const COLUMNS: Record<string, number> = {
   "-three-col": 3
 };
 
-function Gallery({ section }: { section: PortfolioGridSection }) {
+export function Gallery({ section }: { section: PortfolioGridSection }) {
   if (!section.items?.length) return null;
   const columns = COLUMNS[section.modifier ?? ""] ?? 3;
   const hasHeader = section.headline || section.description;

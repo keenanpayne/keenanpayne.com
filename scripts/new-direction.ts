@@ -137,5 +137,7 @@ Next:
   1. Fill in its summary and reference in ${REGISTRY}
   2. Restyle ${target}/${slug}.css, and the Shell and pages/ as the look needs
   3. Preview it at http://localhost:4242/lab/${slug}/ (npm run dev)
+  4. Lay its parts out in ${target}/specimens.tsx for the style guide at
+     http://localhost:4242/lab/styleguide/${slug}/
 
 See app/lab/README.md for what a direction may (and may not) change.`);

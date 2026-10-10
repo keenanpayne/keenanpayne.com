@@ -12,6 +12,7 @@ export default [
 
   // Design lab: experimental aesthetic directions
   route("lab", "routes/lab.tsx"),
+  route("lab/styleguide/*", "routes/lab.styleguide.tsx"),
   route("lab/:direction/*", "routes/lab.$direction.tsx"),
 
   // Every Markdown page (posts, portfolio, services, tags, …) by its URL

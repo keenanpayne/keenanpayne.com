@@ -21,7 +21,7 @@ import {
   type Post
 } from "../parts";
 
-const DESCRIPTIONS: Record<string, string> = {
+export const DESCRIPTIONS: Record<string, string> = {
   Article: "Notes on the craft: front-end, design, and working on the web.",
   Essay: "Longer arguments about work, career, and making things.",
   Reflection: "Looking back on a month, a year, or a lesson learned.",
@@ -29,7 +29,7 @@ const DESCRIPTIONS: Record<string, string> = {
 };
 
 /** Month grid with posting days linked, like the old release calendars */
-function Calendar({ posts }: { posts: Post[] }) {
+export function Calendar({ posts }: { posts: Post[] }) {
   const dated = posts.flatMap((post) => {
     const date = parseDate(post.date);
     return date ? [{ post, ...date }] : [];

@@ -19,7 +19,7 @@ import { FACE, MONITOR } from "../sprites";
 import { Logotype } from "./Home";
 
 /** The featured project as a wide banner, like a game launch */
-function Launch({ item }: { item: WorkItem }) {
+export function Launch({ item }: { item: WorkItem }) {
   const to = useTo();
 
   return (

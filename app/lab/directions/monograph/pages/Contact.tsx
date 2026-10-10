@@ -10,7 +10,7 @@ import {
 } from "../../../site";
 import { Icon, MoreLink, PageHeader } from "../parts";
 
-function FormField({ field }: { field: Field }) {
+export function FormField({ field }: { field: Field }) {
   const className = field.wide ? "mg-field mg-field--wide" : "mg-field";
 
   if (field.kind === "choices") {

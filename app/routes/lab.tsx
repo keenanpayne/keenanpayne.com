@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
 import { directions, labPath, SAMPLE_PAGES } from "../lab/registry";
+import { STYLEGUIDE_PATH, styleguidePath } from "../lab/styleguide/sections";
 import { metadata } from "../lib/site";
 import type { Route } from "./+types/lab";
 
@@ -28,6 +29,13 @@ export default function LabIndex() {
           the same real content and pages in its own visual language, isolated
           from the production styles.
         </p>
+        <p className="lab__guide">
+          <Link to={STYLEGUIDE_PATH}>Style guide</Link>
+          <span>
+            Every direction’s colors, type, and components, one direction at a
+            time or side by side.
+          </span>
+        </p>
       </header>
 
       <ol className="lab__list">
@@ -50,7 +58,8 @@ export default function LabIndex() {
               ))}
             </ul>
             <span className="lab__meta">
-              Ref. {direction.reference} · Started {direction.date}
+              Ref. {direction.reference} · Started {direction.date} ·{" "}
+              <Link to={styleguidePath(direction.slug)}>Style guide</Link>
             </span>
           </li>
         ))}

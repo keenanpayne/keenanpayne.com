@@ -16,7 +16,7 @@ import {
 type Posts = LabContent["posts"];
 
 /** Articles per year as columns of hexagon cells, like a level meter */
-function Equalizer({ years }: { years: [string, Posts][] }) {
+export function Equalizer({ years }: { years: [string, Posts][] }) {
   const max = Math.max(...years.map(([, posts]) => posts.length));
   const chronological = [...years].reverse();
 

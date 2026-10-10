@@ -17,7 +17,7 @@ import {
 import { ITEMS, MONITOR } from "../sprites";
 
 /** Banner colors for each post type, after the colors of each handheld */
-const TYPE_COLORS: Record<string, string> = {
+export const TYPE_COLORS: Record<string, string> = {
   Article: "#3d78d6",
   Essay: "#6ab335",
   Reflection: "#8a5bc9",

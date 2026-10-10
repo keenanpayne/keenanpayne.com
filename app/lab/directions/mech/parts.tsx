@@ -1128,7 +1128,7 @@ export function KindWords({
 // Calls to action
 // ---------------
 
-const AlertSide = () => (
+export const AlertSide = () => (
   <div className="mc-alert__side" aria-hidden="true">
     <div className="mc-alert__warning">
       <HexOutline className="mc-alert__hex" />

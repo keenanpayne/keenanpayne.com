@@ -13,7 +13,7 @@ import { Directory, Intro, Mascot, Pill, Sprite, TitleBar } from "../parts";
 import { ITEMS } from "../sprites";
 import { Address } from "./About";
 
-function FormField({ field }: { field: Field }) {
+export function FormField({ field }: { field: Field }) {
   const className = field.wide ? "pt-field pt-field--wide" : "pt-field";
 
   if (field.kind === "choices") {

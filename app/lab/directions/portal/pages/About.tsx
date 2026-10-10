@@ -10,7 +10,7 @@ import {
 } from "../parts";
 
 // Portal's voice for the shared profile facts
-const FACT_LABELS = {
+export const FACT_LABELS = {
   role: "Class:",
   location: "Home base:",
   experience: "Experience:",

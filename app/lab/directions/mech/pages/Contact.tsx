@@ -11,7 +11,7 @@ import {
 } from "../../../site";
 import { Button, MoreLink, PageHeader, Panel } from "../parts";
 
-function FormField({ field }: { field: Field }) {
+export function FormField({ field }: { field: Field }) {
   const className = field.wide ? "mc-field mc-field--wide" : "mc-field";
 
   if (field.kind === "choices") {

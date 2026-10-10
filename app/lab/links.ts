@@ -18,6 +18,7 @@ function labLink(path: string, base: string) {
 /**
  * Points every internal link in loader data at its lab mirror (e.g. `/about/`
  * becomes `/lab/monograph/about/`), so browsing a mockup stays in the lab.
+ * The style guide runs it in the browser too, once for each direction.
  */
 export function rebaseLinks<T>(value: T, base: string): T {
   const walk = (node: unknown, key?: string): unknown => {

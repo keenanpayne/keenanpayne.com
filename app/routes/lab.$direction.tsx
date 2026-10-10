@@ -4,7 +4,7 @@ import { data } from "react-router";
 import { loadDirection } from "../lab/directions";
 import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
-import { rebaseLinks } from "../lab/links.server";
+import { rebaseLinks } from "../lab/links";
 import { getDirection, labPath } from "../lab/registry";
 import { DirectionPage, navigationFor, resolveView } from "../lab/site";
 import { getLabContent, getPage } from "../lib/content/content.server";

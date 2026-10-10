@@ -9,7 +9,7 @@ import { HexOutline, Ticks, Tri } from "./parts";
 const WIDE = "(width >= 760px)";
 
 /** Each section's designation on the command deck */
-const SECTORS: Record<string, string> = {
+export const SECTORS: Record<string, string> = {
   "/portfolio/": "作品",
   "/archive/": "記録",
   "/about/": "経歴",

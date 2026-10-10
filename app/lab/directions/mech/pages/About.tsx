@@ -13,7 +13,7 @@ import {
 } from "../parts";
 
 // Mech's voice for the shared profile facts
-const FACT_LABELS = {
+export const FACT_LABELS = {
   role: "Designation",
   location: "Base",
   experience: "Service record",

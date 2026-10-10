@@ -93,6 +93,21 @@ body:has(.lab) {
   font-size: 18px;
 }
 
+.lab__guide {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: -32px 0 48px;
+  color: var(--lab-muted);
+  font-size: 14px;
+
+  & a {
+    color: var(--lab-ink);
+    font-weight: 600;
+  }
+}
+
 .lab__list {
   display: grid;
   gap: 12px;
@@ -164,6 +179,10 @@ body:has(.lab) {
   margin-top: 8px;
   color: var(--lab-muted);
   font-size: 13px;
+
+  & a {
+    color: inherit;
+  }
 }
 
 .lab__footnote {

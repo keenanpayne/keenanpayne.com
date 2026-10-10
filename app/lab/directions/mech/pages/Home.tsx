@@ -14,7 +14,7 @@ import {
 } from "../parts";
 
 /** Avatar in a hexagon, ringed by a gauge like a cockpit clock */
-function Gauge({ avatar }: { avatar: string }) {
+export function Gauge({ avatar }: { avatar: string }) {
   const ticks = Array.from({ length: 60 }, (_, i) => i);
 
   return (

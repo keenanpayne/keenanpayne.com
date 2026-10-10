@@ -27,7 +27,7 @@ import { ICONS, INFO, type IconName, type Item } from "./sprites";
 const WIDE = "(width >= 640px)";
 
 /** The item each zone's button shows on the site map */
-const ZONE_ITEMS: Record<string, Item> = {
+export const ZONE_ITEMS: Record<string, Item> = {
   "/portfolio/": "case",
   "/archive/": "pencil",
   "/about/": "star",
@@ -42,16 +42,16 @@ const SUB_NAVIGATION = [
 ];
 
 /** CodePen gets its own "Code bank" chip in the header */
-const isCodeBank = (social: SocialLink) => social.text === "CodePen";
+export const isCodeBank = (social: SocialLink) => social.text === "CodePen";
 
-const RAIL = [
+export const RAIL = [
   { path: "/archive/", text: "New releases" },
   { path: "/services/", text: "Most wanted" },
   { path: "/testimonials/", text: "Clients’ choice" },
   { path: "/archive/#ratings", text: "Ratings guide" }
 ];
 
-const SIDE_BUTTONS: { icon: IconName; text: string; path: string }[] = [
+export const SIDE_BUTTONS: { icon: IconName; text: string; path: string }[] = [
   { icon: "power", text: "Hire me", path: "/project-inquiry/" },
   { icon: "mail", text: "Newsletter", path: "/archive/#newsletter" },
   { icon: "heart", text: "Kind words", path: "/testimonials/" },
@@ -69,7 +69,7 @@ interface Scene {
 }
 
 /** Mascot line, side card, and ads for each part of the site */
-function sceneFor(
+export function sceneFor(
   view: View,
   path: string,
   profile: LabContent["profile"]
@@ -211,7 +211,7 @@ function sceneFor(
  * Raised tab on the top right of the frame: search the writing or work. The
  * site map carries its own on phones.
  */
-function Search({ className }: { className?: string }) {
+export function Search({ className }: { className?: string }) {
   const to = useTo();
   const id = useId();
   const [scope, setScope] = useState("/archive/");
@@ -248,7 +248,7 @@ function Search({ className }: { className?: string }) {
 }
 
 /** The quick chips on the header's right: Code bank and Work list */
-function Chips({ codeBank }: { codeBank?: SocialLink }) {
+export function Chips({ codeBank }: { codeBank?: SocialLink }) {
   const to = useTo();
 
   return (
@@ -271,7 +271,7 @@ function Chips({ codeBank }: { codeBank?: SocialLink }) {
   );
 }
 
-function Hire() {
+export function Hire() {
   const to = useTo();
 
   return (
@@ -287,7 +287,7 @@ function Hire() {
 }
 
 /** The lavender strip under the header: other pages and elsewhere online */
-function Elsewhere({
+export function Elsewhere({
   path,
   socials,
   children

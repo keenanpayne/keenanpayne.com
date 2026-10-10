@@ -29,7 +29,7 @@ export const ArrowCircle = ({ back }: { back?: boolean }) => (
   </svg>
 );
 
-const icons = {
+export const icons = {
   pin: (
     <path d="M8 14.5s4.5-4.2 4.5-7.7a4.5 4.5 0 0 0-9 0c0 3.5 4.5 7.7 4.5 7.7Zm0-5.9a1.8 1.8 0 1 0 0-3.6 1.8 1.8 0 0 0 0 3.6Z" />
   ),

@@ -1,6 +1,7 @@
 import type { ComponentType, ReactNode } from "react";
 
 import type { LabContent } from "../../lib/types";
+import type { SpecimenId } from "../styleguide/sections";
 
 import type { NavItem, View, ViewKind } from "./ia";
 import { BaseContext } from "./links";
@@ -21,6 +22,24 @@ export interface ShellProps {
   children: ReactNode;
 }
 
+/** What each of a direction's style guide specimens receives */
+export interface SpecimenProps {
+  content: LabContent;
+  /** HTML: an article body with every element the Markdown can produce */
+  prose: string;
+}
+
+/** A direction's entries in the style guide at `/lab/styleguide/` */
+export interface Specimens {
+  /**
+   * The class on the Shell's outermost element, which sets the direction's
+   * type, color, and background. Every specimen renders inside one.
+   */
+  root: string;
+  /** One for each section in `../styleguide/sections.ts` it draws itself */
+  sections: { [K in SpecimenId]: ComponentType<SpecimenProps> };
+}
+
 /**
  * A design direction: a skin over the shared content and information
  * architecture. It decides how things look, never what the site says or
@@ -33,6 +52,8 @@ export interface Direction {
   Shell: ComponentType<ShellProps>;
   /** One template for each kind of page in `./ia.ts` */
   templates: { [K in ViewKind]: ComponentType<TemplateProps<K>> };
+  /** Its parts, laid out for the style guide */
+  specimens: Specimens;
 }
 
 /** Renders a site path in a direction, with links prefixed by `base` */

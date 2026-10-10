@@ -23,25 +23,25 @@ import {
 
 const { city, short, timeZone: ZONE } = profile.location;
 
-const clockFormat = new Intl.DateTimeFormat("en-GB", {
+export const clockFormat = new Intl.DateTimeFormat("en-GB", {
   hour: "2-digit",
   minute: "2-digit",
   second: "2-digit",
   timeZone: ZONE
 });
-const readingFormat = new Intl.DateTimeFormat("en-GB", {
+export const readingFormat = new Intl.DateTimeFormat("en-GB", {
   hour: "2-digit",
   minute: "2-digit",
   timeZone: ZONE
 });
-const dateFormat = new Intl.DateTimeFormat("en-US", {
+export const dateFormat = new Intl.DateTimeFormat("en-US", {
   weekday: "long",
   month: "long",
   day: "numeric",
   timeZone: ZONE
 });
 
-const STATUS: Record<Condition, [tone: string, text: string]> = {
+export const STATUS: Record<Condition, [tone: string, text: string]> = {
   clear: ["green", "Condition green · Visibility nominal"],
   cloudy: ["amber", "Cloud cover · Sensors partly obscured"],
   fog: ["amber", "Low visibility"],
@@ -51,7 +51,13 @@ const STATUS: Record<Condition, [tone: string, text: string]> = {
 };
 
 /** Line-art weather glyphs in a 64×64 box */
-function Glyph({ condition, night }: { condition: Condition; night: boolean }) {
+export function Glyph({
+  condition,
+  night
+}: {
+  condition: Condition;
+  night: boolean;
+}) {
   const cloud = (
     <path d="M18 44h28a10 10 0 0 0 0-20 14 14 0 0 0-27-3 11 11 0 0 0-1 23Z" />
   );

@@ -9,7 +9,7 @@ Every direction at `/lab/<slug>/` is a **skin over one site**: the same content 
 | Content | `content/*.md`, `app/data/` (`profile.ts`, `inquiry.ts`, `portfolio/`, `testimonials.ts`, …) | What the site says |
 | Content model | `getLabContent()` in `app/lib/content/content.server.ts`, typed as `LabContent` | The shape every direction receives |
 | Information arch. | `site/ia.ts` | The kinds of page (`View`), which URL is which kind, the navigation, the sample pages |
-| Direction contract | `site/direction.tsx` | `Direction`: `stylesheets`, a `Shell`, and one template per kind of page |
+| Direction contract | `site/direction.tsx` | `Direction`: `stylesheets`, a `Shell`, one template per kind of page, and its style guide `specimens` |
 | Shared helpers | `site/` (`helpers.ts`, `hooks.ts`, `forms.ts`, `links.tsx`, `weather.ts`) | Reading the content the same way everywhere: intros, years, reading time, clocks, form fields, Denver's weather |
 | Directions | `directions/<slug>/` | How it looks |
 
@@ -23,6 +23,7 @@ directions/<slug>/
 ├── Shell.tsx    # Header, navigation, footer
 ├── pages/       # One template per kind of page (some directions share one across kinds)
 ├── parts.tsx    # The direction’s own building blocks
+├── specimens.tsx # Its parts, laid out for the style guide
 └── <slug>.css   # Its styles
 ```
 
@@ -49,7 +50,16 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 | Add a kind of page | `View`, `resolveView()`, and `SAMPLE_PAGES` in `site/ia.ts`, then `npm run typecheck` lists every direction that needs a template |
 | Restyle a direction | Only its folder |
 | Start a direction | `npm run lab:new -- <slug> ["Display name"]`, which copies Wireframe, renames it, and registers it |
+| Show a new part in the style guide | Its direction’s `specimens.tsx` |
 | Retire a direction | Delete its folder and its entries in `registry.ts` and `directions/index.ts` |
+
+## Style guide
+
+`/lab/styleguide/` shows every direction’s foundations, components, and chrome, two ways: one direction with all of its sections (`/lab/styleguide/<slug>/`, or one section alone at `/lab/styleguide/<slug>/<section>/`), or one section across every direction (`/lab/styleguide/compare/<section>/`). The sections are listed in `styleguide/sections.ts`.
+
+- **Shared sections** draw themselves for every direction: Color reads the custom properties straight from `<slug>.css` (`styleguide/tokens.server.ts`), Typefaces reads the font tokens and the Google Fonts URL in `stylesheets`, and Shell renders the direction’s `Shell` around a placeholder. They need nothing from a direction beyond following the light and dark rule above.
+- **Specimens** are the rest (type scale, motifs, imagery, page header, buttons, labels, panels, cards, lists, testimonials, forms, wayfinding, prose). A direction’s `specimens.tsx` gives each one a component that renders its own parts with real `content`, laid out with `styleguide/kit.tsx`: `SpecimenGrid`, `Specimen` (a captioned example), `TypeSample` (measures and prints a style’s specs), and `Note`. They render inside the direction’s `root` class; `prose` is an article body with every element the Markdown can produce, run through the real pipeline.
+- When a direction gains a part or a variant, add it to its specimens. Adding a section is one entry in `STYLE_SECTIONS`, then `npm run typecheck` lists every direction that needs a specimen for it.
 
 **Wireframe** is the baseline: every kind of page with all of its content in plain, semantic HTML. It’s the quickest way to see what a page has to offer, and new directions start as a copy of it.
 

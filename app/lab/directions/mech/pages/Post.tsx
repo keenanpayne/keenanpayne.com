@@ -6,7 +6,7 @@ import { readingMinutes, useTo } from "../../../site";
 import { MoreLink, Newsletter, Panel, PostNav, recordCode } from "../parts";
 
 /** Fixed bar along the top of the screen that fills as you read */
-function SyncBar() {
+export function SyncBar() {
   const bar = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
