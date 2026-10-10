@@ -106,18 +106,26 @@ export function Shell({ path, navigation, content, children }: ShellProps) {
                 </li>
               ))}
             </ol>
-            <ul className="st-menu__links">
-              {socials.map((social) => (
-                <li key={social.url}>
-                  <a href={social.url} rel={social.rel}>
-                    {social.text}
-                  </a>
+            {/* Everything the footer holds, as it has no room for it here */}
+            <div className="st-menu__foot">
+              <ul className="st-menu__links">
+                {socials.map((social) => (
+                  <li key={social.url}>
+                    <a href={social.url} rel={social.rel}>
+                      {social.text}
+                    </a>
+                  </li>
+                ))}
+                <li>
+                  <a href="/feed.xml">RSS</a>
                 </li>
-              ))}
-              <li>
-                <a href="/feed.xml">RSS</a>
-              </li>
-            </ul>
+              </ul>
+              <Signup compact />
+              <p className="st-menu__meta">
+                <DenverClock notes={notes} location={profile.location} />
+                <span>{`© ${new Date().getFullYear()} ${profile.name}`}</span>
+              </p>
+            </div>
             {open && (
               <Terrain
                 className="st-menu__land"

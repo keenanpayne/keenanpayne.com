@@ -106,6 +106,8 @@ export function useMenu(wide: string, path: string) {
     const close = () => setOpen(false);
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.defaultPrevented) return;
+      // A popover opened from the menu takes the Escape first
+      if (document.querySelector(":popover-open")) return;
       close();
       toggle.current?.focus();
     };

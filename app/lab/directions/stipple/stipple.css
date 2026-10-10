@@ -576,6 +576,11 @@ html:has(.st-menu:not([hidden])) {
     align-items: center;
     padding: 13px 2px 11px 0;
     color: var(--st-ink);
+
+    /* Tighter on short screens, so the footer fits beneath */
+    @media (height < 700px) {
+      padding-block: 8px 6px;
+    }
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
 
@@ -609,6 +614,10 @@ html:has(.st-menu:not([hidden])) {
 .st-menu__text {
   font-family: var(--st-serif);
   font-size: clamp(40px, 12.5vw, 52px);
+
+  @media (height < 700px) {
+    font-size: 38px;
+  }
   line-height: 1;
   letter-spacing: -0.01em;
   transition: translate 150ms ease;
@@ -619,12 +628,23 @@ html:has(.st-menu:not([hidden])) {
   height: 24px;
 }
 
+.st-menu__foot {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+  padding-bottom: 18px;
+  font: 300 11px/1.4 var(--st-mono);
+
+  & .st-signup {
+    width: auto;
+    max-width: none;
+  }
+}
+
 .st-menu__links {
   display: flex;
   flex-wrap: wrap;
   gap: 6px 18px;
-  padding: 28px 0 18px !important;
-  font: 300 11px/1.4 var(--st-mono);
 
   & a {
     color: var(--st-muted);
@@ -636,9 +656,17 @@ html:has(.st-menu:not([hidden])) {
   }
 }
 
+.st-menu__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--st-muted);
+}
+
 /* Land along the window's floor, in whatever room is left */
 .st-menu__land {
-  flex: 1 0 64px;
+  flex: 1 0 40px;
   max-height: 180px;
   margin: auto -18px 0;
   border-bottom-right-radius: calc(var(--st-radius) - 1px);
@@ -654,8 +682,13 @@ html:has(.st-menu:not([hidden])) {
 @media (prefers-reduced-motion: reduce) {
   .st-menu,
   .st-menu__list li,
+  .st-menu__text,
   .st-dots circle {
     transition: none;
+  }
+
+  .st-menu__list a:active .st-menu__text {
+    translate: none;
   }
 
   .st-menu__land {
