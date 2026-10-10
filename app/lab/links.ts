@@ -26,10 +26,12 @@ export function rebaseLinks<T>(value: T, base: string): T {
       if (key && PATH_KEYS.has(key) && isSitePath(node)) {
         return labLink(node, base);
       }
-      return node.includes('href="/')
+      // Either quote style: some content writes `href='/practices'`
+      return /href=["']\//.test(node)
         ? node.replace(
-            /href="(\/(?!\/|images\/)[^"]*)"/g,
-            (_match, path: string) => `href="${labLink(path, base)}"`
+            /href=(["'])(\/(?!\/|images\/)(?:(?!\1)[^])*)\1/g,
+            (_match, quote: string, path: string) =>
+              `href=${quote}${labLink(path, base)}${quote}`
           )
         : node;
     }

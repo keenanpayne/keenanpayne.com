@@ -2,7 +2,9 @@ import { HtmlContent } from "../../../../components/HtmlContent";
 import type {
   BasicPageModel,
   EntriesSection,
-  LabContent
+  LabContent,
+  LinkModel,
+  PageListSection
 } from "../../../../lib/types";
 import { Html, introOf, samePath, useTo } from "../../../site";
 import {
@@ -31,7 +33,7 @@ function Entries({
   section,
   title
 }: {
-  section: EntriesSection;
+  section: Pick<EntriesSection, "heading" | "entries">;
   title: string;
 }) {
   if (section.entries.length === 0) return null;
@@ -46,6 +48,32 @@ function Entries({
           href: entry.url ?? "#",
           title: entry.heading ?? "Untitled",
           item
+        }))}
+      />
+    </section>
+  );
+}
+
+const pageEntries = (section: PageListSection) => ({
+  heading: section.title ?? "Pages",
+  entries: section.pages.map((page) => ({
+    url: page.url,
+    heading: page.title ?? page.url
+  }))
+});
+
+/** Tags and post types; each type keeps its rating's icon */
+function Links({ title, links }: { title: string; links: LinkModel[] }) {
+  if (links.length === 0) return null;
+
+  return (
+    <section className="pt-section">
+      <Heading>{title}</Heading>
+      <NewsList
+        items={links.map((link) => ({
+          href: link.url,
+          title: link.text,
+          item: ratingOf(link.text.replace(/s$/, "")).item
         }))}
       />
     </section>
@@ -207,6 +235,24 @@ export function Generic({
         switch (section.type) {
           case "entries":
             return <Entries key={index} section={section} title={title} />;
+          case "tagList":
+            return <Links key={index} title="Tags" links={section.tags} />;
+          case "typeList":
+            return (
+              <Links
+                key={index}
+                title={section.title ?? "Post types"}
+                links={section.types}
+              />
+            );
+          case "pageList":
+            return (
+              <Entries
+                key={index}
+                section={pageEntries(section)}
+                title={title}
+              />
+            );
           case "newsletter":
           case "newsletterStandalone":
             return <Newsletter key={index} />;

@@ -2,7 +2,9 @@ import { HtmlContent } from "../../../../components/HtmlContent";
 import type {
   BasicPageModel,
   EntriesSection,
-  LabContent
+  LabContent,
+  LinkModel,
+  PageListSection
 } from "../../../../lib/types";
 import { Html, introOf } from "../../../site";
 import {
@@ -16,7 +18,11 @@ import {
   ServicesLedger
 } from "../parts";
 
-function Entries({ section }: { section: EntriesSection }) {
+function Entries({
+  section
+}: {
+  section: Pick<EntriesSection, "heading" | "entries">;
+}) {
   if (section.entries.length === 0) return null;
 
   return (
@@ -34,6 +40,31 @@ function Entries({ section }: { section: EntriesSection }) {
           </li>
         ))}
       </ol>
+    </Section>
+  );
+}
+
+const pageEntries = (section: PageListSection) => ({
+  heading: section.title ?? "Pages",
+  entries: section.pages.map((page) => ({
+    url: page.url,
+    heading: page.title ?? page.url
+  }))
+});
+
+/** Tags and post types, as a run of tags */
+function Tags({ label, links }: { label: string; links: LinkModel[] }) {
+  if (links.length === 0) return null;
+
+  return (
+    <Section icon="grid" label={label}>
+      <ul className="mg-tags">
+        {links.map((link) => (
+          <li key={link.url}>
+            <a href={link.url}>{link.text}</a>
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }
@@ -83,6 +114,18 @@ export function Generic({
         switch (section.type) {
           case "entries":
             return <Entries key={index} section={section} />;
+          case "tagList":
+            return <Tags key={index} label="Tags" links={section.tags} />;
+          case "typeList":
+            return (
+              <Tags
+                key={index}
+                label={section.title ?? "Post types"}
+                links={section.types}
+              />
+            );
+          case "pageList":
+            return <Entries key={index} section={pageEntries(section)} />;
           case "newsletter":
           case "newsletterStandalone":
             return <Newsletter key={index} />;
