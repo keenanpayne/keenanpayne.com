@@ -37,16 +37,6 @@ export function Comments({ url }: { url: string }) {
       };
       (document.head || document.body).appendChild(script);
     }
-
-    // Disqus theme switching
-    // Ref: https://thisdevbrain.com/disqus-auto-theme-switching/
-    const onThemeChanged = () => {
-      if (document.readyState == "complete") {
-        window.DISQUS?.reset({ reload: true, config });
-      }
-    };
-    document.addEventListener("themeChanged", onThemeChanged);
-    return () => document.removeEventListener("themeChanged", onThemeChanged);
   }, [url]);
 
   return (

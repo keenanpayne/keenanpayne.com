@@ -70,6 +70,10 @@ export function loader() {
 }
 
 export function Layout({ children }: { children: ReactNode }) {
+  // Here rather than in `App` so it also runs when the first render is the
+  // ErrorBoundary
+  useMarkHydrated();
+
   return (
     <html lang="en" className="newStyles">
       <head>
@@ -93,8 +97,6 @@ export function Layout({ children }: { children: ReactNode }) {
 }
 
 export default function App({ loaderData }: Route.ComponentProps) {
-  useMarkHydrated();
-
   return (
     <>
       <Topbar />
@@ -115,7 +117,9 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 
   if (isRouteErrorResponse(error)) {
     message = `${error.status}`;
-    details = error.statusText || details;
+    // A 404 thrown without status text would otherwise read as a server error
+    details =
+      error.status === 404 ? "Page not found" : error.statusText || details;
   } else if (import.meta.env.DEV && error instanceof Error) {
     details = error.message;
     stack = error.stack;

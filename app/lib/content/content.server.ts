@@ -370,6 +370,9 @@ function getIndex(): ContentIndex {
 
   const tagPages: SitePage[] = tagList.map((tag) => {
     const url = `/tags/${slug(tag)}/`;
+    if (byUrl.has(url)) {
+      throw new Error(`Duplicate URL ${url} (tag "${tag}")`);
+    }
     byUrl.set(
       url,
       memo(() => buildTagPage(tag, url))

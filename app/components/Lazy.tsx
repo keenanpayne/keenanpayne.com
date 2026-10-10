@@ -96,7 +96,7 @@ export function LazyImageTile({
   const [ref, inView] = useInView<HTMLAnchorElement>(!eager);
   const style =
     eager || inView
-      ? ({ "--background": `url(${image})` } as CSSProperties)
+      ? ({ "--background": `url("${image}")` } as CSSProperties)
       : undefined;
 
   return (
