@@ -3,11 +3,12 @@ import type { CSSProperties } from "react";
 function NewsletterForm() {
   return (
     <form
-      action="https://buttondown.email/api/emails/embed-subscribe/kp"
+      // buttondown.email 302s to buttondown.com, which drops the POST body
+      action="https://buttondown.com/api/emails/embed-subscribe/kp"
       method="post"
       target="popupwindow"
       onSubmit={() => {
-        window.open("https://buttondown.email/kp", "popupwindow");
+        window.open("https://buttondown.com/kp", "popupwindow");
       }}
       className="newsletter-form embeddable-buttondown-form"
     >

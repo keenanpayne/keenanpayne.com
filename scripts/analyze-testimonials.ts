@@ -144,7 +144,8 @@ function findQualities(text: string) {
     }
   });
 
-  return foundQualities;
+  // Count each quality once, even if it's listed twice (e.g. "efficient")
+  return [...new Set(foundQualities)];
 }
 
 function analyzeTestimonials() {

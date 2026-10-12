@@ -27,6 +27,7 @@
     "start": "react-router-serve ./build/server/index.js",
     "serve:prod": "npm run build && npm run start",
     "typecheck": "react-router typegen && tsc",
+    "test": "vitest run",
     "clean": "rm -rf build .react-router",
     "clean:deps": "rm -rf node_modules package-lock.json",
     "clean:all": "npm run clean && npm run clean:deps",
@@ -38,7 +39,7 @@
     "lint:css:fix": "stylelint \"app/**/*.css\" --fix",
     "format": "prettier --write .",
     "check:format": "prettier --check .",
-    "validate": "npm run typecheck && npm run lint && npm run check:format",
+    "validate": "npm run typecheck && npm run lint && npm run check:format && npm run test",
     "fix": "npm run lint:fix && npm run format",
     "audit": "npm audit && npm outdated",
     "audit:fix": "npm audit fix && npm update",
@@ -88,7 +89,8 @@
     "stylelint-config-recommended": "^18.0.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.71.1",
-    "vite": "^8.3.3"
+    "vite": "^8.3.3",
+    "vitest": "^5.0.4"
   },
   "volta": {
     "node": "24.21.0"

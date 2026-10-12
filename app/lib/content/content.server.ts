@@ -196,6 +196,9 @@ const TAG_SECTIONS = archiveSections("All articles");
 
 const FILTERED_TAGS = ["all", "nav", "post", "posts", "Featured"];
 
+// Only served as the body of a 404 response, never pre-rendered
+const NOT_FOUND_URL = "/404.html";
+
 const TESTIMONIAL_TRUNCATE_LENGTH = 225;
 
 const SOCIAL_PROOF_LOGOS = [
@@ -323,6 +326,8 @@ function loadItem(path: string, source: string): ContentItem {
 
 interface ContentIndex {
   items: ContentItem[];
+  /** `items` without the ones marked `excludeFromCollections` */
+  listed: ContentItem[];
   posts: ContentItem[];
   tagList: string[];
   typeList: string[];
@@ -371,6 +376,11 @@ function getIndex(): ContentIndex {
     );
   }
 
+  // Fail the build, not the first 404 request, when the page is missing
+  if (!byUrl.has(NOT_FOUND_URL)) {
+    throw new Error(`No content page has \`permalink: ${NOT_FOUND_URL}\``);
+  }
+
   const tagPages: SitePage[] = tagList.map((tag) => {
     const url = `/tags/${slug(tag)}/`;
     if (byUrl.has(url)) {
@@ -407,7 +417,7 @@ function getIndex(): ContentIndex {
     )
     .map(({ page }) => page);
 
-  contentIndex = { items, posts, tagList, typeList, pages, byUrl };
+  contentIndex = { items, listed, posts, tagList, typeList, pages, byUrl };
   return contentIndex;
 }
 
@@ -481,29 +491,31 @@ function entry(
   return model;
 }
 
-// Mirrors the slug logic of the original entries template
-function portfolioUrl(item: PortfolioItem) {
-  if (item.name === "Collective [i]") {
-    return "/portfolio/collective-intelligence";
-  }
-  return `/portfolio/${item.name.toLowerCase().replaceAll(" ", "-").replaceAll(".", "")}`;
+// The case study's page: the Markdown file that declares `data: <key>`
+function portfolioUrl(key: string) {
+  const page = getIndex().listed.find(
+    (item) => item.collection === "portfolio" && item.data.data === key
+  );
+  if (!page) throw new Error(`No portfolio page has \`data: ${key}\``);
+  return page.url;
 }
 
-function portfolioEntry(item: PortfolioItem | undefined, showCovers: boolean) {
-  if (!item) throw new Error("Unknown portfolio item in `featured`");
+function portfolioEntry(key: string, showCovers: boolean) {
+  const item = portfolio[key];
+  if (!item) throw new Error(`Unknown portfolio item "${key}" in \`featured\``);
   return entry(
     showCovers,
     `${CLOUDINARY}/image/upload/f_auto,q_auto,w_1000/${item.cover ?? ""}`,
     item.name,
     item.lede,
-    portfolioUrl(item),
+    portfolioUrl(key),
     "View case study"
   );
 }
 
 const servicesByDate = () =>
   getIndex()
-    .items.filter((item) => item.collection === "services")
+    .listed.filter((item) => item.collection === "services")
     .sort(byDate);
 
 // Nunjucks' `sort(attribute='data.order')`
@@ -516,11 +528,11 @@ function getCollection(name: unknown): unknown[] | undefined {
     case "posts":
       return index.posts;
     case "featured":
-      return index.items
+      return index.listed
         .filter((item) => item.tags.includes("Featured"))
         .sort(byDate);
     case "portfolio":
-      return index.items.filter((item) => item.collection === "portfolio");
+      return index.listed.filter((item) => item.collection === "portfolio");
     case "services":
       return servicesByDate();
     default:
@@ -580,10 +592,10 @@ function resolveEntries(
   } else if (from === "portfolio") {
     const featured = items.featured as string[] | undefined;
     model.entries = featured
-      ? featured.map((key) => portfolioEntry(portfolio[key], showCovers))
-      : Object.values(portfolio)
-          .filter((item) => !item.template && !item.featured)
-          .map((item) => portfolioEntry(item, showCovers));
+      ? featured.map((key) => portfolioEntry(key, showCovers))
+      : Object.entries(portfolio)
+          .filter(([, item]) => !item.template && !item.featured)
+          .map(([key]) => portfolioEntry(key, showCovers));
   } else if (from === "services") {
     model.entries = byOrder(collection as ContentItem[]).map((service) =>
       entry(
@@ -903,7 +915,7 @@ function buildPostPage(item: ContentItem): PostPageModel {
   if (type) {
     model.type = {
       label: type,
-      url: `/type/${typePlural}`,
+      url: `/type/${typePlural}/`,
       title: `View archive for ${typePlural}`
     };
   }
@@ -912,7 +924,7 @@ function buildPostPage(item: ContentItem): PostPageModel {
       url: item.url,
       title: String(data.title),
       article: data.long_form ? "a" : "an",
-      typeUrl: `/type/${typePlural}`,
+      typeUrl: `/type/${typePlural}/`,
       typeTitle: `View archive for ${typePlural}`,
       typeLabel: (data.long_form ?? type ?? "").toLowerCase()
     };
@@ -1027,8 +1039,6 @@ function buildTagPage(tag: string, url: string): PageModel {
 // Public API
 // ----------
 
-const NOT_FOUND_URL = "/404.html";
-
 function normalizePath(pathname: string) {
   let path = pathname;
   try {
@@ -1043,6 +1053,7 @@ function normalizePath(pathname: string) {
 export function getPage(pathname: string): PageModel | undefined {
   const { byUrl } = getIndex();
   const path = normalizePath(pathname);
+  if (path === NOT_FOUND_URL) return undefined;
   const build =
     byUrl.get(path) ??
     (!path.endsWith("/") ? byUrl.get(`${path}/`) : undefined);
@@ -1050,7 +1061,7 @@ export function getPage(pathname: string): PageModel | undefined {
 }
 
 export function getNotFoundPage(): PageModel {
-  return getPage(NOT_FOUND_URL)!;
+  return getIndex().byUrl.get(NOT_FOUND_URL)!();
 }
 
 /** Every page that should be pre-rendered at build time */
@@ -1061,7 +1072,7 @@ export function getPrerenderPaths() {
 /** Navigation items, from each page's `navigation` front matter */
 export function getNavigation(): LinkModel[] {
   return getIndex()
-    .items.filter((item) => item.data.navigation)
+    .listed.filter((item) => item.data.navigation)
     .map((item) => ({ item, order: item.data.navigation!.order ?? 0 }))
     .sort((a, b) => a.order - b.order || byDate(a.item, b.item))
     .map(({ item }) => ({
@@ -1107,12 +1118,12 @@ export function getLabContent(): LabContent {
     };
   });
 
-  const work = Object.values(portfolio)
-    .filter((item) => !item.template && item.cover)
-    .sort((a, b) => Number(b.featured ?? 0) - Number(a.featured ?? 0))
-    .map((item) => ({
+  const work = Object.entries(portfolio)
+    .filter(([, item]) => !item.template && item.cover)
+    .sort(([, a], [, b]) => Number(b.featured ?? 0) - Number(a.featured ?? 0))
+    .map(([key, item]) => ({
       name: item.name,
-      url: portfolioUrl(item),
+      url: portfolioUrl(key),
       lede: optionalString(item.lede),
       cover: `${CLOUDINARY}/image/upload/f_auto,q_auto,w_1200/${item.cover}`,
       // Square, padded with the cover's own edge color, for narrow frames
