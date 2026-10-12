@@ -24,7 +24,9 @@ export default {
     // Resource routes are pre-rendered with a `.data` file too, which nothing
     // requests (they aren't navigated to client-side)
     await Promise.all(
-      RESOURCE_PATHS.map((path) => rm(join(client, `${path}.data`)))
+      RESOURCE_PATHS.map((path) =>
+        rm(join(client, `${path}.data`), { force: true })
+      )
     );
   }
 } satisfies Config;

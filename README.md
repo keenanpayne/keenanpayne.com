@@ -35,7 +35,7 @@ npm run start
 ### Code Quality
 
 ```bash
-# Run all code quality checks (types, lint, formatting)
+# Run all code quality checks (types, lint, formatting, tests)
 npm run validate
 
 # Fix all auto-fixable issues
@@ -43,6 +43,9 @@ npm run fix
 
 # Type checking
 npm run typecheck
+
+# Unit tests for the content pipeline helpers
+npm run test
 
 # Linting
 npm run lint         # Run all linters

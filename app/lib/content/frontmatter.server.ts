@@ -25,9 +25,8 @@ export function parseFrontMatter(source: string): ParsedFile {
   if (closeIndex === -1) closeIndex = rest.length;
 
   const matter = rest.slice(0, closeIndex);
-  const data = matter.replace(/^\s*#[^\n]+/gm, "").trim()
-    ? ((yaml.load(matter) as Record<string, unknown> | undefined) ?? {})
-    : {};
+  // `load` returns `undefined` for empty or comment-only front matter
+  const data = (yaml.load(matter) as Record<string, unknown> | undefined) ?? {};
 
   let body =
     closeIndex === rest.length ? "" : rest.slice(closeIndex + close.length);

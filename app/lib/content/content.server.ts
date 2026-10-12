@@ -193,6 +193,9 @@ const TAG_SECTIONS = archiveSections("All articles");
 
 const FILTERED_TAGS = ["all", "nav", "post", "posts", "Featured"];
 
+// Only served as the body of a 404 response, never pre-rendered
+const NOT_FOUND_URL = "/404.html";
+
 const TESTIMONIAL_TRUNCATE_LENGTH = 225;
 
 const SOCIAL_PROOF_LOGOS = [
@@ -370,6 +373,11 @@ function getIndex(): ContentIndex {
     );
   }
 
+  // Fail the build, not the first 404 request, when the page is missing
+  if (!byUrl.has(NOT_FOUND_URL)) {
+    throw new Error(`No content page has \`permalink: ${NOT_FOUND_URL}\``);
+  }
+
   const tagPages: SitePage[] = tagList.map((tag) => {
     const url = `/tags/${slug(tag)}/`;
     if (byUrl.has(url)) {
@@ -480,22 +488,24 @@ function entry(
   return model;
 }
 
-// Mirrors the slug logic of the original entries template
-function portfolioUrl(item: PortfolioItem) {
-  if (item.name === "Collective [i]") {
-    return "/portfolio/collective-intelligence";
-  }
-  return `/portfolio/${item.name.toLowerCase().replaceAll(" ", "-").replaceAll(".", "")}`;
+// The case study's page: the Markdown file that declares `data: <key>`
+function portfolioUrl(key: string) {
+  const page = getIndex().listed.find(
+    (item) => item.collection === "portfolio" && item.data.data === key
+  );
+  if (!page) throw new Error(`No portfolio page has \`data: ${key}\``);
+  return page.url;
 }
 
-function portfolioEntry(item: PortfolioItem | undefined, showCovers: boolean) {
-  if (!item) throw new Error("Unknown portfolio item in `featured`");
+function portfolioEntry(key: string, showCovers: boolean) {
+  const item = portfolio[key];
+  if (!item) throw new Error(`Unknown portfolio item "${key}" in \`featured\``);
   return entry(
     showCovers,
     `${CLOUDINARY}/image/upload/f_auto,q_auto,w_1000/${item.cover ?? ""}`,
     item.name,
     item.lede,
-    portfolioUrl(item),
+    portfolioUrl(key),
     "View case study"
   );
 }
@@ -579,10 +589,10 @@ function resolveEntries(
   } else if (from === "portfolio") {
     const featured = items.featured as string[] | undefined;
     model.entries = featured
-      ? featured.map((key) => portfolioEntry(portfolio[key], showCovers))
-      : Object.values(portfolio)
-          .filter((item) => !item.template && !item.featured)
-          .map((item) => portfolioEntry(item, showCovers));
+      ? featured.map((key) => portfolioEntry(key, showCovers))
+      : Object.entries(portfolio)
+          .filter(([, item]) => !item.template && !item.featured)
+          .map(([key]) => portfolioEntry(key, showCovers));
   } else if (from === "services") {
     model.entries = byOrder(collection as ContentItem[]).map((service) =>
       entry(
@@ -1026,8 +1036,6 @@ function buildTagPage(tag: string, url: string): PageModel {
 // Public API
 // ----------
 
-const NOT_FOUND_URL = "/404.html";
-
 function normalizePath(pathname: string) {
   let path = pathname;
   try {
@@ -1042,7 +1050,6 @@ function normalizePath(pathname: string) {
 export function getPage(pathname: string): PageModel | undefined {
   const { byUrl } = getIndex();
   const path = normalizePath(pathname);
-  // Only served as the body of a 404 response
   if (path === NOT_FOUND_URL) return undefined;
   const build =
     byUrl.get(path) ??
