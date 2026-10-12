@@ -1,11 +1,10 @@
 import { Fragment, type CSSProperties, type ReactNode } from "react";
 
-import { absoluteUrl, externalLinkProps } from "../../lib/site";
+import { externalLinkProps } from "../../lib/site";
 import type { PortfolioPageModel } from "../../lib/types";
 import { Comments } from "../Comments";
 import { HtmlContent } from "../HtmlContent";
 import { Label } from "../Label";
-import { PostNav } from "../PostNav";
 import { Cta } from "../sections/Cta";
 import { Sections } from "../sections/Sections";
 
@@ -225,13 +224,11 @@ export function PortfolioPage({ page }: { page: PortfolioPageModel }) {
             />
           )}
         </div>
-
-        <PostNav nav={page.postNav} />
       </section>
 
       <Cta />
 
-      {page.comments && <Comments url={absoluteUrl(page.url)} />}
+      {page.comments && <Comments url={page.meta.canonical} />}
     </main>
   );
 }

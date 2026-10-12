@@ -5,13 +5,11 @@
   "description": "Hi, I'm Keenan Payne, a web developer and writer. I like to learn, build, and share.",
   "feed": {
     "subtitle": "Hi, I'm Keenan Payne, a web developer and writer. I like to learn, build, and share.",
-    "filename": "feed.xml",
     "path": "/feed.xml",
     "id": "https://keenanpayne.com/"
   },
   "jsonfeed": {
-    "path": "/feed.json",
-    "url": "https://keenanpayne.com/feed.json"
+    "path": "/feed.json"
   },
   "author": {
     "name": "Keenan Payne",

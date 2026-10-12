@@ -2,7 +2,7 @@ import { rfc3339Date } from "../lib/content/dates.server";
 import { getFeedPosts } from "../lib/content/content.server";
 import { convertToAbsoluteUrls } from "../lib/content/html.server";
 import { escapeHtml } from "../lib/html";
-import { metadata } from "../lib/site";
+import { absoluteUrl, metadata } from "../lib/site";
 
 // Atom feed of every post, newest first
 export function loader() {
@@ -26,7 +26,7 @@ export function loader() {
 <feed xmlns="http://www.w3.org/2005/Atom">
 	<title>${escapeHtml(metadata.title)}</title>
 	<subtitle>${escapeHtml(metadata.feed.subtitle)}</subtitle>
-	<link href="${new URL(metadata.feed.path, metadata.url)}" rel="self"/>
+	<link href="${absoluteUrl(metadata.feed.path)}" rel="self"/>
 	<link href="${metadata.url}"/>
 	<updated>${updated ? rfc3339Date(updated) : ""}</updated>
 	<id>${metadata.feed.id}</id>

@@ -304,8 +304,8 @@ export default {
       caption: ""
     }
   },
-  awards: {
-    [1]: {
+  awards: [
+    {
       name: "Webby",
       year: "2017",
       category: "Websites and Mobile Sites",
@@ -313,7 +313,7 @@ export default {
       status: "Nominee",
       link: "https://winners.webbyawards.com/2017/websites-and-mobile-sites/general-websites-and-mobile-sites/web-services-applications/20776/asana"
     },
-    [2]: {
+    {
       name: "Webby",
       year: "2019",
       category: "Websites and Mobile Sites",
@@ -321,5 +321,5 @@ export default {
       status: "Honoree",
       link: "https://winners.webbyawards.com/2019/websites-and-mobile-sites/general-websites-and-mobile-sites/web-services-applications/89220/asana"
     }
-  }
+  ]
 } satisfies PortfolioItem;

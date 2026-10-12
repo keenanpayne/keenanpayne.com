@@ -269,3 +269,6 @@ export const people: Person[] = [
     projects: ["Jim Barrett Fine Art"]
   }
 ];
+
+export const personById = (id: number) =>
+  people.find((person) => person.id === id);

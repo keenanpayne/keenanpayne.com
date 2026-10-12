@@ -1,14 +1,19 @@
 import type { CSSProperties } from "react";
 
+import { BUTTONDOWN_ORIGIN } from "../lib/endpoints";
+
+const TITLE = "Subscribe to a darn good newsletter";
+const BLURB =
+  "Get my semi-regular newsletter where I share new tutorials and articles to help you grow as a web developer.";
+
 function NewsletterForm() {
   return (
     <form
-      // buttondown.email 302s to buttondown.com, which drops the POST body
-      action="https://buttondown.com/api/emails/embed-subscribe/kp"
+      action={`${BUTTONDOWN_ORIGIN}/api/emails/embed-subscribe/kp`}
       method="post"
       target="popupwindow"
       onSubmit={() => {
-        window.open("https://buttondown.com/kp", "popupwindow");
+        window.open(`${BUTTONDOWN_ORIGIN}/kp`, "popupwindow");
       }}
       className="newsletter-form embeddable-buttondown-form"
     >
@@ -44,14 +49,9 @@ export function Newsletter({ spacing }: { spacing?: string | number }) {
     >
       <div className="newsletter-container _container">
         <div className="newsletter-description">
-          <h2 className="newsletter-title _h2">
-            Subscribe to a darn good newsletter
-          </h2>
+          <h2 className="newsletter-title _h2">{TITLE}</h2>
 
-          <p className="_text-h6">
-            Get my semi-regular newsletter where I share new tutorials and
-            articles to help you grow as a web developer.
-          </p>
+          <p className="_text-h6">{BLURB}</p>
         </div>
 
         <div className="newsletter-cta">
@@ -81,13 +81,10 @@ export function NewsletterLarge({ modifiers }: { modifiers?: string }) {
               standalone ? "newsletter-title _text-h1" : "newsletter-title"
             }
           >
-            Subscribe to a darn good newsletter
+            {TITLE}
           </h2>
 
-          <p className="_text-h5">
-            Get my semi-regular newsletter where I share new tutorials and
-            articles to help you grow as a web developer.
-          </p>
+          <p className="_text-h5">{BLURB}</p>
         </div>
 
         <div className="newsletter-cta">

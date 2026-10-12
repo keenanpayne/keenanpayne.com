@@ -1,3 +1,5 @@
+import { BUTTONDOWN_ORIGIN } from "./endpoints";
+
 /**
  * Response headers that harden every page. The root middleware adds them to
  * server-rendered responses, and the build writes them to Netlify's
@@ -13,7 +15,7 @@ export const SECURITY_HEADERS: Record<string, string> = {
     "object-src 'none'",
     "frame-ancestors 'none'",
     // Netlify Forms post to this origin; the newsletter posts to Buttondown
-    "form-action 'self' https://buttondown.com",
+    `form-action 'self' ${BUTTONDOWN_ORIGIN}`,
     "upgrade-insecure-requests"
   ].join("; "),
   "X-Frame-Options": "DENY",

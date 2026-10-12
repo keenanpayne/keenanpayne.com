@@ -51,7 +51,7 @@ export function Footer({ navigation }: { navigation: LinkModel[] }) {
             <span className="footer-label _label-sans">Follow me</span>
 
             <ul className="footer-socials-list">
-              {Object.values(socials).map((social) => {
+              {socials.map((social) => {
                 const name = social.name.toLowerCase();
                 return (
                   // Items are inline-block, so keep the whitespace between them
