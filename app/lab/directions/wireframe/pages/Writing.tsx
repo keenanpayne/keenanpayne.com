@@ -1,10 +1,11 @@
 import {
+  hasNewsletter,
   introOf,
   postsByYear,
   postTypes,
   type TemplateProps
 } from "../../../site";
-import { PageHeader, PostList, Section } from "../parts";
+import { Newsletter, PageHeader, PostList, Section } from "../parts";
 
 export function Writing({ page, content }: TemplateProps<"writing">) {
   const intro = introOf(page);
@@ -27,6 +28,8 @@ export function Writing({ page, content }: TemplateProps<"writing">) {
           <PostList posts={posts} />
         </Section>
       ))}
+
+      {hasNewsletter(page) && <Newsletter />}
     </>
   );
 }

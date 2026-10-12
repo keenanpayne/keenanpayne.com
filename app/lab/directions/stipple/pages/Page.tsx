@@ -4,10 +4,10 @@ import {
   Chips,
   Entries,
   Layout,
+  NewsletterSection,
   PageHeader,
   PageTable,
-  Section,
-  Signup
+  Section
 } from "../parts";
 
 /** Any other page: type and tag archives, subscribe, … */
@@ -66,14 +66,7 @@ export function Page({ page }: TemplateProps<"page">) {
             );
           case "newsletter":
           case "newsletterStandalone":
-            return (
-              <Section key={id} id={id} title="New writing, by email">
-                <p className="st-copy">
-                  Articles and tutorials, sent when they’re published.
-                </p>
-                <Signup />
-              </Section>
-            );
+            return <NewsletterSection key={id} />;
           default:
             return null;
         }

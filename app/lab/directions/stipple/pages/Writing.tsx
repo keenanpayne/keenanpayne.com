@@ -1,4 +1,5 @@
 import {
+  hasNewsletter,
   introOf,
   postsByYear,
   postTypes,
@@ -8,6 +9,7 @@ import {
   Contents,
   Entries,
   Layout,
+  NewsletterSection,
   PageHeader,
   postItems,
   Section
@@ -40,6 +42,8 @@ export function Writing({ page, content }: TemplateProps<"writing">) {
           <Entries items={postItems(posts)} />
         </Section>
       ))}
+
+      {hasNewsletter(page) && <NewsletterSection />}
     </Layout>
   );
 }

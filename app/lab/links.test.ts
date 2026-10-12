@@ -33,6 +33,31 @@ describe("rebaseLinks", () => {
     expect(rebaseLinks(data, BASE)).toEqual(data);
   });
 
+  it("keeps links written with the site's own origin in the lab", () => {
+    expect(
+      rebaseLinks(
+        {
+          url: "https://keenanpayne.com/contact",
+          link: "http://www.keenanpayne.com/type/drafts/",
+          typeUrl: "https://keenanpayne.com",
+          body:
+            '<a href="https://keenanpayne.com/contact" target="_blank">A</a> ' +
+            '<a href="https://keenanpayne.com.example.net/">B</a> ' +
+            '<a href="https://keenanpayne.com/images/x.png">C</a>'
+        },
+        BASE
+      )
+    ).toEqual({
+      url: "/lab/monograph/contact",
+      link: "/lab/monograph/type/drafts/",
+      typeUrl: "/lab/monograph/",
+      body:
+        '<a href="/lab/monograph/contact" target="_blank">A</a> ' +
+        '<a href="https://keenanpayne.com.example.net/">B</a> ' +
+        '<a href="https://keenanpayne.com/images/x.png">C</a>'
+    });
+  });
+
   it("follows the site's legacy redirects first", () => {
     expect(
       rebaseLinks(

@@ -977,6 +977,16 @@ export function Signup({ compact }: { compact?: boolean }) {
   );
 }
 
+/** The sign-up as a section of its own, after a page's writing */
+export const NewsletterSection = () => (
+  <Section id="newsletter" title="New writing, by email">
+    <p className="st-copy">
+      Articles and tutorials, sent when they’re published.
+    </p>
+    <Signup />
+  </Section>
+);
+
 export function FormField({ field }: { field: Field }) {
   const className = cx("st-field", field.wide && "st-field--wide");
 

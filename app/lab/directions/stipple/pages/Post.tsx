@@ -8,10 +8,9 @@ import {
 import {
   Chips,
   Layout,
+  NewsletterSection,
   PageHeader,
   PostNav,
-  Section,
-  Signup,
   Stipple,
   Terrain
 } from "../parts";
@@ -97,14 +96,7 @@ export function Post({ page, content }: TemplateProps<"post">) {
 
         <PostNav nav={page.postNav} />
 
-        {page.newsletter && (
-          <Section id="newsletter" title="New writing, by email">
-            <p className="st-copy">
-              Articles and tutorials, sent when they’re published.
-            </p>
-            <Signup />
-          </Section>
-        )}
+        {page.newsletter && <NewsletterSection />}
       </article>
     </Layout>
   );

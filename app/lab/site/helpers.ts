@@ -22,6 +22,13 @@ export const sectionOf = <T extends SectionModel["type"]>(
       section.type === type
   );
 
+/** Whether a page asks for the newsletter sign-up, as `/archive/` does */
+export const hasNewsletter = (page: { sections: SectionModel[] }) =>
+  page.sections.some(
+    (section) =>
+      section.type === "newsletter" || section.type === "newsletterStandalone"
+  );
+
 /** Compares site paths, ignoring a trailing slash */
 export const samePath = (a: string, b: string) =>
   a.replace(/\/$/, "") === b.replace(/\/$/, "");

@@ -1,12 +1,33 @@
 import { resolveLegacyPath } from "../lib/legacy-urls";
+import { SITE_ORIGIN } from "../lib/site";
 
 // Keys whose values are site paths (as opposed to image or asset URLs)
 const PATH_KEYS = new Set(["url", "link", "typeUrl"]);
 
-const isSitePath = (value: string) =>
-  value.startsWith("/") &&
-  !value.startsWith("//") &&
-  !/^\/images\//.test(value);
+// The site's own origin in either scheme, with or without `www.`, so links
+// written out in full (`https://keenanpayne.com/contact`) stay in the lab
+const SITE_HOST = new URL(SITE_ORIGIN).host.replace(/\./g, "\\.");
+const SITE_URL = new RegExp(
+  `^https?://(?:www\\.)?${SITE_HOST}(?=[/?#]|$)`,
+  "i"
+);
+
+/**
+ * A link's site path when it points at this site (`/about/`, or the site's
+ * own URL written out), and nothing for other hosts and image assets
+ */
+function sitePathOf(value: string) {
+  let path: string;
+  if (value.startsWith("/")) {
+    if (value.startsWith("//")) return undefined;
+    path = value;
+  } else {
+    const rest = value.replace(SITE_URL, "");
+    if (rest === value) return undefined;
+    path = rest.startsWith("/") ? rest : `/${rest}`;
+  }
+  return /^\/images\//.test(path) ? undefined : path;
+}
 
 // Follows the site's legacy redirects first (`/blog/x` -> `/x`), since the
 // lab only mirrors current pages
@@ -23,15 +44,20 @@ function labLink(path: string, base: string) {
 export function rebaseLinks<T>(value: T, base: string): T {
   const walk = (node: unknown, key?: string): unknown => {
     if (typeof node === "string") {
-      if (key && PATH_KEYS.has(key) && isSitePath(node)) {
-        return labLink(node, base);
+      if (key && PATH_KEYS.has(key)) {
+        const path = sitePathOf(node);
+        return path ? labLink(path, base) : node;
       }
       // Either quote style: some content writes `href='/practices'`
-      return /href=["']\//.test(node)
+      return node.includes("href=")
         ? node.replace(
-            /href=(["'])(\/(?!\/|images\/)(?:(?!\1)[^])*)\1/g,
-            (_match, quote: string, path: string) =>
-              `href=${quote}${labLink(path, base)}${quote}`
+            /href=(["'])((?:(?!\1)[^])*)\1/g,
+            (match, quote: string, href: string) => {
+              const path = sitePathOf(href);
+              return path
+                ? `href=${quote}${labLink(path, base)}${quote}`
+                : match;
+            }
           )
         : node;
     }
