@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { SAMPLE_PAGES } from "../../registry";
+import { getDirection, SAMPLE_PAGES } from "../../registry";
 import {
   formFields,
   Html,
@@ -63,11 +63,15 @@ function TypeScale({ content }: SpecimenProps) {
   );
 }
 
+// The direction's name, read from the registry rather than written into
+// the copy, so `npm run lab:new` never has to splice a display name into JSX
+const NAME = getDirection("wireframe")!.name;
+
 const Motifs = () => (
   <Note>
-    None, by design. Wireframe is the content and information architecture with
-    no skin: system type, hairline rules, and the browser’s own controls, so
-    every other direction’s flourishes are its own.
+    None, by design. {NAME} is the content and information architecture with no
+    skin: system type, hairline rules, and the browser’s own controls, so every
+    other direction’s flourishes are its own.
   </Note>
 );
 

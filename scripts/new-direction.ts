@@ -10,7 +10,8 @@
  *
  * Process:
  * 1. Copies app/lab/directions/wireframe/ to app/lab/directions/<slug>/,
- *    renaming `wireframe` to the slug (files, CSS classes, variables)
+ *    renaming `wireframe` to the slug (files, CSS classes, variables) and
+ *    `Wireframe` to the display name, which the starter only uses in comments
  * 2. Adds the direction's metadata to app/lab/registry.ts
  * 3. Adds its components to app/lab/directions/index.ts
  */
@@ -102,10 +103,13 @@ function rename(directory: string) {
       rename(path);
     } else {
       const source = readFileSync(path, "utf8");
-      // A replacer function, so `$` in the name isn't read as a pattern
+      // The display name lands in comments only (the starter reads its name
+      // from the registry everywhere else), so it just mustn't close one. A
+      // replacer function, so `$` in the name isn't read as a pattern.
+      const safeName = name.replaceAll("*/", "* /");
       writeFileSync(
         path,
-        source.replaceAll(STARTER, slug).replaceAll("Wireframe", () => name)
+        source.replaceAll(STARTER, slug).replaceAll("Wireframe", () => safeName)
       );
     }
   }
