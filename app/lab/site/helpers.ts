@@ -1,7 +1,13 @@
 // Content helpers every direction can lean on, so none of them re-derives
 // the same facts from the page models in its own way.
 
-import type { IntroSection, LabContent, SectionModel } from "../../lib/types";
+import type {
+  IntroSection,
+  LabContent,
+  LinkModel,
+  PageListSection,
+  SectionModel
+} from "../../lib/types";
 import type { ProfileFact, ProfileFactId } from "../../data/profile";
 
 type Posts = LabContent["posts"];
@@ -79,10 +85,25 @@ export function postsByYear(posts: Posts): [year: string, posts: Posts][] {
   return [...years];
 }
 
-/** Every post type, in order of first appearance */
-export const postTypes = (posts: Posts) => [
-  ...new Set(posts.flatMap((post) => (post.type ? [post.type] : [])))
-];
+/** Every post type with its archive, in order of first appearance */
+export function postTypes(posts: Posts): LinkModel[] {
+  const types = new Map<string, LinkModel>();
+  for (const post of posts) {
+    if (post.type && post.typeUrl && !types.has(post.type)) {
+      types.set(post.type, { text: post.type, url: post.typeUrl });
+    }
+  }
+  return [...types.values()];
+}
+
+/** A page list (an archive's pages, …) as entries for a direction's list */
+export const pageEntries = (section: PageListSection) => ({
+  heading: section.title ?? "Pages",
+  entries: section.pages.map((page) => ({
+    url: page.url,
+    heading: page.title ?? page.url
+  }))
+});
 
 /**
  * The profile facts in a direction's own words: every fact, in order, with

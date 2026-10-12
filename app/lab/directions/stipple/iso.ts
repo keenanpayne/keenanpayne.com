@@ -10,10 +10,10 @@
 
 import { atkinson, clamp, fbm, grain, hash, type Levels } from "./dither";
 
-export type Vec2 = [x: number, y: number];
+type Vec2 = [x: number, y: number];
 export type Vec3 = [x: number, y: number, z: number];
 
-export interface SolidOptions {
+interface SolidOptions {
   /** Ink coverage for every face, in place of shading by the light */
   tone?: number;
   /** Added to each face's shaded tone, for darker (or, below 0, paler) stuff */
@@ -26,7 +26,7 @@ export interface SolidOptions {
   outline?: boolean;
 }
 
-export interface FaceOptions {
+interface FaceOptions {
   /** Ink coverage; shaded by the light when left out */
   tone?: number;
   /** Outlined in ink (the default) */
@@ -75,7 +75,11 @@ const VIEW: Vec3 = normalize([1, 1, 1]);
 /** Toward the light: above, in front, a little to the left */
 const LIGHT: Vec3 = normalize([0.15, 0.55, 0.82]);
 
-const project = ([x, y, z]: Vec3): Vec2 => [(x - y) * 0.866, (x + y) * 0.5 - z];
+/** A point in the world on the screen: the isometric projection */
+export const project = ([x, y, z]: Vec3): Vec2 => [
+  (x - y) * 0.866,
+  (x + y) * 0.5 - z
+];
 
 /** Ink coverage for a face: tops are pale, the right-hand faces darkest */
 const shade = (normal: Vec3) => clamp(0.78 - 0.72 * dot(normal, LIGHT));

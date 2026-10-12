@@ -2,8 +2,8 @@ import { HtmlContent } from "../../../../components/HtmlContent";
 import { Html, introOf, type TemplateProps } from "../../../site";
 import { Entries, LinkList, Newsletter, PageHeader, PageTable } from "../parts";
 
-/** Any other page: type and tag archives, subscribe, … */
-export function Page({ page }: TemplateProps<"page">) {
+/** Type and tag archives, and any other page: subscribe, … */
+export function Page({ page }: TemplateProps<"page" | "archive">) {
   const intro = introOf(page);
   const label = page.meta.title.split(" | ")[0];
 

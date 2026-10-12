@@ -5,10 +5,12 @@ import { loadDirection } from "../lab/directions";
 import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
 import { rebaseLinks } from "../lab/links";
-import { getDirection, labPath } from "../lab/registry";
-import { DirectionPage, navigationFor, resolveView } from "../lab/site";
+import { getDirection, labBase } from "../lab/registry";
+import { DirectionPage } from "../lab/site/direction";
+import { navigationFor, resolveView } from "../lab/site/ia";
 import { getLabContent, getPage } from "../lib/content/content.server";
 import { metadata } from "../lib/site";
+import type { LabContent } from "../lib/types";
 import type { Route } from "./+types/lab.$direction";
 
 export const handle = { bare: true };
@@ -21,24 +23,32 @@ export const links: Route.LinksFunction = () => [
 // pre-rendered like the other mockups
 const NOT_FOUND_PATH = "/404/";
 
+// The content is the same on every page of a direction, so its links are
+// rebased once for each
+const contentByDirection = new Map<string, LabContent>();
+
 export function loader({ params }: Route.LoaderArgs) {
   const direction = getDirection(params.direction);
   if (!direction) throw data(null, { status: 404 });
+  const { slug, name } = direction;
+  const base = labBase(slug);
 
   // The site path this mockup mirrors, e.g. `/lab/monograph/about/` -> `/about/`
   const path = `/${params["*"] ?? ""}`;
   const view = resolveView(path, getPage(path));
 
-  const result = rebaseLinks(
-    {
-      direction,
-      path,
-      view,
-      navigation: navigationFor(view, path),
-      content: getLabContent()
-    },
-    labPath(direction.slug).slice(0, -1)
-  );
+  let content = contentByDirection.get(slug);
+  if (!content) {
+    content = rebaseLinks(getLabContent(), base);
+    contentByDirection.set(slug, content);
+  }
+
+  const result = {
+    direction: { slug, name },
+    path,
+    ...rebaseLinks({ view, navigation: navigationFor(view, path) }, base),
+    content
+  };
 
   return view.kind === "notFound" && path !== NOT_FOUND_PATH
     ? data(result, { status: 404 })
@@ -73,7 +83,7 @@ export default function LabDirection({ loaderData }: Route.ComponentProps) {
         // Fresh state for every page, like a full page load
         key={`${direction.slug}${path}`}
         direction={skin}
-        base={labPath(direction.slug).slice(0, -1)}
+        base={labBase(direction.slug)}
         path={path}
         view={view}
         navigation={navigation}

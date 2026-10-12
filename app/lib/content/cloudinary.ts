@@ -17,6 +17,10 @@ export function cloudinarySrcset(file: string) {
   ).join(", ");
 }
 
+/** An image with a transform of its own, e.g. `c_fill,g_face,ar_1:1,w_480` */
+export const cloudinaryImage = (file: string, transform: string) =>
+  `${BASE_URL}f_auto,q_auto,${transform}/${file}`;
+
 /** Portfolio cover image (case study pages and entry lists) */
 export const cloudinaryCover = (file: string) =>
-  `${BASE_URL}f_auto,q_auto,w_1000/${file}`;
+  cloudinaryImage(file, "w_1000");

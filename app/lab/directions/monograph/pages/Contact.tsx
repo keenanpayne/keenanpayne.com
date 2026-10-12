@@ -2,13 +2,13 @@ import { useState, type FormEvent } from "react";
 
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
 import {
-  formFields,
+  formOf,
   Html,
   introOf,
   useTo,
   type FormField as Field
 } from "../../../site";
-import { Icon, MoreLink, PageHeader } from "../parts";
+import { Facts, Icon, MoreLink, PageHeader } from "../parts";
 
 export function FormField({ field }: { field: Field }) {
   const className = field.wide ? "mg-field mg-field--wide" : "mg-field";
@@ -51,6 +51,66 @@ export function FormField({ field }: { field: Field }) {
   );
 }
 
+/** The form beside the details, with the page's lede above them */
+export function ContactForm({
+  profile,
+  variant,
+  lede
+}: {
+  profile: LabContent["profile"];
+  variant: "contact" | "inquiry";
+  /** HTML */
+  lede?: string;
+}) {
+  const form = formOf(variant);
+  const { email, location } = profile;
+  const to = useTo();
+  const [sent, setSent] = useState(false);
+  const onSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    setSent(true);
+  };
+
+  return (
+    <section className="mg-section mg-contact">
+      <aside className="mg-contact__aside">
+        {lede && <Html as="p" className="mg-contact__lede" html={lede} />}
+        <Facts
+          rows={[
+            ["Email", <a href={`mailto:${email}`}>{email}</a>],
+            ["Location", `${location.name} (${location.timeZoneName})`]
+          ]}
+        />
+        <MoreLink href={to(form.alternate.path)}>
+          {form.alternate.text}
+        </MoreLink>
+      </aside>
+
+      <form className="mg-form" onSubmit={onSubmit}>
+        <p className="mg-label mg-field--wide">
+          <Icon name="pen" />
+          {variant === "contact" ? "Send a note" : "Tell me about your project"}
+        </p>
+
+        {form.fields.map((field) => (
+          <FormField key={field.name} field={field} />
+        ))}
+
+        <div className="mg-form__actions mg-field--wide">
+          <button className="mg-pill" type="submit">
+            {form.submit}
+          </button>
+          <p className="mg-meta" role="status">
+            {sent
+              ? "Mockup only — nothing was sent."
+              : "Mockup only — this form doesn’t send anything."}
+          </p>
+        </div>
+      </form>
+    </section>
+  );
+}
+
 /** Mock contact and project inquiry forms; the lab never submits anything */
 export function Contact({
   page,
@@ -62,72 +122,20 @@ export function Contact({
   variant: "contact" | "inquiry";
 }) {
   const intro = introOf(page);
-  const { email, location } = content.profile;
-  const to = useTo();
-  const [sent, setSent] = useState(false);
-  const onSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    setSent(true);
-  };
 
   return (
     <>
       <PageHeader
         icon="mail"
-        eyebrow={variant === "contact" ? "Contact" : "Project inquiry"}
+        eyebrow={formOf(variant).title}
         title={intro?.heading ?? page.meta.title}
       />
 
-      <section className="mg-section mg-contact">
-        <aside className="mg-contact__aside">
-          {intro?.subheading && (
-            <Html as="p" className="mg-contact__lede" html={intro.subheading} />
-          )}
-          <dl className="mg-facts">
-            <div>
-              <dt>Email</dt>
-              <dd>
-                <a href={`mailto:${email}`}>{email}</a>
-              </dd>
-            </div>
-            <div>
-              <dt>Location</dt>
-              <dd>{`${location.name} (${location.timeZoneName})`}</dd>
-            </div>
-          </dl>
-          {variant === "contact" ? (
-            <MoreLink href={to("/project-inquiry/")}>
-              Start a project inquiry instead
-            </MoreLink>
-          ) : (
-            <MoreLink href={to("/contact/")}>Just saying hello?</MoreLink>
-          )}
-        </aside>
-
-        <form className="mg-form" onSubmit={onSubmit}>
-          <p className="mg-label mg-field--wide">
-            <Icon name="pen" />
-            {variant === "contact"
-              ? "Send a note"
-              : "Tell me about your project"}
-          </p>
-
-          {formFields(variant).map((field) => (
-            <FormField key={field.name} field={field} />
-          ))}
-
-          <div className="mg-form__actions mg-field--wide">
-            <button className="mg-pill" type="submit">
-              {variant === "contact" ? "Send message" : "Send inquiry"}
-            </button>
-            <p className="mg-meta" role="status">
-              {sent
-                ? "Mockup only — nothing was sent."
-                : "Mockup only — this form doesn’t send anything."}
-            </p>
-          </div>
-        </form>
-      </section>
+      <ContactForm
+        profile={content.profile}
+        variant={variant}
+        lede={intro?.subheading}
+      />
     </>
   );
 }

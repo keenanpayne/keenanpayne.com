@@ -3,10 +3,9 @@ import type {
   BasicPageModel,
   EntriesSection,
   LabContent,
-  LinkModel,
-  PageListSection
+  LinkModel
 } from "../../../../lib/types";
-import { Html, introOf, samePath, useTo } from "../../../site";
+import { Html, introOf, pageEntries, samePath, useTo } from "../../../site";
 import {
   BackLink,
   Banner,
@@ -53,14 +52,6 @@ function Entries({
     </section>
   );
 }
-
-const pageEntries = (section: PageListSection) => ({
-  heading: section.title ?? "Pages",
-  entries: section.pages.map((page) => ({
-    url: page.url,
-    heading: page.title ?? page.url
-  }))
-});
 
 /** Tags and post types; each type keeps its rating's icon */
 function Links({ title, links }: { title: string; links: LinkModel[] }) {

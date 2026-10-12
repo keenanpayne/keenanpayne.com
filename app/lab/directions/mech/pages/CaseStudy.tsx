@@ -2,9 +2,11 @@ import { HtmlContent } from "../../../../components/HtmlContent";
 import type {
   LabContent,
   PortfolioGridSection,
-  PortfolioPageModel
+  PortfolioPageModel,
+  SectionModel,
+  TestimonialModel
 } from "../../../../lib/types";
-import { galleryColumns, Html, samePath, useTo } from "../../../site";
+import { galleryColumns, Html, pad, samePath, useTo } from "../../../site";
 import {
   Alert,
   MoreLink,
@@ -74,7 +76,7 @@ function Gallery({
   return (
     <Section
       label={section.eyebrow ?? "Visual feed"}
-      code={`Feed ${String(index + 1).padStart(2, "0")}`}
+      code={`Feed ${pad(index + 1)}`}
       as="p"
     >
       <div className="mc-gallery__header">
@@ -90,6 +92,29 @@ function Gallery({
   );
 }
 
+type Block =
+  | { kind: "gallery"; section: PortfolioGridSection; index: number }
+  | { kind: "quote"; testimonial: TestimonialModel; index: number };
+
+/** The galleries and quotes among a page's sections, numbered by kind */
+function blocksOf(sections: SectionModel[]): Block[] {
+  let galleries = 0;
+  let quotes = 0;
+  return sections.flatMap((section): Block | [] => {
+    if (section.type === "portfolioGrid") {
+      return { kind: "gallery", section, index: galleries++ };
+    }
+    if (section.type === "testimonial" && section.testimonial) {
+      return {
+        kind: "quote",
+        testimonial: section.testimonial,
+        index: quotes++
+      };
+    }
+    return [];
+  });
+}
+
 export function CaseStudy({
   page,
   content
@@ -101,8 +126,7 @@ export function CaseStudy({
   const code = unitCode(
     content.work.findIndex((item) => samePath(item.url, page.url))
   );
-  let gallery = 0;
-  let quote = 0;
+  const blocks = blocksOf(page.sections);
 
   return (
     <article className="mc-case">
@@ -249,14 +273,14 @@ export function CaseStudy({
         </section>
       )}
 
-      {page.sections.map((section, index) =>
-        section.type === "portfolioGrid" ? (
-          <Gallery key={index} section={section} index={gallery++} />
-        ) : section.type === "testimonial" && section.testimonial ? (
+      {blocks.map((block, index) =>
+        block.kind === "gallery" ? (
+          <Gallery key={index} section={block.section} index={block.index} />
+        ) : (
           <div key={index} className="mc-gallery__continued">
-            <Transmission testimonial={section.testimonial} index={quote++} />
+            <Transmission testimonial={block.testimonial} index={block.index} />
           </div>
-        ) : null
+        )
       )}
 
       {page.content && (

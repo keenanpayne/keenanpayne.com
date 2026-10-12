@@ -6,7 +6,17 @@ import type {
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
-import { Html, useTo } from "../../site";
+import { cx, Html, pad, useTo } from "../../site";
+
+//
+// Masthead
+// --------
+
+/** The handle the masthead hangs from its rule, from the first profile */
+export function handleOf(socials: LabContent["socials"]) {
+  const name = socials[0]?.url.split("/").filter(Boolean).at(-1);
+  return name && `@${name.replace(/^@/, "")}`;
+}
 
 //
 // Icons
@@ -113,7 +123,7 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section className={["mg-section", className].filter(Boolean).join(" ")}>
+    <section className={cx("mg-section", className)}>
       <SectionLabel icon={icon}>{label}</SectionLabel>
       {children}
     </section>
@@ -149,6 +159,24 @@ export function PageHeader({
   );
 }
 
+/** Term and detail pairs, as About, Contact, posts, and case studies set them */
+export const Facts = ({
+  rows,
+  stacked
+}: {
+  rows: [string, ReactNode][];
+  stacked?: boolean;
+}) => (
+  <dl className={stacked ? "mg-facts mg-facts--stacked" : "mg-facts"}>
+    {rows.map(([term, detail]) => (
+      <div key={term}>
+        <dt>{term}</dt>
+        <dd>{detail}</dd>
+      </div>
+    ))}
+  </dl>
+);
+
 //
 // Work
 // ----
@@ -179,6 +207,25 @@ export function WorkCard({ item, wide }: { item: Work; wide?: boolean }) {
     </article>
   );
 }
+
+/** A row of three cards, with the wide one first or centered */
+export const WorkRow = ({
+  items,
+  center
+}: {
+  items: Work[];
+  center?: boolean;
+}) => (
+  <div className={`mg-row mg-row--${center ? "center" : "lead"}`}>
+    {items.map((item, column) => (
+      <WorkCard
+        key={item.url}
+        item={item}
+        wide={items.length === 3 && column === (center ? 1 : 0)}
+      />
+    ))}
+  </div>
+);
 
 /** One large feature followed by rows of three that alternate the wide card */
 export function WorkGrid({ work }: { work: Work[] }) {
@@ -220,18 +267,7 @@ export function WorkGrid({ work }: { work: Work[] }) {
       </div>
 
       {rows.map((row, index) => (
-        <div
-          key={row[0].url}
-          className={`mg-row mg-row--${index % 2 ? "center" : "lead"}`}
-        >
-          {row.map((item, column) => (
-            <WorkCard
-              key={item.url}
-              item={item}
-              wide={row.length === 3 && column === (index % 2 ? 1 : 0)}
-            />
-          ))}
-        </div>
+        <WorkRow key={row[0].url} items={row} center={index % 2 === 1} />
       ))}
     </>
   );
@@ -251,9 +287,7 @@ export function ServicesLedger({
       {services.map((service, index) => (
         <li key={service.url}>
           <a href={service.url}>
-            <span className="mg-ledger__number">
-              {String(index + 1).padStart(2, "0")}
-            </span>
+            <span className="mg-ledger__number">{pad(index + 1)}</span>
             <span className="mg-ledger__title">{service.title}</span>
             <span className="mg-ledger__lede">{service.lede}</span>
             <ArrowCircle />
@@ -320,13 +354,9 @@ const GLYPHS =
   "{ } </> ; # * => ( ) [ ] && :: // ~ % $ ?? || @ !== ++ ...".split(" ");
 
 export function Banner({
-  heading = "Have a project in mind?",
-  cta = "Start a project inquiry",
-  href
+  heading = "Have a project in mind?"
 }: {
   heading?: string;
-  cta?: string;
-  href?: string;
 }) {
   const to = useTo();
   return (
@@ -338,8 +368,8 @@ export function Banner({
       </div>
       <div className="mg-banner__content">
         <p className="mg-banner__heading">{heading}</p>
-        <a className="mg-pill" href={href ?? to("/project-inquiry/")}>
-          {cta}
+        <a className="mg-pill" href={to("/project-inquiry/")}>
+          Start a project inquiry
         </a>
       </div>
     </section>

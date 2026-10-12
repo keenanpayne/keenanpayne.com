@@ -10,9 +10,9 @@ import { HtmlContent } from "../../../components/HtmlContent";
 import type { LabContent, ProfileModel } from "../../../lib/types";
 import {
   coordinates,
-  formFields,
+  formOf,
   Html,
-  NAVIGATION,
+  LocalTime,
   pad,
   postsByYear,
   postTypes,
@@ -20,6 +20,7 @@ import {
   SAMPLE_PAGES,
   useLocalTime,
   useTo,
+  type NavItem,
   type SpecimenProps,
   type Specimens
 } from "../../site";
@@ -34,15 +35,19 @@ import {
 import { DenverClock, DenverNotes } from "./Denver";
 import { FrontRange } from "./FrontRange";
 import { Groundwork } from "./Groundwork";
+import { WORK_VIEWS, type WorkView } from "./pages/Work";
 import {
   Arrow,
   Button,
   Chips,
   Clients,
   Contents,
+  DirectLine,
   Entries,
   Facts,
   FormField,
+  hostOf,
+  industriesOf,
   Ledger,
   Mark,
   mockStatus,
@@ -62,18 +67,10 @@ import {
   ViewSwitch,
   WorkCard
 } from "./parts";
-import { MenuDots } from "./Shell";
+import { BottomName, Brand, MenuDots, MenuIndex, Step } from "./Shell";
 import { Strata } from "./Strata";
 
 type Location = ProfileModel["location"];
-
-type WorkView = "index" | "plates";
-
-// As on the Work page
-const WORK_VIEWS: { value: WorkView; label: string }[] = [
-  { value: "index", label: "Index" },
-  { value: "plates", label: "Plates" }
-];
 
 /* Context
    ==========================================================================
@@ -125,11 +122,6 @@ const Row = ({
 // header clock. Scoped to a specimen, they hang from the specimen instead.
 const notesScope: CSSProperties = { anchorScope: "--st-clock" };
 const notesAnchor: CSSProperties = { anchorName: "--st-clock" };
-
-/** Stands in for the phone menu's reset of its lists and paragraphs */
-const bare: CSSProperties = { margin: 0, padding: 0, listStyle: "none" };
-
-const typeUrl = (type: string) => `/type/${type.toLowerCase()}s/`;
 
 /* Type
    ========================================================================== */
@@ -263,25 +255,6 @@ function TypeScale({ content }: SpecimenProps) {
 /* Motifs
    ========================================================================== */
 
-/** One step of the frame's edge, as the Shell draws it */
-const Step = ({ edge }: { edge: "top" | "bottom" }) => (
-  <span className={`st-step st-step--${edge}`} aria-hidden="true">
-    {edge === "top" ? (
-      <>
-        <span className="st-step__out" />
-        <span className="st-step__line" />
-        <span className="st-step__in" />
-      </>
-    ) : (
-      <>
-        <span className="st-step__in" />
-        <span className="st-step__line" />
-        <span className="st-step__out" />
-      </>
-    )}
-  </span>
-);
-
 /**
  * The window in miniature: the Shell's tab, steps, and notches around an
  * empty page, with only Contact out in the notch, as on a phone
@@ -295,10 +268,7 @@ function Window({ content }: { content: LabContent }) {
     <div style={{ position: "relative", height: 220, contain: "layout" }}>
       <div className="st-top">
         <div className="st-top__tab">
-          <a className="st-brand" href={to("/")}>
-            <Mark />
-            <span>{profile.name}</span>
-          </a>
+          <Brand name={profile.name} />
         </div>
         <Step edge="top" />
         <div className="st-nav">
@@ -319,9 +289,7 @@ function Window({ content }: { content: LabContent }) {
         </div>
         <Step edge="bottom" />
         <div className="st-bottom__content">
-          <a className="st-bottom__name" href={to("/")}>
-            {profile.name}
-          </a>
+          <BottomName name={profile.name} />
         </div>
       </div>
     </div>
@@ -380,13 +348,8 @@ function Motifs({ content }: SpecimenProps) {
       <SpecimenGrid min={200}>
         <Specimen label="Wordmark" note="Header and footer">
           <Row>
-            <a className="st-brand" href={to("/")}>
-              <Mark />
-              <span>{profile.name}</span>
-            </a>
-            <a className="st-bottom__name" href={to("/")}>
-              {profile.name}
-            </a>
+            <Brand name={profile.name} />
+            <BottomName name={profile.name} />
           </Row>
         </Specimen>
         <Specimen label="Mark" note="A halftone moon, lit from the upper left">
@@ -595,7 +558,6 @@ function PageHeaders({ content }: SpecimenProps) {
   const post = posts[1];
   const [client] = work;
   const [service] = services;
-  const industries = new Set(work.map((item) => item.industry).filter(Boolean));
 
   return (
     <SpecimenGrid>
@@ -646,7 +608,7 @@ function PageHeaders({ content }: SpecimenProps) {
                 {post.type && (
                   <>
                     <span aria-hidden="true">/</span>
-                    <a href={to(typeUrl(post.type))}>{post.type}</a>
+                    <a href={post.typeUrl}>{post.type}</a>
                   </>
                 )}
               </>
@@ -718,7 +680,7 @@ function PageHeaders({ content }: SpecimenProps) {
           <PageHeader title="Work">
             <p className="st-pageMeta">
               <span>{`${work.length} case studies`}</span>
-              <span>{`${industries.size} industries`}</span>
+              <span>{`${industriesOf(work).size} industries`}</span>
               <ViewSwitch
                 label="Show the work as"
                 views={WORK_VIEWS}
@@ -854,10 +816,7 @@ function Labels({ content }: SpecimenProps) {
   const person = testimonials.find(
     (testimonial) => testimonial.person?.position
   )?.person;
-  const types = postTypes(posts).map((type) => ({
-    text: type,
-    url: to(typeUrl(type))
-  }));
+  const types = postTypes(posts);
 
   return (
     <SpecimenGrid min={220}>
@@ -867,7 +826,7 @@ function Labels({ content }: SpecimenProps) {
           {post.type && (
             <>
               <span aria-hidden="true">/</span>
-              <a href={to(typeUrl(post.type))}>{post.type}</a>
+              <a href={post.typeUrl}>{post.type}</a>
             </>
           )}
         </p>
@@ -930,40 +889,6 @@ function Labels({ content }: SpecimenProps) {
 /* Sections and panels
    ========================================================================== */
 
-/** The note in Contact's rail; Project inquiry's has ground over it */
-function DirectLine({
-  profile,
-  art
-}: {
-  profile: ProfileModel;
-  art?: boolean;
-}) {
-  const to = useTo();
-  const id = useId();
-  const time = useLocalTime();
-  const { email, location } = profile;
-
-  return (
-    <section className="st-railNote" aria-labelledby={id}>
-      {art && (
-        <Terrain
-          className="st-railNote__art"
-          seed={to("/project-inquiry/")}
-          scale={120}
-        />
-      )}
-      <h2 id={id}>Direct line</h2>
-      <Facts
-        rows={[
-          ["Email", <a href={`mailto:${email}`}>{email}</a>],
-          ["Based in", location.name],
-          ["Local time", time ? `${time} (${location.timeZoneName})` : "—"]
-        ]}
-      />
-    </section>
-  );
-}
-
 function Surfaces({ content }: SpecimenProps) {
   const to = useTo();
   const id = useId();
@@ -1015,7 +940,7 @@ function Surfaces({ content }: SpecimenProps) {
           <DirectLine profile={profile} />
         </Specimen>
         <Specimen label="Rail note, with ground" note="Project inquiry">
-          <DirectLine profile={profile} art />
+          <DirectLine profile={profile} ground={to("/project-inquiry/")} />
         </Specimen>
       </SpecimenGrid>
     </>
@@ -1112,7 +1037,6 @@ function Cards({ content }: SpecimenProps) {
 
 function Lists({ content }: SpecimenProps) {
   const to = useTo();
-  const time = useLocalTime();
   const { profile, posts, work, services, socials } = content;
   const [client] = work;
 
@@ -1167,7 +1091,7 @@ function Lists({ content }: SpecimenProps) {
           items={socials.map((social) => ({
             url: social.url,
             title: social.text,
-            meta: [new URL(social.url).hostname.replace(/^www\./, "")]
+            meta: [hostOf(social.url)]
           }))}
         />
       </Specimen>
@@ -1184,7 +1108,7 @@ function Lists({ content }: SpecimenProps) {
               ]
             ),
             ["Coordinates", coordinates(profile.location)],
-            ["Local time", time ?? "—"]
+            ["Local time", <LocalTime placeholder="—" />]
           ]}
         />
       </Specimen>
@@ -1280,44 +1204,47 @@ function KindWords({ content }: SpecimenProps) {
 function Forms() {
   const [sent, setSent] = useState<"contact" | "inquiry">();
   const picked = useId();
-  const budget = formFields("inquiry").find(
+  const budget = formOf("inquiry").fields.find(
     (field) => field.kind === "choices" && field.type === "radio" && field.wide
   );
 
   return (
     <SpecimenGrid min={300}>
-      {(["contact", "inquiry"] as const).map((kind) => (
-        <Specimen
-          key={kind}
-          label={kind === "contact" ? "Contact form" : "Project inquiry"}
-          note={
-            kind === "contact"
-              ? "Two columns, the message across both"
-              : "Choices as pills; pick any or one"
-          }
-          wide
-        >
-          <Column>
-            <form
-              className="st-form"
-              onSubmit={(event) => {
-                event.preventDefault();
-                setSent(kind);
-              }}
-            >
-              {formFields(kind).map((field) => (
-                <FormField key={field.name} field={field} />
-              ))}
-              <p className="st-form__submit">
-                <button className="st-button" type="submit">
-                  {kind === "contact" ? "Send message" : "Send inquiry"}
-                </button>
-                <span role="status">{mockStatus(sent === kind)}</span>
-              </p>
-            </form>
-          </Column>
-        </Specimen>
-      ))}
+      {(["contact", "inquiry"] as const).map((kind) => {
+        const form = formOf(kind);
+        return (
+          <Specimen
+            key={kind}
+            label={kind === "contact" ? "Contact form" : "Project inquiry"}
+            note={
+              kind === "contact"
+                ? "Two columns, the message across both"
+                : "Choices as pills; pick any or one"
+            }
+            wide
+          >
+            <Column>
+              <form
+                className="st-form"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                  setSent(kind);
+                }}
+              >
+                {form.fields.map((field) => (
+                  <FormField key={field.name} field={field} />
+                ))}
+                <p className="st-form__submit">
+                  <button className="st-button" type="submit">
+                    {form.submit}
+                  </button>
+                  <span role="status">{mockStatus(sent === kind)}</span>
+                </p>
+              </form>
+            </Column>
+          </Specimen>
+        );
+      })}
       {budget?.kind === "choices" && (
         <Specimen label="Choices, picked" note="Filled with ink">
           <fieldset className="st-field">
@@ -1381,7 +1308,11 @@ function Archive({ content }: { content: LabContent }) {
         <PageHeader title="Writing">
           <p className="st-pageMeta">
             <span>{`${content.posts.length} articles · ${years.length} years`}</span>
-            <span>{postTypes(content.posts).join(", ")}</span>
+            <span>
+              {postTypes(content.posts)
+                .map((type) => type.text)
+                .join(", ")}
+            </span>
           </p>
         </PageHeader>
         {shown.map(([year, posts], index) => (
@@ -1398,62 +1329,24 @@ function Archive({ content }: { content: LabContent }) {
 }
 
 /** The phone menu's index, footer, and clock, outside the window it fills */
-function MenuIndex({ content }: { content: LabContent }) {
-  const to = useTo();
+function MenuPreview({
+  content,
+  navigation
+}: {
+  content: LabContent;
+  navigation: NavItem[];
+}) {
   const notes = useId();
-  const { profile, socials } = content;
-  const navigation = NAVIGATION.map((item) => ({
-    text: item.text,
-    url: to(item.path),
-    current: item.path === "/about/"
-  }));
 
   return (
     <div style={{ maxWidth: 390, ...notesScope }}>
-      <p className="st-menu__label" style={{ margin: 0 }}>
-        <span>Index</span>
-        <span>{`${navigation.length} pages`}</span>
-      </p>
-      <ol className="st-menu__list" style={bare}>
-        {navigation.map((item, index) => (
-          <li key={item.url} style={{ "--st-i": index } as CSSProperties}>
-            <a href={item.url} aria-current={item.current ? "page" : undefined}>
-              <span className="st-menu__number">{pad(index + 1)}</span>
-              <span className="st-menu__text">{item.text}</span>
-              {item.current ? (
-                <Mark seed={item.url} className="st-menu__here" />
-              ) : (
-                <Arrow />
-              )}
-            </a>
-          </li>
-        ))}
-      </ol>
-      <div className="st-menu__foot">
-        <ul className="st-menu__links" style={bare}>
-          {socials.map((social) => (
-            <li key={social.url}>
-              <a href={social.url} rel={social.rel}>
-                {social.text}
-              </a>
-            </li>
-          ))}
-          <li>
-            <a href="/feed.xml">RSS</a>
-          </li>
-        </ul>
-        <Signup compact />
-        <p className="st-menu__meta" style={{ ...bare, ...notesAnchor }}>
-          <DenverClock notes={notes} location={profile.location} />
-          <span>{`© ${new Date().getFullYear()} ${profile.name}`}</span>
-        </p>
-      </div>
-      <DenverNotes id={notes} location={profile.location} />
+      <MenuIndex navigation={navigation} content={content} notes={notes} bare />
+      <DenverNotes id={notes} location={content.profile.location} />
     </div>
   );
 }
 
-function Wayfinding({ content }: SpecimenProps) {
+function Wayfinding({ content, navigation }: SpecimenProps) {
   const to = useTo();
   const [view, setView] = useState<WorkView>("index");
   const post = content.posts[1];
@@ -1468,7 +1361,7 @@ function Wayfinding({ content }: SpecimenProps) {
             {post.type && (
               <>
                 <span aria-hidden="true">/</span>
-                <a href={to(typeUrl(post.type))}>{post.type}</a>
+                <a href={post.typeUrl}>{post.type}</a>
               </>
             )}
           </p>
@@ -1535,7 +1428,7 @@ function Wayfinding({ content }: SpecimenProps) {
           note="The pages as an index that fills the window, the current one in italic with its moon"
           wide
         >
-          <MenuIndex content={content} />
+          <MenuPreview content={content} navigation={navigation} />
         </Specimen>
       </SpecimenGrid>
     </>
@@ -1551,21 +1444,18 @@ const Prose = ({ prose }: SpecimenProps) => (
   </article>
 );
 
-export const specimens: Specimens = {
-  root: "st",
-  sections: {
-    type: TypeScale,
-    motifs: Motifs,
-    imagery: Imagery,
-    pageHeader: PageHeaders,
-    actions: Actions,
-    labels: Labels,
-    surfaces: Surfaces,
-    cards: Cards,
-    lists: Lists,
-    quotes: KindWords,
-    forms: Forms,
-    wayfinding: Wayfinding,
-    prose: Prose
-  }
-};
+export default {
+  type: TypeScale,
+  motifs: Motifs,
+  imagery: Imagery,
+  pageHeader: PageHeaders,
+  actions: Actions,
+  labels: Labels,
+  surfaces: Surfaces,
+  cards: Cards,
+  lists: Lists,
+  quotes: KindWords,
+  forms: Forms,
+  wayfinding: Wayfinding,
+  prose: Prose
+} satisfies Specimens;

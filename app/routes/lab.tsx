@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
 import { directions, labPath, SAMPLE_PAGES } from "../lab/registry";
+import { pad } from "../lab/site/helpers";
 import { STYLEGUIDE_PATH, styleguidePath } from "../lab/styleguide/sections";
 import { metadata } from "../lib/site";
 import type { Route } from "./+types/lab";
@@ -41,9 +42,7 @@ export default function LabIndex() {
       <ol className="lab__list">
         {directions.map((direction, index) => (
           <li key={direction.slug} className="lab__card">
-            <span className="lab__number">
-              {String(index + 1).padStart(2, "0")}
-            </span>
+            <span className="lab__number">{pad(index + 1)}</span>
             <Link className="lab__name" to={labPath(direction.slug)}>
               {direction.name}
             </Link>

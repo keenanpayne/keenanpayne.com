@@ -27,7 +27,11 @@ import type {
   TestimonialModel
 } from "../types";
 
-import { CLOUDINARY_URL as CLOUDINARY, cloudinaryCover } from "./cloudinary";
+import {
+  CLOUDINARY_URL as CLOUDINARY,
+  cloudinaryCover,
+  cloudinaryImage
+} from "./cloudinary";
 import {
   htmlDateString,
   longDate,
@@ -1064,11 +1068,18 @@ export function getFeedPosts() {
   }));
 }
 
+let labContent: LabContent | undefined;
+
 /** Real site content for the design lab (`/lab/*`), in one flat shape */
 export function getLabContent(): LabContent {
+  return (labContent ??= buildLabContent());
+}
+
+function buildLabContent(): LabContent {
   const index = getIndex();
 
   const posts = index.posts.map((post) => {
+    const type = optionalString(post.data.type);
     const image = optionalString(post.data.meta?.image);
     return {
       title: String(post.data.title ?? ""),
@@ -1076,7 +1087,8 @@ export function getLabContent(): LabContent {
       date: readableDate(post.date),
       iso: htmlDateString(post.date),
       year: postYear(post.date),
-      type: optionalString(post.data.type),
+      type,
+      typeUrl: type && typeUrl(type),
       lede: optionalString(post.data.lede ?? post.data.meta?.description),
       // Skip social images that point outside `/public/images`
       image: image && /^(https:\/\/|\/images\/)/.test(image) ? image : undefined
@@ -1092,7 +1104,10 @@ export function getLabContent(): LabContent {
       lede: optionalString(item.lede),
       cover: cloudinaryCover(item.cover ?? ""),
       // Square, padded with the cover's own edge color, for narrow frames
-      coverSquare: `${CLOUDINARY}/image/upload/f_auto,q_auto,c_pad,ar_1:1,b_auto:border,w_640/${item.cover}`,
+      coverSquare: cloudinaryImage(
+        item.cover ?? "",
+        "c_pad,ar_1:1,b_auto:border,w_640"
+      ),
       year: optionalString(item.year),
       role: optionalString(item.role),
       industry: optionalString(item.industry),
@@ -1107,8 +1122,6 @@ export function getLabContent(): LabContent {
   }));
 
   const { socials: socialNames, ...about } = profile;
-  const image = (id: string, transform: string) =>
-    `${CLOUDINARY}/image/upload/f_auto,q_auto,${transform}/${id}`;
   const socialByName = (name: string) => {
     const social = socials.find((candidate) => candidate.name === name);
     if (!social) throw new Error(`No social profile named "${name}"`);
@@ -1122,17 +1135,17 @@ export function getLabContent(): LabContent {
     testimonials: resolveTestimonials([6, 41, 2]),
     profile: {
       ...about,
-      avatar: image(about.avatar, "c_fill,g_face,ar_1:1,w_480"),
+      avatar: cloudinaryImage(about.avatar, "c_fill,g_face,ar_1:1,w_480"),
       photos: about.photos.map((photo) => ({
-        src: image(photo.image, "w_800"),
-        large: image(photo.image, "c_limit,w_1800"),
+        src: cloudinaryImage(photo.image, "w_800"),
+        large: cloudinaryImage(photo.image, "c_limit,w_1800"),
         alt: photo.alt
       }))
     },
     socials: socialNames.map(socialByName).map((social) => ({
       text: social.name,
       url: social.url,
-      rel: social.name === "Mastodon" ? "me" : undefined
+      rel: social.rel
     }))
   };
 }

@@ -1,10 +1,39 @@
-import { useLocalTime, useTo, type ShellProps } from "../../site";
+import { useId } from "react";
 
-import { Icon } from "./parts";
+import { metadata } from "../../../lib/site";
+import { LocalTime, useTo, type ShellProps } from "../../site";
+
+import { handleOf, Icon } from "./parts";
+
+/** The dithered edge under every page's footer; makes its own filter id */
+export function Dither({ id }: { id?: string }) {
+  const generated = useId();
+  const filter = id ?? generated;
+
+  return (
+    <svg className="mg-dither" aria-hidden="true">
+      <filter id={filter} x="0" y="0" width="100%" height="100%">
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.85"
+          numOctaves="1"
+          seed="7"
+        />
+        <feColorMatrix type="saturate" values="0" />
+        <feComponentTransfer>
+          <feFuncR type="discrete" tableValues="0 1" />
+          <feFuncG type="discrete" tableValues="0 1" />
+          <feFuncB type="discrete" tableValues="0 1" />
+        </feComponentTransfer>
+      </filter>
+      <rect width="100%" height="100%" filter={`url(#${filter})`} />
+    </svg>
+  );
+}
 
 export function Shell({ navigation, content, children }: ShellProps) {
   const { profile, socials } = content;
-  const time = useLocalTime();
+  const handle = handleOf(socials);
   const to = useTo();
 
   return (
@@ -14,8 +43,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
           <div className="mg-mast__row">
             <p className="mg-mast__aside">
               <Icon name="pin" />
-              {profile.location.short}
-              {time && <> · {time}</>}
+              {profile.location.short} · <LocalTime placeholder="--:--" />
             </p>
             <span className="mg-mast__line" aria-hidden="true" />
             <a className="mg-mast__name" href={to("/")}>
@@ -38,7 +66,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
             </nav>
           </div>
           <div className="mg-mast__rule">
-            <span className="mg-tag">@keenanpayne</span>
+            {handle && <span className="mg-tag">{handle}</span>}
           </div>
         </header>
 
@@ -57,29 +85,13 @@ export function Shell({ navigation, content, children }: ShellProps) {
               </li>
             ))}
             <li>
-              <a href="/feed.xml">RSS</a>
+              <a href={metadata.feed.path}>RSS</a>
             </li>
           </ul>
         </footer>
       </div>
 
-      <svg className="mg-dither" aria-hidden="true">
-        <filter id="mg-dither-filter" x="0" y="0" width="100%" height="100%">
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.85"
-            numOctaves="1"
-            seed="7"
-          />
-          <feColorMatrix type="saturate" values="0" />
-          <feComponentTransfer>
-            <feFuncR type="discrete" tableValues="0 1" />
-            <feFuncG type="discrete" tableValues="0 1" />
-            <feFuncB type="discrete" tableValues="0 1" />
-          </feComponentTransfer>
-        </filter>
-        <rect width="100%" height="100%" filter="url(#mg-dither-filter)" />
-      </svg>
+      <Dither id="mg-dither-filter" />
     </div>
   );
 }

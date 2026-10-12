@@ -11,7 +11,7 @@ import {
 } from "../parts";
 
 /** Any other page: type and tag archives, subscribe, … */
-export function Page({ page }: TemplateProps<"page">) {
+export function Page({ page }: TemplateProps<"page" | "archive">) {
   const intro = introOf(page);
   const label = page.meta.title.split(" | ")[0];
 

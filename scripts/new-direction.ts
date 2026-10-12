@@ -12,8 +12,7 @@
  * 1. Copies app/lab/directions/wireframe/ to app/lab/directions/<slug>/,
  *    renaming `wireframe` to the slug (files, CSS classes, variables) and
  *    `Wireframe` to the display name, which the starter only uses in comments
- * 2. Adds the direction's metadata to app/lab/registry.ts
- * 3. Adds its components to app/lab/directions/index.ts
+ * 2. Registers it in app/lab/registry.ts: its metadata, and its chunk
  */
 
 import { execFileSync } from "node:child_process";
@@ -32,7 +31,7 @@ import { RESERVED_SLUGS } from "../app/lab/styleguide/sections.ts";
 
 const DIRECTIONS = "app/lab/directions";
 const REGISTRY = "app/lab/registry.ts";
-const INDEX = `${DIRECTIONS}/index.ts`;
+const MARKER = "`npm run lab:new` adds new directions";
 const STARTER = "wireframe";
 
 const [slug, nameArg] = process.argv.slice(2);
@@ -70,24 +69,6 @@ const today = [now.getFullYear(), now.getMonth() + 1, now.getDate()]
   .map((part) => String(part).padStart(2, "0"))
   .join("-");
 
-/** Inserts lines just above a `npm run lab:new` marker comment */
-function insertAboveMarker(
-  file: string,
-  marker: string,
-  lines: string[],
-  { comma = false } = {}
-) {
-  const source = readFileSync(file, "utf8").split("\n");
-  const at = source.findIndex((line) => line.includes(marker));
-  if (at < 0) fail(`Couldn’t find the “${marker}” marker in ${file}.`);
-  // The entry before the new one needs a comma now
-  if (comma && !source[at - 1].trimEnd().endsWith(",")) {
-    source[at - 1] = `${source[at - 1].trimEnd()},`;
-  }
-  source.splice(at, 0, ...lines);
-  writeFileSync(file, source.join("\n"));
-}
-
 // 1. Copy the starter, renaming it throughout
 cpSync(join(DIRECTIONS, STARTER), target, { recursive: true });
 
@@ -116,33 +97,27 @@ function rename(directory: string) {
 }
 rename(target);
 
-// 2. Register its metadata
-insertAboveMarker(
-  REGISTRY,
-  "`npm run lab:new` adds new directions",
-  [
-    "  {",
-    `    slug: "${slug}",`,
-    `    name: ${JSON.stringify(name)},`,
-    '    summary: "TODO: describe the look in a sentence or two.",',
-    '    reference: "TODO: what inspired it",',
-    `    date: "${today}"`,
-    "  }"
-  ],
-  { comma: true }
+// 2. Register it, as the last entry before the marker comment
+const registry = readFileSync(REGISTRY, "utf8").split("\n");
+const at = registry.findIndex((line) => line.includes(MARKER));
+if (at < 0) fail(`Couldn’t find the “${MARKER}” marker in ${REGISTRY}.`);
+// The entry before the new one needs a comma now
+registry[at - 1] = `${registry[at - 1].trimEnd()},`;
+registry.splice(
+  at,
+  0,
+  "  {",
+  `    slug: "${slug}",`,
+  `    name: ${JSON.stringify(name)},`,
+  '    summary: "TODO: describe the look in a sentence or two.",',
+  '    reference: "TODO: what inspired it",',
+  `    date: "${today}",`,
+  `    load: () => import("./directions/${slug}")`,
+  "  }"
 );
+writeFileSync(REGISTRY, registry.join("\n"));
 
-// 3. Register its components, loaded on demand
-insertAboveMarker(
-  INDEX,
-  "`npm run lab:new` adds new directions",
-  [
-    `  ${slug.includes("-") ? JSON.stringify(slug) : slug}: () => import("./${slug}")`
-  ],
-  { comma: true }
-);
-
-execFileSync("npx", ["prettier", "--write", REGISTRY, INDEX, target], {
+execFileSync("npx", ["prettier", "--write", REGISTRY, target], {
   stdio: "ignore"
 });
 

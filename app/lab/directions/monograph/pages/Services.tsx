@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf } from "../../../site";
+import { introOf, pad } from "../../../site";
 import {
   Banner,
   KindWords,
@@ -34,9 +34,7 @@ export function Services({
         <ol className="mg-row mg-row--quarters mg-steps">
           {content.profile.process.map((step, index) => (
             <li className="mg-card" key={step.title}>
-              <span className="mg-steps__number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+              <span className="mg-steps__number">{pad(index + 1)}</span>
               <h3 className="mg-card__title">{step.title}</h3>
               <p className="mg-copy">{step.text}</p>
             </li>

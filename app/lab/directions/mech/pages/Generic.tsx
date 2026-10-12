@@ -3,10 +3,9 @@ import type {
   BasicPageModel,
   EntriesSection,
   LabContent,
-  LinkModel,
-  PageListSection
+  LinkModel
 } from "../../../../lib/types";
-import { Html, introOf, pad, samePath } from "../../../site";
+import { Html, introOf, pad, pageEntries, samePath } from "../../../site";
 import {
   Alert,
   KindWords,
@@ -47,14 +46,6 @@ function Entries({
     </Section>
   );
 }
-
-const pageEntries = (section: PageListSection) => ({
-  heading: section.title ?? "Pages",
-  entries: section.pages.map((page) => ({
-    url: page.url,
-    heading: page.title ?? page.url
-  }))
-});
 
 /** Tags and post types, as chips */
 function Chips({ label, links }: { label: string; links: LinkModel[] }) {

@@ -61,7 +61,8 @@ export function Archive({
   const intro = introOf(page);
   const [filter, setFilter] = useState<string>();
 
-  const types = postTypes(content.posts);
+  // The classes to filter by: the post types' names
+  const types = postTypes(content.posts).map((type) => type.text);
   const allYears = postsByYear(content.posts);
   const shown = filter
     ? content.posts.filter((post) => post.type === filter)

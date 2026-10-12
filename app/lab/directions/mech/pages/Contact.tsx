@@ -2,10 +2,10 @@ import { useState, type FormEvent } from "react";
 
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
 import {
-  formFields,
+  formOf,
   Html,
   introOf,
-  useLocalTime,
+  LocalTime,
   useTo,
   type FormField as Field
 } from "../../../site";
@@ -65,7 +65,7 @@ export function Contact({
   const intro = introOf(page);
   const { email, location } = content.profile;
   const to = useTo();
-  const time = useLocalTime({ hour12: false, seconds: true });
+  const form = formOf(variant);
   const [sent, setSent] = useState(false);
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -76,7 +76,7 @@ export function Contact({
     <>
       <PageHeader
         episode={variant === "contact" ? "Episode:06" : "Episode:07"}
-        eyebrow={variant === "contact" ? "Contact" : "Project inquiry"}
+        eyebrow={form.title}
         jp={variant === "contact" ? "通信" : "依頼"}
         title={intro?.heading ?? page.meta.title}
       />
@@ -104,16 +104,14 @@ export function Contact({
               </div>
               <div>
                 <dt>Local time</dt>
-                <dd className="mc-contact__time">{time ?? "--:--:--"}</dd>
+                <dd className="mc-contact__time">
+                  <LocalTime hour12={false} seconds placeholder="--:--:--" />
+                </dd>
               </div>
             </dl>
-            {variant === "contact" ? (
-              <MoreLink href={to("/project-inquiry/")}>
-                Start a project inquiry instead
-              </MoreLink>
-            ) : (
-              <MoreLink href={to("/contact/")}>Just saying hello?</MoreLink>
-            )}
+            <MoreLink href={to(form.alternate.path)}>
+              {form.alternate.text}
+            </MoreLink>
           </div>
         </Panel>
 
@@ -124,13 +122,13 @@ export function Contact({
           code={sent ? "Held" : "Ready"}
         >
           <form className="mc-form" onSubmit={onSubmit}>
-            {formFields(variant).map((field) => (
+            {form.fields.map((field) => (
               <FormField key={field.name} field={field} />
             ))}
 
             <div className="mc-form__actions mc-field--wide">
               <Button type="submit">
-                {variant === "contact" ? "Transmit" : "Send inquiry"}
+                {variant === "contact" ? "Transmit" : form.submit}
               </Button>
               <p className="mc-form__status" role="status">
                 {sent

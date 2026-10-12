@@ -1,3 +1,4 @@
+import { metadata } from "../../../lib/site";
 import { useTo, type ShellProps } from "../../site";
 
 export function Shell({ navigation, content, children }: ShellProps) {
@@ -39,7 +40,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
             </li>
           ))}
           <li>
-            <a href="/feed.xml">RSS</a>
+            <a href={metadata.feed.path}>RSS</a>
           </li>
         </ul>
       </footer>

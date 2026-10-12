@@ -17,6 +17,7 @@ import type {
   TestimonialModel
 } from "../../../lib/types";
 import {
+  cx,
   Html,
   pad,
   prefersReducedMotion,
@@ -103,7 +104,7 @@ export function Panel({
   children: ReactNode;
 }) {
   return (
-    <Tag className={["mc-panel", className].filter(Boolean).join(" ")}>
+    <Tag className={cx("mc-panel", className)}>
       {label && (
         <div className="mc-panel__head">
           <span className="mc-panel__label">{label}</span>
@@ -159,7 +160,7 @@ export function Section({
   children: ReactNode;
 }) {
   return (
-    <section className={["mc-section", className].filter(Boolean).join(" ")}>
+    <section className={cx("mc-section", className)}>
       <SectionBar {...bar} />
       {children}
     </section>
@@ -477,13 +478,7 @@ function useSweep(points: [number, number][]) {
 }
 
 /** Deterministic noisy line, like a CPU trace, seeded per item */
-export function Waveform({
-  seed,
-  className
-}: {
-  seed: number;
-  className?: string;
-}) {
+export function Waveform({ seed }: { seed: number }) {
   const points = useMemo(() => tracePoints(seed), [seed]);
   const { root, lens, trail, head } = useSweep(points);
   const line = points
@@ -497,11 +492,7 @@ export function Waveform({
   );
 
   return (
-    <div
-      className={["mc-wave", className].filter(Boolean).join(" ")}
-      ref={root}
-      aria-hidden="true"
-    >
+    <div className="mc-wave" ref={root} aria-hidden="true">
       <svg viewBox="0 0 100 20" preserveAspectRatio="none">
         {trace}
       </svg>
@@ -608,9 +599,7 @@ export const Feed = ({
   /** Makes the image a button that opens a larger view (see `Lightbox`) */
   onZoom?: () => void;
 }) => {
-  const classes = ["mc-feed", natural && "mc-feed--natural", className]
-    .filter(Boolean)
-    .join(" ");
+  const classes = cx("mc-feed", natural && "mc-feed--natural", className);
   const content = (
     <>
       {src ? (
@@ -1152,13 +1141,9 @@ export const AlertSide = () => (
 
 /** Red alert banner, after the "Battle Stations" screens */
 export function Alert({
-  heading = "Have a project in mind?",
-  cta = "Initiate project inquiry",
-  href
+  heading = "Have a project in mind?"
 }: {
   heading?: string;
-  cta?: string;
-  href?: string;
 }) {
   const to = useTo();
   return (
@@ -1175,8 +1160,8 @@ export function Alert({
         </p>
         <p className="mc-alert__en">Battle stations · Condition one</p>
         <h2 className="mc-alert__heading">{heading}</h2>
-        <Button tone="invert" href={href ?? to("/project-inquiry/")}>
-          {cta}
+        <Button tone="invert" href={to("/project-inquiry/")}>
+          Initiate project inquiry
         </Button>
       </div>
       <AlertSide />

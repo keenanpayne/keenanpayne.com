@@ -1,5 +1,6 @@
 import { useId, useState, type ReactNode } from "react";
 
+import { metadata } from "../../../lib/site";
 import type { LabContent, SocialLink } from "../../../lib/types";
 import {
   samePath,
@@ -129,8 +130,7 @@ export function sceneFor(
   if (
     view.kind === "post" ||
     view.kind === "writing" ||
-    path.startsWith("/type/") ||
-    path.startsWith("/tags/")
+    view.kind === "archive"
   ) {
     return {
       bubble: "Official Keenan news. Straight from the source!",
@@ -331,6 +331,34 @@ export function Elsewhere({
   );
 }
 
+/** The site map's zones as big buttons, each holding its item */
+export function Zones({ navigation }: { navigation: NavItem[] }) {
+  const to = useTo();
+  const itemFor = (url: string) =>
+    Object.entries(ZONE_ITEMS).find(([zone]) => samePath(url, to(zone)))?.[1];
+
+  return (
+    <ul className="pt-map__zones">
+      {navigation.map((item, index) => {
+        const zoneItem = itemFor(item.url);
+        return (
+          <li key={item.url} style={{ "--pt-i": index } as React.CSSProperties}>
+            <a href={item.url} aria-current={item.current ? "page" : undefined}>
+              <span className="pt-map__well">
+                {zoneItem && <ItemIcon item={zoneItem} />}
+              </span>
+              <span className="pt-map__text">{item.text}</span>
+              {item.current && (
+                <span className="pt-map__here">You are here</span>
+              )}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 /**
  * The site map, which the header folds into on phones: the zones as big
  * buttons, then search, the chips, and the lavender strip
@@ -350,10 +378,6 @@ function SiteMap({
   socials: SocialLink[];
   codeBank?: SocialLink;
 }) {
-  const to = useTo();
-  const itemFor = (url: string) =>
-    Object.entries(ZONE_ITEMS).find(([zone]) => samePath(url, to(zone)))?.[1];
-
   return (
     <div id={id} className="pt-map" hidden={hidden}>
       <p className="pt-map__head">
@@ -363,30 +387,7 @@ function SiteMap({
       </p>
 
       <nav aria-label="Main">
-        <ul className="pt-map__zones">
-          {navigation.map((item, index) => {
-            const zoneItem = itemFor(item.url);
-            return (
-              <li
-                key={item.url}
-                style={{ "--pt-i": index } as React.CSSProperties}
-              >
-                <a
-                  href={item.url}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  <span className="pt-map__well">
-                    {zoneItem && <ItemIcon item={zoneItem} />}
-                  </span>
-                  <span className="pt-map__text">{item.text}</span>
-                  {item.current && (
-                    <span className="pt-map__here">You are here</span>
-                  )}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
+        <Zones navigation={navigation} />
       </nav>
 
       <Search className="pt-search--map" />
@@ -411,7 +412,7 @@ export function Shell({
   const { profile, socials } = content;
   const to = useTo();
   const map = useId();
-  const { open, setOpen, toggle } = useMenu(WIDE, path);
+  const { open, setOpen, toggle } = useMenu(WIDE);
   const scene = sceneFor(view, path, profile);
   const codeBank = socials.find(isCodeBank);
 
@@ -524,7 +525,7 @@ export function Shell({
                     </li>
                   ))}
                   <li>
-                    <a href="/feed.xml">
+                    <a href={metadata.feed.path}>
                       <Icon name="rss" />
                       RSS feed
                     </a>
@@ -567,7 +568,7 @@ export function Shell({
                 property of their respective owners. {profile.name} is
                 headquartered in {profile.location.name}.
               </p>
-              <a className="pt-seal" href="/feed.xml">
+              <a className="pt-seal" href={metadata.feed.path}>
                 <span className="pt-seal__top">
                   RSS<sup>™</sup>
                 </span>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf, pad, useQueryParam, useTo } from "../../../site";
+import { introOf, pad, useQueryParam } from "../../../site";
 import {
   Feature,
   Go,
@@ -13,11 +13,11 @@ import {
   Newsletter,
   parseDate,
   postNews,
+  ratedTypes,
   Rating,
   RATING_TYPES,
   ratingOf,
   TitleBar,
-  typePath,
   type Post
 } from "../parts";
 
@@ -30,10 +30,7 @@ export const DESCRIPTIONS: Record<string, string> = {
 
 /** Month grid with posting days linked, like the old release calendars */
 export function Calendar({ posts }: { posts: Post[] }) {
-  const dated = posts.flatMap((post) => {
-    const date = parseDate(post.date);
-    return date ? [{ post, ...date }] : [];
-  });
+  const dated = posts.map((post) => ({ post, ...parseDate(post.iso) }));
   const months = [
     ...new Set(dated.map(({ year, month }) => `${year}-${pad(month + 1)}`))
   ];
@@ -154,24 +151,16 @@ export function Calendar({ posts }: { posts: Post[] }) {
   );
 }
 
-export function Archive({
-  page,
-  content
-}: {
-  page: BasicPageModel;
-  content: LabContent;
-}) {
-  const intro = introOf(page);
-  const to = useTo();
-  const [latest, ...older] = content.posts;
-  const years = [...new Set(content.posts.map((post) => post.year))];
+/** The archive search's filters, and the posts that pass them */
+export function useArchiveSearch(posts: Post[]) {
+  const years = [...new Set(posts.map((post) => post.year))];
   const [query, setQuery] = useQueryParam("q");
   const [from, setFrom] = useState(years[years.length - 1] ?? "");
   const [until, setUntil] = useState(years[0] ?? "");
   const [type, setType] = useState("");
 
   const needle = query.trim().toLowerCase();
-  const shown = content.posts.filter(
+  const shown = posts.filter(
     (post) =>
       post.year >= from &&
       post.year <= until &&
@@ -181,6 +170,114 @@ export function Archive({
           .toLowerCase()
           .includes(needle))
   );
+
+  return {
+    years,
+    shown,
+    query,
+    setQuery,
+    from,
+    setFrom,
+    until,
+    setUntil,
+    type,
+    setType
+  };
+}
+
+/** Year range, rating, and keyword over the archive's rows */
+export function ArchiveSearch({
+  search
+}: {
+  search: ReturnType<typeof useArchiveSearch>;
+}) {
+  const {
+    years,
+    query,
+    setQuery,
+    from,
+    setFrom,
+    until,
+    setUntil,
+    type,
+    setType
+  } = search;
+
+  return (
+    <form
+      className="pt-searchbar"
+      role="search"
+      onSubmit={(event) => event.preventDefault()}
+    >
+      <p className="pt-searchbar__label">Search archives by year or keyword</p>
+      <div className="pt-searchbar__fields">
+        <label className="pt-searchbar__field">
+          <span>From</span>
+          <select
+            className="pt-select"
+            value={from}
+            onChange={(event) => setFrom(event.target.value)}
+          >
+            {[...years].reverse().map((year) => (
+              <option key={year}>{year}</option>
+            ))}
+          </select>
+        </label>
+        <span className="pt-searchbar__to">to</span>
+        <label className="pt-searchbar__field">
+          <span>Until</span>
+          <select
+            className="pt-select"
+            value={until}
+            onChange={(event) => setUntil(event.target.value)}
+          >
+            {years.map((year) => (
+              <option key={year}>{year}</option>
+            ))}
+          </select>
+        </label>
+        <span className="pt-searchbar__sep" aria-hidden="true" />
+        <label className="pt-searchbar__field">
+          <span>Rating</span>
+          <select
+            className="pt-select"
+            value={type}
+            onChange={(event) => setType(event.target.value)}
+          >
+            <option value="">All</option>
+            {RATING_TYPES.map((option) => (
+              <option key={option} value={option}>
+                {option}s
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="pt-searchbar__field pt-searchbar__field--grow">
+          <span>Keyword</span>
+          <input
+            className="pt-input"
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+          />
+        </label>
+        <Go />
+      </div>
+    </form>
+  );
+}
+
+export function Archive({
+  page,
+  content
+}: {
+  page: BasicPageModel;
+  content: LabContent;
+}) {
+  const intro = introOf(page);
+  const [latest, ...older] = content.posts;
+  const search = useArchiveSearch(content.posts);
+  const { years, shown } = search;
   const byYear = years
     .map((year) => [year, shown.filter((post) => post.year === year)] as const)
     .filter(([, posts]) => posts.length > 0);
@@ -216,68 +313,7 @@ export function Archive({
 
       <section className="pt-section" id="archive">
         <Heading>Writing archives</Heading>
-        <form
-          className="pt-searchbar"
-          role="search"
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <p className="pt-searchbar__label">
-            Search archives by year or keyword
-          </p>
-          <div className="pt-searchbar__fields">
-            <label className="pt-searchbar__field">
-              <span>From</span>
-              <select
-                className="pt-select"
-                value={from}
-                onChange={(event) => setFrom(event.target.value)}
-              >
-                {[...years].reverse().map((year) => (
-                  <option key={year}>{year}</option>
-                ))}
-              </select>
-            </label>
-            <span className="pt-searchbar__to">to</span>
-            <label className="pt-searchbar__field">
-              <span>Until</span>
-              <select
-                className="pt-select"
-                value={until}
-                onChange={(event) => setUntil(event.target.value)}
-              >
-                {years.map((year) => (
-                  <option key={year}>{year}</option>
-                ))}
-              </select>
-            </label>
-            <span className="pt-searchbar__sep" aria-hidden="true" />
-            <label className="pt-searchbar__field">
-              <span>Rating</span>
-              <select
-                className="pt-select"
-                value={type}
-                onChange={(event) => setType(event.target.value)}
-              >
-                <option value="">All</option>
-                {RATING_TYPES.map((option) => (
-                  <option key={option} value={option}>
-                    {option}s
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label className="pt-searchbar__field pt-searchbar__field--grow">
-              <span>Keyword</span>
-              <input
-                className="pt-input"
-                type="search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-              />
-            </label>
-            <Go />
-          </div>
-        </form>
+        <ArchiveSearch search={search} />
 
         <p className="pt-count" role="status">
           Showing {shown.length} of {content.posts.length} articles
@@ -315,21 +351,21 @@ export function Archive({
       <section className="pt-section" id="ratings">
         <Heading>Ratings guide</Heading>
         <ul className="pt-ratings">
-          {RATING_TYPES.map((option) => {
+          {ratedTypes(content.posts).map((type) => {
             const count = content.posts.filter(
-              (post) => post.type === option
+              (post) => post.type === type.text
             ).length;
             return (
-              <li key={option}>
-                <Rating type={option} />
+              <li key={type.text}>
+                <Rating type={type.text} />
                 <div>
                   <p className="pt-ratings__name">
-                    <a href={to(typePath(option))}>
-                      {ratingOf(option).letter} – {option}
+                    <a href={type.url}>
+                      {ratingOf(type.text).letter} – {type.text}
                     </a>
                     <span>{pad(count)} titles</span>
                   </p>
-                  <p>{DESCRIPTIONS[option]}</p>
+                  <p>{DESCRIPTIONS[type.text]}</p>
                 </div>
               </li>
             );

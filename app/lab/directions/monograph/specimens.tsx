@@ -1,10 +1,11 @@
-import { useId, useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { HtmlContent } from "../../../components/HtmlContent";
-import type { LabContent, PortfolioGridSection } from "../../../lib/types";
+import type { PortfolioGridSection } from "../../../lib/types";
 import {
-  formFields,
+  formOf,
   Html,
+  pad,
   postsByYear,
   postTypes,
   useTo,
@@ -22,11 +23,13 @@ import {
 
 import { PostCards } from "./pages/Archive";
 import { Gallery } from "./pages/CaseStudy";
-import { FormField } from "./pages/Contact";
+import { ContactForm, FormField } from "./pages/Contact";
 import { NotFound } from "./pages/NotFound";
 import {
   ArrowCircle,
   Banner,
+  Facts,
+  handleOf,
   Icon,
   icons,
   KindWords,
@@ -38,77 +41,11 @@ import {
   Section,
   SectionLabel,
   ServicesLedger,
-  WorkCard,
   WorkGrid,
+  WorkRow,
   type IconName
 } from "./parts";
-
-type Work = LabContent["work"][number];
-
-/** A post type's archive, e.g. `/type/essays/` */
-const typePath = (type: string) => `/type/${type.toLowerCase()}s/`;
-
-/** The handle the masthead hangs from its rule, from the first profile */
-function handleOf(socials: LabContent["socials"]) {
-  const name = socials[0]?.url.split("/").filter(Boolean).at(-1);
-  return name && `@${name.replace(/^@/, "")}`;
-}
-
-/** Term and detail pairs, as About, Contact, posts, and case studies set them */
-const Facts = ({
-  rows,
-  stacked
-}: {
-  rows: [string, ReactNode][];
-  stacked?: boolean;
-}) => (
-  <dl className={stacked ? "mg-facts mg-facts--stacked" : "mg-facts"}>
-    {rows.map(([term, detail]) => (
-      <div key={term}>
-        <dt>{term}</dt>
-        <dd>{detail}</dd>
-      </div>
-    ))}
-  </dl>
-);
-
-/** The Shell's dithered edge, with a filter of its own */
-function Dither() {
-  const filter = useId();
-
-  return (
-    <svg className="mg-dither" aria-hidden="true">
-      <filter id={filter} x="0" y="0" width="100%" height="100%">
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.85"
-          numOctaves="1"
-          seed="7"
-        />
-        <feColorMatrix type="saturate" values="0" />
-        <feComponentTransfer>
-          <feFuncR type="discrete" tableValues="0 1" />
-          <feFuncG type="discrete" tableValues="0 1" />
-          <feFuncB type="discrete" tableValues="0 1" />
-        </feComponentTransfer>
-      </filter>
-      <rect width="100%" height="100%" filter={`url(#${filter})`} />
-    </svg>
-  );
-}
-
-/** One of WorkGrid's rows of three, with the wide card first or centered */
-const WorkRow = ({ items, center }: { items: Work[]; center?: boolean }) => (
-  <div className={`mg-row mg-row--${center ? "center" : "lead"}`}>
-    {items.map((item, column) => (
-      <WorkCard
-        key={item.url}
-        item={item}
-        wide={items.length === 3 && column === (center ? 1 : 0)}
-      />
-    ))}
-  </div>
-);
+import { Dither } from "./Shell";
 
 interface Heading {
   id: string;
@@ -539,7 +476,8 @@ function PageHeaders({ content }: SpecimenProps) {
       >
         <PageHeader icon="pen" eyebrow="Writing" title="Writing">
           <p className="mg-pageHeader__stats">
-            {posts.length} articles · {years.length} years · {types.join(", ")}
+            {posts.length} articles · {years.length} years ·{" "}
+            {types.map((type) => type.text).join(", ")}
           </p>
         </PageHeader>
       </Specimen>
@@ -555,7 +493,7 @@ function PageHeaders({ content }: SpecimenProps) {
             {post.type && (
               <>
                 <span aria-hidden="true">/</span>
-                <a href={to(typePath(post.type))}>{post.type}</a>
+                <a href={post.typeUrl}>{post.type}</a>
               </>
             )}
           </p>
@@ -638,9 +576,9 @@ function Labels({ content }: SpecimenProps) {
   const { posts, work, socials } = content;
   const [featured] = work;
   const handle = handleOf(socials);
-  const types = postTypes(posts).map((type) => ({
-    type,
-    count: posts.filter((post) => post.type === type).length
+  const types = postTypes(posts).map(({ text }) => ({
+    text,
+    count: posts.filter((post) => post.type === text).length
   }));
 
   return (
@@ -665,7 +603,7 @@ function Labels({ content }: SpecimenProps) {
       <Specimen label="Stats" note="Under the writing archive’s title">
         <p className="mg-pageHeader__stats">
           {posts.length} articles · {postsByYear(posts).length} years ·{" "}
-          {types.map(({ type }) => type).join(", ")}
+          {types.map(({ text }) => text).join(", ")}
         </p>
       </Specimen>
       {handle && (
@@ -686,9 +624,9 @@ function Labels({ content }: SpecimenProps) {
         wide
       >
         <ul className="mg-chips" aria-label="Post types">
-          {types.map(({ type, count }) => (
-            <li key={type}>
-              {type} <span>{count}</span>
+          {types.map(({ text, count }) => (
+            <li key={text}>
+              {text} <span>{count}</span>
             </li>
           ))}
         </ul>
@@ -787,7 +725,7 @@ function Surfaces({ content }: SpecimenProps) {
                   ? [
                       [
                         "Filed under",
-                        <a href={to(typePath(post.type))}>{post.type}</a>
+                        <a href={post.typeUrl}>{post.type}</a>
                       ] as [string, ReactNode]
                     ]
                   : [])
@@ -846,9 +784,7 @@ function Cards({ content }: SpecimenProps) {
         <ol className="mg-row mg-row--quarters mg-steps">
           {profile.process.map((step, index) => (
             <li className="mg-card" key={step.title}>
-              <span className="mg-steps__number">
-                {String(index + 1).padStart(2, "0")}
-              </span>
+              <span className="mg-steps__number">{pad(index + 1)}</span>
               <h3 className="mg-card__title">{step.title}</h3>
               <p className="mg-copy">{step.text}</p>
             </li>
@@ -1084,67 +1020,6 @@ function Quotes({ content }: SpecimenProps) {
   );
 }
 
-/** Contact's form beside its details, without the page's lede */
-function ContactForm({
-  content,
-  variant
-}: {
-  content: LabContent;
-  variant: "contact" | "inquiry";
-}) {
-  const to = useTo();
-  const { email, location } = content.profile;
-  const [sent, setSent] = useState(false);
-
-  return (
-    <section className="mg-section mg-contact">
-      <aside className="mg-contact__aside">
-        <Facts
-          rows={[
-            ["Email", <a href={`mailto:${email}`}>{email}</a>],
-            ["Location", `${location.name} (${location.timeZoneName})`]
-          ]}
-        />
-        {variant === "contact" ? (
-          <MoreLink href={to("/project-inquiry/")}>
-            Start a project inquiry instead
-          </MoreLink>
-        ) : (
-          <MoreLink href={to("/contact/")}>Just saying hello?</MoreLink>
-        )}
-      </aside>
-
-      <form
-        className="mg-form"
-        onSubmit={(event) => {
-          event.preventDefault();
-          setSent(true);
-        }}
-      >
-        <p className="mg-label mg-field--wide">
-          <Icon name="pen" />
-          {variant === "contact" ? "Send a note" : "Tell me about your project"}
-        </p>
-
-        {formFields(variant).map((field) => (
-          <FormField key={field.name} field={field} />
-        ))}
-
-        <div className="mg-form__actions mg-field--wide">
-          <button className="mg-pill" type="submit">
-            {variant === "contact" ? "Send message" : "Send inquiry"}
-          </button>
-          <p className="mg-meta" role="status">
-            {sent
-              ? "Mockup only — nothing was sent."
-              : "Mockup only — this form doesn’t send anything."}
-          </p>
-        </div>
-      </form>
-    </section>
-  );
-}
-
 type Choices = Extract<Field, { kind: "choices" }>;
 
 /** A choice field as Contact sets it, with its first option picked */
@@ -1168,8 +1043,8 @@ const Picked = ({ field }: { field: Choices }) => (
 );
 
 function Forms({ content }: SpecimenProps) {
-  const [name, email, message] = formFields("contact");
-  const choices = formFields("inquiry").filter(
+  const [name, email, message] = formOf("contact").fields;
+  const choices = formOf("inquiry").fields.filter(
     (field): field is Choices => field.kind === "choices"
   );
   const checkboxes = choices.find((field) => field.type === "checkbox");
@@ -1182,14 +1057,14 @@ function Forms({ content }: SpecimenProps) {
         note="Details and a switch beside the form, ruled off from 760px"
         wide
       >
-        <ContactForm content={content} variant="contact" />
+        <ContactForm profile={content.profile} variant="contact" />
       </Specimen>
       <Specimen
         label="Project inquiry"
         note="Text, links, choices, a date, and a budget"
         wide
       >
-        <ContactForm content={content} variant="inquiry" />
+        <ContactForm profile={content.profile} variant="inquiry" />
       </Specimen>
       <Specimen
         label="Field"
@@ -1249,6 +1124,7 @@ function Wayfinding({ content, prose }: SpecimenProps) {
   const to = useTo();
   const nav = samplePostNav(content.posts);
   const post = content.posts[1];
+  const switches = [formOf("contact").alternate, formOf("inquiry").alternate];
 
   return (
     <>
@@ -1267,7 +1143,7 @@ function Wayfinding({ content, prose }: SpecimenProps) {
             {post.type && (
               <>
                 <span aria-hidden="true">/</span>
-                <a href={to(typePath(post.type))}>{post.type}</a>
+                <a href={post.typeUrl}>{post.type}</a>
               </>
             )}
           </p>
@@ -1294,7 +1170,7 @@ function Wayfinding({ content, prose }: SpecimenProps) {
         >
           <PostNav nav={{ next: nav.next }} />
         </Specimen>
-        {post.type && (
+        {post.type && post.typeUrl && (
           <Specimen
             label="End of a post"
             note="Thanks, and more of its type; under the body from 960px"
@@ -1305,7 +1181,7 @@ function Wayfinding({ content, prose }: SpecimenProps) {
                 Thanks for reading. Questions or thoughts?{" "}
                 <a href={to("/contact/")}>Get in touch</a>.
               </p>
-              <MoreLink href={to(typePath(post.type))}>
+              <MoreLink href={post.typeUrl}>
                 {`More ${post.type.toLowerCase()}s`}
               </MoreLink>
             </footer>
@@ -1322,10 +1198,11 @@ function Wayfinding({ content, prose }: SpecimenProps) {
           note="Contact and the project inquiry point to each other"
         >
           <div style={{ display: "grid", justifyItems: "start", gap: 12 }}>
-            <MoreLink href={to("/project-inquiry/")}>
-              Start a project inquiry instead
-            </MoreLink>
-            <MoreLink href={to("/contact/")}>Just saying hello?</MoreLink>
+            {switches.map((link) => (
+              <MoreLink key={link.path} href={to(link.path)}>
+                {link.text}
+              </MoreLink>
+            ))}
           </div>
         </Specimen>
         <Specimen label="Ways back" note="The 404 page’s links">
@@ -1352,21 +1229,18 @@ const Prose = ({ prose }: SpecimenProps) => (
   </SpecimenGrid>
 );
 
-export const specimens: Specimens = {
-  root: "mg",
-  sections: {
-    type: TypeScale,
-    motifs: Motifs,
-    imagery: Imagery,
-    pageHeader: PageHeaders,
-    actions: Actions,
-    labels: Labels,
-    surfaces: Surfaces,
-    cards: Cards,
-    lists: Lists,
-    quotes: Quotes,
-    forms: Forms,
-    wayfinding: Wayfinding,
-    prose: Prose
-  }
-};
+export default {
+  type: TypeScale,
+  motifs: Motifs,
+  imagery: Imagery,
+  pageHeader: PageHeaders,
+  actions: Actions,
+  labels: Labels,
+  surfaces: Surfaces,
+  cards: Cards,
+  lists: Lists,
+  quotes: Quotes,
+  forms: Forms,
+  wayfinding: Wayfinding,
+  prose: Prose
+} satisfies Specimens;

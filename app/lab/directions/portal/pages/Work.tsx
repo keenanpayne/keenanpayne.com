@@ -57,6 +57,56 @@ export function Launch({ item }: { item: WorkItem }) {
   );
 }
 
+/** The master list's keyword filter, and the case studies that match */
+export function useWorkSearch(work: WorkItem[]) {
+  const [query, setQuery] = useQueryParam("q");
+  const needle = query.trim().toLowerCase();
+  const matches = work.filter(
+    (item) =>
+      !needle ||
+      [item.name, item.industry, item.role, item.year, ...item.services]
+        .join(" ")
+        .toLowerCase()
+        .includes(needle)
+  );
+
+  return { query, setQuery, matches, total: work.length };
+}
+
+/** Keyword search over the master list, with a live count */
+export function WorkSearch({
+  search
+}: {
+  search: ReturnType<typeof useWorkSearch>;
+}) {
+  const { query, setQuery, matches, total } = search;
+
+  return (
+    <form
+      className="pt-searchbar"
+      role="search"
+      onSubmit={(event) => event.preventDefault()}
+    >
+      <label className="pt-searchbar__label" htmlFor="pt-work-q">
+        Search case studies by client, sector, or service
+      </label>
+      <div className="pt-searchbar__fields">
+        <input
+          id="pt-work-q"
+          className="pt-input"
+          type="search"
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+        />
+        <Go />
+      </div>
+      <p className="pt-searchbar__count" role="status">
+        {matches.length} of {total}
+      </p>
+    </form>
+  );
+}
+
 export function Work({
   page,
   content
@@ -65,17 +115,9 @@ export function Work({
   content: LabContent;
 }) {
   const intro = introOf(page);
-  const [query, setQuery] = useQueryParam("q");
   const [featured, ...rest] = content.work;
-  const needle = query.trim().toLowerCase();
-  const matches = content.work.filter(
-    (item) =>
-      !needle ||
-      [item.name, item.industry, item.role, item.year, ...item.services]
-        .join(" ")
-        .toLowerCase()
-        .includes(needle)
-  );
+  const search = useWorkSearch(content.work);
+  const { query, matches } = search;
 
   return (
     <>
@@ -97,28 +139,7 @@ export function Work({
 
       <section className="pt-section" id="master-list">
         <Heading>Master work list</Heading>
-        <form
-          className="pt-searchbar"
-          role="search"
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <label className="pt-searchbar__label" htmlFor="pt-work-q">
-            Search case studies by client, sector, or service
-          </label>
-          <div className="pt-searchbar__fields">
-            <input
-              id="pt-work-q"
-              className="pt-input"
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-            />
-            <Go />
-          </div>
-          <p className="pt-searchbar__count" role="status">
-            {matches.length} of {content.work.length}
-          </p>
-        </form>
+        <WorkSearch search={search} />
 
         <div className="pt-tableWrap">
           <table className="pt-table">

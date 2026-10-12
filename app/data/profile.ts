@@ -6,6 +6,8 @@
  * but never restates it, so an edit here reaches every direction at once.
  */
 
+import metadata from "./metadata.json";
+
 export type ProfileFactId =
   "role" | "location" | "experience" | "previously" | "shows" | "offDuty";
 
@@ -21,36 +23,42 @@ export interface ProfileFact {
 /** Cloudinary image IDs */
 const PORTRAIT = "v1666204078/people/me/jun-27-2021_o8sd0l.jpg";
 
+const role = "Full-stack web developer & designer";
+
+const location = {
+  city: "Denver",
+  name: "Denver, Colorado",
+  short: "Denver, CO",
+  timeZone: "America/Denver",
+  timeZoneName: "Mountain Time",
+  latitude: 39.7392,
+  longitude: -104.9903,
+  elevationFeet: 5280
+};
+
+// In figures and in words, so every mention of it agrees
+const years = 18;
+const yearsInWords = "Eighteen";
+
+const experience = { years, text: `${yearsInWords} years on the web` };
+
 export const profile = {
-  name: "Keenan Payne",
-  role: "Full-stack web developer & designer",
-  email: "contact@keenanpayne.com",
-  location: {
-    city: "Denver",
-    name: "Denver, Colorado",
-    short: "Denver, CO",
-    timeZone: "America/Denver",
-    timeZoneName: "Mountain Time",
-    latitude: 39.7392,
-    longitude: -104.9903
-  },
-  // Keep `years`, `text`, and the `bio` in step
-  experience: { years: 18, text: "Eighteen years on the web" },
+  name: metadata.author.name,
+  role,
+  email: metadata.author.email,
+  location,
+  experience,
   /** HTML; site paths are rebased for the lab */
   bio:
-    "I’m a full-stack web developer and designer with eighteen years of experience helping teams market and build products on the web. " +
+    `I’m a full-stack web developer and designer with ${yearsInWords.toLowerCase()} years of experience helping teams market and build products on the web. ` +
     'I spent five years growing the website at <a href="/portfolio/asana/">Asana</a>, and have since partnered with ' +
     '<a href="/portfolio/rippling/">Rippling</a>, <a href="/portfolio/gofundme/">GoFundMe</a>, ' +
     '<a href="/portfolio/neuralink/">Neuralink</a>, and many others. ' +
     'I also <a href="/archive/">write</a> about craft, career, and the occasional reflection.',
   facts: [
-    { id: "role", label: "Role", text: "Full-stack web developer & designer" },
-    { id: "location", label: "Based in", text: "Denver, Colorado" },
-    {
-      id: "experience",
-      label: "Experience",
-      text: "Eighteen years on the web"
-    },
+    { id: "role", label: "Role", text: role },
+    { id: "location", label: "Based in", text: location.name },
+    { id: "experience", label: "Experience", text: experience.text },
     {
       id: "previously",
       label: "Previously",

@@ -94,10 +94,14 @@ function textElement(root: Element) {
 const round = (value: number, places = 1) =>
   Number(value.toFixed(places)).toString();
 
+/** The first family in a font stack, unquoted */
+export const familyOf = (stack: string) =>
+  stack.split(",")[0].replace(/["']/g, "").trim();
+
 /** e.g. `Newsreader · 300 · 64/64 · −0.02em · uppercase` */
 function describe(style: CSSStyleDeclaration) {
   const size = parseFloat(style.fontSize);
-  const family = style.fontFamily.split(",")[0].replace(/["']/g, "").trim();
+  const family = familyOf(style.fontFamily);
   const leading =
     style.lineHeight === "normal"
       ? "normal"

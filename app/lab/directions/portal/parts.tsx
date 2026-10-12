@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 
 import type {
   LabContent,
@@ -6,7 +6,7 @@ import type {
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
-import { cx, Html, pad, usePreview, useTo } from "../../site";
+import { cx, Html, pad, postTypes, usePreview, useTo } from "../../site";
 
 import {
   DIE,
@@ -45,23 +45,14 @@ export const ratingOf = (type?: string) =>
 
 export const RATING_TYPES = Object.keys(RATINGS);
 
-/** Site path of a post type's archive, e.g. `/type/essays/` */
-export const typePath = (type: string) => `/type/${type.toLowerCase()}s/`;
-
-const MONTHS = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec"
-];
+/** Every post type with an archive, in the KPRB's order (unrated ones last) */
+export function ratedTypes(posts: Post[]) {
+  const rank = (type: string) => {
+    const index = RATING_TYPES.indexOf(type);
+    return index < 0 ? RATING_TYPES.length : index;
+  };
+  return postTypes(posts).sort((a, b) => rank(a.text) - rank(b.text));
+}
 
 export const MONTH_NAMES = [
   "January",
@@ -78,40 +69,21 @@ export const MONTH_NAMES = [
   "December"
 ];
 
-/** Reads a readable post date, e.g. "Oct 09, 2022" */
-export function parseDate(date: string) {
-  const match = /^(\w{3}) (\d{1,2}), (\d{4})$/.exec(date);
-  if (!match) return undefined;
-  return {
-    year: Number(match[3]),
-    month: MONTHS.indexOf(match[1]),
-    day: Number(match[2])
-  };
+/** Reads a post's `iso` date, `yyyy-mm-dd`; the month counts from 0 */
+export function parseDate(iso: string) {
+  const [year, month, day] = iso.split("-").map(Number);
+  return { year, month: month - 1, day };
 }
 
 /** Short date in brackets, the way news items were stamped: `[Oct 09, 2022]` */
-export const stamp = (date: string) => `[${date}]`;
+const stamp = (date: string) => `[${date}]`;
 
 //
 // Pixels
 // ------
 
-/** Pixel art as crisp SVG rectangles; `gap` leaves a seam between pixels */
-export function Sprite({
-  art,
-  scale = 1,
-  gap = 0,
-  className,
-  label
-}: {
-  art: Art;
-  scale?: number;
-  gap?: number;
-  className?: string;
-  label?: string;
-}) {
-  const width = Math.max(...art.map((row) => row.length));
-  const height = art.length;
+/** One `<rect>` per run of a color, or per pixel when `gap` leaves seams */
+function rectsOf(art: Art, gap: number) {
   const rects: ReactNode[] = [];
 
   art.forEach((row, y) => {
@@ -139,6 +111,26 @@ export function Sprite({
     }
   });
 
+  return rects;
+}
+
+/** Pixel art as crisp SVG rectangles; `gap` leaves a seam between pixels */
+export function Sprite({
+  art,
+  scale = 1,
+  gap = 0,
+  className
+}: {
+  art: Art;
+  scale?: number;
+  gap?: number;
+  className?: string;
+}) {
+  const width = Math.max(...art.map((row) => row.length));
+  const height = art.length;
+  // Built once per art: the Shell draws dozens, and re-renders as you type
+  const rects = useMemo(() => rectsOf(art, gap), [art, gap]);
+
   return (
     <svg
       className={cx("pt-sprite", className)}
@@ -146,9 +138,7 @@ export function Sprite({
       width={width * scale}
       height={height * scale}
       shapeRendering="crispEdges"
-      role={label ? "img" : undefined}
-      aria-label={label}
-      aria-hidden={label ? undefined : true}
+      aria-hidden="true"
     >
       {rects}
     </svg>
@@ -179,14 +169,17 @@ export const Mascot = ({
 }: {
   item?: Item;
   className?: string;
-}) => (
-  <Sprite art={mascot(item)} scale={3} className={cx("pt-mascot", className)} />
-);
+}) => {
+  // Drawn once per item, so the sprite keeps its rectangles between renders
+  const art = useMemo(() => mascot(item), [item]);
+  return <Sprite art={art} scale={3} className={cx("pt-mascot", className)} />;
+};
 
 /** Pastel mosaic used behind the e-mail news ad */
-export const Mosaic = ({ seed }: { seed: number }) => (
-  <Sprite art={mosaic(12, 22, seed)} className="pt-mosaic" />
-);
+export const Mosaic = ({ seed }: { seed: number }) => {
+  const art = useMemo(() => mosaic(12, 22, seed), [seed]);
+  return <Sprite art={art} className="pt-mosaic" />;
+};
 
 //
 // Building blocks
@@ -194,20 +187,16 @@ export const Mosaic = ({ seed }: { seed: number }) => (
 
 /** Section heading with a triple-bar mark, e.g. `≡ NEWS ARCHIVES` */
 export function Heading({
-  as: Tag = "h2",
-  id,
   more,
   children
 }: {
-  as?: "h1" | "h2" | "h3";
-  id?: string;
   more?: { href: string; text: string };
   children: ReactNode;
 }) {
   return (
-    <div className="pt-heading" id={id}>
+    <div className="pt-heading">
       <span className="pt-heading__bars" aria-hidden="true" />
-      <Tag className="pt-heading__text">{children}</Tag>
+      <h2 className="pt-heading__text">{children}</h2>
       {more && (
         <a className="pt-heading__more" href={more.href}>
           {more.text}
@@ -522,15 +511,13 @@ export function Feature({
   image,
   title,
   date,
-  sub,
-  more = "Read More…"
+  sub
 }: {
   href: string;
   image?: string;
   title: string;
   date?: string;
   sub?: string;
-  more?: string;
 }) {
   return (
     <article className="pt-feature">
@@ -548,7 +535,7 @@ export function Feature({
         {date && <p className="pt-feature__date">{date}</p>}
         {sub && <p className="pt-feature__sub">{sub}</p>}
         <a className="pt-feature__more" href={href}>
-          {more}
+          Read More…
         </a>
       </div>
     </article>
@@ -671,7 +658,7 @@ export function TitleBar({
   title: ReactNode;
   images?: (string | undefined)[];
 }) {
-  const shown = images.filter(Boolean).slice(0, 4) as string[];
+  const shown = images.flatMap((src) => (src ? [src] : [])).slice(0, 4);
 
   return (
     <header className="pt-title">

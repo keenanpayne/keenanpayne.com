@@ -27,18 +27,15 @@ export interface SpecimenProps {
   content: LabContent;
   /** HTML: an article body with every element the Markdown can produce */
   prose: string;
+  /** Primary navigation as the style guide shows the Shell: About is current */
+  navigation: NavItem[];
 }
 
-/** A direction's entries in the style guide at `/lab/styleguide/` */
-export interface Specimens {
-  /**
-   * The class on the Shell's outermost element, which sets the direction's
-   * type, color, and background. Every specimen renders inside one.
-   */
-  root: string;
-  /** One for each section in `../styleguide/sections.ts` it draws itself */
-  sections: { [K in SpecimenId]: ComponentType<SpecimenProps> };
-}
+/**
+ * A direction's entries in the style guide at `/lab/styleguide/`: one for
+ * each section in `../styleguide/sections.ts` it draws itself
+ */
+export type Specimens = { [K in SpecimenId]: ComponentType<SpecimenProps> };
 
 /**
  * A design direction: a skin over the shared content and information
@@ -48,12 +45,18 @@ export interface Specimens {
 export interface Direction {
   /** Stylesheet URLs (the direction's CSS and any web fonts) */
   stylesheets: string[];
+  /**
+   * The class on the Shell's outermost element, which sets the direction's
+   * type, color, and background. The style guide renders every specimen
+   * inside one.
+   */
+  root: string;
   /** Chrome around every page: header, navigation, footer */
   Shell: ComponentType<ShellProps>;
   /** One template for each kind of page in `./ia.ts` */
   templates: { [K in ViewKind]: ComponentType<TemplateProps<K>> };
-  /** Its parts, laid out for the style guide */
-  specimens: Specimens;
+  /** Its parts, laid out for the style guide, which alone loads them */
+  specimens: () => Promise<{ default: Specimens }>;
 }
 
 /** Renders a site path in a direction, with links prefixed by `base` */

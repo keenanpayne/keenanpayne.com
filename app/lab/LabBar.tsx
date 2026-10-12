@@ -1,45 +1,14 @@
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 
 import { directions, labPath, SAMPLE_PAGES } from "./registry";
+import { useStored, writeStored } from "./stored";
 import { STYLEGUIDE_PATH, styleguidePath } from "./styleguide/sections";
 
 type Theme = "auto" | "light" | "dark";
 const THEMES: Theme[] = ["auto", "light", "dark"];
+// The chosen color scheme is remembered, so it carries across directions
 const STORAGE_KEY = "lab-theme";
-
-// The chosen color scheme lives in localStorage (when available), so it
-// carries across directions; listeners re-render the switcher on change.
-const listeners = new Set<() => void>();
-let memoryTheme: Theme | undefined;
-
-function readTheme(): Theme {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved && (THEMES as string[]).includes(saved)) return saved as Theme;
-  } catch {
-    // Storage can be unavailable (private mode); fall back to "auto"
-  }
-  return "auto";
-}
-
-function writeTheme(theme: Theme) {
-  try {
-    localStorage.setItem(STORAGE_KEY, theme);
-  } catch {
-    // Not persisted; the choice still applies until the next page load
-  }
-  memoryTheme = theme;
-  listeners.forEach((listener) => listener());
-}
-
-function subscribe(listener: () => void) {
-  listeners.add(listener);
-  return () => listeners.delete(listener);
-}
-
-const getSnapshot = () => memoryTheme ?? readTheme();
-const getServerSnapshot = (): Theme => "auto";
 
 /** Floating switcher shared by every lab page */
 export function LabBar({
@@ -54,7 +23,8 @@ export function LabBar({
 }) {
   const navigate = useNavigate();
   const isListed = SAMPLE_PAGES.some((page) => page.path === path);
-  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const saved = useStored(STORAGE_KEY);
+  const theme = THEMES.find((candidate) => candidate === saved) ?? "auto";
 
   useEffect(() => {
     const root = document.documentElement;
@@ -63,7 +33,10 @@ export function LabBar({
   }, [theme]);
 
   const cycleTheme = () =>
-    writeTheme(THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length]);
+    writeStored(
+      STORAGE_KEY,
+      THEMES[(THEMES.indexOf(theme) + 1) % THEMES.length]
+    );
 
   return (
     <nav className="labBar" aria-label="Design lab">

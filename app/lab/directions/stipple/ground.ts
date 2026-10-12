@@ -19,7 +19,7 @@ import {
   type Levels
 } from "./dither";
 
-export interface Rect {
+interface Rect {
   x: number;
   y: number;
   width: number;
@@ -44,7 +44,7 @@ export interface Ground {
 }
 
 /** Seconds in a cycle */
-export const CYCLE = 14;
+const CYCLE = 14;
 /** A moment with the site built and its button about to be pressed */
 export const BUILT = 9.2;
 

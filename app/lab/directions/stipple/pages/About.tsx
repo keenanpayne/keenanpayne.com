@@ -2,14 +2,15 @@ import {
   coordinates,
   Html,
   introOf,
+  LocalTime,
   relabel,
-  useLocalTime,
   type TemplateProps
 } from "../../../site";
 import {
   Contents,
   Entries,
   Facts,
+  hostOf,
   Layout,
   PageHeader,
   Section,
@@ -19,7 +20,6 @@ import { Strata } from "../Strata";
 
 export function About({ page, content }: TemplateProps<"about">) {
   const intro = introOf(page);
-  const time = useLocalTime();
   const { facts, location, photos } = content.profile;
 
   return (
@@ -59,7 +59,7 @@ export function About({ page, content }: TemplateProps<"about">) {
                 ]
               ),
               ["Coordinates", coordinates(location)],
-              ["Local time", time ?? "—"]
+              ["Local time", <LocalTime placeholder="—" />]
             ]}
           />
         </Section>
@@ -81,7 +81,7 @@ export function About({ page, content }: TemplateProps<"about">) {
             items={content.socials.map((social) => ({
               url: social.url,
               title: social.text,
-              meta: [new URL(social.url).hostname.replace(/^www\./, "")]
+              meta: [hostOf(social.url)]
             }))}
           />
         </Section>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useTo } from "../../../site";
+import { pad, useTo } from "../../../site";
 import { MoreLink } from "../parts";
 
 const CX = 400;
@@ -62,9 +62,7 @@ function useSecondsSince() {
 export function NotFound() {
   const to = useTo();
   const seconds = useSecondsSince();
-  const counter = String(seconds)
-    .padStart(6, "0")
-    .replace(/^(\d{3})/, "$1,");
+  const counter = pad(seconds, 6).replace(/^(\d{3})/, "$1,");
 
   return (
     <section className="mc-defense">

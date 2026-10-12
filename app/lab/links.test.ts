@@ -11,14 +11,16 @@ describe("rebaseLinks", () => {
         {
           url: "/about/",
           link: "/contact/?from=lab#form",
-          type: { url: "/type/essays/" }
+          type: { url: "/type/essays/" },
+          typeUrl: "/type/essays/"
         },
         BASE
       )
     ).toEqual({
       url: "/lab/monograph/about/",
       link: "/lab/monograph/contact/?from=lab#form",
-      type: { url: "/lab/monograph/type/essays/" }
+      type: { url: "/lab/monograph/type/essays/" },
+      typeUrl: "/lab/monograph/type/essays/"
     });
   });
 

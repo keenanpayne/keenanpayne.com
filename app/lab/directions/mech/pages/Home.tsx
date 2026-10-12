@@ -1,5 +1,5 @@
 import type { LabContent } from "../../../../lib/types";
-import { coordinates, Html, pad, useLocalTime, useTo } from "../../../site";
+import { coordinates, Html, LocalTime, pad, useTo } from "../../../site";
 import {
   Alert,
   Button,
@@ -111,7 +111,6 @@ export function Gauge({ avatar }: { avatar: string }) {
 
 export function Home({ content }: { content: LabContent }) {
   const to = useTo();
-  const time = useLocalTime({ hour12: false });
   const { profile } = content;
   const { experience, location } = profile;
 
@@ -166,7 +165,11 @@ export function Home({ content }: { content: LabContent }) {
               value={pad(content.posts.length, 3)}
               tone="green"
             />
-            <Readout label="Local time" value={time ?? "--:--"} unit="MT" />
+            <Readout
+              label="Local time"
+              value={<LocalTime hour12={false} />}
+              unit="MT"
+            />
           </dl>
           <p className="mc-hero__coords">
             <span>{location.short}</span>

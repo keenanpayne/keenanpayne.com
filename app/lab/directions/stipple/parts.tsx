@@ -13,18 +13,23 @@ import type {
   LinkModel,
   PageListSection,
   PostNavModel,
+  ProfileModel,
   TestimonialModel
 } from "../../../lib/types";
 import {
   cx,
   Html,
+  LocalTime,
+  pad,
   prefersReducedMotion,
+  useActiveSection,
   type FormField as Field
 } from "../../site";
 
 import {
   atkinson,
   canDither,
+  DOT,
   paint,
   photoCoverage,
   readInks,
@@ -51,6 +56,20 @@ const PHOTO_INKS = ["--st-dot-mid", "--st-dot-ink"];
 const TERRAIN_INKS = ["--st-sage", "--st-sage-deep"];
 // Illustration inks: sage ground, then midtones, then full ink
 const SKETCH_INKS = ["--st-sage", "--st-dot-mid", "--st-dot-ink"];
+
+// Dot levels drawn before, by what was drawn, its size, and the scheme, so
+// art that comes back (the phone menu's terrain, each time it opens) isn't
+// computed again. Bounded, as a long visit draws a lot of photos.
+const DRAWN = new Map<string, Levels>();
+const KEEP = 48;
+
+function remember(key: string, levels: Levels) {
+  DRAWN.set(key, levels);
+  if (DRAWN.size > KEEP) {
+    const [oldest] = DRAWN.keys();
+    DRAWN.delete(oldest);
+  }
+}
 
 /**
  * Draws dot art into a canvas that fills `frame`, one cell per `dot` CSS
@@ -102,14 +121,19 @@ function useDots({
       const state = `${columns}×${rows} ${inks.colors.join(" ")}`;
       if (state === drawn) return;
 
-      let levels: Levels | null;
-      try {
-        levels = levelsFor(columns, rows, inks.dark);
-      } catch {
-        // A photo the canvas can't read stays a photo
-        return;
+      const scheme = inks.dark ? "dark" : "light";
+      const key = `${source} ${columns}×${rows} ${scheme}`;
+      let levels = DRAWN.get(key);
+      if (!levels) {
+        try {
+          levels = levelsFor(columns, rows, inks.dark) ?? undefined;
+        } catch {
+          // A photo the canvas can't read stays a photo
+          return;
+        }
+        if (!levels) return;
+        remember(key, levels);
       }
-      if (!levels) return;
       const ready = levels;
 
       target.width = columns;
@@ -178,7 +202,7 @@ function useDots({
 export function Stipple({
   src,
   alt = "",
-  dot = 2,
+  dot = DOT,
   className,
   eager,
   toggle
@@ -251,13 +275,11 @@ export function Stipple({
 export function Terrain({
   seed,
   shape = "field",
-  dot = 2,
   scale = 260,
   className
 }: {
   seed: string;
   shape?: TerrainShape;
-  dot?: number;
   /** Size of the largest features, in CSS pixels */
   scale?: number;
   className?: string;
@@ -268,11 +290,11 @@ export function Terrain({
   useDots({
     frame,
     canvas,
-    dot,
+    dot: DOT,
     inks: TERRAIN_INKS,
     source: `${seed} ${shape} ${scale}`,
     draw: (columns, rows) =>
-      terrain(columns, rows, seedOf(seed), shape, scale / dot)
+      terrain(columns, rows, seedOf(seed), shape, scale / DOT)
   });
 
   return (
@@ -304,7 +326,7 @@ export function ServiceArt({
   useDots({
     frame,
     canvas,
-    dot: 2,
+    dot: DOT,
     inks: SKETCH_INKS,
     source: url,
     draw: (columns, rows, dark) =>
@@ -445,43 +467,7 @@ export interface Chapter {
 
 /** The page's sections, with the one being read marked as you scroll */
 export function Contents({ chapters }: { chapters: Chapter[] }) {
-  const [active, setActive] = useState<string | undefined>(chapters[0]?.id);
-  const ids = chapters.map((chapter) => chapter.id).join(" ");
-
-  useEffect(() => {
-    const sections = ids
-      .split(" ")
-      .map((id) => document.getElementById(id))
-      .filter((section) => section !== null);
-    let frame = 0;
-
-    const update = () => {
-      frame = 0;
-      let current: string | undefined = sections[0]?.id;
-      for (const section of sections) {
-        if (section.getBoundingClientRect().top < innerHeight * 0.35) {
-          current = section.id;
-        }
-      }
-      // The last section may be too short to reach the line
-      if (innerHeight + scrollY >= document.body.scrollHeight - 4) {
-        current = sections.at(-1)?.id;
-      }
-      setActive(current);
-    };
-    const schedule = () => {
-      frame ||= requestAnimationFrame(update);
-    };
-
-    schedule();
-    addEventListener("scroll", schedule, { passive: true });
-    addEventListener("resize", schedule);
-    return () => {
-      removeEventListener("scroll", schedule);
-      removeEventListener("resize", schedule);
-      cancelAnimationFrame(frame);
-    };
-  }, [ids]);
+  const active = useActiveSection(chapters.map((chapter) => chapter.id));
 
   if (chapters.length < 2) return null;
 
@@ -588,6 +574,43 @@ export function Facts({ rows }: { rows: [ReactNode, ReactNode][] }) {
   );
 }
 
+/**
+ * The note in Contact's rail: how to reach Keenan directly. Project
+ * inquiry's has ground over it, grown from a seed.
+ */
+export function DirectLine({
+  profile,
+  ground
+}: {
+  profile: ProfileModel;
+  /** A seed for the ground over the note */
+  ground?: string;
+}) {
+  const id = useId();
+  const { email, location } = profile;
+
+  return (
+    <section className="st-railNote" aria-labelledby={id}>
+      {ground && (
+        <Terrain className="st-railNote__art" seed={ground} scale={120} />
+      )}
+      <h2 id={id}>Direct line</h2>
+      <Facts
+        rows={[
+          ["Email", <a href={`mailto:${email}`}>{email}</a>],
+          ["Based in", location.name],
+          [
+            "Local time",
+            <>
+              <LocalTime placeholder="—" /> ({location.timeZoneName})
+            </>
+          ]
+        ]}
+      />
+    </section>
+  );
+}
+
 /* Lists
    ========================================================================== */
 
@@ -642,6 +665,10 @@ export const postItems = (posts: Posts): EntryItem[] =>
     ].filter(Boolean)
   }));
 
+/** A profile's host, e.g. `github.com`, as the note beside it */
+export const hostOf = (url: string) =>
+  new URL(url).hostname.replace(/^www\./, "");
+
 /** Clients as a roll of names, each beside a moon in its own phase */
 export function Clients({ work }: { work: Work }) {
   return (
@@ -692,7 +719,9 @@ export function WorkCard({ item }: { item: Work[number] }) {
   );
 }
 
-const count = (n: number) => String(n).padStart(2, "0");
+/** The industries the work spans */
+export const industriesOf = (work: Work) =>
+  new Set(work.map((item) => item.industry).filter(Boolean));
 
 /**
  * Clients and their case studies as one index. On wide screens, a roll of
@@ -722,7 +751,7 @@ export function Ledger({ work }: { work: Work }) {
                 src={item.coverSquare}
                 dot={1}
               />
-              <span className="st-ledger__number">{count(index + 1)}</span>
+              <span className="st-ledger__number">{pad(index + 1)}</span>
               <Mark className="st-ledger__mark" seed={item.name} />
               <span className="st-ledger__name">{item.name}</span>
               <span className="st-ledger__meta">
@@ -754,7 +783,7 @@ export function Ledger({ work }: { work: Work }) {
           </a>
           <a className="st-ledger__caption" href={current.url} tabIndex={-1}>
             <span className="st-ledger__count">
-              {`${count(active + 1)} / ${count(work.length)}`}
+              {`${pad(active + 1)} / ${pad(work.length)}`}
             </span>
             <span className="st-ledger__title">{current.name}</span>
             <span className="st-card__meta">

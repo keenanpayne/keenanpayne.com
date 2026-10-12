@@ -111,15 +111,25 @@ export function CaseStudy({
   let quote = 0;
 
   const topics = [
-    page.overview && { id: "overview", title: "Overview" },
-    page.pillars?.challenge && { id: "challenge", title: "The challenge" },
-    page.pillars?.solution && { id: "solution", title: "The solution" },
+    ...(page.overview ? [{ id: "overview", title: "Overview" }] : []),
+    ...(page.pillars?.challenge
+      ? [{ id: "challenge", title: "The challenge" }]
+      : []),
+    ...(page.pillars?.solution
+      ? [{ id: "solution", title: "The solution" }]
+      : []),
     ...groups.map((group, index) => ({
       id: galleryId(index),
       title: group.head?.headline ?? `Gallery ${index + 1}`
     })),
-    page.content && { id: "details", title: "Details" }
-  ].filter(Boolean) as { id: string; title: string }[];
+    ...(page.content ? [{ id: "details", title: "Details" }] : [])
+  ];
+  const specs = [
+    { text: "Sector", small: page.industry },
+    { text: "Company size", small: page.size },
+    { text: "Years", small: page.year },
+    { text: "Role", small: work?.role }
+  ].flatMap((spec) => (spec.small ? [spec] : []));
 
   return (
     <article className="pt-case">
@@ -200,19 +210,19 @@ export function CaseStudy({
                   html={group.head.description}
                 />
               )}
-              {group.blocks.map((block, blockIndex) =>
-                block.type === "portfolioGrid" ? (
-                  <Gallery key={blockIndex} section={block} />
-                ) : (
-                  block.testimonial && (
-                    <Quote
-                      key={blockIndex}
-                      testimonial={block.testimonial}
-                      index={quote++}
-                    />
-                  )
-                )
-              )}
+              {group.blocks.map((block, blockIndex) => {
+                if (block.type === "portfolioGrid") {
+                  return <Gallery key={blockIndex} section={block} />;
+                }
+                if (!block.testimonial) return null;
+                return (
+                  <Quote
+                    key={blockIndex}
+                    testimonial={block.testimonial}
+                    index={quote++}
+                  />
+                );
+              })}
             </KeySection>
           ))}
 
@@ -225,17 +235,7 @@ export function CaseStudy({
 
         <aside className="pt-columns__side" aria-label="Project details">
           <BackLink href={to("/portfolio/")}>Back to Work</BackLink>
-          <SideList
-            title="Specs"
-            items={
-              [
-                page.industry && { text: "Sector", small: page.industry },
-                page.size && { text: "Company size", small: page.size },
-                page.year && { text: "Years", small: page.year },
-                work?.role && { text: "Role", small: work.role }
-              ].filter(Boolean) as { text: string; small: string }[]
-            }
-          />
+          <SideList title="Specs" items={specs} />
           {page.technologies && page.technologies.length > 0 && (
             <SideGroup title="Accessories">
               <ul className="pt-chips">

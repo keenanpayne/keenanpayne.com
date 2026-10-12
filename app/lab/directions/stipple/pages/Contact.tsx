@@ -1,21 +1,14 @@
 import { useState, type FormEvent } from "react";
 
-import {
-  formFields,
-  introOf,
-  useLocalTime,
-  useTo,
-  type TemplateProps
-} from "../../../site";
+import { formOf, introOf, useTo, type TemplateProps } from "../../../site";
 import { FrontRange } from "../FrontRange";
 import {
-  Facts,
+  DirectLine,
   FormField,
   Layout,
   More,
   mockStatus,
-  PageHeader,
-  Terrain
+  PageHeader
 } from "../parts";
 
 /** Mock contact and project inquiry forms; the lab never submits anything */
@@ -25,9 +18,8 @@ export function Contact({
   content
 }: TemplateProps<"contact" | "inquiry">) {
   const to = useTo();
-  const time = useLocalTime();
+  const form = formOf(kind);
   const intro = introOf(page);
-  const { email, location } = content.profile;
   const [sent, setSent] = useState(false);
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -42,37 +34,21 @@ export function Contact({
 
       <Layout
         rail={
-          <section className="st-railNote" aria-labelledby="st-reach">
-            {kind === "inquiry" && (
-              <Terrain
-                className="st-railNote__art"
-                seed={page.url}
-                scale={120}
-              />
-            )}
-            <h2 id="st-reach">Direct line</h2>
-            <Facts
-              rows={[
-                ["Email", <a href={`mailto:${email}`}>{email}</a>],
-                ["Based in", location.name],
-                [
-                  "Local time",
-                  time ? `${time} (${location.timeZoneName})` : "—"
-                ]
-              ]}
-            />
-          </section>
+          <DirectLine
+            profile={content.profile}
+            ground={kind === "inquiry" ? page.url : undefined}
+          />
         }
       >
         <PageHeader
           crumbs={
             kind === "contact" ? (
-              <span>Contact</span>
+              <span>{form.title}</span>
             ) : (
               <>
                 <a href={to("/contact/")}>Contact</a>
                 <span aria-hidden="true">/</span>
-                <span>Project inquiry</span>
+                <span>{form.title}</span>
               </>
             )
           }
@@ -80,25 +56,17 @@ export function Contact({
           lede={intro?.subheading}
         >
           <p className="st-actions">
-            {kind === "contact" ? (
-              <More href={to("/project-inquiry/")}>
-                Start a project inquiry instead
-              </More>
-            ) : (
-              <More href={to("/contact/")}>Just saying hello?</More>
-            )}
+            <More href={to(form.alternate.path)}>{form.alternate.text}</More>
           </p>
         </PageHeader>
 
         <form className="st-form" onSubmit={onSubmit}>
-          {formFields(kind === "contact" ? "contact" : "inquiry").map(
-            (field) => (
-              <FormField key={field.name} field={field} />
-            )
-          )}
+          {form.fields.map((field) => (
+            <FormField key={field.name} field={field} />
+          ))}
           <p className="st-form__submit">
             <button className="st-button" type="submit">
-              {kind === "contact" ? "Send message" : "Send inquiry"}
+              {form.submit}
             </button>
             <span role="status">{mockStatus(sent)}</span>
           </p>

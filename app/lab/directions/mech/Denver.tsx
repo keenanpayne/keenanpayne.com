@@ -1,11 +1,15 @@
-import { useId, type ReactNode } from "react";
+import { useId, useState, type ReactNode } from "react";
 
-import { profile } from "../../../data/profile";
+import type { ProfileModel } from "../../../lib/types";
 import {
   celsius,
   compass,
-  conditionOf,
   coordinates,
+  degrees,
+  localClock,
+  localFormat,
+  LocalTime,
+  pad,
   useForecast,
   useNow,
   zoneName,
@@ -21,25 +25,24 @@ import {
  * alert.
  */
 
-const { city, short, timeZone: ZONE } = profile.location;
+type Location = ProfileModel["location"];
+type Reading = ReturnType<typeof useForecast>;
 
-export const clockFormat = new Intl.DateTimeFormat("en-GB", {
+// A 24-hour clock and reading times, and the date in full
+const CLOCK: Intl.DateTimeFormatOptions = {
   hour: "2-digit",
   minute: "2-digit",
-  second: "2-digit",
-  timeZone: ZONE
-});
-export const readingFormat = new Intl.DateTimeFormat("en-GB", {
+  second: "2-digit"
+};
+const READING: Intl.DateTimeFormatOptions = {
   hour: "2-digit",
-  minute: "2-digit",
-  timeZone: ZONE
-});
-export const dateFormat = new Intl.DateTimeFormat("en-US", {
+  minute: "2-digit"
+};
+const DATE: Intl.DateTimeFormatOptions = {
   weekday: "long",
   month: "long",
-  day: "numeric",
-  timeZone: ZONE
-});
+  day: "numeric"
+};
 
 export const STATUS: Record<Condition, [tone: string, text: string]> = {
   clear: ["green", "Condition green · Visibility nominal"],
@@ -50,14 +53,14 @@ export const STATUS: Record<Condition, [tone: string, text: string]> = {
   storm: ["red", "警報 · Thunderstorm detected"]
 };
 
+/** `07:05` from one of the forecast's local times */
+function clock(iso: string) {
+  const { hours, minutes } = localClock(iso);
+  return `${pad(hours)}:${pad(minutes)}`;
+}
+
 /** Line-art weather glyphs in a 64×64 box */
-export function Glyph({
-  condition,
-  night
-}: {
-  condition: Condition;
-  night: boolean;
-}) {
+function Glyph({ condition, night }: { condition: Condition; night: boolean }) {
   const cloud = (
     <path d="M18 44h28a10 10 0 0 0 0-20 14 14 0 0 0-27-3 11 11 0 0 0-1 23Z" />
   );
@@ -143,31 +146,214 @@ export function Glyph({
   );
 }
 
-/** The header clock, and the popover it opens */
-export function DenverStatus() {
-  const id = useId();
-  const now = useNow();
-  const { forecast, readAt, status, refresh } = useForecast();
+/**
+ * The sky readout: the conditions as a glyph and a temperature, or why
+ * there's no reading yet
+ */
+export function DenverSky({
+  temperature,
+  label,
+  condition,
+  night,
+  status,
+  refresh
+}: {
+  /** °F, once there's a reading */
+  temperature?: number;
+  label?: string;
+  condition?: Condition;
+  night: boolean;
+  status: Reading["status"];
+  /** Tries another reading after an error; a mockup's Retry does nothing */
+  refresh?: () => void;
+}) {
+  return (
+    <div className="mc-den__sky">
+      <span className="mc-den__fx" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </span>
+      {temperature !== undefined && condition ? (
+        <>
+          <Glyph condition={condition} night={night} />
+          <div className="mc-den__reading">
+            <p className="mc-den__temp">
+              {degrees(temperature)}
+              <span>F</span>
+              <small>{celsius(temperature)}°C</small>
+            </p>
+            <p className="mc-den__condition">
+              {label}
+              {night && condition === "clear" && " · Night"}
+            </p>
+          </div>
+        </>
+      ) : (
+        <p className="mc-den__message">
+          {status === "error" ? (
+            <>
+              Telemetry offline
+              <button type="button" onClick={refresh}>
+                Retry
+              </button>
+            </>
+          ) : (
+            "Acquiring telemetry…"
+          )}
+        </p>
+      )}
+    </div>
+  );
+}
 
-  const current = forecast?.current;
-  const [label, condition] = forecast ? conditionOf(forecast) : ["", undefined];
-  const night = current?.is_day === 0;
-  // A failed refresh keeps the last reading on screen, marked as outdated
-  const stale = status === "error" && !!current;
+/**
+ * What the popover holds: the local time, the sky, the day's readouts, and
+ * the status line. Pure, so the style guide can lay it out in place.
+ */
+export function DenverPanel({
+  id,
+  location,
+  now,
+  forecast,
+  current,
+  label,
+  condition,
+  night,
+  stale,
+  readAt,
+  status,
+  refresh
+}: Reading & {
+  /** The popover's id, for its close button */
+  id?: string;
+  location: Location;
+  /** The moment shown; none until the clock is running */
+  now?: Date;
+}) {
   const [tone, statusText] =
     status === "error"
       ? [
           "amber",
           stale && readAt
-            ? `Telemetry offline · Last reading ${readingFormat.format(readAt)}`
+            ? `Telemetry offline · Last reading ${localFormat(READING, "en-GB").format(readAt)}`
             : "Telemetry offline · Weather unavailable"
         ]
       : condition
         ? STATUS[condition]
         : ["amber", "Acquiring telemetry"];
 
-  const fahrenheit = (value: number) => `${Math.round(value)}°`;
-  const time = (iso?: string) => iso?.slice(11) ?? "--:--";
+  return (
+    <>
+      <div className="mc-panel__head">
+        <span className="mc-panel__label">Atmospheric scan</span>
+        <span className="mc-panel__code">{location.short}</span>
+        <button
+          type="button"
+          className="mc-den__close"
+          popoverTarget={id}
+          popoverTargetAction="hide"
+          aria-label="Close"
+        >
+          ×
+        </button>
+      </div>
+
+      <div className="mc-den__time">
+        <p className="mc-den__kicker">
+          Local time
+          {now && (
+            <span>
+              {zoneName(now, "short")} · {zoneName(now, "offset")}
+            </span>
+          )}
+        </p>
+        <p className="mc-den__clock">
+          <time>
+            {now ? localFormat(CLOCK, "en-GB").format(now) : "--:--:--"}
+          </time>
+        </p>
+        <p className="mc-den__date">
+          {now ? localFormat(DATE).format(now) : " "}
+        </p>
+      </div>
+
+      <DenverSky
+        temperature={current?.temperature_2m}
+        label={label}
+        condition={condition}
+        night={night}
+        status={status}
+        refresh={refresh}
+      />
+
+      {current && forecast && (
+        <>
+          <dl className="mc-den__readouts">
+            <div>
+              <dt>Feels like</dt>
+              <dd>{degrees(current.apparent_temperature)}</dd>
+            </div>
+            <div>
+              <dt>High</dt>
+              <dd>{degrees(forecast.daily.temperature_2m_max[0])}</dd>
+            </div>
+            <div>
+              <dt>Low</dt>
+              <dd>{degrees(forecast.daily.temperature_2m_min[0])}</dd>
+            </div>
+            <div>
+              <dt>Humidity</dt>
+              <dd>{current.relative_humidity_2m}%</dd>
+            </div>
+            <div>
+              <dt>Wind</dt>
+              <dd>
+                {Math.round(current.wind_speed_10m)}
+                <small> mph </small>
+                {compass(current.wind_direction_10m)}
+              </dd>
+            </div>
+            <div>
+              <dt>Elevation</dt>
+              <dd>
+                {location.elevationFeet.toLocaleString("en-US")}
+                <small> ft</small>
+              </dd>
+            </div>
+          </dl>
+          <p className="mc-den__sun">
+            <span>Sunrise {clock(forecast.daily.sunrise[0])}</span>
+            <span>Sunset {clock(forecast.daily.sunset[0])}</span>
+          </p>
+        </>
+      )}
+
+      <p className="mc-den__status" data-tone={tone}>
+        <span className="mc-dot" aria-hidden="true" />
+        {statusText}
+        {stale && (
+          <button type="button" onClick={refresh}>
+            Retry
+          </button>
+        )}
+      </p>
+      <p className="mc-den__credit">
+        Weather data: <a href="https://open-meteo.com/">Open-Meteo</a> ·{" "}
+        {coordinates(location)}
+      </p>
+    </>
+  );
+}
+
+/** The header clock, and the popover it opens */
+export function DenverStatus({ location }: { location: Location }) {
+  const id = useId();
+  const [open, setOpen] = useState(false);
+  // The popover's clock, zone names, and date only matter while it's open
+  const now = useNow(open);
+  const reading = useForecast();
+  const { condition, night, refresh } = reading;
 
   return (
     <>
@@ -175,10 +361,12 @@ export function DenverStatus() {
         type="button"
         className="mc-hud__clock"
         popoverTarget={id}
-        aria-label={`${city} local time and weather`}
+        aria-label={`${location.city} local time and weather`}
       >
-        <span>{city.slice(0, 3)}</span>
-        <time>{now ? clockFormat.format(now) : "--:--:--"}</time>
+        <span>{location.city.slice(0, 3)}</span>
+        <time>
+          <LocalTime hour12={false} seconds placeholder="--:--:--" />
+        </time>
       </button>
 
       <div
@@ -186,131 +374,16 @@ export function DenverStatus() {
         popover="auto"
         className="mc-panel mc-den"
         role="dialog"
-        aria-label={`${city} local time and weather`}
+        aria-label={`${location.city} local time and weather`}
         data-condition={condition}
         data-night={night ? "" : undefined}
-        onToggle={(event) => event.newState === "open" && refresh()}
+        onToggle={(event) => {
+          const opening = event.newState === "open";
+          setOpen(opening);
+          if (opening) refresh();
+        }}
       >
-        <div className="mc-panel__head">
-          <span className="mc-panel__label">Atmospheric scan</span>
-          <span className="mc-panel__code">{short}</span>
-          <button
-            type="button"
-            className="mc-den__close"
-            popoverTarget={id}
-            popoverTargetAction="hide"
-            aria-label="Close"
-          >
-            ×
-          </button>
-        </div>
-
-        <div className="mc-den__time">
-          <p className="mc-den__kicker">
-            Local time
-            {now && (
-              <span>
-                {zoneName(now, "short")} · {zoneName(now, "offset")}
-              </span>
-            )}
-          </p>
-          <p className="mc-den__clock">
-            <time>{now ? clockFormat.format(now) : "--:--:--"}</time>
-          </p>
-          <p className="mc-den__date">{now ? dateFormat.format(now) : " "}</p>
-        </div>
-
-        <div className="mc-den__sky">
-          <span className="mc-den__fx" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </span>
-          {current && condition ? (
-            <>
-              <Glyph condition={condition} night={night} />
-              <div className="mc-den__reading">
-                <p className="mc-den__temp">
-                  {fahrenheit(current.temperature_2m)}
-                  <span>F</span>
-                  <small>{celsius(current.temperature_2m)}°C</small>
-                </p>
-                <p className="mc-den__condition">
-                  {label}
-                  {night && condition === "clear" && " · Night"}
-                </p>
-              </div>
-            </>
-          ) : (
-            <p className="mc-den__message">
-              {status === "error" ? (
-                <>
-                  Telemetry offline
-                  <button type="button" onClick={refresh}>
-                    Retry
-                  </button>
-                </>
-              ) : (
-                "Acquiring telemetry…"
-              )}
-            </p>
-          )}
-        </div>
-
-        {current && forecast && (
-          <>
-            <dl className="mc-den__readouts">
-              <div>
-                <dt>Feels like</dt>
-                <dd>{fahrenheit(current.apparent_temperature)}</dd>
-              </div>
-              <div>
-                <dt>High</dt>
-                <dd>{fahrenheit(forecast.daily.temperature_2m_max[0])}</dd>
-              </div>
-              <div>
-                <dt>Low</dt>
-                <dd>{fahrenheit(forecast.daily.temperature_2m_min[0])}</dd>
-              </div>
-              <div>
-                <dt>Humidity</dt>
-                <dd>{current.relative_humidity_2m}%</dd>
-              </div>
-              <div>
-                <dt>Wind</dt>
-                <dd>
-                  {Math.round(current.wind_speed_10m)}
-                  <small> mph </small>
-                  {compass(current.wind_direction_10m)}
-                </dd>
-              </div>
-              <div>
-                <dt>Elevation</dt>
-                <dd>
-                  5,280<small> ft</small>
-                </dd>
-              </div>
-            </dl>
-            <p className="mc-den__sun">
-              <span>Sunrise {time(forecast.daily.sunrise[0])}</span>
-              <span>Sunset {time(forecast.daily.sunset[0])}</span>
-            </p>
-          </>
-        )}
-
-        <p className="mc-den__status" data-tone={tone}>
-          <span className="mc-dot" aria-hidden="true" />
-          {statusText}
-          {stale && (
-            <button type="button" onClick={refresh}>
-              Retry
-            </button>
-          )}
-        </p>
-        <p className="mc-den__credit">
-          Weather data: <a href="https://open-meteo.com/">Open-Meteo</a> ·{" "}
-          {coordinates(profile.location)}
-        </p>
+        <DenverPanel id={id} location={location} now={now} {...reading} />
       </div>
     </>
   );

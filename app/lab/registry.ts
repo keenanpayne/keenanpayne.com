@@ -1,10 +1,13 @@
 /**
  * Design lab
  * ==================================================
- * Metadata for each aesthetic direction explored at `/lab/<slug>/`. Each one
- * mocks up every page in `SAMPLE_PAGES`. Kept free of component imports so
- * the prerender config can read it; components live in `./directions/`.
+ * Each aesthetic direction explored at `/lab/<slug>/`: its metadata, and
+ * the chunk its skin loads from. Each one mocks up every page in
+ * `SAMPLE_PAGES`. Skins are imported on demand only, so the prerender config
+ * can read this without pulling in components.
  */
+
+import type { Direction } from "./site/direction";
 
 export { SAMPLE_PAGES } from "./site/ia";
 
@@ -16,6 +19,8 @@ export interface DirectionInfo {
   reference: string;
   /** When the direction was started (yyyy-mm-dd) */
   date: string;
+  /** Its skin, `./directions/<slug>/`, as a chunk of its own */
+  load: () => Promise<{ default: Direction }>;
 }
 
 export const directions = [
@@ -25,7 +30,8 @@ export const directions = [
     summary:
       "The shared content and information architecture with no skin: plain semantic HTML in system type. The baseline every direction reskins, and the starting point for new ones.",
     reference: "The site’s own content model",
-    date: "2026-10-09"
+    date: "2026-10-09",
+    load: () => import("./directions/wireframe")
   },
   {
     slug: "monograph",
@@ -33,7 +39,8 @@ export const directions = [
     summary:
       "Grayscale broadsheet. Light serif display type over tiny monospace copy, hairline and double rules, column dividers, and a dithered footer.",
     reference: "Helena Zhang’s portfolio",
-    date: "2026-10-07"
+    date: "2026-10-07",
+    load: () => import("./directions/monograph")
   },
   {
     slug: "mech",
@@ -41,7 +48,8 @@ export const directions = [
     summary:
       "Mecha command HUD. Amber panels with corner brackets on a black lattice, compressed serif title cards, hexagon clusters, live readouts, and red alert banners with hazard stripes.",
     reference: "Neon Genesis Evangelion’s NERV and MAGI interfaces",
-    date: "2026-10-08"
+    date: "2026-10-08",
+    load: () => import("./directions/mech")
   },
   {
     slug: "portal",
@@ -49,7 +57,8 @@ export const directions = [
     summary:
       "Early-2000s console-maker web portal. A chunky periwinkle bezel around halftone nav bars, vertical tab rails, pixel-font buttons, rating-badge game cards, skyscraper banner ads, and a pixel mascot with a speech bubble.",
     reference: "Nintendo.com, circa 2002–2003",
-    date: "2026-10-08"
+    date: "2026-10-08",
+    load: () => import("./directions/portal")
   },
   {
     slug: "stipple",
@@ -57,7 +66,8 @@ export const directions = [
     summary:
       "Olive ink on white, inside a hairline frame that steps around its navigation and footer. Condensed serif display over a quiet grotesk and light monospace, with every image, and a generated terrain, rendered in stippled dither.",
     reference: "Urbit.org’s dithered, olive-and-sage site design",
-    date: "2026-10-09"
+    date: "2026-10-09",
+    load: () => import("./directions/stipple")
   }
   // `npm run lab:new` adds new directions above this line
 ] as const satisfies readonly DirectionInfo[];
@@ -67,5 +77,8 @@ export type DirectionSlug = (typeof directions)[number]["slug"];
 export const getDirection = (slug: string | undefined) =>
   directions.find((direction) => direction.slug === slug);
 
+/** Where a direction's mockups live, e.g. `/lab/mech`: a prefix for site paths */
+export const labBase = (slug: string) => `/lab/${slug}`;
+
 /** Lab URL of a direction's mockup of a site path */
-export const labPath = (slug: string, path = "/") => `/lab/${slug}${path}`;
+export const labPath = (slug: string, path = "/") => `${labBase(slug)}${path}`;

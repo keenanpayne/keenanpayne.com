@@ -2,13 +2,14 @@ import { useEffect, useEffectEvent, useRef } from "react";
 
 import type { ProfileModel } from "../../../lib/types";
 import {
-  conditionOf,
-  useForecast,
-  useLocalTime,
-  useReducedMotion
+  degrees,
+  localClock,
+  localFormat,
+  LocalTime,
+  useForecast
 } from "../../site";
 
-import { paint, readInks, seedOf, subscribeToScheme } from "./dither";
+import { seedOf } from "./dither";
 import { cx } from "./parts";
 import {
   frontRange,
@@ -16,10 +17,9 @@ import {
   momentAt,
   moonPhase,
   phaseName,
-  type Moment,
-  type Sky,
-  type View
+  type Sky
 } from "./ridges";
+import { useScene } from "./scene";
 
 /*
  * Front Range: the view from Denver
@@ -34,38 +34,33 @@ type Location = ProfileModel["location"];
 
 // Sage, deep sage, midtones, and full ink
 const INKS = ["--st-sage", "--st-sage-deep", "--st-dot-mid", "--st-dot-ink"];
-const DOT = 2;
-const FPS = 12;
-/** Seconds the view takes to dissolve in */
-const DEVELOP = 0.9;
 // Until the forecast says otherwise
 const SUNRISE = 6.5;
 const SUNSET = 18.5;
 
-/** Decimal hours from a local ISO time, e.g. `2026-10-09T07:05` → 7.08 */
-const hoursOf = (iso?: string) =>
-  iso ? Number(iso.slice(11, 13)) + Number(iso.slice(14, 16)) / 60 : undefined;
+/** The time of day on a 24-hour clock, for `hourOf` */
+const CLOCK: Intl.DateTimeFormatOptions = {
+  hour: "numeric",
+  minute: "numeric",
+  hourCycle: "h23"
+};
+/** A reading's time, like the clock beside it, e.g. `3:04 PM` */
+const READING: Intl.DateTimeFormatOptions = {
+  hour: "numeric",
+  minute: "2-digit"
+};
 
-/** The time of day somewhere, in decimal hours */
-function hourIn(timeZone: string, date: Date) {
-  const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone,
-    hour: "numeric",
-    minute: "numeric",
-    hourCycle: "h23"
-  }).formatToParts(date);
+/** Decimal hours, e.g. 7:05 → 7.08 */
+const decimalHours = ({ hours, minutes }: { hours: number; minutes: number }) =>
+  hours + minutes / 60;
+
+/** The time of day in Denver, in decimal hours */
+function hourOf(date: Date) {
+  const parts = localFormat(CLOCK).formatToParts(date);
   const part = (type: string) =>
     Number(parts.find((each) => each.type === type)?.value ?? 0);
-  return part("hour") + part("minute") / 60;
+  return decimalHours({ hours: part("hour"), minutes: part("minute") });
 }
-
-/** A reading's time somewhere, like the clock beside it, e.g. `3:04 PM` */
-const readingTime = (date: Date, timeZone: string) =>
-  new Intl.DateTimeFormat("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    timeZone
-  }).format(date);
 
 export function FrontRange({
   location,
@@ -76,137 +71,59 @@ export function FrontRange({
 }) {
   const frame = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
-  const still = useReducedMotion();
-  const time = useLocalTime();
-  const { forecast, readAt, status, refresh } = useForecast();
+  const {
+    forecast,
+    current,
+    label,
+    condition,
+    night,
+    readAt,
+    status,
+    refresh
+  } = useForecast();
 
   const load = useEffectEvent(refresh);
   useEffect(() => load(), []);
 
-  const current = forecast?.current;
-  const [label, condition] = forecast ? conditionOf(forecast) : [];
   const sky: Sky = condition ?? "unknown";
-  const sunrise = hoursOf(forecast?.daily.sunrise[0]) ?? SUNRISE;
-  const sunset = hoursOf(forecast?.daily.sunset[0]) ?? SUNSET;
+  const sunrise = forecast
+    ? decimalHours(localClock(forecast.daily.sunrise[0]))
+    : SUNRISE;
+  const sunset = forecast
+    ? decimalHours(localClock(forecast.daily.sunset[0]))
+    : SUNSET;
 
-  /** The sky and the light right now, read fresh by every frame */
-  const conditions = useEffectEvent((): [Sky, Moment] => {
-    const now = new Date();
-    const hour = hourIn(location.timeZone, now);
-    return [sky, momentAt(hour, sunrise, sunset, moonPhase(now))];
+  const repaint = useScene({
+    frame,
+    canvas,
+    inks: INKS,
+    source: "Front Range",
+    develop: true,
+    build: (columns, rows) => frontRange(columns, rows, seedOf("Front Range")),
+    // The sky and the light right now, read fresh by every frame
+    draw: (view, seconds) => {
+      const now = new Date();
+      const moment = momentAt(hourOf(now), sunrise, sunset, moonPhase(now));
+      return frontRangeFrame(view, sky, moment, seconds);
+    },
+    // A still view keeps up with the clock
+    attach: ({ still, repaint }) => {
+      if (!still) return () => {};
+      const minute = setInterval(repaint, 60_000);
+      return () => clearInterval(minute);
+    }
   });
   // Weather arriving after the first frame redraws a still view
-  const redraw = useRef<() => void>(null);
-  useEffect(() => redraw.current?.(), [sky, sunrise, sunset]);
+  useEffect(() => repaint(), [repaint, sky, sunrise, sunset]);
 
-  useEffect(() => {
-    const element = frame.current;
-    const target = canvas.current;
-    if (!element || !target) return;
-
-    let view: View | null = null;
-    let inks = readInks(element, INKS);
-    let seconds = 0;
-    let request = 0;
-    let drawnAt = 0;
-    let timer: ReturnType<typeof setTimeout> | undefined;
-
-    const build = () => {
-      const { width, height } = element.getBoundingClientRect();
-      const columns = Math.ceil(width / DOT);
-      const rows = Math.ceil(height / DOT);
-      if (!columns || !rows) return;
-      view = frontRange(columns, rows, seedOf("Front Range"));
-      target.width = columns;
-      target.height = rows;
-      target.style.width = `${columns * DOT}px`;
-      target.style.height = `${rows * DOT}px`;
-    };
-
-    const draw = () => {
-      if (!view) return;
-      const [sky, moment] = conditions();
-      const progress = still ? 1 : Math.min(1, seconds / DEVELOP) ** 0.7;
-      paint(
-        target,
-        frontRangeFrame(view, sky, moment, seconds),
-        view.width,
-        view.height,
-        inks,
-        progress
-      );
-    };
-    redraw.current = draw;
-
-    const loop = (now: number) => {
-      request = requestAnimationFrame(loop);
-      const elapsed = (now - drawnAt) / 1000;
-      if (elapsed < 1 / FPS) return;
-      drawnAt = now;
-      // A hidden tab pauses the loop; pick up where it left off
-      seconds += Math.min(elapsed, 0.25);
-      draw();
-    };
-    const start = () => {
-      if (still || request) return;
-      drawnAt = performance.now();
-      request = requestAnimationFrame(loop);
-    };
-    const stop = () => {
-      cancelAnimationFrame(request);
-      request = 0;
-    };
-
-    const intersection = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return stop();
-        if (!view) build();
-        draw();
-        start();
-      },
-      { rootMargin: "200px 0px" }
-    );
-    intersection.observe(element);
-
-    const resize = new ResizeObserver(() => {
-      if (!view) return;
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        build();
-        draw();
-      }, 150);
-    });
-    resize.observe(element);
-
-    const unsubscribe = subscribeToScheme(() => {
-      inks = readInks(element, INKS);
-      draw();
-    });
-
-    // A still view keeps up with the clock
-    const minute = still ? setInterval(draw, 60_000) : undefined;
-
-    return () => {
-      stop();
-      intersection.disconnect();
-      resize.disconnect();
-      unsubscribe();
-      clearTimeout(timer);
-      clearInterval(minute);
-      redraw.current = null;
-    };
-  }, [still]);
-
-  const night = current?.is_day === 0;
-  const weather =
-    current && `${label}, ${Math.round(current.temperature_2m)}°F`;
+  const weather = current && `${label}, ${degrees(current.temperature_2m)}F`;
   // A failed refresh keeps the last reading, so mark it as outdated
   const reading =
     status === "error"
       ? [
           "Weather unavailable",
           weather && readAt
-            ? `last reading ${readingTime(readAt, location.timeZone)}: ${weather}`
+            ? `last reading ${localFormat(READING).format(readAt)}: ${weather}`
             : null
         ]
       : [
@@ -215,6 +132,7 @@ export function FrontRange({
             ? phaseName(moonPhase(readAt))
             : null
         ];
+  const notes = reading.filter(Boolean).join(" · ");
 
   return (
     <figure className={cx("st-view", className)}>
@@ -224,9 +142,8 @@ export function FrontRange({
       <figcaption>
         <span>{`The Front Range from ${location.city}`}</span>
         <span>
-          {[time && `${time} ${location.timeZoneName}`, ...reading]
-            .filter(Boolean)
-            .join(" · ")}
+          <LocalTime /> {location.timeZoneName}
+          {notes && ` · ${notes}`}
         </span>
       </figcaption>
     </figure>

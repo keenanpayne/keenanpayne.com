@@ -1,29 +1,40 @@
-import type { DirectionSlug } from "../registry";
-import type { Direction } from "../site";
-
-// Each direction is its own chunk, so a lab page loads only the one it shows
-const loaders: Record<DirectionSlug, () => Promise<{ default: Direction }>> = {
-  wireframe: () => import("./wireframe"),
-  monograph: () => import("./monograph"),
-  mech: () => import("./mech"),
-  portal: () => import("./portal"),
-  stipple: () => import("./stipple")
-  // `npm run lab:new` adds new directions above this line
-};
-
-const loaded = new Map<DirectionSlug, Promise<Direction>>();
+import { getDirection } from "../registry";
+import type { Direction, Specimens } from "../site";
 
 /**
- * Each direction's skin, keyed by its slug in `../registry.ts`. Returns the
- * same promise for a slug every time, so it can be passed to `use()`.
+ * Loads something once per key and returns the same promise every time
+ * after, so it can be passed to `use()`
  */
-export function loadDirection(slug: DirectionSlug) {
-  let direction = loaded.get(slug);
-  if (!direction) {
-    direction = loaders[slug]().then((module) => module.default);
+function once<T>(
+  cache: Map<string, Promise<T>>,
+  key: string,
+  load: () => Promise<T>
+) {
+  let promise = cache.get(key);
+  if (!promise) {
+    promise = load();
     // A load that fails (e.g. a stale chunk after a deploy) can be retried
-    direction.catch(() => loaded.delete(slug));
-    loaded.set(slug, direction);
+    promise.catch(() => cache.delete(key));
+    cache.set(key, promise);
   }
-  return direction;
+  return promise;
 }
+
+const skins = new Map<string, Promise<Direction>>();
+const specimens = new Map<string, Promise<Specimens>>();
+
+/** A direction's skin, by its slug in `../registry.ts` */
+export const loadDirection = (slug: string) =>
+  once(skins, slug, () => {
+    const direction = getDirection(slug);
+    if (!direction) throw new Error(`No direction is registered as "${slug}"`);
+    return direction.load().then((module) => module.default);
+  });
+
+/** A direction's style guide specimens, which only the style guide loads */
+export const loadSpecimens = (slug: string) =>
+  once(specimens, slug, () =>
+    loadDirection(slug)
+      .then((skin) => skin.specimens())
+      .then((module) => module.default)
+  );

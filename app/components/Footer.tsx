@@ -9,6 +9,7 @@ import linkedin from "../assets/svg/linkedin.svg?raw";
 import mastodon from "../assets/svg/mastodon.svg?raw";
 import threads from "../assets/svg/threads.svg?raw";
 import twitter from "../assets/svg/twitter.svg?raw";
+import { profile } from "../data/profile";
 import { socials } from "../data/socials";
 import { isActive, usePageUrl } from "../lib/navigation";
 import type { LinkModel } from "../lib/types";
@@ -76,7 +77,7 @@ export function Footer({ navigation }: { navigation: LinkModel[] }) {
 
         <div className="footer-bottom">
           <span className="_text-small">
-            Live and direct from Denver, Colorado ✌🏻
+            {`Live and direct from ${profile.location.name} ✌🏻`}
           </span>
         </div>
       </div>

@@ -1,10 +1,10 @@
-import { useId, useState, type CSSProperties, type ReactNode } from "react";
+import { useId, type CSSProperties, type ReactNode } from "react";
 
 import { HtmlContent } from "../../../components/HtmlContent";
+import { metadata } from "../../../lib/site";
 import {
-  formFields,
+  formOf,
   Html,
-  NAVIGATION,
   pad,
   postsByYear,
   readingMinutes,
@@ -24,12 +24,17 @@ import {
 } from "../../styleguide/kit";
 
 import { Address, FACT_LABELS } from "./pages/About";
-import { Calendar, DESCRIPTIONS } from "./pages/Archive";
-import { FormField } from "./pages/Contact";
+import {
+  ArchiveSearch,
+  Calendar,
+  DESCRIPTIONS,
+  useArchiveSearch
+} from "./pages/Archive";
+import { FormField, MessageForm } from "./pages/Contact";
 import { Logotype } from "./pages/Home";
 import { splitTopics, TYPE_COLORS } from "./pages/Post";
 import { serviceItem, Worlds } from "./pages/Services";
-import { Launch } from "./pages/Work";
+import { Launch, useWorkSearch, WorkSearch } from "./pages/Work";
 import {
   Ad,
   BackLink,
@@ -59,6 +64,7 @@ import {
   PostNav,
   Quote,
   QuotePromo,
+  ratedTypes,
   Rating,
   RATING_TYPES,
   ratingOf,
@@ -69,7 +75,6 @@ import {
   Tile,
   TitleBar,
   Tri,
-  typePath,
   WorkCard,
   type AdName,
   type Post
@@ -83,7 +88,7 @@ import {
   sceneFor,
   Search,
   SIDE_BUTTONS,
-  ZONE_ITEMS
+  Zones
 } from "./Shell";
 import {
   DIE,
@@ -177,38 +182,7 @@ const firstTag = (html: string, tag: string) =>
 //
 // Inline parts
 // ------------
-// Markup the Shell and pages compose in place rather than export
-
-/**
- * The site map's zone buttons, as the phone menu lists them, without the
- * open menu around them
- */
-function Zones({ current }: { current?: string }) {
-  const to = useTo();
-
-  return (
-    <ul className="pt-map__zones">
-      {NAVIGATION.map((item, index) => {
-        const zoneItem = ZONE_ITEMS[item.path];
-        const isCurrent = item.path === current;
-        return (
-          <li key={item.path} style={{ "--pt-i": index } as CSSProperties}>
-            <a
-              href={to(item.path)}
-              aria-current={isCurrent ? "page" : undefined}
-            >
-              <span className="pt-map__well">
-                {zoneItem && <ItemIcon item={zoneItem} />}
-              </span>
-              <span className="pt-map__text">{item.text}</span>
-              {isCurrent && <span className="pt-map__here">You are here</span>}
-            </a>
-          </li>
-        );
-      })}
-    </ul>
-  );
-}
+// Markup the pages compose in place rather than export
 
 /** A post's banner, as Post renders it; `picture` false shows the stand-in */
 function PostBanner({
@@ -244,12 +218,14 @@ function PostBanner({
 // Type
 // ----
 
-function TypeScale({ content, prose }: SpecimenProps) {
+function TypeScale({ content, prose, navigation }: SpecimenProps) {
   const { profile, posts, work } = content;
   const post = posts[1];
   const [year, ofYear] = postsByYear(posts)[0];
   const scene = sceneFor(viewOf("home"), "/", profile);
   const to = useTo();
+  // Measured off the current page, which the site map sets in orange
+  const zones = navigation.map((item) => ({ ...item, current: false }));
   // Post sets each h2 as a box title; the rest stay in the prose
   const headings = ["h2", "h3", "h4"].flatMap((tag) => {
     const html = firstTag(prose, tag);
@@ -283,9 +259,9 @@ function TypeScale({ content, prose }: SpecimenProps) {
       <TypeSample label="Nav link" measure=".pt-nav a">
         <nav className="pt-nav" aria-label="Main" style={{ marginLeft: 0 }}>
           <ul>
-            {NAVIGATION.map((item) => (
-              <li key={item.path}>
-                <a href={to(item.path)}>{item.text}</a>
+            {navigation.map((item) => (
+              <li key={item.url}>
+                <a href={item.url}>{item.text}</a>
               </li>
             ))}
           </ul>
@@ -293,7 +269,7 @@ function TypeScale({ content, prose }: SpecimenProps) {
       </TypeSample>
       <TypeSample label="Zone button" measure=".pt-map__text">
         <div style={{ maxWidth: 360 }}>
-          <Zones />
+          <Zones navigation={zones} />
         </div>
       </TypeSample>
       <TypeSample label="Section heading" measure=".pt-heading__text">
@@ -407,7 +383,7 @@ function TypeScale({ content, prose }: SpecimenProps) {
       </TypeSample>
       <TypeSample label="Field label" measure=".pt-field__label">
         <div className="pt-form">
-          <FormField field={formFields("contact")[0]} />
+          <FormField field={formOf("contact").fields[0]} />
         </div>
       </TypeSample>
       <TypeSample label="Button" measure=".pt-go">
@@ -646,7 +622,7 @@ function Motifs({ content }: SpecimenProps) {
               property of their respective owners. {profile.name} is
               headquartered in {profile.location.name}.
             </p>
-            <a className="pt-seal" href="/feed.xml">
+            <a className="pt-seal" href={metadata.feed.path}>
               <span className="pt-seal__top">
                 RSS<sup>™</sup>
               </span>
@@ -1493,9 +1469,9 @@ function Cards({ content }: SpecimenProps) {
             <Tile title="Writing" href={to("/archive/")} icon="pencil">
               <JumpMenu
                 label="Sub categories"
-                options={RATING_TYPES.map((type) => ({
-                  href: to(typePath(type)),
-                  text: `${type}s`
+                options={ratedTypes(posts).map((type) => ({
+                  href: type.url,
+                  text: `${type.text}s`
                 }))}
               />
             </Tile>
@@ -1701,21 +1677,21 @@ function Lists({ content }: SpecimenProps) {
         >
           <Field>
             <ul className="pt-ratings">
-              {RATING_TYPES.map((option) => {
+              {ratedTypes(posts).map((type) => {
                 const count = posts.filter(
-                  (post) => post.type === option
+                  (post) => post.type === type.text
                 ).length;
                 return (
-                  <li key={option}>
-                    <Rating type={option} />
+                  <li key={type.text}>
+                    <Rating type={type.text} />
                     <div>
                       <p className="pt-ratings__name">
-                        <a href={to(typePath(option))}>
-                          {ratingOf(option).letter} – {option}
+                        <a href={type.url}>
+                          {ratingOf(type.text).letter} – {type.text}
                         </a>
                         <span>{pad(count)} titles</span>
                       </p>
-                      <p>{DESCRIPTIONS[option]}</p>
+                      <p>{DESCRIPTIONS[type.text]}</p>
                     </div>
                   </li>
                 );
@@ -1854,151 +1830,19 @@ function Quotes({ content }: SpecimenProps) {
 // Forms
 // -----
 
-function MessageForm({ variant }: { variant: "contact" | "inquiry" }) {
-  const [sent, setSent] = useState(false);
-
-  return (
-    <section className="pt-formbox">
-      <h2 className="pt-dir__title">
-        <Sprite art={ITEMS.star} scale={4} className="pt-dir__star" />
-        <span>
-          {variant === "contact" ? "Send a message" : "Mission request"}
-        </span>
-      </h2>
-      <form
-        className="pt-form"
-        onSubmit={(event) => {
-          event.preventDefault();
-          setSent(true);
-        }}
-      >
-        {formFields(variant).map((field) => (
-          <FormField key={field.name} field={field} />
-        ))}
-
-        <div className="pt-form__actions pt-field--wide">
-          <Pill type="submit" icon="mail" tone="orange">
-            {variant === "contact" ? "Send message" : "Send inquiry"}
-          </Pill>
-          <p className="pt-note" role="status">
-            {sent
-              ? "Message held — mockup only, nothing was sent."
-              : "Mockup only — this form doesn’t send anything."}
-          </p>
-        </div>
-      </form>
-    </section>
-  );
+/** The pages' searches on their own, each keeping its filters to itself */
+function ArchiveSearchSample({ posts }: { posts: Post[] }) {
+  const search = useArchiveSearch(posts);
+  return <ArchiveSearch search={search} />;
 }
 
-function ArchiveSearch({ posts }: { posts: Post[] }) {
-  const years = [...new Set(posts.map((post) => post.year))];
-  const [from, setFrom] = useState(years[years.length - 1] ?? "");
-  const [until, setUntil] = useState(years[0] ?? "");
-  const [type, setType] = useState("");
-  const [query, setQuery] = useState("");
-
-  return (
-    <form
-      className="pt-searchbar"
-      role="search"
-      onSubmit={(event) => event.preventDefault()}
-    >
-      <p className="pt-searchbar__label">Search archives by year or keyword</p>
-      <div className="pt-searchbar__fields">
-        <label className="pt-searchbar__field">
-          <span>From</span>
-          <select
-            className="pt-select"
-            value={from}
-            onChange={(event) => setFrom(event.target.value)}
-          >
-            {[...years].reverse().map((year) => (
-              <option key={year}>{year}</option>
-            ))}
-          </select>
-        </label>
-        <span className="pt-searchbar__to">to</span>
-        <label className="pt-searchbar__field">
-          <span>Until</span>
-          <select
-            className="pt-select"
-            value={until}
-            onChange={(event) => setUntil(event.target.value)}
-          >
-            {years.map((year) => (
-              <option key={year}>{year}</option>
-            ))}
-          </select>
-        </label>
-        <span className="pt-searchbar__sep" aria-hidden="true" />
-        <label className="pt-searchbar__field">
-          <span>Rating</span>
-          <select
-            className="pt-select"
-            value={type}
-            onChange={(event) => setType(event.target.value)}
-          >
-            <option value="">All</option>
-            {RATING_TYPES.map((option) => (
-              <option key={option} value={option}>
-                {option}s
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="pt-searchbar__field pt-searchbar__field--grow">
-          <span>Keyword</span>
-          <input
-            className="pt-input"
-            type="search"
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-          />
-        </label>
-        <Go />
-      </div>
-    </form>
-  );
-}
-
-function WorkSearch({ work }: { work: SpecimenProps["content"]["work"] }) {
-  const id = useId();
-  const [query, setQuery] = useState("");
-  const needle = query.trim().toLowerCase();
-  const matches = work.filter(
-    (item) =>
-      !needle ||
-      [item.name, item.industry, item.role, item.year, ...item.services]
-        .join(" ")
-        .toLowerCase()
-        .includes(needle)
-  );
-
-  return (
-    <form
-      className="pt-searchbar"
-      role="search"
-      onSubmit={(event) => event.preventDefault()}
-    >
-      <label className="pt-searchbar__label" htmlFor={id}>
-        Search case studies by client, sector, or service
-      </label>
-      <div className="pt-searchbar__fields">
-        <input
-          id={id}
-          className="pt-input"
-          type="search"
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-        />
-        <Go />
-      </div>
-      <p className="pt-searchbar__count" role="status">
-        {matches.length} of {work.length}
-      </p>
-    </form>
-  );
+function WorkSearchSample({
+  work
+}: {
+  work: SpecimenProps["content"]["work"];
+}) {
+  const search = useWorkSearch(work);
+  return <WorkSearch search={search} />;
 }
 
 function Forms({ content }: SpecimenProps) {
@@ -2008,7 +1852,7 @@ function Forms({ content }: SpecimenProps) {
     <SpecimenGrid min={320}>
       <Specimen
         label="Contact form"
-        note="formFields(“contact”) under a directory tab"
+        note="formOf(“contact”) under a directory tab"
         wide
       >
         <Field>
@@ -2017,7 +1861,7 @@ function Forms({ content }: SpecimenProps) {
       </Specimen>
       <Specimen
         label="Project inquiry"
-        note="formFields(“inquiry”): every kind of field, checkboxes and radios in orange"
+        note="formOf(“inquiry”): every kind of field, checkboxes and radios in orange"
         wide
       >
         <Field>
@@ -2058,7 +1902,7 @@ function Forms({ content }: SpecimenProps) {
         wide
       >
         <Field>
-          <ArchiveSearch posts={posts} />
+          <ArchiveSearchSample posts={posts} />
         </Field>
       </Specimen>
       <Specimen
@@ -2067,7 +1911,7 @@ function Forms({ content }: SpecimenProps) {
         wide
       >
         <Field>
-          <WorkSearch work={work} />
+          <WorkSearchSample work={work} />
         </Field>
       </Specimen>
     </SpecimenGrid>
@@ -2078,7 +1922,7 @@ function Forms({ content }: SpecimenProps) {
 // Wayfinding
 // ----------
 
-function Wayfinding({ content }: SpecimenProps) {
+function Wayfinding({ content, navigation }: SpecimenProps) {
   const to = useTo();
   const { profile, posts, work, services, socials } = content;
   const post = posts[1];
@@ -2106,11 +1950,11 @@ function Wayfinding({ content }: SpecimenProps) {
         >
           <nav className="pt-nav" aria-label="Main" style={{ marginLeft: 0 }}>
             <ul>
-              {NAVIGATION.map((item) => (
-                <li key={item.path}>
+              {navigation.map((item) => (
+                <li key={item.url}>
                   <a
-                    href={to(item.path)}
-                    aria-current={item.path === "/about/" ? "page" : undefined}
+                    href={item.url}
+                    aria-current={item.current ? "page" : undefined}
                   >
                     {item.text}
                   </a>
@@ -2143,7 +1987,7 @@ function Wayfinding({ content }: SpecimenProps) {
           wide
         >
           <div style={{ maxWidth: 360 }}>
-            <Zones current="/about/" />
+            <Zones navigation={navigation} />
           </div>
         </Specimen>
         <Specimen label="Shortcut rail" note="Beside the field, from 760px">
@@ -2175,7 +2019,7 @@ function Wayfinding({ content }: SpecimenProps) {
                 </li>
               ))}
               <li>
-                <a href="/feed.xml">
+                <a href={metadata.feed.path}>
                   <Icon name="rss" />
                   RSS feed
                 </a>
@@ -2225,16 +2069,11 @@ function Wayfinding({ content }: SpecimenProps) {
             <Side>
               <SideList
                 title="Specs"
-                items={
-                  [
-                    work[0].industry && {
-                      text: "Sector",
-                      small: work[0].industry
-                    },
-                    work[0].year && { text: "Years", small: work[0].year },
-                    work[0].role && { text: "Role", small: work[0].role }
-                  ].filter(Boolean) as { text: string; small: string }[]
-                }
+                items={[
+                  { text: "Sector", small: work[0].industry },
+                  { text: "Years", small: work[0].year },
+                  { text: "Role", small: work[0].role }
+                ].flatMap((spec) => (spec.small ? [spec] : []))}
               />
             </Side>
           </Field>
@@ -2243,9 +2082,9 @@ function Wayfinding({ content }: SpecimenProps) {
           <Field id={topics[1].id}>
             <Side>
               <SideGroup title="Links">
-                {post.type && (
+                {post.type && post.typeUrl && (
                   <LinkCard
-                    href={to(typePath(post.type))}
+                    href={post.typeUrl}
                     label={`More ${post.type}s`}
                     art={ITEMS[rating.item]}
                   >
@@ -2328,21 +2167,18 @@ function Prose({ prose }: SpecimenProps) {
   );
 }
 
-export const specimens: Specimens = {
-  root: "pt",
-  sections: {
-    type: TypeScale,
-    motifs: Motifs,
-    imagery: Imagery,
-    pageHeader: PageHeaders,
-    actions: Actions,
-    labels: Labels,
-    surfaces: Surfaces,
-    cards: Cards,
-    lists: Lists,
-    quotes: Quotes,
-    forms: Forms,
-    wayfinding: Wayfinding,
-    prose: Prose
-  }
-};
+export default {
+  type: TypeScale,
+  motifs: Motifs,
+  imagery: Imagery,
+  pageHeader: PageHeaders,
+  actions: Actions,
+  labels: Labels,
+  surfaces: Surfaces,
+  cards: Cards,
+  lists: Lists,
+  quotes: Quotes,
+  forms: Forms,
+  wayfinding: Wayfinding,
+  prose: Prose
+} satisfies Specimens;

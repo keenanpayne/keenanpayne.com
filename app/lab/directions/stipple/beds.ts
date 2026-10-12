@@ -71,7 +71,7 @@ const weightOf = (bed: Bed) =>
   1 + 0.35 * Math.sqrt(bed.posts) + 0.35 * Math.min(bed.work.length, 4);
 
 /** Seconds until every bed has settled */
-export const settledAt = (beds: number) => 0.3 + beds * 0.2 + 0.55;
+const settledAt = (beds: number) => 0.3 + beds * 0.2 + 0.55;
 
 /** The ground and its beds for a frame, the same for a seed every time */
 export function section(

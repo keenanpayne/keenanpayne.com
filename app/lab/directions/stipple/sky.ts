@@ -14,15 +14,29 @@ import { fbm, grain, hash, smoothstep, type Levels } from "./dither";
 
 export type Sky = Condition | "unknown";
 
+export interface SkyView {
+  width: number;
+  height: number;
+  /** The frame being drawn, reused from frame to frame */
+  frame: Levels;
+}
+
+/** The sky for a frame of `width` × `height` cells */
+export const skyView = (width: number, height: number): SkyView => ({
+  width,
+  height,
+  frame: new Uint8Array(width * height)
+});
+
 /** One frame of the sky, `time` seconds in */
 export function skyFrame(
-  width: number,
-  height: number,
+  view: SkyView,
   sky: Sky,
   night: boolean,
   time: number
 ): Levels {
-  const levels = new Uint8Array(width * height);
+  const { width, height, frame: levels } = view;
+  levels.fill(0);
   const H = height;
   // Clear on the left, where the reading sits
   const clearing = (x: number) => smoothstep(0.3, 0.62, x / width);

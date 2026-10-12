@@ -1,6 +1,6 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
 import { Html, introOf } from "../../../site";
-import { Icon, PageHeader, Section } from "../parts";
+import { Facts, Icon, PageHeader, Section } from "../parts";
 
 export function About({
   page,
@@ -53,14 +53,7 @@ export function About({
             <Icon name="list" />
             At a glance
           </p>
-          <dl className="mg-facts">
-            {rows.map(([term, detail]) => (
-              <div key={term}>
-                <dt>{term}</dt>
-                <dd>{detail}</dd>
-              </div>
-            ))}
-          </dl>
+          <Facts rows={rows} />
         </aside>
       </section>
 

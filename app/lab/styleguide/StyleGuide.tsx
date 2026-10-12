@@ -15,24 +15,26 @@ import {
   useEffectEvent,
   useLayoutEffect,
   useMemo,
-  useState,
-  useSyncExternalStore,
   type MouseEvent,
   type ReactNode
 } from "react";
 import { Link, useNavigate } from "react-router";
 
 import type { LabContent } from "../../lib/types";
-import { loadDirection } from "../directions";
+import { loadDirection, loadSpecimens } from "../directions";
 import { rebaseLinks } from "../links";
 import {
   directions,
   getDirection,
+  labBase,
   labPath,
-  type DirectionInfo,
-  type DirectionSlug
+  type DirectionInfo
 } from "../registry";
-import { BaseContext, cx, PreviewContext, type Direction } from "../site";
+import type { Direction } from "../site/direction";
+import { cx, pad } from "../site/helpers";
+import { useActiveSection } from "../site/hooks";
+import { BaseContext, PreviewContext } from "../site/links";
+import { useStored, writeStored } from "../stored";
 
 import {
   comparePath,
@@ -63,44 +65,10 @@ export interface StyleGuideData {
 
 type Data = Omit<StyleGuideData, "tokens">;
 
+// Remembered per viewer: the last direction viewed, and the directions
+// hidden from comparisons
 const LAST_DIRECTION_KEY = "lab-styleguide-direction";
 const HIDDEN_KEY = "lab-styleguide-hidden";
-
-// Remembered per viewer when storage is available, and in memory until the
-// next page load when it isn't; listeners re-render on a change
-const storeListeners = new Set<() => void>();
-const memory = new Map<string, string | null>();
-
-function readStored(key: string) {
-  if (memory.has(key)) return memory.get(key) ?? null;
-  try {
-    return localStorage.getItem(key);
-  } catch {
-    return null;
-  }
-}
-
-function writeStored(key: string, value: string) {
-  memory.set(key, value);
-  try {
-    localStorage.setItem(key, value);
-  } catch {
-    // Not persisted; it still applies until the next page load
-  }
-  storeListeners.forEach((listener) => listener());
-}
-
-function subscribeStored(listener: () => void) {
-  storeListeners.add(listener);
-  return () => storeListeners.delete(listener);
-}
-
-const useStored = (key: string) =>
-  useSyncExternalStore(
-    subscribeStored,
-    () => readStored(key),
-    () => null
-  );
 
 function parseHidden(saved: string | null): string[] {
   try {
@@ -119,6 +87,8 @@ const NO_TOKENS: DirectionTokens = { scheme: "light", tokens: [] };
 /** Every direction's chunk, started together so none waits on another */
 const loadAll = () =>
   directions.map((direction) => loadDirection(direction.slug));
+
+const SECTION_IDS = STYLE_SECTIONS.map((section) => section.id);
 
 /* Stage
    ========================================================================== */
@@ -178,7 +148,7 @@ function Stage({
   children: ReactNode;
 }) {
   return (
-    <BaseContext.Provider value={labPath(info.slug).slice(0, -1)}>
+    <BaseContext.Provider value={labBase(info.slug)}>
       <PreviewContext.Provider value>
         <div
           className={cx("sg-stage", frame && "sg-stage--frame")}
@@ -190,9 +160,7 @@ function Stage({
             {frame ? (
               children
             ) : (
-              <div className={`${skin.specimens.root} sg-stage__root`}>
-                {children}
-              </div>
+              <div className={`${skin.root} sg-stage__root`}>{children}</div>
             )}
           </Boundary>
         </div>
@@ -202,8 +170,7 @@ function Stage({
 }
 
 /** The content and samples with every internal link rebased for a direction */
-const rebased = (slug: string, data: Data) =>
-  rebaseLinks(data, labPath(slug).slice(0, -1));
+const rebased = (slug: string, data: Data) => rebaseLinks(data, labBase(slug));
 
 /** One section of one direction (`data` rebased for it) */
 function SectionBody({
@@ -251,10 +218,15 @@ function SectionBody({
         </Stage>
       );
     default: {
-      const Specimen = skin.specimens.sections[id];
+      // Suspends until the direction's specimens load (only the guide does)
+      const Specimen = use(loadSpecimens(info.slug))[id];
       return (
         <Stage key={key} info={info} skin={skin} tokens={tokens}>
-          <Specimen content={content} prose={prose} />
+          <Specimen
+            content={content}
+            prose={prose}
+            navigation={shell.navigation}
+          />
         </Stage>
       );
     }
@@ -298,40 +270,6 @@ function useKeys(previous: () => void, next: () => void) {
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, []);
-}
-
-/** The section in view while scrolling through a direction */
-function useSectionInView(enabled: boolean) {
-  // Read once mounted, as the server can't know the scroll position or hash
-  const [current, setCurrent] = useState<StyleSectionId>("overview");
-
-  useEffect(() => {
-    if (!enabled) return;
-    const update = () => {
-      const sections = STYLE_SECTIONS.flatMap(
-        ({ id }) => document.getElementById(id) ?? []
-      );
-      // The last section whose top has passed a line a third down the
-      // screen, or the last of all once the page can't scroll further
-      const line = innerHeight / 3;
-      const atEnd =
-        innerHeight + scrollY >= document.documentElement.scrollHeight - 2;
-      const passed = sections.filter(
-        (section) => section.getBoundingClientRect().top <= line
-      );
-      const section = atEnd ? sections.at(-1) : (passed.at(-1) ?? sections[0]);
-      if (section) setCurrent(section.id as StyleSectionId);
-    };
-    update();
-    addEventListener("scroll", update, { passive: true });
-    addEventListener("resize", update);
-    return () => {
-      removeEventListener("scroll", update);
-      removeEventListener("resize", update);
-    };
-  }, [enabled]);
-
-  return current;
 }
 
 interface SectionLinks {
@@ -516,7 +454,7 @@ function DirectionView({
   tokens,
   data
 }: {
-  slug: DirectionSlug;
+  slug: string;
   only?: StyleSectionId;
   tokens: DirectionTokens;
   data: Data;
@@ -639,9 +577,7 @@ function CompareView({
             <article key={info.slug} className="sg-row">
               <header className="sg-row__head">
                 <h2 className="sg-row__name">
-                  <span className="sg-overview__number">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+                  <span className="sg-overview__number">{pad(index + 1)}</span>
                   {info.name}
                 </h2>
                 <Link to={styleguidePath(info.slug, section)}>
@@ -687,10 +623,10 @@ export function StyleGuide({
   const navigate = useNavigate();
   const byDirection = mode.kind === "direction";
   const only = byDirection ? mode.only : undefined;
-  const inView = useSectionInView(byDirection && !only);
-  const section = only ?? (byDirection ? inView : mode.section);
+  // The section in view while scrolling through a whole direction
+  const inView = useActiveSection(byDirection && !only ? SECTION_IDS : []);
+  const section = only ?? (byDirection ? (inView ?? "overview") : mode.section);
 
-  // The last direction viewed, and directions hidden from comparisons
   const storedSlug = useStored(LAST_DIRECTION_KEY);
   const lastSlug =
     storedSlug && getDirection(storedSlug) ? storedSlug : directions[0].slug;
@@ -712,9 +648,9 @@ export function StyleGuide({
     }
   }, [slug]);
 
-  // Start loading every direction, so switching to one is quick
+  // Start loading every direction and its specimens, so switching is quick
   useEffect(() => {
-    loadAll();
+    directions.forEach((direction) => loadSpecimens(direction.slug));
   }, []);
 
   const step = (by: number) => () => {
@@ -776,7 +712,7 @@ export function StyleGuide({
         <main className="sg-main">
           {mode.kind === "direction" ? (
             <DirectionView
-              slug={mode.slug as DirectionSlug}
+              slug={mode.slug}
               only={only}
               tokens={tokens[mode.slug] ?? NO_TOKENS}
               data={data}

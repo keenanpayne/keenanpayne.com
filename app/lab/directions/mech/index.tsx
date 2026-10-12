@@ -13,13 +13,13 @@ import { Services } from "./pages/Services";
 import { Testimonials } from "./pages/Testimonials";
 import { Work } from "./pages/Work";
 import { Shell } from "./Shell";
-import { specimens } from "./specimens";
 
 const FONTS_URL =
   "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho+B1:wght@700;800&family=Share+Tech+Mono&display=swap";
 
 export default {
   stylesheets: [FONTS_URL, stylesheet],
+  root: "mc",
   Shell,
   templates: {
     home: Home,
@@ -27,6 +27,7 @@ export default {
     caseStudy: CaseStudy,
     writing: Archive,
     post: Post,
+    archive: Generic,
     about: About,
     services: Services,
     service: (props) => <Generic {...props} isService />,
@@ -36,5 +37,5 @@ export default {
     page: Generic,
     notFound: NotFound
   },
-  specimens
+  specimens: () => import("./specimens")
 } satisfies Direction;

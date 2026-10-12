@@ -17,6 +17,8 @@ export interface Testimonial {
 export interface Social {
   name: string;
   url: string;
+  /** Link relation: `me` on a profile that verifies this site as its owner's */
+  rel?: "me";
 }
 
 export interface PortfolioAsset {

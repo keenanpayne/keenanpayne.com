@@ -101,41 +101,29 @@ export const compass = (degrees: number) =>
 export const celsius = (fahrenheit: number) =>
   Math.round(((fahrenheit - 32) * 5) / 9);
 
-const zoneFormats = {
-  short: new Intl.DateTimeFormat("en-US", {
-    timeZone,
-    timeZoneName: "short"
-  }),
-  shortOffset: new Intl.DateTimeFormat("en-US", {
-    timeZone,
-    timeZoneName: "shortOffset"
-  })
-};
+/** A temperature, rounded, e.g. `72°` */
+export const degrees = (value: number) => `${Math.round(value)}°`;
 
-/** Denver's time zone right now, e.g. `MDT`, or `UTC−6` as an offset */
-export function zoneName(now: Date, style: "short" | "offset") {
-  const name =
-    zoneFormats[style === "short" ? "short" : "shortOffset"]
-      .formatToParts(now)
-      .find((part) => part.type === "timeZoneName")?.value ?? "";
-  return style === "short"
-    ? name
-    : name.replace("GMT", "UTC").replace("-", "−");
+/** The hours and minutes of one of the forecast's local times (`…T07:05`) */
+export function localClock(iso: string) {
+  const [hours, minutes] = iso.slice(11, 16).split(":").map(Number);
+  return { hours, minutes };
 }
 
-type Status = "idle" | "loading" | "ready" | "error";
+export type ForecastStatus = "idle" | "loading" | "ready" | "error";
 
 // The last reading, kept between pages (each lab page mounts afresh)
 let last: { forecast: Forecast; readAt: Date } | undefined;
 
 /**
  * Loads the forecast on demand (e.g. when a popover opens), reusing a
- * reading for ten minutes. A failed refresh keeps the last reading, so a
+ * reading for ten minutes, and reads it: the conditions, whether it's
+ * night, and whether a failed refresh left the last reading standing, so a
  * direction can show it as outdated.
  */
 export function useForecast() {
   const [reading, setReading] = useState(last);
-  const [status, setStatus] = useState<Status>(last ? "ready" : "idle");
+  const [status, setStatus] = useState<ForecastStatus>(last ? "ready" : "idle");
   const request = useRef<AbortController>(null);
 
   // Cancels a reading on unmount and forgets it, so a remount (e.g. React's
@@ -187,8 +175,19 @@ export function useForecast() {
       });
   };
 
+  const forecast = reading?.forecast;
+  const current = forecast?.current;
+  const [label, condition] = forecast ? conditionOf(forecast) : [];
+
   return {
-    forecast: reading?.forecast,
+    forecast,
+    current,
+    /** e.g. `Overcast`, and its kind of weather */
+    label,
+    condition,
+    night: current?.is_day === 0,
+    /** The reading couldn't be refreshed, so it's outdated */
+    stale: status === "error" && !!current,
     readAt: reading?.readAt,
     status,
     refresh

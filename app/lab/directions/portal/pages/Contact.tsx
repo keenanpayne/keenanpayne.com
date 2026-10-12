@@ -1,20 +1,21 @@
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
+import { metadata } from "../../../../lib/site";
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
 import {
-  formFields,
+  formOf,
   Html,
   introOf,
   useLocalTime,
   useTo,
   type FormField as Field
 } from "../../../site";
-import { Directory, Intro, Mascot, Pill, Sprite, TitleBar } from "../parts";
+import { cx, Directory, Intro, Mascot, Pill, Sprite, TitleBar } from "../parts";
 import { ITEMS } from "../sprites";
 import { Address } from "./About";
 
 export function FormField({ field }: { field: Field }) {
-  const className = field.wide ? "pt-field pt-field--wide" : "pt-field";
+  const className = cx("pt-field", field.wide && "pt-field--wide");
 
   if (field.kind === "choices") {
     return (
@@ -54,7 +55,51 @@ export function FormField({ field }: { field: Field }) {
   );
 }
 
-/** Mock contact and project inquiry forms; the lab never submits anything */
+/** The contact or inquiry form under a directory tab; the lab never sends it */
+export function MessageForm({ variant }: { variant: "contact" | "inquiry" }) {
+  const form = formOf(variant);
+  const [sent, setSent] = useState(false);
+
+  return (
+    <section className="pt-formbox">
+      <h2 className="pt-dir__title">
+        <Sprite art={ITEMS.star} scale={4} className="pt-dir__star" />
+        <span>
+          {variant === "contact" ? "Send a message" : "Mission request"}
+        </span>
+      </h2>
+      <form
+        className="pt-form"
+        onSubmit={(event) => {
+          event.preventDefault();
+          setSent(true);
+        }}
+      >
+        {form.fields.map((field) => (
+          <FormField key={field.name} field={field} />
+        ))}
+
+        <div className="pt-form__actions pt-field--wide">
+          <Pill type="submit" icon="mail" tone="orange">
+            {form.submit}
+          </Pill>
+          <p className="pt-note" role="status">
+            {sent
+              ? "Message held — mockup only, nothing was sent."
+              : "Mockup only — this form doesn’t send anything."}
+          </p>
+        </div>
+      </form>
+    </section>
+  );
+}
+
+/** Ticks on its own, so the page around it doesn't re-render each minute */
+function LocalClock({ city }: { city: string }) {
+  const time = useLocalTime();
+  return time ? `${time} in ${city}` : "—";
+}
+
 export function Contact({
   page,
   content,
@@ -67,12 +112,6 @@ export function Contact({
   const intro = introOf(page);
   const { email, location } = content.profile;
   const to = useTo();
-  const time = useLocalTime();
-  const [sent, setSent] = useState(false);
-  const onSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    setSent(true);
-  };
 
   const contacts: [ReactNode, ReactNode][] = [
     [
@@ -110,16 +149,21 @@ export function Contact({
     ],
     [
       "Writing:",
-      <a className="pt-tri" href="/feed.xml">
+      <a className="pt-tri" href={metadata.feed.path}>
         Subscribe by RSS
       </a>
     ],
-    ["Local time:", <span>{time ? `${time} in ${location.city}` : "—"}</span>]
+    [
+      "Local time:",
+      <span>
+        <LocalClock city={location.city} />
+      </span>
+    ]
   ];
 
   return (
     <>
-      <TitleBar title={variant === "contact" ? "Contact" : "Project inquiry"} />
+      <TitleBar title={formOf(variant).title} />
 
       <div className="pt-split">
         <aside className="pt-split__aside">
@@ -137,30 +181,7 @@ export function Contact({
             <Directory title="Contacts" rows={contacts} />
           )}
 
-          <section className="pt-formbox">
-            <h2 className="pt-dir__title">
-              <Sprite art={ITEMS.star} scale={4} className="pt-dir__star" />
-              <span>
-                {variant === "contact" ? "Send a message" : "Mission request"}
-              </span>
-            </h2>
-            <form className="pt-form" onSubmit={onSubmit}>
-              {formFields(variant).map((field) => (
-                <FormField key={field.name} field={field} />
-              ))}
-
-              <div className="pt-form__actions pt-field--wide">
-                <Pill type="submit" icon="mail" tone="orange">
-                  {variant === "contact" ? "Send message" : "Send inquiry"}
-                </Pill>
-                <p className="pt-note" role="status">
-                  {sent
-                    ? "Message held — mockup only, nothing was sent."
-                    : "Mockup only — this form doesn’t send anything."}
-                </p>
-              </div>
-            </form>
-          </section>
+          <MessageForm variant={variant} />
 
           {variant === "inquiry" && (
             <Directory title="Other ways to reach me" rows={contacts} />

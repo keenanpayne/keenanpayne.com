@@ -263,6 +263,8 @@ export interface LabContent {
     iso: string;
     year: string;
     type?: string;
+    /** The archive of every post of its type, e.g. `/type/essays/` */
+    typeUrl?: string;
     lede?: string;
     image?: string;
   }[];
@@ -305,6 +307,7 @@ export interface ProfileModel {
     timeZoneName: string;
     latitude: number;
     longitude: number;
+    elevationFeet: number;
   };
   experience: { years: number; text: string };
   /** HTML */

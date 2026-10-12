@@ -10,8 +10,10 @@ import { Link } from "react-router";
 
 import { labPath, SAMPLE_PAGES, type DirectionInfo } from "../registry";
 import type { Direction, NavItem, View } from "../site";
+import { pad } from "../site/helpers";
 import type { LabContent } from "../../lib/types";
 
+import { familyOf } from "./kit";
 import { styleguidePath } from "./sections";
 import type { DirectionTokens, Token } from "./tokens.server";
 
@@ -186,9 +188,6 @@ function webFonts(stylesheets: string[]) {
   return families;
 }
 
-export const familyOf = (stack: string) =>
-  stack.split(",")[0].replace(/["']/g, "").trim();
-
 const fontsOf = (tokens: DirectionTokens) =>
   tokens.tokens.filter((token) => token.kind === "font");
 
@@ -295,9 +294,7 @@ export function Overview({
   return (
     <article className="sg-overview">
       <header className="sg-overview__head">
-        <span className="sg-overview__number">
-          {String(index + 1).padStart(2, "0")}
-        </span>
+        <span className="sg-overview__number">{pad(index + 1)}</span>
         <h3 className="sg-overview__name">
           {compact ? (
             <Link to={styleguidePath(info.slug)}>{info.name}</Link>

@@ -2,7 +2,7 @@ import { resolveLegacyPath } from "../lib/legacy-urls";
 import { SITE_ORIGIN } from "../lib/site";
 
 // Keys whose values are site paths (as opposed to image or asset URLs)
-const PATH_KEYS = new Set(["url", "link"]);
+const PATH_KEYS = new Set(["url", "link", "typeUrl"]);
 
 // The site's own origin in either scheme, with or without `www.`, so links
 // written out in full (`https://keenanpayne.com/contact`) stay in the lab

@@ -1,54 +1,5 @@
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
-import { profile } from "../../data/profile";
-
-/**
- * Ticking clock where Keenan is, e.g. `3:04 PM`, or `15:04:05` on a 24-hour
- * clock with seconds. Blank until hydrated so the server markup matches.
- */
-export function useLocalTime({
-  hour12 = true,
-  seconds = false
-}: { hour12?: boolean; seconds?: boolean } = {}) {
-  const [time, setTime] = useState<string>();
-
-  useEffect(() => {
-    const format = new Intl.DateTimeFormat(hour12 ? "en-US" : "en-GB", {
-      hour: hour12 ? "numeric" : "2-digit",
-      minute: "2-digit",
-      second: seconds ? "2-digit" : undefined,
-      timeZone: profile.location.timeZone
-    });
-    const tick = () => setTime(format.format(new Date()));
-    tick();
-    const timer = setInterval(tick, seconds ? 1000 : 15_000);
-    return () => clearInterval(timer);
-  }, [hour12, seconds]);
-
-  return time;
-}
-
-/**
- * The current moment, ticking once a second while `active`. `undefined`
- * until hydrated, so the server markup matches.
- */
-export function useNow(active = true) {
-  const [now, setNow] = useState<Date>();
-
-  useEffect(() => {
-    if (!active) return;
-    const tick = () => setNow(new Date());
-    const first = setTimeout(tick);
-    const timer = setInterval(tick, 1000);
-    return () => {
-      clearTimeout(first);
-      clearInterval(timer);
-    };
-  }, [active]);
-
-  return now;
-}
-
 const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
 
 /** Whether the visitor asked for reduced motion, right now (browser only) */
@@ -88,17 +39,12 @@ export function useQueryParam(name: string) {
 /**
  * A phone menu that the navigation folds into while `wide`, a media query,
  * doesn't match. Escape closes it and hands focus back to its `toggle`;
- * widening past `wide` or moving to another `path` closes it too.
+ * widening past `wide` closes it too. (Every page mounts afresh, so moving
+ * to another page closes it as well.)
  */
-export function useMenu(wide: string, path: string) {
+export function useMenu(wide: string) {
   const toggle = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
-  const [openedOn, setOpenedOn] = useState(path);
-
-  if (openedOn !== path) {
-    setOpenedOn(path);
-    setOpen(false);
-  }
 
   useEffect(() => {
     if (!open) return;
@@ -120,4 +66,49 @@ export function useMenu(wide: string, path: string) {
   }, [open, wide]);
 
   return { open, setOpen, toggle };
+}
+
+/**
+ * Which of the sections with these ids is being read: the last whose top has
+ * passed a line a third of the way down the screen, or the last of all once
+ * the page can't scroll further. Measured at most once a frame. The first
+ * until mounted, as the server can't know the scroll position.
+ */
+export function useActiveSection<Id extends string>(ids: readonly Id[]) {
+  const [active, setActive] = useState<Id | undefined>(ids[0]);
+  const key = ids.join(" ");
+
+  useEffect(() => {
+    const sections = key
+      .split(" ")
+      .flatMap((id) => document.getElementById(id) ?? []);
+    if (sections.length === 0) return;
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const line = innerHeight / 3;
+      const atEnd =
+        innerHeight + scrollY >= document.documentElement.scrollHeight - 2;
+      const passed = sections.filter(
+        (section) => section.getBoundingClientRect().top <= line
+      );
+      const section = atEnd ? sections.at(-1) : (passed.at(-1) ?? sections[0]);
+      setActive(section?.id as Id | undefined);
+    };
+    const schedule = () => {
+      frame ||= requestAnimationFrame(update);
+    };
+
+    schedule();
+    addEventListener("scroll", schedule, { passive: true });
+    addEventListener("resize", schedule);
+    return () => {
+      removeEventListener("scroll", schedule);
+      removeEventListener("resize", schedule);
+      cancelAnimationFrame(frame);
+    };
+  }, [key]);
+
+  return active;
 }

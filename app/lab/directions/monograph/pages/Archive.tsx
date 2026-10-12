@@ -60,7 +60,7 @@ export function Archive({
       >
         <p className="mg-pageHeader__stats">
           {content.posts.length} articles · {years.length} years ·{" "}
-          {types.join(", ")}
+          {types.map((type) => type.text).join(", ")}
         </p>
       </PageHeader>
 

@@ -1,23 +1,24 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 import type { ProfileModel } from "../../../lib/types";
 import {
   celsius,
   compass,
-  conditionOf,
   coordinates,
+  degrees,
+  localClock,
+  localFormat,
+  LocalTime,
   pad,
   useForecast,
-  useLocalTime,
   useNow,
-  useReducedMotion,
   zoneName,
   type Condition
 } from "../../site";
 
-import { paint, readInks, subscribeToScheme } from "./dither";
 import { cx } from "./parts";
-import { skyFrame, type Sky } from "./sky";
+import { useScene } from "./scene";
+import { skyFrame, skyView, type Sky } from "./sky";
 
 /*
  * Denver: local time and weather
@@ -32,8 +33,21 @@ type Location = ProfileModel["location"];
 
 // Sky inks: sage, then midtones, then full ink
 const SKY_INKS = ["--st-sage", "--st-dot-mid", "--st-dot-ink"];
-const DOT = 2;
-const FPS = 12;
+
+const CLOCK: Intl.DateTimeFormatOptions = {
+  hour: "numeric",
+  minute: "2-digit",
+  second: "2-digit"
+};
+const READING: Intl.DateTimeFormatOptions = {
+  hour: "numeric",
+  minute: "2-digit"
+};
+const DATE: Intl.DateTimeFormatOptions = {
+  weekday: "long",
+  month: "long",
+  day: "numeric"
+};
 
 const NOTES: Record<Condition, string> = {
   clear: "Clear skies over the Front Range",
@@ -44,69 +58,27 @@ const NOTES: Record<Condition, string> = {
   storm: "Thunderstorm overhead"
 };
 
-/** `07:05` from a local ISO time, as `7:05 AM` */
-const twelveHour = (iso?: string) => {
-  if (!iso) return "--:--";
-  const [hours, minutes] = iso.slice(11, 16).split(":").map(Number);
+/** One of the forecast's local times (`…T07:05`) as `7:05 AM` */
+function twelveHour(iso: string) {
+  const { hours, minutes } = localClock(iso);
   return `${hours % 12 || 12}:${pad(minutes)} ${hours < 12 ? "AM" : "PM"}`;
-};
+}
 
 /** Draws the sky into a canvas, a dozen frames a second while it's shown */
-function useSky(sky: Sky, night: boolean, shown: boolean) {
+function useSky(sky: Sky, night: boolean) {
   const frame = useRef<HTMLDivElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
-  const still = useReducedMotion();
 
-  useEffect(() => {
-    const element = frame.current;
-    const target = canvas.current;
-    if (!shown || !element || !target) return;
-
-    let inks = readInks(element, SKY_INKS);
-    const draw = (time: number) => {
-      const { width, height } = element.getBoundingClientRect();
-      const columns = Math.ceil(width / DOT);
-      const rows = Math.ceil(height / DOT);
-      if (!columns || !rows) return;
-      if (target.width !== columns || target.height !== rows) {
-        target.width = columns;
-        target.height = rows;
-        target.style.width = `${columns * DOT}px`;
-        target.style.height = `${rows * DOT}px`;
-      }
-      paint(
-        target,
-        skyFrame(columns, rows, sky, night, time),
-        columns,
-        rows,
-        inks
-      );
-    };
-
-    const start = performance.now();
-    let request = 0;
-    let drawnAt = 0;
-    const loop = (now: number) => {
-      if (now - drawnAt >= 1000 / FPS) {
-        drawnAt = now;
-        draw((now - start) / 1000);
-      }
-      request = requestAnimationFrame(loop);
-    };
-
-    // A still sky, part way in, when motion is reduced
-    draw(still ? 1.5 : 0);
-    if (!still) request = requestAnimationFrame(loop);
-
-    const unsubscribe = subscribeToScheme(() => {
-      inks = readInks(element, SKY_INKS);
-      if (still) draw(1.5);
-    });
-    return () => {
-      cancelAnimationFrame(request);
-      unsubscribe();
-    };
-  }, [sky, night, shown, still]);
+  useScene({
+    frame,
+    canvas,
+    inks: SKY_INKS,
+    source: `${sky} ${night}`,
+    // A still sky, part way in
+    hold: 1.5,
+    build: skyView,
+    draw: (view, seconds) => skyFrame(view, sky, night, seconds)
+  });
 
   return { frame, canvas };
 }
@@ -122,8 +94,6 @@ export function DenverClock({
   location: Location;
   className?: string;
 }) {
-  const time = useLocalTime();
-
   return (
     <button
       type="button"
@@ -131,7 +101,7 @@ export function DenverClock({
       popoverTarget={notes}
       aria-label={`${location.city} local time and weather`}
     >
-      {time ?? "--:--"}
+      <LocalTime />
     </button>
   );
 }
@@ -146,43 +116,24 @@ export function DenverNotes({
 }) {
   const [open, setOpen] = useState(false);
   const now = useNow(open);
-  const { forecast, readAt, status, refresh } = useForecast();
-
-  const formats = useMemo(() => {
-    const { timeZone } = location;
-    return {
-      clock: new Intl.DateTimeFormat("en-US", {
-        hour: "numeric",
-        minute: "2-digit",
-        second: "2-digit",
-        timeZone
-      }),
-      reading: new Intl.DateTimeFormat("en-US", {
-        hour: "numeric",
-        minute: "2-digit",
-        timeZone
-      }),
-      date: new Intl.DateTimeFormat("en-US", {
-        weekday: "long",
-        month: "long",
-        day: "numeric",
-        timeZone
-      })
-    };
-  }, [location]);
-
-  const current = forecast?.current;
-  const [label, condition] = forecast ? conditionOf(forecast) : ["", undefined];
-  const night = current?.is_day === 0;
-  // A failed refresh keeps the last reading, marked as outdated
-  const stale = status === "error" && !!current;
+  const {
+    forecast,
+    current,
+    label,
+    condition,
+    night,
+    stale,
+    readAt,
+    status,
+    refresh
+  } = useForecast();
 
   const [tone, note] =
     status === "error"
       ? [
           "off",
           stale && readAt
-            ? `Couldn’t refresh · Last reading ${formats.reading.format(readAt)}`
+            ? `Couldn’t refresh · Last reading ${localFormat(READING).format(readAt)}`
             : "Couldn’t reach the weather service"
         ]
       : condition
@@ -194,16 +145,15 @@ export function DenverNotes({
           ]
         : ["wait", "Reading the sky…"];
 
-  const { frame, canvas } = useSky(condition ?? "unknown", night, open);
+  const { frame, canvas } = useSky(condition ?? "unknown", night);
 
-  const clock = now ? formats.clock.formatToParts(now) : [];
+  const clock = now ? localFormat(CLOCK).formatToParts(now) : [];
   const time = clock
     .filter((part) => part.type !== "dayPeriod")
     .map((part) => part.value)
     .join("")
     .trim();
   const period = clock.find((part) => part.type === "dayPeriod")?.value;
-  const degrees = (value: number) => `${Math.round(value)}°`;
 
   return (
     <div
@@ -244,7 +194,9 @@ export function DenverNotes({
           <time>{time || "--:--:--"}</time>
           {period && <span>{period}</span>}
         </p>
-        <p className="st-den__date">{now ? formats.date.format(now) : " "}</p>
+        <p className="st-den__date">
+          {now ? localFormat(DATE).format(now) : " "}
+        </p>
       </div>
 
       <div ref={frame} className="st-den__sky">
@@ -307,7 +259,8 @@ export function DenverNotes({
             <div>
               <dt>Elevation</dt>
               <dd>
-                5,280<small> ft</small>
+                {location.elevationFeet.toLocaleString("en-US")}
+                <small> ft</small>
               </dd>
             </div>
           </dl>

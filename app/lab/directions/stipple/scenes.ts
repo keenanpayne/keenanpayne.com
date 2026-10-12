@@ -7,7 +7,7 @@
  * x + y), the earlier.
  */
 
-import type { Pen, Scene, Vec3 } from "./iso";
+import { project, type Pen, type Scene, type Vec3 } from "./iso";
 
 /** A rectangle on a wall facing +y (the left-hand faces) */
 const onLeft = (
@@ -95,9 +95,8 @@ const bend = (a: Vec3, control: Vec3, b: Vec3, t: number): Vec3 =>
  */
 function flare(tip: Vec3, toward: Vec3, spread: number, length: number): Vec3 {
   // Screen right is (1, -1, 0) / 1.732 in the world, screen up is +z
-  const screen = ([x, y, z]: Vec3) => [(x - y) * 0.866, (x + y) * 0.5 - z];
-  const [tx, ty] = screen(tip);
-  const [bx, by] = screen(toward);
+  const [tx, ty] = project(tip);
+  const [bx, by] = project(toward);
   const angle = Math.atan2(by - ty, bx - tx) + spread;
   const sx = Math.cos(angle) * length;
   const sy = Math.sin(angle) * length;

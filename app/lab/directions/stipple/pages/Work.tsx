@@ -4,6 +4,7 @@ import { introOf, type TemplateProps } from "../../../site";
 import {
   Clients,
   Contents,
+  industriesOf,
   Layout,
   Ledger,
   PageHeader,
@@ -13,18 +14,18 @@ import {
   WorkCard
 } from "../parts";
 
-type View = "index" | "plates";
+export type WorkView = "index" | "plates";
 
-const VIEWS: { value: View; label: string }[] = [
+/** How the page shows the work: as an index, or as plates */
+export const WORK_VIEWS: { value: WorkView; label: string }[] = [
   { value: "index", label: "Index" },
   { value: "plates", label: "Plates" }
 ];
 
 export function Work({ page, content }: TemplateProps<"work">) {
-  const [view, setView] = useState<View>("index");
+  const [view, setView] = useState<WorkView>("index");
   const intro = introOf(page);
   const { work } = content;
-  const industries = new Set(work.map((item) => item.industry).filter(Boolean));
   const index = view === "index";
 
   return (
@@ -45,10 +46,10 @@ export function Work({ page, content }: TemplateProps<"work">) {
       <PageHeader title={intro?.heading ?? "Work"} lede={intro?.subheading}>
         <p className="st-pageMeta">
           <span>{`${work.length} case studies`}</span>
-          <span>{`${industries.size} industries`}</span>
+          <span>{`${industriesOf(work).size} industries`}</span>
           <ViewSwitch
             label="Show the work as"
-            views={VIEWS}
+            views={WORK_VIEWS}
             value={view}
             onChange={setView}
           />

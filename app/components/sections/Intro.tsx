@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 
+import { profile } from "../../data/profile";
+import { cloudinaryImage } from "../../lib/content/cloudinary";
 import type { IntroSection } from "../../lib/types";
 import { Entry } from "../Entry";
 import { Label } from "../Label";
@@ -7,20 +9,10 @@ import { LazyImage } from "../Lazy";
 
 const maxWidth = (value?: string) => (value ? { maxWidth: value } : undefined);
 
-const PHOTOS_OF_ME = [
-  {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jun-27-2021_o8sd0l.jpg",
-    alt: "Me in grayscale"
-  },
-  {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204077/people/me/dec-26-2021_iuhh3w.jpg",
-    alt: "Me being cold"
-  },
-  {
-    src: "https://res.cloudinary.com/keenan-payne/image/upload/f_auto,q_auto,w_800/v1666204078/people/me/jul-5-2020_lwglyk.jpg",
-    alt: "Hanging out with my high school buddies"
-  }
-];
+const PHOTOS_OF_ME = profile.photos.map((photo) => ({
+  src: cloudinaryImage(photo.image, "w_800"),
+  alt: photo.alt
+}));
 
 export function Intro({ section }: { section: IntroSection }) {
   const { right } = section;

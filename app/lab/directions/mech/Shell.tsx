@@ -1,5 +1,6 @@
 import { useId } from "react";
 
+import { metadata } from "../../../lib/site";
 import { samePath, useMenu, useTo, type ShellProps } from "../../site";
 
 import { DenverStatus } from "./Denver";
@@ -9,7 +10,7 @@ import { HexOutline, Ticks, Tri } from "./parts";
 const WIDE = "(width >= 760px)";
 
 /** Each section's designation on the command deck */
-export const SECTORS: Record<string, string> = {
+const SECTORS: Record<string, string> = {
   "/portfolio/": "作品",
   "/archive/": "記録",
   "/about/": "経歴",
@@ -17,15 +18,15 @@ export const SECTORS: Record<string, string> = {
   "/contact/": "通信"
 };
 
-export function Shell({ path, navigation, content, children }: ShellProps) {
+/** A navigation item's designation, from its (rebased) URL */
+export const sectorOf = (url: string, to: (path: string) => string) =>
+  Object.entries(SECTORS).find(([section]) => samePath(url, to(section)))?.[1];
+
+export function Shell({ navigation, content, children }: ShellProps) {
   const { profile, socials } = content;
   const to = useTo();
   const deck = useId();
-  const { open, setOpen, toggle } = useMenu(WIDE, path);
-  const sectorOf = (url: string) =>
-    Object.entries(SECTORS).find(([section]) =>
-      samePath(url, to(section))
-    )?.[1];
+  const { open, setOpen, toggle } = useMenu(WIDE);
 
   return (
     <div className="mc">
@@ -58,7 +59,7 @@ export function Shell({ path, navigation, content, children }: ShellProps) {
         </nav>
 
         <div className="mc-hud__status">
-          <DenverStatus />
+          <DenverStatus location={profile.location} />
           <span className="mc-hud__signal">
             <span className="mc-dot" aria-hidden="true" />
             Nominal
@@ -109,7 +110,7 @@ export function Shell({ path, navigation, content, children }: ShellProps) {
                       <span className="mc-deck__here">Engaged</span>
                     )}
                     <span className="mc-deck__sector" lang="ja">
-                      {sectorOf(item.url)}
+                      {sectorOf(item.url, to)}
                     </span>
                     <Tri />
                   </a>
@@ -132,7 +133,7 @@ export function Shell({ path, navigation, content, children }: ShellProps) {
                 </li>
               ))}
               <li>
-                <a href="/feed.xml">RSS</a>
+                <a href={metadata.feed.path}>RSS</a>
               </li>
             </ul>
           </div>
@@ -167,7 +168,7 @@ export function Shell({ path, navigation, content, children }: ShellProps) {
               </li>
             ))}
             <li>
-              <a href="/feed.xml">RSS</a>
+              <a href={metadata.feed.path}>RSS</a>
             </li>
           </ul>
           <Ticks />

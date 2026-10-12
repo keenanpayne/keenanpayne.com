@@ -3,7 +3,7 @@ import { data, useParams } from "react-router";
 import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
 import { directions, getDirection } from "../lab/registry";
-import { navigationFor, resolveView } from "../lab/site";
+import { navigationFor, resolveView } from "../lab/site/ia";
 import { getProseSpecimen } from "../lab/styleguide/prose.server";
 import {
   getSection,
@@ -26,11 +26,15 @@ export const links: Route.LinksFunction = () => [
 
 const SLUGS = directions.map((direction) => direction.slug);
 
+/** What the path after `/lab/styleguide/` asks to see */
+const modeOf = (params: { "*"?: string }) =>
+  resolveMode(params["*"] ?? "", SLUGS);
+
 // The Shell is shown around About, so the navigation marks a current page
 const SHELL_PATH = "/about/";
 
 export function loader({ params }: Route.LoaderArgs) {
-  if (!resolveMode(params["*"] ?? "", SLUGS)) throw data(null, { status: 404 });
+  if (!modeOf(params)) throw data(null, { status: 404 });
 
   const view = resolveView(SHELL_PATH, getPage(SHELL_PATH));
   return {
@@ -50,7 +54,7 @@ export function loader({ params }: Route.LoaderArgs) {
 export const shouldRevalidate = () => false;
 
 export const meta = ({ params }: Route.MetaArgs) => {
-  const mode = resolveMode(params["*"] ?? "", SLUGS);
+  const mode = modeOf(params);
   const title =
     mode?.kind === "direction"
       ? [
@@ -72,8 +76,7 @@ export const meta = ({ params }: Route.MetaArgs) => {
 };
 
 export default function LabStyleGuide({ loaderData }: Route.ComponentProps) {
-  const params = useParams();
-  const mode = resolveMode(params["*"] ?? "", SLUGS);
+  const mode = modeOf(useParams());
 
   return (
     <>

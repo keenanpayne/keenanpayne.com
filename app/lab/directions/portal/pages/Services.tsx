@@ -12,7 +12,7 @@ import {
 import { ITEMS, type Item } from "../sprites";
 
 /** One power-up per service, cycled in order */
-export const SERVICE_ITEMS: Item[] = [
+const SERVICE_ITEMS: Item[] = [
   "paper",
   "pencil",
   "star",

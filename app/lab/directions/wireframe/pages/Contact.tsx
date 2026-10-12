@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 
-import { formFields, introOf, useTo, type TemplateProps } from "../../../site";
+import { formOf, introOf, useTo, type TemplateProps } from "../../../site";
 import { Facts, FormField, PageHeader } from "../parts";
 
 /** Mock contact and project inquiry forms; the lab never submits anything */
@@ -12,7 +12,7 @@ export function Contact({
   const to = useTo();
   const intro = introOf(page);
   const { email, location } = content.profile;
-  const variant = kind === "contact" ? "contact" : "inquiry";
+  const form = formOf(kind);
   const [sent, setSent] = useState(false);
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
@@ -22,7 +22,7 @@ export function Contact({
   return (
     <>
       <PageHeader
-        eyebrow={kind === "contact" ? "Contact" : "Project inquiry"}
+        eyebrow={form.title}
         title={intro?.heading ?? page.meta.title}
         lede={intro?.subheading}
       >
@@ -33,24 +33,16 @@ export function Contact({
           ]}
         />
         <p>
-          {kind === "contact" ? (
-            <a href={to("/project-inquiry/")}>
-              Start a project inquiry instead
-            </a>
-          ) : (
-            <a href={to("/contact/")}>Just saying hello?</a>
-          )}
+          <a href={to(form.alternate.path)}>{form.alternate.text}</a>
         </p>
       </PageHeader>
 
       <form className="wireframe-form" onSubmit={onSubmit}>
-        {formFields(variant).map((field) => (
+        {form.fields.map((field) => (
           <FormField key={field.name} field={field} />
         ))}
         <p className="wireframe-field--wide">
-          <button type="submit">
-            {kind === "contact" ? "Send message" : "Send inquiry"}
-          </button>{" "}
+          <button type="submit">{form.submit}</button>{" "}
           <span className="wireframe-meta" role="status">
             {sent
               ? "Mockup only — nothing was sent."

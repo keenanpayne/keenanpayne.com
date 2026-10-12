@@ -1,10 +1,25 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
 import type {
   PortfolioGridSection,
-  PortfolioPageModel
+  PortfolioPageModel,
+  TestimonialModel
 } from "../../../../lib/types";
 import { galleryColumns, Html, useTo } from "../../../site";
-import { ArrowCircle, Banner, Icon, MoreLink, Quote } from "../parts";
+import { ArrowCircle, Banner, Facts, Icon, MoreLink, Quote } from "../parts";
+
+/** What a case study runs between its pillars and its body, in order */
+type Block =
+  | { kind: "gallery"; section: PortfolioGridSection }
+  | { kind: "quote"; testimonial: TestimonialModel };
+
+const blocksOf = (sections: PortfolioPageModel["sections"]) =>
+  sections.flatMap((section): Block[] => {
+    if (section.type === "portfolioGrid") return [{ kind: "gallery", section }];
+    if (section.type === "testimonial" && section.testimonial) {
+      return [{ kind: "quote", testimonial: section.testimonial }];
+    }
+    return [];
+  });
 
 export function Gallery({ section }: { section: PortfolioGridSection }) {
   if (!section.items?.length) return null;
@@ -92,6 +107,56 @@ export function CaseStudy({ page }: { page: PortfolioPageModel }) {
     specs.push(["Services", page.services.join(", ")]);
   }
 
+  const details: [string, React.ReactNode][] = [];
+  if (page.technologies) {
+    details.push([
+      "Technologies",
+      <ul className="mg-tags">
+        {page.technologies.map((technology) => (
+          <li key={technology}>{technology}</li>
+        ))}
+      </ul>
+    ]);
+  }
+  if (page.people) {
+    details.push([
+      "Collaborators",
+      <ul className="mg-people">
+        {page.people.map((person) => (
+          <li key={person.name}>
+            {person.url ? <a href={person.url}>{person.name}</a> : person.name}
+            {person.position && (
+              <span className="mg-meta">{person.position}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+    ]);
+  }
+  if (page.awards) {
+    details.push([
+      "Awards",
+      <ul className="mg-people">
+        {page.awards.map((award) => (
+          <li key={`${award.name}${award.year}${award.category}`}>
+            <a href={award.link}>
+              {award.name} {award.status}, {award.year}
+            </a>
+            <span className="mg-meta">
+              {award.category} · {award.details}
+            </span>
+          </li>
+        ))}
+      </ul>
+    ]);
+  }
+  if (page.siteUrl) {
+    details.push([
+      "Visit",
+      <MoreLink href={page.siteUrl}>{page.siteTitle ?? page.siteUrl}</MoreLink>
+    ]);
+  }
+
   return (
     <article className="mg-case">
       <header className="mg-pageHeader mg-case__header">
@@ -133,70 +198,7 @@ export function CaseStudy({ page }: { page: PortfolioPageModel }) {
           )}
         </div>
 
-        <dl className="mg-facts mg-facts--stacked">
-          {page.technologies && (
-            <div>
-              <dt>Technologies</dt>
-              <dd>
-                <ul className="mg-tags">
-                  {page.technologies.map((technology) => (
-                    <li key={technology}>{technology}</li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
-          )}
-          {page.people && (
-            <div>
-              <dt>Collaborators</dt>
-              <dd>
-                <ul className="mg-people">
-                  {page.people.map((person) => (
-                    <li key={person.name}>
-                      {person.url ? (
-                        <a href={person.url}>{person.name}</a>
-                      ) : (
-                        person.name
-                      )}
-                      {person.position && (
-                        <span className="mg-meta">{person.position}</span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
-          )}
-          {page.awards && (
-            <div>
-              <dt>Awards</dt>
-              <dd>
-                <ul className="mg-people">
-                  {page.awards.map((award) => (
-                    <li key={`${award.name}${award.year}${award.category}`}>
-                      <a href={award.link}>
-                        {award.name} {award.status}, {award.year}
-                      </a>
-                      <span className="mg-meta">
-                        {award.category} · {award.details}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </dd>
-            </div>
-          )}
-          {page.siteUrl && (
-            <div>
-              <dt>Visit</dt>
-              <dd>
-                <MoreLink href={page.siteUrl}>
-                  {page.siteTitle ?? page.siteUrl}
-                </MoreLink>
-              </dd>
-            </div>
-          )}
-        </dl>
+        <Facts stacked rows={details} />
       </section>
 
       {page.pillars && (page.pillars.challenge || page.pillars.solution) && (
@@ -226,14 +228,14 @@ export function CaseStudy({ page }: { page: PortfolioPageModel }) {
         </section>
       )}
 
-      {page.sections.map((section, index) =>
-        section.type === "portfolioGrid" ? (
-          <Gallery key={index} section={section} />
-        ) : section.type === "testimonial" && section.testimonial ? (
+      {blocksOf(page.sections).map((block, index) =>
+        block.kind === "gallery" ? (
+          <Gallery key={index} section={block.section} />
+        ) : (
           <div key={index} className="mg-gallery__continued">
-            <Quote testimonial={section.testimonial} />
+            <Quote testimonial={block.testimonial} />
           </div>
-        ) : null
+        )
       )}
 
       {page.content && (

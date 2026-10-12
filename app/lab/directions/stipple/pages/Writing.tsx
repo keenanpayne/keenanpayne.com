@@ -33,7 +33,11 @@ export function Writing({ page, content }: TemplateProps<"writing">) {
       <PageHeader title={intro?.heading ?? "Writing"} lede={intro?.subheading}>
         <p className="st-pageMeta">
           <span>{`${content.posts.length} articles · ${years.length} years`}</span>
-          <span>{postTypes(content.posts).join(", ")}</span>
+          <span>
+            {postTypes(content.posts)
+              .map((type) => type.text)
+              .join(", ")}
+          </span>
         </p>
       </PageHeader>
 

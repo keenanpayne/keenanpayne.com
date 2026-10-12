@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { getDirection, SAMPLE_PAGES } from "../../registry";
 import {
-  formFields,
+  formOf,
   Html,
   postTypes,
   useTo,
@@ -160,7 +160,7 @@ function Actions({ content }: SpecimenProps) {
   return (
     <SpecimenGrid min={220}>
       <Specimen label="Button" note="Form submit, the browser’s own">
-        <button type="button">Send message</button>
+        <button type="button">{formOf("contact").submit}</button>
       </Specimen>
       <Specimen label="Text link" note="Inherits the text color, underlined">
         <p>
@@ -174,9 +174,7 @@ function Actions({ content }: SpecimenProps) {
       </Specimen>
       <Specimen label="More link">
         <p>
-          <a href={to(`/type/${type.toLowerCase()}s/`)}>
-            {`More ${type.toLowerCase()}s`}
-          </a>
+          <a href={type.url}>{`More ${type.text.toLowerCase()}s`}</a>
         </p>
       </Specimen>
     </SpecimenGrid>
@@ -184,12 +182,8 @@ function Actions({ content }: SpecimenProps) {
 }
 
 function Labels({ content }: SpecimenProps) {
-  const to = useTo();
   const post = content.posts[1];
-  const types = postTypes(content.posts).map((type) => ({
-    text: type,
-    url: to(`/type/${type.toLowerCase()}s/`)
-  }));
+  const types = postTypes(content.posts);
 
   return (
     <SpecimenGrid min={240}>
@@ -287,10 +281,11 @@ function Quotes({ content }: SpecimenProps) {
 
 function Forms() {
   const [sent, setSent] = useState(false);
+  const contact = formOf("contact");
 
   return (
     <SpecimenGrid min={320}>
-      <Specimen label="Contact form" note="formFields(“contact”)" wide>
+      <Specimen label="Contact form" note="formOf(“contact”)" wide>
         <form
           className="wireframe-form"
           onSubmit={(event) => {
@@ -298,11 +293,11 @@ function Forms() {
             setSent(true);
           }}
         >
-          {formFields("contact").map((field) => (
+          {contact.fields.map((field) => (
             <FormField key={field.name} field={field} />
           ))}
           <p className="wireframe-field--wide">
-            <button type="submit">Send message</button>{" "}
+            <button type="submit">{contact.submit}</button>{" "}
             <span className="wireframe-meta" role="status">
               {sent
                 ? "Mockup only — nothing was sent."
@@ -313,8 +308,8 @@ function Forms() {
       </Specimen>
       <Specimen label="Choices" note="From the project inquiry">
         <form className="wireframe-form">
-          {formFields("inquiry")
-            .filter((field) => field.kind === "choices")
+          {formOf("inquiry")
+            .fields.filter((field) => field.kind === "choices")
             .slice(0, 2)
             .map((field) => (
               <FormField key={field.name} field={field} />
@@ -351,21 +346,18 @@ const Prose = ({ prose }: SpecimenProps) => (
   <Html className="wireframe-prose" html={prose} />
 );
 
-export const specimens: Specimens = {
-  root: "wireframe",
-  sections: {
-    type: TypeScale,
-    motifs: Motifs,
-    imagery: Imagery,
-    pageHeader: PageHeaders,
-    actions: Actions,
-    labels: Labels,
-    surfaces: Surfaces,
-    cards: Cards,
-    lists: Lists,
-    quotes: Quotes,
-    forms: Forms,
-    wayfinding: Wayfinding,
-    prose: Prose
-  }
-};
+export default {
+  type: TypeScale,
+  motifs: Motifs,
+  imagery: Imagery,
+  pageHeader: PageHeaders,
+  actions: Actions,
+  labels: Labels,
+  surfaces: Surfaces,
+  cards: Cards,
+  lists: Lists,
+  quotes: Quotes,
+  forms: Forms,
+  wayfinding: Wayfinding,
+  prose: Prose
+} satisfies Specimens;

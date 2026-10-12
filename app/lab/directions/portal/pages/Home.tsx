@@ -10,10 +10,9 @@ import {
   PostCard,
   postNews,
   QuotePromo,
-  RATING_TYPES,
+  ratedTypes,
   TagStrip,
-  Tile,
-  typePath
+  Tile
 } from "../parts";
 import { FACE, MONITOR } from "../sprites";
 
@@ -131,9 +130,9 @@ export function Home({ content }: { content: LabContent }) {
           <Tile title="Writing" href={to("/archive/")} icon="pencil">
             <JumpMenu
               label="Sub categories"
-              options={RATING_TYPES.map((type) => ({
-                href: to(typePath(type)),
-                text: `${type}s`
+              options={ratedTypes(content.posts).map((type) => ({
+                href: type.url,
+                text: `${type.text}s`
               }))}
             />
           </Tile>

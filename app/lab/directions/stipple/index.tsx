@@ -13,7 +13,6 @@ import { Testimonials } from "./pages/Testimonials";
 import { Work } from "./pages/Work";
 import { Writing } from "./pages/Writing";
 import { Shell } from "./Shell";
-import { specimens } from "./specimens";
 import stylesheet from "./stipple.css?url";
 
 const FONTS_URL =
@@ -21,6 +20,7 @@ const FONTS_URL =
 
 export default {
   stylesheets: [FONTS_URL, stylesheet],
+  root: "st",
   Shell,
   templates: {
     home: Home,
@@ -28,6 +28,7 @@ export default {
     caseStudy: CaseStudy,
     writing: Writing,
     post: Post,
+    archive: Page,
     about: About,
     services: Services,
     service: Service,
@@ -37,5 +38,5 @@ export default {
     page: Page,
     notFound: NotFound
   },
-  specimens
+  specimens: () => import("./specimens")
 } satisfies Direction;

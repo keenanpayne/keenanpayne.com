@@ -133,42 +133,6 @@ export function momentAt(
   return { night, arc, twilight, phase };
 }
 
-/** Value noise that repeats every `period` lattice cells across */
-function tiledNoise(x: number, y: number, seed: number, period: number) {
-  const xi = Math.floor(x);
-  const yi = Math.floor(y);
-  const u = (x - xi) ** 2 * (3 - 2 * (x - xi));
-  const v = (y - yi) ** 2 * (3 - 2 * (y - yi));
-  const x0 = ((xi % period) + period) % period;
-  const x1 = (x0 + 1) % period;
-  const a = hash(x0, yi, seed);
-  const b = hash(x1, yi, seed);
-  const c = hash(x0, yi + 1, seed);
-  const d = hash(x1, yi + 1, seed);
-  return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
-}
-
-function tiledFbm(x: number, y: number, seed: number, period: number) {
-  let sum = 0;
-  let amplitude = 0.5;
-  let frequency = 1;
-  let total = 0;
-  for (let octave = 0; octave < 4; octave++) {
-    sum +=
-      amplitude *
-      tiledNoise(
-        x * frequency,
-        y * frequency,
-        seed + octave,
-        period * frequency
-      );
-    total += amplitude;
-    amplitude *= 0.5;
-    frequency *= 2;
-  }
-  return sum / total;
-}
-
 /** The land and the cloud field for a frame, the same for a seed every time */
 export function frontRange(width: number, height: number, seed: number): View {
   const size = width * height;
@@ -254,7 +218,7 @@ export function frontRange(width: number, height: number, seed: number): View {
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
       const index = y * width + x;
-      clouds[index] = tiledFbm(x / scale, y / (scale * 0.55), seed + 5, period);
+      clouds[index] = fbm(x / scale, y / (scale * 0.55), seed + 5, 4, period);
       threshold[index] = grain(x, y, seed);
     }
   }

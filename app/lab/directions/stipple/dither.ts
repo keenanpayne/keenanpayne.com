@@ -11,7 +11,10 @@
 /** Dot levels, one per cell: 0 is paper, then each ink in the palette */
 export type Levels = Uint8Array;
 
-export interface Inks {
+/** CSS pixels per dot of generated art (photos pick their own) */
+export const DOT = 2;
+
+interface Inks {
   dark: boolean;
   /** RGBA for levels 1 and up */
   colors: [number, number, number, number][];
@@ -66,18 +69,40 @@ export function readInks(element: Element, palette: string[]): Inks {
   };
 }
 
-/** Calls back when the color scheme may have changed */
-export function subscribeToScheme(onChange: () => void) {
+// Everyone listening for a change of color scheme, served by one observer
+// of the lab bar's switch (`data-theme`) and one media query for the
+// system's: made on the first subscription, let go after the last
+const listeners = new Set<() => void>();
+let unwatch: (() => void) | undefined;
+
+const notify = () => {
+  for (const listener of [...listeners]) listener();
+};
+
+function watchScheme() {
   const query = matchMedia("(prefers-color-scheme: dark)");
-  const observer = new MutationObserver(onChange);
-  query.addEventListener("change", onChange);
+  const observer = new MutationObserver(notify);
+  query.addEventListener("change", notify);
   observer.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["data-theme"]
   });
   return () => {
-    query.removeEventListener("change", onChange);
+    query.removeEventListener("change", notify);
     observer.disconnect();
+  };
+}
+
+/** Calls back when the color scheme may have changed */
+export function subscribeToScheme(onChange: () => void) {
+  listeners.add(onChange);
+  unwatch ??= watchScheme();
+  return () => {
+    listeners.delete(onChange);
+    if (!listeners.size) {
+      unwatch?.();
+      unwatch = undefined;
+    }
   };
 }
 
@@ -104,27 +129,50 @@ export function hash(x: number, y: number, seed: number) {
   return (h >>> 0) / 4294967296;
 }
 
-function valueNoise(x: number, y: number, seed: number) {
-  const xi = Math.floor(x);
+/**
+ * Smooth noise in [0, 1) between lattice points; with a `period`, it repeats
+ * every that many cells across, so a field can tile
+ */
+function valueNoise(x: number, y: number, seed: number, period?: number) {
+  let xi = Math.floor(x);
   const yi = Math.floor(y);
   const xf = x - xi;
   const yf = y - yi;
   const u = xf * xf * (3 - 2 * xf);
   const v = yf * yf * (3 - 2 * yf);
+  let xn = xi + 1;
+  if (period) {
+    xi = ((xi % period) + period) % period;
+    xn = (xi + 1) % period;
+  }
   const a = hash(xi, yi, seed);
-  const b = hash(xi + 1, yi, seed);
+  const b = hash(xn, yi, seed);
   const c = hash(xi, yi + 1, seed);
-  const d = hash(xi + 1, yi + 1, seed);
+  const d = hash(xn, yi + 1, seed);
   return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
 }
 
-export function fbm(x: number, y: number, seed: number, octaves = 5) {
+/** Layered noise; with a `period`, every layer tiles across at its scale */
+export function fbm(
+  x: number,
+  y: number,
+  seed: number,
+  octaves = 5,
+  period?: number
+) {
   let sum = 0;
   let amplitude = 0.5;
   let frequency = 1;
   let total = 0;
   for (let octave = 0; octave < octaves; octave++) {
-    sum += amplitude * valueNoise(x * frequency, y * frequency, seed + octave);
+    sum +=
+      amplitude *
+      valueNoise(
+        x * frequency,
+        y * frequency,
+        seed + octave,
+        period && period * frequency
+      );
     total += amplitude;
     amplitude *= 0.5;
     frequency *= 2;
@@ -276,7 +324,7 @@ export function photoCoverage(
  * areas read as dense stipple. A little grain keeps flat color from
  * landing exactly on one ink and printing solid.
  */
-export function inkOf(data: ArrayLike<number>, dark: boolean) {
+function inkOf(data: ArrayLike<number>, dark: boolean) {
   const coverage = new Float32Array(data.length / 4);
   const histogram = new Uint32Array(256);
 
@@ -359,6 +407,10 @@ export function atkinson(
 /* Painting
    ========================================================================== */
 
+// One image per canvas, made again only when its size changes: art that
+// moves paints a dozen frames a second
+const images = new WeakMap<HTMLCanvasElement, ImageData>();
+
 /**
  * Paints dot levels into a canvas. Below a `progress` of 1, only some dots
  * show, chosen at random, for the dissolve as the art develops.
@@ -373,8 +425,13 @@ export function paint(
 ) {
   const context = canvas.getContext("2d");
   if (!context) return;
-  const image = context.createImageData(width, height);
+  let image = images.get(canvas);
+  if (!image || image.width !== width || image.height !== height) {
+    image = context.createImageData(width, height);
+    images.set(canvas, image);
+  }
   const { data } = image;
+  data.fill(0);
 
   for (let index = 0; index < levels.length; index++) {
     const level = levels[index];

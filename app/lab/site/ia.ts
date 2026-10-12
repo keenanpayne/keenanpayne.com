@@ -23,23 +23,24 @@ export type View =
   | { kind: "caseStudy"; page: PortfolioPageModel }
   | { kind: "writing"; page: BasicPageModel }
   | { kind: "post"; page: PostPageModel }
+  /** Every post of a type or with a tag, e.g. `/type/essays/` */
+  | { kind: "archive"; page: BasicPageModel }
   | { kind: "about"; page: BasicPageModel }
   | { kind: "services"; page: BasicPageModel }
   | { kind: "service"; page: BasicPageModel }
   | { kind: "testimonials"; page: BasicPageModel }
   | { kind: "contact"; page: BasicPageModel }
   | { kind: "inquiry"; page: BasicPageModel }
-  /** Any other page: type and tag archives, subscribe, … */
+  /** Any other page: subscribe, … */
   | { kind: "page"; page: BasicPageModel }
   | { kind: "notFound" };
 
 export type ViewKind = View["kind"];
 
+type PageKind = Extract<View, { page: BasicPageModel }>["kind"];
+
 /** Pages with a template of their own, by URL */
-const PAGE_KINDS: Record<
-  string,
-  Extract<View, { page: BasicPageModel }>["kind"]
-> = {
+const PAGE_KINDS: Record<string, PageKind> = {
   "/portfolio/": "work",
   "/archive/": "writing",
   "/about/": "about",
@@ -47,6 +48,13 @@ const PAGE_KINDS: Record<
   "/testimonials/": "testimonials",
   "/contact/": "contact",
   "/project-inquiry/": "inquiry"
+};
+
+/** Kinds of page by the path their pages live under */
+const PREFIX_KINDS: Record<string, PageKind> = {
+  "/services/": "service",
+  "/type/": "archive",
+  "/tags/": "archive"
 };
 
 /** Picks the kind of page to render for a site path and its page model */
@@ -58,7 +66,10 @@ export function resolveView(path: string, page: PageModel | undefined): View {
 
   const kind =
     PAGE_KINDS[page.url] ??
-    (page.url.startsWith("/services/") ? "service" : "page");
+    Object.entries(PREFIX_KINDS).find(([prefix]) =>
+      page.url.startsWith(prefix)
+    )?.[1] ??
+    "page";
   return { kind, page };
 }
 
@@ -95,6 +106,7 @@ const SECTIONS: Partial<Record<ViewKind, string>> = {
   caseStudy: "/portfolio/",
   writing: "/archive/",
   post: "/archive/",
+  archive: "/archive/",
   about: "/about/",
   services: "/services/",
   service: "/services/",

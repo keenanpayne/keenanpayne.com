@@ -3,10 +3,9 @@ import type {
   BasicPageModel,
   EntriesSection,
   LabContent,
-  LinkModel,
-  PageListSection
+  LinkModel
 } from "../../../../lib/types";
-import { Html, introOf, samePath } from "../../../site";
+import { Html, introOf, pageEntries, samePath } from "../../../site";
 import {
   ArrowCircle,
   Banner,
@@ -43,14 +42,6 @@ function Entries({
     </Section>
   );
 }
-
-const pageEntries = (section: PageListSection) => ({
-  heading: section.title ?? "Pages",
-  entries: section.pages.map((page) => ({
-    url: page.url,
-    heading: page.title ?? page.url
-  }))
-});
 
 /** Tags and post types, as a run of tags */
 function Tags({ label, links }: { label: string; links: LinkModel[] }) {

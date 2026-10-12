@@ -8,25 +8,21 @@ import {
 } from "react";
 
 import { HtmlContent } from "../../../components/HtmlContent";
+import { metadata } from "../../../lib/site";
 import type { LabContent } from "../../../lib/types";
 import {
-  celsius,
-  compass,
-  conditionOf,
   coordinates,
-  formFields,
+  formOf,
   Html,
-  NAVIGATION,
+  LocalTime,
   pad,
   postsByYear,
   postTypes,
   relabel,
   useForecast,
-  useLocalTime,
   useNow,
   useTo,
   WEATHER_CODES,
-  zoneName,
   type SpecimenProps,
   type Specimens
 } from "../../site";
@@ -38,13 +34,7 @@ import {
   TypeSample
 } from "../../styleguide/kit";
 
-import {
-  clockFormat,
-  dateFormat,
-  Glyph,
-  readingFormat,
-  STATUS
-} from "./Denver";
+import { DenverPanel, DenverSky, STATUS } from "./Denver";
 import { FACT_LABELS } from "./pages/About";
 import { Equalizer } from "./pages/Archive";
 import { FormField } from "./pages/Contact";
@@ -78,12 +68,9 @@ import {
   unitCode,
   Waveform
 } from "./parts";
-import { SECTORS } from "./Shell";
+import { sectorOf } from "./Shell";
 
 type Profile = LabContent["profile"];
-
-/** A post type's archive, e.g. `/type/essays/` */
-const typePath = (type: string) => `/type/${type.toLowerCase()}s/`;
 
 /** The role as the home title card's lines, e.g. `…developer`, `& designer` */
 const roleLines = (role: string) => role.split(/ (?=&)/);
@@ -97,12 +84,6 @@ const zoneInitials = ({ timeZoneName }: Profile["location"]) =>
 
 /* Type scale
    ========================================================================== */
-
-/** The local time, ticking on its own so nothing around it re-renders */
-function Clock() {
-  const now = useNow();
-  return <time>{now ? clockFormat.format(now) : "--:--:--"}</time>;
-}
 
 function TypeScale({ content }: SpecimenProps) {
   const to = useTo();
@@ -263,7 +244,7 @@ function TypeScale({ content }: SpecimenProps) {
       </TypeSample>
       <TypeSample label="Field label">
         <span className="mc-field__label">
-          {formFields("contact")[0].label}
+          {formOf("contact").fields[0].label}
         </span>
       </TypeSample>
       <TypeSample label="Chip" measure="li">
@@ -278,7 +259,9 @@ function TypeScale({ content }: SpecimenProps) {
       </TypeSample>
       <TypeSample label="Clock">
         <p className="mc-den__clock" style={{ margin: 0 }}>
-          <Clock />
+          <time>
+            <LocalTime hour12={false} seconds placeholder="--:--:--" />
+          </time>
         </p>
       </TypeSample>
     </>
@@ -288,19 +271,43 @@ function TypeScale({ content }: SpecimenProps) {
 /* Motifs
    ========================================================================== */
 
-/** Kinds of weather, by WMO code, each with what its sky readout does */
-const SKIES: { code: number; night?: boolean; note: string }[] = [
-  { code: 0, note: "A warm glow and a turning ring" },
-  { code: 0, night: true, note: "A field of twinkling stars" },
-  { code: 2, note: "Cloud banks drift across" },
-  { code: 45, note: "Hazy bands shift over a softened readout" },
-  { code: 63, note: "Two sheets of rain" },
-  { code: 73, note: "Three layers of falling flakes" },
-  { code: 95, note: "Red alert: rain, lightning, and a hazard edge" }
+/**
+ * Kinds of weather, by WMO code, each with a stub temperature (°F) and what
+ * its sky readout does
+ */
+const SKIES: {
+  code: number;
+  night?: boolean;
+  temperature: number;
+  note: string;
+}[] = [
+  { code: 0, temperature: 74, note: "A warm glow and a turning ring" },
+  { code: 0, night: true, temperature: 52, note: "A field of twinkling stars" },
+  { code: 2, temperature: 63, note: "Cloud banks drift across" },
+  {
+    code: 45,
+    temperature: 41,
+    note: "Hazy bands shift over a softened readout"
+  },
+  { code: 63, temperature: 55, note: "Two sheets of rain" },
+  { code: 73, temperature: 27, note: "Three layers of falling flakes" },
+  {
+    code: 95,
+    temperature: 68,
+    note: "Red alert: rain, lightning, and a hazard edge"
+  }
 ];
 
-/** The sky readout for one kind of weather */
-function Sky({ code, night = false }: { code: number; night?: boolean }) {
+/** The sky readout for one kind of weather, with its status line */
+function Sky({
+  code,
+  night = false,
+  temperature
+}: {
+  code: number;
+  night?: boolean;
+  temperature: number;
+}) {
   const [label, condition] = WEATHER_CODES[code];
   const [tone, text] = STATUS[condition];
 
@@ -311,20 +318,13 @@ function Sky({ code, night = false }: { code: number; night?: boolean }) {
       data-night={night ? "" : undefined}
       style={{ maxWidth: "100%" }}
     >
-      <div className="mc-den__sky">
-        <span className="mc-den__fx" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-        </span>
-        <Glyph condition={condition} night={night} />
-        <div className="mc-den__reading">
-          <p className="mc-den__condition">
-            {label}
-            {night && " · Night"}
-          </p>
-        </div>
-      </div>
+      <DenverSky
+        temperature={temperature}
+        label={label}
+        condition={condition}
+        night={night}
+        status="ready"
+      />
       <p className="mc-den__status" data-tone={tone}>
         <span className="mc-dot" aria-hidden="true" />
         {text}
@@ -340,29 +340,11 @@ function Sky({ code, night = false }: { code: number; night?: boolean }) {
  */
 function Scan({ location }: { location: Profile["location"] }) {
   const now = useNow();
-  const { forecast, readAt, status, refresh } = useForecast();
+  const reading = useForecast();
+  const { condition, night, refresh } = reading;
 
   const load = useEffectEvent(refresh);
   useEffect(() => load(), []);
-
-  const current = forecast?.current;
-  const [label, condition] = forecast ? conditionOf(forecast) : ["", undefined];
-  const night = current?.is_day === 0;
-  const stale = status === "error" && !!current;
-  const [tone, statusText] =
-    status === "error"
-      ? [
-          "amber",
-          stale && readAt
-            ? `Telemetry offline · Last reading ${readingFormat.format(readAt)}`
-            : "Telemetry offline · Weather unavailable"
-        ]
-      : condition
-        ? STATUS[condition]
-        : ["amber", "Acquiring telemetry"];
-
-  const fahrenheit = (value: number) => `${Math.round(value)}°`;
-  const time = (iso?: string) => iso?.slice(11) ?? "--:--";
 
   return (
     <div
@@ -380,7 +362,9 @@ function Scan({ location }: { location: Profile["location"] }) {
           aria-label={`${location.city} local time and weather`}
         >
           <span>{location.city.slice(0, 3)}</span>
-          <time>{now ? clockFormat.format(now) : "--:--:--"}</time>
+          <time>
+            <LocalTime hour12={false} seconds placeholder="--:--:--" />
+          </time>
         </button>
       </div>
 
@@ -390,120 +374,7 @@ function Scan({ location }: { location: Profile["location"] }) {
         data-night={night ? "" : undefined}
         style={{ maxWidth: "100%" }}
       >
-        <div className="mc-panel__head">
-          <span className="mc-panel__label">Atmospheric scan</span>
-          <span className="mc-panel__code">{location.short}</span>
-          <button type="button" className="mc-den__close" aria-label="Close">
-            ×
-          </button>
-        </div>
-
-        <div className="mc-den__time">
-          <p className="mc-den__kicker">
-            Local time
-            {now && (
-              <span>
-                {zoneName(now, "short")} · {zoneName(now, "offset")}
-              </span>
-            )}
-          </p>
-          <p className="mc-den__clock">
-            <time>{now ? clockFormat.format(now) : "--:--:--"}</time>
-          </p>
-          <p className="mc-den__date">{now ? dateFormat.format(now) : " "}</p>
-        </div>
-
-        <div className="mc-den__sky">
-          <span className="mc-den__fx" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </span>
-          {current && condition ? (
-            <>
-              <Glyph condition={condition} night={night} />
-              <div className="mc-den__reading">
-                <p className="mc-den__temp">
-                  {fahrenheit(current.temperature_2m)}
-                  <span>F</span>
-                  <small>{celsius(current.temperature_2m)}°C</small>
-                </p>
-                <p className="mc-den__condition">
-                  {label}
-                  {night && condition === "clear" && " · Night"}
-                </p>
-              </div>
-            </>
-          ) : (
-            <p className="mc-den__message">
-              {status === "error" ? (
-                <>
-                  Telemetry offline
-                  <button type="button" onClick={refresh}>
-                    Retry
-                  </button>
-                </>
-              ) : (
-                "Acquiring telemetry…"
-              )}
-            </p>
-          )}
-        </div>
-
-        {current && forecast && (
-          <>
-            <dl className="mc-den__readouts">
-              <div>
-                <dt>Feels like</dt>
-                <dd>{fahrenheit(current.apparent_temperature)}</dd>
-              </div>
-              <div>
-                <dt>High</dt>
-                <dd>{fahrenheit(forecast.daily.temperature_2m_max[0])}</dd>
-              </div>
-              <div>
-                <dt>Low</dt>
-                <dd>{fahrenheit(forecast.daily.temperature_2m_min[0])}</dd>
-              </div>
-              <div>
-                <dt>Humidity</dt>
-                <dd>{current.relative_humidity_2m}%</dd>
-              </div>
-              <div>
-                <dt>Wind</dt>
-                <dd>
-                  {Math.round(current.wind_speed_10m)}
-                  <small> mph </small>
-                  {compass(current.wind_direction_10m)}
-                </dd>
-              </div>
-              <div>
-                <dt>Elevation</dt>
-                <dd>
-                  5,280<small> ft</small>
-                </dd>
-              </div>
-            </dl>
-            <p className="mc-den__sun">
-              <span>Sunrise {time(forecast.daily.sunrise[0])}</span>
-              <span>Sunset {time(forecast.daily.sunset[0])}</span>
-            </p>
-          </>
-        )}
-
-        <p className="mc-den__status" data-tone={tone}>
-          <span className="mc-dot" aria-hidden="true" />
-          {statusText}
-          {stale && (
-            <button type="button" onClick={refresh}>
-              Retry
-            </button>
-          )}
-        </p>
-        <p className="mc-den__credit">
-          Weather data: <a href="https://open-meteo.com/">Open-Meteo</a> ·{" "}
-          {coordinates(location)}
-        </p>
+        <DenverPanel location={location} now={now} {...reading} />
       </div>
     </div>
   );
@@ -602,22 +473,16 @@ function Motifs({ content }: SpecimenProps) {
             label={`Sky, ${WEATHER_CODES[sky.code][1]}${sky.night ? " at night" : ""}`}
             note={sky.note}
           >
-            <Sky code={sky.code} night={sky.night} />
+            <Sky
+              code={sky.code}
+              night={sky.night}
+              temperature={sky.temperature}
+            />
           </Specimen>
         ))}
         <Specimen label="Sky, offline" note="A reading that failed">
           <div className="mc-panel mc-den" style={{ maxWidth: "100%" }}>
-            <div className="mc-den__sky">
-              <span className="mc-den__fx" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-              </span>
-              <p className="mc-den__message">
-                Telemetry offline
-                <button type="button">Retry</button>
-              </p>
-            </div>
+            <DenverSky night={false} status="error" />
             <p className="mc-den__status" data-tone="amber">
               <span className="mc-dot" aria-hidden="true" />
               Telemetry offline · Weather unavailable
@@ -643,7 +508,6 @@ function Motifs({ content }: SpecimenProps) {
    ========================================================================== */
 
 function Imagery({ content }: SpecimenProps) {
-  const time = useLocalTime({ hour12: false });
   const { profile, posts, work, testimonials } = content;
   const { experience, location, photos } = profile;
   const [featured, ...units] = work;
@@ -724,7 +588,7 @@ function Imagery({ content }: SpecimenProps) {
               />
               <Readout
                 label="Local time"
-                value={time ?? "--:--"}
+                value={<LocalTime hour12={false} />}
                 unit={zoneInitials(location)}
               />
             </dl>
@@ -988,10 +852,10 @@ function PageHeaders({ content }: SpecimenProps) {
                 {recordCode(posts, post.url)}
               </span>
               <a href={to("/archive/")}>Records</a>
-              {post.type && (
+              {post.type && post.typeUrl && (
                 <>
                   <span aria-hidden="true">/</span>
-                  <a href={to(typePath(post.type))}>{post.type}</a>
+                  <a href={post.typeUrl}>{post.type}</a>
                 </>
               )}
             </p>
@@ -1097,7 +961,7 @@ function Actions({ content }: SpecimenProps) {
               </li>
             ))}
             <li>
-              <a href="/feed.xml">RSS</a>
+              <a href={metadata.feed.path}>RSS</a>
             </li>
           </ul>
         </Specimen>
@@ -1120,8 +984,6 @@ function Actions({ content }: SpecimenProps) {
    ========================================================================== */
 
 function Labels({ content }: SpecimenProps) {
-  const to = useTo();
-  const time = useLocalTime({ hour12: false });
   const { profile, posts, work } = content;
   const { experience, location } = profile;
   const post = posts[1];
@@ -1159,8 +1021,8 @@ function Labels({ content }: SpecimenProps) {
       >
         <ul className="mc-chips mc-chips--small">
           {postTypes(posts).map((type) => (
-            <li key={type}>
-              <a href={to(typePath(type))}>{type}</a>
+            <li key={type.url}>
+              <a href={type.url}>{type.text}</a>
             </li>
           ))}
         </ul>
@@ -1196,7 +1058,7 @@ function Labels({ content }: SpecimenProps) {
         <dl className="mc-readouts">
           <Readout
             label="Local time"
-            value={time ?? "--:--"}
+            value={<LocalTime hour12={false} />}
             unit={zoneInitials(location)}
           />
         </dl>
@@ -1353,10 +1215,9 @@ function Cards({ content }: SpecimenProps) {
    ========================================================================== */
 
 function Lists({ content }: SpecimenProps) {
-  const to = useTo();
   const { profile, posts, work, services, socials } = content;
   const post = posts[1];
-  const types = postTypes(posts);
+  const types = postTypes(posts).map((type) => type.text);
   const [type] = types;
   const recent = posts.slice(0, 6);
   const entries = posts.filter((item) => item.type === type).slice(0, 4);
@@ -1562,11 +1423,11 @@ function Lists({ content }: SpecimenProps) {
                 <time dateTime={post.iso}>{post.date}</time>
               </dd>
             </div>
-            {post.type && (
+            {post.type && post.typeUrl && (
               <div>
                 <dt>Class</dt>
                 <dd>
-                  <a href={to(typePath(post.type))}>{post.type}</a>
+                  <a href={post.typeUrl}>{post.type}</a>
                 </dd>
               </div>
             )}
@@ -1641,8 +1502,9 @@ function Quotes({ content }: SpecimenProps) {
 
 function Forms({ content }: SpecimenProps) {
   const to = useTo();
-  const time = useLocalTime({ hour12: false, seconds: true });
   const { email, location } = content.profile;
+  const contact = formOf("contact");
+  const inquiry = formOf("inquiry");
   const [sent, setSent] = useState<"contact" | "inquiry">();
   const submit = (form: "contact" | "inquiry") => (event: FormEvent) => {
     event.preventDefault();
@@ -1653,7 +1515,7 @@ function Forms({ content }: SpecimenProps) {
     <SpecimenGrid min={320}>
       <Specimen
         label="Contact"
-        note="formFields(“contact”), beside the comms channel"
+        note="formOf(“contact”), beside the comms channel"
         wide
       >
         <section className="mc-split mc-contact" style={{ marginTop: 0 }}>
@@ -1672,11 +1534,13 @@ function Forms({ content }: SpecimenProps) {
                 </div>
                 <div>
                   <dt>Local time</dt>
-                  <dd className="mc-contact__time">{time ?? "--:--:--"}</dd>
+                  <dd className="mc-contact__time">
+                    <LocalTime hour12={false} seconds placeholder="--:--:--" />
+                  </dd>
                 </div>
               </dl>
-              <MoreLink href={to("/project-inquiry/")}>
-                Start a project inquiry instead
+              <MoreLink href={to(contact.alternate.path)}>
+                {contact.alternate.text}
               </MoreLink>
             </div>
           </Panel>
@@ -1686,7 +1550,7 @@ function Forms({ content }: SpecimenProps) {
             code={sent === "contact" ? "Held" : "Ready"}
           >
             <form className="mc-form" onSubmit={submit("contact")}>
-              {formFields("contact").map((field) => (
+              {contact.fields.map((field) => (
                 <FormField key={field.name} field={field} />
               ))}
               <div className="mc-form__actions mc-field--wide">
@@ -1704,7 +1568,7 @@ function Forms({ content }: SpecimenProps) {
 
       <Specimen
         label="Project inquiry"
-        note="formFields(“inquiry”): inputs, a date, toggles for checkboxes and radios"
+        note="formOf(“inquiry”): inputs, a date, toggles for checkboxes and radios"
         wide
       >
         <Panel
@@ -1712,11 +1576,11 @@ function Forms({ content }: SpecimenProps) {
           code={sent === "inquiry" ? "Held" : "Ready"}
         >
           <form className="mc-form" onSubmit={submit("inquiry")}>
-            {formFields("inquiry").map((field) => (
+            {inquiry.fields.map((field) => (
               <FormField key={field.name} field={field} />
             ))}
             <div className="mc-form__actions mc-field--wide">
-              <Button type="submit">Send inquiry</Button>
+              <Button type="submit">{inquiry.submit}</Button>
               <p className="mc-form__status" role="status">
                 {sent === "inquiry"
                   ? "Transmission held — mockup only, nothing was sent."
@@ -1741,11 +1605,11 @@ function Forms({ content }: SpecimenProps) {
 /* Wayfinding
    ========================================================================== */
 
-function Wayfinding({ content }: SpecimenProps) {
+function Wayfinding({ content, navigation }: SpecimenProps) {
   const to = useTo();
   const { posts, work, socials } = content;
   const post = posts[1];
-  const types = postTypes(posts);
+  const types = postTypes(posts).map((type) => type.text);
   const [filter, setFilter] = useState<string>();
   const [, second] = work;
 
@@ -1760,10 +1624,10 @@ function Wayfinding({ content }: SpecimenProps) {
             {recordCode(posts, post.url)}
           </span>
           <a href={to("/archive/")}>Records</a>
-          {post.type && (
+          {post.type && post.typeUrl && (
             <>
               <span aria-hidden="true">/</span>
-              <a href={to(typePath(post.type))}>{post.type}</a>
+              <a href={post.typeUrl}>{post.type}</a>
             </>
           )}
         </p>
@@ -1828,9 +1692,9 @@ function Wayfinding({ content }: SpecimenProps) {
               Thanks for reading. Questions or thoughts?{" "}
               <a href={to("/contact/")}>Open a channel</a>.
             </p>
-            {post.type && (
+            {post.type && post.typeUrl && (
               <MoreLink
-                href={to(typePath(post.type))}
+                href={post.typeUrl}
               >{`More ${post.type.toLowerCase()}s`}</MoreLink>
             )}
           </footer>
@@ -1861,36 +1725,30 @@ function Wayfinding({ content }: SpecimenProps) {
           <p className="mc-panel__head mc-deck__head">
             <span className="mc-panel__label">Command deck</span>
             <span className="mc-panel__code">
-              {`${NAVIGATION.length} sectors`}
+              {`${navigation.length} sectors`}
             </span>
             <Ticks />
           </p>
           <nav aria-label="Command deck">
             <ol className="mc-deck__list">
-              {NAVIGATION.map((item, index) => {
-                const current = item.path === "/about/";
-                return (
-                  <li
-                    key={item.path}
-                    style={{ "--mc-i": index } as CSSProperties}
+              {navigation.map((item, index) => (
+                <li key={item.url} style={{ "--mc-i": index } as CSSProperties}>
+                  <a
+                    href={item.url}
+                    aria-current={item.current ? "page" : undefined}
                   >
-                    <a
-                      href={to(item.path)}
-                      aria-current={current ? "page" : undefined}
-                    >
-                      <span className="mc-deck__num">0{index + 1}</span>
-                      <span className="mc-deck__text">{item.text}</span>
-                      {current && (
-                        <span className="mc-deck__here">Engaged</span>
-                      )}
-                      <span className="mc-deck__sector" lang="ja">
-                        {SECTORS[item.path]}
-                      </span>
-                      <Tri />
-                    </a>
-                  </li>
-                );
-              })}
+                    <span className="mc-deck__num">0{index + 1}</span>
+                    <span className="mc-deck__text">{item.text}</span>
+                    {item.current && (
+                      <span className="mc-deck__here">Engaged</span>
+                    )}
+                    <span className="mc-deck__sector" lang="ja">
+                      {sectorOf(item.url, to)}
+                    </span>
+                    <Tri />
+                  </a>
+                </li>
+              ))}
             </ol>
           </nav>
           <div className="mc-deck__foot">
@@ -1907,7 +1765,7 @@ function Wayfinding({ content }: SpecimenProps) {
                 </li>
               ))}
               <li>
-                <a href="/feed.xml">RSS</a>
+                <a href={metadata.feed.path}>RSS</a>
               </li>
             </ul>
           </div>
@@ -1924,21 +1782,18 @@ const Prose = ({ prose }: SpecimenProps) => (
   <HtmlContent className="mc-prose mc-post__body" html={prose} />
 );
 
-export const specimens: Specimens = {
-  root: "mc",
-  sections: {
-    type: TypeScale,
-    motifs: Motifs,
-    imagery: Imagery,
-    pageHeader: PageHeaders,
-    actions: Actions,
-    labels: Labels,
-    surfaces: Surfaces,
-    cards: Cards,
-    lists: Lists,
-    quotes: Quotes,
-    forms: Forms,
-    wayfinding: Wayfinding,
-    prose: Prose
-  }
-};
+export default {
+  type: TypeScale,
+  motifs: Motifs,
+  imagery: Imagery,
+  pageHeader: PageHeaders,
+  actions: Actions,
+  labels: Labels,
+  surfaces: Surfaces,
+  cards: Cards,
+  lists: Lists,
+  quotes: Quotes,
+  forms: Forms,
+  wayfinding: Wayfinding,
+  prose: Prose
+} satisfies Specimens;
