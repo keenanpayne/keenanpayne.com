@@ -21,6 +21,8 @@ export function loadDirection(slug: DirectionSlug) {
   let direction = loaded.get(slug);
   if (!direction) {
     direction = loaders[slug]().then((module) => module.default);
+    // A load that fails (e.g. a stale chunk after a deploy) can be retried
+    direction.catch(() => loaded.delete(slug));
     loaded.set(slug, direction);
   }
   return direction;

@@ -8,7 +8,7 @@
  * given, so the same scene works as a plate or a wide cover.
  */
 
-import { atkinson, fbm, grain, hash, type Levels } from "./dither";
+import { atkinson, clamp, fbm, grain, hash, type Levels } from "./dither";
 
 export type Vec2 = [x: number, y: number];
 export type Vec3 = [x: number, y: number, z: number];
@@ -70,8 +70,6 @@ const normalize = (v: Vec3): Vec3 => {
   const length = Math.hypot(...v) || 1;
   return [v[0] / length, v[1] / length, v[2] / length];
 };
-const clamp = (value: number) => Math.min(1, Math.max(0, value));
-
 /** Toward the viewer: the projection looks down this axis */
 const VIEW: Vec3 = normalize([1, 1, 1]);
 /** Toward the light: above, in front, a little to the left */

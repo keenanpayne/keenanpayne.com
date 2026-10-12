@@ -12,7 +12,16 @@
 
 import type { Condition } from "../../site";
 
-import { fbm, grain, hash, levelFor, type Levels } from "./dither";
+import {
+  clamp,
+  fbm,
+  grain,
+  hash,
+  lerp,
+  levelFor,
+  smoothstep,
+  type Levels
+} from "./dither";
 
 export type Sky = Condition | "unknown";
 
@@ -123,13 +132,6 @@ export function momentAt(
   );
   return { night, arc, twilight, phase };
 }
-
-const clamp = (value: number) => Math.min(1, Math.max(0, value));
-const smoothstep = (edge0: number, edge1: number, value: number) => {
-  const t = clamp((value - edge0) / (edge1 - edge0));
-  return t * t * (3 - 2 * t);
-};
-const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 /** Value noise that repeats every `period` lattice cells across */
 function tiledNoise(x: number, y: number, seed: number, period: number) {

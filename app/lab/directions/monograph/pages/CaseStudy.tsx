@@ -3,18 +3,12 @@ import type {
   PortfolioGridSection,
   PortfolioPageModel
 } from "../../../../lib/types";
-import { Html, useTo } from "../../../site";
+import { galleryColumns, Html, useTo } from "../../../site";
 import { ArrowCircle, Banner, Icon, MoreLink, PostNav, Quote } from "../parts";
-
-const COLUMNS: Record<string, number> = {
-  "-one-col": 1,
-  "-two-col": 2,
-  "-three-col": 3
-};
 
 export function Gallery({ section }: { section: PortfolioGridSection }) {
   if (!section.items?.length) return null;
-  const columns = COLUMNS[section.modifier ?? ""] ?? 3;
+  const columns = galleryColumns(section.modifier);
   const hasHeader = section.headline || section.description;
 
   return (

@@ -42,9 +42,26 @@ export const coordinates = ({
 
 /** Minutes to read some HTML, at 230 words a minute */
 export function readingMinutes(html: string) {
-  const words = html.replace(/<[^>]+>/g, " ").split(/\s+/).length;
+  const words = html
+    .replace(/<[^>]+>/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
   return Math.max(1, Math.round(words / 230));
 }
+
+/** Joins class names, leaving out the falsy ones; `undefined` for none */
+export const cx = (...names: (string | false | null | undefined)[]) =>
+  names.filter(Boolean).join(" ") || undefined;
+
+/** Columns a portfolio gallery's `modifier` asks for (`-two-col`, …) */
+const GALLERY_COLUMNS: Record<string, number> = {
+  "-one-col": 1,
+  "-two-col": 2,
+  "-three-col": 3
+};
+
+export const galleryColumns = (modifier?: string) =>
+  GALLERY_COLUMNS[modifier ?? ""] ?? 3;
 
 /** Posts grouped by year, keeping their order */
 export function postsByYear(posts: Posts): [year: string, posts: Posts][] {

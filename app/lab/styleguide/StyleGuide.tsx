@@ -12,6 +12,7 @@ import {
   Component,
   use,
   useEffect,
+  useEffectEvent,
   useLayoutEffect,
   useMemo,
   useState,
@@ -31,7 +32,7 @@ import {
   type DirectionInfo,
   type DirectionSlug
 } from "../registry";
-import { BaseContext, PreviewContext, type Direction } from "../site";
+import { BaseContext, cx, PreviewContext, type Direction } from "../site";
 
 import {
   comparePath,
@@ -112,8 +113,8 @@ function parseHidden(saved: string | null): string[] {
   }
 }
 
-const cx = (...names: (string | false | undefined)[]) =>
-  names.filter(Boolean).join(" ");
+/** What a direction without a `<slug>.css` of its own shows for its tokens */
+const NO_TOKENS: DirectionTokens = { scheme: "light", tokens: [] };
 
 /** Every direction's chunk, started together so none waits on another */
 const loadAll = () =>
@@ -271,6 +272,10 @@ const Stylesheets = ({ skins }: { skins: Direction[] }) =>
    ========================================================================== */
 
 function useKeys(previous: () => void, next: () => void) {
+  // Read fresh on each key press, so the listener is registered only once
+  const onPrevious = useEffectEvent(previous);
+  const onNext = useEffectEvent(next);
+
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
       if (
@@ -287,12 +292,12 @@ function useKeys(previous: () => void, next: () => void) {
       ) {
         return;
       }
-      if (event.key === "ArrowLeft") previous();
-      if (event.key === "ArrowRight") next();
+      if (event.key === "ArrowLeft") onPrevious();
+      if (event.key === "ArrowRight") onNext();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [previous, next]);
+  }, []);
 }
 
 /** The section in view while scrolling through a direction */
@@ -626,7 +631,7 @@ function CompareView({
               info={info}
               index={index}
               skin={skin}
-              tokens={tokens[info.slug]}
+              tokens={tokens[info.slug] ?? NO_TOKENS}
               data={each[info.slug]}
               compact
             />
@@ -649,7 +654,7 @@ function CompareView({
                 info={info}
                 index={index}
                 skin={skin}
-                tokens={tokens[info.slug]}
+                tokens={tokens[info.slug] ?? NO_TOKENS}
                 data={each[info.slug]}
               />
             </article>
@@ -694,12 +699,12 @@ export function StyleGuide({
   const setHidden = (next: string[]) =>
     writeStored(HIDDEN_KEY, JSON.stringify(next));
 
+  const slug = byDirection ? mode.slug : undefined;
   useEffect(() => {
-    if (mode.kind === "direction") writeStored(LAST_DIRECTION_KEY, mode.slug);
-  }, [mode]);
+    if (slug) writeStored(LAST_DIRECTION_KEY, slug);
+  }, [slug]);
 
   // Moving to another direction keeps the section in view
-  const slug = byDirection ? mode.slug : undefined;
   useLayoutEffect(() => {
     const id = location.hash.slice(1);
     if (slug && getSection(id)) {
@@ -773,7 +778,7 @@ export function StyleGuide({
             <DirectionView
               slug={mode.slug as DirectionSlug}
               only={only}
-              tokens={tokens[mode.slug]}
+              tokens={tokens[mode.slug] ?? NO_TOKENS}
               data={data}
             />
           ) : (

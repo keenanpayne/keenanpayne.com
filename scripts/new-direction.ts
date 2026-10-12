@@ -63,7 +63,11 @@ const name =
     (_match, dash: string, char: string) =>
       (dash ? " " : "") + char.toUpperCase()
   );
-const today = new Date().toISOString().slice(0, 10);
+// Today where the script runs (`toISOString` would give the UTC date)
+const now = new Date();
+const today = [now.getFullYear(), now.getMonth() + 1, now.getDate()]
+  .map((part) => String(part).padStart(2, "0"))
+  .join("-");
 
 /** Inserts lines just above a `npm run lab:new` marker comment */
 function insertAboveMarker(
@@ -98,9 +102,10 @@ function rename(directory: string) {
       rename(path);
     } else {
       const source = readFileSync(path, "utf8");
+      // A replacer function, so `$` in the name isn't read as a pattern
       writeFileSync(
         path,
-        source.replaceAll(STARTER, slug).replaceAll("Wireframe", name)
+        source.replaceAll(STARTER, slug).replaceAll("Wireframe", () => name)
       );
     }
   }

@@ -4,7 +4,7 @@ import type {
   PortfolioGridSection,
   PortfolioPageModel
 } from "../../../../lib/types";
-import { Html, samePath, useTo } from "../../../site";
+import { galleryColumns, Html, samePath, useTo } from "../../../site";
 import {
   Alert,
   MoreLink,
@@ -16,12 +16,6 @@ import {
   unitCode
 } from "../parts";
 
-const COLUMNS: Record<string, number> = {
-  "-one-col": 1,
-  "-two-col": 2,
-  "-three-col": 3
-};
-
 function Gallery({
   section,
   index
@@ -30,7 +24,7 @@ function Gallery({
   index: number;
 }) {
   if (!section.items?.length) return null;
-  const columns = COLUMNS[section.modifier ?? ""] ?? 3;
+  const columns = galleryColumns(section.modifier);
   const hasHeader = section.headline || section.description;
 
   const grid = (

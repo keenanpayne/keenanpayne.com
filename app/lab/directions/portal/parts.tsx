@@ -6,7 +6,7 @@ import type {
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
-import { Html, pad, usePreview, useTo } from "../../site";
+import { cx, Html, pad, usePreview, useTo } from "../../site";
 
 import {
   DIE,
@@ -27,8 +27,7 @@ import {
 // Content helpers
 // ---------------
 
-export const cx = (...names: (string | false | undefined)[]) =>
-  names.filter(Boolean).join(" ");
+export { cx };
 
 export type Post = LabContent["posts"][number];
 export type Work = LabContent["work"][number];

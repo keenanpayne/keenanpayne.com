@@ -16,6 +16,7 @@ import type {
   TestimonialModel
 } from "../../../lib/types";
 import {
+  cx,
   Html,
   prefersReducedMotion,
   type FormField as Field
@@ -39,8 +40,7 @@ import { sceneFor } from "./scenes";
 type Posts = LabContent["posts"];
 type Work = LabContent["work"];
 
-export const cx = (...names: (string | false | null | undefined)[]) =>
-  names.filter(Boolean).join(" ") || undefined;
+export { cx };
 
 /* Dot art
    ========================================================================== */

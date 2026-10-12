@@ -6,7 +6,7 @@ import type {
   LinkModel,
   PageListSection
 } from "../../../../lib/types";
-import { Html, introOf } from "../../../site";
+import { Html, introOf, samePath } from "../../../site";
 import {
   ArrowCircle,
   Banner,
@@ -139,7 +139,7 @@ export function Generic({
           <Section icon="list" label="Other services">
             <ServicesLedger
               services={content.services.filter(
-                (service) => !service.url.endsWith(page.url)
+                (service) => !samePath(service.url, page.url)
               )}
             />
           </Section>

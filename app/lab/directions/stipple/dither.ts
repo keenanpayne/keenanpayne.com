@@ -19,7 +19,20 @@ export interface Inks {
 
 /** Cloudinary and this site send images the canvas may read back */
 export const canDither = (src: string) =>
-  src.startsWith("/") || src.startsWith("https://res.cloudinary.com/");
+  (src.startsWith("/") && !src.startsWith("//")) ||
+  src.startsWith("https://res.cloudinary.com/");
+
+/* Math
+   ========================================================================== */
+
+export const clamp = (value: number) => Math.min(1, Math.max(0, value));
+
+export const smoothstep = (edge0: number, edge1: number, value: number) => {
+  const t = clamp((value - edge0) / (edge1 - edge0));
+  return t * t * (3 - 2 * t);
+};
+
+export const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 /* Inks
    ========================================================================== */
@@ -118,11 +131,6 @@ export function fbm(x: number, y: number, seed: number, octaves = 5) {
   }
   return sum / total;
 }
-
-const smoothstep = (edge0: number, edge1: number, value: number) => {
-  const t = Math.min(1, Math.max(0, (value - edge0) / (edge1 - edge0)));
-  return t * t * (3 - 2 * t);
-};
 
 // 8×8 Bayer matrix, as thresholds in (0, 1)
 const BAYER = [

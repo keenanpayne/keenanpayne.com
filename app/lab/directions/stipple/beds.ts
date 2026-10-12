@@ -9,7 +9,7 @@
  * `paint`: 1 sage, 2 deep sage, 3 midtone, 4 ink.
  */
 
-import { fbm, hash, grain, levelFor, type Levels } from "./dither";
+import { clamp, fbm, hash, grain, levelFor, type Levels } from "./dither";
 
 export interface Bed {
   year: number;
@@ -69,8 +69,6 @@ export function bedsOf(
 /** How much a year laid down: a little for being there, more for the work */
 const weightOf = (bed: Bed) =>
   1 + 0.35 * Math.sqrt(bed.posts) + 0.35 * Math.min(bed.work.length, 4);
-
-const clamp = (value: number) => Math.min(1, Math.max(0, value));
 
 /** Seconds until every bed has settled */
 export const settledAt = (beds: number) => 0.3 + beds * 0.2 + 0.55;

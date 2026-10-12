@@ -1,0 +1,83 @@
+import { describe, expect, it } from "vitest";
+
+import { rebaseLinks } from "./links";
+
+const BASE = "/lab/monograph";
+
+describe("rebaseLinks", () => {
+  it("points site paths under link keys at their lab mirror", () => {
+    expect(
+      rebaseLinks(
+        {
+          url: "/about/",
+          link: "/contact/?from=lab#form",
+          typeUrl: "/type/essays/"
+        },
+        BASE
+      )
+    ).toEqual({
+      url: "/lab/monograph/about/",
+      link: "/lab/monograph/contact/?from=lab#form",
+      typeUrl: "/lab/monograph/type/essays/"
+    });
+  });
+
+  it("leaves external URLs, images, and other keys alone", () => {
+    const data = {
+      url: "https://example.com/",
+      link: "//cdn.example.com/x",
+      typeUrl: "/images/social.png",
+      cover: "/portfolio/asana/",
+      src: "/images/photo.jpg"
+    };
+    expect(rebaseLinks(data, BASE)).toEqual(data);
+  });
+
+  it("follows the site's legacy redirects first", () => {
+    expect(
+      rebaseLinks(
+        { url: "/blog/css-arrow-interaction.html", link: "/work" },
+        BASE
+      )
+    ).toEqual({
+      url: "/lab/monograph/css-arrow-interaction/",
+      link: "/lab/monograph/portfolio/"
+    });
+  });
+
+  it("rewrites hrefs inside HTML strings, in either quote style", () => {
+    const html =
+      "<a href=\"/about/\">A</a> <a href='/practices'>B</a> " +
+      '<a href="https://example.com/">C</a> <img src="/images/i.png"> ' +
+      '<a href="/images/file.pdf">D</a> <a href="//cdn.example.com/">E</a>';
+    expect(rebaseLinks({ body: html }, BASE)).toEqual({
+      body:
+        '<a href="/lab/monograph/about/">A</a> ' +
+        "<a href='/lab/monograph/practices'>B</a> " +
+        '<a href="https://example.com/">C</a> <img src="/images/i.png"> ' +
+        '<a href="/images/file.pdf">D</a> <a href="//cdn.example.com/">E</a>'
+    });
+  });
+
+  it("walks arrays and nested objects, keeping everything else", () => {
+    expect(
+      rebaseLinks(
+        {
+          count: 2,
+          empty: null,
+          items: [{ url: "/a/" }, { url: "/b/", text: "B" }],
+          nested: { deep: { link: "/c/" } }
+        },
+        BASE
+      )
+    ).toEqual({
+      count: 2,
+      empty: null,
+      items: [
+        { url: "/lab/monograph/a/" },
+        { url: "/lab/monograph/b/", text: "B" }
+      ],
+      nested: { deep: { link: "/lab/monograph/c/" } }
+    });
+  });
+});

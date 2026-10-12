@@ -5,7 +5,7 @@ import type {
   PortfolioPageModel,
   TestimonialSection
 } from "../../../../lib/types";
-import { Html, samePath, useTo } from "../../../site";
+import { galleryColumns, Html, samePath, useTo } from "../../../site";
 import {
   BackLink,
   Banner,
@@ -19,12 +19,6 @@ import {
   SideList
 } from "../parts";
 import { FACE, ITEMS, MONITOR } from "../sprites";
-
-const COLUMNS: Record<string, number> = {
-  "-one-col": 1,
-  "-two-col": 2,
-  "-three-col": 3
-};
 
 /**
  * A gallery with a headline, plus the headless galleries and client quotes
@@ -56,7 +50,7 @@ function groupGalleries(sections: PortfolioPageModel["sections"]) {
 }
 
 function Gallery({ section }: { section: PortfolioGridSection }) {
-  const columns = COLUMNS[section.modifier ?? ""] ?? 3;
+  const columns = galleryColumns(section.modifier);
 
   return (
     <ul className={`pt-gallery pt-gallery--${columns}`}>

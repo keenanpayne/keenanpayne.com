@@ -10,14 +10,9 @@
 
 import type { Condition } from "../../site";
 
-import { fbm, grain, hash, type Levels } from "./dither";
+import { fbm, grain, hash, smoothstep, type Levels } from "./dither";
 
 export type Sky = Condition | "unknown";
-
-const smoothstep = (edge0: number, edge1: number, value: number) => {
-  const t = Math.min(1, Math.max(0, (value - edge0) / (edge1 - edge0)));
-  return t * t * (3 - 2 * t);
-};
 
 /** One frame of the sky, `time` seconds in */
 export function skyFrame(

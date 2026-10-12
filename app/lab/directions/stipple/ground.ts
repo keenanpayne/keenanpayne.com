@@ -8,7 +8,16 @@
  * and 2 deep sage (the terrain's own), 3 midtone, 4 ink.
  */
 
-import { grain, hash, levelFor, terrain, type Levels } from "./dither";
+import {
+  clamp,
+  grain,
+  hash,
+  lerp,
+  levelFor,
+  smoothstep,
+  terrain,
+  type Levels
+} from "./dither";
 
 export interface Rect {
   x: number;
@@ -62,16 +71,10 @@ const ARROW = [
 /** Radius of the lens that looks under the surface, in cells */
 const LENS = 46;
 
-const clamp = (value: number) => Math.min(1, Math.max(0, value));
-const smoothstep = (edge0: number, edge1: number, value: number) => {
-  const t = clamp((value - edge0) / (edge1 - edge0));
-  return t * t * (3 - 2 * t);
-};
 const ease = (value: number) => {
   const t = clamp(value);
   return t < 0.5 ? 4 * t ** 3 : 1 - (-2 * t + 2) ** 3 / 2;
 };
-const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
 /**
  * A plot for the site in the open ground between `top` and `bottom` (rows
