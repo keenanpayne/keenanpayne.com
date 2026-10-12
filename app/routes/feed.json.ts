@@ -1,7 +1,7 @@
 import { rfc3339Date } from "../lib/content/dates.server";
 import { getFeedPosts } from "../lib/content/content.server";
 import { convertToAbsoluteUrls } from "../lib/content/html.server";
-import { metadata } from "../lib/site";
+import { absoluteUrl, metadata } from "../lib/site";
 
 // JSON Feed (https://jsonfeed.org/version/1.1) of every post, newest first
 export function loader() {
@@ -10,7 +10,7 @@ export function loader() {
     title: metadata.title,
     language: metadata.language,
     home_page_url: metadata.url,
-    feed_url: metadata.jsonfeed.url,
+    feed_url: absoluteUrl(metadata.jsonfeed.path),
     description: metadata.description,
     author: {
       name: metadata.author.name,

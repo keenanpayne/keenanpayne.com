@@ -4,7 +4,7 @@ import type {
   PortfolioPageModel
 } from "../../../../lib/types";
 import { galleryColumns, Html, useTo } from "../../../site";
-import { ArrowCircle, Banner, Icon, MoreLink, PostNav, Quote } from "../parts";
+import { ArrowCircle, Banner, Icon, MoreLink, Quote } from "../parts";
 
 export function Gallery({ section }: { section: PortfolioGridSection }) {
   if (!section.items?.length) return null;
@@ -244,8 +244,6 @@ export function CaseStudy({ page }: { page: PortfolioPageModel }) {
           />
         </section>
       )}
-
-      <PostNav nav={page.postNav} />
 
       <Banner />
     </article>

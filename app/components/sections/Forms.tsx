@@ -1,4 +1,5 @@
 import { inquiryBudgets, inquiryServices } from "../../data/inquiry";
+import { FORM_SUCCESS_PATH } from "../../lib/endpoints";
 
 // Netlify Forms: the pre-rendered markup is detected at deploy time. The
 // hidden `form-name` input is what Netlify would otherwise inject, so it's
@@ -12,7 +13,7 @@ export function Contact() {
       className="ContactForm _container"
       name="Contact"
       data-netlify="true"
-      action="/form-submission-success"
+      action={FORM_SUCCESS_PATH}
       method="POST"
     >
       <input type="hidden" name="form-name" value="Contact" />
@@ -78,7 +79,7 @@ export function ProjectInquiry() {
       className="ContactForm _container"
       name="Project Inquiry"
       data-netlify="true"
-      action="/form-submission-success"
+      action={FORM_SUCCESS_PATH}
       method="POST"
     >
       <input type="hidden" name="form-name" value="Project Inquiry" />

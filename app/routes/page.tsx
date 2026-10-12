@@ -1,15 +1,21 @@
-import { data } from "react-router";
+import { data, redirect } from "react-router";
 
 import { BasicPage } from "../components/layouts/BasicPage";
 import { PortfolioPage } from "../components/layouts/PortfolioPage";
 import { PostPage } from "../components/layouts/PostPage";
 import { getNotFoundPage, getPage } from "../lib/content/content.server";
+import { resolveLegacyPath } from "../lib/legacy-urls";
 import { metaTags } from "../lib/meta";
 import type { Route } from "./+types/page";
 
 export function loader({ url }: Route.LoaderArgs) {
   const page = getPage(url.pathname);
   if (page) return page;
+
+  // Previously Netlify redirect rules; the SSR handler now answers every
+  // path, so they live with the app. Like Netlify's, they keep the query.
+  const legacyPath = resolveLegacyPath(url.pathname);
+  if (legacyPath) throw redirect(`${legacyPath}${url.search}`, 301);
 
   return data(getNotFoundPage(), { status: 404 });
 }

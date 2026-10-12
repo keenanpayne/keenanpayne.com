@@ -9,7 +9,6 @@ import {
   Alert,
   MoreLink,
   Panel,
-  PostNav,
   Readout,
   Section,
   Transmission,
@@ -268,8 +267,6 @@ export function CaseStudy({
           />
         </section>
       )}
-
-      <PostNav nav={page.postNav} noun="unit" />
 
       <Alert />
     </article>

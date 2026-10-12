@@ -1,11 +1,6 @@
 import slugifyString from "slugify";
 
-import asanaLogo from "../../assets/svg/asana.svg?raw";
-import gofundmeLogo from "../../assets/svg/gofundme.svg?raw";
-import neuralinkLogo from "../../assets/svg/neuralink.svg?raw";
-import ripplingLogo from "../../assets/svg/rippling.svg?raw";
-import stableLogo from "../../assets/svg/stable.svg?raw";
-import { people } from "../../data/people";
+import { personById } from "../../data/people";
 import { portfolio } from "../../data/portfolio";
 import { profile } from "../../data/profile";
 import { socials } from "../../data/socials";
@@ -13,7 +8,7 @@ import testimonialAnalysis from "../../data/testimonial-analysis.json";
 import { testimonials } from "../../data/testimonials";
 import type { PortfolioItem, TestimonialAnalysis } from "../../data/types";
 import { escapeHtml } from "../html";
-import { absoluteUrl, metadata } from "../site";
+import { absoluteUrl, canonicalPath, isExternalUrl, metadata } from "../site";
 import type {
   BasicPageModel,
   EntriesSection,
@@ -32,7 +27,7 @@ import type {
   TestimonialModel
 } from "../types";
 
-import { CLOUDINARY_URL as CLOUDINARY } from "./cloudinary";
+import { CLOUDINARY_URL as CLOUDINARY, cloudinaryCover } from "./cloudinary";
 import {
   htmlDateString,
   longDate,
@@ -133,6 +128,8 @@ interface SitePage {
   url: string;
   title?: string;
   date: Date;
+  /** Source path, used as the sort tie-breaker */
+  path: string;
   changefreq?: string;
   seoPriority?: number;
 }
@@ -201,14 +198,6 @@ const NOT_FOUND_URL = "/404.html";
 
 const TESTIMONIAL_TRUNCATE_LENGTH = 225;
 
-const SOCIAL_PROOF_LOGOS = [
-  { name: "asana", svg: asanaLogo },
-  { name: "gofundme", svg: gofundmeLogo },
-  { name: "rippling", svg: ripplingLogo },
-  { name: "neuralink", svg: neuralinkLogo },
-  { name: "stable", svg: stableLogo }
-];
-
 //
 // Helpers
 // -------
@@ -217,6 +206,11 @@ const slug = (value: unknown) =>
   slugifyString(String(value), { replacement: "-", lower: true });
 
 const plural = (value: unknown) => `${value}s`;
+
+const tagUrl = (tag: string) => `/tags/${slug(tag)}/`;
+
+/** Archive of every post with this `type` (e.g. `/type/articles/`) */
+const typeUrl = (type: string) => `/type/${plural(slug(type))}/`;
 
 const html = (value: unknown) => addExternalLinkAttributes(String(value));
 
@@ -229,11 +223,6 @@ const toArray = (tags: FrontMatter["tags"]) =>
 
 const filterTagList = (tags: string[]) =>
   tags.filter((tag) => !FILTERED_TAGS.includes(tag));
-
-// Nunjucks' `head` filter: a negative count takes items from the end
-function head<T>(items: T[], count: number) {
-  return count < 0 ? items.slice(count) : items.slice(0, count);
-}
 
 // Nunjucks' `truncate` filter (without `killwords`)
 function truncate(input: string, length: number) {
@@ -259,10 +248,11 @@ const byDate = (a: { date: Date; path: string }, b: typeof a) =>
   a.date.getTime() - b.date.getTime() ||
   (a.path > b.path ? 1 : a.path < b.path ? -1 : 0);
 
+// Front matter links are written without a trailing slash (`/services`)
 function asLink(value: unknown): LinkModel | undefined {
   if (!value || typeof value !== "object") return undefined;
   const { url, text } = value as Record<string, unknown>;
-  return { url: String(url ?? ""), text: String(text ?? "") };
+  return { url: canonicalPath(String(url ?? "")), text: String(text ?? "") };
 }
 
 const optionalString = (value: unknown) =>
@@ -325,14 +315,16 @@ function loadItem(path: string, source: string): ContentItem {
 }
 
 interface ContentIndex {
-  items: ContentItem[];
-  /** `items` without the ones marked `excludeFromCollections` */
+  /** Every routable page except the ones marked `excludeFromCollections` */
   listed: ContentItem[];
+  /** Newest first */
   posts: ContentItem[];
   tagList: string[];
   typeList: string[];
   pages: SitePage[];
   byUrl: Map<string, () => PageModel>;
+  /** The page served as the body of every 404 response */
+  notFound: () => PageModel;
 }
 
 let contentIndex: ContentIndex | undefined;
@@ -340,14 +332,28 @@ let contentIndex: ContentIndex | undefined;
 function getIndex(): ContentIndex {
   if (contentIndex) return contentIndex;
 
-  const items = Object.entries(sources)
+  const memo = (fn: () => PageModel) => {
+    let model: PageModel | undefined;
+    return () => (model ??= fn());
+  };
+
+  const files = Object.entries(sources)
     .map(([path, source]) => loadItem(path, source))
     .sort((a, b) => (a.path > b.path ? 1 : -1));
+
+  // The 404 page isn't routable, listed, or pre-rendered: fail the build,
+  // not the first 404 request, when it's missing
+  const notFoundItem = files.find((item) => item.url === NOT_FOUND_URL);
+  if (!notFoundItem) {
+    throw new Error(`No content page has \`permalink: ${NOT_FOUND_URL}\``);
+  }
+  const items = files.filter((item) => item !== notFoundItem);
 
   const listed = items.filter((item) => !item.data.excludeFromCollections);
   const posts = listed
     .filter((item) => item.collection === "posts")
-    .sort(byDate);
+    .sort(byDate)
+    .reverse();
 
   const tagList = filterTagList([
     ...new Set(listed.flatMap((item) => item.tags))
@@ -361,10 +367,6 @@ function getIndex(): ContentIndex {
   ];
 
   const byUrl = new Map<string, () => PageModel>();
-  const memo = (fn: () => PageModel) => {
-    let model: PageModel | undefined;
-    return () => (model ??= fn());
-  };
 
   for (const item of items) {
     if (byUrl.has(item.url)) {
@@ -376,13 +378,8 @@ function getIndex(): ContentIndex {
     );
   }
 
-  // Fail the build, not the first 404 request, when the page is missing
-  if (!byUrl.has(NOT_FOUND_URL)) {
-    throw new Error(`No content page has \`permalink: ${NOT_FOUND_URL}\``);
-  }
-
   const tagPages: SitePage[] = tagList.map((tag) => {
-    const url = `/tags/${slug(tag)}/`;
+    const url = tagUrl(tag);
     if (byUrl.has(url)) {
       throw new Error(`Duplicate URL ${url} (tag "${tag}")`);
     }
@@ -394,6 +391,7 @@ function getIndex(): ContentIndex {
       url,
       title: tagTitle(tag),
       date: BUILD_DATE,
+      path: "/content/pages/tags/",
       changefreq: "weekly"
     };
   });
@@ -401,23 +399,25 @@ function getIndex(): ContentIndex {
   // Sorted like Eleventy's `collections.all`: by date, then source path
   const pages: SitePage[] = [
     ...listed.map((item) => ({
-      page: {
-        url: item.url,
-        title: getTitle(item),
-        date: item.date,
-        changefreq: item.data.changefreq,
-        seoPriority: item.data.seoPriority
-      },
-      path: item.path
+      url: item.url,
+      title: getTitle(item),
+      date: item.date,
+      path: item.path,
+      changefreq: item.data.changefreq,
+      seoPriority: item.data.seoPriority
     })),
-    ...tagPages.map((page) => ({ page, path: "/content/pages/tags/" }))
-  ]
-    .sort((a, b) =>
-      byDate({ ...a.page, path: a.path }, { ...b.page, path: b.path })
-    )
-    .map(({ page }) => page);
+    ...tagPages
+  ].sort(byDate);
 
-  contentIndex = { items, listed, posts, tagList, typeList, pages, byUrl };
+  contentIndex = {
+    listed,
+    posts,
+    tagList,
+    typeList,
+    pages,
+    byUrl,
+    notFound: memo(() => buildItemPage(notFoundItem))
+  };
   return contentIndex;
 }
 
@@ -449,9 +449,7 @@ function getMeta(url: string, title?: string, meta?: FrontMatter["meta"]) {
 
   let image: string | undefined;
   if (meta?.image) {
-    image = meta.image.includes("https://res.cloudinary.com/")
-      ? meta.image
-      : absoluteUrl(meta.image);
+    image = isExternalUrl(meta.image) ? meta.image : absoluteUrl(meta.image);
   }
 
   const result: PageMeta = {
@@ -474,16 +472,17 @@ interface SectionContext {
   type?: string;
 }
 
-function entry(
-  showCovers: boolean,
-  cover: unknown,
-  heading: unknown,
-  lede: unknown,
-  url: unknown,
-  linkText: unknown
-): EntryModel {
+interface EntryFields {
+  cover?: unknown;
+  heading?: unknown;
+  lede?: unknown;
+  url?: unknown;
+  linkText?: unknown;
+}
+
+function entry({ cover, heading, lede, url, linkText }: EntryFields) {
   const model: EntryModel = {};
-  if (showCovers && cover) model.cover = String(cover);
+  if (cover) model.cover = String(cover);
   if (heading) model.heading = String(heading);
   if (lede) model.lede = html(lede);
   if (url) model.url = String(url);
@@ -503,14 +502,13 @@ function portfolioUrl(key: string) {
 function portfolioEntry(key: string, showCovers: boolean) {
   const item = portfolio[key];
   if (!item) throw new Error(`Unknown portfolio item "${key}" in \`featured\``);
-  return entry(
-    showCovers,
-    `${CLOUDINARY}/image/upload/f_auto,q_auto,w_1000/${item.cover ?? ""}`,
-    item.name,
-    item.lede,
-    portfolioUrl(key),
-    "View case study"
-  );
+  return entry({
+    cover: showCovers && cloudinaryCover(item.cover ?? ""),
+    heading: item.name,
+    lede: item.lede,
+    url: portfolioUrl(key),
+    linkText: "View case study"
+  });
 }
 
 const servicesByDate = () =>
@@ -522,7 +520,8 @@ const servicesByDate = () =>
 const byOrder = (items: ContentItem[]) =>
   [...items].sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
 
-function getCollection(name: unknown): unknown[] | undefined {
+// Posts and featured items are newest first
+function getCollection(name: unknown): ContentItem[] | undefined {
   const index = getIndex();
   switch (name) {
     case "posts":
@@ -530,7 +529,8 @@ function getCollection(name: unknown): unknown[] | undefined {
     case "featured":
       return index.listed
         .filter((item) => item.tags.includes("Featured"))
-        .sort(byDate);
+        .sort(byDate)
+        .reverse();
     case "portfolio":
       return index.listed.filter((item) => item.collection === "portfolio");
     case "services":
@@ -549,7 +549,6 @@ function resolveEntries(
     type: "entries",
     heading: optionalString(section.heading),
     readMore: asLink(section.readMore),
-    showCovers,
     entries: [],
     empty: false
   };
@@ -564,8 +563,9 @@ function resolveEntries(
       : `-${orientation ?? ""}`;
 
   const from = items.from;
-  const limit = Number(items.limit) || 99999;
-  const collection = head(getCollection(from) ?? [], -limit);
+  // Content writes `limit: -100` for "everything" (Nunjucks' `head` filter)
+  const limit = Math.abs(Number(items.limit)) || Infinity;
+  const collection = (getCollection(from) ?? []).slice(0, limit);
 
   if (!collection.length) {
     model.empty = true;
@@ -573,21 +573,20 @@ function resolveEntries(
   }
 
   if (from === "featured" || from === "posts") {
-    let posts = [...(collection as ContentItem[])].reverse();
+    let posts = collection;
     if (context.tag) {
       posts = posts.filter((post) => post.tags.includes(context.tag!));
     } else if (context.type) {
       posts = posts.filter((post) => post.data.type === context.type);
     }
     model.entries = posts.map((post) =>
-      entry(
-        showCovers,
-        post.data.cover,
-        post.data.title,
-        post.data.lede,
-        post.url,
-        "Read article"
-      )
+      entry({
+        cover: showCovers && post.data.cover,
+        heading: post.data.title,
+        lede: post.data.lede,
+        url: post.url,
+        linkText: "Read article"
+      })
     );
   } else if (from === "portfolio") {
     const featured = items.featured as string[] | undefined;
@@ -597,15 +596,13 @@ function resolveEntries(
           .filter(([, item]) => !item.template && !item.featured)
           .map(([key]) => portfolioEntry(key, showCovers));
   } else if (from === "services") {
-    model.entries = byOrder(collection as ContentItem[]).map((service) =>
-      entry(
-        showCovers,
-        service.data.cover ?? "",
-        service.data.title,
-        service.data.lede,
-        "",
-        "Learn more"
-      )
+    model.entries = byOrder(collection).map((service) =>
+      entry({
+        cover: showCovers && service.data.cover,
+        heading: service.data.title,
+        lede: service.data.lede,
+        linkText: "Learn more"
+      })
     );
   }
 
@@ -641,24 +638,20 @@ function resolveIntro(
     if (items) {
       if (items.from === "services") {
         let services = byOrder(servicesByDate());
-        if (items.limit) services = head(services, Number(items.limit));
+        if (items.limit) services = services.slice(0, Number(items.limit));
         model.right.items = {
           from: "services",
           entries: services.map((service) =>
-            entry(
-              false,
-              false,
-              service.data.title,
-              service.data.short_lede,
-              "",
-              ""
-            )
+            entry({
+              heading: service.data.title,
+              lede: service.data.short_lede
+            })
           )
         };
       } else if (items.from === "photosOfMe") {
         model.right.items = { from: "photosOfMe" };
       } else {
-        model.right.items = { from: "other" };
+        throw new Error(`Unknown intro items source "${items.from}"`);
       }
     }
   }
@@ -680,7 +673,7 @@ function resolveTestimonial(id: unknown): TestimonialModel | undefined {
     );
   }
 
-  const person = people.find(({ id }) => id === testimonial.person_id);
+  const person = personById(testimonial.person_id);
   if (person) {
     model.person = { name: person.name };
     if (person.position) model.person.position = person.position;
@@ -795,10 +788,7 @@ function resolveSection(
     case "tagList":
       return {
         type: "tagList",
-        tags: index.tagList.map((tag) => ({
-          text: tag,
-          url: `/tags/${slug(tag)}/`
-        }))
+        tags: index.tagList.map((tag) => ({ text: tag, url: tagUrl(tag) }))
       };
     case "typeList": {
       const exclude = section.exclude as string[] | undefined;
@@ -808,10 +798,7 @@ function resolveSection(
         types: exclude
           ? index.typeList
               .filter((type) => !exclude.includes(type))
-              .map((type) => ({
-                text: type,
-                url: `/type/${plural(slug(type))}/`
-              }))
+              .map((type) => ({ text: type, url: typeUrl(type) }))
           : []
       };
     }
@@ -822,7 +809,6 @@ function resolveSection(
         pages: index.pages.map(({ title, url }) => ({ title, url }))
       };
     case "socialProofLogos":
-      return { type: "socialProofLogos", logos: SOCIAL_PROOF_LOGOS };
     case "cta":
     case "contact":
     case "projectInquiry":
@@ -850,8 +836,8 @@ function getPostNav(item: ContentItem): PostNavModel | null {
 
   const toLink = (post?: ContentItem) =>
     post ? { url: post.url, text: String(post.data.title) } : undefined;
-  const next = toLink(posts[index + 1]);
-  const previous = toLink(posts[index - 1]);
+  const next = toLink(posts[index - 1]);
+  const previous = toLink(posts[index + 1]);
 
   if (!next && !previous) return null;
   return { next, previous };
@@ -860,7 +846,6 @@ function getPostNav(item: ContentItem): PostNavModel | null {
 function buildPostPage(item: ContentItem): PostPageModel {
   const { data } = item;
   const type = data.type;
-  const typePlural = plural((type ?? "").toLowerCase());
   const isBook = type === "Book";
   const body = renderBody(item);
 
@@ -886,7 +871,7 @@ function buildPostPage(item: ContentItem): PostPageModel {
     meta: getMeta(item.url, data.title, data.meta),
     sectionClass: [
       "post _page-spacing-top _container -small",
-      typePlural,
+      type ? plural(slug(type)) : "",
       data.modifier ? `-${data.modifier}` : ""
     ]
       .filter(Boolean)
@@ -901,7 +886,7 @@ function buildPostPage(item: ContentItem): PostPageModel {
         ? visibleTags.map((tag) =>
             tag === "drafts"
               ? { name: "draft" }
-              : { name: tag, url: `/tags/${slug(tag)}/` }
+              : { name: tag, url: tagUrl(tag) }
           )
         : null,
     content,
@@ -915,17 +900,13 @@ function buildPostPage(item: ContentItem): PostPageModel {
   if (type) {
     model.type = {
       label: type,
-      url: `/type/${typePlural}/`,
-      title: `View archive for ${typePlural}`
+      url: typeUrl(type),
+      title: `View archive for ${plural(slug(type))}`
     };
   }
   if (data.title) {
     model.footer = {
-      url: item.url,
-      title: String(data.title),
       article: data.long_form ? "a" : "an",
-      typeUrl: `/type/${typePlural}/`,
-      typeTitle: `View archive for ${typePlural}`,
       typeLabel: (data.long_form ?? type ?? "").toLowerCase()
     };
   }
@@ -936,52 +917,42 @@ function buildPostPage(item: ContentItem): PostPageModel {
 function buildPortfolioPage(item: ContentItem): PortfolioPageModel {
   const { data } = item;
   const project: Partial<PortfolioItem> = portfolio[String(data.data)] ?? {};
-  const body = renderBody(item);
+  const { pillars } = project;
 
-  const model: PortfolioPageModel = {
+  return {
     layout: "portfolio",
     url: item.url,
     meta: getMeta(item.url, data.title, data.meta),
-    sections: resolveSections(data.sections, { title: data.title }),
-    content: body,
-    postNav: null,
-    comments: data.comments !== false
-  };
-
-  if (project.color) model.color = project.color;
-  if (project.name) model.client = project.name;
-  if (project.lede) model.lede = project.lede;
-  if (project.overview) model.overview = html(project.overview);
-  if (project.size) model.size = project.size;
-  if (project.industry) model.industry = project.industry;
-  if (project.services) model.services = project.services;
-  if (project.year) model.year = String(project.year);
-  if (project.technologies) model.technologies = project.technologies;
-  if (project.people) {
-    model.people = project.people.flatMap((id) => {
-      const person = people.find((candidate) => candidate.id === id);
+    color: project.color,
+    client: project.name,
+    lede: project.lede,
+    overview: project.overview && html(project.overview),
+    size: project.size,
+    industry: project.industry,
+    services: project.services,
+    year: project.year === undefined ? undefined : String(project.year),
+    technologies: project.technologies,
+    people: project.people?.flatMap((id) => {
+      const person = personById(id);
       return person
         ? [{ name: person.name, url: person.url, position: person.position }]
         : [];
-    });
-  }
-  if (project.awards) model.awards = Object.values(project.awards);
-  if (project.url) {
-    model.siteUrl = project.url;
-    model.siteTitle = `Visit ${project.name ?? ""} ${project.project ?? ""}`;
-  }
-  if (project.cover) {
-    model.cover = `${CLOUDINARY}/image/upload/f_auto,q_auto,w_1000/${project.cover}`;
-  }
-  if (project.pillars) {
-    const { client, challenge, solution } = project.pillars;
-    model.pillars = {};
-    if (client) model.pillars.client = client;
-    if (challenge) model.pillars.challenge = html(challenge);
-    if (solution) model.pillars.solution = html(solution);
-  }
-
-  return model;
+    }),
+    awards: project.awards,
+    siteUrl: project.url,
+    siteTitle: project.url
+      ? `Visit ${project.name ?? ""} ${project.project ?? ""}`
+      : undefined,
+    cover: project.cover && cloudinaryCover(project.cover),
+    pillars: pillars && {
+      client: pillars.client,
+      challenge: pillars.challenge && html(pillars.challenge),
+      solution: pillars.solution && html(pillars.solution)
+    },
+    sections: resolveSections(data.sections, { title: data.title }),
+    content: renderBody(item),
+    comments: data.comments !== false
+  };
 }
 
 function buildBasicPage(
@@ -1008,26 +979,21 @@ function buildItemPage(item: ContentItem): PageModel {
       return buildPostPage(item);
     case "portfolio":
       return buildPortfolioPage(item);
-    case "type": {
-      const title = getTitle(item);
+    default: {
+      // `sections:` with no value is `null`, which means "none"
+      let sections = item.data.sections;
+      if (sections === undefined && item.layout === "type") {
+        sections = TYPE_SECTIONS;
+      }
       return buildBasicPage(
         item.url,
-        title,
+        getTitle(item),
         item.data,
-        item.data.sections !== undefined ? item.data.sections : TYPE_SECTIONS,
+        sections,
         renderBody(item),
         { type: item.data.type }
       );
     }
-    default:
-      return buildBasicPage(
-        item.url,
-        item.data.title,
-        item.data,
-        item.data.sections,
-        renderBody(item),
-        { type: item.data.type }
-      );
   }
 }
 
@@ -1053,7 +1019,6 @@ function normalizePath(pathname: string) {
 export function getPage(pathname: string): PageModel | undefined {
   const { byUrl } = getIndex();
   const path = normalizePath(pathname);
-  if (path === NOT_FOUND_URL) return undefined;
   const build =
     byUrl.get(path) ??
     (!path.endsWith("/") ? byUrl.get(`${path}/`) : undefined);
@@ -1061,7 +1026,7 @@ export function getPage(pathname: string): PageModel | undefined {
 }
 
 export function getNotFoundPage(): PageModel {
-  return getIndex().byUrl.get(NOT_FOUND_URL)!();
+  return getIndex().notFound();
 }
 
 /** Every page that should be pre-rendered at build time */
@@ -1091,7 +1056,7 @@ export function getSitemapPages() {
 }
 
 export function getFeedPosts() {
-  return [...getIndex().posts].reverse().map((post) => ({
+  return getIndex().posts.map((post) => ({
     title: String(post.data.title ?? ""),
     url: absoluteUrl(post.url),
     date: post.date,
@@ -1103,7 +1068,7 @@ export function getFeedPosts() {
 export function getLabContent(): LabContent {
   const index = getIndex();
 
-  const posts = [...index.posts].reverse().map((post) => {
+  const posts = index.posts.map((post) => {
     const image = optionalString(post.data.meta?.image);
     return {
       title: String(post.data.title ?? ""),
@@ -1125,7 +1090,7 @@ export function getLabContent(): LabContent {
       name: item.name,
       url: portfolioUrl(key),
       lede: optionalString(item.lede),
-      cover: `${CLOUDINARY}/image/upload/f_auto,q_auto,w_1200/${item.cover}`,
+      cover: cloudinaryCover(item.cover ?? ""),
       // Square, padded with the cover's own edge color, for narrow frames
       coverSquare: `${CLOUDINARY}/image/upload/f_auto,q_auto,c_pad,ar_1:1,b_auto:border,w_640/${item.cover}`,
       year: optionalString(item.year),
@@ -1141,9 +1106,14 @@ export function getLabContent(): LabContent {
     lede: optionalString(item.data.short_lede ?? item.data.lede)
   }));
 
-  const { socials: socialIds, ...about } = profile;
+  const { socials: socialNames, ...about } = profile;
   const image = (id: string, transform: string) =>
     `${CLOUDINARY}/image/upload/f_auto,q_auto,${transform}/${id}`;
+  const socialByName = (name: string) => {
+    const social = socials.find((candidate) => candidate.name === name);
+    if (!social) throw new Error(`No social profile named "${name}"`);
+    return social;
+  };
 
   return {
     posts,
@@ -1159,10 +1129,10 @@ export function getLabContent(): LabContent {
         alt: photo.alt
       }))
     },
-    socials: socialIds.map((id) => ({
-      text: socials[id].name,
-      url: socials[id].url,
-      rel: socials[id].name === "Mastodon" ? "me" : undefined
+    socials: socialNames.map(socialByName).map((social) => ({
+      text: social.name,
+      url: social.url,
+      rel: social.name === "Mastodon" ? "me" : undefined
     }))
   };
 }

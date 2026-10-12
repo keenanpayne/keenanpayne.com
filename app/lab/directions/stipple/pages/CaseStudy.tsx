@@ -11,7 +11,6 @@ import {
   Facts,
   Layout,
   PageHeader,
-  PostNav,
   Quote,
   Section,
   Stipple,
@@ -237,8 +236,6 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
             <Facts rows={details} />
           </Section>
         )}
-
-        <PostNav nav={page.postNav} />
       </article>
     </Layout>
   );

@@ -1,21 +1,18 @@
 import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
-export default [
-  route("sitemap.xml", "routes/sitemap.ts"),
-  route("feed.xml", "routes/feed.xml.ts"),
-  route("feed.json", "routes/feed.json.ts"),
+import { RESOURCE_ROUTES } from "./lib/resource-routes";
 
-  // Legacy URLs
-  route("blog", "routes/redirects.ts", { id: "redirects/blog" }),
-  route("blog/*", "routes/redirects.ts", { id: "redirects/blog-posts" }),
-  route("work", "routes/redirects.ts", { id: "redirects/work" }),
+export default [
+  ...Object.entries(RESOURCE_ROUTES).map(([path, file]) => route(path, file)),
 
   // Design lab: experimental aesthetic directions
   route("lab", "routes/lab.tsx"),
   route("lab/styleguide/*", "routes/lab.styleguide.tsx"),
   route("lab/:direction/*", "routes/lab.$direction.tsx"),
 
-  // Every Markdown page (posts, portfolio, services, tags, …) by its URL
+  // Every Markdown page (posts, portfolio, services, tags, …) by its URL,
+  // plus the legacy redirects and the 404 page. The splat alone doesn't
+  // pre-render `/`, hence the index route.
   index("routes/page.tsx", { id: "routes/home" }),
   route("*", "routes/page.tsx")
 ] satisfies RouteConfig;

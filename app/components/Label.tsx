@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 
-import { canonicalPath } from "../lib/site";
 import type { LinkModel } from "../lib/types";
 
 interface LabelProps {
@@ -17,7 +16,7 @@ export function Label({ text, className, readMore }: LabelProps) {
       <span>{text}</span>
 
       {readMore && (
-        <Link to={canonicalPath(readMore.url)} className="_font-smoothing">
+        <Link to={readMore.url} className="_font-smoothing">
           {readMore.text}
         </Link>
       )}

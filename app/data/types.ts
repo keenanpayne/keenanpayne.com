@@ -68,7 +68,7 @@ export interface PortfolioItem {
   people?: number[];
   testimonials?: number[];
   assets?: Record<number, PortfolioAsset>;
-  awards?: Record<number, PortfolioAward>;
+  awards?: PortfolioAward[];
 }
 
 export interface TestimonialQuality {

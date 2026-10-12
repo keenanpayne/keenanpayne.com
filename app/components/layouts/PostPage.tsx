@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 
-import { absoluteUrl } from "../../lib/site";
 import type { PostPageModel } from "../../lib/types";
 import { Comments } from "../Comments";
 import { HtmlContent } from "../HtmlContent";
@@ -54,11 +53,11 @@ export function PostPage({ page }: { page: PostPageModel }) {
         <HtmlContent className="post-content" html={page.content} />
 
         <footer className="post-footer">
-          {footer && (
+          {footer && page.type && (
             <p>
-              <Link to={footer.url}>{footer.title}</Link>
+              <Link to={page.url}>{page.title}</Link>
               {` is ${footer.article} `}
-              <Link to={footer.typeUrl} title={footer.typeTitle}>
+              <Link to={page.type.url} title={page.type.title}>
                 {footer.typeLabel}
               </Link>
               {" published on "}
@@ -72,7 +71,7 @@ export function PostPage({ page }: { page: PostPageModel }) {
         <PostNav nav={page.postNav} />
       </section>
 
-      {page.comments && <Comments url={absoluteUrl(page.url)} />}
+      {page.comments && <Comments url={page.meta.canonical} />}
 
       {page.newsletter && <NewsletterLarge modifiers="-pre-footer" />}
     </main>

@@ -2,6 +2,7 @@
 // plain, serializable data — HTML strings are marked as such in comments.
 
 import type { ProfileFact } from "../data/profile";
+import type { Person, PortfolioAward } from "../data/types";
 
 export interface LinkModel {
   url: string;
@@ -64,9 +65,7 @@ export interface IntroSection {
     heading?: string;
     readMore?: LinkModel;
     items?:
-      | { from: "services"; entries: EntryModel[] }
-      | { from: "photosOfMe" }
-      | { from: "other" };
+      { from: "services"; entries: EntryModel[] } | { from: "photosOfMe" };
   };
 }
 
@@ -74,7 +73,6 @@ export interface EntriesSection {
   type: "entries";
   heading?: string;
   readMore?: LinkModel;
-  showCovers: boolean;
   /** Class for the items container; omitted when the section lists nothing */
   itemsClass?: string;
   entries: EntryModel[];
@@ -142,7 +140,6 @@ export interface DribbbleSection {
 
 export interface SocialProofLogosSection {
   type: "socialProofLogos";
-  logos: Array<{ name: string; svg: string }>;
 }
 
 export interface TagListSection {
@@ -210,12 +207,9 @@ export interface PostPageModel extends BaseModel {
   tags: Array<{ name: string; url?: string }> | null;
   /** HTML for `.post-content` (cover, table of contents and body) */
   content: string;
+  /** "<title> is a/an <typeLabel> published on <date>" */
   footer?: {
-    url: string;
-    title: string;
     article: string;
-    typeUrl: string;
-    typeTitle: string;
     typeLabel: string;
   };
   postNav: PostNavModel | null;
@@ -223,11 +217,7 @@ export interface PostPageModel extends BaseModel {
   newsletter: boolean;
 }
 
-export interface PortfolioDetailPerson {
-  name: string;
-  url?: string;
-  position?: string;
-}
+export type PortfolioDetailPerson = Pick<Person, "name" | "url" | "position">;
 
 export interface PortfolioPageModel extends BaseModel {
   layout: "portfolio";
@@ -242,14 +232,7 @@ export interface PortfolioPageModel extends BaseModel {
   year?: string;
   technologies?: string[];
   people?: PortfolioDetailPerson[];
-  awards?: Array<{
-    name: string;
-    year: string;
-    category: string;
-    details: string;
-    status: string;
-    link: string;
-  }>;
+  awards?: PortfolioAward[];
   siteUrl?: string;
   siteTitle?: string;
   cover?: string;
@@ -263,7 +246,6 @@ export interface PortfolioPageModel extends BaseModel {
   sections: SectionModel[];
   /** HTML */
   content: string;
-  postNav: PostNavModel | null;
   comments: boolean;
 }
 

@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 import { HtmlContent } from "../../../../components/HtmlContent";
 import { Html, useTo, type TemplateProps } from "../../../site";
-import { Facts, PageHeader, PostNav, Quote, Section } from "../parts";
+import { Facts, PageHeader, Quote, Section } from "../parts";
 
 export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
   const to = useTo();
@@ -135,8 +135,6 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
       {page.content && (
         <HtmlContent className="wireframe-prose" html={page.content} />
       )}
-
-      <PostNav nav={page.postNav} />
     </article>
   );
 }

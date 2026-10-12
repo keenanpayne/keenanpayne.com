@@ -1,6 +1,8 @@
 import type { Config } from "@react-router/dev/config";
 
-const RESOURCE_PATHS = ["/sitemap.xml", "/feed.xml", "/feed.json"];
+import { RESOURCE_ROUTES } from "./app/lib/resource-routes";
+
+const RESOURCE_PATHS = Object.keys(RESOURCE_ROUTES).map((path) => `/${path}`);
 
 export default {
   // Server-side render every request, and pre-render every known page at

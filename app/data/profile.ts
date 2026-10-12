@@ -96,6 +96,6 @@ export const profile = {
       text: "A careful release, documentation for your team, and support after launch."
     }
   ],
-  /** Profiles elsewhere, by their ID in `./socials.ts`, in display order */
-  socials: [1, 4, 6, 2, 3]
+  /** Profiles elsewhere, by their name in `./socials.ts`, in display order */
+  socials: ["LinkedIn", "Bluesky", "Mastodon", "Dribbble", "CodePen"]
 };

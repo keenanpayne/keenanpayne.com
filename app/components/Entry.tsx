@@ -1,10 +1,9 @@
 import { Link } from "react-router";
 
-import { canonicalPath } from "../lib/site";
 import type { EntryModel } from "../lib/types";
 
 export function Entry({ entry }: { entry: EntryModel }) {
-  const url = entry.url ? canonicalPath(entry.url) : undefined;
+  const { url } = entry;
 
   return (
     <article className="collections-item">

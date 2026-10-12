@@ -11,14 +11,14 @@ describe("rebaseLinks", () => {
         {
           url: "/about/",
           link: "/contact/?from=lab#form",
-          typeUrl: "/type/essays/"
+          type: { url: "/type/essays/" }
         },
         BASE
       )
     ).toEqual({
       url: "/lab/monograph/about/",
       link: "/lab/monograph/contact/?from=lab#form",
-      typeUrl: "/lab/monograph/type/essays/"
+      type: { url: "/lab/monograph/type/essays/" }
     });
   });
 
@@ -26,7 +26,7 @@ describe("rebaseLinks", () => {
     const data = {
       url: "https://example.com/",
       link: "//cdn.example.com/x",
-      typeUrl: "/images/social.png",
+      image: { url: "/images/social.png" },
       cover: "/portfolio/asana/",
       src: "/images/photo.jpg"
     };
@@ -39,7 +39,7 @@ describe("rebaseLinks", () => {
         {
           url: "https://keenanpayne.com/contact",
           link: "http://www.keenanpayne.com/type/drafts/",
-          typeUrl: "https://keenanpayne.com",
+          home: { url: "https://keenanpayne.com" },
           body:
             '<a href="https://keenanpayne.com/contact" target="_blank">A</a> ' +
             '<a href="https://keenanpayne.com.example.net/">B</a> ' +
@@ -50,7 +50,7 @@ describe("rebaseLinks", () => {
     ).toEqual({
       url: "/lab/monograph/contact",
       link: "/lab/monograph/type/drafts/",
-      typeUrl: "/lab/monograph/",
+      home: { url: "/lab/monograph/" },
       body:
         '<a href="/lab/monograph/contact" target="_blank">A</a> ' +
         '<a href="https://keenanpayne.com.example.net/">B</a> ' +

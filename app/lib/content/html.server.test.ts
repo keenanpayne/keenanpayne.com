@@ -50,12 +50,17 @@ describe("convertToAbsoluteUrls", () => {
   it("resolves relative href, src and fragment URLs against the page", () => {
     expect(
       convertToAbsoluteUrls(
-        '<a href="/about/">a</a><img src=\'img.png\'><a href="#fn1">1</a>',
+        '<a href="/about/">a</a><img src="img.png"><a href="#fn1">1</a>',
         base
       )
     ).toBe(
-      '<a href="https://keenanpayne.com/about/">a</a><img src=\'https://keenanpayne.com/post/img.png\'><a href="https://keenanpayne.com/post/#fn1">1</a>'
+      '<a href="https://keenanpayne.com/about/">a</a><img src="https://keenanpayne.com/post/img.png"><a href="https://keenanpayne.com/post/#fn1">1</a>'
     );
+  });
+
+  it("leaves URLs in code blocks alone", () => {
+    const html = '<pre><code>&lt;a href="/about/"&gt;</code></pre>';
+    expect(convertToAbsoluteUrls(html, base)).toBe(html);
   });
 
   it("keeps absolute URLs and resolves every srcset candidate", () => {

@@ -1,5 +1,6 @@
 import { parse, type HTMLElement } from "node-html-parser";
 
+import { escapeHtml } from "../html";
 import { isExternalUrl } from "../site";
 
 //
@@ -61,12 +62,6 @@ function tocItemHtml(item: TocItem): string {
   return markup;
 }
 
-// `text` is entity-decoded, so re-escape it for the markup. Only `&`, `<`
-// and `>`, which is how browsers serialize text, so hydration sees the same
-// HTML the server sent.
-const escapeText = (text: string) =>
-  text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-
 function getParent(previous: TocItem, current: TocItem): TocItem {
   if (current.level > previous.level) return previous;
   if (current.level === previous.level) return previous.parent!;
@@ -88,7 +83,8 @@ export function buildTableOfContents(html: string, tags: string[]) {
   for (const heading of headings) {
     const current: TocItem = {
       slug: heading.getAttribute("id"),
-      text: escapeText(heading.text.trim()),
+      // `text` is entity-decoded, so re-escape it for the markup
+      text: escapeHtml(heading.text.trim()),
       level: Number(heading.tagName.slice(1)),
       children: []
     };
@@ -105,13 +101,21 @@ export function buildTableOfContents(html: string, tags: string[]) {
 //
 // Absolute URLs (feeds)
 // ---------------------
-// Port of `htmlToAbsoluteUrls` from `@11ty/eleventy-plugin-rss`.
+// Port of `htmlToAbsoluteUrls` from `@11ty/eleventy-plugin-rss`. The content
+// has already been serialized by node-html-parser (`addExternalLinkAttributes`),
+// so re-serializing it here changes nothing but the URLs.
 
-const URL_ATTRIBUTE =
-  /(\s(?:href|src|poster|cite|action|longdesc|formaction)\s*=\s*)(?:"([^"]*)"|'([^']*)')/gi;
-const SRCSET_ATTRIBUTE = /(\ssrcset\s*=\s*)(?:"([^"]*)"|'([^']*)')/gi;
+const URL_ATTRIBUTES = [
+  "href",
+  "src",
+  "poster",
+  "cite",
+  "action",
+  "longdesc",
+  "formaction"
+];
 
-function absoluteUrl(url: string, base: string) {
+function resolveUrl(url: string, base: string) {
   try {
     return new URL(url.trim(), base).toString();
   } catch {
@@ -156,26 +160,28 @@ function parseSrcset(srcset: string) {
   return candidates;
 }
 
-export function convertToAbsoluteUrls(html: string, base: string) {
-  return html
-    .replace(
-      URL_ATTRIBUTE,
-      (_match, prefix: string, double?: string, single?: string) =>
-        double !== undefined
-          ? `${prefix}"${absoluteUrl(double, base)}"`
-          : `${prefix}'${absoluteUrl(single!, base)}'`
+function resolveSrcset(srcset: string, base: string) {
+  return parseSrcset(srcset)
+    .map(({ url, descriptors }) =>
+      [resolveUrl(url, base), descriptors].filter(Boolean).join(" ")
     )
-    .replace(
-      SRCSET_ATTRIBUTE,
-      (_match, prefix: string, double?: string, single?: string) => {
-        const candidates = parseSrcset(double ?? single!)
-          .map(({ url, descriptors }) =>
-            [absoluteUrl(url, base), descriptors].filter(Boolean).join(" ")
-          )
-          .join(", ");
-        return double !== undefined
-          ? `${prefix}"${candidates}"`
-          : `${prefix}'${candidates}'`;
-      }
+    .join(", ");
+}
+
+export function convertToAbsoluteUrls(html: string, base: string) {
+  const root = parse(html);
+
+  for (const name of URL_ATTRIBUTES) {
+    for (const element of root.querySelectorAll(`[${name}]`)) {
+      element.setAttribute(name, resolveUrl(element.getAttribute(name)!, base));
+    }
+  }
+  for (const element of root.querySelectorAll("[srcset]")) {
+    element.setAttribute(
+      "srcset",
+      resolveSrcset(element.getAttribute("srcset")!, base)
     );
+  }
+
+  return root.toString();
 }

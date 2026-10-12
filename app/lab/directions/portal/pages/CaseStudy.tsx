@@ -13,12 +13,11 @@ import {
   Features,
   KeySection,
   LinkCard,
-  PostNav,
   Quote,
   SideGroup,
   SideList
 } from "../parts";
-import { FACE, ITEMS, MONITOR } from "../sprites";
+import { FACE, MONITOR } from "../sprites";
 
 /**
  * A gallery with a headline, plus the headless galleries and client quotes
@@ -222,8 +221,6 @@ export function CaseStudy({
               <HtmlContent className="pt-prose" html={page.content} />
             </KeySection>
           )}
-
-          <PostNav nav={page.postNav} noun="case study" />
         </div>
 
         <aside className="pt-columns__side" aria-label="Project details">
@@ -272,15 +269,6 @@ export function CaseStudy({
             {page.siteUrl && (
               <LinkCard href={page.siteUrl} label="Visit site" art={MONITOR}>
                 {page.siteTitle ?? "See it live"}
-              </LinkCard>
-            )}
-            {page.postNav?.next && (
-              <LinkCard
-                href={page.postNav.next.url}
-                label="Next case"
-                art={ITEMS.case}
-              >
-                {page.postNav.next.text}
               </LinkCard>
             )}
             <LinkCard
