@@ -1,13 +1,9 @@
-import { metadata } from "../../../lib/site";
-import {
-  cx,
-  LocalTime,
-  useMenu,
-  useQueryParam,
-  useTo,
-  type ShellProps
-} from "../../site";
+import { useId } from "react";
 
+import { metadata } from "../../../lib/site";
+import { cx, useMenu, useQueryParam, useTo, type ShellProps } from "../../site";
+
+import { DenverClock, DenverReadout } from "./Denver";
 import { Cells, Cta, DEFAULT_CTA, isCta } from "./parts";
 
 const WIDE = "(width >= 960px)";
@@ -19,6 +15,7 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
   const to = useTo();
   const { profile, socials } = content;
   const { open, setOpen, toggle } = useMenu(WIDE);
+  const readout = useId();
   // The lab previews the other closing panels from the URL
   const [ctaParam] = useQueryParam("cta");
   const cta = isCta(ctaParam) ? ctaParam : DEFAULT_CTA;
@@ -54,10 +51,12 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
           </nav>
 
           <div className="gl-header__end">
-            <p className="gl-header__clock">
-              <span>{profile.location.city}</span>
-              <LocalTime />
-            </p>
+            <DenverClock
+              readout={readout}
+              location={profile.location}
+              label={profile.location.city}
+              className="gl-header__clock"
+            />
             <div className="gl-header__cta">
               <a
                 className="gl-button gl-button--small"
@@ -99,9 +98,12 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
                 {profile.name}
               </a>
               <p>{profile.role}</p>
-              <p className="gl-footer__clock">
-                {profile.location.name} · <LocalTime />
-              </p>
+              <DenverClock
+                readout={readout}
+                location={profile.location}
+                label={`${profile.location.name} ·`}
+                className="gl-footer__clock"
+              />
             </div>
             <div className="gl-cell">
               <p className="gl-label">Pages</p>
@@ -160,6 +162,8 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
           </p>
         </footer>
       </div>
+
+      <DenverReadout id={readout} location={profile.location} />
     </div>
   );
 }

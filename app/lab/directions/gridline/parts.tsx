@@ -1,9 +1,12 @@
 import {
+  useEffect,
   useId,
   useRef,
   useState,
   type CSSProperties,
   type KeyboardEvent,
+  type MouseEvent as ReactMouseEvent,
+  type PointerEvent as ReactPointerEvent,
   type ReactNode
 } from "react";
 
@@ -20,10 +23,13 @@ import {
   Html,
   LocalTime,
   pad,
+  prefersReducedMotion,
   relabel,
   useTo,
   type FormField as Field
 } from "../../site";
+
+import { ServiceArt } from "./ServiceArt";
 
 type Posts = LabContent["posts"];
 
@@ -441,6 +447,9 @@ export function ServiceCells({
         <li key={service.url} className="gl-cell gl-service">
           <a href={service.url}>
             <span className="gl-service__index">{pad(index + 1)}</span>
+            <span className="gl-service__art">
+              <ServiceArt url={service.url} />
+            </span>
             <h3>{service.title}</h3>
             {service.lede && <p>{service.lede}</p>}
             <span className="gl-service__go">
@@ -1155,6 +1164,227 @@ export const DEFAULT_CTA: CtaId = "blueprint";
 
 export const isCta = (id: string): id is CtaId => Object.hasOwn(CTAS, id);
 
+/** The Blueprint panel's grid squares, in pixels (its stylesheet reads it) */
+const BLUEPRINT_GRID = 48;
+
+/** A filled square, counted in squares from the middle */
+type Paint = { column: number; row: number; leaving?: boolean };
+
+type Square = Omit<Paint, "leaving">;
+
+/** Clicks and drags on these do their own thing, so they never fill squares */
+const NOT_PAINTABLE = "a, button, input, textarea, select, label, .gl-window";
+
+/**
+ * The square at a point in a panel of a size. They're counted from the one
+ * whose corner sits just off the middle (the grid is centered), so filled
+ * squares stay on the grid when the panel resizes.
+ */
+const squareAt = (
+  x: number,
+  y: number,
+  { width, height }: { width: number; height: number }
+): Square => ({
+  column: Math.floor((x - (width / 2 - BLUEPRINT_GRID / 2)) / BLUEPRINT_GRID),
+  row: Math.floor((y - (height / 2 - BLUEPRINT_GRID / 2)) / BLUEPRINT_GRID)
+});
+
+const sameSquare = (a: Square, b: Square) =>
+  a.column === b.column && a.row === b.row;
+
+/**
+ * The Blueprint panel: the closing call to action, and behind the home
+ * page's terminal. Under a mouse or pen, its glow and a violet spotlight on
+ * the grid drift after the pointer, and the square beneath it lights up;
+ * leaving sends the glow back to the middle. A click fills the square it
+ * lands on, and another click clears it; dragging fills every square the
+ * pointer crosses.
+ */
+export function Blueprint({
+  className,
+  children
+}: {
+  className?: string;
+  children: ReactNode;
+}) {
+  const panel = useRef<HTMLDivElement>(null);
+  const frame = useRef(0);
+  // Where a drag last reached, and whether it has left its first square
+  const drag = useRef<{ x: number; y: number; moved: boolean } | null>(null);
+  // The click that ends a drag mustn't also toggle a square
+  const dragged = useRef(false);
+  const [paints, setPaints] = useState<Paint[]>([]);
+
+  useEffect(() => () => cancelAnimationFrame(frame.current), []);
+
+  /** The pointer's position in the panel, and the panel's size */
+  const locate = (clientX: number, clientY: number) => {
+    const box = panel.current!.getBoundingClientRect();
+    return { x: clientX - box.left, y: clientY - box.top, box };
+  };
+
+  /** Fills squares that aren't already, bringing back any fading out */
+  const fill = (squares: Square[]) =>
+    setPaints((current) => {
+      let next = current;
+      for (const square of squares) {
+        const found = next.find((paint) => sameSquare(paint, square));
+        if (!found) next = [...next, square];
+        else if (found.leaving) {
+          next = next.map((paint) => (paint === found ? square : paint));
+        }
+      }
+      return next;
+    });
+
+  const onClick = (event: ReactMouseEvent<HTMLDivElement>) => {
+    if (dragged.current) {
+      dragged.current = false;
+      return;
+    }
+    if ((event.target as Element).closest(NOT_PAINTABLE)) return;
+    const { x, y, box } = locate(event.clientX, event.clientY);
+    const square = squareAt(x, y, box);
+
+    setPaints((current) => {
+      const found = current.find((paint) => sameSquare(paint, square));
+      if (!found) return [...current, square];
+      // Clicked again: a fading square comes back; a filled one fades out,
+      // or simply goes when motion is reduced
+      if (found.leaving || !prefersReducedMotion()) {
+        return current.map((paint) =>
+          paint === found ? { ...square, leaving: !found.leaving } : paint
+        );
+      }
+      return current.filter((paint) => paint !== found);
+    });
+  };
+
+  // A square that has faded out is gone
+  const onPaintEnd = (square: Square) =>
+    setPaints((current) =>
+      current.filter((paint) => !(paint.leaving && sameSquare(paint, square)))
+    );
+
+  const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
+    // Touch scrolls the page instead; taps still fill squares as clicks
+    if (event.pointerType === "touch" || event.button !== 0) return;
+    if ((event.target as Element).closest(NOT_PAINTABLE)) return;
+    const { x, y } = locate(event.clientX, event.clientY);
+    drag.current = { x, y, moved: false };
+    dragged.current = false;
+    // Keeps the drag when it strays past the panel's edge, and stops it
+    // selecting text on the way
+    event.currentTarget.setPointerCapture(event.pointerId);
+    event.preventDefault();
+  };
+
+  const onPointerUp = () => {
+    if (!drag.current) return;
+    dragged.current = drag.current.moved;
+    drag.current = null;
+  };
+
+  /** Fills every square between where the drag was and where it is now */
+  const paintAlong = (clientX: number, clientY: number) => {
+    const from = drag.current;
+    if (!from) return;
+    const { x, y, box } = locate(clientX, clientY);
+    // Nothing until the drag leaves the square it started in, which leaves a
+    // click there to toggle it
+    if (
+      !from.moved &&
+      sameSquare(squareAt(from.x, from.y, box), squareAt(x, y, box))
+    ) {
+      return;
+    }
+    // Sampled a quarter square apart, so a quick drag skips nothing
+    const steps = Math.max(
+      1,
+      Math.ceil(Math.hypot(x - from.x, y - from.y) / (BLUEPRINT_GRID / 4))
+    );
+    const squares = Array.from({ length: steps + 1 }, (_, step) =>
+      squareAt(
+        from.x + ((x - from.x) * step) / steps,
+        from.y + ((y - from.y) * step) / steps,
+        box
+      )
+    );
+    fill(squares);
+    drag.current = { x, y, moved: true };
+  };
+
+  const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "touch") return;
+    const { clientX, clientY } = event;
+    if (drag.current && event.buttons & 1) paintAlong(clientX, clientY);
+
+    // The glow, spotlight, and lit square, at most once a frame
+    cancelAnimationFrame(frame.current);
+    frame.current = requestAnimationFrame(() => {
+      const element = panel.current;
+      if (!element) return;
+      const { x, y, box } = locate(clientX, clientY);
+      // The grid is centered, so its lines sit half a square off the middle
+      const snap = (at: number, size: number) => {
+        const origin = (size / 2 - BLUEPRINT_GRID / 2) % BLUEPRINT_GRID;
+        return (
+          origin + Math.floor((at - origin) / BLUEPRINT_GRID) * BLUEPRINT_GRID
+        );
+      };
+
+      element.style.setProperty("--gl-pointer-x", `${x}px`);
+      element.style.setProperty("--gl-pointer-y", `${y}px`);
+      element.style.setProperty("--gl-cell-x", `${snap(x, box.width)}px`);
+      element.style.setProperty("--gl-cell-y", `${snap(y, box.height)}px`);
+      // Shown a frame after the square first lands, so it fades in where the
+      // pointer is rather than gliding over from a corner
+      if (!element.hasAttribute("data-pointer")) {
+        frame.current = requestAnimationFrame(() =>
+          element.setAttribute("data-pointer", "")
+        );
+      }
+    });
+  };
+
+  const onPointerLeave = () => {
+    cancelAnimationFrame(frame.current);
+    const element = panel.current;
+    if (!element) return;
+    element.style.removeProperty("--gl-pointer-x");
+    element.style.removeProperty("--gl-pointer-y");
+    element.removeAttribute("data-pointer");
+  };
+
+  return (
+    <div
+      ref={panel}
+      className={cx("gl-blueprint", className)}
+      style={{ "--gl-grid": `${BLUEPRINT_GRID}px` } as CSSProperties}
+      onPointerDown={onPointerDown}
+      onPointerMove={onPointerMove}
+      onPointerUp={onPointerUp}
+      onPointerCancel={onPointerUp}
+      onPointerLeave={onPointerLeave}
+      onClick={onClick}
+    >
+      <span className="gl-blueprint__spot" aria-hidden="true" />
+      <span className="gl-blueprint__cell" aria-hidden="true" />
+      {paints.map(({ column, row, leaving }) => (
+        <span
+          key={`${column} ${row}`}
+          className="gl-blueprint__paint"
+          data-leaving={leaving || undefined}
+          style={{ "--gl-column": column, "--gl-row": row } as CSSProperties}
+          onAnimationEnd={() => leaving && onPaintEnd({ column, row })}
+          aria-hidden="true"
+        />
+      ))}
+      {children}
+    </div>
+  );
+}
+
 const CTA_COPY = {
   eyebrow: "Work together",
   title: "Have a project in mind?",
@@ -1228,6 +1458,8 @@ export function Cta({
     <Band className={`gl-cta gl-cta--${variant}`} label={CTA_COPY.eyebrow}>
       {variant === "rays" ? (
         <Rays className="gl-cta__panel">{panel}</Rays>
+      ) : variant === "blueprint" ? (
+        <Blueprint className="gl-cta__panel">{panel}</Blueprint>
       ) : (
         <div className={`gl-cta__panel gl-${variant}`}>{panel}</div>
       )}

@@ -16,6 +16,7 @@ import {
   ServiceRows,
   Trail
 } from "../parts";
+import { ServiceArt } from "../ServiceArt";
 
 export function Service({ page, content }: TemplateProps<"service">) {
   const to = useTo();
@@ -32,6 +33,7 @@ export function Service({ page, content }: TemplateProps<"service">) {
         }
         title={title}
         lede={intro?.subheading}
+        aside={<ServiceArt url={page.url} className="gl-service__cover" />}
       />
 
       <Band label="About this service">

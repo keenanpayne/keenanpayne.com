@@ -2,12 +2,13 @@
  * Service illustrations
  * ==================================================
  * One isometric scene for each service, keyed by the last segment of its
- * URL. A service without a scene here gets generated terrain instead.
+ * URL, drawn through the pen in `./isometric.ts`. Each direction renders
+ * them in its own way, and draws its own stand-in for a service without one.
  * Solids are drawn back to front: the farther from the viewer (the smaller
  * x + y), the earlier.
  */
 
-import { project, type Pen, type Scene, type Vec3 } from "./iso";
+import { project, type Pen, type Scene, type Vec3 } from "./isometric";
 
 /** A rectangle on a wall facing +y (the left-hand faces) */
 const onLeft = (

@@ -1,4 +1,5 @@
 import { getDirection, SAMPLE_PAGES } from "../../registry";
+import type { Condition } from "../../site";
 import {
   formOf,
   Html,
@@ -15,9 +16,17 @@ import {
   TypeSample
 } from "../../styleguide/kit";
 
+import { SkySketch } from "./Denver";
+import {
+  DEFAULT_TREATMENT,
+  ServiceArt,
+  TREATMENTS,
+  type TreatmentId
+} from "./ServiceArt";
 import {
   Arrow,
   Band,
+  Blueprint,
   Button,
   Cells,
   Chips,
@@ -100,6 +109,19 @@ function TypeScale({ content }: SpecimenProps) {
   );
 }
 
+/** Every sky the Denver readout can sketch */
+const SKIES: { condition?: Condition; night: boolean; label: string }[] = [
+  { condition: "clear", night: false, label: "Clear" },
+  { condition: "clear", night: true, label: "Clear night" },
+  { condition: "cloudy", night: false, label: "Cloudy" },
+  { condition: "cloudy", night: true, label: "Cloudy night" },
+  { condition: "fog", night: false, label: "Fog" },
+  { condition: "rain", night: false, label: "Rain" },
+  { condition: "snow", night: false, label: "Snow" },
+  { condition: "storm", night: false, label: "Thunderstorm" },
+  { night: false, label: "Reading the sky" }
+];
+
 function Motifs({ content }: SpecimenProps) {
   return (
     <SpecimenGrid min={300}>
@@ -130,7 +152,7 @@ function Motifs({ content }: SpecimenProps) {
           ))}
         </Cells>
       </Specimen>
-      <Specimen label="Light rays" note="Cover, terminal, call to action, 404">
+      <Specimen label="Light rays" note="Case study covers and the 404">
         <Rays>
           <div style={{ height: 220 }} />
         </Rays>
@@ -142,12 +164,12 @@ function Motifs({ content }: SpecimenProps) {
       </Specimen>
       <Specimen
         label="Terminal"
-        note="Home: the profile, then each section"
+        note="Home: the profile, then each section, on the Blueprint grid"
         wide
       >
-        <Rays className="gl-hero__panel">
+        <Blueprint className="gl-hero__panel">
           <Terminal content={content} />
-        </Rays>
+        </Blueprint>
       </Specimen>
       {Object.entries(MARKS).map(([id, mark]) => (
         <Specimen
@@ -166,6 +188,18 @@ function Motifs({ content }: SpecimenProps) {
           </div>
         </Specimen>
       ))}
+      {SKIES.map(({ condition, night, label }) => (
+        <Specimen
+          key={`${condition}${night}`}
+          label={`Sky: ${label}`}
+          note="The Denver readout, opened from the header clock"
+        >
+          <div className="gl-den__sky" data-night={night || undefined}>
+            <SkySketch condition={condition} night={night} />
+            <p className="gl-den__condition">{label}</p>
+          </div>
+        </Specimen>
+      ))}
       <Specimen label="Wordmark" note="The footer’s last line" wide>
         <p className="gl-wordmark" aria-hidden="true">
           {content.profile.name}
@@ -176,7 +210,7 @@ function Motifs({ content }: SpecimenProps) {
 }
 
 function Imagery({ content }: SpecimenProps) {
-  const { profile, work, testimonials } = content;
+  const { profile, work, testimonials, services } = content;
   const person = testimonials.find(
     (testimonial) => testimonial.person?.image
   )?.person;
@@ -229,6 +263,23 @@ function Imagery({ content }: SpecimenProps) {
           </div>
         </Specimen>
       )}
+      {Object.entries(TREATMENTS).map(([id, treatment]) => (
+        <Specimen
+          key={id}
+          label={`Service illustrations: ${treatment.name}${id === DEFAULT_TREATMENT ? " (in use)" : ""}`}
+          note={`${treatment.note} · ?illo=${id}`}
+          wide
+        >
+          <ul className="gl-illos">
+            {services.map((service) => (
+              <li key={service.url}>
+                <ServiceArt url={service.url} treatment={id as TreatmentId} />
+                <span className="gl-meta">{service.title}</span>
+              </li>
+            ))}
+          </ul>
+        </Specimen>
+      ))}
     </SpecimenGrid>
   );
 }

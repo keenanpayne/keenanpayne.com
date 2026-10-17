@@ -2,12 +2,12 @@ import { Html, useTo, type TemplateProps } from "../../../site";
 import {
   Arrow,
   Band,
+  Blueprint,
   Button,
   Cells,
   Eyebrow,
   KindWords,
   PostRows,
-  Rays,
   SectionHead,
   ServiceCells,
   Stat,
@@ -42,9 +42,9 @@ export function Home({ content }: TemplateProps<"home">) {
       </header>
 
       <Band label="At the terminal">
-        <Rays className="gl-hero__panel">
+        <Blueprint className="gl-hero__panel">
           <Terminal content={content} />
-        </Rays>
+        </Blueprint>
       </Band>
 
       <Band label="By the numbers">
