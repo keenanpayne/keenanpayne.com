@@ -11,7 +11,19 @@ export default {
   async prerender() {
     const { getPrerenderPaths } =
       await import("./app/lib/content/content.server");
-    return [...getPrerenderPaths(), ...RESOURCE_PATHS];
+    const { directions, SAMPLE_PAGES } = await import("./app/lab/registry");
+    const { comparePath, STYLE_SECTIONS, styleguidePath } =
+      await import("./app/lab/styleguide/sections");
+    return [
+      ...getPrerenderPaths(),
+      "/lab/",
+      ...directions.flatMap(({ slug }) =>
+        SAMPLE_PAGES.map(({ path }) => `/lab/${slug}${path}`)
+      ),
+      ...STYLE_SECTIONS.map(({ id }) => comparePath(id)),
+      ...directions.map(({ slug }) => styleguidePath(slug)),
+      ...RESOURCE_PATHS
+    ];
   },
   async buildEnd({ reactRouterConfig }) {
     const { rm, writeFile } = await import("node:fs/promises");

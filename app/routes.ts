@@ -5,6 +5,11 @@ import { RESOURCE_ROUTES } from "./lib/resource-routes";
 export default [
   ...Object.entries(RESOURCE_ROUTES).map(([path, file]) => route(path, file)),
 
+  // Design lab: experimental aesthetic directions
+  route("lab", "routes/lab.tsx"),
+  route("lab/styleguide/*", "routes/lab.styleguide.tsx"),
+  route("lab/:direction/*", "routes/lab.$direction.tsx"),
+
   // Every Markdown page (posts, portfolio, services, tags, …) by its URL,
   // plus the legacy redirects and the 404 page. The splat alone doesn't
   // pre-render `/`, hence the index route.

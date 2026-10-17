@@ -7,6 +7,8 @@ import ripplingLogo from "../../assets/svg/rippling.svg?raw";
 import stableLogo from "../../assets/svg/stable.svg?raw";
 import { personById } from "../../data/people";
 import { portfolio } from "../../data/portfolio";
+import { profile } from "../../data/profile";
+import { socials } from "../../data/socials";
 import testimonialAnalysis from "../../data/testimonial-analysis.json";
 import { testimonials } from "../../data/testimonials";
 import type { PortfolioItem } from "../../data/types";
@@ -23,6 +25,7 @@ import type {
   EntriesSection,
   EntryModel,
   IntroSection,
+  LabContent,
   LinkModel,
   PageMeta,
   PageModel,
@@ -35,7 +38,11 @@ import type {
   TestimonialModel
 } from "../types";
 
-import { cloudinaryCover, cloudinaryUpload } from "./cloudinary";
+import {
+  cloudinaryCover,
+  cloudinaryImage,
+  cloudinaryUpload
+} from "./cloudinary";
 import {
   htmlDateString,
   longDate,
@@ -1073,4 +1080,86 @@ export function getFeedPosts() {
       content: convertToAbsoluteUrls(renderBody(post), url)
     };
   });
+}
+
+let labContent: LabContent | undefined;
+
+/** Real site content for the design lab (`/lab/*`), in one flat shape */
+export function getLabContent(): LabContent {
+  return (labContent ??= buildLabContent());
+}
+
+function buildLabContent(): LabContent {
+  const index = getIndex();
+
+  const posts = index.posts.map((post) => {
+    const type = optionalString(post.data.type);
+    const image = optionalString(post.data.meta?.image);
+    return {
+      title: String(post.data.title ?? ""),
+      url: post.url,
+      date: readableDate(post.date),
+      iso: htmlDateString(post.date),
+      year: postYear(post.date),
+      type,
+      typeUrl: type && typeUrl(type),
+      lede: optionalString(post.data.lede ?? post.data.meta?.description),
+      // Skip social images that point outside `/public/images`
+      image: image && /^(https:\/\/|\/images\/)/.test(image) ? image : undefined
+    };
+  });
+
+  const work = Object.entries(portfolio)
+    .filter(([, item]) => !item.template && item.cover)
+    .sort(([, a], [, b]) => Number(b.featured ?? 0) - Number(a.featured ?? 0))
+    .map(([key, item]) => ({
+      name: item.name,
+      url: portfolioUrl(key),
+      lede: optionalString(item.lede),
+      cover: cloudinaryCover(item.cover ?? ""),
+      // Square, padded with the cover's own edge color, for narrow frames
+      coverSquare: cloudinaryImage(
+        item.cover ?? "",
+        "c_pad,ar_1:1,b_auto:border,w_640"
+      ),
+      year: optionalString(item.year),
+      role: optionalString(item.role),
+      industry: optionalString(item.industry),
+      services: item.services ?? [],
+      technologies: item.technologies ?? []
+    }));
+
+  const services = byOrder(servicesByDate()).map((item) => ({
+    title: String(item.data.title ?? ""),
+    url: item.url,
+    lede: optionalString(item.data.short_lede ?? item.data.lede)
+  }));
+
+  const { socials: socialNames, ...about } = profile;
+  const socialByName = (name: string) => {
+    const social = socials.find((candidate) => candidate.name === name);
+    if (!social) throw new Error(`No social profile named "${name}"`);
+    return social;
+  };
+
+  return {
+    posts,
+    work,
+    services,
+    testimonials: resolveTestimonials([6, 41, 2]),
+    profile: {
+      ...about,
+      avatar: cloudinaryImage(about.avatar, "c_fill,g_face,ar_1:1,w_480"),
+      photos: about.photos.map((photo) => ({
+        src: cloudinaryImage(photo.image, "w_800"),
+        large: cloudinaryImage(photo.image, "c_limit,w_1800"),
+        alt: photo.alt
+      }))
+    },
+    socials: socialNames.map(socialByName).map((social) => ({
+      text: social.name,
+      url: social.url,
+      rel: social.rel
+    }))
+  };
 }
