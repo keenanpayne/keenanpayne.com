@@ -73,11 +73,10 @@ export interface EntriesSection {
   type: "entries";
   heading?: string;
   readMore?: LinkModel;
-  /** Class for the items container; omitted when the section lists nothing */
+  /** Class for the items container; omitted when the section has no `items` */
   itemsClass?: string;
+  /** Empty when nothing matches: shows the "nothing published" notice */
   entries: EntryModel[];
-  /** The source collection is empty: show the "nothing published" notice */
-  empty: boolean;
 }
 
 export interface NewsletterSection {
@@ -140,6 +139,8 @@ export interface DribbbleSection {
 
 export interface SocialProofLogosSection {
   type: "socialProofLogos";
+  /** `svg` is the logo's SVG markup */
+  logos: Array<{ name: string; svg: string }>;
 }
 
 export interface TagListSection {

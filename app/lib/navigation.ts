@@ -16,4 +16,4 @@ export function usePageUrl() {
 
 // A navigation item is active on its own page and on any page beneath it
 export const isActive = (itemUrl: string, pageUrl: string) =>
-  itemUrl === pageUrl || pageUrl.includes(itemUrl);
+  pageUrl.includes(itemUrl);

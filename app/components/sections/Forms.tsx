@@ -1,3 +1,5 @@
+import type { ComponentProps } from "react";
+
 import { inquiryBudgets, inquiryServices } from "../../data/inquiry";
 import { FORM_SUCCESS_PATH } from "../../lib/endpoints";
 
@@ -6,6 +8,35 @@ import { FORM_SUCCESS_PATH } from "../../lib/endpoints";
 // rendered here to keep the server and hydrated markup identical.
 const SUBJECT =
   "New %{formName} form submission on keenanpayne.com — (%{submissionId})";
+
+// Shared by both forms
+const NAME = {
+  type: "text",
+  name: "Name",
+  placeholder: "First and last name",
+  required: true
+};
+const EMAIL = {
+  type: "email",
+  name: "Email",
+  placeholder: "email@company.com",
+  required: true
+};
+
+function Field({
+  label,
+  full,
+  ...input
+}: { label: string; full?: boolean } & ComponentProps<"input">) {
+  return (
+    <p className={full ? "ContactForm-item -full" : "ContactForm-item"}>
+      <label>
+        {label}
+        <input className="ContactForm-input" {...input} />
+      </label>
+    </p>
+  );
+}
 
 export function Contact() {
   return (
@@ -21,31 +52,8 @@ export function Contact() {
       <div className="ContactForm-inner">
         <input type="hidden" name="subject" value={SUBJECT} />
 
-        <p className="ContactForm-item -full">
-          <label>
-            Name
-            <input
-              className="ContactForm-input"
-              type="text"
-              name="Name"
-              placeholder="First and last name"
-              required
-            />
-          </label>
-        </p>
-
-        <p className="ContactForm-item -full">
-          <label>
-            Email
-            <input
-              className="ContactForm-input"
-              type="email"
-              name="Email"
-              placeholder="email@company.com"
-              required
-            />
-          </label>
-        </p>
+        <Field full label="Name" {...NAME} />
+        <Field full label="Email" {...EMAIL} />
 
         <p className="ContactForm-item -full">
           <label>
@@ -85,55 +93,20 @@ export function ProjectInquiry() {
       <input type="hidden" name="form-name" value="Project Inquiry" />
       <input type="hidden" name="subject" value={SUBJECT} />
 
-      <p className="ContactForm-item">
-        <label>
-          Name
-          <input
-            className="ContactForm-input"
-            type="text"
-            name="Name"
-            placeholder="First and last name"
-            required
-          />
-        </label>
-      </p>
-
-      <p className="ContactForm-item">
-        <label>
-          Email
-          <input
-            className="ContactForm-input"
-            type="email"
-            name="Email"
-            placeholder="email@company.com"
-            required
-          />
-        </label>
-      </p>
-
-      <p className="ContactForm-item">
-        <label>
-          Company
-          <input
-            className="ContactForm-input"
-            type="text"
-            name="Company"
-            placeholder="Company name"
-          />
-        </label>
-      </p>
-
-      <p className="ContactForm-item">
-        <label>
-          Website
-          <input
-            className="ContactForm-input"
-            type="url"
-            name="Website"
-            placeholder="If you have one"
-          />
-        </label>
-      </p>
+      <Field label="Name" {...NAME} />
+      <Field label="Email" {...EMAIL} />
+      <Field
+        label="Company"
+        type="text"
+        name="Company"
+        placeholder="Company name"
+      />
+      <Field
+        label="Website"
+        type="url"
+        name="Website"
+        placeholder="If you have one"
+      />
 
       <p className="ContactForm-item">
         What services are you interested in?
@@ -156,16 +129,7 @@ export function ProjectInquiry() {
         </label>
       </p>
 
-      <p className="ContactForm-item">
-        <label>
-          Ideal launch date
-          <input
-            className="ContactForm-input"
-            type="date"
-            name="Ideal Launch Date"
-          />
-        </label>
-      </p>
+      <Field label="Ideal launch date" type="date" name="Ideal Launch Date" />
 
       <p className="ContactForm-item">
         Is your launch date flexible?

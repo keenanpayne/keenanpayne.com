@@ -1,5 +1,6 @@
 import { cloudinarySrc, cloudinarySrcset } from "./cloudinary";
 import {
+  calloutContent,
   furtherReadingIcon,
   noteIcon,
   noticeIcon,
@@ -38,19 +39,19 @@ const shortcodes: Record<string, (args: Args) => string> = {
     `<p class="-context -tldr">\n  ${out(content)}\n</p>\n`,
 
   "type/tip.html": ({ content }) =>
-    `<p class="-context -tip">\n  ${tipIcon}\n  ${out(content)}\n</p>\n`,
+    `<p class="-context -tip">${calloutContent(tipIcon, out(content))}</p>\n`,
 
   "type/further-reading.html": ({ content }) =>
-    `<p class="-context -further-reading">\n  ${furtherReadingIcon}\n  ${out(content)}\n</p>\n`,
+    `<p class="-context -further-reading">${calloutContent(furtherReadingIcon, out(content))}</p>\n`,
 
   "type/notice.html": ({ content }) =>
-    `<p class="-context -notice">\n  ${noticeIcon}\n  <span>${out(content)}</span>\n</p>\n`,
+    `<p class="-context -notice">${calloutContent(noticeIcon, out(content), { span: true })}</p>\n`,
 
   "type/question.html": ({ content }) =>
-    `<p class="-context -question">\n  ${questionIcon}\n  <span>${out(content)}</span>\n</p>\n`,
+    `<p class="-context -question">${calloutContent(questionIcon, out(content), { span: true })}</p>\n`,
 
   "type/note.html": ({ content, align }) =>
-    `<p class="-context -note ${truthy(align) ? `-${out(align)}` : ""}">\n  ${noteIcon}\n  <span>${out(content)}</span>\n</p>\n`,
+    `<p class="-context -note ${truthy(align) ? `-${out(align)}` : ""}">${calloutContent(noteIcon, out(content), { span: true })}</p>\n`,
 
   "type/blockquote.html": (args) => {
     const { content, author, author_position } = args;

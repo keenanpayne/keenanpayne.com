@@ -72,16 +72,3 @@ export interface PortfolioItem {
   assets?: Record<number, PortfolioAsset>;
   awards?: PortfolioAward[];
 }
-
-export interface TestimonialQuality {
-  word: string;
-  count: number;
-  percentage: number;
-}
-
-export interface TestimonialAnalysis {
-  topQualities: TestimonialQuality[];
-  allQualities: TestimonialQuality[];
-  totalTestimonials: number;
-  analyzedAt: string;
-}

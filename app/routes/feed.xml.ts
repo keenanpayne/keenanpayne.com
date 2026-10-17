@@ -1,6 +1,5 @@
 import { rfc3339Date } from "../lib/content/dates.server";
 import { getFeedPosts } from "../lib/content/content.server";
-import { convertToAbsoluteUrls } from "../lib/content/html.server";
 import { escapeHtml } from "../lib/html";
 import { absoluteUrl, metadata } from "../lib/site";
 
@@ -17,7 +16,7 @@ export function loader() {
 		<link href="${post.url}"/>
 		<updated>${rfc3339Date(post.date)}</updated>
 		<id>${post.url}</id>
-		<content type="html">${escapeHtml(convertToAbsoluteUrls(post.content, post.url))}</content>
+		<content type="html">${escapeHtml(post.content)}</content>
 	</entry>`
     )
     .join("");

@@ -16,9 +16,9 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Topbar } from "./components/Topbar";
 import { getNavigation } from "./lib/content/content.server";
-import { useMarkHydrated } from "./lib/hydration";
 import { SECURITY_HEADERS } from "./lib/security-headers";
-import { metadata } from "./lib/site";
+import { metadata, pageTitle } from "./lib/site";
+import type { LinkModel } from "./lib/types";
 import stylesheet from "./styles/app.css?url";
 
 /*
@@ -86,9 +86,6 @@ export function loader() {
 }
 
 export function Layout({ children }: { children: ReactNode }) {
-  // Here rather than in `App` so it also runs when the first render is the
-  // ErrorBoundary
-  useMarkHydrated();
   const isBare = useIsBare();
 
   return (
@@ -119,18 +116,32 @@ export function Layout({ children }: { children: ReactNode }) {
   );
 }
 
+function SiteChrome({
+  navigation,
+  children
+}: {
+  navigation: LinkModel[];
+  children: ReactNode;
+}) {
+  return (
+    <>
+      <Topbar />
+      <Header navigation={navigation} />
+      {children}
+      <Footer navigation={navigation} />
+    </>
+  );
+}
+
 export default function App({ loaderData }: Route.ComponentProps) {
   const isBare = useIsBare();
 
   if (isBare) return <Outlet />;
 
   return (
-    <>
-      <Topbar />
-      <Header navigation={loaderData.navigation} />
+    <SiteChrome navigation={loaderData.navigation}>
       <Outlet />
-      <Footer navigation={loaderData.navigation} />
-    </>
+    </SiteChrome>
   );
 }
 
@@ -153,10 +164,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <>
-      <title>{`${message} | ${metadata.title}`}</title>
-      <Topbar />
-      <Header navigation={navigation} />
+    <SiteChrome navigation={navigation}>
+      <title>{pageTitle(message)}</title>
       <main className="_container _text-align-center">
         <p className="_font-family-mono _text-h4">{message}</p>
         <h1>{details}</h1>
@@ -166,7 +175,6 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
           </pre>
         )}
       </main>
-      <Footer navigation={navigation} />
-    </>
+    </SiteChrome>
   );
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import type { LinkModel } from "../lib/types";
 
 interface LabelProps {
-  text?: string | number;
+  text?: string;
   className?: string;
   readMore?: LinkModel;
 }

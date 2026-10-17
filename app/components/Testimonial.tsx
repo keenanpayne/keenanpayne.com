@@ -1,6 +1,31 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 import type { TestimonialModel } from "../lib/types";
+
+/** A testimonial's text, followed by its "Read more/less" toggle if any */
+function TestimonialText({
+  html,
+  modifiers,
+  children
+}: {
+  /** HTML */
+  html: string;
+  modifiers?: string;
+  children?: ReactNode;
+}) {
+  return (
+    <p
+      className={
+        modifiers
+          ? `testimonial-text _type-my-voice ${modifiers}`
+          : "testimonial-text _type-my-voice"
+      }
+    >
+      <span dangerouslySetInnerHTML={{ __html: html }} />
+      {children && <> {children}</>}
+    </p>
+  );
+}
 
 export function Testimonial({
   testimonial
@@ -16,34 +41,32 @@ export function Testimonial({
         <div className="testimonial-content">
           {truncated ? (
             <>
-              <p
-                className={`testimonial-text _type-my-voice testimonial-text-trimmed${expanded ? " _a11y-hidden" : ""}`}
+              <TestimonialText
+                html={truncated}
+                modifiers={`testimonial-text-trimmed${expanded ? " _a11y-hidden" : ""}`}
               >
-                <span dangerouslySetInnerHTML={{ __html: truncated }} />{" "}
                 <button
                   className="testimonial-toggle"
                   onClick={() => setExpanded(true)}
                 >
                   Read more
                 </button>
-              </p>
+              </TestimonialText>
 
-              <p
-                className={`testimonial-text _type-my-voice testimonial-text-full ${expanded ? "_a11y-visible" : "_a11y-hidden"}`}
+              <TestimonialText
+                html={content}
+                modifiers={`testimonial-text-full ${expanded ? "_a11y-visible" : "_a11y-hidden"}`}
               >
-                <span dangerouslySetInnerHTML={{ __html: content }} />{" "}
                 <button
                   className="testimonial-toggle"
                   onClick={() => setExpanded(false)}
                 >
                   Read less
                 </button>
-              </p>
+              </TestimonialText>
             </>
           ) : (
-            <p className="testimonial-text _type-my-voice">
-              <span dangerouslySetInnerHTML={{ __html: content }} />
-            </p>
+            <TestimonialText html={content} />
           )}
         </div>
       )}
