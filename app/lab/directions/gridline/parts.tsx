@@ -1,0 +1,1236 @@
+import {
+  useId,
+  useRef,
+  useState,
+  type CSSProperties,
+  type KeyboardEvent,
+  type ReactNode
+} from "react";
+
+import type {
+  EntriesSection,
+  LabContent,
+  LinkModel,
+  PageListSection,
+  PostNavModel,
+  TestimonialModel
+} from "../../../lib/types";
+import {
+  cx,
+  Html,
+  LocalTime,
+  pad,
+  relabel,
+  useTo,
+  type FormField as Field
+} from "../../site";
+
+type Posts = LabContent["posts"];
+
+/* Structure
+   ========================================================================== */
+
+/** A full-width row of the grid, between hairlines; `invert` flips its scheme */
+export function Band({
+  invert,
+  className,
+  label,
+  style,
+  children
+}: {
+  invert?: boolean;
+  className?: string;
+  /** Names a band that has no heading of its own */
+  label?: string;
+  style?: CSSProperties;
+  children: ReactNode;
+}) {
+  return (
+    <section
+      className={cx("gl-band", invert && "gl-invert", className)}
+      aria-label={label}
+      style={style}
+    >
+      {children}
+    </section>
+  );
+}
+
+/**
+ * Items that share their hairlines, in up to `cols` columns. Render
+ * `<li className="gl-cell">` children (or `<div>`s with `as="div"`).
+ */
+export function Cells({
+  cols = 3,
+  as: Tag = "ul",
+  className,
+  label,
+  children
+}: {
+  cols?: 1 | 2 | 3 | 4;
+  as?: "ul" | "ol" | "div";
+  className?: string;
+  label?: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className={cx("gl-cells", className)}>
+      <Tag
+        className={`gl-cells__grid gl-cells__grid--${cols}`}
+        aria-label={label}
+      >
+        {children}
+      </Tag>
+    </div>
+  );
+}
+
+/** A mono label over a heading, with the section's number when it has one */
+export function Eyebrow({
+  index,
+  className,
+  children
+}: {
+  index?: number;
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <p className={cx("gl-eyebrow", className)}>
+      {index !== undefined && (
+        <>
+          <span className="gl-eyebrow__index">{pad(index)}</span>
+          <span className="gl-eyebrow__sep" aria-hidden="true">
+            /
+          </span>
+        </>
+      )}
+      {children}
+    </p>
+  );
+}
+
+/** A band's opening row: eyebrow and heading, with a note and a link across */
+export function SectionHead({
+  index,
+  eyebrow,
+  title,
+  description,
+  more
+}: {
+  index?: number;
+  eyebrow: ReactNode;
+  title: ReactNode;
+  description?: ReactNode;
+  more?: LinkModel;
+}) {
+  return (
+    <header className="gl-head">
+      <div>
+        <Eyebrow index={index}>{eyebrow}</Eyebrow>
+        <h2 className="gl-heading">{title}</h2>
+      </div>
+      {(description || more) && (
+        <div className="gl-head__end">
+          {description && <p>{description}</p>}
+          {more && <More href={more.url}>{more.text}</More>}
+        </div>
+      )}
+    </header>
+  );
+}
+
+/**
+ * Breadcrumb trail for an eyebrow: links up to the current page, which is
+ * plain text
+ */
+export function Trail({
+  links,
+  current
+}: {
+  links: LinkModel[];
+  current?: string;
+}) {
+  return (
+    <>
+      {links.map((link, index) => (
+        <span key={link.url}>
+          <a href={link.url}>{link.text}</a>
+          {(current || index < links.length - 1) && (
+            <span className="gl-eyebrow__sep" aria-hidden="true">
+              {" "}
+              /
+            </span>
+          )}
+        </span>
+      ))}
+      {current && <span>{current}</span>}
+    </>
+  );
+}
+
+/** Eyebrow, title, and lede at the top of a page, with an aside of facts */
+export function PageHeader({
+  eyebrow,
+  title,
+  lede,
+  aside,
+  children
+}: {
+  eyebrow: ReactNode;
+  /** HTML */
+  title: string;
+  /** HTML */
+  lede?: string;
+  aside?: ReactNode;
+  children?: ReactNode;
+}) {
+  return (
+    <header
+      className={cx(
+        "gl-band gl-page-header",
+        aside ? "gl-page-header--aside" : undefined
+      )}
+    >
+      <div className="gl-page-header__main">
+        <Eyebrow>{eyebrow}</Eyebrow>
+        <Html as="h1" className="gl-title" html={title} />
+        {lede && <Html as="p" className="gl-lede" html={lede} />}
+        {children}
+      </div>
+      {aside && <div className="gl-page-header__aside">{aside}</div>}
+    </header>
+  );
+}
+
+/** Intro copy: HTML with its own paragraphs, or plain text split by lines */
+export function Copy({
+  html,
+  className
+}: {
+  html: string;
+  className?: string;
+}) {
+  const blocks = /<(p|ul|ol|h\d|div|figure|blockquote)\b/i.test(html);
+  return (
+    <Html
+      className={cx("gl-prose", !blocks && "gl-copy", className)}
+      html={html}
+    />
+  );
+}
+
+/* Actions
+   ========================================================================== */
+
+export function Button({
+  href,
+  variant,
+  size,
+  type = "button",
+  children
+}: {
+  href?: string;
+  variant?: "ghost";
+  size?: "small";
+  type?: "button" | "submit";
+  children: ReactNode;
+}) {
+  const className = cx(
+    "gl-button",
+    variant && `gl-button--${variant}`,
+    size && `gl-button--${size}`
+  );
+
+  return href ? (
+    <a className={className} href={href}>
+      {children}
+    </a>
+  ) : (
+    <button className={className} type={type}>
+      {children}
+    </button>
+  );
+}
+
+export const Arrow = () => <span aria-hidden="true">→</span>;
+
+/** A mono "see all" link in a bordered tab */
+export const More = ({
+  href,
+  children
+}: {
+  href: string;
+  children: ReactNode;
+}) => (
+  <a className="gl-more" href={href}>
+    {children}
+    <Arrow />
+  </a>
+);
+
+/* Labels
+   ========================================================================== */
+
+/** Post types, tags, or qualities, as a row of chips */
+export function Chips({
+  links,
+  label
+}: {
+  links: (LinkModel & { count?: number })[];
+  label: string;
+}) {
+  return (
+    <ul className="gl-chips" aria-label={label}>
+      {links.map((link) => (
+        <li key={link.url || link.text}>
+          {link.url ? (
+            <a className="gl-chip" href={link.url}>
+              {link.text}
+              {link.count !== undefined && (
+                <span className="gl-chip__count">{link.count}</span>
+              )}
+            </a>
+          ) : (
+            <span className="gl-chip">
+              {link.text}
+              {link.count !== undefined && (
+                <span className="gl-chip__count">{link.count}</span>
+              )}
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/** Term and detail pairs, under hairlines */
+export function Facts({ rows }: { rows: [ReactNode, ReactNode][] }) {
+  return (
+    <dl className="gl-facts">
+      {rows.map(([term, detail], index) => (
+        <div key={index}>
+          <dt>{term}</dt>
+          <dd>{detail}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+/** A big figure over a mono label */
+export const Stat = ({
+  value,
+  label
+}: {
+  value: ReactNode;
+  label: ReactNode;
+}) => (
+  <li className="gl-cell gl-stat">
+    <span className="gl-stat__value">{value}</span>
+    <span className="gl-stat__label">{label}</span>
+  </li>
+);
+
+/* Lists
+   ========================================================================== */
+
+/** Posts one to a row: date, title and lede, type */
+export function PostRows({ posts }: { posts: Posts }) {
+  return (
+    <ol className="gl-rows">
+      {posts.map((post) => (
+        <li key={post.url} className="gl-row">
+          <a href={post.url}>
+            <time dateTime={post.iso}>{post.date}</time>
+            <span>
+              <h3 className="gl-row__title">{post.title}</h3>
+              {post.lede && <p className="gl-row__lede">{post.lede}</p>}
+            </span>
+            {post.type ? <span className="gl-tag">{post.type}</span> : <span />}
+            <span className="gl-row__arrow" aria-hidden="true">
+              →
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/** Links listed by an `entries` section (type and tag archives, …) */
+export function EntryRows({ section }: { section: EntriesSection }) {
+  if (section.entries.length === 0) return null;
+
+  return (
+    <Band>
+      <SectionHead
+        eyebrow="Index"
+        title={section.heading ?? "Entries"}
+        more={section.readMore}
+      />
+      <ol className="gl-rows">
+        {section.entries.map((entry, index) => (
+          <li key={entry.url ?? index} className="gl-row gl-row--compact">
+            <a href={entry.url}>
+              <span className="gl-meta">{pad(index + 1)}</span>
+              <span>
+                <h3 className="gl-row__title">{entry.heading}</h3>
+                {entry.lede && (
+                  <Html as="p" className="gl-row__lede" html={entry.lede} />
+                )}
+              </span>
+              <span />
+              <span className="gl-row__arrow" aria-hidden="true">
+                →
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </Band>
+  );
+}
+
+/** Ledes are HTML that may carry links, which can't sit inside a card's */
+const textOf = (html: string) => html.replace(/<[^>]+>/g, "");
+
+export function WorkCards({
+  work,
+  cols = 2
+}: {
+  work: LabContent["work"];
+  cols?: 2 | 3;
+}) {
+  return (
+    <Cells cols={cols}>
+      {work.map((item) => (
+        <li key={item.url} className="gl-cell gl-work">
+          <a href={item.url}>
+            <span className="gl-work__media">
+              <img src={item.cover} alt="" loading="lazy" />
+            </span>
+            <span className="gl-work__body">
+              <span className="gl-meta">
+                {[item.industry, item.year].filter(Boolean).join(" · ")}
+              </span>
+              <h3>
+                {item.name}
+                <span className="gl-work__arrow" aria-hidden="true">
+                  →
+                </span>
+              </h3>
+              {item.lede && <p>{textOf(item.lede)}</p>}
+            </span>
+          </a>
+        </li>
+      ))}
+    </Cells>
+  );
+}
+
+export function ServiceCells({
+  services
+}: {
+  services: LabContent["services"];
+}) {
+  return (
+    <Cells cols={3}>
+      {services.map((service, index) => (
+        <li key={service.url} className="gl-cell gl-service">
+          <a href={service.url}>
+            <span className="gl-service__index">{pad(index + 1)}</span>
+            <h3>{service.title}</h3>
+            {service.lede && <p>{service.lede}</p>}
+            <span className="gl-service__go">
+              Learn more <Arrow />
+            </span>
+          </a>
+        </li>
+      ))}
+    </Cells>
+  );
+}
+
+/** Services one to a row: number, title and lede */
+export function ServiceRows({
+  services
+}: {
+  services: LabContent["services"];
+}) {
+  return (
+    <ol className="gl-rows">
+      {services.map((service, index) => (
+        <li key={service.url} className="gl-row gl-row--compact">
+          <a href={service.url}>
+            <span className="gl-meta">{pad(index + 1)}</span>
+            <span>
+              <h3 className="gl-row__title">{service.title}</h3>
+              {service.lede && <p className="gl-row__lede">{service.lede}</p>}
+            </span>
+            <span />
+            <span className="gl-row__arrow" aria-hidden="true">
+              →
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+/** How a project runs, numbered across a row */
+export function ProcessSteps({
+  steps,
+  cols = 4
+}: {
+  steps: LabContent["profile"]["process"];
+  cols?: 2 | 4;
+}) {
+  return (
+    <Cells cols={cols} as="ol">
+      {steps.map((step, index) => (
+        <li key={step.title} className="gl-cell gl-cell--pad gl-step">
+          <span className="gl-step__index">{`Step ${pad(index + 1)}`}</span>
+          <h3>{step.title}</h3>
+          <p>{step.text}</p>
+        </li>
+      ))}
+    </Cells>
+  );
+}
+
+/** Every page on the site, by title and URL */
+export function PageTable({ pages }: { pages: PageListSection["pages"] }) {
+  return (
+    <div className="gl-table-wrap">
+      <table className="gl-table">
+        <thead>
+          <tr>
+            <th scope="col">Page</th>
+            <th scope="col">Path</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pages.map((page) => (
+            <tr key={page.url}>
+              <th scope="row">
+                <a href={page.url}>{page.title ?? page.url}</a>
+              </th>
+              <td>
+                <code>{page.url}</code>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/* Testimonials
+   ========================================================================== */
+
+/** A quote and who said it; long ones open from their shortened form */
+export function Quote({
+  testimonial,
+  large
+}: {
+  testimonial: TestimonialModel;
+  large?: boolean;
+}) {
+  const { person, truncated } = testimonial;
+  const [open, setOpen] = useState(false);
+
+  return (
+    <figure className={cx("gl-quote", large && "gl-quote--large")}>
+      <Html
+        as="blockquote"
+        html={truncated && !open ? truncated : testimonial.content}
+      />
+      {truncated && (
+        <button
+          className="gl-quote__toggle"
+          type="button"
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? "Show less" : "Read the rest"}
+        </button>
+      )}
+      {person && (
+        <figcaption>
+          {person.image && <img src={person.image} alt="" loading="lazy" />}
+          <span>
+            <span className="gl-quote__name">{person.name}</span>
+            {person.position && (
+              <span className="gl-quote__role">{person.position}</span>
+            )}
+          </span>
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
+export function QuoteCells({
+  testimonials
+}: {
+  testimonials: TestimonialModel[];
+}) {
+  // Two across for an even count, so no row is left with a gap
+  const cols = testimonials.length % 2 === 0 ? 2 : 3;
+
+  return (
+    <Cells cols={cols}>
+      {testimonials.map((testimonial) => (
+        <li key={testimonial.id} className="gl-cell gl-cell--pad">
+          <Quote testimonial={testimonial} />
+        </li>
+      ))}
+    </Cells>
+  );
+}
+
+export function KindWords({
+  testimonials,
+  index,
+  invert
+}: {
+  testimonials: TestimonialModel[];
+  index?: number;
+  invert?: boolean;
+}) {
+  const to = useTo();
+  if (testimonials.length === 0) return null;
+
+  return (
+    <Band invert={invert}>
+      <SectionHead
+        index={index}
+        eyebrow="Kind words"
+        title="From clients and colleagues"
+        more={{ text: "All testimonials", url: to("/testimonials/") }}
+      />
+      <QuoteCells testimonials={testimonials} />
+    </Band>
+  );
+}
+
+/* Light rays and windows
+   ========================================================================== */
+
+/** The violet light-ray panel; `tint` recolors its rays */
+export function Rays({
+  tint,
+  className,
+  children
+}: {
+  tint?: string;
+  className?: string;
+  children?: ReactNode;
+}) {
+  return (
+    <div
+      className={cx("gl-rays", className)}
+      style={tint ? ({ "--gl-ray": tint } as CSSProperties) : undefined}
+    >
+      {children}
+    </div>
+  );
+}
+
+/** A dark pane with a title bar, over the rays */
+export function Window({
+  title,
+  address,
+  status,
+  children
+}: {
+  title?: ReactNode;
+  /** A browser's address bar, in place of a title */
+  address?: ReactNode;
+  status?: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <div className="gl-window">
+      <div className="gl-window__bar">
+        <span className="gl-window__dots" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </span>
+        {address ? (
+          <span className="gl-window__address">{address}</span>
+        ) : (
+          title && <span>{title}</span>
+        )}
+        {status && <span className="gl-window__status">{status}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+type TerminalTab = {
+  id: string;
+  label: string;
+  command: string;
+  lines: { key: string; term: ReactNode; detail: ReactNode; url?: string }[];
+};
+
+/**
+ * The home page's terminal: the profile and the latest of each section as
+ * commands and their output, one tab each
+ */
+export function Terminal({ content }: { content: LabContent }) {
+  const { profile, posts, work, services } = content;
+  const handle = profile.name.split(" ")[0].toLowerCase();
+  const id = useId();
+  const tabList = useRef<HTMLDivElement>(null);
+
+  const facts = relabel(profile.facts, {
+    role: "role",
+    location: "based in",
+    experience: "experience",
+    previously: "previously",
+    shows: "shows/year",
+    offDuty: "off the clock"
+  });
+
+  const tabs: TerminalTab[] = [
+    {
+      id: "whois",
+      label: "whois",
+      command: `whois ${handle}`,
+      lines: [
+        { key: "name", term: "name", detail: profile.name },
+        ...facts.map((fact) => ({
+          key: fact.id,
+          term: fact.label.toLowerCase(),
+          url: fact.url,
+          detail:
+            fact.id === "location" ? (
+              <>
+                {fact.text} · <LocalTime />
+              </>
+            ) : (
+              fact.text
+            )
+        }))
+      ]
+    },
+    {
+      id: "writing",
+      label: "writing",
+      command: "ls writing --latest",
+      lines: posts.slice(0, 7).map((post) => ({
+        key: post.url,
+        term: post.iso,
+        detail: post.title,
+        url: post.url
+      }))
+    },
+    {
+      id: "work",
+      label: "work",
+      command: "ls work",
+      lines: work.slice(0, 7).map((item) => ({
+        key: item.url,
+        term: item.year?.split(/[–-]/)[0] ?? "",
+        detail: item.name,
+        url: item.url
+      }))
+    },
+    {
+      id: "services",
+      label: "services",
+      command: "ls services",
+      lines: services.map((service, index) => ({
+        key: service.url,
+        term: pad(index + 1),
+        detail: service.title,
+        url: service.url
+      }))
+    }
+  ];
+
+  const [active, setActive] = useState(tabs[0].id);
+  const tab = tabs.find((item) => item.id === active) ?? tabs[0];
+
+  // Arrow keys move between tabs, as a tab list should
+  const onKeyDown = (event: KeyboardEvent) => {
+    const step = { ArrowRight: 1, ArrowLeft: -1 }[event.key];
+    if (!step) return;
+    event.preventDefault();
+    const index = tabs.findIndex((item) => item.id === active);
+    const next = tabs[(index + step + tabs.length) % tabs.length];
+    setActive(next.id);
+    tabList.current
+      ?.querySelector<HTMLButtonElement>(`[data-tab="${next.id}"]`)
+      ?.focus();
+  };
+
+  return (
+    <Window
+      title={`${handle}@${profile.location.city.toLowerCase()} — zsh`}
+      status={profile.location.short}
+    >
+      <div
+        className="gl-terminal__body"
+        role="tabpanel"
+        id={`${id}-panel`}
+        aria-labelledby={`${id}-${tab.id}`}
+      >
+        <div>
+          <p className="gl-terminal__prompt">
+            <span>~ $</span> {tab.command}
+          </p>
+          <ul className="gl-terminal__lines">
+            {tab.lines.map((line) => (
+              <li key={line.key}>
+                <span>{line.term}</span>
+                <span>
+                  {line.url ? (
+                    <a href={line.url}>{line.detail}</a>
+                  ) : (
+                    line.detail
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <span className="gl-terminal__cursor" aria-hidden="true" />
+        </div>
+        {tab.id === "whois" && (
+          <img
+            className="gl-terminal__portrait"
+            src={profile.avatar}
+            alt={profile.name}
+          />
+        )}
+      </div>
+      <div
+        ref={tabList}
+        className="gl-terminal__tabs"
+        role="tablist"
+        aria-label="Commands"
+        onKeyDown={onKeyDown}
+      >
+        {tabs.map((item) => (
+          <button
+            key={item.id}
+            id={`${id}-${item.id}`}
+            data-tab={item.id}
+            type="button"
+            role="tab"
+            aria-selected={item.id === active}
+            aria-controls={`${id}-panel`}
+            tabIndex={item.id === active ? 0 : -1}
+            onClick={() => setActive(item.id)}
+          >
+            {item.label}
+          </button>
+        ))}
+      </div>
+    </Window>
+  );
+}
+
+/* Wayfinding
+   ========================================================================== */
+
+export function PostNav({ nav }: { nav: PostNavModel | null }) {
+  if (!nav || (!nav.previous && !nav.next)) return null;
+
+  return (
+    <nav className="gl-band gl-post-nav" aria-label="More writing">
+      <Cells cols={2} as="div">
+        {nav.previous ? (
+          <div className="gl-cell">
+            <a href={nav.previous.url} rel="prev">
+              <span className="gl-label">← Previous</span>
+              <strong>{nav.previous.text}</strong>
+            </a>
+          </div>
+        ) : (
+          <div className="gl-cell" />
+        )}
+        {nav.next && (
+          <div className="gl-cell gl-post-nav__next">
+            <a href={nav.next.url} rel="next">
+              <span className="gl-label">Next →</span>
+              <strong>{nav.next.text}</strong>
+            </a>
+          </div>
+        )}
+      </Cells>
+    </nav>
+  );
+}
+
+/* Forms
+   ========================================================================== */
+
+export const MOCKUP_STATUS = {
+  idle: "Mockup only — this form doesn’t send anything.",
+  sent: "Mockup only — nothing was sent."
+};
+
+/** One question, as a cell of the form's grid */
+export function FormField({ field }: { field: Field }) {
+  const className = cx("gl-cell gl-field", field.wide && "gl-field--wide");
+
+  if (field.kind === "choices") {
+    return (
+      <fieldset className={className}>
+        <legend>{field.label}</legend>
+        <div className="gl-options">
+          {field.options.map((option) => (
+            <label key={option} className="gl-option">
+              <input type={field.type} name={field.name} value={option} />
+              {option}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    );
+  }
+
+  return (
+    <label className={className}>
+      <span className="gl-field__label">{field.label}</span>
+      {field.kind === "textarea" ? (
+        <textarea
+          name={field.name}
+          rows={field.rows}
+          placeholder={field.placeholder}
+        />
+      ) : (
+        <input
+          type={field.type}
+          name={field.name}
+          placeholder={field.placeholder}
+        />
+      )}
+    </label>
+  );
+}
+
+/** A mock form; the lab never submits anything */
+export function Form({ fields, submit }: { fields: Field[]; submit: string }) {
+  const [sent, setSent] = useState(false);
+
+  return (
+    <form
+      className="gl-form"
+      onSubmit={(event) => {
+        event.preventDefault();
+        setSent(true);
+      }}
+    >
+      <Cells cols={2} as="div">
+        {fields.map((field) => (
+          <FormField key={field.name} field={field} />
+        ))}
+        <div className="gl-cell gl-field--wide gl-form__submit">
+          <span className="gl-meta" role="status">
+            {sent ? MOCKUP_STATUS.sent : MOCKUP_STATUS.idle}
+          </span>
+          <Button type="submit">
+            {submit} <Arrow />
+          </Button>
+        </div>
+      </Cells>
+    </form>
+  );
+}
+
+/** Mock newsletter sign-up; the lab never submits anything */
+export function Newsletter({ invert }: { invert?: boolean }) {
+  const [sent, setSent] = useState(false);
+
+  return (
+    <Band invert={invert}>
+      <div className="gl-pad gl-signup">
+        <div>
+          <Eyebrow>Newsletter</Eyebrow>
+          <h2 className="gl-heading">New writing, by email</h2>
+          <p>Articles and tutorials, sent when they’re published.</p>
+        </div>
+        <form
+          className="gl-signup__form"
+          onSubmit={(event) => {
+            event.preventDefault();
+            setSent(true);
+          }}
+        >
+          <label>
+            <span className="gl-sr">Email</span>
+            <input
+              type="email"
+              name="email"
+              placeholder="email@company.com"
+              required
+            />
+          </label>
+          <Button type="submit">Subscribe</Button>
+          <span className="gl-meta" role="status">
+            {sent ? MOCKUP_STATUS.sent : MOCKUP_STATUS.idle}
+          </span>
+        </form>
+      </div>
+    </Band>
+  );
+}
+
+/* Chrome
+   ========================================================================== */
+
+/* Marks: explorations for a logo, each drawn on a 24px grid in ink with
+   one violet part. The Shell wears none; the style guide shows them all. */
+
+const ink = { fill: "none", stroke: "currentColor", strokeWidth: 1.5 } as const;
+
+/** The K of the pixel mark, by column and row on a 5×5 grid */
+const PIXEL_K = [
+  [0, 0],
+  [0, 1],
+  [0, 2],
+  [0, 3],
+  [0, 4],
+  [2, 1],
+  [2, 3],
+  [3, 0],
+  [3, 4]
+];
+
+export const MARKS = {
+  stack: {
+    name: "Stack",
+    note: "Three plates, the top one lit: full-stack",
+    draw: (
+      <>
+        <path className="gl-mark__fill" d="M12 2.5 21 7l-9 4.5L3 7z" />
+        <path {...ink} strokeLinejoin="round" d="M12 2.5 21 7l-9 4.5L3 7z" />
+        <path
+          {...ink}
+          strokeLinejoin="round"
+          d="m3 11.5 9 4.5 9-4.5M3 16l9 4.5 9-4.5"
+        />
+      </>
+    )
+  },
+  tile: {
+    name: "Tile",
+    note: "One cell of the grid, lifted",
+    draw: (
+      <>
+        <path className="gl-mark__fill" d="M12 3.5 21 8l-9 4.5L3 8z" />
+        <path fill="currentColor" d="M3 8l9 4.5V20l-9-4.5z" />
+        <path fill="currentColor" opacity="0.55" d="M21 8l-9 4.5V20l9-4.5z" />
+      </>
+    )
+  },
+  pixel: {
+    name: "Pixel K",
+    note: "The initial, set in cells; the joint lit",
+    draw: (
+      <>
+        {PIXEL_K.map(([column, row]) => (
+          <rect
+            key={`${column}${row}`}
+            x={4.375 + column * 4}
+            y={2.5 + row * 4}
+            width="3.25"
+            height="3.25"
+            fill="currentColor"
+          />
+        ))}
+        <rect
+          className="gl-mark__fill"
+          x="8.375"
+          y="10.5"
+          width="3.25"
+          height="3.25"
+        />
+      </>
+    )
+  },
+  selection: {
+    name: "Selection",
+    note: "A cell picked out, as in a design tool",
+    draw: (
+      <>
+        <path
+          {...ink}
+          d="M2.75 8V2.75H8M16 2.75h5.25V8M21.25 16v5.25H16M8 21.25H2.75V16"
+        />
+        <rect className="gl-mark__fill" x="8" y="8" width="8" height="8" />
+      </>
+    )
+  },
+  crosshair: {
+    name: "Crosshair",
+    note: "The cross where a band meets the rails",
+    draw: (
+      <>
+        <circle {...ink} cx="12" cy="12" r="6.25" />
+        <path {...ink} d="M12 1v6.5M12 16.5V23M1 12h6.5M16.5 12H23" />
+        <circle className="gl-mark__fill" cx="12" cy="12" r="2.25" />
+      </>
+    )
+  },
+  peak: {
+    name: "Peak",
+    note: "The Front Range from Denver, at sunrise",
+    draw: (
+      <>
+        <circle className="gl-mark__fill" cx="17.5" cy="6" r="2.75" />
+        <path
+          {...ink}
+          strokeLinejoin="round"
+          d="M1.5 20h21M2.5 20l6-9 3.5 4.5L15 11l6.5 9"
+        />
+      </>
+    )
+  },
+  initial: {
+    name: "Initial",
+    note: "A K in its cell, the corner lit",
+    draw: (
+      <>
+        <rect
+          className="gl-mark__fill"
+          x="15.5"
+          y="2"
+          width="6.5"
+          height="6.5"
+        />
+        <path {...ink} d="M2.75 2.75h18.5v18.5H2.75z" />
+        <path {...ink} d="M8 6.5v11M8 13l6-6.5M10.25 10.6 15 17.5" />
+      </>
+    )
+  }
+} satisfies Record<string, { name: string; note: string; draw: ReactNode }>;
+
+export type MarkId = keyof typeof MARKS;
+
+/** One of the mark explorations */
+export const Mark = ({ variant }: { variant: MarkId }) => (
+  <svg className="gl-mark" viewBox="0 0 24 24" aria-hidden="true">
+    {MARKS[variant].draw}
+  </svg>
+);
+
+/* Calls to action: options for the panel that closes each page.
+   `?cta=<id>` previews one in the Shell. */
+
+export const CTAS = {
+  blueprint: {
+    name: "Blueprint",
+    note: "The page’s grid, drawn out, with a violet glow; follows the scheme"
+  },
+  horizon: {
+    name: "Horizon",
+    note: "The grid running out to a lit horizon"
+  },
+  rays: { name: "Rays", note: "Violet light rays, as on the home page" },
+  halftone: {
+    name: "Halftone",
+    note: "A violet dot screen rising from the bottom; follows the scheme"
+  },
+  cells: {
+    name: "Cells",
+    note: "No imagery: the heading beside three ways in, as cells"
+  }
+} satisfies Record<string, { name: string; note: string }>;
+
+export type CtaId = keyof typeof CTAS;
+
+/** The panel the Shell closes with unless `?cta=` asks for another */
+export const DEFAULT_CTA: CtaId = "blueprint";
+
+export const isCta = (id: string): id is CtaId => Object.hasOwn(CTAS, id);
+
+const CTA_COPY = {
+  eyebrow: "Work together",
+  title: "Have a project in mind?",
+  lede: "Tell me what you’re building, and let’s find out how I can help."
+};
+
+/** The closing call to action */
+export function Cta({
+  email,
+  variant = DEFAULT_CTA
+}: {
+  email: string;
+  variant?: CtaId;
+}) {
+  const to = useTo();
+
+  if (variant === "cells") {
+    const ways = [
+      {
+        label: "Project inquiry",
+        text: "Start a project",
+        url: to("/project-inquiry/")
+      },
+      { label: "Contact", text: "Say hello", url: to("/contact/") },
+      { label: "Email", text: email, url: `mailto:${email}` }
+    ];
+
+    return (
+      <Band className="gl-cta gl-cta--cells" invert label={CTA_COPY.eyebrow}>
+        <div className="gl-cta-cells">
+          <div className="gl-cta-cells__main">
+            <Eyebrow>{CTA_COPY.eyebrow}</Eyebrow>
+            <h2>{CTA_COPY.title}</h2>
+            <p>{CTA_COPY.lede}</p>
+          </div>
+          <ul className="gl-cta-cells__ways">
+            {ways.map((way) => (
+              <li key={way.url}>
+                <a href={way.url}>
+                  <span className="gl-label">{way.label}</span>
+                  <strong>{way.text}</strong>
+                  <span className="gl-cta-cells__arrow" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Band>
+    );
+  }
+
+  const panel = (
+    <>
+      <Eyebrow>{CTA_COPY.eyebrow}</Eyebrow>
+      <h2>{CTA_COPY.title}</h2>
+      <p>{CTA_COPY.lede}</p>
+      <div className="gl-actions">
+        <Button href={to("/project-inquiry/")}>
+          Start a project <Arrow />
+        </Button>
+        <Button variant="ghost" href={`mailto:${email}`}>
+          {email}
+        </Button>
+      </div>
+    </>
+  );
+
+  return (
+    <Band className={`gl-cta gl-cta--${variant}`} label={CTA_COPY.eyebrow}>
+      {variant === "rays" ? (
+        <Rays className="gl-cta__panel">{panel}</Rays>
+      ) : (
+        <div className={`gl-cta__panel gl-${variant}`}>{panel}</div>
+      )}
+    </Band>
+  );
+}

@@ -68,6 +68,15 @@ export const directions = [
     reference: "Urbit.org’s dithered, olive-and-sage site design",
     date: "2026-10-09",
     load: () => import("./directions/stipple")
+  },
+  {
+    slug: "gridline",
+    name: "Gridline",
+    summary:
+      "The current site, rebuilt on its grid. Every section and cell is outlined in hairlines between two full-height rails, with type doing the work: Instrument Sans headings, Instrument Serif ledes and quotes, IBM Plex Mono labels. Light and dark mirror each other in inverted bands, and violet light rays and a grid horizon light the panels.",
+    reference: "VoidZero’s Vite+ and Void sites",
+    date: "2026-10-17",
+    load: () => import("./directions/gridline")
   }
   // `npm run lab:new` adds new directions above this line
 ] as const satisfies readonly DirectionInfo[];
