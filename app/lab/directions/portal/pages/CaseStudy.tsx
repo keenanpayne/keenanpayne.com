@@ -260,7 +260,7 @@ export function CaseStudy({
               title="Awards"
               items={page.awards.map((award) => ({
                 text: `${award.name} ${award.status}`,
-                small: `${award.year} · ${award.category}`,
+                small: `${award.year} · ${award.category} · ${award.details}`,
                 href: award.link
               }))}
             />

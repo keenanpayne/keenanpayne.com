@@ -67,7 +67,9 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
             <a href={award.link}>
               {award.name} {award.status}, {award.year}
             </a>
-            <span className="gl-meta">{` · ${award.category}`}</span>
+            <span className="gl-meta">
+              {` · ${award.category} · ${award.details}`}
+            </span>
           </li>
         ))}
       </ul>
