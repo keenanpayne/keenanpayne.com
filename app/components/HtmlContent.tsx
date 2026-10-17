@@ -1,12 +1,23 @@
-import { useEffect, useRef } from "react";
-
-import { isHydrated } from "../lib/hydration";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 
 declare global {
   interface Window {
     twttr?: { widgets?: { load: (element?: Element) => void } };
   }
 }
+
+const subscribe = () => () => {};
+
+/**
+ * `false` while hydrating server-rendered markup, `true` for anything React
+ * renders itself (e.g. after a client-side navigation)
+ */
+const useIsClientRender = () =>
+  useSyncExternalStore(
+    subscribe,
+    () => true,
+    () => false
+  );
 
 /**
  * Renders a trusted HTML string (rendered Markdown). Embed scripts in the
@@ -22,7 +33,8 @@ export function HtmlContent({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   // Server-rendered markup was parsed (and its scripts run) by the browser
-  const scriptsRunFor = useRef(isHydrated() ? null : html);
+  const clientRender = useIsClientRender();
+  const scriptsRunFor = useRef(clientRender ? null : html);
 
   useEffect(() => {
     const element = ref.current;

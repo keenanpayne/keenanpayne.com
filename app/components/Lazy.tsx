@@ -6,6 +6,8 @@ import {
   type CSSProperties
 } from "react";
 
+import { externalLinkProps } from "../lib/site";
+
 /**
  * Lazy loading
  * ==================================================
@@ -108,8 +110,7 @@ export function LazyImageTile({
       data-src={image}
       data-lazy={eager ? undefined : ""}
       style={style}
-      target="_blank"
-      rel="noopener"
+      {...externalLinkProps(href ?? "")}
     ></a>
   );
 }

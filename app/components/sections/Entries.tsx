@@ -14,7 +14,7 @@ export function Entries({ section }: { section: EntriesSection }) {
 
       {section.itemsClass !== undefined && (
         <div className={`collections-items ${section.itemsClass}`}>
-          {section.empty ? (
+          {section.entries.length === 0 ? (
             <Notice>No content is published here yet.</Notice>
           ) : (
             section.entries.map((entry, index) => (

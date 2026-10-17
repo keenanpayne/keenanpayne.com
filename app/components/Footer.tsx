@@ -11,6 +11,7 @@ import threads from "../assets/svg/threads.svg?raw";
 import twitter from "../assets/svg/twitter.svg?raw";
 import { socials } from "../data/socials";
 import { isActive, usePageUrl } from "../lib/navigation";
+import { externalLinkProps } from "../lib/site";
 import type { LinkModel } from "../lib/types";
 
 const icons: Record<string, string> = {
@@ -60,8 +61,7 @@ export function Footer({ navigation }: { navigation: LinkModel[] }) {
                     <li className="footer-socials-item">
                       <a
                         className={`footer-socials-link -${name}`}
-                        target="_blank"
-                        rel="noopener"
+                        {...externalLinkProps(social.url)}
                         href={social.url}
                         title={`Find me on ${name}`}
                         dangerouslySetInnerHTML={{ __html: icons[name] }}

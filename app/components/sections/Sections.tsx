@@ -47,7 +47,7 @@ function Section({ section }: { section: SectionModel }) {
     case "pageList":
       return <PageList section={section} />;
     case "socialProofLogos":
-      return <SocialProofLogos />;
+      return <SocialProofLogos section={section} />;
     case "cta":
       return <Cta />;
     case "contact":

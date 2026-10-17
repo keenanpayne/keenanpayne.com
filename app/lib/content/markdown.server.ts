@@ -48,7 +48,7 @@ function getGrammar(language: string) {
 }
 
 // Line highlighting, e.g. ```css/1,4/-1 (highlights / additions / removals)
-function parseLineRanges(ranges = "") {
+function parseLineRanges(ranges: string) {
   const lines = new Set<number>();
   if (!ranges) return lines;
 
@@ -62,8 +62,7 @@ function parseLineRanges(ranges = "") {
   return lines;
 }
 
-function wrapLines(lines: string[], ranges: string) {
-  const groups = ranges.split("/");
+function wrapLines(lines: string[], groups: string[]) {
   const highlight = parseLineRanges(groups.length === 1 ? groups[0] : "");
   const add = parseLineRanges(groups.length === 2 ? groups[0] : "");
   const remove = parseLineRanges(groups.length === 2 ? groups[1] : "");
@@ -102,8 +101,7 @@ function highlight(code: string, info: string) {
 
   let lines = html.split("\n");
   if (lines[lines.length - 1] === "") lines = lines.slice(0, -1);
-  if (highlightRanges.length)
-    lines = wrapLines(lines, highlightRanges.join("/"));
+  if (highlightRanges.length) lines = wrapLines(lines, highlightRanges);
 
   const attributes = ` class="language-${escapeHtml(language)}"`;
   return `<pre${attributes}><code${attributes}>${lines.join("\n")}</code></pre>`;

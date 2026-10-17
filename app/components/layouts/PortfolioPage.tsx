@@ -110,7 +110,7 @@ export function PortfolioPage({ page }: { page: PortfolioPageModel }) {
                   {page.people.map((person, index) => (
                     <li className="portfolio-detail-person" key={index}>
                       {person.url ? (
-                        <a href={person.url} target="_blank" rel="noopener">
+                        <a href={person.url} {...externalLinkProps(person.url)}>
                           {person.name}
                         </a>
                       ) : (
@@ -164,8 +164,7 @@ export function PortfolioPage({ page }: { page: PortfolioPageModel }) {
                     className="button -ghost"
                     href={page.siteUrl}
                     title={page.siteTitle}
-                    target="_blank"
-                    rel="noopener"
+                    {...externalLinkProps(page.siteUrl)}
                   >
                     Visit Site
                   </a>

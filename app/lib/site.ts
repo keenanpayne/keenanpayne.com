@@ -7,6 +7,10 @@ export const SITE_ORIGIN = metadata.url.replace(/\/$/, "");
 
 export const absoluteUrl = (path: string) => `${SITE_ORIGIN}${path}`;
 
+/** Document title: `<name> | <site title>`, or the site title alone */
+export const pageTitle = (name?: string) =>
+  name ? `${name} | ${metadata.title}` : metadata.title;
+
 // Links whose `href` starts with a protocol (`https:`, `mailto:`, …) or `//`
 // open in a new tab — this mirrors the old `eleventy-plugin-external-links`.
 const EXTERNAL_LINK = /^(([a-z]+:)|(\/\/))/i;

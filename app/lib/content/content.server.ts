@@ -1,12 +1,23 @@
 import slugifyString from "slugify";
 
+import asanaLogo from "../../assets/svg/asana.svg?raw";
+import gofundmeLogo from "../../assets/svg/gofundme.svg?raw";
+import neuralinkLogo from "../../assets/svg/neuralink.svg?raw";
+import ripplingLogo from "../../assets/svg/rippling.svg?raw";
+import stableLogo from "../../assets/svg/stable.svg?raw";
 import { personById } from "../../data/people";
 import { portfolio } from "../../data/portfolio";
 import testimonialAnalysis from "../../data/testimonial-analysis.json";
 import { testimonials } from "../../data/testimonials";
-import type { PortfolioItem, TestimonialAnalysis } from "../../data/types";
+import type { PortfolioItem } from "../../data/types";
 import { escapeHtml } from "../html";
-import { absoluteUrl, canonicalPath, isExternalUrl, metadata } from "../site";
+import {
+  absoluteUrl,
+  canonicalPath,
+  isExternalUrl,
+  metadata,
+  pageTitle
+} from "../site";
 import type {
   BasicPageModel,
   EntriesSection,
@@ -24,7 +35,7 @@ import type {
   TestimonialModel
 } from "../types";
 
-import { CLOUDINARY_URL as CLOUDINARY, cloudinaryCover } from "./cloudinary";
+import { cloudinaryCover, cloudinaryUpload } from "./cloudinary";
 import {
   htmlDateString,
   longDate,
@@ -141,6 +152,22 @@ interface SitePage {
 
 const POST_LAYOUT = { changefreq: "yearly", seoPriority: 0.7 };
 
+// Sections shared by every `/type/*` and `/tags/*` archive page
+const archiveSections = (heading: string): RawSection[] => [
+  { type: "intro" },
+  {
+    type: "entries",
+    showCovers: false,
+    heading,
+    orientation: "archive",
+    items: { from: "posts", limit: -100 }
+  },
+  { type: "newsletter", spacing: 10 }
+];
+
+const TYPE_SECTIONS = archiveSections("Archives");
+const TAG_SECTIONS = archiveSections("All articles");
+
 const COLLECTIONS: Record<
   CollectionName,
   { layout: Layout; data?: FrontMatter; tags?: string[] }
@@ -173,24 +200,12 @@ const COLLECTIONS: Record<
       templateClass: "_page-spacing-bottom"
     }
   },
-  type: { layout: "type", data: { changefreq: "weekly" } }
+  // `sections:` with no value is `null`, which overrides this with "none"
+  type: {
+    layout: "type",
+    data: { changefreq: "weekly", sections: TYPE_SECTIONS }
+  }
 };
-
-// Sections shared by every `/type/*` and `/tags/*` archive page
-const archiveSections = (heading: string): RawSection[] => [
-  { type: "intro" },
-  {
-    type: "entries",
-    showCovers: false,
-    heading,
-    orientation: "archive",
-    items: { from: "posts", limit: -100 }
-  },
-  { type: "newsletter", spacing: 10 }
-];
-
-const TYPE_SECTIONS = archiveSections("Archives");
-const TAG_SECTIONS = archiveSections("All articles");
 
 const FILTERED_TAGS = ["all", "nav", "post", "posts", "Featured"];
 
@@ -198,6 +213,14 @@ const FILTERED_TAGS = ["all", "nav", "post", "posts", "Featured"];
 const NOT_FOUND_URL = "/404.html";
 
 const TESTIMONIAL_TRUNCATE_LENGTH = 225;
+
+const SOCIAL_PROOF_LOGOS = [
+  { name: "asana", svg: asanaLogo },
+  { name: "gofundme", svg: gofundmeLogo },
+  { name: "rippling", svg: ripplingLogo },
+  { name: "neuralink", svg: neuralinkLogo },
+  { name: "stable", svg: stableLogo }
+];
 
 //
 // Helpers
@@ -244,6 +267,12 @@ const titleCase = (value: string) =>
     .join(" ");
 
 const nl2br = (value: string) => value.replace(/\r\n|\n/g, "<br />\n");
+
+// Builds the value on the first call, then returns it
+function memo<T>(fn: () => T) {
+  let value: T | undefined;
+  return () => (value ??= fn());
+}
 
 const byDate = (a: { date: Date; path: string }, b: typeof a) =>
   a.date.getTime() - b.date.getTime() ||
@@ -294,12 +323,7 @@ function loadItem(path: string, source: string): ContentItem {
   const { data: frontMatter, body } = parseFrontMatter(source);
   const data = { ...defaults.data, ...(frontMatter as FrontMatter) };
   const fileSlug = path.slice(path.lastIndexOf("/") + 1, -".md".length);
-  const date =
-    data.date instanceof Date
-      ? data.date
-      : data.date
-        ? new Date(data.date)
-        : BUILD_DATE;
+  const date = data.date ? new Date(data.date) : BUILD_DATE;
 
   const item = {
     path,
@@ -333,11 +357,6 @@ let contentIndex: ContentIndex | undefined;
 function getIndex(): ContentIndex {
   if (contentIndex) return contentIndex;
 
-  const memo = (fn: () => PageModel) => {
-    let model: PageModel | undefined;
-    return () => (model ??= fn());
-  };
-
   const files = Object.entries(sources)
     .map(([path, source]) => loadItem(path, source))
     .sort((a, b) => (a.path > b.path ? 1 : -1));
@@ -368,26 +387,18 @@ function getIndex(): ContentIndex {
   ];
 
   const byUrl = new Map<string, () => PageModel>();
+  const register = (url: string, source: string, build: () => PageModel) => {
+    if (byUrl.has(url)) throw new Error(`Duplicate URL ${url} (${source})`);
+    byUrl.set(url, memo(build));
+  };
 
   for (const item of items) {
-    if (byUrl.has(item.url)) {
-      throw new Error(`Duplicate URL ${item.url} (${item.path})`);
-    }
-    byUrl.set(
-      item.url,
-      memo(() => buildItemPage(item))
-    );
+    register(item.url, item.path, () => buildItemPage(item));
   }
 
   const tagPages: SitePage[] = tagList.map((tag) => {
     const url = tagUrl(tag);
-    if (byUrl.has(url)) {
-      throw new Error(`Duplicate URL ${url} (tag "${tag}")`);
-    }
-    byUrl.set(
-      url,
-      memo(() => buildTagPage(tag, url))
-    );
+    register(url, `tag "${tag}"`, () => buildTagPage(tag, url));
     return {
       url,
       title: tagTitle(tag),
@@ -445,8 +456,8 @@ const getTitle = (item: ContentItem) =>
 const tagTitle = (tag: string) => `Articles tagged “${tag}”`;
 
 function getMeta(url: string, title?: string, meta?: FrontMatter["meta"]) {
-  const name = meta?.title ? meta.title : title;
-  const pageTitle = title ? `${name} | ${metadata.title}` : metadata.title;
+  // `meta.title` only renames pages that have a title of their own
+  const name = title ? meta?.title || title : undefined;
 
   let image: string | undefined;
   if (meta?.image) {
@@ -454,7 +465,7 @@ function getMeta(url: string, title?: string, meta?: FrontMatter["meta"]) {
   }
 
   const result: PageMeta = {
-    title: pageTitle,
+    title: pageTitle(name),
     description: meta?.description || metadata.description,
     canonical: absoluteUrl(url)
   };
@@ -522,7 +533,7 @@ const byOrder = (items: ContentItem[]) =>
   [...items].sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
 
 // Posts and featured items are newest first
-function getCollection(name: unknown): ContentItem[] | undefined {
+function getCollection(name: unknown): ContentItem[] {
   const index = getIndex();
   switch (name) {
     case "posts":
@@ -537,7 +548,7 @@ function getCollection(name: unknown): ContentItem[] | undefined {
     case "services":
       return servicesByDate();
     default:
-      return undefined;
+      return [];
   }
 }
 
@@ -550,8 +561,7 @@ function resolveEntries(
     type: "entries",
     heading: optionalString(section.heading),
     readMore: asLink(section.readMore),
-    entries: [],
-    empty: false
+    entries: []
   };
 
   const items = section.items as Record<string, unknown> | undefined;
@@ -566,12 +576,8 @@ function resolveEntries(
   const from = items.from;
   // Content writes `limit: -100` for "everything" (Nunjucks' `head` filter)
   const limit = Number(items.limit) > 0 ? Number(items.limit) : Infinity;
-  const collection = (getCollection(from) ?? []).slice(0, limit);
-
-  if (!collection.length) {
-    model.empty = true;
-    return model;
-  }
+  const collection = getCollection(from).slice(0, limit);
+  if (!collection.length) return model;
 
   if (from === "featured" || from === "posts") {
     let posts = collection;
@@ -580,7 +586,6 @@ function resolveEntries(
     } else if (context.type) {
       posts = posts.filter((post) => post.data.type === context.type);
     }
-    model.empty = !posts.length;
     model.entries = posts.map((post) =>
       entry({
         cover: showCovers && post.data.cover,
@@ -709,15 +714,19 @@ function resolvePortfolioGrid(section: RawSection): PortfolioGridSection {
 
   if (!Array.isArray(section.items)) return model;
 
+  const videoBase = cloudinaryUpload("video");
+  const imageBase = cloudinaryUpload("image");
+
   model.items = section.items.map((key) => {
     const asset = assets[Number(key)] ?? {};
     const transform = asset.asset_transform ?? "";
-    const video = asset.video?.replace(`${CLOUDINARY}/video/upload/`, "");
-    const image = asset.image?.replace(`${CLOUDINARY}/image/upload/`, "");
-    const videoUrl = `${CLOUDINARY}/video/upload/${transform}/${video}`;
-    const videoUrlRaw = `${CLOUDINARY}/video/upload/${video}`;
-    const imageUrl = `${CLOUDINARY}/image/upload/${transform}/${image}`;
-    const imageUrlRaw = `${CLOUDINARY}/image/upload/${image}`;
+    // Assets are stored as full URLs or as paths below the upload prefix
+    const video = asset.video?.replace(videoBase, "");
+    const image = asset.image?.replace(imageBase, "");
+    const videoUrl = `${videoBase}${transform}/${video}`;
+    const videoUrlRaw = `${videoBase}${video}`;
+    const imageUrl = `${imageBase}${transform}/${image}`;
+    const imageUrlRaw = `${imageBase}${image}`;
 
     return {
       video: video ? videoUrl : undefined,
@@ -763,21 +772,21 @@ function resolveSection(
         readMore: asLink(section.readMore),
         testimonials: section.ids ? resolveTestimonials(section.ids) : null
       };
-    case "testimonials-grid": {
-      const analysis = testimonialAnalysis as TestimonialAnalysis;
+    case "testimonials-grid":
       return {
         type: "testimonials-grid",
-        qualities: analysis.topQualities.slice(0, 8).map((quality) => ({
-          label: titleCase(quality.word.replaceAll("-", " ")),
-          count: quality.count
-        })),
+        qualities: testimonialAnalysis.topQualities
+          .slice(0, 8)
+          .map((quality) => ({
+            label: titleCase(quality.word.replaceAll("-", " ")),
+            count: quality.count
+          })),
         testimonials: resolveTestimonials(section.ids)
       };
-    }
     case "testimonial":
       return {
         type: "testimonial",
-        testimonial: section.id ? resolveTestimonial(section.id) : undefined
+        testimonial: resolveTestimonial(section.id)
       };
     case "portfolioGrid":
       return resolvePortfolioGrid(section);
@@ -811,6 +820,9 @@ function resolveSection(
         pages: index.pages.map(({ title, url }) => ({ title, url }))
       };
     case "socialProofLogos":
+      // Only the home page shows these, so they ship in its loader data
+      // rather than in the client bundle every page loads
+      return { type: "socialProofLogos", logos: SOCIAL_PROOF_LOGOS };
     case "cta":
     case "contact":
     case "projectInquiry":
@@ -905,12 +917,12 @@ function buildPostPage(item: ContentItem): PostPageModel {
       url: typeUrl(type),
       title: `View archive for ${plural(slug(type))}`
     };
-  }
-  if (data.title) {
-    model.footer = {
-      article: data.long_form ? "a" : "an",
-      typeLabel: (data.long_form ?? type ?? "").toLowerCase()
-    };
+    if (data.title) {
+      model.footer = {
+        article: data.long_form ? "a" : "an",
+        typeLabel: (data.long_form ?? type).toLowerCase()
+      };
+    }
   }
 
   return model;
@@ -961,7 +973,6 @@ function buildBasicPage(
   url: string,
   title: string | undefined,
   data: FrontMatter,
-  sections: unknown,
   content: string,
   context: SectionContext
 ): BasicPageModel {
@@ -970,7 +981,7 @@ function buildBasicPage(
     url,
     meta: getMeta(url, title, data.meta),
     templateClass: data.templateClass,
-    sections: resolveSections(sections, { title, ...context }),
+    sections: resolveSections(data.sections, { title, ...context }),
     content
   };
 }
@@ -981,26 +992,21 @@ function buildItemPage(item: ContentItem): PageModel {
       return buildPostPage(item);
     case "portfolio":
       return buildPortfolioPage(item);
-    default: {
-      // `sections:` with no value is `null`, which means "none"
-      let sections = item.data.sections;
-      if (sections === undefined && item.layout === "type") {
-        sections = TYPE_SECTIONS;
-      }
+    default:
       return buildBasicPage(
         item.url,
         getTitle(item),
         item.data,
-        sections,
         renderBody(item),
         { type: item.data.type }
       );
-    }
   }
 }
 
 function buildTagPage(tag: string, url: string): PageModel {
-  return buildBasicPage(url, tagTitle(tag), {}, TAG_SECTIONS, "", { tag });
+  return buildBasicPage(url, tagTitle(tag), { sections: TAG_SECTIONS }, "", {
+    tag
+  });
 }
 
 //
@@ -1008,13 +1014,12 @@ function buildTagPage(tag: string, url: string): PageModel {
 // ----------
 
 function normalizePath(pathname: string) {
-  let path = pathname;
   try {
-    path = decodeURI(pathname);
+    return decodeURI(pathname);
   } catch {
     // Keep the raw pathname when it can't be decoded
+    return pathname;
   }
-  return path;
 }
 
 /** Returns the page model for a pathname, or `undefined` when there is none. */

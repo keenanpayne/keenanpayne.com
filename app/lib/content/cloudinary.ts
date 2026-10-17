@@ -1,7 +1,12 @@
 // Ref: https://sia.codes/posts/eleventy-and-cloudinary-images/
 const CLOUDNAME = "keenan-payne";
-export const CLOUDINARY_URL = `https://res.cloudinary.com/${CLOUDNAME}`;
-const BASE_URL = `${CLOUDINARY_URL}/image/upload/`;
+const CLOUDINARY_URL = `https://res.cloudinary.com/${CLOUDNAME}`;
+
+/** Delivery URL prefix for uploaded images or videos */
+export const cloudinaryUpload = (kind: "image" | "video") =>
+  `${CLOUDINARY_URL}/${kind}/upload/`;
+
+const BASE_URL = cloudinaryUpload("image");
 const FALLBACK_WIDTHS = [300, 600, 680, 1360];
 const FALLBACK_WIDTH = 1360;
 

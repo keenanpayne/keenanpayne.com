@@ -1,3 +1,4 @@
+import { externalLinkProps } from "../../lib/site";
 import type { PortfolioGridSection } from "../../lib/types";
 import { Label } from "../Label";
 import { LazyImageTile, LazyVideo } from "../Lazy";
@@ -78,8 +79,7 @@ export function PortfolioGrid({ section }: { section: PortfolioGridSection }) {
                         : "portfolioGrid-link"
                     }
                     href={item.link}
-                    target="_blank"
-                    rel="noopener"
+                    {...externalLinkProps(item.link)}
                   >
                     {item.title}
                   </a>

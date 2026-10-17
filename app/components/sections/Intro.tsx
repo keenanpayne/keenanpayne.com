@@ -61,29 +61,22 @@ export function Intro({ section }: { section: IntroSection }) {
 
         {section.leftPhotos && (
           <div className="intro-photos">
-            {section.leftPhotos.map((photo) => (
-              // Photos are inline, so keep the whitespace between them
-              <Fragment key={photo.src}>
-                {" "}
-                {photo.lazy ? (
-                  <LazyImage
+            {section.leftPhotos.map((photo) => {
+              const Photo = photo.lazy ? LazyImage : "img";
+              return (
+                // Photos are inline, so keep the whitespace between them
+                <Fragment key={photo.src}>
+                  {" "}
+                  <Photo
                     className="intro-photo"
                     src={photo.src}
                     alt={photo.alt}
                     width={photo.width}
                     height={photo.height}
                   />
-                ) : (
-                  <img
-                    className="intro-photo"
-                    src={photo.src}
-                    alt={photo.alt}
-                    width={photo.width}
-                    height={photo.height}
-                  />
-                )}
-              </Fragment>
-            ))}
+                </Fragment>
+              );
+            })}
           </div>
         )}
       </header>
