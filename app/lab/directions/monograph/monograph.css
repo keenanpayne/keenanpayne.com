@@ -1693,6 +1693,38 @@ button.mg-pill {
     background: var(--mg-tint);
   }
 
+  /* Service pages: the process as steps under hairlines, each with its icon
+     set small, and the tools as columns */
+  & .services-items {
+    display: grid;
+    gap: 24px 32px;
+    margin: 1.6em 0;
+
+    @media (width >= 640px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  & .services-items-item {
+    padding-top: 12px;
+    border-top: 1px solid var(--mg-ink);
+  }
+
+  & .services-items-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin-bottom: 10px;
+    fill: currentcolor;
+  }
+
+  & .services-tools-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 16px 24px;
+    margin: 1.2em 0 2em;
+  }
+
   /* Callouts: notes, tips, questions, TL;DR, further reading */
   & .-context {
     position: relative;

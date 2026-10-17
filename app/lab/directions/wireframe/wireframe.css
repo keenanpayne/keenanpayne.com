@@ -205,6 +205,31 @@ body:has(.wireframe) {
     vertical-align: -0.125em;
     fill: currentcolor;
   }
+
+  /* Service pages: the process as steps, each with its icon set small, and
+     the tools as columns (the production stylesheet isn't loaded here) */
+  & .services-items {
+    display: grid;
+    gap: 24px;
+    margin-top: 24px;
+
+    @media (width >= 640px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  & .services-items-icon {
+    display: block;
+    width: 32px;
+    height: 32px;
+    fill: currentcolor;
+  }
+
+  & .services-tools-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px 24px;
+  }
 }
 
 .wireframe-cover {

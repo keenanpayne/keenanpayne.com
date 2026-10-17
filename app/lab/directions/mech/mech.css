@@ -4550,6 +4550,39 @@ a.mc-hex:focus-visible,
     background: var(--mc-green-fill);
   }
 
+  /* Service pages: the process as panels, each with its icon in amber, and
+     the tools as columns */
+  & .services-items {
+    display: grid;
+    gap: 20px;
+    margin: 1.8em 0;
+
+    @media (width >= 640px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  & .services-items-item {
+    padding: 14px 18px;
+    border: 1px solid var(--mc-line-dim);
+    background: var(--mc-panel);
+  }
+
+  & .services-items-icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 8px;
+    color: var(--mc-amber);
+    fill: currentColor;
+  }
+
+  & .services-tools-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px 20px;
+  }
+
   /* Callouts: notes, tips, questions, TL;DR, further reading */
   & .-context {
     position: relative;
