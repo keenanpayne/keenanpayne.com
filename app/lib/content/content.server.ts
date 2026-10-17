@@ -32,7 +32,11 @@ import {
   readableDate
 } from "./dates.server";
 import { parseFrontMatter } from "./frontmatter.server";
-import { addExternalLinkAttributes, buildTableOfContents } from "./html.server";
+import {
+  addExternalLinkAttributes,
+  buildTableOfContents,
+  convertToAbsoluteUrls
+} from "./html.server";
 import { renderMarkdown } from "./markdown.server";
 import { expandShortcodes } from "./shortcodes.server";
 
@@ -561,7 +565,7 @@ function resolveEntries(
 
   const from = items.from;
   // Content writes `limit: -100` for "everything" (Nunjucks' `head` filter)
-  const limit = Math.abs(Number(items.limit)) || Infinity;
+  const limit = Number(items.limit) > 0 ? Number(items.limit) : Infinity;
   const collection = (getCollection(from) ?? []).slice(0, limit);
 
   if (!collection.length) {
@@ -576,6 +580,7 @@ function resolveEntries(
     } else if (context.type) {
       posts = posts.filter((post) => post.data.type === context.type);
     }
+    model.empty = !posts.length;
     model.entries = posts.map((post) =>
       entry({
         cover: showCovers && post.data.cover,
@@ -1052,11 +1057,15 @@ export function getSitemapPages() {
   }));
 }
 
+/** Every post, newest first, with absolute URLs in its content */
 export function getFeedPosts() {
-  return getIndex().posts.map((post) => ({
-    title: String(post.data.title ?? ""),
-    url: absoluteUrl(post.url),
-    date: post.date,
-    content: renderBody(post)
-  }));
+  return getIndex().posts.map((post) => {
+    const url = absoluteUrl(post.url);
+    return {
+      title: String(post.data.title ?? ""),
+      url,
+      date: post.date,
+      content: convertToAbsoluteUrls(renderBody(post), url)
+    };
+  });
 }

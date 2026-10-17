@@ -170,17 +170,21 @@ function resolveSrcset(srcset: string, base: string) {
 
 export function convertToAbsoluteUrls(html: string, base: string) {
   const root = parse(html);
+  const selector = [...URL_ATTRIBUTES, "srcset"]
+    .map((name) => `[${name}]`)
+    .join(",");
 
-  for (const name of URL_ATTRIBUTES) {
-    for (const element of root.querySelectorAll(`[${name}]`)) {
-      element.setAttribute(name, resolveUrl(element.getAttribute(name)!, base));
+  for (const element of root.querySelectorAll(selector)) {
+    for (const name of URL_ATTRIBUTES) {
+      const value = element.getAttribute(name);
+      if (value !== undefined) {
+        element.setAttribute(name, resolveUrl(value, base));
+      }
     }
-  }
-  for (const element of root.querySelectorAll("[srcset]")) {
-    element.setAttribute(
-      "srcset",
-      resolveSrcset(element.getAttribute("srcset")!, base)
-    );
+    const srcset = element.getAttribute("srcset");
+    if (srcset !== undefined) {
+      element.setAttribute("srcset", resolveSrcset(srcset, base));
+    }
   }
 
   return root.toString();
