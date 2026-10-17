@@ -1,0 +1,276 @@
+/* Portfolio */
+/* ================================================== */
+
+.portfolio {
+  --portfolio-color: var(--color-purple-1);
+
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.portfolio-header {
+  grid-column: 1 / -1;
+  margin-bottom: calc(3 * var(--spacing-unit));
+
+  @media (--min-720) {
+    grid-column: 1 / -1;
+  }
+}
+
+.portfolio-title {
+  margin-bottom: 0.5rem;
+
+  @media (--min-960) {
+    margin-bottom: 1rem;
+  }
+}
+
+.portfolio-lede {
+  margin-top: 0;
+  max-width: 46ch;
+}
+
+.portfolio-details {
+  grid-column: 1 / -1;
+
+  @media (--min-560) {
+    align-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media (--min-640) {
+    grid-column: 2 / span 8;
+  }
+
+  @media (--min-720) {
+    grid-column: 1 / span 5;
+  }
+
+  @media (--min-1120) {
+    grid-column: 1 / span 4;
+  }
+}
+
+.portfolio-detail {
+  --border-color: var(--color-gray-4);
+
+  @media (--dark) {
+    --border-color: var(--color-gray-7);
+  }
+
+  @media (--min-560) {
+    flex-basis: 50%;
+  }
+
+  &:not(:last-of-type) {
+    padding-bottom: calc(3 * var(--spacing-unit));
+
+    @media (--min-1120) {
+      padding-bottom: calc(5 * var(--spacing-unit));
+    }
+  }
+
+  &:nth-child(odd):not(.-full-width) {
+    @media (--min-560) {
+      .portfolio-label,
+      .portfolio-stat {
+        padding-left: 1rem;
+      }
+    }
+  }
+
+  /* Modifiers */
+  &.-full-width {
+    flex-basis: 100%;
+  }
+
+  &.-cta {
+    text-align: right;
+  }
+
+  /* Descendants */
+  ul {
+    margin-bottom: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+
+    &.-inline {
+      display: inline-block;
+
+      &:not(:last-of-type) {
+        &::after {
+          content: ",";
+        }
+      }
+    }
+  }
+}
+
+.portfolio-detail-people {
+  @media (--min-640) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: calc(1 * var(--spacing-unit));
+    grid-row-gap: calc(1.5 * var(--spacing-unit));
+  }
+}
+
+.portfolio-detail-person {
+  white-space: nowrap;
+}
+
+.portfolio-detail-position {
+  color: var(--color-gray-6);
+  display: block;
+  font-size: 12px;
+
+  @media (--dark) {
+    color: var(--color-gray-5);
+  }
+}
+
+.portfolio-label {
+  & + * {
+    margin-top: 0.5rem;
+  }
+}
+
+.portfolio-stat {
+  max-width: 55ch;
+
+  /* Descendants */
+  > strong {
+    @mixin subtleBackground;
+  }
+}
+
+.portfolio-cover {
+  grid-column: 1 / -1;
+  margin-bottom: calc(3 * var(--spacing-unit));
+  margin-top: 0.25rem;
+  order: -1;
+  width: 100%;
+
+  @media (--min-720) {
+    grid-column: 6 / -1;
+    margin-bottom: 0;
+    order: initial;
+    padding-right: 1.5rem;
+  }
+
+  @media (--min-1120) {
+    grid-column: 5 / -1;
+  }
+}
+
+.portfolio-cover-img {
+  box-shadow:
+    10px 10px var(--portfolio-color),
+    var(--shadow);
+
+  @media (--min-960) {
+    box-shadow:
+      15px 15px var(--portfolio-color),
+      var(--shadow);
+  }
+}
+
+.portfolio-intro {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-gap: 3rem;
+  margin-top: 3rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  @media (--min-960) {
+    grid-template-columns: repeat(3, 1fr);
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+
+  @media (--min-1120) {
+    margin-top: 5rem;
+  }
+}
+
+.portfolio-intro-content {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50ch;
+}
+
+.portfolio-content {
+  display: grid;
+  gap: calc(3 * var(--spacing-unit));
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(10, 1fr);
+  margin-top: 0.5rem;
+
+  @media (--min-720) {
+    margin-top: 0;
+  }
+}
+
+.portfolio-subcontent {
+  grid-column: 1 / -1;
+}
+
+/* TODO: Move into separate file */
+.awards {
+  --border: var(--color-purple-1);
+
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+
+  @media (--dark) {
+    --border: var(--color-yellow-2);
+  }
+
+  @media (--min-320) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (--min-960) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.awards-item {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  /* Descendants */
+  img {
+    display: block;
+    margin-bottom: 0.5rem;
+    max-width: 100px;
+
+    @media (--dark) {
+      filter: invert(100%);
+    }
+  }
+}
+
+.awards-name {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+}
+
+.awards-details {
+  /* Descendants */
+  span {
+    display: block;
+  }
+}

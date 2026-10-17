@@ -1,0 +1,26 @@
+@define-mixin rainbowBackground {
+  color: var(--color-white);
+  font-weight: var(--font-weight-semibold);
+  margin-left: 0.1rem;
+  margin-right: 0.1rem;
+  padding: 0 0.325rem;
+  position: relative;
+  white-space: pre;
+
+  &::after {
+    background: linear-gradient(
+      to right,
+      var(--color-orange),
+      var(--color-pink),
+      var(--color-purple-1)
+    );
+    bottom: 0;
+    border-radius: 3px;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+}

@@ -1,0 +1,93 @@
+/* Testimonials Grid */
+/* ================================================== */
+
+.testimonials-grid {
+  --grid-gap: calc(1.5 * var(--spacing-unit));
+  --grid-columns: 1;
+
+  @media (--min-640) {
+    --grid-gap: calc(3 * var(--spacing-unit));
+    --grid-columns: 2;
+  }
+}
+
+/* Testimonials Qualities Section */
+.testimonials-qualities {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: calc(3 * var(--spacing-unit));
+
+  @media (--min-1260) {
+    flex-direction: row;
+  }
+}
+
+.testimonials-qualities-heading {
+  color: var(--color-text-subtle);
+  margin-bottom: calc(1.5 * var(--spacing-unit));
+
+  @media (--min-1260) {
+    line-height: 1.5;
+    margin-bottom: 0;
+    margin-right: calc(1.5 * var(--spacing-unit));
+  }
+}
+
+.testimonials-qualities-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(0.75 * var(--spacing-unit));
+  justify-content: center;
+
+  @media (--min-1260) {
+    gap: calc(1.25 * var(--spacing-unit));
+  }
+}
+
+.testimonials-quality-tag {
+  --tag-border-radius: var(--border-radius-pill);
+  --tag-height: 2em;
+
+  align-items: center;
+  background: var(--color-accent-background);
+  border-radius: var(--tag-border-radius);
+  color: var(--color-text-inverted);
+  font-family: var(--font-family-mono);
+  font-weight: var(--font-weight-semibold);
+  display: inline-flex;
+  height: var(--tag-height);
+  font-size: var(--font-size-step--1);
+  gap: calc(0.5 * var(--spacing-unit));
+  padding-left: calc(1.25 * var(--spacing-unit));
+}
+
+.testimonials-quality-count {
+  align-items: center;
+  background: var(--color-accent-background-2);
+  border-top-right-radius: var(--tag-border-radius);
+  border-bottom-right-radius: var(--tag-border-radius);
+  color: var(--color-text-inverted);
+  display: inline-flex;
+  font-weight: var(--font-weight-heavy);
+  height: var(--tag-height);
+  justify-content: center;
+  line-height: inherit;
+  margin-left: calc(0.25 * var(--spacing-unit));
+  padding-left: calc(1 * var(--spacing-unit));
+  padding-right: calc(1.25 * var(--spacing-unit));
+}
+
+.testimonials-grid-container {
+  display: grid;
+  gap: var(--grid-gap);
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+}
+
+.testimonials-grid-item {
+  /* Descendants */
+  .testimonial {
+    height: 100%;
+    margin: 0;
+  }
+}

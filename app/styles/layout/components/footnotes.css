@@ -1,0 +1,32 @@
+/* Footnotes */
+/* ================================================== */
+
+.footnotes {
+  margin-top: calc(5 * var(--spacing-unit));
+}
+
+.footnotes-heading {
+  border-bottom: 1px solid var(--color-gray-4);
+  margin-bottom: 1em;
+}
+
+.footnotes-list {
+  padding-left: 1.5rem;
+  margin-bottom: 0;
+  margin-right: auto;
+  max-width: 65ch;
+
+  @media (--min-640) {
+    padding-left: 0;
+  }
+}
+
+.footnote-item {
+  font-size: var(--font-size-base);
+
+  &:not(:first-of-type) {
+    margin-top: 1rem;
+  }
+}
+
+/* .footnote-ref: font size, see `._text-small` (generic/utilities.css) */

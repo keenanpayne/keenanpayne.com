@@ -1,0 +1,29 @@
+/* <p> */
+/* ================================================== */
+
+p {
+  color: var(--color-paragraph);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  margin-bottom: 0;
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  & + &,
+  & + img {
+    margin-top: calc(1.5 * var(--spacing-unit));
+  }
+
+  /* Descendants */
+  a {
+    @mixin linkHoverBackground;
+    @mixin externalLink;
+  }
+}
+
+strong {
+  font-weight: var(--font-weight-bold);
+}

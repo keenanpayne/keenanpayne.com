@@ -1,9 +1,0 @@
-@mixin grid($columnGap: 3, $rowGap: 3) {
-  display: grid;
-
-  @media (--min-960) {
-    grid-template-columns: repeat(12, 1fr);
-    grid-column-gap: calc(#{$columnGap} * var(--spacing-unit));
-    grid-row-gap: calc(#{$rowGap} * var(--spacing-unit));
-  }
-}

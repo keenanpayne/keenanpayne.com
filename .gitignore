@@ -1,5 +1,10 @@
-_site
-.sass-cache
-node_modules
 .DS_Store
 *.log
+node_modules
+
+# React Router
+/.react-router/
+/build/
+
+# Netlify
+.netlify

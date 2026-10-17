@@ -1,0 +1,31 @@
+/* Layout Container */
+/* ================================================== */
+
+/* Mixin */
+@define-mixin container $size: 1440px {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $size;
+  padding-left: calc(2 * var(--spacing-unit));
+  padding-right: calc(2 * var(--spacing-unit));
+  width: 100%;
+
+  @media (--min-960) {
+    padding-left: calc(3 * var(--spacing-unit));
+    padding-right: calc(3 * var(--spacing-unit));
+  }
+}
+
+/* Styles */
+._container {
+  @mixin container var(--container-large);
+
+  /* Modifiers */
+  &.-small {
+    @mixin container var(--container-small);
+  }
+
+  &.-fluid {
+    @mixin container 95%;
+  }
+}

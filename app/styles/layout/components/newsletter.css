@@ -1,0 +1,131 @@
+/* Newsletter */
+/* ================================================== */
+
+.newsletter {
+  /* Modifiers */
+  &.-standalone {
+    .newsletter-container {
+      max-width: 850px;
+    }
+
+    .newsletter-cta {
+      background: var(--color-yellow-2);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+
+      @media (--dark) {
+        background: var(--color-purple-1);
+      }
+    }
+  }
+
+  &.-pre-footer {
+    background-color: var(--color-yellow-2);
+    color: var(--color-plum-3);
+    margin-top: calc(var(--top-margin, 0) * var(--spacing-unit));
+    padding-bottom: calc(8 * var(--spacing-unit));
+    padding-top: calc(8 * var(--spacing-unit));
+
+    /* Descendants */
+    p {
+      color: var(--color-plum-3);
+    }
+  }
+}
+
+.newsletter-container {
+  display: grid;
+
+  @media (--min-720) {
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: calc(3 * var(--spacing-unit));
+    grid-row-gap: calc(5 * var(--spacing-unit));
+  }
+}
+
+.newsletter-title {
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.newsletter-description {
+  grid-column: 1 / -1;
+
+  @media (--min-720) {
+    grid-column: 1 / span 6;
+  }
+
+  @media (--min-1120) {
+    grid-column: 2 / span 5;
+  }
+}
+
+.newsletter-cta {
+  grid-column: 1 / -1;
+  margin-top: calc(3 * var(--spacing-unit));
+
+  @media (--min-720) {
+    grid-column: 7 / -1;
+    margin-top: 0;
+  }
+
+  @media (--min-1120) {
+    grid-column: 8 / span 4;
+  }
+}
+
+.newsletter-form {
+  margin-bottom: 1rem;
+}
+
+.newsletter-form-fields {
+  display: flex;
+  flex-wrap: wrap;
+
+  > label {
+    flex-basis: 100%;
+    margin-bottom: 0.25rem;
+  }
+
+  > input[type="email"] {
+    background-color: var(--color-white);
+    flex: 1;
+    padding: 1rem 0.75rem;
+  }
+
+  > input[type="submit"] {
+    --background: var(--color-plum-1);
+    --hover: var(--color-plum-3);
+
+    background-color: var(--background);
+    color: var(--color-white);
+    display: inline-block;
+    padding: 0.75rem 1.25rem;
+    transition: background-color var(--transition);
+    width: 100%;
+
+    @media (--min-480) {
+      width: auto;
+    }
+
+    @media (--dark) {
+      --background: var(--color-plum-1);
+      --hover: var(--color-plum-3);
+    }
+
+    &:hover {
+      background-color: var(--hover);
+    }
+  }
+}
+
+/* Context-Specific Styles */
+/* ----------------------- */
+
+.entries + .newsletter {
+  @media (--min-960) {
+    margin-top: 5rem;
+  }
+}

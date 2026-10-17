@@ -1,33 +1,32 @@
 {
-  "extends": "stylelint-config-standard-scss",
+  "extends": "stylelint-config-recommended",
   "rules": {
-    "indentation": 2,
-    "string-quotes": "single",
-    "no-duplicate-selectors": true,
-    "color-hex-case": "lower",
-    "color-hex-length": "short",
-    "color-named": "never",
-    "selector-class-pattern": null,
-    "selector-no-qualifying-type": true,
-    "property-no-vendor-prefix": true,
-    "value-no-vendor-prefix": true,
-    "length-zero-no-unit": true,
-    "shorthand-property-no-redundant-values": true,
-    "number-leading-zero": "always",
-    "declaration-block-no-redundant-longhand-properties": true,
-    "declaration-block-semicolon-newline-after": "always",
-    "block-closing-brace-newline-after": "always",
-    "media-feature-name-no-vendor-prefix": true,
-    "at-rule-no-vendor-prefix": true,
-    "selector-no-vendor-prefix": true,
-    "max-nesting-depth": [
-      3,
+    "at-rule-no-unknown": [
+      true,
       {
-        "ignoreAtRules": ["media", "supports", "include"]
+        "ignoreAtRules": ["define-mixin", "mixin", "custom-media"]
       }
     ],
-    "scss/selector-no-redundant-nesting-selector": true,
-    "scss/at-import-partial-extension": null
-  },
-  "ignoreFiles": ["_site/**/*.css", "node_modules/**"]
+    "at-rule-prelude-no-invalid": [
+      true,
+      {
+        "ignoreAtRules": ["define-mixin", "mixin", "custom-media", "media"]
+      }
+    ],
+    "no-invalid-position-declaration": [
+      true,
+      {
+        "ignoreAtRules": ["define-mixin"]
+      }
+    ],
+    "nesting-selector-no-missing-scoping-root": [
+      true,
+      {
+        "ignoreAtRules": ["define-mixin"]
+      }
+    ],
+    "no-descending-specificity": null,
+    "property-no-deprecated": null,
+    "no-duplicate-selectors": null
+  }
 }

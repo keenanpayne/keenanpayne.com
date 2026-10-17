@@ -1,0 +1,76 @@
+/* Tag */
+/* ================================================== */
+
+/* NOTE: Important to negate `.token`, which is introduced */
+/* by the syntax highlighting library for HTML */
+.tag:not(.token) {
+  /* Font size: see `._text-smaller` (generic/utilities.css) */
+
+  --tag-background: var(--color-white);
+
+  align-items: center;
+  background-color: var(--tag-background);
+  border: 1px solid var(--color-gray-3);
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 1px 0px rgb(100 100 100 / 15%);
+  display: inline-flex;
+  justify-content: center;
+  line-height: 2;
+  padding: 0.05rem 0.5rem 0;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all var(--transition);
+
+  @media (--dark) {
+    --tag-background: var(--color-plum-1);
+
+    border-color: var(--color-gray-4);
+    box-shadow: none;
+  }
+
+  /* Modifiers */
+  &.-large {
+    /* Font size: see `._text-h6` (generic/utilities.css) */
+
+    margin: 0.25rem;
+    padding: 0.15rem 1rem 0.05rem;
+  }
+
+  &.-inactive {
+    --tag-background: var(--color-purple-1);
+
+    border-color: var(--color-purple-1);
+    color: var(--color-gray-1);
+
+    @media (--dark) {
+      --tag-background: var(--color-yellow-2);
+
+      border-color: var(--color-yellow-2);
+      color: var(--color-plum-3);
+    }
+  }
+}
+
+a[href].tag,
+a[href].tag:visited {
+  color: inherit;
+}
+
+a[href].tag:hover,
+a[href].tag:focus {
+  background-color: var(--color-gray-1);
+  border-color: var(--color-gray-5);
+  box-shadow: none;
+  color: initial;
+
+  @media (--dark) {
+    background-color: var(--color-plum-3);
+    border-color: var(--color-gray-6);
+    color: currentColor;
+  }
+}
+
+/* Context-specific styles */
+.entries-item > .tag {
+  align-self: center;
+}

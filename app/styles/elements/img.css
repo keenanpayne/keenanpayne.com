@@ -1,0 +1,18 @@
+/* <img> */
+/* ================================================== */
+
+img {
+  --image-filter: grayscale(25%);
+
+  height: auto;
+  max-width: 100%;
+
+  /* Reducing image vibrancy for dark mode */
+  /* Ref: https://medium.com/dev-channel/re-colorization-for-dark-mode-19e2e17b584b */
+  /* TODO: Turn this into an opt-in setting */
+  /* &:not([src*='.svg']) { */
+  /* @media (--dark) { */
+  /* filter: var(--image-filter); */
+  /* } */
+  /* } */
+}
