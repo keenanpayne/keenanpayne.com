@@ -1101,7 +1101,7 @@ export function KindWords({
       more={{ href: to("/testimonials/"), text: "All testimonials" }}
     >
       <div className="mc-grid mc-grid--3">
-        {testimonials.slice(0, 3).map((testimonial, index) => (
+        {testimonials.map((testimonial, index) => (
           <Transmission
             key={testimonial.id}
             testimonial={testimonial}

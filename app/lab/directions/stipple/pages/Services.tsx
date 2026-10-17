@@ -1,4 +1,10 @@
-import { introOf, pad, useTo, type TemplateProps } from "../../../site";
+import {
+  introOf,
+  pad,
+  quotesOf,
+  useTo,
+  type TemplateProps
+} from "../../../site";
 import {
   Button,
   Layout,
@@ -39,7 +45,7 @@ export function Services({ page, content }: TemplateProps<"services">) {
       </Section>
 
       <Section id="kind-words" title="Kind words">
-        <Quotes testimonials={content.testimonials} />
+        <Quotes testimonials={quotesOf(page, content)} />
       </Section>
     </Layout>
   );

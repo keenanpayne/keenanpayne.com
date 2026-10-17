@@ -1,4 +1,4 @@
-import { introOf, type TemplateProps } from "../../../site";
+import { introOf, quotesOf, type TemplateProps } from "../../../site";
 import { KindWords, PageHeader, Section, WorkGrid } from "../parts";
 
 export function Work({ page, content }: TemplateProps<"work">) {
@@ -41,7 +41,7 @@ export function Work({ page, content }: TemplateProps<"work">) {
         <WorkGrid work={content.work} />
       </Section>
 
-      <KindWords testimonials={content.testimonials} />
+      <KindWords testimonials={quotesOf(page, content)} />
     </>
   );
 }

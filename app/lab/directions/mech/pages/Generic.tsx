@@ -5,7 +5,14 @@ import type {
   LabContent,
   LinkModel
 } from "../../../../lib/types";
-import { Html, introOf, pad, pageEntries, samePath } from "../../../site";
+import {
+  Html,
+  introOf,
+  pad,
+  pageEntries,
+  quotesOf,
+  samePath
+} from "../../../site";
 import {
   Alert,
   KindWords,
@@ -147,7 +154,7 @@ export function Generic({
       {isService && (
         <>
           <Alert heading="Need a hand with this?" />
-          <KindWords testimonials={content.testimonials} />
+          <KindWords testimonials={quotesOf(page, content)} />
         </>
       )}
     </>

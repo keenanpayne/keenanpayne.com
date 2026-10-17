@@ -5,7 +5,14 @@ import type {
   LabContent,
   LinkModel
 } from "../../../../lib/types";
-import { Html, introOf, pageEntries, samePath, useTo } from "../../../site";
+import {
+  Html,
+  introOf,
+  pageEntries,
+  quotesOf,
+  samePath,
+  useTo
+} from "../../../site";
 import {
   BackLink,
   Banner,
@@ -155,7 +162,7 @@ function Service({
           </section>
           <section className="pt-section pt-anchor" id={extras[2].id}>
             <Heading>{extras[2].title}</Heading>
-            <QuotePromo testimonial={content.testimonials[2]} />
+            <QuotePromo testimonial={quotesOf(page, content)[2]} />
           </section>
         </div>
 

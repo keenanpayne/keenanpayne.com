@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf, pad } from "../../../site";
+import { introOf, pad, quotesOf } from "../../../site";
 import {
   Alert,
   KindWords,
@@ -65,7 +65,7 @@ export function Services({
 
       <Alert />
 
-      <KindWords testimonials={content.testimonials} />
+      <KindWords testimonials={quotesOf(page, content)} />
     </>
   );
 }

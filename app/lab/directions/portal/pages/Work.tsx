@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { Html, introOf, useQueryParam, useTo } from "../../../site";
+import { Html, introOf, quotesOf, useQueryParam, useTo } from "../../../site";
 import {
   Badge,
   GoDot,
@@ -9,6 +9,7 @@ import {
   Intro,
   ItemIcon,
   Pill,
+  Quote,
   TagStrip,
   Tile,
   TitleBar,
@@ -115,6 +116,7 @@ export function Work({
   content: LabContent;
 }) {
   const intro = introOf(page);
+  const quotes = quotesOf(page, content);
   const [featured, ...rest] = content.work;
   const search = useWorkSearch(content.work);
   const { query, matches } = search;
@@ -204,6 +206,19 @@ export function Work({
           </ul>
         </section>
       )}
+
+      <section className="pt-section">
+        <Heading>Clients’ choice</Heading>
+        <div className="pt-quotes">
+          {quotes.map((testimonial, index) => (
+            <Quote
+              key={testimonial.id}
+              testimonial={testimonial}
+              index={index}
+            />
+          ))}
+        </div>
+      </section>
     </>
   );
 }

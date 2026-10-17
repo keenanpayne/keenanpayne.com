@@ -5,7 +5,7 @@ import type {
   LabContent,
   LinkModel
 } from "../../../../lib/types";
-import { Html, introOf, pageEntries, samePath } from "../../../site";
+import { Html, introOf, pageEntries, quotesOf, samePath } from "../../../site";
 import {
   ArrowCircle,
   Banner,
@@ -135,7 +135,7 @@ export function Generic({
             />
           </Section>
           <Banner heading="Need a hand with this?" />
-          <KindWords testimonials={content.testimonials} />
+          <KindWords testimonials={quotesOf(page, content)} />
         </>
       )}
     </>

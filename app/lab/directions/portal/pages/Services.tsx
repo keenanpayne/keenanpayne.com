@@ -1,11 +1,11 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf } from "../../../site";
+import { introOf, quotesOf } from "../../../site";
 import {
   Heading,
   Icon,
   Intro,
   NewsList,
-  QuotePromo,
+  Quote,
   Sprite,
   TitleBar
 } from "../parts";
@@ -51,6 +51,7 @@ export function Services({
   content: LabContent;
 }) {
   const intro = introOf(page);
+  const quotes = quotesOf(page, content);
 
   return (
     <>
@@ -101,7 +102,15 @@ export function Services({
         </section>
         <section className="pt-section">
           <Heading>Clients’ choice</Heading>
-          <QuotePromo testimonial={content.testimonials[1]} />
+          <div className="pt-quotes">
+            {quotes.map((testimonial, index) => (
+              <Quote
+                key={testimonial.id}
+                testimonial={testimonial}
+                index={index}
+              />
+            ))}
+          </div>
         </section>
       </div>
     </>

@@ -35,6 +35,16 @@ export const hasNewsletter = (page: { sections: SectionModel[] }) =>
       section.type === "newsletter" || section.type === "newsletterStandalone"
   );
 
+/**
+ * The quotes a page asks for in its `testimonials` section (`/services/`
+ * and `/portfolio/` list four), or the lab's shared selection on a page
+ * without one
+ */
+export const quotesOf = (
+  page: { sections: SectionModel[] },
+  content: LabContent
+) => sectionOf(page, "testimonials")?.testimonials ?? content.testimonials;
+
 /** Compares site paths, ignoring a trailing slash */
 export const samePath = (a: string, b: string) =>
   a.replace(/\/$/, "") === b.replace(/\/$/, "");

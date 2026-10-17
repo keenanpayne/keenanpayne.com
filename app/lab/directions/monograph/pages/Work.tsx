@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf } from "../../../site";
+import { introOf, quotesOf } from "../../../site";
 import {
   ArrowCircle,
   Banner,
@@ -64,7 +64,7 @@ export function Work({
 
       <Banner />
 
-      <KindWords testimonials={content.testimonials} />
+      <KindWords testimonials={quotesOf(page, content)} />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { introOf, type TemplateProps } from "../../../site";
+import { introOf, quotesOf, type TemplateProps } from "../../../site";
 import {
   Clients,
   Contents,
@@ -77,7 +77,7 @@ export function Work({ page, content }: TemplateProps<"work">) {
       )}
 
       <Section id="kind-words" title="Kind words">
-        <Quotes testimonials={content.testimonials} />
+        <Quotes testimonials={quotesOf(page, content)} />
       </Section>
     </Layout>
   );

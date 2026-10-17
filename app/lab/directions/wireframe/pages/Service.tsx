@@ -2,6 +2,7 @@ import { HtmlContent } from "../../../../components/HtmlContent";
 import {
   Html,
   introOf,
+  quotesOf,
   samePath,
   useTo,
   type TemplateProps
@@ -39,7 +40,7 @@ export function Service({ page, content }: TemplateProps<"service">) {
         />
       </Section>
 
-      <KindWords testimonials={content.testimonials} />
+      <KindWords testimonials={quotesOf(page, content)} />
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { introOf, type TemplateProps } from "../../../site";
+import { introOf, quotesOf, type TemplateProps } from "../../../site";
 import { KindWords, PageHeader, Section, ServiceList } from "../parts";
 
 export function Services({ page, content }: TemplateProps<"services">) {
@@ -27,7 +27,7 @@ export function Services({ page, content }: TemplateProps<"services">) {
         </ol>
       </Section>
 
-      <KindWords testimonials={content.testimonials} />
+      <KindWords testimonials={quotesOf(page, content)} />
     </>
   );
 }

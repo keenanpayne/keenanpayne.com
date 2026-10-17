@@ -336,7 +336,7 @@ export function KindWords({
   return (
     <Section icon="quote" label="Kind words">
       <div className="mg-row mg-row--thirds">
-        {testimonials.slice(0, 3).map((testimonial) => (
+        {testimonials.map((testimonial) => (
           <Quote key={testimonial.id} testimonial={testimonial} />
         ))}
       </div>
