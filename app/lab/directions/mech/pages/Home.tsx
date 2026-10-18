@@ -125,8 +125,7 @@ export function Home({ content }: { content: LabContent }) {
           <div className="mc-titlecard mc-titlecard--hero">
             <h1 className="mc-titlecard__title">
               {`${profile.name},`}
-              <span>web developer</span>
-              <span>&amp; designer</span>
+              <span>{profile.role}</span>
             </h1>
             <p className="mc-titlecard__jp" lang="ja">
               ウェブ開発者・デザイナー

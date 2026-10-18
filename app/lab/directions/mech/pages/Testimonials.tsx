@@ -27,7 +27,7 @@ export function Testimonials({ page }: { page: BasicPageModel }) {
                       className="mc-levels__bar"
                       style={
                         {
-                          "--level": quality.count / max
+                          "--mc-level": quality.count / max
                         } as React.CSSProperties
                       }
                       aria-hidden="true"

@@ -4,7 +4,7 @@ import { metadata } from "../../../lib/site";
 import { samePath, useMenu, useTo, type ShellProps } from "../../site";
 
 import { DenverStatus } from "./Denver";
-import { HexOutline, Ticks, Tri } from "./parts";
+import { HexOutline, initialsOf, pilotCode, Ticks, Tri } from "./parts";
 
 /** Below this, the navigation folds into the command deck */
 const WIDE = "(width >= 760px)";
@@ -27,18 +27,24 @@ export function Shell({ navigation, content, children }: ShellProps) {
   const to = useTo();
   const deck = useId();
   const { open, setOpen, toggle } = useMenu(WIDE);
+  const unit = pilotCode(profile.name);
 
   return (
     <div className="mc">
+      <a className="mc-skip" href="#mc-main">
+        <Tri />
+        Skip to content
+      </a>
+
       <header className="mc-hud">
         <a className="mc-hud__id" href={to("/")}>
           <span className="mc-badge" aria-hidden="true">
             <HexOutline />
-            KP
+            {initialsOf(profile.name)}
           </span>
           <span className="mc-hud__name">
             {profile.name}
-            <small>Web development &amp; design · Unit KP-01</small>
+            <small>{`Web development & design · Unit ${unit}`}</small>
           </span>
         </a>
 
@@ -93,7 +99,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
             <Ticks />
           </p>
 
-          <nav aria-label="Main">
+          <nav aria-label="Command deck">
             <ol className="mc-deck__list">
               {navigation.map((item, index) => (
                 <li
@@ -141,7 +147,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
       </header>
       <div className="mc-ruler" aria-hidden="true" />
 
-      <main className="mc-main" inert={open}>
+      <main id="mc-main" className="mc-main" inert={open}>
         {children}
       </main>
 
@@ -155,7 +161,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
             <span>
               End of transmission
               <small>
-                © {new Date().getFullYear()} {profile.name} · KP-01 original
+                © {new Date().getFullYear()} {profile.name} · {unit} original
               </small>
             </span>
           </p>

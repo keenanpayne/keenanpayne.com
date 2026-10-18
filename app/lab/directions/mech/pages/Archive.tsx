@@ -24,7 +24,7 @@ export function Equalizer({ years }: { years: [string, Posts][] }) {
     <Panel className="mc-eq" label="Output by year" code={`Peak ${pad(max)}`}>
       <ol className="mc-eq__columns">
         {chronological.map(([year, posts]) => (
-          <li key={year} style={{ "--rows": max } as React.CSSProperties}>
+          <li key={year} style={{ "--mc-rows": max } as React.CSSProperties}>
             <span className="mc-eq__count">{pad(posts.length)}</span>
             <span className="mc-eq__cells" aria-hidden="true">
               {Array.from({ length: max }, (_, index) => (
@@ -147,12 +147,15 @@ export function Archive({
                     <span className="mc-log__code">
                       {recordCode(content.posts, post.url)}
                     </span>
-                    <span className="mc-log__date">
+                    <time className="mc-log__date" dateTime={post.iso}>
                       {post.date.slice(0, 6)}
-                    </span>
+                    </time>
                     <span className="mc-log__title">{post.title}</span>
                     <span className="mc-log__type">{post.type}</span>
                     <Tri />
+                    {post.lede && (
+                      <span className="mc-log__lede">{post.lede}</span>
+                    )}
                   </a>
                 </li>
               ))}

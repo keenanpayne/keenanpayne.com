@@ -127,9 +127,7 @@ export function Contact({
             ))}
 
             <div className="mc-form__actions mc-field--wide">
-              <Button type="submit">
-                {variant === "contact" ? "Transmit" : form.submit}
-              </Button>
+              <Button type="submit">{form.submit}</Button>
               <p className="mc-form__status" role="status">
                 {sent
                   ? "Transmission held — mockup only, nothing was sent."

@@ -53,6 +53,7 @@ import {
   Newsletter,
   PageHeader,
   Panel,
+  pilotCode,
   PostCards,
   PostNav,
   Readout,
@@ -398,7 +399,7 @@ function Motifs({ content }: SpecimenProps) {
           <span className="mc-hazard" aria-hidden="true" />
         </Specimen>
         <Specimen label="Corner brackets" note="On every panel">
-          <Panel as="div" label="Panel" code="KP-01">
+          <Panel as="div" label="Panel" code={pilotCode(content.profile.name)}>
             <div style={{ minHeight: 72 }} />
           </Panel>
         </Specimen>
@@ -497,7 +498,7 @@ function Motifs({ content }: SpecimenProps) {
           note="The 404 page: MAGI rings repeating the error, routes out"
           wide
         >
-          <NotFound />
+          <NotFound content={content} />
         </Specimen>
       </SpecimenGrid>
     </>
@@ -1004,7 +1005,11 @@ function Labels({ content }: SpecimenProps) {
         label="Label strip"
         note="Heads every panel: label, code, ticks"
       >
-        <Panel as="div" label="Personnel file" code="KP-01">
+        <Panel
+          as="div"
+          label="Personnel file"
+          code={pilotCode(content.profile.name)}
+        >
           {null}
         </Panel>
       </Specimen>
@@ -1233,7 +1238,7 @@ function Lists({ content }: SpecimenProps) {
       fact.url ? (
         <a href={fact.url}>{fact.text}</a>
       ) : fact.id === "role" ? (
-        `KP-01 · ${fact.text}`
+        `${pilotCode(profile.name)} · ${fact.text}`
       ) : (
         fact.text
       )
@@ -1282,12 +1287,15 @@ function Lists({ content }: SpecimenProps) {
                     <span className="mc-log__code">
                       {recordCode(posts, item.url)}
                     </span>
-                    <span className="mc-log__date">
+                    <time className="mc-log__date" dateTime={item.iso}>
                       {item.date.slice(0, 6)}
-                    </span>
+                    </time>
                     <span className="mc-log__title">{item.title}</span>
                     <span className="mc-log__type">{item.type}</span>
                     <Tri />
+                    {item.lede && (
+                      <span className="mc-log__lede">{item.lede}</span>
+                    )}
                   </a>
                 </li>
               ))}
@@ -1401,7 +1409,7 @@ function Lists({ content }: SpecimenProps) {
                 <span className="mc-levels__label">{name}</span>
                 <span
                   className="mc-levels__bar"
-                  style={{ "--level": count / most } as CSSProperties}
+                  style={{ "--mc-level": count / most } as CSSProperties}
                   aria-hidden="true"
                 />
                 <span className="mc-levels__value">{pad(count)}</span>
@@ -1439,13 +1447,13 @@ function Lists({ content }: SpecimenProps) {
         label="Spec sheet, compact"
         note="About: the facts in Mech’s words, beside their terms, under an ID photo"
       >
-        <Panel as="aside" label="Personnel file" code="KP-01">
+        <Panel as="aside" label="Personnel file" code={pilotCode(profile.name)}>
           <div className="mc-dossier">
             <Feed
               className="mc-dossier__photo"
               src={photo.src}
               alt={photo.alt}
-              label="ID · KP-01"
+              label={`ID · ${pilotCode(profile.name)}`}
               natural
             />
             <dl className="mc-spec mc-spec--compact">

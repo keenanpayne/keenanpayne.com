@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
+import type { LabContent } from "../../../../lib/types";
 import { pad, useTo } from "../../../site";
-import { MoreLink } from "../parts";
+import { MoreLink, pilotCode } from "../parts";
 
 const CX = 400;
 const CY = 250;
@@ -59,7 +60,7 @@ function useSecondsSince() {
   return seconds;
 }
 
-export function NotFound() {
+export function NotFound({ content }: { content: LabContent }) {
   const to = useTo();
   const seconds = useSecondsSince();
   const counter = pad(seconds, 6).replace(/^(\d{3})/, "$1,");
@@ -167,7 +168,7 @@ export function NotFound() {
 
       <div className="mc-defense__box mc-defense__box--tl">
         <h1>Page not found</h1>
-        <p>on KP-01 original</p>
+        <p>on {pilotCode(content.profile.name)} original</p>
       </div>
       <div className="mc-defense__box mc-defense__box--tr">
         <p className="mc-defense__small">Time since signal lost</p>

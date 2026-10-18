@@ -18,7 +18,7 @@ export function SyncBar() {
       const progress = max > 0 ? Math.min(1, root.scrollTop / max) : 0;
       const node = bar.current;
       if (!node) return;
-      node.style.setProperty("--progress", String(progress));
+      node.style.setProperty("--mc-progress", String(progress));
       // The percentage label only changes once per whole percent
       const value = `${Math.round(progress * 100)}`;
       if (node.dataset.value !== value) node.dataset.value = value;
