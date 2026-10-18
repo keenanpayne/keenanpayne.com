@@ -9,12 +9,14 @@ import {
   Pill,
   PostCard,
   postNews,
+  Quote,
   QuotePromo,
   ratedTypes,
   TagStrip,
   Tile
 } from "../parts";
 import { FACE, MONITOR } from "../sprites";
+import { serviceItem } from "./Services";
 
 /** Big title art, set like a game logo over a starfield */
 export const Logotype = ({
@@ -44,6 +46,7 @@ export const Logotype = ({
 export function Home({ content }: { content: LabContent }) {
   const to = useTo();
   const { profile } = content;
+  const [promoted, ...reviews] = content.testimonials;
   const tiles = content.work.slice(0, Math.floor(content.work.length / 3) * 3);
 
   return (
@@ -54,7 +57,7 @@ export function Home({ content }: { content: LabContent }) {
             <Logotype lines={profile.name.split(" ")} />
             <p className="pt-hero__tag">
               <GoDot />
-              Web developer &amp; designer
+              {profile.role}
             </p>
             <Html as="p" className="pt-hero__lede" html={profile.bio} />
           </div>
@@ -157,8 +160,40 @@ export function Home({ content }: { content: LabContent }) {
         </section>
         <section className="pt-section">
           <Heading>Clients’ choice</Heading>
-          <QuotePromo testimonial={content.testimonials[0]} />
+          <QuotePromo testimonial={promoted} />
         </section>
+      </div>
+
+      <div className="pt-pair">
+        <section className="pt-section">
+          <Heading more={{ href: to("/services/"), text: "Services" }}>
+            Most wanted
+          </Heading>
+          <NewsList
+            items={content.services.map((service, index) => ({
+              href: service.url,
+              title: service.title,
+              lede: service.lede,
+              item: serviceItem(index)
+            }))}
+          />
+        </section>
+        {reviews.length > 0 && (
+          <section className="pt-section">
+            <Heading more={{ href: to("/testimonials/"), text: "All reviews" }}>
+              Player reviews
+            </Heading>
+            <div className="pt-quotes">
+              {reviews.map((testimonial, index) => (
+                <Quote
+                  key={testimonial.id}
+                  testimonial={testimonial}
+                  index={index + 1}
+                />
+              ))}
+            </div>
+          </section>
+        )}
       </div>
     </>
   );

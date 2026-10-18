@@ -1,6 +1,6 @@
 import type { LabContent } from "../../../../lib/types";
 import { useTo } from "../../../site";
-import { BubbleCard, Mascot, Sprite, TitleBar } from "../parts";
+import { BubbleCard, DOMAIN, Mascot, Sprite, TitleBar } from "../parts";
 import { DIE, ITEMS, pixelNumber } from "../sprites";
 
 export function NotFound({ content }: { content: LabContent }) {
@@ -46,7 +46,7 @@ export function NotFound({ content }: { content: LabContent }) {
           <p>
             Sorry, the page you requested is either invalid or no longer exists
             on this site. Try finding what you need at the{" "}
-            <a href={to("/")}>keenanpayne.com Home Page</a>.
+            <a href={to("/")}>{`${DOMAIN} Home Page`}</a>.
           </p>
           <ul className="pt-404__links">
             <li>

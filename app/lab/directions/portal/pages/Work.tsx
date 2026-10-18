@@ -1,5 +1,12 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { Html, introOf, quotesOf, useQueryParam, useTo } from "../../../site";
+import {
+  Html,
+  introOf,
+  quotesOf,
+  titleOf,
+  useQueryParam,
+  useTo
+} from "../../../site";
 import {
   Badge,
   GoDot,
@@ -86,6 +93,7 @@ export function WorkSearch({
     <form
       className="pt-searchbar"
       role="search"
+      aria-label="Search case studies"
       onSubmit={(event) => event.preventDefault()}
     >
       <label className="pt-searchbar__label" htmlFor="pt-work-q">
@@ -125,9 +133,10 @@ export function Work({
     <>
       <TitleBar
         title="Work"
+        as="p"
         images={content.work.slice(0, 4).map((item) => item.coverSquare)}
       />
-      <Intro heading={intro?.heading} lede={intro?.subheading} />
+      <Intro heading={titleOf(page)} lede={intro?.subheading} as="h1" />
 
       {featured && <Launch item={featured} />}
 
@@ -167,6 +176,13 @@ export function Work({
                   </td>
                   <th scope="row">
                     <a href={item.url}>{item.name}</a>
+                    {item.lede && (
+                      <Html
+                        as="span"
+                        className="pt-table__lede"
+                        html={item.lede}
+                      />
+                    )}
                   </th>
                   <td>{item.industry}</td>
                   <td>{item.role}</td>

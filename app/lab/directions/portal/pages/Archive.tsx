@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf, pad, useQueryParam } from "../../../site";
+import { Html, introOf, pad, titleOf, useQueryParam } from "../../../site";
 import {
   Feature,
   Go,
@@ -207,6 +207,7 @@ export function ArchiveSearch({
     <form
       className="pt-searchbar"
       role="search"
+      aria-label="Search the archives"
       onSubmit={(event) => event.preventDefault()}
     >
       <p className="pt-searchbar__label">Search archives by year or keyword</p>
@@ -286,9 +287,10 @@ export function Archive({
     <>
       <TitleBar
         title="Writing"
+        as="p"
         images={content.posts.map((post) => post.image)}
       />
-      <Intro heading={intro?.heading} lede={intro?.subheading} />
+      <Intro heading={titleOf(page)} lede={intro?.subheading} as="h1" />
 
       {latest && (
         <Feature
@@ -307,7 +309,7 @@ export function Archive({
         </section>
         <section className="pt-section">
           <Heading>Subscribe</Heading>
-          <Newsletter />
+          <Newsletter owner={content.profile.name} />
         </section>
       </div>
 
@@ -331,7 +333,16 @@ export function Archive({
               {posts.map((post) => (
                 <li key={post.url}>
                   <Rating type={post.type} />
-                  <a href={post.url}>{post.title}</a>
+                  <span className="pt-rows__text">
+                    <a href={post.url}>{post.title}</a>
+                    {post.lede && (
+                      <Html
+                        as="span"
+                        className="pt-rows__lede"
+                        html={post.lede}
+                      />
+                    )}
+                  </span>
                   <span className="pt-rows__date">{post.date}</span>
                 </li>
               ))}
@@ -372,8 +383,8 @@ export function Archive({
           })}
         </ul>
         <p className="pt-fineprint">
-          Ratings are issued by the KPRB (Keenan Payne Rating Board), which is
-          entirely made up.
+          Ratings are issued by the KPRB ({content.profile.name} Rating Board),
+          which is entirely made up.
         </p>
       </section>
     </>

@@ -6,6 +6,7 @@ import {
   formOf,
   Html,
   introOf,
+  titleOf,
   useLocalTime,
   useTo,
   type FormField as Field
@@ -57,6 +58,7 @@ export function FormField({ field }: { field: Field }) {
 
 /** The contact or inquiry form under a directory tab; the lab never sends it */
 export function MessageForm({ variant }: { variant: "contact" | "inquiry" }) {
+  const to = useTo();
   const form = formOf(variant);
   const [sent, setSent] = useState(false);
 
@@ -90,6 +92,11 @@ export function MessageForm({ variant }: { variant: "contact" | "inquiry" }) {
           </p>
         </div>
       </form>
+      <p className="pt-formbox__alt">
+        <a className="pt-tri" href={to(form.alternate.path)}>
+          {form.alternate.text}
+        </a>
+      </p>
     </section>
   );
 }
@@ -163,7 +170,7 @@ export function Contact({
 
   return (
     <>
-      <TitleBar title={formOf(variant).title} />
+      <TitleBar title={formOf(variant).title} as="p" />
 
       <div className="pt-split">
         <aside className="pt-split__aside">
@@ -172,7 +179,7 @@ export function Contact({
         </aside>
 
         <div className="pt-split__main">
-          <Intro heading={intro?.heading} />
+          <Intro heading={titleOf(page)} as="h1" />
           {intro?.subheading && (
             <Html as="p" className="pt-intro__lede" html={intro.subheading} />
           )}

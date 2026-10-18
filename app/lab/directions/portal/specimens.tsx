@@ -46,6 +46,7 @@ import {
   BubbleCard,
   ContentKey,
   Directory,
+  DOMAIN,
   Feature,
   Features,
   GameCard,
@@ -53,6 +54,7 @@ import {
   GoDot,
   Heading,
   Icon,
+  initialsOf,
   ItemIcon,
   JumpMenu,
   KeySection,
@@ -301,7 +303,8 @@ function TypeScale({ content, prose, navigation }: SpecimenProps) {
       </TypeSample>
       <TypeSample label="Masthead" measure=".pt-promo__masthead">
         <p className="pt-promo__masthead">
-          <span className="pt-masthead">KP</span> E-mail News
+          <span className="pt-masthead">{initialsOf(profile.name)}</span> E-mail
+          News
         </p>
       </TypeSample>
       <TypeSample label="Archive year" measure=".pt-rows__year">
@@ -600,7 +603,7 @@ function Motifs({ content }: SpecimenProps) {
             label={`Skyscraper ad, “${name}”`}
             note={AD_NOTES[name]}
           >
-            <Ad name={name} />
+            <Ad name={name} profile={profile} />
           </Specimen>
         ))}
         {[4, 7].map((seed) => (
@@ -1037,7 +1040,7 @@ function Actions({ content }: SpecimenProps) {
       </Specimen>
       <Specimen
         label="Clock"
-        note="Denver time on the Elsewhere strip; opens the forecast"
+        note="Local time on the Elsewhere strip; opens the forecast"
       >
         <Clock location={content.profile.location} />
       </Specimen>
@@ -1183,7 +1186,10 @@ function Labels({ content, prose }: SpecimenProps) {
         </Specimen>
         <Specimen label="Masthead" note="Promo boxes: two-tone, italic">
           <p className="pt-promo__masthead">
-            <span className="pt-masthead">KP</span> E-mail News
+            <span className="pt-masthead">
+              {initialsOf(content.profile.name)}
+            </span>{" "}
+            E-mail News
           </p>
         </Specimen>
         <Specimen label="Masthead, reviews">
@@ -1359,7 +1365,7 @@ function Surfaces({ content }: SpecimenProps) {
             <p>
               Sorry, the page you requested is either invalid or no longer
               exists on this site. Try finding what you need at the{" "}
-              <a href={to("/")}>keenanpayne.com Home Page</a>.
+              <a href={to("/")}>{`${DOMAIN} Home Page`}</a>.
             </p>
             <ul className="pt-404__links">
               <li>
@@ -1711,7 +1717,16 @@ function Lists({ content }: SpecimenProps) {
                   {ofYear.map((post) => (
                     <li key={post.url}>
                       <Rating type={post.type} />
-                      <a href={post.url}>{post.title}</a>
+                      <span className="pt-rows__text">
+                        <a href={post.url}>{post.title}</a>
+                        {post.lede && (
+                          <Html
+                            as="span"
+                            className="pt-rows__lede"
+                            html={post.lede}
+                          />
+                        )}
+                      </span>
                       <span className="pt-rows__date">{post.date}</span>
                     </li>
                   ))}
@@ -1923,17 +1938,17 @@ function Forms({ content }: SpecimenProps) {
         note="Writing and posts: the e-mail news promo"
       >
         <Field>
-          <Newsletter />
+          <Newsletter owner={content.profile.name} />
         </Field>
       </Specimen>
       <Specimen
         label="Search tab"
         note="Raised on the frame’s top right, from 640px"
       >
-        <Search />
+        <Search label="Search" />
       </Specimen>
       <Specimen label="Search, site map" note="Phones: inside the site map">
-        <Search className="pt-search--map" />
+        <Search label="Site map search" className="pt-search--map" />
       </Specimen>
       <Specimen label="Jump menu" note="Category tiles: goes where you pick">
         <Field>

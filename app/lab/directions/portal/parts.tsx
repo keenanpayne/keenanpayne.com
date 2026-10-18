@@ -1,12 +1,21 @@
 import { useMemo, useState, type ReactNode } from "react";
 
+import { metadata } from "../../../lib/site";
 import type {
   LabContent,
   LinkModel,
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
-import { cx, Html, pad, postTypes, usePreview, useTo } from "../../site";
+import {
+  cx,
+  Html,
+  newsletterForm,
+  pad,
+  postTypes,
+  usePreview,
+  useTo
+} from "../../site";
 
 import {
   DIE,
@@ -28,6 +37,19 @@ import {
 // ---------------
 
 export { cx };
+
+/** The owner's initials, e.g. `AB` on the e-mail news masthead */
+export const initialsOf = (name: string) =>
+  name
+    .split(/\s+/)
+    .map((part) => part[0])
+    .join("");
+
+/** The owner's first name, for the mascot's lines */
+export const firstNameOf = (name: string) => name.split(/\s+/)[0];
+
+/** The site's domain, without `www.` */
+export const DOMAIN = new URL(metadata.url).host.replace(/^www\./, "");
 
 export type Post = LabContent["posts"][number];
 export type Work = LabContent["work"][number];
@@ -470,19 +492,31 @@ export function JumpMenu({
 export function NewsList({
   items
 }: {
-  items: { href: string; title: string; date?: string; item: Item }[];
+  items: {
+    href: string;
+    title: string;
+    date?: string;
+    /** HTML */
+    lede?: string;
+    item: Item;
+  }[];
 }) {
   return (
     <ul className="pt-news">
       {items.map((entry) => (
         <li key={entry.href}>
           <ItemIcon item={entry.item} className="pt-news__icon" />
-          <p className="pt-news__text">
-            <a href={entry.href}>{entry.title}</a>
-            {entry.date && (
-              <span className="pt-news__date"> {stamp(entry.date)}</span>
+          <div className="pt-news__text">
+            <p>
+              <a href={entry.href}>{entry.title}</a>
+              {entry.date && (
+                <span className="pt-news__date"> {stamp(entry.date)}</span>
+              )}
+            </p>
+            {entry.lede && (
+              <Html as="p" className="pt-news__lede" html={entry.lede} />
             )}
-          </p>
+          </div>
           <a
             className="pt-news__go"
             href={entry.href}
@@ -576,7 +610,7 @@ export function Promo({
 }
 
 /** Mock newsletter sign-up; the lab never submits anything */
-export function Newsletter() {
+export function Newsletter({ owner }: { owner: string }) {
   const [sent, setSent] = useState(false);
 
   return (
@@ -594,7 +628,7 @@ export function Newsletter() {
       }
       masthead={
         <>
-          <span className="pt-masthead">KP</span> E-mail News
+          <span className="pt-masthead">{initialsOf(owner)}</span> E-mail News
         </>
       }
     >
@@ -616,6 +650,7 @@ export function Newsletter() {
           id="pt-newsletter-email"
           className="pt-input"
           type="email"
+          name={newsletterForm.field.name}
           placeholder="you@example.com"
         />
         <Go label="Sign up" />
@@ -636,16 +671,19 @@ export function Newsletter() {
 /** Heading and lede pulled from a page's intro, set on the open field */
 export const Intro = ({
   heading,
-  lede
+  lede,
+  as = "h2"
 }: {
   /** HTML */
   heading?: string;
   /** HTML */
   lede?: string;
+  /** The page's `<h1>` when its title bar only labels it */
+  as?: "h1" | "h2";
 }) =>
   heading || lede ? (
     <div className="pt-intro">
-      {heading && <Html as="h2" className="pt-intro__heading" html={heading} />}
+      {heading && <Html as={as} className="pt-intro__heading" html={heading} />}
       {lede && <Html as="p" className="pt-intro__lede" html={lede} />}
     </div>
   ) : null;
@@ -653,10 +691,13 @@ export const Intro = ({
 /** Dark title tab that opens inner pages, with a strip of framed pictures */
 export function TitleBar({
   title,
-  images = []
+  images = [],
+  as: Title = "h1"
 }: {
   title: ReactNode;
   images?: (string | undefined)[];
+  /** `p` when the page's `<h1>` comes after, in its `Intro` */
+  as?: "h1" | "p";
 }) {
   const shown = images.flatMap((src) => (src ? [src] : [])).slice(0, 4);
 
@@ -664,7 +705,7 @@ export function TitleBar({
     <header className="pt-title">
       <div className="pt-title__tab">
         <span className="pt-title__dots" aria-hidden="true" />
-        <h1 className="pt-title__text">{title}</h1>
+        <Title className="pt-title__text">{title}</Title>
       </div>
       {shown.length > 0 && (
         <ul className="pt-title__strip" aria-hidden="true">
@@ -1067,7 +1108,13 @@ export function QuotePromo({
 export type AdName = "first" | "news" | "suck";
 
 /** Skyscraper ads for the side column, after the ones in the screenshots */
-export function Ad({ name }: { name: AdName }) {
+export function Ad({
+  name,
+  profile
+}: {
+  name: AdName;
+  profile: LabContent["profile"];
+}) {
   const to = useTo();
 
   if (name === "first") {
@@ -1081,7 +1128,7 @@ export function Ad({ name }: { name: AdName }) {
           <span>The best</span>
           <span>The few</span>
         </span>
-        <span className="pt-ad__big">18 years</span>
+        <span className="pt-ad__big">{`${profile.experience.years} years`}</span>
         <span className="pt-ad__on">on the web</span>
         <span className="pt-ad__foot">Free consult</span>
       </a>
@@ -1092,7 +1139,7 @@ export function Ad({ name }: { name: AdName }) {
     return (
       <a className="pt-ad pt-ad--news" href={to("/archive/#newsletter")}>
         <Mosaic seed={7} />
-        <span className="pt-ad__pill">KP</span>
+        <span className="pt-ad__pill">{initialsOf(profile.name)}</span>
         <span className="pt-ad__news">
           E-mail
           <br />
@@ -1117,7 +1164,7 @@ export function Ad({ name }: { name: AdName }) {
       </span>
       <span className="pt-ad__sticker">
         <span>Hire</span>
-        Keenan
+        {firstNameOf(profile.name)}
       </span>
     </a>
   );

@@ -191,6 +191,37 @@ body:has(.pt) {
   }
 }
 
+/* Reduced motion: every sprite holds still */
+@media (prefers-reduced-motion: reduce) {
+  .pt *,
+  .pt *::before,
+  .pt *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Skip link: an orange tab that drops in on focus */
+.pt-skip {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 50;
+  padding: 6px 12px;
+  border: 2px solid var(--pt-navy);
+  border-radius: 4px;
+  background: var(--pt-orange);
+  box-shadow: 2px 2px 0 var(--pt-shadow);
+  color: var(--pt-navy);
+  font-weight: bold;
+  text-transform: uppercase;
+  translate: 0 -200%;
+
+  &:focus {
+    translate: 0;
+  }
+}
+
 /* Element defaults stay at zero specificity so components can restyle them */
 :where(.pt) a {
   color: inherit;
@@ -789,12 +820,6 @@ textarea.pt-input {
   & .pt-go {
     margin-left: auto;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    &:popover-open {
-      animation: none;
-    }
-  }
 }
 
 /* Without anchor positioning, it sits at the top on the right */
@@ -1125,12 +1150,8 @@ textarea.pt-input {
   }
 }
 
+/* Holding still, only the first set of rays shows */
 @media (prefers-reduced-motion: reduce) {
-  .pt-den__level,
-  .pt-den__level * {
-    animation: none !important;
-  }
-
   .pt-den__rays + .pt-den__rays {
     display: none;
   }
@@ -2298,6 +2319,16 @@ a.pt-tile__head:hover {
   border-left: 1px dotted var(--pt-card-muted);
   font-size: 11.5px;
   line-height: 1.35;
+
+  & p {
+    margin: 0;
+  }
+
+  & .pt-news__lede {
+    margin-top: 2px;
+    color: var(--pt-card-muted);
+    font-size: 11px;
+  }
 }
 
 .pt-news__date {
@@ -3866,7 +3897,7 @@ a.pt-tile__head:hover {
     }
   }
 
-  & li > a {
+  & .pt-rows__text > a {
     font-size: 12px;
     font-weight: bold;
   }
@@ -3903,6 +3934,13 @@ a.pt-tile__head:hover {
     font: 8px/1 var(--pt-pixel);
     text-transform: uppercase;
   }
+}
+
+.pt-rows__lede {
+  display: block;
+  color: var(--pt-card-muted);
+  font-size: 11px;
+  line-height: 1.35;
 }
 
 .pt-rows__date {
@@ -4152,6 +4190,16 @@ a.pt-tile__head:hover {
   width: 30px;
 }
 
+.pt-table__lede {
+  display: block;
+  max-width: 46ch;
+  margin-top: 1px;
+  color: var(--pt-card-muted);
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 1.35;
+}
+
 .pt-table__num {
   white-space: nowrap;
 }
@@ -4235,17 +4283,17 @@ a.pt-tile__head:hover {
 }
 
 .pt-gallery {
-  --cols: 3;
+  --pt-cols: 3;
 
   display: grid;
-  grid-template-columns: repeat(min(var(--cols), 2), minmax(0, 1fr));
+  grid-template-columns: repeat(min(var(--pt-cols), 2), minmax(0, 1fr));
   gap: 10px;
   margin: 10px 0 0;
   padding: 0;
   list-style: none;
 
   @media (width >= 640px) {
-    grid-template-columns: repeat(var(--cols), minmax(0, 1fr));
+    grid-template-columns: repeat(var(--pt-cols), minmax(0, 1fr));
   }
 
   & figure {
@@ -4266,11 +4314,11 @@ a.pt-tile__head:hover {
 }
 
 .pt-gallery--1 {
-  --cols: 1;
+  --pt-cols: 1;
 }
 
 .pt-gallery--2 {
-  --cols: 2;
+  --pt-cols: 2;
 }
 
 /* Long page screenshots are cropped to a window, like a game screenshot */
@@ -4361,6 +4409,16 @@ a.pt-tile__head:hover {
 
 .pt-formbox .pt-form {
   border-radius: 0 4px 4px;
+}
+
+.pt-formbox__alt {
+  margin: 8px 4px 0;
+  font-size: 12px;
+  font-weight: bold;
+
+  & a {
+    color: #fff;
+  }
 }
 
 .pt-form {
@@ -4528,18 +4586,6 @@ a.pt-tile__head:hover {
   from {
     opacity: 0;
     transform: scale(0.6);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pt-host .pt-mascot,
-  .pt-404__float,
-  .pt-map__zones li {
-    animation: none;
-  }
-
-  .pt-game__img img {
-    transition: none;
   }
 }
 
@@ -5102,7 +5148,7 @@ a.pt-tile__head:hover {
   .pt-rail,
   .pt-side,
   .pt-cta,
-  .labBar {
+  body:has(.pt) .labBar {
     display: none !important;
   }
 
