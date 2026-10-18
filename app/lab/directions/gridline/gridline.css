@@ -123,6 +123,59 @@
   color-scheme: light;
 }
 
+/* A gray inverted band (Selected work): dark gray on a light page, light
+   gray on a dark one, softer than the full inversion. Its muted ink is set
+   for 4.5:1 on its gray, and its faint ink and strong rules for 3:1. */
+.gl-invert--gray {
+  --gl-paper: #2a2933;
+  --gl-tint: #33323d;
+  --gl-raised: #33323d;
+  --gl-sunk: #201f28;
+  --gl-line: #3f3d4b;
+  --gl-line-strong: #7a788f;
+  --gl-ink: #f4f3f8;
+  --gl-text: #d6d4de;
+  --gl-muted: #a9a7b5;
+  --gl-faint: #78768a;
+  --gl-accent: #a5a8ff;
+  --gl-accent-soft: #3a3860;
+  --gl-on-ink: #2a2933;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .gl-invert--gray {
+    --gl-paper: #dddce3;
+    --gl-tint: #d2d1d9;
+    --gl-raised: #e8e7ec;
+    --gl-sunk: #d2d1d9;
+    --gl-line: #c6c5ce;
+    --gl-line-strong: #7a7887;
+    --gl-ink: #100f16;
+    --gl-text: #2e2c37;
+    --gl-muted: #565462;
+    --gl-faint: #7a7887;
+    --gl-accent: #4448c0;
+    --gl-accent-soft: #c9c8ef;
+    --gl-on-ink: #dddce3;
+  }
+}
+
+:root[data-theme="dark"] .gl-invert--gray {
+  --gl-paper: #dddce3;
+  --gl-tint: #d2d1d9;
+  --gl-raised: #e8e7ec;
+  --gl-sunk: #d2d1d9;
+  --gl-line: #c6c5ce;
+  --gl-line-strong: #7a7887;
+  --gl-ink: #100f16;
+  --gl-text: #2e2c37;
+  --gl-muted: #565462;
+  --gl-faint: #7a7887;
+  --gl-accent: #4448c0;
+  --gl-accent-soft: #c9c8ef;
+  --gl-on-ink: #dddce3;
+}
+
 body:has(.gl) {
   background: var(--gl-paper);
 }
@@ -1804,36 +1857,6 @@ a.gl-chip {
   & .gl-iso__hatch {
     stroke: var(--gl-iso-ground);
     stroke-width: 1.5;
-  }
-}
-
-/* Motion: each scene's own story plays from `./rigs.ts`; here, the scene
-   lifts off its floor on hover */
-.gl-iso__scene {
-  transition: translate 450ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.gl-iso__floor {
-  transition: opacity 450ms;
-}
-
-:is(.gl-service > a:hover, .gl-iso:hover) .gl-iso__scene {
-  translate: 0 -12px;
-}
-
-:is(.gl-service > a:hover, .gl-iso:hover) .gl-iso__shadow {
-  opacity: 0.55;
-}
-
-.gl-iso__shadow {
-  transition: opacity 450ms;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gl-iso *,
-  .gl-iso [class] {
-    transition: none !important;
-    animation: none !important;
   }
 }
 
@@ -3676,7 +3699,8 @@ a.gl-chip {
 }
 
 /* A window on the Blueprint panel takes the page's other scheme, as the
-   inverted bands do: dark on a light page, light on a dark one */
+   inverted bands do: dark on a light page, light gray on a dark one (softer
+   than white there, its muted text and violet darkened to keep 4.5:1) */
 .gl-blueprint .gl-window {
   --gl-win-paper: rgb(22 21 29 / 96%);
   --gl-win-field: #201f29;
@@ -3694,32 +3718,32 @@ a.gl-chip {
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .gl-blueprint .gl-window {
-    --gl-win-paper: rgb(255 255 255 / 97%);
-    --gl-win-field: #f4f4f1;
-    --gl-win-edge: #c9c8c1;
-    --gl-win-line: #e5e4df;
-    --gl-win-dot: #c9c8c1;
+    --gl-win-paper: #e2e1e7;
+    --gl-win-field: #d6d5dd;
+    --gl-win-edge: #c2c1cb;
+    --gl-win-line: #cfced7;
+    --gl-win-dot: #b3b1bd;
     --gl-win-ink: #100f16;
     --gl-win-on-ink: #fcfcfb;
     --gl-win-text: #2e2c37;
-    --gl-win-muted: #6b6977;
-    --gl-win-accent: #5357d6;
+    --gl-win-muted: #5c5a68;
+    --gl-win-accent: #4b4fc8;
     --gl-win-shadow:
       0 1px 2px rgb(0 0 0 / 30%), 0 32px 64px -28px rgb(0 0 0 / 70%);
   }
 }
 
 :root[data-theme="dark"] .gl-blueprint .gl-window {
-  --gl-win-paper: rgb(255 255 255 / 97%);
-  --gl-win-field: #f4f4f1;
-  --gl-win-edge: #c9c8c1;
-  --gl-win-line: #e5e4df;
-  --gl-win-dot: #c9c8c1;
+  --gl-win-paper: #e2e1e7;
+  --gl-win-field: #d6d5dd;
+  --gl-win-edge: #c2c1cb;
+  --gl-win-line: #cfced7;
+  --gl-win-dot: #b3b1bd;
   --gl-win-ink: #100f16;
   --gl-win-on-ink: #fcfcfb;
   --gl-win-text: #2e2c37;
-  --gl-win-muted: #6b6977;
-  --gl-win-accent: #5357d6;
+  --gl-win-muted: #5c5a68;
+  --gl-win-accent: #4b4fc8;
   --gl-win-shadow:
     0 1px 2px rgb(0 0 0 / 30%), 0 32px 64px -28px rgb(0 0 0 / 70%);
 }

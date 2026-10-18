@@ -27,9 +27,8 @@ import { rigFor, type Ease, type Key, type Motion, type Rig } from "./rigs";
  * hairline outlines in ink, faces in a few flat tones, shadows hatched, the
  * ground a patch of floor grid, and the darkest parts in violet. Each one
  * plays its own short story: on a loop where it heads a service's page, and
- * while hovered on a service's tile (always at rest for reduced motion); the
- * scene lifts off its floor on hover. Treatments
- * recolor the tones, and `?illo=` previews one across the site.
+ * while hovered on a service's tile (always at rest for reduced motion).
+ * Treatments recolor the tones, and `?illo=` previews one across the site.
  */
 
 export const TREATMENTS = {
@@ -543,8 +542,7 @@ export function ServiceArt({
           />
         ))}
       </g>
-      {/* Lifted on hover; its parts move on their own inside it */}
-      <g className="gl-iso__scene">{body}</g>
+      {body}
     </svg>
   );
 }

@@ -64,7 +64,7 @@ export function Work({ page, content }: TemplateProps<"work">) {
         </div>
       </Band>
 
-      <Band invert>
+      <Band invert className="gl-invert--gray">
         <SectionHead eyebrow="Case studies" title="Selected work" />
         <WorkCards work={work} />
       </Band>

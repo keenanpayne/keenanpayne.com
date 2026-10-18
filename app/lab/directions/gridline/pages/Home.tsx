@@ -70,7 +70,7 @@ export function Home({ content }: TemplateProps<"home">) {
         <PostRows posts={posts.slice(0, 5)} />
       </Band>
 
-      <Band invert>
+      <Band invert className="gl-invert--gray">
         <SectionHead
           index={2}
           eyebrow="Work"
