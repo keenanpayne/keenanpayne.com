@@ -4,7 +4,7 @@ Every direction in `directions/<slug>/` is a skin over one site: the same conten
 
 ## Always
 
-- Run `npm run lab:check` before you finish. It must pass. A failure names the direction, the requirement, and what’s missing on which page. `/lab/styleguide/conformance/` shows the same results for every direction at once.
+- Run `npm run lab:check` before you finish. It must pass, and CI runs it on every push and pull request. A failure names the direction, the requirement, and what’s missing on which page. `/lab/styleguide/conformance/` shows the same results for every direction at once.
 - Start from Wireframe (`directions/wireframe/`). It meets every requirement in plain HTML, so it shows what each page and the Shell must have.
 - Never edit `conformance/gaps.ts` except to delete a line you’ve closed. Don’t add a line, or loosen a check in `conformance/`, to make a test pass.
 

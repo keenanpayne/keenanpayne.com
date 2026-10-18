@@ -6,7 +6,13 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default defineConfig([
-  globalIgnores(["build/", ".react-router/", ".netlify/"]),
+  // Other Claude Code sessions' checkouts of this repository, too
+  globalIgnores([
+    "build/",
+    ".react-router/",
+    ".netlify/",
+    ".claude/worktrees/"
+  ]),
   js.configs.recommended,
   tseslint.configs.recommended,
   reactHooks.configs.flat.recommended,

@@ -81,7 +81,9 @@ npm run analyze:testimonials
 npm run lab:new -- <slug> ["Display name"]
 
 # Check every design lab direction against the shared feature set,
-# information architecture, and foundations (see app/lab/README.md)
+# information architecture, and foundations (see app/lab/README.md). CI
+# (.github/workflows/ci.yml) runs these, with types, lint, formatting, and
+# the other tests, on every push and pull request.
 npm run lab:check
 ```
 

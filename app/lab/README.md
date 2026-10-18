@@ -73,7 +73,7 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 
 ## Guardrails
 
-Every direction has the same features, pages, and foundations, so a person or an agent can write or edit one without checking the others. Three layers hold them to it, and `npm run lab:check` runs them all (`npm test` runs the conformance checks too):
+Every direction has the same features, pages, and foundations, so a person or an agent can write or edit one without checking the others. Three layers hold them to it, and `npm run lab:check` runs them all (`npm test` runs the conformance checks too). CI (`.github/workflows/ci.yml`) runs them on every push and pull request, so a change to any direction, or to the shared layers beneath them, that falls short fails the build:
 
 1. **Types.** `Direction` needs a template for every kind of page, and `Specimens` one specimen for every style guide section.
 2. **Conformance** (`conformance/`). The tests render every direction’s sample pages the way the lab route does, then check:
