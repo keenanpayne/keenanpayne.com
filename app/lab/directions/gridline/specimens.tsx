@@ -173,6 +173,15 @@ function Motifs({ content }: SpecimenProps) {
           <Terminal content={content} />
         </Blueprint>
       </Specimen>
+      <Specimen
+        label="Grid tools"
+        note="The Blueprint’s easter egg, out once a square is filled: color, tile size, eraser, symmetry, the Game of Life, scatter, and clear"
+        wide
+      >
+        <Blueprint className="gl-cta__panel" tools>
+          <div style={{ height: 160 }} />
+        </Blueprint>
+      </Specimen>
       {Object.entries(MARKS).map(([id, mark]) => (
         <Specimen
           key={id}

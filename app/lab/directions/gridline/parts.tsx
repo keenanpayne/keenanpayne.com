@@ -29,11 +29,26 @@ import {
   pad,
   prefersReducedMotion,
   relabel,
+  useReducedMotion,
   useSubmission,
   useTo,
   type FormField as Field
 } from "../../site";
 
+import {
+  boundsOf,
+  clear,
+  fill,
+  lifeStep,
+  reflect,
+  sameSquare,
+  scatter,
+  squareAt,
+  useGridSettings,
+  type Paint,
+  type Square
+} from "./blueprint";
+import { GridTools } from "./GridTools";
 import { ServiceArt } from "./ServiceArt";
 
 type Posts = LabContent["posts"];
@@ -1180,47 +1195,36 @@ export const DEFAULT_CTA: CtaId = "blueprint";
 
 export const isCta = (id: string): id is CtaId => Object.hasOwn(CTAS, id);
 
-/** The Blueprint panel's grid squares, in pixels (its stylesheet reads it) */
-const BLUEPRINT_GRID = 48;
-
-/** A filled square, counted in squares from the middle */
-type Paint = { column: number; row: number; leaving?: boolean };
-
-type Square = Omit<Paint, "leaving">;
-
 /** Clicks and drags on these do their own thing, so they never fill squares */
-const NOT_PAINTABLE = "a, button, input, textarea, select, label, .gl-window";
+const NOT_PAINTABLE =
+  "a, button, input, textarea, select, label, .gl-window, .gl-blueprint__tools";
 
-/**
- * The square at a point in a panel of a size. They're counted from the one
- * whose corner sits just off the middle (the grid is centered), so filled
- * squares stay on the grid when the panel resizes.
- */
-const squareAt = (
-  x: number,
-  y: number,
-  { width, height }: { width: number; height: number }
-): Square => ({
-  column: Math.floor((x - (width / 2 - BLUEPRINT_GRID / 2)) / BLUEPRINT_GRID),
-  row: Math.floor((y - (height / 2 - BLUEPRINT_GRID / 2)) / BLUEPRINT_GRID)
-});
+/** How long a generation of the Game of Life lasts, in milliseconds */
+const LIFE_TICK = 140;
 
-const sameSquare = (a: Square, b: Square) =>
-  a.column === b.column && a.row === b.row;
+/** The share of squares scattering fills */
+const SCATTER = 0.18;
 
 /**
  * The Blueprint panel: the closing call to action, and behind the home
- * page's terminal. Under a mouse or pen, its glow and a violet spotlight on
- * the grid drift after the pointer, and the square beneath it lights up;
+ * page's terminal. Under a mouse or pen, its glow and a spotlight on the
+ * grid drift after the pointer, and the square beneath it lights up;
  * leaving sends the glow back to the middle. A click fills the square it
  * lands on, and another click clears it; dragging fills every square the
  * pointer crosses.
+ *
+ * Filling a square brings out its grid tools (`GridTools`): the brush's
+ * color, the tile size, an eraser, symmetry about the middle, the Game of
+ * Life over the filled squares, scattering squares, and clearing them.
  */
 export function Blueprint({
   className,
+  tools: startWithTools = false,
   children
 }: {
   className?: string;
+  /** Starts with the grid tools out, as if a square had been filled */
+  tools?: boolean;
   children: ReactNode;
 }) {
   const panel = useRef<HTMLDivElement>(null);
@@ -1230,8 +1234,43 @@ export function Blueprint({
   // The click that ends a drag mustn't also toggle a square
   const dragged = useRef(false);
   const [paints, setPaints] = useState<Paint[]>([]);
+  // The squares as last drawn, for the Game of Life's clock to read
+  const latest = useRef(paints);
+  const [{ brush, size: grid, erase, symmetry }] = useGridSettings();
+  const [tools, setTools] = useState(startWithTools);
+  // Just found: the tools say so for a moment
+  const [found, setFound] = useState(false);
+  const [running, setRunning] = useState(false);
+  const reducedMotion = useReducedMotion();
+  const playing = running && !reducedMotion;
 
   useEffect(() => () => cancelAnimationFrame(frame.current), []);
+
+  useEffect(() => {
+    latest.current = paints;
+  });
+
+  useEffect(() => {
+    if (!found) return;
+    const timer = setTimeout(() => setFound(false), 2800);
+    return () => clearTimeout(timer);
+  }, [found]);
+
+  // A generation at a time, until nothing is born or dies
+  useEffect(() => {
+    if (!playing) return;
+    const timer = setInterval(() => {
+      const box = panel.current?.getBoundingClientRect();
+      if (!box) return;
+      const bounds = boundsOf(box, grid);
+      if (!lifeStep(latest.current, bounds, true).changed) {
+        setRunning(false);
+        return;
+      }
+      setPaints((current) => lifeStep(current, bounds, true).paints);
+    }, LIFE_TICK);
+    return () => clearInterval(timer);
+  }, [playing, grid]);
 
   /** The pointer's position in the panel, and the panel's size */
   const locate = (clientX: number, clientY: number) => {
@@ -1239,19 +1278,22 @@ export function Blueprint({
     return { x: clientX - box.left, y: clientY - box.top, box };
   };
 
-  /** Fills squares that aren't already, bringing back any fading out */
-  const fill = (squares: Square[]) =>
-    setPaints((current) => {
-      let next = current;
-      for (const square of squares) {
-        const found = next.find((paint) => sameSquare(paint, square));
-        if (!found) next = [...next, square];
-        else if (found.leaving) {
-          next = next.map((paint) => (paint === found ? square : paint));
-        }
-      }
-      return next;
-    });
+  /** The squares the panel shows now */
+  const bounds = () => boundsOf(panel.current!.getBoundingClientRect(), grid);
+
+  /** Squares fill with the brush, or clear under the eraser, reflected */
+  const brushOver = (squares: Square[]) => {
+    const reached = squares.flatMap((square) => reflect(square, symmetry));
+    if (erase) {
+      setPaints((current) => clear(current, reached, !prefersReducedMotion()));
+      return;
+    }
+    setPaints((current) => fill(current, reached, brush));
+    if (!tools) {
+      setTools(true);
+      setFound(true);
+    }
+  };
 
   const onClick = (event: ReactMouseEvent<HTMLDivElement>) => {
     if (dragged.current) {
@@ -1260,20 +1302,16 @@ export function Blueprint({
     }
     if ((event.target as Element).closest(NOT_PAINTABLE)) return;
     const { x, y, box } = locate(event.clientX, event.clientY);
-    const square = squareAt(x, y, box);
+    const square = squareAt(x, y, box, grid);
+    const found = paints.find((paint) => sameSquare(paint, square));
 
-    setPaints((current) => {
-      const found = current.find((paint) => sameSquare(paint, square));
-      if (!found) return [...current, square];
-      // Clicked again: a fading square comes back; a filled one fades out,
-      // or simply goes when motion is reduced
-      if (found.leaving || !prefersReducedMotion()) {
-        return current.map((paint) =>
-          paint === found ? { ...square, leaving: !found.leaving } : paint
-        );
-      }
-      return current.filter((paint) => paint !== found);
-    });
+    // Clicked again in the same color: it clears (fading out, or simply
+    // going when motion is reduced); in another color, it takes this one
+    if (!erase && found && !found.leaving && found.brush === brush) {
+      setPaints((current) =>
+        clear(current, reflect(square, symmetry), !prefersReducedMotion())
+      );
+    } else brushOver([square]);
   };
 
   // A square that has faded out is gone
@@ -1301,7 +1339,7 @@ export function Blueprint({
     drag.current = null;
   };
 
-  /** Fills every square between where the drag was and where it is now */
+  /** Brushes every square between where the drag was and where it is now */
   const paintAlong = (clientX: number, clientY: number) => {
     const from = drag.current;
     if (!from) return;
@@ -1310,23 +1348,24 @@ export function Blueprint({
     // click there to toggle it
     if (
       !from.moved &&
-      sameSquare(squareAt(from.x, from.y, box), squareAt(x, y, box))
+      sameSquare(squareAt(from.x, from.y, box, grid), squareAt(x, y, box, grid))
     ) {
       return;
     }
     // Sampled a quarter square apart, so a quick drag skips nothing
     const steps = Math.max(
       1,
-      Math.ceil(Math.hypot(x - from.x, y - from.y) / (BLUEPRINT_GRID / 4))
+      Math.ceil(Math.hypot(x - from.x, y - from.y) / (grid / 4))
     );
     const squares = Array.from({ length: steps + 1 }, (_, step) =>
       squareAt(
         from.x + ((x - from.x) * step) / steps,
         from.y + ((y - from.y) * step) / steps,
-        box
+        box,
+        grid
       )
     );
-    fill(squares);
+    brushOver(squares);
     drag.current = { x, y, moved: true };
   };
 
@@ -1343,16 +1382,18 @@ export function Blueprint({
       const { x, y, box } = locate(clientX, clientY);
       // The grid is centered, so its lines sit half a square off the middle
       const snap = (at: number, size: number) => {
-        const origin = (size / 2 - BLUEPRINT_GRID / 2) % BLUEPRINT_GRID;
-        return (
-          origin + Math.floor((at - origin) / BLUEPRINT_GRID) * BLUEPRINT_GRID
-        );
+        const origin = (size / 2 - grid / 2) % grid;
+        return origin + Math.floor((at - origin) / grid) * grid;
       };
+      const { column, row } = squareAt(x, y, box, grid);
 
       element.style.setProperty("--gl-pointer-x", `${x}px`);
       element.style.setProperty("--gl-pointer-y", `${y}px`);
       element.style.setProperty("--gl-cell-x", `${snap(x, box.width)}px`);
       element.style.setProperty("--gl-cell-y", `${snap(y, box.height)}px`);
+      // Which square, for a brush that colors squares by where they are
+      element.style.setProperty("--gl-column", `${column}`);
+      element.style.setProperty("--gl-row", `${row}`);
       // Shown a frame after the square first lands, so it fades in where the
       // pointer is rather than gliding over from a corner
       if (!element.hasAttribute("data-pointer")) {
@@ -1372,11 +1413,35 @@ export function Blueprint({
     element.removeAttribute("data-pointer");
   };
 
+  /** Plays or pauses the Game of Life; with reduced motion, steps it once */
+  const onLife = () => {
+    if (!reducedMotion) {
+      setRunning((on) => !on);
+      return;
+    }
+    const at = bounds();
+    setPaints((current) => lifeStep(current, at, false).paints);
+  };
+
+  const onScatter = () => brushOver(scatter(bounds(), SCATTER));
+
+  const onClear = () => {
+    setRunning(false);
+    setPaints((current) =>
+      prefersReducedMotion()
+        ? []
+        : current.map((paint) => ({ ...paint, leaving: true }))
+    );
+  };
+
   return (
     <div
       ref={panel}
       className={cx("gl-blueprint", className)}
-      style={{ "--gl-grid": `${BLUEPRINT_GRID}px` } as CSSProperties}
+      style={{ "--gl-grid": `${grid}px` } as CSSProperties}
+      data-brush={brush}
+      data-erase={erase || undefined}
+      data-life={playing || undefined}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -1385,11 +1450,24 @@ export function Blueprint({
       onClick={onClick}
     >
       <span className="gl-blueprint__spot" aria-hidden="true" />
+      {symmetry !== "off" && (
+        <span
+          className="gl-blueprint__axes"
+          data-symmetry={symmetry}
+          aria-hidden="true"
+        >
+          <i />
+          <i />
+          <i />
+          <i />
+        </span>
+      )}
       <span className="gl-blueprint__cell" aria-hidden="true" />
-      {paints.map(({ column, row, leaving }) => (
+      {paints.map(({ column, row, brush: color, leaving }) => (
         <span
           key={`${column} ${row}`}
           className="gl-blueprint__paint"
+          data-brush={color}
           data-leaving={leaving || undefined}
           style={{ "--gl-column": column, "--gl-row": row } as CSSProperties}
           onAnimationEnd={() => leaving && onPaintEnd({ column, row })}
@@ -1397,6 +1475,16 @@ export function Blueprint({
         />
       ))}
       {children}
+      {tools && (
+        <GridTools
+          playing={playing}
+          onLife={onLife}
+          onScatter={onScatter}
+          onClear={onClear}
+          empty={paints.every((paint) => paint.leaving)}
+          found={found}
+        />
+      )}
     </div>
   );
 }

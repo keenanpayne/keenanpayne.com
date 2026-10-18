@@ -1132,8 +1132,9 @@ a.gl-chip {
 .gl-hero__panel {
   /* Its Blueprint glow, a touch stronger than the closing panel's */
   --gl-blueprint-intensity: 1.1;
+  --gl-blueprint-pad: clamp(40px, 7vw, 88px);
 
-  padding: clamp(40px, 7vw, 88px) 16px;
+  padding: var(--gl-blueprint-pad) 16px;
 
   @media (width >= 720px) {
     padding-inline: 32px;
@@ -3437,8 +3438,9 @@ a.gl-chip {
 
   /* Its Blueprint glow, a touch softer than the home page terminal's */
   --gl-blueprint-intensity: 0.9;
+  --gl-blueprint-pad: clamp(72px, 11vw, 136px);
 
-  padding: clamp(72px, 11vw, 136px) var(--gl-x);
+  padding: var(--gl-blueprint-pad) var(--gl-x);
   text-align: center;
 
   & .gl-eyebrow {
@@ -3567,20 +3569,40 @@ a.gl-chip {
   initial-value: 50%;
 }
 
+/* The Blueprint's square, registered so a new tile size zooms the grid (and
+   its filled squares, about the middle) rather than jumping */
+@property --gl-grid {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 48px;
+}
+
+/* How strongly a filled square shows its brush, registered so it can flash
+   bright and settle */
+@property --gl-paint-mix {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 26%;
+}
+
 /* Blueprint: the page's own grid drawn out, glowing violet where the pointer
    is (the middle, until one arrives). `--gl-blueprint-intensity` scales the
-   glow (1 by default). */
+   glow (1 by default); `--gl-blueprint-pad`, the panel's padding above and
+   below, is where its grid tools dock. */
 .gl-blueprint {
   /* The grid's square; the template sets it to match its pointer math */
   --gl-grid: 48px;
 
   position: relative;
-  overflow: hidden;
+  /* Clipped rather than hidden, so it never scrolls: focus moving into its
+     tools would otherwise scroll it to squares reflected out of view */
+  overflow: clip;
   isolation: isolate;
   cursor: crosshair;
   transition:
     --gl-pointer-x 900ms cubic-bezier(0.16, 1, 0.3, 1),
-    --gl-pointer-y 900ms cubic-bezier(0.16, 1, 0.3, 1);
+    --gl-pointer-y 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    --gl-grid 700ms cubic-bezier(0.16, 1, 0.3, 1);
 
   &::before,
   &::after {
@@ -3634,12 +3656,12 @@ a.gl-chip {
   inset: 0;
   background-image:
     linear-gradient(
-      color-mix(in srgb, var(--gl-accent) 60%, transparent) 1px,
+      color-mix(in srgb, var(--gl-brush) 60%, transparent) 1px,
       transparent 1px
     ),
     linear-gradient(
       90deg,
-      color-mix(in srgb, var(--gl-accent) 60%, transparent) 1px,
+      color-mix(in srgb, var(--gl-brush) 60%, transparent) 1px,
       transparent 1px
     );
   background-position: center center;
@@ -3663,11 +3685,18 @@ a.gl-chip {
   left: 0;
   width: calc(var(--gl-grid) - 1px);
   height: calc(var(--gl-grid) - 1px);
-  background: color-mix(in srgb, var(--gl-accent) 14%, transparent);
+  background: color-mix(in srgb, var(--gl-brush) 14%, transparent);
   opacity: 0;
   pointer-events: none;
   transition: opacity 300ms;
   translate: calc(var(--gl-cell-x, 0px) + 1px) calc(var(--gl-cell-y, 0px) + 1px);
+}
+
+/* Under the eraser, the square under the pointer is an outline */
+.gl-blueprint[data-erase] .gl-blueprint__cell {
+  outline: 1.5px dashed color-mix(in srgb, var(--gl-ink) 55%, transparent);
+  outline-offset: -5px;
+  background: none;
 }
 
 .gl-blueprint[data-pointer] {
@@ -3684,7 +3713,7 @@ a.gl-chip {
 }
 
 /* A square filled by a click: it flashes in from its middle, bright, and
-   settles to a soft violet; cleared, it shrinks away */
+   settles to a soft tint of its brush; cleared, it shrinks away */
 .gl-blueprint__paint {
   position: absolute;
   z-index: -1;
@@ -3694,18 +3723,35 @@ a.gl-chip {
   );
   width: calc(var(--gl-grid) - 1px);
   height: calc(var(--gl-grid) - 1px);
-  background: color-mix(in srgb, var(--gl-accent) 26%, transparent);
+  background: color-mix(
+    in srgb,
+    var(--gl-brush) var(--gl-paint-mix),
+    transparent
+  );
   pointer-events: none;
   animation: gl-paint-in 640ms cubic-bezier(0.16, 1, 0.3, 1) both;
 
+  /* Hidden outright where motion stops, rather than fading */
   &[data-leaving] {
+    opacity: 0;
     animation: gl-paint-out 320ms cubic-bezier(0.4, 0, 1, 1) both;
+  }
+}
+
+/* While the Game of Life runs, squares are born and die quicker than a
+   generation lasts */
+.gl-blueprint[data-life] .gl-blueprint__paint {
+  animation-duration: 260ms;
+
+  &[data-leaving] {
+    animation-duration: 200ms;
   }
 }
 
 @keyframes gl-paint-in {
   0% {
-    background: color-mix(in srgb, var(--gl-accent) 70%, transparent);
+    --gl-paint-mix: 70%;
+
     opacity: 0;
     scale: 0.35;
   }
@@ -3715,16 +3761,106 @@ a.gl-chip {
   }
 
   100% {
-    background: color-mix(in srgb, var(--gl-accent) 26%, transparent);
+    --gl-paint-mix: 26%;
+
     opacity: 1;
     scale: 1;
   }
 }
 
 @keyframes gl-paint-out {
+  from {
+    opacity: 1;
+  }
+
   to {
     opacity: 0;
     scale: 0.5;
+  }
+}
+
+/* The brushes, on the panel (for its spotlight and the square under the
+   pointer), each filled square, and the toolbar's swatches. Violet and ink
+   follow the scheme; the rest read on either. Spectrum colors a square by
+   where it is, so a drawing in it comes out a rainbow. */
+.gl-blueprint,
+.gl-blueprint__paint,
+.gl-tools__swatch {
+  --gl-brush: var(--gl-accent);
+
+  &[data-brush="coral"] {
+    --gl-brush: oklch(66% 0.19 28deg);
+  }
+
+  &[data-brush="amber"] {
+    --gl-brush: oklch(78% 0.16 75deg);
+  }
+
+  &[data-brush="mint"] {
+    --gl-brush: oklch(74% 0.14 165deg);
+  }
+
+  &[data-brush="sky"] {
+    --gl-brush: oklch(68% 0.15 245deg);
+  }
+
+  &[data-brush="ink"] {
+    --gl-brush: var(--gl-ink);
+  }
+
+  /* Resolved on each element, from its own square (the panel's is the one
+     under the pointer) */
+  &[data-brush="spectrum"] {
+    --gl-brush: oklch(
+      70% 0.17
+        calc(280deg + var(--gl-column, 0) * 23deg + var(--gl-row, 0) * 11deg)
+    );
+  }
+}
+
+/* The axes a stroke is reflected across, dashed through the middle square:
+   the middle column for a mirror; both middle lines and both diagonals for a
+   kaleidoscope */
+.gl-blueprint__axes {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  animation: gl-axes-in 500ms ease-out both;
+
+  & i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 300vmax;
+    background: repeating-linear-gradient(
+      color-mix(in srgb, var(--gl-brush) 55%, transparent) 0 6px,
+      transparent 6px 12px
+    );
+    translate: -50% -50%;
+  }
+
+  & i:nth-child(2) {
+    rotate: 90deg;
+  }
+
+  & i:nth-child(3) {
+    rotate: 45deg;
+  }
+
+  & i:nth-child(4) {
+    rotate: -45deg;
+  }
+
+  &[data-symmetry="mirror"] i:not(:first-child) {
+    display: none;
+  }
+}
+
+@keyframes gl-axes-in {
+  from {
+    opacity: 0;
   }
 }
 
@@ -3743,8 +3879,10 @@ a.gl-chip {
 
 /* A window on the Blueprint panel takes the page's other scheme, as the
    inverted bands do: dark on a light page, light gray on a dark one (softer
-   than white there, its muted text and violet darkened to keep 4.5:1) */
-.gl-blueprint .gl-window {
+   than white there, its muted text and violet darkened to keep 4.5:1). Its
+   grid tools do too. */
+.gl-blueprint .gl-window,
+.gl-blueprint__tools {
   --gl-win-paper: rgb(22 21 29 / 96%);
   --gl-win-field: #201f29;
   --gl-win-edge: #3d3a4a;
@@ -3760,7 +3898,8 @@ a.gl-chip {
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .gl-blueprint .gl-window {
+  :root:not([data-theme="light"]) .gl-blueprint .gl-window,
+  :root:not([data-theme="light"]) .gl-blueprint__tools {
     --gl-win-paper: #e2e1e7;
     --gl-win-field: #d6d5dd;
     --gl-win-edge: #c2c1cb;
@@ -3776,7 +3915,8 @@ a.gl-chip {
   }
 }
 
-:root[data-theme="dark"] .gl-blueprint .gl-window {
+:root[data-theme="dark"] .gl-blueprint .gl-window,
+:root[data-theme="dark"] .gl-blueprint__tools {
   --gl-win-paper: #e2e1e7;
   --gl-win-field: #d6d5dd;
   --gl-win-edge: #c2c1cb;
@@ -3789,6 +3929,259 @@ a.gl-chip {
   --gl-win-accent: #4b4fc8;
   --gl-win-shadow:
     0 1px 2px rgb(0 0 0 / 30%), 0 32px 64px -28px rgb(0 0 0 / 70%);
+}
+
+/* Grid tools: the Blueprint's easter egg, out once a square is filled. A
+   toolbar docked in the middle of the panel's bottom padding, in the page's
+   other scheme as the panel's windows are; its color and tile size open a
+   tray of choices above it. */
+.gl-blueprint__tools {
+  position: absolute;
+  z-index: 1;
+  bottom: calc((max(var(--gl-blueprint-pad, 64px), 56px) - 36px) / 2);
+  left: 50%;
+  width: max-content;
+  color: var(--gl-win-muted);
+  font-family: var(--gl-mono);
+  font-size: var(--gl-fs-mono);
+  line-height: 1;
+  text-align: left;
+  cursor: default;
+  translate: -50% 0;
+}
+
+/* Out, they keep the panel's bottom padding deep enough to sit in (on a
+   phone, the home page's is shallower than the bar) */
+.gl-blueprint:has(> .gl-blueprint__tools) {
+  padding-bottom: max(var(--gl-blueprint-pad, 0px), 56px);
+}
+
+.gl-tools__bar,
+.gl-tools__tray,
+.gl-tools__unfold {
+  border: 1px solid var(--gl-win-edge);
+  border-radius: 10px;
+  background: var(--gl-win-paper);
+  box-shadow: var(--gl-win-shadow);
+  backdrop-filter: blur(18px) saturate(1.3);
+}
+
+.gl-tools__bar {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  padding: 3px;
+  animation: gl-tools-in 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.gl-tools__tray {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  transform-origin: 50% 100%;
+  animation: gl-tray-in 280ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  translate: -50% 0;
+}
+
+.gl-tools__tool {
+  position: relative;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  padding: 0 6px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+
+  & svg {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  &:hover {
+    background: var(--gl-win-field);
+    color: var(--gl-win-ink);
+  }
+
+  &[aria-pressed="true"],
+  &[aria-expanded="true"],
+  &[data-on] {
+    background: var(--gl-win-field);
+    color: var(--gl-win-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--gl-win-accent);
+    outline-offset: 1px;
+  }
+
+  &:disabled {
+    background: none;
+    color: inherit;
+    cursor: default;
+    opacity: 0.4;
+  }
+
+  /* Its name, over it on hover (after a beat) and on keyboard focus */
+  &::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 9px);
+    left: 50%;
+    padding: 5px 8px;
+    border-radius: 5px;
+    background: var(--gl-win-ink);
+    color: var(--gl-win-on-ink);
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      opacity 150ms,
+      translate 150ms,
+      visibility 150ms;
+    translate: -50% 4px;
+    visibility: hidden;
+  }
+
+  &:focus-visible::after {
+    opacity: 1;
+    translate: -50% 0;
+    visibility: visible;
+  }
+
+  @media (hover: hover) {
+    &:hover::after {
+      opacity: 1;
+      transition-delay: 350ms;
+      translate: -50% 0;
+      visibility: visible;
+    }
+  }
+}
+
+/* The bar's names give way to an open tray, and to the note that they've
+   been found */
+.gl-blueprint__tools:is([data-tray], [data-found])
+  .gl-tools__bar
+  .gl-tools__tool::after {
+  content: none;
+}
+
+.gl-tools__rule {
+  flex-shrink: 0;
+  width: 1px;
+  height: 16px;
+  margin-inline: 3px;
+  background: var(--gl-win-edge);
+}
+
+.gl-tools__size {
+  min-width: 2ch;
+}
+
+.gl-tools__swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gl-brush);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gl-win-ink) 38%, transparent);
+
+  &[data-brush="spectrum"] {
+    background: conic-gradient(
+      oklch(70% 0.17 280deg),
+      oklch(70% 0.17 360deg),
+      oklch(70% 0.17 80deg),
+      oklch(70% 0.17 160deg),
+      oklch(70% 0.17 220deg),
+      oklch(70% 0.17 280deg)
+    );
+  }
+}
+
+/* Folded away: a single button, where the bar was */
+.gl-tools__unfold {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: var(--gl-win-muted);
+  cursor: pointer;
+  animation: gl-tools-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+
+  &:hover {
+    color: var(--gl-win-accent);
+  }
+
+  & svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Said once, when the tools first come out */
+.gl-tools__found {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--gl-win-accent);
+  color: var(--gl-win-on-ink);
+  white-space: nowrap;
+  animation: gl-found 2800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  translate: -50% 0;
+
+  .gl-blueprint__tools[data-tray] & {
+    display: none;
+  }
+}
+
+@keyframes gl-tools-in {
+  from {
+    opacity: 0;
+    scale: 0.94;
+    translate: 0 10px;
+  }
+}
+
+@keyframes gl-tray-in {
+  from {
+    opacity: 0;
+    scale: 0.94;
+  }
+}
+
+@keyframes gl-found {
+  0% {
+    opacity: 0;
+    scale: 0.9;
+  }
+
+  12% {
+    opacity: 1;
+    scale: 1;
+  }
+
+  82% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 /* Halftone: a violet dot screen, its dots swelling toward the bottom */
