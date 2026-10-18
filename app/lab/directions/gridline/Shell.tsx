@@ -147,10 +147,6 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
               <a href="#gl-main">Back to top ↑</a>
             </p>
           </div>
-
-          <p className="gl-wordmark" aria-hidden="true">
-            {profile.name}
-          </p>
         </footer>
       </div>
 

@@ -4438,24 +4438,6 @@ a.gl-chip {
   }
 }
 
-/* The name, outlined, cut off by the bottom of the page */
-.gl-wordmark {
-  overflow: hidden;
-  height: clamp(64px, 12.4vw, 160px);
-  margin: 0;
-  padding-top: 16px;
-  border-top: 1px solid var(--gl-line);
-  color: transparent;
-  font-size: clamp(76px, 15.6vw, 200px);
-  font-weight: 500;
-  letter-spacing: -0.055em;
-  line-height: 0.95;
-  text-align: center;
-  white-space: nowrap;
-  -webkit-text-stroke: 1px var(--gl-line-strong);
-  user-select: none;
-}
-
 /* Denver readout
    ========================================================================== */
 

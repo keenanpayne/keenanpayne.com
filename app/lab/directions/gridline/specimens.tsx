@@ -215,11 +215,6 @@ function Motifs({ content }: SpecimenProps) {
           </div>
         </Specimen>
       ))}
-      <Specimen label="Wordmark" note="The footer’s last line" wide>
-        <p className="gl-wordmark" aria-hidden="true">
-          {content.profile.name}
-        </p>
-      </Specimen>
     </SpecimenGrid>
   );
 }
