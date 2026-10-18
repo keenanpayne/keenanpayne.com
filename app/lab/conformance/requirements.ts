@@ -552,7 +552,9 @@ const everyPage: Requirement[] = [
       if (asked && !forms.length) problem("the newsletter sign-up");
       if (!asked && forms.length) problem("no newsletter sign-up here");
       if (asked) {
-        signups(page.live().main)
+        const live = signups(page.live().main);
+        if (!live.length) problem("the newsletter sign-up on the live site");
+        live
           .flatMap((form) => submissionProblems(form, "newsletter"))
           .forEach(problem);
       }

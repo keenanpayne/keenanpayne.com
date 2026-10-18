@@ -3,6 +3,7 @@ import {
   formOf,
   Html,
   introOf,
+  titleOf,
   LocalTime,
   useSubmission,
   useTo,
@@ -75,7 +76,7 @@ export function Contact({
         episode={variant === "contact" ? "Episode:06" : "Episode:07"}
         eyebrow={form.title}
         jp={variant === "contact" ? "通信" : "依頼"}
-        title={intro?.heading ?? page.meta.title}
+        title={titleOf(page)}
       />
 
       <section className="mc-section mc-split mc-contact">

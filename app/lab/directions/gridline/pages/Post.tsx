@@ -1,7 +1,9 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
 import {
   Html,
+  ledeOf,
   readingMinutes,
+  titleOf,
   useActiveSection,
   useTo,
   type TemplateProps
@@ -60,8 +62,8 @@ export function Post({ page }: TemplateProps<"post">) {
             ]}
           />
         }
-        title={page.title ?? page.meta.title}
-        lede={page.lede}
+        title={titleOf(page)}
+        lede={ledeOf(page)}
         aside={
           <Facts
             rows={[

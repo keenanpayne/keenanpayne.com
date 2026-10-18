@@ -5,6 +5,8 @@ import {
   cx,
   galleryColumns,
   Html,
+  ledeOf,
+  titleOf,
   useTo,
   type TemplateProps
 } from "../../../site";
@@ -23,7 +25,7 @@ import {
 
 export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
   const to = useTo();
-  const title = page.client ?? page.meta.title;
+  const name = page.client ?? page.meta.title;
 
   const glance: [string, ReactNode][] = [];
   if (page.industry) glance.push(["Industry", page.industry]);
@@ -85,7 +87,7 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
 
   const address = page.siteUrl
     ? page.siteUrl.replace(/^https?:\/\//, "").replace(/\/$/, "")
-    : title;
+    : name;
 
   return (
     <article>
@@ -96,8 +98,8 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
             current="Case study"
           />
         }
-        title={title}
-        lede={page.lede}
+        title={titleOf(page)}
+        lede={ledeOf(page)}
         aside={glance.length > 0 && <Facts rows={glance} />}
       />
 

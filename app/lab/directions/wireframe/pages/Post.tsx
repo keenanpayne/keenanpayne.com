@@ -1,5 +1,6 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
 import {
+  ledeOf,
   readingMinutes,
   titleOf,
   useTo,
@@ -25,7 +26,7 @@ export function Post({ page }: TemplateProps<"post">) {
           </>
         }
         title={titleOf(page)}
-        lede={page.lede}
+        lede={ledeOf(page)}
       >
         <Facts
           rows={[

@@ -1,5 +1,5 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
-import { introOf, useTo, type TemplateProps } from "../../../site";
+import { introOf, titleOf, useTo, type TemplateProps } from "../../../site";
 import {
   Band,
   Chips,
@@ -34,7 +34,7 @@ export function Page({ kind, page }: TemplateProps<"page" | "archive">) {
             label
           )
         }
-        title={intro?.heading ?? intro?.title ?? label}
+        title={titleOf(page)}
         lede={intro?.subheading}
       />
 

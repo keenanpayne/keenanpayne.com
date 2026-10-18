@@ -3,6 +3,7 @@ import {
   introOf,
   quotesOf,
   samePath,
+  titleOf,
   useTo,
   type TemplateProps
 } from "../../../site";
@@ -21,7 +22,7 @@ import { ServiceArt } from "../ServiceArt";
 export function Service({ page, content }: TemplateProps<"service">) {
   const to = useTo();
   const intro = introOf(page);
-  const title = intro?.heading ?? intro?.title ?? page.meta.title;
+  const title = titleOf(page);
   // A page that describes its own process doesn't need the general one
   const ownProcess = page.content.includes("services-process");
 

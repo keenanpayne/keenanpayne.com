@@ -5,7 +5,13 @@ import type {
   PortfolioGridItem,
   TestimonialModel
 } from "../../../../lib/types";
-import { Html, useTo, type TemplateProps } from "../../../site";
+import {
+  Html,
+  ledeOf,
+  titleOf,
+  useTo,
+  type TemplateProps
+} from "../../../site";
 import {
   Contents,
   Discussion,
@@ -30,7 +36,7 @@ type Block =
 
 export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
   const to = useTo();
-  const title = page.client ?? page.meta.title;
+  const title = titleOf(page);
 
   // Galleries and client quotes, in page order. Galleries with a title open a
   // section; untitled ones and quotes carry on the last.
@@ -133,7 +139,7 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
             </>
           }
           title={title}
-          lede={page.lede}
+          lede={ledeOf(page)}
         >
           <p className="st-pageMeta">
             <span>{page.industry}</span>

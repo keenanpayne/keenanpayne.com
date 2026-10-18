@@ -3,6 +3,7 @@ import {
   formOf,
   Html,
   introOf,
+  titleOf,
   useSubmission,
   useTo,
   type FormField as Field
@@ -126,7 +127,7 @@ export function Contact({
       <PageHeader
         icon="mail"
         eyebrow={formOf(variant).title}
-        title={intro?.heading ?? page.meta.title}
+        title={titleOf(page)}
       />
 
       <ContactForm

@@ -2,6 +2,7 @@ import {
   formOf,
   introOf,
   LocalTime,
+  titleOf,
   useTo,
   type TemplateProps
 } from "../../../site";
@@ -22,7 +23,7 @@ export function Contact({
     <>
       <PageHeader
         eyebrow={form.title}
-        title={intro?.heading ?? page.meta.title}
+        title={titleOf(page)}
         lede={intro?.subheading}
         aside={
           <>

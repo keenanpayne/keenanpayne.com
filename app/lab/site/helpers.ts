@@ -7,9 +7,12 @@ import type {
   LinkModel,
   PageListSection,
   PageModel,
+  PortfolioPageModel,
+  PostPageModel,
   SectionModel
 } from "../../lib/types";
 import type { ProfileFact, ProfileFactId } from "../../data/profile";
+import { escapeHtml } from "../../lib/html";
 
 import { HOME } from "./ia";
 
@@ -35,15 +38,26 @@ export const labelOf = (page: { meta: { title: string } }) =>
   page.meta.title.split(" | ")[0];
 
 /**
- * A page's title, for its `<h1>`: a post's or case study's own, or the
- * page's intro heading (HTML), falling back to its label
+ * A page's title, for its `<h1>`, as HTML: a post's or case study's own,
+ * or the page's intro heading, falling back to its label. The intro heading
+ * is written as HTML; the rest are plain text, escaped here, so a title
+ * with an ampersand or an angle bracket renders as written.
  */
 export function titleOf(page: PageModel) {
-  if (page.layout === "post") return page.title ?? page.meta.title;
-  if (page.layout === "portfolio") return page.client ?? page.meta.title;
+  if (page.layout === "post") return escapeHtml(page.title ?? page.meta.title);
+  if (page.layout === "portfolio") {
+    return escapeHtml(page.client ?? page.meta.title);
+  }
   const intro = introOf(page);
-  return intro?.heading ?? intro?.title ?? labelOf(page);
+  return intro?.heading ?? escapeHtml(intro?.title ?? labelOf(page));
 }
+
+/**
+ * A post's or case study's lede, as HTML, for the slot under its title.
+ * It's written plain, so it's escaped here.
+ */
+export const ledeOf = (page: PostPageModel | PortfolioPageModel) =>
+  page.lede === undefined ? undefined : escapeHtml(page.lede);
 
 /** A page's first section of a type, e.g. `testimonials-grid` */
 export const sectionOf = <T extends SectionModel["type"]>(

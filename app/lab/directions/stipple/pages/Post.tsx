@@ -1,7 +1,9 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
 import {
+  ledeOf,
   readingMinutes,
   samePath,
+  titleOf,
   useTo,
   type TemplateProps
 } from "../../../site";
@@ -77,8 +79,8 @@ export function Post({ page, content }: TemplateProps<"post">) {
               )}
             </>
           }
-          title={page.title ?? page.meta.title}
-          lede={page.lede}
+          title={titleOf(page)}
+          lede={ledeOf(page)}
         >
           <p className="st-pageMeta">
             <time dateTime={page.date.iso}>{page.date.long}</time>

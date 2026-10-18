@@ -1,5 +1,5 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
-import { Html, introOf, type TemplateProps } from "../../../site";
+import { Html, introOf, titleOf, type TemplateProps } from "../../../site";
 import {
   Chips,
   Entries,
@@ -13,14 +13,10 @@ import {
 /** Any other page: type and tag archives, subscribe, … */
 export function Page({ page }: TemplateProps<"page" | "archive">) {
   const intro = introOf(page);
-  const label = page.meta.title.split(" | ")[0];
 
   return (
     <Layout>
-      <PageHeader
-        title={intro?.heading ?? intro?.title ?? label}
-        lede={intro?.subheading}
-      />
+      <PageHeader title={titleOf(page)} lede={intro?.subheading} />
 
       {intro?.body && <Html className="st-prose" html={intro.body} />}
       {page.content && <HtmlContent className="st-prose" html={page.content} />}

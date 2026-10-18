@@ -1,6 +1,7 @@
 import {
   formOf,
   introOf,
+  titleOf,
   useSubmission,
   useTo,
   type TemplateProps
@@ -45,7 +46,7 @@ export function Contact({
               </>
             )
           }
-          title={intro?.heading ?? page.meta.title}
+          title={titleOf(page)}
           lede={intro?.subheading}
         >
           <p className="st-actions">

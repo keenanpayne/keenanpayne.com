@@ -1,7 +1,13 @@
 import type { ReactNode } from "react";
 
 import { HtmlContent } from "../../../../components/HtmlContent";
-import { Html, titleOf, useTo, type TemplateProps } from "../../../site";
+import {
+  Html,
+  ledeOf,
+  titleOf,
+  useTo,
+  type TemplateProps
+} from "../../../site";
 import { Discussion, Facts, PageHeader, Quote, Section } from "../parts";
 
 export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
@@ -61,7 +67,7 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
           </>
         }
         title={titleOf(page)}
-        lede={page.lede}
+        lede={ledeOf(page)}
       />
 
       {page.cover && (
