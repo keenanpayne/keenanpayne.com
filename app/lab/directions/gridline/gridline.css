@@ -3602,7 +3602,8 @@ a.gl-chip {
   transition:
     --gl-pointer-x 900ms cubic-bezier(0.16, 1, 0.3, 1),
     --gl-pointer-y 900ms cubic-bezier(0.16, 1, 0.3, 1),
-    --gl-grid 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    --gl-grid 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    padding-bottom 500ms cubic-bezier(0.16, 1, 0.3, 1);
 
   &::before,
   &::after {
@@ -3932,13 +3933,17 @@ a.gl-chip {
 }
 
 /* Grid tools: the Blueprint's easter egg, out once a square is filled. A
-   toolbar docked in the middle of the panel's bottom padding, in the page's
-   other scheme as the panel's windows are; its color and tile size open a
-   tray of choices above it. */
+   toolbar (36px tall) docked in the panel's bottom padding, at least 32px
+   clear of the content above it and centered where there's more room than
+   that, in the page's other scheme as the panel's windows are; its color
+   and tile size open a tray of choices above it. */
 .gl-blueprint__tools {
   position: absolute;
   z-index: 1;
-  bottom: calc((max(var(--gl-blueprint-pad, 64px), 56px) - 36px) / 2);
+  bottom: min(
+    (var(--gl-tools-pad) - 36px) / 2,
+    var(--gl-tools-pad) - 36px - 32px
+  );
   left: 50%;
   width: max-content;
   color: var(--gl-win-muted);
@@ -3950,10 +3955,12 @@ a.gl-chip {
   translate: -50% 0;
 }
 
-/* Out, they keep the panel's bottom padding deep enough to sit in (on a
-   phone, the home page's is shallower than the bar) */
+/* Out, they keep the panel's bottom padding deep enough for that room and
+   12px below (on a phone, both panels' padding is shallower), easing it open */
 .gl-blueprint:has(> .gl-blueprint__tools) {
-  padding-bottom: max(var(--gl-blueprint-pad, 0px), 56px);
+  --gl-tools-pad: max(var(--gl-blueprint-pad, 0px), 80px);
+
+  padding-bottom: var(--gl-tools-pad);
 }
 
 .gl-tools__bar,
