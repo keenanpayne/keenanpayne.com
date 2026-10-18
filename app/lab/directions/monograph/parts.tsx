@@ -6,7 +6,14 @@ import type {
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
-import { cx, Html, newsletterForm, pad, useTo } from "../../site";
+import {
+  cx,
+  Html,
+  newsletterForm,
+  pad,
+  useSubmission,
+  useTo
+} from "../../site";
 
 //
 // Masthead
@@ -376,8 +383,10 @@ export function Banner({
   );
 }
 
-/** Mock newsletter sign-up; the lab never submits anything */
+/** The newsletter sign-up: one field and its button */
 export function Newsletter() {
+  const { props, hidden, status } = useSubmission("newsletter");
+
   return (
     <section className="mg-newsletter">
       <div>
@@ -386,8 +395,14 @@ export function Newsletter() {
           New essays and tutorials, sent to your inbox when they’re published.
           No spam, unsubscribe anytime.
         </p>
+        {status && (
+          <p className="mg-meta" role="status">
+            {status}
+          </p>
+        )}
       </div>
-      <form className="mg-inline-form" onSubmit={(e) => e.preventDefault()}>
+      <form className="mg-inline-form" {...props}>
+        {hidden}
         <label className="mg-visually-hidden" htmlFor="mg-newsletter-email">
           Email address
         </label>

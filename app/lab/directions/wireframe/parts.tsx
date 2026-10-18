@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import type {
   EntriesSection,
@@ -8,7 +8,12 @@ import type {
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
-import { Html, newsletterForm, type FormField as Field } from "../../site";
+import {
+  Html,
+  newsletterForm,
+  useSubmission,
+  type FormField as Field
+} from "../../site";
 
 type Posts = LabContent["posts"];
 
@@ -218,21 +223,16 @@ export function PageTable({ pages }: { pages: PageListSection["pages"] }) {
   );
 }
 
-/** Mock newsletter sign-up; the lab never submits anything */
+/** The newsletter sign-up: one field and its button */
 export function Newsletter() {
-  const [sent, setSent] = useState(false);
   const { title, text, submit, field } = newsletterForm;
+  const { props, hidden, status } = useSubmission("newsletter");
 
   return (
     <Section title={title}>
       <p>{text}</p>
-      <form
-        className="wireframe-form"
-        onSubmit={(event) => {
-          event.preventDefault();
-          setSent(true);
-        }}
-      >
+      <form className="wireframe-form" {...props}>
+        {hidden}
         <label className="wireframe-field">
           {field.label}
           <input
@@ -243,12 +243,15 @@ export function Newsletter() {
           />
         </label>
         <p className="wireframe-field--wide">
-          <button type="submit">{submit}</button>{" "}
-          <span className="wireframe-meta" role="status">
-            {sent
-              ? "Mockup only — nothing was sent."
-              : "Mockup only — this form doesn’t send anything."}
-          </span>
+          <button type="submit">{submit}</button>
+          {status && (
+            <>
+              {" "}
+              <span className="wireframe-meta" role="status">
+                {status}
+              </span>
+            </>
+          )}
         </p>
       </form>
     </Section>

@@ -20,12 +20,15 @@ import type {
 } from "../../../lib/types";
 import {
   cx,
+  formOf,
   homeWork,
   Html,
   LocalTime,
+  newsletterForm,
   pad,
   prefersReducedMotion,
   relabel,
+  useSubmission,
   useTo,
   type FormField as Field
 } from "../../site";
@@ -884,11 +887,6 @@ export function PostNav({ nav }: { nav: PostNavModel | null }) {
 /* Forms
    ========================================================================== */
 
-export const MOCKUP_STATUS = {
-  idle: "Mockup only — this form doesn’t send anything.",
-  sent: "Mockup only — nothing was sent."
-};
-
 /** One question, as a cell of the form's grid */
 export function FormField({ field }: { field: Field }) {
   const className = cx("gl-cell gl-field", field.wide && "gl-field--wide");
@@ -929,26 +927,24 @@ export function FormField({ field }: { field: Field }) {
   );
 }
 
-/** A mock form; the lab never submits anything */
-export function Form({ fields, submit }: { fields: Field[]; submit: string }) {
-  const [sent, setSent] = useState(false);
+/** The contact or project inquiry form, as a grid of cells */
+export function Form({ kind }: { kind: "contact" | "inquiry" }) {
+  const { fields, submit } = formOf(kind);
+  const { props, hidden, status } = useSubmission(kind);
 
   return (
-    <form
-      className="gl-form"
-      onSubmit={(event) => {
-        event.preventDefault();
-        setSent(true);
-      }}
-    >
+    <form className="gl-form" {...props}>
+      {hidden}
       <Cells cols={2} as="div">
         {fields.map((field) => (
           <FormField key={field.name} field={field} />
         ))}
         <div className="gl-cell gl-field--wide gl-form__submit">
-          <span className="gl-meta" role="status">
-            {sent ? MOCKUP_STATUS.sent : MOCKUP_STATUS.idle}
-          </span>
+          {status && (
+            <span className="gl-meta" role="status">
+              {status}
+            </span>
+          )}
           <Button type="submit">
             {submit} <Arrow />
           </Button>
@@ -958,9 +954,10 @@ export function Form({ fields, submit }: { fields: Field[]; submit: string }) {
   );
 }
 
-/** Mock newsletter sign-up; the lab never submits anything */
+/** The newsletter sign-up: one field and its button */
 export function Newsletter({ invert }: { invert?: boolean }) {
-  const [sent, setSent] = useState(false);
+  const { field, submit } = newsletterForm;
+  const { props, hidden, status } = useSubmission("newsletter");
 
   return (
     <Band invert={invert}>
@@ -970,26 +967,23 @@ export function Newsletter({ invert }: { invert?: boolean }) {
           <h2 className="gl-heading">New writing, by email</h2>
           <p>Articles and tutorials, sent when they’re published.</p>
         </div>
-        <form
-          className="gl-signup__form"
-          onSubmit={(event) => {
-            event.preventDefault();
-            setSent(true);
-          }}
-        >
+        <form className="gl-signup__form" {...props}>
+          {hidden}
           <label>
-            <span className="gl-sr">Email</span>
+            <span className="gl-sr">{field.label}</span>
             <input
-              type="email"
-              name="email"
-              placeholder="email@company.com"
+              type={field.type}
+              name={field.name}
+              placeholder={field.placeholder}
               required
             />
           </label>
-          <Button type="submit">Subscribe</Button>
-          <span className="gl-meta" role="status">
-            {sent ? MOCKUP_STATUS.sent : MOCKUP_STATUS.idle}
-          </span>
+          <Button type="submit">{submit}</Button>
+          {status && (
+            <span className="gl-meta" role="status">
+              {status}
+            </span>
+          )}
         </form>
       </div>
     </Band>

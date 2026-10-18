@@ -1,10 +1,9 @@
-import { useState } from "react";
-
 import { getDirection, SAMPLE_PAGES } from "../../registry";
 import {
   formOf,
   Html,
   postTypes,
+  useSubmission,
   useTo,
   type SpecimenProps,
   type Specimens
@@ -280,28 +279,21 @@ function Quotes({ content }: SpecimenProps) {
 }
 
 function Forms() {
-  const [sent, setSent] = useState(false);
   const contact = formOf("contact");
+  const { props, hidden, status } = useSubmission("contact");
 
   return (
     <SpecimenGrid min={320}>
       <Specimen label="Contact form" note="formOf(“contact”)" wide>
-        <form
-          className="wireframe-form"
-          onSubmit={(event) => {
-            event.preventDefault();
-            setSent(true);
-          }}
-        >
+        <form className="wireframe-form" {...props}>
+          {hidden}
           {contact.fields.map((field) => (
             <FormField key={field.name} field={field} />
           ))}
           <p className="wireframe-field--wide">
             <button type="submit">{contact.submit}</button>{" "}
             <span className="wireframe-meta" role="status">
-              {sent
-                ? "Mockup only — nothing was sent."
-                : "Mockup only — this form doesn’t send anything."}
+              {status}
             </span>
           </p>
         </form>

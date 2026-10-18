@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { metadata } from "../../../../lib/site";
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
@@ -8,6 +8,7 @@ import {
   introOf,
   titleOf,
   useLocalTime,
+  useSubmission,
   useTo,
   type FormField as Field
 } from "../../../site";
@@ -56,11 +57,11 @@ export function FormField({ field }: { field: Field }) {
   );
 }
 
-/** The contact or inquiry form under a directory tab; the lab never sends it */
+/** The contact or inquiry form under a directory tab */
 export function MessageForm({ variant }: { variant: "contact" | "inquiry" }) {
   const to = useTo();
   const form = formOf(variant);
-  const [sent, setSent] = useState(false);
+  const { props, hidden, status, sent } = useSubmission(variant);
 
   return (
     <section className="pt-formbox">
@@ -70,13 +71,8 @@ export function MessageForm({ variant }: { variant: "contact" | "inquiry" }) {
           {variant === "contact" ? "Send a message" : "Mission request"}
         </span>
       </h2>
-      <form
-        className="pt-form"
-        onSubmit={(event) => {
-          event.preventDefault();
-          setSent(true);
-        }}
-      >
+      <form className="pt-form" {...props}>
+        {hidden}
         {form.fields.map((field) => (
           <FormField key={field.name} field={field} />
         ))}
@@ -85,11 +81,11 @@ export function MessageForm({ variant }: { variant: "contact" | "inquiry" }) {
           <Pill type="submit" icon="mail" tone="orange">
             {form.submit}
           </Pill>
-          <p className="pt-note" role="status">
-            {sent
-              ? "Message held — mockup only, nothing was sent."
-              : "Mockup only — this form doesn’t send anything."}
-          </p>
+          {status && (
+            <p className="pt-note" role="status">
+              {sent ? "Message held — mockup only, nothing was sent." : status}
+            </p>
+          )}
         </div>
       </form>
       <p className="pt-formbox__alt">

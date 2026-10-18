@@ -3,7 +3,6 @@ import {
   useEffectEvent,
   useState,
   type CSSProperties,
-  type FormEvent,
   type ReactNode
 } from "react";
 
@@ -21,6 +20,7 @@ import {
   relabel,
   useForecast,
   useNow,
+  useSubmission,
   useTo,
   WEATHER_CODES,
   type SpecimenProps,
@@ -1513,11 +1513,8 @@ function Forms({ content }: SpecimenProps) {
   const { email, location } = content.profile;
   const contact = formOf("contact");
   const inquiry = formOf("inquiry");
-  const [sent, setSent] = useState<"contact" | "inquiry">();
-  const submit = (form: "contact" | "inquiry") => (event: FormEvent) => {
-    event.preventDefault();
-    setSent(form);
-  };
+  const contactForm = useSubmission("contact");
+  const inquiryForm = useSubmission("inquiry");
 
   return (
     <SpecimenGrid min={320}>
@@ -1555,18 +1552,19 @@ function Forms({ content }: SpecimenProps) {
 
           <Panel
             label="Compose transmission"
-            code={sent === "contact" ? "Held" : "Ready"}
+            code={contactForm.sent ? "Held" : "Ready"}
           >
-            <form className="mc-form" onSubmit={submit("contact")}>
+            <form className="mc-form" {...contactForm.props}>
+              {contactForm.hidden}
               {contact.fields.map((field) => (
                 <FormField key={field.name} field={field} />
               ))}
               <div className="mc-form__actions mc-field--wide">
                 <Button type="submit">Transmit</Button>
                 <p className="mc-form__status" role="status">
-                  {sent === "contact"
+                  {contactForm.sent
                     ? "Transmission held — mockup only, nothing was sent."
-                    : "Mockup only — this form doesn’t send anything."}
+                    : contactForm.status}
                 </p>
               </div>
             </form>
@@ -1581,18 +1579,19 @@ function Forms({ content }: SpecimenProps) {
       >
         <Panel
           label="Mission request"
-          code={sent === "inquiry" ? "Held" : "Ready"}
+          code={inquiryForm.sent ? "Held" : "Ready"}
         >
-          <form className="mc-form" onSubmit={submit("inquiry")}>
+          <form className="mc-form" {...inquiryForm.props}>
+            {inquiryForm.hidden}
             {inquiry.fields.map((field) => (
               <FormField key={field.name} field={field} />
             ))}
             <div className="mc-form__actions mc-field--wide">
               <Button type="submit">{inquiry.submit}</Button>
               <p className="mc-form__status" role="status">
-                {sent === "inquiry"
+                {inquiryForm.sent
                   ? "Transmission held — mockup only, nothing was sent."
-                  : "Mockup only — this form doesn’t send anything."}
+                  : inquiryForm.status}
               </p>
             </div>
           </form>

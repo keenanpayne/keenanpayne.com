@@ -7,7 +7,7 @@ import {
 } from "../../../site";
 import { Band, Facts, Form, More, PageHeader } from "../parts";
 
-/** Mock contact and project inquiry forms; the lab never submits anything */
+/** The contact and project inquiry forms, beside the ways to reach me */
 export function Contact({
   kind,
   page,
@@ -52,7 +52,7 @@ export function Contact({
             <p className="gl-label">{form.title}</p>
             <span className="gl-meta">{`${form.fields.length} questions`}</span>
           </div>
-          <Form fields={form.fields} submit={form.submit} />
+          <Form kind={kind} />
         </div>
       </Band>
     </>

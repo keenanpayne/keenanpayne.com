@@ -23,6 +23,7 @@ import {
   pad,
   prefersReducedMotion,
   useActiveSection,
+  useSubmission,
   useTo,
   type FormField as Field
 } from "../../site";
@@ -968,24 +969,14 @@ export function PostNav({ nav }: { nav: PostNavModel | null }) {
 /* Forms (mockups: the lab never submits anything)
    ========================================================================== */
 
-export const mockStatus = (sent: boolean) =>
-  sent
-    ? "Mockup only — nothing was sent."
-    : "Mockup only — this form doesn’t send anything.";
-
 /** Email sign-up for new writing, as a single field with its button */
 export function Signup() {
-  const [sent, setSent] = useState(false);
+  const { props, hidden, status } = useSubmission("newsletter");
   const id = useId();
 
   return (
-    <form
-      className="st-signup"
-      onSubmit={(event) => {
-        event.preventDefault();
-        setSent(true);
-      }}
-    >
+    <form className="st-signup" {...props}>
+      {hidden}
       <label className="st-visuallyHidden" htmlFor={id}>
         Email
       </label>
@@ -1001,9 +992,11 @@ export function Signup() {
           <Arrow />
         </button>
       </span>
-      <span className="st-signup__status" role="status">
-        {mockStatus(sent)}
-      </span>
+      {status && (
+        <span className="st-signup__status" role="status">
+          {status}
+        </span>
+      )}
     </form>
   );
 }

@@ -1,11 +1,10 @@
-import { useState, type FormEvent } from "react";
-
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
 import {
   formOf,
   Html,
   introOf,
   LocalTime,
+  useSubmission,
   useTo,
   type FormField as Field
 } from "../../../site";
@@ -52,7 +51,7 @@ export function FormField({ field }: { field: Field }) {
   );
 }
 
-/** Mock contact and project inquiry forms; the lab never submits anything */
+/** The contact and project inquiry forms, beside the comms channel */
 export function Contact({
   page,
   content,
@@ -66,11 +65,7 @@ export function Contact({
   const { email, location } = content.profile;
   const to = useTo();
   const form = formOf(variant);
-  const [sent, setSent] = useState(false);
-  const onSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    setSent(true);
-  };
+  const { props, hidden, status, sent } = useSubmission(variant);
 
   return (
     <>
@@ -121,18 +116,21 @@ export function Contact({
           }
           code={sent ? "Held" : "Ready"}
         >
-          <form className="mc-form" onSubmit={onSubmit}>
+          <form className="mc-form" {...props}>
+            {hidden}
             {form.fields.map((field) => (
               <FormField key={field.name} field={field} />
             ))}
 
             <div className="mc-form__actions mc-field--wide">
               <Button type="submit">{form.submit}</Button>
-              <p className="mc-form__status" role="status">
-                {sent
-                  ? "Transmission held — mockup only, nothing was sent."
-                  : "Mockup only — this form doesn’t send anything."}
-              </p>
+              {status && (
+                <p className="mc-form__status" role="status">
+                  {sent
+                    ? "Transmission held — mockup only, nothing was sent."
+                    : status}
+                </p>
+              )}
             </div>
           </form>
         </Panel>

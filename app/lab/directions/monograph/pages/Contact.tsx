@@ -1,10 +1,9 @@
-import { useState, type FormEvent } from "react";
-
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
 import {
   formOf,
   Html,
   introOf,
+  useSubmission,
   useTo,
   type FormField as Field
 } from "../../../site";
@@ -65,11 +64,7 @@ export function ContactForm({
   const form = formOf(variant);
   const { email, location } = profile;
   const to = useTo();
-  const [sent, setSent] = useState(false);
-  const onSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    setSent(true);
-  };
+  const { props, hidden, status } = useSubmission(variant);
 
   return (
     <section className="mg-section mg-contact">
@@ -86,7 +81,8 @@ export function ContactForm({
         </MoreLink>
       </aside>
 
-      <form className="mg-form" onSubmit={onSubmit}>
+      <form className="mg-form" {...props}>
+        {hidden}
         <p className="mg-label mg-field--wide">
           <Icon name="pen" />
           {variant === "contact" ? "Send a note" : "Tell me about your project"}
@@ -100,18 +96,18 @@ export function ContactForm({
           <button className="mg-pill" type="submit">
             {form.submit}
           </button>
-          <p className="mg-meta" role="status">
-            {sent
-              ? "Mockup only — nothing was sent."
-              : "Mockup only — this form doesn’t send anything."}
-          </p>
+          {status && (
+            <p className="mg-meta" role="status">
+              {status}
+            </p>
+          )}
         </div>
       </form>
     </section>
   );
 }
 
-/** Mock contact and project inquiry forms; the lab never submits anything */
+/** The contact and project inquiry forms, beside the ways to reach me */
 export function Contact({
   page,
   content,

@@ -1,15 +1,14 @@
-import { useState, type FormEvent } from "react";
-
 import {
   formOf,
   introOf,
   titleOf,
+  useSubmission,
   useTo,
   type TemplateProps
 } from "../../../site";
 import { Facts, FormField, PageHeader } from "../parts";
 
-/** Mock contact and project inquiry forms; the lab never submits anything */
+/** The contact and project inquiry forms, with the ways to reach me */
 export function Contact({
   kind,
   page,
@@ -19,11 +18,7 @@ export function Contact({
   const intro = introOf(page);
   const { email, location } = content.profile;
   const form = formOf(kind);
-  const [sent, setSent] = useState(false);
-  const onSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    setSent(true);
-  };
+  const { props, hidden, status } = useSubmission(kind);
 
   return (
     <>
@@ -43,17 +38,21 @@ export function Contact({
         </p>
       </PageHeader>
 
-      <form className="wireframe-form" onSubmit={onSubmit}>
+      <form className="wireframe-form" {...props}>
+        {hidden}
         {form.fields.map((field) => (
           <FormField key={field.name} field={field} />
         ))}
         <p className="wireframe-field--wide">
-          <button type="submit">{form.submit}</button>{" "}
-          <span className="wireframe-meta" role="status">
-            {sent
-              ? "Mockup only — nothing was sent."
-              : "Mockup only — this form doesn’t send anything."}
-          </span>
+          <button type="submit">{form.submit}</button>
+          {status && (
+            <>
+              {" "}
+              <span className="wireframe-meta" role="status">
+                {status}
+              </span>
+            </>
+          )}
         </p>
       </form>
     </>

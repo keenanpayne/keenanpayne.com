@@ -1,8 +1,11 @@
 // The contact and project inquiry forms, and the newsletter sign-up: their
-// copy, and their questions field by field. Directions style each kind of
-// field their own way; the questions stay the same everywhere.
+// copy, their questions field by field, and where each sends its answers.
+// Directions style each kind of field their own way; the questions and the
+// destinations stay the same everywhere (`useSubmission()` wires them).
 
 import { inquiryBudgets, inquiryServices } from "../../data/inquiry";
+import { FORM_SUCCESS_PATH, NEWSLETTER_ACTION } from "../../lib/endpoints";
+import { SITE_ORIGIN } from "../../lib/site";
 
 export type FormField = {
   name: string;
@@ -25,6 +28,8 @@ export type FormField = {
 );
 
 export interface Form {
+  /** Its name at Netlify Forms, which files its submissions under it */
+  name: string;
   /** What the form is, e.g. above its page's title */
   title: string;
   /** The submit button's label */
@@ -52,6 +57,7 @@ const email: FormField = {
 
 const FORMS: Record<"contact" | "inquiry", Form> = {
   contact: {
+    name: "Contact",
     title: "Contact",
     submit: "Send message",
     alternate: {
@@ -71,6 +77,7 @@ const FORMS: Record<"contact" | "inquiry", Form> = {
     ]
   },
   inquiry: {
+    name: "Project Inquiry",
     title: "Project inquiry",
     submit: "Send inquiry",
     alternate: { text: "Just saying hello?", path: "/contact/" },
@@ -146,3 +153,57 @@ export const newsletterForm = {
   submit: "Subscribe",
   field: { ...email, label: "Email" } satisfies FormField
 } as const;
+
+export type SubmissionKind = "contact" | "inquiry" | "newsletter";
+
+/** Where a form sends its answers: what its `<form>` carries */
+export interface Submission {
+  attributes: {
+    /** The contact and inquiry forms, as Netlify Forms files them */
+    name?: string;
+    method: "POST" | "post";
+    action: string;
+    /** The newsletter sign-up posts into the popup `useSubmission()` opens */
+    target?: string;
+    /** Marks the form for Netlify Forms, which reads it off the built page */
+    "data-netlify"?: "true";
+  };
+  /** Hidden fields inside the form, which the submission carries along */
+  hidden: { name: string; value: string }[];
+}
+
+// The subject line of Netlify's notification, with its placeholders
+const SUBJECT = `New %{formName} form submission on ${new URL(SITE_ORIGIN).host} — (%{submissionId})`;
+
+/**
+ * Where each form sends. The contact and inquiry forms post to Netlify Forms
+ * under their `name` (the hidden `form-name` field says which, as the
+ * markup is rendered by React), and on to the success page; the newsletter
+ * sign-up posts to Buttondown. Every direction renders these as they are:
+ * `useSubmission()` holds the submit in the lab.
+ */
+export function submissionOf(kind: SubmissionKind): Submission {
+  if (kind === "newsletter") {
+    return {
+      attributes: {
+        method: "post",
+        action: NEWSLETTER_ACTION,
+        target: "popupwindow"
+      },
+      hidden: []
+    };
+  }
+  const { name } = FORMS[kind];
+  return {
+    attributes: {
+      name,
+      method: "POST",
+      action: FORM_SUCCESS_PATH,
+      "data-netlify": "true"
+    },
+    hidden: [
+      { name: "form-name", value: name },
+      { name: "subject", value: SUBJECT }
+    ]
+  };
+}

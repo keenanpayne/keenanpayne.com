@@ -18,7 +18,12 @@ import { parse, type HTMLElement } from "node-html-parser";
 import { getLabContent, getPage } from "../../lib/content/content.server";
 import { metadata } from "../../lib/site";
 import type { TestimonialModel } from "../../lib/types";
-import { formOf, newsletterForm } from "../site/forms";
+import {
+  formOf,
+  newsletterForm,
+  submissionOf,
+  type SubmissionKind
+} from "../site/forms";
 import {
   hasNewsletter,
   homeWork,
@@ -151,6 +156,30 @@ function shows(element: HTMLElement, src: string) {
 
 const short = (text: string, length = 60) =>
   text.length > length ? `${text.slice(0, length)}…` : text;
+
+/**
+ * Problems with where a form sends (`submissionOf(kind)`): each attribute
+ * its `<form>` carries, and each hidden field inside it
+ */
+function submissionProblems(form: HTMLElement, kind: SubmissionKind) {
+  const { attributes, hidden } = submissionOf(kind);
+  return [
+    ...Object.entries(attributes)
+      .filter(
+        ([name, value]) =>
+          (attr(form, name) ?? "").toLowerCase() !== value.toLowerCase()
+      )
+      .map(([name, value]) => `${name}="${value}" on the form`),
+    ...hidden
+      .filter(
+        (field) =>
+          !form
+            .querySelectorAll(`input[type="hidden"][name="${field.name}"]`)
+            .some((input) => attr(input, "value") === field.value)
+      )
+      .map((field) => `a hidden field ${field.name}="${field.value}"`)
+  ];
+}
 
 /** Problems with a list of quotes: each one's words and who said them */
 function quoteProblems(element: HTMLElement, quotes: TestimonialModel[]) {
@@ -453,7 +482,7 @@ const everyPage: Requirement[] = [
   forKinds(
     ["writing", "archive", "page", "post"],
     "page.newsletter",
-    "The newsletter sign-up (`newsletterForm`: a form with an email field named `email`) is on exactly the pages that ask for it.",
+    "The newsletter sign-up (`newsletterForm`: a form with an email field named `email`, sending the shared way) is on exactly the pages that ask for it.",
     ({ main, view }, problem) => {
       const asked =
         view.kind === "post" ? view.page.newsletter : hasNewsletter(view.page);
@@ -467,6 +496,9 @@ const everyPage: Requirement[] = [
         );
       if (asked && !forms.length) problem("the newsletter sign-up");
       if (!asked && forms.length) problem("no newsletter sign-up here");
+      forms
+        .flatMap((form) => submissionProblems(form, "newsletter"))
+        .forEach(problem);
     }
   )
 ];
@@ -905,6 +937,19 @@ const pages: Requirement[] = [
       ) {
         problem(`a link to ${form.alternate.path}, “${form.alternate.text}”`);
       }
+    }
+  ),
+  forKinds(
+    ["contact", "inquiry"],
+    "form.sends",
+    "The form sends its answers the shared way (`useSubmission(kind)`): to Netlify Forms under the form’s name, on to the success page, with the hidden fields a submission needs.",
+    ({ main, view }, problem) => {
+      const [first] = formOf(view.kind).fields;
+      const form = main
+        .querySelectorAll("form")
+        .find((candidate) => candidate.querySelector(`[name="${first.name}"]`));
+      if (!form) return problem("a form with the questions");
+      submissionProblems(form, view.kind).forEach(problem);
     }
   ),
 

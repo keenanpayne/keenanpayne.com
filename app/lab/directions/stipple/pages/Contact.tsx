@@ -1,17 +1,14 @@
-import { useState, type FormEvent } from "react";
-
-import { formOf, introOf, useTo, type TemplateProps } from "../../../site";
-import { FrontRange } from "../FrontRange";
 import {
-  DirectLine,
-  FormField,
-  Layout,
-  More,
-  mockStatus,
-  PageHeader
-} from "../parts";
+  formOf,
+  introOf,
+  useSubmission,
+  useTo,
+  type TemplateProps
+} from "../../../site";
+import { FrontRange } from "../FrontRange";
+import { DirectLine, FormField, Layout, More, PageHeader } from "../parts";
 
-/** Mock contact and project inquiry forms; the lab never submits anything */
+/** The contact and project inquiry forms, with a direct line beside them */
 export function Contact({
   kind,
   page,
@@ -20,11 +17,7 @@ export function Contact({
   const to = useTo();
   const form = formOf(kind);
   const intro = introOf(page);
-  const [sent, setSent] = useState(false);
-  const onSubmit = (event: FormEvent) => {
-    event.preventDefault();
-    setSent(true);
-  };
+  const { props, hidden, status } = useSubmission(kind);
 
   return (
     <>
@@ -60,7 +53,8 @@ export function Contact({
           </p>
         </PageHeader>
 
-        <form className="st-form" onSubmit={onSubmit}>
+        <form className="st-form" {...props}>
+          {hidden}
           {form.fields.map((field) => (
             <FormField key={field.name} field={field} />
           ))}
@@ -68,7 +62,7 @@ export function Contact({
             <button className="st-button" type="submit">
               {form.submit}
             </button>
-            <span role="status">{mockStatus(sent)}</span>
+            {status && <span role="status">{status}</span>}
           </p>
         </form>
       </Layout>

@@ -3,6 +3,7 @@ import { createContext, useContext, type CSSProperties } from "react";
 /**
  * URL prefix for the direction being rendered (e.g. `/lab/mech`), so links a
  * direction writes itself stay inside it. Loader data is rebased already.
+ * Empty on the live site, where the direction renders at the site root.
  */
 export const BaseContext = createContext("");
 
@@ -13,6 +14,16 @@ export const BaseContext = createContext("");
 export const PreviewContext = createContext(false);
 
 export const usePreview = () => useContext(PreviewContext);
+
+/**
+ * True on the live site, where the direction renders at the site root; false
+ * in the lab's mockups and the style guide's previews
+ */
+export function useIsLive() {
+  const base = useContext(BaseContext);
+  const preview = usePreview();
+  return base === "" && !preview;
+}
 
 /** Builds a link to a site path inside the current direction */
 export function useTo() {

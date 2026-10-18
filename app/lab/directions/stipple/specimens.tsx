@@ -19,6 +19,7 @@ import {
   relabel,
   SAMPLE_PAGES,
   useLocalTime,
+  useSubmission,
   useTo,
   type NavItem,
   type SpecimenProps,
@@ -50,7 +51,6 @@ import {
   industriesOf,
   Ledger,
   Mark,
-  mockStatus,
   More,
   PageHeader,
   PageTable,
@@ -1203,7 +1203,10 @@ function KindWords({ content }: SpecimenProps) {
    ========================================================================== */
 
 function Forms() {
-  const [sent, setSent] = useState<"contact" | "inquiry">();
+  const submissions = {
+    contact: useSubmission("contact"),
+    inquiry: useSubmission("inquiry")
+  };
   const picked = useId();
   const budget = formOf("inquiry").fields.find(
     (field) => field.kind === "choices" && field.type === "radio" && field.wide
@@ -1213,6 +1216,7 @@ function Forms() {
     <SpecimenGrid min={300}>
       {(["contact", "inquiry"] as const).map((kind) => {
         const form = formOf(kind);
+        const { props, hidden, status } = submissions[kind];
         return (
           <Specimen
             key={kind}
@@ -1225,13 +1229,8 @@ function Forms() {
             wide
           >
             <Column>
-              <form
-                className="st-form"
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  setSent(kind);
-                }}
-              >
+              <form className="st-form" {...props}>
+                {hidden}
                 {form.fields.map((field) => (
                   <FormField key={field.name} field={field} />
                 ))}
@@ -1239,7 +1238,7 @@ function Forms() {
                   <button className="st-button" type="submit">
                     {form.submit}
                   </button>
-                  <span role="status">{mockStatus(sent === kind)}</span>
+                  <span role="status">{status}</span>
                 </p>
               </form>
             </Column>

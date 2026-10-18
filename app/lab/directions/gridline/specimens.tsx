@@ -586,8 +586,6 @@ function Quotes({ content }: SpecimenProps) {
 }
 
 function Forms() {
-  const contact = formOf("contact");
-
   return (
     <SpecimenGrid min={320}>
       <Specimen
@@ -595,7 +593,7 @@ function Forms() {
         note="formOf(“contact”): fields as cells"
         wide
       >
-        <Form fields={contact.fields} submit={contact.submit} />
+        <Form kind="contact" />
       </Specimen>
       <Specimen label="Choices" note="From the project inquiry" wide>
         <form className="gl-form">

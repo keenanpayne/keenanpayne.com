@@ -24,6 +24,7 @@ import {
   prefersReducedMotion,
   samePath,
   useReducedMotion,
+  useSubmission,
   useTo
 } from "../../site";
 
@@ -1195,9 +1196,10 @@ export function Alert({
   );
 }
 
-/** Mock newsletter sign-up; the lab never submits anything */
+/** The newsletter sign-up: one field and its button */
 export function Newsletter() {
   const { submit, field } = newsletterForm;
+  const { props, hidden, status } = useSubmission("newsletter");
 
   return (
     <Panel
@@ -1212,8 +1214,14 @@ export function Newsletter() {
             New essays and tutorials, sent to your inbox when they’re published.
             No spam, unsubscribe anytime.
           </p>
+          {status && (
+            <p className="mc-form__status" role="status">
+              {status}
+            </p>
+          )}
         </div>
-        <form className="mc-inline-form" onSubmit={(e) => e.preventDefault()}>
+        <form className="mc-inline-form" {...props}>
+          {hidden}
           <label className="mc-visually-hidden" htmlFor="mc-newsletter-email">
             Email address
           </label>

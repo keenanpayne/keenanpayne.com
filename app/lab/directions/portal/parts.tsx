@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, type ReactNode } from "react";
 
 import { metadata } from "../../../lib/site";
 import type {
@@ -14,6 +14,7 @@ import {
   pad,
   postTypes,
   usePreview,
+  useSubmission,
   useTo
 } from "../../site";
 
@@ -609,9 +610,9 @@ export function Promo({
   );
 }
 
-/** Mock newsletter sign-up; the lab never submits anything */
+/** The newsletter sign-up: one field and its button */
 export function Newsletter({ owner }: { owner: string }) {
-  const [sent, setSent] = useState(false);
+  const { props, hidden, status, sent } = useSubmission("newsletter");
 
   return (
     <Promo
@@ -636,13 +637,8 @@ export function Newsletter({ owner }: { owner: string }) {
         New essays and tutorials, sent to your inbox when they’re published. No
         spam, unsubscribe anytime.
       </p>
-      <form
-        className="pt-inline"
-        onSubmit={(event) => {
-          event.preventDefault();
-          setSent(true);
-        }}
-      >
+      <form className="pt-inline" {...props}>
+        {hidden}
         <label className="pt-visually-hidden" htmlFor="pt-newsletter-email">
           Email address
         </label>
@@ -655,11 +651,11 @@ export function Newsletter({ owner }: { owner: string }) {
         />
         <Go label="Sign up" />
       </form>
-      <p className="pt-note" role="status">
-        {sent
-          ? "Thanks! (Mockup only — nothing was sent.)"
-          : "Mockup only — this form doesn’t send anything."}
-      </p>
+      {status && (
+        <p className="pt-note" role="status">
+          {sent ? "Thanks! (Mockup only — nothing was sent.)" : status}
+        </p>
+      )}
     </Promo>
   );
 }
