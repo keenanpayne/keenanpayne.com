@@ -19,8 +19,6 @@ import { getLabContent, getPage } from "../lib/content/content.server";
 import { metadata } from "../lib/site";
 import type { Route } from "./+types/lab.styleguide";
 
-export const handle = { bare: true };
-
 export const links: Route.LinksFunction = () => [
   { rel: "stylesheet", href: labStyles },
   { rel: "stylesheet", href: guideStyles }

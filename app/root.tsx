@@ -5,21 +5,12 @@ import {
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
-  useMatches,
-  useRouteError,
-  useRouteLoaderData
+  ScrollRestoration
 } from "react-router";
 
 import type { Route } from "./+types/root";
-import { Footer } from "./components/Footer";
-import { Header } from "./components/Header";
-import { Topbar } from "./components/Topbar";
-import { getNavigation } from "./lib/content/content.server";
 import { SECURITY_HEADERS } from "./lib/security-headers";
 import { metadata, pageTitle } from "./lib/site";
-import type { LinkModel } from "./lib/types";
-import stylesheet from "./styles/app.css?url";
 
 /*
 
@@ -28,25 +19,6 @@ Check it out on GitHub ✌🏻
 https://github.com/keenanpayne/keenanpayne.com
 
 */
-
-const FONTS_URL =
-  "https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@500&display=swap";
-
-/**
- * Routes with `handle: { bare: true }` (the design lab) opt out of the site
- * chrome and global styles so they can explore a different look in isolation.
- * Their errors still render in the site's ErrorBoundary, which needs both.
- */
-function useIsBare() {
-  const error = useRouteError();
-  const matches = useMatches();
-  return (
-    !error &&
-    matches.some(
-      (match) => (match.handle as { bare?: boolean } | undefined)?.bare
-    )
-  );
-}
 
 export const links: Route.LinksFunction = () => [
   {
@@ -62,7 +34,7 @@ export const links: Route.LinksFunction = () => [
     title: metadata.title
   },
 
-  // Preconnect to Google Fonts
+  // The directions load their web fonts from Google Fonts
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -81,30 +53,20 @@ export const middleware: Route.MiddlewareFunction[] = [
   }
 ];
 
-export function loader() {
-  return { navigation: getNavigation() };
-}
-
+/**
+ * The document alone: every page's chrome and styles come from the design
+ * direction rendering it, the live one (`app/lab/live.ts`) at the site root
+ * and each of the others in the lab at `/lab/<slug>/`.
+ */
 export function Layout({ children }: { children: ReactNode }) {
-  const isBare = useIsBare();
-
   return (
-    <html lang="en" className="newStyles">
+    <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="HandheldFriendly" content="True" />
-        <meta name="MobileOptimized" content="320" />
-        <meta name="author" content="Keenan Payne" />
+        <meta name="author" content={metadata.author.name} />
         <meta name="color-scheme" content="light dark" />
         <Meta />
-        {!isBare && (
-          <>
-            <link rel="stylesheet" href={stylesheet} />
-            <link rel="stylesheet" href={FONTS_URL} />
-          </>
-        )}
         <Links />
       </head>
       <body>
@@ -116,39 +78,16 @@ export function Layout({ children }: { children: ReactNode }) {
   );
 }
 
-function SiteChrome({
-  navigation,
-  children
-}: {
-  navigation: LinkModel[];
-  children: ReactNode;
-}) {
-  return (
-    <>
-      <Topbar />
-      <Header navigation={navigation} />
-      {children}
-      <Footer navigation={navigation} />
-    </>
-  );
+export default function App() {
+  return <Outlet />;
 }
 
-export default function App({ loaderData }: Route.ComponentProps) {
-  const isBare = useIsBare();
-
-  if (isBare) return <Outlet />;
-
-  return (
-    <SiteChrome navigation={loaderData.navigation}>
-      <Outlet />
-    </SiteChrome>
-  );
-}
-
+/**
+ * Thrown errors (a loader that fails, a lab URL that isn't one), on a plain
+ * page of their own: the page route answers unknown paths itself, with the
+ * live direction's not-found page.
+ */
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
-  const data = useRouteLoaderData<typeof loader>("root");
-  const navigation = data?.navigation ?? [];
-
   let message = "Something went wrong";
   let details = "An unexpected error occurred.";
   let stack: string | undefined;
@@ -164,17 +103,26 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <SiteChrome navigation={navigation}>
+    <main
+      style={{
+        maxWidth: "40rem",
+        margin: "0 auto",
+        padding: "4rem 1rem",
+        fontFamily: "system-ui, sans-serif",
+        lineHeight: 1.5
+      }}
+    >
       <title>{pageTitle(message)}</title>
-      <main className="_container _text-align-center">
-        <p className="_font-family-mono _text-h4">{message}</p>
-        <h1>{details}</h1>
-        {stack && (
-          <pre>
-            <code>{stack}</code>
-          </pre>
-        )}
-      </main>
-    </SiteChrome>
+      <p style={{ fontFamily: "ui-monospace, monospace" }}>{message}</p>
+      <h1>{details}</h1>
+      <p>
+        <a href="/">Back to the home page</a>
+      </p>
+      {stack && (
+        <pre style={{ overflowX: "auto" }}>
+          <code>{stack}</code>
+        </pre>
+      )}
+    </main>
   );
 }

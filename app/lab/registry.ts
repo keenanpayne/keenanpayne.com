@@ -3,8 +3,9 @@
  * ==================================================
  * Each aesthetic direction explored at `/lab/<slug>/`: its metadata, and
  * the chunk its skin loads from. Each one mocks up every page in
- * `SAMPLE_PAGES`. Skins are imported on demand only, so the prerender config
- * can read this without pulling in components.
+ * `SAMPLE_PAGES`; the live one (`./live.ts`) renders the site itself too.
+ * Skins are imported on demand only, so the prerender config can read this
+ * without pulling in components.
  */
 
 import type { Direction } from "./site/direction";

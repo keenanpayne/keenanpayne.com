@@ -1,6 +1,6 @@
 # Design lab: working on a direction
 
-Every direction in `directions/<slug>/` is a skin over one site: the same content, pages, features, and foundations, in its own look. `README.md` explains the layers; these are the rules for changing them. When a request would make one direction differ from the others in anything but its look, say so and follow “Adding a feature” below instead.
+Every direction in `directions/<slug>/` is a skin over one site: the same content, pages, features, and foundations, in its own look. One of them is live (`live.ts`): the site renders every page with it at the root, while the others are mockups at `/lab/<slug>/`. `README.md` explains the layers; these are the rules for changing them. When a request would make one direction differ from the others in anything but its look, say so and follow “Adding a feature” below instead.
 
 ## Always
 
@@ -13,6 +13,7 @@ Every direction in `directions/<slug>/` is a skin over one site: the same conten
 - Change only its folder. The shared layers (`site/`, `app/data/`, `content/`, `conformance/`) change only for a feature every direction gets.
 - Read every fact, copy, photo, and link from `content` and the template’s `page`. Never type the owner’s name, initials, email, domain, role, city, or years, even in flavor copy; the source check fails on them.
 - Use the shared readers: `titleOf(page)` for the `<h1>`, `labelOf(page)`, `HOME.posts`, `homeWork(content)` (Home’s case studies, and only those), `quotesOf(page, content)`, `formOf(kind)`, `newsletterForm`, `hasNewsletter(page)`, `useTo()` for fixed paths, `useForecast()` and `LocalTime` for the weather and clock.
+- Wire every form with `useSubmission(kind)`: spread its `props` on the `<form>`, render its `hidden` fields inside, and show its `status` when there is one. That’s what makes the form send on the live site and hold as a mockup in the lab; never write your own `onSubmit`.
 - Keep the Shell’s features: a skip link to `<main id>`, the name linking home, the `navigation` prop as one `<nav>` with `aria-current`, the clock opening the weather popover (crediting Open-Meteo), and a `<footer>` with `© {year} {name}`, every social profile, and the feed. A phone menu that repeats the navigation gets its own `aria-label`.
 - In CSS: prefix every class, custom property, and `@keyframes` with the root class, and scope every selector under it; keep the role tokens on `:root` (`--<root>-paper`, `-ink`, `-muted`, `-line`, `-surface`, `-accent`, `-focus`, `-selection`, `-selection-ink`, `-font-display`, `-font-body`, `-font-mono`) and both color schemes, identically; stop motion under `prefers-reduced-motion` with one rule on `.<root> *`.
 - Motifs are yours: ornament, illustration, animation, voice, labels, and other presentations of the same content. A new part or variant also goes in the direction’s `specimens.tsx`.

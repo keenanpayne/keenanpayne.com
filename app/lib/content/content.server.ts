@@ -1084,7 +1084,10 @@ export function getFeedPosts() {
 
 let labContent: LabContent | undefined;
 
-/** Real site content for the design lab (`/lab/*`), in one flat shape */
+/**
+ * The site's content in one flat shape, as every design direction receives
+ * it: the live one at the site root, and the lab's mockups at `/lab/*`
+ */
 export function getLabContent(): LabContent {
   return (labContent ??= buildLabContent());
 }

@@ -8,8 +8,6 @@ import { STYLEGUIDE_PATH, styleguidePath } from "../lab/styleguide/sections";
 import { metadata } from "../lib/site";
 import type { Route } from "./+types/lab";
 
-export const handle = { bare: true };
-
 export const links: Route.LinksFunction = () => [
   { rel: "stylesheet", href: labStyles }
 ];

@@ -13,8 +13,6 @@ import { metadata } from "../lib/site";
 import type { LabContent } from "../lib/types";
 import type { Route } from "./+types/lab.$direction";
 
-export const handle = { bare: true };
-
 export const links: Route.LinksFunction = () => [
   { rel: "stylesheet", href: labStyles }
 ];
