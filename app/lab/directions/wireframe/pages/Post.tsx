@@ -5,7 +5,7 @@ import {
   useTo,
   type TemplateProps
 } from "../../../site";
-import { Facts, Newsletter, PageHeader, PostNav } from "../parts";
+import { Discussion, Facts, Newsletter, PageHeader, PostNav } from "../parts";
 
 export function Post({ page }: TemplateProps<"post">) {
   const to = useTo();
@@ -60,6 +60,8 @@ export function Post({ page }: TemplateProps<"post">) {
       )}
 
       <PostNav nav={page.postNav} />
+
+      {page.comments && <Discussion url={page.meta.canonical} />}
 
       {page.newsletter && <Newsletter />}
     </article>

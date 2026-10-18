@@ -8,6 +8,7 @@ import type {
 import { Html, useTo, type TemplateProps } from "../../../site";
 import {
   Contents,
+  Discussion,
   Facts,
   Layout,
   PageHeader,
@@ -236,6 +237,8 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
             <Facts rows={details} />
           </Section>
         )}
+
+        {page.comments && <Discussion url={page.meta.canonical} />}
       </article>
     </Layout>
   );

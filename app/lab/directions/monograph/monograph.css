@@ -2518,6 +2518,26 @@ button.mg-pill {
   max-height: none;
 }
 
+/* Comments
+   ========================================================================== */
+
+.mg-comments {
+  margin-top: 48px;
+  border-top: 1px solid var(--mg-ink);
+}
+
+.mg-comments__thread[data-mockup] {
+  padding: 32px 16px;
+  border: 1px dashed var(--mg-line);
+  text-align: center;
+
+  & p {
+    margin: 0;
+    color: var(--mg-muted);
+    font-size: 10px;
+  }
+}
+
 /* Not found
    ========================================================================== */
 

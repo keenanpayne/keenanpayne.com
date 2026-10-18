@@ -17,6 +17,7 @@ import type {
   TestimonialModel
 } from "../../../lib/types";
 import {
+  Comments,
   cx,
   Html,
   newsletterForm,
@@ -1242,6 +1243,13 @@ export function Newsletter() {
 //
 // Previous / next
 // ---------------
+
+/** A post's or case study's comments, as a panel: an open channel */
+export const Discussion = ({ url }: { url: string }) => (
+  <Panel className="mc-comments" label="Comments" code="Channel open">
+    <Comments url={url} className="mc-comments__thread" />
+  </Panel>
+);
 
 export function PostNav({
   nav,

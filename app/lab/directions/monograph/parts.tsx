@@ -7,6 +7,7 @@ import type {
   TestimonialModel
 } from "../../../lib/types";
 import {
+  Comments,
   cx,
   Html,
   newsletterForm,
@@ -424,6 +425,17 @@ export function Newsletter() {
 //
 // Previous / next
 // ---------------
+
+/** A post's or case study's comments, under a label */
+export const Discussion = ({ url }: { url: string }) => (
+  <section className="mg-comments">
+    <p className="mg-label">
+      <Icon name="pen" />
+      Comments
+    </p>
+    <Comments url={url} className="mg-comments__thread" />
+  </section>
+);
 
 export function PostNav({ nav }: { nav: PostNavModel | null }) {
   if (!nav || (!nav.previous && !nav.next)) return null;

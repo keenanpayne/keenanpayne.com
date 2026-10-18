@@ -3539,6 +3539,23 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   }
 }
 
+/* Comments
+   ========================================================================== */
+
+.st-comments__thread[data-mockup] {
+  padding: 32px 16px;
+  border: 1px dashed var(--st-rule);
+  text-align: center;
+
+  & p {
+    margin: 0;
+    color: var(--st-muted);
+    font-family: var(--st-mono);
+    font-size: 10.5px;
+    font-weight: 300;
+  }
+}
+
 /* Print: the page without its window
    ========================================================================== */
 

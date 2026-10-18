@@ -5143,6 +5143,22 @@ a.pt-tile__head:hover {
   }
 }
 
+/* Comments
+   ========================================================================== */
+
+.pt-comments__thread[data-mockup] {
+  padding: 16px;
+  border: 2px dashed var(--pt-line);
+  border-radius: 8px;
+  text-align: center;
+
+  & p {
+    margin: 0;
+    color: var(--pt-muted);
+    font-size: 11px;
+  }
+}
+
 /* Printer friendly format
    ========================================================================== */
 

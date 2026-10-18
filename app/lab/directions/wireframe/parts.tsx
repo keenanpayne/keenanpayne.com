@@ -9,6 +9,7 @@ import type {
   TestimonialModel
 } from "../../../lib/types";
 import {
+  Comments,
   Html,
   newsletterForm,
   useSubmission,
@@ -257,6 +258,13 @@ export function Newsletter() {
     </Section>
   );
 }
+
+/** A post's or case study's comments, under a heading */
+export const Discussion = ({ url }: { url: string }) => (
+  <Section title="Comments">
+    <Comments url={url} className="wireframe-comments" />
+  </Section>
+);
 
 export function PostNav({ nav }: { nav: PostNavModel | null }) {
   if (!nav || (!nav.previous && !nav.next)) return null;

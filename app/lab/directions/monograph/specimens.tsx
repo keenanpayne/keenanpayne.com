@@ -30,6 +30,7 @@ import { NotFound } from "./pages/NotFound";
 import {
   ArrowCircle,
   Banner,
+  Discussion,
   Facts,
   handleOf,
   Icon,
@@ -1198,6 +1199,13 @@ function Wayfinding({ content, prose }: SpecimenProps) {
           wide
         >
           <PostNav nav={{ next: nav.next }} />
+        </Specimen>
+        <Specimen
+          label="Comments"
+          note="After a post that asks for them; the lab marks the thread’s place"
+          wide
+        >
+          <Discussion url={post.url} />
         </Specimen>
         {post.type && post.typeUrl && (
           <Specimen

@@ -8,6 +8,7 @@ import {
 } from "../../../site";
 import {
   Band,
+  Discussion,
   Facts,
   More,
   Newsletter,
@@ -111,6 +112,8 @@ export function Post({ page }: TemplateProps<"post">) {
       </Band>
 
       <PostNav nav={page.postNav} />
+
+      {page.comments && <Discussion url={page.meta.canonical} />}
 
       {page.newsletter && <Newsletter />}
     </article>

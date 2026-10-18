@@ -3,7 +3,14 @@ import { useEffect, useRef } from "react";
 import { HtmlContent } from "../../../../components/HtmlContent";
 import type { LabContent, PostPageModel } from "../../../../lib/types";
 import { readingMinutes, useTo } from "../../../site";
-import { MoreLink, Newsletter, Panel, PostNav, recordCode } from "../parts";
+import {
+  Discussion,
+  MoreLink,
+  Newsletter,
+  Panel,
+  PostNav,
+  recordCode
+} from "../parts";
 
 /** Fixed bar along the top of the screen that fills as you read */
 export function SyncBar() {
@@ -143,6 +150,8 @@ export function Post({
       </footer>
 
       <PostNav nav={page.postNav} />
+
+      {page.comments && <Discussion url={page.meta.canonical} />}
 
       {page.newsletter && <Newsletter />}
     </article>

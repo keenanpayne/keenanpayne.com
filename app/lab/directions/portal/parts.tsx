@@ -8,6 +8,7 @@ import type {
   TestimonialModel
 } from "../../../lib/types";
 import {
+  Comments,
   cx,
   Html,
   newsletterForm,
@@ -802,6 +803,13 @@ export function ContentKey({
 }
 
 /** Light content box with a dark title bar and a "to key" tab back up */
+/** A post's or case study's comments, as a keyed section */
+export const Discussion = ({ url }: { url: string }) => (
+  <KeySection title="Comments" toKey={false} className="pt-comments">
+    <Comments url={url} className="pt-comments__thread" />
+  </KeySection>
+);
+
 export function KeySection({
   id,
   title,

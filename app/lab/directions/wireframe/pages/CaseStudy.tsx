@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 import { HtmlContent } from "../../../../components/HtmlContent";
 import { Html, titleOf, useTo, type TemplateProps } from "../../../site";
-import { Facts, PageHeader, Quote, Section } from "../parts";
+import { Discussion, Facts, PageHeader, Quote, Section } from "../parts";
 
 export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
   const to = useTo();
@@ -135,6 +135,8 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
       {page.content && (
         <HtmlContent className="wireframe-prose" html={page.content} />
       )}
+
+      {page.comments && <Discussion url={page.meta.canonical} />}
     </article>
   );
 }

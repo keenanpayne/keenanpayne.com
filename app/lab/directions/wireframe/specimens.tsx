@@ -17,6 +17,7 @@ import {
 } from "../../styleguide/kit";
 
 import {
+  Discussion,
   Facts,
   FormField,
   LinkList,
@@ -329,6 +330,13 @@ function Wayfinding({ content }: SpecimenProps) {
       </Specimen>
       <Specimen label="Previous and next" note="The end of a post" wide>
         <PostNav nav={samplePostNav(content.posts)} />
+      </Specimen>
+      <Specimen
+        label="Comments"
+        note="After a post that asks for them; the lab marks the thread’s place"
+        wide
+      >
+        <Discussion url={post.url} />
       </Specimen>
     </SpecimenGrid>
   );

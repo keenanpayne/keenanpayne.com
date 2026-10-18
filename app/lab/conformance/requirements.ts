@@ -18,6 +18,7 @@ import { parse, type HTMLElement } from "node-html-parser";
 import { getLabContent, getPage } from "../../lib/content/content.server";
 import { metadata } from "../../lib/site";
 import type { TestimonialModel } from "../../lib/types";
+import { COMMENTS_ID } from "../site/comments";
 import {
   formOf,
   newsletterForm,
@@ -747,6 +748,18 @@ const pages: Requirement[] = [
           link ? [link] : []
         )
       ).forEach(problem)
+  ),
+  forKinds(
+    ["post", "caseStudy"],
+    "post.comments",
+    "A post or case study that asks for comments (`page.comments`) shows them (`Comments`: the Disqus thread for its canonical URL), and one that doesn’t shows none.",
+    ({ main, view: { page } }, problem) => {
+      const threads = main.querySelectorAll(`#${COMMENTS_ID}`).length;
+      if (page.comments && threads !== 1) {
+        problem(threads ? "one comments thread" : "the comments thread");
+      }
+      if (!page.comments && threads) problem("no comments thread here");
+    }
   ),
 
   forKinds(

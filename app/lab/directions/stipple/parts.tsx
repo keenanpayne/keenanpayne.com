@@ -17,6 +17,7 @@ import type {
   TestimonialModel
 } from "../../../lib/types";
 import {
+  Comments,
   cx,
   Html,
   LocalTime,
@@ -490,6 +491,13 @@ export function Contents({ chapters }: { chapters: Chapter[] }) {
     </nav>
   );
 }
+
+/** A post's or case study's comments, as a section of their own */
+export const Discussion = ({ url }: { url: string }) => (
+  <Section id="comments" title="Comments" className="st-comments">
+    <Comments url={url} className="st-comments__thread" />
+  </Section>
+);
 
 export function Section({
   id,

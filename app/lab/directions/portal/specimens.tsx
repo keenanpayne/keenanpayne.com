@@ -46,6 +46,7 @@ import {
   BubbleCard,
   ContentKey,
   Directory,
+  Discussion,
   DOMAIN,
   Feature,
   Features,
@@ -2177,6 +2178,15 @@ function Wayfinding({ content, navigation }: SpecimenProps) {
         <Specimen label="Previous and next" note="The end of a post" wide>
           <Field id={topics[2].id}>
             <PostNav nav={samplePostNav(posts)} />
+          </Field>
+        </Specimen>
+        <Specimen
+          label="Comments"
+          note="After a post that asks for them; the lab marks the thread’s place"
+          wide
+        >
+          <Field>
+            <Discussion url={post.url} />
           </Field>
         </Specimen>
         <Specimen

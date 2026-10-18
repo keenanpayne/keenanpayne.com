@@ -11,6 +11,7 @@ import {
 import {
   Band,
   Cells,
+  Discussion,
   Facts,
   PageHeader,
   Quote,
@@ -243,6 +244,8 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
           </div>
         </Band>
       )}
+
+      {page.comments && <Discussion url={page.meta.canonical} />}
     </article>
   );
 }

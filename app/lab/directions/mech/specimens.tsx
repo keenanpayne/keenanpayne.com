@@ -45,6 +45,7 @@ import {
   Alert,
   AlertSide,
   Button,
+  Discussion,
   Feed,
   HexOutline,
   KindWords,
@@ -1707,6 +1708,13 @@ function Wayfinding({ content, navigation }: SpecimenProps) {
           </footer>
           <PostNav nav={samplePostNav(posts)} />
         </div>
+      </Specimen>
+      <Specimen
+        label="Comments"
+        note="After a post that asks for them; the lab marks the thread’s place"
+        wide
+      >
+        <Discussion url={post.url} />
       </Specimen>
 
       {second && (

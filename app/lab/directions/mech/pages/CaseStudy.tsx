@@ -9,6 +9,7 @@ import type {
 import { galleryColumns, Html, pad, samePath, useTo } from "../../../site";
 import {
   Alert,
+  Discussion,
   MoreLink,
   Panel,
   Readout,
@@ -291,6 +292,8 @@ export function CaseStudy({
           />
         </section>
       )}
+
+      {page.comments && <Discussion url={page.meta.canonical} />}
 
       <Alert />
     </article>

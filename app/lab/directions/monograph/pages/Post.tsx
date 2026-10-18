@@ -3,7 +3,14 @@ import type { ReactNode } from "react";
 import { HtmlContent } from "../../../../components/HtmlContent";
 import type { PostPageModel } from "../../../../lib/types";
 import { readingMinutes, useTo } from "../../../site";
-import { Facts, Icon, MoreLink, Newsletter, PostNav } from "../parts";
+import {
+  Discussion,
+  Facts,
+  Icon,
+  MoreLink,
+  Newsletter,
+  PostNav
+} from "../parts";
 
 export function Post({ page }: { page: PostPageModel }) {
   const to = useTo();
@@ -67,6 +74,8 @@ export function Post({ page }: { page: PostPageModel }) {
       </footer>
 
       <PostNav nav={page.postNav} />
+
+      {page.comments && <Discussion url={page.meta.canonical} />}
 
       {page.newsletter && <Newsletter />}
     </article>

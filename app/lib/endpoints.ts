@@ -11,3 +11,6 @@ export const NEWSLETTER_PAGE = `${BUTTONDOWN_ORIGIN}/kp`;
 
 /** Where Netlify Forms send visitors after a submission */
 export const FORM_SUCCESS_PATH = "/form-submission-success";
+
+/** The Disqus embed that loads a post's comment thread */
+export const DISQUS_EMBED = "https://keenan-payne.disqus.com/embed.js";

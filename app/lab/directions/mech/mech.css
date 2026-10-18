@@ -5730,6 +5730,31 @@ textarea.mc-input {
   }
 }
 
+/* Comments
+   ========================================================================== */
+
+.mc-comments {
+  margin-top: 32px;
+}
+
+.mc-comments__thread {
+  padding: 20px;
+
+  &[data-mockup] {
+    display: grid;
+    place-items: center;
+    min-height: 140px;
+
+    & p {
+      margin: 0;
+      color: var(--mc-muted);
+      font-family: var(--mc-font-mono);
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+  }
+}
+
 /* Reduced motion: everything holds still. Spins, sweeps, falling weather,
    blinking, and the button decode stop (the decode, the transmission sweep,
    and the tile transition also check the setting in script, see

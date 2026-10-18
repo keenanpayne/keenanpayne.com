@@ -1,6 +1,7 @@
 // Everything directions share: the information architecture, the direction
 // contract, and helpers for reading the content. See `app/lab/README.md`.
 
+export * from "./comments";
 export * from "./direction";
 export * from "./forms";
 export * from "./helpers";

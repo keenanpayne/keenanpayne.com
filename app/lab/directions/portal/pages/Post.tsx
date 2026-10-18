@@ -5,6 +5,7 @@ import {
   BackLink,
   Banner,
   ContentKey,
+  Discussion,
   KeySection,
   LinkCard,
   Newsletter,
@@ -153,6 +154,8 @@ export function Post({
           </div>
 
           <PostNav nav={page.postNav} />
+
+          {page.comments && <Discussion url={page.meta.canonical} />}
         </div>
 
         <aside className="pt-columns__side" aria-label="Article details">

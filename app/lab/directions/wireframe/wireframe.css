@@ -460,3 +460,15 @@ body:has(.wireframe) {
 .wireframe-field--wide {
   grid-column: 1 / -1;
 }
+
+.wireframe-comments[data-mockup] {
+  padding: 24px;
+  border: 1px dashed var(--wireframe-line);
+  color: var(--wireframe-muted);
+  font-size: 14px;
+  text-align: center;
+
+  & p {
+    margin: 0;
+  }
+}

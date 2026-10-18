@@ -5,7 +5,15 @@ import type {
   TestimonialModel
 } from "../../../../lib/types";
 import { galleryColumns, Html, useTo } from "../../../site";
-import { ArrowCircle, Banner, Facts, Icon, MoreLink, Quote } from "../parts";
+import {
+  ArrowCircle,
+  Banner,
+  Discussion,
+  Facts,
+  Icon,
+  MoreLink,
+  Quote
+} from "../parts";
 
 /** What a case study runs between its pillars and its body, in order */
 type Block =
@@ -246,6 +254,8 @@ export function CaseStudy({ page }: { page: PortfolioPageModel }) {
           />
         </section>
       )}
+
+      {page.comments && <Discussion url={page.meta.canonical} />}
 
       <Banner />
     </article>

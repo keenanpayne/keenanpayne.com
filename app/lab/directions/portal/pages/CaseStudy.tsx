@@ -10,6 +10,7 @@ import {
   BackLink,
   Banner,
   ContentKey,
+  Discussion,
   Features,
   KeySection,
   LinkCard,
@@ -231,6 +232,8 @@ export function CaseStudy({
               <HtmlContent className="pt-prose" html={page.content} />
             </KeySection>
           )}
+
+          {page.comments && <Discussion url={page.meta.canonical} />}
         </div>
 
         <aside className="pt-columns__side" aria-label="Project details">

@@ -44,6 +44,7 @@ import {
   Clients,
   Contents,
   DirectLine,
+  Discussion,
   Entries,
   Facts,
   FormField,
@@ -1396,6 +1397,13 @@ function Wayfinding({ content, navigation }: SpecimenProps) {
           wide
         >
           <PostNav nav={nav} />
+        </Specimen>
+        <Specimen
+          label="Comments"
+          note="After a post that asks for them; the lab marks the thread’s place"
+          wide
+        >
+          <Discussion url={post.url} />
         </Specimen>
       </SpecimenGrid>
 

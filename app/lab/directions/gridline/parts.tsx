@@ -19,6 +19,7 @@ import type {
   TestimonialModel
 } from "../../../lib/types";
 import {
+  Comments,
   cx,
   formOf,
   homeWork,
@@ -854,6 +855,16 @@ export function Terminal({ content }: { content: LabContent }) {
 
 /* Wayfinding
    ========================================================================== */
+
+/** A post's or case study's comments, as a band of their own */
+export const Discussion = ({ url }: { url: string }) => (
+  <Band label="Comments">
+    <SectionHead eyebrow="Comments" title="Join the conversation" />
+    <div className="gl-pad">
+      <Comments url={url} className="gl-comments" />
+    </div>
+  </Band>
+);
 
 export function PostNav({ nav }: { nav: PostNavModel | null }) {
   if (!nav || (!nav.previous && !nav.next)) return null;

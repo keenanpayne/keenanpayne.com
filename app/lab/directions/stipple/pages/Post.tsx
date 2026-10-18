@@ -7,6 +7,7 @@ import {
 } from "../../../site";
 import {
   Chips,
+  Discussion,
   Layout,
   NewsletterSection,
   PageHeader,
@@ -95,6 +96,8 @@ export function Post({ page, content }: TemplateProps<"post">) {
         )}
 
         <PostNav nav={page.postNav} />
+
+        {page.comments && <Discussion url={page.meta.canonical} />}
 
         {page.newsletter && <NewsletterSection />}
       </article>

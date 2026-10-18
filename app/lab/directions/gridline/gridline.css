@@ -4542,6 +4542,32 @@ a.gl-chip {
   }
 }
 
+/* Comments
+   ========================================================================== */
+
+.gl-comments {
+  max-width: 760px;
+
+  & iframe {
+    max-width: 100%;
+  }
+
+  &[data-mockup] {
+    display: grid;
+    place-items: center;
+    min-height: 160px;
+    border: 1px dashed var(--gl-line-strong);
+    border-radius: 8px;
+
+    & p {
+      margin: 0;
+      color: var(--gl-muted);
+      font-family: var(--gl-mono);
+      font-size: var(--gl-fs-meta);
+    }
+  }
+}
+
 /* Not found
    ========================================================================== */
 
