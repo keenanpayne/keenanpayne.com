@@ -97,7 +97,7 @@ export function checkDirection({
         pages
           .filter((page) => !kinds || kinds.includes(page.view.kind))
           .flatMap((page) =>
-            check(page).map((problem) => `${page.path}: ${problem}`)
+            check(page, flat).map((problem) => `${page.path}: ${problem}`)
           )
       )
     ),

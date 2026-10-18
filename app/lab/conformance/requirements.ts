@@ -14,6 +14,7 @@
  */
 
 import { parse, type HTMLElement } from "node-html-parser";
+import type { Root } from "postcss";
 
 import { getLabContent, getPage } from "../../lib/content/content.server";
 import { metadata } from "../../lib/site";
@@ -43,6 +44,7 @@ import {
 } from "../site/ia";
 
 import type { RenderedPage } from "./render";
+import { hiddenAt, PHONE_WIDTH, type Target } from "./viewport";
 
 export interface Requirement {
   /** Stable, e.g. `shell.skipLink`; what `gaps.ts` lists */
@@ -53,8 +55,11 @@ export interface Requirement {
   rule: string;
   /** The kinds of page it applies to; every page when left out */
   kinds?: readonly ViewKind[];
-  /** What a page is missing or gets wrong; nothing when it conforms */
-  check: (page: RenderedPage) => string[];
+  /**
+   * What a page is missing or gets wrong; nothing when it conforms. Reads
+   * the page, and the direction's stylesheet with its nesting resolved.
+   */
+  check: (page: RenderedPage, stylesheet: Root) => string[];
 }
 
 type PageOf<K extends ViewKind> = RenderedPage & {
@@ -66,15 +71,19 @@ function forKinds<K extends ViewKind>(
   kinds: readonly K[],
   id: string,
   rule: string,
-  check: (page: PageOf<K>, problem: (message: string) => void) => void
+  check: (
+    page: PageOf<K>,
+    problem: (message: string) => void,
+    stylesheet: Root
+  ) => void
 ): Requirement {
   return {
     id,
     rule,
     kinds,
-    check: (page) => {
+    check: (page, stylesheet) => {
       const problems: string[] = [];
-      check(page as PageOf<K>, (message) => problems.push(message));
+      check(page as PageOf<K>, (message) => problems.push(message), stylesheet);
       return problems;
     }
   };
@@ -157,6 +166,46 @@ function shows(element: HTMLElement, src: string) {
 
 const short = (text: string, length = 60) =>
   text.length > length ? `${text.slice(0, length)}…` : text;
+
+/**
+ * The Shell's clocks: every button named for the owner's city that opens
+ * the weather popover (one with a link crediting Open-Meteo). A Shell may
+ * have more than one, e.g. one in its header and one in its phone menu.
+ */
+const clocksIn = (page: RenderedPage) => {
+  const { chrome, document, content } = page;
+  const { city } = content.profile.location;
+  return chrome.querySelectorAll("button").filter((button) => {
+    const target = attr(button, "popovertarget");
+    const name = attr(button, "aria-label") ?? button.text;
+    const popover = target && document.getElementById(target);
+    return (
+      flat(name).includes(flat(city)) &&
+      popover &&
+      attr(popover, "popover") !== undefined &&
+      linksIn(popover).some((link) =>
+        attr(link, "href")?.startsWith("https://open-meteo.com")
+      )
+    );
+  });
+};
+
+/** An element and its ancestors, outward, as the stylesheet checks see them */
+function chainOf(element: HTMLElement): Target[] {
+  const chain: Target[] = [];
+  for (
+    let node: HTMLElement | null = element;
+    node?.rawTagName;
+    node = node.parentNode
+  ) {
+    chain.push({
+      tag: node.rawTagName.toLowerCase(),
+      classes: node.classList.value,
+      attributes: node.attributes
+    });
+  }
+  return chain;
+}
 
 /**
  * Problems with where a form sends (`submissionOf(kind)`): each attribute
@@ -372,23 +421,27 @@ const shell: Requirement[] = [
     ALL_KINDS,
     "shell.localTime",
     "A button named for the owner’s city (“Denver local time and weather”) opens a popover with the local time and weather, crediting Open-Meteo.",
-    ({ chrome, document, content }, problem) => {
-      const { city } = content.profile.location;
-      const found = chrome.querySelectorAll("button").some((button) => {
-        const target = attr(button, "popovertarget");
-        const name = attr(button, "aria-label") ?? button.text;
-        const popover = target && document.getElementById(target);
-        return (
-          flat(name).includes(flat(city)) &&
-          popover &&
-          attr(popover, "popover") !== undefined &&
-          linksIn(popover).some((link) =>
-            attr(link, "href")?.startsWith("https://open-meteo.com")
-          )
-        );
-      });
-      if (!found) {
+    (page, problem) => {
+      if (!clocksIn(page).length) {
+        const { city } = page.content.profile.location;
         problem(`a “${city}” button opening a weather popover`);
+      }
+    }
+  ),
+  forKinds(
+    ALL_KINDS,
+    "shell.clockOnPhones",
+    `A clock stays on screen on phones: at ${PHONE_WIDTH}px wide, no style sets \`display: none\` or \`visibility: hidden\` on one of the clock buttons or anything around it, so the weather is a tap away there too. (Read from the stylesheet by width; rules under a state such as \`:hover\` or an open menu don’t count.)`,
+    (page, problem, stylesheet) => {
+      const clocks = clocksIn(page);
+      if (!clocks.length) return; // shell.localTime says so
+      const hiddenBy = clocks.map((clock) =>
+        hiddenAt(stylesheet, PHONE_WIDTH, chainOf(clock))
+      );
+      if (hiddenBy.every(Boolean)) {
+        problem(
+          `a clock on screen at ${PHONE_WIDTH}px wide (\`${hiddenBy[0]}\` hides it)`
+        );
       }
     }
   ),

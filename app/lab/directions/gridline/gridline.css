@@ -618,13 +618,15 @@ body:has(.gl) {
   margin-left: auto;
 }
 
+/* On screen at every width: the time alone on phones, the city with it
+   once there's room */
 .gl-header__clock {
   position: relative;
-  display: none;
+  display: flex;
   gap: 8px;
   align-items: center;
   margin: 0;
-  padding: 0 20px;
+  padding: 0 14px;
   border: 0;
   border-left: 1px solid var(--gl-line);
   background: none;
@@ -640,13 +642,18 @@ body:has(.gl) {
     background-color 120ms,
     color 120ms;
 
-  @media (width >= 1180px) {
-    display: flex;
+  @media (width >= 720px) {
+    padding: 0 20px;
   }
 
   & span:first-child {
+    display: none;
     color: var(--gl-faint);
     text-transform: uppercase;
+
+    @media (width >= 1180px) {
+      display: inline;
+    }
   }
 
   &:hover {
@@ -4054,6 +4061,12 @@ a.gl-chip {
   top: calc(anchor(bottom) + 10px);
   right: anchor(right);
   width: min(380px, calc(100vw - 24px));
+
+  /* On a phone it's as wide as the screen allows, so it sits in from the
+     edge rather than under the clock */
+  @media (width < 720px) {
+    right: 12px;
+  }
   max-height: calc(100dvh - var(--gl-header) - 24px);
   margin: 0;
   padding: 0;
