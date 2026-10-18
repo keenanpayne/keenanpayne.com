@@ -22,6 +22,18 @@ export const useReducedMotion = () =>
 const subscribeToNothing = () => () => {};
 
 /**
+ * Whether the page has mounted in the browser: `false` while rendering on
+ * the server and hydrating, then `true`. For parts that only the browser
+ * needs, so the server leaves them out of the page.
+ */
+export const useMounted = () =>
+  useSyncExternalStore(
+    subscribeToNothing,
+    () => true,
+    () => false
+  );
+
+/**
  * A query parameter as editable state, starting from the URL. Prerendered
  * markup has no query string, so the server (and hydration) reads it as "".
  */

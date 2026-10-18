@@ -33,6 +33,7 @@ import {
   pad,
   prefersReducedMotion,
   relabel,
+  useMounted,
   useReducedMotion,
   useSubmission,
   useTo,
@@ -513,6 +514,11 @@ export function ServiceCells({
 }: {
   services: LabContent["services"];
 }) {
+  // The tiles' drawings only move on hover, so they're drawn in the browser
+  // once the page has mounted (into a space the page keeps for them),
+  // rather than in every page's HTML
+  const mounted = useMounted();
+
   return (
     <Cells cols={3}>
       {services.map((service, index) => (
@@ -520,7 +526,7 @@ export function ServiceCells({
           <a href={service.url}>
             <span className="gl-service__index">{pad(index + 1)}</span>
             <span className="gl-service__art">
-              <ServiceArt url={service.url} playback="hover" />
+              {mounted && <ServiceArt url={service.url} playback="hover" />}
             </span>
             <h3>{service.title}</h3>
             {service.lede && <p>{service.lede}</p>}
