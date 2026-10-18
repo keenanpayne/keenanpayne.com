@@ -25,23 +25,6 @@ export const KNOWN_GAPS: Partial<Record<DirectionSlug, readonly string[]>> = {
     "service.page",
     "css.reducedMotion"
   ],
-  mech: [
-    "shell.main",
-    "shell.skipLink",
-    "shell.landmarks",
-    "page.newsletter",
-    "home.intro",
-    "home.services",
-    "work.caseStudies",
-    "writing.posts",
-    "service.page",
-    "form.copy",
-    "css.prefix",
-    "source.facts:Shell.tsx",
-    "source.facts:pages/About.tsx",
-    "source.facts:pages/NotFound.tsx",
-    "source.facts:specimens.tsx"
-  ],
   portal: [
     "shell.main",
     "shell.skipLink",

@@ -11,7 +11,8 @@ import {
   pad,
   pageEntries,
   quotesOf,
-  samePath
+  samePath,
+  useTo
 } from "../../../site";
 import {
   Alert,
@@ -81,24 +82,35 @@ export function Generic({
   content: LabContent;
   isService?: boolean;
 }) {
+  const to = useTo();
   const intro = introOf(page);
   const serviceIndex = content.services.findIndex((service) =>
     samePath(service.url, page.url)
   );
   const title = intro?.heading ?? intro?.title ?? page.meta.title;
+  const hasBody = Boolean(intro?.body || page.content);
+  const others = content.services.filter(
+    (service) => !samePath(service.url, page.url)
+  );
 
   return (
     <>
       <PageHeader
         episode={serviceIndex >= 0 ? `Sys-${pad(serviceIndex + 1)}` : undefined}
-        eyebrow={isService ? "Service" : page.meta.title.split(" | ")[0]}
+        eyebrow={
+          isService ? (
+            <a href={to("/services/")}>Services</a>
+          ) : (
+            page.meta.title.split(" | ")[0]
+          )
+        }
         jp={isService ? "業務" : "記録"}
         title={title}
         lede={intro?.subheading}
         morphTitle={serviceIndex >= 0}
       />
 
-      {(intro?.body || page.content) && (
+      {hasBody && (
         <section className="mc-section mc-split mc-split--reverse">
           <div>
             {intro?.body && (
@@ -116,15 +128,21 @@ export function Generic({
           </div>
           {isService && (
             <Panel as="aside" label="System status" code="Online">
-              <ServicesList
-                services={content.services.filter(
-                  (service) => !samePath(service.url, page.url)
-                )}
-                numbered={false}
-              />
+              <ServicesList services={others} numbered={false} />
             </Panel>
           )}
         </section>
+      )}
+
+      {/* Without a briefing to sit beside, the other systems get a row */}
+      {isService && !hasBody && (
+        <Section
+          label="System status"
+          jp="業務"
+          code={`${others.length} online`}
+        >
+          <ServicesList services={others} all={content.services} />
+        </Section>
       )}
 
       {page.sections.map((section, index) => {

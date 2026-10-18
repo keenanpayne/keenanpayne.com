@@ -8,6 +8,7 @@ import {
   type LightboxHandle,
   PageHeader,
   Panel,
+  pilotCode,
   Readout,
   Section
 } from "../parts";
@@ -30,7 +31,8 @@ export function About({
 }) {
   const intro = introOf(page);
   const lightbox = useRef<LightboxHandle>(null);
-  const { experience, facts, photos } = content.profile;
+  const { experience, facts, photos, name } = content.profile;
+  const unit = pilotCode(name);
 
   const rows: [string, React.ReactNode][] = [
     ...relabel(facts, FACT_LABELS).map((fact): [string, React.ReactNode] => [
@@ -38,7 +40,7 @@ export function About({
       fact.url ? (
         <a href={fact.url}>{fact.text}</a>
       ) : fact.id === "role" ? (
-        `KP-01 · ${fact.text}`
+        `${unit} · ${fact.text}`
       ) : (
         fact.text
       )
@@ -87,13 +89,13 @@ export function About({
           {intro?.body && <Html className="mc-prose" html={intro.body} />}
         </div>
 
-        <Panel as="aside" label="Personnel file" code="KP-01">
+        <Panel as="aside" label="Personnel file" code={unit}>
           <div className="mc-dossier">
             <Feed
               className="mc-dossier__photo"
               src={photos[0].src}
               alt={photos[0].alt}
-              label="ID · KP-01"
+              label={`ID · ${unit}`}
               eager
               natural
               onZoom={() => lightbox.current?.open(0)}

@@ -19,6 +19,7 @@ import type {
 import {
   cx,
   Html,
+  newsletterForm,
   pad,
   prefersReducedMotion,
   samePath,
@@ -29,6 +30,17 @@ import {
 //
 // Designations
 // ------------
+
+/** The pilot's initials, from their name, for the HUD badge */
+export const initialsOf = (name: string) =>
+  name
+    .split(/\s+/)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+
+/** The pilot's unit designation, e.g. `AB-01` for “Ada Byron” */
+export const pilotCode = (name: string) => `${initialsOf(name)}-01`;
 
 /** Designation for a case study, e.g. `UNIT-01` (the featured project) */
 export const unitCode = (index: number) =>
@@ -851,6 +863,13 @@ export function UnitCard({ item, index }: { item: Work; index: number }) {
         <p className="mc-unit__meta">
           {[item.industry, item.role].filter(Boolean).join(" · ")}
         </p>
+        {item.lede && (
+          <Html
+            as="p"
+            className="mc-card__copy mc-unit__lede"
+            html={item.lede}
+          />
+        )}
         <MoreLink href={item.url}>Access file</MoreLink>
       </div>
     </Panel>
@@ -990,6 +1009,7 @@ function MagiTile({
       >
         {service.title}
       </span>
+      {service.lede && <span className="mc-hex__copy">{service.lede}</span>}
       <span className="mc-hex__number" aria-hidden="true">
         {index + 1}
       </span>
@@ -1019,20 +1039,26 @@ export function Magi({ services }: { services: LabContent["services"] }) {
   );
 }
 
+/** Services as rows, numbered by their place in `all` (every service) */
 export function ServicesList({
   services,
+  all = services,
   numbered = true
 }: {
   services: LabContent["services"];
+  all?: LabContent["services"];
   numbered?: boolean;
 }) {
+  const codeOf = (service: LabContent["services"][number]) =>
+    `Sys-${pad(all.findIndex((other) => samePath(other.url, service.url)) + 1)}`;
+
   return (
     <ol className="mc-list">
-      {services.map((service, index) => (
+      {services.map((service) => (
         <li key={service.url}>
           <a href={service.url}>
             {numbered && (
-              <span className="mc-list__code">Sys-{pad(index + 1)}</span>
+              <span className="mc-list__code">{codeOf(service)}</span>
             )}
             <span className="mc-list__title">{service.title}</span>
             {service.lede && (
@@ -1171,6 +1197,8 @@ export function Alert({
 
 /** Mock newsletter sign-up; the lab never submits anything */
 export function Newsletter() {
+  const { submit, field } = newsletterForm;
+
   return (
     <Panel
       className="mc-newsletter"
@@ -1193,9 +1221,10 @@ export function Newsletter() {
             id="mc-newsletter-email"
             className="mc-input"
             type="email"
+            name={field.name}
             placeholder="you@example.com"
           />
-          <Button type="submit">Subscribe</Button>
+          <Button type="submit">{submit}</Button>
         </form>
       </div>
     </Panel>
