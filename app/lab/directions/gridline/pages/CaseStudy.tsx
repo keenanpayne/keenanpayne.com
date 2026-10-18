@@ -203,6 +203,8 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
                         <video
                           src={item.video}
                           muted
+                          // Fetched when played, not with the page
+                          preload={item.autoplay ? undefined : "none"}
                           controls={!item.autoplay}
                           loop={item.autoplay}
                           playsInline={item.autoplay}

@@ -1,5 +1,11 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
-import { introOf, titleOf, useTo, type TemplateProps } from "../../../site";
+import {
+  introOf,
+  labelOf,
+  titleOf,
+  useTo,
+  type TemplateProps
+} from "../../../site";
 import {
   Band,
   Chips,
@@ -16,7 +22,7 @@ import {
 export function Page({ kind, page }: TemplateProps<"page" | "archive">) {
   const to = useTo();
   const intro = introOf(page);
-  const label = page.meta.title.split(" | ")[0];
+  const label = labelOf(page);
   const hasEntries = page.sections.some(
     (section) => section.type === "entries" && section.entries.length > 0
   );

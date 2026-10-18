@@ -8,6 +8,7 @@ import type {
 import {
   Html,
   introOf,
+  labelOf,
   pad,
   pageEntries,
   quotesOf,
@@ -98,11 +99,7 @@ export function Generic({
       <PageHeader
         episode={serviceIndex >= 0 ? `Sys-${pad(serviceIndex + 1)}` : undefined}
         eyebrow={
-          isService ? (
-            <a href={to("/services/")}>Services</a>
-          ) : (
-            page.meta.title.split(" | ")[0]
-          )
+          isService ? <a href={to("/services/")}>Services</a> : labelOf(page)
         }
         jp={isService ? "業務" : "記録"}
         title={title}

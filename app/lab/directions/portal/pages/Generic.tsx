@@ -8,6 +8,7 @@ import type {
 import {
   Html,
   introOf,
+  labelOf,
   pageEntries,
   quotesOf,
   samePath,
@@ -238,7 +239,7 @@ export function Generic({
   if (isService) return <Service page={page} content={content} />;
 
   const intro = introOf(page);
-  const title = page.meta.title.split(" | ")[0];
+  const title = labelOf(page);
 
   return (
     <>

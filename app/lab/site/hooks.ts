@@ -52,8 +52,13 @@ export function useMenu(wide: string) {
     const close = () => setOpen(false);
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== "Escape" || event.defaultPrevented) return;
-      // A popover opened from the menu takes the Escape first
-      if (document.querySelector(":popover-open")) return;
+      // A popover opened from the menu takes the Escape first (the selector
+      // throws where popovers aren't supported, and none is open there)
+      try {
+        if (document.querySelector(":popover-open")) return;
+      } catch {
+        // No popover support
+      }
       close();
       toggle.current?.focus();
     };

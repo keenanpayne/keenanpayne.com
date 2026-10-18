@@ -107,7 +107,7 @@ const FORMS: Record<"contact" | "inquiry", Form> = {
         name: "services",
         label: "What services are you interested in?",
         type: "checkbox",
-        options: inquiryServices.map((service) => service.label),
+        options: inquiryServices,
         wide: true
       },
       {

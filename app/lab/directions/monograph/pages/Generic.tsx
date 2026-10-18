@@ -8,6 +8,7 @@ import type {
 import {
   Html,
   introOf,
+  labelOf,
   pageEntries,
   quotesOf,
   samePath,
@@ -93,7 +94,7 @@ export function Generic({
               Service
             </>
           ) : (
-            page.meta.title.split(" | ")[0]
+            labelOf(page)
           )
         }
         title={title}

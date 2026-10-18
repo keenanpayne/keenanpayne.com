@@ -7,6 +7,7 @@ import labStyles from "../lab/lab.css?url";
 import { rebaseLinks } from "../lab/links";
 import { getDirection, labBase } from "../lab/registry";
 import { DirectionPage } from "../lab/site/direction";
+import { labelOf } from "../lab/site/helpers";
 import { navigationFor, resolveView } from "../lab/site/ia";
 import { getLabContent, getPage } from "../lib/content/content.server";
 import { metadata } from "../lib/site";
@@ -32,8 +33,11 @@ export function loader({ params }: Route.LoaderArgs) {
   const base = labBase(slug);
 
   // The site path this mockup mirrors, e.g. `/lab/monograph/about/` -> `/about/`
-  const path = `/${params["*"] ?? ""}`;
-  const view = resolveView(path, getPage(path));
+  // (as the page spells it, so `/about` is the same mockup as `/about/`)
+  const requested = `/${params["*"] ?? ""}`;
+  const page = getPage(requested);
+  const path = page?.url ?? requested;
+  const view = resolveView(path, page);
 
   let content = contentByDirection.get(slug);
   if (!content) {
@@ -60,7 +64,7 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
       ? "Not found"
       : view.kind === "home"
         ? "Home"
-        : view.page.meta.title.split(" | ")[0];
+        : labelOf(view.page);
 
   return [
     {

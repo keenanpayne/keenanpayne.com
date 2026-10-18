@@ -1,17 +1,14 @@
 // Project inquiry options, shared by the live form and the design lab
 
-/** Each service's form field name (as Netlify records it) and label */
+/** The services to pick from (the `services` checkboxes' values) */
 export const inquiryServices = [
-  { name: "Services — Website Design", label: "Website design" },
-  { name: "Services — Website Development", label: "Website development" },
-  {
-    name: "Services — Web Application Development",
-    label: "Web application development"
-  },
-  { name: "Services — UI Design", label: "User Interface (UI) design" },
-  { name: "Services — UX Research", label: "User Experience (UX) research" },
-  { name: "Services — Other", label: "Other" },
-  { name: "Services — Not Sure", label: "Not sure yet" }
+  "Website design",
+  "Website development",
+  "Web application development",
+  "User Interface (UI) design",
+  "User Experience (UX) research",
+  "Other",
+  "Not sure yet"
 ];
 
 export const inquiryBudgets = [
