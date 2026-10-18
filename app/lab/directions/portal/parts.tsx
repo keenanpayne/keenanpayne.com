@@ -649,6 +649,7 @@ export function Newsletter({ owner }: { owner: string }) {
           type="email"
           name={newsletterForm.field.name}
           placeholder="you@example.com"
+          required={newsletterForm.field.required}
         />
         <Go label="Sign up" />
       </form>

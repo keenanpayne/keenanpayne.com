@@ -3,6 +3,7 @@ import type { ComponentType, ReactNode } from "react";
 import type { LabContent } from "../../lib/types";
 import type { SpecimenId } from "../styleguide/sections";
 
+import baseStyles from "./base.css?url";
 import type { NavItem, View, ViewKind } from "./ia";
 import { BaseContext } from "./links";
 
@@ -69,10 +70,13 @@ export function DirectionPage({
   const Template = templates[props.view.kind] as ComponentType<
     TemplateProps<ViewKind>
   >;
+  // The shared base first, then the direction's own (Vitest serves no CSS,
+  // so the base is an empty URL there, which React would warn about)
+  const hrefs = [baseStyles, ...stylesheets].filter(Boolean);
 
   return (
     <BaseContext.Provider value={base}>
-      {stylesheets.map((href) => (
+      {hrefs.map((href) => (
         <link key={href} rel="stylesheet" href={href} precedence="default" />
       ))}
       <Shell {...props}>

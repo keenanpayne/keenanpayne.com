@@ -132,9 +132,26 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
         </Band>
       )}
 
-      {(page.pillars?.challenge || page.pillars?.solution) && (
+      {(page.pillars?.client ||
+        page.pillars?.challenge ||
+        page.pillars?.solution) && (
         <Band>
-          <div className="gl-split gl-split--half">
+          <div
+            className={cx(
+              "gl-split",
+              page.pillars.client &&
+                page.pillars.challenge &&
+                page.pillars.solution
+                ? "gl-split--thirds"
+                : "gl-split--half"
+            )}
+          >
+            {page.pillars.client && (
+              <div className="gl-pad gl-pillar">
+                <p className="gl-label">The client</p>
+                <p>{page.pillars.client}</p>
+              </div>
+            )}
             {page.pillars.challenge && (
               <div className="gl-pad gl-pillar">
                 <p className="gl-label">The challenge</p>

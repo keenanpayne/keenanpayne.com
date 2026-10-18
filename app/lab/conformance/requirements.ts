@@ -483,23 +483,27 @@ const everyPage: Requirement[] = [
   forKinds(
     ["writing", "archive", "page", "post"],
     "page.newsletter",
-    "The newsletter sign-up (`newsletterForm`: a form with an email field named `email`, sending the shared way) is on exactly the pages that ask for it.",
+    "The newsletter sign-up (`newsletterForm`: a form with a required email field named `email`, sending the shared way) is on exactly the pages that ask for it.",
     ({ main, view }, problem) => {
       const asked =
         view.kind === "post" ? view.page.newsletter : hasNewsletter(view.page);
-      const { name } = newsletterForm.field;
+      const { name, required } = newsletterForm.field;
+      const emailIn = (form: HTMLElement) =>
+        form.querySelector(`input[type="email"][name="${name}"]`);
       const forms = main
         .querySelectorAll("form")
-        .filter(
-          (form) =>
-            form.querySelector(`input[type="email"][name="${name}"]`) &&
-            !form.querySelector("textarea")
-        );
+        .filter((form) => emailIn(form) && !form.querySelector("textarea"));
       if (asked && !forms.length) problem("the newsletter sign-up");
       if (!asked && forms.length) problem("no newsletter sign-up here");
       forms
         .flatMap((form) => submissionProblems(form, "newsletter"))
         .forEach(problem);
+      if (
+        required &&
+        forms.some((form) => attr(emailIn(form)!, "required") === undefined)
+      ) {
+        problem("the sign-up’s email marked required");
+      }
     }
   )
 ];
@@ -661,9 +665,10 @@ const pages: Requirement[] = [
   forKinds(
     ["caseStudy"],
     "caseStudy.story",
-    "A case study tells its story whole: the challenge, the solution, every gallery item, its quotes, and its body.",
+    "A case study tells its story whole: the client, the challenge, the solution, every gallery item, its quotes, and its body.",
     ({ main, view: { page } }, problem) => {
-      const { challenge, solution } = page.pillars ?? {};
+      const { client, challenge, solution } = page.pillars ?? {};
+      if (client && !says(main, client)) problem("the client");
       if (challenge && !says(main, plain(challenge))) problem("the challenge");
       if (solution && !says(main, plain(solution))) problem("the solution");
       for (const section of page.sections) {
@@ -904,11 +909,18 @@ const pages: Requirement[] = [
   forKinds(
     ["contact", "inquiry"],
     "form.questions",
-    "A form asks `formOf(kind)`’s questions: a control named for each field, its label, and each of its choices.",
+    "A form asks `formOf(kind)`’s questions: a control named for each field, required where the field is, its label, and each of its choices.",
     ({ main, view }, problem) => {
       for (const field of formOf(view.kind).fields) {
         const controls = main.querySelectorAll(`form [name="${field.name}"]`);
         if (!controls.length) problem(`a control named ${field.name}`);
+        if (
+          field.required &&
+          controls.length &&
+          !controls.some((control) => attr(control, "required") !== undefined)
+        ) {
+          problem(`${field.name} marked required`);
+        }
         if (!says(main, field.label)) problem(`the label “${field.label}”`);
         if (field.kind === "choices") {
           for (const option of field.options) {

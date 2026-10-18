@@ -413,6 +413,7 @@ export function Newsletter() {
           type="email"
           name={newsletterForm.field.name}
           placeholder="you@example.com"
+          required={newsletterForm.field.required}
         />
         <button className="mg-pill" type="submit">
           Subscribe

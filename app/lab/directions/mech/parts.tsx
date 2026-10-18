@@ -1232,6 +1232,7 @@ export function Newsletter() {
             type="email"
             name={field.name}
             placeholder="you@example.com"
+            required={field.required}
           />
           <Button type="submit">{submit}</Button>
         </form>

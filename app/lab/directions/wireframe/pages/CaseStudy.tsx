@@ -73,6 +73,11 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
         <Facts rows={specs} />
       </Section>
 
+      {page.pillars?.client && (
+        <Section title="The client">
+          <p>{page.pillars.client}</p>
+        </Section>
+      )}
       {page.pillars?.challenge && (
         <Section title="The challenge">
           <Html as="p" html={page.pillars.challenge} />

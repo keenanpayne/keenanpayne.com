@@ -245,34 +245,50 @@ export function CaseStudy({
         </Panel>
       </section>
 
-      {page.pillars && (page.pillars.challenge || page.pillars.solution) && (
-        <section className="mc-section">
-          <div className="mc-grid mc-grid--2">
-            {page.pillars.challenge && (
-              <Panel label="Objective" code="Challenge" className="mc-pillar">
-                <Html
-                  as="p"
-                  className="mc-pillar__text"
-                  html={page.pillars.challenge}
-                />
-              </Panel>
-            )}
-            {page.pillars.solution && (
-              <Panel
-                label="Resolution"
-                code="Solution"
-                className="mc-pillar mc-pillar--green"
-              >
-                <Html
-                  as="p"
-                  className="mc-pillar__text"
-                  html={page.pillars.solution}
-                />
-              </Panel>
-            )}
-          </div>
-        </section>
-      )}
+      {page.pillars &&
+        (page.pillars.client ||
+          page.pillars.challenge ||
+          page.pillars.solution) && (
+          <section className="mc-section">
+            <div
+              className={
+                page.pillars.client &&
+                page.pillars.challenge &&
+                page.pillars.solution
+                  ? "mc-grid mc-grid--3"
+                  : "mc-grid mc-grid--2"
+              }
+            >
+              {page.pillars.client && (
+                <Panel label="Briefing" code="Client" className="mc-pillar">
+                  <p className="mc-pillar__text">{page.pillars.client}</p>
+                </Panel>
+              )}
+              {page.pillars.challenge && (
+                <Panel label="Objective" code="Challenge" className="mc-pillar">
+                  <Html
+                    as="p"
+                    className="mc-pillar__text"
+                    html={page.pillars.challenge}
+                  />
+                </Panel>
+              )}
+              {page.pillars.solution && (
+                <Panel
+                  label="Resolution"
+                  code="Solution"
+                  className="mc-pillar mc-pillar--green"
+                >
+                  <Html
+                    as="p"
+                    className="mc-pillar__text"
+                    html={page.pillars.solution}
+                  />
+                </Panel>
+              )}
+            </div>
+          </section>
+        )}
 
       {blocks.map((block, index) =>
         block.kind === "gallery" ? (

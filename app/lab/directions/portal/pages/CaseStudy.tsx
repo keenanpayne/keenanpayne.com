@@ -113,6 +113,7 @@ export function CaseStudy({
 
   const topics = [
     ...(page.overview ? [{ id: "overview", title: "Overview" }] : []),
+    ...(page.pillars?.client ? [{ id: "client", title: "The client" }] : []),
     ...(page.pillars?.challenge
       ? [{ id: "challenge", title: "The challenge" }]
       : []),
@@ -172,6 +173,11 @@ export function CaseStudy({
             </KeySection>
           )}
 
+          {page.pillars?.client && (
+            <KeySection id="client" title="The client">
+              <p className="pt-spec__text">{page.pillars.client}</p>
+            </KeySection>
+          )}
           {page.pillars?.challenge && (
             <KeySection id="challenge" title="The challenge">
               <Html

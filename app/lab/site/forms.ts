@@ -10,6 +10,8 @@ import { SITE_ORIGIN } from "../../lib/site";
 export type FormField = {
   name: string;
   label: string;
+  /** The form can't be sent without an answer */
+  required?: boolean;
   /** Spans the full width of a two-column form */
   wide?: boolean;
 } & (
@@ -44,7 +46,8 @@ const name: FormField = {
   name: "name",
   label: "Name",
   type: "text",
-  placeholder: "First and last name"
+  placeholder: "First and last name",
+  required: true
 };
 
 const email: FormField = {
@@ -52,7 +55,8 @@ const email: FormField = {
   name: "email",
   label: "Email",
   type: "email",
-  placeholder: "email@company.com"
+  placeholder: "email@company.com",
+  required: true
 };
 
 const FORMS: Record<"contact" | "inquiry", Form> = {

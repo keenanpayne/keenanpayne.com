@@ -1,0 +1,19 @@
+/*
+ * Base
+ * What every direction builds on, beneath its own stylesheet: border-box
+ * sizing, no margin on the body, and antialiased type. `DirectionPage` loads
+ * it with the direction wherever one renders, on the live site and in the
+ * lab, so a skin looks the same in both.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

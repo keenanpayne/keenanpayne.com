@@ -304,12 +304,14 @@ export function FormField({ field }: { field: Field }) {
           name={field.name}
           rows={field.rows}
           placeholder={field.placeholder}
+          required={field.required}
         />
       ) : (
         <input
           type={field.type}
           name={field.name}
           placeholder={field.placeholder}
+          required={field.required}
         />
       )}
     </label>

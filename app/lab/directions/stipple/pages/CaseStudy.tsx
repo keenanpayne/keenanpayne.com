@@ -104,6 +104,9 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
   }
 
   const chapters: Chapter[] = [{ id: "overview", label: "Overview" }];
+  if (page.pillars?.client) {
+    chapters.push({ id: "client", label: "The client" });
+  }
   if (page.pillars?.challenge) {
     chapters.push({ id: "challenge", label: "The challenge" });
   }
@@ -153,6 +156,11 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
           )}
         </Section>
 
+        {page.pillars?.client && (
+          <Section id="client" title="The client">
+            <p className="st-copy">{page.pillars.client}</p>
+          </Section>
+        )}
         {page.pillars?.challenge && (
           <Section id="challenge" title="The challenge">
             <Html className="st-copy" html={page.pillars.challenge} />

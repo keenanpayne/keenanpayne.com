@@ -209,32 +209,49 @@ export function CaseStudy({ page }: { page: PortfolioPageModel }) {
         <Facts stacked rows={details} />
       </section>
 
-      {page.pillars && (page.pillars.challenge || page.pillars.solution) && (
-        <section className="mg-section">
-          <div className="mg-row mg-row--halves">
-            {page.pillars.challenge && (
-              <div className="mg-card">
-                <p className="mg-label">The challenge</p>
-                <Html
-                  as="p"
-                  className="mg-case__pillar"
-                  html={page.pillars.challenge}
-                />
-              </div>
-            )}
-            {page.pillars.solution && (
-              <div className="mg-card">
-                <p className="mg-label">The solution</p>
-                <Html
-                  as="p"
-                  className="mg-case__pillar"
-                  html={page.pillars.solution}
-                />
-              </div>
-            )}
-          </div>
-        </section>
-      )}
+      {page.pillars &&
+        (page.pillars.client ||
+          page.pillars.challenge ||
+          page.pillars.solution) && (
+          <section className="mg-section">
+            <div
+              className={
+                page.pillars.client &&
+                page.pillars.challenge &&
+                page.pillars.solution
+                  ? "mg-row mg-row--thirds"
+                  : "mg-row mg-row--halves"
+              }
+            >
+              {page.pillars.client && (
+                <div className="mg-card">
+                  <p className="mg-label">The client</p>
+                  <p className="mg-case__pillar">{page.pillars.client}</p>
+                </div>
+              )}
+              {page.pillars.challenge && (
+                <div className="mg-card">
+                  <p className="mg-label">The challenge</p>
+                  <Html
+                    as="p"
+                    className="mg-case__pillar"
+                    html={page.pillars.challenge}
+                  />
+                </div>
+              )}
+              {page.pillars.solution && (
+                <div className="mg-card">
+                  <p className="mg-label">The solution</p>
+                  <Html
+                    as="p"
+                    className="mg-case__pillar"
+                    html={page.pillars.solution}
+                  />
+                </div>
+              )}
+            </div>
+          </section>
+        )}
 
       {blocksOf(page.sections).map((block, index) =>
         block.kind === "gallery" ? (
