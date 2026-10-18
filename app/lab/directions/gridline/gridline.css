@@ -1123,6 +1123,9 @@ a.gl-chip {
 }
 
 .gl-hero__panel {
+  /* Its Blueprint glow, a touch stronger than the closing panel's */
+  --gl-blueprint-intensity: 1.1;
+
   padding: clamp(40px, 7vw, 88px) 16px;
 
   @media (width >= 720px) {
@@ -3419,6 +3422,9 @@ a.gl-chip {
   --gl-cta-muted: var(--gl-muted);
   --gl-cta-dot: var(--gl-accent);
 
+  /* Its Blueprint glow, a touch softer than the home page terminal's */
+  --gl-blueprint-intensity: 0.9;
+
   padding: clamp(72px, 11vw, 136px) var(--gl-x);
   text-align: center;
 
@@ -3549,7 +3555,8 @@ a.gl-chip {
 }
 
 /* Blueprint: the page's own grid drawn out, glowing violet where the pointer
-   is (the middle, until one arrives) */
+   is (the middle, until one arrives). `--gl-blueprint-intensity` scales the
+   glow (1 by default). */
 .gl-blueprint {
   /* The grid's square; the template sets it to match its pointer math */
   --gl-grid: 48px;
@@ -3595,7 +3602,11 @@ a.gl-chip {
     height: 100%;
     background: radial-gradient(
       closest-side,
-      color-mix(in srgb, var(--gl-ray) 34%, transparent),
+      color-mix(
+        in srgb,
+        var(--gl-ray) calc(34% * var(--gl-blueprint-intensity, 1)),
+        transparent
+      ),
       transparent
     );
     filter: blur(28px);
