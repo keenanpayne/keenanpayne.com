@@ -1,6 +1,7 @@
 import { use } from "react";
 import { data } from "react-router";
 
+import { useLabContent } from "../lab/content";
 import { loadDirection } from "../lab/directions";
 import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
@@ -21,11 +22,12 @@ export function loader({ params }: Route.LoaderArgs) {
   const { slug, name } = direction;
 
   // The site path this mockup mirrors, e.g. `/lab/monograph/about/` -> `/about/`
-  const { path, view, navigation, content } = resolveSitePage(
+  // (the content ships once, as a module, rather than with every mockup)
+  const { path, view, navigation } = resolveSitePage(
     `/${params["*"] ?? ""}`,
     labBase(slug)
   );
-  const result = { direction: { slug, name }, path, view, navigation, content };
+  const result = { direction: { slug, name }, path, view, navigation };
 
   // A listed sample (the "page not found" mockup among them) is served with
   // a 200, so it can be pre-rendered like the other mockups
@@ -53,7 +55,8 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
 };
 
 export default function LabDirection({ loaderData }: Route.ComponentProps) {
-  const { direction, path, view, navigation, content } = loaderData;
+  const { direction, path, view, navigation } = loaderData;
+  const content = useLabContent(labBase(direction.slug));
   // Suspends until the direction's chunk loads (navigations wait on it)
   const skin = use(loadDirection(direction.slug));
 

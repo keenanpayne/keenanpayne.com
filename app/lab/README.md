@@ -7,7 +7,7 @@ Every direction at `/lab/<slug>/` is a **skin over one site**: the same content 
 | Layer | Lives in | Owns |
 | --- | --- | --- |
 | Content | `content/*.md`, `app/data/` (`profile.ts`, `inquiry.ts`, `portfolio/`, `testimonials.ts`, …) | What the site says |
-| Content model | `getLabContent()` in `app/lib/content/content.server.ts`, typed as `LabContent` | The shape every direction receives |
+| Content model | `getLabContent()` in `app/lib/content/content.server.ts`, typed as `LabContent`; shipped once, as `virtual:lab-content` (`vite.config.ts`), read through `content.ts` | The shape every direction receives |
 | Information arch. | `site/ia.ts` | The kinds of page (`View`), which URL is which kind, the navigation, the sample pages |
 | Direction contract | `site/direction.tsx` | `Direction`: `stylesheets`, a `root` class, a `Shell`, one template per kind of page, and its style guide `specimens` |
 | Shared helpers | `site/` (`helpers.ts`, `hooks.ts`, `forms.ts`, `submit.tsx`, `comments.tsx`, `links.tsx`, `time.ts`, `weather.ts`, `readout.ts`, `isometric.ts`, `page.server.ts`, `base.css`) | Reading the content the same way everywhere: intros, years, reading time, clocks, forms and where they send, comments, Denver's time and weather and the clock popover that shows them; the isometric pen the service illustrations are drawn with; how a site path becomes a page for the live site, the lab, and the checks alike; and the document reset beneath every skin |
@@ -15,7 +15,7 @@ Every direction at `/lab/<slug>/` is a **skin over one site**: the same content 
 | Live direction | `live.ts` | Which direction the site runs; the rest stay in the lab |
 | Conformance | `conformance/` | Checks that every direction has the same features, pages, and foundations (see [Guardrails](#guardrails)) |
 
-A request for `/lab/mech/about/` runs through the route in `app/routes/lab.$direction.tsx`: the loader resolves `/about/` to a `View` (`{ kind: "about", page }`), marks the current navigation item, loads `LabContent`, and rebases every internal link onto `/lab/mech/`. `DirectionPage` then renders the direction’s `Shell` around `templates[view.kind]`.
+A request for `/lab/mech/about/` runs through the route in `app/routes/lab.$direction.tsx`: the loader resolves `/about/` to a `View` (`{ kind: "about", page }`), marks the current navigation item, and rebases every internal link onto `/lab/mech/`. The `LabContent` is the same on every page, so it isn’t in the loader data: it ships once, as a module (`virtual:lab-content`, serialized at build time by the plugin in `vite.config.ts`), and `useLabContent(base)` in `content.ts` rebases its links in the browser. `DirectionPage` then renders the direction’s `Shell` around `templates[view.kind]`.
 
 ## A direction
 
@@ -102,6 +102,6 @@ When a direction has something the others don’t, either it’s a motif, or it�
 
 ## Taking a direction live
 
-The site is one direction rendered at its root. `live.ts` names it (Gridline, since 2026-10-18), and `app/routes/page.tsx` renders every page with it: the loader resolves the path to a `View` and loads `LabContent` as the lab route does, with nothing rebased (`base=""`), and `meta` comes from the page’s own model. Directions don’t know which of them is live: `useTo()` builds root-relative links, and `useSubmission()` tells a form to send for real rather than hold the submit (`useIsLive()`). The lab keeps mocking up the live direction at `/lab/<slug>/` beside the others.
+The site is one direction rendered at its root. `live.ts` names it (Gridline, since 2026-10-18), and `app/routes/page.tsx` renders every page with it: the loader resolves the path to a `View` as the lab route does, the shared `LabContent` comes with nothing rebased (`base=""`), and `meta` comes from the page’s own model. Directions don’t know which of them is live: `useTo()` builds root-relative links, and `useSubmission()` tells a form to send for real rather than hold the submit (`useIsLive()`). The lab keeps mocking up the live direction at `/lab/<slug>/` beside the others.
 
 To launch another direction, point `live.ts` at its folder. Nothing else changes, because `npm run lab:check` has held it to the same features, pages, and foundations all along; look it over on the style guide’s Conformance page first. The old `app/components/` and `app/styles/` of the site before the lab are gone, so there’s no other look to fall back to.

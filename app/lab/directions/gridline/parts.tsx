@@ -1,8 +1,11 @@
 import {
+  lazy,
+  Suspense,
   useEffect,
   useId,
   useRef,
   useState,
+  type ComponentProps,
   type CSSProperties,
   type KeyboardEvent,
   type MouseEvent as ReactMouseEvent,
@@ -50,9 +53,30 @@ import {
   type Square
 } from "./blueprint";
 import { GridTools } from "./GridTools";
-import { ServiceArt } from "./ServiceArt";
 
 type Posts = LabContent["posts"];
+
+/* Illustration
+   ========================================================================== */
+
+// The illustration machinery (the rigs, the isometric pen, the animation)
+// is a chunk of its own, so the pages without a drawing don't carry it
+const Art = lazy(() =>
+  import("./ServiceArt").then((module) => ({ default: module.ServiceArt }))
+);
+
+/**
+ * A service's illustration (`./ServiceArt`), loaded after the page. The
+ * server draws it into the page; in the browser the drawing stays in place
+ * until its chunk arrives, then plays as `playback` says.
+ */
+export function ServiceArt(props: ComponentProps<typeof Art>) {
+  return (
+    <Suspense fallback={null}>
+      <Art {...props} />
+    </Suspense>
+  );
+}
 
 /* Structure
    ========================================================================== */

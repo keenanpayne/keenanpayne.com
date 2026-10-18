@@ -1,5 +1,6 @@
 import { data, redirect } from "react-router";
 
+import { useLabContent } from "../lab/content";
 import { live } from "../lab/live";
 import { DirectionPage } from "../lab/site/direction";
 import { resolveSitePage } from "../lab/site/page.server";
@@ -13,8 +14,11 @@ import type { Route } from "./+types/page";
  * templates the lab mocks up at `/lab/<slug>/`, with nothing rebased.
  */
 export function loader({ url }: Route.LoaderArgs) {
-  const site = resolveSitePage(url.pathname);
-  if (site.view.kind !== "notFound") return site;
+  // The content is the same on every page, so it ships once, as a module
+  // (`../lab/content`), rather than in each page's loader data
+  const { path, view, navigation, meta } = resolveSitePage(url.pathname);
+  const site = { path, view, navigation, meta };
+  if (view.kind !== "notFound") return site;
 
   // Previously Netlify redirect rules; the SSR handler now answers every
   // path, so they live with the app. Like Netlify's, they keep the query.
@@ -29,7 +33,8 @@ export function meta({ loaderData }: Route.MetaArgs) {
 }
 
 export default function Page({ loaderData }: Route.ComponentProps) {
-  const { path, view, navigation, content } = loaderData;
+  const { path, view, navigation } = loaderData;
+  const content = useLabContent("");
 
   return (
     <DirectionPage

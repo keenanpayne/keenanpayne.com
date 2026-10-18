@@ -14,10 +14,10 @@ import {
   KindWords,
   PageHeader,
   ProcessSteps,
+  ServiceArt,
   ServiceRows,
   Trail
 } from "../parts";
-import { ServiceArt } from "../ServiceArt";
 
 export function Service({ page, content }: TemplateProps<"service">) {
   const to = useTo();
