@@ -1281,18 +1281,23 @@ export function Blueprint({
   /** The squares the panel shows now */
   const bounds = () => boundsOf(panel.current!.getBoundingClientRect(), grid);
 
-  /** Squares fill with the brush, or clear under the eraser, reflected */
+  /**
+   * Squares fill with the brush, or clear under the eraser, reflected. The
+   * first stroke brings the tools out either way: the settings are shared
+   * between panels, so one may start with the eraser on, and the tools are
+   * where it's turned off.
+   */
   const brushOver = (squares: Square[]) => {
     const reached = squares.flatMap((square) => reflect(square, symmetry));
+    if (!tools) {
+      setTools(true);
+      setFound(true);
+    }
     if (erase) {
       setPaints((current) => clear(current, reached, !prefersReducedMotion()));
       return;
     }
     setPaints((current) => fill(current, reached, brush));
-    if (!tools) {
-      setTools(true);
-      setFound(true);
-    }
   };
 
   const onClick = (event: ReactMouseEvent<HTMLDivElement>) => {
