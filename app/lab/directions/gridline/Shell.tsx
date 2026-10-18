@@ -1,7 +1,12 @@
-import { useId } from "react";
-
 import { metadata } from "../../../lib/site";
-import { cx, useMenu, useQueryParam, useTo, type ShellProps } from "../../site";
+import {
+  cx,
+  useMenu,
+  useQueryParam,
+  useReadout,
+  useTo,
+  type ShellProps
+} from "../../site";
 
 import { DenverClock, DenverReadout } from "./Denver";
 import { Cells, Cta, DEFAULT_CTA, isCta } from "./parts";
@@ -15,7 +20,7 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
   const to = useTo();
   const { profile, socials } = content;
   const { open, setOpen, toggle } = useMenu(WIDE);
-  const readout = useId();
+  const readout = useReadout(profile.location);
   // The lab previews the other closing panels from the URL
   const [ctaParam] = useQueryParam("cta");
   const cta = isCta(ctaParam) ? ctaParam : DEFAULT_CTA;
@@ -52,8 +57,7 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
 
           <div className="gl-header__end">
             <DenverClock
-              readout={readout}
-              location={profile.location}
+              button={readout.button}
               label={profile.location.city}
               className="gl-header__clock"
             />
@@ -150,7 +154,7 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
         </footer>
       </div>
 
-      <DenverReadout id={readout} location={profile.location} />
+      <DenverReadout readout={readout} location={profile.location} />
     </div>
   );
 }

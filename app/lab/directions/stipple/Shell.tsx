@@ -6,8 +6,10 @@ import {
   pad,
   samePath,
   useMenu,
+  useReadout,
   useTo,
   type NavItem,
+  type Readout,
   type ShellProps
 } from "../../site";
 
@@ -26,10 +28,10 @@ const WIDE = "(width >= 760px)";
  */
 export function Shell({ navigation, content, children }: ShellProps) {
   const to = useTo();
-  const notes = useId();
   const menu = useId();
   const { open, setOpen, toggle } = useMenu(WIDE);
   const { profile, socials } = content;
+  const readout = useReadout(profile.location);
 
   return (
     <div className="st">
@@ -74,17 +76,13 @@ export function Shell({ navigation, content, children }: ShellProps) {
             <MenuDots />
             Menu
           </button>
-          <DenverClock
-            notes={notes}
-            location={profile.location}
-            className="st-nav__clock"
-          />
+          <DenverClock button={readout.button} className="st-nav__clock" />
 
           <div id={menu} className="st-menu" hidden={!open}>
             <MenuIndex
               navigation={navigation}
               content={content}
-              notes={notes}
+              clock={readout.button}
             />
             {open && (
               <Terrain
@@ -111,18 +109,14 @@ export function Shell({ navigation, content, children }: ShellProps) {
         </div>
         <Step edge="bottom" />
         <div className="st-bottom__content">
-          <DenverClock
-            notes={notes}
-            location={profile.location}
-            className="st-bottom__clock"
-          />
+          <DenverClock button={readout.button} className="st-bottom__clock" />
           <BottomName name={profile.name} />
           <SocialLinks socials={socials} className="st-bottom__links" />
           <NewsletterLink />
         </div>
       </footer>
 
-      <DenverNotes id={notes} location={profile.location} />
+      <DenverNotes readout={readout} location={profile.location} />
     </div>
   );
 }
@@ -229,13 +223,13 @@ const BARE: CSSProperties = { margin: 0, padding: 0, listStyle: "none" };
 export function MenuIndex({
   navigation,
   content,
-  notes,
+  clock,
   bare
 }: {
   navigation: NavItem[];
   content: Pick<LabContent, "profile" | "socials">;
-  /** The notes popover's id */
-  notes: string;
+  /** The clock that opens the notes, as the Shell wires it */
+  clock: Readout["button"];
   bare?: boolean;
 }) {
   const { profile, socials } = content;
@@ -273,7 +267,7 @@ export function MenuIndex({
           className="st-menu__meta"
           style={bare ? { ...BARE, anchorName: "--st-clock" } : undefined}
         >
-          <DenverClock notes={notes} location={profile.location} />
+          <DenverClock button={clock} />
           <span>{`© ${new Date().getFullYear()} ${profile.name}`}</span>
         </p>
       </div>

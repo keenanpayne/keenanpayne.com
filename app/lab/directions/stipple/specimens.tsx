@@ -23,6 +23,7 @@ import {
   type SpecimenProps,
   type Specimens,
   useLocalTime,
+  useReadout,
   useSubmission,
   useTo
 } from "../../site";
@@ -319,14 +320,14 @@ function MenuToggle() {
 
 /** A clock that opens field notes of its own */
 function Clock({ location }: { location: Location }) {
-  const notes = useId();
+  const readout = useReadout(location);
 
   return (
     <div style={notesScope}>
       <div style={notesAnchor}>
-        <DenverClock notes={notes} location={location} />
+        <DenverClock button={readout.button} />
       </div>
-      <DenverNotes id={notes} location={location} />
+      <DenverNotes readout={readout} location={location} />
     </div>
   );
 }
@@ -1334,12 +1335,17 @@ function MenuPreview({
   content: LabContent;
   navigation: NavItem[];
 }) {
-  const notes = useId();
+  const readout = useReadout(content.profile.location);
 
   return (
     <div style={{ maxWidth: 390, ...notesScope }}>
-      <MenuIndex navigation={navigation} content={content} notes={notes} bare />
-      <DenverNotes id={notes} location={content.profile.location} />
+      <MenuIndex
+        navigation={navigation}
+        content={content}
+        clock={readout.button}
+        bare
+      />
+      <DenverNotes readout={readout} location={content.profile.location} />
     </div>
   );
 }

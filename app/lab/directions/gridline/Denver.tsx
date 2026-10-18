@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from "react";
+import type { CSSProperties } from "react";
 
 import type { ProfileModel } from "../../../lib/types";
 import {
@@ -10,11 +10,11 @@ import {
   localFormat,
   clockParts,
   LocalTime,
-  useForecast,
   useNow,
   twelveHour,
   zoneName,
-  type Condition
+  type Condition,
+  type Readout
 } from "../../site";
 
 /*
@@ -161,25 +161,17 @@ export function SkySketch({
 
 /** The header's clock: a button that opens the readout */
 export function DenverClock({
-  readout,
-  location,
+  button,
   className,
   label
 }: {
-  /** The readout popover's id */
-  readout: string;
-  location: Location;
+  button: Readout["button"];
   className?: string;
   /** Shown before the time, e.g. the city */
   label?: string;
 }) {
   return (
-    <button
-      type="button"
-      className={className}
-      popoverTarget={readout}
-      aria-label={`${location.city} local time and weather`}
-    >
+    <button {...button} className={className}>
       {label && <span>{label}</span>}
       <LocalTime />
     </button>
@@ -188,15 +180,17 @@ export function DenverClock({
 
 /** The popover: Denver's time, sky, and weather readings */
 export function DenverReadout({
-  id,
+  readout,
   location
 }: {
-  id: string;
+  readout: Readout;
   location: Location;
 }) {
-  const [open, setOpen] = useState(false);
-  const now = useNow(open);
   const {
+    popover,
+    close,
+    open,
+    credit,
     forecast,
     current,
     label,
@@ -207,23 +201,13 @@ export function DenverReadout({
     tone,
     note,
     refresh
-  } = useForecast();
+  } = readout;
+  const now = useNow(open);
 
   const { time, period } = clockParts(now);
 
   return (
-    <div
-      id={id}
-      popover="auto"
-      className="gl-den"
-      role="dialog"
-      aria-label={`${location.city} local time and weather`}
-      onToggle={(event) => {
-        const opening = event.newState === "open";
-        setOpen(opening);
-        if (opening) refresh();
-      }}
-    >
+    <div {...popover} className="gl-den">
       <header className="gl-den__bar">
         <span className="gl-window__dots" aria-hidden="true">
           <i />
@@ -232,13 +216,7 @@ export function DenverReadout({
         </span>
         <p>Local readout</p>
         <p>{location.short}</p>
-        <button
-          type="button"
-          className="gl-den__close"
-          popoverTarget={id}
-          popoverTargetAction="hide"
-          aria-label="Close"
-        >
+        <button {...close} className="gl-den__close">
           <svg viewBox="0 0 12 12" aria-hidden="true">
             <path d="M2 2l8 8M10 2l-8 8" />
           </svg>
@@ -343,7 +321,7 @@ export function DenverReadout({
         )}
       </p>
       <p className="gl-den__credit">
-        Weather from <a href="https://open-meteo.com/">Open-Meteo</a> ·{" "}
+        Weather from <a href={credit.href}>{credit.text}</a> ·{" "}
         {coordinates(location)}
       </p>
     </div>

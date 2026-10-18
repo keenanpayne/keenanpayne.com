@@ -5,8 +5,10 @@ import type { LabContent, ProfileModel, SocialLink } from "../../../lib/types";
 import {
   samePath,
   useMenu,
+  useReadout,
   useTo,
   type NavItem,
+  type Readout,
   type ShellProps,
   type View
 } from "../../site";
@@ -362,7 +364,7 @@ function SiteMap({
   path,
   socials,
   codeBank,
-  forecast,
+  clock,
   location
 }: {
   id: string;
@@ -371,8 +373,8 @@ function SiteMap({
   path: string;
   socials: SocialLink[];
   codeBank?: SocialLink;
-  /** The forecast popover's id */
-  forecast: string;
+  /** The clock that opens the forecast, as the Shell wires it */
+  clock: Readout["button"];
   location: ProfileModel["location"];
 }) {
   return (
@@ -391,7 +393,7 @@ function SiteMap({
 
       <div className="pt-map__chips">
         <Chips codeBank={codeBank} />
-        <DenverClock forecast={forecast} location={location} />
+        <DenverClock button={clock} location={location} />
         <Hire />
       </div>
 
@@ -410,7 +412,7 @@ export function Shell({
   const { profile, socials } = content;
   const to = useTo();
   const map = useId();
-  const forecast = useId();
+  const readout = useReadout(profile.location);
   const { open, setOpen, toggle } = useMenu(WIDE);
   const scene = sceneFor(view, path, profile);
   const codeBank = socials.find(isCodeBank);
@@ -478,12 +480,12 @@ export function Shell({
             path={path}
             socials={socials}
             codeBank={codeBank}
-            forecast={forecast}
+            clock={readout.button}
             location={profile.location}
           />
 
           <Elsewhere path={path} socials={socials}>
-            <DenverClock forecast={forecast} location={profile.location} />
+            <DenverClock button={readout.button} location={profile.location} />
             <Hire />
           </Elsewhere>
 
@@ -588,7 +590,7 @@ export function Shell({
         </div>
       </div>
 
-      <DenverForecast id={forecast} location={profile.location} />
+      <DenverForecast readout={readout} location={profile.location} />
     </div>
   );
 }

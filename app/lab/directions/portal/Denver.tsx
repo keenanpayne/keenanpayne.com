@@ -1,4 +1,4 @@
-import { useMemo, useState, type CSSProperties } from "react";
+import { useMemo, type CSSProperties } from "react";
 
 import type { ProfileModel } from "../../../lib/types";
 import {
@@ -9,11 +9,11 @@ import {
   localFormat,
   clockParts,
   LocalTime,
-  useForecast,
   useNow,
   twelveHour,
   zoneName,
-  type Condition
+  type Condition,
+  type Readout
 } from "../../site";
 
 import { cx, Icon, Sprite } from "./parts";
@@ -157,22 +157,16 @@ export function SkyLevel({
 
 /** The strip's clock chip: a button that opens the forecast */
 export function DenverClock({
-  forecast,
+  button,
   location,
   className
 }: {
-  /** The forecast popover's id */
-  forecast: string;
+  button: Readout["button"];
   location: Location;
   className?: string;
 }) {
   return (
-    <button
-      type="button"
-      className={cx("pt-clock", className)}
-      popoverTarget={forecast}
-      aria-label={`${location.city} local time and weather`}
-    >
+    <button {...button} className={cx("pt-clock", className)}>
       <span className="pt-clock__well">
         <Icon name="clock" />
       </span>
@@ -186,15 +180,17 @@ export function DenverClock({
 
 /** The popover: Denver's time, sky, and weather readings */
 export function DenverForecast({
-  id,
+  readout,
   location
 }: {
-  id: string;
+  readout: Readout;
   location: Location;
 }) {
-  const [open, setOpen] = useState(false);
-  const now = useNow(open);
   const {
+    popover,
+    close,
+    open,
+    credit,
     forecast,
     current,
     label,
@@ -205,33 +201,17 @@ export function DenverForecast({
     tone,
     note,
     refresh
-  } = useForecast();
+  } = readout;
+  const now = useNow(open);
 
   const { time, period } = clockParts(now);
 
   return (
-    <div
-      id={id}
-      popover="auto"
-      className="pt-den"
-      role="dialog"
-      aria-label={`${location.city} local time and weather`}
-      onToggle={(event) => {
-        const opening = event.newState === "open";
-        setOpen(opening);
-        if (opening) refresh();
-      }}
-    >
+    <div {...popover} className="pt-den">
       <header className="pt-den__bar">
         <span className="pt-title__dots" aria-hidden="true" />
         <p className="pt-den__title">{location.short}</p>
-        <button
-          type="button"
-          className="pt-den__close"
-          popoverTarget={id}
-          popoverTargetAction="hide"
-          aria-label="Close"
-        >
+        <button {...close} className="pt-den__close">
           <svg viewBox="0 0 7 7" shapeRendering="crispEdges" aria-hidden="true">
             <path d="M0 0h2v1h1v1h1V1h1V0h2v2H6v1H5v1h1v1h1v2H5V6H4V5H3v1H2v1H0V5h1V4h1V3H1V2H0z" />
           </svg>
@@ -339,7 +319,7 @@ export function DenverForecast({
         )}
       </p>
       <p className="pt-den__credit">
-        Weather from <a href="https://open-meteo.com/">Open-Meteo</a> ·{" "}
+        Weather from <a href={credit.href}>{credit.text}</a> ·{" "}
         {coordinates(location)}
       </p>
     </div>

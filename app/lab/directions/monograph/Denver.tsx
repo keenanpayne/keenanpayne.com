@@ -1,4 +1,4 @@
-import { useId, useState, type CSSProperties } from "react";
+import { useId, type CSSProperties } from "react";
 
 import type { ProfileModel } from "../../../lib/types";
 import {
@@ -10,11 +10,11 @@ import {
   localFormat,
   clockParts,
   LocalTime,
-  useForecast,
   useNow,
   twelveHour,
   zoneName,
-  type Condition
+  type Condition,
+  type Readout
 } from "../../site";
 
 import { Icon } from "./parts";
@@ -285,22 +285,16 @@ export function SkyPlate({
 
 /** The masthead's dateline: a button that opens the weather box */
 export function DenverClock({
-  box,
+  button,
   location,
   className
 }: {
-  /** The weather box popover's id */
-  box: string;
+  button: Readout["button"];
   location: Location;
   className?: string;
 }) {
   return (
-    <button
-      type="button"
-      className={className}
-      popoverTarget={box}
-      aria-label={`${location.city} local time and weather`}
-    >
+    <button {...button} className={className}>
       <Icon name="pin" />
       {location.short} · <LocalTime placeholder="--:--" />
     </button>
@@ -309,15 +303,17 @@ export function DenverClock({
 
 /** The popover: Denver's time, sky, and weather readings */
 export function DenverBox({
-  id,
+  readout,
   location
 }: {
-  id: string;
+  readout: Readout;
   location: Location;
 }) {
-  const [open, setOpen] = useState(false);
-  const now = useNow(open);
   const {
+    popover,
+    close,
+    open,
+    credit,
     forecast,
     current,
     label,
@@ -328,35 +324,19 @@ export function DenverBox({
     tone,
     note,
     refresh
-  } = useForecast();
+  } = readout;
+  const now = useNow(open);
 
   const { time, period } = clockParts(now);
 
   return (
-    <div
-      id={id}
-      popover="auto"
-      className="mg-den"
-      role="dialog"
-      aria-label={`${location.city} local time and weather`}
-      onToggle={(event) => {
-        const opening = event.newState === "open";
-        setOpen(opening);
-        if (opening) refresh();
-      }}
-    >
+    <div {...popover} className="mg-den">
       <header className="mg-den__head">
         <p className="mg-label">
           <Icon name="pin" />
           The weather in {location.short}
         </p>
-        <button
-          type="button"
-          className="mg-den__close"
-          popoverTarget={id}
-          popoverTargetAction="hide"
-          aria-label="Close"
-        >
+        <button {...close} className="mg-den__close">
           <svg viewBox="0 0 12 12" aria-hidden="true">
             <path d="M2 2l8 8M10 2l-8 8" />
           </svg>
@@ -464,7 +444,7 @@ export function DenverBox({
         )}
       </p>
       <p className="mg-den__credit">
-        Weather from <a href="https://open-meteo.com/">Open-Meteo</a> ·{" "}
+        Weather from <a href={credit.href}>{credit.text}</a> ·{" "}
         {coordinates(location)}
       </p>
     </div>

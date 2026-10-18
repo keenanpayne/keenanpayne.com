@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import type { ProfileModel } from "../../../lib/types";
 import {
@@ -9,10 +9,10 @@ import {
   localFormat,
   clockParts,
   LocalTime,
-  useForecast,
   useNow,
   twelveHour,
-  zoneName
+  zoneName,
+  type Readout
 } from "../../site";
 
 import { cx } from "./parts";
@@ -60,22 +60,14 @@ function useSky(sky: Sky, night: boolean) {
 
 /** A button that opens the notes; the header and the footer each have one */
 export function DenverClock({
-  notes,
-  location,
+  button,
   className
 }: {
-  /** The notes popover's id */
-  notes: string;
-  location: Location;
+  button: Readout["button"];
   className?: string;
 }) {
   return (
-    <button
-      type="button"
-      className={cx("st-clock", className)}
-      popoverTarget={notes}
-      aria-label={`${location.city} local time and weather`}
-    >
+    <button {...button} className={cx("st-clock", className)}>
       <LocalTime />
     </button>
   );
@@ -83,15 +75,17 @@ export function DenverClock({
 
 /** The popover: Denver's time, sky, and weather readings */
 export function DenverNotes({
-  id,
+  readout,
   location
 }: {
-  id: string;
+  readout: Readout;
   location: Location;
 }) {
-  const [open, setOpen] = useState(false);
-  const now = useNow(open);
   const {
+    popover,
+    close,
+    open,
+    credit,
     forecast,
     current,
     label,
@@ -102,36 +96,19 @@ export function DenverNotes({
     tone,
     note,
     refresh
-  } = useForecast();
+  } = readout;
+  const now = useNow(open);
 
   const { frame, canvas } = useSky(condition ?? "unknown", night);
 
   const { time, period } = clockParts(now);
 
   return (
-    <div
-      id={id}
-      popover="auto"
-      className="st-den"
-      role="dialog"
-      aria-label={`${location.city} local time and weather`}
-      data-condition={condition}
-      onToggle={(event) => {
-        const opening = event.newState === "open";
-        setOpen(opening);
-        if (opening) refresh();
-      }}
-    >
+    <div {...popover} className="st-den" data-condition={condition}>
       <header className="st-den__head">
         <p>Field notes</p>
         <p>{location.short}</p>
-        <button
-          type="button"
-          className="st-den__close"
-          popoverTarget={id}
-          popoverTargetAction="hide"
-          aria-label="Close"
-        >
+        <button {...close} className="st-den__close">
           ×
         </button>
       </header>
@@ -234,7 +211,7 @@ export function DenverNotes({
         )}
       </p>
       <p className="st-den__credit">
-        Weather from <a href="https://open-meteo.com/">Open-Meteo</a> ·{" "}
+        Weather from <a href={credit.href}>{credit.text}</a> ·{" "}
         {coordinates(location)}
       </p>
     </div>

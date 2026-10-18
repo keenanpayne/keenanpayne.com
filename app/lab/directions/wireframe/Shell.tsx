@@ -1,14 +1,12 @@
-import { useId } from "react";
-
 import { metadata } from "../../../lib/site";
-import { useTo, type ShellProps } from "../../site";
+import { useReadout, useTo, type ShellProps } from "../../site";
 
 import { DenverClock, DenverWeather } from "./Denver";
 
 export function Shell({ navigation, content, children }: ShellProps) {
   const to = useTo();
-  const weather = useId();
   const { profile, socials } = content;
+  const readout = useReadout(profile.location);
 
   return (
     <div className="wireframe">
@@ -34,7 +32,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
             ))}
           </ul>
         </nav>
-        <DenverClock popover={weather} location={profile.location} />
+        <DenverClock button={readout.button} location={profile.location} />
       </header>
 
       <main id="wireframe-main" className="wireframe-main">
@@ -57,7 +55,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
         </ul>
       </footer>
 
-      <DenverWeather id={weather} location={profile.location} />
+      <DenverWeather readout={readout} location={profile.location} />
     </div>
   );
 }

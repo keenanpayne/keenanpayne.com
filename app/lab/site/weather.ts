@@ -258,3 +258,6 @@ export function useForecast() {
     refresh
   };
 }
+
+/** What `useForecast()` reads: the forecast, and how the reading stands */
+export type ForecastReading = ReturnType<typeof useForecast>;

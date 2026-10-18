@@ -1,7 +1,7 @@
 import { useId } from "react";
 
 import { metadata } from "../../../lib/site";
-import { useTo, type ShellProps } from "../../site";
+import { useReadout, useTo, type ShellProps } from "../../site";
 
 import { DenverBox, DenverClock } from "./Denver";
 import { handleOf } from "./parts";
@@ -36,7 +36,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
   const { profile, socials } = content;
   const handle = handleOf(socials);
   const to = useTo();
-  const box = useId();
+  const readout = useReadout(profile.location);
 
   return (
     <div className="mg">
@@ -48,7 +48,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
         <header className="mg-mast">
           <div className="mg-mast__row">
             <DenverClock
-              box={box}
+              button={readout.button}
               location={profile.location}
               className="mg-mast__aside mg-mast__clock"
             />
@@ -99,7 +99,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
       </div>
 
       <Dither id="mg-dither-filter" />
-      <DenverBox id={box} location={profile.location} />
+      <DenverBox readout={readout} location={profile.location} />
     </div>
   );
 }

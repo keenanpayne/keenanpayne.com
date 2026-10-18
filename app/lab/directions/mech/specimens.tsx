@@ -23,6 +23,7 @@ import {
   useSubmission,
   useTo,
   WEATHER_CODES,
+  WEATHER_CREDIT,
   type SpecimenProps,
   type Specimens
 } from "../../site";
@@ -376,7 +377,12 @@ function Scan({ location }: { location: Profile["location"] }) {
         data-night={night ? "" : undefined}
         style={{ maxWidth: "100%" }}
       >
-        <DenverPanel location={location} now={now} {...reading} />
+        <DenverPanel
+          location={location}
+          now={now}
+          credit={WEATHER_CREDIT}
+          {...reading}
+        />
       </div>
     </div>
   );

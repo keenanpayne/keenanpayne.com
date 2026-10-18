@@ -1,4 +1,4 @@
-import { useId, useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import type { ProfileModel } from "../../../lib/types";
 import {
@@ -10,10 +10,12 @@ import {
   localFormat,
   LocalTime,
   pad,
-  useForecast,
   useNow,
+  useReadout,
   zoneName,
-  type Condition
+  type Condition,
+  type ForecastReading,
+  type Readout
 } from "../../site";
 
 /*
@@ -26,7 +28,6 @@ import {
  */
 
 type Location = ProfileModel["location"];
-type Reading = ReturnType<typeof useForecast>;
 
 // A 24-hour clock and reading times, and the date in full
 const CLOCK: Intl.DateTimeFormatOptions = {
@@ -163,7 +164,7 @@ export function DenverSky({
   label?: string;
   condition?: Condition;
   night: boolean;
-  status: Reading["status"];
+  status: ForecastReading["status"];
   /** Tries another reading after an error; a mockup's Retry does nothing */
   refresh?: () => void;
 }) {
@@ -212,7 +213,8 @@ export function DenverSky({
  * the status line. Pure, so the style guide can lay it out in place.
  */
 export function DenverPanel({
-  id,
+  close,
+  credit,
   location,
   now,
   forecast,
@@ -224,9 +226,10 @@ export function DenverPanel({
   readAt,
   status,
   refresh
-}: Reading & {
-  /** The popover's id, for its close button */
-  id?: string;
+}: ForecastReading & {
+  /** The popover's Close button; none when the panel is laid out in place */
+  close?: Readout["close"];
+  credit: Readout["credit"];
   location: Location;
   /** The moment shown; none until the clock is running */
   now?: Date;
@@ -248,15 +251,11 @@ export function DenverPanel({
       <div className="mc-panel__head">
         <span className="mc-panel__label">Atmospheric scan</span>
         <span className="mc-panel__code">{location.short}</span>
-        <button
-          type="button"
-          className="mc-den__close"
-          popoverTarget={id}
-          popoverTargetAction="hide"
-          aria-label="Close"
-        >
-          ×
-        </button>
+        {close && (
+          <button {...close} className="mc-den__close">
+            ×
+          </button>
+        )}
       </div>
 
       <div className="mc-den__time">
@@ -339,7 +338,7 @@ export function DenverPanel({
         )}
       </p>
       <p className="mc-den__credit">
-        Weather data: <a href="https://open-meteo.com/">Open-Meteo</a> ·{" "}
+        Weather data: <a href={credit.href}>{credit.text}</a> ·{" "}
         {coordinates(location)}
       </p>
     </>
@@ -348,21 +347,14 @@ export function DenverPanel({
 
 /** The header clock, and the popover it opens */
 export function DenverStatus({ location }: { location: Location }) {
-  const id = useId();
-  const [open, setOpen] = useState(false);
+  const { button, popover, open, ...reading } = useReadout(location);
   // The popover's clock, zone names, and date only matter while it's open
   const now = useNow(open);
-  const reading = useForecast();
-  const { condition, night, refresh } = reading;
+  const { condition, night } = reading;
 
   return (
     <>
-      <button
-        type="button"
-        className="mc-hud__clock"
-        popoverTarget={id}
-        aria-label={`${location.city} local time and weather`}
-      >
+      <button {...button} className="mc-hud__clock">
         <span>{location.city.slice(0, 3)}</span>
         <time>
           <LocalTime hour12={false} seconds placeholder="--:--:--" />
@@ -370,20 +362,12 @@ export function DenverStatus({ location }: { location: Location }) {
       </button>
 
       <div
-        id={id}
-        popover="auto"
+        {...popover}
         className="mc-panel mc-den"
-        role="dialog"
-        aria-label={`${location.city} local time and weather`}
         data-condition={condition}
         data-night={night ? "" : undefined}
-        onToggle={(event) => {
-          const opening = event.newState === "open";
-          setOpen(opening);
-          if (opening) refresh();
-        }}
       >
-        <DenverPanel id={id} location={location} now={now} {...reading} />
+        <DenverPanel location={location} now={now} {...reading} />
       </div>
     </>
   );

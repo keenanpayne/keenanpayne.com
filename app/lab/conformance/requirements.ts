@@ -42,6 +42,7 @@ import {
   type View,
   type ViewKind
 } from "../site/ia";
+import { readoutLabel, WEATHER_CREDIT } from "../site/readout";
 
 import type { RenderedPage } from "./render";
 import { hiddenAt, PHONE_WIDTH, type Target } from "./viewport";
@@ -168,23 +169,22 @@ const short = (text: string, length = 60) =>
   text.length > length ? `${text.slice(0, length)}…` : text;
 
 /**
- * The Shell's clocks: every button named for the owner's city that opens
- * the weather popover (one with a link crediting Open-Meteo). A Shell may
+ * The Shell's clocks: every button named as `useReadout()` names one (for
+ * the owner's city) that opens a popover crediting Open-Meteo. A Shell may
  * have more than one, e.g. one in its header and one in its phone menu.
  */
 const clocksIn = (page: RenderedPage) => {
   const { chrome, document, content } = page;
-  const { city } = content.profile.location;
+  const label = readoutLabel(content.profile.location.city);
   return chrome.querySelectorAll("button").filter((button) => {
     const target = attr(button, "popovertarget");
-    const name = attr(button, "aria-label") ?? button.text;
     const popover = target && document.getElementById(target);
     return (
-      flat(name).includes(flat(city)) &&
+      attr(button, "aria-label") === label &&
       popover &&
       attr(popover, "popover") !== undefined &&
       linksIn(popover).some((link) =>
-        attr(link, "href")?.startsWith("https://open-meteo.com")
+        attr(link, "href")?.startsWith(WEATHER_CREDIT.href)
       )
     );
   });
@@ -436,7 +436,7 @@ const shell: Omit<Requirement, "group">[] = [
   forKinds(
     ALL_KINDS,
     "shell.localTime",
-    "A button named for the owner’s city (“Denver local time and weather”) opens a popover with the local time and weather, crediting Open-Meteo.",
+    "A button named for the owner’s city the way `useReadout()` names it (“Denver local time and weather”) opens a popover with the local time and weather, crediting Open-Meteo.",
     (page, problem) => {
       if (!clocksIn(page).length) {
         const { city } = page.content.profile.location;

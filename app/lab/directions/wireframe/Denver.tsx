@@ -6,36 +6,31 @@ import {
   degrees,
   LocalTime,
   twelveHour,
-  useForecast
+  type Readout
 } from "../../site";
 
 /*
  * Local time and weather
  * ==================================================
  * Every direction's Shell has a clock that opens a popover with the time
- * where the owner is and the weather there, read the same way everywhere
- * (`useForecast()` in `site/weather.ts`). This is it with nothing but the
- * readings, in the order every direction shows them.
+ * where the owner is and the weather there, wired the same way everywhere
+ * (`useReadout()` in `site/readout.ts`: the Shell calls it once and hands
+ * the result to both parts). This is it with nothing but the readings, in
+ * the order every direction shows them.
  */
 
 type Location = ProfileModel["location"];
 
 /** The button that opens the weather */
 export function DenverClock({
-  popover,
+  button,
   location
 }: {
-  /** The weather popover's id */
-  popover: string;
+  button: Readout["button"];
   location: Location;
 }) {
   return (
-    <button
-      type="button"
-      className="wireframe-clock"
-      popoverTarget={popover}
-      aria-label={`${location.city} local time and weather`}
-    >
+    <button {...button} className="wireframe-clock">
       {`${location.city} `}
       <LocalTime />
     </button>
@@ -44,25 +39,17 @@ export function DenverClock({
 
 /** The popover: the local time, then the forecast once it loads */
 export function DenverWeather({
-  id,
+  readout,
   location
 }: {
-  id: string;
+  readout: Readout;
   location: Location;
 }) {
-  const { forecast, current, label, stale, status, refresh } = useForecast();
+  const { popover, credit, forecast, current, label, stale, status, refresh } =
+    readout;
 
   return (
-    <div
-      id={id}
-      popover="auto"
-      className="wireframe-weather"
-      role="dialog"
-      aria-label={`${location.city} local time and weather`}
-      onToggle={(event) => {
-        if (event.newState === "open") refresh();
-      }}
-    >
+    <div {...popover} className="wireframe-weather">
       <h2>
         {`${location.name} · `}
         <LocalTime seconds />
@@ -111,7 +98,7 @@ export function DenverWeather({
       )}
 
       <p className="wireframe-meta">
-        Weather from <a href="https://open-meteo.com/">Open-Meteo</a> ·{" "}
+        Weather from <a href={credit.href}>{credit.text}</a> ·{" "}
         {coordinates(location)}
       </p>
     </div>

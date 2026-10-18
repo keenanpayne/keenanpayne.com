@@ -12,6 +12,7 @@ import {
   relabel,
   type SpecimenProps,
   type Specimens,
+  useReadout,
   useTo,
   type View,
   type ViewKind,
@@ -451,12 +452,12 @@ const AD_NOTES: Record<AdName, string> = {
 
 /** A clock chip that opens a forecast of its own */
 function Clock({ location }: { location: ProfileModel["location"] }) {
-  const forecast = useId();
+  const readout = useReadout(location);
 
   return (
     <div style={{ anchorScope: "--pt-clock" } as CSSProperties}>
-      <DenverClock forecast={forecast} location={location} />
-      <DenverForecast id={forecast} location={location} />
+      <DenverClock button={readout.button} location={location} />
+      <DenverForecast readout={readout} location={location} />
     </div>
   );
 }
