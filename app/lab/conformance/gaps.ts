@@ -14,17 +14,6 @@
 import type { DirectionSlug } from "../registry";
 
 export const KNOWN_GAPS: Partial<Record<DirectionSlug, readonly string[]>> = {
-  monograph: [
-    "shell.main",
-    "shell.skipLink",
-    "page.h1",
-    "page.newsletter",
-    "home.intro",
-    "home.work",
-    "writing.posts",
-    "service.page",
-    "css.reducedMotion"
-  ],
   mech: [
     "shell.main",
     "shell.skipLink",
@@ -68,20 +57,6 @@ export const KNOWN_GAPS: Partial<Record<DirectionSlug, readonly string[]>> = {
     "source.facts:parts.tsx",
     "source.facts:specimens.tsx"
   ],
-  stipple: [
-    "shell.forms",
-    "home.intro",
-    "home.work",
-    "work.caseStudies",
-    "css.prefix",
-    "css.reducedMotion",
-    "source.facts:specimens.tsx"
-  ],
-  gridline: [
-    "shell.links",
-    "home.work",
-    "css.reducedMotion",
-    "source.facts:parts.tsx",
-    "source.facts:specimens.tsx"
-  ]
+  stipple: ["shell.forms", "home.work"],
+  gridline: ["shell.links", "home.work"]
 };

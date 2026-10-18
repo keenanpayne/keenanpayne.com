@@ -12,6 +12,7 @@ import {
   Quotes,
   Section,
   ServiceCards,
+  Stipple,
   WorkCard
 } from "../parts";
 
@@ -52,6 +53,11 @@ export function Home({ content }: TemplateProps<"home">) {
           className="st-split st-intro"
           title={profile.experience.text}
         >
+          <Stipple
+            className="st-intro__portrait"
+            src={profile.avatar}
+            alt={profile.name}
+          />
           <Html className="st-copy" html={profile.bio} />
           <p className="st-actions">
             <Button href={to("/about/")} small>

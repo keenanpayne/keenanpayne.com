@@ -383,7 +383,7 @@ function Motifs({ content }: SpecimenProps) {
         </Specimen>
         <Specimen
           label="Clock"
-          note="Denver time; opens field notes with the sky there now"
+          note={`${profile.location.city} time; opens field notes with the sky there now`}
         >
           <Clock location={profile.location} />
         </Specimen>
@@ -447,7 +447,7 @@ function Motifs({ content }: SpecimenProps) {
         </Specimen>
         <Specimen
           label="Front Range"
-          note="Contact: the view west from Denver, as it is now"
+          note={`Contact: the view west from ${profile.location.city}, as it is now`}
         >
           <FrontRange location={profile.location} />
         </Specimen>
@@ -897,8 +897,8 @@ function Surfaces({ content }: SpecimenProps) {
   return (
     <>
       <Note>
-        The window itself is under Motifs, and its one floating panel, Denver’s
-        field notes, opens from the clock there.
+        The window itself is under Motifs, and its one floating panel,{" "}
+        {profile.location.city}’s field notes, opens from the clock there.
       </Note>
       <SpecimenGrid min={220}>
         <Specimen

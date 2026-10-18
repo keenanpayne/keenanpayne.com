@@ -755,6 +755,7 @@ export function Ledger({ work }: { work: Work }) {
               <Mark className="st-ledger__mark" seed={item.name} />
               <span className="st-ledger__name">{item.name}</span>
               <span className="st-ledger__meta">
+                <span>{item.industry}</span>
                 <span>{item.role}</span>
                 <span>{item.year}</span>
               </span>

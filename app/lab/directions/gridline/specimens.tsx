@@ -176,7 +176,11 @@ function Motifs({ content }: SpecimenProps) {
         <Specimen
           key={id}
           label={`Mark exploration: ${mark.name}`}
-          note={`${mark.note}; not in use`}
+          note={`${
+            typeof mark.note === "function"
+              ? mark.note(content.profile.location.city)
+              : mark.note
+          }; not in use`}
         >
           <div className="gl-mark-sample">
             <span className="gl-brand">
@@ -193,7 +197,7 @@ function Motifs({ content }: SpecimenProps) {
         <Specimen
           key={`${condition}${night}`}
           label={`Sky: ${label}`}
-          note="The Denver readout, opened from the header clock"
+          note={`The ${content.profile.location.city} readout, opened from the header clock`}
         >
           <div className="gl-den__sky" data-night={night || undefined}>
             <SkySketch condition={condition} night={night} />

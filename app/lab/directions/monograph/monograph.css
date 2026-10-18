@@ -75,6 +75,15 @@ body:has(.mg) {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .mg *,
+  .mg *::before,
+  .mg *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 .mg-page {
   flex: 1;
   width: 100%;
@@ -84,6 +93,28 @@ body:has(.mg) {
 
   @media (width >= 760px) {
     padding-inline: 32px;
+  }
+}
+
+/* Above `.mg a`, which would otherwise color it ink on ink */
+.mg .mg-skip {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 50;
+  padding: 4px 10px;
+  background: var(--mg-ink);
+  color: var(--mg-paper);
+  font-size: 10px;
+  translate: 0 -200%;
+
+  &:focus {
+    translate: 0;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--mg-focus);
+    outline-offset: 2px;
   }
 }
 
@@ -291,6 +322,12 @@ body:has(.mg) {
   padding: 12px 0 16px;
   font-size: 10px;
   font-weight: 400;
+}
+
+/* Home's name and role, set as a label over the lede */
+.mg-hero__title {
+  flex-wrap: wrap;
+  padding: 0 0 12px;
 }
 
 /* Rows of cards separated by vertical hairlines */
@@ -821,12 +858,6 @@ body:has(.mg) {
       color: var(--mg-paper);
     }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    &:popover-open {
-      animation: none;
-    }
-  }
 }
 
 /* Without anchor positioning, it hangs from the top of the page */
@@ -987,12 +1018,6 @@ body:has(.mg) {
 
 .mg-den__seek {
   animation: mg-den-twinkle 1.2s ease-in-out infinite alternate;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .mg-den__plate * {
-    animation: none !important;
-  }
 }
 
 /* Set on a paper label so it reads over the dots */
@@ -1342,6 +1367,18 @@ body:has(.mg) {
   font-size: 18px;
   font-weight: 400;
   line-height: 1.25;
+}
+
+/* Under the title, across the type's column too */
+.mg-index__lede {
+  grid-column: 1;
+  max-width: 64em;
+  color: var(--mg-muted);
+
+  @media (width >= 760px) {
+    grid-column: 2 / 4;
+    grid-row: 2;
+  }
 }
 
 .mg-year {

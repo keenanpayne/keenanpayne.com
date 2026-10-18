@@ -13,16 +13,24 @@ import { PostCards } from "./Archive";
 
 export function Home({ content }: { content: LabContent }) {
   const to = useTo();
+  const { profile } = content;
 
   return (
     <>
       <section className="mg-hero">
         <img
           className="mg-hero__avatar"
-          src={content.profile.avatar}
-          alt={content.profile.name}
+          src={profile.avatar}
+          alt={profile.name}
         />
-        <Html as="p" className="mg-hero__lede" html={content.profile.bio} />
+        <div className="mg-hero__text">
+          <h1 className="mg-label mg-hero__title">
+            {profile.name}
+            <span aria-hidden="true">–</span>
+            {profile.role}
+          </h1>
+          <Html as="p" className="mg-hero__lede" html={profile.bio} />
+        </div>
       </section>
 
       <Section icon="pen" label="Writing">
@@ -31,6 +39,9 @@ export function Home({ content }: { content: LabContent }) {
 
       <Section icon="grid" label="Work">
         <WorkGrid work={content.work} />
+        <div className="mg-section__more">
+          <MoreLink href={to("/portfolio/")}>All work</MoreLink>
+        </div>
       </Section>
 
       <Section icon="list" label="Services">
