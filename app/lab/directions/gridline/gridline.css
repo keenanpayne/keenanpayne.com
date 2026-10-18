@@ -4356,6 +4356,13 @@ a.gl-chip {
 .gl-footer {
   border-top: 1px solid var(--gl-line);
 
+  /* Two columns crop the email address on a phone, so stack them */
+  & .gl-cells__grid {
+    @media (width < 560px) {
+      --gl-cols: 1;
+    }
+  }
+
   & .gl-cell {
     padding: 32px var(--gl-x) 36px;
 
