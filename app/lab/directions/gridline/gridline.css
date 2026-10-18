@@ -123,57 +123,63 @@
   color-scheme: light;
 }
 
-/* A gray inverted band (Selected work): dark gray on a light page, light
-   gray on a dark one, softer than the full inversion. Its muted ink is set
-   for 4.5:1 on its gray, and its faint ink and strong rules for 3:1. */
-.gl-invert--gray {
-  --gl-paper: #2a2933;
-  --gl-tint: #33323d;
-  --gl-raised: #33323d;
-  --gl-sunk: #201f28;
-  --gl-line: #3f3d4b;
-  --gl-line-strong: #7a788f;
-  --gl-ink: #f4f3f8;
-  --gl-text: #d6d4de;
-  --gl-muted: #a9a7b5;
-  --gl-faint: #78768a;
-  --gl-accent: #a5a8ff;
-  --gl-accent-soft: #3a3860;
-  --gl-on-ink: #2a2933;
+/* A gray band (Selected work): the page's own scheme, a step off its paper,
+   light gray on a light page and dark gray on a dark one. Its muted ink is
+   set for 4.5:1 on its gray, and its faint ink and strong rules for 3:1. */
+.gl-band--gray {
+  --gl-paper: #ebeaee;
+  --gl-tint: #e2e1e6;
+  --gl-raised: #f6f6f8;
+  --gl-sunk: #e2e1e6;
+  --gl-line: #d9d8de;
+  --gl-line-strong: #807e8d;
+  --gl-ink: #100f16;
+  --gl-text: #2e2c37;
+  --gl-muted: #605e6c;
+  --gl-faint: #807e8d;
+  --gl-accent: #4b4fc8;
+  --gl-accent-soft: #dcdbf7;
+  --gl-on-ink: #fcfcfb;
+
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .gl-invert--gray {
-    --gl-paper: #dddce3;
-    --gl-tint: #d2d1d9;
-    --gl-raised: #e8e7ec;
-    --gl-sunk: #d2d1d9;
-    --gl-line: #c6c5ce;
-    --gl-line-strong: #7a7887;
-    --gl-ink: #100f16;
-    --gl-text: #2e2c37;
-    --gl-muted: #565462;
-    --gl-faint: #7a7887;
-    --gl-accent: #4448c0;
-    --gl-accent-soft: #c9c8ef;
-    --gl-on-ink: #dddce3;
+  :root:not([data-theme="light"]) .gl-band--gray {
+    --gl-paper: #22212b;
+    --gl-tint: #2a2934;
+    --gl-raised: #2a2934;
+    --gl-sunk: #18171f;
+    --gl-line: #2f2d3a;
+    --gl-line-strong: #75728a;
+    --gl-ink: #f4f3f8;
+    --gl-text: #cecbd8;
+    --gl-muted: #9a97a8;
+    --gl-faint: #75728a;
+    --gl-accent: #a5a8ff;
+    --gl-accent-soft: #2e2c52;
+    --gl-on-ink: #0d0c12;
+
+    color-scheme: dark;
   }
 }
 
-:root[data-theme="dark"] .gl-invert--gray {
-  --gl-paper: #dddce3;
-  --gl-tint: #d2d1d9;
-  --gl-raised: #e8e7ec;
-  --gl-sunk: #d2d1d9;
-  --gl-line: #c6c5ce;
-  --gl-line-strong: #7a7887;
-  --gl-ink: #100f16;
-  --gl-text: #2e2c37;
-  --gl-muted: #565462;
-  --gl-faint: #7a7887;
-  --gl-accent: #4448c0;
-  --gl-accent-soft: #c9c8ef;
-  --gl-on-ink: #dddce3;
+:root[data-theme="dark"] .gl-band--gray {
+  --gl-paper: #22212b;
+  --gl-tint: #2a2934;
+  --gl-raised: #2a2934;
+  --gl-sunk: #18171f;
+  --gl-line: #2f2d3a;
+  --gl-line-strong: #75728a;
+  --gl-ink: #f4f3f8;
+  --gl-text: #cecbd8;
+  --gl-muted: #9a97a8;
+  --gl-faint: #75728a;
+  --gl-accent: #a5a8ff;
+  --gl-accent-soft: #2e2c52;
+  --gl-on-ink: #0d0c12;
+
+  color-scheme: dark;
 }
 
 body:has(.gl) {
@@ -360,8 +366,10 @@ body:has(.gl) {
   }
 }
 
-/* An inverted band bleeds its color past the rails and draws its own */
-.gl-invert {
+/* An inverted or gray band bleeds its color past the rails and draws its
+   own */
+.gl-invert,
+.gl-band--gray {
   margin-inline: -1px;
   border-inline: 1px solid var(--gl-line);
   background: var(--gl-paper);
