@@ -130,6 +130,32 @@ body:has(.mg) {
   }
 }
 
+/* The dateline, a button that opens the weather box */
+.mg-mast__clock {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: var(--mg-mono);
+  font-variant-numeric: tabular-nums;
+  text-decoration: underline dotted 1px;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  anchor-name: --mg-clock;
+  transition: text-decoration-color 120ms ease;
+
+  &:hover,
+  body:has(.mg-den:popover-open) & {
+    text-decoration-color: currentcolor;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--mg-ink);
+    outline-offset: 3px;
+  }
+}
+
 .mg-mast__nav,
 .mg-footer__social {
   flex-wrap: wrap;
@@ -709,6 +735,434 @@ body:has(.mg) {
   display: flex;
   gap: 6px;
   margin: 0;
+}
+
+/* Weather box
+   ========================================================================== */
+
+/* The dateline's popover: a boxed column under the masthead, ruled like a
+   section */
+.mg-den {
+  position-anchor: --mg-clock;
+  inset: auto;
+  top: calc(anchor(bottom) + 10px);
+  left: anchor(left);
+  width: min(374px, calc(100vw - 24px));
+  max-height: calc(100dvh - 72px);
+  margin: 0;
+  padding: 0 16px;
+  overflow: auto;
+  border: 1px solid var(--mg-ink);
+  border-top-width: 3px;
+  background: var(--mg-paper);
+  box-shadow: 6px 6px 0 var(--mg-tint);
+  color: var(--mg-ink);
+  font-family: var(--mg-mono);
+  font-size: 11px;
+  line-height: 1.6;
+
+  /* Centered under the dateline, where the masthead stacks */
+  @media (width < 760px) {
+    left: 12px;
+    right: 12px;
+    width: auto;
+    margin-inline: auto;
+    max-width: 374px;
+  }
+
+  &:popover-open {
+    animation: mg-den-open 200ms ease-out both;
+  }
+
+  & :where(p) {
+    margin: 0;
+  }
+
+  & a {
+    color: inherit;
+    text-underline-offset: 2px;
+  }
+
+  & :focus-visible {
+    outline: 2px solid var(--mg-ink);
+    outline-offset: 2px;
+  }
+
+  & ::selection {
+    background: var(--mg-ink);
+    color: var(--mg-paper);
+  }
+
+  /* Retry */
+  & :is(.mg-den__message, .mg-den__status) button {
+    margin-left: auto;
+    padding: 2px 10px;
+    border: 1px solid var(--mg-ink);
+    border-radius: 999px;
+    background: none;
+    color: inherit;
+    font-family: var(--mg-mono);
+    font-size: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: var(--mg-ink);
+      color: var(--mg-paper);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:popover-open {
+      animation: none;
+    }
+  }
+}
+
+/* Without anchor positioning, it hangs from the top of the page */
+@supports not (anchor-name: --a) {
+  .mg-den {
+    top: 64px;
+    left: 12px;
+    right: 12px;
+    margin-inline: auto;
+  }
+}
+
+.mg-den__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  & .mg-label {
+    padding: 10px 0;
+  }
+}
+
+.mg-den__close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin-right: -6px;
+  padding: 0;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+
+  & svg {
+    width: 9px;
+    height: 9px;
+    fill: none;
+    stroke: currentcolor;
+    stroke-width: 1.25;
+  }
+
+  &:hover {
+    border-color: var(--mg-ink);
+  }
+}
+
+.mg-den__time {
+  padding: 12px 0 18px;
+  border-top: 4px double var(--mg-ink);
+}
+
+.mg-den__kicker {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--mg-muted);
+  font-size: 10px;
+}
+
+.mg-den__clock {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-top: 6px !important;
+  font-family: var(--mg-serif);
+  font-size: 56px;
+  font-variant-numeric: tabular-nums lining-nums;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+
+  & span {
+    font-family: var(--mg-mono);
+    font-size: 11px;
+    letter-spacing: 0;
+    text-transform: lowercase;
+  }
+}
+
+.mg-den__date {
+  margin-top: 4px !important;
+  font-family: var(--mg-serif);
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+/* The sky: a dithered plate, bled to the box's edges, captioned over its
+   lower left */
+.mg-den__sky {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 120px;
+  margin: 0 -16px;
+  padding: 14px 16px;
+  overflow: hidden;
+  border-block: 1px solid var(--mg-ink);
+
+  & figcaption {
+    position: relative;
+  }
+}
+
+.mg-den__plate {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: auto;
+  pointer-events: none;
+}
+
+.mg-den__ink {
+  flood-color: var(--mg-ink);
+}
+
+.mg-den__clouds > * {
+  animation: mg-den-drift 10s ease-in-out infinite alternate;
+}
+
+.mg-den__cloud--far {
+  animation-duration: 14s;
+  animation-direction: alternate-reverse;
+}
+
+.mg-den__star {
+  animation: mg-den-twinkle 2.6s steps(2, jump-none) infinite alternate;
+
+  &:nth-child(odd) {
+    animation-delay: -1.3s;
+  }
+}
+
+.mg-den__fog > * {
+  animation: mg-den-drift 7s ease-in-out infinite alternate;
+  animation-delay: calc(var(--mg-i) * -1.75s);
+}
+
+.mg-den__fall > * {
+  animation: mg-den-fall 1s linear infinite;
+  animation-delay: calc(var(--mg-i) * -0.17s);
+}
+
+.mg-den__fall--snow > * {
+  animation-duration: 3s;
+  animation-delay: calc(var(--mg-i) * -0.5s);
+}
+
+.mg-den__bolt {
+  animation: mg-den-flash 2.4s steps(1) infinite;
+}
+
+.mg-den__seek {
+  animation: mg-den-twinkle 1.2s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mg-den__plate * {
+    animation: none !important;
+  }
+}
+
+/* Set on a paper label so it reads over the dots */
+.mg-den__temp {
+  display: flex;
+  align-items: flex-start;
+  width: fit-content;
+  padding: 0 6px 0 0;
+  background: var(--mg-paper);
+  font-family: var(--mg-serif);
+  font-size: 54px;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+
+  & span {
+    margin: 5px 0 0 3px;
+    font-family: var(--mg-mono);
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+}
+
+.mg-den__condition,
+.mg-den__message {
+  width: fit-content;
+  padding: 2px 6px 1px 0;
+  background: var(--mg-paper);
+}
+
+.mg-den__message {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--mg-muted);
+}
+
+/* Readings in columns, a hairline between each, three across */
+.mg-den__facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+
+  & div {
+    padding: 9px 12px 10px;
+    border-left: 1px solid var(--mg-ink);
+  }
+
+  & div:nth-child(3n + 1) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  & div:nth-child(n + 4) {
+    border-top: 1px solid var(--mg-tint);
+  }
+
+  & dt {
+    color: var(--mg-muted);
+    font-size: 10px;
+  }
+
+  & dd {
+    margin: 2px 0 0;
+    font-family: var(--mg-serif);
+    font-size: 24px;
+    font-variant-numeric: tabular-nums lining-nums;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  & small {
+    font-family: var(--mg-mono);
+    font-size: 10px;
+    letter-spacing: 0;
+  }
+}
+
+.mg-den__sun {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 7px 0;
+  border-block: 1px solid var(--mg-ink);
+  font-size: 10px;
+}
+
+.mg-den__status {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 0 2px;
+  font-family: var(--mg-serif);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+/* A bullet, filled while there's a reading */
+.mg-den__dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--mg-ink);
+  border-radius: 50%;
+  background: var(--mg-ink);
+
+  [data-tone="wait"] > & {
+    background: none;
+    animation: mg-den-twinkle 1.2s ease-in-out infinite alternate;
+  }
+
+  [data-tone="off"] > & {
+    background: none;
+  }
+
+  [data-tone="alert"] > & {
+    animation: mg-den-twinkle 0.6s steps(2, jump-none) infinite alternate;
+  }
+}
+
+.mg-den__credit {
+  padding: 0 0 14px 15px;
+  color: var(--mg-muted);
+  font-size: 10px;
+}
+
+@keyframes mg-den-open {
+  from {
+    opacity: 0;
+    translate: 0 -4px;
+  }
+}
+
+@keyframes mg-den-drift {
+  to {
+    translate: 8px 0;
+  }
+}
+
+@keyframes mg-den-twinkle {
+  from {
+    opacity: 0.3;
+  }
+}
+
+@keyframes mg-den-fall {
+  from {
+    opacity: 0;
+    translate: 2px -6px;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    translate: -4px 16px;
+  }
+}
+
+@keyframes mg-den-flash {
+  0%,
+  86% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0.2;
+  }
+
+  94% {
+    opacity: 1;
+  }
+
+  97% {
+    opacity: 0.3;
+  }
 }
 
 /* ==========================================================================

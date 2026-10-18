@@ -312,6 +312,17 @@ export const ICONS = {
     "..CCCCC..",
     "........."
   ],
+  clock: [
+    "..CCCCC..",
+    ".C..C..C.",
+    "C...C...C",
+    "C...C...C",
+    "C...CCC.C",
+    "C.......C",
+    "C.......C",
+    ".C.....C.",
+    "..CCCCC.."
+  ],
   arrowRight: [
     "....C....",
     "....CC...",
@@ -448,3 +459,135 @@ export function mosaic(width: number, height: number, seed = 1): Art {
     ).join("");
   });
 }
+
+//
+// Weather
+// -------
+
+/** Draws a sprite from a test for each pixel's center, then rings it in black */
+function drawn(
+  width: number,
+  height: number,
+  paint: (x: number, y: number) => string | undefined
+): Art {
+  const pixels = Array.from({ length: height }, (_, y) =>
+    Array.from({ length: width }, (_, x) => paint(x + 0.5, y + 0.5) ?? ".")
+  );
+  const filled = (x: number, y: number) =>
+    pixels[y]?.[x] !== undefined &&
+    pixels[y][x] !== "." &&
+    pixels[y][x] !== "K";
+
+  return pixels.map((row, y) =>
+    row
+      .map((pixel, x) =>
+        pixel === "." &&
+        (filled(x - 1, y) ||
+          filled(x + 1, y) ||
+          filled(x, y - 1) ||
+          filled(x, y + 1))
+          ? "K"
+          : pixel
+      )
+      .join("")
+  );
+}
+
+const within = (x: number, y: number, cx: number, cy: number, r: number) =>
+  (x - cx) ** 2 + (y - cy) ** 2 <= r * r;
+
+/** The sun, 17×17: a shaded disc with a glint */
+export const SUN = drawn(17, 17, (x, y) => {
+  if (!within(x, y, 8.5, 8.5, 4.7)) return;
+  if (within(x, y, 6.5, 6.5, 1)) return "W";
+  return x + y > 20 ? "O" : "Y";
+});
+
+/** Its rays, in two frames that take turns */
+export const RAYS: [Art, Art] = [
+  [
+    [8, 0],
+    [8, 1],
+    [8, 15],
+    [8, 16],
+    [0, 8],
+    [1, 8],
+    [15, 8],
+    [16, 8]
+  ],
+  [
+    [2, 2],
+    [3, 3],
+    [13, 13],
+    [14, 14],
+    [2, 14],
+    [3, 13],
+    [14, 2],
+    [13, 3]
+  ]
+].map((points) =>
+  Array.from({ length: 17 }, (_, y) =>
+    Array.from({ length: 17 }, (_, x) =>
+      points.some(([px, py]) => px === x && py === y) ? "O" : "."
+    ).join("")
+  )
+) as [Art, Art];
+
+/** A crescent moon, 14×14 */
+export const MOON = drawn(14, 14, (x, y) => {
+  if (!within(x, y, 6.5, 7, 5.6) || within(x, y, 10, 5, 5.2)) return;
+  return x + y > 12 ? "w" : "W";
+});
+
+/** A cloud, 26×14: puffs over a flat base, shaded underneath */
+export const cloud = (dark?: boolean) =>
+  drawn(26, 14, (x, y) => {
+    const inside =
+      within(x, y, 7, 9, 3.2) ||
+      within(x, y, 12.5, 6.5, 4.6) ||
+      within(x, y, 18.5, 8.5, 3.6) ||
+      (x > 4 && x < 21.5 && y > 9 && y < 12.5);
+    if (!inside) return;
+    if (y > 11) return dark ? "m" : "w";
+    return dark ? "w" : "W";
+  });
+
+/** A lightning bolt, 7×9 */
+export const BOLT = drawn(7, 9, (x, y) =>
+  ["....YY.", "...YY..", "..YY...", ".YYYY..", "...YY..", "..YY...", "..Y...."][
+    Math.floor(y) - 1
+  ]?.[Math.floor(x)] === "Y"
+    ? "Y"
+    : undefined
+);
+
+export const DROP = ["U", "U"];
+export const FLAKE = [".W.", "WWW", ".W."];
+export const TWINKLE = [".W.", "WYW", ".W."];
+
+/** The Front Range, 120×12: two ranges, the near one snowcapped */
+export const RANGE = drawn(120, 12, (x, y) => {
+  const peak = (base: number[][]) =>
+    Math.min(
+      ...base.map(
+        ([px, height, slope]) => 12 - height + Math.abs(x - px) * slope
+      )
+    );
+  const near = peak([
+    [10, 7, 0.6],
+    [30, 9, 0.7],
+    [52, 6, 0.5],
+    [74, 10, 0.75],
+    [98, 7, 0.6],
+    [116, 8, 0.7]
+  ]);
+  const far = peak([
+    [20, 10, 0.45],
+    [44, 11, 0.5],
+    [64, 9, 0.4],
+    [88, 11, 0.5],
+    [110, 10, 0.45]
+  ]);
+  if (y >= near) return y < near + 1.5 && near < 6 ? "W" : "S";
+  if (y >= far) return "U";
+});

@@ -665,6 +665,689 @@ textarea.pt-input {
   }
 }
 
+/* The clock chip on the strip, and on the site map: opens the forecast */
+.pt-clock {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 2px 0 2px auto;
+  padding: 1px 1px 1px 1px;
+  border: 1.5px solid var(--pt-line);
+  border-radius: 3px;
+  background: var(--pt-chip);
+  color: #10121c;
+  font: 8px/1 var(--pt-pixel);
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  anchor-name: --pt-clock;
+
+  &:hover {
+    filter: brightness(1.08);
+  }
+
+  /* Pressed in while its forecast is open */
+  body:has(.pt-den:popover-open) & {
+    box-shadow: inset 0 2px 0 rgb(0 0 0 / 22%);
+  }
+
+  & + .pt-hire {
+    margin-left: 4px;
+  }
+}
+
+.pt-clock__well {
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  border: 1px solid var(--pt-line);
+  background: #fff7d1;
+}
+
+/* The time on the mascot's screen: green on navy */
+.pt-clock__time {
+  padding: 3px 5px 2px;
+  border-radius: 2px;
+  background: #26318a;
+  color: #9bf5ae;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Forecast
+   ========================================================================== */
+
+/* The clock chip's popover: one of the portal's own panels, in the bezel,
+   hung under the chip */
+.pt-den {
+  position-anchor: --pt-clock;
+  inset: auto;
+  top: calc(anchor(bottom) + 8px);
+  right: anchor(right);
+  /* Over the chip, when there isn't room under it */
+  position-try-fallbacks: flip-block;
+  width: min(360px, calc(100vw - 16px));
+  max-height: calc(100dvh - 72px);
+  margin: 0;
+  padding: 6px;
+  overflow: auto;
+  border: 0;
+  border-radius: 18px 0 18px 18px;
+  background: var(--pt-bezel);
+  box-shadow:
+    inset 0 2px 0 var(--pt-bezel-hi),
+    inset 0 -3px 0 var(--pt-bezel-lo),
+    0 3px 0 rgb(0 0 0 / 18%),
+    0 18px 40px -12px var(--pt-shadow);
+  color: var(--pt-card-ink);
+  font-family: var(--pt-sans);
+  font-size: 12px;
+  line-height: 1.4;
+
+  /* On phones, the site map's chip sits low, so it drops in from the top
+     of the screen instead */
+  @media (width < 640px) {
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    width: auto;
+    max-height: calc(100dvh - 16px);
+    border-radius: 18px;
+  }
+
+  &:popover-open {
+    animation: pt-den-open 220ms steps(4, jump-end) both;
+  }
+
+  & :where(p) {
+    margin: 0;
+  }
+
+  & :focus-visible {
+    outline: 2px solid var(--pt-orange);
+    outline-offset: 2px;
+  }
+
+  & .pt-go {
+    margin-left: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:popover-open {
+      animation: none;
+    }
+  }
+}
+
+/* Without anchor positioning, it sits at the top on the right */
+@supports not (anchor-name: --a) {
+  .pt-den {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+/* A title tab on the halftone bar, like the main navigation's */
+.pt-den__bar {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 34px;
+  padding: 0 5px 0 12px;
+  border-radius: 12px 0 2px 2px;
+  background:
+    radial-gradient(circle, rgb(255 255 255 / 13%) 0.8px, transparent 1.2px) 0
+      0 / 4px 4px,
+    var(--pt-slate);
+
+  @media (width < 640px) {
+    border-radius: 12px 12px 2px 2px;
+  }
+}
+
+.pt-den__title {
+  flex: 1;
+  color: var(--pt-orange);
+  font: 800 16px/1 var(--pt-display);
+  font-stretch: 112%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow:
+    1px 1px 0 #000,
+    -1px 0 0 #000,
+    0 -1px 0 #000,
+    2px 2px 0 rgb(0 0 0 / 40%);
+}
+
+/* A little orange cartridge button */
+.pt-den__close {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 1.5px solid var(--pt-line);
+  border-radius: 4px;
+  background: linear-gradient(var(--pt-orange-hi), var(--pt-orange) 55%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 55%),
+    inset 0 -2px 0 var(--pt-orange-lo);
+  color: #10121c;
+  cursor: pointer;
+
+  & svg {
+    width: 7px;
+    height: 7px;
+    fill: currentcolor;
+  }
+
+  &:hover {
+    filter: brightness(1.06);
+  }
+
+  &:active {
+    box-shadow: inset 0 2px 0 var(--pt-orange-lo);
+  }
+}
+
+/* The mascot's screen: green phosphor on navy, with scanlines */
+.pt-den__screen {
+  position: relative;
+  margin-top: 4px;
+  padding: 10px 12px 11px;
+  border: 3px solid #efe6c9;
+  border-radius: 6px;
+  background:
+    repeating-linear-gradient(transparent 0 2px, rgb(0 0 0 / 18%) 2px 3px),
+    radial-gradient(120% 140% at 30% 20%, #3443a8, #26318a 60%, #1b2466);
+  box-shadow:
+    inset 0 0 0 1.5px var(--pt-line),
+    0 0 0 1.5px var(--pt-line);
+  color: #9bf5ae;
+  font-family: var(--pt-pixel);
+  text-shadow: 0 0 6px rgb(155 245 174 / 55%);
+  text-transform: uppercase;
+}
+
+.pt-den__kicker {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: #6fbf3b;
+  font-size: 8px;
+  line-height: 1;
+}
+
+.pt-den__clock {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-top: 8px !important;
+  font-size: 34px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  line-height: 1;
+
+  & span {
+    font-size: 12px;
+  }
+}
+
+.pt-den__date {
+  margin-top: 7px !important;
+  font-size: 9px;
+  line-height: 1;
+}
+
+/* The sky: a pixel level over the Front Range */
+.pt-den__sky {
+  --pt-den-sky: var(--pt-sky);
+  --pt-den-sky-hi: var(--pt-sky-hi);
+
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  min-height: 132px;
+  margin-top: 4px;
+  padding: 10px 12px 44px;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 2px;
+  background: linear-gradient(var(--pt-den-sky-hi), var(--pt-den-sky));
+
+  &:has([data-night]) {
+    --pt-den-sky: #2b3172;
+    --pt-den-sky-hi: #12163f;
+  }
+
+  &:has(
+    :is(
+      [data-condition="rain"],
+      [data-condition="snow"],
+      [data-condition="storm"],
+      [data-condition="fog"]
+    )
+  ) {
+    --pt-den-sky: #a3abc6;
+    --pt-den-sky-hi: #7b84a6;
+  }
+
+  &:has([data-night]):has(
+      :is(
+        [data-condition="rain"],
+        [data-condition="snow"],
+        [data-condition="storm"],
+        [data-condition="fog"]
+      )
+    ) {
+    --pt-den-sky: #3a3f5c;
+    --pt-den-sky-hi: #22263a;
+  }
+}
+
+.pt-den__level {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+
+  & .pt-sprite {
+    position: absolute;
+  }
+}
+
+.pt-den__range {
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
+}
+
+.pt-den__sun {
+  position: absolute;
+  top: 8px;
+  right: 22px;
+  width: 51px;
+  height: 51px;
+  animation: pt-den-bob 1.6s steps(2, jump-none) infinite;
+
+  & .pt-sprite {
+    inset: 0;
+  }
+}
+
+/* The rays take turns */
+.pt-den__rays {
+  animation: pt-den-blink 1.2s steps(1) infinite;
+
+  & + & {
+    animation-delay: -0.6s;
+  }
+}
+
+.pt-den__moon {
+  top: 12px;
+  right: 30px;
+}
+
+.pt-den__star {
+  position: absolute;
+  animation: pt-den-blink 1.8s steps(1) infinite;
+  animation-delay: calc(var(--pt-i) * -0.45s);
+
+  & .pt-sprite {
+    position: static;
+  }
+}
+
+/* Passing clouds float low, in front of the sun or moon */
+.pt-den__cloud {
+  top: 34px;
+  right: 38px;
+  animation: pt-den-drift 2.4s steps(2, jump-none) infinite alternate;
+}
+
+.pt-den__cloud--far {
+  top: 26px;
+  right: 108px;
+  animation-duration: 3.2s;
+  animation-direction: alternate-reverse;
+}
+
+/* Rain and snow clouds ride high, over what's falling */
+:is(
+  [data-condition="rain"],
+  [data-condition="snow"],
+  [data-condition="storm"]
+) {
+  & .pt-den__cloud {
+    top: 6px;
+    right: 26px;
+  }
+
+  & .pt-den__cloud--far {
+    top: 4px;
+    right: 96px;
+  }
+}
+
+.pt-den__fall {
+  position: absolute;
+  top: 44px;
+  right: 40px;
+  width: 60px;
+  height: 46px;
+
+  & > span {
+    position: absolute;
+    top: 0;
+    left: calc(var(--pt-i) * 10px);
+    animation: pt-den-fall 0.6s steps(4) infinite;
+    animation-delay: calc(var(--pt-i) * -0.27s);
+  }
+
+  & .pt-sprite {
+    position: static;
+  }
+}
+
+.pt-den__fall--snow > span {
+  animation-duration: 2s;
+  animation-delay: calc(var(--pt-i) * -0.7s);
+}
+
+.pt-den__bolt {
+  top: 44px;
+  right: 62px;
+  animation: pt-den-flash 2.4s steps(1) infinite;
+}
+
+.pt-den__fog {
+  position: absolute;
+  inset: 34px 0 36px 40%;
+
+  & i {
+    display: block;
+    height: 6px;
+    margin-bottom: 8px;
+    background: repeating-linear-gradient(
+      90deg,
+      #fff 0 18px,
+      transparent 18px 24px
+    );
+    opacity: 0.75;
+    animation: pt-den-mist 2s steps(4) infinite;
+    animation-delay: calc(var(--pt-i) * -0.66s);
+
+    &:nth-child(2) {
+      margin-left: 12px;
+    }
+  }
+}
+
+.pt-den__seek {
+  position: absolute;
+  top: 18px;
+  right: 34px;
+  display: grid;
+  place-items: center;
+  width: 33px;
+  height: 33px;
+  border: 1.5px solid var(--pt-line);
+  background: var(--pt-orange);
+  box-shadow:
+    inset 0 2px 0 var(--pt-orange-hi),
+    inset 0 -3px 0 var(--pt-orange-lo);
+  color: #fff;
+  animation: pt-den-bob 0.8s steps(2, jump-none) infinite;
+
+  & .pt-icon {
+    position: static;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-den__level,
+  .pt-den__level * {
+    animation: none !important;
+  }
+
+  .pt-den__rays + .pt-den__rays {
+    display: none;
+  }
+}
+
+/* The temperature, outlined in black like the navigation */
+.pt-den__temp {
+  display: flex;
+  align-items: flex-start;
+  color: #fff;
+  font: 800 46px/0.9 var(--pt-display);
+  font-stretch: 110%;
+  letter-spacing: -0.01em;
+  text-shadow:
+    2px 2px 0 #000,
+    -1px 0 0 #000,
+    0 -1px 0 #000,
+    1px 0 0 #000,
+    0 1px 0 #000,
+    3px 3px 0 rgb(0 0 0 / 30%);
+
+  & span {
+    margin: 4px 0 0 2px;
+    font-size: 16px;
+  }
+}
+
+.pt-den__condition {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
+  margin-top: 8px !important;
+  font: 8px/1 var(--pt-pixel);
+  text-transform: uppercase;
+
+  &,
+  & span {
+    padding: 3px 5px 2px;
+    border: 1.5px solid var(--pt-line);
+    border-radius: 3px;
+    background: var(--pt-bubble);
+    color: #1c1f2c;
+  }
+
+  & {
+    padding: 3px 3px 2px 5px;
+  }
+
+  & span {
+    padding-block: 2px 1px;
+    border-width: 1px;
+    background: var(--pt-orange);
+  }
+}
+
+.pt-den__message {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  align-items: center;
+  padding: 6px 8px;
+  border: 1.5px solid var(--pt-line);
+  border-radius: 3px;
+  background: var(--pt-bubble);
+  color: #1c1f2c;
+  font: 8px/1.3 var(--pt-pixel);
+  text-transform: uppercase;
+}
+
+/* Readings as stat tiles, three across */
+.pt-den__facts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  margin: 4px 0 0;
+
+  & div {
+    overflow: hidden;
+    border-radius: 3px;
+    background: var(--pt-card);
+    box-shadow: inset 0 -2px 0 var(--pt-card-alt);
+  }
+
+  & dt {
+    padding: 4px 6px 3px;
+    background: var(--pt-slate);
+    color: var(--pt-slate-ink);
+    font: 8px/1 var(--pt-pixel);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  & dd {
+    margin: 0;
+    padding: 5px 6px 7px;
+    font: 800 20px/1 var(--pt-display);
+    font-stretch: 104%;
+    font-variant-numeric: tabular-nums;
+  }
+
+  & small {
+    color: var(--pt-card-muted);
+    font: 10px/1 var(--pt-sans);
+  }
+}
+
+/* An orange strip, like the ones beside game pictures */
+.pt-den__daylight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px !important;
+  padding: 5px 8px 4px;
+  border: 1.5px solid var(--pt-line);
+  border-radius: 3px;
+  background: var(--pt-orange);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 45%);
+  color: #10121c;
+  font: 8px/1 var(--pt-pixel);
+  text-transform: uppercase;
+}
+
+.pt-den__status {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 4px !important;
+  padding: 7px 8px;
+  border-radius: 3px 3px 2px 2px;
+  background: var(--pt-card);
+  font-size: 11px;
+}
+
+/* A console's power light */
+.pt-den__led {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border: 1.5px solid var(--pt-line);
+  background: var(--pt-green);
+  box-shadow: inset 1px 1px 0 rgb(255 255 255 / 55%);
+
+  [data-tone="wait"] > & {
+    background: var(--pt-orange);
+    animation: pt-den-blink 0.8s steps(1) infinite;
+  }
+
+  [data-tone="off"] > & {
+    background: var(--pt-card-alt);
+    box-shadow: none;
+  }
+
+  [data-tone="alert"] > & {
+    background: var(--pt-red);
+    animation: pt-den-blink 0.5s steps(1) infinite;
+  }
+}
+
+.pt-den__credit {
+  padding: 6px 8px 3px;
+  color: #fff;
+  font-size: 10px;
+
+  & a {
+    color: inherit;
+  }
+}
+
+@keyframes pt-den-open {
+  from {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+}
+
+@keyframes pt-den-bob {
+  to {
+    translate: 0 -3px;
+  }
+}
+
+@keyframes pt-den-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes pt-den-drift {
+  to {
+    translate: 6px 0;
+  }
+}
+
+@keyframes pt-den-fall {
+  from {
+    opacity: 0;
+    translate: 3px -6px;
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  to {
+    translate: -6px 36px;
+  }
+}
+
+@keyframes pt-den-mist {
+  to {
+    translate: 24px 0;
+  }
+}
+
+@keyframes pt-den-flash {
+  0%,
+  80% {
+    opacity: 1;
+  }
+
+  84% {
+    opacity: 0;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 0;
+  }
+}
+
 /* Site map (phones)
    ========================================================================== */
 

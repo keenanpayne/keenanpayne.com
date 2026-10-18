@@ -2,6 +2,7 @@ import { useId, type CSSProperties, type ReactNode } from "react";
 
 import { HtmlContent } from "../../../components/HtmlContent";
 import { metadata } from "../../../lib/site";
+import type { ProfileModel } from "../../../lib/types";
 import {
   formOf,
   Html,
@@ -10,6 +11,7 @@ import {
   readingMinutes,
   relabel,
   useTo,
+  type Condition,
   type SpecimenProps,
   type Specimens,
   type View,
@@ -23,6 +25,7 @@ import {
   TypeSample
 } from "../../styleguide/kit";
 
+import { DenverClock, DenverForecast, SkyLevel } from "./Denver";
 import { Address, FACT_LABELS } from "./pages/About";
 import {
   ArchiveSearch,
@@ -441,6 +444,31 @@ const AD_NOTES: Record<AdName, string> = {
   suck: "Links to services"
 };
 
+/** Every sky the forecast can play */
+const SKIES: { condition?: Condition; night: boolean; label: string }[] = [
+  { condition: "clear", night: false, label: "Clear" },
+  { condition: "clear", night: true, label: "Clear night" },
+  { condition: "cloudy", night: false, label: "Cloudy" },
+  { condition: "cloudy", night: true, label: "Cloudy night" },
+  { condition: "fog", night: false, label: "Fog" },
+  { condition: "rain", night: false, label: "Rain" },
+  { condition: "snow", night: false, label: "Snow" },
+  { condition: "storm", night: false, label: "Thunderstorm" },
+  { night: false, label: "Reading the sky" }
+];
+
+/** A clock chip that opens a forecast of its own */
+function Clock({ location }: { location: ProfileModel["location"] }) {
+  const forecast = useId();
+
+  return (
+    <div style={{ anchorScope: "--pt-clock" } as CSSProperties}>
+      <DenverClock forecast={forecast} location={location} />
+      <DenverForecast id={forecast} location={location} />
+    </div>
+  );
+}
+
 function Motifs({ content }: SpecimenProps) {
   const { profile } = content;
 
@@ -482,6 +510,22 @@ function Motifs({ content }: SpecimenProps) {
             {BADGE_SPRITES.map(({ label, art }) => (
               <Specimen key={label} label={label}>
                 <Sprite art={art} scale={3} />
+              </Specimen>
+            ))}
+          </SpecimenGrid>
+        </Specimen>
+        <Specimen
+          label="Skies"
+          note="The forecast’s pixel level over the Front Range, opened from the strip’s clock"
+          wide
+        >
+          <SpecimenGrid min={300}>
+            {SKIES.map(({ condition, night, label }) => (
+              <Specimen key={`${condition}${night}`} label={label}>
+                <div className="pt-den__sky" style={{ marginTop: 0 }}>
+                  <SkyLevel condition={condition} night={night} />
+                  <p className="pt-den__condition">{label}</p>
+                </div>
               </Specimen>
             ))}
           </SpecimenGrid>
@@ -990,6 +1034,12 @@ function Actions({ content }: SpecimenProps) {
         <Row>
           <Chips codeBank={socials.find(isCodeBank)} />
         </Row>
+      </Specimen>
+      <Specimen
+        label="Clock"
+        note="Denver time on the Elsewhere strip; opens the forecast"
+      >
+        <Clock location={content.profile.location} />
       </Specimen>
       <Specimen label="Hire me" note="End of the Elsewhere strip">
         <Hire />

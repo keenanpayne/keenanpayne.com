@@ -1,7 +1,7 @@
 import { useId, useState, type ReactNode } from "react";
 
 import { metadata } from "../../../lib/site";
-import type { LabContent, SocialLink } from "../../../lib/types";
+import type { LabContent, ProfileModel, SocialLink } from "../../../lib/types";
 import {
   samePath,
   useMenu,
@@ -11,6 +11,7 @@ import {
   type View
 } from "../../site";
 
+import { DenverClock, DenverForecast } from "./Denver";
 import {
   Ad,
   cx,
@@ -369,7 +370,9 @@ function SiteMap({
   navigation,
   path,
   socials,
-  codeBank
+  codeBank,
+  forecast,
+  location
 }: {
   id: string;
   hidden: boolean;
@@ -377,6 +380,9 @@ function SiteMap({
   path: string;
   socials: SocialLink[];
   codeBank?: SocialLink;
+  /** The forecast popover's id */
+  forecast: string;
+  location: ProfileModel["location"];
 }) {
   return (
     <div id={id} className="pt-map" hidden={hidden}>
@@ -394,6 +400,7 @@ function SiteMap({
 
       <div className="pt-map__chips">
         <Chips codeBank={codeBank} />
+        <DenverClock forecast={forecast} location={location} />
         <Hire />
       </div>
 
@@ -412,6 +419,7 @@ export function Shell({
   const { profile, socials } = content;
   const to = useTo();
   const map = useId();
+  const forecast = useId();
   const { open, setOpen, toggle } = useMenu(WIDE);
   const scene = sceneFor(view, path, profile);
   const codeBank = socials.find(isCodeBank);
@@ -475,9 +483,12 @@ export function Shell({
             path={path}
             socials={socials}
             codeBank={codeBank}
+            forecast={forecast}
+            location={profile.location}
           />
 
           <Elsewhere path={path} socials={socials}>
+            <DenverClock forecast={forecast} location={profile.location} />
             <Hire />
           </Elsewhere>
 
@@ -579,6 +590,8 @@ export function Shell({
           </footer>
         </div>
       </div>
+
+      <DenverForecast id={forecast} location={profile.location} />
     </div>
   );
 }

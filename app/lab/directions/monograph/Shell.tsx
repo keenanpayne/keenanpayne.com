@@ -1,9 +1,10 @@
 import { useId } from "react";
 
 import { metadata } from "../../../lib/site";
-import { LocalTime, useTo, type ShellProps } from "../../site";
+import { useTo, type ShellProps } from "../../site";
 
-import { handleOf, Icon } from "./parts";
+import { DenverBox, DenverClock } from "./Denver";
+import { handleOf } from "./parts";
 
 /** The dithered edge under every page's footer; makes its own filter id */
 export function Dither({ id }: { id?: string }) {
@@ -35,16 +36,18 @@ export function Shell({ navigation, content, children }: ShellProps) {
   const { profile, socials } = content;
   const handle = handleOf(socials);
   const to = useTo();
+  const box = useId();
 
   return (
     <div className="mg">
       <div className="mg-page">
         <header className="mg-mast">
           <div className="mg-mast__row">
-            <p className="mg-mast__aside">
-              <Icon name="pin" />
-              {profile.location.short} · <LocalTime placeholder="--:--" />
-            </p>
+            <DenverClock
+              box={box}
+              location={profile.location}
+              className="mg-mast__aside mg-mast__clock"
+            />
             <span className="mg-mast__line" aria-hidden="true" />
             <a className="mg-mast__name" href={to("/")}>
               {profile.name}
@@ -92,6 +95,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
       </div>
 
       <Dither id="mg-dither-filter" />
+      <DenverBox id={box} location={profile.location} />
     </div>
   );
 }
