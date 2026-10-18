@@ -40,6 +40,10 @@ export function Shell({ navigation, content, children }: ShellProps) {
 
   return (
     <div className="mg">
+      <a className="mg-skip" href="#mg-main">
+        Skip to content
+      </a>
+
       <div className="mg-page">
         <header className="mg-mast">
           <div className="mg-mast__row">
@@ -73,7 +77,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
           </div>
         </header>
 
-        <main>{children}</main>
+        <main id="mg-main">{children}</main>
 
         <footer className="mg-footer">
           <p>

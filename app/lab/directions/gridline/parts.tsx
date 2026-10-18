@@ -1094,7 +1094,7 @@ export const MARKS = {
   },
   peak: {
     name: "Peak",
-    note: "The Front Range from Denver, at sunrise",
+    note: (city: string) => `The Front Range from ${city}, at sunrise`,
     draw: (
       <>
         <circle className="gl-mark__fill" cx="17.5" cy="6" r="2.75" />
@@ -1123,7 +1123,15 @@ export const MARKS = {
       </>
     )
   }
-} satisfies Record<string, { name: string; note: string; draw: ReactNode }>;
+} satisfies Record<
+  string,
+  {
+    name: string;
+    /** Given the owner's city, for a mark drawn from there */
+    note: string | ((city: string) => string);
+    draw: ReactNode;
+  }
+>;
 
 export type MarkId = keyof typeof MARKS;
 

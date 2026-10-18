@@ -76,11 +76,14 @@ export function Archive({
               {posts.map((post) => (
                 <li key={post.url}>
                   <a href={post.url}>
-                    <span className="mg-index__date">
+                    <time className="mg-index__date" dateTime={post.iso}>
                       {post.date.slice(0, 6)}
-                    </span>
+                    </time>
                     <span className="mg-index__title">{post.title}</span>
                     <span className="mg-index__type">{post.type}</span>
+                    {post.lede && (
+                      <span className="mg-index__lede">{post.lede}</span>
+                    )}
                     <ArrowCircle />
                   </a>
                 </li>

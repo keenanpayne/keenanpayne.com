@@ -6,7 +6,7 @@ import type {
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
-import { cx, Html, pad, useTo } from "../../site";
+import { cx, Html, newsletterForm, pad, useTo } from "../../site";
 
 //
 // Masthead
@@ -395,6 +395,7 @@ export function Newsletter() {
           id="mg-newsletter-email"
           className="mg-input"
           type="email"
+          name={newsletterForm.field.name}
           placeholder="you@example.com"
         />
         <button className="mg-pill" type="submit">

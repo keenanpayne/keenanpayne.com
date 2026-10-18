@@ -5,7 +5,14 @@ import type {
   LabContent,
   LinkModel
 } from "../../../../lib/types";
-import { Html, introOf, pageEntries, quotesOf, samePath } from "../../../site";
+import {
+  Html,
+  introOf,
+  pageEntries,
+  quotesOf,
+  samePath,
+  useTo
+} from "../../../site";
 import {
   ArrowCircle,
   Banner,
@@ -70,6 +77,7 @@ export function Generic({
   content: LabContent;
   isService?: boolean;
 }) {
+  const to = useTo();
   const intro = introOf(page);
   const title = intro?.heading ?? intro?.title ?? page.meta.title;
 
@@ -77,7 +85,17 @@ export function Generic({
     <>
       <PageHeader
         icon={isService ? "list" : "file"}
-        eyebrow={isService ? "Service" : page.meta.title.split(" | ")[0]}
+        eyebrow={
+          isService ? (
+            <>
+              <a href={to("/services/")}>Services</a>
+              <span aria-hidden="true">/</span>
+              Service
+            </>
+          ) : (
+            page.meta.title.split(" | ")[0]
+          )
+        }
         title={title}
         lede={intro?.subheading}
       />

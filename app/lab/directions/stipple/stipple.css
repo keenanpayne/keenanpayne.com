@@ -129,6 +129,15 @@ body:has(.st) .labBar {
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .st *,
+  .st *::before,
+  .st *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 .st-skip {
   position: fixed;
   z-index: 30;
@@ -198,7 +207,7 @@ body:has(.st) .labBar {
   pointer-events: none;
 }
 
-/* Paper outside a rounded corner whose circle is centered at `--at` */
+/* Paper outside a rounded corner whose circle is centered at `--st-at` */
 .st-top__tab::before,
 .st-nav::before,
 .st-bottom__content::before {
@@ -207,7 +216,7 @@ body:has(.st) .labBar {
   width: var(--st-radius);
   height: var(--st-radius);
   background: radial-gradient(
-    circle at var(--at),
+    circle at var(--st-at),
     transparent calc(var(--st-radius) - 0.5px),
     var(--st-paper) calc(var(--st-radius) + 0.5px)
   );
@@ -244,7 +253,7 @@ body:has(.st) .labBar {
   }
 
   &::before {
-    --at: 100% 100%;
+    --st-at: 100% 100%;
 
     top: -1px;
     left: -1px;
@@ -373,7 +382,7 @@ body:has(.st) .labBar {
   box-shadow: -1px 0 0 var(--st-paper);
 
   &::before {
-    --at: 0 100%;
+    --st-at: 0 100%;
 
     top: 100%;
     right: 0;
@@ -690,19 +699,8 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .st-menu,
-  .st-menu__list li,
-  .st-menu__text,
-  .st-dots circle {
-    transition: none;
-  }
-
   .st-menu__list a:active .st-menu__text {
     translate: none;
-  }
-
-  .st-menu__land {
-    animation: none;
   }
 }
 
@@ -799,7 +797,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
   /* The window's bottom-right corner */
   &::before {
-    --at: 0 0;
+    --st-at: 0 0;
 
     top: calc(1px - var(--st-radius));
     right: 0;
@@ -956,13 +954,6 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .st-stipple img,
-  .st-stipple canvas {
-    transition: none;
-  }
-}
-
 /* Home
    ========================================================================== */
 
@@ -986,16 +977,16 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
 /* Reaches up past the window's top edge, behind the tab */
 .st-hero__terrain {
-  --reach: calc(var(--st-notch) + 1px);
+  --st-reach: calc(var(--st-notch) + 1px);
 
   position: absolute;
-  top: calc(-1 * var(--reach));
+  top: calc(-1 * var(--st-reach));
   right: 0;
   width: min(100%, 1100px);
-  height: calc(62% + var(--reach));
+  height: calc(62% + var(--st-reach));
 
   @media (width >= 760px) {
-    height: calc(100% + var(--reach));
+    height: calc(100% + var(--st-reach));
   }
 }
 
@@ -1488,6 +1479,13 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
       line-height: 1.55;
     }
   }
+}
+
+.st-intro__portrait {
+  width: 112px;
+  aspect-ratio: 1;
+  margin-bottom: 24px;
+  border-radius: 50%;
 }
 
 .st-layout--wide {
@@ -2035,15 +2033,6 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .st-ledger__plate,
-  .st-ledger__name,
-  .st-ledger__number,
-  .st-ledger__mark {
-    transition: none;
-  }
-}
-
 /* Two ways to show the same thing, one pressed */
 .st-switch {
   display: inline-flex;
@@ -2264,12 +2253,12 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
    up behind its tab like the home hero, with the caption lined up with the
    page beneath */
 .st-vista {
-  --reach: calc(var(--st-notch) + 1px);
+  --st-reach: calc(var(--st-notch) + 1px);
 
-  margin: calc(-1 * var(--reach)) 0 0;
+  margin: calc(-1 * var(--st-reach)) 0 0;
 
   & .st-view__art {
-    height: calc(clamp(300px, 52svh, 560px) + var(--reach));
+    height: calc(clamp(300px, 52svh, 560px) + var(--st-reach));
     aspect-ratio: auto;
     border-radius: 0;
   }
@@ -3433,13 +3422,6 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .st-den:popover-open,
-  .st-den__dot {
-    animation: none !important;
-  }
-}
-
 /* Service page blocks: the process, tools, and FAQ in a service's Markdown
    ========================================================================== */
 
@@ -3577,7 +3559,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   .st-top,
   .st-bottom,
   .st-rail,
-  .labBar {
+  body:has(.st) .labBar {
     display: none !important;
   }
 
