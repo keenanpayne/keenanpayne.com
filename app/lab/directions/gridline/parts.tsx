@@ -20,6 +20,7 @@ import type {
 } from "../../../lib/types";
 import {
   cx,
+  homeWork,
   Html,
   LocalTime,
   pad,
@@ -695,7 +696,7 @@ type TerminalTab = {
  * commands and their output, one tab each
  */
 export function Terminal({ content }: { content: LabContent }) {
-  const { profile, posts, work, services } = content;
+  const { profile, posts, services } = content;
   const handle = profile.name.split(" ")[0].toLowerCase();
   const id = useId();
   const tabList = useRef<HTMLDivElement>(null);
@@ -746,7 +747,7 @@ export function Terminal({ content }: { content: LabContent }) {
       id: "work",
       label: "work",
       command: "ls work",
-      lines: work.slice(0, 7).map((item) => ({
+      lines: homeWork(content).map((item) => ({
         key: item.url,
         term: item.year?.split(/[–-]/)[0] ?? "",
         detail: item.name,

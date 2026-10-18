@@ -1,5 +1,5 @@
 import type { LabContent } from "../../../../lib/types";
-import { Html, useTo } from "../../../site";
+import { homeWork, Html, useTo } from "../../../site";
 import {
   Banner,
   KindWords,
@@ -38,7 +38,7 @@ export function Home({ content }: { content: LabContent }) {
       </Section>
 
       <Section icon="grid" label="Work">
-        <WorkGrid work={content.work} />
+        <WorkGrid work={homeWork(content)} />
         <div className="mg-section__more">
           <MoreLink href={to("/portfolio/")}>All work</MoreLink>
         </div>

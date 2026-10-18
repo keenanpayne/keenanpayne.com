@@ -1,5 +1,12 @@
 import type { LabContent } from "../../../../lib/types";
-import { coordinates, Html, LocalTime, pad, useTo } from "../../../site";
+import {
+  coordinates,
+  homeWork,
+  Html,
+  LocalTime,
+  pad,
+  useTo
+} from "../../../site";
 import {
   Alert,
   Button,
@@ -191,10 +198,10 @@ export function Home({ content }: { content: LabContent }) {
       <Section
         label="Units deployed"
         jp="機体"
-        code={`${content.work.length} units`}
+        code={`${homeWork(content).length} units`}
         more={{ href: to("/portfolio/"), text: "All work" }}
       >
-        <UnitGrid work={content.work} />
+        <UnitGrid work={homeWork(content)} />
       </Section>
 
       <Section

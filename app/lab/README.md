@@ -34,7 +34,7 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 ### Rules
 
 - **Content comes from props, never from the direction.** Read facts, copy, photos, and links from `content` (`profile`, `socials`, `posts`, `work`, `services`, `testimonials`) and the template’s `page`. Don’t restate them: not the owner’s name, initials, email, domain, role, city, or years, even in flavor copy.
-- **Read the content the shared way:** a page’s title is `titleOf(page)` and its label `labelOf(page)`; Home shows at least `HOME.posts` posts and every case study, service, and testimonial; a page’s quotes are `quotesOf(page, content)`.
+- **Read the content the shared way:** a page’s title is `titleOf(page)` and its label `labelOf(page)`; Home shows at least `HOME.posts` posts, exactly the case studies in `HOME.work` (`homeWork(content)`) and no others, and every service and testimonial; a page’s quotes are `quotesOf(page, content)`.
 - **Voice is the direction’s.** Relabeling a fact (`relabel(facts, { location: "Base" })`), naming sections in the skin’s language, and flavor copy that only makes sense in one skin (Portal’s mascot lines, Mech’s episode numbers) belong to the direction.
 - **Links:** URLs in the content are already rebased. For fixed site paths, use `useTo()`: `to("/contact/")`.
 - **Forms:** render `formOf("contact" | "inquiry")`: its `title`, `fields`, `submit` label, and the `alternate` form it links to, so every direction asks the same questions. The newsletter sign-up is `newsletterForm`, on the pages that ask for it (`hasNewsletter(page)`, a post’s `newsletter`).
@@ -50,6 +50,7 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 | Edit a fact, the bio, a photo, a step | `app/data/profile.ts`: every direction updates |
 | Edit a page’s copy | Its Markdown in `content/` |
 | Add a form question | `site/forms.ts` |
+| Change Home’s case studies | `HOME.work` in `site/ia.ts`: every direction follows, and the conformance checks hold them to it |
 | Add a navigation item | `NAVIGATION` (and `SECTIONS`, for the pages beneath it) in `site/ia.ts` |
 | Add a feature or a page section | The shared layers and `conformance/requirements.ts`, then Wireframe, then every direction (see [Feature or motif?](#feature-or-motif)) |
 | Add something to the content model | `LabContent` in `app/lib/types.ts` and `getLabContent()` |
@@ -76,7 +77,7 @@ Every direction has the same features, pages, and foundations, so a person or an
 
 1. **Types.** `Direction` needs a template for every kind of page, and `Specimens` one specimen for every style guide section.
 2. **Conformance** (`conformance/`). The tests render every direction’s sample pages the way the lab route does, then check:
-   - **Requirements** (`requirements.ts`): the feature set and information architecture, checked the way a visitor would find them (text, links, images, landmarks), so any skin can meet them. The Shell has a skip link to `<main>`, the owner’s name linking home, the navigation with the current item marked, a footer with `© {year} {name}`, every social profile, the feed, and the local time and weather popover; it links nowhere the navigation doesn’t lead, and holds no forms. Every page has one `<h1>` (its `titleOf()`), links that lead somewhere, and `alt` on its images. Then each kind of page has its content: Home its intro, latest posts, every case study, service, and testimonial; a post its breadcrumbs, date, reading time, tags, whole body, and neighbors; a form its questions and copy; and so on.
+   - **Requirements** (`requirements.ts`): the feature set and information architecture, checked the way a visitor would find them (text, links, images, landmarks), so any skin can meet them. The Shell has a skip link to `<main>`, the owner’s name linking home, the navigation with the current item marked, a footer with `© {year} {name}`, every social profile, the feed, and the local time and weather popover; it links nowhere the navigation doesn’t lead, and holds no forms. Every page has one `<h1>` (its `titleOf()`), links that lead somewhere, and `alt` on its images. Then each kind of page has its content: Home its intro, latest posts, exactly its case studies, and every service and testimonial; a post its breadcrumbs, date, reading time, tags, whole body, and neighbors; a form its questions and copy; and so on.
    - **Foundations** (`foundations.ts`): the role tokens, both schemes, the page color, focus ring, selection, reduced motion, and the prefix on every selector, custom property, and keyframe.
    - **Source** (`source.ts`): no fact about the owner spelled out in a direction’s code.
 3. **Known gaps** (`conformance/gaps.ts`): what each direction fell short of when the checks were written. It only shrinks. The tests fail when a direction falls short of anything not listed, and when it meets something listed, so the line comes off. To close one, delete its line and run `npm run lab:check`; the failure says what’s missing, page by page. Never add a line to make a check pass.

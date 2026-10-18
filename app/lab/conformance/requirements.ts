@@ -15,12 +15,13 @@
 
 import { parse, type HTMLElement } from "node-html-parser";
 
-import { getPage } from "../../lib/content/content.server";
+import { getLabContent, getPage } from "../../lib/content/content.server";
 import { metadata } from "../../lib/site";
 import type { TestimonialModel } from "../../lib/types";
 import { formOf, newsletterForm } from "../site/forms";
 import {
   hasNewsletter,
+  homeWork,
   introOf,
   quotesOf,
   readingMinutes,
@@ -496,12 +497,31 @@ const pages: Requirement[] = [
   forKinds(
     ["home"],
     "home.work",
-    "Home links to the portfolio and to every case study.",
+    `Home links to the portfolio and to exactly the case studies in \`HOME.work\` (${homeWork(
+      getLabContent()
+    )
+      .map((item) => item.name)
+      .join(
+        ", "
+      )}; \`homeWork()\`), and shows no other case study: no link to one, and no cover.`,
     ({ main, content, to }, problem) => {
+      const shown = homeWork(content);
+      if (shown.length !== HOME.work.length) {
+        problem("a case study in the content for every path in HOME.work");
+      }
       linkProblems(main, [
         { url: to("/portfolio/"), text: "Work" },
-        ...content.work.map((item) => ({ url: item.url, text: item.name }))
+        ...shown.map((item) => ({ url: item.url, text: item.name }))
       ]).forEach(problem);
+      for (const item of content.work) {
+        if (shown.includes(item)) continue;
+        if (linksToIn(main, item.url)) {
+          problem(`no link to ${item.name}, which Home doesn’t show`);
+        }
+        if (shows(main, item.cover) || shows(main, item.coverSquare)) {
+          problem(`no cover of ${item.name}, which Home doesn’t show`);
+        }
+      }
     }
   ),
   forKinds(

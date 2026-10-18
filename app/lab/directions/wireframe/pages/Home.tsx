@@ -1,4 +1,4 @@
-import { HOME, Html, useTo, type TemplateProps } from "../../../site";
+import { HOME, homeWork, Html, useTo, type TemplateProps } from "../../../site";
 import { KindWords, PostList, Section, ServiceList, WorkGrid } from "../parts";
 
 export function Home({ content }: TemplateProps<"home">) {
@@ -21,7 +21,7 @@ export function Home({ content }: TemplateProps<"home">) {
       </Section>
 
       <Section title={<a href={to("/portfolio/")}>Work</a>}>
-        <WorkGrid work={content.work} />
+        <WorkGrid work={homeWork(content)} />
       </Section>
 
       <Section title={<a href={to("/services/")}>Services</a>}>

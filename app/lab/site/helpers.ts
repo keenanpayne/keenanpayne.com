@@ -11,12 +11,23 @@ import type {
 } from "../../lib/types";
 import type { ProfileFact, ProfileFactId } from "../../data/profile";
 
+import { HOME } from "./ia";
+
 type Posts = LabContent["posts"];
 
 /** A page's `intro` section: its heading, subheading, and body copy */
 export const introOf = (page: { sections: SectionModel[] }) =>
   page.sections.find(
     (section): section is IntroSection => section.type === "intro"
+  );
+
+/**
+ * The case studies Home shows (`HOME.work`), in that order. Their links may
+ * be rebased (`/lab/mech/portfolio/asana/`), so they're matched by path.
+ */
+export const homeWork = (content: Pick<LabContent, "work">) =>
+  HOME.work.flatMap((path) =>
+    content.work.filter((item) => item.url.endsWith(path))
   );
 
 /** A page's short name, from its meta title: `Essays | Keenan Payne` → `Essays` */

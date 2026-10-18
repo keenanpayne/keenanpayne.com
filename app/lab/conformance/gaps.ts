@@ -14,7 +14,7 @@
 import type { DirectionSlug } from "../registry";
 
 export const KNOWN_GAPS: Partial<Record<DirectionSlug, readonly string[]>> = {
-  portal: ["shell.links", "shell.forms", "home.work"],
-  stipple: ["shell.forms", "home.work"],
-  gridline: ["shell.links", "home.work"]
+  portal: ["shell.links", "shell.forms"],
+  stipple: ["shell.forms"],
+  gridline: ["shell.links"]
 };

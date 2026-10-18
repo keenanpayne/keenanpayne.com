@@ -1542,9 +1542,10 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     }
   }
 
+  /* Plates two to a row, so Home's four case studies (`HOME.work`) square up */
   & .st-cards {
     @media (width >= 960px) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: 32px;
     }
   }

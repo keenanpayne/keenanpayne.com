@@ -92,10 +92,23 @@ export const SAMPLE_PAGES: { label: string; path: string }[] = [
 ];
 
 /**
- * How much of a list Home shows at the least, in every direction; the rest
- * is a link away. (Work, services, and kind words: all of them.)
+ * What Home shows, in every direction; the rest is a link away. Services
+ * and kind words: all of them.
  */
-export const HOME = { posts: 4 } as const;
+export const HOME = {
+  /** The latest posts, at the least */
+  posts: 4,
+  /**
+   * The case studies, in this order, and no others: by their portfolio
+   * path (`homeWork()` reads them from the content)
+   */
+  work: [
+    "/portfolio/asana/",
+    "/portfolio/gofundme/",
+    "/portfolio/neuralink/",
+    "/portfolio/rippling/"
+  ]
+} as const;
 
 /** Primary navigation, in order */
 export const NAVIGATION = [

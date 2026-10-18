@@ -1,5 +1,5 @@
 import type { LabContent } from "../../../../lib/types";
-import { Html, useTo } from "../../../site";
+import { homeWork, Html, useTo } from "../../../site";
 import {
   Badge,
   GoDot,
@@ -47,7 +47,7 @@ export function Home({ content }: { content: LabContent }) {
   const to = useTo();
   const { profile } = content;
   const [promoted, ...reviews] = content.testimonials;
-  const tiles = content.work.slice(0, Math.floor(content.work.length / 3) * 3);
+  const work = homeWork(content);
 
   return (
     <>
@@ -63,7 +63,7 @@ export function Home({ content }: { content: LabContent }) {
           </div>
 
           <div className="pt-hero__art" aria-hidden="true">
-            {content.work.slice(0, 3).map((item, index) => (
+            {work.slice(0, 3).map((item, index) => (
               <img
                 key={item.url}
                 className={`pt-hero__shot pt-hero__shot--${index + 1}`}
@@ -112,7 +112,7 @@ export function Home({ content }: { content: LabContent }) {
           Explore these case studies
         </Heading>
         <ul className="pt-tiles">
-          {tiles.map((item) => (
+          {work.map((item) => (
             <Tile
               key={item.url}
               title={item.name}

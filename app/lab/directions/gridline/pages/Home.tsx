@@ -1,4 +1,4 @@
-import { Html, useTo, type TemplateProps } from "../../../site";
+import { homeWork, Html, useTo, type TemplateProps } from "../../../site";
 import {
   Arrow,
   Band,
@@ -78,7 +78,7 @@ export function Home({ content }: TemplateProps<"home">) {
           description="Marketing sites, content hubs, and design systems for teams I’ve partnered with."
           more={{ text: "All case studies", url: to("/portfolio/") }}
         />
-        <WorkCards work={work.slice(0, 4)} />
+        <WorkCards work={homeWork(content)} />
       </Band>
 
       <Band>

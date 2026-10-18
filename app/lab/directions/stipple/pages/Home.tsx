@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { Html, useTo, type TemplateProps } from "../../../site";
+import { homeWork, Html, useTo, type TemplateProps } from "../../../site";
 import { Groundwork } from "../Groundwork";
 import {
   Button,
@@ -19,7 +19,7 @@ import {
 export function Home({ content }: TemplateProps<"home">) {
   const to = useTo();
   const copy = useRef<HTMLDivElement>(null);
-  const { profile, posts, work, services, testimonials } = content;
+  const { profile, posts, services, testimonials } = content;
 
   return (
     <>
@@ -72,7 +72,7 @@ export function Home({ content }: TemplateProps<"home">) {
           action={<More href={to("/portfolio/")}>All work</More>}
         >
           <div className="st-cards">
-            {work.slice(0, 3).map((item) => (
+            {homeWork(content).map((item) => (
               <WorkCard key={item.url} item={item} />
             ))}
           </div>
