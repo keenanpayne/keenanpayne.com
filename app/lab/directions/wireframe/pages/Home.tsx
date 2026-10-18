@@ -1,4 +1,4 @@
-import { Html, useTo, type TemplateProps } from "../../../site";
+import { HOME, Html, useTo, type TemplateProps } from "../../../site";
 import { KindWords, PostList, Section, ServiceList, WorkGrid } from "../parts";
 
 export function Home({ content }: TemplateProps<"home">) {
@@ -17,7 +17,7 @@ export function Home({ content }: TemplateProps<"home">) {
       </header>
 
       <Section title={<a href={to("/archive/")}>Writing</a>}>
-        <PostList posts={content.posts.slice(0, 4)} />
+        <PostList posts={content.posts.slice(0, HOME.posts)} />
       </Section>
 
       <Section title={<a href={to("/portfolio/")}>Work</a>}>

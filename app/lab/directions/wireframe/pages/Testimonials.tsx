@@ -1,4 +1,4 @@
-import { introOf, sectionOf, type TemplateProps } from "../../../site";
+import { introOf, sectionOf, titleOf, type TemplateProps } from "../../../site";
 import { PageHeader, Quote, Section } from "../parts";
 
 export function Testimonials({ page }: TemplateProps<"testimonials">) {
@@ -9,7 +9,7 @@ export function Testimonials({ page }: TemplateProps<"testimonials">) {
     <>
       <PageHeader
         eyebrow="Testimonials"
-        title={intro?.heading ?? "Testimonials"}
+        title={titleOf(page)}
         lede={intro?.subheading}
       >
         {grid && grid.qualities.length > 0 && (

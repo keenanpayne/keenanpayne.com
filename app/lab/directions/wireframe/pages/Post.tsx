@@ -1,5 +1,10 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
-import { readingMinutes, useTo, type TemplateProps } from "../../../site";
+import {
+  readingMinutes,
+  titleOf,
+  useTo,
+  type TemplateProps
+} from "../../../site";
 import { Facts, Newsletter, PageHeader, PostNav } from "../parts";
 
 export function Post({ page }: TemplateProps<"post">) {
@@ -19,7 +24,7 @@ export function Post({ page }: TemplateProps<"post">) {
             )}
           </>
         }
-        title={page.title ?? page.meta.title}
+        title={titleOf(page)}
         lede={page.lede}
       >
         <Facts

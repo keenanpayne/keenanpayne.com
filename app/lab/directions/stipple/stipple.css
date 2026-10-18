@@ -39,6 +39,16 @@
     --st-radius: 16px;
     --st-step: 18px;
   }
+
+  /* Roles every direction names (app/lab/conformance/foundations.ts) */
+  --st-surface: var(--st-wash);
+  --st-accent: var(--st-olive);
+  --st-focus: var(--st-ink);
+  --st-selection: var(--st-sage);
+  --st-selection-ink: var(--st-ink);
+  --st-font-display: var(--st-serif);
+  --st-font-body: var(--st-sans);
+  --st-font-mono: var(--st-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -109,12 +119,12 @@ body:has(.st) .labBar {
   }
 
   & ::selection {
-    background: var(--st-sage);
-    color: var(--st-ink);
+    background: var(--st-selection);
+    color: var(--st-selection-ink);
   }
 
   & :focus-visible {
-    outline: 2px solid var(--st-ink);
+    outline: 2px solid var(--st-focus);
     outline-offset: 2px;
   }
 }

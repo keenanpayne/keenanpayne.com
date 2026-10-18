@@ -1,6 +1,12 @@
 import { useState, type FormEvent } from "react";
 
-import { formOf, introOf, useTo, type TemplateProps } from "../../../site";
+import {
+  formOf,
+  introOf,
+  titleOf,
+  useTo,
+  type TemplateProps
+} from "../../../site";
 import { Facts, FormField, PageHeader } from "../parts";
 
 /** Mock contact and project inquiry forms; the lab never submits anything */
@@ -23,7 +29,7 @@ export function Contact({
     <>
       <PageHeader
         eyebrow={form.title}
-        title={intro?.heading ?? page.meta.title}
+        title={titleOf(page)}
         lede={intro?.subheading}
       >
         <Facts

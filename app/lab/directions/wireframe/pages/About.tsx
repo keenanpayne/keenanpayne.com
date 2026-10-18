@@ -1,4 +1,4 @@
-import { Html, introOf, type TemplateProps } from "../../../site";
+import { Html, introOf, titleOf, type TemplateProps } from "../../../site";
 import { Facts, PageHeader, Section } from "../parts";
 
 export function About({ page, content }: TemplateProps<"about">) {
@@ -9,7 +9,7 @@ export function About({ page, content }: TemplateProps<"about">) {
     <>
       <PageHeader
         eyebrow="About"
-        title={intro?.heading ?? "About"}
+        title={titleOf(page)}
         lede={intro?.subheading}
       />
 

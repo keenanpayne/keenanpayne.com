@@ -29,6 +29,15 @@
   --gl-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
   --gl-serif: "Instrument Serif", georgia, serif;
   --gl-mono: "IBM Plex Mono", ui-monospace, menlo, monospace;
+
+  /* Roles every direction names (app/lab/conformance/foundations.ts) */
+  --gl-surface: var(--gl-raised);
+  --gl-focus: var(--gl-accent);
+  --gl-selection: var(--gl-accent-soft);
+  --gl-selection-ink: var(--gl-ink);
+  --gl-font-display: var(--gl-sans);
+  --gl-font-body: var(--gl-sans);
+  --gl-font-mono: var(--gl-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -182,6 +191,15 @@
   color-scheme: dark;
 }
 
+/* A band's roles follow its own scheme, as the tokens they alias do */
+.gl-invert,
+.gl-band--gray {
+  --gl-surface: var(--gl-raised);
+  --gl-focus: var(--gl-accent);
+  --gl-selection: var(--gl-accent-soft);
+  --gl-selection-ink: var(--gl-ink);
+}
+
 body:has(.gl) {
   background: var(--gl-paper);
 }
@@ -254,8 +272,8 @@ body:has(.gl) {
   }
 
   & ::selection {
-    background: var(--gl-accent-soft);
-    color: var(--gl-ink);
+    background: var(--gl-selection);
+    color: var(--gl-selection-ink);
   }
 
   /* Element defaults stay at zero specificity, so any class overrides them */
@@ -285,7 +303,7 @@ body:has(.gl) {
   }
 
   & :focus-visible {
-    outline: 2px solid var(--gl-accent);
+    outline: 2px solid var(--gl-focus);
     outline-offset: 2px;
   }
 }

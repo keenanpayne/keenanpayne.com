@@ -8,7 +8,7 @@ import type {
   PostNavModel,
   TestimonialModel
 } from "../../../lib/types";
-import { Html, type FormField as Field } from "../../site";
+import { Html, newsletterForm, type FormField as Field } from "../../site";
 
 type Posts = LabContent["posts"];
 
@@ -221,10 +221,11 @@ export function PageTable({ pages }: { pages: PageListSection["pages"] }) {
 /** Mock newsletter sign-up; the lab never submits anything */
 export function Newsletter() {
   const [sent, setSent] = useState(false);
+  const { title, text, submit, field } = newsletterForm;
 
   return (
-    <Section title="Newsletter">
-      <p>New articles and tutorials, sent when they’re published.</p>
+    <Section title={title}>
+      <p>{text}</p>
       <form
         className="wireframe-form"
         onSubmit={(event) => {
@@ -233,11 +234,16 @@ export function Newsletter() {
         }}
       >
         <label className="wireframe-field">
-          Email
-          <input type="email" name="email" required />
+          {field.label}
+          <input
+            type={field.type}
+            name={field.name}
+            placeholder={field.placeholder}
+            required
+          />
         </label>
         <p className="wireframe-field--wide">
-          <button type="submit">Subscribe</button>{" "}
+          <button type="submit">{submit}</button>{" "}
           <span className="wireframe-meta" role="status">
             {sent
               ? "Mockup only — nothing was sent."

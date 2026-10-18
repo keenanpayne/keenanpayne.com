@@ -129,5 +129,7 @@ Next:
   3. Preview it at http://localhost:4242/lab/${slug}/ (npm run dev)
   4. Lay its parts out in ${target}/specimens.tsx for the style guide at
      http://localhost:4242/lab/styleguide/${slug}/
+  5. Run npm run lab:check: it holds the direction to the same features,
+     pages, and foundations as the others
 
 See app/lab/README.md for what a direction may (and may not) change.`);

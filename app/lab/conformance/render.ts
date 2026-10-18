@@ -1,0 +1,95 @@
+/**
+ * Rendering for the conformance checks
+ * ==================================================
+ * Renders a direction's mockup of a site path the way the lab route does
+ * (`app/routes/lab.$direction.tsx`), to HTML, and parses it so the checks
+ * can read it like a visitor would: its text, its links, its landmarks.
+ */
+
+import { createElement } from "react";
+import { renderToString } from "react-dom/server";
+import { createMemoryRouter, RouterProvider } from "react-router";
+import { parse, type HTMLElement } from "node-html-parser";
+
+import { getLabContent, getPage } from "../../lib/content/content.server";
+import type { LabContent } from "../../lib/types";
+import { rebaseLinks } from "../links";
+import { labBase } from "../registry";
+import { DirectionPage, type Direction } from "../site/direction";
+import {
+  navigationFor,
+  resolveView,
+  type NavItem,
+  type View
+} from "../site/ia";
+
+export interface RenderedPage {
+  slug: string;
+  /** The site path, e.g. `/about/` */
+  path: string;
+  view: View;
+  navigation: NavItem[];
+  /** With links rebased onto the direction, as its templates receive it */
+  content: LabContent;
+  /** A site path as the direction links to it, e.g. `/lab/mech/about/` */
+  to: (path: string) => string;
+  /** The whole page */
+  document: HTMLElement;
+  /** Every `<main>`; a conforming page has one */
+  mains: HTMLElement[];
+  /** The page in `<main>`, or an empty element when there's none */
+  main: HTMLElement;
+  /** Everything outside `<main>`: the Shell's chrome */
+  chrome: HTMLElement;
+}
+
+const contents = new Map<string, LabContent>();
+
+export function renderPage(
+  slug: string,
+  direction: Direction,
+  path: string
+): RenderedPage {
+  const base = labBase(slug);
+  const view = resolveView(path, getPage(path));
+  let content = contents.get(slug);
+  if (!content) {
+    content = rebaseLinks(getLabContent(), base);
+    contents.set(slug, content);
+  }
+  const rebased = rebaseLinks(
+    { view, navigation: navigationFor(view, path) },
+    base
+  );
+
+  const page = createElement(DirectionPage, {
+    // Vitest serves stylesheets as empty URLs, which React warns about
+    direction: { ...direction, stylesheets: [] },
+    base,
+    path,
+    content,
+    ...rebased
+  });
+  // Some parts read the router (e.g. `useViewTransitionState`)
+  const router = createMemoryRouter([{ path: "*", element: page }], {
+    initialEntries: [`${base}${path}`]
+  });
+  const html = renderToString(createElement(RouterProvider, { router }));
+
+  const document = parse(html);
+  const mains = document.querySelectorAll("main");
+  const chrome = parse(html);
+  chrome.querySelectorAll("main").forEach((main) => main.remove());
+
+  return {
+    slug,
+    path,
+    ...rebased,
+    content,
+    to: (sitePath) => `${base}${sitePath}`,
+    document,
+    mains,
+    main: mains[0] ?? parse(""),
+    chrome
+  };
+}

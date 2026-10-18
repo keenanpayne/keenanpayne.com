@@ -57,6 +57,19 @@
   --pt-pixel: "Silkscreen", "Courier New", ui-monospace, monospace;
 
   color-scheme: light;
+
+  /* Roles every direction names (app/lab/conformance/foundations.ts) */
+  --pt-paper: var(--pt-page);
+  --pt-ink: var(--pt-card-ink);
+  --pt-muted: var(--pt-card-muted);
+  --pt-surface: var(--pt-card);
+  --pt-accent: var(--pt-orange);
+  --pt-focus: var(--pt-orange);
+  --pt-selection: Highlight;
+  --pt-selection-ink: HighlightText;
+  --pt-font-display: var(--pt-display);
+  --pt-font-body: var(--pt-sans);
+  --pt-font-mono: "Courier New", ui-monospace, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -150,7 +163,7 @@
 }
 
 body:has(.pt) {
-  background: var(--pt-page);
+  background: var(--pt-paper);
 }
 
 .pt {
@@ -167,8 +180,13 @@ body:has(.pt) {
     padding: 20px 20px 96px;
   }
 
+  & ::selection {
+    background: var(--pt-selection);
+    color: var(--pt-selection-ink);
+  }
+
   & :focus-visible {
-    outline: 2px solid var(--pt-orange);
+    outline: 2px solid var(--pt-focus);
     outline-offset: 2px;
   }
 }

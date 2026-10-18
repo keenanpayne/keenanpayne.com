@@ -1,12 +1,21 @@
+import { useId } from "react";
+
 import { metadata } from "../../../lib/site";
 import { useTo, type ShellProps } from "../../site";
 
+import { DenverClock, DenverWeather } from "./Denver";
+
 export function Shell({ navigation, content, children }: ShellProps) {
   const to = useTo();
+  const weather = useId();
   const { profile, socials } = content;
 
   return (
     <div className="wireframe">
+      <a className="wireframe-skip" href="#wireframe-main">
+        Skip to content
+      </a>
+
       <header className="wireframe-header">
         <a className="wireframe-name" href={to("/")}>
           {profile.name}
@@ -25,9 +34,12 @@ export function Shell({ navigation, content, children }: ShellProps) {
             ))}
           </ul>
         </nav>
+        <DenverClock popover={weather} location={profile.location} />
       </header>
 
-      <main className="wireframe-main">{children}</main>
+      <main id="wireframe-main" className="wireframe-main">
+        {children}
+      </main>
 
       <footer className="wireframe-footer">
         <p>{`© ${new Date().getFullYear()} ${profile.name} · ${profile.location.name}`}</p>
@@ -44,6 +56,8 @@ export function Shell({ navigation, content, children }: ShellProps) {
           </li>
         </ul>
       </footer>
+
+      <DenverWeather id={weather} location={profile.location} />
     </div>
   );
 }

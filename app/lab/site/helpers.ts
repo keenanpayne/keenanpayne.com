@@ -6,6 +6,7 @@ import type {
   LabContent,
   LinkModel,
   PageListSection,
+  PageModel,
   SectionModel
 } from "../../lib/types";
 import type { ProfileFact, ProfileFactId } from "../../data/profile";
@@ -17,6 +18,21 @@ export const introOf = (page: { sections: SectionModel[] }) =>
   page.sections.find(
     (section): section is IntroSection => section.type === "intro"
   );
+
+/** A page's short name, from its meta title: `Essays | Keenan Payne` → `Essays` */
+export const labelOf = (page: { meta: { title: string } }) =>
+  page.meta.title.split(" | ")[0];
+
+/**
+ * A page's title, for its `<h1>`: a post's or case study's own, or the
+ * page's intro heading (HTML), falling back to its label
+ */
+export function titleOf(page: PageModel) {
+  if (page.layout === "post") return page.title ?? page.meta.title;
+  if (page.layout === "portfolio") return page.client ?? page.meta.title;
+  const intro = introOf(page);
+  return intro?.heading ?? intro?.title ?? labelOf(page);
+}
 
 /** A page's first section of a type, e.g. `testimonials-grid` */
 export const sectionOf = <T extends SectionModel["type"]>(

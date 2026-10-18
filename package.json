@@ -45,7 +45,8 @@
     "audit:fix": "npm audit fix && npm update",
     "size": "du -h build/ | sort -hr",
     "analyze:testimonials": "node scripts/analyze-testimonials.ts",
-    "lab:new": "node scripts/new-direction.ts"
+    "lab:new": "node scripts/new-direction.ts",
+    "lab:check": "react-router typegen && tsc && vitest run app/lab && eslint app/lab scripts/new-direction.ts --max-warnings 0 && stylelint \"app/lab/**/*.css\""
   },
   "dependencies": {
     "@netlify/vite-plugin-react-router": "^4.0.0",

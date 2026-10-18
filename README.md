@@ -44,7 +44,8 @@ npm run fix
 # Type checking
 npm run typecheck
 
-# Unit tests for the content pipeline helpers
+# Unit tests: the content pipeline's helpers, and the design lab's
+# conformance checks
 npm run test
 
 # Linting
@@ -78,6 +79,10 @@ npm run analyze:testimonials
 
 # Start a design lab direction as a copy of Wireframe
 npm run lab:new -- <slug> ["Display name"]
+
+# Check every design lab direction against the shared feature set,
+# information architecture, and foundations (see app/lab/README.md)
+npm run lab:check
 ```
 
 ## Project Structure

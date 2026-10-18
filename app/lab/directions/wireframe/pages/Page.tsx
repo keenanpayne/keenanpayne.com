@@ -1,17 +1,22 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
-import { Html, introOf, type TemplateProps } from "../../../site";
+import {
+  Html,
+  introOf,
+  labelOf,
+  titleOf,
+  type TemplateProps
+} from "../../../site";
 import { Entries, LinkList, Newsletter, PageHeader, PageTable } from "../parts";
 
 /** Type and tag archives, and any other page: subscribe, … */
 export function Page({ page }: TemplateProps<"page" | "archive">) {
   const intro = introOf(page);
-  const label = page.meta.title.split(" | ")[0];
 
   return (
     <>
       <PageHeader
-        eyebrow={label}
-        title={intro?.heading ?? intro?.title ?? label}
+        eyebrow={labelOf(page)}
+        title={titleOf(page)}
         lede={intro?.subheading}
       />
 

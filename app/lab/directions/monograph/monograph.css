@@ -13,6 +13,17 @@
   --mg-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
   --mg-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
   --mg-dither-opacity: 0.9;
+
+  /* Roles every direction names (app/lab/conformance/foundations.ts) */
+  --mg-line: var(--mg-ink);
+  --mg-surface: var(--mg-tint);
+  --mg-accent: var(--mg-ink);
+  --mg-focus: var(--mg-ink);
+  --mg-selection: var(--mg-ink);
+  --mg-selection-ink: var(--mg-paper);
+  --mg-font-display: var(--mg-serif);
+  --mg-font-body: var(--mg-mono);
+  --mg-font-mono: var(--mg-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -59,8 +70,8 @@ body:has(.mg) {
   }
 
   & ::selection {
-    background: var(--mg-ink);
-    color: var(--mg-paper);
+    background: var(--mg-selection);
+    color: var(--mg-selection-ink);
   }
 }
 
@@ -151,7 +162,7 @@ body:has(.mg) {
   }
 
   &:focus-visible {
-    outline: 2px solid var(--mg-ink);
+    outline: 2px solid var(--mg-focus);
     outline-offset: 3px;
   }
 }

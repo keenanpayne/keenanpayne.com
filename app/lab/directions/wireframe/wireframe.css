@@ -5,14 +5,22 @@
  * direction.
  */
 
+/* The roles every direction names (app/lab/conformance/foundations.ts), and
+   nothing else: a new direction starts from these */
 :root {
   --wireframe-paper: #fff;
   --wireframe-ink: #1a1a1a;
   --wireframe-muted: #6b6b6b;
   --wireframe-line: #d9d9d9;
-  --wireframe-tint: #f3f3f3;
-  --wireframe-font:
+  --wireframe-surface: #f3f3f3;
+  --wireframe-accent: var(--wireframe-ink);
+  --wireframe-focus: var(--wireframe-ink);
+  --wireframe-selection: Highlight;
+  --wireframe-selection-ink: HighlightText;
+  --wireframe-font-body:
     ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --wireframe-font-display: var(--wireframe-font-body);
+  --wireframe-font-mono: ui-monospace, "SF Mono", Menlo, monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -21,7 +29,7 @@
     --wireframe-ink: #e6e6e6;
     --wireframe-muted: #9a9a9a;
     --wireframe-line: #333;
-    --wireframe-tint: #1e1e1e;
+    --wireframe-surface: #1e1e1e;
   }
 }
 
@@ -30,7 +38,7 @@
   --wireframe-ink: #e6e6e6;
   --wireframe-muted: #9a9a9a;
   --wireframe-line: #333;
-  --wireframe-tint: #1e1e1e;
+  --wireframe-surface: #1e1e1e;
 }
 
 body:has(.wireframe) {
@@ -44,7 +52,7 @@ body:has(.wireframe) {
   padding: 0 16px 96px;
   background: var(--wireframe-paper);
   color: var(--wireframe-ink);
-  font-family: var(--wireframe-font);
+  font-family: var(--wireframe-font-body);
   font-size: 16px;
   line-height: 1.5;
 
@@ -85,10 +93,40 @@ body:has(.wireframe) {
     font-size: 14px;
   }
 
+  & h1,
+  & h2,
+  & h3 {
+    font-family: var(--wireframe-font-display);
+  }
+
+  & code,
+  & pre {
+    font-family: var(--wireframe-font-mono);
+  }
+
   & input,
   & textarea,
   & button {
     font: inherit;
+  }
+
+  & ::selection {
+    background: var(--wireframe-selection);
+    color: var(--wireframe-selection-ink);
+  }
+
+  & :focus-visible {
+    outline: 2px solid var(--wireframe-focus);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wireframe *,
+  .wireframe *::before,
+  .wireframe *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
@@ -125,6 +163,47 @@ body:has(.wireframe) {
 .wireframe-name {
   font-weight: 700;
   text-decoration: none;
+}
+
+/* Hidden until it's focused, from the keyboard */
+.wireframe-skip {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  padding: 8px 12px;
+  background: var(--wireframe-paper);
+  transform: translateY(-200%);
+
+  &:focus-visible {
+    transform: none;
+  }
+}
+
+.wireframe-clock {
+  padding: 2px 8px;
+  border: 1px solid var(--wireframe-line);
+  background: none;
+  color: inherit;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.wireframe-weather {
+  width: min(360px, calc(100vw - 32px));
+  padding: 16px;
+  border: 1px solid var(--wireframe-line);
+  background: var(--wireframe-paper);
+  color: var(--wireframe-ink);
+  font-family: var(--wireframe-font-body);
+
+  & h2 {
+    margin: 0 0 8px;
+    font-size: 16px;
+  }
+
+  & p {
+    margin: 8px 0 0;
+  }
 }
 
 .wireframe-footer {
@@ -194,7 +273,7 @@ body:has(.wireframe) {
   & pre {
     overflow-x: auto;
     padding: 16px;
-    background: var(--wireframe-tint);
+    background: var(--wireframe-surface);
   }
 
   /* Callout icons carry no size of their own */
@@ -321,7 +400,7 @@ body:has(.wireframe) {
 
 .wireframe-quote {
   padding: 16px;
-  background: var(--wireframe-tint);
+  background: var(--wireframe-surface);
 
   & blockquote {
     margin: 0;

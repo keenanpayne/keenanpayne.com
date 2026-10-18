@@ -1,4 +1,4 @@
-import { introOf, quotesOf, type TemplateProps } from "../../../site";
+import { introOf, quotesOf, titleOf, type TemplateProps } from "../../../site";
 import { KindWords, PageHeader, Section, WorkGrid } from "../parts";
 
 export function Work({ page, content }: TemplateProps<"work">) {
@@ -8,7 +8,7 @@ export function Work({ page, content }: TemplateProps<"work">) {
     <>
       <PageHeader
         eyebrow="Work"
-        title={intro?.heading ?? "Case studies"}
+        title={titleOf(page)}
         lede={intro?.subheading}
       />
 

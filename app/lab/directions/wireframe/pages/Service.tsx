@@ -4,6 +4,7 @@ import {
   introOf,
   quotesOf,
   samePath,
+  titleOf,
   useTo,
   type TemplateProps
 } from "../../../site";
@@ -17,7 +18,7 @@ export function Service({ page, content }: TemplateProps<"service">) {
     <>
       <PageHeader
         eyebrow={<a href={to("/services/")}>Services</a>}
-        title={intro?.heading ?? intro?.title ?? page.meta.title}
+        title={titleOf(page)}
         lede={intro?.subheading}
       />
 

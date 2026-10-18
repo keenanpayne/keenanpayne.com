@@ -91,6 +91,12 @@ export const SAMPLE_PAGES: { label: string; path: string }[] = [
   { label: "Not found", path: "/404/" }
 ];
 
+/**
+ * How much of a list Home shows at the least, in every direction; the rest
+ * is a link away. (Work, services, and kind words: all of them.)
+ */
+export const HOME = { posts: 4 } as const;
+
 /** Primary navigation, in order */
 export const NAVIGATION = [
   { text: "Work", path: "/portfolio/" },
@@ -113,6 +119,9 @@ const SECTIONS: Partial<Record<ViewKind, string>> = {
   contact: "/contact/",
   inquiry: "/contact/"
 };
+
+/** The navigation item's path a kind of page sits beneath, if any */
+export const sectionFor = (kind: ViewKind) => SECTIONS[kind];
 
 export interface NavItem {
   text: string;

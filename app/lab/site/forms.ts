@@ -1,6 +1,6 @@
-// The contact and project inquiry forms: their copy, and their questions
-// field by field. Directions style each kind of field their own way; the
-// questions stay the same everywhere.
+// The contact and project inquiry forms, and the newsletter sign-up: their
+// copy, and their questions field by field. Directions style each kind of
+// field their own way; the questions stay the same everywhere.
 
 import { inquiryBudgets, inquiryServices } from "../../data/inquiry";
 
@@ -135,3 +135,14 @@ const FORMS: Record<"contact" | "inquiry", Form> = {
 
 /** The contact or the project inquiry form */
 export const formOf = (kind: "contact" | "inquiry") => FORMS[kind];
+
+/**
+ * The newsletter sign-up, on every page that asks for it (`hasNewsletter()`,
+ * or a post's `newsletter`): one email field
+ */
+export const newsletterForm = {
+  title: "Newsletter",
+  text: "New articles and tutorials, sent when they’re published.",
+  submit: "Subscribe",
+  field: { ...email, label: "Email" } satisfies FormField
+} as const;

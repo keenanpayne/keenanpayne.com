@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 import { HtmlContent } from "../../../../components/HtmlContent";
-import { Html, useTo, type TemplateProps } from "../../../site";
+import { Html, titleOf, useTo, type TemplateProps } from "../../../site";
 import { Facts, PageHeader, Quote, Section } from "../parts";
 
 export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
@@ -60,7 +60,7 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
             <a href={to("/portfolio/")}>Work</a> / Case study
           </>
         }
-        title={page.client ?? page.meta.title}
+        title={titleOf(page)}
         lede={page.lede}
       />
 

@@ -109,7 +109,8 @@ const FONT = /(serif|sans-serif|monospace|system-ui|cursive|fantasy)\s*$/i;
 const kindOf = (value: string): TokenKind =>
   COLOR.test(value) ? "color" : FONT.test(value) ? "font" : "other";
 
-function parse(css: string): DirectionTokens {
+/** A stylesheet's tokens, read the way the style guide shows them */
+export function parseTokens(css: string): DirectionTokens {
   const base = declarations(ruleBody(css, /^:root\s*\{/m) ?? "");
   const altMatch = /^:root\[data-theme="(light|dark)"\]\s*\{/m.exec(css);
   const alt = altMatch
@@ -121,12 +122,13 @@ function parse(css: string): DirectionTokens {
 
   const tokens = [...base].map(([name, raw]): Token => {
     const value = resolve(raw, base);
-    const other = alt.has(name) ? resolve(alt.get(name)!, altScope) : undefined;
+    // A token that isn't overridden can still change, by aliasing one that is
+    const other = resolve(alt.get(name) ?? raw, altScope);
     return {
       name,
       kind: kindOf(value),
       value,
-      alt: other !== undefined && other !== value ? other : undefined
+      alt: altMatch && other !== value ? other : undefined
     };
   });
 
@@ -153,7 +155,7 @@ export function getDirectionTokens() {
       // Only a direction's own stylesheet, `<slug>/<slug>.css`
       const [, slug, file] =
         /\/directions\/([^/]+)\/([^/]+)\.css$/.exec(path) ?? [];
-      return slug && slug === file ? [[slug, parse(css)]] : [];
+      return slug && slug === file ? [[slug, parseTokens(css)]] : [];
     })
   );
   return cache;

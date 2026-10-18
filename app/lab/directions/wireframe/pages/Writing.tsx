@@ -3,6 +3,7 @@ import {
   introOf,
   postsByYear,
   postTypes,
+  titleOf,
   type TemplateProps
 } from "../../../site";
 import { Newsletter, PageHeader, PostList, Section } from "../parts";
@@ -16,7 +17,7 @@ export function Writing({ page, content }: TemplateProps<"writing">) {
     <>
       <PageHeader
         eyebrow="Writing"
-        title={intro?.heading ?? "Writing"}
+        title={titleOf(page)}
         lede={intro?.subheading}
       >
         <p className="wireframe-meta">

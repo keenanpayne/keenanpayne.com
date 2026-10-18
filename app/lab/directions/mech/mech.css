@@ -46,6 +46,17 @@
   @media (width >= 760px) {
     --mc-gutter: 32px;
   }
+
+  /* Roles every direction names (app/lab/conformance/foundations.ts) */
+  --mc-paper: var(--mc-void);
+  --mc-surface: var(--mc-panel);
+  --mc-accent: var(--mc-amber);
+  --mc-focus: var(--mc-green);
+  --mc-selection: var(--mc-amber);
+  --mc-selection-ink: var(--mc-void);
+  --mc-font-display: var(--mc-serif);
+  --mc-font-body: var(--mc-sans);
+  --mc-font-mono: var(--mc-mono);
 }
 
 @media (prefers-color-scheme: light) {
@@ -109,7 +120,7 @@
 }
 
 body:has(.mc) {
-  background: var(--mc-void);
+  background: var(--mc-paper);
 }
 
 .mc {
@@ -149,12 +160,12 @@ body:has(.mc) {
   }
 
   & ::selection {
-    background: var(--mc-amber);
-    color: var(--mc-void);
+    background: var(--mc-selection);
+    color: var(--mc-selection-ink);
   }
 
   & :focus-visible {
-    outline: 2px solid var(--mc-green);
+    outline: 2px solid var(--mc-focus);
     outline-offset: 2px;
   }
 }
