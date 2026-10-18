@@ -365,14 +365,15 @@ textarea.pt-input {
   }
 }
 
-.pt-search {
+/* The quick jump: a raised tab of shortcuts into the writing and the work */
+.pt-jump {
   display: none;
 
   @media (width >= 640px) {
     display: grid;
-    gap: 4px;
+    gap: 6px;
     width: 214px;
-    padding: 10px 16px 8px 40px;
+    padding: 10px 16px 10px 40px;
     border-radius: 0 28px 0 0;
     background: var(--pt-bezel);
     box-shadow: inset 0 2px 0 var(--pt-bezel-hi);
@@ -380,7 +381,7 @@ textarea.pt-input {
   }
 }
 
-.pt-search__label {
+.pt-jump__label {
   display: flex;
   align-items: center;
   gap: 6px;
@@ -391,21 +392,28 @@ textarea.pt-input {
   & .pt-icon {
     color: #fff;
   }
-
-  & a {
-    color: var(--pt-lav-ink);
-    font-size: 11px;
-    font-weight: normal;
-  }
 }
 
-.pt-search__row {
-  display: flex;
-  gap: 6px;
+.pt-jump__links {
+  display: grid;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-  & .pt-input,
-  & .pt-select {
-    flex: 1;
+  & a {
+    display: block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    background: var(--pt-lav-hi);
+    box-shadow: inset 0 -2px 0 var(--pt-lav);
+    color: var(--pt-lav-ink);
+    font: bold 11px/1.2 var(--pt-sans);
+    text-decoration: none;
+
+    &:hover {
+      background: #fff;
+    }
   }
 }
 
@@ -1531,9 +1539,9 @@ textarea.pt-input {
   transform: rotate(3deg);
 }
 
-.pt-search.pt-search--map {
+.pt-jump.pt-jump--map {
   display: grid;
-  gap: 4px;
+  gap: 6px;
   width: auto;
   padding: 8px 10px;
   border-radius: 6px;
@@ -1543,11 +1551,8 @@ textarea.pt-input {
     inset 0 -2px 0 var(--pt-bezel-lo);
   clip-path: none;
 
-  /* 16px keeps iOS from zooming in on focus */
-  & .pt-input,
-  & .pt-select {
-    height: 30px;
-    font-size: 16px;
+  & .pt-jump__links {
+    grid-template-columns: 1fr 1fr;
   }
 }
 

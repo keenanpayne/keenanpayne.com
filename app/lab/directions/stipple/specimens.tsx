@@ -61,6 +61,7 @@ import {
   Section,
   ServiceArt,
   ServiceCards,
+  NewsletterLink,
   Signup,
   Stipple,
   Terrain,
@@ -1272,13 +1273,10 @@ function Forms() {
         <Signup />
       </Specimen>
       <Specimen
-        label="Sign-up, compact"
-        note="Footer and phone menu; sending says so above it"
+        label="Newsletter link"
+        note="Footer and phone menu, which hold no forms: to the sign-up"
       >
-        {/* Room for that note */}
-        <div style={{ paddingTop: 36 }}>
-          <Signup compact />
-        </div>
+        <NewsletterLink />
       </Specimen>
     </SpecimenGrid>
   );

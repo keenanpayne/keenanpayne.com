@@ -91,7 +91,7 @@ import {
   isCodeBank,
   RAIL,
   sceneFor,
-  Search,
+  QuickJump,
   SIDE_BUTTONS,
   Zones
 } from "./Shell";
@@ -1942,13 +1942,13 @@ function Forms({ content }: SpecimenProps) {
         </Field>
       </Specimen>
       <Specimen
-        label="Search tab"
+        label="Quick jump tab"
         note="Raised on the frame’s top right, from 640px"
       >
-        <Search label="Search" />
+        <QuickJump />
       </Specimen>
-      <Specimen label="Search, site map" note="Phones: inside the site map">
-        <Search label="Site map search" className="pt-search--map" />
+      <Specimen label="Quick jump, site map" note="Phones: inside the site map">
+        <QuickJump className="pt-jump--map" />
       </Specimen>
       <Specimen label="Jump menu" note="Category tiles: goes where you pick">
         <Field>

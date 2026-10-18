@@ -1082,8 +1082,8 @@ export function QuotePromo({
         </>
       }
       cta={{
-        href: to("/testimonials/"),
-        text: "Click to read more kind words"
+        href: to("/project-inquiry/"),
+        text: "Click to start your own project"
       }}
     >
       <Html

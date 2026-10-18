@@ -23,6 +23,7 @@ import {
   pad,
   prefersReducedMotion,
   useActiveSection,
+  useTo,
   type FormField as Field
 } from "../../site";
 
@@ -973,13 +974,13 @@ export const mockStatus = (sent: boolean) =>
     : "Mockup only — this form doesn’t send anything.";
 
 /** Email sign-up for new writing, as a single field with its button */
-export function Signup({ compact }: { compact?: boolean }) {
+export function Signup() {
   const [sent, setSent] = useState(false);
   const id = useId();
 
   return (
     <form
-      className={cx("st-signup", compact && "st-signup--compact")}
+      className="st-signup"
       onSubmit={(event) => {
         event.preventDefault();
         setSent(true);
@@ -1001,9 +1002,24 @@ export function Signup({ compact }: { compact?: boolean }) {
         </button>
       </span>
       <span className="st-signup__status" role="status">
-        {compact ? (sent ? mockStatus(true) : "") : mockStatus(sent)}
+        {mockStatus(sent)}
       </span>
     </form>
+  );
+}
+
+/**
+ * The way to the sign-up from the footer and the phone menu, which hold no
+ * forms: the writing archive's newsletter section
+ */
+export function NewsletterLink() {
+  const to = useTo();
+
+  return (
+    <a className="st-newsLink" href={to("/archive/#newsletter")}>
+      Get email updates
+      <Arrow />
+    </a>
   );
 }
 

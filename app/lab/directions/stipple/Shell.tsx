@@ -12,7 +12,7 @@ import {
 } from "../../site";
 
 import { DenverClock, DenverNotes } from "./Denver";
-import { Arrow, Mark, Signup, Terrain } from "./parts";
+import { Arrow, Mark, NewsletterLink, Terrain } from "./parts";
 
 /** Below this, the navigation folds into a menu that fills the window */
 const WIDE = "(width >= 760px)";
@@ -118,7 +118,7 @@ export function Shell({ navigation, content, children }: ShellProps) {
           />
           <BottomName name={profile.name} />
           <SocialLinks socials={socials} className="st-bottom__links" />
-          <Signup compact />
+          <NewsletterLink />
         </div>
       </footer>
 
@@ -268,7 +268,7 @@ export function MenuIndex({
           className="st-menu__links"
           style={bare ? BARE : undefined}
         />
-        <Signup compact />
+        <NewsletterLink />
         <p
           className="st-menu__meta"
           style={bare ? { ...BARE, anchorName: "--st-clock" } : undefined}

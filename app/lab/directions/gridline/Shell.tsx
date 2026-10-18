@@ -107,9 +107,6 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
                     <a href={item.url}>{item.text}</a>
                   </li>
                 ))}
-                <li>
-                  <a href={to("/testimonials/")}>Testimonials</a>
-                </li>
               </ul>
             </div>
             <div className="gl-cell">

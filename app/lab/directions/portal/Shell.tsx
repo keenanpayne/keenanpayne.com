@@ -1,4 +1,4 @@
-import { useId, useState, type ReactNode } from "react";
+import { useId, type ReactNode } from "react";
 
 import { metadata } from "../../../lib/site";
 import type { LabContent, ProfileModel, SocialLink } from "../../../lib/types";
@@ -17,7 +17,6 @@ import {
   cx,
   DOMAIN,
   firstNameOf,
-  Go,
   Icon,
   ItemIcon,
   Mascot,
@@ -41,7 +40,7 @@ export const ZONE_ITEMS: Record<string, Item> = {
 
 const SUB_NAVIGATION = [
   { path: "/", text: "Home" },
-  { path: "/testimonials/", text: "Testimonials" },
+  { path: "/archive/#newsletter", text: "Newsletter" },
   { path: "/project-inquiry/", text: "Project inquiry" }
 ];
 
@@ -51,14 +50,14 @@ export const isCodeBank = (social: SocialLink) => social.text === "CodePen";
 export const RAIL = [
   { path: "/archive/", text: "New releases" },
   { path: "/services/", text: "Most wanted" },
-  { path: "/testimonials/", text: "Clients’ choice" },
+  { path: "/portfolio/", text: "Hall of fame" },
   { path: "/archive/#ratings", text: "Ratings guide" }
 ];
 
 export const SIDE_BUTTONS: { icon: IconName; text: string; path: string }[] = [
   { icon: "power", text: "Hire me", path: "/project-inquiry/" },
   { icon: "mail", text: "Newsletter", path: "/archive/#newsletter" },
-  { icon: "heart", text: "Kind words", path: "/testimonials/" },
+  { icon: "star", text: "Player profile", path: "/about/" },
   { icon: "question", text: "Help", path: "/contact/" }
 ];
 
@@ -212,50 +211,28 @@ export function sceneFor(
 }
 
 /**
- * Raised tab on the top right of the frame: search the writing or work. The
- * site map carries its own on phones.
+ * Raised tab on the top right of the frame: quick ways into the writing and
+ * the work (the chrome holds no forms, so it jumps rather than searches).
+ * The site map carries its own on phones.
  */
-export function Search({
-  label,
-  className
-}: {
-  /** Names the landmark; the site map's repeats the frame's */
-  label: string;
-  className?: string;
-}) {
+export function QuickJump({ className }: { className?: string }) {
   const to = useTo();
-  const id = useId();
-  const [scope, setScope] = useState("/archive/");
 
   return (
-    <form
-      className={cx("pt-search", className)}
-      role="search"
-      aria-label={label}
-      method="get"
-      action={to(scope)}
-    >
-      <p className="pt-search__label">
+    <div className={cx("pt-jump", className)}>
+      <p className="pt-jump__label">
         <Icon name="arrowRight" />
-        <label htmlFor={id}>Search</label>
-        <a href={to("/archive/#archive")}>Tips</a>
+        Quick jump
       </p>
-      <div className="pt-search__row">
-        <input id={id} className="pt-input" type="search" name="q" />
-      </div>
-      <div className="pt-search__row">
-        <select
-          className="pt-select"
-          aria-label="Search in"
-          value={scope}
-          onChange={(event) => setScope(event.target.value)}
-        >
-          <option value="/archive/">Writing</option>
-          <option value="/portfolio/">Work</option>
-        </select>
-        <Go />
-      </div>
-    </form>
+      <ul className="pt-jump__links">
+        <li>
+          <a href={to("/archive/#archive")}>Writing archive</a>
+        </li>
+        <li>
+          <a href={to("/portfolio/")}>Master work list</a>
+        </li>
+      </ul>
+    </div>
   );
 }
 
@@ -376,7 +353,7 @@ export function Zones({ navigation }: { navigation: NavItem[] }) {
 
 /**
  * The site map, which the header folds into on phones: the zones as big
- * buttons, then search, the chips, and the lavender strip
+ * buttons, then the quick jump, the chips, and the lavender strip
  */
 function SiteMap({
   id,
@@ -410,7 +387,7 @@ function SiteMap({
         <Zones navigation={navigation} />
       </nav>
 
-      <Search label="Site map search" className="pt-search--map" />
+      <QuickJump className="pt-jump--map" />
 
       <div className="pt-map__chips">
         <Chips codeBank={codeBank} />
@@ -452,7 +429,7 @@ export function Shell({
               {open ? "Where to next? Pick a zone!" : scene.bubble}
             </p>
           </div>
-          <Search label="Search" />
+          <QuickJump />
         </div>
 
         <div className="pt-frame">
