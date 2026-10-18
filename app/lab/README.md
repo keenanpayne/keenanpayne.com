@@ -62,7 +62,7 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 
 ## Style guide
 
-`/lab/styleguide/` shows every direction’s foundations, components, and chrome, two ways: one direction with all of its sections (`/lab/styleguide/<slug>/`, or one section alone at `/lab/styleguide/<slug>/<section>/`), or one section across every direction (`/lab/styleguide/compare/<section>/`). The sections are listed in `styleguide/sections.ts`.
+`/lab/styleguide/` shows every direction’s foundations, components, and chrome, two ways: one direction with all of its sections (`/lab/styleguide/<slug>/`, or one section alone at `/lab/styleguide/<slug>/<section>/`), or one section across every direction (`/lab/styleguide/compare/<section>/`). The sections are listed in `styleguide/sections.ts`. A third view, **Conformance** (`/lab/styleguide/conformance/`), shows how every direction measures up to the [guardrails](#guardrails).
 
 - **Shared sections** draw themselves for every direction: Color reads the custom properties straight from `<slug>.css` (`styleguide/tokens.server.ts`), Typefaces reads the font tokens and the Google Fonts URL in `stylesheets`, and Shell renders the direction’s `Shell` around a placeholder. They need nothing from a direction beyond following the light and dark rule above.
 - **Specimens** are the rest (type scale, motifs, imagery, page header, buttons, labels, panels, cards, lists, testimonials, forms, wayfinding, prose). A direction’s `specimens.tsx` gives each one a component that renders its own parts with real `content`, laid out with `styleguide/kit.tsx`: `SpecimenGrid`, `Specimen` (a captioned example), `TypeSample` (measures and prints a style’s specs), and `Note`. They render inside the direction’s `root` class, and receive the `navigation` as the Shell section shows it; `prose` is an article body with every element the Markdown can produce, run through the real pipeline. The style guide alone loads `specimens.tsx`, so a mockup page doesn’t carry it.
@@ -81,7 +81,7 @@ Every direction has the same features, pages, and foundations, so a person or an
    - **Source** (`source.ts`): no fact about the owner spelled out in a direction’s code.
 3. **Known gaps** (`conformance/gaps.ts`): what each direction fell short of when the checks were written. It only shrinks. The tests fail when a direction falls short of anything not listed, and when it meets something listed, so the line comes off. To close one, delete its line and run `npm run lab:check`; the failure says what’s missing, page by page. Never add a line to make a check pass.
 
-A failure names the direction, the requirement and its rule, and what’s missing on which page.
+A failure names the direction, the requirement and its rule, and what’s missing on which page. The style guide’s Conformance page (`/lab/styleguide/conformance/`) shows the same results for every direction at once: a score for each, every check across all of them, and each known gap or regression with what’s missing, page by page. `conformance/report.server.ts` runs the checks for both, so the page and the tests never disagree; in development the page runs them afresh each time you open it.
 
 ### Feature or motif?
 

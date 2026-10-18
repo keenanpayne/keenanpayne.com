@@ -151,14 +151,20 @@ export const getSection = (id: string | undefined) =>
 
 export const STYLEGUIDE_PATH = "/lab/styleguide/";
 
+/** How every direction measures up to the shared requirements */
+export const CONFORMANCE_PATH = `${STYLEGUIDE_PATH}conformance/`;
+
 /**
  * Names a direction can't take: `/lab/styleguide/` is the guide's own route,
- * and `/lab/styleguide/compare/…` holds its comparisons (`npm run lab:new`
- * rejects both)
+ * `/lab/styleguide/compare/…` holds its comparisons, and
+ * `/lab/styleguide/conformance/` its checks (`npm run lab:new` rejects them)
  */
-export const RESERVED_SLUGS = ["styleguide", "compare"];
+export const RESERVED_SLUGS = ["styleguide", "compare", "conformance"];
 
-/** What a style guide page shows: one direction, or one section across all */
+/**
+ * What a style guide page shows: one direction, one section across all, or
+ * how every direction measures up to the shared requirements
+ */
 export type StyleGuideMode =
   | {
       kind: "direction";
@@ -166,12 +172,13 @@ export type StyleGuideMode =
       /** Shows only this section */
       only?: StyleSectionId;
     }
-  | { kind: "compare"; section: StyleSectionId };
+  | { kind: "compare"; section: StyleSectionId }
+  | { kind: "conformance" };
 
 /**
  * Reads the path after `/lab/styleguide/`: nothing (every direction's
  * overview), `<slug>/` (one direction), `<slug>/<section>/` (one section of
- * it), or `compare/<section>/`
+ * it), `compare/<section>/`, or `conformance/`
  */
 export function resolveMode(
   splat: string,
@@ -179,6 +186,9 @@ export function resolveMode(
 ): StyleGuideMode | undefined {
   const parts = splat.split("/").filter(Boolean);
   if (parts.length === 0) return { kind: "compare", section: "overview" };
+  if (parts.length === 1 && parts[0] === "conformance") {
+    return { kind: "conformance" };
+  }
   if (parts.length === 1 && slugs.includes(parts[0])) {
     return { kind: "direction", slug: parts[0] };
   }

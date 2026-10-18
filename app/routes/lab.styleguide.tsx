@@ -1,11 +1,13 @@
-import { data, useParams } from "react-router";
+import { data, useParams, type ShouldRevalidateFunction } from "react-router";
 
+import { getConformanceReport } from "../lab/conformance/report.server";
 import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
 import { directions, getDirection } from "../lab/registry";
 import { navigationFor, resolveView } from "../lab/site/ia";
 import { getProseSpecimen } from "../lab/styleguide/prose.server";
 import {
+  CONFORMANCE_PATH,
   getSection,
   resolveMode,
   STYLEGUIDE_PATH
@@ -33,8 +35,9 @@ const modeOf = (params: { "*"?: string }) =>
 // The Shell is shown around About, so the navigation marks a current page
 const SHELL_PATH = "/about/";
 
-export function loader({ params }: Route.LoaderArgs) {
-  if (!modeOf(params)) throw data(null, { status: 404 });
+export async function loader({ params }: Route.LoaderArgs) {
+  const mode = modeOf(params);
+  if (!mode) throw data(null, { status: 404 });
 
   const view = resolveView(SHELL_PATH, getPage(SHELL_PATH));
   return {
@@ -45,13 +48,23 @@ export function loader({ params }: Route.LoaderArgs) {
       path: SHELL_PATH,
       view,
       navigation: navigationFor(view, SHELL_PATH)
-    }
+    },
+    // Rendering every direction's pages takes a moment, so only this page
+    // runs the checks
+    conformance:
+      mode.kind === "conformance" ? await getConformanceReport() : undefined
   };
 }
 
-// Everything here is the same on every style guide page, so moving between
-// them only changes what's shown
-export const shouldRevalidate = () => false;
+// Everything else here is the same on every style guide page, so moving
+// between them only changes what's shown. The checks run afresh on the way
+// into the Conformance page.
+export const shouldRevalidate: ShouldRevalidateFunction = ({
+  currentUrl,
+  nextUrl
+}) =>
+  nextUrl.pathname === CONFORMANCE_PATH &&
+  currentUrl.pathname !== CONFORMANCE_PATH;
 
 export const meta = ({ params }: Route.MetaArgs) => {
   const mode = modeOf(params);
@@ -63,9 +76,11 @@ export const meta = ({ params }: Route.MetaArgs) => {
         ]
           .filter(Boolean)
           .join(" · ")
-      : mode && mode.section !== "overview"
-        ? getSection(mode.section)?.label
-        : undefined;
+      : mode?.kind === "conformance"
+        ? "Conformance"
+        : mode && mode.section !== "overview"
+          ? getSection(mode.section)?.label
+          : undefined;
 
   return [
     {

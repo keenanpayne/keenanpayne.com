@@ -12,7 +12,7 @@ export default {
     const { getPrerenderPaths } =
       await import("./app/lib/content/content.server");
     const { directions, SAMPLE_PAGES } = await import("./app/lab/registry");
-    const { comparePath, STYLE_SECTIONS, styleguidePath } =
+    const { comparePath, CONFORMANCE_PATH, STYLE_SECTIONS, styleguidePath } =
       await import("./app/lab/styleguide/sections");
     return [
       ...getPrerenderPaths(),
@@ -22,6 +22,7 @@ export default {
       ),
       ...STYLE_SECTIONS.map(({ id }) => comparePath(id)),
       ...directions.map(({ slug }) => styleguidePath(slug)),
+      CONFORMANCE_PATH,
       ...RESOURCE_PATHS
     ];
   },

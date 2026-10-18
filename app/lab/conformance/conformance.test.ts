@@ -4,7 +4,9 @@
  * Holds every direction to the same feature set, information architecture,
  * and foundations: renders each of its sample pages, then checks them
  * against `./requirements.ts`, its stylesheet against `./foundations.ts`,
- * and its code against `./source.ts`. `npm run lab:check` runs it.
+ * and its code against `./source.ts` (`./report.server.ts` runs them).
+ * `npm run lab:check` runs it, and the style guide shows the same results
+ * at `/lab/styleguide/conformance/`.
  *
  * A failure names the direction, the requirement, and what's missing on
  * which page. What a direction fell short of when the requirements were
@@ -15,14 +17,12 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
-import { directions, SAMPLE_PAGES } from "../registry";
-import { parseTokens } from "../styleguide/tokens.server";
+import { directions } from "../registry";
 
-import { flatten, FOUNDATIONS } from "./foundations";
+import { FOUNDATIONS } from "./foundations";
 import { KNOWN_GAPS } from "./gaps";
-import { renderPage } from "./render";
+import { checkDirection } from "./report.server";
 import { REQUIREMENTS } from "./requirements";
-import { factsIn, SOURCE_RULE } from "./source";
 
 // Read from disk: Vitest serves CSS imports, even `?raw` ones, empty, and
 // a glob is fixed when the test is first compiled, so it would miss a new
@@ -31,7 +31,7 @@ const directionsDir = new URL("../directions/", import.meta.url);
 
 const stylesheetOf = (slug: string) => {
   const file = new URL(`${slug}/${slug}.css`, directionsDir);
-  return existsSync(file) ? readFileSync(file, "utf8") : undefined;
+  return existsSync(file) ? readFileSync(file, "utf8") : "";
 };
 
 /** Source files of a direction, by their path inside its folder */
@@ -52,63 +52,24 @@ const skins = await Promise.all(
   }))
 );
 
-/**
- * Passes when a direction meets a requirement, or falls short of it in a
- * way `./gaps.ts` already lists
- */
-function expectMet(
-  slug: string,
-  id: string,
-  rule: string,
-  problems: string[],
-  label = "needs"
-) {
-  const known = KNOWN_GAPS[slug as keyof typeof KNOWN_GAPS]?.includes(id);
-  if (known) {
-    expect(
-      problems,
-      `${slug} now meets ${id}: delete it from app/lab/conformance/gaps.ts`
-    ).not.toEqual([]);
-  } else {
-    expect(problems, `${rule}\n${slug} ${label}`).toEqual([]);
-  }
-}
-
 describe.each(skins)("$name", ({ slug, skin }) => {
-  const pages = SAMPLE_PAGES.map(({ path }) => renderPage(slug, skin, path));
-
-  describe("pages", () => {
-    it.each(REQUIREMENTS)("$id", ({ id, rule, kinds, check }) => {
-      const problems = pages
-        .filter((page) => !kinds || kinds.includes(page.view.kind))
-        .flatMap((page) =>
-          check(page).map((problem) => `${page.path}: ${problem}`)
-        );
-      expectMet(slug, id, rule, problems);
-    });
+  const results = checkDirection({
+    slug,
+    skin,
+    css: stylesheetOf(slug),
+    sources: sourcesOf(slug)
   });
 
-  describe("foundations", () => {
-    const css = stylesheetOf(slug) ?? "";
-    const sheet = { root: skin.root, css, tokens: parseTokens(css) };
-    const flat = flatten(css);
-
-    it.each(FOUNDATIONS)("$id", ({ id, rule, check }) => {
-      expect(css, `app/lab/directions/${slug}/${slug}.css`).not.toBe("");
-      expectMet(slug, id, rule, check(sheet, flat));
-    });
-  });
-
-  describe("source", () => {
-    it.each(sourcesOf(slug))("source.facts:%s", (file, source) => {
-      expectMet(
-        slug,
-        `source.facts:${file}`,
-        SOURCE_RULE,
-        factsIn(source),
-        "spells out"
+  it.each(results)("$id", ({ id, group, rule, status, problems }) => {
+    if (status === "closed") {
+      expect.fail(
+        `${slug} now meets ${id}: delete it from app/lab/conformance/gaps.ts`
       );
-    });
+    }
+    if (status === "regression") {
+      const label = group === "Source" ? "spells out" : "needs";
+      expect(problems, `${rule}\n${slug} ${label}`).toEqual([]);
+    }
   });
 });
 

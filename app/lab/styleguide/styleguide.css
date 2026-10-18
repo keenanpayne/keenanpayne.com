@@ -890,3 +890,229 @@ html body:has(.sg) .labBar {
     }
   }
 }
+
+/* Conformance
+   ========================================================================== */
+
+.sg {
+  /* Status colors, in whichever scheme the lab is showing */
+  --sg-met: light-dark(#1a7f37, #4ac26b);
+  --sg-gap: light-dark(#9a6700, #d29922);
+  --sg-regression: light-dark(#cf222e, #ff7b72);
+  --sg-closed: light-dark(#0969da, #58a6ff);
+
+  & code {
+    font-family: var(--sg-mono);
+    font-size: 0.92em;
+  }
+}
+
+.sg-mark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  color: var(--sg-status);
+  font-weight: 500;
+  white-space: nowrap;
+
+  & > [aria-hidden] {
+    font-weight: 700;
+  }
+
+  &[data-status="met"] {
+    --sg-status: var(--sg-met);
+  }
+
+  &[data-status="gap"] {
+    --sg-status: var(--sg-gap);
+  }
+
+  &[data-status="regression"] {
+    --sg-status: var(--sg-regression);
+  }
+
+  &[data-status="closed"] {
+    --sg-status: var(--sg-closed);
+  }
+}
+
+.sg-score__count {
+  color: var(--lab-muted);
+
+  & strong {
+    color: var(--lab-ink);
+    font-size: 28px;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+.sg-score__meter {
+  width: 100%;
+  height: 8px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--lab-line);
+  appearance: none;
+
+  &::-webkit-meter-bar {
+    border: 0;
+    border-radius: 999px;
+    background: var(--lab-line);
+  }
+
+  &::-webkit-meter-optimum-value,
+  &::-webkit-meter-suboptimum-value,
+  &::-webkit-meter-even-less-good-value {
+    border-radius: 999px;
+    background: var(--sg-met);
+  }
+
+  &::-moz-meter-bar {
+    border-radius: 999px;
+    background: var(--sg-met);
+  }
+}
+
+.sg-score__tally,
+.sg-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  list-style: none;
+}
+
+/* Every check, across every direction. Positioned, so the hidden labels in
+   its cells scroll with it rather than widening the page. */
+.sg-matrix {
+  position: relative;
+  overflow-x: auto;
+  border: 1px solid var(--lab-line);
+  border-radius: 14px;
+  background: var(--lab-card);
+
+  & table {
+    width: 100%;
+    min-width: 720px;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  & th,
+  & td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--lab-line);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  & thead th {
+    color: var(--lab-muted);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  & thead th:not(:first-child),
+  & td {
+    width: 96px;
+    text-align: center;
+  }
+
+  & tbody th {
+    font-weight: 400;
+  }
+
+  & td a {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 6px;
+    text-decoration: none;
+
+    &:hover {
+      background: var(--lab-paper);
+    }
+  }
+
+  & tbody:last-child tr:last-child :is(th, td) {
+    border-bottom: 0;
+  }
+}
+
+.sg-matrix__id {
+  display: block;
+  color: var(--lab-ink);
+  font-weight: 600;
+}
+
+.sg-matrix__rule {
+  display: block;
+  max-width: 72ch;
+  margin-top: 2px;
+  color: var(--lab-muted);
+}
+
+.sg-matrix__group th {
+  padding-block: 18px 6px;
+  color: var(--lab-muted);
+  font-size: 11px;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* What each direction still falls short of */
+.sg-gaps {
+  display: grid;
+  gap: 8px;
+}
+
+.sg-gap {
+  border: 1px solid var(--lab-line);
+  border-radius: 10px;
+  background: var(--lab-card);
+  scroll-margin-top: calc(var(--sg-toolbar) + 12px);
+
+  & summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 4px 12px;
+    padding: 10px 14px;
+    cursor: pointer;
+
+    & .sg-caption__note {
+      margin-left: auto;
+    }
+  }
+
+  &[open] summary {
+    border-bottom: 1px solid var(--lab-line);
+  }
+
+  & > p {
+    max-width: 72ch;
+    margin: 12px 14px 0;
+    color: var(--lab-muted);
+  }
+
+  & ul {
+    display: grid;
+    gap: 8px;
+    margin: 12px 0 0;
+    padding: 0 14px 14px 32px;
+    font-size: 13px;
+  }
+}
+
+.sg-gap__where {
+  display: block;
+  color: var(--lab-muted);
+}
+
+.sg-gaps__none {
+  margin: 0;
+}

@@ -33,6 +33,11 @@ describe("resolveMode", () => {
     });
   });
 
+  it("shows how every direction conforms", () => {
+    expect(resolveMode("conformance/", SLUGS)).toEqual({ kind: "conformance" });
+    expect(resolveMode("conformance/mech/", SLUGS)).toBeUndefined();
+  });
+
   it("compares one section across directions", () => {
     expect(resolveMode("compare/color/", SLUGS)).toEqual({
       kind: "compare",

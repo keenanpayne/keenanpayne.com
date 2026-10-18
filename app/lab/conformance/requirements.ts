@@ -40,6 +40,8 @@ import type { RenderedPage } from "./render";
 export interface Requirement {
   /** Stable, e.g. `shell.skipLink`; what `gaps.ts` lists */
   id: string;
+  /** Where it's reported: the Shell, every page, or one kind of page */
+  group?: "Shell" | "Every page" | "Pages";
   /** What every direction does, in a sentence */
   rule: string;
   /** The kinds of page it applies to; every page when left out */
@@ -894,7 +896,14 @@ const pages: Requirement[] = [
 ];
 
 /** Every requirement, in the order they're reported */
-export const REQUIREMENTS: Requirement[] = [...shell, ...everyPage, ...pages];
+export const REQUIREMENTS: Requirement[] = [
+  ...shell.map((requirement) => ({ ...requirement, group: "Shell" as const })),
+  ...everyPage.map((requirement) => ({
+    ...requirement,
+    group: "Every page" as const
+  })),
+  ...pages.map((requirement) => ({ ...requirement, group: "Pages" as const }))
+];
 
 export const getRequirement = (id: string) =>
   REQUIREMENTS.find((requirement) => requirement.id === id);

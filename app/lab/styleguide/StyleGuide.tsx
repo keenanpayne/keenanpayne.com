@@ -5,7 +5,9 @@
  * ways: one direction with all of its sections (`/lab/styleguide/<slug>/`),
  * or one section across every direction (`/lab/styleguide/compare/<id>/`).
  * Switching directions keeps the section in view, and switching modes
- * keeps the section too, so either axis is a click away.
+ * keeps the section too, so either axis is a click away. A third view,
+ * `/lab/styleguide/conformance/`, shows how every direction measures up to
+ * the requirements they share.
  */
 
 import {
@@ -21,6 +23,7 @@ import {
 import { Link, useNavigate } from "react-router";
 
 import type { LabContent } from "../../lib/types";
+import type { ConformanceReport } from "../conformance/report.server";
 import { loadDirection, loadSpecimens } from "../directions";
 import { rebaseLinks } from "../links";
 import {
@@ -36,8 +39,10 @@ import { useActiveSection } from "../site/hooks";
 import { BaseContext, PreviewContext } from "../site/links";
 import { useStored, writeStored } from "../stored";
 
+import { ConformanceView } from "./Conformance";
 import {
   comparePath,
+  CONFORMANCE_PATH,
   getSection,
   GROUPS,
   sectionPath,
@@ -61,9 +66,11 @@ export interface StyleGuideData {
   prose: string;
   tokens: Record<string, DirectionTokens>;
   shell: ShellSample;
+  /** Only on the Conformance page, which runs the checks */
+  conformance?: ConformanceReport;
 }
 
-type Data = Omit<StyleGuideData, "tokens">;
+type Data = Omit<StyleGuideData, "tokens" | "conformance">;
 
 // Remembered per viewer: the last direction viewed, and the directions
 // hidden from comparisons
@@ -273,9 +280,12 @@ function useKeys(previous: () => void, next: () => void) {
 }
 
 interface SectionLinks {
-  current: StyleSectionId;
+  /** The section shown, or the Conformance page */
+  current: StyleSectionId | "conformance";
   hrefFor: (id: StyleSectionId) => string;
 }
+
+const CHECKS_GROUP = "Checks";
 
 /** The sections down the side, on wide screens */
 function SectionNav({ current, hrefFor }: SectionLinks) {
@@ -301,6 +311,19 @@ function SectionNav({ current, hrefFor }: SectionLinks) {
           </ul>
         </div>
       ))}
+      <div className="sg-sidebar__group">
+        <p className="sg-sidebar__label">{CHECKS_GROUP}</p>
+        <ul>
+          <li>
+            <Link
+              to={CONFORMANCE_PATH}
+              aria-current={current === "conformance" ? "true" : undefined}
+            >
+              Conformance
+            </Link>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }
@@ -315,7 +338,11 @@ function SectionPicker({ current, hrefFor }: SectionLinks) {
       <select
         value={current}
         onChange={(event) =>
-          navigate(hrefFor(event.target.value as StyleSectionId))
+          navigate(
+            event.target.value === "conformance"
+              ? CONFORMANCE_PATH
+              : hrefFor(event.target.value as StyleSectionId)
+          )
         }
       >
         {GROUPS.map((group) => (
@@ -329,6 +356,9 @@ function SectionPicker({ current, hrefFor }: SectionLinks) {
             )}
           </optgroup>
         ))}
+        <optgroup label={CHECKS_GROUP}>
+          <option value="conformance">Conformance</option>
+        </optgroup>
       </select>
     </label>
   );
@@ -363,15 +393,21 @@ function Toolbar({
         </Link>
         <Link
           to={comparePath(section)}
-          aria-current={byDirection ? undefined : "page"}
+          aria-current={mode.kind === "compare" ? "page" : undefined}
         >
           By component
+        </Link>
+        <Link
+          to={CONFORMANCE_PATH}
+          aria-current={mode.kind === "conformance" ? "page" : undefined}
+        >
+          Conformance
         </Link>
       </div>
 
       {picker}
 
-      {byDirection ? (
+      {mode.kind === "conformance" ? null : byDirection ? (
         <nav className="sg-tabs" aria-label="Directions">
           {directions.map((direction) => (
             <Link
@@ -414,11 +450,13 @@ function Toolbar({
         </div>
       )}
 
-      <span className="sg-toolbar__hint" aria-hidden="true">
-        <kbd>←</kbd>
-        <kbd>→</kbd>
-        {byDirection ? " direction" : " section"}
-      </span>
+      {mode.kind !== "conformance" && (
+        <span className="sg-toolbar__hint" aria-hidden="true">
+          <kbd>←</kbd>
+          <kbd>→</kbd>
+          {byDirection ? " direction" : " section"}
+        </span>
+      )}
     </div>
   );
 }
@@ -625,7 +663,13 @@ export function StyleGuide({
   const only = byDirection ? mode.only : undefined;
   // The section in view while scrolling through a whole direction
   const inView = useActiveSection(byDirection && !only ? SECTION_IDS : []);
-  const section = only ?? (byDirection ? (inView ?? "overview") : mode.section);
+  const section =
+    only ??
+    (byDirection
+      ? (inView ?? "overview")
+      : mode.kind === "compare"
+        ? mode.section
+        : "overview");
 
   const storedSlug = useStored(LAST_DIRECTION_KEY);
   const lastSlug =
@@ -666,7 +710,7 @@ export function StyleGuide({
           : styleguidePath(next.slug, section),
         { preventScrollReset: !only }
       );
-    } else {
+    } else if (mode.kind === "compare") {
       const at = STYLE_SECTIONS.findIndex(({ id }) => id === mode.section);
       const next = STYLE_SECTIONS[at + by];
       if (next) navigate(comparePath(next.id));
@@ -675,11 +719,13 @@ export function StyleGuide({
   useKeys(step(-1), step(1));
 
   const hrefFor = (id: StyleSectionId) =>
-    mode.kind === "compare"
+    mode.kind !== "direction"
       ? comparePath(id)
       : only
         ? sectionPath(mode.slug, id)
         : `#${id}`;
+  // The sidebar marks no section on the Conformance page
+  const current = mode.kind === "conformance" ? "conformance" : section;
 
   return (
     <div className="sg">
@@ -704,11 +750,11 @@ export function StyleGuide({
         lastSlug={lastSlug}
         hidden={hidden}
         setHidden={setHidden}
-        picker={<SectionPicker current={section} hrefFor={hrefFor} />}
+        picker={<SectionPicker current={current} hrefFor={hrefFor} />}
       />
 
       <div className="sg-body">
-        <SectionNav current={section} hrefFor={hrefFor} />
+        <SectionNav current={current} hrefFor={hrefFor} />
         <main className="sg-main">
           {mode.kind === "direction" ? (
             <DirectionView
@@ -717,6 +763,8 @@ export function StyleGuide({
               tokens={tokens[mode.slug] ?? NO_TOKENS}
               data={data}
             />
+          ) : mode.kind === "conformance" ? (
+            <ConformanceView report={loaderData.conformance} />
           ) : (
             <CompareView
               section={mode.section}
