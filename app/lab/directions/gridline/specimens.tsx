@@ -17,6 +17,7 @@ import {
 } from "../../styleguide/kit";
 
 import { SkySketch } from "./Denver";
+import { rigFor } from "./rigs";
 import {
   DEFAULT_TREATMENT,
   ServiceArt,
@@ -273,13 +274,33 @@ function Imagery({ content }: SpecimenProps) {
           <ul className="gl-illos">
             {services.map((service) => (
               <li key={service.url}>
-                <ServiceArt url={service.url} treatment={id as TreatmentId} />
+                <ServiceArt
+                  url={service.url}
+                  treatment={id as TreatmentId}
+                  playback="never"
+                />
                 <span className="gl-meta">{service.title}</span>
               </li>
             ))}
           </ul>
         </Specimen>
       ))}
+      {services.map((service) => {
+        const rig = rigFor(service.url);
+        return (
+          rig && (
+            <Specimen
+              key={service.url}
+              label={`Animation: ${rig.name}`}
+              note={`${rig.story}; loops on its service page, plays on hover on its tile`}
+            >
+              <div className="gl-motion-sample">
+                <ServiceArt url={service.url} />
+              </div>
+            </Specimen>
+          )
+        );
+      })}
     </SpecimenGrid>
   );
 }

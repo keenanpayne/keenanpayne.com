@@ -183,7 +183,7 @@ export function SkySketch({
   );
 }
 
-/** A button that opens the readout; the header and the footer each have one */
+/** The header's clock: a button that opens the readout */
 export function DenverClock({
   readout,
   location,

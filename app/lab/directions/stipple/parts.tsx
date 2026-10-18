@@ -40,7 +40,7 @@ import {
   type TerrainShape
 } from "./dither";
 import { sketch } from "./iso";
-import { sceneFor } from "../../site/scenes";
+import { sceneFor } from "./scenes";
 
 type Posts = LabContent["posts"];
 type Work = LabContent["work"];

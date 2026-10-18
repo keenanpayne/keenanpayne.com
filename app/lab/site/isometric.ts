@@ -317,3 +317,105 @@ export function penFor(surface: Surface): Pen {
       surface.stroke(points.map(project), dashed)
   };
 }
+
+/* Drawing helpers
+   ========================================================================== */
+
+/** A rectangle on a wall facing +y (the left-hand faces) */
+export const onLeft = (
+  y: number,
+  x0: number,
+  x1: number,
+  z0: number,
+  z1: number
+): Vec3[] => [
+  [x0, y, z0],
+  [x1, y, z0],
+  [x1, y, z1],
+  [x0, y, z1]
+];
+
+/** A rectangle on a wall facing +x (the right-hand faces) */
+export const onRight = (
+  x: number,
+  y0: number,
+  y1: number,
+  z0: number,
+  z1: number
+): Vec3[] => [
+  [x, y0, z0],
+  [x, y1, z0],
+  [x, y1, z1],
+  [x, y0, z1]
+];
+
+/** A rectangle facing up, at height z */
+export const onTop = (
+  z: number,
+  x0: number,
+  x1: number,
+  y0: number,
+  y1: number
+): Vec3[] => [
+  [x0, y0, z],
+  [x1, y0, z],
+  [x1, y1, z],
+  [x0, y1, z]
+];
+
+/** A grid of dark windows on a wall */
+export function windows(
+  pen: Pen,
+  wall: "left" | "right",
+  at: number,
+  [from, to]: [number, number],
+  [bottom, top]: [number, number],
+  columns: number,
+  rows: number
+) {
+  const width = (to - from) / columns;
+  const height = (top - bottom) / rows;
+  for (let column = 0; column < columns; column++) {
+    for (let row = 0; row < rows; row++) {
+      const a = from + width * (column + 0.25);
+      const b = from + width * (column + 0.75);
+      const z0 = bottom + height * (row + 0.25);
+      const z1 = bottom + height * (row + 0.7);
+      pen.face(
+        wall === "left" ? onLeft(at, a, b, z0, z1) : onRight(at, a, b, z0, z1),
+        {
+          tone: 0.95,
+          outline: false
+        }
+      );
+    }
+  }
+}
+
+/** A point on a quadratic curve */
+export const bend = (a: Vec3, control: Vec3, b: Vec3, t: number): Vec3 =>
+  [0, 1, 2].map(
+    (axis) =>
+      (1 - t) ** 2 * a[axis] +
+      2 * (1 - t) * t * control[axis] +
+      t ** 2 * b[axis]
+  ) as Vec3;
+
+/**
+ * The end of an arrowhead's wing: from the tip, back toward a point on the
+ * shaft, turned by `spread` radians as seen on screen
+ */
+export function flare(
+  tip: Vec3,
+  toward: Vec3,
+  spread: number,
+  length: number
+): Vec3 {
+  // Screen right is (1, -1, 0) / 1.732 in the world, screen up is +z
+  const [tx, ty] = project(tip);
+  const [bx, by] = project(toward);
+  const angle = Math.atan2(by - ty, bx - tx) + spread;
+  const sx = Math.cos(angle) * length;
+  const sy = Math.sin(angle) * length;
+  return [tip[0] + sx / 1.732, tip[1] - sx / 1.732, tip[2] - sy];
+}

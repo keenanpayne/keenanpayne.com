@@ -98,12 +98,6 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
                 {profile.name}
               </a>
               <p>{profile.role}</p>
-              <DenverClock
-                readout={readout}
-                location={profile.location}
-                label={`${profile.location.name} ·`}
-                className="gl-footer__clock"
-              />
             </div>
             <div className="gl-cell">
               <p className="gl-label">Pages</p>

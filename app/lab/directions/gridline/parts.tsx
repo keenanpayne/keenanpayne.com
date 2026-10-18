@@ -448,7 +448,7 @@ export function ServiceCells({
           <a href={service.url}>
             <span className="gl-service__index">{pad(index + 1)}</span>
             <span className="gl-service__art">
-              <ServiceArt url={service.url} />
+              <ServiceArt url={service.url} playback="hover" />
             </span>
             <h3>{service.title}</h3>
             {service.lede && <p>{service.lede}</p>}
