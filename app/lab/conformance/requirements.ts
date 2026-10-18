@@ -536,21 +536,26 @@ const everyPage: Requirement[] = [
   forKinds(
     ["writing", "archive", "page", "post"],
     "page.newsletter",
-    "The newsletter sign-up (`newsletterForm`: a form with a required email field named `email`, sending the shared way) is on exactly the pages that ask for it.",
-    ({ main, view }, problem) => {
+    "The newsletter sign-up (`newsletterForm`: a form with a required email field named `email`, sending the shared way on the live site) is on exactly the pages that ask for it.",
+    (page, problem) => {
+      const { main, view } = page;
       const asked =
         view.kind === "post" ? view.page.newsletter : hasNewsletter(view.page);
       const { name, required } = newsletterForm.field;
       const emailIn = (form: HTMLElement) =>
         form.querySelector(`input[type="email"][name="${name}"]`);
-      const forms = main
-        .querySelectorAll("form")
-        .filter((form) => emailIn(form) && !form.querySelector("textarea"));
+      const signups = (element: HTMLElement) =>
+        element
+          .querySelectorAll("form")
+          .filter((form) => emailIn(form) && !form.querySelector("textarea"));
+      const forms = signups(main);
       if (asked && !forms.length) problem("the newsletter sign-up");
       if (!asked && forms.length) problem("no newsletter sign-up here");
-      forms
-        .flatMap((form) => submissionProblems(form, "newsletter"))
-        .forEach(problem);
+      if (asked) {
+        signups(page.live().main)
+          .flatMap((form) => submissionProblems(form, "newsletter"))
+          .forEach(problem);
+      }
       if (
         required &&
         forms.some((form) => attr(emailIn(form)!, "required") === undefined)
@@ -1020,14 +1025,23 @@ const pages: Requirement[] = [
   forKinds(
     ["contact", "inquiry"],
     "form.sends",
-    "The form sends its answers the shared way (`useSubmission(kind)`): to Netlify Forms under the form’s name, on to the success page, with the hidden fields a submission needs.",
-    ({ main, view }, problem) => {
+    "On the live site, the form sends its answers the shared way (`useSubmission(kind)`): to Netlify Forms under the form’s name, on to the success page, with the hidden fields a submission needs. In the lab it’s a mockup that can’t send, even without script.",
+    (page, problem) => {
+      const { view } = page;
       const [first] = formOf(view.kind).fields;
-      const form = main
-        .querySelectorAll("form")
-        .find((candidate) => candidate.querySelector(`[name="${first.name}"]`));
-      if (!form) return problem("a form with the questions");
-      submissionProblems(form, view.kind).forEach(problem);
+      const formIn = (element: HTMLElement) =>
+        element
+          .querySelectorAll("form")
+          .find((candidate) =>
+            candidate.querySelector(`[name="${first.name}"]`)
+          );
+      const live = formIn(page.live().main);
+      if (!live) return problem("a form with the questions");
+      submissionProblems(live, view.kind).forEach(problem);
+      const mockup = formIn(page.main);
+      if (mockup && attr(mockup, "method")?.toLowerCase() !== "dialog") {
+        problem('the lab’s mockup with method="dialog", so it never sends');
+      }
     }
   ),
 

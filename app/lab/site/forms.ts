@@ -180,11 +180,12 @@ export interface Submission {
 const SUBJECT = `New %{formName} form submission on ${new URL(SITE_ORIGIN).host} — (%{submissionId})`;
 
 /**
- * Where each form sends. The contact and inquiry forms post to Netlify Forms
- * under their `name` (the hidden `form-name` field says which, as the
- * markup is rendered by React), and on to the success page; the newsletter
- * sign-up posts to Buttondown. Every direction renders these as they are:
- * `useSubmission()` holds the submit in the lab.
+ * Where each form sends, on the live site. The contact and inquiry forms
+ * post to Netlify Forms under their `name` (the hidden `form-name` field
+ * says which, as the markup is rendered by React), and on to the success
+ * page; the newsletter sign-up posts to Buttondown. `useSubmission()` gives
+ * a direction's form these there, and nothing of them in the lab, where the
+ * form is a mockup.
  */
 export function submissionOf(kind: SubmissionKind): Submission {
   if (kind === "newsletter") {

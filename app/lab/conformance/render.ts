@@ -4,6 +4,8 @@
  * Renders a direction's mockup of a site path the way the lab route does
  * (`app/routes/lab.$direction.tsx`), to HTML, and parses it so the checks
  * can read it like a visitor would: its text, its links, its landmarks.
+ * A page can also be rendered as the live site would (`live()`), at the
+ * site root, for what differs there: where the forms send.
  */
 
 import { createElement } from "react";
@@ -41,6 +43,8 @@ export interface RenderedPage {
   main: HTMLElement;
   /** Everything outside `<main>`: the Shell's chrome */
   chrome: HTMLElement;
+  /** The same page as the live site renders it, at the site root */
+  live: () => RenderedPage;
 }
 
 const contents = new Map<string, LabContent>();
@@ -48,14 +52,15 @@ const contents = new Map<string, LabContent>();
 export function renderPage(
   slug: string,
   direction: Direction,
-  path: string
+  path: string,
+  /** Where the direction's links lead: its lab mirror, or `""` for the site root */
+  base = labBase(slug)
 ): RenderedPage {
-  const base = labBase(slug);
   const view = resolveView(path, getPage(path));
-  let content = contents.get(slug);
+  let content = contents.get(base);
   if (!content) {
-    content = rebaseLinks(getLabContent(), base);
-    contents.set(slug, content);
+    content = base ? rebaseLinks(getLabContent(), base) : getLabContent();
+    contents.set(base, content);
   }
   const rebased = rebaseLinks(
     { view, navigation: navigationFor(view, path) },
@@ -81,7 +86,8 @@ export function renderPage(
   const chrome = parse(html);
   chrome.querySelectorAll("main").forEach((main) => main.remove());
 
-  return {
+  let live: RenderedPage | undefined;
+  const rendered: RenderedPage = {
     slug,
     path,
     ...rebased,
@@ -90,6 +96,9 @@ export function renderPage(
     document,
     mains,
     main: mains[0] ?? parse(""),
-    chrome
+    chrome,
+    live: () =>
+      base === "" ? rendered : (live ??= renderPage(slug, direction, path, ""))
   };
+  return rendered;
 }
