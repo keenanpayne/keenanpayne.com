@@ -17,12 +17,16 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
+import { getPage } from "../../lib/content/content.server";
+import type { SectionModel } from "../../lib/types";
 import { directions } from "../registry";
+import { resolveView } from "../site/ia";
 
 import { FOUNDATIONS } from "./foundations";
 import { KNOWN_GAPS } from "./gaps";
+import { CHECKED_PATHS } from "./pages";
 import { checkDirection } from "./report.server";
-import { REQUIREMENTS } from "./requirements";
+import { ALL_KINDS, REQUIREMENTS } from "./requirements";
 
 // Read from disk: Vitest serves CSS imports, even `?raw` ones, empty, and
 // a glob is fixed when the test is first compiled, so it would miss a new
@@ -70,6 +74,48 @@ describe.each(skins)("$name", ({ slug, skin }) => {
       const label = group === "Source" ? "spells out" : "needs";
       expect(problems, `${rule}\n${slug} ${label}`).toEqual([]);
     }
+  });
+});
+
+describe("checked pages", () => {
+  const views = CHECKED_PATHS.map((path) => resolveView(path, getPage(path)));
+
+  it("are all real pages", () => {
+    expect(
+      CHECKED_PATHS.filter((path, at) => views[at].kind === "notFound")
+    ).toEqual(["/404/"]);
+  });
+
+  it("include every kind of page", () => {
+    const kinds = new Set(views.map((view) => view.kind));
+    expect(ALL_KINDS.filter((kind) => !kinds.has(kind))).toEqual([]);
+  });
+
+  // The sections the requirements read: each has to be on a checked page,
+  // or a direction could drop it unnoticed
+  const READ: SectionModel["type"][] = [
+    "intro",
+    "entries",
+    "tagList",
+    "typeList",
+    "pageList",
+    "newsletter",
+    "newsletterStandalone",
+    "testimonials",
+    "testimonials-grid",
+    "testimonial",
+    "portfolioGrid"
+  ];
+
+  it("include every section the requirements read", () => {
+    const sections = new Set(
+      views.flatMap((view) =>
+        "page" in view && "sections" in view.page
+          ? view.page.sections.map((section) => section.type)
+          : []
+      )
+    );
+    expect(READ.filter((type) => !sections.has(type))).toEqual([]);
   });
 });
 

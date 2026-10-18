@@ -10,13 +10,14 @@
 import { Fragment, useEffect, type ReactNode } from "react";
 import { Link } from "react-router";
 
+import { CHECKED_PATHS } from "../conformance/pages";
 import type {
   CheckGroup,
   CheckResult,
   CheckStatus,
   ConformanceReport
 } from "../conformance/report.server";
-import { directions, getDirection, labPath, SAMPLE_PAGES } from "../registry";
+import { directions, getDirection, labPath } from "../registry";
 import { pad } from "../site/helpers";
 
 import { styleguidePath } from "./sections";
@@ -185,9 +186,15 @@ export function ConformanceView({ report }: { report?: ConformanceReport }) {
         <p className="sg-heading__aside sg-caption__note">
           Checked{" "}
           <time dateTime={report.checkedAt}>
+            {/* In UTC, so the prerendered page and the browser agree */}
             {checkedAt.toLocaleString("en-US", {
-              dateStyle: "medium",
-              timeStyle: "short"
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "2-digit",
+              timeZone: "UTC",
+              timeZoneName: "short"
             })}
           </time>
         </p>
@@ -390,7 +397,7 @@ export function ConformanceView({ report }: { report?: ConformanceReport }) {
                               {issue}
                               {wheres.length > 0 && (
                                 <span className="sg-gap__where">
-                                  {wheres.length === SAMPLE_PAGES.length &&
+                                  {wheres.length === CHECKED_PATHS.length &&
                                   result.group !== "Source"
                                     ? "On every page"
                                     : wheres.map((where, at) => (

@@ -7,12 +7,13 @@
  * read it, so they never disagree.
  */
 
-import { directions, SAMPLE_PAGES } from "../registry";
+import { directions } from "../registry";
 import type { Direction } from "../site/direction";
 import { parseTokens } from "../styleguide/tokens.server";
 
 import { flatten, FOUNDATIONS } from "./foundations";
 import { KNOWN_GAPS } from "./gaps";
+import { CHECKED_PATHS } from "./pages";
 import { renderPage } from "./render";
 import { REQUIREMENTS } from "./requirements";
 import { factsIn, SOURCE_RULE } from "./source";
@@ -83,7 +84,7 @@ export function checkDirection({
     problems
   });
 
-  const pages = SAMPLE_PAGES.map(({ path }) => renderPage(slug, skin, path));
+  const pages = CHECKED_PATHS.map((path) => renderPage(slug, skin, path));
   const sheet = { root: skin.root, css, tokens: parseTokens(css) };
   const flat = flatten(css);
 

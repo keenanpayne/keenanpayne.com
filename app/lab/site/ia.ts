@@ -88,6 +88,7 @@ export const SAMPLE_PAGES: { label: string; path: string }[] = [
   { label: "Testimonials", path: "/testimonials/" },
   { label: "Contact", path: "/contact/" },
   { label: "Project inquiry", path: "/project-inquiry/" },
+  { label: "Page", path: "/types/" },
   { label: "Not found", path: "/404/" }
 ];
 

@@ -74,7 +74,8 @@ function forKinds<K extends ViewKind>(
   };
 }
 
-const ALL_KINDS = [
+/** Every kind of page, which the checks render one of each of at least */
+export const ALL_KINDS = [
   "home",
   "work",
   "caseStudy",
@@ -90,6 +91,11 @@ const ALL_KINDS = [
   "page",
   "notFound"
 ] as const satisfies readonly ViewKind[];
+
+// A kind added to `View` but not here is a type error
+type Unlisted = Exclude<ViewKind, (typeof ALL_KINDS)[number]>;
+const everyKindListed: [Unlisted] extends [never] ? true : Unlisted = true;
+void everyKindListed;
 
 // Reading pages
 // --------------------------------------------------

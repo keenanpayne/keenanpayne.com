@@ -8,7 +8,7 @@ import {
   type ReactNode
 } from "react";
 
-import { cx, prefersReducedMotion, useQueryParam } from "../../site";
+import { cx, useQueryParam, useReducedMotion } from "../../site";
 import {
   Measure,
   penFor,
@@ -346,11 +346,13 @@ function usePlayback(
   playback: Playback
 ) {
   const svg = useRef<SVGSVGElement>(null);
+  // Turning reduced motion on cancels the animations under way, which leaves
+  // the still drawing; turning it off starts them again
+  const reduced = useReducedMotion();
 
   useEffect(() => {
     const element = svg.current;
-    if (!element || !frames || playback === "never") return;
-    if (prefersReducedMotion()) return;
+    if (!element || !frames || playback === "never" || reduced) return;
 
     const duration = seconds * 1000;
     const timing = { duration, iterations: Infinity };
@@ -411,7 +413,7 @@ function usePlayback(
       events.forEach((type) => target.removeEventListener(type, on));
       animations.forEach((animation) => animation.cancel());
     };
-  }, [frames, seconds, playback]);
+  }, [frames, seconds, playback, reduced]);
 
   return svg;
 }
