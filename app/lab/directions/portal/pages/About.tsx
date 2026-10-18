@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { Html, introOf, pad, relabel, useTo } from "../../../site";
+import { Html, introOf, pad, relabel, titleOf, useTo } from "../../../site";
 import {
   Directory,
   Heading,
@@ -112,7 +112,11 @@ export function About({
 
   return (
     <>
-      <TitleBar title="About" images={photos.map((photo) => photo.src)} />
+      <TitleBar
+        title="About"
+        as="p"
+        images={photos.map((photo) => photo.src)}
+      />
 
       <div className="pt-split">
         <aside className="pt-split__aside">
@@ -127,7 +131,7 @@ export function About({
         </aside>
 
         <div className="pt-split__main">
-          <Intro heading={intro?.heading} lede={intro?.subheading} />
+          <Intro heading={titleOf(page)} lede={intro?.subheading} as="h1" />
           <Directory title="Player profile" rows={rows} />
           {intro?.body && (
             <KeySection title="Bio" toKey={false}>

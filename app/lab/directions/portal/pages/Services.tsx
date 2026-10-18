@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf, quotesOf } from "../../../site";
+import { introOf, quotesOf, titleOf } from "../../../site";
 import {
   Heading,
   Icon,
@@ -57,9 +57,10 @@ export function Services({
     <>
       <TitleBar
         title="Services"
+        as="p"
         images={content.work.slice(3, 7).map((item) => item.coverSquare)}
       />
-      <Intro heading={intro?.heading} lede={intro?.subheading} />
+      <Intro heading={titleOf(page)} lede={intro?.subheading} as="h1" />
 
       <section className="pt-section">
         <Heading>Explore these service categories</Heading>

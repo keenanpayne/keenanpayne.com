@@ -210,7 +210,7 @@ export function Post({
         </aside>
       </div>
 
-      {page.newsletter && <Newsletter />}
+      {page.newsletter && <Newsletter owner={content.profile.name} />}
     </article>
   );
 }

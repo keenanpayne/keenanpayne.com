@@ -15,6 +15,8 @@ import { DenverClock, DenverForecast } from "./Denver";
 import {
   Ad,
   cx,
+  DOMAIN,
+  firstNameOf,
   Go,
   Icon,
   ItemIcon,
@@ -76,6 +78,7 @@ export function sceneFor(
   path: string,
   profile: LabContent["profile"]
 ): Scene {
+  const first = firstNameOf(profile.name);
   const hire = {
     text: "Start a project inquiry",
     path: "/project-inquiry/",
@@ -84,7 +87,7 @@ export function sceneFor(
 
   if (view.kind === "home") {
     return {
-      bubble: "Everything you want to know about Keenan and more",
+      bubble: `Everything you want to know about ${first} and more`,
       info: {
         title: "Work list",
         body: "Use this tool to browse every case study by client, sector, and year.",
@@ -111,7 +114,7 @@ export function sceneFor(
 
   if (view.kind === "caseStudy" || view.kind === "work") {
     return {
-      bubble: "All about Keenan’s clients and case studies!",
+      bubble: `All about ${first}’s clients and case studies!`,
       item: "case",
       info:
         view.kind === "caseStudy"
@@ -134,7 +137,7 @@ export function sceneFor(
     view.kind === "archive"
   ) {
     return {
-      bubble: "Official Keenan news. Straight from the source!",
+      bubble: `Official ${first} news. Straight from the source!`,
       item: view.kind === "post" ? "pencil" : "paper",
       info: {
         title: "Ratings",
@@ -152,7 +155,7 @@ export function sceneFor(
 
   if (view.kind === "services" || view.kind === "service") {
     return {
-      bubble: "All about Keenan’s web services and expertise!",
+      bubble: `All about ${first}’s web services and expertise!`,
       item: "wrench",
       info:
         view.kind === "services"
@@ -184,7 +187,7 @@ export function sceneFor(
 
   if (view.kind === "contact" || view.kind === "inquiry") {
     return {
-      bubble: "Welcome to keenanpayne.com! Drop me a line!",
+      bubble: `Welcome to ${DOMAIN}! Drop me a line!`,
       item: "mail",
       info: {
         title: "Project inquiry",
@@ -197,7 +200,7 @@ export function sceneFor(
   }
 
   return {
-    bubble: "Welcome to keenanpayne.com!",
+    bubble: `Welcome to ${DOMAIN}!`,
     item: "star",
     info: {
       title: "Player 1",
@@ -212,7 +215,14 @@ export function sceneFor(
  * Raised tab on the top right of the frame: search the writing or work. The
  * site map carries its own on phones.
  */
-export function Search({ className }: { className?: string }) {
+export function Search({
+  label,
+  className
+}: {
+  /** Names the landmark; the site map's repeats the frame's */
+  label: string;
+  className?: string;
+}) {
   const to = useTo();
   const id = useId();
   const [scope, setScope] = useState("/archive/");
@@ -221,6 +231,7 @@ export function Search({ className }: { className?: string }) {
     <form
       className={cx("pt-search", className)}
       role="search"
+      aria-label={label}
       method="get"
       action={to(scope)}
     >
@@ -291,10 +302,13 @@ export function Hire() {
 export function Elsewhere({
   path,
   socials,
+  label = "Elsewhere",
   children
 }: {
   path: string;
   socials: SocialLink[];
+  /** Names the landmark; the site map's repeats the frame's */
+  label?: string;
   children?: ReactNode;
 }) {
   const to = useTo();
@@ -302,7 +316,7 @@ export function Elsewhere({
     target === "/" ? path === "/" : path.startsWith(target);
 
   return (
-    <nav className="pt-subnav" aria-label="Elsewhere">
+    <nav className="pt-subnav" aria-label={label}>
       <span className="pt-subnav__arrow" aria-hidden="true">
         <Icon name="arrowRight" />
       </span>
@@ -392,11 +406,11 @@ function SiteMap({
         <span>{`${navigation.length} zones`}</span>
       </p>
 
-      <nav aria-label="Main">
+      <nav aria-label="Site map">
         <Zones navigation={navigation} />
       </nav>
 
-      <Search className="pt-search--map" />
+      <Search label="Site map search" className="pt-search--map" />
 
       <div className="pt-map__chips">
         <Chips codeBank={codeBank} />
@@ -404,7 +418,7 @@ function SiteMap({
         <Hire />
       </div>
 
-      <Elsewhere path={path} socials={socials} />
+      <Elsewhere path={path} socials={socials} label="Site map elsewhere" />
     </div>
   );
 }
@@ -426,6 +440,10 @@ export function Shell({
 
   return (
     <div className="pt">
+      <a className="pt-skip" href="#pt-main">
+        Skip to content
+      </a>
+
       <div className="pt-device">
         <div className="pt-top">
           <div className="pt-host">
@@ -434,7 +452,7 @@ export function Shell({
               {open ? "Where to next? Pick a zone!" : scene.bubble}
             </p>
           </div>
-          <Search />
+          <Search label="Search" />
         </div>
 
         <div className="pt-frame">
@@ -507,7 +525,9 @@ export function Shell({
             </nav>
 
             <div className="pt-center">
-              <main className="pt-main">{children}</main>
+              <main id="pt-main" className="pt-main">
+                {children}
+              </main>
               <p className="pt-cta">
                 <span className="pt-cta__arrow" aria-hidden="true">
                   <Icon name="arrowRight" />
@@ -563,7 +583,7 @@ export function Shell({
 
               <div className="pt-side__ads">
                 {scene.ads.map((name) => (
-                  <Ad key={name} name={name} />
+                  <Ad key={name} name={name} profile={profile} />
                 ))}
               </div>
             </aside>

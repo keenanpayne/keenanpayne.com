@@ -23,7 +23,7 @@ import {
   LinkCard,
   NewsList,
   Newsletter,
-  QuotePromo,
+  Quote,
   ratingOf,
   SideGroup,
   SideList,
@@ -53,6 +53,7 @@ function Entries({
         items={section.entries.map((entry) => ({
           href: entry.url ?? "#",
           title: entry.heading ?? "Untitled",
+          lede: entry.lede,
           item
         }))}
       />
@@ -91,6 +92,9 @@ function Service({
   const index = content.services.findIndex((service) =>
     samePath(service.url, page.url)
   );
+  const others = content.services.filter(
+    (service) => !samePath(service.url, page.url)
+  );
   const title = intro?.heading ?? intro?.title ?? page.meta.title;
   const topics: Topic[] = [
     ...(intro?.body
@@ -102,7 +106,8 @@ function Service({
   const extras = [
     { id: "how-it-works", title: "How it works" },
     { id: "case-studies", title: "Case studies" },
-    { id: "kind-words", title: "Kind words" }
+    { id: "kind-words", title: "Kind words" },
+    { id: "more-services", title: "More services" }
   ];
 
   return (
@@ -161,8 +166,31 @@ function Service({
             </ul>
           </section>
           <section className="pt-section pt-anchor" id={extras[2].id}>
-            <Heading>{extras[2].title}</Heading>
-            <QuotePromo testimonial={quotesOf(page, content)[2]} />
+            <Heading more={{ href: to("/testimonials/"), text: "All reviews" }}>
+              {extras[2].title}
+            </Heading>
+            <div className="pt-quotes">
+              {quotesOf(page, content).map((testimonial, quoteIndex) => (
+                <Quote
+                  key={testimonial.id}
+                  testimonial={testimonial}
+                  index={quoteIndex}
+                />
+              ))}
+            </div>
+          </section>
+          <section className="pt-section pt-anchor" id={extras[3].id}>
+            <Heading more={{ href: to("/services/"), text: "All services" }}>
+              {extras[3].title}
+            </Heading>
+            <NewsList
+              items={others.map((service) => ({
+                href: service.url,
+                title: service.title,
+                lede: service.lede,
+                item: serviceItem(content.services.indexOf(service))
+              }))}
+            />
           </section>
         </div>
 
@@ -170,9 +198,10 @@ function Service({
           <BackLink href={to("/services/")}>Back to Services</BackLink>
           <SideList
             title="Other services"
-            items={content.services
-              .filter((service) => !samePath(service.url, page.url))
-              .map((service) => ({ text: service.title, href: service.url }))}
+            items={others.map((service) => ({
+              text: service.title,
+              href: service.url
+            }))}
           />
           <SideGroup title="Links">
             <LinkCard
@@ -253,7 +282,7 @@ export function Generic({
             );
           case "newsletter":
           case "newsletterStandalone":
-            return <Newsletter key={index} />;
+            return <Newsletter key={index} owner={content.profile.name} />;
           default:
             return null;
         }
