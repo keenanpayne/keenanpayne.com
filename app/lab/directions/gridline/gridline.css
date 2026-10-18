@@ -127,11 +127,11 @@
    light gray on a light page and dark gray on a dark one. Its muted ink is
    set for 4.5:1 on its gray, and its faint ink and strong rules for 3:1. */
 .gl-band--gray {
-  --gl-paper: #ebeaee;
-  --gl-tint: #e2e1e6;
-  --gl-raised: #f6f6f8;
-  --gl-sunk: #e2e1e6;
-  --gl-line: #d9d8de;
+  --gl-paper: #f4f4f6;
+  --gl-tint: #ececf0;
+  --gl-raised: #fbfbfc;
+  --gl-sunk: #ececf0;
+  --gl-line: #e2e1e6;
   --gl-line-strong: #807e8d;
   --gl-ink: #100f16;
   --gl-text: #2e2c37;
