@@ -2,6 +2,9 @@ build
 .react-router
 package-lock.json
 
+# Other Claude Code sessions' checkouts of this repository
+.claude/worktrees
+
 # Prettier breaks the syntax highlighting for these files
 /content/posts/css-arrow-interaction.md
 /content/posts/css-multi-line-buttons.md

@@ -1,9 +1,5 @@
 ---
 title: Testimonials
-navigation:
-  key: Testimonials
-  order: 5
-templateClass: _page-spacing-bottom
 sections:
   - type: intro
     heading: "Testimonials"

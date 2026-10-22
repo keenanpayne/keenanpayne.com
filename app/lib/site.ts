@@ -17,11 +17,6 @@ const EXTERNAL_LINK = /^(([a-z]+:)|(\/\/))/i;
 
 export const isExternalUrl = (href: string) => EXTERNAL_LINK.test(href);
 
-export const externalLinkProps = (href: string) =>
-  isExternalUrl(href)
-    ? ({ target: "_blank", rel: "noopener" } as const)
-    : ({} as const);
-
 /**
  * Internal links rendered by React use the canonical, trailing-slash form of
  * a path (`/services` -> `/services/`) so client-side navigations hit the

@@ -1,0 +1,72 @@
+import { HtmlContent } from "../../../../components/HtmlContent";
+import { Html, introOf, titleOf, type TemplateProps } from "../../../site";
+import {
+  Chips,
+  Entries,
+  Layout,
+  NewsletterSection,
+  PageHeader,
+  PageTable,
+  Section
+} from "../parts";
+
+/** Any other page: type and tag archives, subscribe, … */
+export function Page({ page }: TemplateProps<"page" | "archive">) {
+  const intro = introOf(page);
+
+  return (
+    <Layout>
+      <PageHeader title={titleOf(page)} lede={intro?.subheading} />
+
+      {intro?.body && <Html className="st-prose" html={intro.body} />}
+      {page.content && <HtmlContent className="st-prose" html={page.content} />}
+
+      {page.sections.map((section, index) => {
+        const id = `section-${index + 1}`;
+        switch (section.type) {
+          case "entries":
+            return section.entries.length > 0 ? (
+              <Section key={id} id={id} title={section.heading ?? "Entries"}>
+                <Entries
+                  items={section.entries.flatMap((entry) =>
+                    entry.url
+                      ? [
+                          {
+                            url: entry.url,
+                            title: entry.heading ?? entry.url,
+                            sub: entry.lede && <Html html={entry.lede} />
+                          }
+                        ]
+                      : []
+                  )}
+                />
+              </Section>
+            ) : null;
+          case "tagList":
+            return (
+              <Section key={id} id={id} title="Tags">
+                <Chips label="Tags" links={section.tags} />
+              </Section>
+            );
+          case "typeList":
+            return (
+              <Section key={id} id={id} title={section.title ?? "Types"}>
+                <Chips label="Post types" links={section.types} />
+              </Section>
+            );
+          case "pageList":
+            return (
+              <Section key={id} id={id} title={section.title ?? "Pages"}>
+                <PageTable pages={section.pages} />
+              </Section>
+            );
+          case "newsletter":
+          case "newsletterStandalone":
+            return <NewsletterSection key={id} />;
+          default:
+            return null;
+        }
+      })}
+    </Layout>
+  );
+}

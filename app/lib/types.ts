@@ -1,6 +1,7 @@
 // View models passed from route loaders to components. Everything here is
 // plain, serializable data — HTML strings are marked as such in comments.
 
+import type { ProfileFact } from "../data/profile";
 import type { Person, PortfolioAward } from "../data/types";
 
 export interface LinkModel {
@@ -22,7 +23,6 @@ export interface EntryModel {
   /** HTML */
   lede?: string;
   url?: string;
-  linkText?: string;
 }
 
 export interface TestimonialModel {
@@ -38,14 +38,6 @@ export interface TestimonialModel {
   };
 }
 
-export interface PhotoModel {
-  src: string;
-  alt?: string;
-  lazy?: boolean;
-  width?: string | number;
-  height?: string | number;
-}
-
 export interface IntroSection {
   type: "intro";
   /** HTML */
@@ -56,36 +48,22 @@ export interface IntroSection {
   subheading?: string;
   /** HTML */
   body?: string;
-  headerMaxWidth?: string;
-  subheadingMaxWidth?: string;
-  bodyMaxWidth?: string;
-  leftPhotos?: PhotoModel[];
-  right?: {
-    heading?: string;
-    readMore?: LinkModel;
-    items?:
-      { from: "services"; entries: EntryModel[] } | { from: "photosOfMe" };
-  };
 }
 
 export interface EntriesSection {
   type: "entries";
   heading?: string;
   readMore?: LinkModel;
-  /** Class for the items container; omitted when the section has no `items` */
-  itemsClass?: string;
   /** Empty when nothing matches: shows the "nothing published" notice */
   entries: EntryModel[];
 }
 
 export interface NewsletterSection {
   type: "newsletter";
-  spacing?: string | number;
 }
 
 export interface NewsletterStandaloneSection {
   type: "newsletterStandalone";
-  modifiers?: string;
 }
 
 export interface TestimonialsSection {
@@ -121,25 +99,12 @@ export interface PortfolioGridItem {
 export interface PortfolioGridSection {
   type: "portfolioGrid";
   modifier?: string;
-  contained?: boolean;
   enlarge?: boolean;
   eyebrow?: string;
   headline?: string;
   /** HTML */
   description?: string;
   items: PortfolioGridItem[] | null;
-}
-
-export interface DribbbleSection {
-  type: "dribbble";
-  modifier?: string;
-  items: Array<{ src?: string; alt?: string; type?: string }>;
-}
-
-export interface SocialProofLogosSection {
-  type: "socialProofLogos";
-  /** `svg` is the logo's SVG markup */
-  logos: Array<{ name: string; svg: string }>;
 }
 
 export interface TagListSection {
@@ -168,14 +133,9 @@ export type SectionModel =
   | TestimonialsGridSection
   | TestimonialSection
   | PortfolioGridSection
-  | DribbbleSection
   | TagListSection
   | TypeListSection
-  | PageListSection
-  | SocialProofLogosSection
-  | { type: "cta" }
-  | { type: "contact" }
-  | { type: "projectInquiry" };
+  | PageListSection;
 
 interface BaseModel {
   /** Canonical path of the page, e.g. `/about/` */
@@ -185,7 +145,6 @@ interface BaseModel {
 
 export interface BasicPageModel extends BaseModel {
   layout: "page";
-  templateClass?: string;
   sections: SectionModel[];
   /** HTML */
   content: string;
@@ -198,7 +157,6 @@ export interface PostNavModel {
 
 export interface PostPageModel extends BaseModel {
   layout: "post";
-  sectionClass: string;
   title?: string;
   /** Plain text */
   lede?: string;
@@ -207,11 +165,6 @@ export interface PostPageModel extends BaseModel {
   tags: Array<{ name: string; url?: string }> | null;
   /** HTML for `.post-content` (cover, table of contents and body) */
   content: string;
-  /** "<title> is a/an <typeLabel> published on <date>" */
-  footer?: {
-    article: string;
-    typeLabel: string;
-  };
   postNav: PostNavModel | null;
   comments: boolean;
   newsletter: boolean;
@@ -250,3 +203,76 @@ export interface PortfolioPageModel extends BaseModel {
 }
 
 export type PageModel = BasicPageModel | PostPageModel | PortfolioPageModel;
+
+/** Real site content handed to every design lab direction */
+export interface LabContent {
+  /** Newest first */
+  posts: {
+    title: string;
+    url: string;
+    /** Readable, e.g. `Oct 09, 2022` */
+    date: string;
+    /** `yyyy-mm-dd` */
+    iso: string;
+    year: string;
+    type?: string;
+    /** The archive of every post of its type, e.g. `/type/essays/` */
+    typeUrl?: string;
+    lede?: string;
+    image?: string;
+  }[];
+  work: {
+    name: string;
+    url: string;
+    /** HTML */
+    lede?: string;
+    cover: string;
+    /** Square crop padded with the cover's edge color */
+    coverSquare: string;
+    year?: string;
+    role?: string;
+    industry?: string;
+    services: string[];
+    technologies: string[];
+  }[];
+  services: { title: string; url: string; lede?: string }[];
+  testimonials: TestimonialModel[];
+  profile: ProfileModel;
+  /** Profiles elsewhere, in display order */
+  socials: SocialLink[];
+}
+
+export interface SocialLink extends LinkModel {
+  /** `me` for profiles that verify the site (Mastodon) */
+  rel?: string;
+}
+
+/** `app/data/profile.ts`, with image URLs resolved */
+export interface ProfileModel {
+  name: string;
+  role: string;
+  email: string;
+  location: {
+    city: string;
+    name: string;
+    short: string;
+    timeZone: string;
+    timeZoneName: string;
+    latitude: number;
+    longitude: number;
+    elevationFeet: number;
+  };
+  experience: { years: number; text: string };
+  /** HTML */
+  bio: string;
+  facts: ProfileFact[];
+  /** Square, face-centered crop */
+  avatar: string;
+  photos: Array<{
+    src: string;
+    /** For lightboxes; never upscaled past the original */
+    large: string;
+    alt: string;
+  }>;
+  process: Array<{ title: string; text: string }>;
+}

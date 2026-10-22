@@ -1,0 +1,57 @@
+# Checks every push and pull request: types, lint, formatting, the design
+# lab's conformance checks (every direction against the shared feature set,
+# information architecture, and foundations; see app/lab/README.md), and the
+# other unit tests. Each runs as its own step, so a failure says which kind,
+# and every one runs even when an earlier one fails.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# A newer push to the same branch or pull request replaces a run in progress
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      # The Node version Volta pins in package.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: npm
+
+      - id: install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run lint
+
+      - name: Formatting
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run check:format
+
+      # A failure names the direction, the requirement, and what's missing on
+      # which page, and is annotated on the run and its pull request
+      - name: Design lab conformance
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npx vitest run app/lab/conformance --reporter=default --reporter=github-actions
+
+      - name: Unit tests
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npx vitest run --exclude "app/lab/conformance/**" --reporter=default --reporter=github-actions

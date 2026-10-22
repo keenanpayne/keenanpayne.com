@@ -1,7 +1,6 @@
 ---
 permalink: /tags/
 title: Tags
-templateClass: _page-spacing-bottom
 sections:
   - type: intro
     heading: "Tags"

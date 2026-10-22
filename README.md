@@ -6,6 +6,8 @@ Feel free to fork this and use my code and designs for whatever you'd like. You 
 
 The site is built with [React](https://react.dev/) and [React Router](https://reactrouter.com/) (framework mode) with server-side rendering. Every page is also pre-rendered to static HTML at build time, and all content lives in Markdown files.
 
+How it looks is a **design direction**: a skin over the shared content and information architecture, one of several in the design lab (`app/lab/`, see [its README](app/lab/README.md)). The live one, which renders every page at the site root, is set in `app/lab/live.ts`; the others are mocked up at `/lab/<slug>/` until their turn.
+
 ## Requirements
 
 - Node.js 24 (see `.node-version`; [Volta](https://volta.sh/) picks it up automatically from `package.json`)
@@ -44,7 +46,8 @@ npm run fix
 # Type checking
 npm run typecheck
 
-# Unit tests for the content pipeline helpers
+# Unit tests: the content pipeline's helpers, and the design lab's
+# conformance checks
 npm run test
 
 # Linting
@@ -75,6 +78,15 @@ npm run size         # Show size of build directory
 
 # Re-count the qualities mentioned in testimonials (app/data/testimonial-analysis.json)
 npm run analyze:testimonials
+
+# Start a design lab direction as a copy of Wireframe
+npm run lab:new -- <slug> ["Display name"]
+
+# Check every design lab direction against the shared feature set,
+# information architecture, and foundations (see app/lab/README.md). CI
+# (.github/workflows/ci.yml) runs these, with types, lint, formatting, and
+# the other tests, on every push and pull request.
+npm run lab:check
 ```
 
 ## Project Structure
@@ -82,16 +94,17 @@ npm run analyze:testimonials
 ```
 .
 ├── app/                    # React Router application
-│   ├── assets/svg/         # Inline SVG icons and logos
-│   ├── components/         # React components
-│   │   ├── layouts/        # Page, post, and portfolio layouts
-│   │   └── sections/       # Page sections (intro, entries, testimonials, …)
-│   ├── data/               # People, testimonials, socials, portfolio case studies, site metadata
+│   ├── components/         # HtmlContent: rendered Markdown, with its embeds
+│   ├── data/               # Profile, people, testimonials, socials, portfolio case studies, site metadata
+│   ├── lab/                # Design directions over the same content (see app/lab/README.md)
+│   │   ├── directions/     # One folder per direction (its shell, page templates, and styles)
+│   │   ├── site/           # What every direction shares: page kinds, navigation, forms, helpers
+│   │   ├── conformance/    # Checks that every direction has the same features and foundations
+│   │   └── live.ts         # Which direction the site runs
 │   ├── lib/                # Content loading, Markdown rendering, helpers
 │   │   └── content/        # Server-only content pipeline
-│   ├── routes/             # Route modules (pages, feeds, sitemap)
-│   ├── styles/             # CSS (compiled with PostCSS)
-│   ├── root.tsx            # Document shell, header, and footer
+│   ├── routes/             # Route modules (pages, the lab, feeds, sitemap)
+│   ├── root.tsx            # The document; each page's chrome and styles come from its direction
 │   └── routes.ts           # Route configuration
 ├── content/                # Markdown content
 │   ├── bookshelf/          # Book reviews
@@ -114,10 +127,10 @@ npm run analyze:testimonials
 Every Markdown file in `content/` becomes a page. Front matter works like it did with Eleventy:
 
 - `title`, `permalink`, `date`, `tags`, `type`, `lede`, `cover`, and `meta` (`title`, `description`, `image`, `image_alt`)
-- `templateClass` adds classes to the page's `<main>` element
-- `navigation` (`key`, `order`) adds a page to the header and footer navigation
-- `sections` builds a page from components (`intro`, `entries`, `testimonials`, `portfolioGrid`, `cta`, …) — see `app/components/sections/Sections.tsx` for the full list
-- `toc: false` hides a post's table of contents, and `comments: false` / `cta: false` hide comments and the newsletter sign-up
+- `sections` builds a page from sections (`intro`, `entries`, `testimonials`, `portfolioGrid`, …) — see `resolveSection()` in `app/lib/content/content.server.ts` for the full list; each direction decides how they look
+- `toc: false` hides a post's table of contents, `comments: false` its comments, and `cta: false` its newsletter sign-up
+
+The primary navigation isn't front matter: it's `NAVIGATION` in `app/lab/site/ia.ts`, which every direction renders.
 
 Each folder has its own defaults (layout, URL, and data), defined in `app/lib/content/content.server.ts`. Posts without a `permalink` are published at `/<slugified title>/`.
 
@@ -140,16 +153,14 @@ The shortcodes are implemented in `app/lib/content/shortcodes.server.ts`.
 
 ## Styles
 
-Styles are plain CSS in `app/styles/`, compiled with PostCSS:
+Each design direction brings its own stylesheet, `app/lab/directions/<slug>/<slug>.css`, scoped to its root class (see [app/lab/README.md](app/lab/README.md)); the lab's own pages have `app/lab/lab.css` and `app/lab/styleguide/styleguide.css`. They're plain CSS, compiled with PostCSS:
 
-- [postcss-mixins](https://github.com/postcss/postcss-mixins) for `@define-mixin` / `@mixin`
 - [postcss-nested](https://github.com/postcss/postcss-nested) for nesting
-- [postcss-custom-media](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) for breakpoints like `@media (--min-960)`
 - [postcss-media-minmax](https://github.com/postcss/postcss-media-minmax) and [Autoprefixer](https://github.com/postcss/autoprefixer) for browser support
 
 ## Deployment
 
-The site deploys to [Netlify](https://netlify.com) with `npm run build`, publishing `build/client`. Pre-rendered pages are served as static files; any other request (404s and legacy redirects in `app/lib/legacy-urls.ts`) is server-rendered by a Netlify Function generated by [`@netlify/vite-plugin-react-router`](https://www.npmjs.com/package/@netlify/vite-plugin-react-router). The contact and project inquiry forms use [Netlify Forms](https://docs.netlify.com/manage/forms/setup/).
+The site deploys to [Netlify](https://netlify.com) with `npm run build`, publishing `build/client`. Pre-rendered pages are served as static files; any other request (404s and legacy redirects in `app/lib/legacy-urls.ts`) is server-rendered by a Netlify Function generated by [`@netlify/vite-plugin-react-router`](https://www.npmjs.com/package/@netlify/vite-plugin-react-router). The contact and project inquiry forms use [Netlify Forms](https://docs.netlify.com/manage/forms/setup/), and the newsletter sign-up posts to [Buttondown](https://buttondown.com/); where each sends is `submissionOf()` in `app/lab/site/forms.ts`, and `useSubmission()` wires every direction's forms to it (in the lab, they're mockups). Comments are [Disqus](https://disqus.com/) threads, loaded by `Comments` in `app/lab/site/comments.tsx` on the live site only.
 
 ## Contributing
 
