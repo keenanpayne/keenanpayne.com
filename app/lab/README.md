@@ -10,7 +10,7 @@ Every direction at `/lab/<slug>/` is a **skin over one site**: the same content 
 | Content model | `getLabContent()` in `app/lib/content/content.server.ts`, typed as `LabContent` | The shape every direction receives |
 | Information arch. | `site/ia.ts` | The kinds of page (`View`), which URL is which kind, the navigation, the sample pages |
 | Direction contract | `site/direction.tsx` | `Direction`: `stylesheets`, a `root` class, a `Shell`, one template per kind of page, and its style guide `specimens` |
-| Shared helpers | `site/` (`helpers.ts`, `hooks.ts`, `forms.ts`, `submit.tsx`, `comments.tsx`, `links.tsx`, `time.ts`, `weather.ts`, `isometric.ts`, `base.css`) | Reading the content the same way everywhere: intros, years, reading time, clocks, forms and where they send, comments, Denver's time and weather; the isometric pen the service illustrations are drawn with; and the document reset beneath every skin |
+| Shared helpers | `site/` (`helpers.ts`, `hooks.ts`, `forms.ts`, `submit.tsx`, `comments.tsx`, `links.tsx`, `time.ts`, `weather.ts`, `isometric.ts`, `page.server.ts`, `base.css`) | Reading the content the same way everywhere: intros, years, reading time, clocks, forms and where they send, comments, Denver's time and weather; the isometric pen the service illustrations are drawn with; how a site path becomes a page for the live site, the lab, and the checks alike; and the document reset beneath every skin |
 | Directions | `directions/<slug>/`, registered in `registry.ts` | How it looks |
 | Live direction | `live.ts` | Which direction the site runs; the rest stay in the lab |
 | Conformance | `conformance/` | Checks that every direction has the same features, pages, and foundations (see [Guardrails](#guardrails)) |

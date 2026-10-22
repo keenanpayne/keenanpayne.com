@@ -9,7 +9,7 @@
 
 import { directions } from "../registry";
 import type { Direction } from "../site/direction";
-import { parseTokens } from "../styleguide/tokens.server";
+import { parseTokens, readStylesheet } from "../styleguide/tokens.server";
 
 import { flatten, FOUNDATIONS } from "./foundations";
 import { KNOWN_GAPS } from "./gaps";
@@ -89,7 +89,7 @@ export function checkDirection({
   const flat = flatten(css);
 
   return [
-    ...REQUIREMENTS.map(({ id, group = "Pages", rule, kinds, check }) =>
+    ...REQUIREMENTS.map(({ id, group, rule, kinds, check }) =>
       result(
         id,
         group,
@@ -115,18 +115,12 @@ export function checkDirection({
   ];
 }
 
-// The app reads stylesheets and code through Vite, which keeps them current
-// in development and bundles them for the build
-const stylesheets = import.meta.glob<string>("../directions/*/*.css", {
-  query: "?raw",
-  import: "default",
-  eager: true
-});
-
+// The app reads the directions' code through Vite, which keeps it current
+// in development and bundles each file as a chunk of its own, loaded only
+// by the Conformance page
 const code = import.meta.glob<string>("../directions/*/**/*.{ts,tsx}", {
   query: "?raw",
-  import: "default",
-  eager: true
+  import: "default"
 });
 
 /** Every direction, checked now */
@@ -134,16 +128,21 @@ export async function getConformanceReport(): Promise<ConformanceReport> {
   const reports = await Promise.all(
     directions.map(async ({ slug, load }) => {
       const prefix = `../directions/${slug}/`;
-      const sources = Object.entries(code)
-        .filter(([path]) => path.startsWith(prefix) && !/\.test\./.test(path))
-        .map(([path, source]) => [path.slice(prefix.length), source] as const)
-        .sort(([a], [b]) => a.localeCompare(b));
+      const sources = await Promise.all(
+        Object.entries(code)
+          .filter(([path]) => path.startsWith(prefix) && !/\.test\./.test(path))
+          .sort(([a], [b]) => a.localeCompare(b))
+          .map(
+            async ([path, read]) =>
+              [path.slice(prefix.length), await read()] as const
+          )
+      );
       return {
         slug,
         results: checkDirection({
           slug,
           skin: (await load()).default,
-          css: stylesheets[`${prefix}${slug}.css`] ?? "",
+          css: await readStylesheet(slug),
           sources
         })
       };

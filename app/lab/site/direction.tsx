@@ -60,6 +60,18 @@ export interface Direction {
   specimens: () => Promise<{ default: Specimens }>;
 }
 
+/**
+ * Stylesheet links, hoisted into the document's head. Vitest serves a
+ * stylesheet import as an empty URL, which React would warn about, so
+ * those are left out.
+ */
+export const Stylesheets = ({ hrefs }: { hrefs: string[] }) =>
+  hrefs
+    .filter(Boolean)
+    .map((href) => (
+      <link key={href} rel="stylesheet" href={href} precedence="default" />
+    ));
+
 /** Renders a site path in a direction, with links prefixed by `base` */
 export function DirectionPage({
   direction,
@@ -70,15 +82,10 @@ export function DirectionPage({
   const Template = templates[props.view.kind] as ComponentType<
     TemplateProps<ViewKind>
   >;
-  // The shared base first, then the direction's own (Vitest serves no CSS,
-  // so the base is an empty URL there, which React would warn about)
-  const hrefs = [baseStyles, ...stylesheets].filter(Boolean);
-
   return (
     <BaseContext.Provider value={base}>
-      {hrefs.map((href) => (
-        <link key={href} rel="stylesheet" href={href} precedence="default" />
-      ))}
+      {/* The shared base first, then the direction's own */}
+      <Stylesheets hrefs={[baseStyles, ...stylesheets]} />
       <Shell {...props}>
         <Template {...props.view} content={props.content} />
       </Shell>

@@ -3,7 +3,8 @@ import {
   introOf,
   postsByYear,
   postTypes,
-  type TemplateProps
+  type TemplateProps,
+  titleOf
 } from "../../../site";
 import { Band, Chips, Facts, Newsletter, PageHeader, PostRows } from "../parts";
 
@@ -17,7 +18,7 @@ export function Writing({ page, content }: TemplateProps<"writing">) {
     <>
       <PageHeader
         eyebrow="Writing"
-        title={intro?.heading ?? "Writing"}
+        title={titleOf(page)}
         lede={intro?.subheading}
         aside={
           <Facts

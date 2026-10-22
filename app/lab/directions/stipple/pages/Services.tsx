@@ -2,8 +2,9 @@ import {
   introOf,
   pad,
   quotesOf,
-  useTo,
-  type TemplateProps
+  type TemplateProps,
+  titleOf,
+  useTo
 } from "../../../site";
 import {
   Button,
@@ -20,7 +21,7 @@ export function Services({ page, content }: TemplateProps<"services">) {
 
   return (
     <Layout wide>
-      <PageHeader title={intro?.heading ?? "Services"} lede={intro?.subheading}>
+      <PageHeader title={titleOf(page)} lede={intro?.subheading}>
         <p className="st-actions">
           <Button href={to("/project-inquiry/")} arrow>
             Start a project

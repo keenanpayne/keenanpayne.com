@@ -13,17 +13,11 @@ import { renderToString } from "react-dom/server";
 import { createMemoryRouter, RouterProvider } from "react-router";
 import { parse, type HTMLElement } from "node-html-parser";
 
-import { getLabContent, getPage } from "../../lib/content/content.server";
 import type { LabContent } from "../../lib/types";
-import { rebaseLinks } from "../links";
 import { labBase } from "../registry";
 import { DirectionPage, type Direction } from "../site/direction";
-import {
-  navigationFor,
-  resolveView,
-  type NavItem,
-  type View
-} from "../site/ia";
+import type { NavItem, View } from "../site/ia";
+import { resolveSitePage } from "../site/page.server";
 
 export interface RenderedPage {
   slug: string;
@@ -47,33 +41,21 @@ export interface RenderedPage {
   live: () => RenderedPage;
 }
 
-const contents = new Map<string, LabContent>();
-
 export function renderPage(
   slug: string,
   direction: Direction,
-  path: string,
+  requested: string,
   /** Where the direction's links lead: its lab mirror, or `""` for the site root */
   base = labBase(slug)
 ): RenderedPage {
-  const view = resolveView(path, getPage(path));
-  let content = contents.get(base);
-  if (!content) {
-    content = base ? rebaseLinks(getLabContent(), base) : getLabContent();
-    contents.set(base, content);
-  }
-  const rebased = rebaseLinks(
-    { view, navigation: navigationFor(view, path) },
-    base
-  );
-
+  const { path, view, navigation, content } = resolveSitePage(requested, base);
   const page = createElement(DirectionPage, {
-    // Vitest serves stylesheets as empty URLs, which React warns about
-    direction: { ...direction, stylesheets: [] },
+    direction,
     base,
     path,
-    content,
-    ...rebased
+    view,
+    navigation,
+    content
   });
   // Some parts read the router (e.g. `useViewTransitionState`)
   const router = createMemoryRouter([{ path: "*", element: page }], {
@@ -90,7 +72,8 @@ export function renderPage(
   const rendered: RenderedPage = {
     slug,
     path,
-    ...rebased,
+    view,
+    navigation,
     content,
     to: (sitePath) => `${base}${sitePath}`,
     document,

@@ -12,6 +12,7 @@ import {
   pageEntries,
   quotesOf,
   samePath,
+  titleOf,
   useTo
 } from "../../../site";
 import {
@@ -96,7 +97,7 @@ function Service({
   const others = content.services.filter(
     (service) => !samePath(service.url, page.url)
   );
-  const title = intro?.heading ?? intro?.title ?? page.meta.title;
+  const title = titleOf(page);
   const topics: Topic[] = [
     ...(intro?.body
       ? [{ id: "overview", title: "Overview", html: intro.body }]

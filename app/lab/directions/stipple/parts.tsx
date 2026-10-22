@@ -729,10 +729,6 @@ export function WorkCard({ item }: { item: Work[number] }) {
   );
 }
 
-/** The industries the work spans */
-export const industriesOf = (work: Work) =>
-  new Set(work.map((item) => item.industry).filter(Boolean));
-
 /**
  * Clients and their case studies as one index. On wide screens, a roll of
  * names beside a plate of the one you're pointing at; on narrow ones, each

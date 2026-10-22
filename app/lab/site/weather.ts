@@ -10,6 +10,9 @@ import { useEffect, useRef, useState } from "react";
 
 import { profile } from "../../data/profile";
 
+import { pad } from "./helpers";
+import { localFormat } from "./time";
+
 const { latitude, longitude, timeZone } = profile.location;
 
 const FORECAST_URL = `https://api.open-meteo.com/v1/forecast?${new URLSearchParams(
@@ -88,7 +91,7 @@ export interface Forecast {
 }
 
 /** A forecast's label and kind of weather, e.g. `["Overcast", "cloudy"]` */
-export const conditionOf = (forecast: Forecast) =>
+const conditionOf = (forecast: Forecast) =>
   WEATHER_CODES[forecast.current.weather_code] ??
   (["Unknown", "cloudy"] as [string, Condition]);
 
@@ -110,7 +113,62 @@ export function localClock(iso: string) {
   return { hours, minutes };
 }
 
+/** One of the forecast's local times (`…T07:05`) as `7:05 AM` */
+export function twelveHour(iso: string) {
+  const { hours, minutes } = localClock(iso);
+  return `${hours % 12 || 12}:${pad(minutes)} ${hours < 12 ? "AM" : "PM"}`;
+}
+
 export type ForecastStatus = "idle" | "loading" | "ready" | "error";
+
+/** How a reading stands: waiting, in, a storm, or not to be had */
+export type ReadingTone = "wait" | "on" | "alert" | "off";
+
+/** A line on each kind of weather, in the lab's words */
+const NOTES: Record<Condition, string> = {
+  clear: "Clear skies over the Front Range",
+  cloudy: "Clouds moving over the Front Range",
+  fog: "Fog settled over the city",
+  rain: "Rain coming down",
+  snow: "Snow coming down",
+  storm: "Thunderstorm overhead"
+};
+
+const READ_AT: Intl.DateTimeFormatOptions = {
+  hour: "numeric",
+  minute: "2-digit"
+};
+
+/** A reading's tone and a line on it, for a status line in the lab's words */
+function noteOn({
+  status,
+  stale,
+  readAt,
+  condition,
+  night
+}: {
+  status: ForecastStatus;
+  stale: boolean;
+  readAt?: Date;
+  condition?: Condition;
+  night: boolean;
+}): [ReadingTone, string] {
+  if (status === "error") {
+    return [
+      "off",
+      stale && readAt
+        ? `Couldn’t refresh · Last reading ${localFormat(READ_AT).format(readAt)}`
+        : "Couldn’t reach the weather service"
+    ];
+  }
+  if (!condition) return ["wait", "Reading the sky…"];
+  return [
+    condition === "storm" ? "alert" : "on",
+    night && condition === "clear"
+      ? "Clear night over the Front Range"
+      : NOTES[condition]
+  ];
+}
 
 // The last reading, kept between pages (each lab page mounts afresh)
 let last: { forecast: Forecast; readAt: Date } | undefined;
@@ -178,6 +236,10 @@ export function useForecast() {
   const forecast = reading?.forecast;
   const current = forecast?.current;
   const [label, condition] = forecast ? conditionOf(forecast) : [];
+  const night = current?.is_day === 0;
+  const stale = status === "error" && !!current;
+  const readAt = reading?.readAt;
+  const [tone, note] = noteOn({ status, stale, readAt, condition, night });
 
   return {
     forecast,
@@ -185,11 +247,14 @@ export function useForecast() {
     /** e.g. `Overcast`, and its kind of weather */
     label,
     condition,
-    night: current?.is_day === 0,
+    night,
     /** The reading couldn't be refreshed, so it's outdated */
-    stale: status === "error" && !!current,
-    readAt: reading?.readAt,
+    stale,
+    readAt,
     status,
+    /** How the reading stands, and a line on it in the lab's words */
+    tone,
+    note,
     refresh
   };
 }

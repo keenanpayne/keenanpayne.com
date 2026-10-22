@@ -9,6 +9,8 @@
  * `paint`: 1 sage, 2 deep sage, 3 midtone, 4 ink.
  */
 
+import { yearsOf } from "../../site";
+
 import { clamp, fbm, hash, grain, levelFor, type Levels } from "./dither";
 
 export interface Bed {
@@ -36,12 +38,6 @@ export interface Section {
   last: number;
   /** The frame being drawn, reused from frame to frame */
   frame: Levels;
-}
-
-/** `2014–2019`, `2019`, or `2019-2020` as the first and last years */
-function yearsOf(text?: string): [number, number] | null {
-  const years = text?.match(/\d{4}/g)?.map(Number);
-  return years?.length ? [years[0], years[years.length - 1]] : null;
 }
 
 /** A bed for every year from `since` to `until`, with what it holds */

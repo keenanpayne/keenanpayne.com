@@ -26,11 +26,18 @@ export interface DirectionTokens {
   tokens: Token[];
 }
 
+import { directions } from "../registry";
+
+// Read through Vite, which keeps them current in development and bundles
+// each as a chunk of its own, loaded only by the pages that read them
 const stylesheets = import.meta.glob<string>("../directions/*/*.css", {
   query: "?raw",
-  import: "default",
-  eager: true
+  import: "default"
 });
+
+/** A direction's own stylesheet, `<slug>/<slug>.css`; empty when it has none */
+export const readStylesheet = (slug: string) =>
+  stylesheets[`../directions/${slug}/${slug}.css`]?.() ?? Promise.resolve("");
 
 /** The body of the first top-level rule whose selector matches */
 function ruleBody(css: string, selector: RegExp) {
@@ -146,17 +153,14 @@ export function parseTokens(css: string): DirectionTokens {
   };
 }
 
-let cache: Record<string, DirectionTokens> | undefined;
+let cache: Promise<Record<string, DirectionTokens>> | undefined;
 
 /** Tokens for every direction, by slug */
 export function getDirectionTokens() {
-  cache ??= Object.fromEntries(
-    Object.entries(stylesheets).flatMap(([path, css]) => {
-      // Only a direction's own stylesheet, `<slug>/<slug>.css`
-      const [, slug, file] =
-        /\/directions\/([^/]+)\/([^/]+)\.css$/.exec(path) ?? [];
-      return slug && slug === file ? [[slug, parseTokens(css)]] : [];
-    })
-  );
-  return cache;
+  return (cache ??= Promise.all(
+    directions.map(
+      async ({ slug }) =>
+        [slug, parseTokens(await readStylesheet(slug))] as const
+    )
+  ).then(Object.fromEntries));
 }

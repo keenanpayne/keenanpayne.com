@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import type { PortfolioGridItem } from "../../../../lib/types";
 import { HtmlContent } from "../../../../components/HtmlContent";
 import {
   cx,
@@ -22,6 +23,15 @@ import {
   Trail,
   Window
 } from "../parts";
+
+/** A gallery image, lazy unless the item says not to */
+const image = (item: PortfolioGridItem) => (
+  <img
+    src={item.image}
+    alt={item.title ?? ""}
+    loading={item.preventLazy ? undefined : "lazy"}
+  />
+);
 
 export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
   const to = useTo();
@@ -213,19 +223,9 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
                       ) : (
                         item.image &&
                         (section.enlarge ? (
-                          <a href={item.enlargeHref}>
-                            <img
-                              src={item.image}
-                              alt={item.title ?? ""}
-                              loading={item.preventLazy ? undefined : "lazy"}
-                            />
-                          </a>
+                          <a href={item.enlargeHref}>{image(item)}</a>
                         ) : (
-                          <img
-                            src={item.image}
-                            alt={item.title ?? ""}
-                            loading={item.preventLazy ? undefined : "lazy"}
-                          />
+                          image(item)
                         ))
                       )}
                     </div>

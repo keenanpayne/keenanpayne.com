@@ -12,18 +12,19 @@ import {
   coordinates,
   formOf,
   Html,
+  industriesOf,
   LocalTime,
+  type NavItem,
   pad,
   postsByYear,
   postTypes,
   relabel,
   SAMPLE_PAGES,
+  type SpecimenProps,
+  type Specimens,
   useLocalTime,
   useSubmission,
-  useTo,
-  type NavItem,
-  type SpecimenProps,
-  type Specimens
+  useTo
 } from "../../site";
 import {
   Note,
@@ -49,7 +50,6 @@ import {
   Facts,
   FormField,
   hostOf,
-  industriesOf,
   Ledger,
   Mark,
   More,

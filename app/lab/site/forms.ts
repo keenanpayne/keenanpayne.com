@@ -155,7 +155,7 @@ export const newsletterForm = {
   title: "Newsletter",
   text: "New articles and tutorials, sent when they’re published.",
   submit: "Subscribe",
-  field: { ...email, label: "Email" } satisfies FormField
+  field: email
 } as const;
 
 export type SubmissionKind = "contact" | "inquiry" | "newsletter";

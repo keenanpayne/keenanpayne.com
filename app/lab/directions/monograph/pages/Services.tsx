@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf, pad, quotesOf } from "../../../site";
+import { introOf, pad, quotesOf, titleOf } from "../../../site";
 import {
   Banner,
   KindWords,
@@ -22,7 +22,7 @@ export function Services({
       <PageHeader
         icon="list"
         eyebrow="Services"
-        title={intro?.heading ?? "Services"}
+        title={titleOf(page)}
         lede={intro?.subheading}
       />
 

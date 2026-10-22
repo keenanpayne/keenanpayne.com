@@ -12,6 +12,7 @@ import {
   pageEntries,
   quotesOf,
   samePath,
+  titleOf,
   useTo
 } from "../../../site";
 import {
@@ -80,7 +81,7 @@ export function Generic({
 }) {
   const to = useTo();
   const intro = introOf(page);
-  const title = intro?.heading ?? intro?.title ?? page.meta.title;
+  const title = titleOf(page);
 
   return (
     <>

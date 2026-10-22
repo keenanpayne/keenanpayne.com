@@ -1,4 +1,11 @@
-import { introOf, quotesOf, type TemplateProps } from "../../../site";
+import {
+  industriesOf,
+  introOf,
+  quotesOf,
+  type TemplateProps,
+  titleOf,
+  yearsOf
+} from "../../../site";
 import {
   Band,
   Facts,
@@ -11,26 +18,22 @@ import {
 export function Work({ page, content }: TemplateProps<"work">) {
   const intro = introOf(page);
   const { work } = content;
-  const industries = new Set(work.map((item) => item.industry).filter(Boolean));
+  const since = Math.min(
+    ...work.flatMap((item) => yearsOf(item.year)?.[0] ?? [])
+  );
 
   return (
     <>
       <PageHeader
         eyebrow="Work"
-        title={intro?.heading ?? "Case studies"}
+        title={titleOf(page)}
         lede={intro?.subheading}
         aside={
           <Facts
             rows={[
               ["Projects", work.length],
-              ["Industries", industries.size],
-              [
-                "Since",
-                work
-                  .map((item) => item.year?.slice(0, 4))
-                  .filter(Boolean)
-                  .sort()[0]
-              ]
+              ["Industries", industriesOf(work).size],
+              ["Since", since]
             ]}
           />
         }

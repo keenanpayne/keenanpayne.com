@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf, pad, postsByYear, postTypes } from "../../../site";
+import { introOf, pad, postsByYear, postTypes, titleOf } from "../../../site";
 import {
   Newsletter,
   PageHeader,
@@ -74,7 +74,7 @@ export function Archive({
         episode="Episode:02"
         eyebrow="Writing"
         jp="記録"
-        title={intro?.heading ?? "Writing"}
+        title={titleOf(page)}
         lede={intro?.subheading}
         aside={
           <dl className="mc-readouts mc-readouts--grid">

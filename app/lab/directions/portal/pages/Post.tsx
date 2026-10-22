@@ -1,6 +1,11 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
 import type { LabContent, PostPageModel } from "../../../../lib/types";
-import { readingMinutes, samePath, useTo } from "../../../site";
+import {
+  readingMinutes,
+  samePath,
+  useTo,
+  withoutContents
+} from "../../../site";
 import {
   BackLink,
   Banner,
@@ -95,10 +100,7 @@ export function Post({
   content: LabContent;
 }) {
   const to = useTo();
-  const body = page.content.replace(
-    /<details class="toc">[\s\S]*?<\/details>/,
-    ""
-  );
+  const body = withoutContents(page.content);
   const topics = splitTopics(body);
   const minutes = readingMinutes(body);
   const type = page.type?.label;

@@ -1,5 +1,5 @@
 import type { BasicPageModel } from "../../../../lib/types";
-import { introOf, pad, sectionOf } from "../../../site";
+import { introOf, pad, sectionOf, titleOf } from "../../../site";
 import { Alert, PageHeader, Panel, Section, Transmission } from "../parts";
 
 export function Testimonials({ page }: { page: BasicPageModel }) {
@@ -13,7 +13,7 @@ export function Testimonials({ page }: { page: BasicPageModel }) {
         episode="Episode:05"
         eyebrow="Testimonials"
         jp="証言"
-        title={intro?.heading ?? "Testimonials"}
+        title={titleOf(page)}
         lede={intro?.subheading}
         aside={
           grid &&

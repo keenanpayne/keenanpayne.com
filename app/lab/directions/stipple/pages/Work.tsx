@@ -1,10 +1,15 @@
 import { useState } from "react";
 
-import { introOf, quotesOf, type TemplateProps } from "../../../site";
+import {
+  industriesOf,
+  introOf,
+  quotesOf,
+  type TemplateProps,
+  titleOf
+} from "../../../site";
 import {
   Clients,
   Contents,
-  industriesOf,
   Layout,
   Ledger,
   PageHeader,
@@ -43,7 +48,7 @@ export function Work({ page, content }: TemplateProps<"work">) {
         )
       }
     >
-      <PageHeader title={intro?.heading ?? "Work"} lede={intro?.subheading}>
+      <PageHeader title={titleOf(page)} lede={intro?.subheading}>
         <p className="st-pageMeta">
           <span>{`${work.length} case studies`}</span>
           <span>{`${industriesOf(work).size} industries`}</span>

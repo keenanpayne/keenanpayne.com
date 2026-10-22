@@ -233,6 +233,3 @@ export const FOUNDATIONS: Foundation[] = [
     }
   }
 ];
-
-export const getFoundation = (id: string) =>
-  FOUNDATIONS.find((foundation) => foundation.id === id);

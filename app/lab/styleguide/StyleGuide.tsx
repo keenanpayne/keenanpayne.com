@@ -33,7 +33,7 @@ import {
   labPath,
   type DirectionInfo
 } from "../registry";
-import type { Direction } from "../site/direction";
+import { Stylesheets, type Direction } from "../site/direction";
 import { cx, pad } from "../site/helpers";
 import { useActiveSection } from "../site/hooks";
 import { BaseContext, PreviewContext } from "../site/links";
@@ -239,13 +239,6 @@ function SectionBody({
     }
   }
 }
-
-const Stylesheets = ({ skins }: { skins: Direction[] }) =>
-  skins
-    .flatMap((skin) => skin.stylesheets)
-    .map((href) => (
-      <link key={href} rel="stylesheet" href={href} precedence="default" />
-    ));
 
 /* Chrome
    ========================================================================== */
@@ -504,7 +497,7 @@ function DirectionView({
 
   return (
     <>
-      <Stylesheets skins={[skin]} />
+      <Stylesheets hrefs={skin.stylesheets} />
       {STYLE_SECTIONS.filter(({ id }) => !only || id === only).map(({ id }) => (
         <section key={id} id={id} className="sg-section">
           <SectionHeading
@@ -573,7 +566,7 @@ function CompareView({
 
   return (
     <>
-      <Stylesheets skins={shown.map(({ skin }) => skin)} />
+      <Stylesheets hrefs={shown.flatMap(({ skin }) => skin.stylesheets)} />
       <SectionHeading
         id={section}
         as="h1"
@@ -692,9 +685,17 @@ export function StyleGuide({
     }
   }, [slug]);
 
-  // Start loading every direction and its specimens, so switching is quick
+  // Once the page is idle, start loading every direction and its specimens,
+  // so switching is quick without competing with the one shown
   useEffect(() => {
-    directions.forEach((direction) => loadSpecimens(direction.slug));
+    const warm = () =>
+      directions.forEach((direction) => loadSpecimens(direction.slug));
+    if ("requestIdleCallback" in window) {
+      const idle = requestIdleCallback(warm);
+      return () => cancelIdleCallback(idle);
+    }
+    const timer = setTimeout(warm, 2000);
+    return () => clearTimeout(timer);
   }, []);
 
   const step = (by: number) => () => {

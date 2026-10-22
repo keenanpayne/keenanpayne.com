@@ -3,7 +3,8 @@ import {
   introOf,
   postsByYear,
   postTypes,
-  type TemplateProps
+  type TemplateProps,
+  titleOf
 } from "../../../site";
 import {
   Contents,
@@ -30,7 +31,7 @@ export function Writing({ page, content }: TemplateProps<"writing">) {
         />
       }
     >
-      <PageHeader title={intro?.heading ?? "Writing"} lede={intro?.subheading}>
+      <PageHeader title={titleOf(page)} lede={intro?.subheading}>
         <p className="st-pageMeta">
           <span>{`${content.posts.length} articles · ${years.length} years`}</span>
           <span>

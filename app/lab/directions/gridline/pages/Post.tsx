@@ -1,12 +1,13 @@
 import { HtmlContent } from "../../../../components/HtmlContent";
 import {
+  contentsOf,
   Html,
   ledeOf,
   readingMinutes,
+  type TemplateProps,
   titleOf,
   useActiveSection,
-  useTo,
-  type TemplateProps
+  useTo
 } from "../../../site";
 import {
   Band,
@@ -18,16 +19,6 @@ import {
   PostNav,
   Trail
 } from "../parts";
-
-/** The post's table of contents (`<details class="toc">`), as its own list */
-function contentsOf(html: string) {
-  const details = /<details class="toc">[\s\S]*?<\/details>/.exec(html)?.[0];
-  const nav = details && /<nav class="toc-nav">([\s\S]*?)<\/nav>/.exec(details);
-  if (!nav) return undefined;
-
-  const ids = [...nav[1].matchAll(/href="#([^"]+)"/g)].map((match) => match[1]);
-  return { html: nav[1], ids };
-}
 
 /** Contents in the left rail, marking the section being read */
 function Contents({ html, ids }: { html: string; ids: string[] }) {

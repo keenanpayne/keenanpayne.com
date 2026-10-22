@@ -1,4 +1,4 @@
-import { introOf, sectionOf, type TemplateProps } from "../../../site";
+import { introOf, sectionOf, type TemplateProps, titleOf } from "../../../site";
 import { Chips, Layout, PageHeader, Quotes } from "../parts";
 
 export function Testimonials({ page }: TemplateProps<"testimonials">) {
@@ -24,10 +24,7 @@ export function Testimonials({ page }: TemplateProps<"testimonials">) {
         )
       }
     >
-      <PageHeader
-        title={intro?.heading ?? "Testimonials"}
-        lede={intro?.subheading}
-      >
+      <PageHeader title={titleOf(page)} lede={intro?.subheading}>
         {grid && (
           <p className="st-pageMeta">
             <span>{`${grid.testimonials.length} kind words`}</span>

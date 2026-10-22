@@ -92,6 +92,28 @@ export function LocalTime({
   );
 }
 
+const CLOCK: Intl.DateTimeFormatOptions = {
+  hour: "numeric",
+  minute: "2-digit",
+  second: "2-digit"
+};
+
+/**
+ * A moment as a readout's clock: its digits (`3:04:05`) and its period
+ * (`PM`), set apart so a direction can style them; blank before hydration
+ */
+export function clockParts(now: Date | undefined) {
+  const parts = now ? localFormat(CLOCK).formatToParts(now) : [];
+  return {
+    time: parts
+      .filter((part) => part.type !== "dayPeriod")
+      .map((part) => part.value)
+      .join("")
+      .trim(),
+    period: parts.find((part) => part.type === "dayPeriod")?.value
+  };
+}
+
 /**
  * The current moment, ticking once a second while `active`. `undefined`
  * until hydrated, so the server markup matches.

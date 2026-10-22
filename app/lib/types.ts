@@ -23,7 +23,6 @@ export interface EntryModel {
   /** HTML */
   lede?: string;
   url?: string;
-  linkText?: string;
 }
 
 export interface TestimonialModel {
@@ -39,14 +38,6 @@ export interface TestimonialModel {
   };
 }
 
-export interface PhotoModel {
-  src: string;
-  alt?: string;
-  lazy?: boolean;
-  width?: string | number;
-  height?: string | number;
-}
-
 export interface IntroSection {
   type: "intro";
   /** HTML */
@@ -57,36 +48,22 @@ export interface IntroSection {
   subheading?: string;
   /** HTML */
   body?: string;
-  headerMaxWidth?: string;
-  subheadingMaxWidth?: string;
-  bodyMaxWidth?: string;
-  leftPhotos?: PhotoModel[];
-  right?: {
-    heading?: string;
-    readMore?: LinkModel;
-    items?:
-      { from: "services"; entries: EntryModel[] } | { from: "photosOfMe" };
-  };
 }
 
 export interface EntriesSection {
   type: "entries";
   heading?: string;
   readMore?: LinkModel;
-  /** Class for the items container; omitted when the section has no `items` */
-  itemsClass?: string;
   /** Empty when nothing matches: shows the "nothing published" notice */
   entries: EntryModel[];
 }
 
 export interface NewsletterSection {
   type: "newsletter";
-  spacing?: string | number;
 }
 
 export interface NewsletterStandaloneSection {
   type: "newsletterStandalone";
-  modifiers?: string;
 }
 
 export interface TestimonialsSection {
@@ -122,25 +99,12 @@ export interface PortfolioGridItem {
 export interface PortfolioGridSection {
   type: "portfolioGrid";
   modifier?: string;
-  contained?: boolean;
   enlarge?: boolean;
   eyebrow?: string;
   headline?: string;
   /** HTML */
   description?: string;
   items: PortfolioGridItem[] | null;
-}
-
-export interface DribbbleSection {
-  type: "dribbble";
-  modifier?: string;
-  items: Array<{ src?: string; alt?: string; type?: string }>;
-}
-
-export interface SocialProofLogosSection {
-  type: "socialProofLogos";
-  /** `svg` is the logo's SVG markup */
-  logos: Array<{ name: string; svg: string }>;
 }
 
 export interface TagListSection {
@@ -169,14 +133,9 @@ export type SectionModel =
   | TestimonialsGridSection
   | TestimonialSection
   | PortfolioGridSection
-  | DribbbleSection
   | TagListSection
   | TypeListSection
-  | PageListSection
-  | SocialProofLogosSection
-  | { type: "cta" }
-  | { type: "contact" }
-  | { type: "projectInquiry" };
+  | PageListSection;
 
 interface BaseModel {
   /** Canonical path of the page, e.g. `/about/` */
@@ -186,7 +145,6 @@ interface BaseModel {
 
 export interface BasicPageModel extends BaseModel {
   layout: "page";
-  templateClass?: string;
   sections: SectionModel[];
   /** HTML */
   content: string;
@@ -199,7 +157,6 @@ export interface PostNavModel {
 
 export interface PostPageModel extends BaseModel {
   layout: "post";
-  sectionClass: string;
   title?: string;
   /** Plain text */
   lede?: string;
@@ -208,11 +165,6 @@ export interface PostPageModel extends BaseModel {
   tags: Array<{ name: string; url?: string }> | null;
   /** HTML for `.post-content` (cover, table of contents and body) */
   content: string;
-  /** "<title> is a/an <typeLabel> published on <date>" */
-  footer?: {
-    article: string;
-    typeLabel: string;
-  };
   postNav: PostNavModel | null;
   comments: boolean;
   newsletter: boolean;

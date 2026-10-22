@@ -4,7 +4,7 @@ import { getConformanceReport } from "../lab/conformance/report.server";
 import { LabBar } from "../lab/LabBar";
 import labStyles from "../lab/lab.css?url";
 import { directions, getDirection } from "../lab/registry";
-import { navigationFor, resolveView } from "../lab/site/ia";
+import { resolveSitePage } from "../lab/site/page.server";
 import { getProseSpecimen } from "../lab/styleguide/prose.server";
 import {
   CONFORMANCE_PATH,
@@ -15,7 +15,6 @@ import {
 import { StyleGuide } from "../lab/styleguide/StyleGuide";
 import guideStyles from "../lab/styleguide/styleguide.css?url";
 import { getDirectionTokens } from "../lab/styleguide/tokens.server";
-import { getLabContent, getPage } from "../lib/content/content.server";
 import { metadata } from "../lib/site";
 import type { Route } from "./+types/lab.styleguide";
 
@@ -37,16 +36,12 @@ export async function loader({ params }: Route.LoaderArgs) {
   const mode = modeOf(params);
   if (!mode) throw data(null, { status: 404 });
 
-  const view = resolveView(SHELL_PATH, getPage(SHELL_PATH));
+  const { path, view, navigation, content } = resolveSitePage(SHELL_PATH);
   return {
-    content: getLabContent(),
+    content,
     prose: getProseSpecimen(),
-    tokens: getDirectionTokens(),
-    shell: {
-      path: SHELL_PATH,
-      view,
-      navigation: navigationFor(view, SHELL_PATH)
-    },
+    tokens: await getDirectionTokens(),
+    shell: { path, view, navigation },
     // Rendering every direction's pages takes a moment, so only this page
     // runs the checks
     conformance:

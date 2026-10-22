@@ -4,7 +4,8 @@ import {
   introOf,
   LocalTime,
   relabel,
-  type TemplateProps
+  type TemplateProps,
+  titleOf
 } from "../../../site";
 import {
   Contents,
@@ -38,10 +39,7 @@ export function About({ page, content }: TemplateProps<"about">) {
           />
         }
       >
-        <PageHeader
-          title={intro?.heading ?? "About"}
-          lede={intro?.subheading}
-        />
+        <PageHeader title={titleOf(page)} lede={intro?.subheading} />
 
         {intro?.body && (
           <Section id="story" title="Story">

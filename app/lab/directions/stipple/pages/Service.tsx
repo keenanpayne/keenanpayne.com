@@ -4,8 +4,9 @@ import {
   introOf,
   quotesOf,
   samePath,
-  useTo,
-  type TemplateProps
+  type TemplateProps,
+  titleOf,
+  useTo
 } from "../../../site";
 import {
   Button,
@@ -39,7 +40,7 @@ export function Service({ page, content }: TemplateProps<"service">) {
             <span>Service</span>
           </>
         }
-        title={intro?.heading ?? intro?.title ?? page.meta.title}
+        title={titleOf(page)}
         lede={intro?.subheading}
       >
         <p className="st-actions">

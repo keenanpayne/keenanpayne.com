@@ -21,6 +21,7 @@ import type {
 import {
   Comments,
   cx,
+  type FormField as Field,
   formOf,
   homeWork,
   Html,
@@ -32,7 +33,7 @@ import {
   useReducedMotion,
   useSubmission,
   useTo,
-  type FormField as Field
+  yearsOf
 } from "../../site";
 
 import {
@@ -308,25 +309,27 @@ export function Chips({
 }) {
   return (
     <ul className="gl-chips" aria-label={label}>
-      {links.map((link) => (
-        <li key={link.url || link.text}>
-          {link.url ? (
-            <a className="gl-chip" href={link.url}>
-              {link.text}
-              {link.count !== undefined && (
-                <span className="gl-chip__count">{link.count}</span>
-              )}
-            </a>
-          ) : (
-            <span className="gl-chip">
-              {link.text}
-              {link.count !== undefined && (
-                <span className="gl-chip__count">{link.count}</span>
-              )}
-            </span>
-          )}
-        </li>
-      ))}
+      {links.map((link) => {
+        const chip = (
+          <>
+            {link.text}
+            {link.count !== undefined && (
+              <span className="gl-chip__count">{link.count}</span>
+            )}
+          </>
+        );
+        return (
+          <li key={link.url || link.text}>
+            {link.url ? (
+              <a className="gl-chip" href={link.url}>
+                {chip}
+              </a>
+            ) : (
+              <span className="gl-chip">{chip}</span>
+            )}
+          </li>
+        );
+      })}
     </ul>
   );
 }
@@ -385,6 +388,35 @@ export function PostRows({ posts }: { posts: Posts }) {
   );
 }
 
+/** A numbered row: index, title and lede */
+function CompactRow({
+  index,
+  url,
+  title,
+  lede
+}: {
+  index: number;
+  url?: string;
+  title?: string;
+  lede?: ReactNode;
+}) {
+  return (
+    <li className="gl-row gl-row--compact">
+      <a href={url}>
+        <span className="gl-meta">{pad(index + 1)}</span>
+        <span>
+          <h3 className="gl-row__title">{title}</h3>
+          {lede}
+        </span>
+        <span />
+        <span className="gl-row__arrow" aria-hidden="true">
+          →
+        </span>
+      </a>
+    </li>
+  );
+}
+
 /** Links listed by an `entries` section (type and tag archives, …) */
 export function EntryRows({ section }: { section: EntriesSection }) {
   if (section.entries.length === 0) return null;
@@ -398,21 +430,17 @@ export function EntryRows({ section }: { section: EntriesSection }) {
       />
       <ol className="gl-rows">
         {section.entries.map((entry, index) => (
-          <li key={entry.url ?? index} className="gl-row gl-row--compact">
-            <a href={entry.url}>
-              <span className="gl-meta">{pad(index + 1)}</span>
-              <span>
-                <h3 className="gl-row__title">{entry.heading}</h3>
-                {entry.lede && (
-                  <Html as="p" className="gl-row__lede" html={entry.lede} />
-                )}
-              </span>
-              <span />
-              <span className="gl-row__arrow" aria-hidden="true">
-                →
-              </span>
-            </a>
-          </li>
+          <CompactRow
+            key={entry.url ?? index}
+            index={index}
+            url={entry.url}
+            title={entry.heading}
+            lede={
+              entry.lede && (
+                <Html as="p" className="gl-row__lede" html={entry.lede} />
+              )
+            }
+          />
         ))}
       </ol>
     </Band>
@@ -491,19 +519,13 @@ export function ServiceRows({
   return (
     <ol className="gl-rows">
       {services.map((service, index) => (
-        <li key={service.url} className="gl-row gl-row--compact">
-          <a href={service.url}>
-            <span className="gl-meta">{pad(index + 1)}</span>
-            <span>
-              <h3 className="gl-row__title">{service.title}</h3>
-              {service.lede && <p className="gl-row__lede">{service.lede}</p>}
-            </span>
-            <span />
-            <span className="gl-row__arrow" aria-hidden="true">
-              →
-            </span>
-          </a>
-        </li>
+        <CompactRow
+          key={service.url}
+          index={index}
+          url={service.url}
+          title={service.title}
+          lede={service.lede && <p className="gl-row__lede">{service.lede}</p>}
+        />
       ))}
     </ol>
   );
@@ -768,7 +790,7 @@ export function Terminal({ content }: { content: LabContent }) {
       command: "ls work",
       lines: homeWork(content).map((item) => ({
         key: item.url,
-        term: item.year?.split(/[–-]/)[0] ?? "",
+        term: yearsOf(item.year)?.[0] ?? "",
         detail: item.name,
         url: item.url
       }))
@@ -1263,11 +1285,17 @@ export function Blueprint({
       const box = panel.current?.getBoundingClientRect();
       if (!box) return;
       const bounds = boundsOf(box, grid);
-      if (!lifeStep(latest.current, bounds, true).changed) {
+      const next = lifeStep(latest.current, bounds, true);
+      if (!next.changed) {
         setRunning(false);
         return;
       }
-      setPaints((current) => lifeStep(current, bounds, true).paints);
+      // Reused unless a stroke landed since the last render
+      setPaints((current) =>
+        current === latest.current
+          ? next.paints
+          : lifeStep(current, bounds, true).paints
+      );
     }, LIFE_TICK);
     return () => clearInterval(timer);
   }, [playing, grid]);
@@ -1509,6 +1537,13 @@ export function Cta({
   variant?: CtaId;
 }) {
   const to = useTo();
+  const heading = (
+    <>
+      <Eyebrow>{CTA_COPY.eyebrow}</Eyebrow>
+      <h2>{CTA_COPY.title}</h2>
+      <p>{CTA_COPY.lede}</p>
+    </>
+  );
 
   if (variant === "cells") {
     const ways = [
@@ -1524,11 +1559,7 @@ export function Cta({
     return (
       <Band className="gl-cta gl-cta--cells" invert label={CTA_COPY.eyebrow}>
         <div className="gl-cta-cells">
-          <div className="gl-cta-cells__main">
-            <Eyebrow>{CTA_COPY.eyebrow}</Eyebrow>
-            <h2>{CTA_COPY.title}</h2>
-            <p>{CTA_COPY.lede}</p>
-          </div>
+          <div className="gl-cta-cells__main">{heading}</div>
           <ul className="gl-cta-cells__ways">
             {ways.map((way) => (
               <li key={way.url}>
@@ -1549,9 +1580,7 @@ export function Cta({
 
   const panel = (
     <>
-      <Eyebrow>{CTA_COPY.eyebrow}</Eyebrow>
-      <h2>{CTA_COPY.title}</h2>
-      <p>{CTA_COPY.lede}</p>
+      {heading}
       <div className="gl-actions">
         <Button href={to("/project-inquiry/")}>
           Start a project <Arrow />

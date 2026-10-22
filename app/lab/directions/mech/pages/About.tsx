@@ -1,7 +1,7 @@
 import { useRef } from "react";
 
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { Html, introOf, pad, relabel } from "../../../site";
+import { Html, introOf, pad, relabel, titleOf } from "../../../site";
 import {
   Feed,
   Lightbox,
@@ -64,7 +64,7 @@ export function About({
         episode="Episode:03"
         eyebrow="About"
         jp="人物"
-        title={intro?.heading ?? "About"}
+        title={titleOf(page)}
         lede={intro?.subheading}
         aside={
           <dl className="mc-readouts mc-readouts--grid">

@@ -13,6 +13,7 @@ import {
   pageEntries,
   quotesOf,
   samePath,
+  titleOf,
   useTo
 } from "../../../site";
 import {
@@ -88,7 +89,7 @@ export function Generic({
   const serviceIndex = content.services.findIndex((service) =>
     samePath(service.url, page.url)
   );
-  const title = intro?.heading ?? intro?.title ?? page.meta.title;
+  const title = titleOf(page);
   const hasBody = Boolean(intro?.body || page.content);
   const others = content.services.filter(
     (service) => !samePath(service.url, page.url)

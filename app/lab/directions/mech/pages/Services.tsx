@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf, pad, quotesOf } from "../../../site";
+import { introOf, pad, quotesOf, titleOf } from "../../../site";
 import {
   Alert,
   KindWords,
@@ -25,7 +25,7 @@ export function Services({
         episode="Episode:04"
         eyebrow="Services"
         jp="業務"
-        title={intro?.heading ?? "Services"}
+        title={titleOf(page)}
         lede={intro?.subheading}
         aside={
           <dl className="mc-readouts mc-readouts--grid">

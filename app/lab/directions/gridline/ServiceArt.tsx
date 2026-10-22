@@ -2,7 +2,6 @@ import {
   Fragment,
   useEffect,
   useId,
-  useMemo,
   useRef,
   type CSSProperties,
   type ReactNode
@@ -426,6 +425,23 @@ function usePlayback(
  * service without one. `treatment` overrides the site's (and `?illo=`);
  * `playback` says when it moves.
  */
+// The rigs never change, so each is drawn and sampled once, however many
+// tiles show it and however often they mount (on the server too)
+const arts = new Map<
+  Rig,
+  { drawing: ReturnType<typeof draw>; frames: Record<string, PartFrames> }
+>();
+
+function artOf(rig: Rig) {
+  let art = arts.get(rig);
+  if (!art) {
+    const drawing = draw(rig);
+    art = { drawing, frames: framesOf(rig, drawing.origin) };
+    arts.set(rig, art);
+  }
+  return art;
+}
+
 export function ServiceArt({
   url,
   treatment,
@@ -438,16 +454,13 @@ export function ServiceArt({
   className?: string;
 }) {
   const rig = rigFor(url);
-  const drawing = useMemo(() => rig && draw(rig), [rig]);
-  const frames = useMemo(
-    () => (rig && drawing ? framesOf(rig, drawing.origin) : undefined),
-    [rig, drawing]
-  );
+  const art = rig && artOf(rig);
   const [illo] = useQueryParam("illo");
   // An id for the hatching that's safe inside `url(#…)`
   const hatch = `gl-hatch-${useId().replace(/[^\w-]/g, "")}`;
-  const svg = usePlayback(frames, rig?.seconds ?? 0, playback);
-  if (!drawing || !frames) return null;
+  const svg = usePlayback(art?.frames, rig?.seconds ?? 0, playback);
+  if (!art) return null;
+  const { drawing, frames } = art;
 
   const look = treatment ?? (isTreatment(illo) ? illo : DEFAULT_TREATMENT);
   const points = (list: Vec2[]) =>

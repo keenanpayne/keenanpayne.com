@@ -94,7 +94,6 @@ npm run lab:check
 ```
 .
 ├── app/                    # React Router application
-│   ├── assets/svg/         # Inline SVG icons and logos
 │   ├── components/         # HtmlContent: rendered Markdown, with its embeds
 │   ├── data/               # Profile, people, testimonials, socials, portfolio case studies, site metadata
 │   ├── lab/                # Design directions over the same content (see app/lab/README.md)

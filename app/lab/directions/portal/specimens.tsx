@@ -10,15 +10,16 @@ import {
   postsByYear,
   readingMinutes,
   relabel,
-  useTo,
-  type Condition,
   type SpecimenProps,
   type Specimens,
+  useTo,
   type View,
-  type ViewKind
+  type ViewKind,
+  withoutContents
 } from "../../site";
 import {
   Note,
+  SAMPLE_SKIES,
   samplePostNav,
   Specimen,
   SpecimenGrid,
@@ -448,19 +449,6 @@ const AD_NOTES: Record<AdName, string> = {
   suck: "Links to services"
 };
 
-/** Every sky the forecast can play */
-const SKIES: { condition?: Condition; night: boolean; label: string }[] = [
-  { condition: "clear", night: false, label: "Clear" },
-  { condition: "clear", night: true, label: "Clear night" },
-  { condition: "cloudy", night: false, label: "Cloudy" },
-  { condition: "cloudy", night: true, label: "Cloudy night" },
-  { condition: "fog", night: false, label: "Fog" },
-  { condition: "rain", night: false, label: "Rain" },
-  { condition: "snow", night: false, label: "Snow" },
-  { condition: "storm", night: false, label: "Thunderstorm" },
-  { night: false, label: "Reading the sky" }
-];
-
 /** A clock chip that opens a forecast of its own */
 function Clock({ location }: { location: ProfileModel["location"] }) {
   const forecast = useId();
@@ -524,7 +512,7 @@ function Motifs({ content }: SpecimenProps) {
           wide
         >
           <SpecimenGrid min={300}>
-            {SKIES.map(({ condition, night, label }) => (
+            {SAMPLE_SKIES.map(({ condition, night, label }) => (
               <Specimen key={`${condition}${night}`} label={label}>
                 <div className="pt-den__sky" style={{ marginTop: 0 }}>
                   <SkyLevel condition={condition} night={night} />
@@ -2216,9 +2204,10 @@ function Wayfinding({ content, navigation }: SpecimenProps) {
  */
 function Prose({ prose }: SpecimenProps) {
   const id = useId();
-  const topics = splitTopics(
-    prose.replace(/<details class="toc">[\s\S]*?<\/details>/, "")
-  ).map((topic) => ({ ...topic, id: `${id}${topic.id}` }));
+  const topics = splitTopics(withoutContents(prose)).map((topic) => ({
+    ...topic,
+    id: `${id}${topic.id}`
+  }));
 
   return (
     <>

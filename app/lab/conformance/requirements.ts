@@ -18,7 +18,7 @@ import type { Root } from "postcss";
 
 import { getLabContent, getPage } from "../../lib/content/content.server";
 import { metadata } from "../../lib/site";
-import type { TestimonialModel } from "../../lib/types";
+import type { SectionModel, TestimonialModel } from "../../lib/types";
 import { COMMENTS_ID } from "../site/comments";
 import {
   formOf,
@@ -50,7 +50,7 @@ export interface Requirement {
   /** Stable, e.g. `shell.skipLink`; what `gaps.ts` lists */
   id: string;
   /** Where it's reported: the Shell, every page, or one kind of page */
-  group?: "Shell" | "Every page" | "Pages";
+  group: "Shell" | "Every page" | "Pages";
   /** What every direction does, in a sentence */
   rule: string;
   /** The kinds of page it applies to; every page when left out */
@@ -76,7 +76,7 @@ function forKinds<K extends ViewKind>(
     problem: (message: string) => void,
     stylesheet: Root
   ) => void
-): Requirement {
+): Omit<Requirement, "group"> {
   return {
     id,
     rule,
@@ -244,6 +244,22 @@ function quoteProblems(element: HTMLElement, quotes: TestimonialModel[]) {
   });
 }
 
+/** Problems with a page's intro: its subheading and body, when it has them */
+function introProblems(
+  element: HTMLElement,
+  page: { sections: SectionModel[] }
+) {
+  const intro = introOf(page);
+  const problems: string[] = [];
+  if (intro?.subheading && !says(element, plain(intro.subheading))) {
+    problems.push("the intro’s subheading");
+  }
+  if (intro?.body && !says(element, plain(intro.body))) {
+    problems.push("the intro’s body");
+  }
+  return problems;
+}
+
 /** Problems with an article body: every heading, link, and image in it */
 function bodyProblems(element: HTMLElement, html: string) {
   const body = parse(html);
@@ -276,7 +292,7 @@ const linkProblems = (
 // The Shell, on every page
 // --------------------------------------------------
 
-const shell: Requirement[] = [
+const shell: Omit<Requirement, "group">[] = [
   forKinds(
     ALL_KINDS,
     "shell.main",
@@ -479,7 +495,7 @@ const shell: Requirement[] = [
 // Every page
 // --------------------------------------------------
 
-const everyPage: Requirement[] = [
+const everyPage: Omit<Requirement, "group">[] = [
   forKinds(
     ALL_KINDS,
     "page.h1",
@@ -534,13 +550,15 @@ const everyPage: Requirement[] = [
     }
   ),
   forKinds(
-    ["writing", "archive", "page", "post"],
+    ALL_KINDS,
     "page.newsletter",
     "The newsletter sign-up (`newsletterForm`: a form with a required email field named `email`, sending the shared way on the live site) is on exactly the pages that ask for it.",
     (page, problem) => {
       const { main, view } = page;
       const asked =
-        view.kind === "post" ? view.page.newsletter : hasNewsletter(view.page);
+        view.kind === "post"
+          ? view.page.newsletter
+          : "page" in view && hasNewsletter(view.page);
       const { name, required } = newsletterForm.field;
       const emailIn = (form: HTMLElement) =>
         form.querySelector(`input[type="email"][name="${name}"]`);
@@ -571,7 +589,7 @@ const everyPage: Requirement[] = [
 // Pages, by kind
 // --------------------------------------------------
 
-const pages: Requirement[] = [
+const pages: Omit<Requirement, "group">[] = [
   forKinds(
     ["home"],
     "home.intro",
@@ -832,12 +850,7 @@ const pages: Requirement[] = [
     "listing.sections",
     "A page renders its intro, its body, and each of its sections: entries (linked, with their ledes), tags, post types, and pages.",
     ({ main, view: { page } }, problem) => {
-      const intro = introOf(page);
-      if (intro?.subheading && !says(main, plain(intro.subheading))) {
-        problem("the intro’s subheading");
-      }
-      if (intro?.body && !says(main, plain(intro.body)))
-        problem("the intro’s body");
+      introProblems(main, page).forEach(problem);
       bodyProblems(main, page.content).forEach(problem);
       for (const section of page.sections) {
         if (section.type === "entries") {
@@ -872,12 +885,7 @@ const pages: Requirement[] = [
     "about.profile",
     "About shows its intro and body, every profile fact (in the direction’s own labels) with its link, every profile elsewhere, and every photo with its caption.",
     ({ main, view: { page }, content }, problem) => {
-      const intro = introOf(page);
-      if (intro?.subheading && !says(main, plain(intro.subheading))) {
-        problem("the intro’s subheading");
-      }
-      if (intro?.body && !says(main, plain(intro.body)))
-        problem("the intro’s body");
+      introProblems(main, page).forEach(problem);
       for (const fact of content.profile.facts) {
         if (!says(main, fact.text)) problem(`the ${fact.id} fact`);
         if (fact.url && !linksToIn(main, fact.url))
@@ -921,12 +929,7 @@ const pages: Requirement[] = [
     "A service links back to Services, renders its intro, body, and entries, and lists every other service, linked, with its lede.",
     ({ main, view: { page }, content, to }, problem) => {
       if (!linksToIn(main, to("/services/"))) problem("a link to Services");
-      const intro = introOf(page);
-      if (intro?.subheading && !says(main, plain(intro.subheading))) {
-        problem("the intro’s subheading");
-      }
-      if (intro?.body && !says(main, plain(intro.body)))
-        problem("the intro’s body");
+      introProblems(main, page).forEach(problem);
       bodyProblems(main, page.content).forEach(problem);
       for (const section of page.sections) {
         if (section.type !== "entries") continue;
@@ -1069,6 +1072,3 @@ export const REQUIREMENTS: Requirement[] = [
   })),
   ...pages.map((requirement) => ({ ...requirement, group: "Pages" as const }))
 ];
-
-export const getRequirement = (id: string) =>
-  REQUIREMENTS.find((requirement) => requirement.id === id);

@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf, postsByYear, postTypes } from "../../../site";
+import { introOf, postsByYear, postTypes, titleOf } from "../../../site";
 import {
   ArrowCircle,
   MoreLink,
@@ -55,7 +55,7 @@ export function Archive({
       <PageHeader
         icon="pen"
         eyebrow="Writing"
-        title={intro?.heading ?? "Writing"}
+        title={titleOf(page)}
         lede={intro?.subheading}
       >
         <p className="mg-pageHeader__stats">

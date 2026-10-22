@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf, pad, quotesOf } from "../../../site";
+import { introOf, pad, quotesOf, titleOf } from "../../../site";
 import {
   Alert,
   KindWords,
@@ -29,7 +29,7 @@ export function Work({
         episode="Episode:01"
         eyebrow="Work"
         jp="作品"
-        title={intro?.heading ?? "Case studies"}
+        title={titleOf(page)}
         lede={intro?.subheading}
         aside={
           <dl className="mc-readouts mc-readouts--grid">

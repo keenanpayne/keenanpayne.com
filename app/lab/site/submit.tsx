@@ -10,7 +10,7 @@ import { submissionOf, type SubmissionKind } from "./forms";
 import { useIsLive } from "./links";
 
 /** What a mockup form says instead of sending, before and after a submit */
-export const MOCKUP_STATUS = {
+const MOCKUP_STATUS = {
   idle: "Mockup only — this form doesn’t send anything.",
   sent: "Mockup only — nothing was sent."
 };

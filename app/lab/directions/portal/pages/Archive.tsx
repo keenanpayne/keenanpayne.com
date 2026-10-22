@@ -1,7 +1,14 @@
 import { useState } from "react";
 
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { Html, introOf, pad, titleOf, useQueryParam } from "../../../site";
+import {
+  Html,
+  introOf,
+  pad,
+  postsByYear,
+  titleOf,
+  useQueryParam
+} from "../../../site";
 import {
   Feature,
   Go,
@@ -153,7 +160,7 @@ export function Calendar({ posts }: { posts: Post[] }) {
 
 /** The archive search's filters, and the posts that pass them */
 export function useArchiveSearch(posts: Post[]) {
-  const years = [...new Set(posts.map((post) => post.year))];
+  const years = postsByYear(posts).map(([year]) => year);
   const [query, setQuery] = useQueryParam("q");
   const [from, setFrom] = useState(years[years.length - 1] ?? "");
   const [until, setUntil] = useState(years[0] ?? "");

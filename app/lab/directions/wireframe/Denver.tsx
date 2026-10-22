@@ -4,9 +4,8 @@ import {
   compass,
   coordinates,
   degrees,
-  localClock,
   LocalTime,
-  pad,
+  twelveHour,
   useForecast
 } from "../../site";
 
@@ -20,12 +19,6 @@ import {
  */
 
 type Location = ProfileModel["location"];
-
-/** One of the forecast's local times (`…T07:05`) as `7:05 AM` */
-function twelveHour(iso: string) {
-  const { hours, minutes } = localClock(iso);
-  return `${hours % 12 || 12}:${pad(minutes)} ${hours < 12 ? "AM" : "PM"}`;
-}
 
 /** The button that opens the weather */
 export function DenverClock({

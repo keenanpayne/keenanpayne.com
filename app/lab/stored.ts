@@ -12,7 +12,7 @@ import { useSyncExternalStore } from "react";
 const listeners = new Set<() => void>();
 const memory = new Map<string, string | null>();
 
-export function readStored(key: string) {
+function readStored(key: string) {
   if (memory.has(key)) return memory.get(key) ?? null;
   try {
     return localStorage.getItem(key);

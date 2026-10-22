@@ -2,12 +2,7 @@ import { data, redirect } from "react-router";
 
 import { live } from "../lab/live";
 import { DirectionPage } from "../lab/site/direction";
-import { navigationFor, resolveView } from "../lab/site/ia";
-import {
-  getLabContent,
-  getNotFoundPage,
-  getPage
-} from "../lib/content/content.server";
+import { resolveSitePage } from "../lab/site/page.server";
 import { resolveLegacyPath } from "../lib/legacy-urls";
 import { metaTags } from "../lib/meta";
 import type { Route } from "./+types/page";
@@ -18,26 +13,15 @@ import type { Route } from "./+types/page";
  * templates the lab mocks up at `/lab/<slug>/`, with nothing rebased.
  */
 export function loader({ url }: Route.LoaderArgs) {
-  const page = getPage(url.pathname);
+  const site = resolveSitePage(url.pathname);
+  if (site.view.kind !== "notFound") return site;
 
-  if (!page && url.pathname !== "/") {
-    // Previously Netlify redirect rules; the SSR handler now answers every
-    // path, so they live with the app. Like Netlify's, they keep the query.
-    const legacyPath = resolveLegacyPath(url.pathname);
-    if (legacyPath) throw redirect(`${legacyPath}${url.search}`, 301);
-  }
+  // Previously Netlify redirect rules; the SSR handler now answers every
+  // path, so they live with the app. Like Netlify's, they keep the query.
+  const legacyPath = resolveLegacyPath(url.pathname);
+  if (legacyPath) throw redirect(`${legacyPath}${url.search}`, 301);
 
-  const path = page?.url ?? url.pathname;
-  const view = resolveView(path, page);
-  const result = {
-    path,
-    view,
-    navigation: navigationFor(view, path),
-    content: getLabContent(),
-    meta: (page ?? getNotFoundPage()).meta
-  };
-
-  return view.kind === "notFound" ? data(result, { status: 404 }) : result;
+  return data(site, { status: 404 });
 }
 
 export function meta({ loaderData }: Route.MetaArgs) {

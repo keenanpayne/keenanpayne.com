@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-import { introOf, relabel, type TemplateProps } from "../../../site";
+import { introOf, relabel, type TemplateProps, titleOf } from "../../../site";
 import { Band, Cells, Copy, Facts, PageHeader, SectionHead } from "../parts";
 
 export function About({ page, content }: TemplateProps<"about">) {
@@ -12,7 +12,7 @@ export function About({ page, content }: TemplateProps<"about">) {
     <>
       <PageHeader
         eyebrow="About"
-        title={intro?.heading ?? "About"}
+        title={titleOf(page)}
         lede={intro?.subheading}
       />
 

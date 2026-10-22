@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { Html, introOf } from "../../../site";
+import { Html, introOf, titleOf } from "../../../site";
 import { Facts, Icon, PageHeader, Section } from "../parts";
 
 export function About({
@@ -35,7 +35,7 @@ export function About({
       <PageHeader
         icon="user"
         eyebrow="About"
-        title={intro?.heading ?? "About"}
+        title={titleOf(page)}
         lede={intro?.subheading}
       />
 

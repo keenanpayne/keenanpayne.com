@@ -1,10 +1,7 @@
 ---
 title: Project Inquiry
-templateClass: _page-spacing-bottom
 sections:
   - type: intro
     heading: "Want to work together?"
     subheading: <strong>I'd love to hear from you.</strong> Please fill out the form below or shoot me an email at <a class="-hover-background" href="mailto:contact@keenanpayne.com?subject=Contact from keenanpayne.com">contact@keenanpayne.com</a> to get started.
-    subheadingMaxWidth: 52ch
-  - type: projectInquiry
 ---

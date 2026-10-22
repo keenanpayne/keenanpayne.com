@@ -16,11 +16,29 @@ import {
 } from "react";
 
 import type { LabContent, PostNavModel } from "../../lib/types";
+import type { Condition } from "../site/weather";
 
 /* Samples
    ==========================================================================
    Stand-ins for page data a specimen needs but `content` doesn't carry,
    built from the content so every direction shows the same thing. */
+
+/** Every sky the Denver readout can show, and the wait for one */
+export const SAMPLE_SKIES: {
+  condition?: Condition;
+  night: boolean;
+  label: string;
+}[] = [
+  { condition: "clear", night: false, label: "Clear" },
+  { condition: "clear", night: true, label: "Clear night" },
+  { condition: "cloudy", night: false, label: "Cloudy" },
+  { condition: "cloudy", night: true, label: "Cloudy night" },
+  { condition: "fog", night: false, label: "Fog" },
+  { condition: "rain", night: false, label: "Rain" },
+  { condition: "snow", night: false, label: "Snow" },
+  { condition: "storm", night: false, label: "Thunderstorm" },
+  { night: false, label: "Reading the sky" }
+];
 
 /** Previous and next around the second-newest post, as a post page has */
 export const samplePostNav = (posts: LabContent["posts"]): PostNavModel => ({

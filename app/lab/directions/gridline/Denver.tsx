@@ -7,12 +7,12 @@ import {
   coordinates,
   cx,
   degrees,
-  localClock,
   localFormat,
+  clockParts,
   LocalTime,
-  pad,
   useForecast,
   useNow,
+  twelveHour,
   zoneName,
   type Condition
 } from "../../site";
@@ -28,35 +28,11 @@ import {
 
 type Location = ProfileModel["location"];
 
-const CLOCK: Intl.DateTimeFormatOptions = {
-  hour: "numeric",
-  minute: "2-digit",
-  second: "2-digit"
-};
-const READING: Intl.DateTimeFormatOptions = {
-  hour: "numeric",
-  minute: "2-digit"
-};
 const DATE: Intl.DateTimeFormatOptions = {
   weekday: "long",
   month: "long",
   day: "numeric"
 };
-
-const NOTES: Record<Condition, string> = {
-  clear: "Clear skies over the Front Range",
-  cloudy: "Clouds moving over the Front Range",
-  fog: "Fog settled over the city",
-  rain: "Rain coming down",
-  snow: "Snow coming down",
-  storm: "Thunderstorm overhead"
-};
-
-/** One of the forecast's local times (`…T07:05`) as `7:05 AM` */
-function twelveHour(iso: string) {
-  const { hours, minutes } = localClock(iso);
-  return `${hours % 12 || 12}:${pad(minutes)} ${hours < 12 ? "AM" : "PM"}`;
-}
 
 /** A cloud's outline, its flat base at the origin */
 const CLOUD =
@@ -227,35 +203,13 @@ export function DenverReadout({
     condition,
     night,
     stale,
-    readAt,
     status,
+    tone,
+    note,
     refresh
   } = useForecast();
 
-  const [tone, note] =
-    status === "error"
-      ? [
-          "off",
-          stale && readAt
-            ? `Couldn’t refresh · Last reading ${localFormat(READING).format(readAt)}`
-            : "Couldn’t reach the weather service"
-        ]
-      : condition
-        ? [
-            condition === "storm" ? "alert" : "on",
-            night && condition === "clear"
-              ? "Clear night over the Front Range"
-              : NOTES[condition]
-          ]
-        : ["wait", "Reading the sky…"];
-
-  const clock = now ? localFormat(CLOCK).formatToParts(now) : [];
-  const time = clock
-    .filter((part) => part.type !== "dayPeriod")
-    .map((part) => part.value)
-    .join("")
-    .trim();
-  const period = clock.find((part) => part.type === "dayPeriod")?.value;
+  const { time, period } = clockParts(now);
 
   return (
     <div

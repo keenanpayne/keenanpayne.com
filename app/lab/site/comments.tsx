@@ -20,8 +20,7 @@ declare global {
 export const COMMENTS_ID = "disqus_thread";
 
 /** What stands in the thread's place in the lab */
-export const COMMENTS_MOCKUP =
-  "Mockup only — the comments load on the live site.";
+const COMMENTS_MOCKUP = "Mockup only — the comments load on the live site.";
 
 // The embed is requested once per page load; `DISQUS.reset` serves the rest
 let embedRequested = false;

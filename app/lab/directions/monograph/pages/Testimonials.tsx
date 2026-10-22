@@ -1,5 +1,5 @@
 import type { BasicPageModel } from "../../../../lib/types";
-import { introOf, sectionOf } from "../../../site";
+import { introOf, sectionOf, titleOf } from "../../../site";
 import { Banner, PageHeader, Quote, Section } from "../parts";
 
 export function Testimonials({ page }: { page: BasicPageModel }) {
@@ -11,7 +11,7 @@ export function Testimonials({ page }: { page: BasicPageModel }) {
       <PageHeader
         icon="quote"
         eyebrow="Testimonials"
-        title={intro?.heading ?? "Testimonials"}
+        title={titleOf(page)}
         lede={intro?.subheading}
       >
         {grid && grid.qualities.length > 0 && (

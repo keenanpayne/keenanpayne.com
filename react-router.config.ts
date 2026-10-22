@@ -11,14 +11,15 @@ export default {
   async prerender() {
     const { getPrerenderPaths } =
       await import("./app/lib/content/content.server");
-    const { directions, SAMPLE_PAGES } = await import("./app/lab/registry");
+    const { directions, labPath, SAMPLE_PAGES } =
+      await import("./app/lab/registry");
     const { comparePath, CONFORMANCE_PATH, STYLE_SECTIONS, styleguidePath } =
       await import("./app/lab/styleguide/sections");
     return [
       ...getPrerenderPaths(),
       "/lab/",
       ...directions.flatMap(({ slug }) =>
-        SAMPLE_PAGES.map(({ path }) => `/lab/${slug}${path}`)
+        SAMPLE_PAGES.map(({ path }) => labPath(slug, path))
       ),
       ...STYLE_SECTIONS.map(({ id }) => comparePath(id)),
       ...directions.map(({ slug }) => styleguidePath(slug)),

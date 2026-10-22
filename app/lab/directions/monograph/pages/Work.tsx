@@ -1,5 +1,5 @@
 import type { BasicPageModel, LabContent } from "../../../../lib/types";
-import { introOf, quotesOf } from "../../../site";
+import { introOf, quotesOf, titleOf } from "../../../site";
 import {
   ArrowCircle,
   Banner,
@@ -23,7 +23,7 @@ export function Work({
       <PageHeader
         icon="grid"
         eyebrow="Work"
-        title={intro?.heading ?? "Case studies"}
+        title={titleOf(page)}
         lede={intro?.subheading}
       />
 

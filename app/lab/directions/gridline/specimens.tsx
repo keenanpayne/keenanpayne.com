@@ -1,5 +1,4 @@
 import { getDirection, SAMPLE_PAGES } from "../../registry";
-import type { Condition } from "../../site";
 import {
   formOf,
   Html,
@@ -10,6 +9,7 @@ import {
 } from "../../site";
 import {
   Note,
+  SAMPLE_SKIES,
   samplePostNav,
   Specimen,
   SpecimenGrid,
@@ -111,19 +111,6 @@ function TypeScale({ content }: SpecimenProps) {
   );
 }
 
-/** Every sky the Denver readout can sketch */
-const SKIES: { condition?: Condition; night: boolean; label: string }[] = [
-  { condition: "clear", night: false, label: "Clear" },
-  { condition: "clear", night: true, label: "Clear night" },
-  { condition: "cloudy", night: false, label: "Cloudy" },
-  { condition: "cloudy", night: true, label: "Cloudy night" },
-  { condition: "fog", night: false, label: "Fog" },
-  { condition: "rain", night: false, label: "Rain" },
-  { condition: "snow", night: false, label: "Snow" },
-  { condition: "storm", night: false, label: "Thunderstorm" },
-  { night: false, label: "Reading the sky" }
-];
-
 function Motifs({ content }: SpecimenProps) {
   return (
     <SpecimenGrid min={300}>
@@ -203,7 +190,7 @@ function Motifs({ content }: SpecimenProps) {
           </div>
         </Specimen>
       ))}
-      {SKIES.map(({ condition, night, label }) => (
+      {SAMPLE_SKIES.map(({ condition, night, label }) => (
         <Specimen
           key={`${condition}${night}`}
           label={`Sky: ${label}`}

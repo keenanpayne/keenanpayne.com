@@ -17,6 +17,7 @@ import { escapeHtml } from "../../lib/html";
 import { HOME } from "./ia";
 
 type Posts = LabContent["posts"];
+type Work = LabContent["work"];
 
 /** A page's `intro` section: its heading, subheading, and body copy */
 export const introOf = (page: { sections: SectionModel[] }) =>
@@ -126,6 +127,34 @@ const GALLERY_COLUMNS: Record<string, number> = {
 
 export const galleryColumns = (modifier?: string) =>
   GALLERY_COLUMNS[modifier ?? ""] ?? 3;
+
+/** `2014–2019`, `2019`, or `2019-2020` as the first and last years */
+export function yearsOf(text?: string): [number, number] | null {
+  const years = text?.match(/\d{4}/g)?.map(Number);
+  return years?.length ? [years[0], years[years.length - 1]] : null;
+}
+
+/** The industries the work spans */
+export const industriesOf = (work: Work) =>
+  new Set(work.map((item) => item.industry).filter(Boolean));
+
+const CONTENTS = /<details class="toc">[\s\S]*?<\/details>/;
+
+/**
+ * A post's table of contents (the `<details class="toc">` opening its
+ * `content`): the list's HTML and the ids it links to, for a direction that
+ * lays it out apart from the body
+ */
+export function contentsOf(html: string) {
+  const details = CONTENTS.exec(html)?.[0];
+  const nav = details && /<nav class="toc-nav">([\s\S]*?)<\/nav>/.exec(details);
+  if (!nav) return undefined;
+  const ids = [...nav[1].matchAll(/href="#([^"]+)"/g)].map((match) => match[1]);
+  return { html: nav[1], ids };
+}
+
+/** A post's `content` without its table of contents */
+export const withoutContents = (html: string) => html.replace(CONTENTS, "");
 
 /** Posts grouped by year, keeping their order */
 export function postsByYear(posts: Posts): [year: string, posts: Posts][] {

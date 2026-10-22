@@ -79,7 +79,7 @@ export const normalize = (v: Vec3): Vec3 => {
 /** Toward the viewer: the projection looks down this axis */
 export const VIEW: Vec3 = normalize([1, 1, 1]);
 /** Toward the light: above, in front, a little to the left */
-export const LIGHT: Vec3 = normalize([0.15, 0.55, 0.82]);
+const LIGHT: Vec3 = normalize([0.15, 0.55, 0.82]);
 
 /** A point in the world on the screen: the isometric projection */
 export const project = ([x, y, z]: Vec3): Vec2 => [
@@ -91,14 +91,14 @@ export const project = ([x, y, z]: Vec3): Vec2 => [
 export const shade = (normal: Vec3) => clamp(0.78 - 0.72 * dot(normal, LIGHT));
 
 /** Where a point's shadow falls on the floor */
-export const shadowOf = ([x, y, z]: Vec3): Vec3 => [
+const shadowOf = ([x, y, z]: Vec3): Vec3 => [
   x - (LIGHT[0] / LIGHT[2]) * z,
   y - (LIGHT[1] / LIGHT[2]) * z,
   0
 ];
 
 /** The convex hull of some points on the floor (monotone chain) */
-export function hull(points: Vec2[]) {
+function hull(points: Vec2[]) {
   const sorted = [...points].sort((a, b) => a[0] - b[0] || a[1] - b[1]);
   const turn = (o: Vec2, a: Vec2, b: Vec2) =>
     (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);

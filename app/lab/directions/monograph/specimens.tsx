@@ -9,13 +9,13 @@ import {
   postsByYear,
   postTypes,
   useTo,
-  type Condition,
   type FormField as Field,
   type SpecimenProps,
   type Specimens
 } from "../../site";
 import {
   Note,
+  SAMPLE_SKIES,
   samplePostNav,
   Specimen,
   SpecimenGrid,
@@ -231,19 +231,6 @@ function TypeScale({ content }: SpecimenProps) {
   );
 }
 
-/** Every sky the weather box can print */
-const SKIES: { condition?: Condition; night: boolean; label: string }[] = [
-  { condition: "clear", night: false, label: "Clear" },
-  { condition: "clear", night: true, label: "Clear night" },
-  { condition: "cloudy", night: false, label: "Cloudy" },
-  { condition: "cloudy", night: true, label: "Cloudy night" },
-  { condition: "fog", night: false, label: "Fog" },
-  { condition: "rain", night: false, label: "Rain" },
-  { condition: "snow", night: false, label: "Snow" },
-  { condition: "storm", night: false, label: "Thunderstorm" },
-  { night: false, label: "Reading the sky" }
-];
-
 function Motifs({ content }: SpecimenProps) {
   const handle = handleOf(content.socials);
 
@@ -318,7 +305,7 @@ function Motifs({ content }: SpecimenProps) {
       >
         <Dither />
       </Specimen>
-      {SKIES.map(({ condition, night, label }) => (
+      {SAMPLE_SKIES.map(({ condition, night, label }) => (
         <Specimen
           key={`${condition}${night}`}
           label={`Sky: ${label}`}
