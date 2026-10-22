@@ -52,7 +52,7 @@
     "@react-router/serve": "^8.4.0",
     "isbot": "^5.2.2",
     "js-yaml": "^4.3.2",
-    "markdown-it": "^14.3.2",
+    "markdown-it": "^14.3.3",
     "markdown-it-anchor": "^9.2.1",
     "markdown-it-footnote": "^4.0.0",
     "node-html-parser": "^9.0.4",
