@@ -233,7 +233,7 @@ body:has(.gl) {
   --gl-fs-h2: clamp(30px, 20px + 0.781vw, 35px);
   --gl-fs-year: clamp(36px, 24px + 0.938vw, 42px);
   --gl-fs-year-wide: clamp(44px, 32px + 0.938vw, 50px);
-  --gl-fs-lede: clamp(21px, 2vw, clamp(25px, 17px + 0.625vw, 29px));
+  --gl-fs-large: clamp(21px, 2vw, clamp(25px, 17px + 0.625vw, 29px));
   --gl-fs-heading: clamp(28px, 3.3vw, clamp(40px, 24px + 1.25vw, 48px));
   --gl-fs-title: clamp(40px, 5.6vw, clamp(72px, 48px + 1.875vw, 84px));
 
@@ -496,8 +496,9 @@ body:has(.gl) {
   padding: 0 var(--gl-x) 0 20px;
   border-right: 1px solid var(--gl-line);
   color: var(--gl-ink);
-  font-size: var(--gl-fs-body);
-  font-weight: 600;
+  font-family: var(--gl-serif);
+  font-size: var(--gl-fs-large);
+  font-weight: normal;
   letter-spacing: -0.02em;
   text-decoration: none;
 
@@ -821,7 +822,7 @@ body:has(.gl) {
   margin: 24px 0 0;
   color: var(--gl-text);
   font-family: var(--gl-serif);
-  font-size: var(--gl-fs-lede);
+  font-size: var(--gl-fs-large);
   line-height: 1.36;
   text-wrap: pretty;
 
@@ -3035,7 +3036,7 @@ a.gl-chip {
     margin: 0;
     color: var(--gl-ink);
     font-family: var(--gl-serif);
-    font-size: var(--gl-fs-lede);
+    font-size: var(--gl-fs-large);
     line-height: 1.38;
   }
 }
@@ -3143,7 +3144,7 @@ a.gl-chip {
   margin: 0;
   color: var(--gl-ink);
   font-family: var(--gl-serif);
-  font-size: var(--gl-fs-lede);
+  font-size: var(--gl-fs-large);
   line-height: 1.4;
 }
 
@@ -3466,7 +3467,7 @@ a.gl-chip {
     margin: 20px auto 0;
     color: var(--gl-cta-text);
     font-family: var(--gl-serif);
-    font-size: var(--gl-fs-lede);
+    font-size: var(--gl-fs-large);
     line-height: 1.38;
   }
 
@@ -4256,7 +4257,7 @@ a.gl-chip {
     max-width: 30em;
     margin: 20px 0 0;
     font-family: var(--gl-serif);
-    font-size: var(--gl-fs-lede);
+    font-size: var(--gl-fs-large);
     line-height: 1.38;
   }
 }
@@ -5001,7 +5002,7 @@ a.gl-chip {
     margin: 20px auto 0;
     color: rgb(244 243 248 / 78%);
     font-family: var(--gl-serif);
-    font-size: var(--gl-fs-lede);
+    font-size: var(--gl-fs-large);
     line-height: 1.38;
   }
 
