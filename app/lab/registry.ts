@@ -78,6 +78,16 @@ export const directions = [
     reference: "VoidZero’s Vite+ and Void sites",
     date: "2026-10-17",
     load: () => import("./directions/gridline")
+  },
+  {
+    slug: "neon",
+    name: "Neon",
+    summary:
+      "Cyberpunk night city after the rain. Tilt Neon tube lettering glowing magenta and cyan over a generated violet skyline, vertical shop signs with floor numbers and katakana, an LED-mosaic portrait billboard, cyan-to-magenta line-art emblems, and a horizon of neon domes at street level. Light mode is the same street at dawn.",
+    reference:
+      "Shinjuku and Kabukichō signage at night, Xu Teng Pan’s neon cityscapes, and gradient line-art emblem sets",
+    date: "2026-10-21",
+    load: () => import("./directions/neon")
   }
   // `npm run lab:new` adds new directions above this line
 ] as const satisfies readonly DirectionInfo[];
