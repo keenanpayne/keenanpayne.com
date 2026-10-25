@@ -492,7 +492,22 @@ export async function checkFocus({ exclude }: { exclude: string }) {
       }
     }
   }
-  const shadow = getComputedStyle(element).boxShadow !== "none";
+  // A shadow marks focus only where focus draws it: one the element wears
+  // anyway (a decorative glow, say) shows nothing new. So it's read focused
+  // and at rest, with transitions held so both reads are where it settles.
+  const shadowed = () => {
+    const node = element as HTMLElement;
+    const transition = node.style.transition;
+    node.style.transition = "none";
+    const focusedShadow = getComputedStyle(node).boxShadow;
+    node.blur();
+    const restingShadow = getComputedStyle(node).boxShadow;
+    node.focus({ preventScroll: true, focusVisible: true } as FocusOptions);
+    // Settled focused again before transitions come back
+    void getComputedStyle(node).boxShadow;
+    node.style.transition = transition;
+    return focusedShadow !== "none" && focusedShadow !== restingShadow;
+  };
 
   if (ring) {
     const ground = behind(ring.outside ? ring.on.parentElement : ring.on);
@@ -503,7 +518,7 @@ export async function checkFocus({ exclude }: { exclude: string }) {
         message: `ring at ${Math.floor(measured * 100) / 100}:1 against what's behind it, needs 3:1`
       });
     }
-  } else if (!shadow) {
+  } else if (!shadowed()) {
     problems.push({
       id: "focus-appearance",
       message: browserRing
