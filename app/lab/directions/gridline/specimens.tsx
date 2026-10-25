@@ -62,6 +62,9 @@ import {
   type MarkId
 } from "./parts";
 
+/** The 404's lettering, as the page writes it */
+const LOST = lettering("404", "violet");
+
 // The direction's name, read from the registry rather than written into
 // the copy
 const NAME = getDirection("gridline")!.name;
@@ -172,10 +175,10 @@ function Motifs({ content }: SpecimenProps) {
       </Specimen>
       <Specimen
         label="Lettering"
-        note="The 404, written in the Blueprint’s squares, filling in from the left; the tile size steps down where it doesn’t fit"
+        note="The 404, written in the Blueprint’s squares, filling in from the left"
         wide
       >
-        <Blueprint className="gl-lost" drawing={lettering("404", "violet")}>
+        <Blueprint className="gl-lost" drawing={LOST}>
           <div className="gl-lost__room" />
           <div className="gl-lost__copy" />
         </Blueprint>

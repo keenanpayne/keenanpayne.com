@@ -15,6 +15,7 @@ import {
   SYMMETRIES,
   useGridSettings,
   type BrushId,
+  type Size,
   type SymmetryId
 } from "./blueprint";
 
@@ -184,13 +185,15 @@ type Tray = "brush" | "size";
 /**
  * The Blueprint panel's easter egg: a toolbar that comes out the first time
  * a square is filled. The brush's color and the tile size open a tray of
- * choices above it; the eraser, symmetry, and the Game of Life are toggles;
+ * choices above it (the sizes too big for the panel's width are off); the eraser, symmetry, and the Game of Life are toggles;
  * scatter and clear act at once. It can grow the grid to fill the screen
  * (Escape shrinks it again), and folds away to a single button. Each tool's
  * name shows over it on hover and focus; Escape hides the names until the
  * pointer or focus moves on.
  */
 export function GridTools({
+  size: shown,
+  largest,
   playing,
   onLife,
   onScatter,
@@ -200,6 +203,10 @@ export function GridTools({
   expanded,
   onExpand
 }: {
+  /** The tile size the panel shows, fitted to its width */
+  size: Size;
+  /** The largest tile size that fits the panel's width, once measured */
+  largest?: Size;
   /** Whether the Game of Life is running */
   playing: boolean;
   onLife: () => void;
@@ -392,16 +399,25 @@ export function GridTools({
           role="group"
           aria-label="Tile size"
         >
-          {SIZES.map((size) => (
-            <Tool
-              key={size}
-              tip={`${size} pixels`}
-              aria-pressed={size === settings.size}
-              onClick={() => choose("size", { size })}
-            >
-              {size}
-            </Tool>
-          ))}
+          {SIZES.map((size) => {
+            // Not `disabled`, so it can still be reached and its tip read
+            const off = largest !== undefined && size > largest;
+            return (
+              <Tool
+                key={size}
+                tip={
+                  off
+                    ? `${size} pixels: too big at this width`
+                    : `${size} pixels`
+                }
+                aria-pressed={size === shown}
+                aria-disabled={off || undefined}
+                onClick={() => !off && choose("size", { size })}
+              >
+                {size}
+              </Tool>
+            );
+          })}
         </div>
       )}
 
@@ -417,13 +433,13 @@ export function GridTools({
         </Tool>
         <Tool
           ref={sizeTrigger}
-          tip={`Tile size: ${settings.size} pixels`}
+          tip={`Tile size: ${shown} pixels`}
           aria-expanded={tray === "size"}
           aria-controls={tray === "size" ? `${id}-tray` : undefined}
           onClick={() => toggleTray("size")}
         >
           <Icon>{ICONS.grid}</Icon>
-          <span className="gl-tools__size">{settings.size}</span>
+          <span className="gl-tools__size">{shown}</span>
         </Tool>
 
         <span className="gl-tools__rule" aria-hidden="true" />

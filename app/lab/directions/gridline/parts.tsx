@@ -44,7 +44,9 @@ import {
   boundsOf,
   clear,
   fill,
+  fitSize,
   lifeStep,
+  MIN_SPAN,
   reflect,
   sameSquare,
   scatter,
@@ -1323,9 +1325,11 @@ const MOVES: Record<string, [number, number]> = {
  * the arrow keys move the lit square, and Space or Enter fills it as a click
  * would.
  *
- * It can start with a drawing (the 404's lettering), drawn on the server too.
- * Where the drawing is wider than the panel, the tile size steps down until
- * it fits; until then, the stylesheet sizes its squares.
+ * Its squares are the tile size picked, stepped down while fewer than
+ * `MIN_SPAN` fit across the panel, so they shrink as the window narrows and
+ * grow back as it widens; until the script first measures the panel, the
+ * stylesheet sizes them for the screen. It can start with a drawing (the
+ * 404's lettering), drawn on the server too, and always wide enough for it.
  */
 export function Blueprint({
   className,
@@ -1349,9 +1353,17 @@ export function Blueprint({
   const [paints, setPaints] = useState<Paint[]>(drawing ?? []);
   // The squares as last drawn, for the Game of Life's clock to read
   const latest = useRef(paints);
-  const [{ brush, size: grid, erase, symmetry }, update] = useGridSettings();
-  // The drawing is fitted to the panel once, as it first shows
-  const [fitted, setFitted] = useState(!drawing?.length);
+  const [{ brush, size: picked, erase, symmetry }] = useGridSettings();
+  // The panel's width inside its padding, once measured
+  const [room, setRoom] = useState<number | null>(null);
+  // The squares it fits across: enough for its drawing, and never fewer
+  const span = Math.max(
+    MIN_SPAN,
+    ...(drawing ?? []).map(({ column }) => Math.abs(column) * 2 + 1)
+  );
+  const grid = room === null ? picked : fitSize(picked, room, span);
+  const largest =
+    room === null ? undefined : fitSize(SIZES.at(-1)!, room, span);
   const [tools, setTools] = useState(startWithTools);
   // Just found: the tools say so for a moment
   const [found, setFound] = useState(false);
@@ -1368,30 +1380,16 @@ export function Blueprint({
     latest.current = paints;
   });
 
-  // Measured once the panel has a width (it has none while hidden)
+  // Measured each time its width changes (it has none while hidden)
   useEffect(() => {
     const node = panel.current;
-    if (fitted || !drawing?.length || !node) return;
-    const fit = () => {
-      if (!node.clientWidth) return;
-      observer.disconnect();
-      setFitted(true);
-      const style = getComputedStyle(node);
-      const room =
-        node.clientWidth -
-        parseFloat(style.paddingLeft) -
-        parseFloat(style.paddingRight);
-      const reach = Math.max(...drawing.map(({ column }) => Math.abs(column)));
-      const fits = SIZES.filter(
-        (size) => size <= grid && size * (reach * 2 + 1) <= room
-      );
-      const size = fits.at(-1) ?? SIZES[0];
-      if (size !== grid) update({ size });
-    };
-    const observer = new ResizeObserver(fit);
+    if (!node) return;
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry.contentRect.width) setRoom(entry.contentRect.width);
+    });
     observer.observe(node);
     return () => observer.disconnect();
-  }, [fitted, drawing, grid, update]);
+  }, []);
 
   useEffect(() => {
     if (!found) return;
@@ -1663,7 +1661,9 @@ export function Blueprint({
       ref={panel}
       className={cx("gl-blueprint", className)}
       style={
-        fitted ? ({ "--gl-grid": `${grid}px` } as CSSProperties) : undefined
+        room === null
+          ? undefined
+          : ({ "--gl-grid": `${grid}px` } as CSSProperties)
       }
       data-brush={brush}
       data-erase={erase || undefined}
@@ -1726,6 +1726,8 @@ export function Blueprint({
       </span>
       {tools && (
         <GridTools
+          size={grid}
+          largest={largest}
           playing={playing}
           onLife={onLife}
           onScatter={onScatter}

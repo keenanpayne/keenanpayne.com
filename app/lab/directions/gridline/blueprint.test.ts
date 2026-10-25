@@ -4,6 +4,7 @@ import {
   boundsOf,
   clear,
   fill,
+  fitSize,
   lettering,
   lifeStep,
   reflect,
@@ -142,5 +143,18 @@ describe("lettering", () => {
     expect(paints.map(({ step }) => step)).toEqual(paints.map((_, i) => i));
     const columns = paints.map(({ column }) => column);
     expect(columns).toEqual([...columns].sort((a, b) => a - b));
+  });
+});
+
+describe("tile size", () => {
+  it("is the one picked, where it fits", () => {
+    expect(fitSize(48, 1000, 11)).toBe(48);
+    expect(fitSize(32, 1000, 11)).toBe(32);
+  });
+
+  it("steps down until the span fits, and no further than the smallest", () => {
+    expect(fitSize(48, 527, 11)).toBe(32);
+    expect(fitSize(96, 333, 11)).toBe(24);
+    expect(fitSize(48, 100, 11)).toBe(16);
   });
 });

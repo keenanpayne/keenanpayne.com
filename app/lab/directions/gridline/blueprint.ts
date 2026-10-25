@@ -57,6 +57,17 @@ export const SIZES = [16, 24, 32, 48, 64, 96] as const;
 
 export type Size = (typeof SIZES)[number];
 
+/** The fewest squares a panel shows across: as many as the 404's lettering */
+export const MIN_SPAN = 11;
+
+/**
+ * The tile size a panel shows: the one picked, stepped down until `span`
+ * squares fit across its `room` pixels (or the smallest, where none does)
+ */
+export const fitSize = (picked: Size, room: number, span: number): Size =>
+  SIZES.filter((size) => size <= picked && size * span <= room).at(-1) ??
+  SIZES[0];
+
 /** How a stroke is reflected about the middle square */
 export const SYMMETRIES = {
   off: "Off",

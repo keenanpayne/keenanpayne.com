@@ -3864,8 +3864,22 @@ a.gl-chip {
    glow (1 by default); `--gl-blueprint-pad`, the panel's padding above and
    below, is where its grid tools dock. */
 .gl-blueprint {
-  /* The grid's square; the template sets it to match its pointer math */
+  /* The grid's square; the template sets it to match its pointer math, once
+     it has measured the panel. Until then, the largest that fits eleven
+     squares across a panel as wide as the screen, inside its padding. */
   --gl-grid: 48px;
+
+  @media (width < 570px) {
+    --gl-grid: 32px;
+  }
+
+  @media (width < 394px) {
+    --gl-grid: 24px;
+  }
+
+  @media (width < 306px) {
+    --gl-grid: 16px;
+  }
 
   position: relative;
   /* Clipped rather than hidden, so it never scrolls: focus moving into its
@@ -5348,21 +5362,6 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
 .gl-lost {
   --gl-blueprint-intensity: 0.9;
   --gl-blueprint-pad: clamp(56px, 8vw, 96px);
-  /* Until the script fits the lettering to the panel, the largest square it
-     fits at for the screen's width (eleven squares, and the panel's padding) */
-  --gl-grid: 48px;
-
-  @media (width < 570px) {
-    --gl-grid: 32px;
-  }
-
-  @media (width < 394px) {
-    --gl-grid: 24px;
-  }
-
-  @media (width < 306px) {
-    --gl-grid: 16px;
-  }
 
   display: grid;
   grid-template-rows: 1fr 1fr;
