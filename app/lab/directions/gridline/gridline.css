@@ -730,6 +730,11 @@ body:has(.gl) {
     background-color 120ms,
     color 120ms;
 
+  /* Room for a two-digit hour beside the name and the menu at 320px */
+  @media (width < 360px) {
+    padding: 0 12px;
+  }
+
   @media (width >= 720px) {
     padding: 0 20px;
   }
@@ -796,6 +801,10 @@ body:has(.gl) {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   cursor: pointer;
+
+  @media (width < 360px) {
+    padding: 0 16px;
+  }
 
   @media (width >= 960px) {
     display: none;
