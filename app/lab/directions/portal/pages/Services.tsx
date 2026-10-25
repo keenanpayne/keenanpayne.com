@@ -75,6 +75,7 @@ export function Services({
                 className="pt-tile__screen"
                 href={service.url}
                 tabIndex={-1}
+                aria-hidden="true"
                 style={{ "--hue": index * 37 } as React.CSSProperties}
               >
                 <Sprite art={ITEMS[serviceItem(index)]} scale={5} />

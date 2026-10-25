@@ -7,7 +7,10 @@
  * sizes the canvas to its frame, steps a dozen frames a second while the
  * frame is on screen and pauses off it, builds the scene again when the
  * frame resizes, reads the inks again when the color scheme changes, and
- * holds one frame when motion is reduced.
+ * holds one frame when motion is reduced. Nothing moves on its own for
+ * more than five seconds (WCAG 2.2.2): a scene comes to rest after its
+ * first five, and moves again while the pointer is over it, or for five
+ * more after a tap.
  */
 
 import {
@@ -27,6 +30,8 @@ const FPS = 12;
 const DEVELOP = 0.9;
 /** A hidden tab pauses the loop; the scene picks up where it left off */
 const MAX_STEP = 0.25;
+/** Milliseconds a scene moves on its own, or after a tap, before it rests */
+const RUN = 5000;
 
 /** What a scene gets while it's mounted, for anything beyond its frames */
 export interface SceneControls<State> {
@@ -85,6 +90,9 @@ export function useScene<State extends { width: number; height: number }>({
   const levelsAt = useEffectEvent(draw);
   const attachNow = useEffectEvent(attach ?? (() => () => {}));
   const painter = useRef<() => void>(null);
+  // When it comes to rest, unless the pointer is over it; kept when the
+  // scene starts over, so a new source doesn't move for five more seconds
+  const rest = useRef({ until: 0, woken: false });
   const paletteKey = palette.join(" ");
 
   useEffect(() => {
@@ -98,6 +106,11 @@ export function useScene<State extends { width: number; height: number }>({
     let request = 0;
     let drawnAt = 0;
     let timer: ReturnType<typeof setTimeout> | undefined;
+    const wake = rest.current;
+    let pointer = false;
+    // At rest, it shows the frame it holds when motion is reduced
+    let resting = false;
+    const quiet = () => still || resting;
 
     const rebuild = () => {
       const { width, height } = element.getBoundingClientRect();
@@ -114,10 +127,10 @@ export function useScene<State extends { width: number; height: number }>({
     const repaint = () => {
       if (!state) return;
       const progress =
-        still || !develop ? 1 : Math.min(1, seconds / DEVELOP) ** 0.7;
+        quiet() || !develop ? 1 : Math.min(1, seconds / DEVELOP) ** 0.7;
       paint(
         target,
-        levelsAt(state, seconds, still),
+        levelsAt(state, seconds, quiet()),
         state.width,
         state.height,
         inks,
@@ -126,7 +139,17 @@ export function useScene<State extends { width: number; height: number }>({
     };
     painter.current = repaint;
 
+    const settle = () => {
+      resting = true;
+      seconds = hold;
+      repaint();
+    };
     const loop = (now: number) => {
+      if (!pointer && now > wake.until) {
+        request = 0;
+        settle();
+        return;
+      }
       request = requestAnimationFrame(loop);
       const elapsed = (now - drawnAt) / 1000;
       if (elapsed < 1 / FPS) return;
@@ -136,6 +159,11 @@ export function useScene<State extends { width: number; height: number }>({
     };
     const start = () => {
       if (still || request) return;
+      if (!pointer && performance.now() > wake.until) {
+        if (!resting) settle();
+        return;
+      }
+      resting = false;
       drawnAt = performance.now();
       request = requestAnimationFrame(loop);
     };
@@ -149,6 +177,10 @@ export function useScene<State extends { width: number; height: number }>({
         if (!entry?.isIntersecting) return stop();
         if (!state) rebuild();
         repaint();
+        if (!wake.woken) {
+          wake.woken = true;
+          wake.until = performance.now() + RUN;
+        }
         start();
       },
       { rootMargin: "200px 0px" }
@@ -170,6 +202,23 @@ export function useScene<State extends { width: number; height: number }>({
       repaint();
     });
 
+    // Moving again: while the pointer is over it, or for a while after a tap
+    const enter = (event: PointerEvent) => {
+      if (event.pointerType !== "mouse") return;
+      pointer = true;
+      start();
+    };
+    const leave = () => {
+      pointer = false;
+    };
+    const tap = () => {
+      wake.until = performance.now() + RUN;
+      start();
+    };
+    element.addEventListener("pointerenter", enter);
+    element.addEventListener("pointerleave", leave);
+    element.addEventListener("pointerdown", tap);
+
     const detach = attachNow({
       element,
       target,
@@ -180,6 +229,9 @@ export function useScene<State extends { width: number; height: number }>({
     });
 
     return () => {
+      element.removeEventListener("pointerenter", enter);
+      element.removeEventListener("pointerleave", leave);
+      element.removeEventListener("pointerdown", tap);
       detach();
       stop();
       intersection.disconnect();

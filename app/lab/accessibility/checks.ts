@@ -163,14 +163,39 @@ export function checkPage({ exclude, reflow }: PageCheckOptions) {
     if (excluded(element) || !shown(element)) continue;
     if (element.matches(":disabled")) continue;
 
-    // In a sentence or block of text: exempt
+    // In a sentence or block of text: exempt. That's words in the block it
+    // flows in, not in a block of their own inside it (a date or a summary
+    // set under a title is not a sentence the title sits in), and not in
+    // another target (a row of links isn't one either)
     const style = getComputedStyle(element);
-    if (style.display === "inline") {
-      const own = (element.textContent ?? "").replace(/\s+/g, " ").trim();
-      const around = (blockOf(element)?.textContent ?? "")
-        .replace(/\s+/g, " ")
-        .trim();
-      if (around.length > own.length) continue;
+    const block = blockOf(element);
+    if (style.display === "inline" && block) {
+      const ownBlock = (node: Element | null) => {
+        while (node && getComputedStyle(node).display.startsWith("inline")) {
+          node = node.parentElement;
+        }
+        return node;
+      };
+      const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+      const range = document.createRange();
+      let inText = false;
+      for (
+        let node = walker.nextNode();
+        node && !inText;
+        node = walker.nextNode()
+      ) {
+        if (
+          element.contains(node) ||
+          !/[\p{L}\p{N}]/u.test(node.textContent ?? "") ||
+          node.parentElement?.closest(TARGETS) ||
+          ownBlock(node.parentElement) !== block
+        ) {
+          continue;
+        }
+        range.selectNodeContents(node);
+        inText = [...range.getClientRects()].some((rect) => rect.width > 0);
+      }
+      if (inText) continue;
     }
 
     // Its target is everything that takes the click: it and what's in it
@@ -414,10 +439,27 @@ export async function checkFocus({ exclude }: { exclude: string }) {
   ) {
     holders.push(at);
   }
+  // A field's label, and what's drawn inside it (a choice's pill), can
+  // carry the ring too
+  for (const label of (element as HTMLInputElement).labels ?? []) {
+    for (const part of [label, ...label.querySelectorAll("*")]) {
+      if (part !== element && !holders.includes(part)) holders.push(part);
+    }
+  }
+  // A ring on something see-through (a styled checkbox's hidden input)
+  // isn't seen, however it's drawn
+  const opacityOf = (node: Element, pseudo: string | null) => {
+    let opacity = parseFloat(getComputedStyle(node, pseudo).opacity);
+    for (let at = node.parentElement; at; at = at.parentElement) {
+      opacity *= parseFloat(getComputedStyle(at).opacity);
+    }
+    return opacity;
+  };
   search: for (const holder of holders) {
     for (const pseudo of [null, "::before", "::after"]) {
       const style = getComputedStyle(holder, pseudo);
       if (pseudo && style.content === "none") continue;
+      if (opacityOf(holder, pseudo) < 0.5) continue;
       if (style.outlineStyle === "auto") browserRing = true;
       const outline = parseFloat(style.outlineWidth) || 0;
       if (!/none|auto/.test(style.outlineStyle) && outline > 0) {

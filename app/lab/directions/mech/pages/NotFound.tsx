@@ -45,15 +45,19 @@ function Arm({
   );
 }
 
+/** Counts up for under five seconds, then holds (WCAG 2.2.2) */
+const COUNT_FOR = 4;
+
 function useSecondsSince() {
   const [seconds, setSeconds] = useState(0);
 
   useEffect(() => {
     const start = Date.now();
-    const timer = setInterval(
-      () => setSeconds(Math.floor((Date.now() - start) / 1000)),
-      1000
-    );
+    const timer = setInterval(() => {
+      const elapsed = Math.floor((Date.now() - start) / 1000);
+      setSeconds(Math.min(elapsed, COUNT_FOR));
+      if (elapsed >= COUNT_FOR) clearInterval(timer);
+    }, 1000);
     return () => clearInterval(timer);
   }, []);
 
@@ -74,11 +78,8 @@ export function NotFound({ content }: { content: LabContent }) {
         always 1/800 of the screen's width, and the rings are sized in
         container units to match.
       */}
-      <div
-        className="mc-defense__screen"
-        role="img"
-        aria-label="A defensive screen of concentric rings repeating 404"
-      >
+      {/* Ornament only: its arms repeat the routes listed below */}
+      <div className="mc-defense__screen">
         <svg
           className="mc-defense__layer"
           viewBox="0 0 800 500"
@@ -112,7 +113,9 @@ export function NotFound({ content }: { content: LabContent }) {
               className={`mc-defense__ring mc-defense__ring--${index % 2 ? "ccw" : "cw"}`}
               style={{
                 width: `${size / 4}cqw`,
-                animationDuration: `${90 + index * 25}s`
+                animationDuration: `${90 + index * 25}s`,
+                // Under five seconds of turning, whatever the ring's pace
+                animationIterationCount: 4.8 / (90 + index * 25)
               }}
             >
               <svg

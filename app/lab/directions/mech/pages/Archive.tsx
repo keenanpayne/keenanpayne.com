@@ -22,31 +22,39 @@ export function Equalizer({ years }: { years: [string, Posts][] }) {
 
   return (
     <Panel className="mc-eq" label="Output by year" code={`Peak ${pad(max)}`}>
-      <ol className="mc-eq__columns">
-        {chronological.map(([year, posts]) => (
-          <li key={year} style={{ "--mc-rows": max } as React.CSSProperties}>
-            <span className="mc-eq__count">{pad(posts.length)}</span>
-            <span className="mc-eq__cells" aria-hidden="true">
-              {Array.from({ length: max }, (_, index) => (
-                <span
-                  key={index}
-                  className={
-                    index < posts.length
-                      ? index === posts.length - 1
-                        ? "is-peak"
-                        : "is-on"
-                      : undefined
-                  }
-                />
-              ))}
-            </span>
-            <span className="mc-eq__year">{year}</span>
-            <span className="mc-visually-hidden">
-              {posts.length} articles in {year}
-            </span>
-          </li>
-        ))}
-      </ol>
+      {/* Scrolls sideways on phones, so it takes focus to be scrolled */}
+      <div
+        className="mc-eq__scroll"
+        role="region"
+        aria-label="Output by year"
+        tabIndex={0}
+      >
+        <ol className="mc-eq__columns">
+          {chronological.map(([year, posts]) => (
+            <li key={year} style={{ "--mc-rows": max } as React.CSSProperties}>
+              <span className="mc-eq__count">{pad(posts.length)}</span>
+              <span className="mc-eq__cells" aria-hidden="true">
+                {Array.from({ length: max }, (_, index) => (
+                  <span
+                    key={index}
+                    className={
+                      index < posts.length
+                        ? index === posts.length - 1
+                          ? "is-peak"
+                          : "is-on"
+                        : undefined
+                    }
+                  />
+                ))}
+              </span>
+              <span className="mc-eq__year">{year}</span>
+              <span className="mc-visually-hidden">
+                {posts.length} articles in {year}
+              </span>
+            </li>
+          ))}
+        </ol>
+      </div>
     </Panel>
   );
 }

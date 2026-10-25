@@ -19,14 +19,16 @@ export function About({
     ]),
     [
       "Elsewhere",
-      content.socials.map((social, index) => (
-        <span key={social.url}>
-          {index > 0 && " – "}
-          <a href={social.url} rel={social.rel}>
-            {social.text}
-          </a>
-        </span>
-      ))
+      // A run of links between dashes, like the footer's
+      <ul className="mg-footer__social mg-facts__links">
+        {content.socials.map((social) => (
+          <li key={social.url}>
+            <a href={social.url} rel={social.rel}>
+              {social.text}
+            </a>
+          </li>
+        ))}
+      </ul>
     ]
   ];
 

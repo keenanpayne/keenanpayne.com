@@ -287,7 +287,14 @@ export function WorkGrid({
           key={item.url}
           className={cx("neon-work", `neon-tone--${toneAt(index + 1)}`)}
         >
-          <a className="neon-work__screen" href={item.url} tabIndex={-1}>
+          {/* The screen repeats the name's link for the pointer alone, so
+              it's out of the tab order and hidden from screen readers */}
+          <a
+            className="neon-work__screen"
+            href={item.url}
+            tabIndex={-1}
+            aria-hidden="true"
+          >
             <img src={item.cover} alt="" loading="lazy" />
           </a>
           <div className="neon-work__plate">

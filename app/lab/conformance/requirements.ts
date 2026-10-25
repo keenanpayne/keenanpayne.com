@@ -169,7 +169,7 @@ const short = (text: string, length = 60) =>
   text.length > length ? `${text.slice(0, length)}…` : text;
 
 /**
- * The Shell's clocks: every button named as `useReadout()` names one (for
+ * The Shell's clocks: every button described as `useReadout()` describes one (for
  * the owner's city) that opens a popover crediting Open-Meteo. A Shell may
  * have more than one, e.g. one in its header and one in its phone menu.
  */
@@ -180,7 +180,7 @@ const clocksIn = (page: RenderedPage) => {
     const target = attr(button, "popovertarget");
     const popover = target && document.getElementById(target);
     return (
-      attr(button, "aria-label") === label &&
+      attr(button, "aria-description") === label &&
       popover &&
       attr(popover, "popover") !== undefined &&
       linksIn(popover).some((link) =>

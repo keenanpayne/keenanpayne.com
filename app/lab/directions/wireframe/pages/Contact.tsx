@@ -33,7 +33,7 @@ export function Contact({
             ["Location", `${location.name} (${location.timeZoneName})`]
           ]}
         />
-        <p>
+        <p className="wireframe-more">
           <a href={to(form.alternate.path)}>{form.alternate.text}</a>
         </p>
       </PageHeader>

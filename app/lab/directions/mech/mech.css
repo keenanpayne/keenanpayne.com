@@ -19,13 +19,15 @@
   --mc-line-faint: rgb(242 117 28 / 17%);
   --mc-amber: #ff8c26;
   --mc-ink: #f6d9bb;
-  --mc-muted: #c39069;
+  --mc-muted: #cf9c76;
   --mc-title: #fff4e8;
   --mc-green: #9bff4a;
   --mc-green-ink: #0b1703;
   --mc-green-line: rgb(155 255 74 / 40%);
   --mc-green-fill: rgb(155 255 74 / 9%);
-  --mc-red: #f0190f;
+  --mc-red: #ff8070;
+  --mc-cyan: #3cc8e6;
+  --mc-red-fill: #a50d06;
   --mc-purple: #b98cff;
   --mc-hazard: #c6f51c;
   --mc-hazard-gap: #0b0603;
@@ -67,19 +69,21 @@
     --mc-panel: #f8f2e8;
     --mc-panel-hi: #fdfaf4;
     --mc-well: rgb(255 255 255 / 65%);
-    --mc-line: #df620e;
+    --mc-line: #c95508;
     --mc-line-dim: rgb(223 98 14 / 50%);
     --mc-line-faint: rgb(223 98 14 / 20%);
-    --mc-amber: #b54700;
+    --mc-amber: #7a2f00;
     --mc-ink: #2c160b;
-    --mc-muted: #7a5136;
+    --mc-muted: #5e3a22;
     --mc-title: #150a04;
-    --mc-green: #2b7a0b;
+    --mc-green: #1a5205;
     --mc-green-ink: #f4ffe9;
     --mc-green-line: rgb(43 122 11 / 45%);
     --mc-green-fill: rgb(43 122 11 / 9%);
-    --mc-red: #d9140b;
-    --mc-purple: #6a3bc0;
+    --mc-red: #940b05;
+    --mc-cyan: #034a5c;
+    --mc-red-fill: #a50d06;
+    --mc-purple: #552c98;
     --mc-hazard: #1c0e06;
     --mc-hazard-gap: #f0b800;
     --mc-glow: rgb(223 98 14 / 12%);
@@ -97,19 +101,21 @@
   --mc-panel: #f8f2e8;
   --mc-panel-hi: #fdfaf4;
   --mc-well: rgb(255 255 255 / 65%);
-  --mc-line: #df620e;
+  --mc-line: #c95508;
   --mc-line-dim: rgb(223 98 14 / 50%);
   --mc-line-faint: rgb(223 98 14 / 20%);
-  --mc-amber: #b54700;
+  --mc-amber: #7a2f00;
   --mc-ink: #2c160b;
-  --mc-muted: #7a5136;
+  --mc-muted: #5e3a22;
   --mc-title: #150a04;
-  --mc-green: #2b7a0b;
+  --mc-green: #1a5205;
   --mc-green-ink: #f4ffe9;
   --mc-green-line: rgb(43 122 11 / 45%);
   --mc-green-fill: rgb(43 122 11 / 9%);
-  --mc-red: #d9140b;
-  --mc-purple: #6a3bc0;
+  --mc-red: #940b05;
+  --mc-cyan: #034a5c;
+  --mc-red-fill: #a50d06;
+  --mc-purple: #552c98;
   --mc-hazard: #1c0e06;
   --mc-hazard-gap: #f0b800;
   --mc-glow: rgb(223 98 14 / 12%);
@@ -121,6 +127,17 @@
 
 body:has(.mc) {
   background: var(--mc-paper);
+}
+
+/* Whatever focus or a link scrolls to stops clear of the sticky header */
+:root:has(.mc) {
+  @media (width < 760px) {
+    scroll-padding-top: calc(64px + 16px);
+  }
+
+  @media (width >= 1000px) {
+    scroll-padding-top: 112px;
+  }
 }
 
 .mc {
@@ -247,7 +264,8 @@ body:has(.mc) {
   border-radius: 50%;
   background: var(--mc-green);
   box-shadow: 0 0 8px var(--mc-green);
-  animation: mc-blink 1.6s steps(2, jump-none) infinite;
+  /* Three blinks, then steady: nothing blinks for more than five seconds */
+  animation: mc-blink 1.6s steps(2, jump-none) 3;
 }
 
 .mc-ticks {
@@ -287,6 +305,7 @@ body:has(.mc) {
 }
 
 .mc-body {
+  max-width: 54ch;
   margin: 0;
 }
 
@@ -309,7 +328,19 @@ body:has(.mc) {
     text-transform: uppercase;
   }
 
+  /* A linked tag's target is 44px around it; the chip keeps its size */
+  & li:has(> a) {
+    display: flex;
+  }
+
   & a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    margin: -15px -8px;
+    padding-inline: 8px;
     text-decoration: none;
 
     &:hover {
@@ -329,6 +360,9 @@ body:has(.mc) {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  /* A 44px target around the 18px line, without spacing it further out */
+  min-height: 44px;
+  margin-block: -13px;
   color: var(--mc-amber);
   font-family: var(--mc-cond);
   font-size: 14px;
@@ -416,7 +450,6 @@ body:has(.mc) {
 
   &:hover,
   &:focus-visible {
-    outline: none;
     color: var(--mc-btn-hot-ink);
 
     & .mc-btn__glow {
@@ -430,11 +463,11 @@ body:has(.mc) {
     & .mc-btn__lock {
       opacity: 1;
       transform: none;
-      animation: mc-blink 1.4s steps(2, jump-none) 320ms infinite;
+      animation: mc-blink 1.4s steps(2, jump-none) 320ms 3;
     }
 
     & .mc-tri {
-      animation: mc-feed 700ms cubic-bezier(0.5, 0, 0.5, 1) infinite;
+      animation: mc-feed 700ms cubic-bezier(0.5, 0, 0.5, 1) 3;
     }
   }
 
@@ -571,7 +604,7 @@ body:has(.mc) {
 /* On the red alert: charges to black with a hazard-yellow edge */
 .mc-btn--invert {
   --mc-btn-bg: #fff;
-  --mc-btn-ink: #c10d05;
+  --mc-btn-ink: var(--mc-red-fill);
   --mc-btn-hot: #150301;
   --mc-btn-hot-ink: #fff;
   --mc-btn-edge: #ffd02e;
@@ -619,6 +652,7 @@ body:has(.mc) {
   align-items: center;
   gap: 12px;
   min-width: 0;
+  min-height: 44px;
   text-decoration: none;
 }
 
@@ -727,7 +761,8 @@ body:has(.mc) {
     display: flex;
     align-items: baseline;
     gap: 6px;
-    padding: 8px 12px;
+    padding: 13px 12px;
+    margin-block: -5px;
     border: 1px solid transparent;
     color: var(--mc-ink);
     font-family: var(--mc-cond);
@@ -750,7 +785,6 @@ body:has(.mc) {
 
       & .mc-hud__num {
         color: inherit;
-        opacity: 0.7;
       }
     }
   }
@@ -779,7 +813,8 @@ body:has(.mc) {
   display: flex;
   align-items: baseline;
   gap: 6px;
-  padding: 4px 8px;
+  min-height: 44px;
+  padding: 4px 10px;
   border: 1px solid var(--mc-green-line);
   background: var(--mc-green-fill);
   color: var(--mc-green);
@@ -802,7 +837,6 @@ body:has(.mc) {
 
     & span {
       color: inherit;
-      opacity: 0.7;
     }
   }
 }
@@ -826,7 +860,7 @@ body:has(.mc) {
     display: flex;
     align-items: center;
     gap: 8px;
-    height: 40px;
+    height: 44px;
     padding: 0 12px 0 11px;
     border: 1px solid var(--mc-line);
     border-radius: 0;
@@ -1002,7 +1036,6 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
 
   [aria-current] > & {
     color: inherit;
-    opacity: 0.7;
   }
 }
 
@@ -1071,8 +1104,10 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   list-style: none;
 
   & a {
-    display: inline-block;
-    padding-block: 6px;
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
     color: var(--mc-ink);
     text-decoration: none;
 
@@ -1154,8 +1189,10 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   display: grid;
   flex: none;
   place-items: center;
-  width: 26px;
-  height: 26px;
+  width: 44px;
+  height: 44px;
+  margin-block: -6px;
+  margin-right: -6px;
   border: 1px solid var(--mc-line-dim);
   background: none;
   color: var(--mc-amber);
@@ -1258,7 +1295,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
 .mc-den__temp {
   font-family: var(--mc-mono);
   font-size: 48px;
-  line-height: 1;
+  line-height: 1.5;
   text-shadow: 0 0 16px var(--mc-sky-glow);
 
   & span {
@@ -1269,7 +1306,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
 
   & small {
     margin-left: 10px;
-    color: rgb(255 255 255 / 55%);
+    color: rgb(255 255 255 / 80%);
     font-size: 15px;
   }
 }
@@ -1294,7 +1331,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  animation: mc-blink 1.2s steps(2, jump-none) infinite;
+  animation: mc-blink 1.2s steps(2, jump-none) 4;
 
   & button {
     padding: 2px 10px;
@@ -1360,7 +1397,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   gap: 8px;
   padding: 9px 16px;
   border-top: 1px solid var(--mc-line-faint);
-  background: color-mix(in srgb, var(--mc-tone) 10%, transparent);
+  background: color-mix(in srgb, var(--mc-tone) 6%, transparent);
   color: var(--mc-tone);
   font-family: var(--mc-cond);
   font-size: 13px;
@@ -1375,8 +1412,10 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
 
   /* Retry after a failed refresh, beside the outdated reading */
   & button {
+    min-height: 44px;
+    margin-block: -9px;
     margin-left: auto;
-    padding: 2px 10px;
+    padding: 2px 12px;
     border: 1px solid currentColor;
     background: none;
     color: inherit;
@@ -1391,7 +1430,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   }
 
   &[data-tone="cyan"] {
-    --mc-tone: #3cc8e6;
+    --mc-tone: var(--mc-cyan);
   }
 
   &[data-tone="red"] {
@@ -1427,7 +1466,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
 
 /* Clear: a warm sun glow by day, a field of stars by night */
 .mc-den[data-condition="clear"] {
-  --mc-sky-ink: #ffb347;
+  --mc-sky-ink: #ffc670;
   --mc-sky-glow: rgb(255 150 40 / 40%);
 }
 
@@ -1599,7 +1638,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
 
 /* Storm: red alert, with rain, lightning flashes, and hazard stripes */
 .mc-den[data-condition="storm"] {
-  --mc-sky-ink: #ff4a3d;
+  --mc-sky-ink: #ff9a92;
   --mc-sky-glow: rgb(255 40 30 / 35%);
 
   & .mc-den__sky {
@@ -1804,7 +1843,9 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 10px;
+  min-height: 44px;
+  padding: 0 12px;
+  margin-block: -8px;
   border: 1px solid var(--mc-line-dim);
   color: var(--mc-amber);
   font-family: var(--mc-cond);
@@ -1963,7 +2004,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
     font-size: 19px;
     font-weight: 600;
     letter-spacing: 0.02em;
-    line-height: 1.2;
+    line-height: 1.5;
   }
 
   & small {
@@ -1983,18 +2024,20 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   & dd {
     color: var(--mc-green);
     font-family: var(--mc-mono);
+    margin-top: 0;
     font-size: 28px;
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.5;
   }
 }
 
 .mc-readout--amber dd {
   color: var(--mc-amber);
   font-family: var(--mc-mono);
+  margin-top: 0;
   font-size: 28px;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.5;
 }
 
 /* Title cards and page headers
@@ -2033,6 +2076,11 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   text-transform: uppercase;
 
   & a {
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    margin-block: -14px;
     text-decoration: none;
 
     &:hover {
@@ -2102,7 +2150,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
 }
 
 .mc-pageHeader__lede {
-  max-width: 40em;
+  max-width: 54ch;
   margin: 22px 0 0;
   color: var(--mc-ink);
   font-size: clamp(17px, 1.5vw, 20px);
@@ -2147,7 +2195,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
 }
 
 .mc-hero__lede {
-  max-width: 38em;
+  max-width: 54ch;
   margin: 26px 0 0;
   font-size: clamp(17px, 1.45vw, 19px);
   line-height: 1.65;
@@ -2234,7 +2282,9 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
 }
 
 .mc-gauge__spin {
-  animation: mc-spin 40s linear infinite;
+  /* At its slow pace for under five seconds, then it holds where it got to
+     (WCAG 2.2.2): 0.12 of a 40s turn is 4.8s */
+  animation: mc-spin 40s linear 0.12 forwards;
 
   & circle {
     fill: none;
@@ -2357,7 +2407,11 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
     transparent
   );
 
-  &:hover .mc-ticker__run {
+  /* Holds still under the pointer, while a headline has focus, and once
+     it's held */
+  &:hover .mc-ticker__run,
+  &:focus-within .mc-ticker__run,
+  &[data-held] .mc-ticker__run {
     animation-play-state: paused;
   }
 }
@@ -2379,9 +2433,19 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   }
 
   & a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-block: -9px;
     color: var(--mc-title);
     font-family: var(--mc-cond);
     font-size: 17px;
+
+    /* Inside, so the strip's edge doesn't clip it */
+    &:focus-visible {
+      outline-offset: -2px;
+    }
+
     font-weight: 600;
     letter-spacing: 0.02em;
     text-decoration: none;
@@ -2389,6 +2453,59 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
     &:hover {
       color: var(--mc-amber);
     }
+  }
+}
+
+/* Holds the feed still: two bars, or a play arrow while it's held */
+.mc-ticker__hold {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 8px;
+  min-width: 48px;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 0;
+  border-left: 1px solid var(--mc-line-dim);
+  background: var(--mc-panel);
+  color: var(--mc-amber);
+  font-family: var(--mc-cond);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--mc-green);
+  }
+
+  &:focus-visible {
+    outline-offset: -4px;
+  }
+
+  &[aria-pressed="true"] {
+    color: var(--mc-green);
+  }
+
+  /* Just the icon on narrow screens */
+  @media (width < 640px) {
+    padding: 0 15px;
+    font-size: 0;
+  }
+}
+
+.mc-ticker__holdIcon {
+  width: 10px;
+  height: 12px;
+  border-inline: 3px solid currentColor;
+
+  [aria-pressed="true"] > & {
+    width: 0;
+    height: 0;
+    border-block: 6px solid transparent;
+    border-inline: 10px solid currentColor;
+    border-inline-end: 0;
   }
 }
 
@@ -2426,7 +2543,11 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   line-height: 1.15;
   text-wrap: balance;
 
+  /* The whole line is the target, at least 44px tall */
   & a {
+    display: block;
+    padding-block: 10px;
+    margin-block: -10px;
     text-decoration: none;
 
     &:hover {
@@ -2547,7 +2668,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   bottom: 8px;
   left: 8px;
   padding: 2px 6px;
-  background: rgb(0 0 0 / 70%);
+  background: rgb(0 0 0 / 80%);
   color: #9bff4a;
   font-family: var(--mc-mono);
   font-size: 11px;
@@ -2567,7 +2688,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   cursor: zoom-in;
 
   &:focus-visible {
-    outline-offset: -2px;
+    outline-offset: 2px;
   }
 }
 
@@ -2579,7 +2700,7 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   right: 8px;
   padding: 2px 6px;
   border: 1px solid rgb(155 255 74 / 50%);
-  background: rgb(0 0 0 / 70%);
+  background: rgb(0 0 0 / 80%);
   color: #9bff4a;
   font-family: var(--mc-mono);
   font-size: 11px;
@@ -2648,7 +2769,11 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   line-height: 1;
   text-transform: uppercase;
 
+  /* The whole line is the target, at least 44px tall */
   & a {
+    display: block;
+    padding-block: 10px;
+    margin-block: -10px;
     text-decoration: none;
 
     &:hover {
@@ -2712,7 +2837,11 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
   line-height: 0.95;
   text-transform: uppercase;
 
+  /* The whole line is the target, at least 44px tall */
   & a {
+    display: block;
+    padding-block: 10px;
+    margin-block: -10px;
     text-decoration: none;
 
     &:hover {
@@ -2843,6 +2972,12 @@ body:has(.mc-deck:not([hidden], .sg-stage *)) .labBar {
     inset: 1.5px;
     background: linear-gradient(180deg, var(--mc-panel-hi), var(--mc-panel));
   }
+}
+
+/* The hexagon is clipped, so its focus ring goes around its cell */
+.mc-magi__cell:has(> a.mc-hex:focus-visible) {
+  outline: 2px solid var(--mc-focus);
+  outline-offset: 2px;
 }
 
 a.mc-hex:hover,
@@ -3158,7 +3293,7 @@ a.mc-hex:focus-visible,
   letter-spacing: 0.02em;
   line-height: 1;
   text-transform: uppercase;
-  animation: mc-blink 1.2s steps(2, jump-none) infinite;
+  animation: mc-blink 1.2s steps(2, jump-none) 4;
 
   & .mc-tri {
     width: 18px;
@@ -3225,10 +3360,23 @@ a.mc-hex:focus-visible,
   align-items: center;
   justify-content: center;
   gap: 8px;
+  /* White on the red: the focus ring too, so it shows on the banner */
+  --mc-focus: #fff;
+  --mc-shape: polygon(
+    var(--mc-cut) 0,
+    calc(100% - var(--mc-cut)) 0,
+    100% 50%,
+    calc(100% - var(--mc-cut)) 100%,
+    var(--mc-cut) 100%,
+    0 50%
+  );
+
   min-height: 300px;
   padding: 44px 40px;
+  background: var(--mc-red-fill);
   color: #fff;
   text-align: center;
+  clip-path: var(--mc-shape);
 
   @media (width >= 760px) {
     --mc-cut: 56px;
@@ -3236,25 +3384,11 @@ a.mc-hex:focus-visible,
     padding-inline: 80px;
   }
 
-  &::before,
   & .mc-alert__frame,
   & .mc-alert__frame::before {
     content: "";
     position: absolute;
-    clip-path: polygon(
-      var(--mc-cut) 0,
-      calc(100% - var(--mc-cut)) 0,
-      100% 50%,
-      calc(100% - var(--mc-cut)) 100%,
-      var(--mc-cut) 100%,
-      0 50%
-    );
-  }
-
-  &::before {
-    z-index: -3;
-    inset: 0;
-    background: var(--mc-red);
+    clip-path: var(--mc-shape);
   }
 
   & .mc-alert__frame {
@@ -3264,7 +3398,7 @@ a.mc-hex:focus-visible,
 
     &::before {
       inset: 2px;
-      background: var(--mc-red);
+      background: var(--mc-red-fill);
     }
   }
 }
@@ -3314,7 +3448,6 @@ a.mc-hex:focus-visible,
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  opacity: 0.85;
 }
 
 .mc-alert__heading {
@@ -3433,6 +3566,7 @@ a.mc-hex:focus-visible,
 .mc-quote__text {
   flex: 1;
   margin: 0;
+  max-width: 54ch;
   padding: 18px 18px 0;
   color: var(--mc-title);
   font-size: 17px;
@@ -3613,6 +3747,10 @@ a.mc-hex:focus-visible,
   }
 
   & tbody th a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-block: -11px;
     color: var(--mc-title);
     font-family: var(--mc-cond);
     font-size: 19px;
@@ -3655,8 +3793,8 @@ a.mc-hex:focus-visible,
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    min-height: 36px;
-    padding: 0 12px;
+    min-height: 44px;
+    padding: 0 14px;
     border: 1px solid var(--mc-line-dim);
     background: transparent;
     color: var(--mc-amber);
@@ -3686,7 +3824,6 @@ a.mc-hex:focus-visible,
 
       & span {
         color: inherit;
-        opacity: 0.7;
       }
     }
   }
@@ -3841,13 +3978,20 @@ a.mc-hex:focus-visible,
   }
 }
 
+.mc-eq__scroll {
+  overflow-x: auto;
+
+  &:focus-visible {
+    outline-offset: -2px;
+  }
+}
+
 .mc-eq__columns {
   display: flex;
   justify-content: space-between;
   gap: 8px;
   margin: 0;
   padding: 22px 20px 16px;
-  overflow-x: auto;
   list-style: none;
 
   & li {
@@ -3931,6 +4075,11 @@ a.mc-hex:focus-visible,
     color: var(--mc-amber);
     text-underline-offset: 0.18em;
   }
+
+  /* Links padded out to 44px targets, which doesn't move the line */
+  & dd a {
+    padding-block: 13px;
+  }
 }
 
 .mc-spec--compact > div {
@@ -3943,6 +4092,12 @@ a.mc-hex:focus-visible,
 .mc-people {
   display: grid;
   gap: 10px;
+
+  /* Padded out to 44px targets, which doesn't move the line */
+  & a {
+    padding-block: 13px;
+  }
+
   margin: 0;
   padding: 0;
   list-style: none;
@@ -4331,7 +4486,7 @@ a.mc-hex:focus-visible,
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 0.03em;
-  line-height: 1.1;
+  line-height: 1.5;
   text-transform: uppercase;
 }
 
@@ -4363,6 +4518,11 @@ a.mc-hex:focus-visible,
   & ul,
   & ol {
     margin: 0 0 1.15em;
+  }
+
+  /* About 75 characters a line at most */
+  & :is(p, li, blockquote, dd) {
+    max-width: 54ch;
   }
 
   & ul,
@@ -4447,6 +4607,13 @@ a.mc-hex:focus-visible,
     text-decoration: none;
   }
 
+  /* A 44px target, padded over the space around the heading */
+  & .header-anchor {
+    display: block;
+    padding-block: 8px;
+    margin-block: -8px;
+  }
+
   & hr {
     height: 10px;
     margin: 2.6em 0;
@@ -4468,7 +4635,7 @@ a.mc-hex:focus-visible,
     color: var(--mc-title);
     font-size: 22px;
     font-style: normal;
-    line-height: 1.45;
+    line-height: 1.5;
   }
 
   & blockquote p:last-child {
@@ -4575,11 +4742,13 @@ a.mc-hex:focus-visible,
     font-size: 0.85em;
   }
 
+  /* The block that takes focus (it's in the tab order) is the one that
+     scrolls; its label stays put */
   & pre {
     position: relative;
     margin: 1.8em 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: auto;
     border: 1px solid var(--mc-line-dim);
     background: var(--mc-well);
     font-size: 14px;
@@ -4587,6 +4756,8 @@ a.mc-hex:focus-visible,
 
     &::before {
       content: "Terminal";
+      position: sticky;
+      left: 0;
       display: block;
       padding: 6px 12px;
       border-bottom: 1px solid var(--mc-line-faint);
@@ -4601,8 +4772,9 @@ a.mc-hex:focus-visible,
 
     & code {
       display: block;
+      width: max-content;
+      min-width: 100%;
       padding: 16px 18px;
-      overflow-x: auto;
       border: 0;
       background: none;
       color: var(--mc-ink);
@@ -4728,12 +4900,15 @@ a.mc-hex:focus-visible,
   /* Table of contents */
   & .toc {
     margin: 0 0 2em;
-    padding: 12px 16px;
+    padding: 0 16px;
     border: 1px solid var(--mc-line-dim);
     background: var(--mc-panel);
     font-size: 15px;
 
     & summary {
+      display: flex;
+      align-items: center;
+      min-height: 44px;
       color: var(--mc-amber);
       font-family: var(--mc-cond);
       font-size: 13px;
@@ -4745,7 +4920,23 @@ a.mc-hex:focus-visible,
 
     & ol,
     & ul {
-      margin: 8px 0 0;
+      margin: 0 0 12px;
+    }
+
+    & li ol,
+    & li ul {
+      margin-bottom: 0;
+    }
+
+    /* Stacked 44px targets, so neighbors don't overlap */
+    & li + li {
+      margin-top: 0;
+    }
+
+    & li a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
     }
   }
 
@@ -4897,7 +5088,8 @@ legend.mc-field__label {
   width: 100%;
   min-height: 46px;
   padding: 10px 12px;
-  border: 1px solid var(--mc-line-dim);
+  /* A field's edge is all that marks it: 3:1 against the page */
+  border: 1px solid var(--mc-line);
   border-radius: 0;
   background: var(--mc-well);
   color: var(--mc-title);
@@ -4907,7 +5099,6 @@ legend.mc-field__label {
 
   &::placeholder {
     color: var(--mc-muted);
-    opacity: 0.75;
   }
 
   &:focus,
@@ -4945,7 +5136,7 @@ textarea.mc-input {
     display: inline-flex;
     align-items: center;
     gap: 9px;
-    min-height: 40px;
+    min-height: 44px;
     padding: 0 14px;
     border: 1px solid var(--mc-line-dim);
     color: var(--mc-ink);
@@ -5006,6 +5197,9 @@ textarea.mc-input {
    ========================================================================== */
 
 .mc-defense {
+  /* The screen is dark in both schemes, so its focus ring is too */
+  --mc-focus: #9bff4a;
+
   position: relative;
   display: grid;
   gap: 14px;
@@ -5066,7 +5260,9 @@ textarea.mc-input {
   aspect-ratio: 1;
   translate: -50% -50%;
   will-change: transform;
-  animation: mc-spin linear infinite;
+  /* Each ring turns at its own slow pace for 4.8s, then holds (WCAG 2.2.2):
+     its iteration count is set beside its duration, in NotFound.tsx */
+  animation: mc-spin linear forwards;
 
   & svg {
     display: block;
@@ -5198,7 +5394,7 @@ textarea.mc-input {
   & p {
     margin: 6px 0 0;
     font-size: 15px;
-    line-height: 1.45;
+    line-height: 1.5;
   }
 
   & .mc-more {
@@ -5243,7 +5439,11 @@ textarea.mc-input {
 
   display: grid;
   justify-items: start;
-  gap: 6px;
+  gap: 0;
+
+  & .mc-more {
+    margin-block: 0;
+  }
 }
 
 .mc-defense__small {
@@ -5352,8 +5552,11 @@ textarea.mc-input {
   }
 
   & a {
-    display: inline-block;
-    padding: 6px 10px;
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 12px;
     border: 1px solid var(--mc-line-dim);
     color: var(--mc-ink);
     font-family: var(--mc-cond);
@@ -5477,7 +5680,7 @@ textarea.mc-input {
     font-size: 12px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    animation: mc-blink 1.2s steps(2, jump-none) infinite;
+    animation: mc-blink 1.2s steps(2, jump-none) 4;
   }
 
   /* Flickers in, like a signal locking on, whenever the image changes */

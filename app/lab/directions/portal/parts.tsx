@@ -356,7 +356,12 @@ export function GameCard({
   return (
     <article className="pt-game">
       <div className="pt-game__media">
-        <a className="pt-game__img" href={href} tabIndex={-1}>
+        <a
+          className="pt-game__img"
+          href={href}
+          tabIndex={-1}
+          aria-hidden="true"
+        >
           {image ? (
             <img src={image} alt="" loading="lazy" />
           ) : (
@@ -445,7 +450,12 @@ export function Tile({
         <p className="pt-tile__head">{head}</p>
       )}
       {image && href && (
-        <a className="pt-tile__img" href={href} tabIndex={-1}>
+        <a
+          className="pt-tile__img"
+          href={href}
+          tabIndex={-1}
+          aria-hidden="true"
+        >
           <img src={image} alt="" loading="lazy" />
         </a>
       )}
@@ -557,7 +567,12 @@ export function Feature({
 }) {
   return (
     <article className="pt-feature">
-      <a className="pt-feature__img" href={href} tabIndex={-1}>
+      <a
+        className="pt-feature__img"
+        href={href}
+        tabIndex={-1}
+        aria-hidden="true"
+      >
         {image ? (
           <img src={image} alt="" />
         ) : (
@@ -737,13 +752,16 @@ export function Banner({
   image?: ReactNode;
   tab: string;
 }) {
-  const valid = color && /^#[0-9a-f]{3,8}$/i.test(color) ? color : undefined;
+  // Without a color of its own, a banner is the portal's green
+  const tone = bannerTone(color ?? "#6ab335");
   const Logo = logoIsTitle ? "h1" : "p";
 
   return (
     <header
-      className={cx("pt-banner", valid && isLight(valid) && "pt-banner--light")}
-      style={valid ? ({ "--banner": valid } as React.CSSProperties) : undefined}
+      className={cx("pt-banner", tone?.light && "pt-banner--light")}
+      style={
+        tone ? ({ "--banner": tone.color } as React.CSSProperties) : undefined
+      }
     >
       <div className="pt-banner__main">
         <Logo className="pt-banner__logo">{logo}</Logo>
@@ -758,12 +776,43 @@ export function Banner({
   );
 }
 
-/** Rough relative luminance check for a hex color */
-function isLight(hex: string) {
+/** A color's relative luminance, from its sRGB channels (0–255) */
+const luminanceOf = (rgb: number[]) => {
+  const [r, g, b] = rgb.map((channel) => {
+    const c = channel / 255;
+    return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+};
+
+const contrastOf = (a: number[], b: number[]) => {
+  const [light, dark] = [luminanceOf(a), luminanceOf(b)].sort((x, y) => y - x);
+  return (light + 0.05) / (dark + 0.05);
+};
+
+/**
+ * A banner in its case study's or post type's color, with the text that
+ * reads best on it (near-black or white), the color tinted toward white or
+ * shaded toward black only as far as that text needs for 7:1
+ */
+export function bannerTone(hex: string) {
+  if (!/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(hex)) return undefined;
   const full =
     hex.length === 4 ? `#${[...hex.slice(1)].map((c) => c + c).join("")}` : hex;
-  const [r, g, b] = [1, 3, 5].map((i) => parseInt(full.slice(i, i + 2), 16));
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 150;
+  const base = [1, 3, 5].map((i) => parseInt(full.slice(i, i + 2), 16));
+  const ink = [17, 17, 17];
+  const white = [255, 255, 255];
+  const light = contrastOf(base, ink) >= contrastOf(base, white);
+  const [text, toward] = light ? [ink, white] : [white, [0, 0, 0]];
+
+  let rgb = base;
+  for (let step = 1; contrastOf(rgb, text) < 7.1 && step <= 20; step++) {
+    rgb = base.map((channel, at) =>
+      Math.round(channel + (toward[at] - channel) * (step / 20))
+    );
+  }
+  const color = `#${rgb.map((channel) => channel.toString(16).padStart(2, "0")).join("")}`;
+  return { color, light };
 }
 
 /** Bar with a topic menu that jumps down the page */

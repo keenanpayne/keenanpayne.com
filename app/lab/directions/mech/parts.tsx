@@ -336,10 +336,13 @@ function tracePoints(seed: number) {
 
 // Time for the head to cross one trace, the trail's length (as a share of
 // the width), and the pauses before the next row and before starting over
-const CROSS_MS = 4000;
+const CROSS_MS = 3600;
 const TRAIL = 0.3;
 const ROW_MS = 250;
 const REST_MS = 900;
+// How long the relay runs in all before the traces hold still: under five
+// seconds, so nothing moves on its own for longer (WCAG 2.2.2)
+const LIMIT_MS = 4800;
 
 /** Plays one sweep after a delay; resolves when the head leaves the trace */
 type Sweep = (delay: number) => Promise<void>;
@@ -348,14 +351,22 @@ type Sweep = (delay: number) => Promise<void>;
  * Passes a single sweep from trace to trace across the transmissions on
  * screen, in reading order, so it reads as one signal running through the
  * cards. It crosses the gap between neighbours at the same pace, and starts
- * over from the first card after a short rest.
+ * over from the first card after a short rest, until `LIMIT_MS` would pass;
+ * then every trace holds still until they've all left the page.
  */
 const relay = (() => {
   const sweeps = new Map<Element, Sweep>();
   const visible = new Set<Element>();
   let current: Element | undefined;
   let running = false;
+  let started: number | undefined;
+  let finished = false;
   let observer: IntersectionObserver | undefined;
+
+  const finish = () => {
+    finished = true;
+    for (const element of sweeps.keys()) element.classList.remove("is-live");
+  };
 
   // Top to bottom (rows within 40px of each other count as one), then left
   // to right
@@ -369,7 +380,7 @@ const relay = (() => {
       );
 
   const advance = async () => {
-    if (running) return;
+    if (running || finished) return;
     const order = inReadingOrder();
     if (order.length === 0) return;
 
@@ -382,6 +393,13 @@ const relay = (() => {
       const sameRow = Math.abs(a.top - b.top) < 40;
       const gap = (b.left - a.right) / (a.width / CROSS_MS);
       delay = sameRow ? Math.min(Math.max(gap, 0), 400) : ROW_MS;
+    }
+
+    const now = performance.now();
+    started ??= now;
+    if (now - started + delay + CROSS_MS * (1 + TRAIL) > LIMIT_MS) {
+      finish();
+      return;
     }
 
     running = true;
@@ -408,12 +426,19 @@ const relay = (() => {
         advance();
       });
       sweeps.set(element, sweep);
+      if (finished) element.classList.remove("is-live");
       observer.observe(element);
 
       return () => {
         sweeps.delete(element);
         visible.delete(element);
         observer?.unobserve(element);
+        // A page of traces of its own gets a run of its own
+        if (sweeps.size === 0) {
+          started = undefined;
+          finished = false;
+          current = undefined;
+        }
       };
     }
   };
@@ -639,18 +664,26 @@ export const Feed = ({
         className={classes}
         onClick={onZoom}
         aria-haspopup="dialog"
-        aria-label={`Enlarge photo: ${alt}`}
+        // Starts with the tag it shows, so its name holds its visible text
+        aria-label={
+          typeof label === "string"
+            ? `${label} · Enlarge photo: ${alt}`
+            : `Enlarge photo: ${alt}`
+        }
       >
         {content}
       </button>
     );
   }
 
-  const Tag = href ? "a" : "div";
-  return (
-    <Tag className={classes} href={href} tabIndex={href ? -1 : undefined}>
+  // A mouse shortcut to the same page as the title's link beside it, so it's
+  // left out of the tab order and the accessibility tree
+  return href ? (
+    <a className={classes} href={href} tabIndex={-1} aria-hidden="true">
       {content}
-    </Tag>
+    </a>
+  ) : (
+    <div className={classes}>{content}</div>
   );
 };
 
@@ -816,6 +849,8 @@ export function PostCards({ posts, all }: { posts: Posts; all: Posts }) {
 /** Scrolling strip of headlines, like a news ticker */
 export function Ticker({ posts }: { posts: Posts }) {
   const items = posts.slice(0, 8);
+  // It scrolls on its own, so it can be held still (WCAG 2.2.2)
+  const [held, setHeld] = useState(false);
   const run = (hidden?: boolean) => (
     <ul className="mc-ticker__run" aria-hidden={hidden || undefined}>
       {items.map((post) => (
@@ -838,10 +873,19 @@ export function Ticker({ posts }: { posts: Posts }) {
         </span>
         Latest transmissions
       </p>
-      <div className="mc-ticker__track">
+      <div className="mc-ticker__track" data-held={held || undefined}>
         {run()}
         {run(true)}
       </div>
+      <button
+        type="button"
+        className="mc-ticker__hold"
+        aria-pressed={held}
+        onClick={() => setHeld(!held)}
+      >
+        <span className="mc-ticker__holdIcon" aria-hidden="true" />
+        Hold
+      </button>
     </section>
   );
 }

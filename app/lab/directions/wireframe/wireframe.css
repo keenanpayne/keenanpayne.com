@@ -110,6 +110,39 @@ body:has(.wireframe) {
     font: inherit;
   }
 
+  /* Buttons: outlined in a color that tells them apart (3:1 and more), and
+     tall enough to take a thumb (2.5.5) */
+  & button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--wireframe-muted);
+    background: none;
+    color: var(--wireframe-ink);
+    cursor: pointer;
+
+    &:hover {
+      background: var(--wireframe-surface);
+    }
+  }
+
+  /* Blocks of text stay at 80 characters a line or fewer (1.4.8) */
+  & :is(p, li, dd, blockquote, figcaption) {
+    max-width: 50ch;
+  }
+
+  /* Standalone links (not inside a sentence) are targets of 44 by 44px
+     (2.5.5): navigation, headings, lists, cards, tables, and the like */
+  & :is(h2, h3, h4) > a,
+  & :is(.wireframe-list, .toc) li > a,
+  & :is(.wireframe-eyebrow, .wireframe-more, .wireframe-postNav) a,
+  & :is(.wireframe-facts dd, .wireframe-table, figcaption) a {
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
   & ::selection {
     background: var(--wireframe-selection);
     color: var(--wireframe-selection-ink);
@@ -140,15 +173,24 @@ body:has(.wireframe) {
   gap: 8px 24px;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
+  padding: 8px 0;
 
   & ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px 16px;
+    gap: 0 16px;
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  /* Each link is a 44px target (2.5.5) */
+  & a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
   }
 }
 
@@ -161,6 +203,9 @@ body:has(.wireframe) {
 }
 
 .wireframe-name {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-weight: 700;
   text-decoration: none;
 }
@@ -170,7 +215,10 @@ body:has(.wireframe) {
   position: absolute;
   top: 8px;
   left: 8px;
-  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
   background: var(--wireframe-paper);
   transform: translateY(-200%);
 
@@ -179,13 +227,11 @@ body:has(.wireframe) {
   }
 }
 
+/* A button like any other (`.wireframe button`), with figures that hold
+   still as the time ticks */
 .wireframe-clock {
-  padding: 2px 8px;
-  border: 1px solid var(--wireframe-line);
-  background: none;
-  color: inherit;
+  padding: 0 12px;
   font-variant-numeric: tabular-nums;
-  cursor: pointer;
 }
 
 .wireframe-weather {
@@ -276,6 +322,12 @@ body:has(.wireframe) {
     background: var(--wireframe-surface);
   }
 
+  /* The table of contents opens from a 44px target (2.5.5) */
+  & summary {
+    padding-block: 10px;
+    cursor: pointer;
+  }
+
   /* Callout icons carry no size of their own */
   & .icon {
     width: 1em;
@@ -346,18 +398,28 @@ body:has(.wireframe) {
   gap: 8px;
   margin: 16px 0 0;
 
+  /* Term beside detail, or above it where there's no room for both (a
+     phone, the weather popover), so nothing runs off the screen (1.4.10) */
   & > div {
-    display: grid;
-    grid-template-columns: minmax(120px, 1fr) 3fr;
-    gap: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 16px;
+    align-items: baseline;
   }
 
+  /* A quarter beside the rest, until they'd be under 120px and 180px */
   & dt {
+    flex: 1 1 0;
+    min-width: 120px;
+    max-width: 25%;
     color: var(--wireframe-muted);
   }
 
   & dd {
+    flex: 3 1 0;
+    min-width: min(180px, 100%);
     margin: 0;
+    overflow-wrap: anywhere;
   }
 
   & ul {
@@ -379,6 +441,23 @@ body:has(.wireframe) {
     padding: 2px 8px;
     border: 1px solid var(--wireframe-line);
   }
+
+  /* A linked tag fills its box, and the box is a 44px target (2.5.5) */
+  & a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    margin: -2px -8px;
+    padding: 0 8px;
+  }
+}
+
+/* Tables scroll sideways on their own, where they're wider than a phone,
+   so the page doesn't (1.4.10) */
+.wireframe-scroll {
+  overflow-x: auto;
 }
 
 .wireframe-table {
@@ -434,9 +513,10 @@ body:has(.wireframe) {
   & textarea {
     display: block;
     width: 100%;
+    min-height: 44px;
     margin-top: 4px;
     padding: 8px;
-    border: 1px solid var(--wireframe-line);
+    border: 1px solid var(--wireframe-muted);
     background: var(--wireframe-paper);
     color: inherit;
   }
@@ -452,8 +532,12 @@ body:has(.wireframe) {
     padding: 0;
   }
 
+  /* A choice and its label are one 44px target (2.5.5) */
   & label {
-    display: block;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    min-height: 44px;
   }
 }
 

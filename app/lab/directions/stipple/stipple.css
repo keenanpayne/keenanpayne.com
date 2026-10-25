@@ -9,14 +9,15 @@
 :root {
   --st-paper: #fdfdfa;
   --st-ink: #393a20;
-  --st-olive: #737a4b;
-  --st-muted: #717267;
+  --st-olive: #4b512b;
+  --st-muted: #4e4f44;
   --st-faint: #b3b4aa;
   --st-line: #b4b5ab;
   --st-rule: #e2e3db;
   --st-wash: #f1f1eb;
   --st-sage: #bcc29b;
   --st-sage-deep: #98a073;
+  --st-highlight: #cbd0ab;
   --st-dot-ink: #393a20;
   --st-dot-mid: #a5a88d;
   --st-scheme: light;
@@ -30,21 +31,20 @@
      (twice it is the height of the notches), and room for the chrome */
   --st-gutter: 6px;
   --st-radius: 14px;
-  --st-step: 16px;
+  --st-step: 22px;
   --st-notch: calc(var(--st-step) * 2);
   --st-chrome: calc(var(--st-gutter) * 2 + var(--st-notch) * 2);
 
   @media (width >= 760px) {
     --st-gutter: 10px;
     --st-radius: 16px;
-    --st-step: 18px;
   }
 
   /* Roles every direction names (app/lab/conformance/foundations.ts) */
   --st-surface: var(--st-wash);
   --st-accent: var(--st-olive);
   --st-focus: var(--st-ink);
-  --st-selection: var(--st-sage);
+  --st-selection: var(--st-highlight);
   --st-selection-ink: var(--st-ink);
   --st-font-display: var(--st-serif);
   --st-font-body: var(--st-sans);
@@ -56,13 +56,14 @@
     --st-paper: #121310;
     --st-ink: #e3e4cf;
     --st-olive: #aab184;
-    --st-muted: #9d9e8c;
+    --st-muted: #adae9c;
     --st-faint: #5c5d51;
     --st-line: #4d4e42;
     --st-rule: #2a2b24;
     --st-wash: #1c1d18;
     --st-sage: #4f5537;
     --st-sage-deep: #737a50;
+    --st-highlight: #41472b;
     --st-dot-ink: #e3e4cf;
     --st-dot-mid: #777a62;
     --st-scheme: dark;
@@ -75,13 +76,14 @@
   --st-paper: #121310;
   --st-ink: #e3e4cf;
   --st-olive: #aab184;
-  --st-muted: #9d9e8c;
+  --st-muted: #adae9c;
   --st-faint: #5c5d51;
   --st-line: #4d4e42;
   --st-rule: #2a2b24;
   --st-wash: #1c1d18;
   --st-sage: #4f5537;
   --st-sage-deep: #737a50;
+  --st-highlight: #41472b;
   --st-dot-ink: #e3e4cf;
   --st-dot-mid: #777a62;
   --st-scheme: dark;
@@ -91,6 +93,12 @@
 
 body:has(.st) {
   background: var(--st-paper);
+}
+
+/* What scrolls into view, by focus or a link, clears the fixed header and
+   footer (not in the style guide, where the Shell isn't fixed) */
+:root:has(.st:not(.sg-stage *)) {
+  scroll-padding-block: calc(var(--st-gutter) + var(--st-notch) + 12px);
 }
 
 /* The lab switcher floats above the footer instead of over it */
@@ -266,11 +274,14 @@ body:has(.st) .labBar {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  height: calc(var(--st-notch) - 10px);
+  justify-content: center;
+  min-width: 44px;
+  height: var(--st-notch);
   margin-left: -5px;
   padding: 0 5px;
+  border-block: 6px solid transparent;
   border-radius: 999px;
-  background: var(--st-paper);
+  background: var(--st-paper) padding-box;
   color: var(--st-olive) !important;
   font-size: 15px;
   font-weight: 600;
@@ -279,12 +290,16 @@ body:has(.st) .labBar {
   text-transform: lowercase;
   white-space: nowrap;
 
-  /* With the navigation folded into a menu, there's room for the name */
+  /* With the navigation folded into a menu, there's room for the name;
+     narrower, it's still the link's name, unseen */
   & span {
-    display: none;
-
-    @media (width >= 360px) {
-      display: inline;
+    @media (width < 360px) {
+      position: absolute;
+      overflow: hidden;
+      width: 1px;
+      height: 1px;
+      clip-path: inset(50%);
+      white-space: nowrap;
     }
   }
 }
@@ -416,8 +431,12 @@ body:has(.st) .labBar {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 3px 6px;
-    border-radius: 5px;
+    height: var(--st-notch);
+    padding: 0 6px;
+    /* 44px to tap, with the CTA's ink drawn inside the block borders */
+    border-block: 8px solid transparent;
+    border-radius: 5px / 13px;
+    background-clip: padding-box;
     color: var(--st-muted);
     font-size: 12.5px;
     text-decoration: none;
@@ -425,7 +444,7 @@ body:has(.st) .labBar {
     transition: color 150ms ease;
 
     @media (width >= 760px) {
-      padding: 4px 10px;
+      padding: 0 10px;
       font-size: 13px;
     }
 
@@ -437,13 +456,13 @@ body:has(.st) .labBar {
 
   & .st-nav__cta {
     margin-left: 4px;
-    background: var(--st-ink);
+    background-color: var(--st-ink);
     color: var(--st-paper);
 
     &:hover,
     &[aria-current="page"] {
       color: var(--st-paper);
-      background: var(--st-olive);
+      background-color: var(--st-olive);
     }
 
     & .st-arrow {
@@ -466,7 +485,6 @@ body:has(.st) .labBar {
     padding-right: 3px;
 
     & > ul a {
-      height: 26px;
       padding: 0 10px;
       font-size: 13px;
     }
@@ -480,13 +498,14 @@ body:has(.st) .labBar {
    downward from the notch. */
 
 .st-nav__toggle {
+  position: relative;
   display: inline-flex;
   flex: none;
   align-items: center;
   gap: 7px;
-  height: 26px;
+  height: var(--st-notch);
   padding: 0 10px 0 8px;
-  border: 1px solid var(--st-line);
+  border: 0;
   border-radius: 5px;
   background: none;
   color: var(--st-ink);
@@ -496,8 +515,19 @@ body:has(.st) .labBar {
     border-color 150ms ease,
     background-color 150ms ease;
 
-  &:hover,
-  &[aria-expanded="true"] {
+  /* The box it draws, inside its 44px */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 9px 0;
+    border: 1px solid var(--st-line);
+    border-radius: inherit;
+    pointer-events: none;
+    transition: border-color 150ms ease;
+  }
+
+  &:hover::before,
+  &[aria-expanded="true"]::before {
     border-color: var(--st-ink);
   }
 
@@ -572,7 +602,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   padding-bottom: 10px;
   border-bottom: 1px solid var(--st-line);
   color: var(--st-muted);
-  font: 300 11px/1.4 var(--st-mono);
+  font: 300 11px/1.5 var(--st-mono);
 }
 
 .st-menu__list {
@@ -653,15 +683,23 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   gap: 16px;
   margin-top: 28px;
   padding-bottom: 18px;
-  font: 300 11px/1.4 var(--st-mono);
+  font: 300 11px/1.5 var(--st-mono);
 }
 
 .st-menu__links {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px 18px;
+  gap: 0 2px;
+  margin: -12px -8px;
 
+  /* 44px to tap, the same 18px apart */
   & a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 8px;
     color: var(--st-muted);
     text-decoration: none;
 
@@ -703,29 +741,50 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 /* Clocks that open the Denver notes (see `DenverNotes`): in the header,
    or in the footer where the header has no room */
 .st-clock {
+  position: relative;
+  isolation: isolate;
   flex: none;
-  padding: 3px 8px;
-  border: 1px solid var(--st-line);
+  min-width: 44px;
+  height: 44px;
+  padding: 0 8px;
+  border: 0;
   border-radius: 6px;
   background: none;
   color: var(--st-muted);
-  font: 300 11px/1.4 var(--st-mono);
+  font: 300 11px/1.5 var(--st-mono);
   white-space: nowrap;
   cursor: pointer;
-  transition:
-    background-color 150ms ease,
-    border-color 150ms ease,
-    color 150ms ease;
+  transition: color 150ms ease;
+
+  /* The box it draws, inside its 44px */
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 11px 0;
+    border: 1px solid var(--st-line);
+    border-radius: inherit;
+    pointer-events: none;
+    transition:
+      background-color 150ms ease,
+      border-color 150ms ease;
+  }
 
   &:hover {
-    border-color: var(--st-ink);
     color: var(--st-ink);
+
+    &::before {
+      border-color: var(--st-ink);
+    }
   }
 
   body:has(.st-den:popover-open) & {
-    border-color: var(--st-ink);
-    background: var(--st-ink);
     color: var(--st-paper);
+
+    &::before {
+      border-color: var(--st-ink);
+      background: var(--st-ink);
+    }
   }
 }
 
@@ -801,7 +860,10 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 }
 
 .st-bottom__name {
+  display: inline-flex;
   flex: none;
+  align-items: center;
+  min-height: 44px;
   color: var(--st-olive) !important;
   font-size: 15px;
   font-weight: 600;
@@ -813,9 +875,8 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
 .st-bottom__links {
   display: flex;
-  gap: 16px;
   min-width: 0;
-  margin: 0;
+  margin: 0 -8px;
   padding: 0;
   overflow-x: auto;
   list-style: none;
@@ -824,7 +885,14 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   font-size: 11px;
   font-weight: 300;
 
+  /* 44px to tap, the same 16px apart */
   & a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 8px;
     color: var(--st-muted);
     text-decoration: none;
     white-space: nowrap;
@@ -898,12 +966,15 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
 .st-stipple__toggle {
   position: absolute;
+  isolation: isolate;
   right: 8px;
-  bottom: 8px;
-  padding: 2px 9px;
-  border: 1px solid var(--st-line);
+  bottom: 0;
+  min-width: 44px;
+  height: 44px;
+  padding: 0 9px;
+  border: 0;
   border-radius: 999px;
-  background: var(--st-paper);
+  background: none;
   color: var(--st-muted);
   font: 300 10.5px/1.5 var(--st-mono);
   cursor: pointer;
@@ -920,10 +991,25 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     opacity: 1;
   }
 
+  /* The pill it draws, inside its 44px */
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 11px 0 9px;
+    border: 1px solid var(--st-line);
+    border-radius: inherit;
+    background: var(--st-paper);
+    pointer-events: none;
+  }
+
   &[aria-pressed="true"] {
-    border-color: var(--st-ink);
-    background: var(--st-ink);
     color: var(--st-paper);
+
+    &::before {
+      border-color: var(--st-ink);
+      background: var(--st-ink);
+    }
   }
 }
 
@@ -1067,21 +1153,23 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
   & ul {
     display: grid;
-    gap: 2px;
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
   & a {
-    color: var(--st-faint);
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--st-muted);
     font-size: 15px;
-    line-height: 1.4;
+    line-height: 1.5;
     text-decoration: none;
     transition: color 200ms ease;
 
     &:hover {
-      color: var(--st-muted);
+      color: var(--st-ink);
     }
 
     &[aria-current] {
@@ -1169,6 +1257,8 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
 .st-reading__title {
   display: block;
+  padding-block: 11px;
+  margin-block: -11px;
   font-family: var(--st-serif);
   font-size: 21px;
   line-height: 1.05;
@@ -1195,7 +1285,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   margin: 6px 0 0;
   overflow: hidden;
   font-size: 13px;
-  line-height: 1.4;
+  line-height: 1.5;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
@@ -1217,7 +1307,14 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   font-size: 11px;
   font-weight: 300;
 
+  /* 44px to tap, in the line's own room */
   & a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    margin-block: -13.5px;
     text-decoration: none;
 
     &:hover {
@@ -1241,7 +1338,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   margin: 16px 0 0;
   color: var(--st-muted);
   font-size: 18px;
-  line-height: 1.45;
+  line-height: 1.5;
   text-wrap: pretty;
 
   & a {
@@ -1331,7 +1428,8 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 7px 12px;
+  min-height: 44px;
+  padding: 0 16px;
   border: 1px solid var(--st-ink);
   border-radius: 6px;
   background: var(--st-ink);
@@ -1362,7 +1460,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 }
 
 .st-button--small {
-  padding: 4px 8px;
+  padding: 0 12px;
   border-radius: 5px;
   font-size: 12px;
 }
@@ -1371,6 +1469,8 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  min-height: 44px;
+  margin-block: -12px;
   color: var(--st-muted);
   font-size: 13px;
   text-decoration: none;
@@ -1421,6 +1521,14 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     & a {
       text-decoration-color: var(--st-faint);
       text-underline-offset: 3px;
+    }
+
+    & > a,
+    & li > a:only-child {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-block: -12px;
     }
   }
 }
@@ -1677,6 +1785,8 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 .st-entry__title {
   grid-area: title;
   justify-self: start;
+  padding-block: 10px;
+  margin-block: -10px;
   font-family: var(--st-serif);
   font-size: clamp(31px, 4.6vw, 42px);
   letter-spacing: -0.015em;
@@ -1695,7 +1805,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   max-width: 38em;
   margin-top: 4px;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.5;
 
   & p {
     margin: 0;
@@ -1711,7 +1821,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   font-family: var(--st-mono);
   font-size: 10.5px;
   font-weight: 300;
-  line-height: 1.45;
+  line-height: 1.5;
   white-space: nowrap;
 
   @media (width >= 560px) {
@@ -1781,7 +1891,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   font-family: var(--st-mono);
   font-size: 10.5px;
   font-weight: 300;
-  line-height: 1.45;
+  line-height: 1.5;
   text-align: right;
 
   @media (width >= 640px) {
@@ -1851,7 +1961,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 .st-ledger__number {
   display: none;
   grid-area: number;
-  color: var(--st-faint);
+  color: var(--st-muted);
   font-family: var(--st-mono);
   font-size: 10.5px;
   font-weight: 300;
@@ -1899,7 +2009,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   font-family: var(--st-mono);
   font-size: 10.5px;
   font-weight: 300;
-  line-height: 1.45;
+  line-height: 1.5;
 
   @media (width >= 960px) {
     flex-direction: column;
@@ -1914,7 +2024,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   margin-top: 6px;
   overflow: hidden;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.5;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 
@@ -2023,17 +2133,31 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
 /* Two ways to show the same thing, one pressed */
 .st-switch {
+  position: relative;
   display: inline-flex;
   gap: 2px;
-  padding: 2px;
-  border: 1px solid var(--st-rule);
+  margin-block: -13px;
+  padding: 0 3px;
   border-radius: 999px;
 
+  /* Its ring, around buttons 44px tall that draw a pill inside */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 10px 0;
+    border: 1px solid var(--st-rule);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
   & button {
-    padding: 1px 9px;
+    min-width: 44px;
+    height: 44px;
+    padding: 0 9px;
     border: 0;
+    border-block: 13px solid transparent;
     border-radius: 999px;
-    background: none;
+    background: none padding-box;
     color: var(--st-muted);
     font: 300 10.5px/1.5 var(--st-mono);
     cursor: pointer;
@@ -2046,7 +2170,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     }
 
     &[aria-pressed="true"] {
-      background: var(--st-ink);
+      background-color: var(--st-ink);
       color: var(--st-paper);
     }
   }
@@ -2078,6 +2202,9 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   line-height: 1.05;
 
   & a {
+    display: inline-block;
+    padding-block: 7px;
+    margin-block: -7px;
     text-decoration: none;
 
     &:hover {
@@ -2149,6 +2276,9 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   line-height: 1.05;
 
   & a {
+    display: inline-block;
+    padding-block: 9px;
+    margin-block: -9px;
     text-decoration: none;
 
     &:hover {
@@ -2160,7 +2290,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 .st-plate__text {
   margin: 6px 0 0;
   font-size: 14px;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .st-steps {
@@ -2191,7 +2321,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   & p {
     margin: 0;
     font-size: 14px;
-    line-height: 1.45;
+    line-height: 1.5;
   }
 }
 
@@ -2335,10 +2465,19 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     gap: 2px;
     margin-top: 10px;
     font-size: 13px;
-    line-height: 1.4;
+    line-height: 1.5;
 
     & > :first-child {
       font-weight: 500;
+    }
+
+    & > a:first-child {
+      display: flex;
+      align-items: center;
+      justify-self: start;
+      min-width: 44px;
+      min-height: 44px;
+      margin-block: -13px;
     }
 
     & > span:not(:first-child) {
@@ -2362,6 +2501,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   break-inside: avoid;
 
   & blockquote {
+    max-width: 50ch;
     margin: 0;
     font-size: 15px;
     line-height: 1.55;
@@ -2404,7 +2544,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   display: block;
   font-size: 14px;
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.5;
 }
 
 .st-quote__role {
@@ -2413,7 +2553,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   font-family: var(--st-mono);
   font-size: 10.5px;
   font-weight: 300;
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 /* Chips, tables, post navigation
@@ -2422,27 +2562,43 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 .st-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: 24px 0 0;
+  gap: 0 6px;
+  margin: 14px 0 -10px;
   padding: 0;
   list-style: none;
 
   & a,
   & span {
-    display: inline-block;
-    padding: 2px 9px;
-    border: 1px solid var(--st-line);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 9px;
     border-radius: 999px;
     color: var(--st-muted);
     font-family: var(--st-mono);
     font-size: 11px;
     font-weight: 300;
     text-decoration: none;
+
+    /* The pill it draws, inside its 44px */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 10px 0;
+      border: 1px solid var(--st-line);
+      border-radius: inherit;
+      pointer-events: none;
+    }
   }
 
   & a:hover {
-    border-color: var(--st-ink);
     color: var(--st-ink);
+
+    &::before {
+      border-color: var(--st-ink);
+    }
   }
 }
 
@@ -2471,6 +2627,14 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     font-size: 11.5px;
     overflow-wrap: anywhere;
   }
+
+  /* A row's link is 44px to tap: the row is that tall */
+  & td > a:only-child {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin-block: -8px;
+  }
 }
 
 .st-postNav {
@@ -2486,6 +2650,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
   & a {
     display: block;
+    min-height: 44px;
     font-family: var(--st-serif);
     font-size: 24px;
     line-height: 1.05;
@@ -2530,11 +2695,15 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
   &:focus-within {
     border-color: var(--st-ink);
+    outline: 2px solid var(--st-focus);
+    outline-offset: 2px;
   }
 
   & input {
     flex: 1;
+    align-self: stretch;
     min-width: 0;
+    min-height: 44px;
     padding: 6px 10px;
     border: 0;
     outline: none;
@@ -2550,8 +2719,8 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   & button {
     display: grid;
     place-items: center;
-    width: 30px;
-    height: 26px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: 0;
     background: none;
@@ -2573,21 +2742,37 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
 /* Drawn like the sign-up's field, as tall as the header's controls */
 .st-newsLink {
+  position: relative;
+  isolation: isolate;
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 3px 6px 3px 10px;
-  border: 1px solid var(--st-line);
+  min-height: 44px;
+  padding: 0 6px 0 10px;
   border-radius: 6px;
-  background: var(--st-paper);
   color: var(--st-muted);
-  font: 300 11px/1.4 var(--st-mono);
+  font: 300 11px/1.5 var(--st-mono);
   text-decoration: none;
   white-space: nowrap;
 
+  /* The field it draws, inside its 44px */
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 11px 0;
+    border: 1px solid var(--st-line);
+    border-radius: inherit;
+    background: var(--st-paper);
+    pointer-events: none;
+  }
+
   &:hover {
-    border-color: var(--st-ink);
     color: var(--st-ink);
+
+    &::before {
+      border-color: var(--st-ink);
+    }
   }
 }
 
@@ -2622,6 +2807,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   & input:not([type="checkbox"], [type="radio"]),
   & textarea {
     width: 100%;
+    min-height: 44px;
     padding: 9px 11px;
     border: 1px solid var(--st-line);
     border-radius: 6px;
@@ -2631,7 +2817,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     color-scheme: light dark;
 
     &::placeholder {
-      color: var(--st-faint);
+      color: var(--st-muted);
       font-family: var(--st-mono);
       font-size: 12.5px;
       font-weight: 300;
@@ -2639,7 +2825,6 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
     &:focus {
       border-color: var(--st-ink);
-      outline: none;
     }
   }
 
@@ -2655,11 +2840,17 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 .st-field__choices {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 0 6px;
+  margin-block: -7px;
 }
 
 .st-choice {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
 
   & input {
     position: absolute;
@@ -2762,6 +2953,16 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   line-height: 1.65;
   text-wrap: pretty;
 
+  /* Lines of text no longer than 80 characters */
+  & :is(p, li, dd, blockquote) {
+    max-width: 50ch;
+  }
+
+  /* In monospace, a character is a ch */
+  & figcaption {
+    max-width: 76ch;
+  }
+
   & > :first-child {
     margin-top: 0;
   }
@@ -2821,6 +3022,9 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
   /* Markdown headings wrap their text in a permalink */
   & .header-anchor {
+    display: inline-block;
+    padding-block: 9px;
+    margin-block: -9px;
     text-decoration: none;
   }
 
@@ -2840,7 +3044,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     font-family: var(--st-serif);
     font-size: 26px;
     font-style: italic;
-    line-height: 1.2;
+    line-height: 1.5;
   }
 
   & .blockquote-content,
@@ -3028,6 +3232,8 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     font-size: 14px;
 
     & summary {
+      margin-block: -12px;
+      padding-block: 13px;
       color: var(--st-muted);
       font-family: var(--st-mono);
       font-size: 11px;
@@ -3037,6 +3243,12 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     & ol,
     & ul {
       margin: 8px 0 0;
+    }
+
+    & li > a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
     }
   }
 
@@ -3098,7 +3310,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 .st-den {
   position-anchor: --st-clock;
   inset: auto;
-  top: calc(anchor(bottom) + 12px);
+  top: calc(anchor(bottom) + 6px);
   right: anchor(right);
   width: min(360px, calc(100vw - 24px));
   max-height: calc(100dvh - var(--st-chrome) - 24px);
@@ -3129,16 +3341,30 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
   /* Retry */
   & :is(.st-den__message, .st-den__status) button {
+    position: relative;
+    min-width: 44px;
+    min-height: 44px;
+    margin-block: -12px;
     margin-left: auto;
-    padding: 2px 9px;
-    border: 1px solid var(--st-line);
+    padding: 0 9px;
+    border: 0;
     border-radius: 999px;
     background: none;
     color: var(--st-ink);
     font: 300 11px/1.5 var(--st-mono);
     cursor: pointer;
 
-    &:hover {
+    /* The pill it draws, inside its 44px */
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 11px 0;
+      border: 1px solid var(--st-line);
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    &:hover::before {
       border-color: var(--st-ink);
     }
   }
@@ -3168,7 +3394,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 10px 10px 16px;
+  padding: 0 0 0 16px;
   border-bottom: 1px solid var(--st-rule);
   color: var(--st-muted);
   font-family: var(--st-mono);
@@ -3185,22 +3411,36 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 }
 
 .st-den__close {
+  position: relative;
   display: grid;
   flex: none;
   place-items: center;
-  width: 24px;
-  height: 24px;
+  width: 44px;
+  height: 44px;
   padding: 0 0 2px;
-  border: 1px solid var(--st-line);
+  border: 0;
   border-radius: 999px;
   background: none;
   color: var(--st-muted);
   font: 16px/1 var(--st-sans);
   cursor: pointer;
 
+  /* The ring it draws, inside its 44px */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid var(--st-line);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
   &:hover {
-    border-color: var(--st-ink);
     color: var(--st-ink);
+
+    &::before {
+      border-color: var(--st-ink);
+    }
   }
 }
 
@@ -3326,7 +3566,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
     margin: 2px 0 0;
     font-family: var(--st-serif);
     font-size: 24px;
-    line-height: 1.1;
+    line-height: 1.5;
   }
 
   & small {
@@ -3365,7 +3605,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
   [data-tone="wait"] > & {
     background: var(--st-faint);
-    animation: st-pulse 1.2s ease-in-out infinite alternate;
+    animation: st-pulse 1.2s ease-in-out 4 alternate;
   }
 
   [data-tone="off"] > & {
@@ -3375,7 +3615,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
 
   [data-tone="alert"] > & {
     background: var(--st-ink);
-    animation: st-pulse 0.6s ease-in-out infinite alternate;
+    animation: st-pulse 0.6s ease-in-out 8 alternate;
   }
 }
 
@@ -3500,7 +3740,7 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
       padding: 0;
       color: var(--st-muted);
       font-size: 13px;
-      line-height: 1.45;
+      line-height: 1.5;
       list-style: none;
     }
 

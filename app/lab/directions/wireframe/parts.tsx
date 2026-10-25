@@ -91,9 +91,7 @@ export function WorkGrid({ work }: { work: LabContent["work"] }) {
     <ul className="wireframe-grid">
       {work.map((item) => (
         <li key={item.url} className="wireframe-card">
-          <a href={item.url} tabIndex={-1}>
-            <img src={item.cover} alt="" loading="lazy" />
-          </a>
+          <img src={item.cover} alt="" loading="lazy" />
           <h3>
             <a href={item.url}>{item.name}</a>
           </h3>
@@ -198,29 +196,55 @@ export function LinkList({
   );
 }
 
+/**
+ * A table that scrolls sideways on its own when it's wider than the screen,
+ * so the page doesn't; it takes focus so the keyboard can scroll it too
+ */
+export function TableScroll({
+  label,
+  children
+}: {
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    // A scrolling region has to be reachable from the keyboard (2.1.1)
+    <div
+      className="wireframe-scroll"
+      role="region"
+      aria-label={label}
+      tabIndex={0}
+    >
+      {children}
+    </div>
+  );
+}
+
 /** Every page on the site, by title and URL */
 export function PageTable({ pages }: { pages: PageListSection["pages"] }) {
   return (
-    <table className="wireframe-table">
-      <thead>
-        <tr>
-          <th>Page</th>
-          <th>URL</th>
-        </tr>
-      </thead>
-      <tbody>
-        {pages.map((page) => (
-          <tr key={page.url}>
-            <td>{page.title}</td>
-            <td>
-              <a href={page.url}>
-                <code>{page.url}</code>
-              </a>
-            </td>
+    <TableScroll label="Every page">
+      <table className="wireframe-table">
+        <thead>
+          <tr>
+            <th>Page</th>
+            <th>URL</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {pages.map((page) => (
+            <tr key={page.url}>
+              <td>{page.title}</td>
+              <td>
+                <a href={page.url}>
+                  <code>{page.url}</code>
+                </a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </TableScroll>
   );
 }
 

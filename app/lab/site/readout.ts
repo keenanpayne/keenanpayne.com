@@ -19,15 +19,22 @@ export const WEATHER_CREDIT = {
   text: "Open-Meteo"
 };
 
-/** What the clock and its popover are named, e.g. `Denver local time and weather` */
+/**
+ * What the popover is named, and how the clock is described, e.g. `Denver
+ * local time and weather`. The clock's name is what it shows (the time),
+ * so what a visitor sees is what a voice user says (WCAG 2.5.3).
+ */
 export const readoutLabel = (city: string) => `${city} local time and weather`;
 
 export interface Readout extends ForecastReading {
-  /** Attributes for the header clock, the `<button>` that opens the popover */
+  /**
+   * Attributes for the header clock, the `<button>` that opens the popover.
+   * Its name is its text, so it must show some (the time, say).
+   */
   button: {
     type: "button";
     popoverTarget: string;
-    "aria-label": string;
+    "aria-description": string;
   };
   /**
    * Attributes for the popover: a dialog named like the clock, which starts
@@ -72,7 +79,7 @@ export function useReadout(
 
   return {
     ...reading,
-    button: { type: "button", popoverTarget: id, "aria-label": label },
+    button: { type: "button", popoverTarget: id, "aria-description": label },
     popover: {
       id,
       popover: "auto",

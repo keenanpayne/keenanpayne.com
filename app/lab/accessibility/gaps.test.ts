@@ -23,10 +23,19 @@ const CHECKS = new Set([
 ]);
 
 describe("accessibility gaps", () => {
-  it.each(Object.entries(KNOWN_A11Y_GAPS))(
-    "%s lists checks the audit runs",
-    (slug, gaps) => {
-      expect(directions.map((direction) => direction.slug)).toContain(slug);
+  it("name real directions", () => {
+    const slugs = directions.map((direction) => direction.slug);
+    expect(
+      Object.keys(KNOWN_A11Y_GAPS).filter(
+        (slug) => !slugs.includes(slug as (typeof slugs)[number])
+      )
+    ).toEqual([]);
+  });
+
+  it.each(directions.map((direction) => direction.slug))(
+    "%s lists only checks the audit runs",
+    (slug) => {
+      const gaps = KNOWN_A11Y_GAPS[slug] ?? [];
       expect(gaps.filter((id) => !CHECKS.has(id))).toEqual([]);
     }
   );

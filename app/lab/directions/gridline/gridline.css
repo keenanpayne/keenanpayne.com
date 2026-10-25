@@ -293,10 +293,10 @@ body:has(.gl) {
   }
 
   /* Running text stops short of 80 characters a line, however wide the
-     frame: 34em of the sans, or 24em of the narrower serif (a component's
+     frame: 33em of the sans, or 24em of the narrower serif (a component's
      own measure, set with more weight, wins) */
   & :where(p, figcaption, .gl-prose li) {
-    max-width: 34em;
+    max-width: 33em;
   }
 
   & :where(blockquote) {
@@ -1166,6 +1166,7 @@ a.gl-chip {
 
 .gl-page-header {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
 
   @media (width >= 1024px) {
     &.gl-page-header--aside {
@@ -1306,6 +1307,10 @@ a.gl-chip {
     var(--gl-ray-deep);
   color: #f4f3f8;
 
+  /* Rings in white, the one light that keeps 3:1 on the brightest streaks
+     as well as the dark between them, in either scheme */
+  --gl-focus: #fff;
+
   &::before,
   &::after {
     content: "";
@@ -1373,6 +1378,10 @@ a.gl-chip {
   --gl-win-shadow:
     0 1px 0 rgb(255 255 255 / 8%) inset, 0 40px 90px -30px rgb(0 0 0 / 70%);
 
+  /* Rings in the window's own violet, at 3:1 on its glass in either scheme
+     (and on the Blueprint's, which re-declares it) */
+  --gl-focus: var(--gl-win-accent);
+
   position: relative;
   max-width: clamp(860px, 56vw, 1000px);
   margin-inline: auto;
@@ -1402,6 +1411,11 @@ a.gl-chip {
   & .gl-window__status {
     margin-left: auto;
   }
+
+  /* A browser's bar holds its address link's 44px target */
+  &:has(.gl-window__address a) {
+    height: 46px;
+  }
 }
 
 .gl-window__dots {
@@ -1429,12 +1443,31 @@ a.gl-chip {
   text-overflow: ellipsis;
   white-space: nowrap;
 
+  /* A link's target reaches 44px past the pill, which takes its ring */
+  &:has(a) {
+    overflow: visible;
+  }
+
+  &:has(a:focus-visible) {
+    outline: 2px solid var(--gl-focus);
+    outline-offset: 2px;
+  }
+
   & a {
+    display: block;
+    overflow: hidden;
+    margin-block: calc((1lh - 44px) / 2);
+    padding-block: calc((44px - 1lh) / 2);
     color: inherit;
     text-decoration: none;
+    text-overflow: ellipsis;
 
     &:hover {
       color: var(--gl-win-ink);
+    }
+
+    &:focus-visible {
+      outline: 0;
     }
   }
 }
@@ -1482,7 +1515,13 @@ a.gl-chip {
     font-variant-numeric: tabular-nums;
   }
 
+  /* Reaching 44px tall, over the lines around it; its ring keeps to its
+     text, clear of theirs */
   & a {
+    position: relative;
+    display: inline-block;
+    margin-block: calc((1lh - 44px) / 2);
+    padding-block: calc((44px - 1lh) / 2);
     color: var(--gl-win-ink);
     text-decoration: none;
 
@@ -1490,6 +1529,19 @@ a.gl-chip {
       color: var(--gl-win-accent);
       text-decoration: underline;
       text-underline-offset: 3px;
+    }
+
+    &:focus-visible {
+      outline: 0;
+    }
+
+    &:focus-visible::after {
+      content: "";
+      position: absolute;
+      inset: calc((44px - 1lh) / 2 - 2px) -4px;
+      border: 2px solid var(--gl-focus);
+      border-radius: 3px;
+      pointer-events: none;
     }
   }
 }
@@ -1953,7 +2005,9 @@ a.gl-chip {
 
 .gl-quote__toggle {
   align-self: flex-start;
-  padding: 0;
+  min-width: 44px;
+  margin-block: calc((1lh - 44px) / 2);
+  padding: calc((44px - 1lh) / 2) 0;
   border: 0;
   background: none;
   color: var(--gl-muted);
@@ -2122,7 +2176,7 @@ a.gl-chip {
 
   & > div {
     display: grid;
-    grid-template-columns: minmax(100px, 0.75fr) 2fr;
+    grid-template-columns: minmax(100px, 0.75fr) minmax(0, 2fr);
     gap: 16px;
     padding: 13px 0;
     border-top: 1px solid var(--gl-line);
@@ -2138,16 +2192,20 @@ a.gl-chip {
     text-transform: uppercase;
   }
 
+  /* An address too long for the row breaks rather than pushing it wide */
   & dd {
+    min-width: 0;
     margin: 0;
     color: var(--gl-ink);
     font-size: var(--gl-fs-small);
     line-height: 1.5;
+    overflow-wrap: anywhere;
   }
 
-  /* Reaching 44px tall, into the row's own padding */
+  /* Reaching 44px, into the row's own padding */
   & a {
     display: inline-block;
+    min-width: 44px;
     padding-block: 11px;
     margin-block: -11px;
     text-decoration-color: color-mix(
@@ -2228,7 +2286,12 @@ a.gl-chip {
     font-weight: 500;
     letter-spacing: -0.015em;
 
+    /* Reaching 44px, into the row's own padding */
     & a {
+      display: inline-block;
+      min-width: 44px;
+      margin-block: calc((1lh - 44px) / 2);
+      padding-block: calc((44px - 1lh) / 2);
       text-decoration: none;
 
       &:hover {
@@ -2311,9 +2374,10 @@ a.gl-chip {
     padding-left: 28px;
   }
 
+  /* Each entry a 44px target */
   & a {
     display: block;
-    padding: 5px 0 5px 14px;
+    padding: calc((44px - 1lh) / 2) 0 calc((44px - 1lh) / 2) 14px;
     border-left: 1px solid var(--gl-line);
     color: var(--gl-muted);
     font-size: var(--gl-fs-caption);
@@ -2470,6 +2534,14 @@ a.gl-chip {
   & .header-anchor:hover {
     color: inherit;
     text-decoration: none;
+  }
+
+  /* Reaching 44px, into the space around the heading */
+  & .header-anchor {
+    display: inline-block;
+    min-width: 44px;
+    margin-block: calc((1lh - 44px) / 2);
+    padding-block: calc((44px - 1lh) / 2);
   }
 
   & hr {
@@ -2817,7 +2889,14 @@ a.gl-chip {
       padding-left: 1.2em;
     }
 
+    /* Each entry a 44px target, so the rows sit flush */
+    & li + li {
+      margin-top: 0;
+    }
+
     & a {
+      display: block;
+      padding-block: calc((44px - 1lh) / 2);
       color: var(--gl-text);
       text-decoration: none;
 
@@ -3240,6 +3319,12 @@ a.gl-chip {
     & > :first-child {
       color: var(--gl-ink);
       font-weight: 500;
+    }
+
+    /* A title that links reaches 44px, into the caption's padding */
+    & > a {
+      margin-block: calc((1lh - 44px) / 2);
+      padding-block: calc((44px - 1lh) / 2);
     }
   }
 }

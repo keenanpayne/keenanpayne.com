@@ -14,10 +14,4 @@
 
 import type { DirectionSlug } from "../registry";
 
-export const KNOWN_GAPS: Partial<Record<DirectionSlug, readonly string[]>> = {
-  monograph: ["css.contrast"],
-  mech: ["css.contrast"],
-  portal: ["css.contrast"],
-  stipple: ["css.contrast"],
-  neon: ["css.contrast"]
-};
+export const KNOWN_GAPS: Partial<Record<DirectionSlug, readonly string[]>> = {};

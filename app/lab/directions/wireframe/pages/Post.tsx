@@ -55,7 +55,7 @@ export function Post({ page }: TemplateProps<"post">) {
       <HtmlContent className="wireframe-prose" html={page.content} />
 
       {page.type && (
-        <p>
+        <p className="wireframe-more">
           <a href={page.type.url}>{`More ${page.type.label.toLowerCase()}s`}</a>
         </p>
       )}

@@ -16,7 +16,12 @@ export function PostCards({ posts }: { posts: Posts }) {
     <div className="mg-row mg-row--quarters">
       {posts.map((post) => (
         <article className="mg-card" key={post.url}>
-          <a className="mg-figure" href={post.url} tabIndex={-1}>
+          <a
+            className="mg-figure"
+            href={post.url}
+            tabIndex={-1}
+            aria-hidden="true"
+          >
             {post.image ? (
               <img src={post.image} alt="" loading="lazy" />
             ) : (

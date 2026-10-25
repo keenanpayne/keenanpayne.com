@@ -45,8 +45,10 @@ import {
   BackLink,
   Badge,
   Banner,
+  bannerTone,
   BubbleCard,
   ContentKey,
+  cx,
   Directory,
   Discussion,
   DOMAIN,
@@ -232,6 +234,7 @@ function TypeScale({ content, prose, navigation }: SpecimenProps) {
   const [year, ofYear] = postsByYear(posts)[0];
   const scene = sceneFor(viewOf("home"), "/", profile);
   const to = useTo();
+  const typeColor = TYPE_COLORS[post.type ?? ""] ?? "#6ab335";
   // Measured off the current page, which the site map sets in orange
   const zones = navigation.map((item) => ({ ...item, current: false }));
   // Post sets each h2 as a box title; the rest stay in the prose
@@ -253,8 +256,11 @@ function TypeScale({ content, prose, navigation }: SpecimenProps) {
       </TypeSample>
       <TypeSample label="Banner logo" measure=".pt-banner__logo">
         <header
-          className="pt-banner"
-          style={{ "--banner": TYPE_COLORS[post.type ?? ""] } as CSSProperties}
+          className={cx(
+            "pt-banner",
+            bannerTone(typeColor)?.light && "pt-banner--light"
+          )}
+          style={{ "--banner": bannerTone(typeColor)?.color } as CSSProperties}
         >
           <div className="pt-banner__main">
             <p className="pt-banner__logo">{post.type ?? "Article"}</p>
@@ -1550,6 +1556,7 @@ function Cards({ content }: SpecimenProps) {
                   className="pt-tile__screen"
                   href={service.url}
                   tabIndex={-1}
+                  aria-hidden="true"
                   style={{ "--hue": index * 37 } as CSSProperties}
                 >
                   <Sprite art={ITEMS[serviceItem(index)]} scale={5} />

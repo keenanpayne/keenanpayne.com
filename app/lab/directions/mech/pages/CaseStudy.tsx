@@ -6,7 +6,14 @@ import type {
   SectionModel,
   TestimonialModel
 } from "../../../../lib/types";
-import { galleryColumns, Html, pad, samePath, useTo } from "../../../site";
+import {
+  galleryColumns,
+  Html,
+  pad,
+  samePath,
+  useReducedMotion,
+  useTo
+} from "../../../site";
 import {
   Alert,
   Discussion,
@@ -25,6 +32,9 @@ function Gallery({
   section: PortfolioGridSection;
   index: number;
 }) {
+  // A looping video waits for play when the visitor asked for less motion;
+  // either way its controls can pause it (WCAG 2.2.2)
+  const reducedMotion = useReducedMotion();
   if (!section.items?.length) return null;
   const columns = galleryColumns(section.modifier);
   const hasHeader = section.headline || section.description;
@@ -42,7 +52,7 @@ function Gallery({
                 controls
                 loop={item.autoplay}
                 playsInline={item.autoplay}
-                autoPlay={item.autoplay}
+                autoPlay={item.autoplay && !reducedMotion}
               />
             </div>
           ) : (

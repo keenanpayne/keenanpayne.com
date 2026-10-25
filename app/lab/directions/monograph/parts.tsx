@@ -194,7 +194,9 @@ type Work = LabContent["work"][number];
 export function WorkCard({ item, wide }: { item: Work; wide?: boolean }) {
   return (
     <article className="mg-card">
-      <a className="mg-figure" href={item.url} tabIndex={-1}>
+      {/* The picture repeats the title's link for the pointer, out of the
+          keyboard's and screen reader's way */}
+      <a className="mg-figure" href={item.url} tabIndex={-1} aria-hidden="true">
         <img src={wide ? item.cover : item.coverSquare} alt="" loading="lazy" />
       </a>
       <h3 className="mg-card__title">
@@ -269,6 +271,7 @@ export function WorkGrid({ work }: { work: Work[] }) {
           className="mg-figure mg-feature__figure"
           href={featured.url}
           tabIndex={-1}
+          aria-hidden="true"
         >
           <img src={featured.cover} alt="" />
         </a>

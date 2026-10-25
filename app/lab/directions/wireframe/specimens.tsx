@@ -159,7 +159,7 @@ function Actions({ content }: SpecimenProps) {
 
   return (
     <SpecimenGrid min={220}>
-      <Specimen label="Button" note="Form submit, the browser’s own">
+      <Specimen label="Button" note="Form submit, outlined, 44px tall">
         <button type="button">{formOf("contact").submit}</button>
       </Specimen>
       <Specimen label="Text link" note="Inherits the text color, underlined">
@@ -172,8 +172,8 @@ function Actions({ content }: SpecimenProps) {
           <a href={to("/archive/")}>Writing</a>
         </h2>
       </Specimen>
-      <Specimen label="More link">
-        <p>
+      <Specimen label="More link" note="Standalone, so a 44px target">
+        <p className="wireframe-more">
           <a href={type.url}>{`More ${type.text.toLowerCase()}s`}</a>
         </p>
       </Specimen>
