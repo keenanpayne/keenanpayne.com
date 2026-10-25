@@ -33,6 +33,7 @@ export function Writing({ page, content }: TemplateProps<"writing">) {
         <div className="gl-actions">
           <Chips
             label="Post types"
+            unit={["post", "posts"]}
             links={types.map((type) => ({
               ...type,
               count: posts.filter((post) => post.type === type.text).length

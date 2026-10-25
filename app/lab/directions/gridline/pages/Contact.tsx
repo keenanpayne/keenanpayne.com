@@ -47,10 +47,10 @@ export function Contact({
         }
       />
 
-      <Band label={form.title} className="gl-form-band">
+      <Band className="gl-form-band">
         <div className="gl-form-panel">
           <div className="gl-form-panel__bar">
-            <p className="gl-label">{form.title}</p>
+            <h2 className="gl-label">{form.title}</h2>
             <span className="gl-meta">{`${form.fields.length} questions`}</span>
           </div>
           <Form kind={kind} />

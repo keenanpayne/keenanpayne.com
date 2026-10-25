@@ -227,7 +227,15 @@ export function DenverReadout({
         <p className="gl-den__kicker">
           <span>Local time</span>
           {now && (
-            <span>{`${zoneName(now, "short")} · ${zoneName(now, "offset")}`}</span>
+            <span>
+              <abbr title={location.timeZoneName}>
+                {zoneName(now, "short")}
+              </abbr>
+              {" · "}
+              <abbr title="Offset from Coordinated Universal Time">
+                {zoneName(now, "offset")}
+              </abbr>
+            </span>
           )}
         </p>
         <p className="gl-den__clock">
@@ -245,12 +253,17 @@ export function DenverReadout({
           <div className="gl-den__reading">
             <p className="gl-den__temp">
               {degrees(current.temperature_2m)}
-              <span>F</span>
+              <span>
+                <abbr title="Fahrenheit">F</abbr>
+              </span>
             </p>
             <p className="gl-den__condition">
               {label}
               {night && condition === "clear" && " · Night"}
-              <span>{`${celsius(current.temperature_2m)}°C`}</span>
+              <span>
+                {`${celsius(current.temperature_2m)}°`}
+                <abbr title="Celsius">C</abbr>
+              </span>
             </p>
           </div>
         ) : (
@@ -292,7 +305,10 @@ export function DenverReadout({
               <dt>Wind</dt>
               <dd>
                 {Math.round(current.wind_speed_10m)}
-                <small> mph </small>
+                <small>
+                  {" "}
+                  <abbr title="miles per hour">mph</abbr>{" "}
+                </small>
                 {compass(current.wind_direction_10m)}
               </dd>
             </div>
@@ -300,7 +316,10 @@ export function DenverReadout({
               <dt>Elevation</dt>
               <dd>
                 {location.elevationFeet.toLocaleString("en-US")}
-                <small> ft</small>
+                <small>
+                  {" "}
+                  <abbr title="feet">ft</abbr>
+                </small>
               </dd>
             </div>
           </dl>
@@ -311,7 +330,7 @@ export function DenverReadout({
         </>
       )}
 
-      <p className="gl-den__status" data-tone={tone}>
+      <p className="gl-den__status" data-tone={tone} role="status">
         <span className="gl-den__dot" aria-hidden="true" />
         {note}
         {stale && (

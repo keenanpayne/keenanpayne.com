@@ -18,9 +18,9 @@
   --gl-line-strong: #c9c8c1;
   --gl-ink: #100f16;
   --gl-text: #2e2c37;
-  --gl-muted: #6b6977;
-  --gl-faint: #a2a0ab;
-  --gl-accent: #5357d6;
+  --gl-muted: #504e59;
+  --gl-faint: #898791;
+  --gl-accent: #393db0;
   --gl-accent-soft: #e9e8fd;
   --gl-on-ink: #fcfcfb;
   --gl-ray-deep: #08071a;
@@ -50,9 +50,9 @@
     --gl-line-strong: #3d3a4a;
     --gl-ink: #f4f3f8;
     --gl-text: #cecbd8;
-    --gl-muted: #9a97a8;
+    --gl-muted: #a4a2b1;
     --gl-faint: #67647a;
-    --gl-accent: #a5a8ff;
+    --gl-accent: #a7aaff;
     --gl-accent-soft: #23214a;
     --gl-on-ink: #0d0c12;
   }
@@ -67,9 +67,9 @@
   --gl-line-strong: #3d3a4a;
   --gl-ink: #f4f3f8;
   --gl-text: #cecbd8;
-  --gl-muted: #9a97a8;
+  --gl-muted: #a4a2b1;
   --gl-faint: #67647a;
-  --gl-accent: #a5a8ff;
+  --gl-accent: #a7aaff;
   --gl-accent-soft: #23214a;
   --gl-on-ink: #0d0c12;
 }
@@ -85,9 +85,9 @@
   --gl-line-strong: #3d3a4a;
   --gl-ink: #f4f3f8;
   --gl-text: #cecbd8;
-  --gl-muted: #9a97a8;
+  --gl-muted: #a4a2b1;
   --gl-faint: #67647a;
-  --gl-accent: #a5a8ff;
+  --gl-accent: #a7aaff;
   --gl-accent-soft: #23214a;
   --gl-on-ink: #0d0c12;
 
@@ -104,9 +104,9 @@
     --gl-line-strong: #c9c8c1;
     --gl-ink: #100f16;
     --gl-text: #2e2c37;
-    --gl-muted: #6b6977;
-    --gl-faint: #a2a0ab;
-    --gl-accent: #5357d6;
+    --gl-muted: #504e59;
+    --gl-faint: #898791;
+    --gl-accent: #393db0;
     --gl-accent-soft: #e9e8fd;
     --gl-on-ink: #fcfcfb;
 
@@ -123,9 +123,9 @@
   --gl-line-strong: #c9c8c1;
   --gl-ink: #100f16;
   --gl-text: #2e2c37;
-  --gl-muted: #6b6977;
-  --gl-faint: #a2a0ab;
-  --gl-accent: #5357d6;
+  --gl-muted: #504e59;
+  --gl-faint: #898791;
+  --gl-accent: #393db0;
   --gl-accent-soft: #e9e8fd;
   --gl-on-ink: #fcfcfb;
 
@@ -133,8 +133,9 @@
 }
 
 /* A gray band (Selected work): the page's own scheme, a step off its paper,
-   light gray on a light page and dark gray on a dark one. Its muted ink is
-   set for 4.5:1 on its gray, and its faint ink and strong rules for 3:1. */
+   light gray on a light page and dark gray on a dark one. Its muted ink and
+   violet are set for 7:1 on its gray, and its faint ink and strong rules for
+   3:1. */
 .gl-band--gray {
   --gl-paper: #f4f4f6;
   --gl-tint: #ececf0;
@@ -144,9 +145,9 @@
   --gl-line-strong: #807e8d;
   --gl-ink: #100f16;
   --gl-text: #2e2c37;
-  --gl-muted: #605e6c;
+  --gl-muted: #4e4d58;
   --gl-faint: #807e8d;
-  --gl-accent: #4b4fc8;
+  --gl-accent: #3236a0;
   --gl-accent-soft: #dcdbf7;
   --gl-on-ink: #fcfcfb;
 
@@ -163,9 +164,9 @@
     --gl-line-strong: #75728a;
     --gl-ink: #f4f3f8;
     --gl-text: #cecbd8;
-    --gl-muted: #9a97a8;
+    --gl-muted: #b7b5c1;
     --gl-faint: #75728a;
-    --gl-accent: #a5a8ff;
+    --gl-accent: #b6b8ff;
     --gl-accent-soft: #2e2c52;
     --gl-on-ink: #0d0c12;
 
@@ -182,9 +183,9 @@
   --gl-line-strong: #75728a;
   --gl-ink: #f4f3f8;
   --gl-text: #cecbd8;
-  --gl-muted: #9a97a8;
+  --gl-muted: #b7b5c1;
   --gl-faint: #75728a;
-  --gl-accent: #a5a8ff;
+  --gl-accent: #b6b8ff;
   --gl-accent-soft: #2e2c52;
   --gl-on-ink: #0d0c12;
 
@@ -214,8 +215,8 @@ body:has(.gl) {
 
   /* Type sizes: fixed up to 1280px wide, then growing to 1920px, so the
      wider frame keeps its text in proportion */
-  --gl-fs-micro: clamp(10.5px, 8.5px + 0.156vw, 11.5px);
-  --gl-fs-label: clamp(11.5px, 9px + 0.195vw, 12.75px);
+  --gl-fs-micro: clamp(12px, 10px + 0.156vw, 13px);
+  --gl-fs-label: clamp(12px, 9.5px + 0.195vw, 13.25px);
   --gl-fs-mono: clamp(12px, 9.5px + 0.195vw, 13.25px);
   --gl-fs-meta: clamp(12.5px, 10px + 0.195vw, 13.75px);
   --gl-fs-code: clamp(13px, 10.5px + 0.195vw, 14.25px);
@@ -291,6 +292,17 @@ body:has(.gl) {
     margin: 0;
   }
 
+  /* Running text stops short of 80 characters a line, however wide the
+     frame: 34em of the sans, or 24em of the narrower serif (a component's
+     own measure, set with more weight, wins) */
+  & :where(p, figcaption, .gl-prose li) {
+    max-width: 34em;
+  }
+
+  & :where(blockquote) {
+    max-width: 24em;
+  }
+
   & :where(h1, h2, h3, h4) {
     color: var(--gl-ink);
     font-weight: 500;
@@ -335,7 +347,10 @@ body:has(.gl) {
   top: 8px;
   left: 8px;
   z-index: 50;
-  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
   background: var(--gl-ink);
   color: var(--gl-on-ink);
   font-size: var(--gl-fs-caption);
@@ -701,7 +716,7 @@ body:has(.gl) {
 
   & span:first-child {
     display: none;
-    color: var(--gl-faint);
+    color: var(--gl-muted);
     text-transform: uppercase;
 
     @media (width >= 1180px) {
@@ -838,6 +853,24 @@ body:has(.gl) {
   color: var(--gl-faint);
 }
 
+/* A breadcrumb trail in an eyebrow, its links reaching 44px tall without
+   moving anything */
+.gl-trail ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.gl-trail a {
+  display: inline-block;
+  min-width: 44px;
+  padding-block: 14px;
+  margin-block: -14px;
+}
+
 .gl-display {
   max-width: 13ch;
   margin: 0 auto;
@@ -869,13 +902,14 @@ body:has(.gl) {
   line-height: 1.08;
 }
 
+/* Serif blocks stop at 24em, under 80 characters a line */
 .gl-lede {
-  max-width: 34em;
+  max-width: 24em;
   margin: 24px 0 0;
   color: var(--gl-text);
   font-family: var(--gl-serif);
   font-size: var(--gl-fs-large);
-  line-height: 1.36;
+  line-height: 1.5;
   text-wrap: pretty;
 
   & a {
@@ -936,7 +970,7 @@ body:has(.gl) {
   gap: 8px;
   align-items: center;
   justify-content: center;
-  height: 42px;
+  height: 44px;
   padding: 0 18px;
   border: 1px solid var(--gl-ink);
   border-radius: 7px;
@@ -980,7 +1014,7 @@ body:has(.gl) {
 }
 
 .gl-button--small {
-  height: 36px;
+  height: 44px;
   padding: 0 14px;
   border-radius: 6px;
   font-size: var(--gl-fs-caption);
@@ -991,7 +1025,8 @@ body:has(.gl) {
   display: inline-flex;
   gap: 10px;
   align-items: center;
-  padding: 8px 12px;
+  min-height: 44px;
+  padding: 0 14px;
   border: 1px solid var(--gl-line-strong);
   border-radius: 5px;
   color: var(--gl-ink);
@@ -1066,7 +1101,10 @@ body:has(.gl) {
   white-space: nowrap;
 }
 
+/* A chip that's a link is a full target */
 a.gl-chip {
+  height: 44px;
+  padding-inline: 14px;
   transition:
     border-color 140ms,
     color 140ms;
@@ -1078,7 +1116,7 @@ a.gl-chip {
 }
 
 .gl-chip__count {
-  color: var(--gl-faint);
+  color: var(--gl-muted);
 }
 
 .gl-tag {
@@ -1200,7 +1238,7 @@ a.gl-chip {
   }
 
   & .gl-lede {
-    max-width: 31em;
+    max-width: 24em;
     margin-inline: auto;
   }
 }
@@ -1330,7 +1368,7 @@ a.gl-chip {
   --gl-win-ink: #fff;
   --gl-win-on-ink: #100f16;
   --gl-win-text: #e9e8f2;
-  --gl-win-muted: rgb(233 232 242 / 55%);
+  --gl-win-muted: rgb(233 232 242 / 72%);
   --gl-win-accent: #b8b2ff;
   --gl-win-shadow:
     0 1px 0 rgb(255 255 255 / 8%) inset, 0 40px 90px -30px rgb(0 0 0 / 70%);
@@ -1463,7 +1501,8 @@ a.gl-chip {
   margin-top: 8px;
   background: var(--gl-win-accent);
   vertical-align: -2px;
-  animation: gl-blink 1.1s steps(1) infinite;
+  /* Four blinks, then it holds still: nothing blinks past five seconds */
+  animation: gl-blink 1.1s steps(1) 4;
 }
 
 @keyframes gl-blink {
@@ -1494,7 +1533,9 @@ a.gl-chip {
   border-top: 1px solid var(--gl-win-line);
 
   & button {
-    padding: 5px 10px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 12px;
     border: 1px solid transparent;
     border-radius: 5px;
     background: none;
@@ -1583,7 +1624,7 @@ a.gl-chip {
 }
 
 .gl-row__lede {
-  max-width: 64ch;
+  max-width: 34em;
   margin: 6px 0 0;
   color: var(--gl-muted);
   font-size: var(--gl-fs-small);
@@ -1733,7 +1774,7 @@ a.gl-chip {
 }
 
 .gl-service__index {
-  color: var(--gl-faint);
+  color: var(--gl-muted);
   font-family: var(--gl-mono);
   font-size: var(--gl-fs-mono);
   font-variant-numeric: tabular-nums;
@@ -1766,7 +1807,35 @@ a.gl-chip {
 }
 
 .gl-page-header__aside:has(.gl-service__cover) {
+  position: relative;
   justify-content: center;
+}
+
+/* Stops (and starts) the cover's loop */
+.gl-iso__pause {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--gl-faint);
+  border-radius: 7px;
+  background: var(--gl-raised);
+  color: var(--gl-muted);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--gl-ink);
+    color: var(--gl-ink);
+  }
+
+  & svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .gl-service__go {
@@ -1831,7 +1900,7 @@ a.gl-chip {
     color: var(--gl-ink);
     font-family: var(--gl-serif);
     font-size: var(--gl-fs-quote);
-    line-height: 1.38;
+    line-height: 1.5;
     text-wrap: pretty;
 
     & p {
@@ -1861,9 +1930,9 @@ a.gl-chip {
 }
 
 .gl-quote--large blockquote {
-  max-width: 30em;
+  max-width: 24em;
   font-size: clamp(24px, 2.6vw, clamp(34px, 26px + 0.625vw, 38px));
-  line-height: 1.28;
+  line-height: 1.5;
 }
 
 .gl-quote__name {
@@ -2076,7 +2145,11 @@ a.gl-chip {
     line-height: 1.5;
   }
 
+  /* Reaching 44px tall, into the row's own padding */
   & a {
+    display: inline-block;
+    padding-block: 11px;
+    margin-block: -11px;
     text-decoration-color: color-mix(
       in srgb,
       var(--gl-accent) 55%,
@@ -2410,13 +2483,14 @@ a.gl-chip {
   & blockquote,
   & .blockquote,
   & .-large {
+    max-width: 24em;
     margin: 1.8em 0;
     padding: 0.1em 0 0.1em 24px;
     border-left: 2px solid var(--gl-accent);
     color: var(--gl-ink);
     font-family: var(--gl-serif);
     font-size: var(--gl-fs-pull);
-    line-height: 1.32;
+    line-height: 1.5;
   }
 
   & blockquote p:last-child {
@@ -2525,7 +2599,7 @@ a.gl-chip {
     background: var(--gl-tint);
     color: var(--gl-ink);
     font-family: var(--gl-mono);
-    font-size: 0.8em;
+    font-size: max(12px, 0.8em);
   }
 
   /* Code blocks are always the dark window */
@@ -2553,7 +2627,7 @@ a.gl-chip {
   & .token.comment,
   & .token.prolog,
   & .token.doctype {
-    color: #7f7c94;
+    color: #a6a4b4;
     font-style: italic;
   }
 
@@ -2780,7 +2854,7 @@ a.gl-chip {
 
   & .footnote-ref a {
     font-family: var(--gl-mono);
-    font-size: 0.7em;
+    font-size: max(12px, 0.7em);
     text-decoration: none;
   }
 
@@ -2817,7 +2891,7 @@ a.gl-chip {
   }
 
   & ._text-small {
-    font-size: 0.85em;
+    font-size: max(12px, 0.85em);
   }
 
   & ._hidden-min-720 {
@@ -3045,7 +3119,7 @@ a.gl-chip {
 }
 
 .gl-ledger__prose :is(p, ul, ol) {
-  max-width: 70ch;
+  max-width: 34em;
 }
 
 .gl-ledger__prose .services-tools-items {
@@ -3108,11 +3182,12 @@ a.gl-chip {
   }
 
   & p:not(.gl-label) {
+    max-width: 24em;
     margin: 0;
     color: var(--gl-ink);
     font-family: var(--gl-serif);
     font-size: var(--gl-fs-large);
-    line-height: 1.38;
+    line-height: 1.5;
   }
 }
 
@@ -3128,6 +3203,11 @@ a.gl-chip {
   & .gl-gallery__media {
     flex: 1;
     padding: 16px 16px 0;
+
+    /* An enlargeable image's link is the image's whole box */
+    & a {
+      display: block;
+    }
 
     @media (width >= 720px) {
       padding: 20px 20px 0;
@@ -3216,11 +3296,12 @@ a.gl-chip {
 
 /* A service page's opening paragraphs read as a lede */
 .gl-service__intro {
+  max-width: 24em;
   margin: 0;
   color: var(--gl-ink);
   font-family: var(--gl-serif);
   font-size: var(--gl-fs-large);
-  line-height: 1.4;
+  line-height: 1.5;
 }
 
 /* Forms
@@ -3246,15 +3327,14 @@ a.gl-chip {
     padding-inline: 28px;
   }
 
+  /* Focused, a ring around the whole cell */
   &::before {
     content: "";
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 2px;
-    background: var(--gl-accent);
+    inset: 0;
+    border: 2px solid var(--gl-accent);
     opacity: 0;
+    pointer-events: none;
     transition: opacity 140ms;
   }
 
@@ -3278,7 +3358,7 @@ a.gl-chip {
     outline: none;
 
     &::placeholder {
-      color: var(--gl-faint);
+      color: var(--gl-muted);
       opacity: 1;
     }
   }
@@ -3326,9 +3406,9 @@ a.gl-chip {
   display: inline-flex;
   gap: 8px;
   align-items: center;
-  min-height: 36px;
+  min-height: 44px;
   padding: 6px 14px;
-  border: 1px solid var(--gl-line-strong);
+  border: 1px solid var(--gl-faint);
   border-radius: 6px;
   color: var(--gl-text);
   font-size: var(--gl-fs-ui);
@@ -3463,28 +3543,35 @@ a.gl-chip {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: flex-end;
 
   & label {
+    display: flex;
     flex: 1 1 240px;
+    flex-direction: column;
+    gap: 8px;
+
+    & .gl-label {
+      margin: 0;
+    }
   }
 
   & input {
     width: 100%;
-    height: 42px;
+    height: 44px;
     padding: 0 14px;
-    border: 1px solid var(--gl-line-strong);
+    border: 1px solid var(--gl-faint);
     border-radius: 7px;
     background: var(--gl-paper);
     color: var(--gl-ink);
     font-size: var(--gl-fs-input);
 
     &::placeholder {
-      color: var(--gl-faint);
+      color: var(--gl-muted);
     }
 
-    &:focus {
+    &:focus-visible {
       border-color: var(--gl-ink);
-      outline: none;
     }
   }
 
@@ -3538,12 +3625,12 @@ a.gl-chip {
   }
 
   & p:not(.gl-eyebrow) {
-    max-width: 30em;
+    max-width: 24em;
     margin: 20px auto 0;
     color: var(--gl-cta-text);
     font-family: var(--gl-serif);
     font-size: var(--gl-fs-large);
-    line-height: 1.38;
+    line-height: 1.5;
   }
 
   & .gl-actions {
@@ -3554,8 +3641,8 @@ a.gl-chip {
 .gl-rays.gl-cta__panel,
 .gl-horizon {
   --gl-cta-ink: #fff;
-  --gl-cta-text: rgb(244 243 248 / 78%);
-  --gl-cta-muted: rgb(244 243 248 / 70%);
+  --gl-cta-text: rgb(244 243 248 / 90%);
+  --gl-cta-muted: rgb(244 243 248 / 85%);
   --gl-cta-dot: #c9c4ff;
 }
 
@@ -3968,7 +4055,7 @@ a.gl-chip {
   --gl-win-ink: #f4f3f8;
   --gl-win-on-ink: #0d0c12;
   --gl-win-text: #cecbd8;
-  --gl-win-muted: #9a97a8;
+  --gl-win-muted: #aba9b7;
   --gl-win-accent: #a5a8ff;
   --gl-win-shadow:
     0 1px 2px rgb(16 15 22 / 10%), 0 32px 64px -28px rgb(16 15 22 / 45%);
@@ -3985,8 +4072,8 @@ a.gl-chip {
     --gl-win-ink: #100f16;
     --gl-win-on-ink: #fcfcfb;
     --gl-win-text: #2e2c37;
-    --gl-win-muted: #5c5a68;
-    --gl-win-accent: #4b4fc8;
+    --gl-win-muted: #413f49;
+    --gl-win-accent: #34368a;
     --gl-win-shadow:
       0 1px 2px rgb(0 0 0 / 30%), 0 32px 64px -28px rgb(0 0 0 / 70%);
   }
@@ -4002,26 +4089,33 @@ a.gl-chip {
   --gl-win-ink: #100f16;
   --gl-win-on-ink: #fcfcfb;
   --gl-win-text: #2e2c37;
-  --gl-win-muted: #5c5a68;
-  --gl-win-accent: #4b4fc8;
+  --gl-win-muted: #413f49;
+  --gl-win-accent: #34368a;
   --gl-win-shadow:
     0 1px 2px rgb(0 0 0 / 30%), 0 32px 64px -28px rgb(0 0 0 / 70%);
 }
 
 /* Grid tools: the Blueprint's easter egg, out once a square is filled. A
-   toolbar (36px tall) docked in the panel's bottom padding, at least 32px
-   clear of the content above it and centered where there's more room than
-   that, in the page's other scheme as the panel's windows are; its color
-   and tile size open a tray of choices above it. */
+   toolbar (52px tall, its tools 44px targets) docked in the panel's bottom
+   padding, at least 32px clear of the content above it and centered where
+   there's more room than that, in the page's other scheme as the panel's
+   windows are; its color and tile size open a tray of choices above it. On
+   a phone it wraps to two rows, and the padding deepens to match. */
 .gl-blueprint__tools {
   position: absolute;
   z-index: 1;
   bottom: min(
-    (var(--gl-tools-pad) - 36px) / 2,
-    var(--gl-tools-pad) - 36px - 32px
+    (var(--gl-tools-pad) - 52px) / 2,
+    var(--gl-tools-pad) - 52px - 32px
   );
   left: 50%;
   width: max-content;
+  max-width: calc(100vw - 32px);
+
+  /* Two rows (98px) sit 24px up, the padding leaving 38px above them */
+  @media (width < 560px) {
+    bottom: 24px;
+  }
   color: var(--gl-win-muted);
   font-family: var(--gl-mono);
   font-size: var(--gl-fs-mono);
@@ -4031,18 +4125,34 @@ a.gl-chip {
   translate: -50% 0;
 }
 
+/* The keyboard's way in to drawing: a layer over the panel that takes focus
+   (ringed inside the panel's edge) but never the pointer */
+.gl-blueprint__keys {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  &:focus-visible {
+    outline-offset: -4px;
+  }
+}
+
 /* Out, they keep the panel's bottom padding deep enough for that room and
    12px below (on a phone, both panels' padding is shallower), easing it open */
 .gl-blueprint:has(> .gl-blueprint__tools) {
-  --gl-tools-pad: max(var(--gl-blueprint-pad, 0px), 80px);
+  --gl-tools-pad: max(var(--gl-blueprint-pad, 0px), 96px);
 
   padding-bottom: var(--gl-tools-pad);
+
+  @media (width < 560px) {
+    --gl-tools-pad: 160px;
+  }
 }
 
 /* Grown to fill the screen below the header, without its contents: only the
    grid, its squares, and its tools, with the page held still behind it */
 .gl-blueprint[data-expanded] {
-  --gl-tools-pad: 80px;
+  --gl-tools-pad: 96px;
 
   position: fixed;
   z-index: 19;
@@ -4094,8 +4204,10 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
 
 .gl-tools__bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 2px;
   align-items: center;
+  justify-content: center;
   padding: 3px;
   animation: gl-tools-in 560ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -4118,8 +4230,8 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
   gap: 5px;
   align-items: center;
   justify-content: center;
-  min-width: 28px;
-  height: 28px;
+  min-width: 44px;
+  height: 44px;
   padding: 0 6px;
   border: 0;
   border-radius: 6px;
@@ -4152,14 +4264,15 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
     outline-offset: 1px;
   }
 
-  &:disabled {
+  &[aria-disabled="true"] {
     background: none;
     color: inherit;
     cursor: default;
     opacity: 0.4;
   }
 
-  /* Its name, over it on hover (after a beat) and on keyboard focus */
+  /* Its name, over it on hover (after a beat) and on keyboard focus, which
+     the pointer can move onto, and Escape hides (`data-quiet`) */
   &::after {
     content: attr(data-tip);
     position: absolute;
@@ -4190,16 +4303,27 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
   @media (hover: hover) {
     &:hover::after {
       opacity: 1;
+      pointer-events: auto;
       transition-delay: 350ms;
       translate: -50% 0;
       visibility: visible;
+    }
+
+    /* Bridges the gap up to the name */
+    &:hover::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 100%;
+      left: 0;
+      height: 10px;
     }
   }
 }
 
 /* The bar's names give way to an open tray, and to the note that they've
    been found */
-.gl-blueprint__tools:is([data-tray], [data-found])
+.gl-blueprint__tools:is([data-tray], [data-found], [data-quiet])
   .gl-tools__bar
   .gl-tools__tool::after {
   content: none;
@@ -4240,8 +4364,8 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
 .gl-tools__unfold {
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 52px;
+  height: 52px;
   padding: 0;
   color: var(--gl-win-muted);
   cursor: pointer;
@@ -4372,11 +4496,11 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
   }
 
   & p:not(.gl-eyebrow) {
-    max-width: 30em;
+    max-width: 24em;
     margin: 20px 0 0;
     font-family: var(--gl-serif);
     font-size: var(--gl-fs-large);
-    line-height: 1.38;
+    line-height: 1.5;
   }
 }
 
@@ -4496,11 +4620,11 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
     list-style: none;
   }
 
-  & li + li {
-    margin-top: 6px;
-  }
-
   & ul a {
+    display: inline-flex;
+    align-items: center;
+    min-width: 44px;
+    min-height: 44px;
     color: var(--gl-text);
     font-size: var(--gl-fs-small);
     text-decoration: none;
@@ -4527,6 +4651,7 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
   }
 
   & .gl-brand {
+    min-height: 44px;
     padding: 0;
     border: 0;
   }
@@ -4548,7 +4673,11 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
     margin: 0;
   }
 
+  /* Reaching 44px tall, into the bar's own padding */
   & a {
+    display: inline-block;
+    padding-block: 14px;
+    margin-block: -14px;
     text-decoration: none;
 
     &:hover {
@@ -4605,8 +4734,9 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
 
   /* Retry */
   & :is(.gl-den__message, .gl-den__status) button {
+    min-height: 44px;
     margin-left: auto;
-    padding: 3px 10px;
+    padding: 0 14px;
     border: 1px solid var(--gl-line-strong);
     border-radius: 5px;
     background: var(--gl-raised);
@@ -4657,8 +4787,9 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
   display: grid;
   flex: none;
   place-items: center;
-  width: 28px;
-  height: 28px;
+  width: 44px;
+  height: 44px;
+  margin: -8px -8px -8px 0;
   padding: 0;
   border: 1px solid transparent;
   border-radius: 6px;
@@ -4919,7 +5050,7 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
   & dt {
     color: var(--gl-muted);
     font-family: var(--gl-mono);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -4938,7 +5069,7 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
   & small {
     color: var(--gl-muted);
     font-family: var(--gl-mono);
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 400;
     letter-spacing: 0;
   }
@@ -4990,7 +5121,7 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
   padding: 0 14px 14px 30px;
   color: var(--gl-muted);
   font-family: var(--gl-mono);
-  font-size: 11px;
+  font-size: 12px;
 
   & a {
     color: inherit;
@@ -5116,16 +5247,16 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
   }
 
   & p:not(.gl-eyebrow) {
-    max-width: 28em;
+    max-width: 24em;
     margin: 20px auto 0;
-    color: rgb(244 243 248 / 78%);
+    color: rgb(244 243 248 / 90%);
     font-family: var(--gl-serif);
     font-size: var(--gl-fs-large);
-    line-height: 1.38;
+    line-height: 1.5;
   }
 
   & .gl-eyebrow {
-    color: rgb(244 243 248 / 70%);
+    color: rgb(244 243 248 / 85%);
 
     &::before {
       background: #c9c4ff;

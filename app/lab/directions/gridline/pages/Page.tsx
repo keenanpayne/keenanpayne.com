@@ -45,7 +45,7 @@ export function Page({ kind, page }: TemplateProps<"page" | "archive">) {
       />
 
       {(intro?.body || page.content) && (
-        <Band label="Body">
+        <Band>
           <div className="gl-pad">
             {intro?.body && <Copy html={intro.body} />}
             {page.content && (
@@ -74,7 +74,11 @@ export function Page({ kind, page }: TemplateProps<"page" | "archive">) {
               <Band key={index}>
                 <SectionHead eyebrow="Tags" title="Browse by tag" />
                 <div className="gl-pad">
-                  <Chips links={section.tags} label="Tags" />
+                  <Chips
+                    links={section.tags}
+                    label="Tags"
+                    unit={["post", "posts"]}
+                  />
                 </div>
               </Band>
             );
@@ -86,7 +90,11 @@ export function Page({ kind, page }: TemplateProps<"page" | "archive">) {
                   title={section.title ?? "Browse by type"}
                 />
                 <div className="gl-pad">
-                  <Chips links={section.types} label="Post types" />
+                  <Chips
+                    links={section.types}
+                    label="Post types"
+                    unit={["post", "posts"]}
+                  />
                 </div>
               </Band>
             );

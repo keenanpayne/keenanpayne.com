@@ -16,7 +16,7 @@ export function About({ page, content }: TemplateProps<"about">) {
         lede={intro?.subheading}
       />
 
-      <Band label="Story">
+      <Band heading="Story">
         <div className="gl-split">
           <div className="gl-pad">
             {intro?.body && <Copy html={intro.body} />}
@@ -27,7 +27,7 @@ export function About({ page, content }: TemplateProps<"about">) {
               src={profile.avatar}
               alt={profile.name}
             />
-            <p className="gl-label">At a glance</p>
+            <h2 className="gl-label">At a glance</h2>
             <Facts
               rows={[
                 ...facts.map((fact): [string, ReactNode] => [
@@ -59,6 +59,7 @@ export function About({ page, content }: TemplateProps<"about">) {
               <figure className="gl-photo">
                 <a href={photo.large}>
                   <img src={photo.src} alt={photo.alt} loading="lazy" />
+                  <span className="gl-sr"> (view larger)</span>
                 </a>
                 <figcaption>{photo.alt}</figcaption>
               </figure>

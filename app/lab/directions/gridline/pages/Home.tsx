@@ -41,13 +41,13 @@ export function Home({ content }: TemplateProps<"home">) {
         </div>
       </header>
 
-      <Band label="At the terminal">
+      <Band heading="At the terminal">
         <Blueprint className="gl-hero__panel">
           <Terminal content={content} />
         </Blueprint>
       </Band>
 
-      <Band label="By the numbers">
+      <Band heading="By the numbers">
         <Cells cols={4}>
           <Stat value={profile.experience.years} label="Years on the web" />
           <Stat value={work.length} label="Case studies" />

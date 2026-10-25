@@ -87,6 +87,7 @@ export function Band({
   invert,
   className,
   label,
+  heading,
   style,
   children
 }: {
@@ -94,15 +95,24 @@ export function Band({
   className?: string;
   /** Names a band that has no heading of its own */
   label?: string;
+  /** Names a band that shows no heading, with one for screen readers */
+  heading?: string;
   style?: CSSProperties;
   children: ReactNode;
 }) {
+  const id = useId();
   return (
     <section
       className={cx("gl-band", invert && "gl-invert", className)}
       aria-label={label}
+      aria-labelledby={heading ? id : undefined}
       style={style}
     >
+      {heading && (
+        <h2 id={id} className="gl-sr">
+          {heading}
+        </h2>
+      )}
       {children}
     </section>
   );
@@ -140,15 +150,18 @@ export function Cells({
 /** A mono label over a heading, with the section's number when it has one */
 export function Eyebrow({
   index,
+  as: Tag = "p",
   className,
   children
 }: {
   index?: number;
+  /** A `div` where it holds a block, such as a breadcrumb trail */
+  as?: "p" | "div";
   className?: string;
   children: ReactNode;
 }) {
   return (
-    <p className={cx("gl-eyebrow", className)}>
+    <Tag className={cx("gl-eyebrow", className)}>
       {index !== undefined && (
         <>
           <span className="gl-eyebrow__index">{pad(index)}</span>
@@ -158,7 +171,7 @@ export function Eyebrow({
         </>
       )}
       {children}
-    </p>
+    </Tag>
   );
 }
 
@@ -204,20 +217,22 @@ export function Trail({
   current?: string;
 }) {
   return (
-    <>
-      {links.map((link, index) => (
-        <span key={link.url}>
-          <a href={link.url}>{link.text}</a>
-          {(current || index < links.length - 1) && (
-            <span className="gl-eyebrow__sep" aria-hidden="true">
-              {" "}
-              /
-            </span>
-          )}
-        </span>
-      ))}
-      {current && <span>{current}</span>}
-    </>
+    <nav className="gl-trail" aria-label="Breadcrumb">
+      <ol>
+        {links.map((link, index) => (
+          <li key={link.url}>
+            <a href={link.url}>{link.text}</a>
+            {(current || index < links.length - 1) && (
+              <span className="gl-eyebrow__sep" aria-hidden="true">
+                {" "}
+                /
+              </span>
+            )}
+          </li>
+        ))}
+        {current && <li aria-current="page">{current}</li>}
+      </ol>
+    </nav>
   );
 }
 
@@ -245,7 +260,7 @@ export function PageHeader({
       )}
     >
       <div className="gl-page-header__main">
-        <Eyebrow>{eyebrow}</Eyebrow>
+        <Eyebrow as="div">{eyebrow}</Eyebrow>
         <Html as="h1" className="gl-title" html={title} />
         {lede && <Html as="p" className="gl-lede" html={lede} />}
         {children}
@@ -327,10 +342,13 @@ export const More = ({
 /** Post types, tags, or qualities, as a row of chips */
 export function Chips({
   links,
-  label
+  label,
+  unit = ["item", "items"]
 }: {
   links: (LinkModel & { count?: number })[];
   label: string;
+  /** What a count counts, singular and plural, said after it */
+  unit?: [string, string];
 }) {
   return (
     <ul className="gl-chips" aria-label={label}>
@@ -339,7 +357,14 @@ export function Chips({
           <>
             {link.text}
             {link.count !== undefined && (
-              <span className="gl-chip__count">{link.count}</span>
+              <>
+                <span className="gl-chip__count" aria-hidden="true">
+                  {link.count}
+                </span>
+                <span className="gl-sr">
+                  {` (${link.count} ${unit[link.count === 1 ? 0 : 1]})`}
+                </span>
+              </>
             )}
           </>
         );
@@ -942,7 +967,9 @@ export function PostNav({ nav }: { nav: PostNavModel | null }) {
         {nav.previous ? (
           <div className="gl-cell">
             <a href={nav.previous.url} rel="prev">
-              <span className="gl-label">← Previous</span>
+              <span className="gl-label">
+                <span aria-hidden="true">← </span>Previous
+              </span>
               <strong>{nav.previous.text}</strong>
             </a>
           </div>
@@ -952,7 +979,9 @@ export function PostNav({ nav }: { nav: PostNavModel | null }) {
         {nav.next && (
           <div className="gl-cell gl-post-nav__next">
             <a href={nav.next.url} rel="next">
-              <span className="gl-label">Next →</span>
+              <span className="gl-label">
+                Next<span aria-hidden="true"> →</span>
+              </span>
               <strong>{nav.next.text}</strong>
             </a>
           </div>
@@ -987,7 +1016,12 @@ export function FormField({ field }: { field: Field }) {
 
   return (
     <label className={className}>
-      <span className="gl-field__label">{field.label}</span>
+      <span className="gl-field__label">
+        {field.label}
+        {field.required && (
+          <span className="gl-field__required"> (required)</span>
+        )}
+      </span>
       {field.kind === "textarea" ? (
         <textarea
           name={field.name}
@@ -1020,11 +1054,10 @@ export function Form({ kind }: { kind: "contact" | "inquiry" }) {
           <FormField key={field.name} field={field} />
         ))}
         <div className="gl-cell gl-field--wide gl-form__submit">
-          {status && (
-            <span className="gl-meta" role="status">
-              {status}
-            </span>
-          )}
+          {/* Present before there's anything to say, so it's announced */}
+          <span className="gl-meta" role="status">
+            {status}
+          </span>
           <Button type="submit">
             {submit} <Arrow />
           </Button>
@@ -1050,7 +1083,7 @@ export function Newsletter({ invert }: { invert?: boolean }) {
         <form className="gl-signup__form" {...props}>
           {hidden}
           <label>
-            <span className="gl-sr">{field.label}</span>
+            <span className="gl-label">{field.label}</span>
             <input
               type={field.type}
               name={field.name}
@@ -1058,12 +1091,14 @@ export function Newsletter({ invert }: { invert?: boolean }) {
               required
             />
           </label>
-          <Button type="submit">{submit}</Button>
-          {status && (
-            <span className="gl-meta" role="status">
-              {status}
-            </span>
-          )}
+          {/* The live site sends it from a window of its own */}
+          <Button type="submit">
+            {submit}
+            <span className="gl-sr"> (opens a new window)</span>
+          </Button>
+          <span className="gl-meta" role="status">
+            {status}
+          </span>
         </form>
       </div>
     </Band>
@@ -1257,6 +1292,14 @@ const LIFE_TICK = 140;
 /** The share of squares scattering fills */
 const SCATTER = 0.18;
 
+/** The way each arrow key moves the keyboard's square */
+const MOVES: Record<string, [number, number]> = {
+  ArrowLeft: [-1, 0],
+  ArrowRight: [1, 0],
+  ArrowUp: [0, -1],
+  ArrowDown: [0, 1]
+};
+
 /**
  * The Blueprint panel: the closing call to action, and behind the home
  * page's terminal. Under a mouse or pen, its glow and a spotlight on the
@@ -1269,7 +1312,12 @@ const SCATTER = 0.18;
  * color, the tile size, an eraser, symmetry about the middle, the Game of
  * Life over the filled squares, scattering squares, and clearing them. They
  * can also grow the panel to fill the screen below the header, without its
- * contents, for a bigger canvas; touch paints there too, as nothing scrolls.
+ * contents, for a bigger canvas; touch paints there too, as nothing scrolls,
+ * and the page behind it is inert.
+ *
+ * The keyboard draws too, from a focusable layer after the panel's contents:
+ * the arrow keys move the lit square, and Space or Enter fills it as a click
+ * would.
  */
 export function Blueprint({
   className,
@@ -1296,6 +1344,8 @@ export function Blueprint({
   const [found, setFound] = useState(false);
   const [running, setRunning] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  // The square the keyboard is on, from the middle
+  const [cursor, setCursor] = useState<Square>({ column: 0, row: 0 });
   const reducedMotion = useReducedMotion();
   const playing = running && !reducedMotion;
 
@@ -1310,6 +1360,29 @@ export function Blueprint({
     const timer = setTimeout(() => setFound(false), 2800);
     return () => clearTimeout(timer);
   }, [found]);
+
+  // Filling the screen, everything but the header and the panel is inert, so
+  // focus can't reach what's hidden behind it
+  useEffect(() => {
+    const node = panel.current;
+    if (!expanded || !node) return;
+    const stilled: Element[] = [];
+    for (let at: Element = node; at.parentElement; at = at.parentElement) {
+      for (const sibling of at.parentElement.children) {
+        if (
+          sibling === at ||
+          sibling.matches(".gl-header") ||
+          sibling.hasAttribute("inert")
+        ) {
+          continue;
+        }
+        sibling.setAttribute("inert", "");
+        stilled.push(sibling);
+      }
+      if (at.parentElement.matches(".gl")) break;
+    }
+    return () => stilled.forEach((sibling) => sibling.removeAttribute("inert"));
+  }, [expanded]);
 
   // A generation at a time, until nothing is born or dies
   useEffect(() => {
@@ -1361,6 +1434,20 @@ export function Blueprint({
     setPaints((current) => fill(current, reached, brush));
   };
 
+  /**
+   * A square clicked (or pressed): filled in the brush's color again, it
+   * clears (fading out, or simply going when motion is reduced); in another
+   * color, it takes this one
+   */
+  const toggle = (square: Square) => {
+    const found = paints.find((paint) => sameSquare(paint, square));
+    if (!erase && found && !found.leaving && found.brush === brush) {
+      setPaints((current) =>
+        clear(current, reflect(square, symmetry), !prefersReducedMotion())
+      );
+    } else brushOver([square]);
+  };
+
   const onClick = (event: ReactMouseEvent<HTMLDivElement>) => {
     if (dragged.current) {
       dragged.current = false;
@@ -1368,16 +1455,40 @@ export function Blueprint({
     }
     if ((event.target as Element).closest(NOT_PAINTABLE)) return;
     const { x, y, box } = locate(event.clientX, event.clientY);
-    const square = squareAt(x, y, box, grid);
-    const found = paints.find((paint) => sameSquare(paint, square));
+    toggle(squareAt(x, y, box, grid));
+  };
 
-    // Clicked again in the same color: it clears (fading out, or simply
-    // going when motion is reduced); in another color, it takes this one
-    if (!erase && found && !found.leaving && found.brush === brush) {
-      setPaints((current) =>
-        clear(current, reflect(square, symmetry), !prefersReducedMotion())
-      );
-    } else brushOver([square]);
+  /** Lights the keyboard's square, and draws the glow to it */
+  const light = (square: Square) => {
+    const element = panel.current;
+    if (!element) return;
+    const box = element.getBoundingClientRect();
+    const left = box.width / 2 - grid / 2 + square.column * grid;
+    const top = box.height / 2 - grid / 2 + square.row * grid;
+    element.style.setProperty("--gl-cell-x", `${left}px`);
+    element.style.setProperty("--gl-cell-y", `${top}px`);
+    element.style.setProperty("--gl-pointer-x", `${left + grid / 2}px`);
+    element.style.setProperty("--gl-pointer-y", `${top + grid / 2}px`);
+    element.style.setProperty("--gl-column", `${square.column}`);
+    element.style.setProperty("--gl-row", `${square.row}`);
+    element.setAttribute("data-pointer", "");
+  };
+
+  const onKeys = (event: KeyboardEvent<HTMLDivElement>) => {
+    const move = MOVES[event.key];
+    if (move) {
+      event.preventDefault();
+      const { left, right, top, bottom } = bounds();
+      const next = {
+        column: Math.min(right, Math.max(left, cursor.column + move[0])),
+        row: Math.min(bottom, Math.max(top, cursor.row + move[1]))
+      };
+      setCursor(next);
+      light(next);
+    } else if (event.key === " " || event.key === "Enter") {
+      event.preventDefault();
+      toggle(cursor);
+    }
   };
 
   // A square that has faded out is gone
@@ -1472,6 +1583,10 @@ export function Blueprint({
     });
   };
 
+  const onKeysBlur = () => {
+    if (!panel.current?.matches(":hover")) onPointerLeave();
+  };
+
   const onPointerLeave = () => {
     cancelAnimationFrame(frame.current);
     const element = panel.current;
@@ -1544,6 +1659,19 @@ export function Blueprint({
         />
       ))}
       {children}
+      <div
+        className="gl-blueprint__keys"
+        role="application"
+        aria-roledescription="drawing grid"
+        aria-label="Drawing grid: the arrow keys move the lit square, and Space fills it"
+        tabIndex={0}
+        onKeyDown={onKeys}
+        onFocus={() => light(cursor)}
+        onBlur={onKeysBlur}
+      />
+      <span className="gl-sr" role="status">
+        {tools && !startWithTools ? "You found the grid tools" : ""}
+      </span>
       {tools && (
         <GridTools
           playing={playing}

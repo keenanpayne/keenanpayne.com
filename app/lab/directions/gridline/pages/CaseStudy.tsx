@@ -8,6 +8,7 @@ import {
   Html,
   ledeOf,
   titleOf,
+  useReducedMotion,
   useTo,
   type TemplateProps
 } from "../../../site";
@@ -35,6 +36,7 @@ const image = (item: PortfolioGridItem) => (
 
 export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
   const to = useTo();
+  const reducedMotion = useReducedMotion();
   const name = page.client ?? page.meta.title;
 
   const glance: [string, ReactNode][] = [];
@@ -114,7 +116,7 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
       />
 
       {page.cover && (
-        <Band label="Cover">
+        <Band>
           <Rays tint={page.color} className="gl-case-cover">
             <Window
               address={
@@ -131,12 +133,12 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
         <Band>
           <div className="gl-split">
             <div className="gl-pad gl-pillar">
-              <p className="gl-label">Overview</p>
+              <h2 className="gl-label">Overview</h2>
               {page.overview && <Html as="p" html={page.overview} />}
             </div>
             {specs.length > 0 && (
               <div className="gl-pad">
-                <p className="gl-label">Project</p>
+                <h2 className="gl-label">Project</h2>
                 <Facts rows={specs} />
               </div>
             )}
@@ -160,19 +162,19 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
           >
             {page.pillars.client && (
               <div className="gl-pad gl-pillar">
-                <p className="gl-label">The client</p>
+                <h2 className="gl-label">The client</h2>
                 <p>{page.pillars.client}</p>
               </div>
             )}
             {page.pillars.challenge && (
               <div className="gl-pad gl-pillar">
-                <p className="gl-label">The challenge</p>
+                <h2 className="gl-label">The challenge</h2>
                 <Html as="p" html={page.pillars.challenge} />
               </div>
             )}
             {page.pillars.solution && (
               <div className="gl-pad gl-pillar">
-                <p className="gl-label">The solution</p>
+                <h2 className="gl-label">The solution</h2>
                 <Html as="p" html={page.pillars.solution} />
               </div>
             )}
@@ -182,10 +184,7 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
 
       {page.sections.map((section, index) =>
         section.type === "portfolioGrid" && section.items?.length ? (
-          <Band
-            key={index}
-            label={section.headline ?? section.eyebrow ?? "Gallery"}
-          >
+          <Band key={index} label={section.headline ?? section.eyebrow}>
             {/* A gallery with no heading continues the one before it */}
             {(section.headline || section.eyebrow) && (
               <SectionHead
@@ -215,15 +214,23 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
                           muted
                           // Fetched when played, not with the page
                           preload={item.autoplay ? undefined : "none"}
-                          controls={!item.autoplay}
+                          // Always with controls, so a looping one can be paused
+                          controls
                           loop={item.autoplay}
                           playsInline={item.autoplay}
-                          autoPlay={item.autoplay}
+                          autoPlay={item.autoplay && !reducedMotion}
                         />
                       ) : (
                         item.image &&
                         (section.enlarge ? (
-                          <a href={item.enlargeHref}>{image(item)}</a>
+                          <a href={item.enlargeHref}>
+                            {image(item)}
+                            <span className="gl-sr">
+                              {item.title
+                                ? " (view larger)"
+                                : "View larger image"}
+                            </span>
+                          </a>
                         ) : (
                           image(item)
                         ))
@@ -246,7 +253,7 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
             </Cells>
           </Band>
         ) : section.type === "testimonial" && section.testimonial ? (
-          <Band key={index} invert label="Testimonial">
+          <Band key={index} invert heading="Testimonial">
             <div className="gl-pad">
               <Quote testimonial={section.testimonial} large />
             </div>
@@ -255,7 +262,7 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
       )}
 
       {page.content && (
-        <Band label="Story">
+        <Band heading="Story">
           <div className="gl-article">
             <div className="gl-article__rail" />
             <div className="gl-article__body">

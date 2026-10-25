@@ -15,9 +15,10 @@ export function Testimonials({ page }: TemplateProps<"testimonials">) {
           grid &&
           grid.qualities.length > 0 && (
             <>
-              <p className="gl-label">Mentioned most</p>
+              <h2 className="gl-label">Mentioned most</h2>
               <Chips
                 label="Most mentioned qualities"
+                unit={["mention", "mentions"]}
                 links={grid.qualities.map((quality) => ({
                   text: quality.label,
                   url: "",

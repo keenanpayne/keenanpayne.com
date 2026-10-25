@@ -203,7 +203,7 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
               <p>{profile.role}</p>
             </div>
             <div className="gl-cell">
-              <p className="gl-label">Pages</p>
+              <h2 className="gl-label">Pages</h2>
               <ul>
                 {navigation.map((item) => (
                   <li key={item.url}>
@@ -213,7 +213,7 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
               </ul>
             </div>
             <div className="gl-cell">
-              <p className="gl-label">Elsewhere</p>
+              <h2 className="gl-label">Elsewhere</h2>
               <ul>
                 {socials.map((social) => (
                   <li key={social.url}>
@@ -228,7 +228,7 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
               </ul>
             </div>
             <div className="gl-cell">
-              <p className="gl-label">Get in touch</p>
+              <h2 className="gl-label">Get in touch</h2>
               <ul>
                 <li>
                   <a href={`mailto:${profile.email}`}>{profile.email}</a>
@@ -247,7 +247,9 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
             <p>{`© ${new Date().getFullYear()} ${profile.name}`}</p>
             <p>Set in Instrument Sans, Instrument Serif &amp; IBM Plex Mono</p>
             <p>
-              <a href="#gl-main">Back to top ↑</a>
+              <a href="#gl-main">
+                Back to top<span aria-hidden="true"> ↑</span>
+              </a>
             </p>
           </div>
         </footer>

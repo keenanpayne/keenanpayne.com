@@ -3,6 +3,7 @@ import {
   useEffect,
   useId,
   useRef,
+  useState,
   type CSSProperties,
   type ReactNode
 } from "react";
@@ -423,7 +424,9 @@ function usePlayback(
 /**
  * What a service is, drawn as an animated isometric scene, or nothing for a
  * service without one. `treatment` overrides the site's (and `?illo=`);
- * `playback` says when it moves.
+ * `playback` says when it moves. A `pausable` one that plays by itself has
+ * a button to stop it (and start it again), as its loop runs past the five
+ * seconds anything may move unasked.
  */
 // The rigs never change, so each is drawn and sampled once, however many
 // tiles show it and however often they mount (on the server too)
@@ -446,19 +449,27 @@ export function ServiceArt({
   url,
   treatment,
   playback = "auto",
+  pausable,
   className
 }: {
   url: string;
   treatment?: TreatmentId;
   playback?: Playback;
+  pausable?: boolean;
   className?: string;
 }) {
+  const [paused, setPaused] = useState(false);
+  const reduced = useReducedMotion();
   const rig = rigFor(url);
   const art = rig && artOf(rig);
   const [illo] = useQueryParam("illo");
   // An id for the hatching that's safe inside `url(#…)`
   const hatch = `gl-hatch-${useId().replace(/[^\w-]/g, "")}`;
-  const svg = usePlayback(art?.frames, rig?.seconds ?? 0, playback);
+  const svg = usePlayback(
+    art?.frames,
+    rig?.seconds ?? 0,
+    paused ? "never" : playback
+  );
   if (!art) return null;
   const { drawing, frames } = art;
 
@@ -528,36 +539,57 @@ export function ServiceArt({
     );
   });
 
-  return (
-    <svg
-      ref={svg}
-      className={cx("gl-iso", `gl-iso--${look}`, className)}
-      viewBox={drawing.viewBox}
-      aria-hidden="true"
+  const toggle = pausable && playback === "auto" && !reduced && (
+    <button
+      type="button"
+      className="gl-iso__pause"
+      onClick={() => setPaused(!paused)}
     >
-      <defs>
-        <pattern
-          id={hatch}
-          width="9"
-          height="9"
-          patternUnits="userSpaceOnUse"
-          patternTransform="rotate(45)"
-        >
-          <path className="gl-iso__hatch" d="M0 0v9" />
-        </pattern>
-      </defs>
-      <g className="gl-iso__floor">
-        <path className="gl-iso__ground" d={drawing.ground} />
-        {drawing.shadows.map((shadow, index) => (
-          <polygon
-            key={index}
-            className="gl-iso__shadow"
-            points={points(shadow)}
-            fill={`url(#${hatch})`}
-          />
-        ))}
-      </g>
-      {body}
-    </svg>
+      <svg viewBox="0 0 16 16" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d={paused ? "M5 3.5v9l7.5-4.5z" : "M4.5 3h2.5v10H4.5zM9 3h2.5v10H9z"}
+        />
+      </svg>
+      <span className="gl-sr">
+        {paused ? "Play the illustration" : "Pause the illustration"}
+      </span>
+    </button>
+  );
+
+  return (
+    <>
+      <svg
+        ref={svg}
+        className={cx("gl-iso", `gl-iso--${look}`, className)}
+        viewBox={drawing.viewBox}
+        aria-hidden="true"
+      >
+        <defs>
+          <pattern
+            id={hatch}
+            width="9"
+            height="9"
+            patternUnits="userSpaceOnUse"
+            patternTransform="rotate(45)"
+          >
+            <path className="gl-iso__hatch" d="M0 0v9" />
+          </pattern>
+        </defs>
+        <g className="gl-iso__floor">
+          <path className="gl-iso__ground" d={drawing.ground} />
+          {drawing.shadows.map((shadow, index) => (
+            <polygon
+              key={index}
+              className="gl-iso__shadow"
+              points={points(shadow)}
+              fill={`url(#${hatch})`}
+            />
+          ))}
+        </g>
+        {body}
+      </svg>
+      {toggle}
+    </>
   );
 }

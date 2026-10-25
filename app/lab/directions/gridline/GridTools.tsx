@@ -186,7 +186,9 @@ type Tray = "brush" | "size";
  * a square is filled. The brush's color and the tile size open a tray of
  * choices above it; the eraser, symmetry, and the Game of Life are toggles;
  * scatter and clear act at once. It can grow the grid to fill the screen
- * (Escape shrinks it again), and folds away to a single button.
+ * (Escape shrinks it again), and folds away to a single button. Each tool's
+ * name shows over it on hover and focus; Escape hides the names until the
+ * pointer or focus moves on.
  */
 export function GridTools({
   playing,
@@ -215,6 +217,8 @@ export function GridTools({
   const reducedMotion = useReducedMotion();
   const [tray, setTray] = useState<Tray | null>(null);
   const [folded, setFolded] = useState(false);
+  // Escape hides the tools' names until the pointer or focus moves on
+  const [quiet, setQuiet] = useState(false);
   const root = useRef<HTMLDivElement>(null);
   const brushTrigger = useRef<HTMLButtonElement>(null);
   const sizeTrigger = useRef<HTMLButtonElement>(null);
@@ -252,6 +256,22 @@ export function GridTools({
       document.removeEventListener("pointerdown", onPress);
     };
   }, [tray]);
+
+  // Escape hides a name showing over a tool, before anything else it might do
+  useEffect(() => {
+    if (tray) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || event.defaultPrevented) return;
+      const named = root.current?.querySelector(
+        ".gl-tools__tool:hover, .gl-tools__tool:focus-visible"
+      );
+      if (!named || quiet) return;
+      event.preventDefault();
+      setQuiet(true);
+    };
+    document.addEventListener("keydown", onKey, true);
+    return () => document.removeEventListener("keydown", onKey, true);
+  }, [tray, quiet]);
 
   // Escape shrinks a grid that fills the screen, once any tray is closed,
   // unless it's meant for something else: the header's menu or a popover
@@ -309,7 +329,6 @@ export function GridTools({
           type="button"
           className="gl-tools__unfold"
           aria-label="Show grid tools"
-          aria-expanded="false"
           onClick={() => fold(false)}
         >
           <Icon>{ICONS.show}</Icon>
@@ -334,9 +353,13 @@ export function GridTools({
       className="gl-blueprint__tools"
       data-tray={tray ?? undefined}
       data-found={found || undefined}
+      data-quiet={quiet || undefined}
+      onPointerLeave={() => setQuiet(false)}
+      onFocus={() => setQuiet(false)}
     >
+      {/* Seen for a moment; the panel's status region says it aloud */}
       {found && (
-        <span className="gl-tools__found" role="status">
+        <span className="gl-tools__found" aria-hidden="true">
           You found the grid tools
         </span>
       )}
@@ -420,13 +443,18 @@ export function GridTools({
 
         <span className="gl-tools__rule" aria-hidden="true" />
 
-        <Tool tip={life} aria-pressed={playing} onClick={onLife}>
+        <Tool tip={life} data-on={playing || undefined} onClick={onLife}>
           <Icon>{playing ? ICONS.pause : ICONS.glider}</Icon>
         </Tool>
         <Tool tip="Scatter squares" onClick={onScatter}>
           <Icon>{ICONS.scatter}</Icon>
         </Tool>
-        <Tool tip="Clear the grid" disabled={empty} onClick={onClear}>
+        {/* Not `disabled`, which would drop focus once the grid is cleared */}
+        <Tool
+          tip="Clear the grid"
+          aria-disabled={empty}
+          onClick={() => !empty && onClear()}
+        >
           <Icon>{ICONS.clear}</Icon>
         </Tool>
 
@@ -434,7 +462,7 @@ export function GridTools({
 
         <Tool
           tip={expanded ? "Shrink the grid" : "Fill the screen"}
-          aria-pressed={expanded}
+          data-on={expanded || undefined}
           data-expand=""
           onClick={() => onExpand(!expanded)}
         >

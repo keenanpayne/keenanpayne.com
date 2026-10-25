@@ -29,7 +29,7 @@ function Contents({ html, ids }: { html: string; ids: string[] }) {
 
   return (
     <nav className="gl-contents" aria-label="On this page">
-      <p className="gl-label">On this page</p>
+      <h2 className="gl-label">On this page</h2>
       <Html html={marked} />
     </nav>
   );
@@ -85,7 +85,7 @@ export function Post({ page }: TemplateProps<"post">) {
         }
       />
 
-      <Band label="Article">
+      <Band>
         <div className="gl-article">
           <aside className="gl-article__rail">
             {contents && <Contents {...contents} />}
