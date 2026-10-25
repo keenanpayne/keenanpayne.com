@@ -354,6 +354,9 @@ body:has(.gl) {
 
   &::before,
   &::after {
+    /* A touch stronger than the lines they sit on, in either scheme */
+    --gl-cross: color-mix(in srgb, var(--gl-line-strong), var(--gl-ink) 20%);
+
     content: "";
     position: absolute;
     z-index: 2;
@@ -362,10 +365,10 @@ body:has(.gl) {
     width: 11px;
     height: 11px;
     background:
-      linear-gradient(var(--gl-line-strong), var(--gl-line-strong)) center / 1px
-        100% no-repeat,
-      linear-gradient(var(--gl-line-strong), var(--gl-line-strong)) center /
-        100% 1px no-repeat;
+      linear-gradient(var(--gl-cross), var(--gl-cross)) center / 1px 100%
+        no-repeat,
+      linear-gradient(var(--gl-cross), var(--gl-cross)) center / 100% 1px
+        no-repeat;
     pointer-events: none;
 
     @media (width >= 720px) {
