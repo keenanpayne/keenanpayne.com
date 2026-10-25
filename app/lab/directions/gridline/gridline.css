@@ -294,8 +294,10 @@ body:has(.gl) {
 
   /* Running text stops short of 80 characters a line, however wide the
      frame: 33em of the sans, or 24em of the narrower serif (a component's
-     own measure, set with more weight, wins) */
-  & :where(p, figcaption, .gl-prose li) {
+     own measure, set with more weight, wins). An eyebrow is a label, not
+     running text, so it spans its section and centers where the section
+     does */
+  & :where(p:not(.gl-eyebrow), figcaption, .gl-prose li) {
     max-width: 33em;
   }
 
