@@ -10,7 +10,7 @@
 :root {
   --wireframe-paper: #fff;
   --wireframe-ink: #1a1a1a;
-  --wireframe-muted: #6b6b6b;
+  --wireframe-muted: #4f4f4f;
   --wireframe-line: #d9d9d9;
   --wireframe-surface: #f3f3f3;
   --wireframe-accent: var(--wireframe-ink);
@@ -27,7 +27,7 @@
   :root:not([data-theme="light"]) {
     --wireframe-paper: #141414;
     --wireframe-ink: #e6e6e6;
-    --wireframe-muted: #9a9a9a;
+    --wireframe-muted: #adadad;
     --wireframe-line: #333;
     --wireframe-surface: #1e1e1e;
   }
@@ -36,7 +36,7 @@
 :root[data-theme="dark"] {
   --wireframe-paper: #141414;
   --wireframe-ink: #e6e6e6;
-  --wireframe-muted: #9a9a9a;
+  --wireframe-muted: #adadad;
   --wireframe-line: #333;
   --wireframe-surface: #1e1e1e;
 }

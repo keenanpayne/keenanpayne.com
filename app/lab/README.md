@@ -14,6 +14,7 @@ Every direction at `/lab/<slug>/` is a **skin over one site**: the same content 
 | Directions | `directions/<slug>/`, registered in `registry.ts` | How it looks |
 | Live direction | `live.ts` | Which direction the site runs; the rest stay in the lab |
 | Conformance | `conformance/` | Checks that every direction has the same features, pages, and foundations (see [Guardrails](#guardrails)) |
+| Accessibility | `accessibility/` | The WCAG 2.2 AAA audit of every direction in a browser, and the contrast math (see [Accessibility](#accessibility)) |
 
 A request for `/lab/mech/about/` runs through the route in `app/routes/lab.$direction.tsx`: the loader resolves `/about/` to a `View` (`{ kind: "about", page }`), marks the current navigation item, and rebases every internal link onto `/lab/mech/`. The `LabContent` is the same on every page, so it isn’t in the loader data: it ships once, as a module (`virtual:lab-content`, serialized at build time by the plugin in `vite.config.ts`), and `useLabContent(base)` in `content.ts` rebases its links in the browser. `DirectionPage` then renders the direction’s `Shell` around `templates[view.kind]`.
 
@@ -44,6 +45,7 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 - **Styles are scoped.** A direction’s stylesheet stays loaded after the lab navigates to another direction, so prefix every class, custom property, and `@keyframes` name with the root class (`mc-`, `--mc-`), and scope every selector under it, print styles included.
 - **Page-wide effects skip the style guide.** A rule that reaches past the direction for something a visitor opens (locking the page’s scroll, hiding the lab bar) must not match it inside the style guide’s previews: `:root:has(.mc-deck:not([hidden], .sg-stage *))`.
 - **Light and dark:** define tokens on `:root`, then override them under `@media (prefers-color-scheme: dark)` with `:root:not([data-theme="light"])`, and again under `:root[data-theme="dark"]` (the lab bar’s switch), identically. A skin that’s dark by default (Mech) does the same the other way around.
+- **Accessible:** every direction is held to WCAG 2.2 AAA (see [Accessibility](#accessibility)). Check a color before it goes in (`npm run a11y:contrast`), and audit the direction before you finish (`npm run a11y -- -g <Name>`).
 - **Foundations:** name the same roles on `:root`, whatever their values: `--<root>-paper`, `-ink`, `-muted`, `-line`, `-surface`, `-accent`, `-focus`, `-selection`, `-selection-ink`, `-font-display`, `-font-body`, and `-font-mono` (`conformance/foundations.ts`). An alias of a token the skin already has is fine (`--mc-paper: var(--mc-void)`), but a custom property resolves where it’s declared: a scope that re-declares the tokens a role aliases (Gridline’s inverted bands) re-declares the role too. Then paint the page in `-paper` (`body:has(.<root>)`), draw focus rings in `-focus`, color `::selection` with `-selection` and `-selection-ink`, and stop every animation and transition under `prefers-reduced-motion: reduce` with one rule on `.<root> *`. Every other token is the skin’s own.
 
 ## Common changes
@@ -61,7 +63,8 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 | Restyle a direction | Only its folder |
 | Start a direction | `npm run lab:new -- <slug> ["Display name"]`, which copies Wireframe, renames it, and registers it |
 | Launch a direction | `live.ts` (see [Taking a direction live](#taking-a-direction-live)) |
-| Check your work | `npm run lab:check`: types, conformance, and lint for the lab |
+| Check your work | `npm run lab:check`: types, conformance, and lint for the lab; then `npm run a11y -- -g <Name>` for the direction you changed |
+| Pick a color | `npm run a11y:contrast -- "<color>" "<background>"`, or `-- <slug>` for a direction’s role pairs (`--all` for every token) |
 | Show a new part in the style guide | Its direction’s `specimens.tsx` |
 | Retire a direction | Delete its folder and its entry in `registry.ts` |
 
@@ -82,11 +85,13 @@ Every direction has the same features, pages, and foundations, so a person or an
 1. **Types.** `Direction` needs a template for every kind of page, and `Specimens` one specimen for every style guide section.
 2. **Conformance** (`conformance/`). The tests render every direction’s sample pages the way the lab route does, plus the pages with sections no sample has (`conformance/pages.ts`; a test makes sure every kind of page and every section the requirements read is among them), then check:
    - **Requirements** (`requirements.ts`): the feature set and information architecture, checked the way a visitor would find them (text, links, images, landmarks), so any skin can meet them. The Shell has a skip link to `<main>`, the owner’s name linking home, the navigation with the current item marked, a footer with `© {year} {name}`, every social profile, the feed, and the local time and weather popover, with a clock that stays on screen on phones (`viewport.ts` reads the stylesheet at a phone’s width for that); it links nowhere the navigation doesn’t lead, and holds no forms. Every page has one `<h1>` (its `titleOf()`), links that lead somewhere, and `alt` on its images. Then each kind of page has its content: Home its intro, latest posts, exactly its case studies, and every service and testimonial; a post its breadcrumbs, date, reading time, tags, whole body, neighbors, and comments; a form its questions and copy, sending the shared way; and so on.
-   - **Foundations** (`foundations.ts`): the role tokens, both schemes, the page color, focus ring, selection, reduced motion, and the prefix on every selector, custom property, and keyframe.
+   - **Foundations** (`foundations.ts`): the role tokens, both schemes, their contrast (`css.contrast`: text roles at 7:1 on the paper and surface, the accent and focus ring at 3:1, in both schemes), the page color, focus ring, selection, reduced motion, and the prefix on every selector, custom property, and keyframe.
    - **Source** (`source.ts`): no fact about the owner spelled out in a direction’s code.
 3. **Known gaps** (`conformance/gaps.ts`): what each direction fell short of when the checks were written. It only shrinks. The tests fail when a direction falls short of anything not listed, and when it meets something listed, so the line comes off. To close one, delete its line and run `npm run lab:check`; the failure says what’s missing, page by page. Never add a line to make a check pass.
 
 A failure names the direction, the requirement and its rule, and what’s missing on which page. The style guide’s Conformance page (`/lab/styleguide/conformance/`) shows the same results for every direction at once: a score for each, every check across all of them, and each known gap or regression with what’s missing, page by page. `conformance/report.server.ts` runs the checks for both, so the page and the tests never disagree; in development the page runs them afresh each time you open it.
+
+A fourth layer, the [accessibility audit](#accessibility), renders the same pages in a browser; it’s slower, so it runs on its own (`npm run a11y`) and as its own CI job.
 
 ### Feature or motif?
 
@@ -99,6 +104,35 @@ Anything that changes what the site _has_ is a feature: a page section, a contro
 3. Every other direction. `npm run lab:check` lists the ones that don’t have it yet.
 
 When a direction has something the others don’t, either it’s a motif, or it’s a feature the others are missing: make it shared, or take it out.
+
+## Accessibility
+
+Every direction is held to **WCAG 2.2 AAA**, the live one first. Four tools hold them to it, from quickest to most thorough:
+
+| Tool | Run | Checks |
+| --- | --- | --- |
+| Contrast calculator | `npm run a11y:contrast -- "#6b6b6b" "#fff"` | Any two CSS colors: the ratio, and whether it’s enough for body text (7:1), large text (4.5:1), and borders, icons, and focus rings (3:1). `-- <slug>` measures a direction’s role pairs in both schemes, `--all` every color token on its paper and surface. |
+| Lint | `npm run lint` | The markup in every `.tsx` file ([jsx-a11y](https://github.com/es-tooling/eslint-plugin-jsx-a11y-x), strict): names, roles, labels, alt text, keyboard handlers. A deliberate exception is disabled on its line, with the reason above it. |
+| Token contrast | `npm run lab:check` | The `css.contrast` foundation: the role tokens against each other, before anything renders. |
+| Browser audit | `npm run a11y` (`-- -g Gridline` for one direction) | Every checked page (`conformance/pages.ts`) of every direction, light and dark, on a desktop and a 320px-wide phone, in Chromium: every axe rule for WCAG 2.0–2.2 at A, AA, and AAA (contrast at 7:1, link purpose, names, structure…), plus `accessibility/checks.ts` for what axe doesn’t measure: 44px targets (2.5.5), line spacing of 1.5, lines of 80 characters or fewer, and no justified text (1.4.8), reflow at 320px (1.4.10), and, tabbing through every page, a focus ring of 2px at 3:1 (2.4.13) that nothing fixed or sticky covers (2.4.12). |
+
+The audit starts a dev server of its own (port 4343), so it always audits this checkout; `A11Y_URL=<url> npm run a11y` audits a running one, or a deploy preview, instead. It takes a few minutes for every direction, a minute or two for one. A failure names each element that falls short, what it measured, and on which pages, schemes, and widths; `test-results/a11y-findings/<slug>.json` has every finding, the known gaps’ included, and what axe couldn’t decide on (`review`: contrast over an image, say), and `npm run a11y:report` opens the last run.
+
+**Known gaps** (`accessibility/gaps.ts`) work like the conformance checks’ ones: what each direction fell short of when the audit was first run, by check. It only shrinks. The audit fails when a direction falls short of anything not listed, and when it meets something listed, so the line comes off. To close one, delete its line and run `npm run a11y -- -g <Name>`; the failure lists every element, page by page. Never add a line to make the audit pass.
+
+Some of the gaps are in the shared layers, so they close for every direction at once: the clock’s accessible name (`label-content-name-mismatch`, `site/readout.ts`) and code blocks that scroll without taking focus (`scrollable-region-focusable`, the Markdown pipeline).
+
+### Making a design change
+
+1. Before a color goes in, measure it with `npm run a11y:contrast` against everything it sits on, in both schemes, including its hover, active, and visited states (the audit only sees the page at rest).
+2. Run `npm run lab:check`, then `npm run a11y -- -g <Name>`. Fix what they name; don’t loosen a check or add a gap.
+3. Check by hand what no tool can:
+   - Hover and focus states, and anything drawn over an image or gradient: their contrast (the audit lists the latter under `review`).
+   - Content that appears on hover or focus (tooltips, popovers): it can be dismissed with Escape, hovered over, and stays until then (1.4.13).
+   - Motion: nothing flashes (2.3.2), and anything that moves, blinks, or scrolls on its own for more than five seconds can be paused (2.2.2), with or without `prefers-reduced-motion`.
+   - At 200% text size, and with WCAG’s text spacing (1.4.12), nothing is cut off or overlaps.
+   - With a screen reader (VoiceOver: ⌘F5), the page reads in order, and every control says what it is and does.
+   - Copy: headings that say what’s under them (2.4.10), abbreviations spelled out (3.1.4), and plain language (3.1.5).
 
 ## Taking a direction live
 

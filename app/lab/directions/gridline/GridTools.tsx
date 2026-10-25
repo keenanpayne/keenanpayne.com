@@ -348,6 +348,8 @@ export function GridTools({
       : "Play the Game of Life";
 
   return (
+    // Quiets the tools' hint while they're in use; the tools are buttons
+    // eslint-disable-next-line jsx-a11y-x/no-static-element-interactions
     <div
       ref={root}
       className="gl-blueprint__tools"

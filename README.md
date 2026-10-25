@@ -61,6 +61,26 @@ npm run format       # Format all files
 npm run check:format # Check formatting without making changes
 ```
 
+### Accessibility
+
+Every page is held to [WCAG 2.2 AAA](https://www.w3.org/TR/WCAG22/); see [Accessibility in the design lab’s README](app/lab/README.md#accessibility) for what’s checked and how to make a design change.
+
+```bash
+# Contrast of two colors against AAA, or of a direction's tokens
+npm run a11y:contrast -- "#6b6b6b" "#fff"
+npm run a11y:contrast -- gridline --all
+
+# Audit every direction's pages in a browser (axe, plus target size, line
+# spacing and length, reflow, and focus); or one, by name
+npm run a11y
+npm run a11y -- -g Gridline
+
+# Open the last audit's report
+npm run a11y:report
+```
+
+The first time, install the browser the audit runs in: `npx playwright install chromium`.
+
 ### Maintenance
 
 ```bash
@@ -84,8 +104,8 @@ npm run lab:new -- <slug> ["Display name"]
 
 # Check every design lab direction against the shared feature set,
 # information architecture, and foundations (see app/lab/README.md). CI
-# (.github/workflows/ci.yml) runs these, with types, lint, formatting, and
-# the other tests, on every push and pull request.
+# (.github/workflows/ci.yml) runs these, with types, lint, formatting, the
+# other tests, and the accessibility audit, on every push and pull request.
 npm run lab:check
 ```
 
@@ -100,6 +120,7 @@ npm run lab:check
 │   │   ├── directions/     # One folder per direction (its shell, page templates, and styles)
 │   │   ├── site/           # What every direction shares: page kinds, navigation, forms, helpers
 │   │   ├── conformance/    # Checks that every direction has the same features and foundations
+│   │   ├── accessibility/  # The WCAG 2.2 AAA audit of every direction, in a browser
 │   │   └── live.ts         # Which direction the site runs
 │   ├── lib/                # Content loading, Markdown rendering, helpers
 │   │   └── content/        # Server-only content pipeline
@@ -117,6 +138,7 @@ npm run lab:check
 ├── public/                 # Static files (images)
 ├── scripts/                # Maintenance scripts
 ├── netlify.toml            # Netlify build settings
+├── playwright.config.ts    # The accessibility audit's browser and dev server
 ├── postcss.config.js       # PostCSS plugins
 ├── react-router.config.ts  # SSR and pre-rendering settings
 └── vite.config.ts          # Vite, React Router, and Netlify plugins
@@ -194,6 +216,10 @@ The site deploys to [Netlify](https://netlify.com) with `npm run build`, publish
   - Code formatter for consistent style
 - [Stylelint](https://stylelint.io/)
   - CSS linting utility
+- [Playwright](https://playwright.dev/) and [axe](https://github.com/dequelabs/axe-core)
+  - Browser automation, and the accessibility engine the audit runs
+- [Color.js](https://colorjs.io/)
+  - Color parsing and contrast
 
 ## License
 

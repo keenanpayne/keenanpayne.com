@@ -700,6 +700,9 @@ export function Lightbox({
   const close = () => dialog.current?.close();
 
   return (
+    // The arrow keys step through the images, and a click on the backdrop
+    // closes it, as Escape does
+    // eslint-disable-next-line jsx-a11y-x/no-noninteractive-element-interactions
     <dialog
       ref={dialog}
       className="mc-lightbox"

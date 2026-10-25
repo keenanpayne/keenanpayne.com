@@ -11,6 +11,11 @@
 import postcss, { type AtRule, type Root, type Rule } from "postcss";
 import nested from "postcss-nested";
 
+import {
+  contrast,
+  CONTRAST_PAIRS,
+  formatRatio
+} from "../accessibility/contrast";
 import type { DirectionTokens } from "../styleguide/tokens.server";
 
 /**
@@ -127,6 +132,37 @@ export const FOUNDATIONS: Foundation[] = [
           problem(`--${root}-${role} to change in ${other}`);
       }
       return problems;
+    }
+  },
+  {
+    id: "css.contrast",
+    rule: `In both schemes, the role tokens reach WCAG 2.2 AAA contrast with each other: ${CONTRAST_PAIRS.map(
+      ([fg, bg, minimum]) => `\`-${fg}\` on \`-${bg}\` ${minimum}:1`
+    ).join(
+      ", "
+    )}. A system color (\`Highlight\`) is the browser’s to keep legible, so it isn’t measured.`,
+    check: ({ root, tokens }) => {
+      const other = tokens.scheme === "light" ? "dark" : "light";
+      const valueOf = (role: string, alt: boolean) => {
+        const token = tokens.tokens.find(
+          (candidate) => candidate.name === `--${root}-${role}`
+        );
+        return alt ? (token?.alt ?? token?.value) : token?.value;
+      };
+      return [false, true].flatMap((alt) =>
+        CONTRAST_PAIRS.flatMap(([fg, bg, minimum]) => {
+          const [foreground, background, paper] = [fg, bg, "paper"].map(
+            (role) => valueOf(role, alt)
+          );
+          if (!foreground || !background) return [];
+          const ratio = contrast(foreground, background, paper);
+          return ratio === undefined || ratio >= minimum
+            ? []
+            : [
+                `--${root}-${fg} on --${root}-${bg} at ${minimum}:1 in ${alt ? other : tokens.scheme} (it’s ${formatRatio(ratio)}: ${foreground} on ${background})`
+              ];
+        })
+      );
     }
   },
   {

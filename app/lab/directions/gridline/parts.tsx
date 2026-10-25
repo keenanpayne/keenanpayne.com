@@ -918,6 +918,9 @@ export function Terminal({ content }: { content: LabContent }) {
           />
         )}
       </div>
+      {/* Roving focus: the tabs inside take it, and the arrow keys move it
+          between them */}
+      {/* eslint-disable-next-line jsx-a11y-x/interactive-supports-focus */}
       <div
         ref={tabList}
         className="gl-terminal__tabs"
@@ -1618,6 +1621,9 @@ export function Blueprint({
   };
 
   return (
+    // Drawing with a pointer; the keyboard draws through the keys layer
+    // below (`gl-blueprint__keys`)
+    // eslint-disable-next-line jsx-a11y-x/click-events-have-key-events, jsx-a11y-x/no-static-element-interactions
     <div
       ref={panel}
       className={cx("gl-blueprint", className)}
@@ -1659,11 +1665,14 @@ export function Blueprint({
         />
       ))}
       {children}
+      {/* A drawing surface, focusable so it can take the arrow keys */}
+      {/* eslint-disable-next-line jsx-a11y-x/no-noninteractive-element-interactions */}
       <div
         className="gl-blueprint__keys"
         role="application"
         aria-roledescription="drawing grid"
         aria-label="Drawing grid: the arrow keys move the lit square, and Space fills it"
+        // eslint-disable-next-line jsx-a11y-x/no-noninteractive-tabindex
         tabIndex={0}
         onKeyDown={onKeys}
         onFocus={() => light(cursor)}

@@ -8,3 +8,7 @@ node_modules
 
 # Netlify
 .netlify
+
+# Accessibility audit (Playwright)
+/test-results/
+/playwright-report/

@@ -2,7 +2,8 @@
 # lab's conformance checks (every direction against the shared feature set,
 # information architecture, and foundations; see app/lab/README.md), and the
 # other unit tests. Each runs as its own step, so a failure says which kind,
-# and every one runs even when an earlier one fails.
+# and every one runs even when an earlier one fails. A second job audits
+# every page in a browser against WCAG 2.2 AAA.
 name: CI
 
 on:
@@ -55,3 +56,35 @@ jobs:
       - name: Unit tests
         if: ${{ !cancelled() && steps.install.outcome == 'success' }}
         run: npx vitest run --exclude "app/lab/conformance/**" --reporter=default --reporter=github-actions
+
+  # Every direction's pages in a real browser against WCAG 2.2 AAA (see
+  # app/lab/accessibility/), apart from the checks above so the two run side
+  # by side. A failure names each element that falls short, and every
+  # finding is uploaded with the run.
+  accessibility:
+    name: Accessibility (WCAG 2.2 AAA)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: npm
+
+      - run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Audit
+        run: npm run a11y
+
+      - name: Upload findings
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-findings
+          path: test-results/a11y-findings/
+          if-no-files-found: ignore
