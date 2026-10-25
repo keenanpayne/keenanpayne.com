@@ -1398,7 +1398,8 @@ export function Blueprint({
   }, [found]);
 
   // Filling the screen, everything but the header and the panel is inert, so
-  // focus can't reach what's hidden behind it
+  // focus can't reach what's hidden behind it. Popovers stay live: the
+  // header's clock opens the weather readout, which shows above the grid.
   useEffect(() => {
     const node = panel.current;
     if (!expanded || !node) return;
@@ -1407,7 +1408,7 @@ export function Blueprint({
       for (const sibling of at.parentElement.children) {
         if (
           sibling === at ||
-          sibling.matches(".gl-header") ||
+          sibling.matches(".gl-header, [popover]") ||
           sibling.hasAttribute("inert")
         ) {
           continue;
