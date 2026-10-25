@@ -48,6 +48,7 @@ import {
   reflect,
   sameSquare,
   scatter,
+  SIZES,
   squareAt,
   useGridSettings,
   type Paint,
@@ -1321,15 +1322,22 @@ const MOVES: Record<string, [number, number]> = {
  * The keyboard draws too, from a focusable layer after the panel's contents:
  * the arrow keys move the lit square, and Space or Enter fills it as a click
  * would.
+ *
+ * It can start with a drawing (the 404's lettering), drawn on the server too.
+ * Where the drawing is wider than the panel, the tile size steps down until
+ * it fits; until then, the stylesheet sizes its squares.
  */
 export function Blueprint({
   className,
   tools: startWithTools = false,
+  drawing,
   children
 }: {
   className?: string;
   /** Starts with the grid tools out, as if a square had been filled */
   tools?: boolean;
+  /** The squares it starts with filled */
+  drawing?: Paint[];
   children: ReactNode;
 }) {
   const panel = useRef<HTMLDivElement>(null);
@@ -1338,10 +1346,12 @@ export function Blueprint({
   const drag = useRef<{ x: number; y: number; moved: boolean } | null>(null);
   // The click that ends a drag mustn't also toggle a square
   const dragged = useRef(false);
-  const [paints, setPaints] = useState<Paint[]>([]);
+  const [paints, setPaints] = useState<Paint[]>(drawing ?? []);
   // The squares as last drawn, for the Game of Life's clock to read
   const latest = useRef(paints);
-  const [{ brush, size: grid, erase, symmetry }] = useGridSettings();
+  const [{ brush, size: grid, erase, symmetry }, update] = useGridSettings();
+  // The drawing is fitted to the panel once, as it first shows
+  const [fitted, setFitted] = useState(!drawing?.length);
   const [tools, setTools] = useState(startWithTools);
   // Just found: the tools say so for a moment
   const [found, setFound] = useState(false);
@@ -1357,6 +1367,31 @@ export function Blueprint({
   useEffect(() => {
     latest.current = paints;
   });
+
+  // Measured once the panel has a width (it has none while hidden)
+  useEffect(() => {
+    const node = panel.current;
+    if (fitted || !drawing?.length || !node) return;
+    const fit = () => {
+      if (!node.clientWidth) return;
+      observer.disconnect();
+      setFitted(true);
+      const style = getComputedStyle(node);
+      const room =
+        node.clientWidth -
+        parseFloat(style.paddingLeft) -
+        parseFloat(style.paddingRight);
+      const reach = Math.max(...drawing.map(({ column }) => Math.abs(column)));
+      const fits = SIZES.filter(
+        (size) => size <= grid && size * (reach * 2 + 1) <= room
+      );
+      const size = fits.at(-1) ?? SIZES[0];
+      if (size !== grid) update({ size });
+    };
+    const observer = new ResizeObserver(fit);
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [fitted, drawing, grid, update]);
 
   useEffect(() => {
     if (!found) return;
@@ -1627,7 +1662,9 @@ export function Blueprint({
     <div
       ref={panel}
       className={cx("gl-blueprint", className)}
-      style={{ "--gl-grid": `${grid}px` } as CSSProperties}
+      style={
+        fitted ? ({ "--gl-grid": `${grid}px` } as CSSProperties) : undefined
+      }
       data-brush={brush}
       data-erase={erase || undefined}
       data-life={playing || undefined}
@@ -1653,13 +1690,19 @@ export function Blueprint({
         </span>
       )}
       <span className="gl-blueprint__cell" aria-hidden="true" />
-      {paints.map(({ column, row, brush: color, leaving }) => (
+      {paints.map(({ column, row, brush: color, leaving, step }) => (
         <span
           key={`${column} ${row}`}
           className="gl-blueprint__paint"
           data-brush={color}
           data-leaving={leaving || undefined}
-          style={{ "--gl-column": column, "--gl-row": row } as CSSProperties}
+          style={
+            {
+              "--gl-column": column,
+              "--gl-row": row,
+              "--gl-paint-step": step
+            } as CSSProperties
+          }
           onAnimationEnd={() => leaving && onPaintEnd({ column, row })}
           aria-hidden="true"
         />

@@ -16,6 +16,7 @@ import {
   TypeSample
 } from "../../styleguide/kit";
 
+import { lettering } from "./blueprint";
 import { SkySketch } from "./Denver";
 import { rigFor } from "./rigs";
 import {
@@ -141,7 +142,7 @@ function Motifs({ content }: SpecimenProps) {
           ))}
         </Cells>
       </Specimen>
-      <Specimen label="Light rays" note="Case study covers and the 404">
+      <Specimen label="Light rays" note="Case study covers">
         <Rays>
           <div style={{ height: 220 }} />
         </Rays>
@@ -167,6 +168,16 @@ function Motifs({ content }: SpecimenProps) {
       >
         <Blueprint className="gl-cta__panel" tools>
           <div style={{ height: 160 }} />
+        </Blueprint>
+      </Specimen>
+      <Specimen
+        label="Lettering"
+        note="The 404, written in the Blueprint’s squares, filling in from the left; the tile size steps down where it doesn’t fit"
+        wide
+      >
+        <Blueprint className="gl-lost" drawing={lettering("404", "violet")}>
+          <div className="gl-lost__room" />
+          <div className="gl-lost__copy" />
         </Blueprint>
       </Specimen>
       {Object.entries(MARKS).map(([id, mark]) => (

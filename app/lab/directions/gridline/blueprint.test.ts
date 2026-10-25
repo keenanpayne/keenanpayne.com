@@ -4,6 +4,7 @@ import {
   boundsOf,
   clear,
   fill,
+  lettering,
   lifeStep,
   reflect,
   scatter,
@@ -120,5 +121,26 @@ describe("the Game of Life", () => {
     const edge = [violet(5, -1), violet(5, 0), violet(5, 1)];
     const { paints } = lifeStep(edge, BOUNDS, false);
     expect(live(paints)).toEqual(["-5 0", "4 0", "5 0"]);
+  });
+});
+
+describe("lettering", () => {
+  it("writes centered on the middle column, ending above the middle square", () => {
+    const paints = lettering("404", "violet");
+    const columns = paints.map(({ column }) => column);
+    const rows = paints.map(({ row }) => row);
+    expect([Math.min(...columns), Math.max(...columns)]).toEqual([-5, 5]);
+    expect([Math.min(...rows), Math.max(...rows)]).toEqual([-5, -1]);
+    // The first 4's open top, and the 0's hollow middle
+    expect(live(paints)).not.toContain("-4 -5");
+    expect(live(paints)).not.toContain("0 -3");
+    expect(live(paints)).toContain("-1 -3");
+  });
+
+  it("fills in from the left", () => {
+    const paints = lettering("404", "violet");
+    expect(paints.map(({ step }) => step)).toEqual(paints.map((_, i) => i));
+    const columns = paints.map(({ column }) => column);
+    expect(columns).toEqual([...columns].sort((a, b) => a - b));
   });
 });

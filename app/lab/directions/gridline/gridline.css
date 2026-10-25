@@ -4005,6 +4005,8 @@ a.gl-chip {
   );
   pointer-events: none;
   animation: gl-paint-in 640ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  /* Squares filled together (a lettering's) fill in one after another */
+  animation-delay: calc(var(--gl-paint-step, 0) * 32ms);
 
   /* Hidden outright where motion stops, rather than fading */
   &[data-leaving] {
@@ -5340,12 +5342,45 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
 /* Not found
    ========================================================================== */
 
+/* The 404 written in the Blueprint's squares, above the middle of the panel,
+   and the copy a square below it. The two halves are always the same height,
+   so the middle of the panel, where the lettering ends, is where they meet. */
 .gl-lost {
+  --gl-blueprint-intensity: 0.9;
+  --gl-blueprint-pad: clamp(56px, 8vw, 96px);
+  /* Until the script fits the lettering to the panel, the largest square it
+     fits at for the screen's width (eleven squares, and the panel's padding) */
+  --gl-grid: 48px;
+
+  @media (width < 570px) {
+    --gl-grid: 32px;
+  }
+
+  @media (width < 394px) {
+    --gl-grid: 24px;
+  }
+
+  @media (width < 306px) {
+    --gl-grid: 16px;
+  }
+
   display: grid;
-  place-items: center;
+  grid-template-rows: 1fr 1fr;
   min-height: 62vh;
-  padding: 96px var(--gl-x);
+  padding: var(--gl-blueprint-pad) var(--gl-x);
   text-align: center;
+  transition:
+    --gl-pointer-x 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    --gl-pointer-y 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    --gl-grid 700ms cubic-bezier(0.16, 1, 0.3, 1),
+    padding-top 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    padding-bottom 500ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Its tools deepen the bottom padding, and the top with it, to keep the
+     middle where the halves meet */
+  &:has(> .gl-blueprint__tools) {
+    padding-top: var(--gl-tools-pad);
+  }
 
   & .gl-eyebrow,
   & .gl-actions {
@@ -5354,34 +5389,24 @@ body:has(.gl-blueprint[data-expanded]) .labBar {
 
   & h1 {
     margin: 0 auto;
-    color: #fff;
   }
 
   & p:not(.gl-eyebrow) {
     max-width: 24em;
     margin: 20px auto 0;
-    color: rgb(244 243 248 / 90%);
+    color: var(--gl-text);
     font-family: var(--gl-serif);
     font-size: var(--gl-fs-large);
     line-height: 1.5;
   }
-
-  & .gl-eyebrow {
-    color: rgb(244 243 248 / 85%);
-
-    &::before {
-      background: #c9c4ff;
-    }
-  }
 }
 
-.gl-lost__code {
-  display: block;
-  margin-bottom: 16px;
-  color: transparent;
-  font-size: clamp(120px, 22vw, 260px);
-  font-weight: 500;
-  letter-spacing: -0.06em;
-  line-height: 0.85;
-  -webkit-text-stroke: 1px rgb(255 255 255 / 55%);
+/* Room for the lettering: five squares, and the half of the middle one */
+.gl-lost__room {
+  min-height: calc(var(--gl-grid) * 5.5);
+}
+
+/* From the top of the square below the middle one */
+.gl-lost__copy {
+  padding-top: calc(var(--gl-grid) / 2);
 }

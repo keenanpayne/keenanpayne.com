@@ -14,8 +14,16 @@ import { useCallback, useSyncExternalStore } from "react";
 /** A square of the grid, counted in squares from the middle one */
 export type Square = { column: number; row: number };
 
-/** A filled square, in a brush's color; `leaving` while it fades out */
-export type Paint = Square & { brush: BrushId; leaving?: boolean };
+/**
+ * A filled square, in a brush's color; `leaving` while it fades out. `step`
+ * is its place among squares filled together (a lettering's), which fill in
+ * one after another.
+ */
+export type Paint = Square & {
+  brush: BrushId;
+  leaving?: boolean;
+  step?: number;
+};
 
 /** The squares a panel shows, at their edges (inclusive) */
 export type Bounds = {
@@ -224,6 +232,42 @@ export function scatter(
     }
   }
   return squares;
+}
+
+/* Lettering
+   ========================================================================== */
+
+/** A face three squares wide and five tall, with only what the site writes */
+const FACE: Record<string, string[]> = {
+  "0": ["###", "#.#", "#.#", "#.#", "###"],
+  "4": ["#.#", "#.#", "###", "..#", "..#"]
+};
+
+/**
+ * Text written in filled squares, its characters a square apart: centered on
+ * the middle column, its last row the one above the middle square (so copy
+ * can start a square below the middle). Its squares fill in from the left.
+ */
+export function lettering(text: string, brush: BrushId): Paint[] {
+  const glyphs = [...text].map((character) => FACE[character]);
+  const width = glyphs.length * 4 - 1;
+  const height = FACE["0"].length;
+  const squares = glyphs.flatMap((glyph, index) =>
+    glyph.flatMap((line, row) =>
+      [...line].flatMap((mark, column) =>
+        mark === "#" ? [{ column: index * 4 + column, row }] : []
+      )
+    )
+  );
+
+  return squares
+    .sort((a, b) => a.column - b.column || a.row - b.row)
+    .map(({ column, row }, step) => ({
+      column: column - (width - 1) / 2,
+      row: row - height,
+      brush,
+      step
+    }));
 }
 
 /* The Game of Life
