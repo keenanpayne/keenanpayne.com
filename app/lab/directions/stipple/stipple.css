@@ -2953,9 +2953,10 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   line-height: 1.65;
   text-wrap: pretty;
 
-  /* Lines of text no longer than 80 characters */
+  /* Lines of text no longer than 80 characters, with room to spare: the
+     same text sets a few characters longer on some machines than others */
   & :is(p, li, dd, blockquote) {
-    max-width: 50ch;
+    max-width: 47ch;
   }
 
   /* In monospace, a character is a ch */
