@@ -161,13 +161,27 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
                         autoPlay={item.autoplay}
                       />
                     ) : (
-                      item.image && (
+                      item.image &&
+                      (section.enlarge ? (
+                        <a href={item.enlargeHref}>
+                          <img
+                            src={item.image}
+                            alt={item.title ?? ""}
+                            loading="lazy"
+                          />
+                          <span className="neon-gallery__larger">
+                            {item.title
+                              ? " (view larger)"
+                              : "View larger image"}
+                          </span>
+                        </a>
+                      ) : (
                         <img
                           src={item.image}
                           alt={item.title ?? ""}
                           loading="lazy"
                         />
-                      )
+                      ))
                     )}
                   </div>
                   {(item.title || item.caption) && (

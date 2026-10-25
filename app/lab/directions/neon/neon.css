@@ -3126,10 +3126,24 @@ a.neon-chip {
     outline: none;
   }
 
+  & a {
+    display: block;
+  }
+
   & img,
   & video {
     width: 100%;
   }
+}
+
+/* A screenshot that opens larger says so to a screen reader */
+.neon-gallery__larger {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .neon-gallery__item figcaption {
