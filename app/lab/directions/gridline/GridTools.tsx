@@ -83,6 +83,19 @@ const ICONS = {
       d="M2.5 4.5h11M6.5 4.5V2.75h3V4.5M4 4.5l.75 9h6.5l.75-9M6.75 7v4M9.25 7v4"
     />
   ),
+  // Corners pushed out to the edges, and drawn back in
+  expand: (
+    <path
+      {...stroke}
+      d="M2.5 6V2.5H6M10 2.5h3.5V6M13.5 10v3.5H10M6 13.5H2.5V10"
+    />
+  ),
+  shrink: (
+    <path
+      {...stroke}
+      d="M6 2.5V6H2.5M13.5 6H10V2.5M10 13.5V10h3.5M2.5 10H6v3.5"
+    />
+  ),
   hide: <path {...stroke} d="m4 6 4 4 4-4" />,
   // A cell picked out, as in a design tool (the Selection mark)
   show: (
@@ -172,7 +185,8 @@ type Tray = "brush" | "size";
  * The Blueprint panel's easter egg: a toolbar that comes out the first time
  * a square is filled. The brush's color and the tile size open a tray of
  * choices above it; the eraser, symmetry, and the Game of Life are toggles;
- * scatter and clear act at once. It folds away to a single button.
+ * scatter and clear act at once. It can grow the grid to fill the screen
+ * (Escape shrinks it again), and folds away to a single button.
  */
 export function GridTools({
   playing,
@@ -180,7 +194,9 @@ export function GridTools({
   onScatter,
   onClear,
   empty,
-  found
+  found,
+  expanded,
+  onExpand
 }: {
   /** Whether the Game of Life is running */
   playing: boolean;
@@ -191,6 +207,9 @@ export function GridTools({
   empty: boolean;
   /** Just found: says so for a moment */
   found: boolean;
+  /** Whether the grid fills the screen */
+  expanded: boolean;
+  onExpand: (expanded: boolean) => void;
 }) {
   const [settings, update] = useGridSettings();
   const reducedMotion = useReducedMotion();
@@ -233,6 +252,29 @@ export function GridTools({
       document.removeEventListener("pointerdown", onPress);
     };
   }, [tray]);
+
+  // Escape shrinks a grid that fills the screen, once any tray is closed,
+  // unless it's meant for something else: the header's menu or a popover
+  useEffect(() => {
+    if (!expanded || tray) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key !== "Escape" || event.defaultPrevented) return;
+      const target = event.target as Node;
+      const panel = root.current?.closest(".gl-blueprint");
+      if (target !== document.body && !panel?.contains(target)) return;
+      // The selector throws where popovers aren't supported, and none is
+      // open there
+      try {
+        if (document.querySelector(":popover-open")) return;
+      } catch {
+        // No popover support
+      }
+      event.preventDefault();
+      onExpand(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [expanded, tray, onExpand]);
 
   useEffect(() => {
     if (!refocus.current) return;
@@ -390,6 +432,14 @@ export function GridTools({
 
         <span className="gl-tools__rule" aria-hidden="true" />
 
+        <Tool
+          tip={expanded ? "Shrink the grid" : "Fill the screen"}
+          aria-pressed={expanded}
+          data-expand=""
+          onClick={() => onExpand(!expanded)}
+        >
+          <Icon>{expanded ? ICONS.shrink : ICONS.expand}</Icon>
+        </Tool>
         <Tool tip="Hide grid tools" onClick={() => fold(true)}>
           <Icon>{ICONS.hide}</Icon>
         </Tool>

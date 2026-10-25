@@ -3964,6 +3964,49 @@ a.gl-chip {
   padding-bottom: var(--gl-tools-pad);
 }
 
+/* Grown to fill the screen below the header, without its contents: only the
+   grid, its squares, and its tools, with the page held still behind it */
+.gl-blueprint[data-expanded] {
+  --gl-tools-pad: 80px;
+
+  position: fixed;
+  z-index: 19;
+  inset: var(--gl-header) 0 0;
+  padding: 0;
+  background: var(--gl-paper);
+  touch-action: none;
+
+  /* The grid reaches further out before it fades */
+  &::before {
+    mask-image: radial-gradient(
+      75% 90% at 50% 50%,
+      #000 30%,
+      rgb(0 0 0 / 35%) 70%,
+      transparent 100%
+    );
+  }
+
+  /* Everything but its own parts */
+  & > :not([class^="gl-blueprint__"]) {
+    display: none;
+  }
+}
+
+:root:has(.gl-blueprint[data-expanded]) {
+  overflow: hidden;
+}
+
+/* Not in the style guide, whose stage contains anything fixed to its own box,
+   so there's no screen to fill */
+.gl-tools__tool[data-expand]:is(.sg-stage *) {
+  display: none;
+}
+
+/* The lab switcher steps aside so it doesn't cover the tools */
+body:has(.gl-blueprint[data-expanded]) .labBar {
+  display: none;
+}
+
 .gl-tools__bar,
 .gl-tools__tray,
 .gl-tools__unfold {

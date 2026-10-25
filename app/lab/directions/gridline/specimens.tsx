@@ -162,7 +162,7 @@ function Motifs({ content }: SpecimenProps) {
       </Specimen>
       <Specimen
         label="Grid tools"
-        note="The Blueprint’s easter egg, out once a square is filled: color, tile size, eraser, symmetry, the Game of Life, scatter, and clear"
+        note="The Blueprint’s easter egg, out once a square is filled: color, tile size, eraser, symmetry, the Game of Life, scatter, and clear (and, on a page, filling the screen)"
         wide
       >
         <Blueprint className="gl-cta__panel" tools>

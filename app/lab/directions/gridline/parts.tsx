@@ -1267,7 +1267,9 @@ const SCATTER = 0.18;
  *
  * Filling a square brings out its grid tools (`GridTools`): the brush's
  * color, the tile size, an eraser, symmetry about the middle, the Game of
- * Life over the filled squares, scattering squares, and clearing them.
+ * Life over the filled squares, scattering squares, and clearing them. They
+ * can also grow the panel to fill the screen below the header, without its
+ * contents, for a bigger canvas; touch paints there too, as nothing scrolls.
  */
 export function Blueprint({
   className,
@@ -1293,6 +1295,7 @@ export function Blueprint({
   // Just found: the tools say so for a moment
   const [found, setFound] = useState(false);
   const [running, setRunning] = useState(false);
+  const [expanded, setExpanded] = useState(false);
   const reducedMotion = useReducedMotion();
   const playing = running && !reducedMotion;
 
@@ -1384,8 +1387,10 @@ export function Blueprint({
     );
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
-    // Touch scrolls the page instead; taps still fill squares as clicks
-    if (event.pointerType === "touch" || event.button !== 0) return;
+    // Touch scrolls the page instead, unless the grid fills the screen; taps
+    // still fill squares as clicks
+    if ((event.pointerType === "touch" && !expanded) || event.button !== 0)
+      return;
     if ((event.target as Element).closest(NOT_PAINTABLE)) return;
     const { x, y } = locate(event.clientX, event.clientY);
     drag.current = { x, y, moved: false };
@@ -1433,7 +1438,7 @@ export function Blueprint({
   };
 
   const onPointerMove = (event: ReactPointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "touch") return;
+    if (event.pointerType === "touch" && !expanded) return;
     const { clientX, clientY } = event;
     if (drag.current && event.buttons & 1) paintAlong(clientX, clientY);
 
@@ -1505,6 +1510,7 @@ export function Blueprint({
       data-brush={brush}
       data-erase={erase || undefined}
       data-life={playing || undefined}
+      data-expanded={expanded || undefined}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
       onPointerUp={onPointerUp}
@@ -1546,6 +1552,8 @@ export function Blueprint({
           onClear={onClear}
           empty={paints.every((paint) => paint.leaving)}
           found={found}
+          expanded={expanded}
+          onExpand={setExpanded}
         />
       )}
     </div>
