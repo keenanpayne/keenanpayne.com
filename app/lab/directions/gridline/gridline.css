@@ -1164,6 +1164,29 @@ a.gl-chip {
   }
 }
 
+/* Facts sit flush at the bottom, their rules running the box's full width,
+   with the padding inside each row instead */
+.gl-page-header__aside:has(> .gl-facts) {
+  --gl-aside-x: var(--gl-x);
+
+  padding: 0;
+
+  @media (width >= 1024px) {
+    --gl-aside-x: 32px;
+  }
+
+  & .gl-facts > div {
+    padding-inline: var(--gl-aside-x);
+  }
+
+  /* Contact's other way in, as a last row */
+  & .gl-contact__alternate {
+    margin: 0;
+    padding: 20px var(--gl-aside-x) 24px;
+    border-top: 1px solid var(--gl-line);
+  }
+}
+
 /* Home
    ========================================================================== */
 
