@@ -557,6 +557,16 @@ body:has(.gl) {
 /* Header
    ========================================================================== */
 
+/* Focus moving to something the sticky header covers scrolls it clear, with
+   room for its ring; the browser otherwise counts it as in view already */
+:root:has(.gl) {
+  scroll-padding-top: 72px;
+
+  @media (width >= 1600px) {
+    scroll-padding-top: 80px;
+  }
+}
+
 .gl-header {
   position: sticky;
   top: 0;
