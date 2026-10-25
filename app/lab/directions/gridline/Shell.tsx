@@ -21,13 +21,18 @@ const NO_CTA = new Set(["contact", "inquiry", "notFound"]);
 /** How near a cross the pointer has to be to reach it, in pixels */
 const CROSS_REACH = 10;
 
+/** A cross and what draws it: a band, or the header on its bottom rule */
 type Cross = { band: HTMLElement; side: "start" | "end" };
 
 /** The cross within reach of a point, if one is shown there */
 function crossAt(root: HTMLElement, x: number, y: number): Cross | null {
-  for (const band of root.querySelectorAll<HTMLElement>(".gl-band")) {
+  for (const band of root.querySelectorAll<HTMLElement>(
+    ".gl-header, .gl-band"
+  )) {
     const box = band.getBoundingClientRect();
-    if (Math.abs(y - box.top) > CROSS_REACH * 2) continue;
+    if (y < box.top - CROSS_REACH * 2 || y > box.bottom + CROSS_REACH * 2) {
+      continue;
+    }
     for (const side of ["start", "end"] as const) {
       const mark = getComputedStyle(
         band,
@@ -53,10 +58,11 @@ function crossAt(root: HTMLElement, x: number, y: number): Cross | null {
 }
 
 /**
- * The bands' crosses are drawn as their `::before` and `::after`, which
- * can't take the pointer, so this finds the one under it: marking its band
- * `data-cross` (with the side) while it's there, and `data-cross-ping` once
- * it's clicked, until that animation ends. Scrolling lets go of it.
+ * The crosses (the bands', and the header's) are drawn as their `::before`
+ * and `::after`, which can't take the pointer, so this finds the one under
+ * it: marking what draws it `data-cross` (with the side) while it's there,
+ * and `data-cross-ping` once it's clicked, until that animation ends.
+ * Scrolling lets go of it.
  */
 function useCrosses(root: RefObject<HTMLElement | null>) {
   useEffect(() => {
@@ -87,6 +93,9 @@ function useCrosses(root: RefObject<HTMLElement | null>) {
     const onClick = (event: MouseEvent) => {
       const cross = crossAt(node, event.clientX, event.clientY);
       if (!cross) return;
+      // The cross takes the click from what's under it, such as the header's
+      // name, whose corner falls within its cross's reach
+      event.preventDefault();
       // Restarted on each click, even one landing mid-ping
       cross.band.removeAttribute("data-cross-ping");
       void cross.band.offsetWidth;

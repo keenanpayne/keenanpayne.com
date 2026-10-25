@@ -368,7 +368,8 @@ body:has(.gl) {
    can't take it themselves, and marked on its band as `data-cross`) reaches
    out in violet; a click there spins it a quarter turn as a square pings out
    from it (`data-cross-ping`). Each is drawn in a 21px box, room for the
-   arms to grow, centered where the rules meet. */
+   arms to grow, centered where the rules meet. The header draws its own
+   pair on its bottom rule, above the bands that pass under it. */
 @property --gl-cross {
   syntax: "<color>";
   inherits: false;
@@ -384,7 +385,10 @@ body:has(.gl) {
 .gl-band {
   position: relative;
   border-top: 1px solid var(--gl-line);
+}
 
+.gl-band,
+.gl-header {
   &::before,
   &::after {
     /* A touch stronger than the lines they sit on, in either scheme */
@@ -422,7 +426,9 @@ body:has(.gl) {
     right: -11px;
   }
 
-  &[data-cross] {
+  /* Over whatever sits under the cross, a link included */
+  &[data-cross],
+  &[data-cross] * {
     cursor: crosshair;
   }
 
@@ -451,14 +457,15 @@ body:has(.gl) {
   }
 }
 
-/* The first band meets the header's rule instead of drawing its own */
+/* The first band meets the header's rule, and its crosses, instead of
+   drawing its own */
 .gl-main > .gl-band:first-child,
 .gl-main > article:first-child > .gl-band:first-child {
   border-top: 0;
 
   &::before,
   &::after {
-    top: -11px;
+    display: none;
   }
 }
 
@@ -555,6 +562,12 @@ body:has(.gl) {
   border-bottom: 1px solid var(--gl-line);
   background: color-mix(in srgb, var(--gl-paper) 84%, transparent);
   backdrop-filter: blur(14px) saturate(1.4);
+
+  /* Its crosses, on its bottom rule */
+  &::before,
+  &::after {
+    top: calc(100% - 10px);
+  }
 }
 
 .gl-brand {
