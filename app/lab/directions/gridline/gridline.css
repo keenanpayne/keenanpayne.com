@@ -347,7 +347,23 @@ body:has(.gl) {
 }
 
 /* Bands: full-width rows between hairlines, marked with a cross where they
-   meet the rails */
+   meet the rails. A cross under the pointer (found by the Shell, as these
+   can't take it themselves, and marked on its band as `data-cross`) reaches
+   out in violet; a click there spins it a quarter turn as a square pings out
+   from it (`data-cross-ping`). Each is drawn in a 21px box, room for the
+   arms to grow, centered where the rules meet. */
+@property --gl-cross {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: transparent;
+}
+
+@property --gl-cross-arm {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 11px;
+}
+
 .gl-band {
   position: relative;
   border-top: 1px solid var(--gl-line);
@@ -356,20 +372,25 @@ body:has(.gl) {
   &::after {
     /* A touch stronger than the lines they sit on, in either scheme */
     --gl-cross: color-mix(in srgb, var(--gl-line-strong), var(--gl-ink) 20%);
+    --gl-cross-arm: 11px;
 
     content: "";
     position: absolute;
     z-index: 2;
-    top: -5px;
+    top: -10px;
     display: none;
-    width: 11px;
-    height: 11px;
+    width: 21px;
+    height: 21px;
+    outline: 1px solid transparent;
     background:
-      linear-gradient(var(--gl-cross), var(--gl-cross)) center / 1px 100%
-        no-repeat,
-      linear-gradient(var(--gl-cross), var(--gl-cross)) center / 100% 1px
-        no-repeat;
+      linear-gradient(var(--gl-cross), var(--gl-cross)) center / 1px
+        var(--gl-cross-arm) no-repeat,
+      linear-gradient(var(--gl-cross), var(--gl-cross)) center /
+        var(--gl-cross-arm) 1px no-repeat;
     pointer-events: none;
+    transition:
+      --gl-cross 200ms,
+      --gl-cross-arm 360ms cubic-bezier(0.16, 1, 0.3, 1);
 
     @media (width >= 720px) {
       display: block;
@@ -377,11 +398,39 @@ body:has(.gl) {
   }
 
   &::before {
-    left: -6px;
+    left: -11px;
   }
 
   &::after {
-    right: -6px;
+    right: -11px;
+  }
+
+  &[data-cross] {
+    cursor: crosshair;
+  }
+
+  &[data-cross="start"]::before,
+  &[data-cross="end"]::after {
+    --gl-cross: var(--gl-accent);
+    --gl-cross-arm: 17px;
+  }
+
+  &[data-cross-ping="start"]::before,
+  &[data-cross-ping="end"]::after {
+    animation: gl-cross-ping 640ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@keyframes gl-cross-ping {
+  from {
+    outline-color: var(--gl-accent);
+    outline-offset: -7px;
+  }
+
+  to {
+    outline-color: transparent;
+    outline-offset: 3px;
+    rotate: 90deg;
   }
 }
 
@@ -392,7 +441,7 @@ body:has(.gl) {
 
   &::before,
   &::after {
-    top: -6px;
+    top: -11px;
   }
 }
 
@@ -408,11 +457,11 @@ body:has(.gl) {
   color: var(--gl-text);
 
   &.gl-band::before {
-    left: -5px;
+    left: -10px;
   }
 
   &.gl-band::after {
-    right: -5px;
+    right: -10px;
   }
 }
 

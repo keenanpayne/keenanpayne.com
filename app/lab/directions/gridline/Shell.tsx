@@ -1,3 +1,5 @@
+import { useEffect, useRef, type RefObject } from "react";
+
 import { metadata } from "../../../lib/site";
 import {
   cx,
@@ -16,6 +18,101 @@ const WIDE = "(width >= 960px)";
 /** Pages that are a call to action already, so don't close with another */
 const NO_CTA = new Set(["contact", "inquiry", "notFound"]);
 
+/** How near a cross the pointer has to be to reach it, in pixels */
+const CROSS_REACH = 10;
+
+type Cross = { band: HTMLElement; side: "start" | "end" };
+
+/** The cross within reach of a point, if one is shown there */
+function crossAt(root: HTMLElement, x: number, y: number): Cross | null {
+  for (const band of root.querySelectorAll<HTMLElement>(".gl-band")) {
+    const box = band.getBoundingClientRect();
+    if (Math.abs(y - box.top) > CROSS_REACH * 2) continue;
+    for (const side of ["start", "end"] as const) {
+      const mark = getComputedStyle(
+        band,
+        side === "start" ? "::before" : "::after"
+      );
+      if (mark.display === "none") continue;
+      // Its middle, from its offsets in the band's padding box
+      const half = parseFloat(mark.width) / 2;
+      const middleX =
+        side === "start"
+          ? box.left + band.clientLeft + parseFloat(mark.left) + half
+          : box.right - band.clientLeft - parseFloat(mark.right) - half;
+      const middleY = box.top + band.clientTop + parseFloat(mark.top) + half;
+      if (
+        Math.abs(x - middleX) <= CROSS_REACH &&
+        Math.abs(y - middleY) <= CROSS_REACH
+      ) {
+        return { band, side };
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * The bands' crosses are drawn as their `::before` and `::after`, which
+ * can't take the pointer, so this finds the one under it: marking its band
+ * `data-cross` (with the side) while it's there, and `data-cross-ping` once
+ * it's clicked, until that animation ends. Scrolling lets go of it.
+ */
+function useCrosses(root: RefObject<HTMLElement | null>) {
+  useEffect(() => {
+    const node = root.current;
+    if (!node) return;
+    let frame = 0;
+    let hovered: Cross | null = null;
+
+    const hover = (next: Cross | null) => {
+      if (next?.band === hovered?.band && next?.side === hovered?.side) return;
+      hovered?.band.removeAttribute("data-cross");
+      next?.band.setAttribute("data-cross", next.side);
+      hovered = next;
+    };
+
+    const onMove = (event: PointerEvent) => {
+      if (event.pointerType === "touch") return;
+      const { clientX, clientY } = event;
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() =>
+        hover(crossAt(node, clientX, clientY))
+      );
+    };
+    const onLeave = () => {
+      cancelAnimationFrame(frame);
+      hover(null);
+    };
+    const onClick = (event: MouseEvent) => {
+      const cross = crossAt(node, event.clientX, event.clientY);
+      if (!cross) return;
+      // Restarted on each click, even one landing mid-ping
+      cross.band.removeAttribute("data-cross-ping");
+      void cross.band.offsetWidth;
+      cross.band.setAttribute("data-cross-ping", cross.side);
+    };
+    const onPinged = (event: AnimationEvent) => {
+      if (event.animationName !== "gl-cross-ping") return;
+      (event.target as Element).removeAttribute("data-cross-ping");
+    };
+
+    node.addEventListener("pointermove", onMove);
+    node.addEventListener("pointerleave", onLeave);
+    node.addEventListener("click", onClick);
+    node.addEventListener("animationend", onPinged);
+    window.addEventListener("scroll", onLeave, { passive: true });
+    return () => {
+      cancelAnimationFrame(frame);
+      node.removeEventListener("pointermove", onMove);
+      node.removeEventListener("pointerleave", onLeave);
+      node.removeEventListener("click", onClick);
+      node.removeEventListener("animationend", onPinged);
+      window.removeEventListener("scroll", onLeave);
+    };
+  }, [root]);
+}
+
 export function Shell({ view, navigation, content, children }: ShellProps) {
   const to = useTo();
   const { profile, socials } = content;
@@ -24,9 +121,11 @@ export function Shell({ view, navigation, content, children }: ShellProps) {
   // The lab previews the other closing panels from the URL
   const [ctaParam] = useQueryParam("cta");
   const cta = isCta(ctaParam) ? ctaParam : DEFAULT_CTA;
+  const root = useRef<HTMLDivElement>(null);
+  useCrosses(root);
 
   return (
-    <div className="gl">
+    <div ref={root} className="gl">
       <a className="gl-skip" href="#gl-main">
         Skip to content
       </a>
