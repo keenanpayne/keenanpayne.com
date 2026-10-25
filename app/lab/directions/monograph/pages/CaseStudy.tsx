@@ -70,16 +70,19 @@ export function Gallery({ section }: { section: PortfolioGridSection }) {
                   autoPlay={item.autoplay}
                 />
               </div>
+            ) : item.image && section.enlarge ? (
+              <a className="mg-gallery__media" href={item.enlargeHref}>
+                <img src={item.image} alt={item.title ?? ""} loading="lazy" />
+                <span className="mg-visually-hidden">
+                  {item.title ? " (view larger)" : "View larger image"}
+                </span>
+              </a>
             ) : (
-              <a
-                className="mg-gallery__media"
-                href={item.imageRaw ?? item.link ?? item.image}
-                tabIndex={-1}
-              >
+              <div className="mg-gallery__media">
                 {item.image && (
                   <img src={item.image} alt={item.title ?? ""} loading="lazy" />
                 )}
-              </a>
+              </div>
             )}
             {(item.title || item.caption) && (
               <figcaption>

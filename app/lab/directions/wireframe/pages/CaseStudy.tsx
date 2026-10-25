@@ -114,6 +114,19 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
                       playsInline={item.autoplay}
                       autoPlay={item.autoplay}
                     />
+                  ) : item.image && section.enlarge ? (
+                    // The link's name is its image's, saying it opens larger
+                    <a href={item.enlargeHref}>
+                      <img
+                        src={item.image}
+                        alt={
+                          item.title
+                            ? `${item.title} (view larger)`
+                            : "View larger image"
+                        }
+                        loading="lazy"
+                      />
+                    </a>
                   ) : (
                     item.image && (
                       <img

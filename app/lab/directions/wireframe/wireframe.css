@@ -389,6 +389,11 @@ body:has(.wireframe) {
   list-style: none;
 }
 
+/* A screenshot that opens larger: one box around it, for its focus ring */
+.wireframe-grid figure > a {
+  display: block;
+}
+
 .wireframe-card p {
   margin: 4px 0 0;
 }

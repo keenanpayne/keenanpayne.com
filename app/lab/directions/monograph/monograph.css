@@ -2647,7 +2647,8 @@ button.mg-pill {
   }
 
   &:hover img,
-  &:hover video {
+  &:hover video,
+  &:focus-visible img {
     filter: none;
   }
 }

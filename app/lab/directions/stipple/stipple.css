@@ -2451,6 +2451,11 @@ html:has(.st-menu:not([hidden], .sg-stage *)) {
   display: grid;
   gap: 32px;
 
+  /* A screenshot that opens larger */
+  & .st-gallery__larger {
+    display: block;
+  }
+
   & figure {
     margin: 0;
   }

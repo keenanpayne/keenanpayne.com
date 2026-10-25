@@ -765,6 +765,25 @@ const pages: Omit<Requirement, "group">[] = [
       bodyProblems(main, page.content).forEach(problem);
     }
   ),
+  forKinds(
+    ["caseStudy"],
+    "caseStudy.enlarge",
+    "A gallery that asks to open larger (`section.enlarge`) links each screenshot to its full size (`item.enlargeHref`), the link around the image.",
+    ({ main, view: { page } }, problem) => {
+      for (const section of page.sections) {
+        if (section.type !== "portfolioGrid" || !section.enlarge) continue;
+        for (const item of section.items ?? []) {
+          if (item.video || !item.image) continue;
+          const image = item.image;
+          if (!linksTo(main, item.enlargeHref).some((a) => shows(a, image))) {
+            problem(
+              `a link around the gallery’s ${item.title ?? imageKey(image)}`
+            );
+          }
+        }
+      }
+    }
+  ),
 
   forKinds(
     ["writing"],

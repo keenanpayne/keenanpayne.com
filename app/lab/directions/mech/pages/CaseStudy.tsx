@@ -55,16 +55,19 @@ function Gallery({
                 autoPlay={item.autoplay && !reducedMotion}
               />
             </div>
+          ) : item.image && section.enlarge ? (
+            <a className="mc-gallery__media" href={item.enlargeHref}>
+              <img src={item.image} alt={item.title ?? ""} loading="lazy" />
+              <span className="mc-visually-hidden">
+                {item.title ? " (view larger)" : "View larger image"}
+              </span>
+            </a>
           ) : (
-            <a
-              className="mc-gallery__media"
-              href={item.imageRaw ?? item.link ?? item.image}
-              tabIndex={-1}
-            >
+            <div className="mc-gallery__media">
               {item.image && (
                 <img src={item.image} alt={item.title ?? ""} loading="lazy" />
               )}
-            </a>
+            </div>
           )}
           {(item.title || item.caption) && (
             <figcaption>

@@ -30,6 +30,7 @@ type Block =
       id: string;
       title?: string;
       description?: string;
+      enlarge?: boolean;
       items: PortfolioGridItem[];
     }
   | { kind: "quote"; id: string; testimonial: TestimonialModel };
@@ -48,6 +49,7 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
           id: `gallery-${index + 1}`,
           title: section.headline ?? section.eyebrow,
           description: section.description,
+          enlarge: section.enlarge,
           items: section.items
         }
       ];
@@ -187,7 +189,7 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
             );
           }
 
-          const { id, title, description, items } = block;
+          const { id, title, description, enlarge, items } = block;
           const gallery = (
             <>
               {description && <Html className="st-copy" html={description} />}
@@ -203,6 +205,15 @@ export function CaseStudy({ page }: TemplateProps<"caseStudy">) {
                         playsInline={item.autoplay}
                         autoPlay={item.autoplay}
                       />
+                    ) : item.image && enlarge ? (
+                      // Opening larger shows the original, so no switch to it;
+                      // hovered or focused, the link shows it in color
+                      <a className="st-gallery__larger" href={item.enlargeHref}>
+                        <Stipple src={item.image} alt={item.title ?? ""} />
+                        <span className="st-visuallyHidden">
+                          {item.title ? " (view larger)" : "View larger image"}
+                        </span>
+                      </a>
                     ) : (
                       item.image && (
                         <Stipple
