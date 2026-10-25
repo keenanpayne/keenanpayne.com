@@ -1206,11 +1206,13 @@ a.gl-chip {
 }
 
 /* Facts sit flush at the bottom, their rules running the box's full width,
-   with the padding inside each row instead */
+   with the padding inside each row instead. The first row keeps its rule,
+   so the list reads as boxed wherever it lands, and the aside drops its own */
 .gl-page-header__aside:has(> .gl-facts) {
   --gl-aside-x: var(--gl-x);
 
   padding: 0;
+  border-top: 0;
 
   @media (width >= 1024px) {
     --gl-aside-x: 32px;
@@ -1218,6 +1220,10 @@ a.gl-chip {
 
   & .gl-facts > div {
     padding-inline: var(--gl-aside-x);
+  }
+
+  & .gl-facts > div:first-child {
+    border-top: 1px solid var(--gl-line);
   }
 
   /* Contact's other way in, as a last row */
