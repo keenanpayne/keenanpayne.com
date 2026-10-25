@@ -23,6 +23,9 @@
   --gl-accent: #393db0;
   --gl-accent-soft: #e9e8fd;
   --gl-on-ink: #fcfcfb;
+  /* The navigation's links at rest: muted on paper, a step brighter on the
+     dark page, where muted reads dim against the header */
+  --gl-nav-ink: var(--gl-muted);
   --gl-ray-deep: #08071a;
   --gl-ray: #7468ff;
   --gl-ray-light: #d4d0ff;
@@ -55,6 +58,7 @@
     --gl-accent: #a7aaff;
     --gl-accent-soft: #23214a;
     --gl-on-ink: #0d0c12;
+    --gl-nav-ink: var(--gl-text);
   }
 }
 
@@ -72,6 +76,7 @@
   --gl-accent: #a7aaff;
   --gl-accent-soft: #23214a;
   --gl-on-ink: #0d0c12;
+  --gl-nav-ink: var(--gl-text);
 }
 
 /* An inverted band takes the other scheme: dark on a light page, light on a
@@ -623,7 +628,7 @@ body:has(.gl) {
     height: 100%;
     padding: 0 20px;
     border-right: 1px solid var(--gl-line);
-    color: var(--gl-muted);
+    color: var(--gl-nav-ink);
     font-size: var(--gl-fs-ui);
     font-weight: 500;
     text-decoration: none;
