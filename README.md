@@ -191,6 +191,8 @@ The site deploys to [Netlify](https://netlify.com) with `npm run build`, publish
 
 ## Contributing
 
+The site's stylesheets come from a private npm package (see [Styles](#styles)), and GitHub keeps repository secrets away from pull requests opened from forks, so CI can't install it for those and skips them with a note. A maintainer runs the checks by pushing the branch to this repository.
+
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
