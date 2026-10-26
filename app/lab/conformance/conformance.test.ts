@@ -13,12 +13,13 @@
  * written is listed in `./gaps.ts`, which only shrinks.
  */
 
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 
 import { describe, expect, it } from "vitest";
 
 import { getPage } from "../../lib/content/content.server";
 import type { SectionModel } from "../../lib/types";
+import { readFormaStylesheet } from "../forma.server";
 import { directions } from "../registry";
 import { resolveView } from "../site/ia";
 
@@ -28,15 +29,12 @@ import { CHECKED_PATHS } from "./pages";
 import { checkDirection } from "./report.server";
 import { ALL_KINDS, REQUIREMENTS } from "./requirements";
 
-// Read from disk: Vitest serves CSS imports, even `?raw` ones, empty, and
-// a glob is fixed when the test is first compiled, so it would miss a new
-// direction
+// Read from disk: Vitest serves CSS imports, even `?raw` ones, empty. The
+// stylesheet comes from the installed package (`../forma.server.ts`), the
+// code from here.
 const directionsDir = new URL("../directions/", import.meta.url);
 
-const stylesheetOf = (slug: string) => {
-  const file = new URL(`${slug}/${slug}.css`, directionsDir);
-  return existsSync(file) ? readFileSync(file, "utf8") : "";
-};
+const stylesheetOf = readFormaStylesheet;
 
 /** Source files of a direction, by their path inside its folder */
 const sourcesOf = (slug: string) => {

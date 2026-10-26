@@ -49,9 +49,11 @@
     "size": "du -h build/ | sort -hr",
     "analyze:testimonials": "node scripts/analyze-testimonials.ts",
     "lab:new": "node scripts/new-direction.ts",
-    "lab:check": "react-router typegen && tsc && vitest run app/lab && eslint app/lab scripts/new-direction.ts --max-warnings 0 && stylelint \"app/lab/**/*.css\""
+    "lab:check": "react-router typegen && tsc && vitest run app/lab && eslint app/lab scripts/new-direction.ts --max-warnings 0 && stylelint \"app/lab/**/*.css\"",
+    "forma:samples": "node scripts/forma-samples.ts"
   },
   "dependencies": {
+    "@keenanpayne/forma-ui": "^0.1.0",
     "@netlify/vite-plugin-react-router": "^4.0.0",
     "@react-router/node": "^8.4.0",
     "@react-router/serve": "^8.4.0",

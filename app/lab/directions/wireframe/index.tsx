@@ -1,4 +1,6 @@
 import type { Direction } from "../../site";
+import direction from "@keenanpayne/forma-ui/directions/wireframe.json";
+import stylesheet from "@keenanpayne/forma-ui/wireframe.css?url";
 
 import { About } from "./pages/About";
 import { CaseStudy } from "./pages/CaseStudy";
@@ -13,11 +15,10 @@ import { Testimonials } from "./pages/Testimonials";
 import { Work } from "./pages/Work";
 import { Writing } from "./pages/Writing";
 import { Shell } from "./Shell";
-import stylesheet from "./wireframe.css?url";
 
 export default {
-  // Add web font URLs here, before the stylesheet
-  stylesheets: [stylesheet],
+  // Its web fonts, from its manifest, then its stylesheet
+  stylesheets: [...direction.fonts, stylesheet],
   root: "wireframe",
   Shell,
   templates: {

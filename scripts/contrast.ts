@@ -9,14 +9,21 @@
  *                                               # its paper and surface
  *   npm run a11y:contrast                       # every direction
  *
+ * The stylesheets are read from the installed `@keenanpayne/forma-ui`.
  * The role pairs are the ones the `css.contrast` foundation checks
  * (`CONTRAST_PAIRS` in `app/lab/accessibility/contrast.ts`), in both
  * schemes. What a color is painted on in practice, the browser audit
  * (`npm run a11y`) measures.
  */
 
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 
+import {
+  FORMA_DIR,
+  formaStylesheetPath,
+  readFormaStylesheet
+} from "../app/lab/forma.server.ts";
 import {
   contrast,
   CONTRAST_PAIRS,
@@ -29,7 +36,9 @@ import {
   type DirectionTokens
 } from "../app/lab/styleguide/tokens.ts";
 
-const DIRECTIONS = new URL("../app/lab/directions/", import.meta.url);
+// The stylesheets live in @keenanpayne/forma-ui; this reads the installed
+// package's source ones (`npm run contrast` there does the same)
+const DIRECTIONS = join(FORMA_DIR, "src", "directions");
 
 const args = process.argv.slice(2);
 const all = args.includes("--all");
@@ -71,14 +80,13 @@ const schemesOf = (tokens: DirectionTokens) => {
 };
 
 function direction(slug: string) {
-  const file = new URL(`${slug}/${slug}.css`, DIRECTIONS);
-  if (!existsSync(file)) {
+  if (!existsSync(formaStylesheetPath(slug))) {
     console.error(
-      `No direction "${slug}" (app/lab/directions/${slug}/${slug}.css)`
+      `No direction "${slug}" in @keenanpayne/forma-ui (src/directions/${slug}/${slug}.css)`
     );
     process.exit(1);
   }
-  const tokens = parseTokens(readFileSync(file, "utf8"));
+  const tokens = parseTokens(readFormaStylesheet(slug));
   const root = tokens.paper?.name.replace(/^--|-paper$/g, "");
   if (!root) {
     console.error(`${slug}.css doesn't paint the page in --<root>-paper`);
@@ -172,6 +180,6 @@ if (first && second) {
   direction(first);
 } else {
   for (const slug of readdirSync(DIRECTIONS).sort()) {
-    if (existsSync(new URL(`${slug}/${slug}.css`, DIRECTIONS))) direction(slug);
+    if (existsSync(formaStylesheetPath(slug))) direction(slug);
   }
 }

@@ -1,6 +1,7 @@
 import type { Direction } from "../../site";
+import direction from "@keenanpayne/forma-ui/directions/monograph.json";
+import stylesheet from "@keenanpayne/forma-ui/monograph.css?url";
 
-import stylesheet from "./monograph.css?url";
 import { About } from "./pages/About";
 import { Archive } from "./pages/Archive";
 import { CaseStudy } from "./pages/CaseStudy";
@@ -14,11 +15,9 @@ import { Testimonials } from "./pages/Testimonials";
 import { Work } from "./pages/Work";
 import { Shell } from "./Shell";
 
-const FONTS_URL =
-  "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,300;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap";
-
 export default {
-  stylesheets: [FONTS_URL, stylesheet],
+  // Its web fonts, from its manifest, then its stylesheet
+  stylesheets: [...direction.fonts, stylesheet],
   root: "mg",
   Shell,
   templates: {

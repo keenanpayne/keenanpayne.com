@@ -1,4 +1,6 @@
 import type { Direction } from "../../site";
+import direction from "@keenanpayne/forma-ui/directions/stipple.json";
+import stylesheet from "@keenanpayne/forma-ui/stipple.css?url";
 
 import { About } from "./pages/About";
 import { CaseStudy } from "./pages/CaseStudy";
@@ -13,13 +15,10 @@ import { Testimonials } from "./pages/Testimonials";
 import { Work } from "./pages/Work";
 import { Writing } from "./pages/Writing";
 import { Shell } from "./Shell";
-import stylesheet from "./stipple.css?url";
-
-const FONTS_URL =
-  "https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap";
 
 export default {
-  stylesheets: [FONTS_URL, stylesheet],
+  // Its web fonts, from its manifest, then its stylesheet
+  stylesheets: [...direction.fonts, stylesheet],
   root: "st",
   Shell,
   templates: {

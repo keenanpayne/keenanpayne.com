@@ -1,6 +1,7 @@
 import type { Direction } from "../../site";
+import direction from "@keenanpayne/forma-ui/directions/neon.json";
+import stylesheet from "@keenanpayne/forma-ui/neon.css?url";
 
-import stylesheet from "./neon.css?url";
 import { About } from "./pages/About";
 import { CaseStudy } from "./pages/CaseStudy";
 import { Contact } from "./pages/Contact";
@@ -15,11 +16,9 @@ import { Work } from "./pages/Work";
 import { Writing } from "./pages/Writing";
 import { Shell } from "./Shell";
 
-const FONTS_URL =
-  "https://fonts.googleapis.com/css2?family=Tilt+Neon&family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Martian+Mono:wght@400;500&family=DotGothic16&display=swap";
-
 export default {
-  stylesheets: [FONTS_URL, stylesheet],
+  // Its web fonts, from its manifest, then its stylesheet
+  stylesheets: [...direction.fonts, stylesheet],
   root: "neon",
   Shell,
   templates: {

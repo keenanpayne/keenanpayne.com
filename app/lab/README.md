@@ -10,8 +10,9 @@ Every direction at `/lab/<slug>/` is a **skin over one site**: the same content 
 | Content model | `getLabContent()` in `app/lib/content/content.server.ts`, typed as `LabContent`; shipped once, as `virtual:lab-content` (`vite.config.ts`), read through `content.ts` | The shape every direction receives |
 | Information arch. | `site/ia.ts` | The kinds of page (`View`), which URL is which kind, the navigation, the sample pages |
 | Direction contract | `site/direction.tsx` | `Direction`: `stylesheets`, a `root` class, a `Shell`, one template per kind of page, and its style guide `specimens` |
-| Shared helpers | `site/` (`helpers.ts`, `hooks.ts`, `forms.ts`, `submit.tsx`, `comments.tsx`, `links.tsx`, `time.ts`, `weather.ts`, `readout.ts`, `isometric.ts`, `page.server.ts`, `base.css`) | Reading the content the same way everywhere: intros, years, reading time, clocks, forms and where they send, comments, Denver's time and weather and the clock popover that shows them; the isometric pen the service illustrations are drawn with; how a site path becomes a page for the live site, the lab, and the checks alike; and the document reset beneath every skin |
-| Directions | `directions/<slug>/`, registered in `registry.ts` | How it looks |
+| Shared helpers | `site/` (`helpers.ts`, `hooks.ts`, `forms.ts`, `submit.tsx`, `comments.tsx`, `links.tsx`, `time.ts`, `weather.ts`, `readout.ts`, `isometric.ts`, `page.server.ts`) | Reading the content the same way everywhere: intros, years, reading time, clocks, forms and where they send, comments, Denver's time and weather and the clock popover that shows them; the isometric pen the service illustrations are drawn with; and how a site path becomes a page for the live site, the lab, and the checks alike |
+| Directions | `directions/<slug>/`, registered in `registry.ts` | How it looks: the Shell, the templates, and the specimens, in React |
+| Stylesheets | [`@keenanpayne/forma-ui`](https://github.com/keenanpayne/forma-ui), read through `forma.server.ts` | Each direction's CSS (with the document reset beneath every skin) and its fonts, as a package any site can use; its demo shows every direction's components with their markup, written from this site's rendered pages by `npm run forma:samples` |
 | Live direction | `live.ts` | Which direction the site runs; the rest stay in the lab |
 | Conformance | `conformance/` | Checks that every direction has the same features, pages, and foundations (see [Guardrails](#guardrails)) |
 | Accessibility | `accessibility/` | The WCAG 2.2 AAA audit of every direction in a browser, and the contrast math (see [Accessibility](#accessibility)) |
@@ -22,14 +23,15 @@ A request for `/lab/mech/about/` runs through the route in `app/routes/lab.$dire
 
 ```
 directions/<slug>/
-├── index.tsx    # The Direction: stylesheets, root class, Shell, and a template for every kind of page
+├── index.tsx    # The Direction: its stylesheet and fonts (from @keenanpayne/forma-ui), root class, Shell, and a template for every kind of page
 ├── Shell.tsx    # Header, navigation, footer
 ├── Denver.tsx   # The local time and weather popover the Shell opens
 ├── pages/       # One template per kind of page (some directions share one across kinds)
 ├── parts.tsx    # The direction’s own building blocks
-├── specimens.tsx # Its parts, laid out for the style guide (loaded only there)
-└── <slug>.css   # Its styles
+└── specimens.tsx # Its parts, laid out for the style guide (loaded only there)
 ```
+
+Its styles are `src/directions/<slug>/<slug>.css` in [forma-ui](https://github.com/keenanpayne/forma-ui), scoped to its root class, with its fonts in the manifest beside it; `index.tsx` links the built stylesheet from the package. To work on them, link a checkout (`npm link` there, `npm link @keenanpayne/forma-ui` here) and run `npm run watch` there; the dev server serves the linked files.
 
 The `Direction` type requires a template for every kind in `View`, so a direction can’t skip a page, and adding a kind of page is a type error in each direction until it has one.
 
@@ -42,7 +44,7 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 - **Forms:** render `formOf("contact" | "inquiry")`: its `title`, `fields` (marking the `required` ones), `submit` label, and the `alternate` form it links to, so every direction asks the same questions. The newsletter sign-up is `newsletterForm`, on the pages that ask for it (`hasNewsletter(page)`, a post’s `newsletter`). Wire each `<form>` with `useSubmission(kind)`: spread its `props`, render its `hidden` fields inside, and show its `status` when there is one. On the live site the forms send for real (the contact and inquiry forms to Netlify Forms, the sign-up to Buttondown: `submissionOf(kind)`); in the lab and the style guide the same forms are mockups that carry no destination and can’t send even before the page’s script runs, and `status` says so.
 - **Clock:** wire the Shell’s clock and its popover with `useReadout(profile.location)`, called once in the Shell: spread its `button` on the clock (on each one, if there are several), its `popover` on the readout, and its `close` on a Close button if there is one; read the forecast from the rest and link `credit` inside. It describes the clock and names the popover for the conformance checks (the clock’s name is what it shows, so it must show text: the time, say), refreshes the forecast as the popover opens, and says whether it’s `open`, so a clock inside can tick only then (`useNow(open)`). The clock’s face and the readout’s layout are the direction’s.
 - **Comments:** a post or case study that asks for them (`page.comments`) shows `Comments` with its `page.meta.canonical`, and one that doesn’t shows none. On the live site it loads the Disqus thread; in the lab and the style guide it marks the thread’s place and says so. The heading and surroundings are the direction’s.
-- **Styles are scoped.** A direction’s stylesheet stays loaded after the lab navigates to another direction, so prefix every class, custom property, and `@keyframes` name with the root class (`mc-`, `--mc-`), and scope every selector under it, print styles included.
+- **Styles are scoped.** A direction’s stylesheet stays loaded after the lab navigates to another direction, so prefix every class, custom property, and `@keyframes` name with the root class (`mc-`, `--mc-`), and scope every selector under it, print styles included. (forma-ui’s `docs/tokens.md` and `docs/creating-a-direction.md` have the stylesheet rules in full; its `npm run check` enforces them, as `lab:check` does here.)
 - **Page-wide effects skip the style guide.** A rule that reaches past the direction for something a visitor opens (locking the page’s scroll, hiding the lab bar) must not match it inside the style guide’s previews: `:root:has(.mc-deck:not([hidden], .sg-stage *))`.
 - **Light and dark:** define tokens on `:root`, then override them under `@media (prefers-color-scheme: dark)` with `:root:not([data-theme="light"])`, and again under `:root[data-theme="dark"]` (the lab bar’s switch), identically. A skin that’s dark by default (Mech) does the same the other way around.
 - **Accessible:** every direction is held to WCAG 2.2 AAA (see [Accessibility](#accessibility)). Check a color before it goes in (`npm run a11y:contrast`), and audit the direction before you finish (`npm run a11y -- -g <Name>`).
@@ -60,8 +62,9 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 | Add a feature or a page section | The shared layers and `conformance/requirements.ts`, then Wireframe, then every direction (see [Feature or motif?](#feature-or-motif)) |
 | Add something to the content model | `LabContent` in `app/lib/types.ts` and `getLabContent()` |
 | Add a kind of page | `View`, `resolveView()`, and `SAMPLE_PAGES` in `site/ia.ts`, then `npm run typecheck` lists every direction that needs a template |
-| Restyle a direction | Only its folder |
-| Start a direction | `npm run lab:new -- <slug> ["Display name"]`, which copies Wireframe, renames it, and registers it |
+| Restyle a direction | Its folder here (templates), and its folder in forma-ui (the stylesheet) |
+| Start a direction | `npm run lab:new -- <slug> ["Display name"]`, which copies Wireframe, renames it, and registers it; and `npm run new -- <slug>` in forma-ui for its stylesheet |
+| Share a direction’s markup | `npm run build && npm run forma:samples`: writes every direction’s rendered pages and specimens into the forma-ui checkout |
 | Launch a direction | `live.ts` (see [Taking a direction live](#taking-a-direction-live)) |
 | Check your work | `npm run lab:check`: types, conformance, and lint for the lab; then `npm run a11y -- -g <Name>` for the direction you changed |
 | Pick a color | `npm run a11y:contrast -- "<color>" "<background>"`, or `-- <slug>` for a direction’s role pairs (`--all` for every token) |
@@ -72,7 +75,7 @@ The `Direction` type requires a template for every kind in `View`, so a directio
 
 `/lab/styleguide/` shows every direction’s foundations, components, and chrome, two ways: one direction with all of its sections (`/lab/styleguide/<slug>/`, or one section alone at `/lab/styleguide/<slug>/<section>/`), or one section across every direction (`/lab/styleguide/compare/<section>/`). The sections are listed in `styleguide/sections.ts`. A third view, **Conformance** (`/lab/styleguide/conformance/`), shows how every direction measures up to the [guardrails](#guardrails).
 
-- **Shared sections** draw themselves for every direction: Color reads the custom properties straight from `<slug>.css` (`styleguide/tokens.server.ts`), Typefaces reads the font tokens and the Google Fonts URL in `stylesheets`, and Shell renders the direction’s `Shell` around a placeholder. They need nothing from a direction beyond following the light and dark rule above.
+- **Shared sections** draw themselves for every direction: Color reads the custom properties straight from the package’s `<slug>.css` (`styleguide/tokens.server.ts`), Typefaces reads the font tokens and the Google Fonts URL in `stylesheets`, and Shell renders the direction’s `Shell` around a placeholder. They need nothing from a direction beyond following the light and dark rule above.
 - **Specimens** are the rest (type scale, motifs, imagery, page header, buttons, labels, panels, cards, lists, testimonials, forms, wayfinding, prose). A direction’s `specimens.tsx` gives each one a component that renders its own parts with real `content`, laid out with `styleguide/kit.tsx`: `SpecimenGrid`, `Specimen` (a captioned example), `TypeSample` (measures and prints a style’s specs), and `Note`. They render inside the direction’s `root` class, and receive the `navigation` as the Shell section shows it; `prose` is an article body with every element the Markdown can produce, run through the real pipeline. The style guide alone loads `specimens.tsx`, so a mockup page doesn’t carry it.
 - When a direction gains a part or a variant, add it to its specimens. Adding a section is one entry in `STYLE_SECTIONS`, then `npm run typecheck` lists every direction that needs a specimen for it.
 
@@ -85,7 +88,7 @@ Every direction has the same features, pages, and foundations, so a person or an
 1. **Types.** `Direction` needs a template for every kind of page, and `Specimens` one specimen for every style guide section.
 2. **Conformance** (`conformance/`). The tests render every direction’s sample pages the way the lab route does, plus the pages with sections no sample has (`conformance/pages.ts`; a test makes sure every kind of page and every section the requirements read is among them), then check:
    - **Requirements** (`requirements.ts`): the feature set and information architecture, checked the way a visitor would find them (text, links, images, landmarks), so any skin can meet them. The Shell has a skip link to `<main>`, the owner’s name linking home, the navigation with the current item marked, a footer with `© {year} {name}`, every social profile, the feed, and the local time and weather popover, with a clock that stays on screen on phones (`viewport.ts` reads the stylesheet at a phone’s width for that); it links nowhere the navigation doesn’t lead, and holds no forms. Every page has one `<h1>` (its `titleOf()`), links that lead somewhere, and `alt` on its images. Then each kind of page has its content: Home its intro, latest posts, exactly its case studies, and every service and testimonial; a post its breadcrumbs, date, reading time, tags, whole body, neighbors, and comments; a form its questions and copy, sending the shared way; and so on.
-   - **Foundations** (`foundations.ts`): the role tokens, both schemes, their contrast (`css.contrast`: text roles at 7:1 on the paper and surface, the accent and focus ring at 3:1, in both schemes), the page color, focus ring, selection, reduced motion, and the prefix on every selector, custom property, and keyframe.
+   - **Foundations** (`foundations.ts`): the role tokens, both schemes, their contrast (`css.contrast`: text roles at 7:1 on the paper and surface, the accent and focus ring at 3:1, in both schemes), the page color, focus ring, selection, reduced motion, and the prefix on every selector, custom property, and keyframe. Read from the installed package’s source stylesheet (`forma.server.ts`); forma-ui runs the same checks before a release.
    - **Source** (`source.ts`): no fact about the owner spelled out in a direction’s code.
 3. **Known gaps** (`conformance/gaps.ts`): what each direction fell short of when the checks were written. It only shrinks. The tests fail when a direction falls short of anything not listed, and when it meets something listed, so the line comes off. To close one, delete its line and run `npm run lab:check`; the failure says what’s missing, page by page. Never add a line to make a check pass.
 

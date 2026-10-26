@@ -1,6 +1,7 @@
 import type { Direction } from "../../site";
+import direction from "@keenanpayne/forma-ui/directions/gridline.json";
+import stylesheet from "@keenanpayne/forma-ui/gridline.css?url";
 
-import stylesheet from "./gridline.css?url";
 import { About } from "./pages/About";
 import { CaseStudy } from "./pages/CaseStudy";
 import { Contact } from "./pages/Contact";
@@ -15,11 +16,9 @@ import { Work } from "./pages/Work";
 import { Writing } from "./pages/Writing";
 import { Shell } from "./Shell";
 
-const FONTS_URL =
-  "https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap";
-
 export default {
-  stylesheets: [FONTS_URL, stylesheet],
+  // Its web fonts, from its manifest, then its stylesheet
+  stylesheets: [...direction.fonts, stylesheet],
   root: "gl",
   Shell,
   templates: {

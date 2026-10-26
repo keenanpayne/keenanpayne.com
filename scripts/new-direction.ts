@@ -10,9 +10,13 @@
  *
  * Process:
  * 1. Copies app/lab/directions/wireframe/ to app/lab/directions/<slug>/,
- *    renaming `wireframe` to the slug (files, CSS classes, variables) and
- *    `Wireframe` to the display name, which the starter only uses in comments
+ *    renaming `wireframe` to the slug (files, CSS classes, the package
+ *    imports) and `Wireframe` to the display name, which the starter only
+ *    uses in comments
  * 2. Registers it in app/lab/registry.ts: its metadata, and its chunk
+ *
+ * The stylesheet is forma-ui's: `npm run new -- <slug>` there starts it from
+ * Wireframe's, and the templates here link it from the package.
  */
 
 import { execFileSync } from "node:child_process";
@@ -125,11 +129,14 @@ console.log(`✓ Created ${name} at ${target}/`);
 console.log(`
 Next:
   1. Fill in its summary and reference in ${REGISTRY}
-  2. Restyle ${target}/${slug}.css, and the Shell and pages/ as the look needs
-  3. Preview it at http://localhost:4242/lab/${slug}/ (npm run dev)
-  4. Lay its parts out in ${target}/specimens.tsx for the style guide at
+  2. Start its stylesheet in forma-ui: \`npm run new -- ${slug}\` there, then
+     link the checkout here (\`npm link\` there, \`npm link @keenanpayne/forma-ui\`
+     here) and run \`npm run watch\` there while you work
+  3. Restyle it there, and the Shell and pages/ here, as the look needs
+  4. Preview it at http://localhost:4242/lab/${slug}/ (npm run dev)
+  5. Lay its parts out in ${target}/specimens.tsx for the style guide at
      http://localhost:4242/lab/styleguide/${slug}/
-  5. Run npm run lab:check: it holds the direction to the same features,
+  6. Run npm run lab:check: it holds the direction to the same features,
      pages, and foundations as the others
 
 See app/lab/README.md for what a direction may (and may not) change.`);

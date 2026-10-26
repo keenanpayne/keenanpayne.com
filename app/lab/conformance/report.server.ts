@@ -66,7 +66,7 @@ export function checkDirection({
 }: {
   slug: string;
   skin: Direction;
-  /** Its `<slug>.css` */
+  /** Its `<slug>.css`, from the package */
   css: string;
   /** Its code, by path inside its folder, e.g. `pages/Home.tsx` */
   sources: (readonly [file: string, source: string])[];
@@ -106,7 +106,9 @@ export function checkDirection({
         id,
         "Foundations",
         rule,
-        css ? check(sheet, flat) : [`app/lab/directions/${slug}/${slug}.css`]
+        css
+          ? check(sheet, flat)
+          : [`${slug}.css in @keenanpayne/forma-ui (src/directions/${slug}/)`]
       )
     ),
     ...sources.map(([file, source]) =>

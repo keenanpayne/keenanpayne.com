@@ -1,6 +1,7 @@
 import type { Direction } from "../../site";
+import direction from "@keenanpayne/forma-ui/directions/mech.json";
+import stylesheet from "@keenanpayne/forma-ui/mech.css?url";
 
-import stylesheet from "./mech.css?url";
 import { About } from "./pages/About";
 import { Archive } from "./pages/Archive";
 import { CaseStudy } from "./pages/CaseStudy";
@@ -14,11 +15,9 @@ import { Testimonials } from "./pages/Testimonials";
 import { Work } from "./pages/Work";
 import { Shell } from "./Shell";
 
-const FONTS_URL =
-  "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Shippori+Mincho+B1:wght@700;800&family=Share+Tech+Mono&display=swap";
-
 export default {
-  stylesheets: [FONTS_URL, stylesheet],
+  // Its web fonts, from its manifest, then its stylesheet
+  stylesheets: [...direction.fonts, stylesheet],
   root: "mc",
   Shell,
   templates: {

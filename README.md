@@ -99,8 +99,13 @@ npm run size         # Show size of build directory
 # Re-count the qualities mentioned in testimonials (app/data/testimonial-analysis.json)
 npm run analyze:testimonials
 
-# Start a design lab direction as a copy of Wireframe
+# Start a design lab direction as a copy of Wireframe (its stylesheet starts
+# in forma-ui: `npm run new -- <slug>` there)
 npm run lab:new -- <slug> ["Display name"]
+
+# Write every direction's rendered markup into a forma-ui checkout (after
+# `npm run build`), as the samples its demo shows: ../forma-ui, or a path
+npm run forma:samples
 
 # Check every design lab direction against the shared feature set,
 # information architecture, and foundations (see app/lab/README.md). CI
@@ -117,7 +122,7 @@ npm run lab:check
 │   ├── components/         # HtmlContent: rendered Markdown, with its embeds
 │   ├── data/               # Profile, people, testimonials, socials, portfolio case studies, site metadata
 │   ├── lab/                # Design directions over the same content (see app/lab/README.md)
-│   │   ├── directions/     # One folder per direction (its shell, page templates, and styles)
+│   │   ├── directions/     # One folder per direction (its shell and page templates; styles come from @keenanpayne/forma-ui)
 │   │   ├── site/           # What every direction shares: page kinds, navigation, forms, helpers
 │   │   ├── conformance/    # Checks that every direction has the same features and foundations
 │   │   ├── accessibility/  # The WCAG 2.2 AAA audit of every direction, in a browser
@@ -175,7 +180,7 @@ The shortcodes are implemented in `app/lib/content/shortcodes.server.ts`.
 
 ## Styles
 
-Each design direction brings its own stylesheet, `app/lab/directions/<slug>/<slug>.css`, scoped to its root class (see [app/lab/README.md](app/lab/README.md)); the lab's own pages have `app/lab/lab.css` and `app/lab/styleguide/styleguide.css`. They're plain CSS, compiled with PostCSS:
+Each design direction's stylesheet is a package: [`@keenanpayne/forma-ui`](https://github.com/keenanpayne/forma-ui), where the directions live as a CSS design system (one stylesheet per direction, scoped to its root class, plus a Tailwind theme and the markup samples). Each direction's `index.tsx` links its stylesheet and fonts from the package, and the lab's checks read the same package's source. To change how a direction looks, change it there (`npm link` the checkout here while you work, and `npm run watch` there); `npm run forma:samples` after a build writes the directions' rendered markup back into it. The lab's own pages have `app/lab/lab.css` and `app/lab/styleguide/styleguide.css`, plain CSS compiled with PostCSS:
 
 - [postcss-nested](https://github.com/postcss/postcss-nested) for nesting
 - [postcss-media-minmax](https://github.com/postcss/postcss-media-minmax) and [Autoprefixer](https://github.com/postcss/autoprefixer) for browser support
@@ -194,6 +199,8 @@ The site deploys to [Netlify](https://netlify.com) with `npm run build`, publish
 
 ## Credits
 
+- [Forma UI](https://github.com/keenanpayne/forma-ui)
+  - The design directions' stylesheets, as a CSS design system
 - [Netlify](https://netlify.com)
   - Superb web hosting and deployment platform
 - [React](https://react.dev/) and [React Router](https://reactrouter.com/)

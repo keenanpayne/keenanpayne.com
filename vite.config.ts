@@ -1,3 +1,5 @@
+import { realpathSync } from "node:fs";
+
 import netlifyReactRouter from "@netlify/vite-plugin-react-router";
 import { reactRouter } from "@react-router/dev/vite";
 import {
@@ -5,6 +7,7 @@ import {
   createServer,
   defineConfig,
   isRunnableDevEnvironment,
+  searchForWorkspaceRoot,
   type EnvironmentModuleNode,
   type Plugin,
   type ViteDevServer
@@ -128,6 +131,20 @@ function labContent(): Plugin {
   };
 }
 
+/**
+ * `@keenanpayne/forma-ui` linked from a checkout (`npm link`) resolves to a
+ * folder outside this one, which Vite's dev server won't serve unless it's
+ * allowed; an installed copy is inside node_modules already
+ */
+function linkedFormaUi() {
+  try {
+    const real = realpathSync("node_modules/@keenanpayne/forma-ui");
+    return real.includes("node_modules") ? [] : [real];
+  } catch {
+    return [];
+  }
+}
+
 export default defineConfig({
   plugins: [
     labContent(),
@@ -138,6 +155,9 @@ export default defineConfig({
     })
   ],
   server: {
-    port: 4242
+    port: 4242,
+    fs: {
+      allow: [searchForWorkspaceRoot(process.cwd()), ...linkedFormaUi()]
+    }
   }
 });

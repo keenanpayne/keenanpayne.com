@@ -3,7 +3,6 @@ import type { ComponentType, ReactNode } from "react";
 import type { LabContent } from "../../lib/types";
 import type { SpecimenId } from "../styleguide/sections";
 
-import baseStyles from "./base.css?url";
 import type { NavItem, View, ViewKind } from "./ia";
 import { BaseContext } from "./links";
 
@@ -84,8 +83,8 @@ export function DirectionPage({
   >;
   return (
     <BaseContext.Provider value={base}>
-      {/* The shared base first, then the direction's own */}
-      <Stylesheets hrefs={[baseStyles, ...stylesheets]} />
+      {/* Its fonts and its stylesheet, which carries the shared base */}
+      <Stylesheets hrefs={stylesheets} />
       <Shell {...props}>
         <Template {...props.view} content={props.content} />
       </Shell>
