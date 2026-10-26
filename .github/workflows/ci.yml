@@ -27,14 +27,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # The Node version Volta pins in package.json
+      # The Node version Volta pins in package.json; the registry URL so the
+      # NPM_TOKEN secret (read access to @keenanpayne/forma-ui, which is
+      # private) is used to install
       - uses: actions/setup-node@v4
         with:
           node-version-file: package.json
           cache: npm
+          registry-url: https://registry.npmjs.org
 
       - id: install
         run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Typecheck
         run: npm run typecheck
@@ -72,8 +77,11 @@ jobs:
         with:
           node-version-file: package.json
           cache: npm
+          registry-url: https://registry.npmjs.org
 
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
