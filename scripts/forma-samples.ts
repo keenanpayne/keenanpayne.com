@@ -112,6 +112,17 @@ function rewriteUrl(url: string, slug: string) {
   return `${SITE_ORIGIN}${url}`;
 }
 
+/**
+ * Setting any attribute makes the parser rewrite the element's attributes,
+ * and it writes an empty one bare (`alt`); put the `=""` back, so the
+ * samples read as React wrote them. Only the attribute string is touched.
+ */
+const EMPTY_ATTRIBUTES = /(^|\s)(alt|content|title|value)(?=\s|$)/g;
+
+function keepEmptyValues(element: HTMLElement) {
+  element.rawAttrs = element.rawAttrs.replace(EMPTY_ATTRIBUTES, '$1$2=""');
+}
+
 function rewriteLinks(root: HTMLElement, slug: string) {
   for (const element of root.querySelectorAll("*")) {
     const names =
@@ -143,17 +154,14 @@ function rewriteLinks(root: HTMLElement, slug: string) {
         element.setAttribute(to, value);
       }
     }
+    keepEmptyValues(element);
   }
 }
 
 /** React's markers between text nodes and around Suspense boundaries */
 const REACT_COMMENTS = /<!--(?: |\$|\/\$|\$!|\$\?)-->/g;
 
-/** The parser writes an empty attribute bare; `alt=""` reads as meant */
-const EMPTY_ATTRIBUTES = /\s(alt|content|title|value)(?=[\s>])/g;
-
-const clean = (html: string) =>
-  `${html.replace(REACT_COMMENTS, "").replace(EMPTY_ATTRIBUTES, ' $1=""').trim()}\n`;
+const clean = (html: string) => `${html.replace(REACT_COMMENTS, "").trim()}\n`;
 
 const isElement = (node: Node): node is HTMLElement => node.nodeType === 1;
 
