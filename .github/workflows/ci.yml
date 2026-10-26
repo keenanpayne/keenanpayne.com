@@ -1,0 +1,116 @@
+# Checks every push and pull request: types, lint, formatting, the design
+# lab's conformance checks (every direction against the shared feature set,
+# information architecture, and foundations; see app/lab/README.md), and the
+# other unit tests. Each runs as its own step, so a failure says which kind,
+# and every one runs even when an earlier one fails. A second job audits
+# every page in a browser against WCAG 2.2 AAA.
+#
+# Installing needs the NPM_TOKEN secret: the directions' stylesheets are a
+# private package (@keenanpayne/forma-ui). GitHub withholds secrets from
+# pull requests opened from forks, so both jobs skip those (the run shows
+# why); a maintainer checks such a change by pushing its branch here.
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# A newer push to the same branch or pull request replaces a run in progress
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: Checks
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: Check for the npm token
+        if: ${{ env.NODE_AUTH_TOKEN == '' }}
+        run: |
+          echo "::error::No NPM_TOKEN secret: the site installs @keenanpayne/forma-ui, a private package, with it. Add a read-only token for the package as a repository secret."
+          exit 1
+
+      - uses: actions/checkout@v4
+
+      # The Node version Volta pins in package.json; the registry URL so the
+      # token is sent with the install
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - id: install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Lint
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run lint
+
+      - name: Formatting
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npm run check:format
+
+      # A failure names the direction, the requirement, and what's missing on
+      # which page, and is annotated on the run and its pull request
+      - name: Design lab conformance
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npx vitest run app/lab/conformance --reporter=default --reporter=github-actions
+
+      - name: Unit tests
+        if: ${{ !cancelled() && steps.install.outcome == 'success' }}
+        run: npx vitest run --exclude "app/lab/conformance/**" --reporter=default --reporter=github-actions
+
+  # Every direction's pages in a real browser against WCAG 2.2 AAA (see
+  # app/lab/accessibility/), apart from the checks above so the two run side
+  # by side. A failure names each element that falls short, and every
+  # finding is uploaded with the run.
+  accessibility:
+    name: Accessibility (WCAG 2.2 AAA)
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    steps:
+      - name: Check for the npm token
+        if: ${{ env.NODE_AUTH_TOKEN == '' }}
+        run: |
+          echo "::error::No NPM_TOKEN secret: the site installs @keenanpayne/forma-ui, a private package, with it. Add a read-only token for the package as a repository secret."
+          exit 1
+
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: npm
+          registry-url: https://registry.npmjs.org
+
+      - run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Audit
+        run: npm run a11y
+
+      - name: Upload findings
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-findings
+          path: test-results/a11y-findings/
+          if-no-files-found: ignore

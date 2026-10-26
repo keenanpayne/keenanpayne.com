@@ -6,6 +6,8 @@ Feel free to fork this and use my code and designs for whatever you'd like. You 
 
 The site is built with [React](https://react.dev/) and [React Router](https://reactrouter.com/) (framework mode) with server-side rendering. Every page is also pre-rendered to static HTML at build time, and all content lives in Markdown files.
 
+How it looks is a **design direction**: a skin over the shared content and information architecture, one of several in the design lab (`app/lab/`, see [its README](app/lab/README.md)). The live one, which renders every page at the site root, is set in `app/lab/live.ts`; the others are mocked up at `/lab/<slug>/` until their turn.
+
 ## Requirements
 
 - Node.js 24 (see `.node-version`; [Volta](https://volta.sh/) picks it up automatically from `package.json`)
@@ -44,7 +46,8 @@ npm run fix
 # Type checking
 npm run typecheck
 
-# Unit tests for the content pipeline helpers
+# Unit tests: the content pipeline's helpers, and the design lab's
+# conformance checks
 npm run test
 
 # Linting
@@ -57,6 +60,26 @@ npm run lint:fix     # Fix all auto-fixable lint issues
 npm run format       # Format all files
 npm run check:format # Check formatting without making changes
 ```
+
+### Accessibility
+
+Every page is held to [WCAG 2.2 AAA](https://www.w3.org/TR/WCAG22/); see [Accessibility in the design lab’s README](app/lab/README.md#accessibility) for what’s checked and how to make a design change.
+
+```bash
+# Contrast of two colors against AAA, or of a direction's tokens
+npm run a11y:contrast -- "#6b6b6b" "#fff"
+npm run a11y:contrast -- gridline --all
+
+# Audit every direction's pages in a browser (axe, plus target size, line
+# spacing and length, reflow, and focus); or one, by name
+npm run a11y
+npm run a11y -- -g Gridline
+
+# Open the last audit's report
+npm run a11y:report
+```
+
+The first time, install the browser the audit runs in: `npx playwright install chromium`.
 
 ### Maintenance
 
@@ -75,6 +98,20 @@ npm run size         # Show size of build directory
 
 # Re-count the qualities mentioned in testimonials (app/data/testimonial-analysis.json)
 npm run analyze:testimonials
+
+# Start a design lab direction as a copy of Wireframe (its stylesheet starts
+# in forma-ui: `npm run new -- <slug>` there)
+npm run lab:new -- <slug> ["Display name"]
+
+# Write every direction's rendered markup into a forma-ui checkout (after
+# `npm run build`), as the samples its demo shows: ../forma-ui, or a path
+npm run forma:samples
+
+# Check every design lab direction against the shared feature set,
+# information architecture, and foundations (see app/lab/README.md). CI
+# (.github/workflows/ci.yml) runs these, with types, lint, formatting, the
+# other tests, and the accessibility audit, on every push and pull request.
+npm run lab:check
 ```
 
 ## Project Structure
@@ -82,16 +119,18 @@ npm run analyze:testimonials
 ```
 .
 ├── app/                    # React Router application
-│   ├── assets/svg/         # Inline SVG icons and logos
-│   ├── components/         # React components
-│   │   ├── layouts/        # Page, post, and portfolio layouts
-│   │   └── sections/       # Page sections (intro, entries, testimonials, …)
-│   ├── data/               # People, testimonials, socials, portfolio case studies, site metadata
+│   ├── components/         # HtmlContent: rendered Markdown, with its embeds
+│   ├── data/               # Profile, people, testimonials, socials, portfolio case studies, site metadata
+│   ├── lab/                # Design directions over the same content (see app/lab/README.md)
+│   │   ├── directions/     # One folder per direction (its shell and page templates; styles come from @keenanpayne/forma-ui)
+│   │   ├── site/           # What every direction shares: page kinds, navigation, forms, helpers
+│   │   ├── conformance/    # Checks that every direction has the same features and foundations
+│   │   ├── accessibility/  # The WCAG 2.2 AAA audit of every direction, in a browser
+│   │   └── live.ts         # Which direction the site runs
 │   ├── lib/                # Content loading, Markdown rendering, helpers
 │   │   └── content/        # Server-only content pipeline
-│   ├── routes/             # Route modules (pages, feeds, sitemap)
-│   ├── styles/             # CSS (compiled with PostCSS)
-│   ├── root.tsx            # Document shell, header, and footer
+│   ├── routes/             # Route modules (pages, the lab, feeds, sitemap)
+│   ├── root.tsx            # The document; each page's chrome and styles come from its direction
 │   └── routes.ts           # Route configuration
 ├── content/                # Markdown content
 │   ├── bookshelf/          # Book reviews
@@ -104,6 +143,7 @@ npm run analyze:testimonials
 ├── public/                 # Static files (images)
 ├── scripts/                # Maintenance scripts
 ├── netlify.toml            # Netlify build settings
+├── playwright.config.ts    # The accessibility audit's browser and dev server
 ├── postcss.config.js       # PostCSS plugins
 ├── react-router.config.ts  # SSR and pre-rendering settings
 └── vite.config.ts          # Vite, React Router, and Netlify plugins
@@ -114,10 +154,10 @@ npm run analyze:testimonials
 Every Markdown file in `content/` becomes a page. Front matter works like it did with Eleventy:
 
 - `title`, `permalink`, `date`, `tags`, `type`, `lede`, `cover`, and `meta` (`title`, `description`, `image`, `image_alt`)
-- `templateClass` adds classes to the page's `<main>` element
-- `navigation` (`key`, `order`) adds a page to the header and footer navigation
-- `sections` builds a page from components (`intro`, `entries`, `testimonials`, `portfolioGrid`, `cta`, …) — see `app/components/sections/Sections.tsx` for the full list
-- `toc: false` hides a post's table of contents, and `comments: false` / `cta: false` hide comments and the newsletter sign-up
+- `sections` builds a page from sections (`intro`, `entries`, `testimonials`, `portfolioGrid`, …) — see `resolveSection()` in `app/lib/content/content.server.ts` for the full list; each direction decides how they look
+- `toc: false` hides a post's table of contents, `comments: false` its comments, and `cta: false` its newsletter sign-up
+
+The primary navigation isn't front matter: it's `NAVIGATION` in `app/lab/site/ia.ts`, which every direction renders.
 
 Each folder has its own defaults (layout, URL, and data), defined in `app/lib/content/content.server.ts`. Posts without a `permalink` are published at `/<slugified title>/`.
 
@@ -140,18 +180,18 @@ The shortcodes are implemented in `app/lib/content/shortcodes.server.ts`.
 
 ## Styles
 
-Styles are plain CSS in `app/styles/`, compiled with PostCSS:
+Each design direction's stylesheet is a package: [`@keenanpayne/forma-ui`](https://github.com/keenanpayne/forma-ui), where the directions live as a CSS design system (one stylesheet per direction, scoped to its root class, plus a Tailwind theme and the markup samples). Each direction's `index.tsx` links its stylesheet and fonts from the package, and the lab's checks read the same package's source. To change how a direction looks, change it there (`npm link` the checkout here while you work, and `npm run watch` there); `npm run forma:samples` after a build writes the directions' rendered markup back into it. The package is private on npm: `npm login` once on your machine to install it, and CI and Netlify read it with an `NPM_TOKEN` (a read-only granular access token for `@keenanpayne/forma-ui`: a repository secret here, used by `.github/workflows/ci.yml`, and a build environment variable on Netlify, which writes its own `.npmrc` for it). The lab's own pages have `app/lab/lab.css` and `app/lab/styleguide/styleguide.css`, plain CSS compiled with PostCSS:
 
-- [postcss-mixins](https://github.com/postcss/postcss-mixins) for `@define-mixin` / `@mixin`
 - [postcss-nested](https://github.com/postcss/postcss-nested) for nesting
-- [postcss-custom-media](https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-custom-media) for breakpoints like `@media (--min-960)`
 - [postcss-media-minmax](https://github.com/postcss/postcss-media-minmax) and [Autoprefixer](https://github.com/postcss/autoprefixer) for browser support
 
 ## Deployment
 
-The site deploys to [Netlify](https://netlify.com) with `npm run build`, publishing `build/client`. Pre-rendered pages are served as static files; any other request (404s and legacy redirects in `app/lib/legacy-urls.ts`) is server-rendered by a Netlify Function generated by [`@netlify/vite-plugin-react-router`](https://www.npmjs.com/package/@netlify/vite-plugin-react-router). The contact and project inquiry forms use [Netlify Forms](https://docs.netlify.com/manage/forms/setup/).
+The site deploys to [Netlify](https://netlify.com) with `npm run build`, publishing `build/client`. Pre-rendered pages are served as static files; any other request (404s and legacy redirects in `app/lib/legacy-urls.ts`) is server-rendered by a Netlify Function generated by [`@netlify/vite-plugin-react-router`](https://www.npmjs.com/package/@netlify/vite-plugin-react-router). The contact and project inquiry forms use [Netlify Forms](https://docs.netlify.com/manage/forms/setup/), and the newsletter sign-up posts to [Buttondown](https://buttondown.com/); where each sends is `submissionOf()` in `app/lab/site/forms.ts`, and `useSubmission()` wires every direction's forms to it (in the lab, they're mockups). Comments are [Disqus](https://disqus.com/) threads, loaded by `Comments` in `app/lab/site/comments.tsx` on the live site only.
 
 ## Contributing
+
+The site's stylesheets come from a private npm package (see [Styles](#styles)), and GitHub keeps repository secrets away from pull requests opened from forks, so CI can't install it for those and skips them with a note. A maintainer runs the checks by pushing the branch to this repository.
 
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/amazing-feature`)
@@ -161,6 +201,8 @@ The site deploys to [Netlify](https://netlify.com) with `npm run build`, publish
 
 ## Credits
 
+- [Forma UI](https://github.com/keenanpayne/forma-ui)
+  - The design directions' stylesheets, as a CSS design system
 - [Netlify](https://netlify.com)
   - Superb web hosting and deployment platform
 - [React](https://react.dev/) and [React Router](https://reactrouter.com/)
@@ -183,6 +225,10 @@ The site deploys to [Netlify](https://netlify.com) with `npm run build`, publish
   - Code formatter for consistent style
 - [Stylelint](https://stylelint.io/)
   - CSS linting utility
+- [Playwright](https://playwright.dev/) and [axe](https://github.com/dequelabs/axe-core)
+  - Browser automation, and the accessibility engine the audit runs
+- [Color.js](https://colorjs.io/)
+  - Color parsing and contrast
 
 ## License
 

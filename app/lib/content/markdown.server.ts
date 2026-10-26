@@ -125,5 +125,9 @@ markdown.renderer.rules.footnote_block_open = () =>
   '<ol class="footnotes-list">\n';
 
 export function renderMarkdown(source: string) {
-  return markdown.render(source, {});
+  // A code block can scroll sideways, so the keyboard has to reach it to
+  // scroll it (WCAG 2.1.1)
+  return markdown
+    .render(source, {})
+    .replace(/<pre(?![^>]*\btabindex=)/g, '<pre tabindex="0"');
 }

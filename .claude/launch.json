@@ -24,6 +24,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev", "--", "--port", "4324", "--strictPort"],
       "port": 4324
+    },
+    {
+      "name": "forma-demo",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["../forma-ui/scripts/serve.ts"],
+      "port": 4545
     }
   ]
 }

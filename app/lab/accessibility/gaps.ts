@@ -1,0 +1,20 @@
+/**
+ * Known accessibility gaps
+ * ==================================================
+ * Where each direction fell short of WCAG 2.2 AAA when the audit
+ * (`./audit.spec.ts`) was first run (2026-10-24), by check: an axe rule
+ * id, or one of `CUSTOM_CHECKS` in `./checks.ts`. Like
+ * `../conformance/gaps.ts`, it only ever shrinks: the audit fails when a
+ * direction falls short of anything not listed here, and when it meets
+ * something that is (so it comes off). Never add to it to make the audit
+ * pass; fix the page instead.
+ *
+ * To close one, delete its line and run `npm run a11y -- -g <Name>`: the
+ * failure lists every element that falls short, page by page.
+ */
+
+import type { DirectionSlug } from "../registry";
+
+export const KNOWN_A11Y_GAPS: Partial<
+  Record<DirectionSlug, readonly string[]>
+> = {};

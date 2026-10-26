@@ -23,8 +23,8 @@ export const socials: Social[] = [
   },
   {
     name: "Mastodon",
-    // Format as <a rel="me" href="https://pkm.social/@Keenan">Mastodon</a>
-    url: "https://pkm.social/@Keenan"
+    url: "https://pkm.social/@Keenan",
+    rel: "me"
   },
   {
     name: "Threads",

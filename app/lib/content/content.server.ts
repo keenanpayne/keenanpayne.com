@@ -1,12 +1,9 @@
 import slugifyString from "slugify";
 
-import asanaLogo from "../../assets/svg/asana.svg?raw";
-import gofundmeLogo from "../../assets/svg/gofundme.svg?raw";
-import neuralinkLogo from "../../assets/svg/neuralink.svg?raw";
-import ripplingLogo from "../../assets/svg/rippling.svg?raw";
-import stableLogo from "../../assets/svg/stable.svg?raw";
 import { personById } from "../../data/people";
 import { portfolio } from "../../data/portfolio";
+import { profile } from "../../data/profile";
+import { socials } from "../../data/socials";
 import testimonialAnalysis from "../../data/testimonial-analysis.json";
 import { testimonials } from "../../data/testimonials";
 import type { PortfolioItem } from "../../data/types";
@@ -23,10 +20,10 @@ import type {
   EntriesSection,
   EntryModel,
   IntroSection,
+  LabContent,
   LinkModel,
   PageMeta,
   PageModel,
-  PhotoModel,
   PortfolioGridSection,
   PortfolioPageModel,
   PostNavModel,
@@ -35,7 +32,11 @@ import type {
   TestimonialModel
 } from "../types";
 
-import { cloudinaryCover, cloudinaryUpload } from "./cloudinary";
+import {
+  cloudinaryCover,
+  cloudinaryImage,
+  cloudinaryUpload
+} from "./cloudinary";
 import {
   htmlDateString,
   longDate,
@@ -106,12 +107,9 @@ interface FrontMatter {
     image_alt?: string;
   };
   sections?: unknown;
-  templateClass?: string;
-  modifier?: string;
   toc?: boolean;
   cta?: boolean;
   comments?: boolean;
-  navigation?: { key: string; order?: number };
   changefreq?: string;
   seoPriority?: number;
   /** Portfolio pages: key of the case study in `app/data/portfolio` */
@@ -162,7 +160,7 @@ const archiveSections = (heading: string): RawSection[] => [
     orientation: "archive",
     items: { from: "posts", limit: -100 }
   },
-  { type: "newsletter", spacing: 10 }
+  { type: "newsletter" }
 ];
 
 const TYPE_SECTIONS = archiveSections("Archives");
@@ -196,8 +194,7 @@ const COLLECTIONS: Record<
       type: "Service",
       long_form: "Service Item",
       cta: false,
-      comments: false,
-      templateClass: "_page-spacing-bottom"
+      comments: false
     }
   },
   // `sections:` with no value is `null`, which overrides this with "none"
@@ -213,14 +210,6 @@ const FILTERED_TAGS = ["all", "nav", "post", "posts", "Featured"];
 const NOT_FOUND_URL = "/404.html";
 
 const TESTIMONIAL_TRUNCATE_LENGTH = 225;
-
-const SOCIAL_PROOF_LOGOS = [
-  { name: "asana", svg: asanaLogo },
-  { name: "gofundme", svg: gofundmeLogo },
-  { name: "rippling", svg: ripplingLogo },
-  { name: "neuralink", svg: neuralinkLogo },
-  { name: "stable", svg: stableLogo }
-];
 
 //
 // Helpers
@@ -489,16 +478,14 @@ interface EntryFields {
   heading?: unknown;
   lede?: unknown;
   url?: unknown;
-  linkText?: unknown;
 }
 
-function entry({ cover, heading, lede, url, linkText }: EntryFields) {
+function entry({ cover, heading, lede, url }: EntryFields) {
   const model: EntryModel = {};
   if (cover) model.cover = String(cover);
   if (heading) model.heading = String(heading);
   if (lede) model.lede = html(lede);
   if (url) model.url = String(url);
-  if (linkText) model.linkText = String(linkText);
   return model;
 }
 
@@ -518,8 +505,7 @@ function portfolioEntry(key: string, showCovers: boolean) {
     cover: showCovers && cloudinaryCover(item.cover ?? ""),
     heading: item.name,
     lede: item.lede,
-    url: portfolioUrl(key),
-    linkText: "View case study"
+    url: portfolioUrl(key)
   });
 }
 
@@ -567,12 +553,6 @@ function resolveEntries(
   const items = section.items as Record<string, unknown> | undefined;
   if (!items) return model;
 
-  const { orientation, columns } = section;
-  model.itemsClass =
-    orientation && columns
-      ? `-${orientation}-${columns}-columns`
-      : `-${orientation ?? ""}`;
-
   const from = items.from;
   // Content writes `limit: -100` for "everything" (Nunjucks' `head` filter)
   const limit = Number(items.limit) > 0 ? Number(items.limit) : Infinity;
@@ -591,8 +571,7 @@ function resolveEntries(
         cover: showCovers && post.data.cover,
         heading: post.data.title,
         lede: post.data.lede,
-        url: post.url,
-        linkText: "Read article"
+        url: post.url
       })
     );
   } else if (from === "portfolio") {
@@ -607,8 +586,7 @@ function resolveEntries(
       entry({
         cover: showCovers && service.data.cover,
         heading: service.data.title,
-        lede: service.data.lede,
-        linkText: "Learn more"
+        lede: service.data.lede
       })
     );
   }
@@ -626,42 +604,6 @@ function resolveIntro(
   else model.title = context.title;
   if (section.subheading) model.subheading = html(section.subheading);
   if (section.body) model.body = html(section.body);
-  if (section.headerMaxWidth) {
-    model.headerMaxWidth = String(section.headerMaxWidth);
-  }
-  if (section.subheadingMaxWidth) {
-    model.subheadingMaxWidth = String(section.subheadingMaxWidth);
-  }
-  if (section.bodyMaxWidth) model.bodyMaxWidth = String(section.bodyMaxWidth);
-  if (section.leftPhotos) model.leftPhotos = section.leftPhotos as PhotoModel[];
-
-  const right = section.right as Record<string, unknown> | undefined;
-  if (right) {
-    model.right = {};
-    if (right.heading) model.right.heading = String(right.heading);
-    if (right.readMore) model.right.readMore = asLink(right.readMore);
-
-    const items = right.items as Record<string, unknown> | undefined;
-    if (items) {
-      if (items.from === "services") {
-        let services = byOrder(servicesByDate());
-        if (items.limit) services = services.slice(0, Number(items.limit));
-        model.right.items = {
-          from: "services",
-          entries: services.map((service) =>
-            entry({
-              heading: service.data.title,
-              lede: service.data.short_lede
-            })
-          )
-        };
-      } else if (items.from === "photosOfMe") {
-        model.right.items = { from: "photosOfMe" };
-      } else {
-        throw new Error(`Unknown intro items source "${items.from}"`);
-      }
-    }
-  }
 
   return model;
 }
@@ -698,13 +640,11 @@ const resolveTestimonials = (ids: unknown) =>
 function resolvePortfolioGrid(section: RawSection): PortfolioGridSection {
   const project = portfolio[String(section.project)];
   const assets = project?.assets ?? {};
-  const contained = Boolean(section.contained);
   const description = optionalString(section.description);
 
   const model: PortfolioGridSection = {
     type: "portfolioGrid",
     modifier: optionalString(section.modifier),
-    contained,
     enlarge: Boolean(section.enlarge),
     eyebrow: optionalString(section.eyebrow),
     headline: optionalString(section.headline),
@@ -757,15 +697,9 @@ function resolveSection(
     case "entries":
       return resolveEntries(section, context);
     case "newsletter":
-      return {
-        type: "newsletter",
-        spacing: section.spacing as string | number | undefined
-      };
+      return { type: "newsletter" };
     case "newsletterStandalone":
-      return {
-        type: "newsletterStandalone",
-        modifiers: optionalString(section.modifiers)
-      };
+      return { type: "newsletterStandalone" };
     case "testimonials":
       return {
         type: "testimonials",
@@ -790,12 +724,6 @@ function resolveSection(
       };
     case "portfolioGrid":
       return resolvePortfolioGrid(section);
-    case "dribbble":
-      return {
-        type: "dribbble",
-        modifier: optionalString(section.modifier),
-        items: (section.items as Array<Record<string, string>>) ?? []
-      };
     case "tagList":
       return {
         type: "tagList",
@@ -819,14 +747,6 @@ function resolveSection(
         title: context.title,
         pages: index.pages.map(({ title, url }) => ({ title, url }))
       };
-    case "socialProofLogos":
-      // Only the home page shows these, so they ship in its loader data
-      // rather than in the client bundle every page loads
-      return { type: "socialProofLogos", logos: SOCIAL_PROOF_LOGOS };
-    case "cta":
-    case "contact":
-    case "projectInquiry":
-      return { type: section.type };
     default:
       throw new Error(`Unknown section type "${section.type}"`);
   }
@@ -883,13 +803,6 @@ function buildPostPage(item: ContentItem): PostPageModel {
     layout: "post",
     url: item.url,
     meta: getMeta(item.url, data.title, data.meta),
-    sectionClass: [
-      "post _page-spacing-top _container -small",
-      type ? plural(slug(type)) : "",
-      data.modifier ? `-${data.modifier}` : ""
-    ]
-      .filter(Boolean)
-      .join(" "),
     date: {
       iso: htmlDateString(item.date),
       short: isBook ? postYear(item.date) : readableDate(item.date),
@@ -917,12 +830,6 @@ function buildPostPage(item: ContentItem): PostPageModel {
       url: typeUrl(type),
       title: `View archive for ${plural(slug(type))}`
     };
-    if (data.title) {
-      model.footer = {
-        article: data.long_form ? "a" : "an",
-        typeLabel: (data.long_form ?? type).toLowerCase()
-      };
-    }
   }
 
   return model;
@@ -980,7 +887,6 @@ function buildBasicPage(
     layout: "page",
     url,
     meta: getMeta(url, title, data.meta),
-    templateClass: data.templateClass,
     sections: resolveSections(data.sections, { title, ...context }),
     content
   };
@@ -1041,18 +947,6 @@ export function getPrerenderPaths() {
   return getIndex().pages.map((page) => page.url);
 }
 
-/** Navigation items, from each page's `navigation` front matter */
-export function getNavigation(): LinkModel[] {
-  return getIndex()
-    .listed.filter((item) => item.data.navigation)
-    .map((item) => ({ item, order: item.data.navigation!.order ?? 0 }))
-    .sort((a, b) => a.order - b.order || byDate(a.item, b.item))
-    .map(({ item }) => ({
-      url: item.url,
-      text: item.data.navigation!.key
-    }));
-}
-
 export function getSitemapPages() {
   return getIndex().pages.map((page) => ({
     url: absoluteUrl(page.url),
@@ -1073,4 +967,89 @@ export function getFeedPosts() {
       content: convertToAbsoluteUrls(renderBody(post), url)
     };
   });
+}
+
+let labContent: LabContent | undefined;
+
+/**
+ * The site's content in one flat shape, as every design direction receives
+ * it: the live one at the site root, and the lab's mockups at `/lab/*`
+ */
+export function getLabContent(): LabContent {
+  return (labContent ??= buildLabContent());
+}
+
+function buildLabContent(): LabContent {
+  const index = getIndex();
+
+  const posts = index.posts.map((post) => {
+    const type = optionalString(post.data.type);
+    const image = optionalString(post.data.meta?.image);
+    return {
+      title: String(post.data.title ?? ""),
+      url: post.url,
+      date: readableDate(post.date),
+      iso: htmlDateString(post.date),
+      year: postYear(post.date),
+      type,
+      typeUrl: type && typeUrl(type),
+      lede: optionalString(post.data.lede ?? post.data.meta?.description),
+      // Skip social images that point outside `/public/images`
+      image: image && /^(https:\/\/|\/images\/)/.test(image) ? image : undefined
+    };
+  });
+
+  const work = Object.entries(portfolio)
+    .filter(([, item]) => !item.template && item.cover)
+    .sort(([, a], [, b]) => Number(b.featured ?? 0) - Number(a.featured ?? 0))
+    .map(([key, item]) => ({
+      name: item.name,
+      url: portfolioUrl(key),
+      lede: optionalString(item.lede),
+      cover: cloudinaryCover(item.cover ?? ""),
+      // Square, padded with the cover's own edge color, for narrow frames
+      coverSquare: cloudinaryImage(
+        item.cover ?? "",
+        "c_pad,ar_1:1,b_auto:border,w_640"
+      ),
+      year: optionalString(item.year),
+      role: optionalString(item.role),
+      industry: optionalString(item.industry),
+      services: item.services ?? [],
+      technologies: item.technologies ?? []
+    }));
+
+  const services = byOrder(servicesByDate()).map((item) => ({
+    title: String(item.data.title ?? ""),
+    url: item.url,
+    lede: optionalString(item.data.short_lede ?? item.data.lede)
+  }));
+
+  const { socials: socialNames, ...about } = profile;
+  const socialByName = (name: string) => {
+    const social = socials.find((candidate) => candidate.name === name);
+    if (!social) throw new Error(`No social profile named "${name}"`);
+    return social;
+  };
+
+  return {
+    posts,
+    work,
+    services,
+    testimonials: resolveTestimonials([6, 41, 2]),
+    profile: {
+      ...about,
+      avatar: cloudinaryImage(about.avatar, "c_fill,g_face,ar_1:1,w_480"),
+      photos: about.photos.map((photo) => ({
+        src: cloudinaryImage(photo.image, "w_800"),
+        large: cloudinaryImage(photo.image, "c_limit,w_1800"),
+        alt: photo.alt
+      }))
+    },
+    socials: socialNames.map(socialByName).map((social) => ({
+      text: social.name,
+      url: social.url,
+      rel: social.rel
+    }))
+  };
 }

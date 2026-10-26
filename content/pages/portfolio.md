@@ -4,10 +4,6 @@ seoPriority: 0.9
 title: Portfolio
 description:
 
-navigation:
-  key: Portfolio
-  order: 2
-
 sections:
   - type: intro
     heading: "Case studies"
@@ -39,5 +35,4 @@ sections:
     readMore:
       url: "/testimonials"
       text: "View all testimonials"
-  - type: cta
 ---
